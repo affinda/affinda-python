@@ -60,7 +60,7 @@ All required parameters must be populated in order to send to Azure.
 
 **Arguments**:
 
-- `error_code` (`int`): Required.
+- `error_code` (`str`): Required.
 - `error_detail` (`str`): Required.
 
 <a name="models._models.Get200ApplicationJsonPropertiesItemsItem"></a>
@@ -80,6 +80,23 @@ All required parameters must be populated in order to send to Azure.
 blank, one will be automatically generated.
 - `identifier` (`str`): Required. Unique identifier for the resume. If creating a document and left
 - `format_file` (`str`): Required. The template to apply.
+
+<a name="models._models.GetAllDocumentsResults"></a>
+
+## GetAllDocumentsResults Objects
+
+```python
+class GetAllDocumentsResults(msrest.serialization.Model)
+```
+
+GetAllDocumentsResults.
+
+**Arguments**:
+
+- `count` (`int`): 
+- `next` (`str`): 
+- `previous` (`str`): 
+- `results` (`list[~affinda.models.Meta]`): 
 
 <a name="models._models.Location"></a>
 
@@ -123,31 +140,14 @@ blank, one will be automatically generated.
 an endpoint request specified wait=False, when polling use this variable to determine when to
 stop polling.
 'error' field of the main return object.
-deleted.  Defaults to no expiry.
+automatically deleted.  Defaults to no expiry.
 - `identifier` (`str`): Required. Unique identifier for the resume. If creating a document and left
 - `file_name` (`str`): Optional filename of the file.
 - `ready` (`bool`): Required. If true, the document has finished processing. Particularly useful if
 - `ready_dt` (`~datetime.datetime`): Required. The datetime when the document was ready.
 - `failed` (`bool`): Required. If true, some exception was raised during processing. Check the
 - `user` (`~affinda.models.User`): Required.
-- `expiry_time` (`str`): The date/time in ISO-8601 format when the resume will be automatically
-
-<a name="models._models.Paths1My65ZdRedactedResumesGetResponses200ContentApplicationJsonSchema"></a>
-
-## Paths1My65ZdRedactedResumesGetResponses200ContentApplicationJsonSchema Objects
-
-```python
-class Paths1My65ZdRedactedResumesGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model)
-```
-
-Paths1My65ZdRedactedResumesGetResponses200ContentApplicationJsonSchema.
-
-**Arguments**:
-
-- `count` (`int`): 
-- `next` (`str`): 
-- `previous` (`str`): 
-- `results` (`list[~affinda.models.Meta]`): 
+- `expiry_time` (`str`): Required. The date/time in ISO-8601 format when the resume will be
 
 <a name="models._models.Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema"></a>
 
@@ -166,79 +166,6 @@ Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema.
 - `previous` (`str`): 
 - `results` (`list[~affinda.models.Get200ApplicationJsonPropertiesItemsItem]`): 
 
-<a name="models._models.Paths1VouiekRedactedResumesPostResponses201ContentApplicationJsonSchema"></a>
-
-## Paths1VouiekRedactedResumesPostResponses201ContentApplicationJsonSchema Objects
-
-```python
-class Paths1VouiekRedactedResumesPostResponses201ContentApplicationJsonSchema(msrest.serialization.Model)
-```
-
-Paths1VouiekRedactedResumesPostResponses201ContentApplicationJsonSchema.
-
-**Arguments**:
-
-- `file_name` (`str`): 
-- `identifier` (`str`): 
-- `redact_headshot` (`bool`): 
-- `redact_personal_details` (`bool`): 
-- `redact_work_details` (`bool`): 
-- `redact_education_details` (`bool`): 
-- `redact_referees` (`bool`): 
-- `redact_locations` (`bool`): 
-- `redact_dates` (`bool`): 
-
-<a name="models._models.Paths1Vwy7YkResumesGetResponses200ContentApplicationJsonSchema"></a>
-
-## Paths1Vwy7YkResumesGetResponses200ContentApplicationJsonSchema Objects
-
-```python
-class Paths1Vwy7YkResumesGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model)
-```
-
-Paths1Vwy7YkResumesGetResponses200ContentApplicationJsonSchema.
-
-**Arguments**:
-
-- `count` (`int`): 
-- `next` (`str`): 
-- `previous` (`str`): 
-- `results` (`list[~affinda.models.Meta]`): 
-
-<a name="models._models.Paths1Wyf6PlReformattedResumesPostResponses201ContentApplicationJsonSchema"></a>
-
-## Paths1Wyf6PlReformattedResumesPostResponses201ContentApplicationJsonSchema Objects
-
-```python
-class Paths1Wyf6PlReformattedResumesPostResponses201ContentApplicationJsonSchema(msrest.serialization.Model)
-```
-
-Paths1Wyf6PlReformattedResumesPostResponses201ContentApplicationJsonSchema.
-
-**Arguments**:
-
-will be automatically generated.
-- `file_name` (`str`): Optional filename of the file.
-- `identifier` (`str`): Unique identifier for the resume. If creating a document and left blank, one
-- `resume_format` (`str`): Identifier of the format used.
-
-<a name="models._models.Paths4Fg3YrReformattedResumesGetResponses200ContentApplicationJsonSchema"></a>
-
-## Paths4Fg3YrReformattedResumesGetResponses200ContentApplicationJsonSchema Objects
-
-```python
-class Paths4Fg3YrReformattedResumesGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model)
-```
-
-Paths4Fg3YrReformattedResumesGetResponses200ContentApplicationJsonSchema.
-
-**Arguments**:
-
-- `count` (`int`): 
-- `next` (`str`): 
-- `previous` (`str`): 
-- `results` (`list[~affinda.models.Meta]`): 
-
 <a name="models._models.Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema"></a>
 
 ## Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema Objects
@@ -252,7 +179,7 @@ Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema.
 **Arguments**:
 
 will be automatically generated.
-completed. If False, will return an identifier, which can be polled at the GET endpoint until
+false, will return an empty data object which can be polled at the GET endpoint until
 processing is complete.
 Chinese.
 deleted.  Defaults to no expiry.
@@ -260,7 +187,7 @@ deleted.  Defaults to no expiry.
 - `identifier` (`str`): Unique identifier for the resume. If creating a document and left blank, one
 - `file_name` (`str`): Optional filename of the file.
 - `url` (`str`): URL to file to download and process.
-- `wait` (`bool`): If true (default), will return a response only after resume processing has
+- `wait` (`bool`): If true (default), will return a response only after processing has completed. If
 - `resume_language` (`str`): Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for
 - `expiry_time` (`str`): The date/time in ISO-8601 format when the resume will be automatically
 
@@ -278,12 +205,15 @@ Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema.
 
 will be automatically generated.
 Chinese.
+false, will return an empty data object which can be polled at the GET endpoint until
+processing is complete.
 deleted.  Defaults to no expiry.
 - `file` (`IO`): File as binary data blob.
 - `identifier` (`str`): Unique identifier for the resume. If creating a document and left blank, one
 - `file_name` (`str`): Optional filename of the file.
 - `url` (`str`): URL to file to download and process.
 - `resume_language` (`str`): Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for
+- `wait` (`bool`): If true (default), will return a response only after processing has completed. If
 - `redact_headshot` (`bool`): Whether to redact headshot.
 - `redact_personal_details` (`bool`): Whether to redact personal details (e.g. name, address).
 - `redact_work_details` (`bool`): Whether to redact work details (e.g. company names).
@@ -292,22 +222,6 @@ deleted.  Defaults to no expiry.
 - `redact_locations` (`bool`): Whether to redact location names.
 - `redact_dates` (`bool`): Whether to redact dates.
 - `expiry_time` (`str`): The date/time in ISO-8601 format when the resume will be automatically
-
-<a name="models._models.PathsWt95EfResumesPostResponses201ContentApplicationJsonSchema"></a>
-
-## PathsWt95EfResumesPostResponses201ContentApplicationJsonSchema Objects
-
-```python
-class PathsWt95EfResumesPostResponses201ContentApplicationJsonSchema(msrest.serialization.Model)
-```
-
-PathsWt95EfResumesPostResponses201ContentApplicationJsonSchema.
-
-**Arguments**:
-
-will be automatically generated.
-- `identifier` (`str`): Unique identifier for the resume. If creating a document and left blank, one
-- `file_name` (`str`): Optional filename of the file.
 
 <a name="models._models.PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema"></a>
 
@@ -325,12 +239,15 @@ All required parameters must be populated in order to send to Azure.
 
 will be automatically generated.
 Chinese.
+false, will return an empty data object which can be polled at the GET endpoint until
+processing is complete.
 - `file` (`IO`): File as binary data blob.
 - `identifier` (`str`): Unique identifier for the resume. If creating a document and left blank, one
 - `file_name` (`str`): Optional filename of the file.
 - `url` (`str`): URL to file to download and process.
 - `resume_language` (`str`): Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for
 - `resume_format` (`str`): Required. Identifier of the format used.
+- `wait` (`bool`): If true (default), will return a response only after processing has completed. If
 
 <a name="models._models.RedactedResume"></a>
 

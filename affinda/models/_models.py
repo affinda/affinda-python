@@ -78,7 +78,7 @@ class Error(msrest.serialization.Model):
     All required parameters must be populated in order to send to Azure.
 
     :param error_code: Required.
-    :type error_code: int
+    :type error_code: str
     :param error_detail: Required.
     :type error_detail: str
     """
@@ -89,7 +89,7 @@ class Error(msrest.serialization.Model):
     }
 
     _attribute_map = {
-        'error_code': {'key': 'errorCode', 'type': 'int'},
+        'error_code': {'key': 'errorCode', 'type': 'str'},
         'error_detail': {'key': 'errorDetail', 'type': 'str'},
     }
 
@@ -131,6 +131,37 @@ class Get200ApplicationJsonPropertiesItemsItem(msrest.serialization.Model):
         super(Get200ApplicationJsonPropertiesItemsItem, self).__init__(**kwargs)
         self.identifier = kwargs['identifier']
         self.format_file = kwargs['format_file']
+
+
+class GetAllDocumentsResults(msrest.serialization.Model):
+    """GetAllDocumentsResults.
+
+    :param count:
+    :type count: int
+    :param next:
+    :type next: str
+    :param previous:
+    :type previous: str
+    :param results:
+    :type results: list[~affinda.models.Meta]
+    """
+
+    _attribute_map = {
+        'count': {'key': 'count', 'type': 'int'},
+        'next': {'key': 'next', 'type': 'str'},
+        'previous': {'key': 'previous', 'type': 'str'},
+        'results': {'key': 'results', 'type': '[Meta]'},
+    }
+
+    def __init__(
+        self,
+        **kwargs
+    ):
+        super(GetAllDocumentsResults, self).__init__(**kwargs)
+        self.count = kwargs.get('count', None)
+        self.next = kwargs.get('next', None)
+        self.previous = kwargs.get('previous', None)
+        self.results = kwargs.get('results', None)
 
 
 class Location(msrest.serialization.Model):
@@ -211,8 +242,8 @@ class Meta(msrest.serialization.Model):
     :type failed: bool
     :param user: Required.
     :type user: ~affinda.models.User
-    :param expiry_time: The date/time in ISO-8601 format when the resume will be automatically
-     deleted.  Defaults to no expiry.
+    :param expiry_time: Required. The date/time in ISO-8601 format when the resume will be
+     automatically deleted.  Defaults to no expiry.
     :type expiry_time: str
     """
 
@@ -222,6 +253,7 @@ class Meta(msrest.serialization.Model):
         'ready_dt': {'required': True},
         'failed': {'required': True},
         'user': {'required': True},
+        'expiry_time': {'required': True},
     }
 
     _attribute_map = {
@@ -245,38 +277,7 @@ class Meta(msrest.serialization.Model):
         self.ready_dt = kwargs['ready_dt']
         self.failed = kwargs['failed']
         self.user = kwargs['user']
-        self.expiry_time = kwargs.get('expiry_time', None)
-
-
-class Paths1My65ZdRedactedResumesGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model):
-    """Paths1My65ZdRedactedResumesGetResponses200ContentApplicationJsonSchema.
-
-    :param count:
-    :type count: int
-    :param next:
-    :type next: str
-    :param previous:
-    :type previous: str
-    :param results:
-    :type results: list[~affinda.models.Meta]
-    """
-
-    _attribute_map = {
-        'count': {'key': 'count', 'type': 'int'},
-        'next': {'key': 'next', 'type': 'str'},
-        'previous': {'key': 'previous', 'type': 'str'},
-        'results': {'key': 'results', 'type': '[Meta]'},
-    }
-
-    def __init__(
-        self,
-        **kwargs
-    ):
-        super(Paths1My65ZdRedactedResumesGetResponses200ContentApplicationJsonSchema, self).__init__(**kwargs)
-        self.count = kwargs.get('count', None)
-        self.next = kwargs.get('next', None)
-        self.previous = kwargs.get('previous', None)
-        self.results = kwargs.get('results', None)
+        self.expiry_time = kwargs['expiry_time']
 
 
 class Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model):
@@ -310,147 +311,6 @@ class Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema(msres
         self.results = kwargs.get('results', None)
 
 
-class Paths1VouiekRedactedResumesPostResponses201ContentApplicationJsonSchema(msrest.serialization.Model):
-    """Paths1VouiekRedactedResumesPostResponses201ContentApplicationJsonSchema.
-
-    :param file_name:
-    :type file_name: str
-    :param identifier:
-    :type identifier: str
-    :param redact_headshot:
-    :type redact_headshot: bool
-    :param redact_personal_details:
-    :type redact_personal_details: bool
-    :param redact_work_details:
-    :type redact_work_details: bool
-    :param redact_education_details:
-    :type redact_education_details: bool
-    :param redact_referees:
-    :type redact_referees: bool
-    :param redact_locations:
-    :type redact_locations: bool
-    :param redact_dates:
-    :type redact_dates: bool
-    """
-
-    _attribute_map = {
-        'file_name': {'key': 'fileName', 'type': 'str'},
-        'identifier': {'key': 'identifier', 'type': 'str'},
-        'redact_headshot': {'key': 'redactHeadshot', 'type': 'bool'},
-        'redact_personal_details': {'key': 'redactPersonalDetails', 'type': 'bool'},
-        'redact_work_details': {'key': 'redactWorkDetails', 'type': 'bool'},
-        'redact_education_details': {'key': 'redactEducationDetails', 'type': 'bool'},
-        'redact_referees': {'key': 'redactReferees', 'type': 'bool'},
-        'redact_locations': {'key': 'redactLocations', 'type': 'bool'},
-        'redact_dates': {'key': 'redactDates', 'type': 'bool'},
-    }
-
-    def __init__(
-        self,
-        **kwargs
-    ):
-        super(Paths1VouiekRedactedResumesPostResponses201ContentApplicationJsonSchema, self).__init__(**kwargs)
-        self.file_name = kwargs.get('file_name', None)
-        self.identifier = kwargs.get('identifier', None)
-        self.redact_headshot = kwargs.get('redact_headshot', None)
-        self.redact_personal_details = kwargs.get('redact_personal_details', None)
-        self.redact_work_details = kwargs.get('redact_work_details', None)
-        self.redact_education_details = kwargs.get('redact_education_details', None)
-        self.redact_referees = kwargs.get('redact_referees', None)
-        self.redact_locations = kwargs.get('redact_locations', None)
-        self.redact_dates = kwargs.get('redact_dates', None)
-
-
-class Paths1Vwy7YkResumesGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model):
-    """Paths1Vwy7YkResumesGetResponses200ContentApplicationJsonSchema.
-
-    :param count:
-    :type count: int
-    :param next:
-    :type next: str
-    :param previous:
-    :type previous: str
-    :param results:
-    :type results: list[~affinda.models.Meta]
-    """
-
-    _attribute_map = {
-        'count': {'key': 'count', 'type': 'int'},
-        'next': {'key': 'next', 'type': 'str'},
-        'previous': {'key': 'previous', 'type': 'str'},
-        'results': {'key': 'results', 'type': '[Meta]'},
-    }
-
-    def __init__(
-        self,
-        **kwargs
-    ):
-        super(Paths1Vwy7YkResumesGetResponses200ContentApplicationJsonSchema, self).__init__(**kwargs)
-        self.count = kwargs.get('count', None)
-        self.next = kwargs.get('next', None)
-        self.previous = kwargs.get('previous', None)
-        self.results = kwargs.get('results', None)
-
-
-class Paths1Wyf6PlReformattedResumesPostResponses201ContentApplicationJsonSchema(msrest.serialization.Model):
-    """Paths1Wyf6PlReformattedResumesPostResponses201ContentApplicationJsonSchema.
-
-    :param file_name: Optional filename of the file.
-    :type file_name: str
-    :param identifier: Unique identifier for the resume. If creating a document and left blank, one
-     will be automatically generated.
-    :type identifier: str
-    :param resume_format: Identifier of the format used.
-    :type resume_format: str
-    """
-
-    _attribute_map = {
-        'file_name': {'key': 'fileName', 'type': 'str'},
-        'identifier': {'key': 'identifier', 'type': 'str'},
-        'resume_format': {'key': 'resumeFormat', 'type': 'str'},
-    }
-
-    def __init__(
-        self,
-        **kwargs
-    ):
-        super(Paths1Wyf6PlReformattedResumesPostResponses201ContentApplicationJsonSchema, self).__init__(**kwargs)
-        self.file_name = kwargs.get('file_name', None)
-        self.identifier = kwargs.get('identifier', None)
-        self.resume_format = kwargs.get('resume_format', None)
-
-
-class Paths4Fg3YrReformattedResumesGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model):
-    """Paths4Fg3YrReformattedResumesGetResponses200ContentApplicationJsonSchema.
-
-    :param count:
-    :type count: int
-    :param next:
-    :type next: str
-    :param previous:
-    :type previous: str
-    :param results:
-    :type results: list[~affinda.models.Meta]
-    """
-
-    _attribute_map = {
-        'count': {'key': 'count', 'type': 'int'},
-        'next': {'key': 'next', 'type': 'str'},
-        'previous': {'key': 'previous', 'type': 'str'},
-        'results': {'key': 'results', 'type': '[Meta]'},
-    }
-
-    def __init__(
-        self,
-        **kwargs
-    ):
-        super(Paths4Fg3YrReformattedResumesGetResponses200ContentApplicationJsonSchema, self).__init__(**kwargs)
-        self.count = kwargs.get('count', None)
-        self.next = kwargs.get('next', None)
-        self.previous = kwargs.get('previous', None)
-        self.results = kwargs.get('results', None)
-
-
 class Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema(msrest.serialization.Model):
     """Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema.
 
@@ -463,8 +323,8 @@ class Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema(msrest.ser
     :type file_name: str
     :param url: URL to file to download and process.
     :type url: str
-    :param wait: If true (default), will return a response only after resume processing has
-     completed. If False, will return an identifier, which can be polled at the GET endpoint until
+    :param wait: If true (default), will return a response only after processing has completed. If
+     false, will return an empty data object which can be polled at the GET endpoint until
      processing is complete.
     :type wait: bool
     :param resume_language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for
@@ -514,6 +374,10 @@ class Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema(ms
     :param resume_language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for
      Chinese.
     :type resume_language: str
+    :param wait: If true (default), will return a response only after processing has completed. If
+     false, will return an empty data object which can be polled at the GET endpoint until
+     processing is complete.
+    :type wait: bool
     :param redact_headshot: Whether to redact headshot.
     :type redact_headshot: bool
     :param redact_personal_details: Whether to redact personal details (e.g. name, address).
@@ -539,6 +403,7 @@ class Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema(ms
         'file_name': {'key': 'fileName', 'type': 'str'},
         'url': {'key': 'url', 'type': 'str'},
         'resume_language': {'key': 'resumeLanguage', 'type': 'str'},
+        'wait': {'key': 'wait', 'type': 'bool'},
         'redact_headshot': {'key': 'redactHeadshot', 'type': 'bool'},
         'redact_personal_details': {'key': 'redactPersonalDetails', 'type': 'bool'},
         'redact_work_details': {'key': 'redactWorkDetails', 'type': 'bool'},
@@ -559,6 +424,7 @@ class Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema(ms
         self.file_name = kwargs.get('file_name', None)
         self.url = kwargs.get('url', None)
         self.resume_language = kwargs.get('resume_language', None)
+        self.wait = kwargs.get('wait', None)
         self.redact_headshot = kwargs.get('redact_headshot', True)
         self.redact_personal_details = kwargs.get('redact_personal_details', True)
         self.redact_work_details = kwargs.get('redact_work_details', True)
@@ -567,30 +433,6 @@ class Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema(ms
         self.redact_locations = kwargs.get('redact_locations', True)
         self.redact_dates = kwargs.get('redact_dates', True)
         self.expiry_time = kwargs.get('expiry_time', None)
-
-
-class PathsWt95EfResumesPostResponses201ContentApplicationJsonSchema(msrest.serialization.Model):
-    """PathsWt95EfResumesPostResponses201ContentApplicationJsonSchema.
-
-    :param identifier: Unique identifier for the resume. If creating a document and left blank, one
-     will be automatically generated.
-    :type identifier: str
-    :param file_name: Optional filename of the file.
-    :type file_name: str
-    """
-
-    _attribute_map = {
-        'identifier': {'key': 'identifier', 'type': 'str'},
-        'file_name': {'key': 'fileName', 'type': 'str'},
-    }
-
-    def __init__(
-        self,
-        **kwargs
-    ):
-        super(PathsWt95EfResumesPostResponses201ContentApplicationJsonSchema, self).__init__(**kwargs)
-        self.identifier = kwargs.get('identifier', None)
-        self.file_name = kwargs.get('file_name', None)
 
 
 class PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema(msrest.serialization.Model):
@@ -612,6 +454,10 @@ class PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema
     :type resume_language: str
     :param resume_format: Required. Identifier of the format used.
     :type resume_format: str
+    :param wait: If true (default), will return a response only after processing has completed. If
+     false, will return an empty data object which can be polled at the GET endpoint until
+     processing is complete.
+    :type wait: bool
     """
 
     _validation = {
@@ -625,6 +471,7 @@ class PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema
         'url': {'key': 'url', 'type': 'str'},
         'resume_language': {'key': 'resumeLanguage', 'type': 'str'},
         'resume_format': {'key': 'resumeFormat', 'type': 'str'},
+        'wait': {'key': 'wait', 'type': 'bool'},
     }
 
     def __init__(
@@ -638,6 +485,7 @@ class PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema
         self.url = kwargs.get('url', None)
         self.resume_language = kwargs.get('resume_language', None)
         self.resume_format = kwargs['resume_format']
+        self.wait = kwargs.get('wait', None)
 
 
 class RedactedResume(msrest.serialization.Model):

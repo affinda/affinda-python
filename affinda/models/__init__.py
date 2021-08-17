@@ -10,17 +10,12 @@ try:
     from ._models_py3 import ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema
     from ._models_py3 import Error
     from ._models_py3 import Get200ApplicationJsonPropertiesItemsItem
+    from ._models_py3 import GetAllDocumentsResults
     from ._models_py3 import Location
     from ._models_py3 import Meta
-    from ._models_py3 import Paths1My65ZdRedactedResumesGetResponses200ContentApplicationJsonSchema
     from ._models_py3 import Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema
-    from ._models_py3 import Paths1VouiekRedactedResumesPostResponses201ContentApplicationJsonSchema
-    from ._models_py3 import Paths1Vwy7YkResumesGetResponses200ContentApplicationJsonSchema
-    from ._models_py3 import Paths1Wyf6PlReformattedResumesPostResponses201ContentApplicationJsonSchema
-    from ._models_py3 import Paths4Fg3YrReformattedResumesGetResponses200ContentApplicationJsonSchema
     from ._models_py3 import Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema
     from ._models_py3 import Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema
-    from ._models_py3 import PathsWt95EfResumesPostResponses201ContentApplicationJsonSchema
     from ._models_py3 import PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema
     from ._models_py3 import RedactedResume
     from ._models_py3 import RedactedResumeData
@@ -46,17 +41,12 @@ except (SyntaxError, ImportError):
     from ._models import ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema  # type: ignore
     from ._models import Error  # type: ignore
     from ._models import Get200ApplicationJsonPropertiesItemsItem  # type: ignore
+    from ._models import GetAllDocumentsResults  # type: ignore
     from ._models import Location  # type: ignore
     from ._models import Meta  # type: ignore
-    from ._models import Paths1My65ZdRedactedResumesGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema  # type: ignore
-    from ._models import Paths1VouiekRedactedResumesPostResponses201ContentApplicationJsonSchema  # type: ignore
-    from ._models import Paths1Vwy7YkResumesGetResponses200ContentApplicationJsonSchema  # type: ignore
-    from ._models import Paths1Wyf6PlReformattedResumesPostResponses201ContentApplicationJsonSchema  # type: ignore
-    from ._models import Paths4Fg3YrReformattedResumesGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema  # type: ignore
     from ._models import Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema  # type: ignore
-    from ._models import PathsWt95EfResumesPostResponses201ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema  # type: ignore
     from ._models import RedactedResume  # type: ignore
     from ._models import RedactedResumeData  # type: ignore
@@ -83,17 +73,12 @@ __all__ = [
     'ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema',
     'Error',
     'Get200ApplicationJsonPropertiesItemsItem',
+    'GetAllDocumentsResults',
     'Location',
     'Meta',
-    'Paths1My65ZdRedactedResumesGetResponses200ContentApplicationJsonSchema',
     'Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema',
-    'Paths1VouiekRedactedResumesPostResponses201ContentApplicationJsonSchema',
-    'Paths1Vwy7YkResumesGetResponses200ContentApplicationJsonSchema',
-    'Paths1Wyf6PlReformattedResumesPostResponses201ContentApplicationJsonSchema',
-    'Paths4Fg3YrReformattedResumesGetResponses200ContentApplicationJsonSchema',
     'Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema',
     'Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema',
-    'PathsWt95EfResumesPostResponses201ContentApplicationJsonSchema',
     'PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema',
     'RedactedResume',
     'RedactedResumeData',

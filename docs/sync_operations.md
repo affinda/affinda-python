@@ -48,7 +48,7 @@ Returns all the resume summaries for that user, limited to 300 per page.
 
 **Returns**:
 
-`~affinda.models.Paths1Vwy7YkResumesGetResponses200ContentApplicationJsonSchema or`: Paths1Vwy7YkResumesGetResponses200ContentApplicationJsonSchema or
+`~affinda.models.GetAllDocumentsResults or`: GetAllDocumentsResults or
 
 <a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resume"></a>
 
@@ -68,20 +68,18 @@ retrieve results.
 
 **Arguments**:
 
-completed. If False, will return an identifier, which can be polled at the GET endpoint until
-processing is complete.
 :keyword callable cls: A custom type or function that will be passed the direct response
-- `file` (`IO`): File as binary data blob.
+- `file` (`IO`): 
 - `identifier` (`str`): 
 - `file_name` (`str`): 
 - `url` (`str`): 
-- `wait` (`bool`): If true (default), will return a response only after resume processing has
+- `wait` (`bool`): 
 - `resume_language` (`str`): 
 - `expiry_time` (`str`): 
 
 **Returns**:
 
-`~affinda.models.Resume or`: Resume or PathsWt95EfResumesPostResponses201ContentApplicationJsonSchema or
+`~affinda.models.Resume or`: Resume or Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema or
 
 <a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume"></a>
 
@@ -146,7 +144,7 @@ Returns all the redacted resume information for that resume.
 
 **Returns**:
 
-`~affinda.models.Paths1My65ZdRedactedResumesGetResponses200ContentApplicationJsonSchema`: Paths1My65ZdRedactedResumesGetResponses200ContentApplicationJsonSchema or
+`~affinda.models.GetAllDocumentsResults or`: GetAllDocumentsResults or
 
 <a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_redacted_resume"></a>
 
@@ -154,7 +152,7 @@ Returns all the redacted resume information for that resume.
 
 ```python
  | @distributed_trace
- | create_redacted_resume(file=None, identifier=None, file_name=None, url=None, resume_language=None, redact_headshot=True, redact_personal_details=True, redact_work_details=True, redact_education_details=True, redact_referees=True, redact_locations=True, redact_dates=True, expiry_time=None, **kwargs)
+ | create_redacted_resume(file=None, identifier=None, file_name=None, url=None, resume_language=None, wait=None, redact_headshot=True, redact_personal_details=True, redact_work_details=True, redact_education_details=True, redact_referees=True, redact_locations=True, redact_dates=True, expiry_time=None, **kwargs)
 ```
 
 Uploads a resume for redacting.
@@ -164,11 +162,12 @@ Uploads a resume for redacting.
 **Arguments**:
 
 :keyword callable cls: A custom type or function that will be passed the direct response
-- `file` (`IO`): File as binary data blob.
+- `file` (`IO`): 
 - `identifier` (`str`): 
 - `file_name` (`str`): 
 - `url` (`str`): 
 - `resume_language` (`str`): 
+- `wait` (`bool`): 
 - `redact_headshot` (`bool`): Whether to redact headshot.
 - `redact_personal_details` (`bool`): Whether to redact personal details (e.g. name, address).
 - `redact_work_details` (`bool`): Whether to redact work details (e.g. company names).
@@ -264,7 +263,7 @@ Returns all the reformatted resume information for that resume.
 
 **Returns**:
 
-Paths4Fg3YrReformattedResumesGetResponses200ContentApplicationJsonSchema or
+`~affinda.models.GetAllDocumentsResults or`: GetAllDocumentsResults or
 
 <a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_reformatted_resume"></a>
 
@@ -272,7 +271,7 @@ Paths4Fg3YrReformattedResumesGetResponses200ContentApplicationJsonSchema or
 
 ```python
  | @distributed_trace
- | create_reformatted_resume(resume_format, file=None, identifier=None, file_name=None, url=None, resume_language=None, **kwargs)
+ | create_reformatted_resume(resume_format, file=None, identifier=None, file_name=None, url=None, resume_language=None, wait=None, **kwargs)
 ```
 
 Uploads a resume for reformatting.
@@ -283,11 +282,12 @@ Uploads a resume for reformatting.
 
 :keyword callable cls: A custom type or function that will be passed the direct response
 - `resume_format` (`str`): 
-- `file` (`IO`): File as binary data blob.
+- `file` (`IO`): 
 - `identifier` (`str`): 
 - `file_name` (`str`): 
-- `url` (`str`): URL to file to download and process.
+- `url` (`str`): 
 - `resume_language` (`str`): 
+- `wait` (`bool`): 
 
 **Returns**:
 
