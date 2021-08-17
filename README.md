@@ -41,219 +41,185 @@ with open(file_pth, "rb") as f:
 ## Parser
 ### Gets summary information for all resumes of a user
 ```python
-from pathlib import Path
-from affinda.public.openapi.generated.python.affinda_python import AffindaAPI, TokenCredential
+from affinda import AffindaAPI, TokenCredential
 
-TOKEN = "YOUR_API_TOKEN"
+token = "REPLACE_TOKEN"
 
-file_pth = Path("path_to_file")
-credential = TokenCredential(token=TOKEN)
-
+credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
-with open(file_pth, "rb") as f:
-    resume = client.get_all_resumes()
+all_resumes = client.get_all_resumes()
 
-print(resume.as_dict())
+print(all_resumes.as_dict())
 ```
 ### Uploads a resume for parsing
 ```python
 from pathlib import Path
-from affinda.public.openapi.generated.python.affinda_python import AffindaAPI, TokenCredential
 
-TOKEN = "YOUR_API_TOKEN"
+from affinda import AffindaAPI, TokenCredential
 
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
 file_pth = Path("path_to_file")
-credential = TokenCredential(token=TOKEN)
 
+credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
+
 with open(file_pth, "rb") as f:
-    resume = client.create_resume(file=f, file_name="test.pdf", wait=False)
+    resume = client.create_resume(file=f, file_name=file_pth.name, wait=True)
 
 print(resume.as_dict())
 ```
 ### Gets parse results for a specific resume
 ```python
-from pathlib import Path
-from affinda.public.openapi.generated.python.affinda_python import AffindaAPI, TokenCredential
+from affinda import AffindaAPI, TokenCredential
 
-TOKEN = "YOUR_API_TOKEN"
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
 
-file_pth = Path("path_to_file")
-credential = TokenCredential(token=TOKEN)
-
+credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
-with open(file_pth, "rb") as f:
-    resume = client.get_resume(identifier="DUglqBoT")
+resume = client.get_resume(identifier=identifier)
 
 print(resume.as_dict())
 ```
 ### Deletes a resume
 ```python
-from pathlib import Path
-from affinda.public.openapi.generated.python.affinda_python import AffindaAPI, TokenCredential
+from affinda import AffindaAPI, TokenCredential
 
-TOKEN = "YOUR_API_TOKEN"
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
 
-file_pth = Path("path_to_file")
-credential = TokenCredential(token=TOKEN)
-
+credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
-with open(file_pth, "rb") as f:
-    confirmation = client.delete_resume(identifier="DUglqBoT")
+response = client.delete_resume(identifier=identifier)
 
-print(confirmation.as_dict())
+print(response.as_dict())
 ```
 ## Redactor
 ### Gets summary information for all redacted resumes of a user
 ```python
-import requests
+from affinda import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 
-url = "https://api.affinda.com/v1/redacted_resumes"
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+all_redacted_resumes = client.get_all_redacted_resumes()
 
-headers = {"Authorization": f"Bearer {token}"}
-
-response = requests.get(url, headers=headers)
-
-print(response.json())
-
-### THIS TEXT WILL NOT BE INCLUDED IN THE REDOCS, BUT WILL HELP DEFINE THE OUTPUT IN README.MD
-### HEADING = "Get a resume
+print(all_redacted_resumes.as_dict())
 ```
 ### Uploads a resume for redacting
 ```python
-import requests
 from pathlib import Path
 
-FILE_TO_UPLOAD_PATH = Path("path/to/file")
-
-url = "https://api.affinda.com/v1/redacted_resumes/"
+from affinda import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+file_pth = Path("path_to_file")
 
-headers = {"Authorization": f"Bearer {token}"}
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
 
-with open(FILE_TO_UPLOAD_PATH, "rb") as doc_file:
-    response = requests.post(
-        url,
-        data={"fileName": FILE_TO_UPLOAD_PATH.name},
-        files={"file": doc_file},
-        headers=headers,
-    )
+with open(file_pth, "rb") as f:
+    redacted_resume = client.create_redacted_resume(file=f, file_name=file_pth.name)
 
-print(response.json())
+print(redacted_resume.as_dict())
 ```
 ### Gets redaction results for a specific resume
 ```python
-import requests
-
-identifier = "REPLACE_IDENTIFIER"
+from affinda import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
 
-url = f"https://api.affinda.com/v1/redacted_resumes/{identifier}"
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+redacted_resume = client.get_redacted_resume(identifier=identifier)
 
-headers = {"Authorization": f"Bearer {token}"}
-
-response = requests.get(url, headers=headers)
-
-print(response.json())
+print(redacted_resume.as_dict())
 ```
 ### Deletes a redacted resume
 ```python
-import requests
-
-identifier = "REPLACE_IDENTIFIER"
+from affinda import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
 
-url = f"https://api.affinda.com/v1/redacted_resumes/{identifier}"
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+response = client.delete_redacted_resume(identifier=identifier)
 
-headers = {"Authorization": f"Bearer {token}"}
-
-response = requests.delete(url, headers=headers)
+print(response.as_dict())
 ```
 ## Reformatter
 ### Gets summary information for all resume formats of a user
 ```python
-import requests
+from affinda import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 
-url = "https://api.affinda.com/v1/resume_formats"
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+resume_formats = client.get_all_resume_formats()
 
-headers = {"Authorization": f"Bearer {token}"}
-
-response = requests.get(url, headers=headers)
-
-print(response.json())
+print(resume_formats.as_dict())
 ```
 ### Gets summary information for all reformatted resumes of a user
 ```python
-import requests
+from affinda import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 
-url = "https://api.affinda.com/v1/reformatted_resumes"
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+all_reformatted_resumes = client.get_all_reformatted_resumes()
 
-headers = {"Authorization": f"Bearer {token}"}
-
-response = requests.get(url, headers=headers)
-
-print(response.json())
+print(all_reformatted_resumes.as_dict())
 ```
 ### Uploads a resume for reformatting
 ```python
-import requests
 from pathlib import Path
 
-FILE_TO_UPLOAD_PATH = Path("path/to/file")
-
-url = "https://api.affinda.com/v1/reformatted_resumes/"
+from affinda import TokenCredential, AffindaAPI
 
 token = "REPLACE_TOKEN"
-resumeFormat = "REPLACE_FORMAT_IDENTIFIER"
+resume_format = "REPLACE_FORMAT_IDENTIFIER"
+file_pth = Path("path_to_file")
 
-headers = {"Authorization": f"Bearer {token}"}
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
 
-with open(FILE_TO_UPLOAD_PATH, "rb") as doc_file:
-    response = requests.post(
-        url,
-        data={"fileName": FILE_TO_UPLOAD_PATH.name, "resumeFormat": resumeFormat},
-        files={"file": doc_file},
-        headers=headers,
-    )
+with open(file_pth, "rb") as f:
+    reformatted_resume = client.create_reformatted_resume(file=f,
+                                                          file_name=file_pth.name,
+                                                          resume_format="iRBSptwK")
 
-print(response.json())
+print(reformatted_resume.as_dict())
 ```
 ### Gets reformatting results for a specific resume
 ```python
-import requests
-
-identifier = "REPLACE_IDENTIFIER"
+from affinda import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
 
-url = f"https://api.affinda.com/v1/redacted_resumes/{identifier}"
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+reformatted_resume = client.get_reformatted_resume(identifier=identifier)
 
-headers = {"Authorization": f"Bearer {token}"}
-
-response = requests.get(url, headers=headers)
-
-print(response.json())
+print(reformatted_resume.as_dict())
 ```
 ### Deletes a reformatted resume
 ```python
-import requests
-
-identifier = "REPLACE_IDENTIFIER"
+from affinda import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
 
-url = f"https://api.affinda.com/v1/reformatted_resumes/{identifier}"
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+response = client.delete_reformatted_resume(identifier=identifier)
 
-headers = {"Authorization": f"Bearer {token}"}
-
-response = requests.delete(url, headers=headers)
+print(response.as_dict())
 ```

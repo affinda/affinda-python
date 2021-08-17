@@ -121,9 +121,10 @@ class Get200ApplicationJsonPropertiesItemsItem(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
-    :param identifier: Required.
+    :param identifier: Required. Unique identifier for the resume. If creating a document and left
+     blank, one will be automatically generated.
     :type identifier: str
-    :param format_file: Required.
+    :param format_file: Required. The template to apply.
     :type format_file: str
     """
 
@@ -237,8 +238,8 @@ class Meta(msrest.serialization.Model):
     :type failed: bool
     :param user: Required.
     :type user: ~affinda.models.User
-    :param expiry_time: Required. The date/time in ISO-8601 format when the resume will be
-     automatically deleted.  Defaults to no expiry.
+    :param expiry_time: The date/time in ISO-8601 format when the resume will be automatically
+     deleted.  Defaults to no expiry.
     :type expiry_time: str
     """
 
@@ -248,7 +249,6 @@ class Meta(msrest.serialization.Model):
         'ready_dt': {'required': True},
         'failed': {'required': True},
         'user': {'required': True},
-        'expiry_time': {'required': True},
     }
 
     _attribute_map = {
@@ -269,8 +269,8 @@ class Meta(msrest.serialization.Model):
         ready_dt: datetime.datetime,
         failed: bool,
         user: "User",
-        expiry_time: str,
         file_name: Optional[str] = None,
+        expiry_time: Optional[str] = None,
         **kwargs
     ):
         super(Meta, self).__init__(**kwargs)
@@ -741,11 +741,11 @@ class PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema
         self.resume_format = resume_format
 
 
-class RedactedDocument(msrest.serialization.Model):
-    """RedactedDocument.
+class RedactedResume(msrest.serialization.Model):
+    """RedactedResume.
 
     :param data:
-    :type data: ~affinda.models.RedactedDocumentData
+    :type data: ~affinda.models.RedactedResumeData
     :param meta:
     :type meta: ~affinda.models.Meta
     :param error:
@@ -753,7 +753,7 @@ class RedactedDocument(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'data': {'key': 'data', 'type': 'RedactedDocumentData'},
+        'data': {'key': 'data', 'type': 'RedactedResumeData'},
         'meta': {'key': 'meta', 'type': 'Meta'},
         'error': {'key': 'error', 'type': 'Error'},
     }
@@ -761,19 +761,19 @@ class RedactedDocument(msrest.serialization.Model):
     def __init__(
         self,
         *,
-        data: Optional["RedactedDocumentData"] = None,
+        data: Optional["RedactedResumeData"] = None,
         meta: Optional["Meta"] = None,
         error: Optional["Error"] = None,
         **kwargs
     ):
-        super(RedactedDocument, self).__init__(**kwargs)
+        super(RedactedResume, self).__init__(**kwargs)
         self.data = data
         self.meta = meta
         self.error = error
 
 
-class RedactedDocumentData(msrest.serialization.Model):
-    """RedactedDocumentData.
+class RedactedResumeData(msrest.serialization.Model):
+    """RedactedResumeData.
 
     :param redacted_pdf:
     :type redacted_pdf: str
@@ -789,15 +789,15 @@ class RedactedDocumentData(msrest.serialization.Model):
         redacted_pdf: Optional[str] = None,
         **kwargs
     ):
-        super(RedactedDocumentData, self).__init__(**kwargs)
+        super(RedactedResumeData, self).__init__(**kwargs)
         self.redacted_pdf = redacted_pdf
 
 
-class ReformattedDocument(msrest.serialization.Model):
-    """ReformattedDocument.
+class ReformattedResume(msrest.serialization.Model):
+    """ReformattedResume.
 
     :param data:
-    :type data: ~affinda.models.ReformattedDocumentData
+    :type data: ~affinda.models.ReformattedResumeData
     :param meta:
     :type meta: ~affinda.models.Meta
     :param error:
@@ -805,7 +805,7 @@ class ReformattedDocument(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'data': {'key': 'data', 'type': 'ReformattedDocumentData'},
+        'data': {'key': 'data', 'type': 'ReformattedResumeData'},
         'meta': {'key': 'meta', 'type': 'Meta'},
         'error': {'key': 'error', 'type': 'Error'},
     }
@@ -813,19 +813,19 @@ class ReformattedDocument(msrest.serialization.Model):
     def __init__(
         self,
         *,
-        data: Optional["ReformattedDocumentData"] = None,
+        data: Optional["ReformattedResumeData"] = None,
         meta: Optional["Meta"] = None,
         error: Optional["Error"] = None,
         **kwargs
     ):
-        super(ReformattedDocument, self).__init__(**kwargs)
+        super(ReformattedResume, self).__init__(**kwargs)
         self.data = data
         self.meta = meta
         self.error = error
 
 
-class ReformattedDocumentData(msrest.serialization.Model):
-    """ReformattedDocumentData.
+class ReformattedResumeData(msrest.serialization.Model):
+    """ReformattedResumeData.
 
     :param reformatted_file:
     :type reformatted_file: str
@@ -841,7 +841,7 @@ class ReformattedDocumentData(msrest.serialization.Model):
         reformatted_file: Optional[str] = None,
         **kwargs
     ):
-        super(ReformattedDocumentData, self).__init__(**kwargs)
+        super(ReformattedResumeData, self).__init__(**kwargs)
         self.reformatted_file = reformatted_file
 
 

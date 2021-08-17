@@ -22,10 +22,10 @@ try:
     from ._models_py3 import Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema
     from ._models_py3 import PathsWt95EfResumesPostResponses201ContentApplicationJsonSchema
     from ._models_py3 import PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema
-    from ._models_py3 import RedactedDocument
-    from ._models_py3 import RedactedDocumentData
-    from ._models_py3 import ReformattedDocument
-    from ._models_py3 import ReformattedDocumentData
+    from ._models_py3 import RedactedResume
+    from ._models_py3 import RedactedResumeData
+    from ._models_py3 import ReformattedResume
+    from ._models_py3 import ReformattedResumeData
     from ._models_py3 import Resume
     from ._models_py3 import ResumeData
     from ._models_py3 import ResumeDataEducationItem
@@ -58,10 +58,10 @@ except (SyntaxError, ImportError):
     from ._models import Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema  # type: ignore
     from ._models import PathsWt95EfResumesPostResponses201ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema  # type: ignore
-    from ._models import RedactedDocument  # type: ignore
-    from ._models import RedactedDocumentData  # type: ignore
-    from ._models import ReformattedDocument  # type: ignore
-    from ._models import ReformattedDocumentData  # type: ignore
+    from ._models import RedactedResume  # type: ignore
+    from ._models import RedactedResumeData  # type: ignore
+    from ._models import ReformattedResume  # type: ignore
+    from ._models import ReformattedResumeData  # type: ignore
     from ._models import Resume  # type: ignore
     from ._models import ResumeData  # type: ignore
     from ._models import ResumeDataEducationItem  # type: ignore
@@ -95,10 +95,10 @@ __all__ = [
     'Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema',
     'PathsWt95EfResumesPostResponses201ContentApplicationJsonSchema',
     'PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema',
-    'RedactedDocument',
-    'RedactedDocumentData',
-    'ReformattedDocument',
-    'ReformattedDocumentData',
+    'RedactedResume',
+    'RedactedResumeData',
+    'ReformattedResume',
+    'ReformattedResumeData',
     'Resume',
     'ResumeData',
     'ResumeDataEducationItem',

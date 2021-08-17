@@ -10,9 +10,12 @@ import warnings
 from azure.core.exceptions import ClientAuthenticationError, HttpResponseError, ResourceExistsError, ResourceNotFoundError, map_error
 from azure.core.pipeline import PipelineResponse
 from azure.core.pipeline.transport import HttpResponse
+from azure.core.pipeline.transport._base import _format_url_section
 from azure.core.rest import HttpRequest
+from azure.core.tracing.decorator import distributed_trace
+from msrest import Serializer
 
-from .. import _rest as rest, models as _models
+from .. import models as _models
 
 if TYPE_CHECKING:
     # pylint: disable=unused-import,ungrouped-imports
@@ -21,8 +24,364 @@ if TYPE_CHECKING:
     T = TypeVar('T')
     ClsType = Optional[Callable[[PipelineResponse[HttpRequest, HttpResponse], T, Dict[str, Any]], Any]]
 
+_SERIALIZER = Serializer()
+# fmt: off
+
+def build_get_all_resumes_request(
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    limit = kwargs.pop('limit', 300)  # type: Optional[int]
+    offset = kwargs.pop('offset', None)  # type: Optional[int]
+
+    accept = "application/json"
+    # Construct URL
+    url = kwargs.pop("template_url", '/resumes')
+
+    # Construct parameters
+    query_parameters = kwargs.pop("params", {})  # type: Dict[str, Any]
+    if limit is not None:
+        query_parameters['limit'] = _SERIALIZER.query("limit", limit, 'int', minimum=1)
+    if offset is not None:
+        query_parameters['offset'] = _SERIALIZER.query("offset", offset, 'int', minimum=0)
+
+    # Construct headers
+    header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
+    header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="GET",
+        url=url,
+        params=query_parameters,
+        headers=header_parameters,
+        **kwargs
+    )
+
+
+def build_create_resume_request(
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+
+    accept = "application/json"
+    # Construct URL
+    url = kwargs.pop("template_url", '/resumes')
+
+    # Construct headers
+    header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
+    if content_type is not None:
+        header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="POST",
+        url=url,
+        headers=header_parameters,
+        **kwargs
+    )
+
+
+def build_get_resume_request(
+    identifier,  # type: str
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    accept = "application/json"
+    # Construct URL
+    url = kwargs.pop("template_url", '/resumes/{identifier}')
+    path_format_arguments = {
+        "identifier": _SERIALIZER.url("identifier", identifier, 'str'),
+    }
+
+    url = _format_url_section(url, **path_format_arguments)
+
+    # Construct headers
+    header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
+    header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="GET",
+        url=url,
+        headers=header_parameters,
+        **kwargs
+    )
+
+
+def build_delete_resume_request(
+    identifier,  # type: str
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    accept = "application/json"
+    # Construct URL
+    url = kwargs.pop("template_url", '/resumes/{identifier}')
+    path_format_arguments = {
+        "identifier": _SERIALIZER.url("identifier", identifier, 'str'),
+    }
+
+    url = _format_url_section(url, **path_format_arguments)
+
+    # Construct headers
+    header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
+    header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="DELETE",
+        url=url,
+        headers=header_parameters,
+        **kwargs
+    )
+
+
+def build_get_all_redacted_resumes_request(
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    limit = kwargs.pop('limit', 300)  # type: Optional[int]
+    offset = kwargs.pop('offset', None)  # type: Optional[int]
+
+    accept = "application/json"
+    # Construct URL
+    url = kwargs.pop("template_url", '/redacted_resumes')
+
+    # Construct parameters
+    query_parameters = kwargs.pop("params", {})  # type: Dict[str, Any]
+    if limit is not None:
+        query_parameters['limit'] = _SERIALIZER.query("limit", limit, 'int', minimum=1)
+    if offset is not None:
+        query_parameters['offset'] = _SERIALIZER.query("offset", offset, 'int', minimum=0)
+
+    # Construct headers
+    header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
+    header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="GET",
+        url=url,
+        params=query_parameters,
+        headers=header_parameters,
+        **kwargs
+    )
+
+
+def build_create_redacted_resume_request(
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+
+    accept = "application/json"
+    # Construct URL
+    url = kwargs.pop("template_url", '/redacted_resumes')
+
+    # Construct headers
+    header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
+    if content_type is not None:
+        header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="POST",
+        url=url,
+        headers=header_parameters,
+        **kwargs
+    )
+
+
+def build_get_redacted_resume_request(
+    identifier,  # type: str
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    accept = "application/json"
+    # Construct URL
+    url = kwargs.pop("template_url", '/redacted_resumes/{identifier}')
+    path_format_arguments = {
+        "identifier": _SERIALIZER.url("identifier", identifier, 'str'),
+    }
+
+    url = _format_url_section(url, **path_format_arguments)
+
+    # Construct headers
+    header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
+    header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="GET",
+        url=url,
+        headers=header_parameters,
+        **kwargs
+    )
+
+
+def build_delete_redacted_resume_request(
+    identifier,  # type: str
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    accept = "application/json"
+    # Construct URL
+    url = kwargs.pop("template_url", '/redacted_resumes/{identifier}')
+    path_format_arguments = {
+        "identifier": _SERIALIZER.url("identifier", identifier, 'str'),
+    }
+
+    url = _format_url_section(url, **path_format_arguments)
+
+    # Construct headers
+    header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
+    header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="DELETE",
+        url=url,
+        headers=header_parameters,
+        **kwargs
+    )
+
+
+def build_get_all_resume_formats_request(
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    limit = kwargs.pop('limit', 300)  # type: Optional[int]
+    offset = kwargs.pop('offset', None)  # type: Optional[int]
+
+    accept = "application/json"
+    # Construct URL
+    url = kwargs.pop("template_url", '/resume_formats')
+
+    # Construct parameters
+    query_parameters = kwargs.pop("params", {})  # type: Dict[str, Any]
+    if limit is not None:
+        query_parameters['limit'] = _SERIALIZER.query("limit", limit, 'int', minimum=1)
+    if offset is not None:
+        query_parameters['offset'] = _SERIALIZER.query("offset", offset, 'int', minimum=0)
+
+    # Construct headers
+    header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
+    header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="GET",
+        url=url,
+        params=query_parameters,
+        headers=header_parameters,
+        **kwargs
+    )
+
+
+def build_get_all_reformatted_resumes_request(
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    limit = kwargs.pop('limit', 300)  # type: Optional[int]
+    offset = kwargs.pop('offset', None)  # type: Optional[int]
+
+    accept = "application/json"
+    # Construct URL
+    url = kwargs.pop("template_url", '/reformatted_resumes')
+
+    # Construct parameters
+    query_parameters = kwargs.pop("params", {})  # type: Dict[str, Any]
+    if limit is not None:
+        query_parameters['limit'] = _SERIALIZER.query("limit", limit, 'int', minimum=1)
+    if offset is not None:
+        query_parameters['offset'] = _SERIALIZER.query("offset", offset, 'int', minimum=0)
+
+    # Construct headers
+    header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
+    header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="GET",
+        url=url,
+        params=query_parameters,
+        headers=header_parameters,
+        **kwargs
+    )
+
+
+def build_create_reformatted_resume_request(
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+
+    accept = "application/json"
+    # Construct URL
+    url = kwargs.pop("template_url", '/reformatted_resumes')
+
+    # Construct headers
+    header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
+    if content_type is not None:
+        header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="POST",
+        url=url,
+        headers=header_parameters,
+        **kwargs
+    )
+
+
+def build_get_reformatted_resume_request(
+    identifier,  # type: str
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    accept = "application/json"
+    # Construct URL
+    url = kwargs.pop("template_url", '/reformatted_resumes/{identifier}')
+    path_format_arguments = {
+        "identifier": _SERIALIZER.url("identifier", identifier, 'str'),
+    }
+
+    url = _format_url_section(url, **path_format_arguments)
+
+    # Construct headers
+    header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
+    header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="GET",
+        url=url,
+        headers=header_parameters,
+        **kwargs
+    )
+
+
+def build_delete_reformatted_resume_request(
+    identifier,  # type: str
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    accept = "application/json"
+    # Construct URL
+    url = kwargs.pop("template_url", '/reformatted_resumes/{identifier}')
+    path_format_arguments = {
+        "identifier": _SERIALIZER.url("identifier", identifier, 'str'),
+    }
+
+    url = _format_url_section(url, **path_format_arguments)
+
+    # Construct headers
+    header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
+    header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="DELETE",
+        url=url,
+        headers=header_parameters,
+        **kwargs
+    )
+
+# fmt: on
 class AffindaAPIOperationsMixin(object):
 
+    @distributed_trace
     def get_all_resumes(
         self,
         **kwargs  # type: Any
@@ -44,8 +403,9 @@ class AffindaAPIOperationsMixin(object):
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
+
         
-        request = rest.build_get_all_resumes_request(
+        request = build_get_all_resumes_request(
             limit=self._config.limit,
             offset=self._config.offset,
             template_url=self.get_all_resumes.metadata['url'],
@@ -73,6 +433,7 @@ class AffindaAPIOperationsMixin(object):
     get_all_resumes.metadata = {'url': '/resumes'}  # type: ignore
 
 
+    @distributed_trace
     def create_resume(
         self,
         file=None,  # type: Optional[IO]
@@ -84,7 +445,7 @@ class AffindaAPIOperationsMixin(object):
         expiry_time=None,  # type: Optional[str]
         **kwargs  # type: Any
     ):
-        # type: (...) -> Union["_models.PathsWt95EfResumesPostResponses201ContentApplicationJsonSchema", "_models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
+        # type: (...) -> Union["_models.Resume", "_models.PathsWt95EfResumesPostResponses201ContentApplicationJsonSchema", "_models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
         """Uploads a resume for parsing.
 
         Uploads a resume for parsing.
@@ -109,21 +470,23 @@ class AffindaAPIOperationsMixin(object):
         :param expiry_time:
         :type expiry_time: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: PathsWt95EfResumesPostResponses201ContentApplicationJsonSchema or
+        :return: Resume or PathsWt95EfResumesPostResponses201ContentApplicationJsonSchema or
          Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema or
          ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or
          ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema, or the result of cls(response)
-        :rtype: ~affinda.models.PathsWt95EfResumesPostResponses201ContentApplicationJsonSchema or
+        :rtype: ~affinda.models.Resume or
+         ~affinda.models.PathsWt95EfResumesPostResponses201ContentApplicationJsonSchema or
          ~affinda.models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema or
          ~affinda.models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or
          ~affinda.models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.PathsWt95EfResumesPostResponses201ContentApplicationJsonSchema", "_models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.Resume", "_models.PathsWt95EfResumesPostResponses201ContentApplicationJsonSchema", "_models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
+
         content_type = kwargs.pop('content_type', None)  # type: Optional[str]
 
         files = None
@@ -139,7 +502,7 @@ class AffindaAPIOperationsMixin(object):
             "expiryTime": expiry_time,
         }
 
-        request = rest.build_create_resume_request(
+        request = build_create_resume_request(
             content_type=content_type,
             files=files,
             data=data,
@@ -150,9 +513,12 @@ class AffindaAPIOperationsMixin(object):
         pipeline_response = self._client.send_request(request, stream=False, _return_pipeline_response=True, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [201, 400, 401, 404]:
+        if response.status_code not in [200, 201, 400, 401, 404]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
+
+        if response.status_code == 200:
+            deserialized = self._deserialize('Resume', pipeline_response)
 
         if response.status_code == 201:
             deserialized = self._deserialize('PathsWt95EfResumesPostResponses201ContentApplicationJsonSchema', pipeline_response)
@@ -174,6 +540,7 @@ class AffindaAPIOperationsMixin(object):
     create_resume.metadata = {'url': '/resumes'}  # type: ignore
 
 
+    @distributed_trace
     def get_resume(
         self,
         identifier,  # type: str
@@ -201,8 +568,9 @@ class AffindaAPIOperationsMixin(object):
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
+
         
-        request = rest.build_get_resume_request(
+        request = build_get_resume_request(
             identifier=identifier,
             template_url=self.get_resume.metadata['url'],
         )._to_pipeline_transport_request()
@@ -232,6 +600,7 @@ class AffindaAPIOperationsMixin(object):
     get_resume.metadata = {'url': '/resumes/{identifier}'}  # type: ignore
 
 
+    @distributed_trace
     def delete_resume(
         self,
         identifier,  # type: str
@@ -256,8 +625,9 @@ class AffindaAPIOperationsMixin(object):
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
+
         
-        request = rest.build_delete_resume_request(
+        request = build_delete_resume_request(
             identifier=identifier,
             template_url=self.delete_resume.metadata['url'],
         )._to_pipeline_transport_request()
@@ -285,6 +655,7 @@ class AffindaAPIOperationsMixin(object):
     delete_resume.metadata = {'url': '/resumes/{identifier}'}  # type: ignore
 
 
+    @distributed_trace
     def get_all_redacted_resumes(
         self,
         **kwargs  # type: Any
@@ -308,8 +679,9 @@ class AffindaAPIOperationsMixin(object):
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
+
         
-        request = rest.build_get_all_redacted_resumes_request(
+        request = build_get_all_redacted_resumes_request(
             limit=self._config.limit,
             offset=self._config.offset,
             template_url=self.get_all_redacted_resumes.metadata['url'],
@@ -340,6 +712,7 @@ class AffindaAPIOperationsMixin(object):
     get_all_redacted_resumes.metadata = {'url': '/redacted_resumes'}  # type: ignore
 
 
+    @distributed_trace
     def create_redacted_resume(
         self,
         file=None,  # type: Optional[IO]
@@ -357,13 +730,10 @@ class AffindaAPIOperationsMixin(object):
         expiry_time=None,  # type: Optional[str]
         **kwargs  # type: Any
     ):
-        # type: (...) -> Union["_models.Paths1VouiekRedactedResumesPostResponses201ContentApplicationJsonSchema", "_models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
+        # type: (...) -> Union["_models.RedactedResume", "_models.Paths1VouiekRedactedResumesPostResponses201ContentApplicationJsonSchema", "_models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
         """Uploads a resume for redacting.
 
         Uploads a resume for redacting.
-        When successful, returns an ``identifier`` in the response for subsequent use with the
-        `/redacted_resumes/{identifier} <#operation/getRedactedResume>`_ endpoint to check processing
-        status and retrieve results.
 
         :param file: File as binary data blob.
         :type file: IO
@@ -392,21 +762,24 @@ class AffindaAPIOperationsMixin(object):
         :param expiry_time:
         :type expiry_time: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: Paths1VouiekRedactedResumesPostResponses201ContentApplicationJsonSchema or
+        :return: RedactedResume or
+         Paths1VouiekRedactedResumesPostResponses201ContentApplicationJsonSchema or
          Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema or
          ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or
          ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema, or the result of cls(response)
-        :rtype: ~affinda.models.Paths1VouiekRedactedResumesPostResponses201ContentApplicationJsonSchema
-         or ~affinda.models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema or
+        :rtype: ~affinda.models.RedactedResume or
+         ~affinda.models.Paths1VouiekRedactedResumesPostResponses201ContentApplicationJsonSchema or
+         ~affinda.models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema or
          ~affinda.models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or
          ~affinda.models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.Paths1VouiekRedactedResumesPostResponses201ContentApplicationJsonSchema", "_models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.RedactedResume", "_models.Paths1VouiekRedactedResumesPostResponses201ContentApplicationJsonSchema", "_models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
+
         content_type = kwargs.pop('content_type', None)  # type: Optional[str]
 
         files = None
@@ -428,7 +801,7 @@ class AffindaAPIOperationsMixin(object):
             "expiryTime": expiry_time,
         }
 
-        request = rest.build_create_redacted_resume_request(
+        request = build_create_redacted_resume_request(
             content_type=content_type,
             files=files,
             data=data,
@@ -439,9 +812,12 @@ class AffindaAPIOperationsMixin(object):
         pipeline_response = self._client.send_request(request, stream=False, _return_pipeline_response=True, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [201, 400, 401, 404]:
+        if response.status_code not in [200, 201, 400, 401, 404]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
+
+        if response.status_code == 200:
+            deserialized = self._deserialize('RedactedResume', pipeline_response)
 
         if response.status_code == 201:
             deserialized = self._deserialize('Paths1VouiekRedactedResumesPostResponses201ContentApplicationJsonSchema', pipeline_response)
@@ -463,12 +839,13 @@ class AffindaAPIOperationsMixin(object):
     create_redacted_resume.metadata = {'url': '/redacted_resumes'}  # type: ignore
 
 
+    @distributed_trace
     def get_redacted_resume(
         self,
         identifier,  # type: str
         **kwargs  # type: Any
     ):
-        # type: (...) -> Union["_models.RedactedDocument", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
+        # type: (...) -> Union["_models.RedactedResume", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
         """Gets redaction results for a specific resume.
 
         Returns all the redaction results for that resume if processing is completed.
@@ -478,20 +855,21 @@ class AffindaAPIOperationsMixin(object):
         :param identifier: Document identifier.
         :type identifier: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: RedactedDocument or ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or
+        :return: RedactedResume or ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or
          ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema, or the result of cls(response)
-        :rtype: ~affinda.models.RedactedDocument or
+        :rtype: ~affinda.models.RedactedResume or
          ~affinda.models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or
          ~affinda.models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.RedactedDocument", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.RedactedResume", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
+
         
-        request = rest.build_get_redacted_resume_request(
+        request = build_get_redacted_resume_request(
             identifier=identifier,
             template_url=self.get_redacted_resume.metadata['url'],
         )._to_pipeline_transport_request()
@@ -505,7 +883,7 @@ class AffindaAPIOperationsMixin(object):
             raise HttpResponseError(response=response)
 
         if response.status_code == 200:
-            deserialized = self._deserialize('RedactedDocument', pipeline_response)
+            deserialized = self._deserialize('RedactedResume', pipeline_response)
 
         if response.status_code == 401:
             deserialized = self._deserialize('ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema', pipeline_response)
@@ -521,6 +899,7 @@ class AffindaAPIOperationsMixin(object):
     get_redacted_resume.metadata = {'url': '/redacted_resumes/{identifier}'}  # type: ignore
 
 
+    @distributed_trace
     def delete_redacted_resume(
         self,
         identifier,  # type: str
@@ -545,8 +924,9 @@ class AffindaAPIOperationsMixin(object):
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
+
         
-        request = rest.build_delete_redacted_resume_request(
+        request = build_delete_redacted_resume_request(
             identifier=identifier,
             template_url=self.delete_redacted_resume.metadata['url'],
         )._to_pipeline_transport_request()
@@ -574,6 +954,7 @@ class AffindaAPIOperationsMixin(object):
     delete_redacted_resume.metadata = {'url': '/redacted_resumes/{identifier}'}  # type: ignore
 
 
+    @distributed_trace
     def get_all_resume_formats(
         self,
         **kwargs  # type: Any
@@ -597,8 +978,9 @@ class AffindaAPIOperationsMixin(object):
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
+
         
-        request = rest.build_get_all_resume_formats_request(
+        request = build_get_all_resume_formats_request(
             limit=self._config.limit,
             offset=self._config.offset,
             template_url=self.get_all_resume_formats.metadata['url'],
@@ -629,6 +1011,7 @@ class AffindaAPIOperationsMixin(object):
     get_all_resume_formats.metadata = {'url': '/resume_formats'}  # type: ignore
 
 
+    @distributed_trace
     def get_all_reformatted_resumes(
         self,
         **kwargs  # type: Any
@@ -653,8 +1036,9 @@ class AffindaAPIOperationsMixin(object):
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
+
         
-        request = rest.build_get_all_reformatted_resumes_request(
+        request = build_get_all_reformatted_resumes_request(
             limit=self._config.limit,
             offset=self._config.offset,
             template_url=self.get_all_reformatted_resumes.metadata['url'],
@@ -685,6 +1069,7 @@ class AffindaAPIOperationsMixin(object):
     get_all_reformatted_resumes.metadata = {'url': '/reformatted_resumes'}  # type: ignore
 
 
+    @distributed_trace
     def create_reformatted_resume(
         self,
         resume_format,  # type: str
@@ -695,13 +1080,10 @@ class AffindaAPIOperationsMixin(object):
         resume_language=None,  # type: Optional[str]
         **kwargs  # type: Any
     ):
-        # type: (...) -> Union["_models.Paths1Wyf6PlReformattedResumesPostResponses201ContentApplicationJsonSchema", "_models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
+        # type: (...) -> Union["_models.ReformattedResume", "_models.Paths1Wyf6PlReformattedResumesPostResponses201ContentApplicationJsonSchema", "_models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
         """Uploads a resume for reformatting.
 
         Uploads a resume for reformatting.
-        When successful, returns an ``identifier`` in the response for subsequent use with the
-        `/reformatted_resumes/{identifier} <#operation/getReformattedResume>`_ endpoint to check
-        processing status and retrieve results.
 
         :param resume_format:
         :type resume_format: str
@@ -716,22 +1098,24 @@ class AffindaAPIOperationsMixin(object):
         :param resume_language:
         :type resume_language: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: Paths1Wyf6PlReformattedResumesPostResponses201ContentApplicationJsonSchema or
+        :return: ReformattedResume or
+         Paths1Wyf6PlReformattedResumesPostResponses201ContentApplicationJsonSchema or
          Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema or
          ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or
          ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema, or the result of cls(response)
-        :rtype:
+        :rtype: ~affinda.models.ReformattedResume or
          ~affinda.models.Paths1Wyf6PlReformattedResumesPostResponses201ContentApplicationJsonSchema or
          ~affinda.models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema or
          ~affinda.models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or
          ~affinda.models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.Paths1Wyf6PlReformattedResumesPostResponses201ContentApplicationJsonSchema", "_models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.ReformattedResume", "_models.Paths1Wyf6PlReformattedResumesPostResponses201ContentApplicationJsonSchema", "_models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
+
         content_type = kwargs.pop('content_type', None)  # type: Optional[str]
 
         files = None
@@ -746,7 +1130,7 @@ class AffindaAPIOperationsMixin(object):
             "resumeFormat": resume_format,
         }
 
-        request = rest.build_create_reformatted_resume_request(
+        request = build_create_reformatted_resume_request(
             content_type=content_type,
             files=files,
             data=data,
@@ -757,9 +1141,12 @@ class AffindaAPIOperationsMixin(object):
         pipeline_response = self._client.send_request(request, stream=False, _return_pipeline_response=True, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [201, 400, 401, 404]:
+        if response.status_code not in [200, 201, 400, 401, 404]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
+
+        if response.status_code == 200:
+            deserialized = self._deserialize('ReformattedResume', pipeline_response)
 
         if response.status_code == 201:
             deserialized = self._deserialize('Paths1Wyf6PlReformattedResumesPostResponses201ContentApplicationJsonSchema', pipeline_response)
@@ -781,12 +1168,13 @@ class AffindaAPIOperationsMixin(object):
     create_reformatted_resume.metadata = {'url': '/reformatted_resumes'}  # type: ignore
 
 
+    @distributed_trace
     def get_reformatted_resume(
         self,
         identifier,  # type: str
         **kwargs  # type: Any
     ):
-        # type: (...) -> Union["_models.ReformattedDocument", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
+        # type: (...) -> Union["_models.ReformattedResume", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
         """Gets reformatting results for a specific resume.
 
         Returns all the reformatting results for that resume if processing is completed.
@@ -796,21 +1184,21 @@ class AffindaAPIOperationsMixin(object):
         :param identifier: Document identifier.
         :type identifier: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: ReformattedDocument or ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema
-         or ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema, or the result of
-         cls(response)
-        :rtype: ~affinda.models.ReformattedDocument or
+        :return: ReformattedResume or ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or
+         ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema, or the result of cls(response)
+        :rtype: ~affinda.models.ReformattedResume or
          ~affinda.models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or
          ~affinda.models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.ReformattedDocument", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.ReformattedResume", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
+
         
-        request = rest.build_get_reformatted_resume_request(
+        request = build_get_reformatted_resume_request(
             identifier=identifier,
             template_url=self.get_reformatted_resume.metadata['url'],
         )._to_pipeline_transport_request()
@@ -824,7 +1212,7 @@ class AffindaAPIOperationsMixin(object):
             raise HttpResponseError(response=response)
 
         if response.status_code == 200:
-            deserialized = self._deserialize('ReformattedDocument', pipeline_response)
+            deserialized = self._deserialize('ReformattedResume', pipeline_response)
 
         if response.status_code == 401:
             deserialized = self._deserialize('ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema', pipeline_response)
@@ -840,6 +1228,7 @@ class AffindaAPIOperationsMixin(object):
     get_reformatted_resume.metadata = {'url': '/reformatted_resumes/{identifier}'}  # type: ignore
 
 
+    @distributed_trace
     def delete_reformatted_resume(
         self,
         identifier,  # type: str
@@ -864,8 +1253,9 @@ class AffindaAPIOperationsMixin(object):
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
+
         
-        request = rest.build_delete_reformatted_resume_request(
+        request = build_delete_reformatted_resume_request(
             identifier=identifier,
             template_url=self.delete_reformatted_resume.metadata['url'],
         )._to_pipeline_transport_request()

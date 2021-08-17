@@ -77,8 +77,9 @@ All required parameters must be populated in order to send to Azure.
 
 **Arguments**:
 
-- `identifier` (`str`): Required.
-- `format_file` (`str`): Required.
+blank, one will be automatically generated.
+- `identifier` (`str`): Required. Unique identifier for the resume. If creating a document and left
+- `format_file` (`str`): Required. The template to apply.
 
 <a name="models._models.Location"></a>
 
@@ -122,14 +123,14 @@ blank, one will be automatically generated.
 an endpoint request specified wait=False, when polling use this variable to determine when to
 stop polling.
 'error' field of the main return object.
-automatically deleted.  Defaults to no expiry.
+deleted.  Defaults to no expiry.
 - `identifier` (`str`): Required. Unique identifier for the resume. If creating a document and left
 - `file_name` (`str`): Optional filename of the file.
 - `ready` (`bool`): Required. If true, the document has finished processing. Particularly useful if
 - `ready_dt` (`~datetime.datetime`): Required. The datetime when the document was ready.
 - `failed` (`bool`): Required. If true, some exception was raised during processing. Check the
 - `user` (`~affinda.models.User`): Required.
-- `expiry_time` (`str`): Required. The date/time in ISO-8601 format when the resume will be
+- `expiry_time` (`str`): The date/time in ISO-8601 format when the resume will be automatically
 
 <a name="models._models.Paths1My65ZdRedactedResumesGetResponses200ContentApplicationJsonSchema"></a>
 
@@ -331,61 +332,61 @@ Chinese.
 - `resume_language` (`str`): Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for
 - `resume_format` (`str`): Required. Identifier of the format used.
 
-<a name="models._models.RedactedDocument"></a>
+<a name="models._models.RedactedResume"></a>
 
-## RedactedDocument Objects
+## RedactedResume Objects
 
 ```python
-class RedactedDocument(msrest.serialization.Model)
+class RedactedResume(msrest.serialization.Model)
 ```
 
-RedactedDocument.
+RedactedResume.
 
 **Arguments**:
 
-- `data` (`~affinda.models.RedactedDocumentData`): 
+- `data` (`~affinda.models.RedactedResumeData`): 
 - `meta` (`~affinda.models.Meta`): 
 - `error` (`~affinda.models.Error`): 
 
-<a name="models._models.RedactedDocumentData"></a>
+<a name="models._models.RedactedResumeData"></a>
 
-## RedactedDocumentData Objects
+## RedactedResumeData Objects
 
 ```python
-class RedactedDocumentData(msrest.serialization.Model)
+class RedactedResumeData(msrest.serialization.Model)
 ```
 
-RedactedDocumentData.
+RedactedResumeData.
 
 **Arguments**:
 
 - `redacted_pdf` (`str`): 
 
-<a name="models._models.ReformattedDocument"></a>
+<a name="models._models.ReformattedResume"></a>
 
-## ReformattedDocument Objects
+## ReformattedResume Objects
 
 ```python
-class ReformattedDocument(msrest.serialization.Model)
+class ReformattedResume(msrest.serialization.Model)
 ```
 
-ReformattedDocument.
+ReformattedResume.
 
 **Arguments**:
 
-- `data` (`~affinda.models.ReformattedDocumentData`): 
+- `data` (`~affinda.models.ReformattedResumeData`): 
 - `meta` (`~affinda.models.Meta`): 
 - `error` (`~affinda.models.Error`): 
 
-<a name="models._models.ReformattedDocumentData"></a>
+<a name="models._models.ReformattedResumeData"></a>
 
-## ReformattedDocumentData Objects
+## ReformattedResumeData Objects
 
 ```python
-class ReformattedDocumentData(msrest.serialization.Model)
+class ReformattedResumeData(msrest.serialization.Model)
 ```
 
-ReformattedDocumentData.
+ReformattedResumeData.
 
 **Arguments**:
 
