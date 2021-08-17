@@ -193,7 +193,7 @@ client = AffindaAPI(credential=credential)
 with open(file_pth, "rb") as f:
     reformatted_resume = client.create_reformatted_resume(file=f,
                                                           file_name=file_pth.name,
-                                                          resume_format="iRBSptwK")
+                                                          resume_format=resume_format)
 
 print(reformatted_resume.as_dict())
 ```
