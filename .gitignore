@@ -389,3 +389,4 @@ FodyWeavers.xsd
 
 dist/
 *.egg-info/
+make_dev_version.sh

@@ -34,7 +34,6 @@ try:
     from ._models_py3 import ResumeDataSkillsDetailsPropertiesItemsItem
     from ._models_py3 import ResumeDataWorkExperienceItem
     from ._models_py3 import ResumeDataWorkExperienceItemDates
-    from ._models_py3 import User
 except (SyntaxError, ImportError):
     from ._models import Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema  # type: ignore
     from ._models import ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema  # type: ignore
@@ -65,7 +64,6 @@ except (SyntaxError, ImportError):
     from ._models import ResumeDataSkillsDetailsPropertiesItemsItem  # type: ignore
     from ._models import ResumeDataWorkExperienceItem  # type: ignore
     from ._models import ResumeDataWorkExperienceItemDates  # type: ignore
-    from ._models import User  # type: ignore
 
 __all__ = [
     'Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema',
@@ -97,5 +95,4 @@ __all__ = [
     'ResumeDataSkillsDetailsPropertiesItemsItem',
     'ResumeDataWorkExperienceItem',
     'ResumeDataWorkExperienceItemDates',
-    'User',
 ]

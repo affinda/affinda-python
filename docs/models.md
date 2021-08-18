@@ -263,7 +263,6 @@ All required parameters must be populated in order to send to Azure.
 - `data` (`~affinda.models.RedactedResumeData`): Required.
 - `meta` (`~affinda.models.Meta`): Required.
 - `error` (`~affinda.models.Error`): Required.
-- `user` (`~affinda.models.User`): Required.
 
 <a name="models._models.RedactedResumeData"></a>
 
@@ -296,7 +295,6 @@ All required parameters must be populated in order to send to Azure.
 - `data` (`~affinda.models.ReformattedResumeData`): Required.
 - `meta` (`~affinda.models.Meta`): Required.
 - `error` (`~affinda.models.Error`): Required.
-- `user` (`~affinda.models.User`): Required.
 
 <a name="models._models.ReformattedResumeData"></a>
 
@@ -329,7 +327,6 @@ All required parameters must be populated in order to send to Azure.
 - `data` (`~affinda.models.ResumeData`): Required.
 - `meta` (`~affinda.models.Meta`): Required.
 - `error` (`~affinda.models.Error`): Required.
-- `user` (`~affinda.models.User`): Required.
 
 <a name="models._models.ResumeData"></a>
 
@@ -551,23 +548,4 @@ ResumeDataWorkExperienceItemDates.
 - `end_date` (`~datetime.date`): 
 - `months_in_position` (`int`): 
 - `is_current` (`bool`): 
-
-<a name="models._models.User"></a>
-
-## User Objects
-
-```python
-class User(msrest.serialization.Model)
-```
-
-User.
-
-**Arguments**:
-
-- `document_count` (`int`): 
-- `redacted_document_count` (`int`): 
-- `reformatted_resume_count` (`int`): 
-- `parsing_credits` (`int`): 
-- `redaction_credits` (`int`): 
-- `reformatting_credits` (`int`): 
 

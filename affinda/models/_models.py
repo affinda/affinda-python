@@ -485,22 +485,18 @@ class RedactedResume(msrest.serialization.Model):
     :type meta: ~affinda.models.Meta
     :param error: Required.
     :type error: ~affinda.models.Error
-    :param user: Required.
-    :type user: ~affinda.models.User
     """
 
     _validation = {
         'data': {'required': True},
         'meta': {'required': True},
         'error': {'required': True},
-        'user': {'required': True},
     }
 
     _attribute_map = {
         'data': {'key': 'data', 'type': 'RedactedResumeData'},
         'meta': {'key': 'meta', 'type': 'Meta'},
         'error': {'key': 'error', 'type': 'Error'},
-        'user': {'key': 'user', 'type': 'User'},
     }
 
     def __init__(
@@ -511,7 +507,6 @@ class RedactedResume(msrest.serialization.Model):
         self.data = kwargs['data']
         self.meta = kwargs['meta']
         self.error = kwargs['error']
-        self.user = kwargs['user']
 
 
 class RedactedResumeData(msrest.serialization.Model):
@@ -544,22 +539,18 @@ class ReformattedResume(msrest.serialization.Model):
     :type meta: ~affinda.models.Meta
     :param error: Required.
     :type error: ~affinda.models.Error
-    :param user: Required.
-    :type user: ~affinda.models.User
     """
 
     _validation = {
         'data': {'required': True},
         'meta': {'required': True},
         'error': {'required': True},
-        'user': {'required': True},
     }
 
     _attribute_map = {
         'data': {'key': 'data', 'type': 'ReformattedResumeData'},
         'meta': {'key': 'meta', 'type': 'Meta'},
         'error': {'key': 'error', 'type': 'Error'},
-        'user': {'key': 'user', 'type': 'User'},
     }
 
     def __init__(
@@ -570,7 +561,6 @@ class ReformattedResume(msrest.serialization.Model):
         self.data = kwargs['data']
         self.meta = kwargs['meta']
         self.error = kwargs['error']
-        self.user = kwargs['user']
 
 
 class ReformattedResumeData(msrest.serialization.Model):
@@ -603,22 +593,18 @@ class Resume(msrest.serialization.Model):
     :type meta: ~affinda.models.Meta
     :param error: Required.
     :type error: ~affinda.models.Error
-    :param user: Required.
-    :type user: ~affinda.models.User
     """
 
     _validation = {
         'data': {'required': True},
         'meta': {'required': True},
         'error': {'required': True},
-        'user': {'required': True},
     }
 
     _attribute_map = {
         'data': {'key': 'data', 'type': 'ResumeData'},
         'meta': {'key': 'meta', 'type': 'Meta'},
         'error': {'key': 'error', 'type': 'Error'},
-        'user': {'key': 'user', 'type': 'User'},
     }
 
     def __init__(
@@ -629,7 +615,6 @@ class Resume(msrest.serialization.Model):
         self.data = kwargs['data']
         self.meta = kwargs['meta']
         self.error = kwargs['error']
-        self.user = kwargs['user']
 
 
 class ResumeData(msrest.serialization.Model):
@@ -1071,42 +1056,3 @@ class ResumeDataWorkExperienceItemDates(msrest.serialization.Model):
         self.end_date = kwargs.get('end_date', None)
         self.months_in_position = kwargs.get('months_in_position', None)
         self.is_current = kwargs.get('is_current', None)
-
-
-class User(msrest.serialization.Model):
-    """User.
-
-    :param document_count:
-    :type document_count: int
-    :param redacted_document_count:
-    :type redacted_document_count: int
-    :param reformatted_resume_count:
-    :type reformatted_resume_count: int
-    :param parsing_credits:
-    :type parsing_credits: int
-    :param redaction_credits:
-    :type redaction_credits: int
-    :param reformatting_credits:
-    :type reformatting_credits: int
-    """
-
-    _attribute_map = {
-        'document_count': {'key': 'documentCount', 'type': 'int'},
-        'redacted_document_count': {'key': 'redactedDocumentCount', 'type': 'int'},
-        'reformatted_resume_count': {'key': 'reformattedResumeCount', 'type': 'int'},
-        'parsing_credits': {'key': 'parsingCredits', 'type': 'int'},
-        'redaction_credits': {'key': 'redactionCredits', 'type': 'int'},
-        'reformatting_credits': {'key': 'reformattingCredits', 'type': 'int'},
-    }
-
-    def __init__(
-        self,
-        **kwargs
-    ):
-        super(User, self).__init__(**kwargs)
-        self.document_count = kwargs.get('document_count', None)
-        self.redacted_document_count = kwargs.get('redacted_document_count', None)
-        self.reformatted_resume_count = kwargs.get('reformatted_resume_count', None)
-        self.parsing_credits = kwargs.get('parsing_credits', None)
-        self.redaction_credits = kwargs.get('redaction_credits', None)
-        self.reformatting_credits = kwargs.get('reformatting_credits', None)
