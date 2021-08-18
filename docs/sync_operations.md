@@ -36,7 +36,6 @@ class AffindaAPIOperationsMixin(object)
 #### get\_all\_resumes
 
 ```python
- | @distributed_trace
  | get_all_resumes(**kwargs)
 ```
 
@@ -55,7 +54,6 @@ Returns all the resume summaries for that user, limited to 300 per page.
 #### create\_resume
 
 ```python
- | @distributed_trace
  | create_resume(file=None, identifier=None, file_name=None, url=None, wait=None, resume_language=None, expiry_time=None, **kwargs)
 ```
 
@@ -86,7 +84,6 @@ retrieve results.
 #### get\_resume
 
 ```python
- | @distributed_trace
  | get_resume(identifier, **kwargs)
 ```
 
@@ -110,7 +107,6 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the `
 #### delete\_resume
 
 ```python
- | @distributed_trace
  | delete_resume(identifier, **kwargs)
 ```
 
@@ -132,7 +128,6 @@ Deletes the specified resume from the database.
 #### get\_all\_redacted\_resumes
 
 ```python
- | @distributed_trace
  | get_all_redacted_resumes(**kwargs)
 ```
 
@@ -151,7 +146,6 @@ Returns all the redacted resume information for that resume.
 #### create\_redacted\_resume
 
 ```python
- | @distributed_trace
  | create_redacted_resume(file=None, identifier=None, file_name=None, url=None, resume_language=None, wait=None, redact_headshot=True, redact_personal_details=True, redact_work_details=True, redact_education_details=True, redact_referees=True, redact_locations=True, redact_dates=True, expiry_time=None, **kwargs)
 ```
 
@@ -186,7 +180,6 @@ Uploads a resume for redacting.
 #### get\_redacted\_resume
 
 ```python
- | @distributed_trace
  | get_redacted_resume(identifier, **kwargs)
 ```
 
@@ -210,7 +203,6 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the
 #### delete\_redacted\_resume
 
 ```python
- | @distributed_trace
  | delete_redacted_resume(identifier, **kwargs)
 ```
 
@@ -232,7 +224,6 @@ Deletes the specified resume from the database.
 #### get\_all\_resume\_formats
 
 ```python
- | @distributed_trace
  | get_all_resume_formats(**kwargs)
 ```
 
@@ -251,7 +242,6 @@ Returns all the resume formats.
 #### get\_all\_reformatted\_resumes
 
 ```python
- | @distributed_trace
  | get_all_reformatted_resumes(**kwargs)
 ```
 
@@ -270,7 +260,6 @@ Returns all the reformatted resume information for that resume.
 #### create\_reformatted\_resume
 
 ```python
- | @distributed_trace
  | create_reformatted_resume(resume_format, file=None, identifier=None, file_name=None, url=None, resume_language=None, wait=None, **kwargs)
 ```
 
@@ -298,7 +287,6 @@ Uploads a resume for reformatting.
 #### get\_reformatted\_resume
 
 ```python
- | @distributed_trace
  | get_reformatted_resume(identifier, **kwargs)
 ```
 
@@ -322,7 +310,6 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the
 #### delete\_reformatted\_resume
 
 ```python
- | @distributed_trace
  | delete_reformatted_resume(identifier, **kwargs)
 ```
 

@@ -2,6 +2,8 @@
 
 This is the python client for the **Affinda API**
 
+Generated using [autorest](https://github.com/Azure/autorest) and [autorest.python](https://github.com/Azure/autorest.python).
+
 ## Installation
 
 ```shell
@@ -179,7 +181,7 @@ print(all_reformatted_resumes.as_dict())
 ```
 ### Uploads a resume for reformatting
 ```python
-from pathlib import Path
+from pathlib import PathAdding basic test suite
 
 from affinda import TokenCredential, AffindaAPI
 

@@ -56,12 +56,10 @@ class Error(msrest.serialization.Model)
 
 Error.
 
-All required parameters must be populated in order to send to Azure.
-
 **Arguments**:
 
-- `error_code` (`str`): Required.
-- `error_detail` (`str`): Required.
+- `error_code` (`str`): 
+- `error_detail` (`str`): 
 
 <a name="models._models.Get200ApplicationJsonPropertiesItemsItem"></a>
 
@@ -140,14 +138,13 @@ blank, one will be automatically generated.
 an endpoint request specified wait=False, when polling use this variable to determine when to
 stop polling.
 'error' field of the main return object.
-automatically deleted.  Defaults to no expiry.
+deleted.  Defaults to no expiry.
 - `identifier` (`str`): Required. Unique identifier for the resume. If creating a document and left
 - `file_name` (`str`): Optional filename of the file.
 - `ready` (`bool`): Required. If true, the document has finished processing. Particularly useful if
-- `ready_dt` (`~datetime.datetime`): Required. The datetime when the document was ready.
+- `ready_dt` (`~datetime.datetime`): The datetime when the document was ready.
 - `failed` (`bool`): Required. If true, some exception was raised during processing. Check the
-- `user` (`~affinda.models.User`): Required.
-- `expiry_time` (`str`): Required. The date/time in ISO-8601 format when the resume will be
+- `expiry_time` (`str`): The date/time in ISO-8601 format when the resume will be automatically
 
 <a name="models._models.Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema"></a>
 
@@ -259,11 +256,14 @@ class RedactedResume(msrest.serialization.Model)
 
 RedactedResume.
 
+All required parameters must be populated in order to send to Azure.
+
 **Arguments**:
 
-- `data` (`~affinda.models.RedactedResumeData`): 
-- `meta` (`~affinda.models.Meta`): 
-- `error` (`~affinda.models.Error`): 
+- `data` (`~affinda.models.RedactedResumeData`): Required.
+- `meta` (`~affinda.models.Meta`): Required.
+- `error` (`~affinda.models.Error`): Required.
+- `user` (`~affinda.models.User`): Required.
 
 <a name="models._models.RedactedResumeData"></a>
 
@@ -289,11 +289,14 @@ class ReformattedResume(msrest.serialization.Model)
 
 ReformattedResume.
 
+All required parameters must be populated in order to send to Azure.
+
 **Arguments**:
 
-- `data` (`~affinda.models.ReformattedResumeData`): 
-- `meta` (`~affinda.models.Meta`): 
-- `error` (`~affinda.models.Error`): 
+- `data` (`~affinda.models.ReformattedResumeData`): Required.
+- `meta` (`~affinda.models.Meta`): Required.
+- `error` (`~affinda.models.Error`): Required.
+- `user` (`~affinda.models.User`): Required.
 
 <a name="models._models.ReformattedResumeData"></a>
 
@@ -319,11 +322,14 @@ class Resume(msrest.serialization.Model)
 
 Resume.
 
+All required parameters must be populated in order to send to Azure.
+
 **Arguments**:
 
-- `data` (`~affinda.models.ResumeData`): 
-- `meta` (`~affinda.models.Meta`): 
-- `error` (`~affinda.models.Error`): 
+- `data` (`~affinda.models.ResumeData`): Required.
+- `meta` (`~affinda.models.Meta`): Required.
+- `error` (`~affinda.models.Error`): Required.
+- `user` (`~affinda.models.User`): Required.
 
 <a name="models._models.ResumeData"></a>
 
