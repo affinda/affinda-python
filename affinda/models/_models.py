@@ -7,23 +7,27 @@
 import msrest.serialization
 
 
-class Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema(msrest.serialization.Model):
-    """Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema.
+class Components8Sxs33Responses400ErrorContentApplicationJsonSchema(msrest.serialization.Model):
+    """Components8Sxs33Responses400ErrorContentApplicationJsonSchema.
 
-    :param file_for_conversion:
-    :type file_for_conversion: str
+    :param status_code:
+    :type status_code: int
+    :param detail:
+    :type detail: str
     """
 
     _attribute_map = {
-        'file_for_conversion': {'key': 'fileForConversion', 'type': 'str'},
+        'status_code': {'key': 'statusCode', 'type': 'int'},
+        'detail': {'key': 'detail', 'type': 'str'},
     }
 
     def __init__(
         self,
         **kwargs
     ):
-        super(Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema, self).__init__(**kwargs)
-        self.file_for_conversion = kwargs.get('file_for_conversion', None)
+        super(Components8Sxs33Responses400ErrorContentApplicationJsonSchema, self).__init__(**kwargs)
+        self.status_code = kwargs.get('status_code', None)
+        self.detail = kwargs.get('detail', None)
 
 
 class ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema(msrest.serialization.Model):

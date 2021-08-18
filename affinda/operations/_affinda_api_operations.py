@@ -442,7 +442,7 @@ class AffindaAPIOperationsMixin(object):
         expiry_time=None,  # type: Optional[str]
         **kwargs  # type: Any
     ):
-        # type: (...) -> Union["_models.Resume", "_models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
+        # type: (...) -> Union["_models.Resume", "_models.Components8Sxs33Responses400ErrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
         """Uploads a resume for parsing.
 
         Uploads a resume for parsing.
@@ -465,16 +465,16 @@ class AffindaAPIOperationsMixin(object):
         :param expiry_time:
         :type expiry_time: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: Resume or Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema or
+        :return: Resume or Components8Sxs33Responses400ErrorContentApplicationJsonSchema or
          ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or
          ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema, or the result of cls(response)
         :rtype: ~affinda.models.Resume or
-         ~affinda.models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema or
+         ~affinda.models.Components8Sxs33Responses400ErrorContentApplicationJsonSchema or
          ~affinda.models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or
          ~affinda.models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.Resume", "_models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.Resume", "_models.Components8Sxs33Responses400ErrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
@@ -517,7 +517,7 @@ class AffindaAPIOperationsMixin(object):
             deserialized = self._deserialize('Resume', pipeline_response)
 
         if response.status_code == 400:
-            deserialized = self._deserialize('Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize('Components8Sxs33Responses400ErrorContentApplicationJsonSchema', pipeline_response)
 
         if response.status_code == 401:
             deserialized = self._deserialize('ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema', pipeline_response)
@@ -720,7 +720,7 @@ class AffindaAPIOperationsMixin(object):
         expiry_time=None,  # type: Optional[str]
         **kwargs  # type: Any
     ):
-        # type: (...) -> Union["_models.RedactedResume", "_models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
+        # type: (...) -> Union["_models.RedactedResume", "_models.Components8Sxs33Responses400ErrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
         """Uploads a resume for redacting.
 
         Uploads a resume for redacting.
@@ -754,17 +754,16 @@ class AffindaAPIOperationsMixin(object):
         :param expiry_time:
         :type expiry_time: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: RedactedResume or
-         Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema or
+        :return: RedactedResume or Components8Sxs33Responses400ErrorContentApplicationJsonSchema or
          ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or
          ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema, or the result of cls(response)
         :rtype: ~affinda.models.RedactedResume or
-         ~affinda.models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema or
+         ~affinda.models.Components8Sxs33Responses400ErrorContentApplicationJsonSchema or
          ~affinda.models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or
          ~affinda.models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.RedactedResume", "_models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.RedactedResume", "_models.Components8Sxs33Responses400ErrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
@@ -814,7 +813,7 @@ class AffindaAPIOperationsMixin(object):
             deserialized = self._deserialize('RedactedResume', pipeline_response)
 
         if response.status_code == 400:
-            deserialized = self._deserialize('Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize('Components8Sxs33Responses400ErrorContentApplicationJsonSchema', pipeline_response)
 
         if response.status_code == 401:
             deserialized = self._deserialize('ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema', pipeline_response)
@@ -1066,7 +1065,7 @@ class AffindaAPIOperationsMixin(object):
         wait=None,  # type: Optional[bool]
         **kwargs  # type: Any
     ):
-        # type: (...) -> Union["_models.ReformattedResume", "_models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
+        # type: (...) -> Union["_models.ReformattedResume", "_models.Components8Sxs33Responses400ErrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
         """Uploads a resume for reformatting.
 
         Uploads a resume for reformatting.
@@ -1086,17 +1085,16 @@ class AffindaAPIOperationsMixin(object):
         :param wait:
         :type wait: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: ReformattedResume or
-         Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema or
+        :return: ReformattedResume or Components8Sxs33Responses400ErrorContentApplicationJsonSchema or
          ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or
          ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema, or the result of cls(response)
         :rtype: ~affinda.models.ReformattedResume or
-         ~affinda.models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema or
+         ~affinda.models.Components8Sxs33Responses400ErrorContentApplicationJsonSchema or
          ~affinda.models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or
          ~affinda.models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.ReformattedResume", "_models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.ReformattedResume", "_models.Components8Sxs33Responses400ErrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
@@ -1139,7 +1137,7 @@ class AffindaAPIOperationsMixin(object):
             deserialized = self._deserialize('ReformattedResume', pipeline_response)
 
         if response.status_code == 400:
-            deserialized = self._deserialize('Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize('Components8Sxs33Responses400ErrorContentApplicationJsonSchema', pipeline_response)
 
         if response.status_code == 401:
             deserialized = self._deserialize('ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema', pipeline_response)

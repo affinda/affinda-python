@@ -10,25 +10,30 @@ from typing import IO, List, Optional
 import msrest.serialization
 
 
-class Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema(msrest.serialization.Model):
-    """Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema.
+class Components8Sxs33Responses400ErrorContentApplicationJsonSchema(msrest.serialization.Model):
+    """Components8Sxs33Responses400ErrorContentApplicationJsonSchema.
 
-    :param file_for_conversion:
-    :type file_for_conversion: str
+    :param status_code:
+    :type status_code: int
+    :param detail:
+    :type detail: str
     """
 
     _attribute_map = {
-        'file_for_conversion': {'key': 'fileForConversion', 'type': 'str'},
+        'status_code': {'key': 'statusCode', 'type': 'int'},
+        'detail': {'key': 'detail', 'type': 'str'},
     }
 
     def __init__(
         self,
         *,
-        file_for_conversion: Optional[str] = None,
+        status_code: Optional[int] = None,
+        detail: Optional[str] = None,
         **kwargs
     ):
-        super(Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema, self).__init__(**kwargs)
-        self.file_for_conversion = file_for_conversion
+        super(Components8Sxs33Responses400ErrorContentApplicationJsonSchema, self).__init__(**kwargs)
+        self.status_code = status_code
+        self.detail = detail
 
 
 class ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema(msrest.serialization.Model):

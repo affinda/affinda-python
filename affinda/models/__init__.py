@@ -5,7 +5,7 @@
 # --------------------------------------------------------------------------
 
 try:
-    from ._models_py3 import Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema
+    from ._models_py3 import Components8Sxs33Responses400ErrorContentApplicationJsonSchema
     from ._models_py3 import ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema
     from ._models_py3 import ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema
     from ._models_py3 import Error
@@ -35,7 +35,7 @@ try:
     from ._models_py3 import ResumeDataWorkExperienceItem
     from ._models_py3 import ResumeDataWorkExperienceItemDates
 except (SyntaxError, ImportError):
-    from ._models import Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema  # type: ignore
+    from ._models import Components8Sxs33Responses400ErrorContentApplicationJsonSchema  # type: ignore
     from ._models import ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema  # type: ignore
     from ._models import ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema  # type: ignore
     from ._models import Error  # type: ignore
@@ -66,7 +66,7 @@ except (SyntaxError, ImportError):
     from ._models import ResumeDataWorkExperienceItemDates  # type: ignore
 
 __all__ = [
-    'Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema',
+    'Components8Sxs33Responses400ErrorContentApplicationJsonSchema',
     'ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema',
     'ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema',
     'Error',

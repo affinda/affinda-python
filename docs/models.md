@@ -2,19 +2,20 @@
 
 # models.\_models
 
-<a name="models._models.Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema"></a>
+<a name="models._models.Components8Sxs33Responses400ErrorContentApplicationJsonSchema"></a>
 
-## Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema Objects
+## Components8Sxs33Responses400ErrorContentApplicationJsonSchema Objects
 
 ```python
-class Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema(msrest.serialization.Model)
+class Components8Sxs33Responses400ErrorContentApplicationJsonSchema(msrest.serialization.Model)
 ```
 
-Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema.
+Components8Sxs33Responses400ErrorContentApplicationJsonSchema.
 
 **Arguments**:
 
-- `file_for_conversion` (`str`): 
+- `status_code` (`int`): 
+- `detail` (`str`): 
 
 <a name="models._models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema"></a>
 

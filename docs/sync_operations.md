@@ -77,7 +77,7 @@ retrieve results.
 
 **Returns**:
 
-`~affinda.models.Resume or`: Resume or Components10Bc157ResponsesConversionerrorContentApplicationJsonSchema or
+`~affinda.models.Resume or`: Resume or Components8Sxs33Responses400ErrorContentApplicationJsonSchema or
 
 <a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume"></a>
 
@@ -173,7 +173,7 @@ Uploads a resume for redacting.
 
 **Returns**:
 
-`~affinda.models.RedactedResume or`: RedactedResume or
+`~affinda.models.RedactedResume or`: RedactedResume or Components8Sxs33Responses400ErrorContentApplicationJsonSchema or
 
 <a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_redacted_resume"></a>
 
@@ -280,7 +280,7 @@ Uploads a resume for reformatting.
 
 **Returns**:
 
-`~affinda.models.ReformattedResume or`: ReformattedResume or
+`~affinda.models.ReformattedResume or`: ReformattedResume or Components8Sxs33Responses400ErrorContentApplicationJsonSchema or
 
 <a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_reformatted_resume"></a>
 

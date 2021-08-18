@@ -1,22 +1,22 @@
-![affinda logo](affinda_logo.png)
+![affinda logo](https://raw.githubusercontent.com/affinda/affinda-python/main/affinda_logo.png)
 
 This is the python client for the **Affinda API**
 
-Generated using [autorest](https://github.com/Azure/autorest) and [autorest.python](https://github.com/Azure/autorest.python).
+Generated using [autorest](https://github.com/Azure/autorest)
+and [autorest.python](https://github.com/Azure/autorest.python).
 
 ## Installation
 
 ```shell
-git clone git@github.com:affinda/affinda-python.git
-cd affinda
-pip install -e . 
+pip install affinda
 ```
 
-Or to use in code:
+Or latest dev from github
+
 ```shell
 git clone git@github.com:affinda/affinda-python.git
-cd affinda
-pip install -r requirements.txt
+cd affinda-python
+pip install -e .
 ```
 
 ## Quickstart
@@ -36,6 +36,7 @@ with open(file_pth, "rb") as f:
 ```
 
 ## API reference
+
 - [API operations can be found here](./docs/sync_operations.md)
 - [API models and objects](./docs/models.md)
 - [Exceptions](./docs/exceptions.md)
