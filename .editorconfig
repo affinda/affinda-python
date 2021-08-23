@@ -1,0 +1,26 @@
+# EditorConfig
+# http://EditorConfig.org
+
+# Don't search any further up the directory tree
+root = true
+
+# Baseline
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# Markdown
+[*.md]
+trim_trailing_whitespace = false
+
+# PyCharm configuration
+[.idea/**/*.xml]
+indent_size = 2
+insert_final_newline = false
+
+# Python
+[*.py]
+max_line_length = 88
