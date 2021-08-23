@@ -1,0 +1,18 @@
+# Including files in source distributions with MANIFEST.in
+# https://packaging.python.org/guides/using-manifest-in/
+
+# Exclude development files
+exclude .*
+recursive-exclude .idea *
+recursive-exclude .vscode *
+
+# Explicitly include some important non-Python files
+include CHANGELOG.md
+include affinda_logo.png
+include affinda/py.typed
+recursive-include docs *.md
+
+# Automatically included by recent setuptools releases
+include LICENSE
+include README.md
+include pyproject.toml
