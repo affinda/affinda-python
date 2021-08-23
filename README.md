@@ -3,6 +3,15 @@ Affinda API - Python Client Library
 
 ![affinda logo](https://raw.githubusercontent.com/affinda/affinda-python/main/affinda_logo.png)
 
+[![pypi ver](https://img.shields.io/pypi/v/affinda)](https://pypi.org/project/affinda/)
+[![pypi pyver](https://img.shields.io/pypi/pyversions/affinda)](https://pypi.org/affinda/)
+[![pypi dlm](https://img.shields.io/pypi/dm/affinda)](https://pypi.org/project/affinda/)
+[![license](https://img.shields.io/github/license/affinda/affinda-python)](https://choosealicense.com/licenses/mit/)
+
+[![codestyle](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
+[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/affinda/affinda-python)
+
 - [Installation](#installation)
 - [Quickstart](#quickstart)
 - [API reference](#api-reference)
