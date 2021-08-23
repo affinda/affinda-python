@@ -1,4 +1,0 @@
-requests
-azure-core
-msrest
-azure-identity
