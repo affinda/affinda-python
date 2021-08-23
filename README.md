@@ -1,11 +1,19 @@
+Affinda API - Python Client Library
+===================================
+
 ![affinda logo](https://raw.githubusercontent.com/affinda/affinda-python/main/affinda_logo.png)
 
-This is the python client for the **Affinda API**
+- [Installation](#installation)
+- [Quickstart](#quickstart)
+- [API reference](#api-reference)
+- [Parser](#parser)
+- [Redactor](#redactor)
+- [Reformatter](#reformatter)
 
-Generated using [autorest](https://github.com/Azure/autorest)
-and [autorest.python](https://github.com/Azure/autorest.python).
+Generated using [autorest](https://github.com/Azure/autorest) and [autorest.python](https://github.com/Azure/autorest.python).
 
-## Installation
+Installation
+------------
 
 ```shell
 pip install affinda
@@ -19,7 +27,8 @@ cd affinda-python
 pip install -e .
 ```
 
-## Quickstart
+Quickstart
+----------
 
 ```python
 from pathlib import Path
@@ -35,14 +44,18 @@ with open(file_pth, "rb") as f:
     resp = client.create_resume(file=f, file_name="test.pdf", wait=False)
 ```
 
-## API reference
+API reference
+-------------
 
 - [API operations can be found here](./docs/sync_operations.md)
 - [API models and objects](./docs/models.md)
 - [Exceptions](./docs/exceptions.md)
 
-## Parser
+Parser
+------
+
 ### Gets summary information for all resumes of a user
+
 ```python
 from affinda import AffindaAPI, TokenCredential
 
@@ -54,7 +67,9 @@ all_resumes = client.get_all_resumes()
 
 print(all_resumes.as_dict())
 ```
+
 ### Uploads a resume for parsing
+
 ```python
 from pathlib import Path
 
@@ -72,7 +87,9 @@ with open(file_pth, "rb") as f:
 
 print(resume.as_dict())
 ```
+
 ### Gets parse results for a specific resume
+
 ```python
 from affinda import AffindaAPI, TokenCredential
 
@@ -85,7 +102,9 @@ resume = client.get_resume(identifier=identifier)
 
 print(resume.as_dict())
 ```
+
 ### Deletes a resume
+
 ```python
 from affinda import AffindaAPI, TokenCredential
 
@@ -98,8 +117,12 @@ response = client.delete_resume(identifier=identifier)
 
 print(response.as_dict())
 ```
-## Redactor
+
+Redactor
+--------
+
 ### Gets summary information for all redacted resumes of a user
+
 ```python
 from affinda import AffindaAPI, TokenCredential
 
@@ -111,7 +134,9 @@ all_redacted_resumes = client.get_all_redacted_resumes()
 
 print(all_redacted_resumes.as_dict())
 ```
+
 ### Uploads a resume for redacting
+
 ```python
 from pathlib import Path
 
@@ -129,7 +154,9 @@ with open(file_pth, "rb") as f:
 
 print(redacted_resume.as_dict())
 ```
+
 ### Gets redaction results for a specific resume
+
 ```python
 from affinda import AffindaAPI, TokenCredential
 
@@ -142,7 +169,9 @@ redacted_resume = client.get_redacted_resume(identifier=identifier)
 
 print(redacted_resume.as_dict())
 ```
+
 ### Deletes a redacted resume
+
 ```python
 from affinda import AffindaAPI, TokenCredential
 
@@ -155,8 +184,12 @@ response = client.delete_redacted_resume(identifier=identifier)
 
 print(response.as_dict())
 ```
-## Reformatter
+
+Reformatter
+-----------
+
 ### Gets summary information for all resume formats of a user
+
 ```python
 from affinda import AffindaAPI, TokenCredential
 
@@ -168,7 +201,9 @@ resume_formats = client.get_all_resume_formats()
 
 print(resume_formats.as_dict())
 ```
+
 ### Gets summary information for all reformatted resumes of a user
+
 ```python
 from affinda import AffindaAPI, TokenCredential
 
@@ -180,7 +215,9 @@ all_reformatted_resumes = client.get_all_reformatted_resumes()
 
 print(all_reformatted_resumes.as_dict())
 ```
+
 ### Uploads a resume for reformatting
+
 ```python
 from pathlib import PathAdding basic test suite
 
@@ -200,7 +237,9 @@ with open(file_pth, "rb") as f:
 
 print(reformatted_resume.as_dict())
 ```
+
 ### Gets reformatting results for a specific resume
+
 ```python
 from affinda import AffindaAPI, TokenCredential
 
@@ -213,7 +252,9 @@ reformatted_resume = client.get_reformatted_resume(identifier=identifier)
 
 print(reformatted_resume.as_dict())
 ```
+
 ### Deletes a reformatted resume
+
 ```python
 from affinda import AffindaAPI, TokenCredential
 
