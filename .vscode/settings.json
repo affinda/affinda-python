@@ -1,6 +1,10 @@
 {
     // File paths to language mappings
     "files.associations": {
+        // Python linting configs
+        ".flake8": "ini",
+        ".isort.cfg": "ini",
+        ".pylintrc": "ini",
         // Python packaging configs
         "MANIFEST.in": "properties",
         "setup.cfg": "ini"
@@ -23,7 +27,21 @@
     // Default venv path
     "python.pythonPath": "venv\\Scripts\\python.exe",
 
+    // Use Black for formatting
+    "python.formatting.provider": "black",
+
+    // Enable Python linters
+    "python.linting.flake8Enabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.pylintEnabled": true,
+
     "[python]": {
+        "editor.codeActionsOnSave": {
+            // Organise imports with isort
+            "source.organizeImports": true
+        },
+
+        "editor.formatOnSave": true,
         "editor.rulers": [88]
     }
 }
