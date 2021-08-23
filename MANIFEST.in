@@ -2,7 +2,7 @@
 # https://packaging.python.org/guides/using-manifest-in/
 
 # Exclude development files
-exclude .*
+exclude .* tox.ini
 recursive-exclude .idea *
 recursive-exclude .vscode *
 
