@@ -5,18 +5,32 @@
 # --------------------------------------------------------------------------
 
 try:
-    from ._models_py3 import Components8Sxs33Responses400ErrorContentApplicationJsonSchema
-    from ._models_py3 import ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema
-    from ._models_py3 import ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema
+    from ._models_py3 import (
+        Components8Sxs33Responses400ErrorContentApplicationJsonSchema,
+    )
+    from ._models_py3 import (
+        ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema,
+    )
+    from ._models_py3 import (
+        ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema,
+    )
     from ._models_py3 import Error
     from ._models_py3 import Get200ApplicationJsonPropertiesItemsItem
     from ._models_py3 import GetAllDocumentsResults
     from ._models_py3 import Location
     from ._models_py3 import Meta
-    from ._models_py3 import Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema
-    from ._models_py3 import Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema
-    from ._models_py3 import Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema
-    from ._models_py3 import PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema
+    from ._models_py3 import (
+        Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema,
+    )
+    from ._models_py3 import (
+        Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema,
+    )
+    from ._models_py3 import (
+        Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema,
+    )
+    from ._models_py3 import (
+        PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema,
+    )
     from ._models_py3 import RedactedResume
     from ._models_py3 import RedactedResumeData
     from ._models_py3 import ReformattedResume
@@ -66,33 +80,33 @@ except (SyntaxError, ImportError):
     from ._models import ResumeDataWorkExperienceItemDates  # type: ignore
 
 __all__ = [
-    'Components8Sxs33Responses400ErrorContentApplicationJsonSchema',
-    'ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema',
-    'ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema',
-    'Error',
-    'Get200ApplicationJsonPropertiesItemsItem',
-    'GetAllDocumentsResults',
-    'Location',
-    'Meta',
-    'Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema',
-    'Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema',
-    'Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema',
-    'PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema',
-    'RedactedResume',
-    'RedactedResumeData',
-    'ReformattedResume',
-    'ReformattedResumeData',
-    'Resume',
-    'ResumeData',
-    'ResumeDataEducationItem',
-    'ResumeDataEducationItemAccreditation',
-    'ResumeDataEducationItemDates',
-    'ResumeDataEducationItemGrade',
-    'ResumeDataName',
-    'ResumeDataRefereesItem',
-    'ResumeDataSectionsItem',
-    'ResumeDataSkillsDetailsItem',
-    'ResumeDataSkillsDetailsPropertiesItemsItem',
-    'ResumeDataWorkExperienceItem',
-    'ResumeDataWorkExperienceItemDates',
+    "Components8Sxs33Responses400ErrorContentApplicationJsonSchema",
+    "ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema",
+    "ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema",
+    "Error",
+    "Get200ApplicationJsonPropertiesItemsItem",
+    "GetAllDocumentsResults",
+    "Location",
+    "Meta",
+    "Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema",
+    "Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema",
+    "Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema",
+    "PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema",
+    "RedactedResume",
+    "RedactedResumeData",
+    "ReformattedResume",
+    "ReformattedResumeData",
+    "Resume",
+    "ResumeData",
+    "ResumeDataEducationItem",
+    "ResumeDataEducationItemAccreditation",
+    "ResumeDataEducationItemDates",
+    "ResumeDataEducationItemGrade",
+    "ResumeDataName",
+    "ResumeDataRefereesItem",
+    "ResumeDataSectionsItem",
+    "ResumeDataSkillsDetailsItem",
+    "ResumeDataSkillsDetailsPropertiesItemsItem",
+    "ResumeDataWorkExperienceItem",
+    "ResumeDataWorkExperienceItemDates",
 ]

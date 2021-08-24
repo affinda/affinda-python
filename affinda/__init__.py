@@ -9,10 +9,11 @@ from .token_credential import TokenCredential
 from ._version import VERSION
 
 __version__ = VERSION
-__all__ = ['AffindaAPI', 'TokenCredential']
+__all__ = ["AffindaAPI", "TokenCredential"]
 
 try:
     from ._patch import patch_sdk  # type: ignore
+
     patch_sdk()
 except ImportError:
     pass

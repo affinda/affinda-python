@@ -21,6 +21,7 @@ if TYPE_CHECKING:
     from azure.core.credentials import TokenCredential
     from azure.core.rest import HttpRequest, HttpResponse
 
+
 class AffindaAPI(AffindaAPIOperationsMixin):
     """Affinda API client for Python.
 
@@ -40,24 +41,25 @@ class AffindaAPI(AffindaAPIOperationsMixin):
         limit=300,  # type: Optional[int]
         offset=None,  # type: Optional[int]
         base_url=None,  # type: Optional[str]
-        **kwargs  # type: Any
+        **kwargs,  # type: Any
     ):
         # type: (...) -> None
         if not base_url:
-            base_url = 'https://api.affinda.com/v1'
+            base_url = "https://api.affinda.com/v1"
         self._config = AffindaAPIConfiguration(credential, limit, offset, **kwargs)
         self._client = PipelineClient(base_url=base_url, config=self._config, **kwargs)
 
-        client_models = {k: v for k, v in models.__dict__.items() if isinstance(v, type)}
+        client_models = {
+            k: v for k, v in models.__dict__.items() if isinstance(v, type)
+        }
         self._serialize = Serializer(client_models)
         self._deserialize = Deserializer(client_models)
         self._serialize.client_side_validation = False
 
-
     def _send_request(
         self,
         request,  # type: HttpRequest
-        **kwargs  # type: Any
+        **kwargs,  # type: Any
     ):
         # type: (...) -> HttpResponse
         """Runs the network request through the client's chained policies.

@@ -7,7 +7,13 @@ import functools
 from typing import TYPE_CHECKING
 import warnings
 
-from azure.core.exceptions import ClientAuthenticationError, HttpResponseError, ResourceExistsError, ResourceNotFoundError, map_error
+from azure.core.exceptions import (
+    ClientAuthenticationError,
+    HttpResponseError,
+    ResourceExistsError,
+    ResourceNotFoundError,
+    map_error,
+)
 from azure.core.pipeline import PipelineResponse
 from azure.core.pipeline.transport import HttpResponse
 from azure.core.pipeline.transport._base import _format_url_section
@@ -20,8 +26,10 @@ if TYPE_CHECKING:
     # pylint: disable=unused-import,ungrouped-imports
     from typing import Any, Callable, Dict, Generic, IO, Optional, TypeVar, Union
 
-    T = TypeVar('T')
-    ClsType = Optional[Callable[[PipelineResponse[HttpRequest, HttpResponse], T, Dict[str, Any]], Any]]
+    T = TypeVar("T")
+    ClsType = Optional[
+        Callable[[PipelineResponse[HttpRequest, HttpResponse], T, Dict[str, Any]], Any]
+    ]
 
 _SERIALIZER = Serializer()
 # fmt: off
@@ -379,10 +387,8 @@ def build_delete_reformatted_resume_request(
 
 # fmt: on
 class AffindaAPIOperationsMixin(object):
-
     def get_all_resumes(
-        self,
-        **kwargs  # type: Any
+        self, **kwargs  # type: Any
     ):
         # type: (...) -> Union["_models.GetAllDocumentsResults", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema"]
         """Gets summary information for all resumes of a user.
@@ -396,40 +402,51 @@ class AffindaAPIOperationsMixin(object):
          ~affinda.models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.GetAllDocumentsResults", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema"]]
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Union["_models.GetAllDocumentsResults", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema"]]
         error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
         }
-        error_map.update(kwargs.pop('error_map', {}))
+        error_map.update(kwargs.pop("error_map", {}))
 
-        
         request = build_get_all_resumes_request(
             limit=self._config.limit,
             offset=self._config.offset,
-            template_url=self.get_all_resumes.metadata['url'],
+            template_url=self.get_all_resumes.metadata["url"],
         )._to_pipeline_transport_request()
         request.url = self._client.format_url(request.url)
 
-        pipeline_response = self._client.send_request(request, stream=False, _return_pipeline_response=True, **kwargs)
+        pipeline_response = self._client.send_request(
+            request, stream=False, _return_pipeline_response=True, **kwargs
+        )
         response = pipeline_response.http_response
 
         if response.status_code not in [200, 401]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            map_error(
+                status_code=response.status_code, response=response, error_map=error_map
+            )
             raise HttpResponseError(response=response)
 
         if response.status_code == 200:
-            deserialized = self._deserialize('GetAllDocumentsResults', pipeline_response)
+            deserialized = self._deserialize(
+                "GetAllDocumentsResults", pipeline_response
+            )
 
         if response.status_code == 401:
-            deserialized = self._deserialize('ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_all_resumes.metadata = {'url': '/resumes'}  # type: ignore
-
+    get_all_resumes.metadata = {"url": "/resumes"}  # type: ignore
 
     def create_resume(
         self,
@@ -440,7 +457,7 @@ class AffindaAPIOperationsMixin(object):
         wait=None,  # type: Optional[bool]
         resume_language=None,  # type: Optional[str]
         expiry_time=None,  # type: Optional[str]
-        **kwargs  # type: Any
+        **kwargs,  # type: Any
     ):
         # type: (...) -> Union["_models.Resume", "_models.Components8Sxs33Responses400ErrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
         """Uploads a resume for parsing.
@@ -474,13 +491,17 @@ class AffindaAPIOperationsMixin(object):
          ~affinda.models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.Resume", "_models.Components8Sxs33Responses400ErrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Union["_models.Resume", "_models.Components8Sxs33Responses400ErrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
         error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
         }
-        error_map.update(kwargs.pop('error_map', {}))
+        error_map.update(kwargs.pop("error_map", {}))
 
-        content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+        content_type = kwargs.pop("content_type", None)  # type: Optional[str]
 
         files = None
         data = None
@@ -499,44 +520,56 @@ class AffindaAPIOperationsMixin(object):
             content_type=content_type,
             files=files,
             data=data,
-            template_url=self.create_resume.metadata['url'],
+            template_url=self.create_resume.metadata["url"],
         )._to_pipeline_transport_request()
         request.url = self._client.format_url(request.url)
 
-        pipeline_response = self._client.send_request(request, stream=False, _return_pipeline_response=True, **kwargs)
+        pipeline_response = self._client.send_request(
+            request, stream=False, _return_pipeline_response=True, **kwargs
+        )
         response = pipeline_response.http_response
 
         if response.status_code not in [200, 201, 400, 401, 404]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            map_error(
+                status_code=response.status_code, response=response, error_map=error_map
+            )
             raise HttpResponseError(response=response)
 
         if response.status_code == 200:
-            deserialized = self._deserialize('Resume', pipeline_response)
+            deserialized = self._deserialize("Resume", pipeline_response)
 
         if response.status_code == 201:
-            deserialized = self._deserialize('Resume', pipeline_response)
+            deserialized = self._deserialize("Resume", pipeline_response)
 
         if response.status_code == 400:
-            deserialized = self._deserialize('Components8Sxs33Responses400ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "Components8Sxs33Responses400ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if response.status_code == 401:
-            deserialized = self._deserialize('ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if response.status_code == 404:
-            deserialized = self._deserialize('ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    create_resume.metadata = {'url': '/resumes'}  # type: ignore
-
+    create_resume.metadata = {"url": "/resumes"}  # type: ignore
 
     def get_resume(
         self,
         identifier,  # type: str
-        **kwargs  # type: Any
+        **kwargs,  # type: Any
     ):
         # type: (...) -> Union["_models.Resume", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
         """Gets parse results for a specific resume.
@@ -555,47 +588,59 @@ class AffindaAPIOperationsMixin(object):
          ~affinda.models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.Resume", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Union["_models.Resume", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
         error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
         }
-        error_map.update(kwargs.pop('error_map', {}))
+        error_map.update(kwargs.pop("error_map", {}))
 
-        
         request = build_get_resume_request(
             identifier=identifier,
-            template_url=self.get_resume.metadata['url'],
+            template_url=self.get_resume.metadata["url"],
         )._to_pipeline_transport_request()
         request.url = self._client.format_url(request.url)
 
-        pipeline_response = self._client.send_request(request, stream=False, _return_pipeline_response=True, **kwargs)
+        pipeline_response = self._client.send_request(
+            request, stream=False, _return_pipeline_response=True, **kwargs
+        )
         response = pipeline_response.http_response
 
         if response.status_code not in [200, 401, 404]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            map_error(
+                status_code=response.status_code, response=response, error_map=error_map
+            )
             raise HttpResponseError(response=response)
 
         if response.status_code == 200:
-            deserialized = self._deserialize('Resume', pipeline_response)
+            deserialized = self._deserialize("Resume", pipeline_response)
 
         if response.status_code == 401:
-            deserialized = self._deserialize('ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if response.status_code == 404:
-            deserialized = self._deserialize('ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_resume.metadata = {'url': '/resumes/{identifier}'}  # type: ignore
-
+    get_resume.metadata = {"url": "/resumes/{identifier}"}  # type: ignore
 
     def delete_resume(
         self,
         identifier,  # type: str
-        **kwargs  # type: Any
+        **kwargs,  # type: Any
     ):
         # type: (...) -> Optional[Union["_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
         """Deletes a resume.
@@ -611,44 +656,55 @@ class AffindaAPIOperationsMixin(object):
          ~affinda.models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema or None
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[Optional[Union["_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]]
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Optional[Union["_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]]
         error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
         }
-        error_map.update(kwargs.pop('error_map', {}))
+        error_map.update(kwargs.pop("error_map", {}))
 
-        
         request = build_delete_resume_request(
             identifier=identifier,
-            template_url=self.delete_resume.metadata['url'],
+            template_url=self.delete_resume.metadata["url"],
         )._to_pipeline_transport_request()
         request.url = self._client.format_url(request.url)
 
-        pipeline_response = self._client.send_request(request, stream=False, _return_pipeline_response=True, **kwargs)
+        pipeline_response = self._client.send_request(
+            request, stream=False, _return_pipeline_response=True, **kwargs
+        )
         response = pipeline_response.http_response
 
         if response.status_code not in [204, 401, 404]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            map_error(
+                status_code=response.status_code, response=response, error_map=error_map
+            )
             raise HttpResponseError(response=response)
 
         deserialized = None
         if response.status_code == 401:
-            deserialized = self._deserialize('ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if response.status_code == 404:
-            deserialized = self._deserialize('ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    delete_resume.metadata = {'url': '/resumes/{identifier}'}  # type: ignore
-
+    delete_resume.metadata = {"url": "/resumes/{identifier}"}  # type: ignore
 
     def get_all_redacted_resumes(
-        self,
-        **kwargs  # type: Any
+        self, **kwargs  # type: Any
     ):
         # type: (...) -> Union["_models.GetAllDocumentsResults", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
         """Gets summary information for all redacted resumes of a user.
@@ -664,43 +720,57 @@ class AffindaAPIOperationsMixin(object):
          ~affinda.models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.GetAllDocumentsResults", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Union["_models.GetAllDocumentsResults", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
         error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
         }
-        error_map.update(kwargs.pop('error_map', {}))
+        error_map.update(kwargs.pop("error_map", {}))
 
-        
         request = build_get_all_redacted_resumes_request(
             limit=self._config.limit,
             offset=self._config.offset,
-            template_url=self.get_all_redacted_resumes.metadata['url'],
+            template_url=self.get_all_redacted_resumes.metadata["url"],
         )._to_pipeline_transport_request()
         request.url = self._client.format_url(request.url)
 
-        pipeline_response = self._client.send_request(request, stream=False, _return_pipeline_response=True, **kwargs)
+        pipeline_response = self._client.send_request(
+            request, stream=False, _return_pipeline_response=True, **kwargs
+        )
         response = pipeline_response.http_response
 
         if response.status_code not in [200, 401, 404]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            map_error(
+                status_code=response.status_code, response=response, error_map=error_map
+            )
             raise HttpResponseError(response=response)
 
         if response.status_code == 200:
-            deserialized = self._deserialize('GetAllDocumentsResults', pipeline_response)
+            deserialized = self._deserialize(
+                "GetAllDocumentsResults", pipeline_response
+            )
 
         if response.status_code == 401:
-            deserialized = self._deserialize('ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if response.status_code == 404:
-            deserialized = self._deserialize('ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_all_redacted_resumes.metadata = {'url': '/redacted_resumes'}  # type: ignore
-
+    get_all_redacted_resumes.metadata = {"url": "/redacted_resumes"}  # type: ignore
 
     def create_redacted_resume(
         self,
@@ -718,7 +788,7 @@ class AffindaAPIOperationsMixin(object):
         redact_locations=True,  # type: Optional[bool]
         redact_dates=True,  # type: Optional[bool]
         expiry_time=None,  # type: Optional[str]
-        **kwargs  # type: Any
+        **kwargs,  # type: Any
     ):
         # type: (...) -> Union["_models.RedactedResume", "_models.Components8Sxs33Responses400ErrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
         """Uploads a resume for redacting.
@@ -763,13 +833,17 @@ class AffindaAPIOperationsMixin(object):
          ~affinda.models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.RedactedResume", "_models.Components8Sxs33Responses400ErrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Union["_models.RedactedResume", "_models.Components8Sxs33Responses400ErrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
         error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
         }
-        error_map.update(kwargs.pop('error_map', {}))
+        error_map.update(kwargs.pop("error_map", {}))
 
-        content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+        content_type = kwargs.pop("content_type", None)  # type: Optional[str]
 
         files = None
         data = None
@@ -795,44 +869,56 @@ class AffindaAPIOperationsMixin(object):
             content_type=content_type,
             files=files,
             data=data,
-            template_url=self.create_redacted_resume.metadata['url'],
+            template_url=self.create_redacted_resume.metadata["url"],
         )._to_pipeline_transport_request()
         request.url = self._client.format_url(request.url)
 
-        pipeline_response = self._client.send_request(request, stream=False, _return_pipeline_response=True, **kwargs)
+        pipeline_response = self._client.send_request(
+            request, stream=False, _return_pipeline_response=True, **kwargs
+        )
         response = pipeline_response.http_response
 
         if response.status_code not in [200, 201, 400, 401, 404]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            map_error(
+                status_code=response.status_code, response=response, error_map=error_map
+            )
             raise HttpResponseError(response=response)
 
         if response.status_code == 200:
-            deserialized = self._deserialize('RedactedResume', pipeline_response)
+            deserialized = self._deserialize("RedactedResume", pipeline_response)
 
         if response.status_code == 201:
-            deserialized = self._deserialize('RedactedResume', pipeline_response)
+            deserialized = self._deserialize("RedactedResume", pipeline_response)
 
         if response.status_code == 400:
-            deserialized = self._deserialize('Components8Sxs33Responses400ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "Components8Sxs33Responses400ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if response.status_code == 401:
-            deserialized = self._deserialize('ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if response.status_code == 404:
-            deserialized = self._deserialize('ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    create_redacted_resume.metadata = {'url': '/redacted_resumes'}  # type: ignore
-
+    create_redacted_resume.metadata = {"url": "/redacted_resumes"}  # type: ignore
 
     def get_redacted_resume(
         self,
         identifier,  # type: str
-        **kwargs  # type: Any
+        **kwargs,  # type: Any
     ):
         # type: (...) -> Union["_models.RedactedResume", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
         """Gets redaction results for a specific resume.
@@ -851,47 +937,59 @@ class AffindaAPIOperationsMixin(object):
          ~affinda.models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.RedactedResume", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Union["_models.RedactedResume", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
         error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
         }
-        error_map.update(kwargs.pop('error_map', {}))
+        error_map.update(kwargs.pop("error_map", {}))
 
-        
         request = build_get_redacted_resume_request(
             identifier=identifier,
-            template_url=self.get_redacted_resume.metadata['url'],
+            template_url=self.get_redacted_resume.metadata["url"],
         )._to_pipeline_transport_request()
         request.url = self._client.format_url(request.url)
 
-        pipeline_response = self._client.send_request(request, stream=False, _return_pipeline_response=True, **kwargs)
+        pipeline_response = self._client.send_request(
+            request, stream=False, _return_pipeline_response=True, **kwargs
+        )
         response = pipeline_response.http_response
 
         if response.status_code not in [200, 401, 404]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            map_error(
+                status_code=response.status_code, response=response, error_map=error_map
+            )
             raise HttpResponseError(response=response)
 
         if response.status_code == 200:
-            deserialized = self._deserialize('RedactedResume', pipeline_response)
+            deserialized = self._deserialize("RedactedResume", pipeline_response)
 
         if response.status_code == 401:
-            deserialized = self._deserialize('ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if response.status_code == 404:
-            deserialized = self._deserialize('ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_redacted_resume.metadata = {'url': '/redacted_resumes/{identifier}'}  # type: ignore
-
+    get_redacted_resume.metadata = {"url": "/redacted_resumes/{identifier}"}  # type: ignore
 
     def delete_redacted_resume(
         self,
         identifier,  # type: str
-        **kwargs  # type: Any
+        **kwargs,  # type: Any
     ):
         # type: (...) -> Optional[Union["_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
         """Deletes a redacted resume.
@@ -907,44 +1005,55 @@ class AffindaAPIOperationsMixin(object):
          ~affinda.models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema or None
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[Optional[Union["_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]]
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Optional[Union["_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]]
         error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
         }
-        error_map.update(kwargs.pop('error_map', {}))
+        error_map.update(kwargs.pop("error_map", {}))
 
-        
         request = build_delete_redacted_resume_request(
             identifier=identifier,
-            template_url=self.delete_redacted_resume.metadata['url'],
+            template_url=self.delete_redacted_resume.metadata["url"],
         )._to_pipeline_transport_request()
         request.url = self._client.format_url(request.url)
 
-        pipeline_response = self._client.send_request(request, stream=False, _return_pipeline_response=True, **kwargs)
+        pipeline_response = self._client.send_request(
+            request, stream=False, _return_pipeline_response=True, **kwargs
+        )
         response = pipeline_response.http_response
 
         if response.status_code not in [204, 401, 404]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            map_error(
+                status_code=response.status_code, response=response, error_map=error_map
+            )
             raise HttpResponseError(response=response)
 
         deserialized = None
         if response.status_code == 401:
-            deserialized = self._deserialize('ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if response.status_code == 404:
-            deserialized = self._deserialize('ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    delete_redacted_resume.metadata = {'url': '/redacted_resumes/{identifier}'}  # type: ignore
-
+    delete_redacted_resume.metadata = {"url": "/redacted_resumes/{identifier}"}  # type: ignore
 
     def get_all_resume_formats(
-        self,
-        **kwargs  # type: Any
+        self, **kwargs  # type: Any
     ):
         # type: (...) -> Union["_models.Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
         """Gets summary information for all resume formats of a user.
@@ -960,47 +1069,61 @@ class AffindaAPIOperationsMixin(object):
          ~affinda.models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Union["_models.Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
         error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
         }
-        error_map.update(kwargs.pop('error_map', {}))
+        error_map.update(kwargs.pop("error_map", {}))
 
-        
         request = build_get_all_resume_formats_request(
             limit=self._config.limit,
             offset=self._config.offset,
-            template_url=self.get_all_resume_formats.metadata['url'],
+            template_url=self.get_all_resume_formats.metadata["url"],
         )._to_pipeline_transport_request()
         request.url = self._client.format_url(request.url)
 
-        pipeline_response = self._client.send_request(request, stream=False, _return_pipeline_response=True, **kwargs)
+        pipeline_response = self._client.send_request(
+            request, stream=False, _return_pipeline_response=True, **kwargs
+        )
         response = pipeline_response.http_response
 
         if response.status_code not in [200, 401, 404]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            map_error(
+                status_code=response.status_code, response=response, error_map=error_map
+            )
             raise HttpResponseError(response=response)
 
         if response.status_code == 200:
-            deserialized = self._deserialize('Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if response.status_code == 401:
-            deserialized = self._deserialize('ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if response.status_code == 404:
-            deserialized = self._deserialize('ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_all_resume_formats.metadata = {'url': '/resume_formats'}  # type: ignore
-
+    get_all_resume_formats.metadata = {"url": "/resume_formats"}  # type: ignore
 
     def get_all_reformatted_resumes(
-        self,
-        **kwargs  # type: Any
+        self, **kwargs  # type: Any
     ):
         # type: (...) -> Union["_models.GetAllDocumentsResults", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
         """Gets summary information for all reformatted resumes of a user.
@@ -1016,43 +1139,57 @@ class AffindaAPIOperationsMixin(object):
          ~affinda.models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.GetAllDocumentsResults", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Union["_models.GetAllDocumentsResults", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
         error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
         }
-        error_map.update(kwargs.pop('error_map', {}))
+        error_map.update(kwargs.pop("error_map", {}))
 
-        
         request = build_get_all_reformatted_resumes_request(
             limit=self._config.limit,
             offset=self._config.offset,
-            template_url=self.get_all_reformatted_resumes.metadata['url'],
+            template_url=self.get_all_reformatted_resumes.metadata["url"],
         )._to_pipeline_transport_request()
         request.url = self._client.format_url(request.url)
 
-        pipeline_response = self._client.send_request(request, stream=False, _return_pipeline_response=True, **kwargs)
+        pipeline_response = self._client.send_request(
+            request, stream=False, _return_pipeline_response=True, **kwargs
+        )
         response = pipeline_response.http_response
 
         if response.status_code not in [200, 401, 404]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            map_error(
+                status_code=response.status_code, response=response, error_map=error_map
+            )
             raise HttpResponseError(response=response)
 
         if response.status_code == 200:
-            deserialized = self._deserialize('GetAllDocumentsResults', pipeline_response)
+            deserialized = self._deserialize(
+                "GetAllDocumentsResults", pipeline_response
+            )
 
         if response.status_code == 401:
-            deserialized = self._deserialize('ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if response.status_code == 404:
-            deserialized = self._deserialize('ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_all_reformatted_resumes.metadata = {'url': '/reformatted_resumes'}  # type: ignore
-
+    get_all_reformatted_resumes.metadata = {"url": "/reformatted_resumes"}  # type: ignore
 
     def create_reformatted_resume(
         self,
@@ -1063,7 +1200,7 @@ class AffindaAPIOperationsMixin(object):
         url=None,  # type: Optional[str]
         resume_language=None,  # type: Optional[str]
         wait=None,  # type: Optional[bool]
-        **kwargs  # type: Any
+        **kwargs,  # type: Any
     ):
         # type: (...) -> Union["_models.ReformattedResume", "_models.Components8Sxs33Responses400ErrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
         """Uploads a resume for reformatting.
@@ -1094,13 +1231,17 @@ class AffindaAPIOperationsMixin(object):
          ~affinda.models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.ReformattedResume", "_models.Components8Sxs33Responses400ErrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Union["_models.ReformattedResume", "_models.Components8Sxs33Responses400ErrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
         error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
         }
-        error_map.update(kwargs.pop('error_map', {}))
+        error_map.update(kwargs.pop("error_map", {}))
 
-        content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+        content_type = kwargs.pop("content_type", None)  # type: Optional[str]
 
         files = None
         data = None
@@ -1119,44 +1260,56 @@ class AffindaAPIOperationsMixin(object):
             content_type=content_type,
             files=files,
             data=data,
-            template_url=self.create_reformatted_resume.metadata['url'],
+            template_url=self.create_reformatted_resume.metadata["url"],
         )._to_pipeline_transport_request()
         request.url = self._client.format_url(request.url)
 
-        pipeline_response = self._client.send_request(request, stream=False, _return_pipeline_response=True, **kwargs)
+        pipeline_response = self._client.send_request(
+            request, stream=False, _return_pipeline_response=True, **kwargs
+        )
         response = pipeline_response.http_response
 
         if response.status_code not in [200, 201, 400, 401, 404]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            map_error(
+                status_code=response.status_code, response=response, error_map=error_map
+            )
             raise HttpResponseError(response=response)
 
         if response.status_code == 200:
-            deserialized = self._deserialize('ReformattedResume', pipeline_response)
+            deserialized = self._deserialize("ReformattedResume", pipeline_response)
 
         if response.status_code == 201:
-            deserialized = self._deserialize('ReformattedResume', pipeline_response)
+            deserialized = self._deserialize("ReformattedResume", pipeline_response)
 
         if response.status_code == 400:
-            deserialized = self._deserialize('Components8Sxs33Responses400ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "Components8Sxs33Responses400ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if response.status_code == 401:
-            deserialized = self._deserialize('ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if response.status_code == 404:
-            deserialized = self._deserialize('ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    create_reformatted_resume.metadata = {'url': '/reformatted_resumes'}  # type: ignore
-
+    create_reformatted_resume.metadata = {"url": "/reformatted_resumes"}  # type: ignore
 
     def get_reformatted_resume(
         self,
         identifier,  # type: str
-        **kwargs  # type: Any
+        **kwargs,  # type: Any
     ):
         # type: (...) -> Union["_models.ReformattedResume", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]
         """Gets reformatting results for a specific resume.
@@ -1175,47 +1328,59 @@ class AffindaAPIOperationsMixin(object):
          ~affinda.models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[Union["_models.ReformattedResume", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Union["_models.ReformattedResume", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
         error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
         }
-        error_map.update(kwargs.pop('error_map', {}))
+        error_map.update(kwargs.pop("error_map", {}))
 
-        
         request = build_get_reformatted_resume_request(
             identifier=identifier,
-            template_url=self.get_reformatted_resume.metadata['url'],
+            template_url=self.get_reformatted_resume.metadata["url"],
         )._to_pipeline_transport_request()
         request.url = self._client.format_url(request.url)
 
-        pipeline_response = self._client.send_request(request, stream=False, _return_pipeline_response=True, **kwargs)
+        pipeline_response = self._client.send_request(
+            request, stream=False, _return_pipeline_response=True, **kwargs
+        )
         response = pipeline_response.http_response
 
         if response.status_code not in [200, 401, 404]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            map_error(
+                status_code=response.status_code, response=response, error_map=error_map
+            )
             raise HttpResponseError(response=response)
 
         if response.status_code == 200:
-            deserialized = self._deserialize('ReformattedResume', pipeline_response)
+            deserialized = self._deserialize("ReformattedResume", pipeline_response)
 
         if response.status_code == 401:
-            deserialized = self._deserialize('ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if response.status_code == 404:
-            deserialized = self._deserialize('ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_reformatted_resume.metadata = {'url': '/reformatted_resumes/{identifier}'}  # type: ignore
-
+    get_reformatted_resume.metadata = {"url": "/reformatted_resumes/{identifier}"}  # type: ignore
 
     def delete_reformatted_resume(
         self,
         identifier,  # type: str
-        **kwargs  # type: Any
+        **kwargs,  # type: Any
     ):
         # type: (...) -> Optional[Union["_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]
         """Deletes a reformatted resume.
@@ -1231,37 +1396,49 @@ class AffindaAPIOperationsMixin(object):
          ~affinda.models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema or None
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[Optional[Union["_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]]
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Optional[Union["_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]]]
         error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
         }
-        error_map.update(kwargs.pop('error_map', {}))
+        error_map.update(kwargs.pop("error_map", {}))
 
-        
         request = build_delete_reformatted_resume_request(
             identifier=identifier,
-            template_url=self.delete_reformatted_resume.metadata['url'],
+            template_url=self.delete_reformatted_resume.metadata["url"],
         )._to_pipeline_transport_request()
         request.url = self._client.format_url(request.url)
 
-        pipeline_response = self._client.send_request(request, stream=False, _return_pipeline_response=True, **kwargs)
+        pipeline_response = self._client.send_request(
+            request, stream=False, _return_pipeline_response=True, **kwargs
+        )
         response = pipeline_response.http_response
 
         if response.status_code not in [204, 401, 404]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            map_error(
+                status_code=response.status_code, response=response, error_map=error_map
+            )
             raise HttpResponseError(response=response)
 
         deserialized = None
         if response.status_code == 401:
-            deserialized = self._deserialize('ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if response.status_code == 404:
-            deserialized = self._deserialize('ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema', pipeline_response)
+            deserialized = self._deserialize(
+                "ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema",
+                pipeline_response,
+            )
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    delete_reformatted_resume.metadata = {'url': '/reformatted_resumes/{identifier}'}  # type: ignore
-
+    delete_reformatted_resume.metadata = {"url": "/reformatted_resumes/{identifier}"}  # type: ignore

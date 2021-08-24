@@ -7,7 +7,9 @@
 import msrest.serialization
 
 
-class Components8Sxs33Responses400ErrorContentApplicationJsonSchema(msrest.serialization.Model):
+class Components8Sxs33Responses400ErrorContentApplicationJsonSchema(
+    msrest.serialization.Model
+):
     """Components8Sxs33Responses400ErrorContentApplicationJsonSchema.
 
     :param status_code:
@@ -17,20 +19,21 @@ class Components8Sxs33Responses400ErrorContentApplicationJsonSchema(msrest.seria
     """
 
     _attribute_map = {
-        'status_code': {'key': 'statusCode', 'type': 'int'},
-        'detail': {'key': 'detail', 'type': 'str'},
+        "status_code": {"key": "statusCode", "type": "int"},
+        "detail": {"key": "detail", "type": "str"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
-        super(Components8Sxs33Responses400ErrorContentApplicationJsonSchema, self).__init__(**kwargs)
-        self.status_code = kwargs.get('status_code', None)
-        self.detail = kwargs.get('detail', None)
+    def __init__(self, **kwargs):
+        super(
+            Components8Sxs33Responses400ErrorContentApplicationJsonSchema, self
+        ).__init__(**kwargs)
+        self.status_code = kwargs.get("status_code", None)
+        self.detail = kwargs.get("detail", None)
 
 
-class ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema(msrest.serialization.Model):
+class ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema(
+    msrest.serialization.Model
+):
     """ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema.
 
     :param detail:
@@ -40,20 +43,21 @@ class ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema(msrest.seria
     """
 
     _attribute_map = {
-        'detail': {'key': 'detail', 'type': 'str'},
-        'status_code': {'key': 'statusCode', 'type': 'int'},
+        "detail": {"key": "detail", "type": "str"},
+        "status_code": {"key": "statusCode", "type": "int"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
-        super(ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema, self).__init__(**kwargs)
-        self.detail = kwargs.get('detail', None)
-        self.status_code = kwargs.get('status_code', None)
+    def __init__(self, **kwargs):
+        super(
+            ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema, self
+        ).__init__(**kwargs)
+        self.detail = kwargs.get("detail", None)
+        self.status_code = kwargs.get("status_code", None)
 
 
-class ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema(msrest.serialization.Model):
+class ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema(
+    msrest.serialization.Model
+):
     """ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema.
 
     :param detail:
@@ -63,17 +67,16 @@ class ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema(msrest.seria
     """
 
     _attribute_map = {
-        'detail': {'key': 'detail', 'type': 'str'},
-        'status_code': {'key': 'statusCode', 'type': 'int'},
+        "detail": {"key": "detail", "type": "str"},
+        "status_code": {"key": "statusCode", "type": "int"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
-        super(ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema, self).__init__(**kwargs)
-        self.detail = kwargs.get('detail', None)
-        self.status_code = kwargs.get('status_code', None)
+    def __init__(self, **kwargs):
+        super(
+            ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema, self
+        ).__init__(**kwargs)
+        self.detail = kwargs.get("detail", None)
+        self.status_code = kwargs.get("status_code", None)
 
 
 class Error(msrest.serialization.Model):
@@ -86,17 +89,14 @@ class Error(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'error_code': {'key': 'errorCode', 'type': 'str'},
-        'error_detail': {'key': 'errorDetail', 'type': 'str'},
+        "error_code": {"key": "errorCode", "type": "str"},
+        "error_detail": {"key": "errorDetail", "type": "str"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(Error, self).__init__(**kwargs)
-        self.error_code = kwargs.get('error_code', None)
-        self.error_detail = kwargs.get('error_detail', None)
+        self.error_code = kwargs.get("error_code", None)
+        self.error_detail = kwargs.get("error_detail", None)
 
 
 class Get200ApplicationJsonPropertiesItemsItem(msrest.serialization.Model):
@@ -112,22 +112,19 @@ class Get200ApplicationJsonPropertiesItemsItem(msrest.serialization.Model):
     """
 
     _validation = {
-        'identifier': {'required': True},
-        'format_file': {'required': True},
+        "identifier": {"required": True},
+        "format_file": {"required": True},
     }
 
     _attribute_map = {
-        'identifier': {'key': 'identifier', 'type': 'str'},
-        'format_file': {'key': 'formatFile', 'type': 'str'},
+        "identifier": {"key": "identifier", "type": "str"},
+        "format_file": {"key": "formatFile", "type": "str"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(Get200ApplicationJsonPropertiesItemsItem, self).__init__(**kwargs)
-        self.identifier = kwargs['identifier']
-        self.format_file = kwargs['format_file']
+        self.identifier = kwargs["identifier"]
+        self.format_file = kwargs["format_file"]
 
 
 class GetAllDocumentsResults(msrest.serialization.Model):
@@ -144,21 +141,18 @@ class GetAllDocumentsResults(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'count': {'key': 'count', 'type': 'int'},
-        'next': {'key': 'next', 'type': 'str'},
-        'previous': {'key': 'previous', 'type': 'str'},
-        'results': {'key': 'results', 'type': '[Meta]'},
+        "count": {"key": "count", "type": "int"},
+        "next": {"key": "next", "type": "str"},
+        "previous": {"key": "previous", "type": "str"},
+        "results": {"key": "results", "type": "[Meta]"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(GetAllDocumentsResults, self).__init__(**kwargs)
-        self.count = kwargs.get('count', None)
-        self.next = kwargs.get('next', None)
-        self.previous = kwargs.get('previous', None)
-        self.results = kwargs.get('results', None)
+        self.count = kwargs.get("count", None)
+        self.next = kwargs.get("next", None)
+        self.previous = kwargs.get("previous", None)
+        self.results = kwargs.get("results", None)
 
 
 class Location(msrest.serialization.Model):
@@ -187,35 +181,32 @@ class Location(msrest.serialization.Model):
     """
 
     _validation = {
-        'raw_input': {'required': True},
+        "raw_input": {"required": True},
     }
 
     _attribute_map = {
-        'formatted': {'key': 'formatted', 'type': 'str'},
-        'postal_code': {'key': 'postalCode', 'type': 'str'},
-        'state': {'key': 'state', 'type': 'str'},
-        'country': {'key': 'country', 'type': 'str'},
-        'raw_input': {'key': 'rawInput', 'type': 'str'},
-        'street_number': {'key': 'streetNumber', 'type': 'str'},
-        'street': {'key': 'street', 'type': 'str'},
-        'apartment_number': {'key': 'apartmentNumber', 'type': 'str'},
-        'city': {'key': 'city', 'type': 'str'},
+        "formatted": {"key": "formatted", "type": "str"},
+        "postal_code": {"key": "postalCode", "type": "str"},
+        "state": {"key": "state", "type": "str"},
+        "country": {"key": "country", "type": "str"},
+        "raw_input": {"key": "rawInput", "type": "str"},
+        "street_number": {"key": "streetNumber", "type": "str"},
+        "street": {"key": "street", "type": "str"},
+        "apartment_number": {"key": "apartmentNumber", "type": "str"},
+        "city": {"key": "city", "type": "str"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(Location, self).__init__(**kwargs)
-        self.formatted = kwargs.get('formatted', None)
-        self.postal_code = kwargs.get('postal_code', None)
-        self.state = kwargs.get('state', None)
-        self.country = kwargs.get('country', None)
-        self.raw_input = kwargs['raw_input']
-        self.street_number = kwargs.get('street_number', None)
-        self.street = kwargs.get('street', None)
-        self.apartment_number = kwargs.get('apartment_number', None)
-        self.city = kwargs.get('city', None)
+        self.formatted = kwargs.get("formatted", None)
+        self.postal_code = kwargs.get("postal_code", None)
+        self.state = kwargs.get("state", None)
+        self.country = kwargs.get("country", None)
+        self.raw_input = kwargs["raw_input"]
+        self.street_number = kwargs.get("street_number", None)
+        self.street = kwargs.get("street", None)
+        self.apartment_number = kwargs.get("apartment_number", None)
+        self.city = kwargs.get("city", None)
 
 
 class Meta(msrest.serialization.Model):
@@ -243,34 +234,33 @@ class Meta(msrest.serialization.Model):
     """
 
     _validation = {
-        'identifier': {'required': True},
-        'ready': {'required': True},
-        'failed': {'required': True},
+        "identifier": {"required": True},
+        "ready": {"required": True},
+        "failed": {"required": True},
     }
 
     _attribute_map = {
-        'identifier': {'key': 'identifier', 'type': 'str'},
-        'file_name': {'key': 'fileName', 'type': 'str'},
-        'ready': {'key': 'ready', 'type': 'bool'},
-        'ready_dt': {'key': 'readyDt', 'type': 'iso-8601'},
-        'failed': {'key': 'failed', 'type': 'bool'},
-        'expiry_time': {'key': 'expiryTime', 'type': 'str'},
+        "identifier": {"key": "identifier", "type": "str"},
+        "file_name": {"key": "fileName", "type": "str"},
+        "ready": {"key": "ready", "type": "bool"},
+        "ready_dt": {"key": "readyDt", "type": "iso-8601"},
+        "failed": {"key": "failed", "type": "bool"},
+        "expiry_time": {"key": "expiryTime", "type": "str"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(Meta, self).__init__(**kwargs)
-        self.identifier = kwargs['identifier']
-        self.file_name = kwargs.get('file_name', None)
-        self.ready = kwargs['ready']
-        self.ready_dt = kwargs.get('ready_dt', None)
-        self.failed = kwargs['failed']
-        self.expiry_time = kwargs.get('expiry_time', None)
+        self.identifier = kwargs["identifier"]
+        self.file_name = kwargs.get("file_name", None)
+        self.ready = kwargs["ready"]
+        self.ready_dt = kwargs.get("ready_dt", None)
+        self.failed = kwargs["failed"]
+        self.expiry_time = kwargs.get("expiry_time", None)
 
 
-class Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model):
+class Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema(
+    msrest.serialization.Model
+):
     """Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema.
 
     :param count:
@@ -284,24 +274,28 @@ class Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema(msres
     """
 
     _attribute_map = {
-        'count': {'key': 'count', 'type': 'int'},
-        'next': {'key': 'next', 'type': 'str'},
-        'previous': {'key': 'previous', 'type': 'str'},
-        'results': {'key': 'results', 'type': '[Get200ApplicationJsonPropertiesItemsItem]'},
+        "count": {"key": "count", "type": "int"},
+        "next": {"key": "next", "type": "str"},
+        "previous": {"key": "previous", "type": "str"},
+        "results": {
+            "key": "results",
+            "type": "[Get200ApplicationJsonPropertiesItemsItem]",
+        },
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
-        super(Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema, self).__init__(**kwargs)
-        self.count = kwargs.get('count', None)
-        self.next = kwargs.get('next', None)
-        self.previous = kwargs.get('previous', None)
-        self.results = kwargs.get('results', None)
+    def __init__(self, **kwargs):
+        super(
+            Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema, self
+        ).__init__(**kwargs)
+        self.count = kwargs.get("count", None)
+        self.next = kwargs.get("next", None)
+        self.previous = kwargs.get("previous", None)
+        self.results = kwargs.get("results", None)
 
 
-class Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema(msrest.serialization.Model):
+class Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema(
+    msrest.serialization.Model
+):
     """Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema.
 
     :param file: File as binary data blob.
@@ -326,30 +320,31 @@ class Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema(msrest.ser
     """
 
     _attribute_map = {
-        'file': {'key': 'file', 'type': 'IO'},
-        'identifier': {'key': 'identifier', 'type': 'str'},
-        'file_name': {'key': 'fileName', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'wait': {'key': 'wait', 'type': 'bool'},
-        'resume_language': {'key': 'resumeLanguage', 'type': 'str'},
-        'expiry_time': {'key': 'expiryTime', 'type': 'str'},
+        "file": {"key": "file", "type": "IO"},
+        "identifier": {"key": "identifier", "type": "str"},
+        "file_name": {"key": "fileName", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "wait": {"key": "wait", "type": "bool"},
+        "resume_language": {"key": "resumeLanguage", "type": "str"},
+        "expiry_time": {"key": "expiryTime", "type": "str"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
-        super(Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema, self).__init__(**kwargs)
-        self.file = kwargs.get('file', None)
-        self.identifier = kwargs.get('identifier', None)
-        self.file_name = kwargs.get('file_name', None)
-        self.url = kwargs.get('url', None)
-        self.wait = kwargs.get('wait', None)
-        self.resume_language = kwargs.get('resume_language', None)
-        self.expiry_time = kwargs.get('expiry_time', None)
+    def __init__(self, **kwargs):
+        super(
+            Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema, self
+        ).__init__(**kwargs)
+        self.file = kwargs.get("file", None)
+        self.identifier = kwargs.get("identifier", None)
+        self.file_name = kwargs.get("file_name", None)
+        self.url = kwargs.get("url", None)
+        self.wait = kwargs.get("wait", None)
+        self.resume_language = kwargs.get("resume_language", None)
+        self.expiry_time = kwargs.get("expiry_time", None)
 
 
-class Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema(msrest.serialization.Model):
+class Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema(
+    msrest.serialization.Model
+):
     """Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema.
 
     :param file: File as binary data blob.
@@ -388,44 +383,46 @@ class Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema(ms
     """
 
     _attribute_map = {
-        'file': {'key': 'file', 'type': 'IO'},
-        'identifier': {'key': 'identifier', 'type': 'str'},
-        'file_name': {'key': 'fileName', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'resume_language': {'key': 'resumeLanguage', 'type': 'str'},
-        'wait': {'key': 'wait', 'type': 'bool'},
-        'redact_headshot': {'key': 'redactHeadshot', 'type': 'bool'},
-        'redact_personal_details': {'key': 'redactPersonalDetails', 'type': 'bool'},
-        'redact_work_details': {'key': 'redactWorkDetails', 'type': 'bool'},
-        'redact_education_details': {'key': 'redactEducationDetails', 'type': 'bool'},
-        'redact_referees': {'key': 'redactReferees', 'type': 'bool'},
-        'redact_locations': {'key': 'redactLocations', 'type': 'bool'},
-        'redact_dates': {'key': 'redactDates', 'type': 'bool'},
-        'expiry_time': {'key': 'expiryTime', 'type': 'str'},
+        "file": {"key": "file", "type": "IO"},
+        "identifier": {"key": "identifier", "type": "str"},
+        "file_name": {"key": "fileName", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "resume_language": {"key": "resumeLanguage", "type": "str"},
+        "wait": {"key": "wait", "type": "bool"},
+        "redact_headshot": {"key": "redactHeadshot", "type": "bool"},
+        "redact_personal_details": {"key": "redactPersonalDetails", "type": "bool"},
+        "redact_work_details": {"key": "redactWorkDetails", "type": "bool"},
+        "redact_education_details": {"key": "redactEducationDetails", "type": "bool"},
+        "redact_referees": {"key": "redactReferees", "type": "bool"},
+        "redact_locations": {"key": "redactLocations", "type": "bool"},
+        "redact_dates": {"key": "redactDates", "type": "bool"},
+        "expiry_time": {"key": "expiryTime", "type": "str"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
-        super(Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema, self).__init__(**kwargs)
-        self.file = kwargs.get('file', None)
-        self.identifier = kwargs.get('identifier', None)
-        self.file_name = kwargs.get('file_name', None)
-        self.url = kwargs.get('url', None)
-        self.resume_language = kwargs.get('resume_language', None)
-        self.wait = kwargs.get('wait', None)
-        self.redact_headshot = kwargs.get('redact_headshot', True)
-        self.redact_personal_details = kwargs.get('redact_personal_details', True)
-        self.redact_work_details = kwargs.get('redact_work_details', True)
-        self.redact_education_details = kwargs.get('redact_education_details', True)
-        self.redact_referees = kwargs.get('redact_referees', True)
-        self.redact_locations = kwargs.get('redact_locations', True)
-        self.redact_dates = kwargs.get('redact_dates', True)
-        self.expiry_time = kwargs.get('expiry_time', None)
+    def __init__(self, **kwargs):
+        super(
+            Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema,
+            self,
+        ).__init__(**kwargs)
+        self.file = kwargs.get("file", None)
+        self.identifier = kwargs.get("identifier", None)
+        self.file_name = kwargs.get("file_name", None)
+        self.url = kwargs.get("url", None)
+        self.resume_language = kwargs.get("resume_language", None)
+        self.wait = kwargs.get("wait", None)
+        self.redact_headshot = kwargs.get("redact_headshot", True)
+        self.redact_personal_details = kwargs.get("redact_personal_details", True)
+        self.redact_work_details = kwargs.get("redact_work_details", True)
+        self.redact_education_details = kwargs.get("redact_education_details", True)
+        self.redact_referees = kwargs.get("redact_referees", True)
+        self.redact_locations = kwargs.get("redact_locations", True)
+        self.redact_dates = kwargs.get("redact_dates", True)
+        self.expiry_time = kwargs.get("expiry_time", None)
 
 
-class PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema(msrest.serialization.Model):
+class PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema(
+    msrest.serialization.Model
+):
     """PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema.
 
     All required parameters must be populated in order to send to Azure.
@@ -451,31 +448,31 @@ class PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema
     """
 
     _validation = {
-        'resume_format': {'required': True},
+        "resume_format": {"required": True},
     }
 
     _attribute_map = {
-        'file': {'key': 'file', 'type': 'IO'},
-        'identifier': {'key': 'identifier', 'type': 'str'},
-        'file_name': {'key': 'fileName', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'resume_language': {'key': 'resumeLanguage', 'type': 'str'},
-        'resume_format': {'key': 'resumeFormat', 'type': 'str'},
-        'wait': {'key': 'wait', 'type': 'bool'},
+        "file": {"key": "file", "type": "IO"},
+        "identifier": {"key": "identifier", "type": "str"},
+        "file_name": {"key": "fileName", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "resume_language": {"key": "resumeLanguage", "type": "str"},
+        "resume_format": {"key": "resumeFormat", "type": "str"},
+        "wait": {"key": "wait", "type": "bool"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
-        super(PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema, self).__init__(**kwargs)
-        self.file = kwargs.get('file', None)
-        self.identifier = kwargs.get('identifier', None)
-        self.file_name = kwargs.get('file_name', None)
-        self.url = kwargs.get('url', None)
-        self.resume_language = kwargs.get('resume_language', None)
-        self.resume_format = kwargs['resume_format']
-        self.wait = kwargs.get('wait', None)
+    def __init__(self, **kwargs):
+        super(
+            PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema,
+            self,
+        ).__init__(**kwargs)
+        self.file = kwargs.get("file", None)
+        self.identifier = kwargs.get("identifier", None)
+        self.file_name = kwargs.get("file_name", None)
+        self.url = kwargs.get("url", None)
+        self.resume_language = kwargs.get("resume_language", None)
+        self.resume_format = kwargs["resume_format"]
+        self.wait = kwargs.get("wait", None)
 
 
 class RedactedResume(msrest.serialization.Model):
@@ -492,25 +489,22 @@ class RedactedResume(msrest.serialization.Model):
     """
 
     _validation = {
-        'data': {'required': True},
-        'meta': {'required': True},
-        'error': {'required': True},
+        "data": {"required": True},
+        "meta": {"required": True},
+        "error": {"required": True},
     }
 
     _attribute_map = {
-        'data': {'key': 'data', 'type': 'RedactedResumeData'},
-        'meta': {'key': 'meta', 'type': 'Meta'},
-        'error': {'key': 'error', 'type': 'Error'},
+        "data": {"key": "data", "type": "RedactedResumeData"},
+        "meta": {"key": "meta", "type": "Meta"},
+        "error": {"key": "error", "type": "Error"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(RedactedResume, self).__init__(**kwargs)
-        self.data = kwargs['data']
-        self.meta = kwargs['meta']
-        self.error = kwargs['error']
+        self.data = kwargs["data"]
+        self.meta = kwargs["meta"]
+        self.error = kwargs["error"]
 
 
 class RedactedResumeData(msrest.serialization.Model):
@@ -521,15 +515,12 @@ class RedactedResumeData(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'redacted_pdf': {'key': 'redactedPdf', 'type': 'str'},
+        "redacted_pdf": {"key": "redactedPdf", "type": "str"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(RedactedResumeData, self).__init__(**kwargs)
-        self.redacted_pdf = kwargs.get('redacted_pdf', None)
+        self.redacted_pdf = kwargs.get("redacted_pdf", None)
 
 
 class ReformattedResume(msrest.serialization.Model):
@@ -546,25 +537,22 @@ class ReformattedResume(msrest.serialization.Model):
     """
 
     _validation = {
-        'data': {'required': True},
-        'meta': {'required': True},
-        'error': {'required': True},
+        "data": {"required": True},
+        "meta": {"required": True},
+        "error": {"required": True},
     }
 
     _attribute_map = {
-        'data': {'key': 'data', 'type': 'ReformattedResumeData'},
-        'meta': {'key': 'meta', 'type': 'Meta'},
-        'error': {'key': 'error', 'type': 'Error'},
+        "data": {"key": "data", "type": "ReformattedResumeData"},
+        "meta": {"key": "meta", "type": "Meta"},
+        "error": {"key": "error", "type": "Error"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(ReformattedResume, self).__init__(**kwargs)
-        self.data = kwargs['data']
-        self.meta = kwargs['meta']
-        self.error = kwargs['error']
+        self.data = kwargs["data"]
+        self.meta = kwargs["meta"]
+        self.error = kwargs["error"]
 
 
 class ReformattedResumeData(msrest.serialization.Model):
@@ -575,15 +563,12 @@ class ReformattedResumeData(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'reformatted_file': {'key': 'reformattedFile', 'type': 'str'},
+        "reformatted_file": {"key": "reformattedFile", "type": "str"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(ReformattedResumeData, self).__init__(**kwargs)
-        self.reformatted_file = kwargs.get('reformatted_file', None)
+        self.reformatted_file = kwargs.get("reformatted_file", None)
 
 
 class Resume(msrest.serialization.Model):
@@ -600,25 +585,22 @@ class Resume(msrest.serialization.Model):
     """
 
     _validation = {
-        'data': {'required': True},
-        'meta': {'required': True},
-        'error': {'required': True},
+        "data": {"required": True},
+        "meta": {"required": True},
+        "error": {"required": True},
     }
 
     _attribute_map = {
-        'data': {'key': 'data', 'type': 'ResumeData'},
-        'meta': {'key': 'meta', 'type': 'Meta'},
-        'error': {'key': 'error', 'type': 'Error'},
+        "data": {"key": "data", "type": "ResumeData"},
+        "meta": {"key": "meta", "type": "Meta"},
+        "error": {"key": "error", "type": "Error"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(Resume, self).__init__(**kwargs)
-        self.data = kwargs['data']
-        self.meta = kwargs['meta']
-        self.error = kwargs['error']
+        self.data = kwargs["data"]
+        self.meta = kwargs["meta"]
+        self.error = kwargs["error"]
 
 
 class ResumeData(msrest.serialization.Model):
@@ -668,53 +650,56 @@ class ResumeData(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'ResumeDataName'},
-        'phone_numbers': {'key': 'phoneNumbers', 'type': '[str]'},
-        'websites': {'key': 'websites', 'type': '[str]'},
-        'emails': {'key': 'emails', 'type': '[str]'},
-        'date_of_birth': {'key': 'dateOfBirth', 'type': 'str'},
-        'location': {'key': 'location', 'type': 'Location'},
-        'objective': {'key': 'objective', 'type': 'str'},
-        'languages': {'key': 'languages', 'type': '[str]'},
-        'summary': {'key': 'summary', 'type': 'str'},
-        'total_years_experience': {'key': 'totalYearsExperience', 'type': 'int'},
-        'head_shot': {'key': 'headShot', 'type': 'IO'},
-        'education': {'key': 'education', 'type': '[ResumeDataEducationItem]'},
-        'work_experience': {'key': 'workExperience', 'type': '[ResumeDataWorkExperienceItem]'},
-        'skills': {'key': 'skills', 'type': '[str]'},
-        'skills_details': {'key': 'skillsDetails', 'type': '[ResumeDataSkillsDetailsItem]'},
-        'certifications': {'key': 'certifications', 'type': '[str]'},
-        'publications': {'key': 'publications', 'type': '[str]'},
-        'referees': {'key': 'referees', 'type': '[ResumeDataRefereesItem]'},
-        'sections': {'key': 'sections', 'type': '[ResumeDataSectionsItem]'},
-        'is_resume_probability': {'key': 'isResumeProbability', 'type': 'int'},
+        "name": {"key": "name", "type": "ResumeDataName"},
+        "phone_numbers": {"key": "phoneNumbers", "type": "[str]"},
+        "websites": {"key": "websites", "type": "[str]"},
+        "emails": {"key": "emails", "type": "[str]"},
+        "date_of_birth": {"key": "dateOfBirth", "type": "str"},
+        "location": {"key": "location", "type": "Location"},
+        "objective": {"key": "objective", "type": "str"},
+        "languages": {"key": "languages", "type": "[str]"},
+        "summary": {"key": "summary", "type": "str"},
+        "total_years_experience": {"key": "totalYearsExperience", "type": "int"},
+        "head_shot": {"key": "headShot", "type": "IO"},
+        "education": {"key": "education", "type": "[ResumeDataEducationItem]"},
+        "work_experience": {
+            "key": "workExperience",
+            "type": "[ResumeDataWorkExperienceItem]",
+        },
+        "skills": {"key": "skills", "type": "[str]"},
+        "skills_details": {
+            "key": "skillsDetails",
+            "type": "[ResumeDataSkillsDetailsItem]",
+        },
+        "certifications": {"key": "certifications", "type": "[str]"},
+        "publications": {"key": "publications", "type": "[str]"},
+        "referees": {"key": "referees", "type": "[ResumeDataRefereesItem]"},
+        "sections": {"key": "sections", "type": "[ResumeDataSectionsItem]"},
+        "is_resume_probability": {"key": "isResumeProbability", "type": "int"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(ResumeData, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.phone_numbers = kwargs.get('phone_numbers', None)
-        self.websites = kwargs.get('websites', None)
-        self.emails = kwargs.get('emails', None)
-        self.date_of_birth = kwargs.get('date_of_birth', None)
-        self.location = kwargs.get('location', None)
-        self.objective = kwargs.get('objective', None)
-        self.languages = kwargs.get('languages', None)
-        self.summary = kwargs.get('summary', None)
-        self.total_years_experience = kwargs.get('total_years_experience', None)
-        self.head_shot = kwargs.get('head_shot', None)
-        self.education = kwargs.get('education', None)
-        self.work_experience = kwargs.get('work_experience', None)
-        self.skills = kwargs.get('skills', None)
-        self.skills_details = kwargs.get('skills_details', None)
-        self.certifications = kwargs.get('certifications', None)
-        self.publications = kwargs.get('publications', None)
-        self.referees = kwargs.get('referees', None)
-        self.sections = kwargs.get('sections', None)
-        self.is_resume_probability = kwargs.get('is_resume_probability', None)
+        self.name = kwargs.get("name", None)
+        self.phone_numbers = kwargs.get("phone_numbers", None)
+        self.websites = kwargs.get("websites", None)
+        self.emails = kwargs.get("emails", None)
+        self.date_of_birth = kwargs.get("date_of_birth", None)
+        self.location = kwargs.get("location", None)
+        self.objective = kwargs.get("objective", None)
+        self.languages = kwargs.get("languages", None)
+        self.summary = kwargs.get("summary", None)
+        self.total_years_experience = kwargs.get("total_years_experience", None)
+        self.head_shot = kwargs.get("head_shot", None)
+        self.education = kwargs.get("education", None)
+        self.work_experience = kwargs.get("work_experience", None)
+        self.skills = kwargs.get("skills", None)
+        self.skills_details = kwargs.get("skills_details", None)
+        self.certifications = kwargs.get("certifications", None)
+        self.publications = kwargs.get("publications", None)
+        self.referees = kwargs.get("referees", None)
+        self.sections = kwargs.get("sections", None)
+        self.is_resume_probability = kwargs.get("is_resume_probability", None)
 
 
 class ResumeDataEducationItem(msrest.serialization.Model):
@@ -733,23 +718,23 @@ class ResumeDataEducationItem(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'organization': {'key': 'organization', 'type': 'str'},
-        'accreditation': {'key': 'accreditation', 'type': 'ResumeDataEducationItemAccreditation'},
-        'grade': {'key': 'grade', 'type': 'ResumeDataEducationItemGrade'},
-        'location': {'key': 'location', 'type': 'Location'},
-        'dates': {'key': 'dates', 'type': 'ResumeDataEducationItemDates'},
+        "organization": {"key": "organization", "type": "str"},
+        "accreditation": {
+            "key": "accreditation",
+            "type": "ResumeDataEducationItemAccreditation",
+        },
+        "grade": {"key": "grade", "type": "ResumeDataEducationItemGrade"},
+        "location": {"key": "location", "type": "Location"},
+        "dates": {"key": "dates", "type": "ResumeDataEducationItemDates"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(ResumeDataEducationItem, self).__init__(**kwargs)
-        self.organization = kwargs.get('organization', None)
-        self.accreditation = kwargs.get('accreditation', None)
-        self.grade = kwargs.get('grade', None)
-        self.location = kwargs.get('location', None)
-        self.dates = kwargs.get('dates', None)
+        self.organization = kwargs.get("organization", None)
+        self.accreditation = kwargs.get("accreditation", None)
+        self.grade = kwargs.get("grade", None)
+        self.location = kwargs.get("location", None)
+        self.dates = kwargs.get("dates", None)
 
 
 class ResumeDataEducationItemAccreditation(msrest.serialization.Model):
@@ -766,21 +751,18 @@ class ResumeDataEducationItemAccreditation(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'education': {'key': 'education', 'type': 'str'},
-        'input_str': {'key': 'inputStr', 'type': 'str'},
-        'match_str': {'key': 'matchStr', 'type': 'str'},
-        'education_level': {'key': 'educationLevel', 'type': 'str'},
+        "education": {"key": "education", "type": "str"},
+        "input_str": {"key": "inputStr", "type": "str"},
+        "match_str": {"key": "matchStr", "type": "str"},
+        "education_level": {"key": "educationLevel", "type": "str"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(ResumeDataEducationItemAccreditation, self).__init__(**kwargs)
-        self.education = kwargs.get('education', None)
-        self.input_str = kwargs.get('input_str', None)
-        self.match_str = kwargs.get('match_str', None)
-        self.education_level = kwargs.get('education_level', None)
+        self.education = kwargs.get("education", None)
+        self.input_str = kwargs.get("input_str", None)
+        self.match_str = kwargs.get("match_str", None)
+        self.education_level = kwargs.get("education_level", None)
 
 
 class ResumeDataEducationItemDates(msrest.serialization.Model):
@@ -795,19 +777,16 @@ class ResumeDataEducationItemDates(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'completion_date': {'key': 'completionDate', 'type': 'date'},
-        'is_current': {'key': 'isCurrent', 'type': 'bool'},
-        'start_date': {'key': 'startDate', 'type': 'date'},
+        "completion_date": {"key": "completionDate", "type": "date"},
+        "is_current": {"key": "isCurrent", "type": "bool"},
+        "start_date": {"key": "startDate", "type": "date"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(ResumeDataEducationItemDates, self).__init__(**kwargs)
-        self.completion_date = kwargs.get('completion_date', None)
-        self.is_current = kwargs.get('is_current', None)
-        self.start_date = kwargs.get('start_date', None)
+        self.completion_date = kwargs.get("completion_date", None)
+        self.is_current = kwargs.get("is_current", None)
+        self.start_date = kwargs.get("start_date", None)
 
 
 class ResumeDataEducationItemGrade(msrest.serialization.Model):
@@ -822,19 +801,16 @@ class ResumeDataEducationItemGrade(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'raw': {'key': 'raw', 'type': 'str'},
-        'metric': {'key': 'metric', 'type': 'str'},
-        'value': {'key': 'value', 'type': 'str'},
+        "raw": {"key": "raw", "type": "str"},
+        "metric": {"key": "metric", "type": "str"},
+        "value": {"key": "value", "type": "str"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(ResumeDataEducationItemGrade, self).__init__(**kwargs)
-        self.raw = kwargs.get('raw', None)
-        self.metric = kwargs.get('metric', None)
-        self.value = kwargs.get('value', None)
+        self.raw = kwargs.get("raw", None)
+        self.metric = kwargs.get("metric", None)
+        self.value = kwargs.get("value", None)
 
 
 class ResumeDataName(msrest.serialization.Model):
@@ -853,23 +829,20 @@ class ResumeDataName(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'raw': {'key': 'raw', 'type': 'str'},
-        'first': {'key': 'first', 'type': 'str'},
-        'last': {'key': 'last', 'type': 'str'},
-        'middle': {'key': 'middle', 'type': 'str'},
-        'title': {'key': 'title', 'type': 'str'},
+        "raw": {"key": "raw", "type": "str"},
+        "first": {"key": "first", "type": "str"},
+        "last": {"key": "last", "type": "str"},
+        "middle": {"key": "middle", "type": "str"},
+        "title": {"key": "title", "type": "str"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(ResumeDataName, self).__init__(**kwargs)
-        self.raw = kwargs.get('raw', None)
-        self.first = kwargs.get('first', None)
-        self.last = kwargs.get('last', None)
-        self.middle = kwargs.get('middle', None)
-        self.title = kwargs.get('title', None)
+        self.raw = kwargs.get("raw", None)
+        self.first = kwargs.get("first", None)
+        self.last = kwargs.get("last", None)
+        self.middle = kwargs.get("middle", None)
+        self.title = kwargs.get("title", None)
 
 
 class ResumeDataRefereesItem(msrest.serialization.Model):
@@ -886,21 +859,18 @@ class ResumeDataRefereesItem(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'text': {'key': 'text', 'type': 'str'},
-        'email': {'key': 'email', 'type': 'str'},
-        'number': {'key': 'number', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "text": {"key": "text", "type": "str"},
+        "email": {"key": "email", "type": "str"},
+        "number": {"key": "number", "type": "str"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(ResumeDataRefereesItem, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.text = kwargs.get('text', None)
-        self.email = kwargs.get('email', None)
-        self.number = kwargs.get('number', None)
+        self.name = kwargs.get("name", None)
+        self.text = kwargs.get("text", None)
+        self.email = kwargs.get("email", None)
+        self.number = kwargs.get("number", None)
 
 
 class ResumeDataSectionsItem(msrest.serialization.Model):
@@ -917,25 +887,22 @@ class ResumeDataSectionsItem(msrest.serialization.Model):
     """
 
     _validation = {
-        'bbox': {'max_items': 4, 'min_items': 4},
+        "bbox": {"max_items": 4, "min_items": 4},
     }
 
     _attribute_map = {
-        'section_type': {'key': 'sectionType', 'type': 'str'},
-        'bbox': {'key': 'bbox', 'type': '[float]'},
-        'page_index': {'key': 'pageIndex', 'type': 'int'},
-        'text': {'key': 'text', 'type': 'str'},
+        "section_type": {"key": "sectionType", "type": "str"},
+        "bbox": {"key": "bbox", "type": "[float]"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "text": {"key": "text", "type": "str"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(ResumeDataSectionsItem, self).__init__(**kwargs)
-        self.section_type = kwargs.get('section_type', None)
-        self.bbox = kwargs.get('bbox', None)
-        self.page_index = kwargs.get('page_index', None)
-        self.text = kwargs.get('text', None)
+        self.section_type = kwargs.get("section_type", None)
+        self.bbox = kwargs.get("bbox", None)
+        self.page_index = kwargs.get("page_index", None)
+        self.text = kwargs.get("text", None)
 
 
 class ResumeDataSkillsDetailsItem(msrest.serialization.Model):
@@ -954,23 +921,23 @@ class ResumeDataSkillsDetailsItem(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'last_used': {'key': 'lastUsed', 'type': 'str'},
-        'number_of_months': {'key': 'numberOfMonths', 'type': 'int'},
-        'type': {'key': 'type', 'type': 'str'},
-        'sources': {'key': 'sources', 'type': '[ResumeDataSkillsDetailsPropertiesItemsItem]'},
+        "name": {"key": "name", "type": "str"},
+        "last_used": {"key": "lastUsed", "type": "str"},
+        "number_of_months": {"key": "numberOfMonths", "type": "int"},
+        "type": {"key": "type", "type": "str"},
+        "sources": {
+            "key": "sources",
+            "type": "[ResumeDataSkillsDetailsPropertiesItemsItem]",
+        },
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(ResumeDataSkillsDetailsItem, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.last_used = kwargs.get('last_used', None)
-        self.number_of_months = kwargs.get('number_of_months', None)
-        self.type = kwargs.get('type', None)
-        self.sources = kwargs.get('sources', None)
+        self.name = kwargs.get("name", None)
+        self.last_used = kwargs.get("last_used", None)
+        self.number_of_months = kwargs.get("number_of_months", None)
+        self.type = kwargs.get("type", None)
+        self.sources = kwargs.get("sources", None)
 
 
 class ResumeDataSkillsDetailsPropertiesItemsItem(msrest.serialization.Model):
@@ -983,17 +950,14 @@ class ResumeDataSkillsDetailsPropertiesItemsItem(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'section': {'key': 'section', 'type': 'str'},
-        'position': {'key': 'position', 'type': 'int'},
+        "section": {"key": "section", "type": "str"},
+        "position": {"key": "position", "type": "int"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(ResumeDataSkillsDetailsPropertiesItemsItem, self).__init__(**kwargs)
-        self.section = kwargs.get('section', None)
-        self.position = kwargs.get('position', None)
+        self.section = kwargs.get("section", None)
+        self.position = kwargs.get("position", None)
 
 
 class ResumeDataWorkExperienceItem(msrest.serialization.Model):
@@ -1012,23 +976,20 @@ class ResumeDataWorkExperienceItem(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'job_title': {'key': 'jobTitle', 'type': 'str'},
-        'organization': {'key': 'organization', 'type': 'str'},
-        'location': {'key': 'location', 'type': 'Location'},
-        'job_description': {'key': 'jobDescription', 'type': 'str'},
-        'dates': {'key': 'dates', 'type': 'ResumeDataWorkExperienceItemDates'},
+        "job_title": {"key": "jobTitle", "type": "str"},
+        "organization": {"key": "organization", "type": "str"},
+        "location": {"key": "location", "type": "Location"},
+        "job_description": {"key": "jobDescription", "type": "str"},
+        "dates": {"key": "dates", "type": "ResumeDataWorkExperienceItemDates"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(ResumeDataWorkExperienceItem, self).__init__(**kwargs)
-        self.job_title = kwargs.get('job_title', None)
-        self.organization = kwargs.get('organization', None)
-        self.location = kwargs.get('location', None)
-        self.job_description = kwargs.get('job_description', None)
-        self.dates = kwargs.get('dates', None)
+        self.job_title = kwargs.get("job_title", None)
+        self.organization = kwargs.get("organization", None)
+        self.location = kwargs.get("location", None)
+        self.job_description = kwargs.get("job_description", None)
+        self.dates = kwargs.get("dates", None)
 
 
 class ResumeDataWorkExperienceItemDates(msrest.serialization.Model):
@@ -1045,18 +1006,15 @@ class ResumeDataWorkExperienceItemDates(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'start_date': {'key': 'startDate', 'type': 'date'},
-        'end_date': {'key': 'endDate', 'type': 'date'},
-        'months_in_position': {'key': 'monthsInPosition', 'type': 'int'},
-        'is_current': {'key': 'isCurrent', 'type': 'bool'},
+        "start_date": {"key": "startDate", "type": "date"},
+        "end_date": {"key": "endDate", "type": "date"},
+        "months_in_position": {"key": "monthsInPosition", "type": "int"},
+        "is_current": {"key": "isCurrent", "type": "bool"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(ResumeDataWorkExperienceItemDates, self).__init__(**kwargs)
-        self.start_date = kwargs.get('start_date', None)
-        self.end_date = kwargs.get('end_date', None)
-        self.months_in_position = kwargs.get('months_in_position', None)
-        self.is_current = kwargs.get('is_current', None)
+        self.start_date = kwargs.get("start_date", None)
+        self.end_date = kwargs.get("end_date", None)
+        self.months_in_position = kwargs.get("months_in_position", None)
+        self.is_current = kwargs.get("is_current", None)

@@ -7,5 +7,5 @@
 from ._affinda_api_operations import AffindaAPIOperationsMixin
 
 __all__ = [
-    'AffindaAPIOperationsMixin',
+    "AffindaAPIOperationsMixin",
 ]

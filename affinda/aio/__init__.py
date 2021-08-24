@@ -5,4 +5,5 @@
 # --------------------------------------------------------------------------
 
 from ._affinda_api import AffindaAPI
-__all__ = ['AffindaAPI']
+
+__all__ = ["AffindaAPI"]
