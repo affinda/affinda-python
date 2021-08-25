@@ -60,3 +60,4 @@ htmlcov/
 
 # Pycharm project
 .idea/
+.gitconfig
