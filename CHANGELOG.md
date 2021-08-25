@@ -1,3 +1,10 @@
+## 0.1.5 - 2021-08-25
+
+### Added
+
+- Added flake, editorconfig, tox.ini etc files to match best practices for existing Draftable/Affinda projects (thanks @ralish!)
+- 
+
 ## 0.1.4 - 2021-08-18
 
 ### Fixes:
