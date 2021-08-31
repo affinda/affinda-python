@@ -633,9 +633,7 @@ class ResumeData(msrest.serialization.Model):
     :param work_experience:
     :type work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
     :param skills:
-    :type skills: list[str]
-    :param skills_details:
-    :type skills_details: list[~affinda.models.ResumeDataSkillsDetailsItem]
+    :type skills: list[~affinda.models.ResumeDataSkillsItem]
     :param certifications:
     :type certifications: list[str]
     :param publications:
@@ -647,6 +645,8 @@ class ResumeData(msrest.serialization.Model):
     :param is_resume_probability: Probability that the given document is a resume. Values below 30
      suggest that the resume is not a resume.
     :type is_resume_probability: int
+    :param raw_text: All of the raw text of the parsed resume, example is shortened for readiblity.
+    :type raw_text: str
     """
 
     _attribute_map = {
@@ -666,16 +666,13 @@ class ResumeData(msrest.serialization.Model):
             "key": "workExperience",
             "type": "[ResumeDataWorkExperienceItem]",
         },
-        "skills": {"key": "skills", "type": "[str]"},
-        "skills_details": {
-            "key": "skillsDetails",
-            "type": "[ResumeDataSkillsDetailsItem]",
-        },
+        "skills": {"key": "skills", "type": "[ResumeDataSkillsItem]"},
         "certifications": {"key": "certifications", "type": "[str]"},
         "publications": {"key": "publications", "type": "[str]"},
         "referees": {"key": "referees", "type": "[ResumeDataRefereesItem]"},
         "sections": {"key": "sections", "type": "[ResumeDataSectionsItem]"},
         "is_resume_probability": {"key": "isResumeProbability", "type": "int"},
+        "raw_text": {"key": "rawText", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -694,12 +691,12 @@ class ResumeData(msrest.serialization.Model):
         self.education = kwargs.get("education", None)
         self.work_experience = kwargs.get("work_experience", None)
         self.skills = kwargs.get("skills", None)
-        self.skills_details = kwargs.get("skills_details", None)
         self.certifications = kwargs.get("certifications", None)
         self.publications = kwargs.get("publications", None)
         self.referees = kwargs.get("referees", None)
         self.sections = kwargs.get("sections", None)
         self.is_resume_probability = kwargs.get("is_resume_probability", None)
+        self.raw_text = kwargs.get("raw_text", None)
 
 
 class ResumeDataEducationItem(msrest.serialization.Model):
@@ -905,8 +902,8 @@ class ResumeDataSectionsItem(msrest.serialization.Model):
         self.text = kwargs.get("text", None)
 
 
-class ResumeDataSkillsDetailsItem(msrest.serialization.Model):
-    """ResumeDataSkillsDetailsItem.
+class ResumeDataSkillsItem(msrest.serialization.Model):
+    """ResumeDataSkillsItem.
 
     :param name:
     :type name: str
@@ -917,7 +914,7 @@ class ResumeDataSkillsDetailsItem(msrest.serialization.Model):
     :param type:
     :type type: str
     :param sources:
-    :type sources: list[~affinda.models.ResumeDataSkillsDetailsPropertiesItemsItem]
+    :type sources: list[~affinda.models.ResumeDataSkillsPropertiesItemsItem]
     """
 
     _attribute_map = {
@@ -925,14 +922,11 @@ class ResumeDataSkillsDetailsItem(msrest.serialization.Model):
         "last_used": {"key": "lastUsed", "type": "str"},
         "number_of_months": {"key": "numberOfMonths", "type": "int"},
         "type": {"key": "type", "type": "str"},
-        "sources": {
-            "key": "sources",
-            "type": "[ResumeDataSkillsDetailsPropertiesItemsItem]",
-        },
+        "sources": {"key": "sources", "type": "[ResumeDataSkillsPropertiesItemsItem]"},
     }
 
     def __init__(self, **kwargs):
-        super(ResumeDataSkillsDetailsItem, self).__init__(**kwargs)
+        super(ResumeDataSkillsItem, self).__init__(**kwargs)
         self.name = kwargs.get("name", None)
         self.last_used = kwargs.get("last_used", None)
         self.number_of_months = kwargs.get("number_of_months", None)
@@ -940,8 +934,8 @@ class ResumeDataSkillsDetailsItem(msrest.serialization.Model):
         self.sources = kwargs.get("sources", None)
 
 
-class ResumeDataSkillsDetailsPropertiesItemsItem(msrest.serialization.Model):
-    """ResumeDataSkillsDetailsPropertiesItemsItem.
+class ResumeDataSkillsPropertiesItemsItem(msrest.serialization.Model):
+    """ResumeDataSkillsPropertiesItemsItem.
 
     :param section:
     :type section: str
@@ -955,7 +949,7 @@ class ResumeDataSkillsDetailsPropertiesItemsItem(msrest.serialization.Model):
     }
 
     def __init__(self, **kwargs):
-        super(ResumeDataSkillsDetailsPropertiesItemsItem, self).__init__(**kwargs)
+        super(ResumeDataSkillsPropertiesItemsItem, self).__init__(**kwargs)
         self.section = kwargs.get("section", None)
         self.position = kwargs.get("position", None)
 

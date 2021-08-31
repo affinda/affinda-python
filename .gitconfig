@@ -1,0 +1,3 @@
+[alias]
+    lg = log --graph --all --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
+    push_stable = !git checkout main && git push && git checkout stable && git merge main --ff-only && git push && git checkout main

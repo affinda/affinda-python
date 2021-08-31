@@ -44,8 +44,8 @@ try:
     from ._models_py3 import ResumeDataName
     from ._models_py3 import ResumeDataRefereesItem
     from ._models_py3 import ResumeDataSectionsItem
-    from ._models_py3 import ResumeDataSkillsDetailsItem
-    from ._models_py3 import ResumeDataSkillsDetailsPropertiesItemsItem
+    from ._models_py3 import ResumeDataSkillsItem
+    from ._models_py3 import ResumeDataSkillsPropertiesItemsItem
     from ._models_py3 import ResumeDataWorkExperienceItem
     from ._models_py3 import ResumeDataWorkExperienceItemDates
 except (SyntaxError, ImportError):
@@ -74,8 +74,8 @@ except (SyntaxError, ImportError):
     from ._models import ResumeDataName  # type: ignore
     from ._models import ResumeDataRefereesItem  # type: ignore
     from ._models import ResumeDataSectionsItem  # type: ignore
-    from ._models import ResumeDataSkillsDetailsItem  # type: ignore
-    from ._models import ResumeDataSkillsDetailsPropertiesItemsItem  # type: ignore
+    from ._models import ResumeDataSkillsItem  # type: ignore
+    from ._models import ResumeDataSkillsPropertiesItemsItem  # type: ignore
     from ._models import ResumeDataWorkExperienceItem  # type: ignore
     from ._models import ResumeDataWorkExperienceItemDates  # type: ignore
 
@@ -105,8 +105,8 @@ __all__ = [
     "ResumeDataName",
     "ResumeDataRefereesItem",
     "ResumeDataSectionsItem",
-    "ResumeDataSkillsDetailsItem",
-    "ResumeDataSkillsDetailsPropertiesItemsItem",
+    "ResumeDataSkillsItem",
+    "ResumeDataSkillsPropertiesItemsItem",
     "ResumeDataWorkExperienceItem",
     "ResumeDataWorkExperienceItemDates",
 ]

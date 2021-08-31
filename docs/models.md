@@ -355,13 +355,13 @@ suggest that the resume is not a resume.
 - `head_shot` (`IO`): base64 encoded string.
 - `education` (`list[~affinda.models.ResumeDataEducationItem]`): 
 - `work_experience` (`list[~affinda.models.ResumeDataWorkExperienceItem]`): 
-- `skills` (`list[str]`): 
-- `skills_details` (`list[~affinda.models.ResumeDataSkillsDetailsItem]`): 
+- `skills` (`list[~affinda.models.ResumeDataSkillsItem]`): 
 - `certifications` (`list[str]`): 
 - `publications` (`list[str]`): 
 - `referees` (`list[~affinda.models.ResumeDataRefereesItem]`): 
 - `sections` (`list[~affinda.models.ResumeDataSectionsItem]`): 
 - `is_resume_probability` (`int`): Probability that the given document is a resume. Values below 30
+- `raw_text` (`str`): All of the raw text of the parsed resume, example is shortened for readiblity.
 
 <a name="models._models.ResumeDataEducationItem"></a>
 
@@ -482,15 +482,15 @@ ResumeDataSectionsItem.
 - `page_index` (`int`): 
 - `text` (`str`): 
 
-<a name="models._models.ResumeDataSkillsDetailsItem"></a>
+<a name="models._models.ResumeDataSkillsItem"></a>
 
-## ResumeDataSkillsDetailsItem Objects
+## ResumeDataSkillsItem Objects
 
 ```python
-class ResumeDataSkillsDetailsItem(msrest.serialization.Model)
+class ResumeDataSkillsItem(msrest.serialization.Model)
 ```
 
-ResumeDataSkillsDetailsItem.
+ResumeDataSkillsItem.
 
 **Arguments**:
 
@@ -498,17 +498,17 @@ ResumeDataSkillsDetailsItem.
 - `last_used` (`str`): 
 - `number_of_months` (`int`): 
 - `type` (`str`): 
-- `sources` (`list[~affinda.models.ResumeDataSkillsDetailsPropertiesItemsItem]`): 
+- `sources` (`list[~affinda.models.ResumeDataSkillsPropertiesItemsItem]`): 
 
-<a name="models._models.ResumeDataSkillsDetailsPropertiesItemsItem"></a>
+<a name="models._models.ResumeDataSkillsPropertiesItemsItem"></a>
 
-## ResumeDataSkillsDetailsPropertiesItemsItem Objects
+## ResumeDataSkillsPropertiesItemsItem Objects
 
 ```python
-class ResumeDataSkillsDetailsPropertiesItemsItem(msrest.serialization.Model)
+class ResumeDataSkillsPropertiesItemsItem(msrest.serialization.Model)
 ```
 
-ResumeDataSkillsDetailsPropertiesItemsItem.
+ResumeDataSkillsPropertiesItemsItem.
 
 **Arguments**:
 
