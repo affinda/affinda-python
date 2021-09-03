@@ -177,7 +177,7 @@ Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema.
 **Arguments**:
 
 will be automatically generated.
-false, will return an empty data object which can be polled at the GET endpoint until
+If "false", will return an empty data object which can be polled at the GET endpoint until
 processing is complete.
 Chinese.
 deleted.  Defaults to no expiry.
@@ -185,7 +185,7 @@ deleted.  Defaults to no expiry.
 - `identifier` (`str`): Unique identifier for the resume. If creating a document and left blank, one
 - `file_name` (`str`): Optional filename of the file.
 - `url` (`str`): URL to file to download and process.
-- `wait` (`bool`): If true (default), will return a response only after processing has completed. If
+- `wait` (`bool`): If "true" (default), will return a response only after processing has completed.
 - `resume_language` (`str`): Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for
 - `expiry_time` (`str`): The date/time in ISO-8601 format when the resume will be automatically
 
@@ -203,7 +203,7 @@ Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema.
 
 will be automatically generated.
 Chinese.
-false, will return an empty data object which can be polled at the GET endpoint until
+If "false", will return an empty data object which can be polled at the GET endpoint until
 processing is complete.
 deleted.  Defaults to no expiry.
 - `file` (`IO`): File as binary data blob.
@@ -211,7 +211,7 @@ deleted.  Defaults to no expiry.
 - `file_name` (`str`): Optional filename of the file.
 - `url` (`str`): URL to file to download and process.
 - `resume_language` (`str`): Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for
-- `wait` (`bool`): If true (default), will return a response only after processing has completed. If
+- `wait` (`bool`): If "true" (default), will return a response only after processing has completed.
 - `redact_headshot` (`bool`): Whether to redact headshot.
 - `redact_personal_details` (`bool`): Whether to redact personal details (e.g. name, address).
 - `redact_work_details` (`bool`): Whether to redact work details (e.g. company names).
@@ -237,7 +237,7 @@ All required parameters must be populated in order to send to Azure.
 
 will be automatically generated.
 Chinese.
-false, will return an empty data object which can be polled at the GET endpoint until
+If "false", will return an empty data object which can be polled at the GET endpoint until
 processing is complete.
 - `file` (`IO`): File as binary data blob.
 - `identifier` (`str`): Unique identifier for the resume. If creating a document and left blank, one
@@ -245,7 +245,7 @@ processing is complete.
 - `url` (`str`): URL to file to download and process.
 - `resume_language` (`str`): Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for
 - `resume_format` (`str`): Required. Identifier of the format used.
-- `wait` (`bool`): If true (default), will return a response only after processing has completed. If
+- `wait` (`bool`): If "true" (default), will return a response only after processing has completed.
 
 <a name="models._models.RedactedResume"></a>
 

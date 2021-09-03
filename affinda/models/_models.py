@@ -307,8 +307,8 @@ class Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema(
     :type file_name: str
     :param url: URL to file to download and process.
     :type url: str
-    :param wait: If true (default), will return a response only after processing has completed. If
-     false, will return an empty data object which can be polled at the GET endpoint until
+    :param wait: If "true" (default), will return a response only after processing has completed.
+     If "false", will return an empty data object which can be polled at the GET endpoint until
      processing is complete.
     :type wait: bool
     :param resume_language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for
@@ -337,7 +337,7 @@ class Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema(
         self.identifier = kwargs.get("identifier", None)
         self.file_name = kwargs.get("file_name", None)
         self.url = kwargs.get("url", None)
-        self.wait = kwargs.get("wait", None)
+        self.wait = kwargs.get("wait", False)
         self.resume_language = kwargs.get("resume_language", None)
         self.expiry_time = kwargs.get("expiry_time", None)
 
@@ -359,8 +359,8 @@ class Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema(
     :param resume_language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for
      Chinese.
     :type resume_language: str
-    :param wait: If true (default), will return a response only after processing has completed. If
-     false, will return an empty data object which can be polled at the GET endpoint until
+    :param wait: If "true" (default), will return a response only after processing has completed.
+     If "false", will return an empty data object which can be polled at the GET endpoint until
      processing is complete.
     :type wait: bool
     :param redact_headshot: Whether to redact headshot.
@@ -409,7 +409,7 @@ class Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema(
         self.file_name = kwargs.get("file_name", None)
         self.url = kwargs.get("url", None)
         self.resume_language = kwargs.get("resume_language", None)
-        self.wait = kwargs.get("wait", None)
+        self.wait = kwargs.get("wait", False)
         self.redact_headshot = kwargs.get("redact_headshot", True)
         self.redact_personal_details = kwargs.get("redact_personal_details", True)
         self.redact_work_details = kwargs.get("redact_work_details", True)
@@ -441,8 +441,8 @@ class PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema
     :type resume_language: str
     :param resume_format: Required. Identifier of the format used.
     :type resume_format: str
-    :param wait: If true (default), will return a response only after processing has completed. If
-     false, will return an empty data object which can be polled at the GET endpoint until
+    :param wait: If "true" (default), will return a response only after processing has completed.
+     If "false", will return an empty data object which can be polled at the GET endpoint until
      processing is complete.
     :type wait: bool
     """
@@ -472,7 +472,7 @@ class PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema
         self.url = kwargs.get("url", None)
         self.resume_language = kwargs.get("resume_language", None)
         self.resume_format = kwargs["resume_format"]
-        self.wait = kwargs.get("wait", None)
+        self.wait = kwargs.get("wait", False)
 
 
 class RedactedResume(msrest.serialization.Model):

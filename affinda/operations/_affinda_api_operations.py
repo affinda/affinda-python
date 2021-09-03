@@ -454,7 +454,7 @@ class AffindaAPIOperationsMixin(object):
         identifier=None,  # type: Optional[str]
         file_name=None,  # type: Optional[str]
         url=None,  # type: Optional[str]
-        wait=None,  # type: Optional[bool]
+        wait=False,  # type: Optional[bool]
         resume_language=None,  # type: Optional[str]
         expiry_time=None,  # type: Optional[str]
         **kwargs,  # type: Any
@@ -779,7 +779,7 @@ class AffindaAPIOperationsMixin(object):
         file_name=None,  # type: Optional[str]
         url=None,  # type: Optional[str]
         resume_language=None,  # type: Optional[str]
-        wait=None,  # type: Optional[bool]
+        wait=False,  # type: Optional[bool]
         redact_headshot=True,  # type: Optional[bool]
         redact_personal_details=True,  # type: Optional[bool]
         redact_work_details=True,  # type: Optional[bool]
@@ -1199,7 +1199,7 @@ class AffindaAPIOperationsMixin(object):
         file_name=None,  # type: Optional[str]
         url=None,  # type: Optional[str]
         resume_language=None,  # type: Optional[str]
-        wait=None,  # type: Optional[bool]
+        wait=False,  # type: Optional[bool]
         **kwargs,  # type: Any
     ):
         # type: (...) -> Union["_models.ReformattedResume", "_models.Components8Sxs33Responses400ErrorContentApplicationJsonSchema", "_models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema", "_models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"]

@@ -54,7 +54,7 @@ Returns all the resume summaries for that user, limited to 300 per page.
 #### create\_resume
 
 ```python
- | create_resume(file=None, identifier=None, file_name=None, url=None, wait=None, resume_language=None, expiry_time=None, **kwargs)
+ | create_resume(file=None, identifier=None, file_name=None, url=None, wait=False, resume_language=None, expiry_time=None, **kwargs)
 ```
 
 Uploads a resume for parsing.
@@ -146,7 +146,7 @@ Returns all the redacted resume information for that resume.
 #### create\_redacted\_resume
 
 ```python
- | create_redacted_resume(file=None, identifier=None, file_name=None, url=None, resume_language=None, wait=None, redact_headshot=True, redact_personal_details=True, redact_work_details=True, redact_education_details=True, redact_referees=True, redact_locations=True, redact_dates=True, expiry_time=None, **kwargs)
+ | create_redacted_resume(file=None, identifier=None, file_name=None, url=None, resume_language=None, wait=False, redact_headshot=True, redact_personal_details=True, redact_work_details=True, redact_education_details=True, redact_referees=True, redact_locations=True, redact_dates=True, expiry_time=None, **kwargs)
 ```
 
 Uploads a resume for redacting.
@@ -260,7 +260,7 @@ Returns all the reformatted resume information for that resume.
 #### create\_reformatted\_resume
 
 ```python
- | create_reformatted_resume(resume_format, file=None, identifier=None, file_name=None, url=None, resume_language=None, wait=None, **kwargs)
+ | create_reformatted_resume(resume_format, file=None, identifier=None, file_name=None, url=None, resume_language=None, wait=False, **kwargs)
 ```
 
 Uploads a resume for reformatting.

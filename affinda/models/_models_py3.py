@@ -373,8 +373,8 @@ class Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema(
     :type file_name: str
     :param url: URL to file to download and process.
     :type url: str
-    :param wait: If true (default), will return a response only after processing has completed. If
-     false, will return an empty data object which can be polled at the GET endpoint until
+    :param wait: If "true" (default), will return a response only after processing has completed.
+     If "false", will return an empty data object which can be polled at the GET endpoint until
      processing is complete.
     :type wait: bool
     :param resume_language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for
@@ -402,7 +402,7 @@ class Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema(
         identifier: Optional[str] = None,
         file_name: Optional[str] = None,
         url: Optional[str] = None,
-        wait: Optional[bool] = None,
+        wait: Optional[bool] = False,
         resume_language: Optional[str] = None,
         expiry_time: Optional[str] = None,
         **kwargs,
@@ -436,8 +436,8 @@ class Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema(
     :param resume_language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for
      Chinese.
     :type resume_language: str
-    :param wait: If true (default), will return a response only after processing has completed. If
-     false, will return an empty data object which can be polled at the GET endpoint until
+    :param wait: If "true" (default), will return a response only after processing has completed.
+     If "false", will return an empty data object which can be polled at the GET endpoint until
      processing is complete.
     :type wait: bool
     :param redact_headshot: Whether to redact headshot.
@@ -484,7 +484,7 @@ class Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema(
         file_name: Optional[str] = None,
         url: Optional[str] = None,
         resume_language: Optional[str] = None,
-        wait: Optional[bool] = None,
+        wait: Optional[bool] = False,
         redact_headshot: Optional[bool] = True,
         redact_personal_details: Optional[bool] = True,
         redact_work_details: Optional[bool] = True,
@@ -536,8 +536,8 @@ class PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema
     :type resume_language: str
     :param resume_format: Required. Identifier of the format used.
     :type resume_format: str
-    :param wait: If true (default), will return a response only after processing has completed. If
-     false, will return an empty data object which can be polled at the GET endpoint until
+    :param wait: If "true" (default), will return a response only after processing has completed.
+     If "false", will return an empty data object which can be polled at the GET endpoint until
      processing is complete.
     :type wait: bool
     """
@@ -565,7 +565,7 @@ class PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema
         file_name: Optional[str] = None,
         url: Optional[str] = None,
         resume_language: Optional[str] = None,
-        wait: Optional[bool] = None,
+        wait: Optional[bool] = False,
         **kwargs,
     ):
         super(

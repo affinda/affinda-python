@@ -87,14 +87,13 @@ from pathlib import Path
 from affinda import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
 file_pth = Path("path_to_file")
 
 credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
 
 with open(file_pth, "rb") as f:
-    resume = client.create_resume(file=f, file_name=file_pth.name, wait=True)
+    resume = client.create_resume(file=f)
 
 print(resume.as_dict())
 ```
@@ -154,14 +153,13 @@ from pathlib import Path
 from affinda import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
 file_pth = Path("path_to_file")
 
 credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
 
 with open(file_pth, "rb") as f:
-    redacted_resume = client.create_redacted_resume(file=f, file_name=file_pth.name)
+    redacted_resume = client.create_redacted_resume(file=f)
 
 print(redacted_resume.as_dict())
 ```
