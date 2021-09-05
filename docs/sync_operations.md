@@ -39,7 +39,7 @@ class AffindaAPIOperationsMixin(object)
  | get_all_resumes(**kwargs)
 ```
 
-Gets summary information for all resumes of a user.
+Gets list of all resumes.
 
 Returns all the resume summaries for that user, limited to 300 per page.
 
@@ -131,7 +131,7 @@ Deletes the specified resume from the database.
  | get_all_redacted_resumes(**kwargs)
 ```
 
-Gets summary information for all redacted resumes of a user.
+Gets list of all redacted resumes.
 
 Returns all the redacted resume information for that resume.
 
@@ -227,7 +227,7 @@ Deletes the specified resume from the database.
  | get_all_resume_formats(**kwargs)
 ```
 
-Gets summary information for all resume formats of a user.
+Gets list of all resume formats.
 
 Returns all the resume formats.
 
@@ -245,7 +245,7 @@ Returns all the resume formats.
  | get_all_reformatted_resumes(**kwargs)
 ```
 
-Gets summary information for all reformatted resumes of a user.
+Gets list of all reformatted resumes.
 
 Returns all the reformatted resume information for that resume.
 
