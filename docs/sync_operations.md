@@ -17,7 +17,7 @@ Affinda API client for Python.
 - `credential` (`~azure.core.credentials.TokenCredential`): Credential needed for the client to connect to Azure.
 - `limit` (`int`): The numbers of documents to return, defaults to 300.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
-- `base_url` (`str`): Service URL
+- `base_url` (`str`): Service URL. Default value is 'https://api.affinda.com/v1'.
 
 <a name="operations._affinda_api_operations"></a>
 
@@ -47,14 +47,14 @@ Returns all the resume summaries for that user, limited to 300 per page.
 
 **Returns**:
 
-`~affinda.models.GetAllDocumentsResults or`: GetAllDocumentsResults or
+`~affinda.models.GetAllDocumentsResults or ~affinda.models.RequestError`: GetAllDocumentsResults or RequestError, or the result of cls(response)
 
 <a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resume"></a>
 
 #### create\_resume
 
 ```python
- | create_resume(file=None, identifier=None, file_name=None, url=None, wait=False, resume_language=None, expiry_time=None, **kwargs)
+ | create_resume(file=None, identifier=None, file_name=None, url=None, wait=True, resume_language=None, expiry_time=None, **kwargs)
 ```
 
 Uploads a resume for parsing.
@@ -77,7 +77,7 @@ retrieve results.
 
 **Returns**:
 
-`~affinda.models.Resume or`: Resume or Components8Sxs33Responses400ErrorContentApplicationJsonSchema or
+`~affinda.models.Resume or ~affinda.models.RequestError`: Resume or RequestError, or the result of cls(response)
 
 <a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume"></a>
 
@@ -100,7 +100,7 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the `
 
 **Returns**:
 
-`~affinda.models.Resume or`: Resume or ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or
+`~affinda.models.Resume or ~affinda.models.RequestError`: Resume or RequestError, or the result of cls(response)
 
 <a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_resume"></a>
 
@@ -121,7 +121,7 @@ Deletes the specified resume from the database.
 
 **Returns**:
 
-`~affinda.models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or`: ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or
+`~affinda.models.RequestError or None`: RequestError, or the result of cls(response)
 
 <a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_redacted_resumes"></a>
 
@@ -139,14 +139,14 @@ Returns all the redacted resume information for that resume.
 
 **Returns**:
 
-`~affinda.models.GetAllDocumentsResults or`: GetAllDocumentsResults or
+`~affinda.models.GetAllDocumentsResults or ~affinda.models.RequestError`: GetAllDocumentsResults or RequestError, or the result of cls(response)
 
 <a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_redacted_resume"></a>
 
 #### create\_redacted\_resume
 
 ```python
- | create_redacted_resume(file=None, identifier=None, file_name=None, url=None, resume_language=None, wait=False, redact_headshot=True, redact_personal_details=True, redact_work_details=True, redact_education_details=True, redact_referees=True, redact_locations=True, redact_dates=True, expiry_time=None, **kwargs)
+ | create_redacted_resume(file=None, identifier=None, file_name=None, url=None, resume_language=None, wait=True, redact_headshot=True, redact_personal_details=True, redact_work_details=True, redact_education_details=True, redact_referees=True, redact_locations=True, redact_dates=True, expiry_time=None, **kwargs)
 ```
 
 Uploads a resume for redacting.
@@ -173,7 +173,7 @@ Uploads a resume for redacting.
 
 **Returns**:
 
-`~affinda.models.RedactedResume or`: RedactedResume or Components8Sxs33Responses400ErrorContentApplicationJsonSchema or
+`~affinda.models.RedactedResume or ~affinda.models.RequestError`: RedactedResume or RequestError, or the result of cls(response)
 
 <a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_redacted_resume"></a>
 
@@ -196,7 +196,7 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the
 
 **Returns**:
 
-`~affinda.models.RedactedResume or`: RedactedResume or ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or
+`~affinda.models.RedactedResume or ~affinda.models.RequestError`: RedactedResume or RequestError, or the result of cls(response)
 
 <a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_redacted_resume"></a>
 
@@ -217,7 +217,7 @@ Deletes the specified resume from the database.
 
 **Returns**:
 
-`~affinda.models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or`: ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or
+`~affinda.models.RequestError or None`: RequestError, or the result of cls(response)
 
 <a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_resume_formats"></a>
 
@@ -235,7 +235,7 @@ Returns all the resume formats.
 
 **Returns**:
 
-`~affinda.models.Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema or`: Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema or
+`~affinda.models.Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema or`: Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema or RequestError,
 
 <a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_reformatted_resumes"></a>
 
@@ -253,14 +253,14 @@ Returns all the reformatted resume information for that resume.
 
 **Returns**:
 
-`~affinda.models.GetAllDocumentsResults or`: GetAllDocumentsResults or
+`~affinda.models.GetAllDocumentsResults or ~affinda.models.RequestError`: GetAllDocumentsResults or RequestError, or the result of cls(response)
 
 <a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_reformatted_resume"></a>
 
 #### create\_reformatted\_resume
 
 ```python
- | create_reformatted_resume(resume_format, file=None, identifier=None, file_name=None, url=None, resume_language=None, wait=False, **kwargs)
+ | create_reformatted_resume(resume_format, file=None, identifier=None, file_name=None, url=None, resume_language=None, wait=True, **kwargs)
 ```
 
 Uploads a resume for reformatting.
@@ -280,7 +280,7 @@ Uploads a resume for reformatting.
 
 **Returns**:
 
-`~affinda.models.ReformattedResume or`: ReformattedResume or Components8Sxs33Responses400ErrorContentApplicationJsonSchema or
+`~affinda.models.ReformattedResume or ~affinda.models.RequestError`: ReformattedResume or RequestError, or the result of cls(response)
 
 <a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_reformatted_resume"></a>
 
@@ -303,7 +303,7 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the
 
 **Returns**:
 
-`~affinda.models.ReformattedResume or`: ReformattedResume or ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or
+`~affinda.models.ReformattedResume or ~affinda.models.RequestError`: ReformattedResume or RequestError, or the result of cls(response)
 
 <a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_reformatted_resume"></a>
 
@@ -324,5 +324,5 @@ Deletes the specified resume from the database.
 
 **Returns**:
 
-`~affinda.models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or`: ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema or
+`~affinda.models.RequestError or None`: RequestError, or the result of cls(response)
 

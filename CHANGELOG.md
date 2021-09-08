@@ -1,9 +1,15 @@
+## 0.1.9 - 2021-09-08
+
+### Added
+
+- Profession in ResumeData model
+- Unified Error models
+
 ## 0.1.8 - 2021-09-06
 
 ### Fixed
 
 - wait=true in API spec
-- 
 
 ## 0.1.7 - 2021-09-05
 

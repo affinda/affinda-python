@@ -5,15 +5,6 @@
 # --------------------------------------------------------------------------
 
 try:
-    from ._models_py3 import (
-        Components8Sxs33Responses400ErrorContentApplicationJsonSchema,
-    )
-    from ._models_py3 import (
-        ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema,
-    )
-    from ._models_py3 import (
-        ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema,
-    )
     from ._models_py3 import Error
     from ._models_py3 import Get200ApplicationJsonPropertiesItemsItem
     from ._models_py3 import GetAllDocumentsResults
@@ -35,6 +26,7 @@ try:
     from ._models_py3 import RedactedResumeData
     from ._models_py3 import ReformattedResume
     from ._models_py3 import ReformattedResumeData
+    from ._models_py3 import RequestError
     from ._models_py3 import Resume
     from ._models_py3 import ResumeData
     from ._models_py3 import ResumeDataEducationItem
@@ -49,9 +41,6 @@ try:
     from ._models_py3 import ResumeDataWorkExperienceItem
     from ._models_py3 import ResumeDataWorkExperienceItemDates
 except (SyntaxError, ImportError):
-    from ._models import Components8Sxs33Responses400ErrorContentApplicationJsonSchema  # type: ignore
-    from ._models import ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema  # type: ignore
-    from ._models import ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema  # type: ignore
     from ._models import Error  # type: ignore
     from ._models import Get200ApplicationJsonPropertiesItemsItem  # type: ignore
     from ._models import GetAllDocumentsResults  # type: ignore
@@ -65,6 +54,7 @@ except (SyntaxError, ImportError):
     from ._models import RedactedResumeData  # type: ignore
     from ._models import ReformattedResume  # type: ignore
     from ._models import ReformattedResumeData  # type: ignore
+    from ._models import RequestError  # type: ignore
     from ._models import Resume  # type: ignore
     from ._models import ResumeData  # type: ignore
     from ._models import ResumeDataEducationItem  # type: ignore
@@ -80,9 +70,6 @@ except (SyntaxError, ImportError):
     from ._models import ResumeDataWorkExperienceItemDates  # type: ignore
 
 __all__ = [
-    "Components8Sxs33Responses400ErrorContentApplicationJsonSchema",
-    "ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema",
-    "ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema",
     "Error",
     "Get200ApplicationJsonPropertiesItemsItem",
     "GetAllDocumentsResults",
@@ -96,6 +83,7 @@ __all__ = [
     "RedactedResumeData",
     "ReformattedResume",
     "ReformattedResumeData",
+    "RequestError",
     "Resume",
     "ResumeData",
     "ResumeDataEducationItem",

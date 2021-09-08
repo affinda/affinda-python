@@ -2,51 +2,6 @@
 
 # models.\_models
 
-<a name="models._models.Components8Sxs33Responses400ErrorContentApplicationJsonSchema"></a>
-
-## Components8Sxs33Responses400ErrorContentApplicationJsonSchema Objects
-
-```python
-class Components8Sxs33Responses400ErrorContentApplicationJsonSchema(msrest.serialization.Model)
-```
-
-Components8Sxs33Responses400ErrorContentApplicationJsonSchema.
-
-**Arguments**:
-
-- `status_code` (`int`): 
-- `detail` (`str`): 
-
-<a name="models._models.ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema"></a>
-
-## ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema Objects
-
-```python
-class ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema(msrest.serialization.Model)
-```
-
-ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema.
-
-**Arguments**:
-
-- `detail` (`str`): 
-- `status_code` (`int`): 
-
-<a name="models._models.ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema"></a>
-
-## ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema Objects
-
-```python
-class ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema(msrest.serialization.Model)
-```
-
-ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema.
-
-**Arguments**:
-
-- `detail` (`str`): 
-- `status_code` (`int`): 
-
 <a name="models._models.Error"></a>
 
 ## Error Objects
@@ -311,6 +266,23 @@ ReformattedResumeData.
 
 - `reformatted_file` (`str`): 
 
+<a name="models._models.RequestError"></a>
+
+## RequestError Objects
+
+```python
+class RequestError(msrest.serialization.Model)
+```
+
+RequestError.
+
+All required parameters must be populated in order to send to Azure.
+
+**Arguments**:
+
+- `detail` (`str`): Required.
+- `status_code` (`int`): Required.
+
 <a name="models._models.Resume"></a>
 
 ## Resume Objects
@@ -352,8 +324,9 @@ suggest that the resume is not a resume.
 - `languages` (`list[str]`): 
 - `summary` (`str`): 
 - `total_years_experience` (`int`): 
-- `head_shot` (`IO`): base64 encoded string.
+- `head_shot` (`bytearray`): base64 encoded string.
 - `education` (`list[~affinda.models.ResumeDataEducationItem]`): 
+- `profession` (`str`): Prediction of the candidate's profession based on recent work experience.
 - `work_experience` (`list[~affinda.models.ResumeDataWorkExperienceItem]`): 
 - `skills` (`list[~affinda.models.ResumeDataSkillsItem]`): 
 - `certifications` (`list[str]`): 

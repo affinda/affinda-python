@@ -3,7 +3,7 @@
 Parser
 ------
 
-### Gets list of all resumes
+### getAllResumes - Gets list of all resumes
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -17,7 +17,7 @@ all_resumes = client.get_all_resumes()
 print(all_resumes.as_dict())
 ```
 
-### Uploads a resume for parsing
+### createResume - Uploads a resume for parsing
 
 ```python
 from pathlib import Path
@@ -36,7 +36,7 @@ with open(file_pth, "rb") as f:
 print(resume.as_dict())
 ```
 
-### Gets parse results for a specific resume
+### getResume - Gets parse results for a specific resume
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -51,7 +51,7 @@ resume = client.get_resume(identifier=identifier)
 print(resume.as_dict())
 ```
 
-### Deletes a resume
+### deleteResume - Deletes a resume
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -69,7 +69,7 @@ print(response.as_dict())
 Redactor
 --------
 
-### Gets list of all redacted resumes
+### getAllRedactedResumes - Gets list of all redacted resumes
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -83,7 +83,7 @@ all_redacted_resumes = client.get_all_redacted_resumes()
 print(all_redacted_resumes.as_dict())
 ```
 
-### Uploads a resume for redacting
+### createRedactedResume - Uploads a resume for redacting
 
 ```python
 from pathlib import Path
@@ -102,7 +102,7 @@ with open(file_pth, "rb") as f:
 print(redacted_resume.as_dict())
 ```
 
-### Gets redaction results for a specific resume
+### getRedactedResume - Gets redaction results for a specific resume
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -117,7 +117,7 @@ redacted_resume = client.get_redacted_resume(identifier=identifier)
 print(redacted_resume.as_dict())
 ```
 
-### Deletes a redacted resume
+### deleteRedactedResume - Deletes a redacted resume
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -135,7 +135,7 @@ print(response.as_dict())
 Reformatter
 -----------
 
-### Gets list of all resume formats
+### getAllResumeFormats - Gets list of all resume formats
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -149,7 +149,7 @@ resume_formats = client.get_all_resume_formats()
 print(resume_formats.as_dict())
 ```
 
-### Gets list of all reformatted resumes
+### getAllReformattedResumes - Gets list of all reformatted resumes
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -163,7 +163,7 @@ all_reformatted_resumes = client.get_all_reformatted_resumes()
 print(all_reformatted_resumes.as_dict())
 ```
 
-### Uploads a resume for reformatting
+### createReformattedResume - Uploads a resume for reformatting
 
 ```python
 from pathlib import PathAdding basic test suite
@@ -185,7 +185,7 @@ with open(file_pth, "rb") as f:
 print(reformatted_resume.as_dict())
 ```
 
-### Gets reformatting results for a specific resume
+### getReformattedResume - Gets reformatting results for a specific resume
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -200,7 +200,7 @@ reformatted_resume = client.get_reformatted_resume(identifier=identifier)
 print(reformatted_resume.as_dict())
 ```
 
-### Deletes a reformatted resume
+### deleteReformattedResume - Deletes a reformatted resume
 
 ```python
 from affinda import AffindaAPI, TokenCredential

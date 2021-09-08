@@ -7,97 +7,8 @@
 import datetime
 from typing import IO, List, Optional
 
+from azure.core.exceptions import HttpResponseError
 import msrest.serialization
-
-
-class Components8Sxs33Responses400ErrorContentApplicationJsonSchema(
-    msrest.serialization.Model
-):
-    """Components8Sxs33Responses400ErrorContentApplicationJsonSchema.
-
-    :param status_code:
-    :type status_code: int
-    :param detail:
-    :type detail: str
-    """
-
-    _attribute_map = {
-        "status_code": {"key": "statusCode", "type": "int"},
-        "detail": {"key": "detail", "type": "str"},
-    }
-
-    def __init__(
-        self,
-        *,
-        status_code: Optional[int] = None,
-        detail: Optional[str] = None,
-        **kwargs,
-    ):
-        super(
-            Components8Sxs33Responses400ErrorContentApplicationJsonSchema, self
-        ).__init__(**kwargs)
-        self.status_code = status_code
-        self.detail = detail
-
-
-class ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema(
-    msrest.serialization.Model
-):
-    """ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema.
-
-    :param detail:
-    :type detail: str
-    :param status_code:
-    :type status_code: int
-    """
-
-    _attribute_map = {
-        "detail": {"key": "detail", "type": "str"},
-        "status_code": {"key": "statusCode", "type": "int"},
-    }
-
-    def __init__(
-        self,
-        *,
-        detail: Optional[str] = None,
-        status_code: Optional[int] = None,
-        **kwargs,
-    ):
-        super(
-            ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema, self
-        ).__init__(**kwargs)
-        self.detail = detail
-        self.status_code = status_code
-
-
-class ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema(
-    msrest.serialization.Model
-):
-    """ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema.
-
-    :param detail:
-    :type detail: str
-    :param status_code:
-    :type status_code: int
-    """
-
-    _attribute_map = {
-        "detail": {"key": "detail", "type": "str"},
-        "status_code": {"key": "statusCode", "type": "int"},
-    }
-
-    def __init__(
-        self,
-        *,
-        detail: Optional[str] = None,
-        status_code: Optional[int] = None,
-        **kwargs,
-    ):
-        super(
-            ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema, self
-        ).__init__(**kwargs)
-        self.detail = detail
-        self.status_code = status_code
 
 
 class Error(msrest.serialization.Model):
@@ -402,7 +313,7 @@ class Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema(
         identifier: Optional[str] = None,
         file_name: Optional[str] = None,
         url: Optional[str] = None,
-        wait: Optional[bool] = False,
+        wait: Optional[bool] = True,
         resume_language: Optional[str] = None,
         expiry_time: Optional[str] = None,
         **kwargs,
@@ -484,7 +395,7 @@ class Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema(
         file_name: Optional[str] = None,
         url: Optional[str] = None,
         resume_language: Optional[str] = None,
-        wait: Optional[bool] = False,
+        wait: Optional[bool] = True,
         redact_headshot: Optional[bool] = True,
         redact_personal_details: Optional[bool] = True,
         redact_work_details: Optional[bool] = True,
@@ -565,7 +476,7 @@ class PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema
         file_name: Optional[str] = None,
         url: Optional[str] = None,
         resume_language: Optional[str] = None,
-        wait: Optional[bool] = False,
+        wait: Optional[bool] = True,
         **kwargs,
     ):
         super(
@@ -681,6 +592,33 @@ class ReformattedResumeData(msrest.serialization.Model):
         self.reformatted_file = reformatted_file
 
 
+class RequestError(msrest.serialization.Model):
+    """RequestError.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :param detail: Required.
+    :type detail: str
+    :param status_code: Required.
+    :type status_code: int
+    """
+
+    _validation = {
+        "detail": {"required": True},
+        "status_code": {"required": True},
+    }
+
+    _attribute_map = {
+        "detail": {"key": "detail", "type": "str"},
+        "status_code": {"key": "statusCode", "type": "int"},
+    }
+
+    def __init__(self, *, detail: str, status_code: int, **kwargs):
+        super(RequestError, self).__init__(**kwargs)
+        self.detail = detail
+        self.status_code = status_code
+
+
 class Resume(msrest.serialization.Model):
     """Resume.
 
@@ -737,9 +675,11 @@ class ResumeData(msrest.serialization.Model):
     :param total_years_experience:
     :type total_years_experience: int
     :param head_shot: base64 encoded string.
-    :type head_shot: IO
+    :type head_shot: bytearray
     :param education:
     :type education: list[~affinda.models.ResumeDataEducationItem]
+    :param profession: Prediction of the candidate's profession based on recent work experience.
+    :type profession: str
     :param work_experience:
     :type work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
     :param skills:
@@ -770,8 +710,9 @@ class ResumeData(msrest.serialization.Model):
         "languages": {"key": "languages", "type": "[str]"},
         "summary": {"key": "summary", "type": "str"},
         "total_years_experience": {"key": "totalYearsExperience", "type": "int"},
-        "head_shot": {"key": "headShot", "type": "IO"},
+        "head_shot": {"key": "headShot", "type": "bytearray"},
         "education": {"key": "education", "type": "[ResumeDataEducationItem]"},
+        "profession": {"key": "profession", "type": "str"},
         "work_experience": {
             "key": "workExperience",
             "type": "[ResumeDataWorkExperienceItem]",
@@ -798,8 +739,9 @@ class ResumeData(msrest.serialization.Model):
         languages: Optional[List[str]] = None,
         summary: Optional[str] = None,
         total_years_experience: Optional[int] = None,
-        head_shot: Optional[IO] = None,
+        head_shot: Optional[bytearray] = None,
         education: Optional[List["ResumeDataEducationItem"]] = None,
+        profession: Optional[str] = None,
         work_experience: Optional[List["ResumeDataWorkExperienceItem"]] = None,
         skills: Optional[List["ResumeDataSkillsItem"]] = None,
         certifications: Optional[List[str]] = None,
@@ -823,6 +765,7 @@ class ResumeData(msrest.serialization.Model):
         self.total_years_experience = total_years_experience
         self.head_shot = head_shot
         self.education = education
+        self.profession = profession
         self.work_experience = work_experience
         self.skills = skills
         self.certifications = certifications

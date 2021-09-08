@@ -12,15 +12,9 @@ Affinda API - Python Client Library
 
 [![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/affinda/affinda-python)
 
-- [Installation](#installation)
-- [Quickstart](#quickstart)
-- [API reference](#api-reference)
-- [Parser](#parser)
-- [Redactor](#redactor)
-- [Reformatter](#reformatter)
-
-Generated using [autorest](https://github.com/Azure/autorest)
-and [autorest.python](https://github.com/Azure/autorest.python).
+This is a python client for the Affinda document parsing API which wraps all available endpoints 
+and handles authentication and signing.  You may also want to refer to the full
+[API documentation](https://api.affinda.com/docs) for additional information.
 
 Installation
 ------------
@@ -29,29 +23,19 @@ Installation
 pip install affinda
 ```
 
-Or latest dev from github
-
-```shell
-git clone git@github.com:affinda/affinda-python.git
-cd affinda-python
-pip install -e .
-```
 
 Quickstart
 ----------
+If you don't have an API token, obtain one from [affinda.com](https://affinda.com/resume-parser/free-api-key/).
 
 ```python
-from pathlib import Path
 from affinda import AffindaAPI, TokenCredential
 
-TOKEN = "YOUR_API_TOKEN"
-
-file_pth = Path("path_to_file")
-credential = TokenCredential(token=TOKEN)
-
+credential = TokenCredential(token="YOUR_API_TOKEN")
 client = AffindaAPI(credential=credential)
-with open(file_pth, "rb") as f:
-    resp = client.create_resume(file=f, file_name="test.pdf", wait=False)
+
+with open("PATH_TO_FILE", "rb") as f:
+    resume = client.create_resume(file=f)
 ```
 
 Samples

@@ -4,79 +4,8 @@
 # Changes may cause incorrect behavior and will be lost if the code is regenerated.
 # --------------------------------------------------------------------------
 
+from azure.core.exceptions import HttpResponseError
 import msrest.serialization
-
-
-class Components8Sxs33Responses400ErrorContentApplicationJsonSchema(
-    msrest.serialization.Model
-):
-    """Components8Sxs33Responses400ErrorContentApplicationJsonSchema.
-
-    :param status_code:
-    :type status_code: int
-    :param detail:
-    :type detail: str
-    """
-
-    _attribute_map = {
-        "status_code": {"key": "statusCode", "type": "int"},
-        "detail": {"key": "detail", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        super(
-            Components8Sxs33Responses400ErrorContentApplicationJsonSchema, self
-        ).__init__(**kwargs)
-        self.status_code = kwargs.get("status_code", None)
-        self.detail = kwargs.get("detail", None)
-
-
-class ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema(
-    msrest.serialization.Model
-):
-    """ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema.
-
-    :param detail:
-    :type detail: str
-    :param status_code:
-    :type status_code: int
-    """
-
-    _attribute_map = {
-        "detail": {"key": "detail", "type": "str"},
-        "status_code": {"key": "statusCode", "type": "int"},
-    }
-
-    def __init__(self, **kwargs):
-        super(
-            ComponentsMzfa75Responses401ErrorContentApplicationJsonSchema, self
-        ).__init__(**kwargs)
-        self.detail = kwargs.get("detail", None)
-        self.status_code = kwargs.get("status_code", None)
-
-
-class ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema(
-    msrest.serialization.Model
-):
-    """ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema.
-
-    :param detail:
-    :type detail: str
-    :param status_code:
-    :type status_code: int
-    """
-
-    _attribute_map = {
-        "detail": {"key": "detail", "type": "str"},
-        "status_code": {"key": "statusCode", "type": "int"},
-    }
-
-    def __init__(self, **kwargs):
-        super(
-            ComponentsP4H6CrResponses404ErrorContentApplicationJsonSchema, self
-        ).__init__(**kwargs)
-        self.detail = kwargs.get("detail", None)
-        self.status_code = kwargs.get("status_code", None)
 
 
 class Error(msrest.serialization.Model):
@@ -337,7 +266,7 @@ class Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema(
         self.identifier = kwargs.get("identifier", None)
         self.file_name = kwargs.get("file_name", None)
         self.url = kwargs.get("url", None)
-        self.wait = kwargs.get("wait", False)
+        self.wait = kwargs.get("wait", True)
         self.resume_language = kwargs.get("resume_language", None)
         self.expiry_time = kwargs.get("expiry_time", None)
 
@@ -409,7 +338,7 @@ class Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema(
         self.file_name = kwargs.get("file_name", None)
         self.url = kwargs.get("url", None)
         self.resume_language = kwargs.get("resume_language", None)
-        self.wait = kwargs.get("wait", False)
+        self.wait = kwargs.get("wait", True)
         self.redact_headshot = kwargs.get("redact_headshot", True)
         self.redact_personal_details = kwargs.get("redact_personal_details", True)
         self.redact_work_details = kwargs.get("redact_work_details", True)
@@ -472,7 +401,7 @@ class PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema
         self.url = kwargs.get("url", None)
         self.resume_language = kwargs.get("resume_language", None)
         self.resume_format = kwargs["resume_format"]
-        self.wait = kwargs.get("wait", False)
+        self.wait = kwargs.get("wait", True)
 
 
 class RedactedResume(msrest.serialization.Model):
@@ -571,6 +500,33 @@ class ReformattedResumeData(msrest.serialization.Model):
         self.reformatted_file = kwargs.get("reformatted_file", None)
 
 
+class RequestError(msrest.serialization.Model):
+    """RequestError.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :param detail: Required.
+    :type detail: str
+    :param status_code: Required.
+    :type status_code: int
+    """
+
+    _validation = {
+        "detail": {"required": True},
+        "status_code": {"required": True},
+    }
+
+    _attribute_map = {
+        "detail": {"key": "detail", "type": "str"},
+        "status_code": {"key": "statusCode", "type": "int"},
+    }
+
+    def __init__(self, **kwargs):
+        super(RequestError, self).__init__(**kwargs)
+        self.detail = kwargs["detail"]
+        self.status_code = kwargs["status_code"]
+
+
 class Resume(msrest.serialization.Model):
     """Resume.
 
@@ -627,9 +583,11 @@ class ResumeData(msrest.serialization.Model):
     :param total_years_experience:
     :type total_years_experience: int
     :param head_shot: base64 encoded string.
-    :type head_shot: IO
+    :type head_shot: bytearray
     :param education:
     :type education: list[~affinda.models.ResumeDataEducationItem]
+    :param profession: Prediction of the candidate's profession based on recent work experience.
+    :type profession: str
     :param work_experience:
     :type work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
     :param skills:
@@ -660,8 +618,9 @@ class ResumeData(msrest.serialization.Model):
         "languages": {"key": "languages", "type": "[str]"},
         "summary": {"key": "summary", "type": "str"},
         "total_years_experience": {"key": "totalYearsExperience", "type": "int"},
-        "head_shot": {"key": "headShot", "type": "IO"},
+        "head_shot": {"key": "headShot", "type": "bytearray"},
         "education": {"key": "education", "type": "[ResumeDataEducationItem]"},
+        "profession": {"key": "profession", "type": "str"},
         "work_experience": {
             "key": "workExperience",
             "type": "[ResumeDataWorkExperienceItem]",
@@ -689,6 +648,7 @@ class ResumeData(msrest.serialization.Model):
         self.total_years_experience = kwargs.get("total_years_experience", None)
         self.head_shot = kwargs.get("head_shot", None)
         self.education = kwargs.get("education", None)
+        self.profession = kwargs.get("profession", None)
         self.work_experience = kwargs.get("work_experience", None)
         self.skills = kwargs.get("skills", None)
         self.certifications = kwargs.get("certifications", None)
