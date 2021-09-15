@@ -1,3 +1,9 @@
+## 0.1.10 - 2021-09-
+
+### Added
+- Adding LinkedIn to ResumeData
+
+
 ## 0.1.9 - 2021-09-08
 
 ### Added

@@ -146,7 +146,7 @@ Returns all the redacted resume information for that resume.
 #### create\_redacted\_resume
 
 ```python
- | create_redacted_resume(file=None, identifier=None, file_name=None, url=None, resume_language=None, wait=True, redact_headshot=True, redact_personal_details=True, redact_work_details=True, redact_education_details=True, redact_referees=True, redact_locations=True, redact_dates=True, expiry_time=None, **kwargs)
+ | create_redacted_resume(file=None, identifier=None, file_name=None, url=None, resume_language=None, wait=True, redact_headshot="true", redact_personal_details="true", redact_work_details="true", redact_education_details="true", redact_referees="true", redact_locations="true", redact_dates="true", expiry_time=None, **kwargs)
 ```
 
 Uploads a resume for redacting.
@@ -162,13 +162,13 @@ Uploads a resume for redacting.
 - `url` (`str`): 
 - `resume_language` (`str`): 
 - `wait` (`bool`): 
-- `redact_headshot` (`bool`): Whether to redact headshot.
-- `redact_personal_details` (`bool`): Whether to redact personal details (e.g. name, address).
-- `redact_work_details` (`bool`): Whether to redact work details (e.g. company names).
-- `redact_education_details` (`bool`): Whether to redact education details (e.g. university names).
-- `redact_referees` (`bool`): Whether to redact referee details.
-- `redact_locations` (`bool`): Whether to redact location names.
-- `redact_dates` (`bool`): Whether to redact dates.
+- `redact_headshot` (`str`): Whether to redact headshot.
+- `redact_personal_details` (`str`): Whether to redact personal details (e.g. name, address).
+- `redact_work_details` (`str`): Whether to redact work details (e.g. company names).
+- `redact_education_details` (`str`): Whether to redact education details (e.g. university names).
+- `redact_referees` (`str`): Whether to redact referee details.
+- `redact_locations` (`str`): Whether to redact location names.
+- `redact_dates` (`str`): Whether to redact dates.
 - `expiry_time` (`str`): 
 
 **Returns**:
