@@ -17,7 +17,7 @@ Affinda API client for Python.
 - `credential` (`~azure.core.credentials.TokenCredential`): Credential needed for the client to connect to Azure.
 - `limit` (`int`): The numbers of documents to return, defaults to 300.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
-- `base_url` (`str`): Service URL. Default value is 'https://api.affinda.com/v1'.
+- `base_url` (`str`): Service URL
 
 <a id="operations._affinda_api_operations"></a>
 

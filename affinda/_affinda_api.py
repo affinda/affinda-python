@@ -31,7 +31,7 @@ class AffindaAPI(AffindaAPIOperationsMixin):
     :type limit: int
     :param offset: The number of documents to skip before starting to collect the result set.
     :type offset: int
-    :param base_url: Service URL. Default value is 'https://api.affinda.com/v1'.
+    :param base_url: Service URL
     :type base_url: str
     """
 
@@ -40,10 +40,12 @@ class AffindaAPI(AffindaAPIOperationsMixin):
         credential,  # type: "TokenCredential"
         limit=300,  # type: Optional[int]
         offset=None,  # type: Optional[int]
-        base_url="https://api.affinda.com/v1",  # type: str
+        base_url=None,  # type: Optional[str]
         **kwargs,  # type: Any
     ):
         # type: (...) -> None
+        if not base_url:
+            base_url = "https://api.affinda.com/v1"
         self._config = AffindaAPIConfiguration(credential, limit, offset, **kwargs)
         self._client = PipelineClient(base_url=base_url, config=self._config, **kwargs)
 
@@ -60,13 +62,14 @@ class AffindaAPI(AffindaAPIOperationsMixin):
         # type: (...) -> HttpResponse
         """Runs the network request through the client's chained policies.
 
-        >>> from azure.core.rest import HttpRequest
-        >>> request = HttpRequest("GET", "https://www.example.org/")
-        <HttpRequest [GET], url: 'https://www.example.org/'>
-        >>> response = client._send_request(request)
-        <HttpResponse: 200 OK>
+        We have helper methods to create requests specific to this service in `affinda.rest`.
+        Use these helper methods to create the request you pass to this method.
+
 
         For more information on this code flow, see https://aka.ms/azsdk/python/protocol/quickstart
+
+        For advanced cases, you can also create your own :class:`~azure.core.rest.HttpRequest`
+        and pass it in.
 
         :param request: The network request you want to make. Required.
         :type request: ~azure.core.rest.HttpRequest

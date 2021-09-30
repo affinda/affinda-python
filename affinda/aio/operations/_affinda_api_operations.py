@@ -78,7 +78,7 @@ class AffindaAPIOperationsMixin:
 
         if response.status_code not in [200, 400, 401, 404]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, response)
             raise HttpResponseError(response=response, model=error)
 
         if response.status_code == 200:
@@ -177,7 +177,7 @@ class AffindaAPIOperationsMixin:
 
         if response.status_code not in [200, 201, 400, 401, 404]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, response)
             raise HttpResponseError(response=response, model=error)
 
         if response.status_code == 200:
@@ -241,7 +241,7 @@ class AffindaAPIOperationsMixin:
 
         if response.status_code not in [200, 400, 401, 404]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, response)
             raise HttpResponseError(response=response, model=error)
 
         if response.status_code == 200:
@@ -298,7 +298,7 @@ class AffindaAPIOperationsMixin:
 
         if response.status_code not in [204, 400, 401, 404]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, response)
             raise HttpResponseError(response=response, model=error)
 
         deserialized = None
@@ -354,7 +354,7 @@ class AffindaAPIOperationsMixin:
 
         if response.status_code not in [200, 400, 401, 404]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, response)
             raise HttpResponseError(response=response, model=error)
 
         if response.status_code == 200:
@@ -478,7 +478,7 @@ class AffindaAPIOperationsMixin:
 
         if response.status_code not in [200, 201, 400, 401, 404]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, response)
             raise HttpResponseError(response=response, model=error)
 
         if response.status_code == 200:
@@ -542,7 +542,7 @@ class AffindaAPIOperationsMixin:
 
         if response.status_code not in [200, 400, 401, 404]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, response)
             raise HttpResponseError(response=response, model=error)
 
         if response.status_code == 200:
@@ -599,7 +599,7 @@ class AffindaAPIOperationsMixin:
 
         if response.status_code not in [204, 400, 401, 404]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, response)
             raise HttpResponseError(response=response, model=error)
 
         deserialized = None
@@ -660,7 +660,7 @@ class AffindaAPIOperationsMixin:
 
         if response.status_code not in [200, 400, 401, 404]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, response)
             raise HttpResponseError(response=response, model=error)
 
         if response.status_code == 200:
@@ -721,7 +721,7 @@ class AffindaAPIOperationsMixin:
 
         if response.status_code not in [200, 400, 401, 404]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, response)
             raise HttpResponseError(response=response, model=error)
 
         if response.status_code == 200:
@@ -817,7 +817,7 @@ class AffindaAPIOperationsMixin:
 
         if response.status_code not in [200, 201, 400, 401, 404]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, response)
             raise HttpResponseError(response=response, model=error)
 
         if response.status_code == 200:
@@ -881,7 +881,7 @@ class AffindaAPIOperationsMixin:
 
         if response.status_code not in [200, 400, 401, 404]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, response)
             raise HttpResponseError(response=response, model=error)
 
         if response.status_code == 200:
@@ -938,7 +938,7 @@ class AffindaAPIOperationsMixin:
 
         if response.status_code not in [204, 400, 401, 404]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, response)
             raise HttpResponseError(response=response, model=error)
 
         deserialized = None
