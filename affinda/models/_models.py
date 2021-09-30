@@ -206,25 +206,20 @@ class Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema(
         "count": {"key": "count", "type": "int"},
         "next": {"key": "next", "type": "str"},
         "previous": {"key": "previous", "type": "str"},
-        "results": {
-            "key": "results",
-            "type": "[Get200ApplicationJsonPropertiesItemsItem]",
-        },
+        "results": {"key": "results", "type": "[Get200ApplicationJsonPropertiesItemsItem]"},
     }
 
     def __init__(self, **kwargs):
-        super(
-            Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema, self
-        ).__init__(**kwargs)
+        super(Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema, self).__init__(
+            **kwargs
+        )
         self.count = kwargs.get("count", None)
         self.next = kwargs.get("next", None)
         self.previous = kwargs.get("previous", None)
         self.results = kwargs.get("results", None)
 
 
-class Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema(
-    msrest.serialization.Model
-):
+class Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema(msrest.serialization.Model):
     """Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema.
 
     :keyword file: File as binary data blob.
@@ -259,9 +254,9 @@ class Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema(
     }
 
     def __init__(self, **kwargs):
-        super(
-            Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema, self
-        ).__init__(**kwargs)
+        super(Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema, self).__init__(
+            **kwargs
+        )
         self.file = kwargs.get("file", None)
         self.identifier = kwargs.get("identifier", None)
         self.file_name = kwargs.get("file_name", None)
@@ -330,8 +325,7 @@ class Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema(
 
     def __init__(self, **kwargs):
         super(
-            Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema,
-            self,
+            Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema, self
         ).__init__(**kwargs)
         self.file = kwargs.get("file", None)
         self.identifier = kwargs.get("identifier", None)
@@ -392,8 +386,7 @@ class PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema
 
     def __init__(self, **kwargs):
         super(
-            PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema,
-            self,
+            PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema, self
         ).__init__(**kwargs)
         self.file = kwargs.get("file", None)
         self.identifier = kwargs.get("identifier", None)
@@ -625,10 +618,7 @@ class ResumeData(msrest.serialization.Model):
         "education": {"key": "education", "type": "[ResumeDataEducationItem]"},
         "profession": {"key": "profession", "type": "str"},
         "linkedin": {"key": "linkedin", "type": "str"},
-        "work_experience": {
-            "key": "workExperience",
-            "type": "[ResumeDataWorkExperienceItem]",
-        },
+        "work_experience": {"key": "workExperience", "type": "[ResumeDataWorkExperienceItem]"},
         "skills": {"key": "skills", "type": "[ResumeDataSkillsItem]"},
         "certifications": {"key": "certifications", "type": "[str]"},
         "publications": {"key": "publications", "type": "[str]"},
@@ -681,10 +671,7 @@ class ResumeDataEducationItem(msrest.serialization.Model):
 
     _attribute_map = {
         "organization": {"key": "organization", "type": "str"},
-        "accreditation": {
-            "key": "accreditation",
-            "type": "ResumeDataEducationItemAccreditation",
-        },
+        "accreditation": {"key": "accreditation", "type": "ResumeDataEducationItemAccreditation"},
         "grade": {"key": "grade", "type": "ResumeDataEducationItemGrade"},
         "location": {"key": "location", "type": "Location"},
         "dates": {"key": "dates", "type": "ResumeDataEducationItemDates"},

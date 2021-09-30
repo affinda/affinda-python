@@ -26,11 +26,7 @@ class Error(msrest.serialization.Model):
     }
 
     def __init__(
-        self,
-        *,
-        error_code: Optional[str] = None,
-        error_detail: Optional[str] = None,
-        **kwargs,
+        self, *, error_code: Optional[str] = None, error_detail: Optional[str] = None, **kwargs
     ):
         super(Error, self).__init__(**kwargs)
         self.error_code = error_code
@@ -246,10 +242,7 @@ class Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema(
         "count": {"key": "count", "type": "int"},
         "next": {"key": "next", "type": "str"},
         "previous": {"key": "previous", "type": "str"},
-        "results": {
-            "key": "results",
-            "type": "[Get200ApplicationJsonPropertiesItemsItem]",
-        },
+        "results": {"key": "results", "type": "[Get200ApplicationJsonPropertiesItemsItem]"},
     }
 
     def __init__(
@@ -261,18 +254,16 @@ class Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema(
         results: Optional[List["Get200ApplicationJsonPropertiesItemsItem"]] = None,
         **kwargs,
     ):
-        super(
-            Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema, self
-        ).__init__(**kwargs)
+        super(Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema, self).__init__(
+            **kwargs
+        )
         self.count = count
         self.next = next
         self.previous = previous
         self.results = results
 
 
-class Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema(
-    msrest.serialization.Model
-):
+class Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema(msrest.serialization.Model):
     """Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema.
 
     :keyword file: File as binary data blob.
@@ -318,9 +309,9 @@ class Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema(
         expiry_time: Optional[str] = None,
         **kwargs,
     ):
-        super(
-            Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema, self
-        ).__init__(**kwargs)
+        super(Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema, self).__init__(
+            **kwargs
+        )
         self.file = file
         self.identifier = identifier
         self.file_name = file_name
@@ -407,8 +398,7 @@ class Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema(
         **kwargs,
     ):
         super(
-            Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema,
-            self,
+            Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema, self
         ).__init__(**kwargs)
         self.file = file
         self.identifier = identifier
@@ -480,8 +470,7 @@ class PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema
         **kwargs,
     ):
         super(
-            PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema,
-            self,
+            PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema, self
         ).__init__(**kwargs)
         self.file = file
         self.identifier = identifier
@@ -517,9 +506,7 @@ class RedactedResume(msrest.serialization.Model):
         "error": {"key": "error", "type": "Error"},
     }
 
-    def __init__(
-        self, *, data: "RedactedResumeData", meta: "Meta", error: "Error", **kwargs
-    ):
+    def __init__(self, *, data: "RedactedResumeData", meta: "Meta", error: "Error", **kwargs):
         super(RedactedResume, self).__init__(**kwargs)
         self.data = data
         self.meta = meta
@@ -567,9 +554,7 @@ class ReformattedResume(msrest.serialization.Model):
         "error": {"key": "error", "type": "Error"},
     }
 
-    def __init__(
-        self, *, data: "ReformattedResumeData", meta: "Meta", error: "Error", **kwargs
-    ):
+    def __init__(self, *, data: "ReformattedResumeData", meta: "Meta", error: "Error", **kwargs):
         super(ReformattedResume, self).__init__(**kwargs)
         self.data = data
         self.meta = meta
@@ -717,10 +702,7 @@ class ResumeData(msrest.serialization.Model):
         "education": {"key": "education", "type": "[ResumeDataEducationItem]"},
         "profession": {"key": "profession", "type": "str"},
         "linkedin": {"key": "linkedin", "type": "str"},
-        "work_experience": {
-            "key": "workExperience",
-            "type": "[ResumeDataWorkExperienceItem]",
-        },
+        "work_experience": {"key": "workExperience", "type": "[ResumeDataWorkExperienceItem]"},
         "skills": {"key": "skills", "type": "[ResumeDataSkillsItem]"},
         "certifications": {"key": "certifications", "type": "[str]"},
         "publications": {"key": "publications", "type": "[str]"},
@@ -799,10 +781,7 @@ class ResumeDataEducationItem(msrest.serialization.Model):
 
     _attribute_map = {
         "organization": {"key": "organization", "type": "str"},
-        "accreditation": {
-            "key": "accreditation",
-            "type": "ResumeDataEducationItemAccreditation",
-        },
+        "accreditation": {"key": "accreditation", "type": "ResumeDataEducationItemAccreditation"},
         "grade": {"key": "grade", "type": "ResumeDataEducationItemGrade"},
         "location": {"key": "location", "type": "Location"},
         "dates": {"key": "dates", "type": "ResumeDataEducationItemDates"},
@@ -1096,9 +1075,7 @@ class ResumeDataSkillsPropertiesItemsItem(msrest.serialization.Model):
         "position": {"key": "position", "type": "int"},
     }
 
-    def __init__(
-        self, *, section: Optional[str] = None, position: Optional[int] = None, **kwargs
-    ):
+    def __init__(self, *, section: Optional[str] = None, position: Optional[int] = None, **kwargs):
         super(ResumeDataSkillsPropertiesItemsItem, self).__init__(**kwargs)
         self.section = section
         self.position = position

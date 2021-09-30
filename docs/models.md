@@ -1,8 +1,8 @@
-<a name="models._models"></a>
+<a id="models._models"></a>
 
 # models.\_models
 
-<a name="models._models.Error"></a>
+<a id="models._models.Error"></a>
 
 ## Error Objects
 
@@ -17,7 +17,7 @@ Error.
 :keyword error_detail:
 :paramtype error_detail: str
 
-<a name="models._models.Get200ApplicationJsonPropertiesItemsItem"></a>
+<a id="models._models.Get200ApplicationJsonPropertiesItemsItem"></a>
 
 ## Get200ApplicationJsonPropertiesItemsItem Objects
 
@@ -35,7 +35,7 @@ left blank, one will be automatically generated.
 :keyword format_file: Required. The template to apply.
 :paramtype format_file: str
 
-<a name="models._models.GetAllDocumentsResults"></a>
+<a id="models._models.GetAllDocumentsResults"></a>
 
 ## GetAllDocumentsResults Objects
 
@@ -54,7 +54,7 @@ GetAllDocumentsResults.
 :keyword results:
 :paramtype results: list[~affinda.models.Meta]
 
-<a name="models._models.Location"></a>
+<a id="models._models.Location"></a>
 
 ## Location Objects
 
@@ -85,7 +85,7 @@ All required parameters must be populated in order to send to Azure.
 :keyword city:
 :paramtype city: str
 
-<a name="models._models.Meta"></a>
+<a id="models._models.Meta"></a>
 
 ## Meta Objects
 
@@ -115,7 +115,7 @@ stop polling.
 deleted.  Defaults to no expiry.
 :paramtype expiry_time: str
 
-<a name="models._models.Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema"></a>
+<a id="models._models.Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema"></a>
 
 ## Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema Objects
 
@@ -134,7 +134,7 @@ Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema.
 :keyword results:
 :paramtype results: list[~affinda.models.Get200ApplicationJsonPropertiesItemsItem]
 
-<a name="models._models.Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema"></a>
+<a id="models._models.Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema"></a>
 
 ## Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema Objects
 
@@ -164,7 +164,7 @@ Chinese.
 deleted.  Defaults to no expiry.
 :paramtype expiry_time: str
 
-<a name="models._models.Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema"></a>
+<a id="models._models.Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema"></a>
 
 ## Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema Objects
 
@@ -208,7 +208,7 @@ processing is complete.
 deleted.  Defaults to no expiry.
 :paramtype expiry_time: str
 
-<a name="models._models.PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema"></a>
+<a id="models._models.PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema"></a>
 
 ## PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema Objects
 
@@ -239,7 +239,7 @@ If "false", will return an empty data object which can be polled at the GET endp
 processing is complete.
 :paramtype wait: bool
 
-<a name="models._models.RedactedResume"></a>
+<a id="models._models.RedactedResume"></a>
 
 ## RedactedResume Objects
 
@@ -258,7 +258,7 @@ All required parameters must be populated in order to send to Azure.
 :keyword error: Required.
 :paramtype error: ~affinda.models.Error
 
-<a name="models._models.RedactedResumeData"></a>
+<a id="models._models.RedactedResumeData"></a>
 
 ## RedactedResumeData Objects
 
@@ -271,7 +271,7 @@ RedactedResumeData.
 :keyword redacted_pdf:
 :paramtype redacted_pdf: str
 
-<a name="models._models.ReformattedResume"></a>
+<a id="models._models.ReformattedResume"></a>
 
 ## ReformattedResume Objects
 
@@ -290,7 +290,7 @@ All required parameters must be populated in order to send to Azure.
 :keyword error: Required.
 :paramtype error: ~affinda.models.Error
 
-<a name="models._models.ReformattedResumeData"></a>
+<a id="models._models.ReformattedResumeData"></a>
 
 ## ReformattedResumeData Objects
 
@@ -303,7 +303,7 @@ ReformattedResumeData.
 :keyword reformatted_file:
 :paramtype reformatted_file: str
 
-<a name="models._models.RequestError"></a>
+<a id="models._models.RequestError"></a>
 
 ## RequestError Objects
 
@@ -320,7 +320,7 @@ All required parameters must be populated in order to send to Azure.
 :keyword status_code: Required.
 :paramtype status_code: int
 
-<a name="models._models.Resume"></a>
+<a id="models._models.Resume"></a>
 
 ## Resume Objects
 
@@ -339,7 +339,7 @@ All required parameters must be populated in order to send to Azure.
 :keyword error: Required.
 :paramtype error: ~affinda.models.Error
 
-<a name="models._models.ResumeData"></a>
+<a id="models._models.ResumeData"></a>
 
 ## ResumeData Objects
 
@@ -396,7 +396,7 @@ ResumeData.
 readiblity.
 :paramtype raw_text: str
 
-<a name="models._models.ResumeDataEducationItem"></a>
+<a id="models._models.ResumeDataEducationItem"></a>
 
 ## ResumeDataEducationItem Objects
 
@@ -417,7 +417,7 @@ ResumeDataEducationItem.
 :keyword dates:
 :paramtype dates: ~affinda.models.ResumeDataEducationItemDates
 
-<a name="models._models.ResumeDataEducationItemAccreditation"></a>
+<a id="models._models.ResumeDataEducationItemAccreditation"></a>
 
 ## ResumeDataEducationItemAccreditation Objects
 
@@ -436,7 +436,7 @@ ResumeDataEducationItemAccreditation.
 :keyword education_level:
 :paramtype education_level: str
 
-<a name="models._models.ResumeDataEducationItemDates"></a>
+<a id="models._models.ResumeDataEducationItemDates"></a>
 
 ## ResumeDataEducationItemDates Objects
 
@@ -453,7 +453,7 @@ ResumeDataEducationItemDates.
 :keyword start_date:
 :paramtype start_date: ~datetime.date
 
-<a name="models._models.ResumeDataEducationItemGrade"></a>
+<a id="models._models.ResumeDataEducationItemGrade"></a>
 
 ## ResumeDataEducationItemGrade Objects
 
@@ -470,7 +470,7 @@ ResumeDataEducationItemGrade.
 :keyword value:
 :paramtype value: str
 
-<a name="models._models.ResumeDataName"></a>
+<a id="models._models.ResumeDataName"></a>
 
 ## ResumeDataName Objects
 
@@ -491,7 +491,7 @@ ResumeDataName.
 :keyword title:
 :paramtype title: str
 
-<a name="models._models.ResumeDataRefereesItem"></a>
+<a id="models._models.ResumeDataRefereesItem"></a>
 
 ## ResumeDataRefereesItem Objects
 
@@ -510,7 +510,7 @@ ResumeDataRefereesItem.
 :keyword number:
 :paramtype number: str
 
-<a name="models._models.ResumeDataSectionsItem"></a>
+<a id="models._models.ResumeDataSectionsItem"></a>
 
 ## ResumeDataSectionsItem Objects
 
@@ -529,7 +529,7 @@ ResumeDataSectionsItem.
 :keyword text:
 :paramtype text: str
 
-<a name="models._models.ResumeDataSkillsItem"></a>
+<a id="models._models.ResumeDataSkillsItem"></a>
 
 ## ResumeDataSkillsItem Objects
 
@@ -550,7 +550,7 @@ ResumeDataSkillsItem.
 :keyword sources:
 :paramtype sources: list[~affinda.models.ResumeDataSkillsPropertiesItemsItem]
 
-<a name="models._models.ResumeDataSkillsPropertiesItemsItem"></a>
+<a id="models._models.ResumeDataSkillsPropertiesItemsItem"></a>
 
 ## ResumeDataSkillsPropertiesItemsItem Objects
 
@@ -565,7 +565,7 @@ ResumeDataSkillsPropertiesItemsItem.
 :keyword position:
 :paramtype position: int
 
-<a name="models._models.ResumeDataWorkExperienceItem"></a>
+<a id="models._models.ResumeDataWorkExperienceItem"></a>
 
 ## ResumeDataWorkExperienceItem Objects
 
@@ -586,7 +586,7 @@ ResumeDataWorkExperienceItem.
 :keyword dates:
 :paramtype dates: ~affinda.models.ResumeDataWorkExperienceItemDates
 
-<a name="models._models.ResumeDataWorkExperienceItemDates"></a>
+<a id="models._models.ResumeDataWorkExperienceItemDates"></a>
 
 ## ResumeDataWorkExperienceItemDates Objects
 

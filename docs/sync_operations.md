@@ -1,8 +1,8 @@
-<a name="_affinda_api"></a>
+<a id="_affinda_api"></a>
 
 # \_affinda\_api
 
-<a name="_affinda_api.AffindaAPI"></a>
+<a id="_affinda_api.AffindaAPI"></a>
 
 ## AffindaAPI Objects
 
@@ -19,11 +19,11 @@ Affinda API client for Python.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 - `base_url` (`str`): Service URL. Default value is 'https://api.affinda.com/v1'.
 
-<a name="operations._affinda_api_operations"></a>
+<a id="operations._affinda_api_operations"></a>
 
 # operations.\_affinda\_api\_operations
 
-<a name="operations._affinda_api_operations.AffindaAPIOperationsMixin"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin"></a>
 
 ## AffindaAPIOperationsMixin Objects
 
@@ -31,12 +31,12 @@ Affinda API client for Python.
 class AffindaAPIOperationsMixin(object)
 ```
 
-<a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_resumes"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_resumes"></a>
 
 #### get\_all\_resumes
 
 ```python
- | get_all_resumes(**kwargs)
+def get_all_resumes(**kwargs)
 ```
 
 Gets list of all resumes.
@@ -49,12 +49,12 @@ Returns all the resume summaries for that user, limited to 300 per page.
 
 `~affinda.models.GetAllDocumentsResults or ~affinda.models.RequestError`: GetAllDocumentsResults or RequestError, or the result of cls(response)
 
-<a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resume"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resume"></a>
 
 #### create\_resume
 
 ```python
- | create_resume(file=None, identifier=None, file_name=None, url=None, wait=True, resume_language=None, expiry_time=None, **kwargs)
+def create_resume(file=None, identifier=None, file_name=None, url=None, wait=True, resume_language=None, expiry_time=None, **kwargs)
 ```
 
 Uploads a resume for parsing.
@@ -79,12 +79,12 @@ retrieve results.
 
 `~affinda.models.Resume or ~affinda.models.RequestError`: Resume or RequestError, or the result of cls(response)
 
-<a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume"></a>
 
 #### get\_resume
 
 ```python
- | get_resume(identifier, **kwargs)
+def get_resume(identifier, **kwargs)
 ```
 
 Gets parse results for a specific resume.
@@ -102,12 +102,12 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the `
 
 `~affinda.models.Resume or ~affinda.models.RequestError`: Resume or RequestError, or the result of cls(response)
 
-<a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_resume"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_resume"></a>
 
 #### delete\_resume
 
 ```python
- | delete_resume(identifier, **kwargs)
+def delete_resume(identifier, **kwargs)
 ```
 
 Deletes a resume.
@@ -123,12 +123,12 @@ Deletes the specified resume from the database.
 
 `~affinda.models.RequestError or None`: RequestError, or the result of cls(response)
 
-<a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_redacted_resumes"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_redacted_resumes"></a>
 
 #### get\_all\_redacted\_resumes
 
 ```python
- | get_all_redacted_resumes(**kwargs)
+def get_all_redacted_resumes(**kwargs)
 ```
 
 Gets list of all redacted resumes.
@@ -141,12 +141,12 @@ Returns all the redacted resume information for that resume.
 
 `~affinda.models.GetAllDocumentsResults or ~affinda.models.RequestError`: GetAllDocumentsResults or RequestError, or the result of cls(response)
 
-<a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_redacted_resume"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_redacted_resume"></a>
 
 #### create\_redacted\_resume
 
 ```python
- | create_redacted_resume(file=None, identifier=None, file_name=None, url=None, resume_language=None, wait=True, redact_headshot="true", redact_personal_details="true", redact_work_details="true", redact_education_details="true", redact_referees="true", redact_locations="true", redact_dates="true", expiry_time=None, **kwargs)
+def create_redacted_resume(file=None, identifier=None, file_name=None, url=None, resume_language=None, wait=True, redact_headshot="true", redact_personal_details="true", redact_work_details="true", redact_education_details="true", redact_referees="true", redact_locations="true", redact_dates="true", expiry_time=None, **kwargs)
 ```
 
 Uploads a resume for redacting.
@@ -175,12 +175,12 @@ Uploads a resume for redacting.
 
 `~affinda.models.RedactedResume or ~affinda.models.RequestError`: RedactedResume or RequestError, or the result of cls(response)
 
-<a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_redacted_resume"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_redacted_resume"></a>
 
 #### get\_redacted\_resume
 
 ```python
- | get_redacted_resume(identifier, **kwargs)
+def get_redacted_resume(identifier, **kwargs)
 ```
 
 Gets redaction results for a specific resume.
@@ -198,12 +198,12 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the
 
 `~affinda.models.RedactedResume or ~affinda.models.RequestError`: RedactedResume or RequestError, or the result of cls(response)
 
-<a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_redacted_resume"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_redacted_resume"></a>
 
 #### delete\_redacted\_resume
 
 ```python
- | delete_redacted_resume(identifier, **kwargs)
+def delete_redacted_resume(identifier, **kwargs)
 ```
 
 Deletes a redacted resume.
@@ -219,12 +219,12 @@ Deletes the specified resume from the database.
 
 `~affinda.models.RequestError or None`: RequestError, or the result of cls(response)
 
-<a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_resume_formats"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_resume_formats"></a>
 
 #### get\_all\_resume\_formats
 
 ```python
- | get_all_resume_formats(**kwargs)
+def get_all_resume_formats(**kwargs)
 ```
 
 Gets list of all resume formats.
@@ -237,12 +237,12 @@ Returns all the resume formats.
 
 `~affinda.models.Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema or`: Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema or RequestError,
 
-<a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_reformatted_resumes"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_reformatted_resumes"></a>
 
 #### get\_all\_reformatted\_resumes
 
 ```python
- | get_all_reformatted_resumes(**kwargs)
+def get_all_reformatted_resumes(**kwargs)
 ```
 
 Gets list of all reformatted resumes.
@@ -255,12 +255,12 @@ Returns all the reformatted resume information for that resume.
 
 `~affinda.models.GetAllDocumentsResults or ~affinda.models.RequestError`: GetAllDocumentsResults or RequestError, or the result of cls(response)
 
-<a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_reformatted_resume"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_reformatted_resume"></a>
 
 #### create\_reformatted\_resume
 
 ```python
- | create_reformatted_resume(resume_format, file=None, identifier=None, file_name=None, url=None, resume_language=None, wait=True, **kwargs)
+def create_reformatted_resume(resume_format, file=None, identifier=None, file_name=None, url=None, resume_language=None, wait=True, **kwargs)
 ```
 
 Uploads a resume for reformatting.
@@ -282,12 +282,12 @@ Uploads a resume for reformatting.
 
 `~affinda.models.ReformattedResume or ~affinda.models.RequestError`: ReformattedResume or RequestError, or the result of cls(response)
 
-<a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_reformatted_resume"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_reformatted_resume"></a>
 
 #### get\_reformatted\_resume
 
 ```python
- | get_reformatted_resume(identifier, **kwargs)
+def get_reformatted_resume(identifier, **kwargs)
 ```
 
 Gets reformatting results for a specific resume.
@@ -305,12 +305,12 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the
 
 `~affinda.models.ReformattedResume or ~affinda.models.RequestError`: ReformattedResume or RequestError, or the result of cls(response)
 
-<a name="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_reformatted_resume"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_reformatted_resume"></a>
 
 #### delete\_reformatted\_resume
 
 ```python
- | delete_reformatted_resume(identifier, **kwargs)
+def delete_reformatted_resume(identifier, **kwargs)
 ```
 
 Deletes a reformatted resume.

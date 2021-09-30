@@ -10,12 +10,8 @@ try:
     from ._models_py3 import GetAllDocumentsResults
     from ._models_py3 import Location
     from ._models_py3 import Meta
-    from ._models_py3 import (
-        Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema,
-    )
-    from ._models_py3 import (
-        Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema,
-    )
+    from ._models_py3 import Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema
+    from ._models_py3 import Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema
     from ._models_py3 import (
         Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema,
     )

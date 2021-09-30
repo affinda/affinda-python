@@ -60,3 +60,5 @@ htmlcov/
 
 # Pycharm project
 .idea/
+
+build_state.json

@@ -166,7 +166,7 @@ print(all_reformatted_resumes.as_dict())
 ### createReformattedResume - Uploads a resume for reformatting
 
 ```python
-from pathlib import PathAdding basic test suite
+from pathlib import Path
 
 from affinda import TokenCredential, AffindaAPI
 
@@ -178,9 +178,7 @@ credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
 
 with open(file_pth, "rb") as f:
-    reformatted_resume = client.create_reformatted_resume(file=f,
-                                                          file_name=file_pth.name,
-                                                          resume_format=resume_format)
+    reformatted_resume = client.create_reformatted_resume(file=f, file_name=file_pth.name, resume_format=resume_format)
 
 print(reformatted_resume.as_dict())
 ```
