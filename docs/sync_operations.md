@@ -54,7 +54,7 @@ Returns all the resume summaries for that user, limited to 300 per page.
 #### create\_resume
 
 ```python
-def create_resume(file=None, identifier=None, file_name=None, url=None, wait=True, resume_language=None, expiry_time=None, **kwargs, ,)
+def create_resume(file=None, identifier=None, file_name=None, url=None, wait=True, resume_language=None, expiry_time=None, **kwargs)
 ```
 
 Uploads a resume for parsing.
@@ -84,7 +84,7 @@ retrieve results.
 #### get\_resume
 
 ```python
-def get_resume(identifier, **kwargs, ,)
+def get_resume(identifier, **kwargs)
 ```
 
 Gets parse results for a specific resume.
@@ -107,7 +107,7 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the `
 #### delete\_resume
 
 ```python
-def delete_resume(identifier, **kwargs, ,)
+def delete_resume(identifier, **kwargs)
 ```
 
 Deletes a resume.
@@ -146,7 +146,7 @@ Returns all the redacted resume information for that resume.
 #### create\_redacted\_resume
 
 ```python
-def create_redacted_resume(file=None, identifier=None, file_name=None, url=None, resume_language=None, wait=True, redact_headshot="true", redact_personal_details="true", redact_work_details="true", redact_education_details="true", redact_referees="true", redact_locations="true", redact_dates="true", expiry_time=None, **kwargs, ,)
+def create_redacted_resume(file=None, identifier=None, file_name=None, url=None, resume_language=None, wait=True, redact_headshot="true", redact_personal_details="true", redact_work_details="true", redact_education_details="true", redact_referees="true", redact_locations="true", redact_dates="true", expiry_time=None, **kwargs)
 ```
 
 Uploads a resume for redacting.
@@ -180,7 +180,7 @@ Uploads a resume for redacting.
 #### get\_redacted\_resume
 
 ```python
-def get_redacted_resume(identifier, **kwargs, ,)
+def get_redacted_resume(identifier, **kwargs)
 ```
 
 Gets redaction results for a specific resume.
@@ -203,7 +203,7 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the
 #### delete\_redacted\_resume
 
 ```python
-def delete_redacted_resume(identifier, **kwargs, ,)
+def delete_redacted_resume(identifier, **kwargs)
 ```
 
 Deletes a redacted resume.
@@ -260,7 +260,7 @@ Returns all the reformatted resume information for that resume.
 #### create\_reformatted\_resume
 
 ```python
-def create_reformatted_resume(resume_format, file=None, identifier=None, file_name=None, url=None, resume_language=None, wait=True, **kwargs, ,)
+def create_reformatted_resume(resume_format, file=None, identifier=None, file_name=None, url=None, resume_language=None, wait=True, **kwargs)
 ```
 
 Uploads a resume for reformatting.
@@ -287,7 +287,7 @@ Uploads a resume for reformatting.
 #### get\_reformatted\_resume
 
 ```python
-def get_reformatted_resume(identifier, **kwargs, ,)
+def get_reformatted_resume(identifier, **kwargs)
 ```
 
 Gets reformatting results for a specific resume.
@@ -310,7 +310,7 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the
 #### delete\_reformatted\_resume
 
 ```python
-def delete_reformatted_resume(identifier, **kwargs, ,)
+def delete_reformatted_resume(identifier, **kwargs)
 ```
 
 Deletes a reformatted resume.

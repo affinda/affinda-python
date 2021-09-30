@@ -120,8 +120,7 @@ deleted.  Defaults to no expiry.
 ## Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema Objects
 
 ```python
-class Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema(
-    msrest.serialization.Model)
+class Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model)
 ```
 
 Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema.
@@ -170,8 +169,7 @@ deleted.  Defaults to no expiry.
 ## Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema Objects
 
 ```python
-class Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema(
-    msrest.serialization.Model)
+class Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema(msrest.serialization.Model)
 ```
 
 Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema.
@@ -215,8 +213,7 @@ deleted.  Defaults to no expiry.
 ## PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema Objects
 
 ```python
-class PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema(
-    msrest.serialization.Model)
+class PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema(msrest.serialization.Model)
 ```
 
 PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema.
