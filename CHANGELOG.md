@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Reformatted code with black
+- Minor changes
+- Very minor formatting changes
 
 ## [0.1.9] - 2021-09-08
 ### Added
