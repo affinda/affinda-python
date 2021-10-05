@@ -1,5 +1,5 @@
 [build-system]
-requires = ["azure-core<=1.18.*", "msrest", "setuptools>=40.8.0", "wheel"]
+requires = ["azure-core==1.18.0", "msrest", "setuptools>=40.8.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.black]
