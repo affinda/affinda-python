@@ -1,9 +1,9 @@
 
 
-Parser
-------
+Resume Parser
+-------------
 
-### getAllResumes - Gets list of all resumes
+### getAllResumes - Get list of all resumes
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -17,7 +17,7 @@ all_resumes = client.get_all_resumes()
 print(all_resumes.as_dict())
 ```
 
-### createResume - Uploads a resume for parsing
+### createResume - Upload a resume for parsing
 
 ```python
 from pathlib import Path
@@ -25,7 +25,7 @@ from pathlib import Path
 from affinda import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
-file_pth = Path("path_to_file")
+file_pth = Path("path_to_file.pdf")
 
 credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
@@ -36,7 +36,7 @@ with open(file_pth, "rb") as f:
 print(resume.as_dict())
 ```
 
-### getResume - Gets parse results for a specific resume
+### getResume - Get parse results for a specific resume
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -51,7 +51,7 @@ resume = client.get_resume(identifier=identifier)
 print(resume.as_dict())
 ```
 
-### deleteResume - Deletes a resume
+### deleteResume - Delete a resume
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -66,10 +66,10 @@ response = client.delete_resume(identifier=identifier)
 print(response.as_dict())
 ```
 
-Redactor
---------
+Resume Redactor
+---------------
 
-### getAllRedactedResumes - Gets list of all redacted resumes
+### getAllRedactedResumes - Get list of all redacted resumes
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -83,7 +83,7 @@ all_redacted_resumes = client.get_all_redacted_resumes()
 print(all_redacted_resumes.as_dict())
 ```
 
-### createRedactedResume - Uploads a resume for redacting
+### createRedactedResume - Upload a resume for redacting
 
 ```python
 from pathlib import Path
@@ -91,7 +91,7 @@ from pathlib import Path
 from affinda import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
-file_pth = Path("path_to_file")
+file_pth = Path("path_to_file.pdf")
 
 credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
@@ -102,7 +102,7 @@ with open(file_pth, "rb") as f:
 print(redacted_resume.as_dict())
 ```
 
-### getRedactedResume - Gets redaction results for a specific resume
+### getRedactedResume - Get redaction results for a specific resume
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -117,7 +117,7 @@ redacted_resume = client.get_redacted_resume(identifier=identifier)
 print(redacted_resume.as_dict())
 ```
 
-### deleteRedactedResume - Deletes a redacted resume
+### deleteRedactedResume - Delete a redacted resume
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -132,10 +132,10 @@ response = client.delete_redacted_resume(identifier=identifier)
 print(response.as_dict())
 ```
 
-Reformatter
------------
+Resume Reformatter
+------------------
 
-### getAllResumeFormats - Gets list of all resume formats
+### getAllResumeFormats - Get list of all resume formats
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -149,7 +149,7 @@ resume_formats = client.get_all_resume_formats()
 print(resume_formats.as_dict())
 ```
 
-### getAllReformattedResumes - Gets list of all reformatted resumes
+### getAllReformattedResumes - Get list of all reformatted resumes
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -163,7 +163,7 @@ all_reformatted_resumes = client.get_all_reformatted_resumes()
 print(all_reformatted_resumes.as_dict())
 ```
 
-### createReformattedResume - Uploads a resume for reformatting
+### createReformattedResume - Upload a resume for reformatting
 
 ```python
 from pathlib import Path
@@ -172,7 +172,7 @@ from affinda import TokenCredential, AffindaAPI
 
 token = "REPLACE_TOKEN"
 resume_format = "REPLACE_FORMAT_IDENTIFIER"
-file_pth = Path("path_to_file")
+file_pth = Path("path_to_file.pdf")
 
 credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
@@ -183,7 +183,7 @@ with open(file_pth, "rb") as f:
 print(reformatted_resume.as_dict())
 ```
 
-### getReformattedResume - Gets reformatting results for a specific resume
+### getReformattedResume - Get reformatting results for a specific resume
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -198,7 +198,7 @@ reformatted_resume = client.get_reformatted_resume(identifier=identifier)
 print(reformatted_resume.as_dict())
 ```
 
-### deleteReformattedResume - Deletes a reformatted resume
+### deleteReformattedResume - Delete a reformatted resume
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -209,6 +209,72 @@ identifier = "REPLACE_IDENTIFIER"
 credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
 response = client.delete_reformatted_resume(identifier=identifier)
+
+print(response.as_dict())
+```
+
+Invoice Parser
+--------------
+
+### getAllInvoices - Get list of all invoices
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+all_invoices = client.get_all_invoices()
+
+print(all_invoices.as_dict())
+```
+
+### createInvoice - Upload an invoice for parsing
+
+```python
+from pathlib import Path
+
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+file_pth = Path("path_to_file.pdf")
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+with open(file_pth, "rb") as f:
+    invoice = client.create_invoice(file=f)
+
+print(invoice.as_dict())
+```
+
+### getInvoice - Get parse results for a specific invoice
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+invoice = client.get_invoices(identifier=identifier)
+
+print(invoice.as_dict())
+```
+
+### deleteInvoice - Delete an invoice
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+response = client.delete_invoice(identifier=identifier)
 
 print(response.as_dict())
 ```

@@ -17,7 +17,7 @@ Affinda API client for Python.
 - `credential` (`~azure.core.credentials.TokenCredential`): Credential needed for the client to connect to Azure.
 - `limit` (`int`): The numbers of documents to return, defaults to 300.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
-- `base_url` (`str`): Service URL
+- `base_url` (`str`): Service URL. Default value is 'https://api.affinda.com/v1'.
 
 <a id="operations._affinda_api_operations"></a>
 
@@ -39,7 +39,7 @@ class AffindaAPIOperationsMixin(object)
 def get_all_resumes(**kwargs)
 ```
 
-Gets list of all resumes.
+Get list of all resumes.
 
 Returns all the resume summaries for that user, limited to 300 per page.
 
@@ -54,10 +54,10 @@ Returns all the resume summaries for that user, limited to 300 per page.
 #### create\_resume
 
 ```python
-def create_resume(file=None, identifier=None, file_name=None, url=None, wait=True, resume_language=None, expiry_time=None, **kwargs)
+def create_resume(file=None, identifier=None, file_name=None, url=None, wait=True, language=None, expiry_time=None, **kwargs)
 ```
 
-Uploads a resume for parsing.
+Upload a resume for parsing.
 
 Uploads a resume for parsing.
 When successful, returns an ``identifier`` in the response for subsequent use with the
@@ -72,7 +72,7 @@ retrieve results.
 - `file_name` (`str`): 
 - `url` (`str`): 
 - `wait` (`bool`): 
-- `resume_language` (`str`): 
+- `language` (`str`): 
 - `expiry_time` (`str`): 
 
 **Returns**:
@@ -87,7 +87,7 @@ retrieve results.
 def get_resume(identifier, **kwargs)
 ```
 
-Gets parse results for a specific resume.
+Get parse results for a specific resume.
 
 Returns all the parse results for that resume if processing is completed.
 The ``identifier`` is the unique ID returned after POST-ing the resume via the `/resumes
@@ -110,7 +110,7 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the `
 def delete_resume(identifier, **kwargs)
 ```
 
-Deletes a resume.
+Delete a resume.
 
 Deletes the specified resume from the database.
 
@@ -131,7 +131,7 @@ Deletes the specified resume from the database.
 def get_all_redacted_resumes(**kwargs)
 ```
 
-Gets list of all redacted resumes.
+Get list of all redacted resumes.
 
 Returns all the redacted resume information for that resume.
 
@@ -146,10 +146,10 @@ Returns all the redacted resume information for that resume.
 #### create\_redacted\_resume
 
 ```python
-def create_redacted_resume(file=None, identifier=None, file_name=None, url=None, resume_language=None, wait=True, redact_headshot="true", redact_personal_details="true", redact_work_details="true", redact_education_details="true", redact_referees="true", redact_locations="true", redact_dates="true", expiry_time=None, **kwargs)
+def create_redacted_resume(file=None, identifier=None, file_name=None, url=None, language=None, wait=True, redact_headshot=True, redact_personal_details=True, redact_work_details=True, redact_education_details=True, redact_referees=True, redact_locations=True, redact_dates=True, expiry_time=None, **kwargs)
 ```
 
-Uploads a resume for redacting.
+Upload a resume for redacting.
 
 Uploads a resume for redacting.
 
@@ -160,15 +160,15 @@ Uploads a resume for redacting.
 - `identifier` (`str`): 
 - `file_name` (`str`): 
 - `url` (`str`): 
-- `resume_language` (`str`): 
+- `language` (`str`): 
 - `wait` (`bool`): 
-- `redact_headshot` (`str`): Whether to redact headshot.
-- `redact_personal_details` (`str`): Whether to redact personal details (e.g. name, address).
-- `redact_work_details` (`str`): Whether to redact work details (e.g. company names).
-- `redact_education_details` (`str`): Whether to redact education details (e.g. university names).
-- `redact_referees` (`str`): Whether to redact referee details.
-- `redact_locations` (`str`): Whether to redact location names.
-- `redact_dates` (`str`): Whether to redact dates.
+- `redact_headshot` (`bool`): Whether to redact headshot.
+- `redact_personal_details` (`bool`): Whether to redact personal details (e.g. name, address).
+- `redact_work_details` (`bool`): Whether to redact work details (e.g. company names).
+- `redact_education_details` (`bool`): Whether to redact education details (e.g. university names).
+- `redact_referees` (`bool`): Whether to redact referee details.
+- `redact_locations` (`bool`): Whether to redact location names.
+- `redact_dates` (`bool`): Whether to redact dates.
 - `expiry_time` (`str`): 
 
 **Returns**:
@@ -183,7 +183,7 @@ Uploads a resume for redacting.
 def get_redacted_resume(identifier, **kwargs)
 ```
 
-Gets redaction results for a specific resume.
+Get redaction results for a specific resume.
 
 Returns all the redaction results for that resume if processing is completed.
 The ``identifier`` is the unique ID returned after POST-ing the resume via the
@@ -206,7 +206,7 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the
 def delete_redacted_resume(identifier, **kwargs)
 ```
 
-Deletes a redacted resume.
+Delete a redacted resume.
 
 Deletes the specified resume from the database.
 
@@ -227,7 +227,7 @@ Deletes the specified resume from the database.
 def get_all_resume_formats(**kwargs)
 ```
 
-Gets list of all resume formats.
+Get list of all resume formats.
 
 Returns all the resume formats.
 
@@ -245,7 +245,7 @@ Returns all the resume formats.
 def get_all_reformatted_resumes(**kwargs)
 ```
 
-Gets list of all reformatted resumes.
+Get list of all reformatted resumes.
 
 Returns all the reformatted resume information for that resume.
 
@@ -260,12 +260,12 @@ Returns all the reformatted resume information for that resume.
 #### create\_reformatted\_resume
 
 ```python
-def create_reformatted_resume(resume_format, file=None, identifier=None, file_name=None, url=None, resume_language=None, wait=True, **kwargs)
+def create_reformatted_resume(resume_format, file=None, identifier=None, file_name=None, url=None, language=None, wait=True, **kwargs)
 ```
 
-Uploads a resume for reformatting.
+Upload a resume for reformatting.
 
-Uploads a resume for reformatting.
+Upload a resume for reformatting.
 
 **Arguments**:
 
@@ -275,7 +275,7 @@ Uploads a resume for reformatting.
 - `identifier` (`str`): 
 - `file_name` (`str`): 
 - `url` (`str`): 
-- `resume_language` (`str`): 
+- `language` (`str`): 
 - `wait` (`bool`): 
 
 **Returns**:
@@ -290,7 +290,7 @@ Uploads a resume for reformatting.
 def get_reformatted_resume(identifier, **kwargs)
 ```
 
-Gets reformatting results for a specific resume.
+Get reformatting results for a specific resume.
 
 Returns all the reformatting results for that resume if processing is completed.
 The ``identifier`` is the unique ID returned after POST-ing the resume via the
@@ -313,14 +313,106 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the
 def delete_reformatted_resume(identifier, **kwargs)
 ```
 
-Deletes a reformatted resume.
+Delete a reformatted resume.
 
-Deletes the specified resume from the database.
+Delete the specified resume from the database.
 
 **Arguments**:
 
 :keyword callable cls: A custom type or function that will be passed the direct response
 - `identifier` (`str`): Document identifier.
+
+**Returns**:
+
+`~affinda.models.RequestError or None`: RequestError, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_invoices"></a>
+
+#### get\_all\_invoices
+
+```python
+def get_all_invoices(**kwargs)
+```
+
+Get list of all invoices.
+
+Returns all the invoice summaries for that user, limited to 300 per page.
+
+:keyword callable cls: A custom type or function that will be passed the direct response
+
+**Returns**:
+
+`~affinda.models.GetAllInvoicesResults or ~affinda.models.RequestError`: GetAllInvoicesResults or RequestError, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_invoice"></a>
+
+#### create\_invoice
+
+```python
+def create_invoice(file=None, identifier=None, file_name=None, url=True, wait=True, language=None, expiry_time=None, **kwargs)
+```
+
+Upload an invoice for parsing.
+
+Uploads an invoice for parsing.
+When successful, returns an ``identifier`` in the response for subsequent use with the
+`/invoices/{identifier} <#operation/getInvoice>`_ endpoint to check processing status and
+retrieve results.
+
+**Arguments**:
+
+:keyword callable cls: A custom type or function that will be passed the direct response
+- `file` (`IO`): 
+- `identifier` (`str`): 
+- `file_name` (`str`): 
+- `url` (`bool`): URL to file to download and process.
+- `wait` (`bool`): 
+- `language` (`str`): 
+- `expiry_time` (`str`): 
+
+**Returns**:
+
+`~affinda.models.Invoice or ~affinda.models.RequestError`: Invoice or RequestError, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_invoice"></a>
+
+#### get\_invoice
+
+```python
+def get_invoice(identifier, **kwargs)
+```
+
+Get parse results for a specific invoice.
+
+Returns all the parse results for that invoice if processing is completed.
+The ``identifier`` is the unique ID returned after POST-ing the invoice via the `/invoices
+<#operation/createInvoice>`_ endpoint.
+
+**Arguments**:
+
+:keyword callable cls: A custom type or function that will be passed the direct response
+- `identifier` (`str`): Document identifier.
+
+**Returns**:
+
+`~affinda.models.Invoice or ~affinda.models.RequestError`: Invoice or RequestError, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_invoice"></a>
+
+#### delete\_invoice
+
+```python
+def delete_invoice(identifier, **kwargs)
+```
+
+Delete an invoice.
+
+Delete the specified invoice from the database.
+
+**Arguments**:
+
+:keyword callable cls: A custom type or function that will be passed the direct response
+- `identifier` (`str`): Invoice identifier.
 
 **Returns**:
 
