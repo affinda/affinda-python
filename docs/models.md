@@ -2,6 +2,46 @@
 
 # models.\_models
 
+<a id="models._models.Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification"></a>
+
+## Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification Objects
+
+```python
+class Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification(msrest.serialization.Model)
+```
+
+Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification.
+
+:ivar title: SOC2020 classification for this job title.
+:vartype title: str
+:ivar minor_group: SOC2020 minor group.
+:vartype minor_group: str
+:ivar sub_major_group: SOC2020 sub major group.
+:vartype sub_major_group: str
+:ivar major_group: SOC2020 major group.
+:vartype major_group: str
+:ivar soc_code: The 4 digit code representing the SOC2020 classification for this job title.
+:vartype soc_code: int
+
+<a id="models._models.Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword title: SOC2020 classification for this job title.
+:paramtype title: str
+:keyword minor_group: SOC2020 minor group.
+:paramtype minor_group: str
+:keyword sub_major_group: SOC2020 sub major group.
+:paramtype sub_major_group: str
+:keyword major_group: SOC2020 major group.
+:paramtype major_group: str
+:keyword soc_code: The 4 digit code representing the SOC2020 classification for this job title.
+:paramtype soc_code: int
+
 <a id="models._models.Error"></a>
 
 ## Error Objects
@@ -452,7 +492,8 @@ class Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema(msrest.s
 
 Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema.
 
-:ivar file: File as binary data blob.
+:ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
+ JPG.
 :vartype file: IO
 :ivar identifier: Unique identifier for the document. If creating a document and left blank,
  one will be automatically generated.
@@ -479,7 +520,8 @@ Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema.
 def __init__(**kwargs)
 ```
 
-:keyword file: File as binary data blob.
+:keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+PNG, JPG.
 :paramtype file: IO
 :keyword identifier: Unique identifier for the document. If creating a document and left blank,
 one will be automatically generated.
@@ -544,7 +586,8 @@ class Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema(msrest.ser
 
 Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema.
 
-:ivar file: File as binary data blob.
+:ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
+ JPG.
 :vartype file: IO
 :ivar identifier: Unique identifier for the document. If creating a document and left blank,
  one will be automatically generated.
@@ -571,7 +614,8 @@ Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema.
 def __init__(**kwargs)
 ```
 
-:keyword file: File as binary data blob.
+:keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+PNG, JPG.
 :paramtype file: IO
 :keyword identifier: Unique identifier for the document. If creating a document and left blank,
 one will be automatically generated.
@@ -600,7 +644,8 @@ class Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema(ms
 
 Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema.
 
-:ivar file: File as binary data blob.
+:ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
+ JPG.
 :vartype file: IO
 :ivar identifier: Unique identifier for the document. If creating a document and left blank,
  one will be automatically generated.
@@ -629,6 +674,8 @@ Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema.
 :vartype redact_locations: bool
 :ivar redact_dates: Whether to redact dates.
 :vartype redact_dates: bool
+:ivar redact_gender: Whether to redact gender.
+:vartype redact_gender: bool
 :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
  deleted.  Defaults to no expiry.
 :vartype expiry_time: str
@@ -641,7 +688,8 @@ Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema.
 def __init__(**kwargs)
 ```
 
-:keyword file: File as binary data blob.
+:keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+PNG, JPG.
 :paramtype file: IO
 :keyword identifier: Unique identifier for the document. If creating a document and left blank,
 one will be automatically generated.
@@ -670,6 +718,8 @@ processing is complete.
 :paramtype redact_locations: bool
 :keyword redact_dates: Whether to redact dates.
 :paramtype redact_dates: bool
+:keyword redact_gender: Whether to redact gender.
+:paramtype redact_gender: bool
 :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
 :paramtype expiry_time: str
@@ -686,7 +736,8 @@ PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema.
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar file: File as binary data blob.
+:ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
+ JPG.
 :vartype file: IO
 :ivar identifier: Unique identifier for the document. If creating a document and left blank,
  one will be automatically generated.
@@ -712,7 +763,8 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword file: File as binary data blob.
+:keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+PNG, JPG.
 :paramtype file: IO
 :keyword identifier: Unique identifier for the document. If creating a document and left blank,
 one will be automatically generated.
@@ -1361,6 +1413,8 @@ ResumeDataWorkExperienceItem.
 :vartype job_description: str
 :ivar dates:
 :vartype dates: ~affinda.models.ResumeDataWorkExperienceItemDates
+:ivar occupation:
+:vartype occupation: ~affinda.models.ResumeDataWorkExperienceItemOccupation
 
 <a id="models._models.ResumeDataWorkExperienceItem.__init__"></a>
 
@@ -1380,6 +1434,8 @@ def __init__(**kwargs)
 :paramtype job_description: str
 :keyword dates:
 :paramtype dates: ~affinda.models.ResumeDataWorkExperienceItemDates
+:keyword occupation:
+:paramtype occupation: ~affinda.models.ResumeDataWorkExperienceItemOccupation
 
 <a id="models._models.ResumeDataWorkExperienceItemDates"></a>
 
@@ -1416,4 +1472,44 @@ def __init__(**kwargs)
 :paramtype months_in_position: int
 :keyword is_current:
 :paramtype is_current: bool
+
+<a id="models._models.ResumeDataWorkExperienceItemOccupation"></a>
+
+## ResumeDataWorkExperienceItemOccupation Objects
+
+```python
+class ResumeDataWorkExperienceItemOccupation(msrest.serialization.Model)
+```
+
+ResumeDataWorkExperienceItemOccupation.
+
+:ivar job_title: The raw (not normalized) job title pulled from the work experience entry.
+:vartype job_title: str
+:ivar job_title_normalized: Mapped onto the EMSI job title taxonomy if a sufficiently close
+ match exists.
+:vartype job_title_normalized: str
+:ivar management_level: Possible values include: "None", "Low", "Mid", "Upper".
+:vartype management_level: str or ~affinda.models.Enum0
+:ivar classification:
+:vartype classification:
+ ~affinda.models.Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification
+
+<a id="models._models.ResumeDataWorkExperienceItemOccupation.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword job_title: The raw (not normalized) job title pulled from the work experience entry.
+:paramtype job_title: str
+:keyword job_title_normalized: Mapped onto the EMSI job title taxonomy if a sufficiently close
+match exists.
+:paramtype job_title_normalized: str
+:keyword management_level: Possible values include: "None", "Low", "Mid", "Upper".
+:paramtype management_level: str or ~affinda.models.Enum0
+:keyword classification:
+:paramtype classification:
+~affinda.models.Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification
 

@@ -146,7 +146,7 @@ Returns all the redacted resume information for that resume.
 #### create\_redacted\_resume
 
 ```python
-def create_redacted_resume(file=None, identifier=None, file_name=None, url=None, language=None, wait=True, redact_headshot=True, redact_personal_details=True, redact_work_details=True, redact_education_details=True, redact_referees=True, redact_locations=True, redact_dates=True, expiry_time=None, **kwargs)
+def create_redacted_resume(file=None, identifier=None, file_name=None, url=None, language=None, wait=True, redact_headshot=True, redact_personal_details=True, redact_work_details=True, redact_education_details=True, redact_referees=True, redact_locations=True, redact_dates=True, redact_gender=True, expiry_time=None, **kwargs)
 ```
 
 Upload a resume for redacting.
@@ -169,6 +169,7 @@ Uploads a resume for redacting.
 - `redact_referees` (`bool`): Whether to redact referee details.
 - `redact_locations` (`bool`): Whether to redact location names.
 - `redact_dates` (`bool`): Whether to redact dates.
+- `redact_gender` (`bool`): Whether to redact gender.
 - `expiry_time` (`str`): 
 
 **Returns**:

@@ -4,4 +4,14 @@
 # Changes may cause incorrect behavior and will be lost if the code is regenerated.
 # --------------------------------------------------------------------------
 
-VERSION = "0.2.0"
+from enum import Enum
+from six import with_metaclass
+from azure.core import CaseInsensitiveEnumMeta
+
+
+class Enum0(with_metaclass(CaseInsensitiveEnumMeta, str, Enum)):
+
+    NONE = "None"
+    LOW = "Low"
+    MID = "Mid"
+    UPPER = "Upper"
