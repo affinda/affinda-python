@@ -388,6 +388,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype state: str
 :ivar country:
 :vartype country: str
+:ivar country_code: Two letter country code (ISO 3166-1 alpha-2).
+:vartype country_code: str
 :ivar raw_input: Required.
 :vartype raw_input: str
 :ivar street_number:
@@ -415,6 +417,8 @@ def __init__(**kwargs)
 :paramtype state: str
 :keyword country:
 :paramtype country: str
+:keyword country_code: Two letter country code (ISO 3166-1 alpha-2).
+:paramtype country_code: str
 :keyword raw_input: Required.
 :paramtype raw_input: str
 :keyword street_number:
