@@ -9,9 +9,23 @@ from six import with_metaclass
 from azure.core import CaseInsensitiveEnumMeta
 
 
-class Enum0(with_metaclass(CaseInsensitiveEnumMeta, str, Enum)):
+class EducationLevel(with_metaclass(CaseInsensitiveEnumMeta, str, Enum)):
 
-    NONE = "None"
+    SCHOOL = "school"
+    CERTIFICATE = "certificate"
+    BACHELORS = "bachelors"
+    MASTERS = "masters"
+    DOCTORAL = "doctoral"
+
+
+class ManagementLevel(with_metaclass(CaseInsensitiveEnumMeta, str, Enum)):
+
     LOW = "Low"
     MID = "Mid"
     UPPER = "Upper"
+
+
+class SearchLocationUnit(with_metaclass(CaseInsensitiveEnumMeta, str, Enum)):
+
+    KM = "km"
+    MI = "mi"

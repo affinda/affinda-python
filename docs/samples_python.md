@@ -213,6 +213,112 @@ response = client.delete_reformatted_resume(identifier=identifier)
 print(response.as_dict())
 ```
 
+Resume Search
+-------------
+
+### createResumeSearch - Search through parsed resumes
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+request_body = {
+    "indices": ["MyIndex"],
+    "job_titles": ["Senior Java Software Developer"],
+    "institutions": ["Boston University"],
+}
+
+
+resp = client.create_resume_search(body=request_body)
+
+print(resp[0].as_dict())
+```
+
+### getAllIndexes - Get list of all indexes
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+all_indexes = client.get_all_indexes()
+
+print(all_indexes.as_dict())
+```
+
+### createIndex - Create a new index
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+index_name = "REPLACE_INDEX_NAME"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+response = client.create_index(name=index_name)
+
+print(response.as_dict())
+```
+
+### deleteIndex - Delete an index
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+index_name = "REPLACE_INDEX_NAME"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+client.delete_index(name=index_name)
+```
+
+### createIndexDocument - Index a new document
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+index_name = "REPLACE_INDEX_NAME"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+request_body = {
+    "document": identifier,
+}
+
+resp = client.create_index_document(name=index_name, body=request_body)
+
+print(resp.as_dict())
+```
+
+### deleteIndexDocument - Delete an indexed document
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+index_name = "REPLACE_INDEX_NAME"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+client.delete_index_document(name=index_name, identifier=identifier)
+```
+
 Invoice Parser
 --------------
 

@@ -16,12 +16,31 @@ try:
     from ._models_py3 import InvoiceData
     from ._models_py3 import Location
     from ._models_py3 import Meta
+    from ._models_py3 import OccupationGroup
+    from ._models_py3 import (
+        Paths108CfgmIndexGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems,
+    )
     from ._models_py3 import Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema
+    from ._models_py3 import Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema
     from ._models_py3 import Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema
+    from ._models_py3 import Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema
     from ._models_py3 import Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema
     from ._models_py3 import (
         Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema,
     )
+    from ._models_py3 import (
+        PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema,
+    )
+    from ._models_py3 import (
+        PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema,
+    )
+    from ._models_py3 import (
+        PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems,
+    )
+    from ._models_py3 import (
+        PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema,
+    )
+    from ._models_py3 import PathsSot11NIndexPostRequestbodyContentMultipartFormDataSchema
     from ._models_py3 import (
         PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema,
     )
@@ -44,6 +63,14 @@ try:
     from ._models_py3 import ResumeDataWorkExperienceItem
     from ._models_py3 import ResumeDataWorkExperienceItemDates
     from ._models_py3 import ResumeDataWorkExperienceItemOccupation
+    from ._models_py3 import ResumeSearch
+    from ._models_py3 import ResumeSearchParameters
+    from ._models_py3 import ResumeSearchParametersLanguagesItem
+    from ._models_py3 import ResumeSearchParametersLocationsItem
+    from ._models_py3 import ResumeSearchParametersLocationsItemCoordinates
+    from ._models_py3 import ResumeSearchParametersSkillsItem
+    from ._models_py3 import ResumeSearchResult
+    from ._models_py3 import ResumeSearchScoreComponent
 except (SyntaxError, ImportError):
     from ._models import Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification  # type: ignore
     from ._models import Error  # type: ignore
@@ -54,10 +81,19 @@ except (SyntaxError, ImportError):
     from ._models import InvoiceData  # type: ignore
     from ._models import Location  # type: ignore
     from ._models import Meta  # type: ignore
+    from ._models import OccupationGroup  # type: ignore
+    from ._models import Paths108CfgmIndexGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems  # type: ignore
     from ._models import Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema  # type: ignore
+    from ._models import Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema  # type: ignore
     from ._models import Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema  # type: ignore
+    from ._models import Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema  # type: ignore
     from ._models import Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema  # type: ignore
+    from ._models import PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema  # type: ignore
+    from ._models import PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema  # type: ignore
+    from ._models import PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems  # type: ignore
+    from ._models import PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema  # type: ignore
+    from ._models import PathsSot11NIndexPostRequestbodyContentMultipartFormDataSchema  # type: ignore
     from ._models import PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema  # type: ignore
     from ._models import RedactedResume  # type: ignore
     from ._models import RedactedResumeData  # type: ignore
@@ -78,9 +114,19 @@ except (SyntaxError, ImportError):
     from ._models import ResumeDataWorkExperienceItem  # type: ignore
     from ._models import ResumeDataWorkExperienceItemDates  # type: ignore
     from ._models import ResumeDataWorkExperienceItemOccupation  # type: ignore
+    from ._models import ResumeSearch  # type: ignore
+    from ._models import ResumeSearchParameters  # type: ignore
+    from ._models import ResumeSearchParametersLanguagesItem  # type: ignore
+    from ._models import ResumeSearchParametersLocationsItem  # type: ignore
+    from ._models import ResumeSearchParametersLocationsItemCoordinates  # type: ignore
+    from ._models import ResumeSearchParametersSkillsItem  # type: ignore
+    from ._models import ResumeSearchResult  # type: ignore
+    from ._models import ResumeSearchScoreComponent  # type: ignore
 
 from ._affinda_api_enums import (
-    Enum0,
+    EducationLevel,
+    ManagementLevel,
+    SearchLocationUnit,
 )
 
 __all__ = [
@@ -93,10 +139,19 @@ __all__ = [
     "InvoiceData",
     "Location",
     "Meta",
+    "OccupationGroup",
+    "Paths108CfgmIndexGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems",
     "Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema",
+    "Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema",
     "Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema",
+    "Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema",
     "Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema",
     "Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema",
+    "PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema",
+    "PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema",
+    "PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems",
+    "PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema",
+    "PathsSot11NIndexPostRequestbodyContentMultipartFormDataSchema",
     "PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema",
     "RedactedResume",
     "RedactedResumeData",
@@ -117,5 +172,15 @@ __all__ = [
     "ResumeDataWorkExperienceItem",
     "ResumeDataWorkExperienceItemDates",
     "ResumeDataWorkExperienceItemOccupation",
-    "Enum0",
+    "ResumeSearch",
+    "ResumeSearchParameters",
+    "ResumeSearchParametersLanguagesItem",
+    "ResumeSearchParametersLocationsItem",
+    "ResumeSearchParametersLocationsItemCoordinates",
+    "ResumeSearchParametersSkillsItem",
+    "ResumeSearchResult",
+    "ResumeSearchScoreComponent",
+    "EducationLevel",
+    "ManagementLevel",
+    "SearchLocationUnit",
 ]

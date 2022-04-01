@@ -327,6 +327,189 @@ Delete the specified resume from the database.
 
 `~affinda.models.RequestError or None`: RequestError, or the result of cls(response)
 
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resume_search"></a>
+
+#### create\_resume\_search
+
+```python
+def create_resume_search(indices, limit=20, job_titles=None, job_titles_current_only=None, job_titles_required=None, job_titles_weight=None, years_experience_min=None, years_experience_max=None, years_experience_required=None, years_experience_weight=None, locations=None, locations_weight=None, locations_required=None, skills=None, skills_weight=None, languages=None, languages_weight=None, institutions=None, institutions_required=None, degrees=None, degrees_required=None, highest_degree_types=None, highest_degree_types_required=None, is_current_student=None, is_current_student_required=None, is_recent_graduate=None, is_recent_graduate_required=None, education_weight=None, search_expression=None, search_expression_required=None, search_expression_weight=None, soc_codes=None, soc_codes_weight=None, soc_codes_required=None, management_level=None, management_level_required=None, management_level_weight=None, **kwargs)
+```
+
+Search through parsed resumes.
+
+Searches through parsed resumes.
+
+**Arguments**:
+
+:keyword callable cls: A custom type or function that will be passed the direct response
+- `indices` (`list[str]`): 
+- `limit` (`int`): The numbers of results to return.
+- `job_titles` (`list[str]`): 
+- `job_titles_current_only` (`bool`): 
+- `job_titles_required` (`bool`): 
+- `job_titles_weight` (`float`): 
+- `years_experience_min` (`int`): 
+- `years_experience_max` (`int`): 
+- `years_experience_required` (`bool`): 
+- `years_experience_weight` (`float`): 
+- `locations` (`list[~affinda.models.ResumeSearchParametersLocationsItem]`): 
+- `locations_weight` (`float`): 
+- `locations_required` (`bool`): 
+- `skills` (`list[~affinda.models.ResumeSearchParametersSkillsItem]`): 
+- `skills_weight` (`float`): 
+- `languages` (`list[~affinda.models.ResumeSearchParametersLanguagesItem]`): 
+- `languages_weight` (`float`): 
+- `institutions` (`list[str]`): 
+- `institutions_required` (`bool`): 
+- `degrees` (`list[str]`): 
+- `degrees_required` (`bool`): 
+- `highest_degree_types` (`list[str or ~affinda.models.EducationLevel]`): 
+- `highest_degree_types_required` (`bool`): 
+- `is_current_student` (`bool`): 
+- `is_current_student_required` (`bool`): 
+- `is_recent_graduate` (`bool`): 
+- `is_recent_graduate_required` (`bool`): 
+- `education_weight` (`float`): 
+- `search_expression` (`str`): 
+- `search_expression_required` (`bool`): 
+- `search_expression_weight` (`float`): 
+- `soc_codes` (`list[int]`): 
+- `soc_codes_weight` (`float`): 
+- `soc_codes_required` (`bool`): 
+- `management_level` (`str or ~affinda.models.ManagementLevel`): 
+- `management_level_required` (`bool`): 
+- `management_level_weight` (`float`): 
+
+**Returns**:
+
+`~affinda.models.ResumeSearch or ~affinda.models.RequestError`: ResumeSearch or RequestError, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_indexes"></a>
+
+#### get\_all\_indexes
+
+```python
+def get_all_indexes(**kwargs)
+```
+
+Get list of all indexes.
+
+Returns all the indexes.
+
+:keyword callable cls: A custom type or function that will be passed the direct response
+
+**Returns**:
+
+`~affinda.models.Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema or`: Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema or RequestError, or the
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_index"></a>
+
+#### create\_index
+
+```python
+def create_index(name=True, **kwargs)
+```
+
+Create a new index.
+
+Create an index for the search tool.
+
+**Arguments**:
+
+:keyword callable cls: A custom type or function that will be passed the direct response
+- `name` (`bool`): 
+
+**Returns**:
+
+`~affinda.models.Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema or`: Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema or RequestError, or the
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_index"></a>
+
+#### delete\_index
+
+```python
+def delete_index(name, **kwargs)
+```
+
+Delete an index.
+
+Deletes the specified index from the database.
+
+**Arguments**:
+
+:keyword callable cls: A custom type or function that will be passed the direct response
+- `name` (`str`): Index name.
+
+**Returns**:
+
+`~affinda.models.RequestError or None`: RequestError, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_index_documents"></a>
+
+#### get\_all\_index\_documents
+
+```python
+def get_all_index_documents(name, **kwargs)
+```
+
+Get indexed documents for a specific index.
+
+Returns all the indexed documents for that index.
+
+**Arguments**:
+
+:keyword callable cls: A custom type or function that will be passed the direct response
+- `name` (`str`): Index name.
+
+**Returns**:
+
+PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema or
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_index_document"></a>
+
+#### create\_index\_document
+
+```python
+def create_index_document(name, body, **kwargs)
+```
+
+Index a new document.
+
+Create an indexed document for the search tool.
+
+**Arguments**:
+
+~affinda.models.PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema
+:keyword callable cls: A custom type or function that will be passed the direct response
+- `name` (`str`): Index name.
+- `body`: Document to index.
+
+**Returns**:
+
+PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema or
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_index_document"></a>
+
+#### delete\_index\_document
+
+```python
+def delete_index_document(name, identifier, **kwargs)
+```
+
+Delete an indexed document.
+
+Delete the specified indexed document from the database.
+
+**Arguments**:
+
+:keyword callable cls: A custom type or function that will be passed the direct response
+- `name` (`str`): Index name.
+- `identifier` (`str`): Document identifier.
+
+**Returns**:
+
+`~affinda.models.RequestError or None`: RequestError, or the result of cls(response)
+
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_invoices"></a>
 
 #### get\_all\_invoices
@@ -418,4 +601,22 @@ Delete the specified invoice from the database.
 **Returns**:
 
 `~affinda.models.RequestError or None`: RequestError, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.list_occupation_groups"></a>
+
+#### list\_occupation\_groups
+
+```python
+def list_occupation_groups(**kwargs)
+```
+
+List occupation groups.
+
+TODO TODO TODO.
+
+:keyword callable cls: A custom type or function that will be passed the direct response
+
+**Returns**:
+
+`~affinda.models.OccupationGroup or ~affinda.models.RequestError`: OccupationGroup or RequestError, or the result of cls(response)
 

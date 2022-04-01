@@ -606,6 +606,71 @@ class Meta(msrest.serialization.Model):
         self.expiry_time = kwargs.get("expiry_time", None)
 
 
+class OccupationGroup(msrest.serialization.Model):
+    """OccupationGroup.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar code: Required.
+    :vartype code: int
+    :ivar name: Required.
+    :vartype name: str
+    :ivar children: Required.
+    :vartype children: list[~affinda.models.OccupationGroup]
+    """
+
+    _validation = {
+        "code": {"required": True},
+        "name": {"required": True},
+        "children": {"required": True},
+    }
+
+    _attribute_map = {
+        "code": {"key": "code", "type": "int"},
+        "name": {"key": "name", "type": "str"},
+        "children": {"key": "children", "type": "[OccupationGroup]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword code: Required.
+        :paramtype code: int
+        :keyword name: Required.
+        :paramtype name: str
+        :keyword children: Required.
+        :paramtype children: list[~affinda.models.OccupationGroup]
+        """
+        super(OccupationGroup, self).__init__(**kwargs)
+        self.code = kwargs["code"]
+        self.name = kwargs["name"]
+        self.children = kwargs["children"]
+
+
+class Paths108CfgmIndexGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems(
+    msrest.serialization.Model
+):
+    """Paths108CfgmIndexGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems.
+
+    :ivar name:
+    :vartype name: str
+    """
+
+    _attribute_map = {
+        "name": {"key": "name", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name:
+        :paramtype name: str
+        """
+        super(
+            Paths108CfgmIndexGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems,
+            self,
+        ).__init__(**kwargs)
+        self.name = kwargs.get("name", None)
+
+
 class Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema(
     msrest.serialization.Model
 ):
@@ -676,6 +741,28 @@ class Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema(
         self.expiry_time = kwargs.get("expiry_time", None)
 
 
+class Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema(msrest.serialization.Model):
+    """Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema.
+
+    :ivar name:
+    :vartype name: str
+    """
+
+    _attribute_map = {
+        "name": {"key": "name", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name:
+        :paramtype name: str
+        """
+        super(Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema, self).__init__(
+            **kwargs
+        )
+        self.name = kwargs.get("name", None)
+
+
 class Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema(
     msrest.serialization.Model
 ):
@@ -712,6 +799,49 @@ class Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema(
         super(Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema, self).__init__(
             **kwargs
         )
+        self.count = kwargs.get("count", None)
+        self.next = kwargs.get("next", None)
+        self.previous = kwargs.get("previous", None)
+        self.results = kwargs.get("results", None)
+
+
+class Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model):
+    """Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema.
+
+    :ivar count: Number of indexes in result.
+    :vartype count: int
+    :ivar next: URL to request next page of results.
+    :vartype next: str
+    :ivar previous: URL to request previous page of results.
+    :vartype previous: str
+    :ivar results:
+    :vartype results:
+     list[~affinda.models.Paths108CfgmIndexGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]
+    """
+
+    _attribute_map = {
+        "count": {"key": "count", "type": "int"},
+        "next": {"key": "next", "type": "str"},
+        "previous": {"key": "previous", "type": "str"},
+        "results": {
+            "key": "results",
+            "type": "[Paths108CfgmIndexGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]",
+        },
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword count: Number of indexes in result.
+        :paramtype count: int
+        :keyword next: URL to request next page of results.
+        :paramtype next: str
+        :keyword previous: URL to request previous page of results.
+        :paramtype previous: str
+        :keyword results:
+        :paramtype results:
+         list[~affinda.models.Paths108CfgmIndexGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]
+        """
+        super(Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema, self).__init__(**kwargs)
         self.count = kwargs.get("count", None)
         self.next = kwargs.get("next", None)
         self.previous = kwargs.get("previous", None)
@@ -902,6 +1032,148 @@ class Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema(
         self.redact_dates = kwargs.get("redact_dates", True)
         self.redact_gender = kwargs.get("redact_gender", True)
         self.expiry_time = kwargs.get("expiry_time", None)
+
+
+class PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema(
+    msrest.serialization.Model
+):
+    """PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema.
+
+    :ivar document: Unique identifier for the document.
+    :vartype document: str
+    """
+
+    _attribute_map = {
+        "document": {"key": "document", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword document: Unique identifier for the document.
+        :paramtype document: str
+        """
+        super(
+            PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema, self
+        ).__init__(**kwargs)
+        self.document = kwargs.get("document", None)
+
+
+class PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema(
+    msrest.serialization.Model
+):
+    """PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema.
+
+    :ivar document:
+    :vartype document: str
+    """
+
+    _attribute_map = {
+        "document": {"key": "document", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword document:
+        :paramtype document: str
+        """
+        super(
+            PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema, self
+        ).__init__(**kwargs)
+        self.document = kwargs.get("document", None)
+
+
+class PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems(
+    msrest.serialization.Model
+):
+    """PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems.
+
+    :ivar document:
+    :vartype document: str
+    """
+
+    _attribute_map = {
+        "document": {"key": "document", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword document:
+        :paramtype document: str
+        """
+        super(
+            PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems,
+            self,
+        ).__init__(**kwargs)
+        self.document = kwargs.get("document", None)
+
+
+class PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema(
+    msrest.serialization.Model
+):
+    """PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema.
+
+    :ivar count: Number of indexed documents in result.
+    :vartype count: int
+    :ivar next: URL to request next page of results.
+    :vartype next: str
+    :ivar previous: URL to request previous page of results.
+    :vartype previous: str
+    :ivar results:
+    :vartype results:
+     list[~affinda.models.PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]
+    """
+
+    _attribute_map = {
+        "count": {"key": "count", "type": "int"},
+        "next": {"key": "next", "type": "str"},
+        "previous": {"key": "previous", "type": "str"},
+        "results": {
+            "key": "results",
+            "type": "[PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]",
+        },
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword count: Number of indexed documents in result.
+        :paramtype count: int
+        :keyword next: URL to request next page of results.
+        :paramtype next: str
+        :keyword previous: URL to request previous page of results.
+        :paramtype previous: str
+        :keyword results:
+        :paramtype results:
+         list[~affinda.models.PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]
+        """
+        super(
+            PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema, self
+        ).__init__(**kwargs)
+        self.count = kwargs.get("count", None)
+        self.next = kwargs.get("next", None)
+        self.previous = kwargs.get("previous", None)
+        self.results = kwargs.get("results", None)
+
+
+class PathsSot11NIndexPostRequestbodyContentMultipartFormDataSchema(msrest.serialization.Model):
+    """PathsSot11NIndexPostRequestbodyContentMultipartFormDataSchema.
+
+    :ivar name:
+    :vartype name: bool
+    """
+
+    _attribute_map = {
+        "name": {"key": "name", "type": "bool"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name:
+        :paramtype name: bool
+        """
+        super(PathsSot11NIndexPostRequestbodyContentMultipartFormDataSchema, self).__init__(
+            **kwargs
+        )
+        self.name = kwargs.get("name", True)
 
 
 class PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema(
@@ -1756,8 +2028,8 @@ class ResumeDataWorkExperienceItemOccupation(msrest.serialization.Model):
     :ivar job_title_normalized: Mapped onto the EMSI job title taxonomy if a sufficiently close
      match exists.
     :vartype job_title_normalized: str
-    :ivar management_level: Possible values include: "None", "Low", "Mid", "Upper".
-    :vartype management_level: str or ~affinda.models.Enum0
+    :ivar management_level: Possible values include: "Low", "Mid", "Upper".
+    :vartype management_level: str or ~affinda.models.ManagementLevel
     :ivar classification:
     :vartype classification:
      ~affinda.models.Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification
@@ -1780,8 +2052,8 @@ class ResumeDataWorkExperienceItemOccupation(msrest.serialization.Model):
         :keyword job_title_normalized: Mapped onto the EMSI job title taxonomy if a sufficiently close
          match exists.
         :paramtype job_title_normalized: str
-        :keyword management_level: Possible values include: "None", "Low", "Mid", "Upper".
-        :paramtype management_level: str or ~affinda.models.Enum0
+        :keyword management_level: Possible values include: "Low", "Mid", "Upper".
+        :paramtype management_level: str or ~affinda.models.ManagementLevel
         :keyword classification:
         :paramtype classification:
          ~affinda.models.Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification
@@ -1791,3 +2063,554 @@ class ResumeDataWorkExperienceItemOccupation(msrest.serialization.Model):
         self.job_title_normalized = kwargs.get("job_title_normalized", None)
         self.management_level = kwargs.get("management_level", None)
         self.classification = kwargs.get("classification", None)
+
+
+class ResumeSearch(msrest.serialization.Model):
+    """ResumeSearch.
+
+    :ivar count: Total number of results.
+    :vartype count: int
+    :ivar next: URL to request next page of results.
+    :vartype next: str
+    :ivar previous: URL to request previous page of results.
+    :vartype previous: str
+    :ivar parameters:
+    :vartype parameters: ~affinda.models.ResumeSearchParameters
+    :ivar results:
+    :vartype results: list[~affinda.models.ResumeSearchResult]
+    """
+
+    _attribute_map = {
+        "count": {"key": "count", "type": "int"},
+        "next": {"key": "next", "type": "str"},
+        "previous": {"key": "previous", "type": "str"},
+        "parameters": {"key": "parameters", "type": "ResumeSearchParameters"},
+        "results": {"key": "results", "type": "[ResumeSearchResult]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword count: Total number of results.
+        :paramtype count: int
+        :keyword next: URL to request next page of results.
+        :paramtype next: str
+        :keyword previous: URL to request previous page of results.
+        :paramtype previous: str
+        :keyword parameters:
+        :paramtype parameters: ~affinda.models.ResumeSearchParameters
+        :keyword results:
+        :paramtype results: list[~affinda.models.ResumeSearchResult]
+        """
+        super(ResumeSearch, self).__init__(**kwargs)
+        self.count = kwargs.get("count", None)
+        self.next = kwargs.get("next", None)
+        self.previous = kwargs.get("previous", None)
+        self.parameters = kwargs.get("parameters", None)
+        self.results = kwargs.get("results", None)
+
+
+class ResumeSearchParameters(msrest.serialization.Model):
+    """ResumeSearchParameters.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar indices: Required.
+    :vartype indices: list[str]
+    :ivar job_titles:
+    :vartype job_titles: list[str]
+    :ivar job_titles_current_only:
+    :vartype job_titles_current_only: bool
+    :ivar job_titles_required:
+    :vartype job_titles_required: bool
+    :ivar job_titles_weight:
+    :vartype job_titles_weight: float
+    :ivar years_experience_min:
+    :vartype years_experience_min: int
+    :ivar years_experience_max:
+    :vartype years_experience_max: int
+    :ivar years_experience_required:
+    :vartype years_experience_required: bool
+    :ivar years_experience_weight:
+    :vartype years_experience_weight: float
+    :ivar locations:
+    :vartype locations: list[~affinda.models.ResumeSearchParametersLocationsItem]
+    :ivar locations_weight:
+    :vartype locations_weight: float
+    :ivar locations_required:
+    :vartype locations_required: bool
+    :ivar skills:
+    :vartype skills: list[~affinda.models.ResumeSearchParametersSkillsItem]
+    :ivar skills_weight:
+    :vartype skills_weight: float
+    :ivar languages:
+    :vartype languages: list[~affinda.models.ResumeSearchParametersLanguagesItem]
+    :ivar languages_weight:
+    :vartype languages_weight: float
+    :ivar institutions:
+    :vartype institutions: list[str]
+    :ivar institutions_required:
+    :vartype institutions_required: bool
+    :ivar degrees:
+    :vartype degrees: list[str]
+    :ivar degrees_required:
+    :vartype degrees_required: bool
+    :ivar highest_degree_types:
+    :vartype highest_degree_types: list[str or ~affinda.models.EducationLevel]
+    :ivar highest_degree_types_required:
+    :vartype highest_degree_types_required: bool
+    :ivar is_current_student:
+    :vartype is_current_student: bool
+    :ivar is_current_student_required:
+    :vartype is_current_student_required: bool
+    :ivar is_recent_graduate:
+    :vartype is_recent_graduate: bool
+    :ivar is_recent_graduate_required:
+    :vartype is_recent_graduate_required: bool
+    :ivar education_weight:
+    :vartype education_weight: float
+    :ivar search_expression:
+    :vartype search_expression: str
+    :ivar search_expression_required:
+    :vartype search_expression_required: bool
+    :ivar search_expression_weight:
+    :vartype search_expression_weight: float
+    :ivar soc_codes:
+    :vartype soc_codes: list[int]
+    :ivar soc_codes_weight:
+    :vartype soc_codes_weight: float
+    :ivar soc_codes_required:
+    :vartype soc_codes_required: bool
+    :ivar management_level: Possible values include: "Low", "Mid", "Upper".
+    :vartype management_level: str or ~affinda.models.ManagementLevel
+    :ivar management_level_required:
+    :vartype management_level_required: bool
+    :ivar management_level_weight:
+    :vartype management_level_weight: float
+    """
+
+    _validation = {
+        "indices": {"required": True},
+        "job_titles_weight": {"maximum": 1, "minimum": 0},
+        "years_experience_weight": {"maximum": 1, "minimum": 0},
+        "locations_weight": {"maximum": 1, "minimum": 0},
+        "skills_weight": {"maximum": 1, "minimum": 0},
+        "languages_weight": {"maximum": 1, "minimum": 0},
+        "highest_degree_types": {"unique": True},
+        "education_weight": {"maximum": 1, "minimum": 0},
+        "search_expression_weight": {"maximum": 1, "minimum": 0},
+        "soc_codes_weight": {"maximum": 1, "minimum": 0},
+        "management_level_weight": {"maximum": 1, "minimum": 0},
+    }
+
+    _attribute_map = {
+        "indices": {"key": "indices", "type": "[str]"},
+        "job_titles": {"key": "jobTitles", "type": "[str]"},
+        "job_titles_current_only": {"key": "jobTitlesCurrentOnly", "type": "bool"},
+        "job_titles_required": {"key": "jobTitlesRequired", "type": "bool"},
+        "job_titles_weight": {"key": "jobTitlesWeight", "type": "float"},
+        "years_experience_min": {"key": "yearsExperienceMin", "type": "int"},
+        "years_experience_max": {"key": "yearsExperienceMax", "type": "int"},
+        "years_experience_required": {"key": "yearsExperienceRequired", "type": "bool"},
+        "years_experience_weight": {"key": "yearsExperienceWeight", "type": "float"},
+        "locations": {"key": "locations", "type": "[ResumeSearchParametersLocationsItem]"},
+        "locations_weight": {"key": "locationsWeight", "type": "float"},
+        "locations_required": {"key": "locationsRequired", "type": "bool"},
+        "skills": {"key": "skills", "type": "[ResumeSearchParametersSkillsItem]"},
+        "skills_weight": {"key": "skillsWeight", "type": "float"},
+        "languages": {"key": "languages", "type": "[ResumeSearchParametersLanguagesItem]"},
+        "languages_weight": {"key": "languagesWeight", "type": "float"},
+        "institutions": {"key": "institutions", "type": "[str]"},
+        "institutions_required": {"key": "institutionsRequired", "type": "bool"},
+        "degrees": {"key": "degrees", "type": "[str]"},
+        "degrees_required": {"key": "degreesRequired", "type": "bool"},
+        "highest_degree_types": {"key": "highestDegreeTypes", "type": "[str]"},
+        "highest_degree_types_required": {"key": "highestDegreeTypesRequired", "type": "bool"},
+        "is_current_student": {"key": "isCurrentStudent", "type": "bool"},
+        "is_current_student_required": {"key": "isCurrentStudentRequired", "type": "bool"},
+        "is_recent_graduate": {"key": "isRecentGraduate", "type": "bool"},
+        "is_recent_graduate_required": {"key": "isRecentGraduateRequired", "type": "bool"},
+        "education_weight": {"key": "educationWeight", "type": "float"},
+        "search_expression": {"key": "searchExpression", "type": "str"},
+        "search_expression_required": {"key": "searchExpressionRequired", "type": "bool"},
+        "search_expression_weight": {"key": "searchExpressionWeight", "type": "float"},
+        "soc_codes": {"key": "socCodes", "type": "[int]"},
+        "soc_codes_weight": {"key": "socCodesWeight", "type": "float"},
+        "soc_codes_required": {"key": "socCodesRequired", "type": "bool"},
+        "management_level": {"key": "managementLevel", "type": "str"},
+        "management_level_required": {"key": "managementLevelRequired", "type": "bool"},
+        "management_level_weight": {"key": "managementLevelWeight", "type": "float"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword indices: Required.
+        :paramtype indices: list[str]
+        :keyword job_titles:
+        :paramtype job_titles: list[str]
+        :keyword job_titles_current_only:
+        :paramtype job_titles_current_only: bool
+        :keyword job_titles_required:
+        :paramtype job_titles_required: bool
+        :keyword job_titles_weight:
+        :paramtype job_titles_weight: float
+        :keyword years_experience_min:
+        :paramtype years_experience_min: int
+        :keyword years_experience_max:
+        :paramtype years_experience_max: int
+        :keyword years_experience_required:
+        :paramtype years_experience_required: bool
+        :keyword years_experience_weight:
+        :paramtype years_experience_weight: float
+        :keyword locations:
+        :paramtype locations: list[~affinda.models.ResumeSearchParametersLocationsItem]
+        :keyword locations_weight:
+        :paramtype locations_weight: float
+        :keyword locations_required:
+        :paramtype locations_required: bool
+        :keyword skills:
+        :paramtype skills: list[~affinda.models.ResumeSearchParametersSkillsItem]
+        :keyword skills_weight:
+        :paramtype skills_weight: float
+        :keyword languages:
+        :paramtype languages: list[~affinda.models.ResumeSearchParametersLanguagesItem]
+        :keyword languages_weight:
+        :paramtype languages_weight: float
+        :keyword institutions:
+        :paramtype institutions: list[str]
+        :keyword institutions_required:
+        :paramtype institutions_required: bool
+        :keyword degrees:
+        :paramtype degrees: list[str]
+        :keyword degrees_required:
+        :paramtype degrees_required: bool
+        :keyword highest_degree_types:
+        :paramtype highest_degree_types: list[str or ~affinda.models.EducationLevel]
+        :keyword highest_degree_types_required:
+        :paramtype highest_degree_types_required: bool
+        :keyword is_current_student:
+        :paramtype is_current_student: bool
+        :keyword is_current_student_required:
+        :paramtype is_current_student_required: bool
+        :keyword is_recent_graduate:
+        :paramtype is_recent_graduate: bool
+        :keyword is_recent_graduate_required:
+        :paramtype is_recent_graduate_required: bool
+        :keyword education_weight:
+        :paramtype education_weight: float
+        :keyword search_expression:
+        :paramtype search_expression: str
+        :keyword search_expression_required:
+        :paramtype search_expression_required: bool
+        :keyword search_expression_weight:
+        :paramtype search_expression_weight: float
+        :keyword soc_codes:
+        :paramtype soc_codes: list[int]
+        :keyword soc_codes_weight:
+        :paramtype soc_codes_weight: float
+        :keyword soc_codes_required:
+        :paramtype soc_codes_required: bool
+        :keyword management_level: Possible values include: "Low", "Mid", "Upper".
+        :paramtype management_level: str or ~affinda.models.ManagementLevel
+        :keyword management_level_required:
+        :paramtype management_level_required: bool
+        :keyword management_level_weight:
+        :paramtype management_level_weight: float
+        """
+        super(ResumeSearchParameters, self).__init__(**kwargs)
+        self.indices = kwargs["indices"]
+        self.job_titles = kwargs.get("job_titles", None)
+        self.job_titles_current_only = kwargs.get("job_titles_current_only", None)
+        self.job_titles_required = kwargs.get("job_titles_required", None)
+        self.job_titles_weight = kwargs.get("job_titles_weight", None)
+        self.years_experience_min = kwargs.get("years_experience_min", None)
+        self.years_experience_max = kwargs.get("years_experience_max", None)
+        self.years_experience_required = kwargs.get("years_experience_required", None)
+        self.years_experience_weight = kwargs.get("years_experience_weight", None)
+        self.locations = kwargs.get("locations", None)
+        self.locations_weight = kwargs.get("locations_weight", None)
+        self.locations_required = kwargs.get("locations_required", None)
+        self.skills = kwargs.get("skills", None)
+        self.skills_weight = kwargs.get("skills_weight", None)
+        self.languages = kwargs.get("languages", None)
+        self.languages_weight = kwargs.get("languages_weight", None)
+        self.institutions = kwargs.get("institutions", None)
+        self.institutions_required = kwargs.get("institutions_required", None)
+        self.degrees = kwargs.get("degrees", None)
+        self.degrees_required = kwargs.get("degrees_required", None)
+        self.highest_degree_types = kwargs.get("highest_degree_types", None)
+        self.highest_degree_types_required = kwargs.get("highest_degree_types_required", None)
+        self.is_current_student = kwargs.get("is_current_student", None)
+        self.is_current_student_required = kwargs.get("is_current_student_required", None)
+        self.is_recent_graduate = kwargs.get("is_recent_graduate", None)
+        self.is_recent_graduate_required = kwargs.get("is_recent_graduate_required", None)
+        self.education_weight = kwargs.get("education_weight", None)
+        self.search_expression = kwargs.get("search_expression", None)
+        self.search_expression_required = kwargs.get("search_expression_required", None)
+        self.search_expression_weight = kwargs.get("search_expression_weight", None)
+        self.soc_codes = kwargs.get("soc_codes", None)
+        self.soc_codes_weight = kwargs.get("soc_codes_weight", None)
+        self.soc_codes_required = kwargs.get("soc_codes_required", None)
+        self.management_level = kwargs.get("management_level", None)
+        self.management_level_required = kwargs.get("management_level_required", None)
+        self.management_level_weight = kwargs.get("management_level_weight", None)
+
+
+class ResumeSearchParametersLanguagesItem(msrest.serialization.Model):
+    """ResumeSearchParametersLanguagesItem.
+
+    :ivar name:
+    :vartype name: str
+    :ivar required:
+    :vartype required: bool
+    """
+
+    _attribute_map = {
+        "name": {"key": "name", "type": "str"},
+        "required": {"key": "required", "type": "bool"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name:
+        :paramtype name: str
+        :keyword required:
+        :paramtype required: bool
+        """
+        super(ResumeSearchParametersLanguagesItem, self).__init__(**kwargs)
+        self.name = kwargs.get("name", None)
+        self.required = kwargs.get("required", None)
+
+
+class ResumeSearchParametersLocationsItem(msrest.serialization.Model):
+    """ResumeSearchParametersLocationsItem.
+
+    :ivar name:
+    :vartype name: str
+    :ivar coordinates:
+    :vartype coordinates: ~affinda.models.ResumeSearchParametersLocationsItemCoordinates
+    :ivar distance:
+    :vartype distance: int
+    :ivar unit: Possible values include: "km", "mi".
+    :vartype unit: str or ~affinda.models.SearchLocationUnit
+    """
+
+    _attribute_map = {
+        "name": {"key": "name", "type": "str"},
+        "coordinates": {
+            "key": "coordinates",
+            "type": "ResumeSearchParametersLocationsItemCoordinates",
+        },
+        "distance": {"key": "distance", "type": "int"},
+        "unit": {"key": "unit", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name:
+        :paramtype name: str
+        :keyword coordinates:
+        :paramtype coordinates: ~affinda.models.ResumeSearchParametersLocationsItemCoordinates
+        :keyword distance:
+        :paramtype distance: int
+        :keyword unit: Possible values include: "km", "mi".
+        :paramtype unit: str or ~affinda.models.SearchLocationUnit
+        """
+        super(ResumeSearchParametersLocationsItem, self).__init__(**kwargs)
+        self.name = kwargs.get("name", None)
+        self.coordinates = kwargs.get("coordinates", None)
+        self.distance = kwargs.get("distance", None)
+        self.unit = kwargs.get("unit", None)
+
+
+class ResumeSearchParametersLocationsItemCoordinates(msrest.serialization.Model):
+    """ResumeSearchParametersLocationsItemCoordinates.
+
+    :ivar latitude:
+    :vartype latitude: float
+    :ivar longitude:
+    :vartype longitude: float
+    """
+
+    _attribute_map = {
+        "latitude": {"key": "latitude", "type": "float"},
+        "longitude": {"key": "longitude", "type": "float"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword latitude:
+        :paramtype latitude: float
+        :keyword longitude:
+        :paramtype longitude: float
+        """
+        super(ResumeSearchParametersLocationsItemCoordinates, self).__init__(**kwargs)
+        self.latitude = kwargs.get("latitude", None)
+        self.longitude = kwargs.get("longitude", None)
+
+
+class ResumeSearchParametersSkillsItem(msrest.serialization.Model):
+    """ResumeSearchParametersSkillsItem.
+
+    :ivar name:
+    :vartype name: str
+    :ivar required:
+    :vartype required: bool
+    """
+
+    _attribute_map = {
+        "name": {"key": "name", "type": "str"},
+        "required": {"key": "required", "type": "bool"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name:
+        :paramtype name: str
+        :keyword required:
+        :paramtype required: bool
+        """
+        super(ResumeSearchParametersSkillsItem, self).__init__(**kwargs)
+        self.name = kwargs.get("name", None)
+        self.required = kwargs.get("required", None)
+
+
+class ResumeSearchResult(msrest.serialization.Model):
+    """ResumeSearchResult.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar identifier: Required. Unique identifier for the document. If creating a document and left
+     blank, one will be automatically generated.
+    :vartype identifier: str
+    :ivar score: Required.
+    :vartype score: float
+    :ivar pdf: Required.
+    :vartype pdf: str
+    :ivar name:
+    :vartype name: str
+    :ivar job_title: Required.
+    :vartype job_title: ~affinda.models.ResumeSearchScoreComponent
+    :ivar management_level: Required.
+    :vartype management_level: ~affinda.models.ResumeSearchScoreComponent
+    :ivar experience: Required.
+    :vartype experience: ~affinda.models.ResumeSearchScoreComponent
+    :ivar skills: Required.
+    :vartype skills: ~affinda.models.ResumeSearchScoreComponent
+    :ivar languages: Required.
+    :vartype languages: ~affinda.models.ResumeSearchScoreComponent
+    :ivar location: Required.
+    :vartype location: ~affinda.models.ResumeSearchScoreComponent
+    :ivar education: Required.
+    :vartype education: ~affinda.models.ResumeSearchScoreComponent
+    :ivar occupation_group: Required.
+    :vartype occupation_group: ~affinda.models.ResumeSearchScoreComponent
+    """
+
+    _validation = {
+        "identifier": {"required": True},
+        "score": {"required": True},
+        "pdf": {"required": True},
+        "job_title": {"required": True},
+        "management_level": {"required": True},
+        "experience": {"required": True},
+        "skills": {"required": True},
+        "languages": {"required": True},
+        "location": {"required": True},
+        "education": {"required": True},
+        "occupation_group": {"required": True},
+    }
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "score": {"key": "score", "type": "float"},
+        "pdf": {"key": "pdf", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "job_title": {"key": "jobTitle", "type": "ResumeSearchScoreComponent"},
+        "management_level": {"key": "managementLevel", "type": "ResumeSearchScoreComponent"},
+        "experience": {"key": "experience", "type": "ResumeSearchScoreComponent"},
+        "skills": {"key": "skills", "type": "ResumeSearchScoreComponent"},
+        "languages": {"key": "languages", "type": "ResumeSearchScoreComponent"},
+        "location": {"key": "location", "type": "ResumeSearchScoreComponent"},
+        "education": {"key": "education", "type": "ResumeSearchScoreComponent"},
+        "occupation_group": {"key": "occupationGroup", "type": "ResumeSearchScoreComponent"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Required. Unique identifier for the document. If creating a document and
+         left blank, one will be automatically generated.
+        :paramtype identifier: str
+        :keyword score: Required.
+        :paramtype score: float
+        :keyword pdf: Required.
+        :paramtype pdf: str
+        :keyword name:
+        :paramtype name: str
+        :keyword job_title: Required.
+        :paramtype job_title: ~affinda.models.ResumeSearchScoreComponent
+        :keyword management_level: Required.
+        :paramtype management_level: ~affinda.models.ResumeSearchScoreComponent
+        :keyword experience: Required.
+        :paramtype experience: ~affinda.models.ResumeSearchScoreComponent
+        :keyword skills: Required.
+        :paramtype skills: ~affinda.models.ResumeSearchScoreComponent
+        :keyword languages: Required.
+        :paramtype languages: ~affinda.models.ResumeSearchScoreComponent
+        :keyword location: Required.
+        :paramtype location: ~affinda.models.ResumeSearchScoreComponent
+        :keyword education: Required.
+        :paramtype education: ~affinda.models.ResumeSearchScoreComponent
+        :keyword occupation_group: Required.
+        :paramtype occupation_group: ~affinda.models.ResumeSearchScoreComponent
+        """
+        super(ResumeSearchResult, self).__init__(**kwargs)
+        self.identifier = kwargs["identifier"]
+        self.score = kwargs["score"]
+        self.pdf = kwargs["pdf"]
+        self.name = kwargs.get("name", None)
+        self.job_title = kwargs["job_title"]
+        self.management_level = kwargs["management_level"]
+        self.experience = kwargs["experience"]
+        self.skills = kwargs["skills"]
+        self.languages = kwargs["languages"]
+        self.location = kwargs["location"]
+        self.education = kwargs["education"]
+        self.occupation_group = kwargs["occupation_group"]
+
+
+class ResumeSearchScoreComponent(msrest.serialization.Model):
+    """ResumeSearchScoreComponent.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar label: Required.
+    :vartype label: str
+    :ivar value:
+    :vartype value: str
+    :ivar score:
+    :vartype score: float
+    """
+
+    _validation = {
+        "label": {"required": True},
+    }
+
+    _attribute_map = {
+        "label": {"key": "label", "type": "str"},
+        "value": {"key": "value", "type": "str"},
+        "score": {"key": "score", "type": "float"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword label: Required.
+        :paramtype label: str
+        :keyword value:
+        :paramtype value: str
+        :keyword score:
+        :paramtype score: float
+        """
+        super(ResumeSearchScoreComponent, self).__init__(**kwargs)
+        self.label = kwargs["label"]
+        self.value = kwargs.get("value", None)
+        self.score = kwargs.get("score", None)
