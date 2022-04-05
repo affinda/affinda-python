@@ -15,8 +15,6 @@ Affinda API client for Python.
 **Arguments**:
 
 - `credential` (`~azure.core.credentials.TokenCredential`): Credential needed for the client to connect to Azure.
-- `limit` (`int`): The numbers of documents to return, defaults to 300.
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
 - `base_url` (`str`): Service URL. Default value is 'https://api.affinda.com/v1'.
 
 <a id="operations._affinda_api_operations"></a>
@@ -36,14 +34,18 @@ class AffindaAPIOperationsMixin(object)
 #### get\_all\_resumes
 
 ```python
-def get_all_resumes(**kwargs)
+def get_all_resumes(offset=None, limit=300, **kwargs)
 ```
 
 Get list of all resumes.
 
 Returns all the resume summaries for that user, limited to 300 per page.
 
+**Arguments**:
+
 :keyword callable cls: A custom type or function that will be passed the direct response
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+- `limit` (`int`): The numbers of results to return.
 
 **Returns**:
 
@@ -128,14 +130,18 @@ Deletes the specified resume from the database.
 #### get\_all\_redacted\_resumes
 
 ```python
-def get_all_redacted_resumes(**kwargs)
+def get_all_redacted_resumes(offset=None, limit=300, **kwargs)
 ```
 
 Get list of all redacted resumes.
 
 Returns all the redacted resume information for that resume.
 
+**Arguments**:
+
 :keyword callable cls: A custom type or function that will be passed the direct response
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+- `limit` (`int`): The numbers of results to return.
 
 **Returns**:
 
@@ -225,14 +231,18 @@ Deletes the specified resume from the database.
 #### get\_all\_resume\_formats
 
 ```python
-def get_all_resume_formats(**kwargs)
+def get_all_resume_formats(offset=None, limit=300, **kwargs)
 ```
 
 Get list of all resume formats.
 
 Returns all the resume formats.
 
+**Arguments**:
+
 :keyword callable cls: A custom type or function that will be passed the direct response
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+- `limit` (`int`): The numbers of results to return.
 
 **Returns**:
 
@@ -243,14 +253,18 @@ Returns all the resume formats.
 #### get\_all\_reformatted\_resumes
 
 ```python
-def get_all_reformatted_resumes(**kwargs)
+def get_all_reformatted_resumes(offset=None, limit=300, **kwargs)
 ```
 
 Get list of all reformatted resumes.
 
 Returns all the reformatted resume information for that resume.
 
+**Arguments**:
+
 :keyword callable cls: A custom type or function that will be passed the direct response
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+- `limit` (`int`): The numbers of results to return.
 
 **Returns**:
 
@@ -332,7 +346,7 @@ Delete the specified resume from the database.
 #### create\_resume\_search
 
 ```python
-def create_resume_search(indices, limit=20, job_titles=None, job_titles_current_only=None, job_titles_required=None, job_titles_weight=None, years_experience_min=None, years_experience_max=None, years_experience_required=None, years_experience_weight=None, locations=None, locations_weight=None, locations_required=None, skills=None, skills_weight=None, languages=None, languages_weight=None, institutions=None, institutions_required=None, degrees=None, degrees_required=None, highest_degree_types=None, highest_degree_types_required=None, is_current_student=None, is_current_student_required=None, is_recent_graduate=None, is_recent_graduate_required=None, education_weight=None, search_expression=None, search_expression_required=None, search_expression_weight=None, soc_codes=None, soc_codes_weight=None, soc_codes_required=None, management_level=None, management_level_required=None, management_level_weight=None, **kwargs)
+def create_resume_search(body, offset=None, limit=20, **kwargs)
 ```
 
 Search through parsed resumes.
@@ -342,43 +356,9 @@ Searches through parsed resumes.
 **Arguments**:
 
 :keyword callable cls: A custom type or function that will be passed the direct response
-- `indices` (`list[str]`): 
+- `body` (`~affinda.models.ResumeSearchParameters`): Search parameters.
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
 - `limit` (`int`): The numbers of results to return.
-- `job_titles` (`list[str]`): 
-- `job_titles_current_only` (`bool`): 
-- `job_titles_required` (`bool`): 
-- `job_titles_weight` (`float`): 
-- `years_experience_min` (`int`): 
-- `years_experience_max` (`int`): 
-- `years_experience_required` (`bool`): 
-- `years_experience_weight` (`float`): 
-- `locations` (`list[~affinda.models.ResumeSearchParametersLocationsItem]`): 
-- `locations_weight` (`float`): 
-- `locations_required` (`bool`): 
-- `skills` (`list[~affinda.models.ResumeSearchParametersSkillsItem]`): 
-- `skills_weight` (`float`): 
-- `languages` (`list[~affinda.models.ResumeSearchParametersLanguagesItem]`): 
-- `languages_weight` (`float`): 
-- `institutions` (`list[str]`): 
-- `institutions_required` (`bool`): 
-- `degrees` (`list[str]`): 
-- `degrees_required` (`bool`): 
-- `highest_degree_types` (`list[str or ~affinda.models.EducationLevel]`): 
-- `highest_degree_types_required` (`bool`): 
-- `is_current_student` (`bool`): 
-- `is_current_student_required` (`bool`): 
-- `is_recent_graduate` (`bool`): 
-- `is_recent_graduate_required` (`bool`): 
-- `education_weight` (`float`): 
-- `search_expression` (`str`): 
-- `search_expression_required` (`bool`): 
-- `search_expression_weight` (`float`): 
-- `soc_codes` (`list[int]`): 
-- `soc_codes_weight` (`float`): 
-- `soc_codes_required` (`bool`): 
-- `management_level` (`str or ~affinda.models.ManagementLevel`): 
-- `management_level_required` (`bool`): 
-- `management_level_weight` (`float`): 
 
 **Returns**:
 
@@ -389,14 +369,18 @@ Searches through parsed resumes.
 #### get\_all\_indexes
 
 ```python
-def get_all_indexes(**kwargs)
+def get_all_indexes(offset=None, limit=300, **kwargs)
 ```
 
 Get list of all indexes.
 
 Returns all the indexes.
 
+**Arguments**:
+
 :keyword callable cls: A custom type or function that will be passed the direct response
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+- `limit` (`int`): The numbers of results to return.
 
 **Returns**:
 
@@ -515,14 +499,18 @@ Delete the specified indexed document from the database.
 #### get\_all\_invoices
 
 ```python
-def get_all_invoices(**kwargs)
+def get_all_invoices(offset=None, limit=300, **kwargs)
 ```
 
 Get list of all invoices.
 
 Returns all the invoice summaries for that user, limited to 300 per page.
 
+**Arguments**:
+
 :keyword callable cls: A custom type or function that will be passed the direct response
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+- `limit` (`int`): The numbers of results to return.
 
 **Returns**:
 

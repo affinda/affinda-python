@@ -746,17 +746,23 @@ class Paths108CfgmIndexGetResponses200ContentApplicationJsonSchemaPropertiesResu
 ):
     """Paths108CfgmIndexGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems.
 
-    :ivar name:
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar name: Required.
     :vartype name: str
     """
+
+    _validation = {
+        "name": {"required": True},
+    }
 
     _attribute_map = {
         "name": {"key": "name", "type": "str"},
     }
 
-    def __init__(self, *, name: Optional[str] = None, **kwargs):
+    def __init__(self, *, name: str, **kwargs):
         """
-        :keyword name:
+        :keyword name: Required.
         :paramtype name: str
         """
         super(

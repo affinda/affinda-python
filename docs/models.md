@@ -530,7 +530,9 @@ class Paths108CfgmIndexGetResponses200ContentApplicationJsonSchemaPropertiesResu
 
 Paths108CfgmIndexGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems.
 
-:ivar name:
+All required parameters must be populated in order to send to Azure.
+
+:ivar name: Required.
 :vartype name: str
 
 <a id="models._models.Paths108CfgmIndexGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems.__init__"></a>
@@ -541,7 +543,7 @@ Paths108CfgmIndexGetResponses200ContentApplicationJsonSchemaPropertiesResultsIte
 def __init__(**kwargs)
 ```
 
-:keyword name:
+:keyword name: Required.
 :paramtype name: str
 
 <a id="models._models.Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema"></a>

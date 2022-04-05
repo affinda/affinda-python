@@ -13,7 +13,7 @@ from ._version import VERSION
 
 if TYPE_CHECKING:
     # pylint: disable=unused-import,ungrouped-imports
-    from typing import Any, Optional
+    from typing import Any
 
     from azure.core.credentials import TokenCredential
 
@@ -26,17 +26,11 @@ class AffindaAPIConfiguration(Configuration):
 
     :param credential: Credential needed for the client to connect to Azure.
     :type credential: ~azure.core.credentials.TokenCredential
-    :param limit: The numbers of documents to return, defaults to 300.
-    :type limit: int
-    :param offset: The number of documents to skip before starting to collect the result set.
-    :type offset: int
     """
 
     def __init__(
         self,
         credential,  # type: "TokenCredential"
-        limit=300,  # type: Optional[int]
-        offset=None,  # type: Optional[int]
         **kwargs,  # type: Any
     ):
         # type: (...) -> None
@@ -45,8 +39,6 @@ class AffindaAPIConfiguration(Configuration):
             raise ValueError("Parameter 'credential' must not be None.")
 
         self.credential = credential
-        self.limit = limit
-        self.offset = offset
         self.credential_scopes = kwargs.pop(
             "credential_scopes", ["https://management.azure.com/.default"]
         )

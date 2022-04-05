@@ -27,10 +27,6 @@ class AffindaAPI(AffindaAPIOperationsMixin):
 
     :param credential: Credential needed for the client to connect to Azure.
     :type credential: ~azure.core.credentials.TokenCredential
-    :param limit: The numbers of documents to return, defaults to 300.
-    :type limit: int
-    :param offset: The number of documents to skip before starting to collect the result set.
-    :type offset: int
     :param base_url: Service URL. Default value is 'https://api.affinda.com/v1'.
     :type base_url: str
     """
@@ -38,15 +34,11 @@ class AffindaAPI(AffindaAPIOperationsMixin):
     def __init__(
         self,
         credential,  # type: "TokenCredential"
-        limit=300,  # type: Optional[int]
-        offset=None,  # type: Optional[int]
         base_url="https://api.affinda.com/v1",  # type: str
         **kwargs,  # type: Any
     ):
         # type: (...) -> None
-        self._config = AffindaAPIConfiguration(
-            credential=credential, limit=limit, offset=offset, **kwargs
-        )
+        self._config = AffindaAPIConfiguration(credential=credential, **kwargs)
         self._client = PipelineClient(base_url=base_url, config=self._config, **kwargs)
 
         client_models = {k: v for k, v in models.__dict__.items() if isinstance(v, type)}
