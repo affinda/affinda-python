@@ -691,7 +691,7 @@ class Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema(
     :ivar file_name: Optional filename of the file.
     :vartype file_name: str
     :ivar url: URL to file to download and process.
-    :vartype url: bool
+    :vartype url: str
     :ivar wait: If "true" (default), will return a response only after processing has completed. If
      "false", will return an empty data object which can be polled at the GET endpoint until
      processing is complete.
@@ -707,7 +707,7 @@ class Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema(
         "file": {"key": "file", "type": "IO"},
         "identifier": {"key": "identifier", "type": "str"},
         "file_name": {"key": "fileName", "type": "str"},
-        "url": {"key": "url", "type": "bool"},
+        "url": {"key": "url", "type": "str"},
         "wait": {"key": "wait", "type": "bool"},
         "language": {"key": "language", "type": "str"},
         "expiry_time": {"key": "expiryTime", "type": "str"},
@@ -724,7 +724,7 @@ class Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema(
         :keyword file_name: Optional filename of the file.
         :paramtype file_name: str
         :keyword url: URL to file to download and process.
-        :paramtype url: bool
+        :paramtype url: str
         :keyword wait: If "true" (default), will return a response only after processing has completed.
          If "false", will return an empty data object which can be polled at the GET endpoint until
          processing is complete.
@@ -741,7 +741,7 @@ class Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema(
         self.file = kwargs.get("file", None)
         self.identifier = kwargs.get("identifier", None)
         self.file_name = kwargs.get("file_name", None)
-        self.url = kwargs.get("url", True)
+        self.url = kwargs.get("url", None)
         self.wait = kwargs.get("wait", True)
         self.language = kwargs.get("language", None)
         self.expiry_time = kwargs.get("expiry_time", None)
@@ -2122,6 +2122,9 @@ class ResumeSearchParameters(msrest.serialization.Model):
 
     :ivar indices: Required.
     :vartype indices: list[str]
+    :ivar job_description: Unique identifier for the document. If creating a document and left
+     blank, one will be automatically generated.
+    :vartype job_description: str
     :ivar job_titles:
     :vartype job_titles: list[str]
     :ivar job_titles_current_only:
@@ -2210,6 +2213,7 @@ class ResumeSearchParameters(msrest.serialization.Model):
 
     _attribute_map = {
         "indices": {"key": "indices", "type": "[str]"},
+        "job_description": {"key": "jobDescription", "type": "str"},
         "job_titles": {"key": "jobTitles", "type": "[str]"},
         "job_titles_current_only": {"key": "jobTitlesCurrentOnly", "type": "bool"},
         "job_titles_required": {"key": "jobTitlesRequired", "type": "bool"},
@@ -2251,6 +2255,9 @@ class ResumeSearchParameters(msrest.serialization.Model):
         """
         :keyword indices: Required.
         :paramtype indices: list[str]
+        :keyword job_description: Unique identifier for the document. If creating a document and left
+         blank, one will be automatically generated.
+        :paramtype job_description: str
         :keyword job_titles:
         :paramtype job_titles: list[str]
         :keyword job_titles_current_only:
@@ -2324,6 +2331,7 @@ class ResumeSearchParameters(msrest.serialization.Model):
         """
         super(ResumeSearchParameters, self).__init__(**kwargs)
         self.indices = kwargs["indices"]
+        self.job_description = kwargs.get("job_description", None)
         self.job_titles = kwargs.get("job_titles", None)
         self.job_titles_current_only = kwargs.get("job_titles_current_only", None)
         self.job_titles_required = kwargs.get("job_titles_required", None)

@@ -786,7 +786,7 @@ class Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema(
     :ivar file_name: Optional filename of the file.
     :vartype file_name: str
     :ivar url: URL to file to download and process.
-    :vartype url: bool
+    :vartype url: str
     :ivar wait: If "true" (default), will return a response only after processing has completed. If
      "false", will return an empty data object which can be polled at the GET endpoint until
      processing is complete.
@@ -802,7 +802,7 @@ class Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema(
         "file": {"key": "file", "type": "IO"},
         "identifier": {"key": "identifier", "type": "str"},
         "file_name": {"key": "fileName", "type": "str"},
-        "url": {"key": "url", "type": "bool"},
+        "url": {"key": "url", "type": "str"},
         "wait": {"key": "wait", "type": "bool"},
         "language": {"key": "language", "type": "str"},
         "expiry_time": {"key": "expiryTime", "type": "str"},
@@ -814,7 +814,7 @@ class Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema(
         file: Optional[IO] = None,
         identifier: Optional[str] = None,
         file_name: Optional[str] = None,
-        url: Optional[bool] = True,
+        url: Optional[str] = None,
         wait: Optional[bool] = True,
         language: Optional[str] = None,
         expiry_time: Optional[str] = None,
@@ -830,7 +830,7 @@ class Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema(
         :keyword file_name: Optional filename of the file.
         :paramtype file_name: str
         :keyword url: URL to file to download and process.
-        :paramtype url: bool
+        :paramtype url: str
         :keyword wait: If "true" (default), will return a response only after processing has completed.
          If "false", will return an empty data object which can be polled at the GET endpoint until
          processing is complete.
@@ -2429,6 +2429,9 @@ class ResumeSearchParameters(msrest.serialization.Model):
 
     :ivar indices: Required.
     :vartype indices: list[str]
+    :ivar job_description: Unique identifier for the document. If creating a document and left
+     blank, one will be automatically generated.
+    :vartype job_description: str
     :ivar job_titles:
     :vartype job_titles: list[str]
     :ivar job_titles_current_only:
@@ -2517,6 +2520,7 @@ class ResumeSearchParameters(msrest.serialization.Model):
 
     _attribute_map = {
         "indices": {"key": "indices", "type": "[str]"},
+        "job_description": {"key": "jobDescription", "type": "str"},
         "job_titles": {"key": "jobTitles", "type": "[str]"},
         "job_titles_current_only": {"key": "jobTitlesCurrentOnly", "type": "bool"},
         "job_titles_required": {"key": "jobTitlesRequired", "type": "bool"},
@@ -2558,6 +2562,7 @@ class ResumeSearchParameters(msrest.serialization.Model):
         self,
         *,
         indices: List[str],
+        job_description: Optional[str] = None,
         job_titles: Optional[List[str]] = None,
         job_titles_current_only: Optional[bool] = None,
         job_titles_required: Optional[bool] = None,
@@ -2598,6 +2603,9 @@ class ResumeSearchParameters(msrest.serialization.Model):
         """
         :keyword indices: Required.
         :paramtype indices: list[str]
+        :keyword job_description: Unique identifier for the document. If creating a document and left
+         blank, one will be automatically generated.
+        :paramtype job_description: str
         :keyword job_titles:
         :paramtype job_titles: list[str]
         :keyword job_titles_current_only:
@@ -2671,6 +2679,7 @@ class ResumeSearchParameters(msrest.serialization.Model):
         """
         super(ResumeSearchParameters, self).__init__(**kwargs)
         self.indices = indices
+        self.job_description = job_description
         self.job_titles = job_titles
         self.job_titles_current_only = job_titles_current_only
         self.job_titles_required = job_titles_required

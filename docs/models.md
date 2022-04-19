@@ -565,7 +565,7 @@ Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema.
 :ivar file_name: Optional filename of the file.
 :vartype file_name: str
 :ivar url: URL to file to download and process.
-:vartype url: bool
+:vartype url: str
 :ivar wait: If "true" (default), will return a response only after processing has completed. If
  "false", will return an empty data object which can be polled at the GET endpoint until
  processing is complete.
@@ -593,7 +593,7 @@ one will be automatically generated.
 :keyword file_name: Optional filename of the file.
 :paramtype file_name: str
 :keyword url: URL to file to download and process.
-:paramtype url: bool
+:paramtype url: str
 :keyword wait: If "true" (default), will return a response only after processing has completed.
 If "false", will return an empty data object which can be polled at the GET endpoint until
 processing is complete.
@@ -1827,6 +1827,9 @@ All required parameters must be populated in order to send to Azure.
 
 :ivar indices: Required.
 :vartype indices: list[str]
+:ivar job_description: Unique identifier for the document. If creating a document and left
+ blank, one will be automatically generated.
+:vartype job_description: str
 :ivar job_titles:
 :vartype job_titles: list[str]
 :ivar job_titles_current_only:
@@ -1908,6 +1911,9 @@ def __init__(**kwargs)
 
 :keyword indices: Required.
 :paramtype indices: list[str]
+:keyword job_description: Unique identifier for the document. If creating a document and left
+blank, one will be automatically generated.
+:paramtype job_description: str
 :keyword job_titles:
 :paramtype job_titles: list[str]
 :keyword job_titles_current_only:

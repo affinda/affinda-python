@@ -521,7 +521,7 @@ Returns all the invoice summaries for that user, limited to 300 per page.
 #### create\_invoice
 
 ```python
-def create_invoice(file=None, identifier=None, file_name=None, url=True, wait=True, language=None, expiry_time=None, **kwargs)
+def create_invoice(file=None, identifier=None, file_name=None, url=None, wait=True, language=None, expiry_time=None, **kwargs)
 ```
 
 Upload an invoice for parsing.
@@ -537,7 +537,7 @@ retrieve results.
 - `file` (`IO`): 
 - `identifier` (`str`): 
 - `file_name` (`str`): 
-- `url` (`bool`): URL to file to download and process.
+- `url` (`str`): 
 - `wait` (`bool`): 
 - `language` (`str`): 
 - `expiry_time` (`str`): 

@@ -2212,7 +2212,7 @@ class AffindaAPIOperationsMixin(object):
         file=None,  # type: Optional[IO]
         identifier=None,  # type: Optional[str]
         file_name=None,  # type: Optional[str]
-        url=True,  # type: Optional[bool]
+        url=None,  # type: Optional[str]
         wait=True,  # type: Optional[bool]
         language=None,  # type: Optional[str]
         expiry_time=None,  # type: Optional[str]
@@ -2232,8 +2232,8 @@ class AffindaAPIOperationsMixin(object):
         :type identifier: str
         :param file_name:
         :type file_name: str
-        :param url: URL to file to download and process.
-        :type url: bool
+        :param url:
+        :type url: str
         :param wait:
         :type wait: bool
         :param language:
