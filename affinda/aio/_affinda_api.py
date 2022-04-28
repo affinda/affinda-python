@@ -25,14 +25,14 @@ class AffindaAPI(AffindaAPIOperationsMixin):
 
     :param credential: Credential needed for the client to connect to Azure.
     :type credential: ~azure.core.credentials_async.AsyncTokenCredential
-    :param base_url: Service URL. Default value is 'https://api.affinda.com/v1'.
+    :param base_url: Service URL. Default value is 'https://api.affinda.com/v2'.
     :type base_url: str
     """
 
     def __init__(
         self,
         credential: "AsyncTokenCredential",
-        base_url: str = "https://api.affinda.com/v1",
+        base_url: str = "https://api.affinda.com/v2",
         **kwargs: Any,
     ) -> None:
         self._config = AffindaAPIConfiguration(credential=credential, **kwargs)

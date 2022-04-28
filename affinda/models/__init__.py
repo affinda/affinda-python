@@ -5,16 +5,89 @@
 # --------------------------------------------------------------------------
 
 try:
+    from ._models_py3 import Annotation
+    from ._models_py3 import Components11Zi81FSchemasInvoicedataPropertiesBankswiftAllof2
+    from ._models_py3 import Components14Dm0XSchemasInvoicedataPropertiesBankaccountnumberAllof2
+    from ._models_py3 import Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2
+    from ._models_py3 import Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2
+    from ._models_py3 import Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2
+    from ._models_py3 import Components1Bh8NlbSchemasInvoicedataPropertiesBpaybillercodeAllof2
+    from ._models_py3 import Components1ByjheSchemasInvoicedataPropertiesSupplierfaxAllof2
+    from ._models_py3 import Components1Fdmi0OSchemasInvoicedataPropertiesSuppliervatAllof2
+    from ._models_py3 import Components1LdfgdeSchemasInvoicedataPropertiesPaymentamountpaidAllof2
+    from ._models_py3 import Components1O4BmpySchemasInvoicedataPropertiesSuppliercompanynameAllof2
+    from ._models_py3 import Components1OmsnpSchemasInvoicedataPropertiesBpayreferenceAllof2
+    from ._models_py3 import Components1Rbm6P1SchemasInvoicedataPropertiesBanksortcodeAllof2
     from ._models_py3 import (
         Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification,
     )
+    from ._models_py3 import Components1Wx56HlSchemasInvoicedataPropertiesPaymentreferenceAllof2
+    from ._models_py3 import Components2Hu973SchemasInvoicedataPropertiesCustomernumberAllof2
+    from ._models_py3 import (
+        Components55Nj82SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof2,
+    )
+    from ._models_py3 import Components5PwavySchemasInvoicedataPropertiesCustomeremailAllof2
+    from ._models_py3 import Components6DhvidSchemasInvoicedataPropertiesCustomercompanynameAllof2
+    from ._models_py3 import Components7CqvqpSchemasInvoicedataPropertiesInvoicenumberAllof2
+    from ._models_py3 import ComponentsBvthtoSchemasInvoicedataPropertiesSupplierphonenumberAllof2
+    from ._models_py3 import ComponentsE6Bjv3SchemasInvoicedataPropertiesBankibanAllof2
+    from ._models_py3 import ComponentsPs8Uo7SchemasInvoicedataPropertiesCustomerphonenumberAllof2
+    from ._models_py3 import (
+        ComponentsRft7JdSchemasInvoicedataPropertiesCustomerbusinessnumberAllof2,
+    )
+    from ._models_py3 import ComponentsRsi73USchemasInvoicedataPropertiesCustomervatAllof2
+    from ._models_py3 import ComponentsTz04ToSchemasInvoicedataPropertiesPaymentamountbaseAllof2
+    from ._models_py3 import ComponentsUilt2MSchemasInvoicedataPropertiesBankbsbAllof2
+    from ._models_py3 import ComponentsVyrnzuSchemasInvoicedataPropertiesSupplieremailAllof2
+    from ._models_py3 import ComponentsWywi9WSchemasInvoicedataPropertiesCustomercontactnameAllof2
+    from ._models_py3 import ComponentsY49P83SchemasInvoicedataPropertiesPaymentamounttaxAllof2
+    from ._models_py3 import (
+        ComponentsYe0TzySchemasInvoicedataPropertiesSupplierbusinessnumberAllof2,
+    )
+    from ._models_py3 import DateAnnotation
     from ._models_py3 import Error
+    from ._models_py3 import ExpectedRemunerationAnnotation
+    from ._models_py3 import ExpectedRemunerationAnnotationParsed
     from ._models_py3 import Get200ApplicationJsonPropertiesItemsItem
     from ._models_py3 import GetAllDocumentsResults
     from ._models_py3 import GetAllInvoicesResults
+    from ._models_py3 import GetAllJobDescriptionsResults
     from ._models_py3 import Invoice
     from ._models_py3 import InvoiceData
+    from ._models_py3 import InvoiceDataBankAccountNumber
+    from ._models_py3 import InvoiceDataBankBSB
+    from ._models_py3 import InvoiceDataBankIBAN
+    from ._models_py3 import InvoiceDataBankSortCode
+    from ._models_py3 import InvoiceDataBankSwift
+    from ._models_py3 import InvoiceDataBpayBillerCode
+    from ._models_py3 import InvoiceDataBpayReference
+    from ._models_py3 import InvoiceDataCustomerBusinessNumber
+    from ._models_py3 import InvoiceDataCustomerCompanyName
+    from ._models_py3 import InvoiceDataCustomerContactName
+    from ._models_py3 import InvoiceDataCustomerEmail
+    from ._models_py3 import InvoiceDataCustomerNumber
+    from ._models_py3 import InvoiceDataCustomerPhoneNumber
+    from ._models_py3 import InvoiceDataCustomerVAT
+    from ._models_py3 import InvoiceDataInvoiceNumber
+    from ._models_py3 import InvoiceDataInvoicePurchaseOrderNumber
+    from ._models_py3 import InvoiceDataPaymentAmountBase
+    from ._models_py3 import InvoiceDataPaymentAmountDue
+    from ._models_py3 import InvoiceDataPaymentAmountPaid
+    from ._models_py3 import InvoiceDataPaymentAmountTax
+    from ._models_py3 import InvoiceDataPaymentAmountTotal
+    from ._models_py3 import InvoiceDataPaymentReference
+    from ._models_py3 import InvoiceDataSupplierBusinessNumber
+    from ._models_py3 import InvoiceDataSupplierCompanyName
+    from ._models_py3 import InvoiceDataSupplierEmail
+    from ._models_py3 import InvoiceDataSupplierFax
+    from ._models_py3 import InvoiceDataSupplierPhoneNumber
+    from ._models_py3 import InvoiceDataSupplierVAT
+    from ._models_py3 import InvoiceDataSupplierWebsite
+    from ._models_py3 import JobDescription
+    from ._models_py3 import JobDescriptionData
+    from ._models_py3 import LanguageAnnotation
     from ._models_py3 import Location
+    from ._models_py3 import LocationAnnotation
     from ._models_py3 import Meta
     from ._models_py3 import OccupationGroup
     from ._models_py3 import (
@@ -41,9 +114,11 @@ try:
         PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema,
     )
     from ._models_py3 import PathsSot11NIndexPostRequestbodyContentMultipartFormDataSchema
+    from ._models_py3 import PathsYlw96JobDescriptionsPostRequestbodyContentMultipartFormDataSchema
     from ._models_py3 import (
         PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema,
     )
+    from ._models_py3 import Rectangle
     from ._models_py3 import RedactedResume
     from ._models_py3 import RedactedResumeData
     from ._models_py3 import ReformattedResume
@@ -71,15 +146,83 @@ try:
     from ._models_py3 import ResumeSearchParametersSkillsItem
     from ._models_py3 import ResumeSearchResult
     from ._models_py3 import ResumeSearchScoreComponent
+    from ._models_py3 import SkillAnnotation
 except (SyntaxError, ImportError):
+    from ._models import Annotation  # type: ignore
+    from ._models import Components11Zi81FSchemasInvoicedataPropertiesBankswiftAllof2  # type: ignore
+    from ._models import Components14Dm0XSchemasInvoicedataPropertiesBankaccountnumberAllof2  # type: ignore
+    from ._models import Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2  # type: ignore
+    from ._models import Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2  # type: ignore
+    from ._models import Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2  # type: ignore
+    from ._models import Components1Bh8NlbSchemasInvoicedataPropertiesBpaybillercodeAllof2  # type: ignore
+    from ._models import Components1ByjheSchemasInvoicedataPropertiesSupplierfaxAllof2  # type: ignore
+    from ._models import Components1Fdmi0OSchemasInvoicedataPropertiesSuppliervatAllof2  # type: ignore
+    from ._models import Components1LdfgdeSchemasInvoicedataPropertiesPaymentamountpaidAllof2  # type: ignore
+    from ._models import Components1O4BmpySchemasInvoicedataPropertiesSuppliercompanynameAllof2  # type: ignore
+    from ._models import Components1OmsnpSchemasInvoicedataPropertiesBpayreferenceAllof2  # type: ignore
+    from ._models import Components1Rbm6P1SchemasInvoicedataPropertiesBanksortcodeAllof2  # type: ignore
     from ._models import Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification  # type: ignore
+    from ._models import Components1Wx56HlSchemasInvoicedataPropertiesPaymentreferenceAllof2  # type: ignore
+    from ._models import Components2Hu973SchemasInvoicedataPropertiesCustomernumberAllof2  # type: ignore
+    from ._models import Components55Nj82SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof2  # type: ignore
+    from ._models import Components5PwavySchemasInvoicedataPropertiesCustomeremailAllof2  # type: ignore
+    from ._models import Components6DhvidSchemasInvoicedataPropertiesCustomercompanynameAllof2  # type: ignore
+    from ._models import Components7CqvqpSchemasInvoicedataPropertiesInvoicenumberAllof2  # type: ignore
+    from ._models import ComponentsBvthtoSchemasInvoicedataPropertiesSupplierphonenumberAllof2  # type: ignore
+    from ._models import ComponentsE6Bjv3SchemasInvoicedataPropertiesBankibanAllof2  # type: ignore
+    from ._models import ComponentsPs8Uo7SchemasInvoicedataPropertiesCustomerphonenumberAllof2  # type: ignore
+    from ._models import ComponentsRft7JdSchemasInvoicedataPropertiesCustomerbusinessnumberAllof2  # type: ignore
+    from ._models import ComponentsRsi73USchemasInvoicedataPropertiesCustomervatAllof2  # type: ignore
+    from ._models import ComponentsTz04ToSchemasInvoicedataPropertiesPaymentamountbaseAllof2  # type: ignore
+    from ._models import ComponentsUilt2MSchemasInvoicedataPropertiesBankbsbAllof2  # type: ignore
+    from ._models import ComponentsVyrnzuSchemasInvoicedataPropertiesSupplieremailAllof2  # type: ignore
+    from ._models import ComponentsWywi9WSchemasInvoicedataPropertiesCustomercontactnameAllof2  # type: ignore
+    from ._models import ComponentsY49P83SchemasInvoicedataPropertiesPaymentamounttaxAllof2  # type: ignore
+    from ._models import ComponentsYe0TzySchemasInvoicedataPropertiesSupplierbusinessnumberAllof2  # type: ignore
+    from ._models import DateAnnotation  # type: ignore
     from ._models import Error  # type: ignore
+    from ._models import ExpectedRemunerationAnnotation  # type: ignore
+    from ._models import ExpectedRemunerationAnnotationParsed  # type: ignore
     from ._models import Get200ApplicationJsonPropertiesItemsItem  # type: ignore
     from ._models import GetAllDocumentsResults  # type: ignore
     from ._models import GetAllInvoicesResults  # type: ignore
+    from ._models import GetAllJobDescriptionsResults  # type: ignore
     from ._models import Invoice  # type: ignore
     from ._models import InvoiceData  # type: ignore
+    from ._models import InvoiceDataBankAccountNumber  # type: ignore
+    from ._models import InvoiceDataBankBSB  # type: ignore
+    from ._models import InvoiceDataBankIBAN  # type: ignore
+    from ._models import InvoiceDataBankSortCode  # type: ignore
+    from ._models import InvoiceDataBankSwift  # type: ignore
+    from ._models import InvoiceDataBpayBillerCode  # type: ignore
+    from ._models import InvoiceDataBpayReference  # type: ignore
+    from ._models import InvoiceDataCustomerBusinessNumber  # type: ignore
+    from ._models import InvoiceDataCustomerCompanyName  # type: ignore
+    from ._models import InvoiceDataCustomerContactName  # type: ignore
+    from ._models import InvoiceDataCustomerEmail  # type: ignore
+    from ._models import InvoiceDataCustomerNumber  # type: ignore
+    from ._models import InvoiceDataCustomerPhoneNumber  # type: ignore
+    from ._models import InvoiceDataCustomerVAT  # type: ignore
+    from ._models import InvoiceDataInvoiceNumber  # type: ignore
+    from ._models import InvoiceDataInvoicePurchaseOrderNumber  # type: ignore
+    from ._models import InvoiceDataPaymentAmountBase  # type: ignore
+    from ._models import InvoiceDataPaymentAmountDue  # type: ignore
+    from ._models import InvoiceDataPaymentAmountPaid  # type: ignore
+    from ._models import InvoiceDataPaymentAmountTax  # type: ignore
+    from ._models import InvoiceDataPaymentAmountTotal  # type: ignore
+    from ._models import InvoiceDataPaymentReference  # type: ignore
+    from ._models import InvoiceDataSupplierBusinessNumber  # type: ignore
+    from ._models import InvoiceDataSupplierCompanyName  # type: ignore
+    from ._models import InvoiceDataSupplierEmail  # type: ignore
+    from ._models import InvoiceDataSupplierFax  # type: ignore
+    from ._models import InvoiceDataSupplierPhoneNumber  # type: ignore
+    from ._models import InvoiceDataSupplierVAT  # type: ignore
+    from ._models import InvoiceDataSupplierWebsite  # type: ignore
+    from ._models import JobDescription  # type: ignore
+    from ._models import JobDescriptionData  # type: ignore
+    from ._models import LanguageAnnotation  # type: ignore
     from ._models import Location  # type: ignore
+    from ._models import LocationAnnotation  # type: ignore
     from ._models import Meta  # type: ignore
     from ._models import OccupationGroup  # type: ignore
     from ._models import Paths108CfgmIndexGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems  # type: ignore
@@ -94,7 +237,9 @@ except (SyntaxError, ImportError):
     from ._models import PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems  # type: ignore
     from ._models import PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsSot11NIndexPostRequestbodyContentMultipartFormDataSchema  # type: ignore
+    from ._models import PathsYlw96JobDescriptionsPostRequestbodyContentMultipartFormDataSchema  # type: ignore
     from ._models import PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema  # type: ignore
+    from ._models import Rectangle  # type: ignore
     from ._models import RedactedResume  # type: ignore
     from ._models import RedactedResumeData  # type: ignore
     from ._models import ReformattedResume  # type: ignore
@@ -122,6 +267,7 @@ except (SyntaxError, ImportError):
     from ._models import ResumeSearchParametersSkillsItem  # type: ignore
     from ._models import ResumeSearchResult  # type: ignore
     from ._models import ResumeSearchScoreComponent  # type: ignore
+    from ._models import SkillAnnotation  # type: ignore
 
 from ._affinda_api_enums import (
     EducationLevel,
@@ -130,14 +276,81 @@ from ._affinda_api_enums import (
 )
 
 __all__ = [
+    "Annotation",
+    "Components11Zi81FSchemasInvoicedataPropertiesBankswiftAllof2",
+    "Components14Dm0XSchemasInvoicedataPropertiesBankaccountnumberAllof2",
+    "Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2",
+    "Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2",
+    "Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2",
+    "Components1Bh8NlbSchemasInvoicedataPropertiesBpaybillercodeAllof2",
+    "Components1ByjheSchemasInvoicedataPropertiesSupplierfaxAllof2",
+    "Components1Fdmi0OSchemasInvoicedataPropertiesSuppliervatAllof2",
+    "Components1LdfgdeSchemasInvoicedataPropertiesPaymentamountpaidAllof2",
+    "Components1O4BmpySchemasInvoicedataPropertiesSuppliercompanynameAllof2",
+    "Components1OmsnpSchemasInvoicedataPropertiesBpayreferenceAllof2",
+    "Components1Rbm6P1SchemasInvoicedataPropertiesBanksortcodeAllof2",
     "Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification",
+    "Components1Wx56HlSchemasInvoicedataPropertiesPaymentreferenceAllof2",
+    "Components2Hu973SchemasInvoicedataPropertiesCustomernumberAllof2",
+    "Components55Nj82SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof2",
+    "Components5PwavySchemasInvoicedataPropertiesCustomeremailAllof2",
+    "Components6DhvidSchemasInvoicedataPropertiesCustomercompanynameAllof2",
+    "Components7CqvqpSchemasInvoicedataPropertiesInvoicenumberAllof2",
+    "ComponentsBvthtoSchemasInvoicedataPropertiesSupplierphonenumberAllof2",
+    "ComponentsE6Bjv3SchemasInvoicedataPropertiesBankibanAllof2",
+    "ComponentsPs8Uo7SchemasInvoicedataPropertiesCustomerphonenumberAllof2",
+    "ComponentsRft7JdSchemasInvoicedataPropertiesCustomerbusinessnumberAllof2",
+    "ComponentsRsi73USchemasInvoicedataPropertiesCustomervatAllof2",
+    "ComponentsTz04ToSchemasInvoicedataPropertiesPaymentamountbaseAllof2",
+    "ComponentsUilt2MSchemasInvoicedataPropertiesBankbsbAllof2",
+    "ComponentsVyrnzuSchemasInvoicedataPropertiesSupplieremailAllof2",
+    "ComponentsWywi9WSchemasInvoicedataPropertiesCustomercontactnameAllof2",
+    "ComponentsY49P83SchemasInvoicedataPropertiesPaymentamounttaxAllof2",
+    "ComponentsYe0TzySchemasInvoicedataPropertiesSupplierbusinessnumberAllof2",
+    "DateAnnotation",
     "Error",
+    "ExpectedRemunerationAnnotation",
+    "ExpectedRemunerationAnnotationParsed",
     "Get200ApplicationJsonPropertiesItemsItem",
     "GetAllDocumentsResults",
     "GetAllInvoicesResults",
+    "GetAllJobDescriptionsResults",
     "Invoice",
     "InvoiceData",
+    "InvoiceDataBankAccountNumber",
+    "InvoiceDataBankBSB",
+    "InvoiceDataBankIBAN",
+    "InvoiceDataBankSortCode",
+    "InvoiceDataBankSwift",
+    "InvoiceDataBpayBillerCode",
+    "InvoiceDataBpayReference",
+    "InvoiceDataCustomerBusinessNumber",
+    "InvoiceDataCustomerCompanyName",
+    "InvoiceDataCustomerContactName",
+    "InvoiceDataCustomerEmail",
+    "InvoiceDataCustomerNumber",
+    "InvoiceDataCustomerPhoneNumber",
+    "InvoiceDataCustomerVAT",
+    "InvoiceDataInvoiceNumber",
+    "InvoiceDataInvoicePurchaseOrderNumber",
+    "InvoiceDataPaymentAmountBase",
+    "InvoiceDataPaymentAmountDue",
+    "InvoiceDataPaymentAmountPaid",
+    "InvoiceDataPaymentAmountTax",
+    "InvoiceDataPaymentAmountTotal",
+    "InvoiceDataPaymentReference",
+    "InvoiceDataSupplierBusinessNumber",
+    "InvoiceDataSupplierCompanyName",
+    "InvoiceDataSupplierEmail",
+    "InvoiceDataSupplierFax",
+    "InvoiceDataSupplierPhoneNumber",
+    "InvoiceDataSupplierVAT",
+    "InvoiceDataSupplierWebsite",
+    "JobDescription",
+    "JobDescriptionData",
+    "LanguageAnnotation",
     "Location",
+    "LocationAnnotation",
     "Meta",
     "OccupationGroup",
     "Paths108CfgmIndexGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems",
@@ -152,7 +365,9 @@ __all__ = [
     "PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems",
     "PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema",
     "PathsSot11NIndexPostRequestbodyContentMultipartFormDataSchema",
+    "PathsYlw96JobDescriptionsPostRequestbodyContentMultipartFormDataSchema",
     "PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema",
+    "Rectangle",
     "RedactedResume",
     "RedactedResumeData",
     "ReformattedResume",
@@ -180,6 +395,7 @@ __all__ = [
     "ResumeSearchParametersSkillsItem",
     "ResumeSearchResult",
     "ResumeSearchScoreComponent",
+    "SkillAnnotation",
     "EducationLevel",
     "ManagementLevel",
     "SearchLocationUnit",

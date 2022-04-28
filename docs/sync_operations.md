@@ -15,7 +15,7 @@ Affinda API client for Python.
 **Arguments**:
 
 - `credential` (`~azure.core.credentials.TokenCredential`): Credential needed for the client to connect to Azure.
-- `base_url` (`str`): Service URL. Default value is 'https://api.affinda.com/v1'.
+- `base_url` (`str`): Service URL. Default value is 'https://api.affinda.com/v2'.
 
 <a id="operations._affinda_api_operations"></a>
 
@@ -363,6 +363,102 @@ Searches through parsed resumes.
 **Returns**:
 
 `~affinda.models.ResumeSearch or ~affinda.models.RequestError`: ResumeSearch or RequestError, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_job_descriptions"></a>
+
+#### get\_all\_job\_descriptions
+
+```python
+def get_all_job_descriptions(offset=None, limit=300, **kwargs)
+```
+
+Get list of all job descriptions.
+
+Returns all the job descriptions for that user, limited to 300 per page.
+
+**Arguments**:
+
+:keyword callable cls: A custom type or function that will be passed the direct response
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+- `limit` (`int`): The numbers of results to return.
+
+**Returns**:
+
+`~affinda.models.GetAllJobDescriptionsResults or ~affinda.models.RequestError`: GetAllJobDescriptionsResults or RequestError, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_job_description"></a>
+
+#### create\_job\_description
+
+```python
+def create_job_description(file=None, identifier=None, file_name=None, url=None, wait=True, language=None, expiry_time=None, **kwargs)
+```
+
+Upload a job description for parsing.
+
+Uploads a job description for parsing.
+When successful, returns an ``identifier`` in the response for subsequent use with the
+`/job_descriptions/{identifier} <#operation/getResume>`_ endpoint to check processing status
+and retrieve results.
+
+**Arguments**:
+
+:keyword callable cls: A custom type or function that will be passed the direct response
+- `file` (`IO`): 
+- `identifier` (`str`): 
+- `file_name` (`str`): 
+- `url` (`str`): 
+- `wait` (`bool`): 
+- `language` (`str`): 
+- `expiry_time` (`str`): 
+
+**Returns**:
+
+`~affinda.models.JobDescription or ~affinda.models.RequestError`: JobDescription or RequestError, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_job_description"></a>
+
+#### get\_job\_description
+
+```python
+def get_job_description(identifier, **kwargs)
+```
+
+Get job description results for a specific job description file.
+
+Returns all the results for that job description if processing is completed.
+The ``identifier`` is the unique ID returned after POST-ing the resume via the
+`/job_descriptions <#operation/createJobDescription>`_ endpoint.
+
+**Arguments**:
+
+:keyword callable cls: A custom type or function that will be passed the direct response
+- `identifier` (`str`): Document identifier.
+
+**Returns**:
+
+`~affinda.models.JobDescription or ~affinda.models.RequestError`: JobDescription or RequestError, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_job_description"></a>
+
+#### delete\_job\_description
+
+```python
+def delete_job_description(identifier, **kwargs)
+```
+
+Delete a job description.
+
+Deletes the specified job description from the database.
+
+**Arguments**:
+
+:keyword callable cls: A custom type or function that will be passed the direct response
+- `identifier` (`str`): Document identifier.
+
+**Returns**:
+
+`~affinda.models.RequestError or None`: RequestError, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_indexes"></a>
 

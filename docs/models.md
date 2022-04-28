@@ -2,6 +2,398 @@
 
 # models.\_models
 
+<a id="models._models.Annotation"></a>
+
+## Annotation Objects
+
+```python
+class Annotation(msrest.serialization.Model)
+```
+
+Annotation.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.Annotation.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.Components11Zi81FSchemasInvoicedataPropertiesBankswiftAllof2"></a>
+
+## Components11Zi81FSchemasInvoicedataPropertiesBankswiftAllof2 Objects
+
+```python
+class Components11Zi81FSchemasInvoicedataPropertiesBankswiftAllof2(msrest.serialization.Model)
+```
+
+Components11Zi81FSchemasInvoicedataPropertiesBankswiftAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.Components11Zi81FSchemasInvoicedataPropertiesBankswiftAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.Components14Dm0XSchemasInvoicedataPropertiesBankaccountnumberAllof2"></a>
+
+## Components14Dm0XSchemasInvoicedataPropertiesBankaccountnumberAllof2 Objects
+
+```python
+class Components14Dm0XSchemasInvoicedataPropertiesBankaccountnumberAllof2(msrest.serialization.Model)
+```
+
+Components14Dm0XSchemasInvoicedataPropertiesBankaccountnumberAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.Components14Dm0XSchemasInvoicedataPropertiesBankaccountnumberAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2"></a>
+
+## Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2 Objects
+
+```python
+class Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2(msrest.serialization.Model)
+```
+
+Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2"></a>
+
+## Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2 Objects
+
+```python
+class Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2(msrest.serialization.Model)
+```
+
+Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2"></a>
+
+## Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2 Objects
+
+```python
+class Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2(msrest.serialization.Model)
+```
+
+Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.Components1Bh8NlbSchemasInvoicedataPropertiesBpaybillercodeAllof2"></a>
+
+## Components1Bh8NlbSchemasInvoicedataPropertiesBpaybillercodeAllof2 Objects
+
+```python
+class Components1Bh8NlbSchemasInvoicedataPropertiesBpaybillercodeAllof2(msrest.serialization.Model)
+```
+
+Components1Bh8NlbSchemasInvoicedataPropertiesBpaybillercodeAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.Components1Bh8NlbSchemasInvoicedataPropertiesBpaybillercodeAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.Components1ByjheSchemasInvoicedataPropertiesSupplierfaxAllof2"></a>
+
+## Components1ByjheSchemasInvoicedataPropertiesSupplierfaxAllof2 Objects
+
+```python
+class Components1ByjheSchemasInvoicedataPropertiesSupplierfaxAllof2(msrest.serialization.Model)
+```
+
+Components1ByjheSchemasInvoicedataPropertiesSupplierfaxAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.Components1ByjheSchemasInvoicedataPropertiesSupplierfaxAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.Components1Fdmi0OSchemasInvoicedataPropertiesSuppliervatAllof2"></a>
+
+## Components1Fdmi0OSchemasInvoicedataPropertiesSuppliervatAllof2 Objects
+
+```python
+class Components1Fdmi0OSchemasInvoicedataPropertiesSuppliervatAllof2(msrest.serialization.Model)
+```
+
+Components1Fdmi0OSchemasInvoicedataPropertiesSuppliervatAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.Components1Fdmi0OSchemasInvoicedataPropertiesSuppliervatAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.Components1LdfgdeSchemasInvoicedataPropertiesPaymentamountpaidAllof2"></a>
+
+## Components1LdfgdeSchemasInvoicedataPropertiesPaymentamountpaidAllof2 Objects
+
+```python
+class Components1LdfgdeSchemasInvoicedataPropertiesPaymentamountpaidAllof2(msrest.serialization.Model)
+```
+
+Components1LdfgdeSchemasInvoicedataPropertiesPaymentamountpaidAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.Components1LdfgdeSchemasInvoicedataPropertiesPaymentamountpaidAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.Components1O4BmpySchemasInvoicedataPropertiesSuppliercompanynameAllof2"></a>
+
+## Components1O4BmpySchemasInvoicedataPropertiesSuppliercompanynameAllof2 Objects
+
+```python
+class Components1O4BmpySchemasInvoicedataPropertiesSuppliercompanynameAllof2(msrest.serialization.Model)
+```
+
+Components1O4BmpySchemasInvoicedataPropertiesSuppliercompanynameAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.Components1O4BmpySchemasInvoicedataPropertiesSuppliercompanynameAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.Components1OmsnpSchemasInvoicedataPropertiesBpayreferenceAllof2"></a>
+
+## Components1OmsnpSchemasInvoicedataPropertiesBpayreferenceAllof2 Objects
+
+```python
+class Components1OmsnpSchemasInvoicedataPropertiesBpayreferenceAllof2(msrest.serialization.Model)
+```
+
+Components1OmsnpSchemasInvoicedataPropertiesBpayreferenceAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.Components1OmsnpSchemasInvoicedataPropertiesBpayreferenceAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.Components1Rbm6P1SchemasInvoicedataPropertiesBanksortcodeAllof2"></a>
+
+## Components1Rbm6P1SchemasInvoicedataPropertiesBanksortcodeAllof2 Objects
+
+```python
+class Components1Rbm6P1SchemasInvoicedataPropertiesBanksortcodeAllof2(msrest.serialization.Model)
+```
+
+Components1Rbm6P1SchemasInvoicedataPropertiesBanksortcodeAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.Components1Rbm6P1SchemasInvoicedataPropertiesBanksortcodeAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
 <a id="models._models.Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification"></a>
 
 ## Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification Objects
@@ -42,6 +434,538 @@ def __init__(**kwargs)
 :keyword soc_code: The 4 digit code representing the SOC2020 classification for this job title.
 :paramtype soc_code: int
 
+<a id="models._models.Components1Wx56HlSchemasInvoicedataPropertiesPaymentreferenceAllof2"></a>
+
+## Components1Wx56HlSchemasInvoicedataPropertiesPaymentreferenceAllof2 Objects
+
+```python
+class Components1Wx56HlSchemasInvoicedataPropertiesPaymentreferenceAllof2(msrest.serialization.Model)
+```
+
+Components1Wx56HlSchemasInvoicedataPropertiesPaymentreferenceAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.Components1Wx56HlSchemasInvoicedataPropertiesPaymentreferenceAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.Components2Hu973SchemasInvoicedataPropertiesCustomernumberAllof2"></a>
+
+## Components2Hu973SchemasInvoicedataPropertiesCustomernumberAllof2 Objects
+
+```python
+class Components2Hu973SchemasInvoicedataPropertiesCustomernumberAllof2(msrest.serialization.Model)
+```
+
+Components2Hu973SchemasInvoicedataPropertiesCustomernumberAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.Components2Hu973SchemasInvoicedataPropertiesCustomernumberAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.Components55Nj82SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof2"></a>
+
+## Components55Nj82SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof2 Objects
+
+```python
+class Components55Nj82SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof2(msrest.serialization.Model)
+```
+
+Components55Nj82SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.Components55Nj82SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.Components5PwavySchemasInvoicedataPropertiesCustomeremailAllof2"></a>
+
+## Components5PwavySchemasInvoicedataPropertiesCustomeremailAllof2 Objects
+
+```python
+class Components5PwavySchemasInvoicedataPropertiesCustomeremailAllof2(msrest.serialization.Model)
+```
+
+Components5PwavySchemasInvoicedataPropertiesCustomeremailAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.Components5PwavySchemasInvoicedataPropertiesCustomeremailAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.Components6DhvidSchemasInvoicedataPropertiesCustomercompanynameAllof2"></a>
+
+## Components6DhvidSchemasInvoicedataPropertiesCustomercompanynameAllof2 Objects
+
+```python
+class Components6DhvidSchemasInvoicedataPropertiesCustomercompanynameAllof2(msrest.serialization.Model)
+```
+
+Components6DhvidSchemasInvoicedataPropertiesCustomercompanynameAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.Components6DhvidSchemasInvoicedataPropertiesCustomercompanynameAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.Components7CqvqpSchemasInvoicedataPropertiesInvoicenumberAllof2"></a>
+
+## Components7CqvqpSchemasInvoicedataPropertiesInvoicenumberAllof2 Objects
+
+```python
+class Components7CqvqpSchemasInvoicedataPropertiesInvoicenumberAllof2(msrest.serialization.Model)
+```
+
+Components7CqvqpSchemasInvoicedataPropertiesInvoicenumberAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.Components7CqvqpSchemasInvoicedataPropertiesInvoicenumberAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.ComponentsBvthtoSchemasInvoicedataPropertiesSupplierphonenumberAllof2"></a>
+
+## ComponentsBvthtoSchemasInvoicedataPropertiesSupplierphonenumberAllof2 Objects
+
+```python
+class ComponentsBvthtoSchemasInvoicedataPropertiesSupplierphonenumberAllof2(msrest.serialization.Model)
+```
+
+ComponentsBvthtoSchemasInvoicedataPropertiesSupplierphonenumberAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.ComponentsBvthtoSchemasInvoicedataPropertiesSupplierphonenumberAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.ComponentsE6Bjv3SchemasInvoicedataPropertiesBankibanAllof2"></a>
+
+## ComponentsE6Bjv3SchemasInvoicedataPropertiesBankibanAllof2 Objects
+
+```python
+class ComponentsE6Bjv3SchemasInvoicedataPropertiesBankibanAllof2(msrest.serialization.Model)
+```
+
+ComponentsE6Bjv3SchemasInvoicedataPropertiesBankibanAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.ComponentsE6Bjv3SchemasInvoicedataPropertiesBankibanAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.ComponentsPs8Uo7SchemasInvoicedataPropertiesCustomerphonenumberAllof2"></a>
+
+## ComponentsPs8Uo7SchemasInvoicedataPropertiesCustomerphonenumberAllof2 Objects
+
+```python
+class ComponentsPs8Uo7SchemasInvoicedataPropertiesCustomerphonenumberAllof2(msrest.serialization.Model)
+```
+
+ComponentsPs8Uo7SchemasInvoicedataPropertiesCustomerphonenumberAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.ComponentsPs8Uo7SchemasInvoicedataPropertiesCustomerphonenumberAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.ComponentsRft7JdSchemasInvoicedataPropertiesCustomerbusinessnumberAllof2"></a>
+
+## ComponentsRft7JdSchemasInvoicedataPropertiesCustomerbusinessnumberAllof2 Objects
+
+```python
+class ComponentsRft7JdSchemasInvoicedataPropertiesCustomerbusinessnumberAllof2(msrest.serialization.Model)
+```
+
+ComponentsRft7JdSchemasInvoicedataPropertiesCustomerbusinessnumberAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.ComponentsRft7JdSchemasInvoicedataPropertiesCustomerbusinessnumberAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.ComponentsRsi73USchemasInvoicedataPropertiesCustomervatAllof2"></a>
+
+## ComponentsRsi73USchemasInvoicedataPropertiesCustomervatAllof2 Objects
+
+```python
+class ComponentsRsi73USchemasInvoicedataPropertiesCustomervatAllof2(msrest.serialization.Model)
+```
+
+ComponentsRsi73USchemasInvoicedataPropertiesCustomervatAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.ComponentsRsi73USchemasInvoicedataPropertiesCustomervatAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.ComponentsTz04ToSchemasInvoicedataPropertiesPaymentamountbaseAllof2"></a>
+
+## ComponentsTz04ToSchemasInvoicedataPropertiesPaymentamountbaseAllof2 Objects
+
+```python
+class ComponentsTz04ToSchemasInvoicedataPropertiesPaymentamountbaseAllof2(msrest.serialization.Model)
+```
+
+ComponentsTz04ToSchemasInvoicedataPropertiesPaymentamountbaseAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.ComponentsTz04ToSchemasInvoicedataPropertiesPaymentamountbaseAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.ComponentsUilt2MSchemasInvoicedataPropertiesBankbsbAllof2"></a>
+
+## ComponentsUilt2MSchemasInvoicedataPropertiesBankbsbAllof2 Objects
+
+```python
+class ComponentsUilt2MSchemasInvoicedataPropertiesBankbsbAllof2(msrest.serialization.Model)
+```
+
+ComponentsUilt2MSchemasInvoicedataPropertiesBankbsbAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.ComponentsUilt2MSchemasInvoicedataPropertiesBankbsbAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.ComponentsVyrnzuSchemasInvoicedataPropertiesSupplieremailAllof2"></a>
+
+## ComponentsVyrnzuSchemasInvoicedataPropertiesSupplieremailAllof2 Objects
+
+```python
+class ComponentsVyrnzuSchemasInvoicedataPropertiesSupplieremailAllof2(msrest.serialization.Model)
+```
+
+ComponentsVyrnzuSchemasInvoicedataPropertiesSupplieremailAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.ComponentsVyrnzuSchemasInvoicedataPropertiesSupplieremailAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.ComponentsWywi9WSchemasInvoicedataPropertiesCustomercontactnameAllof2"></a>
+
+## ComponentsWywi9WSchemasInvoicedataPropertiesCustomercontactnameAllof2 Objects
+
+```python
+class ComponentsWywi9WSchemasInvoicedataPropertiesCustomercontactnameAllof2(msrest.serialization.Model)
+```
+
+ComponentsWywi9WSchemasInvoicedataPropertiesCustomercontactnameAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.ComponentsWywi9WSchemasInvoicedataPropertiesCustomercontactnameAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.ComponentsY49P83SchemasInvoicedataPropertiesPaymentamounttaxAllof2"></a>
+
+## ComponentsY49P83SchemasInvoicedataPropertiesPaymentamounttaxAllof2 Objects
+
+```python
+class ComponentsY49P83SchemasInvoicedataPropertiesPaymentamounttaxAllof2(msrest.serialization.Model)
+```
+
+ComponentsY49P83SchemasInvoicedataPropertiesPaymentamounttaxAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.ComponentsY49P83SchemasInvoicedataPropertiesPaymentamounttaxAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.ComponentsYe0TzySchemasInvoicedataPropertiesSupplierbusinessnumberAllof2"></a>
+
+## ComponentsYe0TzySchemasInvoicedataPropertiesSupplierbusinessnumberAllof2 Objects
+
+```python
+class ComponentsYe0TzySchemasInvoicedataPropertiesSupplierbusinessnumberAllof2(msrest.serialization.Model)
+```
+
+ComponentsYe0TzySchemasInvoicedataPropertiesSupplierbusinessnumberAllof2.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.ComponentsYe0TzySchemasInvoicedataPropertiesSupplierbusinessnumberAllof2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.DateAnnotation"></a>
+
+## DateAnnotation Objects
+
+```python
+class DateAnnotation(Annotation)
+```
+
+DateAnnotation.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+:ivar parsed:
+:vartype parsed: ~datetime.date
+
+<a id="models._models.DateAnnotation.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+:keyword parsed:
+:paramtype parsed: ~datetime.date
+
 <a id="models._models.Error"></a>
 
 ## Error Objects
@@ -69,6 +993,98 @@ def __init__(**kwargs)
 :paramtype error_code: str
 :keyword error_detail:
 :paramtype error_detail: str
+
+<a id="models._models.ExpectedRemunerationAnnotation"></a>
+
+## ExpectedRemunerationAnnotation Objects
+
+```python
+class ExpectedRemunerationAnnotation(Annotation)
+```
+
+ExpectedRemunerationAnnotation.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+:ivar parsed:
+:vartype parsed: ~affinda.models.ExpectedRemunerationAnnotationParsed
+
+<a id="models._models.ExpectedRemunerationAnnotation.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+:keyword parsed:
+:paramtype parsed: ~affinda.models.ExpectedRemunerationAnnotationParsed
+
+<a id="models._models.ExpectedRemunerationAnnotationParsed"></a>
+
+## ExpectedRemunerationAnnotationParsed Objects
+
+```python
+class ExpectedRemunerationAnnotationParsed(msrest.serialization.Model)
+```
+
+ExpectedRemunerationAnnotationParsed.
+
+:ivar minimum:
+:vartype minimum: float
+:ivar maximum:
+:vartype maximum: float
+:ivar currency:
+:vartype currency: str
+:ivar unit:
+:vartype unit: str
+
+<a id="models._models.ExpectedRemunerationAnnotationParsed.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword minimum:
+:paramtype minimum: float
+:keyword maximum:
+:paramtype maximum: float
+:keyword currency:
+:paramtype currency: str
+:keyword unit:
+:paramtype unit: str
 
 <a id="models._models.Get200ApplicationJsonPropertiesItemsItem"></a>
 
@@ -174,6 +1190,42 @@ def __init__(**kwargs)
 :keyword results:
 :paramtype results: list[~affinda.models.Meta]
 
+<a id="models._models.GetAllJobDescriptionsResults"></a>
+
+## GetAllJobDescriptionsResults Objects
+
+```python
+class GetAllJobDescriptionsResults(msrest.serialization.Model)
+```
+
+GetAllJobDescriptionsResults.
+
+:ivar count: Number of documents in result.
+:vartype count: int
+:ivar next: URL to request next page of results.
+:vartype next: str
+:ivar previous: URL to request previous page of results.
+:vartype previous: str
+:ivar results:
+:vartype results: list[~affinda.models.Meta]
+
+<a id="models._models.GetAllJobDescriptionsResults.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword count: Number of documents in result.
+:paramtype count: int
+:keyword next: URL to request next page of results.
+:paramtype next: str
+:keyword previous: URL to request previous page of results.
+:paramtype previous: str
+:keyword results:
+:paramtype results: list[~affinda.models.Meta]
+
 <a id="models._models.Invoice"></a>
 
 ## Invoice Objects
@@ -219,75 +1271,75 @@ class InvoiceData(msrest.serialization.Model)
 InvoiceData.
 
 :ivar invoice_date:
-:vartype invoice_date: str
+:vartype invoice_date: ~affinda.models.DateAnnotation
 :ivar invoice_order_date:
-:vartype invoice_order_date: str
+:vartype invoice_order_date: ~affinda.models.DateAnnotation
 :ivar payment_date_due:
-:vartype payment_date_due: str
+:vartype payment_date_due: ~affinda.models.DateAnnotation
 :ivar payment_amount_base:
-:vartype payment_amount_base: str
+:vartype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
 :ivar payment_amount_tax:
-:vartype payment_amount_tax: str
+:vartype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
 :ivar payment_amount_total:
-:vartype payment_amount_total: str
+:vartype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
 :ivar payment_amount_paid:
-:vartype payment_amount_paid: str
+:vartype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
 :ivar payment_amount_due:
-:vartype payment_amount_due: str
+:vartype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
 :ivar invoice_number:
-:vartype invoice_number: str
+:vartype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
 :ivar invoice_purchase_order_number:
-:vartype invoice_purchase_order_number: str
+:vartype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
 :ivar supplier_business_number:
-:vartype supplier_business_number: str
+:vartype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
 :ivar customer_number:
-:vartype customer_number: str
+:vartype customer_number: ~affinda.models.InvoiceDataCustomerNumber
 :ivar customer_business_number:
-:vartype customer_business_number: str
+:vartype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
 :ivar payment_reference:
-:vartype payment_reference: str
+:vartype payment_reference: ~affinda.models.InvoiceDataPaymentReference
 :ivar bank_account_number:
-:vartype bank_account_number: str
+:vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
 :ivar supplier_vat:
-:vartype supplier_vat: str
+:vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVAT
 :ivar customer_vat:
-:vartype customer_vat: str
+:vartype customer_vat: ~affinda.models.InvoiceDataCustomerVAT
 :ivar bpay_biller_code:
-:vartype bpay_biller_code: str
+:vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
 :ivar bpay_reference:
-:vartype bpay_reference: str
+:vartype bpay_reference: ~affinda.models.InvoiceDataBpayReference
 :ivar bank_sort_code:
-:vartype bank_sort_code: str
+:vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
 :ivar bank_iban:
-:vartype bank_iban: str
+:vartype bank_iban: ~affinda.models.InvoiceDataBankIBAN
 :ivar bank_swift:
-:vartype bank_swift: str
+:vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
 :ivar bank_bsb:
-:vartype bank_bsb: str
+:vartype bank_bsb: ~affinda.models.InvoiceDataBankBSB
 :ivar customer_contact_name:
-:vartype customer_contact_name: str
+:vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
 :ivar customer_company_name:
-:vartype customer_company_name: str
+:vartype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
 :ivar supplier_company_name:
-:vartype supplier_company_name: str
+:vartype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
 :ivar customer_billing_address:
-:vartype customer_billing_address: ~affinda.models.Location
+:vartype customer_billing_address: ~affinda.models.LocationAnnotation
 :ivar customer_delivery_address:
-:vartype customer_delivery_address: ~affinda.models.Location
+:vartype customer_delivery_address: ~affinda.models.LocationAnnotation
 :ivar supplier_address:
-:vartype supplier_address: ~affinda.models.Location
+:vartype supplier_address: ~affinda.models.LocationAnnotation
 :ivar customer_phone_number:
-:vartype customer_phone_number: str
+:vartype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
 :ivar supplier_phone_number:
-:vartype supplier_phone_number: str
+:vartype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
 :ivar supplier_fax:
-:vartype supplier_fax: str
+:vartype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
 :ivar customer_email:
-:vartype customer_email: str
+:vartype customer_email: ~affinda.models.InvoiceDataCustomerEmail
 :ivar supplier_email:
-:vartype supplier_email: str
+:vartype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
 :ivar supplier_website:
-:vartype supplier_website: str
+:vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
 
 <a id="models._models.InvoiceData.__init__"></a>
 
@@ -298,75 +1350,1869 @@ def __init__(**kwargs)
 ```
 
 :keyword invoice_date:
-:paramtype invoice_date: str
+:paramtype invoice_date: ~affinda.models.DateAnnotation
 :keyword invoice_order_date:
-:paramtype invoice_order_date: str
+:paramtype invoice_order_date: ~affinda.models.DateAnnotation
 :keyword payment_date_due:
-:paramtype payment_date_due: str
+:paramtype payment_date_due: ~affinda.models.DateAnnotation
 :keyword payment_amount_base:
-:paramtype payment_amount_base: str
+:paramtype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
 :keyword payment_amount_tax:
-:paramtype payment_amount_tax: str
+:paramtype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
 :keyword payment_amount_total:
-:paramtype payment_amount_total: str
+:paramtype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
 :keyword payment_amount_paid:
-:paramtype payment_amount_paid: str
+:paramtype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
 :keyword payment_amount_due:
-:paramtype payment_amount_due: str
+:paramtype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
 :keyword invoice_number:
-:paramtype invoice_number: str
+:paramtype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
 :keyword invoice_purchase_order_number:
-:paramtype invoice_purchase_order_number: str
+:paramtype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
 :keyword supplier_business_number:
-:paramtype supplier_business_number: str
+:paramtype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
 :keyword customer_number:
-:paramtype customer_number: str
+:paramtype customer_number: ~affinda.models.InvoiceDataCustomerNumber
 :keyword customer_business_number:
-:paramtype customer_business_number: str
+:paramtype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
 :keyword payment_reference:
-:paramtype payment_reference: str
+:paramtype payment_reference: ~affinda.models.InvoiceDataPaymentReference
 :keyword bank_account_number:
-:paramtype bank_account_number: str
+:paramtype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
 :keyword supplier_vat:
-:paramtype supplier_vat: str
+:paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVAT
 :keyword customer_vat:
-:paramtype customer_vat: str
+:paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVAT
 :keyword bpay_biller_code:
-:paramtype bpay_biller_code: str
+:paramtype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
 :keyword bpay_reference:
-:paramtype bpay_reference: str
+:paramtype bpay_reference: ~affinda.models.InvoiceDataBpayReference
 :keyword bank_sort_code:
-:paramtype bank_sort_code: str
+:paramtype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
 :keyword bank_iban:
-:paramtype bank_iban: str
+:paramtype bank_iban: ~affinda.models.InvoiceDataBankIBAN
 :keyword bank_swift:
-:paramtype bank_swift: str
+:paramtype bank_swift: ~affinda.models.InvoiceDataBankSwift
 :keyword bank_bsb:
-:paramtype bank_bsb: str
+:paramtype bank_bsb: ~affinda.models.InvoiceDataBankBSB
 :keyword customer_contact_name:
-:paramtype customer_contact_name: str
+:paramtype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
 :keyword customer_company_name:
-:paramtype customer_company_name: str
+:paramtype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
 :keyword supplier_company_name:
-:paramtype supplier_company_name: str
+:paramtype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
 :keyword customer_billing_address:
-:paramtype customer_billing_address: ~affinda.models.Location
+:paramtype customer_billing_address: ~affinda.models.LocationAnnotation
 :keyword customer_delivery_address:
-:paramtype customer_delivery_address: ~affinda.models.Location
+:paramtype customer_delivery_address: ~affinda.models.LocationAnnotation
 :keyword supplier_address:
-:paramtype supplier_address: ~affinda.models.Location
+:paramtype supplier_address: ~affinda.models.LocationAnnotation
 :keyword customer_phone_number:
-:paramtype customer_phone_number: str
+:paramtype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
 :keyword supplier_phone_number:
-:paramtype supplier_phone_number: str
+:paramtype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
 :keyword supplier_fax:
-:paramtype supplier_fax: str
+:paramtype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
 :keyword customer_email:
-:paramtype customer_email: str
+:paramtype customer_email: ~affinda.models.InvoiceDataCustomerEmail
 :keyword supplier_email:
-:paramtype supplier_email: str
+:paramtype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
 :keyword supplier_website:
-:paramtype supplier_website: str
+:paramtype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
+
+<a id="models._models.InvoiceDataBankAccountNumber"></a>
+
+## InvoiceDataBankAccountNumber Objects
+
+```python
+class InvoiceDataBankAccountNumber(Annotation,  Components14Dm0XSchemasInvoicedataPropertiesBankaccountnumberAllof2)
+```
+
+InvoiceDataBankAccountNumber.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataBankAccountNumber.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataBankBSB"></a>
+
+## InvoiceDataBankBSB Objects
+
+```python
+class InvoiceDataBankBSB(Annotation,  ComponentsUilt2MSchemasInvoicedataPropertiesBankbsbAllof2)
+```
+
+InvoiceDataBankBSB.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataBankBSB.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataBankIBAN"></a>
+
+## InvoiceDataBankIBAN Objects
+
+```python
+class InvoiceDataBankIBAN(Annotation,  ComponentsE6Bjv3SchemasInvoicedataPropertiesBankibanAllof2)
+```
+
+InvoiceDataBankIBAN.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataBankIBAN.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataBankSortCode"></a>
+
+## InvoiceDataBankSortCode Objects
+
+```python
+class InvoiceDataBankSortCode(Annotation,  Components1Rbm6P1SchemasInvoicedataPropertiesBanksortcodeAllof2)
+```
+
+InvoiceDataBankSortCode.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataBankSortCode.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataBankSwift"></a>
+
+## InvoiceDataBankSwift Objects
+
+```python
+class InvoiceDataBankSwift(Annotation,  Components11Zi81FSchemasInvoicedataPropertiesBankswiftAllof2)
+```
+
+InvoiceDataBankSwift.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataBankSwift.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataBpayBillerCode"></a>
+
+## InvoiceDataBpayBillerCode Objects
+
+```python
+class InvoiceDataBpayBillerCode(Annotation,  Components1Bh8NlbSchemasInvoicedataPropertiesBpaybillercodeAllof2)
+```
+
+InvoiceDataBpayBillerCode.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataBpayBillerCode.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataBpayReference"></a>
+
+## InvoiceDataBpayReference Objects
+
+```python
+class InvoiceDataBpayReference(Annotation,  Components1OmsnpSchemasInvoicedataPropertiesBpayreferenceAllof2)
+```
+
+InvoiceDataBpayReference.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataBpayReference.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataCustomerBusinessNumber"></a>
+
+## InvoiceDataCustomerBusinessNumber Objects
+
+```python
+class InvoiceDataCustomerBusinessNumber(Annotation,  ComponentsRft7JdSchemasInvoicedataPropertiesCustomerbusinessnumberAllof2)
+```
+
+InvoiceDataCustomerBusinessNumber.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataCustomerBusinessNumber.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataCustomerCompanyName"></a>
+
+## InvoiceDataCustomerCompanyName Objects
+
+```python
+class InvoiceDataCustomerCompanyName(Annotation,  Components6DhvidSchemasInvoicedataPropertiesCustomercompanynameAllof2)
+```
+
+InvoiceDataCustomerCompanyName.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataCustomerCompanyName.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataCustomerContactName"></a>
+
+## InvoiceDataCustomerContactName Objects
+
+```python
+class InvoiceDataCustomerContactName(Annotation,  ComponentsWywi9WSchemasInvoicedataPropertiesCustomercontactnameAllof2)
+```
+
+InvoiceDataCustomerContactName.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataCustomerContactName.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataCustomerEmail"></a>
+
+## InvoiceDataCustomerEmail Objects
+
+```python
+class InvoiceDataCustomerEmail(Annotation,  Components5PwavySchemasInvoicedataPropertiesCustomeremailAllof2)
+```
+
+InvoiceDataCustomerEmail.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataCustomerEmail.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataCustomerNumber"></a>
+
+## InvoiceDataCustomerNumber Objects
+
+```python
+class InvoiceDataCustomerNumber(Annotation,  Components2Hu973SchemasInvoicedataPropertiesCustomernumberAllof2)
+```
+
+InvoiceDataCustomerNumber.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataCustomerNumber.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataCustomerPhoneNumber"></a>
+
+## InvoiceDataCustomerPhoneNumber Objects
+
+```python
+class InvoiceDataCustomerPhoneNumber(Annotation,  ComponentsPs8Uo7SchemasInvoicedataPropertiesCustomerphonenumberAllof2)
+```
+
+InvoiceDataCustomerPhoneNumber.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataCustomerPhoneNumber.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataCustomerVAT"></a>
+
+## InvoiceDataCustomerVAT Objects
+
+```python
+class InvoiceDataCustomerVAT(Annotation,  ComponentsRsi73USchemasInvoicedataPropertiesCustomervatAllof2)
+```
+
+InvoiceDataCustomerVAT.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataCustomerVAT.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataInvoiceNumber"></a>
+
+## InvoiceDataInvoiceNumber Objects
+
+```python
+class InvoiceDataInvoiceNumber(Annotation,  Components7CqvqpSchemasInvoicedataPropertiesInvoicenumberAllof2)
+```
+
+InvoiceDataInvoiceNumber.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataInvoiceNumber.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataInvoicePurchaseOrderNumber"></a>
+
+## InvoiceDataInvoicePurchaseOrderNumber Objects
+
+```python
+class InvoiceDataInvoicePurchaseOrderNumber(Annotation,  Components55Nj82SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof2)
+```
+
+InvoiceDataInvoicePurchaseOrderNumber.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataInvoicePurchaseOrderNumber.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataPaymentAmountBase"></a>
+
+## InvoiceDataPaymentAmountBase Objects
+
+```python
+class InvoiceDataPaymentAmountBase(Annotation,  ComponentsTz04ToSchemasInvoicedataPropertiesPaymentamountbaseAllof2)
+```
+
+InvoiceDataPaymentAmountBase.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataPaymentAmountBase.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataPaymentAmountDue"></a>
+
+## InvoiceDataPaymentAmountDue Objects
+
+```python
+class InvoiceDataPaymentAmountDue(Annotation,  Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2)
+```
+
+InvoiceDataPaymentAmountDue.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataPaymentAmountDue.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataPaymentAmountPaid"></a>
+
+## InvoiceDataPaymentAmountPaid Objects
+
+```python
+class InvoiceDataPaymentAmountPaid(Annotation,  Components1LdfgdeSchemasInvoicedataPropertiesPaymentamountpaidAllof2)
+```
+
+InvoiceDataPaymentAmountPaid.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataPaymentAmountPaid.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataPaymentAmountTax"></a>
+
+## InvoiceDataPaymentAmountTax Objects
+
+```python
+class InvoiceDataPaymentAmountTax(Annotation,  ComponentsY49P83SchemasInvoicedataPropertiesPaymentamounttaxAllof2)
+```
+
+InvoiceDataPaymentAmountTax.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataPaymentAmountTax.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataPaymentAmountTotal"></a>
+
+## InvoiceDataPaymentAmountTotal Objects
+
+```python
+class InvoiceDataPaymentAmountTotal(Annotation,  Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2)
+```
+
+InvoiceDataPaymentAmountTotal.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataPaymentAmountTotal.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataPaymentReference"></a>
+
+## InvoiceDataPaymentReference Objects
+
+```python
+class InvoiceDataPaymentReference(Annotation,  Components1Wx56HlSchemasInvoicedataPropertiesPaymentreferenceAllof2)
+```
+
+InvoiceDataPaymentReference.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataPaymentReference.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataSupplierBusinessNumber"></a>
+
+## InvoiceDataSupplierBusinessNumber Objects
+
+```python
+class InvoiceDataSupplierBusinessNumber(Annotation,  ComponentsYe0TzySchemasInvoicedataPropertiesSupplierbusinessnumberAllof2)
+```
+
+InvoiceDataSupplierBusinessNumber.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataSupplierBusinessNumber.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataSupplierCompanyName"></a>
+
+## InvoiceDataSupplierCompanyName Objects
+
+```python
+class InvoiceDataSupplierCompanyName(Annotation,  Components1O4BmpySchemasInvoicedataPropertiesSuppliercompanynameAllof2)
+```
+
+InvoiceDataSupplierCompanyName.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataSupplierCompanyName.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataSupplierEmail"></a>
+
+## InvoiceDataSupplierEmail Objects
+
+```python
+class InvoiceDataSupplierEmail(Annotation,  ComponentsVyrnzuSchemasInvoicedataPropertiesSupplieremailAllof2)
+```
+
+InvoiceDataSupplierEmail.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataSupplierEmail.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataSupplierFax"></a>
+
+## InvoiceDataSupplierFax Objects
+
+```python
+class InvoiceDataSupplierFax(Annotation,  Components1ByjheSchemasInvoicedataPropertiesSupplierfaxAllof2)
+```
+
+InvoiceDataSupplierFax.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataSupplierFax.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataSupplierPhoneNumber"></a>
+
+## InvoiceDataSupplierPhoneNumber Objects
+
+```python
+class InvoiceDataSupplierPhoneNumber(Annotation,  ComponentsBvthtoSchemasInvoicedataPropertiesSupplierphonenumberAllof2)
+```
+
+InvoiceDataSupplierPhoneNumber.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataSupplierPhoneNumber.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataSupplierVAT"></a>
+
+## InvoiceDataSupplierVAT Objects
+
+```python
+class InvoiceDataSupplierVAT(Annotation,  Components1Fdmi0OSchemasInvoicedataPropertiesSuppliervatAllof2)
+```
+
+InvoiceDataSupplierVAT.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataSupplierVAT.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.InvoiceDataSupplierWebsite"></a>
+
+## InvoiceDataSupplierWebsite Objects
+
+```python
+class InvoiceDataSupplierWebsite(Annotation,  Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2)
+```
+
+InvoiceDataSupplierWebsite.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+
+<a id="models._models.InvoiceDataSupplierWebsite.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+
+<a id="models._models.JobDescription"></a>
+
+## JobDescription Objects
+
+```python
+class JobDescription(msrest.serialization.Model)
+```
+
+JobDescription.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar data: Required.
+:vartype data: ~affinda.models.JobDescriptionData
+:ivar meta: Required.
+:vartype meta: ~affinda.models.Meta
+:ivar error: Required.
+:vartype error: ~affinda.models.Error
+
+<a id="models._models.JobDescription.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword data: Required.
+:paramtype data: ~affinda.models.JobDescriptionData
+:keyword meta: Required.
+:paramtype meta: ~affinda.models.Meta
+:keyword error: Required.
+:paramtype error: ~affinda.models.Error
+
+<a id="models._models.JobDescriptionData"></a>
+
+## JobDescriptionData Objects
+
+```python
+class JobDescriptionData(msrest.serialization.Model)
+```
+
+JobDescriptionData.
+
+:ivar contact_email:
+:vartype contact_email: ~affinda.models.Annotation
+:ivar contact_name:
+:vartype contact_name: ~affinda.models.Annotation
+:ivar contact_phone:
+:vartype contact_phone: ~affinda.models.Annotation
+:ivar start_date:
+:vartype start_date: ~affinda.models.DateAnnotation
+:ivar end_date:
+:vartype end_date: ~affinda.models.DateAnnotation
+:ivar job_type:
+:vartype job_type: ~affinda.models.Annotation
+:ivar languages:
+:vartype languages: list[~affinda.models.LanguageAnnotation]
+:ivar skills:
+:vartype skills: list[~affinda.models.SkillAnnotation]
+:ivar organization_name:
+:vartype organization_name: ~affinda.models.Annotation
+:ivar organization_website:
+:vartype organization_website: ~affinda.models.Annotation
+:ivar education_level:
+:vartype education_level: ~affinda.models.Annotation
+:ivar education_accreditation:
+:vartype education_accreditation: ~affinda.models.Annotation
+:ivar expected_remuneration:
+:vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotation
+:ivar location:
+:vartype location: ~affinda.models.LocationAnnotation
+:ivar certifications:
+:vartype certifications: list[~affinda.models.Annotation]
+
+<a id="models._models.JobDescriptionData.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword contact_email:
+:paramtype contact_email: ~affinda.models.Annotation
+:keyword contact_name:
+:paramtype contact_name: ~affinda.models.Annotation
+:keyword contact_phone:
+:paramtype contact_phone: ~affinda.models.Annotation
+:keyword start_date:
+:paramtype start_date: ~affinda.models.DateAnnotation
+:keyword end_date:
+:paramtype end_date: ~affinda.models.DateAnnotation
+:keyword job_type:
+:paramtype job_type: ~affinda.models.Annotation
+:keyword languages:
+:paramtype languages: list[~affinda.models.LanguageAnnotation]
+:keyword skills:
+:paramtype skills: list[~affinda.models.SkillAnnotation]
+:keyword organization_name:
+:paramtype organization_name: ~affinda.models.Annotation
+:keyword organization_website:
+:paramtype organization_website: ~affinda.models.Annotation
+:keyword education_level:
+:paramtype education_level: ~affinda.models.Annotation
+:keyword education_accreditation:
+:paramtype education_accreditation: ~affinda.models.Annotation
+:keyword expected_remuneration:
+:paramtype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotation
+:keyword location:
+:paramtype location: ~affinda.models.LocationAnnotation
+:keyword certifications:
+:paramtype certifications: list[~affinda.models.Annotation]
+
+<a id="models._models.LanguageAnnotation"></a>
+
+## LanguageAnnotation Objects
+
+```python
+class LanguageAnnotation(Annotation)
+```
+
+LanguageAnnotation.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.LanguageAnnotation.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.Location"></a>
 
@@ -429,6 +3275,62 @@ def __init__(**kwargs)
 :paramtype apartment_number: str
 :keyword city:
 :paramtype city: str
+
+<a id="models._models.LocationAnnotation"></a>
+
+## LocationAnnotation Objects
+
+```python
+class LocationAnnotation(Annotation)
+```
+
+LocationAnnotation.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+:ivar parsed:
+:vartype parsed: ~affinda.models.Location
+
+<a id="models._models.LocationAnnotation.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+:keyword parsed:
+:paramtype parsed: ~affinda.models.Location
 
 <a id="models._models.Meta"></a>
 
@@ -984,6 +3886,64 @@ def __init__(**kwargs)
 :keyword name:
 :paramtype name: bool
 
+<a id="models._models.PathsYlw96JobDescriptionsPostRequestbodyContentMultipartFormDataSchema"></a>
+
+## PathsYlw96JobDescriptionsPostRequestbodyContentMultipartFormDataSchema Objects
+
+```python
+class PathsYlw96JobDescriptionsPostRequestbodyContentMultipartFormDataSchema(msrest.serialization.Model)
+```
+
+PathsYlw96JobDescriptionsPostRequestbodyContentMultipartFormDataSchema.
+
+:ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
+ JPG.
+:vartype file: IO
+:ivar identifier: Unique identifier for the document. If creating a document and left blank,
+ one will be automatically generated.
+:vartype identifier: str
+:ivar file_name: Optional filename of the file.
+:vartype file_name: str
+:ivar url: URL to file to download and process.
+:vartype url: str
+:ivar wait: If "true" (default), will return a response only after processing has completed. If
+ "false", will return an empty data object which can be polled at the GET endpoint until
+ processing is complete.
+:vartype wait: bool
+:ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+:vartype language: str
+:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+ deleted.  Defaults to no expiry.
+:vartype expiry_time: str
+
+<a id="models._models.PathsYlw96JobDescriptionsPostRequestbodyContentMultipartFormDataSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+PNG, JPG.
+:paramtype file: IO
+:keyword identifier: Unique identifier for the document. If creating a document and left blank,
+one will be automatically generated.
+:paramtype identifier: str
+:keyword file_name: Optional filename of the file.
+:paramtype file_name: str
+:keyword url: URL to file to download and process.
+:paramtype url: str
+:keyword wait: If "true" (default), will return a response only after processing has completed.
+If "false", will return an empty data object which can be polled at the GET endpoint until
+processing is complete.
+:paramtype wait: bool
+:keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+:paramtype language: str
+:keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+deleted.  Defaults to no expiry.
+:paramtype expiry_time: str
+
 <a id="models._models.PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema"></a>
 
 ## PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema Objects
@@ -1041,6 +4001,44 @@ one will be automatically generated.
 If "false", will return an empty data object which can be polled at the GET endpoint until
 processing is complete.
 :paramtype wait: bool
+
+<a id="models._models.Rectangle"></a>
+
+## Rectangle Objects
+
+```python
+class Rectangle(msrest.serialization.Model)
+```
+
+Rectangle.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar x0: Required.
+:vartype x0: float
+:ivar y0: Required.
+:vartype y0: float
+:ivar x1: Required.
+:vartype x1: float
+:ivar y1: Required.
+:vartype y1: float
+
+<a id="models._models.Rectangle.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword x0: Required.
+:paramtype x0: float
+:keyword y0: Required.
+:paramtype y0: float
+:keyword x1: Required.
+:paramtype x1: float
+:keyword y1: Required.
+:paramtype y1: float
 
 <a id="models._models.RedactedResume"></a>
 
@@ -2210,4 +5208,60 @@ def __init__(**kwargs)
 :paramtype value: str
 :keyword score:
 :paramtype score: float
+
+<a id="models._models.SkillAnnotation"></a>
+
+## SkillAnnotation Objects
+
+```python
+class SkillAnnotation(Annotation)
+```
+
+SkillAnnotation.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.SkillAnnotation.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 

@@ -319,6 +319,72 @@ client = AffindaAPI(credential=credential)
 client.delete_index_document(name=index_name, identifier=identifier)
 ```
 
+Job Descriptions
+----------------
+
+### getAllJobDescriptions - Get list of all job descriptions
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+all_job_descriptions = client.get_all_job_descriptions()
+
+print(all_job_descriptions.as_dict())
+```
+
+### createJobDescription - Upload a job description for parsing
+
+```python
+from pathlib import Path
+
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+file_pth = Path("path_to_file.pdf")
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+with open(file_pth, "rb") as f:
+    job_description = client.create_job_description(file=f)
+
+print(job_description.as_dict())
+```
+
+### getJobDescription - Get job description results for a specific job description file
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+job_description = client.get_job_description(identifier=identifier)
+
+print(job_description.as_dict())
+```
+
+### deleteJobDescription - Delete a job description
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+response = client.delete_job_description(identifier=identifier)
+
+print(response.as_dict())
+```
+
 Invoice Parser
 --------------
 
@@ -365,7 +431,7 @@ identifier = "REPLACE_IDENTIFIER"
 
 credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
-invoice = client.get_invoices(identifier=identifier)
+invoice = client.get_invoice(identifier=identifier)
 
 print(invoice.as_dict())
 ```

@@ -24,6 +24,7 @@ from ...operations._affinda_api_operations import (
     build_create_index_document_request,
     build_create_index_request,
     build_create_invoice_request,
+    build_create_job_description_request,
     build_create_redacted_resume_request,
     build_create_reformatted_resume_request,
     build_create_resume_request,
@@ -31,17 +32,20 @@ from ...operations._affinda_api_operations import (
     build_delete_index_document_request,
     build_delete_index_request,
     build_delete_invoice_request,
+    build_delete_job_description_request,
     build_delete_redacted_resume_request,
     build_delete_reformatted_resume_request,
     build_delete_resume_request,
     build_get_all_index_documents_request,
     build_get_all_indexes_request,
     build_get_all_invoices_request,
+    build_get_all_job_descriptions_request,
     build_get_all_redacted_resumes_request,
     build_get_all_reformatted_resumes_request,
     build_get_all_resume_formats_request,
     build_get_all_resumes_request,
     build_get_invoice_request,
+    build_get_job_description_request,
     build_get_redacted_resume_request,
     build_get_reformatted_resume_request,
     build_get_resume_request,
@@ -1041,6 +1045,279 @@ class AffindaAPIOperationsMixin:
         return deserialized
 
     create_resume_search.metadata = {"url": "/resume_search"}  # type: ignore
+
+    async def get_all_job_descriptions(
+        self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any
+    ) -> Union["_models.GetAllJobDescriptionsResults", "_models.RequestError"]:
+        """Get list of all job descriptions.
+
+        Returns all the job descriptions for that user, limited to 300 per page.
+
+        :param offset: The number of documents to skip before starting to collect the result set.
+        :type offset: int
+        :param limit: The numbers of results to return.
+        :type limit: int
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: GetAllJobDescriptionsResults or RequestError, or the result of cls(response)
+        :rtype: ~affinda.models.GetAllJobDescriptionsResults or ~affinda.models.RequestError
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Union["_models.GetAllJobDescriptionsResults", "_models.RequestError"]]
+        error_map = {
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+        }
+        error_map.update(kwargs.pop("error_map", {}))
+
+        request = build_get_all_job_descriptions_request(
+            offset=offset,
+            limit=limit,
+            template_url=self.get_all_job_descriptions.metadata["url"],
+        )
+        request = _convert_request(request)
+        request.url = self._client.format_url(request.url)
+
+        pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200, 400, 401, 404]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if response.status_code == 200:
+            deserialized = self._deserialize("GetAllJobDescriptionsResults", pipeline_response)
+
+        if response.status_code == 400:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if response.status_code == 401:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if response.status_code == 404:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_all_job_descriptions.metadata = {"url": "/job_descriptions"}  # type: ignore
+
+    async def create_job_description(
+        self,
+        file: Optional[IO] = None,
+        identifier: Optional[str] = None,
+        file_name: Optional[str] = None,
+        url: Optional[str] = None,
+        wait: Optional[bool] = True,
+        language: Optional[str] = None,
+        expiry_time: Optional[str] = None,
+        **kwargs: Any,
+    ) -> Union["_models.JobDescription", "_models.RequestError"]:
+        """Upload a job description for parsing.
+
+        Uploads a job description for parsing.
+        When successful, returns an ``identifier`` in the response for subsequent use with the
+        `/job_descriptions/{identifier} <#operation/getResume>`_ endpoint to check processing status
+        and retrieve results.
+
+        :param file:
+        :type file: IO
+        :param identifier:
+        :type identifier: str
+        :param file_name:
+        :type file_name: str
+        :param url:
+        :type url: str
+        :param wait:
+        :type wait: bool
+        :param language:
+        :type language: str
+        :param expiry_time:
+        :type expiry_time: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: JobDescription or RequestError, or the result of cls(response)
+        :rtype: ~affinda.models.JobDescription or ~affinda.models.RequestError
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Union["_models.JobDescription", "_models.RequestError"]]
+        error_map = {
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+        }
+        error_map.update(kwargs.pop("error_map", {}))
+
+        content_type = kwargs.pop("content_type", None)  # type: Optional[str]
+
+        # Construct form data
+        _files = {
+            "file": file,
+            "identifier": identifier,
+            "fileName": file_name,
+            "url": url,
+            "wait": wait,
+            "language": language,
+            "expiryTime": expiry_time,
+        }
+
+        request = build_create_job_description_request(
+            content_type=content_type,
+            files=_files,
+            template_url=self.create_job_description.metadata["url"],
+        )
+        request = _convert_request(request, _files)
+        request.url = self._client.format_url(request.url)
+
+        pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200, 201, 400, 401, 404]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if response.status_code == 200:
+            deserialized = self._deserialize("JobDescription", pipeline_response)
+
+        if response.status_code == 201:
+            deserialized = self._deserialize("JobDescription", pipeline_response)
+
+        if response.status_code == 400:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if response.status_code == 401:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if response.status_code == 404:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    create_job_description.metadata = {"url": "/job_descriptions"}  # type: ignore
+
+    async def get_job_description(
+        self, identifier: str, **kwargs: Any
+    ) -> Union["_models.JobDescription", "_models.RequestError"]:
+        """Get job description results for a specific job description file.
+
+        Returns all the results for that job description if processing is completed.
+        The ``identifier`` is the unique ID returned after POST-ing the resume via the
+        `/job_descriptions <#operation/createJobDescription>`_ endpoint.
+
+        :param identifier: Document identifier.
+        :type identifier: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: JobDescription or RequestError, or the result of cls(response)
+        :rtype: ~affinda.models.JobDescription or ~affinda.models.RequestError
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Union["_models.JobDescription", "_models.RequestError"]]
+        error_map = {
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+        }
+        error_map.update(kwargs.pop("error_map", {}))
+
+        request = build_get_job_description_request(
+            identifier=identifier,
+            template_url=self.get_job_description.metadata["url"],
+        )
+        request = _convert_request(request)
+        request.url = self._client.format_url(request.url)
+
+        pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200, 400, 401, 404]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if response.status_code == 200:
+            deserialized = self._deserialize("JobDescription", pipeline_response)
+
+        if response.status_code == 400:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if response.status_code == 401:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if response.status_code == 404:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_job_description.metadata = {"url": "/job_descriptions/{identifier}"}  # type: ignore
+
+    async def delete_job_description(
+        self, identifier: str, **kwargs: Any
+    ) -> Optional["_models.RequestError"]:
+        """Delete a job description.
+
+        Deletes the specified job description from the database.
+
+        :param identifier: Document identifier.
+        :type identifier: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: RequestError, or the result of cls(response)
+        :rtype: ~affinda.models.RequestError or None
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        cls = kwargs.pop("cls", None)  # type: ClsType[Optional["_models.RequestError"]]
+        error_map = {
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+        }
+        error_map.update(kwargs.pop("error_map", {}))
+
+        request = build_delete_job_description_request(
+            identifier=identifier,
+            template_url=self.delete_job_description.metadata["url"],
+        )
+        request = _convert_request(request)
+        request.url = self._client.format_url(request.url)
+
+        pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
+        response = pipeline_response.http_response
+
+        if response.status_code not in [204, 400, 401, 404]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = None
+        if response.status_code == 400:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if response.status_code == 401:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if response.status_code == 404:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    delete_job_description.metadata = {"url": "/job_descriptions/{identifier}"}  # type: ignore
 
     async def get_all_indexes(
         self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any
