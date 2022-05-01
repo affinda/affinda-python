@@ -22,8 +22,6 @@ class Annotation(msrest.serialization.Model):
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
@@ -46,9 +44,8 @@ class Annotation(msrest.serialization.Model):
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
     }
 
@@ -63,8 +60,6 @@ class Annotation(msrest.serialization.Model):
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
@@ -77,7 +72,6 @@ class Annotation(msrest.serialization.Model):
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
@@ -229,6 +223,26 @@ class Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2(
         )
         self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
+
+
+class Components17Ashz6SchemasInvoicePropertiesMetaAllof1(msrest.serialization.Model):
+    """Components17Ashz6SchemasInvoicePropertiesMetaAllof1.
+
+    :ivar review_url: Signed URL (valid for 60 minutes) to access the invoice review tool.
+    :vartype review_url: str
+    """
+
+    _attribute_map = {
+        "review_url": {"key": "reviewUrl", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword review_url: Signed URL (valid for 60 minutes) to access the invoice review tool.
+        :paramtype review_url: str
+        """
+        super(Components17Ashz6SchemasInvoicePropertiesMetaAllof1, self).__init__(**kwargs)
+        self.review_url = kwargs.get("review_url", None)
 
 
 class Components1Bh8NlbSchemasInvoicedataPropertiesBpaybillercodeAllof2(
@@ -1013,7 +1027,7 @@ class DateAnnotation(Annotation):
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "date"},
     }
@@ -1107,7 +1121,7 @@ class ExpectedRemunerationAnnotation(Annotation):
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "ExpectedRemunerationAnnotationParsed"},
     }
@@ -1331,7 +1345,7 @@ class Invoice(msrest.serialization.Model):
     :ivar data: Required.
     :vartype data: ~affinda.models.InvoiceData
     :ivar meta: Required.
-    :vartype meta: ~affinda.models.Meta
+    :vartype meta: ~affinda.models.InvoiceMeta
     :ivar error: Required.
     :vartype error: ~affinda.models.Error
     """
@@ -1344,7 +1358,7 @@ class Invoice(msrest.serialization.Model):
 
     _attribute_map = {
         "data": {"key": "data", "type": "InvoiceData"},
-        "meta": {"key": "meta", "type": "Meta"},
+        "meta": {"key": "meta", "type": "InvoiceMeta"},
         "error": {"key": "error", "type": "Error"},
     }
 
@@ -1353,7 +1367,7 @@ class Invoice(msrest.serialization.Model):
         :keyword data: Required.
         :paramtype data: ~affinda.models.InvoiceData
         :keyword meta: Required.
-        :paramtype meta: ~affinda.models.Meta
+        :paramtype meta: ~affinda.models.InvoiceMeta
         :keyword error: Required.
         :paramtype error: ~affinda.models.Error
         """
@@ -1629,8 +1643,76 @@ class InvoiceData(msrest.serialization.Model):
         self.supplier_website = kwargs.get("supplier_website", None)
 
 
+class TextAnnotation(Annotation):
+    """TextAnnotation.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar rectangle: Required.
+    :vartype rectangle: ~affinda.models.Rectangle
+    :ivar page_index: Required.
+    :vartype page_index: int
+    :ivar raw: Required.
+    :vartype raw: str
+    :ivar confidence: Required.
+    :vartype confidence: float
+    :ivar is_verified: Required.
+    :vartype is_verified: bool
+    :ivar classification: Required.
+    :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
+    """
+
+    _validation = {
+        "rectangle": {"required": True},
+        "page_index": {"required": True},
+        "raw": {"required": True},
+        "confidence": {"required": True},
+        "is_verified": {"required": True},
+        "classification": {"required": True},
+    }
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "rectangle": {"key": "rectangle", "type": "Rectangle"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "raw": {"key": "raw", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
+        "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword rectangle: Required.
+        :paramtype rectangle: ~affinda.models.Rectangle
+        :keyword page_index: Required.
+        :paramtype page_index: int
+        :keyword raw: Required.
+        :paramtype raw: str
+        :keyword confidence: Required.
+        :paramtype confidence: float
+        :keyword is_verified: Required.
+        :paramtype is_verified: bool
+        :keyword classification: Required.
+        :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
+        """
+        super(TextAnnotation, self).__init__(**kwargs)
+        self.parsed = kwargs.get("parsed", None)
+
+
 class InvoiceDataBankAccountNumber(
-    Annotation, Components14Dm0XSchemasInvoicedataPropertiesBankaccountnumberAllof2
+    TextAnnotation, Components14Dm0XSchemasInvoicedataPropertiesBankaccountnumberAllof2
 ):
     """InvoiceDataBankAccountNumber.
 
@@ -1645,14 +1727,14 @@ class InvoiceDataBankAccountNumber(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -1669,10 +1751,10 @@ class InvoiceDataBankAccountNumber(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -1686,27 +1768,29 @@ class InvoiceDataBankAccountNumber(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataBankAccountNumber, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
-class InvoiceDataBankBSB(Annotation, ComponentsUilt2MSchemasInvoicedataPropertiesBankbsbAllof2):
+class InvoiceDataBankBSB(
+    TextAnnotation, ComponentsUilt2MSchemasInvoicedataPropertiesBankbsbAllof2
+):
     """InvoiceDataBankBSB.
 
     All required parameters must be populated in order to send to Azure.
@@ -1720,14 +1804,14 @@ class InvoiceDataBankBSB(Annotation, ComponentsUilt2MSchemasInvoicedataPropertie
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -1744,10 +1828,10 @@ class InvoiceDataBankBSB(Annotation, ComponentsUilt2MSchemasInvoicedataPropertie
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -1761,27 +1845,29 @@ class InvoiceDataBankBSB(Annotation, ComponentsUilt2MSchemasInvoicedataPropertie
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataBankBSB, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
-class InvoiceDataBankIBAN(Annotation, ComponentsE6Bjv3SchemasInvoicedataPropertiesBankibanAllof2):
+class InvoiceDataBankIBAN(
+    TextAnnotation, ComponentsE6Bjv3SchemasInvoicedataPropertiesBankibanAllof2
+):
     """InvoiceDataBankIBAN.
 
     All required parameters must be populated in order to send to Azure.
@@ -1795,14 +1881,14 @@ class InvoiceDataBankIBAN(Annotation, ComponentsE6Bjv3SchemasInvoicedataProperti
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -1819,10 +1905,10 @@ class InvoiceDataBankIBAN(Annotation, ComponentsE6Bjv3SchemasInvoicedataProperti
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -1836,28 +1922,28 @@ class InvoiceDataBankIBAN(Annotation, ComponentsE6Bjv3SchemasInvoicedataProperti
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataBankIBAN, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataBankSortCode(
-    Annotation, Components1Rbm6P1SchemasInvoicedataPropertiesBanksortcodeAllof2
+    TextAnnotation, Components1Rbm6P1SchemasInvoicedataPropertiesBanksortcodeAllof2
 ):
     """InvoiceDataBankSortCode.
 
@@ -1872,14 +1958,14 @@ class InvoiceDataBankSortCode(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -1896,10 +1982,10 @@ class InvoiceDataBankSortCode(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -1913,28 +1999,28 @@ class InvoiceDataBankSortCode(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataBankSortCode, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataBankSwift(
-    Annotation, Components11Zi81FSchemasInvoicedataPropertiesBankswiftAllof2
+    TextAnnotation, Components11Zi81FSchemasInvoicedataPropertiesBankswiftAllof2
 ):
     """InvoiceDataBankSwift.
 
@@ -1949,14 +2035,14 @@ class InvoiceDataBankSwift(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -1973,10 +2059,10 @@ class InvoiceDataBankSwift(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -1990,28 +2076,28 @@ class InvoiceDataBankSwift(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataBankSwift, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataBpayBillerCode(
-    Annotation, Components1Bh8NlbSchemasInvoicedataPropertiesBpaybillercodeAllof2
+    TextAnnotation, Components1Bh8NlbSchemasInvoicedataPropertiesBpaybillercodeAllof2
 ):
     """InvoiceDataBpayBillerCode.
 
@@ -2026,14 +2112,14 @@ class InvoiceDataBpayBillerCode(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -2050,10 +2136,10 @@ class InvoiceDataBpayBillerCode(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -2067,28 +2153,28 @@ class InvoiceDataBpayBillerCode(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataBpayBillerCode, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataBpayReference(
-    Annotation, Components1OmsnpSchemasInvoicedataPropertiesBpayreferenceAllof2
+    TextAnnotation, Components1OmsnpSchemasInvoicedataPropertiesBpayreferenceAllof2
 ):
     """InvoiceDataBpayReference.
 
@@ -2103,14 +2189,14 @@ class InvoiceDataBpayReference(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -2127,10 +2213,10 @@ class InvoiceDataBpayReference(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -2144,28 +2230,28 @@ class InvoiceDataBpayReference(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataBpayReference, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataCustomerBusinessNumber(
-    Annotation, ComponentsRft7JdSchemasInvoicedataPropertiesCustomerbusinessnumberAllof2
+    TextAnnotation, ComponentsRft7JdSchemasInvoicedataPropertiesCustomerbusinessnumberAllof2
 ):
     """InvoiceDataCustomerBusinessNumber.
 
@@ -2180,14 +2266,14 @@ class InvoiceDataCustomerBusinessNumber(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -2204,10 +2290,10 @@ class InvoiceDataCustomerBusinessNumber(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -2221,28 +2307,28 @@ class InvoiceDataCustomerBusinessNumber(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataCustomerBusinessNumber, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataCustomerCompanyName(
-    Annotation, Components6DhvidSchemasInvoicedataPropertiesCustomercompanynameAllof2
+    TextAnnotation, Components6DhvidSchemasInvoicedataPropertiesCustomercompanynameAllof2
 ):
     """InvoiceDataCustomerCompanyName.
 
@@ -2257,14 +2343,14 @@ class InvoiceDataCustomerCompanyName(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -2281,10 +2367,10 @@ class InvoiceDataCustomerCompanyName(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -2298,28 +2384,28 @@ class InvoiceDataCustomerCompanyName(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataCustomerCompanyName, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataCustomerContactName(
-    Annotation, ComponentsWywi9WSchemasInvoicedataPropertiesCustomercontactnameAllof2
+    TextAnnotation, ComponentsWywi9WSchemasInvoicedataPropertiesCustomercontactnameAllof2
 ):
     """InvoiceDataCustomerContactName.
 
@@ -2334,14 +2420,14 @@ class InvoiceDataCustomerContactName(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -2358,10 +2444,10 @@ class InvoiceDataCustomerContactName(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -2375,28 +2461,28 @@ class InvoiceDataCustomerContactName(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataCustomerContactName, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataCustomerEmail(
-    Annotation, Components5PwavySchemasInvoicedataPropertiesCustomeremailAllof2
+    TextAnnotation, Components5PwavySchemasInvoicedataPropertiesCustomeremailAllof2
 ):
     """InvoiceDataCustomerEmail.
 
@@ -2411,14 +2497,14 @@ class InvoiceDataCustomerEmail(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -2435,10 +2521,10 @@ class InvoiceDataCustomerEmail(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -2452,28 +2538,28 @@ class InvoiceDataCustomerEmail(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataCustomerEmail, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataCustomerNumber(
-    Annotation, Components2Hu973SchemasInvoicedataPropertiesCustomernumberAllof2
+    TextAnnotation, Components2Hu973SchemasInvoicedataPropertiesCustomernumberAllof2
 ):
     """InvoiceDataCustomerNumber.
 
@@ -2488,14 +2574,14 @@ class InvoiceDataCustomerNumber(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -2512,10 +2598,10 @@ class InvoiceDataCustomerNumber(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -2529,28 +2615,28 @@ class InvoiceDataCustomerNumber(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataCustomerNumber, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataCustomerPhoneNumber(
-    Annotation, ComponentsPs8Uo7SchemasInvoicedataPropertiesCustomerphonenumberAllof2
+    TextAnnotation, ComponentsPs8Uo7SchemasInvoicedataPropertiesCustomerphonenumberAllof2
 ):
     """InvoiceDataCustomerPhoneNumber.
 
@@ -2565,14 +2651,14 @@ class InvoiceDataCustomerPhoneNumber(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -2589,10 +2675,10 @@ class InvoiceDataCustomerPhoneNumber(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -2606,28 +2692,28 @@ class InvoiceDataCustomerPhoneNumber(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataCustomerPhoneNumber, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataCustomerVAT(
-    Annotation, ComponentsRsi73USchemasInvoicedataPropertiesCustomervatAllof2
+    TextAnnotation, ComponentsRsi73USchemasInvoicedataPropertiesCustomervatAllof2
 ):
     """InvoiceDataCustomerVAT.
 
@@ -2642,14 +2728,14 @@ class InvoiceDataCustomerVAT(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -2666,10 +2752,10 @@ class InvoiceDataCustomerVAT(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -2683,28 +2769,28 @@ class InvoiceDataCustomerVAT(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataCustomerVAT, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataInvoiceNumber(
-    Annotation, Components7CqvqpSchemasInvoicedataPropertiesInvoicenumberAllof2
+    TextAnnotation, Components7CqvqpSchemasInvoicedataPropertiesInvoicenumberAllof2
 ):
     """InvoiceDataInvoiceNumber.
 
@@ -2719,14 +2805,14 @@ class InvoiceDataInvoiceNumber(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -2743,10 +2829,10 @@ class InvoiceDataInvoiceNumber(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -2760,28 +2846,28 @@ class InvoiceDataInvoiceNumber(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataInvoiceNumber, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataInvoicePurchaseOrderNumber(
-    Annotation, Components55Nj82SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof2
+    TextAnnotation, Components55Nj82SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof2
 ):
     """InvoiceDataInvoicePurchaseOrderNumber.
 
@@ -2796,14 +2882,14 @@ class InvoiceDataInvoicePurchaseOrderNumber(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -2820,10 +2906,10 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -2837,28 +2923,28 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataInvoicePurchaseOrderNumber, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataPaymentAmountBase(
-    Annotation, ComponentsTz04ToSchemasInvoicedataPropertiesPaymentamountbaseAllof2
+    TextAnnotation, ComponentsTz04ToSchemasInvoicedataPropertiesPaymentamountbaseAllof2
 ):
     """InvoiceDataPaymentAmountBase.
 
@@ -2873,14 +2959,14 @@ class InvoiceDataPaymentAmountBase(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -2897,10 +2983,10 @@ class InvoiceDataPaymentAmountBase(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -2914,28 +3000,28 @@ class InvoiceDataPaymentAmountBase(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataPaymentAmountBase, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataPaymentAmountDue(
-    Annotation, Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2
+    TextAnnotation, Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2
 ):
     """InvoiceDataPaymentAmountDue.
 
@@ -2950,14 +3036,14 @@ class InvoiceDataPaymentAmountDue(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -2974,10 +3060,10 @@ class InvoiceDataPaymentAmountDue(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -2991,28 +3077,28 @@ class InvoiceDataPaymentAmountDue(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataPaymentAmountDue, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataPaymentAmountPaid(
-    Annotation, Components1LdfgdeSchemasInvoicedataPropertiesPaymentamountpaidAllof2
+    TextAnnotation, Components1LdfgdeSchemasInvoicedataPropertiesPaymentamountpaidAllof2
 ):
     """InvoiceDataPaymentAmountPaid.
 
@@ -3027,14 +3113,14 @@ class InvoiceDataPaymentAmountPaid(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -3051,10 +3137,10 @@ class InvoiceDataPaymentAmountPaid(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -3068,28 +3154,28 @@ class InvoiceDataPaymentAmountPaid(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataPaymentAmountPaid, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataPaymentAmountTax(
-    Annotation, ComponentsY49P83SchemasInvoicedataPropertiesPaymentamounttaxAllof2
+    TextAnnotation, ComponentsY49P83SchemasInvoicedataPropertiesPaymentamounttaxAllof2
 ):
     """InvoiceDataPaymentAmountTax.
 
@@ -3104,14 +3190,14 @@ class InvoiceDataPaymentAmountTax(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -3128,10 +3214,10 @@ class InvoiceDataPaymentAmountTax(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -3145,28 +3231,28 @@ class InvoiceDataPaymentAmountTax(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataPaymentAmountTax, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataPaymentAmountTotal(
-    Annotation, Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2
+    TextAnnotation, Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2
 ):
     """InvoiceDataPaymentAmountTotal.
 
@@ -3181,14 +3267,14 @@ class InvoiceDataPaymentAmountTotal(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -3205,10 +3291,10 @@ class InvoiceDataPaymentAmountTotal(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -3222,28 +3308,28 @@ class InvoiceDataPaymentAmountTotal(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataPaymentAmountTotal, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataPaymentReference(
-    Annotation, Components1Wx56HlSchemasInvoicedataPropertiesPaymentreferenceAllof2
+    TextAnnotation, Components1Wx56HlSchemasInvoicedataPropertiesPaymentreferenceAllof2
 ):
     """InvoiceDataPaymentReference.
 
@@ -3258,14 +3344,14 @@ class InvoiceDataPaymentReference(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -3282,10 +3368,10 @@ class InvoiceDataPaymentReference(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -3299,28 +3385,28 @@ class InvoiceDataPaymentReference(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataPaymentReference, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataSupplierBusinessNumber(
-    Annotation, ComponentsYe0TzySchemasInvoicedataPropertiesSupplierbusinessnumberAllof2
+    TextAnnotation, ComponentsYe0TzySchemasInvoicedataPropertiesSupplierbusinessnumberAllof2
 ):
     """InvoiceDataSupplierBusinessNumber.
 
@@ -3335,14 +3421,14 @@ class InvoiceDataSupplierBusinessNumber(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -3359,10 +3445,10 @@ class InvoiceDataSupplierBusinessNumber(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -3376,28 +3462,28 @@ class InvoiceDataSupplierBusinessNumber(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataSupplierBusinessNumber, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataSupplierCompanyName(
-    Annotation, Components1O4BmpySchemasInvoicedataPropertiesSuppliercompanynameAllof2
+    TextAnnotation, Components1O4BmpySchemasInvoicedataPropertiesSuppliercompanynameAllof2
 ):
     """InvoiceDataSupplierCompanyName.
 
@@ -3412,14 +3498,14 @@ class InvoiceDataSupplierCompanyName(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -3436,10 +3522,10 @@ class InvoiceDataSupplierCompanyName(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -3453,28 +3539,28 @@ class InvoiceDataSupplierCompanyName(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataSupplierCompanyName, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataSupplierEmail(
-    Annotation, ComponentsVyrnzuSchemasInvoicedataPropertiesSupplieremailAllof2
+    TextAnnotation, ComponentsVyrnzuSchemasInvoicedataPropertiesSupplieremailAllof2
 ):
     """InvoiceDataSupplierEmail.
 
@@ -3489,14 +3575,14 @@ class InvoiceDataSupplierEmail(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -3513,10 +3599,10 @@ class InvoiceDataSupplierEmail(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -3530,28 +3616,28 @@ class InvoiceDataSupplierEmail(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataSupplierEmail, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataSupplierFax(
-    Annotation, Components1ByjheSchemasInvoicedataPropertiesSupplierfaxAllof2
+    TextAnnotation, Components1ByjheSchemasInvoicedataPropertiesSupplierfaxAllof2
 ):
     """InvoiceDataSupplierFax.
 
@@ -3566,14 +3652,14 @@ class InvoiceDataSupplierFax(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -3590,10 +3676,10 @@ class InvoiceDataSupplierFax(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -3607,28 +3693,28 @@ class InvoiceDataSupplierFax(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataSupplierFax, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataSupplierPhoneNumber(
-    Annotation, ComponentsBvthtoSchemasInvoicedataPropertiesSupplierphonenumberAllof2
+    TextAnnotation, ComponentsBvthtoSchemasInvoicedataPropertiesSupplierphonenumberAllof2
 ):
     """InvoiceDataSupplierPhoneNumber.
 
@@ -3643,14 +3729,14 @@ class InvoiceDataSupplierPhoneNumber(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -3667,10 +3753,10 @@ class InvoiceDataSupplierPhoneNumber(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -3684,28 +3770,28 @@ class InvoiceDataSupplierPhoneNumber(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataSupplierPhoneNumber, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataSupplierVAT(
-    Annotation, Components1Fdmi0OSchemasInvoicedataPropertiesSuppliervatAllof2
+    TextAnnotation, Components1Fdmi0OSchemasInvoicedataPropertiesSuppliervatAllof2
 ):
     """InvoiceDataSupplierVAT.
 
@@ -3720,14 +3806,14 @@ class InvoiceDataSupplierVAT(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -3744,10 +3830,10 @@ class InvoiceDataSupplierVAT(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -3761,28 +3847,28 @@ class InvoiceDataSupplierVAT(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataSupplierVAT, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataSupplierWebsite(
-    Annotation, Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2
+    TextAnnotation, Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2
 ):
     """InvoiceDataSupplierWebsite.
 
@@ -3797,14 +3883,14 @@ class InvoiceDataSupplierWebsite(
     :vartype page_index: int
     :ivar raw: Required.
     :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
     :ivar confidence: Required.
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
     :ivar classification: Required.
     :vartype classification: str
+    :ivar parsed:
+    :vartype parsed: str
     """
 
     _validation = {
@@ -3821,10 +3907,10 @@ class InvoiceDataSupplierWebsite(
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -3838,24 +3924,166 @@ class InvoiceDataSupplierWebsite(
         :paramtype page_index: int
         :keyword raw: Required.
         :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
         :keyword confidence: Required.
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
         super(InvoiceDataSupplierWebsite, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.rectangle = kwargs["rectangle"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
-        self.parsed = kwargs.get("parsed", None)
         self.confidence = kwargs["confidence"]
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
+        self.parsed = kwargs.get("parsed", None)
+
+
+class Meta(msrest.serialization.Model):
+    """Meta.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar identifier: Required. Unique identifier for the document. If creating a document and left
+     blank, one will be automatically generated.
+    :vartype identifier: str
+    :ivar file_name: Optional filename of the file.
+    :vartype file_name: str
+    :ivar ready: Required. If true, the document has finished processing. Particularly useful if an
+     endpoint request specified wait=False, when polling use this variable to determine when to stop
+     polling.
+    :vartype ready: bool
+    :ivar ready_dt: The datetime when the document was ready.
+    :vartype ready_dt: ~datetime.datetime
+    :ivar failed: Required. If true, some exception was raised during processing. Check the 'error'
+     field of the main return object.
+    :vartype failed: bool
+    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+     deleted.  Defaults to no expiry.
+    :vartype expiry_time: str
+    """
+
+    _validation = {
+        "identifier": {"required": True},
+        "ready": {"required": True},
+        "failed": {"required": True},
+    }
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "file_name": {"key": "fileName", "type": "str"},
+        "ready": {"key": "ready", "type": "bool"},
+        "ready_dt": {"key": "readyDt", "type": "iso-8601"},
+        "failed": {"key": "failed", "type": "bool"},
+        "expiry_time": {"key": "expiryTime", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Required. Unique identifier for the document. If creating a document and
+         left blank, one will be automatically generated.
+        :paramtype identifier: str
+        :keyword file_name: Optional filename of the file.
+        :paramtype file_name: str
+        :keyword ready: Required. If true, the document has finished processing. Particularly useful if
+         an endpoint request specified wait=False, when polling use this variable to determine when to
+         stop polling.
+        :paramtype ready: bool
+        :keyword ready_dt: The datetime when the document was ready.
+        :paramtype ready_dt: ~datetime.datetime
+        :keyword failed: Required. If true, some exception was raised during processing. Check the
+         'error' field of the main return object.
+        :paramtype failed: bool
+        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+         deleted.  Defaults to no expiry.
+        :paramtype expiry_time: str
+        """
+        super(Meta, self).__init__(**kwargs)
+        self.identifier = kwargs["identifier"]
+        self.file_name = kwargs.get("file_name", None)
+        self.ready = kwargs["ready"]
+        self.ready_dt = kwargs.get("ready_dt", None)
+        self.failed = kwargs["failed"]
+        self.expiry_time = kwargs.get("expiry_time", None)
+
+
+class InvoiceMeta(Meta, Components17Ashz6SchemasInvoicePropertiesMetaAllof1):
+    """InvoiceMeta.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar review_url: Signed URL (valid for 60 minutes) to access the invoice review tool.
+    :vartype review_url: str
+    :ivar identifier: Required. Unique identifier for the document. If creating a document and left
+     blank, one will be automatically generated.
+    :vartype identifier: str
+    :ivar file_name: Optional filename of the file.
+    :vartype file_name: str
+    :ivar ready: Required. If true, the document has finished processing. Particularly useful if an
+     endpoint request specified wait=False, when polling use this variable to determine when to stop
+     polling.
+    :vartype ready: bool
+    :ivar ready_dt: The datetime when the document was ready.
+    :vartype ready_dt: ~datetime.datetime
+    :ivar failed: Required. If true, some exception was raised during processing. Check the 'error'
+     field of the main return object.
+    :vartype failed: bool
+    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+     deleted.  Defaults to no expiry.
+    :vartype expiry_time: str
+    """
+
+    _validation = {
+        "identifier": {"required": True},
+        "ready": {"required": True},
+        "failed": {"required": True},
+    }
+
+    _attribute_map = {
+        "review_url": {"key": "reviewUrl", "type": "str"},
+        "identifier": {"key": "identifier", "type": "str"},
+        "file_name": {"key": "fileName", "type": "str"},
+        "ready": {"key": "ready", "type": "bool"},
+        "ready_dt": {"key": "readyDt", "type": "iso-8601"},
+        "failed": {"key": "failed", "type": "bool"},
+        "expiry_time": {"key": "expiryTime", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword review_url: Signed URL (valid for 60 minutes) to access the invoice review tool.
+        :paramtype review_url: str
+        :keyword identifier: Required. Unique identifier for the document. If creating a document and
+         left blank, one will be automatically generated.
+        :paramtype identifier: str
+        :keyword file_name: Optional filename of the file.
+        :paramtype file_name: str
+        :keyword ready: Required. If true, the document has finished processing. Particularly useful if
+         an endpoint request specified wait=False, when polling use this variable to determine when to
+         stop polling.
+        :paramtype ready: bool
+        :keyword ready_dt: The datetime when the document was ready.
+        :paramtype ready_dt: ~datetime.datetime
+        :keyword failed: Required. If true, some exception was raised during processing. Check the
+         'error' field of the main return object.
+        :paramtype failed: bool
+        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+         deleted.  Defaults to no expiry.
+        :paramtype expiry_time: str
+        """
+        super(InvoiceMeta, self).__init__(**kwargs)
+        self.review_url = kwargs.get("review_url", None)
+        self.identifier = kwargs["identifier"]
+        self.file_name = kwargs.get("file_name", None)
+        self.ready = kwargs["ready"]
+        self.ready_dt = kwargs.get("ready_dt", None)
+        self.failed = kwargs["failed"]
+        self.expiry_time = kwargs.get("expiry_time", None)
 
 
 class JobDescription(msrest.serialization.Model):
@@ -3902,90 +4130,90 @@ class JobDescriptionData(msrest.serialization.Model):
     """JobDescriptionData.
 
     :ivar contact_email:
-    :vartype contact_email: ~affinda.models.Annotation
+    :vartype contact_email: ~affinda.models.TextAnnotation
     :ivar contact_name:
-    :vartype contact_name: ~affinda.models.Annotation
+    :vartype contact_name: ~affinda.models.TextAnnotation
     :ivar contact_phone:
-    :vartype contact_phone: ~affinda.models.Annotation
+    :vartype contact_phone: ~affinda.models.TextAnnotation
     :ivar start_date:
     :vartype start_date: ~affinda.models.DateAnnotation
     :ivar end_date:
     :vartype end_date: ~affinda.models.DateAnnotation
     :ivar job_type:
-    :vartype job_type: ~affinda.models.Annotation
+    :vartype job_type: ~affinda.models.TextAnnotation
     :ivar languages:
     :vartype languages: list[~affinda.models.LanguageAnnotation]
     :ivar skills:
     :vartype skills: list[~affinda.models.SkillAnnotation]
     :ivar organization_name:
-    :vartype organization_name: ~affinda.models.Annotation
+    :vartype organization_name: ~affinda.models.TextAnnotation
     :ivar organization_website:
-    :vartype organization_website: ~affinda.models.Annotation
+    :vartype organization_website: ~affinda.models.TextAnnotation
     :ivar education_level:
-    :vartype education_level: ~affinda.models.Annotation
+    :vartype education_level: ~affinda.models.TextAnnotation
     :ivar education_accreditation:
-    :vartype education_accreditation: ~affinda.models.Annotation
+    :vartype education_accreditation: ~affinda.models.TextAnnotation
     :ivar expected_remuneration:
     :vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotation
     :ivar location:
     :vartype location: ~affinda.models.LocationAnnotation
     :ivar certifications:
-    :vartype certifications: list[~affinda.models.Annotation]
+    :vartype certifications: list[~affinda.models.TextAnnotation]
     """
 
     _attribute_map = {
-        "contact_email": {"key": "contactEmail", "type": "Annotation"},
-        "contact_name": {"key": "contactName", "type": "Annotation"},
-        "contact_phone": {"key": "contactPhone", "type": "Annotation"},
+        "contact_email": {"key": "contactEmail", "type": "TextAnnotation"},
+        "contact_name": {"key": "contactName", "type": "TextAnnotation"},
+        "contact_phone": {"key": "contactPhone", "type": "TextAnnotation"},
         "start_date": {"key": "startDate", "type": "DateAnnotation"},
         "end_date": {"key": "endDate", "type": "DateAnnotation"},
-        "job_type": {"key": "jobType", "type": "Annotation"},
+        "job_type": {"key": "jobType", "type": "TextAnnotation"},
         "languages": {"key": "languages", "type": "[LanguageAnnotation]"},
         "skills": {"key": "skills", "type": "[SkillAnnotation]"},
-        "organization_name": {"key": "organizationName", "type": "Annotation"},
-        "organization_website": {"key": "organizationWebsite", "type": "Annotation"},
-        "education_level": {"key": "educationLevel", "type": "Annotation"},
-        "education_accreditation": {"key": "educationAccreditation", "type": "Annotation"},
+        "organization_name": {"key": "organizationName", "type": "TextAnnotation"},
+        "organization_website": {"key": "organizationWebsite", "type": "TextAnnotation"},
+        "education_level": {"key": "educationLevel", "type": "TextAnnotation"},
+        "education_accreditation": {"key": "educationAccreditation", "type": "TextAnnotation"},
         "expected_remuneration": {
             "key": "expectedRemuneration",
             "type": "ExpectedRemunerationAnnotation",
         },
         "location": {"key": "location", "type": "LocationAnnotation"},
-        "certifications": {"key": "certifications", "type": "[Annotation]"},
+        "certifications": {"key": "certifications", "type": "[TextAnnotation]"},
     }
 
     def __init__(self, **kwargs):
         """
         :keyword contact_email:
-        :paramtype contact_email: ~affinda.models.Annotation
+        :paramtype contact_email: ~affinda.models.TextAnnotation
         :keyword contact_name:
-        :paramtype contact_name: ~affinda.models.Annotation
+        :paramtype contact_name: ~affinda.models.TextAnnotation
         :keyword contact_phone:
-        :paramtype contact_phone: ~affinda.models.Annotation
+        :paramtype contact_phone: ~affinda.models.TextAnnotation
         :keyword start_date:
         :paramtype start_date: ~affinda.models.DateAnnotation
         :keyword end_date:
         :paramtype end_date: ~affinda.models.DateAnnotation
         :keyword job_type:
-        :paramtype job_type: ~affinda.models.Annotation
+        :paramtype job_type: ~affinda.models.TextAnnotation
         :keyword languages:
         :paramtype languages: list[~affinda.models.LanguageAnnotation]
         :keyword skills:
         :paramtype skills: list[~affinda.models.SkillAnnotation]
         :keyword organization_name:
-        :paramtype organization_name: ~affinda.models.Annotation
+        :paramtype organization_name: ~affinda.models.TextAnnotation
         :keyword organization_website:
-        :paramtype organization_website: ~affinda.models.Annotation
+        :paramtype organization_website: ~affinda.models.TextAnnotation
         :keyword education_level:
-        :paramtype education_level: ~affinda.models.Annotation
+        :paramtype education_level: ~affinda.models.TextAnnotation
         :keyword education_accreditation:
-        :paramtype education_accreditation: ~affinda.models.Annotation
+        :paramtype education_accreditation: ~affinda.models.TextAnnotation
         :keyword expected_remuneration:
         :paramtype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotation
         :keyword location:
         :paramtype location: ~affinda.models.LocationAnnotation
         :keyword certifications:
-        :paramtype certifications: list[~affinda.models.Annotation]
+        :paramtype certifications: list[~affinda.models.TextAnnotation]
         """
         super(JobDescriptionData, self).__init__(**kwargs)
         self.contact_email = kwargs.get("contact_email", None)
@@ -4044,7 +4272,7 @@ class LanguageAnnotation(Annotation):
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -4192,7 +4420,7 @@ class LocationAnnotation(Annotation):
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "Location"},
     }
@@ -4219,74 +4447,6 @@ class LocationAnnotation(Annotation):
         """
         super(LocationAnnotation, self).__init__(**kwargs)
         self.parsed = kwargs.get("parsed", None)
-
-
-class Meta(msrest.serialization.Model):
-    """Meta.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar identifier: Required. Unique identifier for the document. If creating a document and left
-     blank, one will be automatically generated.
-    :vartype identifier: str
-    :ivar file_name: Optional filename of the file.
-    :vartype file_name: str
-    :ivar ready: Required. If true, the document has finished processing. Particularly useful if an
-     endpoint request specified wait=False, when polling use this variable to determine when to stop
-     polling.
-    :vartype ready: bool
-    :ivar ready_dt: The datetime when the document was ready.
-    :vartype ready_dt: ~datetime.datetime
-    :ivar failed: Required. If true, some exception was raised during processing. Check the 'error'
-     field of the main return object.
-    :vartype failed: bool
-    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
-     deleted.  Defaults to no expiry.
-    :vartype expiry_time: str
-    """
-
-    _validation = {
-        "identifier": {"required": True},
-        "ready": {"required": True},
-        "failed": {"required": True},
-    }
-
-    _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-        "file_name": {"key": "fileName", "type": "str"},
-        "ready": {"key": "ready", "type": "bool"},
-        "ready_dt": {"key": "readyDt", "type": "iso-8601"},
-        "failed": {"key": "failed", "type": "bool"},
-        "expiry_time": {"key": "expiryTime", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword identifier: Required. Unique identifier for the document. If creating a document and
-         left blank, one will be automatically generated.
-        :paramtype identifier: str
-        :keyword file_name: Optional filename of the file.
-        :paramtype file_name: str
-        :keyword ready: Required. If true, the document has finished processing. Particularly useful if
-         an endpoint request specified wait=False, when polling use this variable to determine when to
-         stop polling.
-        :paramtype ready: bool
-        :keyword ready_dt: The datetime when the document was ready.
-        :paramtype ready_dt: ~datetime.datetime
-        :keyword failed: Required. If true, some exception was raised during processing. Check the
-         'error' field of the main return object.
-        :paramtype failed: bool
-        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
-         deleted.  Defaults to no expiry.
-        :paramtype expiry_time: str
-        """
-        super(Meta, self).__init__(**kwargs)
-        self.identifier = kwargs["identifier"]
-        self.file_name = kwargs.get("file_name", None)
-        self.ready = kwargs["ready"]
-        self.ready_dt = kwargs.get("ready_dt", None)
-        self.failed = kwargs["failed"]
-        self.expiry_time = kwargs.get("expiry_time", None)
 
 
 class OccupationGroup(msrest.serialization.Model):
@@ -6469,7 +6629,7 @@ class SkillAnnotation(Annotation):
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
-        "is_verified": {"key": "is_verified", "type": "bool"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }

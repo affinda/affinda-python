@@ -23,8 +23,6 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
@@ -49,8 +47,6 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
@@ -197,6 +193,30 @@ def __init__(**kwargs)
 :paramtype raw: str
 :keyword parsed:
 :paramtype parsed: str
+
+<a id="models._models.Components17Ashz6SchemasInvoicePropertiesMetaAllof1"></a>
+
+## Components17Ashz6SchemasInvoicePropertiesMetaAllof1 Objects
+
+```python
+class Components17Ashz6SchemasInvoicePropertiesMetaAllof1(msrest.serialization.Model)
+```
+
+Components17Ashz6SchemasInvoicePropertiesMetaAllof1.
+
+:ivar review_url: Signed URL (valid for 60 minutes) to access the invoice review tool.
+:vartype review_url: str
+
+<a id="models._models.Components17Ashz6SchemasInvoicePropertiesMetaAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword review_url: Signed URL (valid for 60 minutes) to access the invoice review tool.
+:paramtype review_url: str
 
 <a id="models._models.Components1Bh8NlbSchemasInvoicedataPropertiesBpaybillercodeAllof2"></a>
 
@@ -1241,7 +1261,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar data: Required.
 :vartype data: ~affinda.models.InvoiceData
 :ivar meta: Required.
-:vartype meta: ~affinda.models.Meta
+:vartype meta: ~affinda.models.InvoiceMeta
 :ivar error: Required.
 :vartype error: ~affinda.models.Error
 
@@ -1256,7 +1276,7 @@ def __init__(**kwargs)
 :keyword data: Required.
 :paramtype data: ~affinda.models.InvoiceData
 :keyword meta: Required.
-:paramtype meta: ~affinda.models.Meta
+:paramtype meta: ~affinda.models.InvoiceMeta
 :keyword error: Required.
 :paramtype error: ~affinda.models.Error
 
@@ -1420,12 +1440,68 @@ def __init__(**kwargs)
 :keyword supplier_website:
 :paramtype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
 
+<a id="models._models.TextAnnotation"></a>
+
+## TextAnnotation Objects
+
+```python
+class TextAnnotation(Annotation)
+```
+
+TextAnnotation.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.TextAnnotation.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
+
 <a id="models._models.InvoiceDataBankAccountNumber"></a>
 
 ## InvoiceDataBankAccountNumber Objects
 
 ```python
-class InvoiceDataBankAccountNumber(Annotation,  Components14Dm0XSchemasInvoicedataPropertiesBankaccountnumberAllof2)
+class InvoiceDataBankAccountNumber(TextAnnotation,  Components14Dm0XSchemasInvoicedataPropertiesBankaccountnumberAllof2)
 ```
 
 InvoiceDataBankAccountNumber.
@@ -1441,14 +1517,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataBankAccountNumber.__init__"></a>
 
@@ -1467,21 +1543,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataBankBSB"></a>
 
 ## InvoiceDataBankBSB Objects
 
 ```python
-class InvoiceDataBankBSB(Annotation,  ComponentsUilt2MSchemasInvoicedataPropertiesBankbsbAllof2)
+class InvoiceDataBankBSB(TextAnnotation,  ComponentsUilt2MSchemasInvoicedataPropertiesBankbsbAllof2)
 ```
 
 InvoiceDataBankBSB.
@@ -1497,14 +1573,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataBankBSB.__init__"></a>
 
@@ -1523,21 +1599,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataBankIBAN"></a>
 
 ## InvoiceDataBankIBAN Objects
 
 ```python
-class InvoiceDataBankIBAN(Annotation,  ComponentsE6Bjv3SchemasInvoicedataPropertiesBankibanAllof2)
+class InvoiceDataBankIBAN(TextAnnotation,  ComponentsE6Bjv3SchemasInvoicedataPropertiesBankibanAllof2)
 ```
 
 InvoiceDataBankIBAN.
@@ -1553,14 +1629,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataBankIBAN.__init__"></a>
 
@@ -1579,21 +1655,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataBankSortCode"></a>
 
 ## InvoiceDataBankSortCode Objects
 
 ```python
-class InvoiceDataBankSortCode(Annotation,  Components1Rbm6P1SchemasInvoicedataPropertiesBanksortcodeAllof2)
+class InvoiceDataBankSortCode(TextAnnotation,  Components1Rbm6P1SchemasInvoicedataPropertiesBanksortcodeAllof2)
 ```
 
 InvoiceDataBankSortCode.
@@ -1609,14 +1685,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataBankSortCode.__init__"></a>
 
@@ -1635,21 +1711,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataBankSwift"></a>
 
 ## InvoiceDataBankSwift Objects
 
 ```python
-class InvoiceDataBankSwift(Annotation,  Components11Zi81FSchemasInvoicedataPropertiesBankswiftAllof2)
+class InvoiceDataBankSwift(TextAnnotation,  Components11Zi81FSchemasInvoicedataPropertiesBankswiftAllof2)
 ```
 
 InvoiceDataBankSwift.
@@ -1665,14 +1741,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataBankSwift.__init__"></a>
 
@@ -1691,21 +1767,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataBpayBillerCode"></a>
 
 ## InvoiceDataBpayBillerCode Objects
 
 ```python
-class InvoiceDataBpayBillerCode(Annotation,  Components1Bh8NlbSchemasInvoicedataPropertiesBpaybillercodeAllof2)
+class InvoiceDataBpayBillerCode(TextAnnotation,  Components1Bh8NlbSchemasInvoicedataPropertiesBpaybillercodeAllof2)
 ```
 
 InvoiceDataBpayBillerCode.
@@ -1721,14 +1797,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataBpayBillerCode.__init__"></a>
 
@@ -1747,21 +1823,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataBpayReference"></a>
 
 ## InvoiceDataBpayReference Objects
 
 ```python
-class InvoiceDataBpayReference(Annotation,  Components1OmsnpSchemasInvoicedataPropertiesBpayreferenceAllof2)
+class InvoiceDataBpayReference(TextAnnotation,  Components1OmsnpSchemasInvoicedataPropertiesBpayreferenceAllof2)
 ```
 
 InvoiceDataBpayReference.
@@ -1777,14 +1853,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataBpayReference.__init__"></a>
 
@@ -1803,21 +1879,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataCustomerBusinessNumber"></a>
 
 ## InvoiceDataCustomerBusinessNumber Objects
 
 ```python
-class InvoiceDataCustomerBusinessNumber(Annotation,  ComponentsRft7JdSchemasInvoicedataPropertiesCustomerbusinessnumberAllof2)
+class InvoiceDataCustomerBusinessNumber(TextAnnotation,  ComponentsRft7JdSchemasInvoicedataPropertiesCustomerbusinessnumberAllof2)
 ```
 
 InvoiceDataCustomerBusinessNumber.
@@ -1833,14 +1909,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataCustomerBusinessNumber.__init__"></a>
 
@@ -1859,21 +1935,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataCustomerCompanyName"></a>
 
 ## InvoiceDataCustomerCompanyName Objects
 
 ```python
-class InvoiceDataCustomerCompanyName(Annotation,  Components6DhvidSchemasInvoicedataPropertiesCustomercompanynameAllof2)
+class InvoiceDataCustomerCompanyName(TextAnnotation,  Components6DhvidSchemasInvoicedataPropertiesCustomercompanynameAllof2)
 ```
 
 InvoiceDataCustomerCompanyName.
@@ -1889,14 +1965,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataCustomerCompanyName.__init__"></a>
 
@@ -1915,21 +1991,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataCustomerContactName"></a>
 
 ## InvoiceDataCustomerContactName Objects
 
 ```python
-class InvoiceDataCustomerContactName(Annotation,  ComponentsWywi9WSchemasInvoicedataPropertiesCustomercontactnameAllof2)
+class InvoiceDataCustomerContactName(TextAnnotation,  ComponentsWywi9WSchemasInvoicedataPropertiesCustomercontactnameAllof2)
 ```
 
 InvoiceDataCustomerContactName.
@@ -1945,14 +2021,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataCustomerContactName.__init__"></a>
 
@@ -1971,21 +2047,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataCustomerEmail"></a>
 
 ## InvoiceDataCustomerEmail Objects
 
 ```python
-class InvoiceDataCustomerEmail(Annotation,  Components5PwavySchemasInvoicedataPropertiesCustomeremailAllof2)
+class InvoiceDataCustomerEmail(TextAnnotation,  Components5PwavySchemasInvoicedataPropertiesCustomeremailAllof2)
 ```
 
 InvoiceDataCustomerEmail.
@@ -2001,14 +2077,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataCustomerEmail.__init__"></a>
 
@@ -2027,21 +2103,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataCustomerNumber"></a>
 
 ## InvoiceDataCustomerNumber Objects
 
 ```python
-class InvoiceDataCustomerNumber(Annotation,  Components2Hu973SchemasInvoicedataPropertiesCustomernumberAllof2)
+class InvoiceDataCustomerNumber(TextAnnotation,  Components2Hu973SchemasInvoicedataPropertiesCustomernumberAllof2)
 ```
 
 InvoiceDataCustomerNumber.
@@ -2057,14 +2133,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataCustomerNumber.__init__"></a>
 
@@ -2083,21 +2159,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataCustomerPhoneNumber"></a>
 
 ## InvoiceDataCustomerPhoneNumber Objects
 
 ```python
-class InvoiceDataCustomerPhoneNumber(Annotation,  ComponentsPs8Uo7SchemasInvoicedataPropertiesCustomerphonenumberAllof2)
+class InvoiceDataCustomerPhoneNumber(TextAnnotation,  ComponentsPs8Uo7SchemasInvoicedataPropertiesCustomerphonenumberAllof2)
 ```
 
 InvoiceDataCustomerPhoneNumber.
@@ -2113,14 +2189,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataCustomerPhoneNumber.__init__"></a>
 
@@ -2139,21 +2215,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataCustomerVAT"></a>
 
 ## InvoiceDataCustomerVAT Objects
 
 ```python
-class InvoiceDataCustomerVAT(Annotation,  ComponentsRsi73USchemasInvoicedataPropertiesCustomervatAllof2)
+class InvoiceDataCustomerVAT(TextAnnotation,  ComponentsRsi73USchemasInvoicedataPropertiesCustomervatAllof2)
 ```
 
 InvoiceDataCustomerVAT.
@@ -2169,14 +2245,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataCustomerVAT.__init__"></a>
 
@@ -2195,21 +2271,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataInvoiceNumber"></a>
 
 ## InvoiceDataInvoiceNumber Objects
 
 ```python
-class InvoiceDataInvoiceNumber(Annotation,  Components7CqvqpSchemasInvoicedataPropertiesInvoicenumberAllof2)
+class InvoiceDataInvoiceNumber(TextAnnotation,  Components7CqvqpSchemasInvoicedataPropertiesInvoicenumberAllof2)
 ```
 
 InvoiceDataInvoiceNumber.
@@ -2225,14 +2301,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataInvoiceNumber.__init__"></a>
 
@@ -2251,21 +2327,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataInvoicePurchaseOrderNumber"></a>
 
 ## InvoiceDataInvoicePurchaseOrderNumber Objects
 
 ```python
-class InvoiceDataInvoicePurchaseOrderNumber(Annotation,  Components55Nj82SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof2)
+class InvoiceDataInvoicePurchaseOrderNumber(TextAnnotation,  Components55Nj82SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof2)
 ```
 
 InvoiceDataInvoicePurchaseOrderNumber.
@@ -2281,14 +2357,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataInvoicePurchaseOrderNumber.__init__"></a>
 
@@ -2307,21 +2383,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataPaymentAmountBase"></a>
 
 ## InvoiceDataPaymentAmountBase Objects
 
 ```python
-class InvoiceDataPaymentAmountBase(Annotation,  ComponentsTz04ToSchemasInvoicedataPropertiesPaymentamountbaseAllof2)
+class InvoiceDataPaymentAmountBase(TextAnnotation,  ComponentsTz04ToSchemasInvoicedataPropertiesPaymentamountbaseAllof2)
 ```
 
 InvoiceDataPaymentAmountBase.
@@ -2337,14 +2413,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataPaymentAmountBase.__init__"></a>
 
@@ -2363,21 +2439,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataPaymentAmountDue"></a>
 
 ## InvoiceDataPaymentAmountDue Objects
 
 ```python
-class InvoiceDataPaymentAmountDue(Annotation,  Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2)
+class InvoiceDataPaymentAmountDue(TextAnnotation,  Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2)
 ```
 
 InvoiceDataPaymentAmountDue.
@@ -2393,14 +2469,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataPaymentAmountDue.__init__"></a>
 
@@ -2419,21 +2495,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataPaymentAmountPaid"></a>
 
 ## InvoiceDataPaymentAmountPaid Objects
 
 ```python
-class InvoiceDataPaymentAmountPaid(Annotation,  Components1LdfgdeSchemasInvoicedataPropertiesPaymentamountpaidAllof2)
+class InvoiceDataPaymentAmountPaid(TextAnnotation,  Components1LdfgdeSchemasInvoicedataPropertiesPaymentamountpaidAllof2)
 ```
 
 InvoiceDataPaymentAmountPaid.
@@ -2449,14 +2525,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataPaymentAmountPaid.__init__"></a>
 
@@ -2475,21 +2551,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataPaymentAmountTax"></a>
 
 ## InvoiceDataPaymentAmountTax Objects
 
 ```python
-class InvoiceDataPaymentAmountTax(Annotation,  ComponentsY49P83SchemasInvoicedataPropertiesPaymentamounttaxAllof2)
+class InvoiceDataPaymentAmountTax(TextAnnotation,  ComponentsY49P83SchemasInvoicedataPropertiesPaymentamounttaxAllof2)
 ```
 
 InvoiceDataPaymentAmountTax.
@@ -2505,14 +2581,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataPaymentAmountTax.__init__"></a>
 
@@ -2531,21 +2607,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataPaymentAmountTotal"></a>
 
 ## InvoiceDataPaymentAmountTotal Objects
 
 ```python
-class InvoiceDataPaymentAmountTotal(Annotation,  Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2)
+class InvoiceDataPaymentAmountTotal(TextAnnotation,  Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2)
 ```
 
 InvoiceDataPaymentAmountTotal.
@@ -2561,14 +2637,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataPaymentAmountTotal.__init__"></a>
 
@@ -2587,21 +2663,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataPaymentReference"></a>
 
 ## InvoiceDataPaymentReference Objects
 
 ```python
-class InvoiceDataPaymentReference(Annotation,  Components1Wx56HlSchemasInvoicedataPropertiesPaymentreferenceAllof2)
+class InvoiceDataPaymentReference(TextAnnotation,  Components1Wx56HlSchemasInvoicedataPropertiesPaymentreferenceAllof2)
 ```
 
 InvoiceDataPaymentReference.
@@ -2617,14 +2693,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataPaymentReference.__init__"></a>
 
@@ -2643,21 +2719,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataSupplierBusinessNumber"></a>
 
 ## InvoiceDataSupplierBusinessNumber Objects
 
 ```python
-class InvoiceDataSupplierBusinessNumber(Annotation,  ComponentsYe0TzySchemasInvoicedataPropertiesSupplierbusinessnumberAllof2)
+class InvoiceDataSupplierBusinessNumber(TextAnnotation,  ComponentsYe0TzySchemasInvoicedataPropertiesSupplierbusinessnumberAllof2)
 ```
 
 InvoiceDataSupplierBusinessNumber.
@@ -2673,14 +2749,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataSupplierBusinessNumber.__init__"></a>
 
@@ -2699,21 +2775,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataSupplierCompanyName"></a>
 
 ## InvoiceDataSupplierCompanyName Objects
 
 ```python
-class InvoiceDataSupplierCompanyName(Annotation,  Components1O4BmpySchemasInvoicedataPropertiesSuppliercompanynameAllof2)
+class InvoiceDataSupplierCompanyName(TextAnnotation,  Components1O4BmpySchemasInvoicedataPropertiesSuppliercompanynameAllof2)
 ```
 
 InvoiceDataSupplierCompanyName.
@@ -2729,14 +2805,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataSupplierCompanyName.__init__"></a>
 
@@ -2755,21 +2831,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataSupplierEmail"></a>
 
 ## InvoiceDataSupplierEmail Objects
 
 ```python
-class InvoiceDataSupplierEmail(Annotation,  ComponentsVyrnzuSchemasInvoicedataPropertiesSupplieremailAllof2)
+class InvoiceDataSupplierEmail(TextAnnotation,  ComponentsVyrnzuSchemasInvoicedataPropertiesSupplieremailAllof2)
 ```
 
 InvoiceDataSupplierEmail.
@@ -2785,14 +2861,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataSupplierEmail.__init__"></a>
 
@@ -2811,21 +2887,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataSupplierFax"></a>
 
 ## InvoiceDataSupplierFax Objects
 
 ```python
-class InvoiceDataSupplierFax(Annotation,  Components1ByjheSchemasInvoicedataPropertiesSupplierfaxAllof2)
+class InvoiceDataSupplierFax(TextAnnotation,  Components1ByjheSchemasInvoicedataPropertiesSupplierfaxAllof2)
 ```
 
 InvoiceDataSupplierFax.
@@ -2841,14 +2917,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataSupplierFax.__init__"></a>
 
@@ -2867,21 +2943,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataSupplierPhoneNumber"></a>
 
 ## InvoiceDataSupplierPhoneNumber Objects
 
 ```python
-class InvoiceDataSupplierPhoneNumber(Annotation,  ComponentsBvthtoSchemasInvoicedataPropertiesSupplierphonenumberAllof2)
+class InvoiceDataSupplierPhoneNumber(TextAnnotation,  ComponentsBvthtoSchemasInvoicedataPropertiesSupplierphonenumberAllof2)
 ```
 
 InvoiceDataSupplierPhoneNumber.
@@ -2897,14 +2973,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataSupplierPhoneNumber.__init__"></a>
 
@@ -2923,21 +2999,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataSupplierVAT"></a>
 
 ## InvoiceDataSupplierVAT Objects
 
 ```python
-class InvoiceDataSupplierVAT(Annotation,  Components1Fdmi0OSchemasInvoicedataPropertiesSuppliervatAllof2)
+class InvoiceDataSupplierVAT(TextAnnotation,  Components1Fdmi0OSchemasInvoicedataPropertiesSuppliervatAllof2)
 ```
 
 InvoiceDataSupplierVAT.
@@ -2953,14 +3029,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataSupplierVAT.__init__"></a>
 
@@ -2979,21 +3055,21 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.InvoiceDataSupplierWebsite"></a>
 
 ## InvoiceDataSupplierWebsite Objects
 
 ```python
-class InvoiceDataSupplierWebsite(Annotation,  Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2)
+class InvoiceDataSupplierWebsite(TextAnnotation,  Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2)
 ```
 
 InvoiceDataSupplierWebsite.
@@ -3009,14 +3085,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar parsed:
-:vartype parsed: str
 :ivar confidence: Required.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar classification: Required.
 :vartype classification: str
+:ivar parsed:
+:vartype parsed: str
 
 <a id="models._models.InvoiceDataSupplierWebsite.__init__"></a>
 
@@ -3035,14 +3111,130 @@ collection.
 :paramtype page_index: int
 :keyword raw: Required.
 :paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
 :keyword confidence: Required.
 :paramtype confidence: float
 :keyword is_verified: Required.
 :paramtype is_verified: bool
 :keyword classification: Required.
 :paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.Meta"></a>
+
+## Meta Objects
+
+```python
+class Meta(msrest.serialization.Model)
+```
+
+Meta.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar identifier: Required. Unique identifier for the document. If creating a document and left
+ blank, one will be automatically generated.
+:vartype identifier: str
+:ivar file_name: Optional filename of the file.
+:vartype file_name: str
+:ivar ready: Required. If true, the document has finished processing. Particularly useful if an
+ endpoint request specified wait=False, when polling use this variable to determine when to stop
+ polling.
+:vartype ready: bool
+:ivar ready_dt: The datetime when the document was ready.
+:vartype ready_dt: ~datetime.datetime
+:ivar failed: Required. If true, some exception was raised during processing. Check the 'error'
+ field of the main return object.
+:vartype failed: bool
+:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+ deleted.  Defaults to no expiry.
+:vartype expiry_time: str
+
+<a id="models._models.Meta.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword identifier: Required. Unique identifier for the document. If creating a document and
+left blank, one will be automatically generated.
+:paramtype identifier: str
+:keyword file_name: Optional filename of the file.
+:paramtype file_name: str
+:keyword ready: Required. If true, the document has finished processing. Particularly useful if
+an endpoint request specified wait=False, when polling use this variable to determine when to
+stop polling.
+:paramtype ready: bool
+:keyword ready_dt: The datetime when the document was ready.
+:paramtype ready_dt: ~datetime.datetime
+:keyword failed: Required. If true, some exception was raised during processing. Check the
+'error' field of the main return object.
+:paramtype failed: bool
+:keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+deleted.  Defaults to no expiry.
+:paramtype expiry_time: str
+
+<a id="models._models.InvoiceMeta"></a>
+
+## InvoiceMeta Objects
+
+```python
+class InvoiceMeta(Meta,  Components17Ashz6SchemasInvoicePropertiesMetaAllof1)
+```
+
+InvoiceMeta.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar review_url: Signed URL (valid for 60 minutes) to access the invoice review tool.
+:vartype review_url: str
+:ivar identifier: Required. Unique identifier for the document. If creating a document and left
+ blank, one will be automatically generated.
+:vartype identifier: str
+:ivar file_name: Optional filename of the file.
+:vartype file_name: str
+:ivar ready: Required. If true, the document has finished processing. Particularly useful if an
+ endpoint request specified wait=False, when polling use this variable to determine when to stop
+ polling.
+:vartype ready: bool
+:ivar ready_dt: The datetime when the document was ready.
+:vartype ready_dt: ~datetime.datetime
+:ivar failed: Required. If true, some exception was raised during processing. Check the 'error'
+ field of the main return object.
+:vartype failed: bool
+:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+ deleted.  Defaults to no expiry.
+:vartype expiry_time: str
+
+<a id="models._models.InvoiceMeta.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword review_url: Signed URL (valid for 60 minutes) to access the invoice review tool.
+:paramtype review_url: str
+:keyword identifier: Required. Unique identifier for the document. If creating a document and
+left blank, one will be automatically generated.
+:paramtype identifier: str
+:keyword file_name: Optional filename of the file.
+:paramtype file_name: str
+:keyword ready: Required. If true, the document has finished processing. Particularly useful if
+an endpoint request specified wait=False, when polling use this variable to determine when to
+stop polling.
+:paramtype ready: bool
+:keyword ready_dt: The datetime when the document was ready.
+:paramtype ready_dt: ~datetime.datetime
+:keyword failed: Required. If true, some exception was raised during processing. Check the
+'error' field of the main return object.
+:paramtype failed: bool
+:keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+deleted.  Defaults to no expiry.
+:paramtype expiry_time: str
 
 <a id="models._models.JobDescription"></a>
 
@@ -3089,35 +3281,35 @@ class JobDescriptionData(msrest.serialization.Model)
 JobDescriptionData.
 
 :ivar contact_email:
-:vartype contact_email: ~affinda.models.Annotation
+:vartype contact_email: ~affinda.models.TextAnnotation
 :ivar contact_name:
-:vartype contact_name: ~affinda.models.Annotation
+:vartype contact_name: ~affinda.models.TextAnnotation
 :ivar contact_phone:
-:vartype contact_phone: ~affinda.models.Annotation
+:vartype contact_phone: ~affinda.models.TextAnnotation
 :ivar start_date:
 :vartype start_date: ~affinda.models.DateAnnotation
 :ivar end_date:
 :vartype end_date: ~affinda.models.DateAnnotation
 :ivar job_type:
-:vartype job_type: ~affinda.models.Annotation
+:vartype job_type: ~affinda.models.TextAnnotation
 :ivar languages:
 :vartype languages: list[~affinda.models.LanguageAnnotation]
 :ivar skills:
 :vartype skills: list[~affinda.models.SkillAnnotation]
 :ivar organization_name:
-:vartype organization_name: ~affinda.models.Annotation
+:vartype organization_name: ~affinda.models.TextAnnotation
 :ivar organization_website:
-:vartype organization_website: ~affinda.models.Annotation
+:vartype organization_website: ~affinda.models.TextAnnotation
 :ivar education_level:
-:vartype education_level: ~affinda.models.Annotation
+:vartype education_level: ~affinda.models.TextAnnotation
 :ivar education_accreditation:
-:vartype education_accreditation: ~affinda.models.Annotation
+:vartype education_accreditation: ~affinda.models.TextAnnotation
 :ivar expected_remuneration:
 :vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotation
 :ivar location:
 :vartype location: ~affinda.models.LocationAnnotation
 :ivar certifications:
-:vartype certifications: list[~affinda.models.Annotation]
+:vartype certifications: list[~affinda.models.TextAnnotation]
 
 <a id="models._models.JobDescriptionData.__init__"></a>
 
@@ -3128,35 +3320,35 @@ def __init__(**kwargs)
 ```
 
 :keyword contact_email:
-:paramtype contact_email: ~affinda.models.Annotation
+:paramtype contact_email: ~affinda.models.TextAnnotation
 :keyword contact_name:
-:paramtype contact_name: ~affinda.models.Annotation
+:paramtype contact_name: ~affinda.models.TextAnnotation
 :keyword contact_phone:
-:paramtype contact_phone: ~affinda.models.Annotation
+:paramtype contact_phone: ~affinda.models.TextAnnotation
 :keyword start_date:
 :paramtype start_date: ~affinda.models.DateAnnotation
 :keyword end_date:
 :paramtype end_date: ~affinda.models.DateAnnotation
 :keyword job_type:
-:paramtype job_type: ~affinda.models.Annotation
+:paramtype job_type: ~affinda.models.TextAnnotation
 :keyword languages:
 :paramtype languages: list[~affinda.models.LanguageAnnotation]
 :keyword skills:
 :paramtype skills: list[~affinda.models.SkillAnnotation]
 :keyword organization_name:
-:paramtype organization_name: ~affinda.models.Annotation
+:paramtype organization_name: ~affinda.models.TextAnnotation
 :keyword organization_website:
-:paramtype organization_website: ~affinda.models.Annotation
+:paramtype organization_website: ~affinda.models.TextAnnotation
 :keyword education_level:
-:paramtype education_level: ~affinda.models.Annotation
+:paramtype education_level: ~affinda.models.TextAnnotation
 :keyword education_accreditation:
-:paramtype education_accreditation: ~affinda.models.Annotation
+:paramtype education_accreditation: ~affinda.models.TextAnnotation
 :keyword expected_remuneration:
 :paramtype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotation
 :keyword location:
 :paramtype location: ~affinda.models.LocationAnnotation
 :keyword certifications:
-:paramtype certifications: list[~affinda.models.Annotation]
+:paramtype certifications: list[~affinda.models.TextAnnotation]
 
 <a id="models._models.LanguageAnnotation"></a>
 
@@ -3331,62 +3523,6 @@ collection.
 :paramtype classification: str
 :keyword parsed:
 :paramtype parsed: ~affinda.models.Location
-
-<a id="models._models.Meta"></a>
-
-## Meta Objects
-
-```python
-class Meta(msrest.serialization.Model)
-```
-
-Meta.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar identifier: Required. Unique identifier for the document. If creating a document and left
- blank, one will be automatically generated.
-:vartype identifier: str
-:ivar file_name: Optional filename of the file.
-:vartype file_name: str
-:ivar ready: Required. If true, the document has finished processing. Particularly useful if an
- endpoint request specified wait=False, when polling use this variable to determine when to stop
- polling.
-:vartype ready: bool
-:ivar ready_dt: The datetime when the document was ready.
-:vartype ready_dt: ~datetime.datetime
-:ivar failed: Required. If true, some exception was raised during processing. Check the 'error'
- field of the main return object.
-:vartype failed: bool
-:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
- deleted.  Defaults to no expiry.
-:vartype expiry_time: str
-
-<a id="models._models.Meta.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-:keyword identifier: Required. Unique identifier for the document. If creating a document and
-left blank, one will be automatically generated.
-:paramtype identifier: str
-:keyword file_name: Optional filename of the file.
-:paramtype file_name: str
-:keyword ready: Required. If true, the document has finished processing. Particularly useful if
-an endpoint request specified wait=False, when polling use this variable to determine when to
-stop polling.
-:paramtype ready: bool
-:keyword ready_dt: The datetime when the document was ready.
-:paramtype ready_dt: ~datetime.datetime
-:keyword failed: Required. If true, some exception was raised during processing. Check the
-'error' field of the main return object.
-:paramtype failed: bool
-:keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
-deleted.  Defaults to no expiry.
-:paramtype expiry_time: str
 
 <a id="models._models.OccupationGroup"></a>
 

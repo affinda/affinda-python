@@ -11,6 +11,7 @@ try:
     from ._models_py3 import Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2
     from ._models_py3 import Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2
     from ._models_py3 import Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2
+    from ._models_py3 import Components17Ashz6SchemasInvoicePropertiesMetaAllof1
     from ._models_py3 import Components1Bh8NlbSchemasInvoicedataPropertiesBpaybillercodeAllof2
     from ._models_py3 import Components1ByjheSchemasInvoicedataPropertiesSupplierfaxAllof2
     from ._models_py3 import Components1Fdmi0OSchemasInvoicedataPropertiesSuppliervatAllof2
@@ -83,6 +84,7 @@ try:
     from ._models_py3 import InvoiceDataSupplierPhoneNumber
     from ._models_py3 import InvoiceDataSupplierVAT
     from ._models_py3 import InvoiceDataSupplierWebsite
+    from ._models_py3 import InvoiceMeta
     from ._models_py3 import JobDescription
     from ._models_py3 import JobDescriptionData
     from ._models_py3 import LanguageAnnotation
@@ -147,6 +149,7 @@ try:
     from ._models_py3 import ResumeSearchResult
     from ._models_py3 import ResumeSearchScoreComponent
     from ._models_py3 import SkillAnnotation
+    from ._models_py3 import TextAnnotation
 except (SyntaxError, ImportError):
     from ._models import Annotation  # type: ignore
     from ._models import Components11Zi81FSchemasInvoicedataPropertiesBankswiftAllof2  # type: ignore
@@ -154,6 +157,7 @@ except (SyntaxError, ImportError):
     from ._models import Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2  # type: ignore
     from ._models import Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2  # type: ignore
     from ._models import Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2  # type: ignore
+    from ._models import Components17Ashz6SchemasInvoicePropertiesMetaAllof1  # type: ignore
     from ._models import Components1Bh8NlbSchemasInvoicedataPropertiesBpaybillercodeAllof2  # type: ignore
     from ._models import Components1ByjheSchemasInvoicedataPropertiesSupplierfaxAllof2  # type: ignore
     from ._models import Components1Fdmi0OSchemasInvoicedataPropertiesSuppliervatAllof2  # type: ignore
@@ -218,6 +222,7 @@ except (SyntaxError, ImportError):
     from ._models import InvoiceDataSupplierPhoneNumber  # type: ignore
     from ._models import InvoiceDataSupplierVAT  # type: ignore
     from ._models import InvoiceDataSupplierWebsite  # type: ignore
+    from ._models import InvoiceMeta  # type: ignore
     from ._models import JobDescription  # type: ignore
     from ._models import JobDescriptionData  # type: ignore
     from ._models import LanguageAnnotation  # type: ignore
@@ -268,6 +273,7 @@ except (SyntaxError, ImportError):
     from ._models import ResumeSearchResult  # type: ignore
     from ._models import ResumeSearchScoreComponent  # type: ignore
     from ._models import SkillAnnotation  # type: ignore
+    from ._models import TextAnnotation  # type: ignore
 
 from ._affinda_api_enums import (
     EducationLevel,
@@ -282,6 +288,7 @@ __all__ = [
     "Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2",
     "Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2",
     "Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2",
+    "Components17Ashz6SchemasInvoicePropertiesMetaAllof1",
     "Components1Bh8NlbSchemasInvoicedataPropertiesBpaybillercodeAllof2",
     "Components1ByjheSchemasInvoicedataPropertiesSupplierfaxAllof2",
     "Components1Fdmi0OSchemasInvoicedataPropertiesSuppliervatAllof2",
@@ -346,6 +353,7 @@ __all__ = [
     "InvoiceDataSupplierPhoneNumber",
     "InvoiceDataSupplierVAT",
     "InvoiceDataSupplierWebsite",
+    "InvoiceMeta",
     "JobDescription",
     "JobDescriptionData",
     "LanguageAnnotation",
@@ -396,6 +404,7 @@ __all__ = [
     "ResumeSearchResult",
     "ResumeSearchScoreComponent",
     "SkillAnnotation",
+    "TextAnnotation",
     "EducationLevel",
     "ManagementLevel",
     "SearchLocationUnit",
