@@ -75,7 +75,7 @@ retrieve results.
 - `url` (`str`): 
 - `wait` (`bool`): 
 - `language` (`str`): 
-- `expiry_time` (`str`): 
+- `expiry_time` (`~datetime.datetime`): 
 
 **Returns**:
 
@@ -176,7 +176,7 @@ Uploads a resume for redacting.
 - `redact_locations` (`bool`): Whether to redact location names.
 - `redact_dates` (`bool`): Whether to redact dates.
 - `redact_gender` (`bool`): Whether to redact gender.
-- `expiry_time` (`str`): 
+- `expiry_time` (`~datetime.datetime`): 
 
 **Returns**:
 
@@ -410,7 +410,7 @@ and retrieve results.
 - `url` (`str`): 
 - `wait` (`bool`): 
 - `language` (`str`): 
-- `expiry_time` (`str`): 
+- `expiry_time` (`~datetime.datetime`): 
 
 **Returns**:
 
@@ -636,7 +636,7 @@ retrieve results.
 - `url` (`str`): 
 - `wait` (`bool`): 
 - `language` (`str`): 
-- `expiry_time` (`str`): 
+- `expiry_time` (`~datetime.datetime`): 
 
 **Returns**:
 

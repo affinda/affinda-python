@@ -3965,7 +3965,7 @@ class Meta(msrest.serialization.Model):
     :vartype failed: bool
     :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
      deleted.  Defaults to no expiry.
-    :vartype expiry_time: str
+    :vartype expiry_time: ~datetime.datetime
     """
 
     _validation = {
@@ -3980,7 +3980,7 @@ class Meta(msrest.serialization.Model):
         "ready": {"key": "ready", "type": "bool"},
         "ready_dt": {"key": "readyDt", "type": "iso-8601"},
         "failed": {"key": "failed", "type": "bool"},
-        "expiry_time": {"key": "expiryTime", "type": "str"},
+        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
     }
 
     def __init__(self, **kwargs):
@@ -4001,7 +4001,7 @@ class Meta(msrest.serialization.Model):
         :paramtype failed: bool
         :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
          deleted.  Defaults to no expiry.
-        :paramtype expiry_time: str
+        :paramtype expiry_time: ~datetime.datetime
         """
         super(Meta, self).__init__(**kwargs)
         self.identifier = kwargs["identifier"]
@@ -4035,7 +4035,7 @@ class InvoiceMeta(Meta, Components17Ashz6SchemasInvoicePropertiesMetaAllof1):
     :vartype failed: bool
     :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
      deleted.  Defaults to no expiry.
-    :vartype expiry_time: str
+    :vartype expiry_time: ~datetime.datetime
     """
 
     _validation = {
@@ -4051,7 +4051,7 @@ class InvoiceMeta(Meta, Components17Ashz6SchemasInvoicePropertiesMetaAllof1):
         "ready": {"key": "ready", "type": "bool"},
         "ready_dt": {"key": "readyDt", "type": "iso-8601"},
         "failed": {"key": "failed", "type": "bool"},
-        "expiry_time": {"key": "expiryTime", "type": "str"},
+        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
     }
 
     def __init__(self, **kwargs):
@@ -4074,7 +4074,7 @@ class InvoiceMeta(Meta, Components17Ashz6SchemasInvoicePropertiesMetaAllof1):
         :paramtype failed: bool
         :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
          deleted.  Defaults to no expiry.
-        :paramtype expiry_time: str
+        :paramtype expiry_time: ~datetime.datetime
         """
         super(InvoiceMeta, self).__init__(**kwargs)
         self.review_url = kwargs.get("review_url", None)
@@ -4543,7 +4543,7 @@ class Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema(
     :vartype language: str
     :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
      deleted.  Defaults to no expiry.
-    :vartype expiry_time: str
+    :vartype expiry_time: ~datetime.datetime
     """
 
     _attribute_map = {
@@ -4553,7 +4553,7 @@ class Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema(
         "url": {"key": "url", "type": "str"},
         "wait": {"key": "wait", "type": "bool"},
         "language": {"key": "language", "type": "str"},
-        "expiry_time": {"key": "expiryTime", "type": "str"},
+        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
     }
 
     def __init__(self, **kwargs):
@@ -4576,7 +4576,7 @@ class Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema(
         :paramtype language: str
         :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
          deleted.  Defaults to no expiry.
-        :paramtype expiry_time: str
+        :paramtype expiry_time: ~datetime.datetime
         """
         super(Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema, self).__init__(
             **kwargs
@@ -4718,7 +4718,7 @@ class Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema(msrest.ser
     :vartype language: str
     :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
      deleted.  Defaults to no expiry.
-    :vartype expiry_time: str
+    :vartype expiry_time: ~datetime.datetime
     """
 
     _attribute_map = {
@@ -4728,7 +4728,7 @@ class Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema(msrest.ser
         "url": {"key": "url", "type": "str"},
         "wait": {"key": "wait", "type": "bool"},
         "language": {"key": "language", "type": "str"},
-        "expiry_time": {"key": "expiryTime", "type": "str"},
+        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
     }
 
     def __init__(self, **kwargs):
@@ -4751,7 +4751,7 @@ class Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema(msrest.ser
         :paramtype language: str
         :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
          deleted.  Defaults to no expiry.
-        :paramtype expiry_time: str
+        :paramtype expiry_time: ~datetime.datetime
         """
         super(Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema, self).__init__(
             **kwargs
@@ -4804,7 +4804,7 @@ class Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema(
     :vartype redact_gender: bool
     :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
      deleted.  Defaults to no expiry.
-    :vartype expiry_time: str
+    :vartype expiry_time: ~datetime.datetime
     """
 
     _attribute_map = {
@@ -4822,7 +4822,7 @@ class Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema(
         "redact_locations": {"key": "redactLocations", "type": "bool"},
         "redact_dates": {"key": "redactDates", "type": "bool"},
         "redact_gender": {"key": "redactGender", "type": "bool"},
-        "expiry_time": {"key": "expiryTime", "type": "str"},
+        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
     }
 
     def __init__(self, **kwargs):
@@ -4861,7 +4861,7 @@ class Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema(
         :paramtype redact_gender: bool
         :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
          deleted.  Defaults to no expiry.
-        :paramtype expiry_time: str
+        :paramtype expiry_time: ~datetime.datetime
         """
         super(
             Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema, self
@@ -5048,7 +5048,7 @@ class PathsYlw96JobDescriptionsPostRequestbodyContentMultipartFormDataSchema(
     :vartype language: str
     :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
      deleted.  Defaults to no expiry.
-    :vartype expiry_time: str
+    :vartype expiry_time: ~datetime.datetime
     """
 
     _attribute_map = {
@@ -5058,7 +5058,7 @@ class PathsYlw96JobDescriptionsPostRequestbodyContentMultipartFormDataSchema(
         "url": {"key": "url", "type": "str"},
         "wait": {"key": "wait", "type": "bool"},
         "language": {"key": "language", "type": "str"},
-        "expiry_time": {"key": "expiryTime", "type": "str"},
+        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
     }
 
     def __init__(self, **kwargs):
@@ -5081,7 +5081,7 @@ class PathsYlw96JobDescriptionsPostRequestbodyContentMultipartFormDataSchema(
         :paramtype language: str
         :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
          deleted.  Defaults to no expiry.
-        :paramtype expiry_time: str
+        :paramtype expiry_time: ~datetime.datetime
         """
         super(
             PathsYlw96JobDescriptionsPostRequestbodyContentMultipartFormDataSchema, self

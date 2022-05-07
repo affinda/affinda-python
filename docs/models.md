@@ -3148,7 +3148,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype failed: bool
 :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
  deleted.  Defaults to no expiry.
-:vartype expiry_time: str
+:vartype expiry_time: ~datetime.datetime
 
 <a id="models._models.Meta.__init__"></a>
 
@@ -3174,7 +3174,7 @@ stop polling.
 :paramtype failed: bool
 :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
-:paramtype expiry_time: str
+:paramtype expiry_time: ~datetime.datetime
 
 <a id="models._models.InvoiceMeta"></a>
 
@@ -3206,7 +3206,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype failed: bool
 :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
  deleted.  Defaults to no expiry.
-:vartype expiry_time: str
+:vartype expiry_time: ~datetime.datetime
 
 <a id="models._models.InvoiceMeta.__init__"></a>
 
@@ -3234,7 +3234,7 @@ stop polling.
 :paramtype failed: bool
 :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
-:paramtype expiry_time: str
+:paramtype expiry_time: ~datetime.datetime
 
 <a id="models._models.JobDescription"></a>
 
@@ -3612,7 +3612,7 @@ Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema.
 :vartype language: str
 :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
  deleted.  Defaults to no expiry.
-:vartype expiry_time: str
+:vartype expiry_time: ~datetime.datetime
 
 <a id="models._models.Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema.__init__"></a>
 
@@ -3640,7 +3640,7 @@ processing is complete.
 :paramtype language: str
 :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
-:paramtype expiry_time: str
+:paramtype expiry_time: ~datetime.datetime
 
 <a id="models._models.Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema"></a>
 
@@ -3768,7 +3768,7 @@ Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema.
 :vartype language: str
 :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
  deleted.  Defaults to no expiry.
-:vartype expiry_time: str
+:vartype expiry_time: ~datetime.datetime
 
 <a id="models._models.Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema.__init__"></a>
 
@@ -3796,7 +3796,7 @@ processing is complete.
 :paramtype language: str
 :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
-:paramtype expiry_time: str
+:paramtype expiry_time: ~datetime.datetime
 
 <a id="models._models.Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema"></a>
 
@@ -3842,7 +3842,7 @@ Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema.
 :vartype redact_gender: bool
 :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
  deleted.  Defaults to no expiry.
-:vartype expiry_time: str
+:vartype expiry_time: ~datetime.datetime
 
 <a id="models._models.Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema.__init__"></a>
 
@@ -3886,7 +3886,7 @@ processing is complete.
 :paramtype redact_gender: bool
 :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
-:paramtype expiry_time: str
+:paramtype expiry_time: ~datetime.datetime
 
 <a id="models._models.PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema"></a>
 
@@ -4050,7 +4050,7 @@ PathsYlw96JobDescriptionsPostRequestbodyContentMultipartFormDataSchema.
 :vartype language: str
 :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
  deleted.  Defaults to no expiry.
-:vartype expiry_time: str
+:vartype expiry_time: ~datetime.datetime
 
 <a id="models._models.PathsYlw96JobDescriptionsPostRequestbodyContentMultipartFormDataSchema.__init__"></a>
 
@@ -4078,7 +4078,7 @@ processing is complete.
 :paramtype language: str
 :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
-:paramtype expiry_time: str
+:paramtype expiry_time: ~datetime.datetime
 
 <a id="models._models.PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema"></a>
 
