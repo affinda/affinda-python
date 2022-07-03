@@ -4,7 +4,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is regenerated.
 # --------------------------------------------------------------------------
 
-from typing import Any, TYPE_CHECKING
+from typing import Any, Optional, TYPE_CHECKING
 
 from azure.core.configuration import Configuration
 from azure.core.pipeline import policies
@@ -24,14 +24,26 @@ class AffindaAPIConfiguration(Configuration):
 
     :param credential: Credential needed for the client to connect to Azure.
     :type credential: ~azure.core.credentials_async.AsyncTokenCredential
+    :param offset: The number of documents to skip before starting to collect the result set.
+    :type offset: int
+    :param limit: The numbers of results to return.
+    :type limit: int
     """
 
-    def __init__(self, credential: "AsyncTokenCredential", **kwargs: Any) -> None:
+    def __init__(
+        self,
+        credential: "AsyncTokenCredential",
+        offset: Optional[int] = None,
+        limit: Optional[int] = 300,
+        **kwargs: Any,
+    ) -> None:
         super(AffindaAPIConfiguration, self).__init__(**kwargs)
         if credential is None:
             raise ValueError("Parameter 'credential' must not be None.")
 
         self.credential = credential
+        self.offset = offset
+        self.limit = limit
         self.credential_scopes = kwargs.pop(
             "credential_scopes", ["https://management.azure.com/.default"]
         )

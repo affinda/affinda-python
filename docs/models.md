@@ -2,6 +2,42 @@
 
 # models.\_models
 
+<a id="models._models.Accreditation"></a>
+
+## Accreditation Objects
+
+```python
+class Accreditation(msrest.serialization.Model)
+```
+
+Accreditation.
+
+:ivar education:
+:vartype education: str
+:ivar education_level:
+:vartype education_level: str
+:ivar input_str:
+:vartype input_str: str
+:ivar match_str:
+:vartype match_str: str
+
+<a id="models._models.Accreditation.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword education:
+:paramtype education: str
+:keyword education_level:
+:paramtype education_level: str
+:keyword input_str:
+:paramtype input_str: str
+:keyword match_str:
+:paramtype match_str: str
+
 <a id="models._models.Annotation"></a>
 
 ## Annotation Objects
@@ -137,6 +173,30 @@ def __init__(**kwargs)
 :paramtype raw: str
 :keyword parsed:
 :paramtype parsed: str
+
+<a id="models._models.Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1"></a>
+
+## Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1 Objects
+
+```python
+class Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1(msrest.serialization.Model)
+```
+
+Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1.
+
+:ivar match:
+:vartype match: bool
+
+<a id="models._models.Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword match:
+:paramtype match: bool
 
 <a id="models._models.Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2"></a>
 
@@ -678,6 +738,78 @@ def __init__(**kwargs)
 :keyword parsed:
 :paramtype parsed: str
 
+<a id="models._models.ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1"></a>
+
+## ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1 Objects
+
+```python
+class ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1(msrest.serialization.Model)
+```
+
+ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1.
+
+:ivar match:
+:vartype match: bool
+
+<a id="models._models.ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword match:
+:paramtype match: bool
+
+<a id="models._models.ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1"></a>
+
+## ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1 Objects
+
+```python
+class ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1(msrest.serialization.Model)
+```
+
+ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1.
+
+:ivar match:
+:vartype match: bool
+
+<a id="models._models.ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword match:
+:paramtype match: bool
+
+<a id="models._models.ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1"></a>
+
+## ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1 Objects
+
+```python
+class ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1(msrest.serialization.Model)
+```
+
+ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1.
+
+:ivar match:
+:vartype match: bool
+
+<a id="models._models.ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword match:
+:paramtype match: bool
+
 <a id="models._models.ComponentsPs8Uo7SchemasInvoicedataPropertiesCustomerphonenumberAllof2"></a>
 
 ## ComponentsPs8Uo7SchemasInvoicedataPropertiesCustomerphonenumberAllof2 Objects
@@ -761,6 +893,30 @@ def __init__(**kwargs)
 :paramtype raw: str
 :keyword parsed:
 :paramtype parsed: str
+
+<a id="models._models.ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1"></a>
+
+## ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1 Objects
+
+```python
+class ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1(msrest.serialization.Model)
+```
+
+ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1.
+
+:ivar match:
+:vartype match: bool
+
+<a id="models._models.ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword match:
+:paramtype match: bool
 
 <a id="models._models.ComponentsTz04ToSchemasInvoicedataPropertiesPaymentamountbaseAllof2"></a>
 
@@ -985,6 +1141,78 @@ collection.
 :paramtype classification: str
 :keyword parsed:
 :paramtype parsed: ~datetime.date
+
+<a id="models._models.Education"></a>
+
+## Education Objects
+
+```python
+class Education(msrest.serialization.Model)
+```
+
+Education.
+
+:ivar organization:
+:vartype organization: str
+:ivar accreditation:
+:vartype accreditation: ~affinda.models.Accreditation
+:ivar grade:
+:vartype grade: str
+:ivar location:
+:vartype location: ~affinda.models.Location
+:ivar dates:
+:vartype dates: ~affinda.models.EducationDates
+
+<a id="models._models.Education.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword organization:
+:paramtype organization: str
+:keyword accreditation:
+:paramtype accreditation: ~affinda.models.Accreditation
+:keyword grade:
+:paramtype grade: str
+:keyword location:
+:paramtype location: ~affinda.models.Location
+:keyword dates:
+:paramtype dates: ~affinda.models.EducationDates
+
+<a id="models._models.EducationDates"></a>
+
+## EducationDates Objects
+
+```python
+class EducationDates(msrest.serialization.Model)
+```
+
+EducationDates.
+
+:ivar start_date:
+:vartype start_date: str
+:ivar completion_date:
+:vartype completion_date: str
+:ivar is_current:
+:vartype is_current: bool
+
+<a id="models._models.EducationDates.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword start_date:
+:paramtype start_date: str
+:keyword completion_date:
+:paramtype completion_date: str
+:keyword is_current:
+:paramtype is_current: bool
 
 <a id="models._models.Error"></a>
 
@@ -3416,6 +3644,8 @@ class Location(msrest.serialization.Model)
 
 Location.
 
+Variables are only populated by the server, and will be ignored when sending a request.
+
 All required parameters must be populated in order to send to Azure.
 
 :ivar formatted:
@@ -3447,26 +3677,8 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword formatted:
-:paramtype formatted: str
-:keyword postal_code:
-:paramtype postal_code: str
-:keyword state:
-:paramtype state: str
-:keyword country:
-:paramtype country: str
-:keyword country_code: Two letter country code (ISO 3166-1 alpha-2).
-:paramtype country_code: str
 :keyword raw_input: Required.
 :paramtype raw_input: str
-:keyword street_number:
-:paramtype street_number: str
-:keyword street:
-:paramtype street: str
-:keyword apartment_number:
-:paramtype apartment_number: str
-:keyword city:
-:paramtype city: str
 
 <a id="models._models.LocationAnnotation"></a>
 
@@ -3702,6 +3914,32 @@ def __init__(**kwargs)
 :keyword results:
 :paramtype results: list[~affinda.models.Get200ApplicationJsonPropertiesItemsItem]
 
+<a id="models._models.Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1"></a>
+
+## Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1 Objects
+
+```python
+class Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
+```
+
+Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1.
+
+:ivar api_key: API key used to authenticate for future requests.  This key is only retrievable
+ at the initial creation of the user.
+:vartype api_key: str
+
+<a id="models._models.Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword api_key: API key used to authenticate for future requests.  This key is only
+retrievable at the initial creation of the user.
+:paramtype api_key: str
+
 <a id="models._models.Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema"></a>
 
 ## Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema Objects
@@ -3753,13 +3991,15 @@ Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema.
 :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
  JPG.
 :vartype file: IO
+:ivar url: URL to file to download and process.
+:vartype url: str
+:ivar data: A JSON-encoded string of the ``ResumeData`` object.
+:vartype data: ~affinda.models.ResumeData
 :ivar identifier: Unique identifier for the document. If creating a document and left blank,
  one will be automatically generated.
 :vartype identifier: str
 :ivar file_name: Optional filename of the file.
 :vartype file_name: str
-:ivar url: URL to file to download and process.
-:vartype url: str
 :ivar wait: If "true" (default), will return a response only after processing has completed. If
  "false", will return an empty data object which can be polled at the GET endpoint until
  processing is complete.
@@ -3781,13 +4021,15 @@ def __init__(**kwargs)
 :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
 PNG, JPG.
 :paramtype file: IO
+:keyword url: URL to file to download and process.
+:paramtype url: str
+:keyword data: A JSON-encoded string of the ``ResumeData`` object.
+:paramtype data: ~affinda.models.ResumeData
 :keyword identifier: Unique identifier for the document. If creating a document and left blank,
 one will be automatically generated.
 :paramtype identifier: str
 :keyword file_name: Optional filename of the file.
 :paramtype file_name: str
-:keyword url: URL to file to download and process.
-:paramtype url: str
 :keyword wait: If "true" (default), will return a response only after processing has completed.
 If "false", will return an empty data object which can be polled at the GET endpoint until
 processing is complete.
@@ -4021,6 +4263,124 @@ def __init__(**kwargs)
 
 :keyword name:
 :paramtype name: bool
+
+<a id="models._models.User"></a>
+
+## User Objects
+
+```python
+class User(msrest.serialization.Model)
+```
+
+User.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar id:
+:vartype id: int
+:ivar name:
+:vartype name: str
+:ivar username: Required.
+:vartype username: str
+:ivar email:
+:vartype email: str
+
+<a id="models._models.User.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword id:
+:paramtype id: int
+:keyword name:
+:paramtype name: str
+:keyword username: Required.
+:paramtype username: str
+:keyword email:
+:paramtype email: str
+
+<a id="models._models.PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema"></a>
+
+## PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema Objects
+
+```python
+class PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema(User,  Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1)
+```
+
+PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar api_key: API key used to authenticate for future requests.  This key is only retrievable
+ at the initial creation of the user.
+:vartype api_key: str
+:ivar id:
+:vartype id: int
+:ivar name:
+:vartype name: str
+:ivar username: Required.
+:vartype username: str
+:ivar email:
+:vartype email: str
+
+<a id="models._models.PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword api_key: API key used to authenticate for future requests.  This key is only
+retrievable at the initial creation of the user.
+:paramtype api_key: str
+:keyword id:
+:paramtype id: int
+:keyword name:
+:paramtype name: str
+:keyword username: Required.
+:paramtype username: str
+:keyword email:
+:paramtype email: str
+
+<a id="models._models.PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema"></a>
+
+## PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema Objects
+
+```python
+class PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model)
+```
+
+PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema.
+
+:ivar count: Number of indexes in result.
+:vartype count: int
+:ivar next: URL to request next page of results.
+:vartype next: str
+:ivar previous: URL to request previous page of results.
+:vartype previous: str
+:ivar results:
+:vartype results: list[~affinda.models.User]
+
+<a id="models._models.PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword count: Number of indexes in result.
+:paramtype count: int
+:keyword next: URL to request next page of results.
+:paramtype next: str
+:keyword previous: URL to request previous page of results.
+:paramtype previous: str
+:keyword results:
+:paramtype results: list[~affinda.models.User]
 
 <a id="models._models.PathsYlw96JobDescriptionsPostRequestbodyContentMultipartFormDataSchema"></a>
 
@@ -4304,10 +4664,10 @@ RequestError.
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar detail: Required.
-:vartype detail: str
-:ivar status_code: Required.
-:vartype status_code: int
+:ivar type: Required.
+:vartype type: str
+:ivar errors: Required.
+:vartype errors: list[~affinda.models.RequestErrorErrorsItem]
 
 <a id="models._models.RequestError.__init__"></a>
 
@@ -4317,10 +4677,44 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
+:keyword type: Required.
+:paramtype type: str
+:keyword errors: Required.
+:paramtype errors: list[~affinda.models.RequestErrorErrorsItem]
+
+<a id="models._models.RequestErrorErrorsItem"></a>
+
+## RequestErrorErrorsItem Objects
+
+```python
+class RequestErrorErrorsItem(msrest.serialization.Model)
+```
+
+RequestErrorErrorsItem.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar attr: Required.
+:vartype attr: str
+:ivar code: Required.
+:vartype code: str
+:ivar detail: Required.
+:vartype detail: str
+
+<a id="models._models.RequestErrorErrorsItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword attr: Required.
+:paramtype attr: str
+:keyword code: Required.
+:paramtype code: str
 :keyword detail: Required.
 :paramtype detail: str
-:keyword status_code: Required.
-:paramtype status_code: int
 
 <a id="models._models.Resume"></a>
 
@@ -4365,6 +4759,8 @@ class ResumeData(msrest.serialization.Model)
 ```
 
 ResumeData.
+
+Variables are only populated by the server, and will be ignored when sending a request.
 
 :ivar name:
 :vartype name: ~affinda.models.ResumeDataName
@@ -4434,20 +4830,12 @@ def __init__(**kwargs)
 :paramtype location: ~affinda.models.Location
 :keyword objective:
 :paramtype objective: str
-:keyword languages:
-:paramtype languages: list[str]
 :keyword summary:
 :paramtype summary: str
 :keyword total_years_experience:
 :paramtype total_years_experience: int
-:keyword head_shot: base64 encoded string.
-:paramtype head_shot: bytearray
 :keyword education:
 :paramtype education: list[~affinda.models.ResumeDataEducationItem]
-:keyword profession: Prediction of the candidate's profession based on recent work experience.
-:paramtype profession: str
-:keyword linkedin: Linkedin account associated with the candidate.
-:paramtype linkedin: str
 :keyword work_experience:
 :paramtype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
 :keyword skills:
@@ -4458,11 +4846,6 @@ def __init__(**kwargs)
 :paramtype publications: list[str]
 :keyword referees:
 :paramtype referees: list[~affinda.models.ResumeDataRefereesItem]
-:keyword sections:
-:paramtype sections: list[~affinda.models.ResumeDataSectionsItem]
-:keyword is_resume_probability: Probability that the given document is a resume. Values below
-30 suggest that the document is not a resume.
-:paramtype is_resume_probability: int
 :keyword raw_text: All of the raw text of the parsed resume, example is shortened for
 readiblity.
 :paramtype raw_text: str
@@ -4477,6 +4860,8 @@ class ResumeDataEducationItem(msrest.serialization.Model)
 
 ResumeDataEducationItem.
 
+:ivar id:
+:vartype id: int
 :ivar organization:
 :vartype organization: str
 :ivar accreditation:
@@ -4496,6 +4881,8 @@ ResumeDataEducationItem.
 def __init__(**kwargs)
 ```
 
+:keyword id:
+:paramtype id: int
 :keyword organization:
 :paramtype organization: str
 :keyword accreditation:
@@ -4517,6 +4904,8 @@ class ResumeDataEducationItemAccreditation(msrest.serialization.Model)
 
 ResumeDataEducationItemAccreditation.
 
+Variables are only populated by the server, and will be ignored when sending a request.
+
 :ivar education:
 :vartype education: str
 :ivar input_str:
@@ -4536,12 +4925,6 @@ def __init__(**kwargs)
 
 :keyword education:
 :paramtype education: str
-:keyword input_str:
-:paramtype input_str: str
-:keyword match_str:
-:paramtype match_str: str
-:keyword education_level:
-:paramtype education_level: str
 
 <a id="models._models.ResumeDataEducationItemDates"></a>
 
@@ -4729,6 +5112,10 @@ class ResumeDataSkillsItem(msrest.serialization.Model)
 
 ResumeDataSkillsItem.
 
+Variables are only populated by the server, and will be ignored when sending a request.
+
+:ivar id:
+:vartype id: int
 :ivar name:
 :vartype name: str
 :ivar last_used:
@@ -4748,16 +5135,14 @@ ResumeDataSkillsItem.
 def __init__(**kwargs)
 ```
 
+:keyword id:
+:paramtype id: int
 :keyword name:
 :paramtype name: str
 :keyword last_used:
 :paramtype last_used: str
 :keyword number_of_months:
 :paramtype number_of_months: int
-:keyword type:
-:paramtype type: str
-:keyword sources:
-:paramtype sources: list[~affinda.models.ResumeDataSkillsPropertiesItemsItem]
 
 <a id="models._models.ResumeDataSkillsPropertiesItemsItem"></a>
 
@@ -4797,6 +5182,10 @@ class ResumeDataWorkExperienceItem(msrest.serialization.Model)
 
 ResumeDataWorkExperienceItem.
 
+Variables are only populated by the server, and will be ignored when sending a request.
+
+:ivar id:
+:vartype id: int
 :ivar job_title:
 :vartype job_title: str
 :ivar organization:
@@ -4818,6 +5207,8 @@ ResumeDataWorkExperienceItem.
 def __init__(**kwargs)
 ```
 
+:keyword id:
+:paramtype id: int
 :keyword job_title:
 :paramtype job_title: str
 :keyword organization:
@@ -4828,8 +5219,6 @@ def __init__(**kwargs)
 :paramtype job_description: str
 :keyword dates:
 :paramtype dates: ~affinda.models.ResumeDataWorkExperienceItemDates
-:keyword occupation:
-:paramtype occupation: ~affinda.models.ResumeDataWorkExperienceItemOccupation
 
 <a id="models._models.ResumeDataWorkExperienceItemDates"></a>
 
@@ -4947,6 +5336,654 @@ def __init__(**kwargs)
 :keyword results:
 :paramtype results: list[~affinda.models.ResumeSearchResult]
 
+<a id="models._models.ResumeSearchDetail"></a>
+
+## ResumeSearchDetail Objects
+
+```python
+class ResumeSearchDetail(msrest.serialization.Model)
+```
+
+ResumeSearchDetail.
+
+:ivar job_title:
+:vartype job_title: ~affinda.models.ResumeSearchDetailJobTitle
+:ivar location:
+:vartype location: ~affinda.models.ResumeSearchDetailLocation
+:ivar education:
+:vartype education: ~affinda.models.ResumeSearchDetailEducation
+:ivar skills:
+:vartype skills: ~affinda.models.ResumeSearchDetailSkills
+:ivar experience:
+:vartype experience: ~affinda.models.ResumeSearchDetailExperience
+:ivar occupation_group:
+:vartype occupation_group: ~affinda.models.ResumeSearchDetailOccupationGroup
+:ivar languages:
+:vartype languages: ~affinda.models.ResumeSearchDetailLanguages
+:ivar management_level:
+:vartype management_level: ~affinda.models.ResumeSearchDetailManagementLevel
+:ivar search_expression:
+:vartype search_expression: ~affinda.models.ResumeSearchDetailSearchExpression
+
+<a id="models._models.ResumeSearchDetail.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword job_title:
+:paramtype job_title: ~affinda.models.ResumeSearchDetailJobTitle
+:keyword location:
+:paramtype location: ~affinda.models.ResumeSearchDetailLocation
+:keyword education:
+:paramtype education: ~affinda.models.ResumeSearchDetailEducation
+:keyword skills:
+:paramtype skills: ~affinda.models.ResumeSearchDetailSkills
+:keyword experience:
+:paramtype experience: ~affinda.models.ResumeSearchDetailExperience
+:keyword occupation_group:
+:paramtype occupation_group: ~affinda.models.ResumeSearchDetailOccupationGroup
+:keyword languages:
+:paramtype languages: ~affinda.models.ResumeSearchDetailLanguages
+:keyword management_level:
+:paramtype management_level: ~affinda.models.ResumeSearchDetailManagementLevel
+:keyword search_expression:
+:paramtype search_expression: ~affinda.models.ResumeSearchDetailSearchExpression
+
+<a id="models._models.ResumeSearchDetailEducation"></a>
+
+## ResumeSearchDetailEducation Objects
+
+```python
+class ResumeSearchDetailEducation(msrest.serialization.Model)
+```
+
+ResumeSearchDetailEducation.
+
+:ivar missing:
+:vartype missing: ~affinda.models.ResumeSearchDetailEducationMissing
+:ivar value:
+:vartype value: list[~affinda.models.ResumeSearchDetailEducationValueItem]
+
+<a id="models._models.ResumeSearchDetailEducation.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword missing:
+:paramtype missing: ~affinda.models.ResumeSearchDetailEducationMissing
+:keyword value:
+:paramtype value: list[~affinda.models.ResumeSearchDetailEducationValueItem]
+
+<a id="models._models.ResumeSearchDetailEducationMissing"></a>
+
+## ResumeSearchDetailEducationMissing Objects
+
+```python
+class ResumeSearchDetailEducationMissing(msrest.serialization.Model)
+```
+
+ResumeSearchDetailEducationMissing.
+
+:ivar degrees:
+:vartype degrees: list[str]
+:ivar highest_degree_types:
+:vartype highest_degree_types: list[str]
+:ivar institutions:
+:vartype institutions: list[str]
+:ivar current_student:
+:vartype current_student: bool
+:ivar recent_graduate:
+:vartype recent_graduate: bool
+
+<a id="models._models.ResumeSearchDetailEducationMissing.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword degrees:
+:paramtype degrees: list[str]
+:keyword highest_degree_types:
+:paramtype highest_degree_types: list[str]
+:keyword institutions:
+:paramtype institutions: list[str]
+:keyword current_student:
+:paramtype current_student: bool
+:keyword recent_graduate:
+:paramtype recent_graduate: bool
+
+<a id="models._models.ResumeSearchDetailEducationValueItem"></a>
+
+## ResumeSearchDetailEducationValueItem Objects
+
+```python
+class ResumeSearchDetailEducationValueItem(Education,  ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1)
+```
+
+ResumeSearchDetailEducationValueItem.
+
+:ivar match:
+:vartype match: bool
+:ivar organization:
+:vartype organization: str
+:ivar accreditation:
+:vartype accreditation: ~affinda.models.Accreditation
+:ivar grade:
+:vartype grade: str
+:ivar location:
+:vartype location: ~affinda.models.Location
+:ivar dates:
+:vartype dates: ~affinda.models.EducationDates
+
+<a id="models._models.ResumeSearchDetailEducationValueItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword match:
+:paramtype match: bool
+:keyword organization:
+:paramtype organization: str
+:keyword accreditation:
+:paramtype accreditation: ~affinda.models.Accreditation
+:keyword grade:
+:paramtype grade: str
+:keyword location:
+:paramtype location: ~affinda.models.Location
+:keyword dates:
+:paramtype dates: ~affinda.models.EducationDates
+
+<a id="models._models.ResumeSearchDetailExperience"></a>
+
+## ResumeSearchDetailExperience Objects
+
+```python
+class ResumeSearchDetailExperience(msrest.serialization.Model)
+```
+
+ResumeSearchDetailExperience.
+
+:ivar years:
+:vartype years: int
+:ivar match:
+:vartype match: bool
+
+<a id="models._models.ResumeSearchDetailExperience.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword years:
+:paramtype years: int
+:keyword match:
+:paramtype match: bool
+
+<a id="models._models.ResumeSearchDetailJobTitle"></a>
+
+## ResumeSearchDetailJobTitle Objects
+
+```python
+class ResumeSearchDetailJobTitle(msrest.serialization.Model)
+```
+
+ResumeSearchDetailJobTitle.
+
+:ivar missing:
+:vartype missing: list[str]
+:ivar value:
+:vartype value: list[~affinda.models.ResumeSearchDetailJobTitleValueItem]
+
+<a id="models._models.ResumeSearchDetailJobTitle.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword missing:
+:paramtype missing: list[str]
+:keyword value:
+:paramtype value: list[~affinda.models.ResumeSearchDetailJobTitleValueItem]
+
+<a id="models._models.ResumeSearchDetailJobTitleValueItem"></a>
+
+## ResumeSearchDetailJobTitleValueItem Objects
+
+```python
+class ResumeSearchDetailJobTitleValueItem(msrest.serialization.Model)
+```
+
+ResumeSearchDetailJobTitleValueItem.
+
+:ivar name:
+:vartype name: str
+:ivar start_date:
+:vartype start_date: str
+:ivar end_date:
+:vartype end_date: str
+:ivar company_name:
+:vartype company_name: str
+:ivar match:
+:vartype match: bool
+
+<a id="models._models.ResumeSearchDetailJobTitleValueItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword name:
+:paramtype name: str
+:keyword start_date:
+:paramtype start_date: str
+:keyword end_date:
+:paramtype end_date: str
+:keyword company_name:
+:paramtype company_name: str
+:keyword match:
+:paramtype match: bool
+
+<a id="models._models.ResumeSearchDetailLanguages"></a>
+
+## ResumeSearchDetailLanguages Objects
+
+```python
+class ResumeSearchDetailLanguages(msrest.serialization.Model)
+```
+
+ResumeSearchDetailLanguages.
+
+:ivar missing:
+:vartype missing: list[~affinda.models.ResumeSearchParametersSkill]
+:ivar value:
+:vartype value: list[~affinda.models.ResumeSearchDetailLanguagesValueItem]
+
+<a id="models._models.ResumeSearchDetailLanguages.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword missing:
+:paramtype missing: list[~affinda.models.ResumeSearchParametersSkill]
+:keyword value:
+:paramtype value: list[~affinda.models.ResumeSearchDetailLanguagesValueItem]
+
+<a id="models._models.ResumeSkill"></a>
+
+## ResumeSkill Objects
+
+```python
+class ResumeSkill(msrest.serialization.Model)
+```
+
+ResumeSkill.
+
+:ivar name:
+:vartype name: str
+:ivar last_used:
+:vartype last_used: str
+:ivar number_of_months:
+:vartype number_of_months: int
+:ivar type:
+:vartype type: str
+:ivar sources:
+:vartype sources: list[~affinda.models.ResumeSkillSourcesItem]
+
+<a id="models._models.ResumeSkill.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword name:
+:paramtype name: str
+:keyword last_used:
+:paramtype last_used: str
+:keyword number_of_months:
+:paramtype number_of_months: int
+:keyword type:
+:paramtype type: str
+:keyword sources:
+:paramtype sources: list[~affinda.models.ResumeSkillSourcesItem]
+
+<a id="models._models.ResumeSearchDetailLanguagesValueItem"></a>
+
+## ResumeSearchDetailLanguagesValueItem Objects
+
+```python
+class ResumeSearchDetailLanguagesValueItem(ResumeSkill,  Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1)
+```
+
+ResumeSearchDetailLanguagesValueItem.
+
+:ivar match:
+:vartype match: bool
+:ivar name:
+:vartype name: str
+:ivar last_used:
+:vartype last_used: str
+:ivar number_of_months:
+:vartype number_of_months: int
+:ivar type:
+:vartype type: str
+:ivar sources:
+:vartype sources: list[~affinda.models.ResumeSkillSourcesItem]
+
+<a id="models._models.ResumeSearchDetailLanguagesValueItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword match:
+:paramtype match: bool
+:keyword name:
+:paramtype name: str
+:keyword last_used:
+:paramtype last_used: str
+:keyword number_of_months:
+:paramtype number_of_months: int
+:keyword type:
+:paramtype type: str
+:keyword sources:
+:paramtype sources: list[~affinda.models.ResumeSkillSourcesItem]
+
+<a id="models._models.ResumeSearchDetailLocation"></a>
+
+## ResumeSearchDetailLocation Objects
+
+```python
+class ResumeSearchDetailLocation(msrest.serialization.Model)
+```
+
+ResumeSearchDetailLocation.
+
+:ivar missing:
+:vartype missing: list[~affinda.models.ResumeSearchParametersLocation]
+:ivar value:
+:vartype value: ~affinda.models.ResumeSearchDetailLocationValue
+
+<a id="models._models.ResumeSearchDetailLocation.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword missing:
+:paramtype missing: list[~affinda.models.ResumeSearchParametersLocation]
+:keyword value:
+:paramtype value: ~affinda.models.ResumeSearchDetailLocationValue
+
+<a id="models._models.ResumeSearchDetailLocationValue"></a>
+
+## ResumeSearchDetailLocationValue Objects
+
+```python
+class ResumeSearchDetailLocationValue(Location,  ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1)
+```
+
+ResumeSearchDetailLocationValue.
+
+Variables are only populated by the server, and will be ignored when sending a request.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar match:
+:vartype match: bool
+:ivar formatted:
+:vartype formatted: str
+:ivar postal_code:
+:vartype postal_code: str
+:ivar state:
+:vartype state: str
+:ivar country:
+:vartype country: str
+:ivar country_code: Two letter country code (ISO 3166-1 alpha-2).
+:vartype country_code: str
+:ivar raw_input: Required.
+:vartype raw_input: str
+:ivar street_number:
+:vartype street_number: str
+:ivar street:
+:vartype street: str
+:ivar apartment_number:
+:vartype apartment_number: str
+:ivar city:
+:vartype city: str
+
+<a id="models._models.ResumeSearchDetailLocationValue.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword match:
+:paramtype match: bool
+:keyword raw_input: Required.
+:paramtype raw_input: str
+
+<a id="models._models.ResumeSearchDetailManagementLevel"></a>
+
+## ResumeSearchDetailManagementLevel Objects
+
+```python
+class ResumeSearchDetailManagementLevel(msrest.serialization.Model)
+```
+
+ResumeSearchDetailManagementLevel.
+
+:ivar level: Possible values include: "Low", "Mid", "Upper".
+:vartype level: str or ~affinda.models.ManagementLevel
+:ivar match:
+:vartype match: bool
+
+<a id="models._models.ResumeSearchDetailManagementLevel.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword level: Possible values include: "Low", "Mid", "Upper".
+:paramtype level: str or ~affinda.models.ManagementLevel
+:keyword match:
+:paramtype match: bool
+
+<a id="models._models.ResumeSearchDetailOccupationGroup"></a>
+
+## ResumeSearchDetailOccupationGroup Objects
+
+```python
+class ResumeSearchDetailOccupationGroup(msrest.serialization.Model)
+```
+
+ResumeSearchDetailOccupationGroup.
+
+:ivar missing:
+:vartype missing: list[int]
+:ivar value:
+:vartype value: list[~affinda.models.ResumeSearchDetailOccupationGroupValueItem]
+
+<a id="models._models.ResumeSearchDetailOccupationGroup.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword missing:
+:paramtype missing: list[int]
+:keyword value:
+:paramtype value: list[~affinda.models.ResumeSearchDetailOccupationGroupValueItem]
+
+<a id="models._models.ResumeSearchDetailOccupationGroupValueItem"></a>
+
+## ResumeSearchDetailOccupationGroupValueItem Objects
+
+```python
+class ResumeSearchDetailOccupationGroupValueItem(OccupationGroup,  ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1)
+```
+
+ResumeSearchDetailOccupationGroupValueItem.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar match:
+:vartype match: bool
+:ivar code: Required.
+:vartype code: int
+:ivar name: Required.
+:vartype name: str
+:ivar children: Required.
+:vartype children: list[~affinda.models.OccupationGroup]
+
+<a id="models._models.ResumeSearchDetailOccupationGroupValueItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword match:
+:paramtype match: bool
+:keyword code: Required.
+:paramtype code: int
+:keyword name: Required.
+:paramtype name: str
+:keyword children: Required.
+:paramtype children: list[~affinda.models.OccupationGroup]
+
+<a id="models._models.ResumeSearchDetailSearchExpression"></a>
+
+## ResumeSearchDetailSearchExpression Objects
+
+```python
+class ResumeSearchDetailSearchExpression(msrest.serialization.Model)
+```
+
+ResumeSearchDetailSearchExpression.
+
+:ivar missing:
+:vartype missing: list[str]
+:ivar value:
+:vartype value: list[str]
+
+<a id="models._models.ResumeSearchDetailSearchExpression.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword missing:
+:paramtype missing: list[str]
+:keyword value:
+:paramtype value: list[str]
+
+<a id="models._models.ResumeSearchDetailSkills"></a>
+
+## ResumeSearchDetailSkills Objects
+
+```python
+class ResumeSearchDetailSkills(msrest.serialization.Model)
+```
+
+ResumeSearchDetailSkills.
+
+:ivar missing:
+:vartype missing: list[~affinda.models.ResumeSearchParametersSkill]
+:ivar value:
+:vartype value: list[~affinda.models.ResumeSearchDetailSkillsValueItem]
+
+<a id="models._models.ResumeSearchDetailSkills.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword missing:
+:paramtype missing: list[~affinda.models.ResumeSearchParametersSkill]
+:keyword value:
+:paramtype value: list[~affinda.models.ResumeSearchDetailSkillsValueItem]
+
+<a id="models._models.ResumeSearchDetailSkillsValueItem"></a>
+
+## ResumeSearchDetailSkillsValueItem Objects
+
+```python
+class ResumeSearchDetailSkillsValueItem(ResumeSkill,  ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1)
+```
+
+ResumeSearchDetailSkillsValueItem.
+
+:ivar match:
+:vartype match: bool
+:ivar name:
+:vartype name: str
+:ivar last_used:
+:vartype last_used: str
+:ivar number_of_months:
+:vartype number_of_months: int
+:ivar type:
+:vartype type: str
+:ivar sources:
+:vartype sources: list[~affinda.models.ResumeSkillSourcesItem]
+
+<a id="models._models.ResumeSearchDetailSkillsValueItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword match:
+:paramtype match: bool
+:keyword name:
+:paramtype name: str
+:keyword last_used:
+:paramtype last_used: str
+:keyword number_of_months:
+:paramtype number_of_months: int
+:keyword type:
+:paramtype type: str
+:keyword sources:
+:paramtype sources: list[~affinda.models.ResumeSkillSourcesItem]
+
 <a id="models._models.ResumeSearchParameters"></a>
 
 ## ResumeSearchParameters Objects
@@ -4981,17 +6018,17 @@ All required parameters must be populated in order to send to Azure.
 :ivar years_experience_weight:
 :vartype years_experience_weight: float
 :ivar locations:
-:vartype locations: list[~affinda.models.ResumeSearchParametersLocationsItem]
+:vartype locations: list[~affinda.models.ResumeSearchParametersLocation]
 :ivar locations_weight:
 :vartype locations_weight: float
 :ivar locations_required:
 :vartype locations_required: bool
 :ivar skills:
-:vartype skills: list[~affinda.models.ResumeSearchParametersSkillsItem]
+:vartype skills: list[~affinda.models.ResumeSearchParametersSkill]
 :ivar skills_weight:
 :vartype skills_weight: float
 :ivar languages:
-:vartype languages: list[~affinda.models.ResumeSearchParametersLanguagesItem]
+:vartype languages: list[~affinda.models.ResumeSearchParametersSkill]
 :ivar languages_weight:
 :vartype languages_weight: float
 :ivar institutions:
@@ -5014,6 +6051,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_recent_graduate: bool
 :ivar is_recent_graduate_required:
 :vartype is_recent_graduate_required: bool
+:ivar is_top_student:
+:vartype is_top_student: bool
+:ivar is_top_student_required:
+:vartype is_top_student_required: bool
 :ivar education_weight:
 :vartype education_weight: float
 :ivar search_expression:
@@ -5065,17 +6106,17 @@ blank, one will be automatically generated.
 :keyword years_experience_weight:
 :paramtype years_experience_weight: float
 :keyword locations:
-:paramtype locations: list[~affinda.models.ResumeSearchParametersLocationsItem]
+:paramtype locations: list[~affinda.models.ResumeSearchParametersLocation]
 :keyword locations_weight:
 :paramtype locations_weight: float
 :keyword locations_required:
 :paramtype locations_required: bool
 :keyword skills:
-:paramtype skills: list[~affinda.models.ResumeSearchParametersSkillsItem]
+:paramtype skills: list[~affinda.models.ResumeSearchParametersSkill]
 :keyword skills_weight:
 :paramtype skills_weight: float
 :keyword languages:
-:paramtype languages: list[~affinda.models.ResumeSearchParametersLanguagesItem]
+:paramtype languages: list[~affinda.models.ResumeSearchParametersSkill]
 :keyword languages_weight:
 :paramtype languages_weight: float
 :keyword institutions:
@@ -5098,6 +6139,10 @@ blank, one will be automatically generated.
 :paramtype is_recent_graduate: bool
 :keyword is_recent_graduate_required:
 :paramtype is_recent_graduate_required: bool
+:keyword is_top_student:
+:paramtype is_top_student: bool
+:keyword is_top_student_required:
+:paramtype is_top_student_required: bool
 :keyword education_weight:
 :paramtype education_weight: float
 :keyword search_expression:
@@ -5119,54 +6164,26 @@ blank, one will be automatically generated.
 :keyword management_level_weight:
 :paramtype management_level_weight: float
 
-<a id="models._models.ResumeSearchParametersLanguagesItem"></a>
+<a id="models._models.ResumeSearchParametersLocation"></a>
 
-## ResumeSearchParametersLanguagesItem Objects
-
-```python
-class ResumeSearchParametersLanguagesItem(msrest.serialization.Model)
-```
-
-ResumeSearchParametersLanguagesItem.
-
-:ivar name:
-:vartype name: str
-:ivar required:
-:vartype required: bool
-
-<a id="models._models.ResumeSearchParametersLanguagesItem.__init__"></a>
-
-#### \_\_init\_\_
+## ResumeSearchParametersLocation Objects
 
 ```python
-def __init__(**kwargs)
+class ResumeSearchParametersLocation(msrest.serialization.Model)
 ```
 
-:keyword name:
-:paramtype name: str
-:keyword required:
-:paramtype required: bool
-
-<a id="models._models.ResumeSearchParametersLocationsItem"></a>
-
-## ResumeSearchParametersLocationsItem Objects
-
-```python
-class ResumeSearchParametersLocationsItem(msrest.serialization.Model)
-```
-
-ResumeSearchParametersLocationsItem.
+ResumeSearchParametersLocation.
 
 :ivar name:
 :vartype name: str
 :ivar coordinates:
-:vartype coordinates: ~affinda.models.ResumeSearchParametersLocationsItemCoordinates
+:vartype coordinates: ~affinda.models.ResumeSearchParametersLocationCoordinates
 :ivar distance:
 :vartype distance: int
 :ivar unit: Possible values include: "km", "mi".
 :vartype unit: str or ~affinda.models.SearchLocationUnit
 
-<a id="models._models.ResumeSearchParametersLocationsItem.__init__"></a>
+<a id="models._models.ResumeSearchParametersLocation.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -5177,28 +6194,28 @@ def __init__(**kwargs)
 :keyword name:
 :paramtype name: str
 :keyword coordinates:
-:paramtype coordinates: ~affinda.models.ResumeSearchParametersLocationsItemCoordinates
+:paramtype coordinates: ~affinda.models.ResumeSearchParametersLocationCoordinates
 :keyword distance:
 :paramtype distance: int
 :keyword unit: Possible values include: "km", "mi".
 :paramtype unit: str or ~affinda.models.SearchLocationUnit
 
-<a id="models._models.ResumeSearchParametersLocationsItemCoordinates"></a>
+<a id="models._models.ResumeSearchParametersLocationCoordinates"></a>
 
-## ResumeSearchParametersLocationsItemCoordinates Objects
+## ResumeSearchParametersLocationCoordinates Objects
 
 ```python
-class ResumeSearchParametersLocationsItemCoordinates(msrest.serialization.Model)
+class ResumeSearchParametersLocationCoordinates(msrest.serialization.Model)
 ```
 
-ResumeSearchParametersLocationsItemCoordinates.
+ResumeSearchParametersLocationCoordinates.
 
 :ivar latitude:
 :vartype latitude: float
 :ivar longitude:
 :vartype longitude: float
 
-<a id="models._models.ResumeSearchParametersLocationsItemCoordinates.__init__"></a>
+<a id="models._models.ResumeSearchParametersLocationCoordinates.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -5211,22 +6228,22 @@ def __init__(**kwargs)
 :keyword longitude:
 :paramtype longitude: float
 
-<a id="models._models.ResumeSearchParametersSkillsItem"></a>
+<a id="models._models.ResumeSearchParametersSkill"></a>
 
-## ResumeSearchParametersSkillsItem Objects
+## ResumeSearchParametersSkill Objects
 
 ```python
-class ResumeSearchParametersSkillsItem(msrest.serialization.Model)
+class ResumeSearchParametersSkill(msrest.serialization.Model)
 ```
 
-ResumeSearchParametersSkillsItem.
+ResumeSearchParametersSkill.
 
 :ivar name:
 :vartype name: str
 :ivar required:
 :vartype required: bool
 
-<a id="models._models.ResumeSearchParametersSkillsItem.__init__"></a>
+<a id="models._models.ResumeSearchParametersSkill.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -5276,6 +6293,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype education: ~affinda.models.ResumeSearchScoreComponent
 :ivar occupation_group: Required.
 :vartype occupation_group: ~affinda.models.ResumeSearchScoreComponent
+:ivar search_expression: Required.
+:vartype search_expression: ~affinda.models.ResumeSearchScoreComponent
 
 <a id="models._models.ResumeSearchResult.__init__"></a>
 
@@ -5310,6 +6329,8 @@ left blank, one will be automatically generated.
 :paramtype education: ~affinda.models.ResumeSearchScoreComponent
 :keyword occupation_group: Required.
 :paramtype occupation_group: ~affinda.models.ResumeSearchScoreComponent
+:keyword search_expression: Required.
+:paramtype search_expression: ~affinda.models.ResumeSearchScoreComponent
 
 <a id="models._models.ResumeSearchScoreComponent"></a>
 
@@ -5344,6 +6365,40 @@ def __init__(**kwargs)
 :paramtype value: str
 :keyword score:
 :paramtype score: float
+
+<a id="models._models.ResumeSkillSourcesItem"></a>
+
+## ResumeSkillSourcesItem Objects
+
+```python
+class ResumeSkillSourcesItem(msrest.serialization.Model)
+```
+
+ResumeSkillSourcesItem.
+
+:ivar section: Possible values include: "Achievements", "AdditionalInformation", "Education",
+ "Extracurriculars", "Organisations", "Other", "PersonalDetails", "Projects", "Publications",
+ "Referees", "Skills", "Summary", "Training", "WorkExperience", "NotPopulated", "Header",
+ "Footer".
+:vartype section: str or ~affinda.models.ResumeSkillSourcesItemSection
+:ivar position:
+:vartype position: int
+
+<a id="models._models.ResumeSkillSourcesItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword section: Possible values include: "Achievements", "AdditionalInformation",
+"Education", "Extracurriculars", "Organisations", "Other", "PersonalDetails", "Projects",
+"Publications", "Referees", "Skills", "Summary", "Training", "WorkExperience", "NotPopulated",
+"Header", "Footer".
+:paramtype section: str or ~affinda.models.ResumeSkillSourcesItemSection
+:keyword position:
+:paramtype position: int
 
 <a id="models._models.SkillAnnotation"></a>
 

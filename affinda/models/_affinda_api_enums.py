@@ -25,6 +25,27 @@ class ManagementLevel(with_metaclass(CaseInsensitiveEnumMeta, str, Enum)):
     UPPER = "Upper"
 
 
+class ResumeSkillSourcesItemSection(with_metaclass(CaseInsensitiveEnumMeta, str, Enum)):
+
+    ACHIEVEMENTS = "Achievements"
+    ADDITIONAL_INFORMATION = "AdditionalInformation"
+    EDUCATION = "Education"
+    EXTRACURRICULARS = "Extracurriculars"
+    ORGANISATIONS = "Organisations"
+    OTHER = "Other"
+    PERSONAL_DETAILS = "PersonalDetails"
+    PROJECTS = "Projects"
+    PUBLICATIONS = "Publications"
+    REFEREES = "Referees"
+    SKILLS = "Skills"
+    SUMMARY = "Summary"
+    TRAINING = "Training"
+    WORK_EXPERIENCE = "WorkExperience"
+    NOT_POPULATED = "NotPopulated"
+    HEADER = "Header"
+    FOOTER = "Footer"
+
+
 class SearchLocationUnit(with_metaclass(CaseInsensitiveEnumMeta, str, Enum)):
 
     KM = "km"

@@ -5,7 +5,7 @@
 # --------------------------------------------------------------------------
 import datetime
 import functools
-from typing import Any, Callable, Dict, Generic, IO, Optional, TypeVar, Union
+from typing import Any, Callable, Dict, Generic, IO, List, Optional, TypeVar, Union
 import warnings
 
 from azure.core.exceptions import (
@@ -30,6 +30,7 @@ from ...operations._affinda_api_operations import (
     build_create_reformatted_resume_request,
     build_create_resume_request,
     build_create_resume_search_request,
+    build_create_user_request,
     build_delete_index_document_request,
     build_delete_index_request,
     build_delete_invoice_request,
@@ -45,12 +46,15 @@ from ...operations._affinda_api_operations import (
     build_get_all_reformatted_resumes_request,
     build_get_all_resume_formats_request,
     build_get_all_resumes_request,
+    build_get_all_users_request,
     build_get_invoice_request,
     build_get_job_description_request,
     build_get_redacted_resume_request,
     build_get_reformatted_resume_request,
     build_get_resume_request,
+    build_get_resume_search_detail_request,
     build_list_occupation_groups_request,
+    build_update_resume_data_request,
 )
 
 T = TypeVar("T")
@@ -61,16 +65,12 @@ ClsType = Optional[
 
 class AffindaAPIOperationsMixin:
     async def get_all_resumes(
-        self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any
+        self, **kwargs: Any
     ) -> Union["_models.GetAllDocumentsResults", "_models.RequestError"]:
         """Get list of all resumes.
 
         Returns all the resume summaries for that user, limited to 300 per page.
 
-        :param offset: The number of documents to skip before starting to collect the result set.
-        :type offset: int
-        :param limit: The numbers of results to return.
-        :type limit: int
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: GetAllDocumentsResults or RequestError, or the result of cls(response)
         :rtype: ~affinda.models.GetAllDocumentsResults or ~affinda.models.RequestError
@@ -87,8 +87,8 @@ class AffindaAPIOperationsMixin:
         error_map.update(kwargs.pop("error_map", {}))
 
         request = build_get_all_resumes_request(
-            offset=offset,
-            limit=limit,
+            offset=self._config.offset,
+            limit=self._config.limit,
             template_url=self.get_all_resumes.metadata["url"],
         )
         request = _convert_request(request)
@@ -97,7 +97,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [200, 400, 401, 404]:
+        if response.status_code not in [200, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -111,9 +111,6 @@ class AffindaAPIOperationsMixin:
         if response.status_code == 401:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
-        if response.status_code == 404:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
         if cls:
             return cls(pipeline_response, deserialized, {})
 
@@ -124,9 +121,10 @@ class AffindaAPIOperationsMixin:
     async def create_resume(
         self,
         file: Optional[IO] = None,
+        url: Optional[str] = None,
+        data: Optional["_models.ResumeData"] = None,
         identifier: Optional[str] = None,
         file_name: Optional[str] = None,
-        url: Optional[str] = None,
         wait: Optional[bool] = True,
         language: Optional[str] = None,
         expiry_time: Optional[datetime.datetime] = None,
@@ -135,18 +133,23 @@ class AffindaAPIOperationsMixin:
         """Upload a resume for parsing.
 
         Uploads a resume for parsing.
+        Provide ``file`` for uploading a resume file, or ``url`` for getting resume file from an url,
+        or ``data`` if you want to upload resume data directly without parsing any resume file.
+        For uploading resume data, the ``data`` argument provided must be a JSON-encoded string.
         When successful, returns an ``identifier`` in the response for subsequent use with the
         `/resumes/{identifier} <#operation/getResume>`_ endpoint to check processing status and
         retrieve results.
 
         :param file:
         :type file: IO
+        :param url:
+        :type url: str
+        :param data: A JSON-encoded string of the ``ResumeData`` object.
+        :type data: ~affinda.models.ResumeData
         :param identifier:
         :type identifier: str
         :param file_name:
         :type file_name: str
-        :param url:
-        :type url: str
         :param wait:
         :type wait: bool
         :param language:
@@ -173,9 +176,10 @@ class AffindaAPIOperationsMixin:
         # Construct form data
         _files = {
             "file": file,
+            "url": url,
+            "data": data,
             "identifier": identifier,
             "fileName": file_name,
-            "url": url,
             "wait": wait,
             "language": language,
             "expiryTime": expiry_time,
@@ -192,7 +196,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [200, 201, 400, 401, 404]:
+        if response.status_code not in [200, 201, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -207,9 +211,6 @@ class AffindaAPIOperationsMixin:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if cls:
@@ -255,7 +256,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [200, 400, 401, 404]:
+        if response.status_code not in [200, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -269,7 +270,69 @@ class AffindaAPIOperationsMixin:
         if response.status_code == 401:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
-        if response.status_code == 404:
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_resume.metadata = {"url": "/resumes/{identifier}"}  # type: ignore
+
+    async def update_resume_data(
+        self, identifier: str, body: "_models.ResumeData", **kwargs: Any
+    ) -> Union[Optional["_models.ResumeData"], "_models.RequestError"]:
+        """Update a resume's data.
+
+        Update data of a parsed resume.
+        The ``identifier`` is the unique ID returned after POST-ing the resume via the `/resumes
+        <#operation/createResume>`_ endpoint.
+
+        :param identifier: Resume identifier.
+        :type identifier: str
+        :param body: Resume data to update.
+        :type body: ~affinda.models.ResumeData
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: ResumeData or None or RequestError, or the result of cls(response)
+        :rtype: ~affinda.models.ResumeData or None or ~affinda.models.RequestError
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Union[Optional["_models.ResumeData"], "_models.RequestError"]]
+        error_map = {
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+        }
+        error_map.update(kwargs.pop("error_map", {}))
+
+        content_type = kwargs.pop("content_type", "application/json")  # type: Optional[str]
+
+        _json = self._serialize.body(body, "ResumeData")
+
+        request = build_update_resume_data_request(
+            identifier=identifier,
+            content_type=content_type,
+            json=_json,
+            template_url=self.update_resume_data.metadata["url"],
+        )
+        request = _convert_request(request)
+        request.url = self._client.format_url(request.url)
+
+        pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200, 400, 401]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if response.status_code == 200:
+            deserialized = self._deserialize("ResumeData", pipeline_response)
+
+        if response.status_code == 400:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if response.status_code == 401:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if cls:
@@ -277,7 +340,7 @@ class AffindaAPIOperationsMixin:
 
         return deserialized
 
-    get_resume.metadata = {"url": "/resumes/{identifier}"}  # type: ignore
+    update_resume_data.metadata = {"url": "/resumes/{identifier}"}  # type: ignore
 
     async def delete_resume(
         self, identifier: str, **kwargs: Any
@@ -311,7 +374,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [204, 400, 401, 404]:
+        if response.status_code not in [204, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -323,9 +386,6 @@ class AffindaAPIOperationsMixin:
         if response.status_code == 401:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
-        if response.status_code == 404:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
         if cls:
             return cls(pipeline_response, deserialized, {})
 
@@ -334,16 +394,12 @@ class AffindaAPIOperationsMixin:
     delete_resume.metadata = {"url": "/resumes/{identifier}"}  # type: ignore
 
     async def get_all_redacted_resumes(
-        self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any
+        self, **kwargs: Any
     ) -> Union["_models.GetAllDocumentsResults", "_models.RequestError"]:
         """Get list of all redacted resumes.
 
         Returns all the redacted resume information for that resume.
 
-        :param offset: The number of documents to skip before starting to collect the result set.
-        :type offset: int
-        :param limit: The numbers of results to return.
-        :type limit: int
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: GetAllDocumentsResults or RequestError, or the result of cls(response)
         :rtype: ~affinda.models.GetAllDocumentsResults or ~affinda.models.RequestError
@@ -360,8 +416,8 @@ class AffindaAPIOperationsMixin:
         error_map.update(kwargs.pop("error_map", {}))
 
         request = build_get_all_redacted_resumes_request(
-            offset=offset,
-            limit=limit,
+            offset=self._config.offset,
+            limit=self._config.limit,
             template_url=self.get_all_redacted_resumes.metadata["url"],
         )
         request = _convert_request(request)
@@ -370,7 +426,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [200, 400, 401, 404]:
+        if response.status_code not in [200, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -382,9 +438,6 @@ class AffindaAPIOperationsMixin:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if cls:
@@ -494,7 +547,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [200, 201, 400, 401, 404]:
+        if response.status_code not in [200, 201, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -509,9 +562,6 @@ class AffindaAPIOperationsMixin:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if cls:
@@ -557,7 +607,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [200, 400, 401, 404]:
+        if response.status_code not in [200, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -569,9 +619,6 @@ class AffindaAPIOperationsMixin:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if cls:
@@ -613,7 +660,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [204, 400, 401, 404]:
+        if response.status_code not in [204, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -625,9 +672,6 @@ class AffindaAPIOperationsMixin:
         if response.status_code == 401:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
-        if response.status_code == 404:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
         if cls:
             return cls(pipeline_response, deserialized, {})
 
@@ -636,7 +680,7 @@ class AffindaAPIOperationsMixin:
     delete_redacted_resume.metadata = {"url": "/redacted_resumes/{identifier}"}  # type: ignore
 
     async def get_all_resume_formats(
-        self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any
+        self, **kwargs: Any
     ) -> Union[
         "_models.Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema",
         "_models.RequestError",
@@ -645,10 +689,6 @@ class AffindaAPIOperationsMixin:
 
         Returns all the resume formats.
 
-        :param offset: The number of documents to skip before starting to collect the result set.
-        :type offset: int
-        :param limit: The numbers of results to return.
-        :type limit: int
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema or RequestError,
          or the result of cls(response)
@@ -667,8 +707,8 @@ class AffindaAPIOperationsMixin:
         error_map.update(kwargs.pop("error_map", {}))
 
         request = build_get_all_resume_formats_request(
-            offset=offset,
-            limit=limit,
+            offset=self._config.offset,
+            limit=self._config.limit,
             template_url=self.get_all_resume_formats.metadata["url"],
         )
         request = _convert_request(request)
@@ -677,7 +717,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [200, 400, 401, 404]:
+        if response.status_code not in [200, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -694,9 +734,6 @@ class AffindaAPIOperationsMixin:
         if response.status_code == 401:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
-        if response.status_code == 404:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
         if cls:
             return cls(pipeline_response, deserialized, {})
 
@@ -705,16 +742,12 @@ class AffindaAPIOperationsMixin:
     get_all_resume_formats.metadata = {"url": "/resume_formats"}  # type: ignore
 
     async def get_all_reformatted_resumes(
-        self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any
+        self, **kwargs: Any
     ) -> Union["_models.GetAllDocumentsResults", "_models.RequestError"]:
         """Get list of all reformatted resumes.
 
         Returns all the reformatted resume information for that resume.
 
-        :param offset: The number of documents to skip before starting to collect the result set.
-        :type offset: int
-        :param limit: The numbers of results to return.
-        :type limit: int
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: GetAllDocumentsResults or RequestError, or the result of cls(response)
         :rtype: ~affinda.models.GetAllDocumentsResults or ~affinda.models.RequestError
@@ -731,8 +764,8 @@ class AffindaAPIOperationsMixin:
         error_map.update(kwargs.pop("error_map", {}))
 
         request = build_get_all_reformatted_resumes_request(
-            offset=offset,
-            limit=limit,
+            offset=self._config.offset,
+            limit=self._config.limit,
             template_url=self.get_all_reformatted_resumes.metadata["url"],
         )
         request = _convert_request(request)
@@ -741,7 +774,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [200, 400, 401, 404]:
+        if response.status_code not in [200, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -753,9 +786,6 @@ class AffindaAPIOperationsMixin:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if cls:
@@ -833,7 +863,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [200, 201, 400, 401, 404]:
+        if response.status_code not in [200, 201, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -848,9 +878,6 @@ class AffindaAPIOperationsMixin:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if cls:
@@ -896,7 +923,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [200, 400, 401, 404]:
+        if response.status_code not in [200, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -908,9 +935,6 @@ class AffindaAPIOperationsMixin:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if cls:
@@ -952,7 +976,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [204, 400, 401, 404]:
+        if response.status_code not in [204, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -964,9 +988,6 @@ class AffindaAPIOperationsMixin:
         if response.status_code == 401:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
-        if response.status_code == 404:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
         if cls:
             return cls(pipeline_response, deserialized, {})
 
@@ -975,11 +996,7 @@ class AffindaAPIOperationsMixin:
     delete_reformatted_resume.metadata = {"url": "/reformatted_resumes/{identifier}"}  # type: ignore
 
     async def create_resume_search(
-        self,
-        body: "_models.ResumeSearchParameters",
-        offset: Optional[int] = None,
-        limit: Optional[int] = 20,
-        **kwargs: Any,
+        self, body: "_models.ResumeSearchParameters", **kwargs: Any
     ) -> Union["_models.ResumeSearch", "_models.RequestError"]:
         """Search through parsed resumes.
 
@@ -987,10 +1004,6 @@ class AffindaAPIOperationsMixin:
 
         :param body: Search parameters.
         :type body: ~affinda.models.ResumeSearchParameters
-        :param offset: The number of documents to skip before starting to collect the result set.
-        :type offset: int
-        :param limit: The numbers of results to return.
-        :type limit: int
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: ResumeSearch or RequestError, or the result of cls(response)
         :rtype: ~affinda.models.ResumeSearch or ~affinda.models.RequestError
@@ -1013,8 +1026,8 @@ class AffindaAPIOperationsMixin:
         request = build_create_resume_search_request(
             content_type=content_type,
             json=_json,
-            offset=offset,
-            limit=limit,
+            offset=self._config.offset,
+            limit=self._config.limit,
             template_url=self.create_resume_search.metadata["url"],
         )
         request = _convert_request(request)
@@ -1023,7 +1036,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [201, 400, 401, 404]:
+        if response.status_code not in [201, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -1037,9 +1050,6 @@ class AffindaAPIOperationsMixin:
         if response.status_code == 401:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
-        if response.status_code == 404:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
         if cls:
             return cls(pipeline_response, deserialized, {})
 
@@ -1047,17 +1057,79 @@ class AffindaAPIOperationsMixin:
 
     create_resume_search.metadata = {"url": "/resume_search"}  # type: ignore
 
+    async def get_resume_search_detail(
+        self, identifier: str, body: "_models.ResumeSearchParameters", **kwargs: Any
+    ) -> Union["_models.ResumeSearchDetail", "_models.RequestError"]:
+        """Get search result of specific resume.
+
+        This contains more detailed information about the matching score of the search criteria, or
+        which search criteria is missing in this resume.
+        The ``identifier`` is the unique ID returned via the `/resume_search
+        <#operation/createResumeSearch>`_ endpoint.
+
+        :param identifier: Resume identifier.
+        :type identifier: str
+        :param body: Search parameters.
+        :type body: ~affinda.models.ResumeSearchParameters
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: ResumeSearchDetail or RequestError, or the result of cls(response)
+        :rtype: ~affinda.models.ResumeSearchDetail or ~affinda.models.RequestError
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Union["_models.ResumeSearchDetail", "_models.RequestError"]]
+        error_map = {
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+        }
+        error_map.update(kwargs.pop("error_map", {}))
+
+        content_type = kwargs.pop("content_type", "application/json")  # type: Optional[str]
+
+        _json = self._serialize.body(body, "ResumeSearchParameters")
+
+        request = build_get_resume_search_detail_request(
+            identifier=identifier,
+            content_type=content_type,
+            json=_json,
+            template_url=self.get_resume_search_detail.metadata["url"],
+        )
+        request = _convert_request(request)
+        request.url = self._client.format_url(request.url)
+
+        pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200, 400, 401]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if response.status_code == 200:
+            deserialized = self._deserialize("ResumeSearchDetail", pipeline_response)
+
+        if response.status_code == 400:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if response.status_code == 401:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_resume_search_detail.metadata = {"url": "/resume_search/details/{identifier}"}  # type: ignore
+
     async def get_all_job_descriptions(
-        self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any
+        self, **kwargs: Any
     ) -> Union["_models.GetAllJobDescriptionsResults", "_models.RequestError"]:
         """Get list of all job descriptions.
 
         Returns all the job descriptions for that user, limited to 300 per page.
 
-        :param offset: The number of documents to skip before starting to collect the result set.
-        :type offset: int
-        :param limit: The numbers of results to return.
-        :type limit: int
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: GetAllJobDescriptionsResults or RequestError, or the result of cls(response)
         :rtype: ~affinda.models.GetAllJobDescriptionsResults or ~affinda.models.RequestError
@@ -1074,8 +1146,8 @@ class AffindaAPIOperationsMixin:
         error_map.update(kwargs.pop("error_map", {}))
 
         request = build_get_all_job_descriptions_request(
-            offset=offset,
-            limit=limit,
+            offset=self._config.offset,
+            limit=self._config.limit,
             template_url=self.get_all_job_descriptions.metadata["url"],
         )
         request = _convert_request(request)
@@ -1084,7 +1156,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [200, 400, 401, 404]:
+        if response.status_code not in [200, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -1096,9 +1168,6 @@ class AffindaAPIOperationsMixin:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if cls:
@@ -1179,7 +1248,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [200, 201, 400, 401, 404]:
+        if response.status_code not in [200, 201, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -1194,9 +1263,6 @@ class AffindaAPIOperationsMixin:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if cls:
@@ -1242,7 +1308,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [200, 400, 401, 404]:
+        if response.status_code not in [200, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -1254,9 +1320,6 @@ class AffindaAPIOperationsMixin:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if cls:
@@ -1298,7 +1361,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [204, 400, 401, 404]:
+        if response.status_code not in [204, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -1310,9 +1373,6 @@ class AffindaAPIOperationsMixin:
         if response.status_code == 401:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
-        if response.status_code == 404:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
         if cls:
             return cls(pipeline_response, deserialized, {})
 
@@ -1321,7 +1381,7 @@ class AffindaAPIOperationsMixin:
     delete_job_description.metadata = {"url": "/job_descriptions/{identifier}"}  # type: ignore
 
     async def get_all_indexes(
-        self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any
+        self, **kwargs: Any
     ) -> Union[
         "_models.Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema",
         "_models.RequestError",
@@ -1330,10 +1390,6 @@ class AffindaAPIOperationsMixin:
 
         Returns all the indexes.
 
-        :param offset: The number of documents to skip before starting to collect the result set.
-        :type offset: int
-        :param limit: The numbers of results to return.
-        :type limit: int
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema or RequestError, or the
          result of cls(response)
@@ -1352,8 +1408,8 @@ class AffindaAPIOperationsMixin:
         error_map.update(kwargs.pop("error_map", {}))
 
         request = build_get_all_indexes_request(
-            offset=offset,
-            limit=limit,
+            offset=self._config.offset,
+            limit=self._config.limit,
             template_url=self.get_all_indexes.metadata["url"],
         )
         request = _convert_request(request)
@@ -1362,7 +1418,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [200, 400, 401, 404]:
+        if response.status_code not in [200, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -1376,9 +1432,6 @@ class AffindaAPIOperationsMixin:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if cls:
@@ -1435,7 +1488,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [201, 400, 401, 404]:
+        if response.status_code not in [201, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -1449,9 +1502,6 @@ class AffindaAPIOperationsMixin:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if cls:
@@ -1491,7 +1541,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [204, 400, 401, 404]:
+        if response.status_code not in [204, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -1501,9 +1551,6 @@ class AffindaAPIOperationsMixin:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if cls:
@@ -1553,7 +1600,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [200, 400, 401, 404]:
+        if response.status_code not in [200, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -1568,9 +1615,6 @@ class AffindaAPIOperationsMixin:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if cls:
@@ -1634,7 +1678,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [201, 400, 401, 404]:
+        if response.status_code not in [201, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -1649,9 +1693,6 @@ class AffindaAPIOperationsMixin:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if cls:
@@ -1696,7 +1737,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [204, 400, 401, 404]:
+        if response.status_code not in [204, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -1708,9 +1749,6 @@ class AffindaAPIOperationsMixin:
         if response.status_code == 401:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
-        if response.status_code == 404:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
         if cls:
             return cls(pipeline_response, deserialized, {})
 
@@ -1719,16 +1757,12 @@ class AffindaAPIOperationsMixin:
     delete_index_document.metadata = {"url": "/index/{name}/documents/{identifier}"}  # type: ignore
 
     async def get_all_invoices(
-        self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any
+        self, **kwargs: Any
     ) -> Union["_models.GetAllInvoicesResults", "_models.RequestError"]:
         """Get list of all invoices.
 
         Returns all the invoice summaries for that user, limited to 300 per page.
 
-        :param offset: The number of documents to skip before starting to collect the result set.
-        :type offset: int
-        :param limit: The numbers of results to return.
-        :type limit: int
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: GetAllInvoicesResults or RequestError, or the result of cls(response)
         :rtype: ~affinda.models.GetAllInvoicesResults or ~affinda.models.RequestError
@@ -1745,8 +1779,8 @@ class AffindaAPIOperationsMixin:
         error_map.update(kwargs.pop("error_map", {}))
 
         request = build_get_all_invoices_request(
-            offset=offset,
-            limit=limit,
+            offset=self._config.offset,
+            limit=self._config.limit,
             template_url=self.get_all_invoices.metadata["url"],
         )
         request = _convert_request(request)
@@ -1755,7 +1789,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [200, 400, 401, 404]:
+        if response.status_code not in [200, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -1767,9 +1801,6 @@ class AffindaAPIOperationsMixin:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if cls:
@@ -1850,7 +1881,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [200, 201, 400, 401, 404]:
+        if response.status_code not in [200, 201, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -1865,9 +1896,6 @@ class AffindaAPIOperationsMixin:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if cls:
@@ -1913,7 +1941,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [200, 400, 401, 404]:
+        if response.status_code not in [200, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -1925,9 +1953,6 @@ class AffindaAPIOperationsMixin:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if cls:
@@ -1969,7 +1994,7 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [204, 400, 401, 404]:
+        if response.status_code not in [204, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -1981,9 +2006,6 @@ class AffindaAPIOperationsMixin:
         if response.status_code == 401:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
-        if response.status_code == 404:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
         if cls:
             return cls(pipeline_response, deserialized, {})
 
@@ -1993,19 +2015,19 @@ class AffindaAPIOperationsMixin:
 
     async def list_occupation_groups(
         self, **kwargs: Any
-    ) -> Union["_models.OccupationGroup", "_models.RequestError"]:
+    ) -> Union[List["_models.OccupationGroup"], "_models.RequestError"]:
         """List occupation groups.
 
         TODO TODO TODO.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: OccupationGroup or RequestError, or the result of cls(response)
-        :rtype: ~affinda.models.OccupationGroup or ~affinda.models.RequestError
+        :return: list of OccupationGroup or RequestError, or the result of cls(response)
+        :rtype: list[~affinda.models.OccupationGroup] or ~affinda.models.RequestError
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         cls = kwargs.pop(
             "cls", None
-        )  # type: ClsType[Union["_models.OccupationGroup", "_models.RequestError"]]
+        )  # type: ClsType[Union[List["_models.OccupationGroup"], "_models.RequestError"]]
         error_map = {
             401: ClientAuthenticationError,
             404: ResourceNotFoundError,
@@ -2022,21 +2044,18 @@ class AffindaAPIOperationsMixin:
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
-        if response.status_code not in [201, 400, 401, 404]:
+        if response.status_code not in [200, 400, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
 
-        if response.status_code == 201:
-            deserialized = self._deserialize("OccupationGroup", pipeline_response)
+        if response.status_code == 200:
+            deserialized = self._deserialize("[OccupationGroup]", pipeline_response)
 
         if response.status_code == 400:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
             deserialized = self._deserialize("RequestError", pipeline_response)
 
         if cls:
@@ -2045,3 +2064,148 @@ class AffindaAPIOperationsMixin:
         return deserialized
 
     list_occupation_groups.metadata = {"url": "/occupation_groups"}  # type: ignore
+
+    async def get_all_users(
+        self, **kwargs: Any
+    ) -> Union[
+        "_models.PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema",
+        "_models.RequestError",
+    ]:
+        """Get list of all users.
+
+        Returns all the users.
+
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema or RequestError, or the
+         result of cls(response)
+        :rtype: ~affinda.models.PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema or
+         ~affinda.models.RequestError
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Union["_models.PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema", "_models.RequestError"]]
+        error_map = {
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+        }
+        error_map.update(kwargs.pop("error_map", {}))
+
+        request = build_get_all_users_request(
+            offset=self._config.offset,
+            limit=self._config.limit,
+            template_url=self.get_all_users.metadata["url"],
+        )
+        request = _convert_request(request)
+        request.url = self._client.format_url(request.url)
+
+        pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200, 400, 401]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if response.status_code == 200:
+            deserialized = self._deserialize(
+                "PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema", pipeline_response
+            )
+
+        if response.status_code == 400:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if response.status_code == 401:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_all_users.metadata = {"url": "/users"}  # type: ignore
+
+    async def create_user(
+        self,
+        username: str,
+        id: Optional[int] = None,
+        name: Optional[str] = None,
+        email: Optional[str] = None,
+        **kwargs: Any,
+    ) -> Union[
+        "_models.PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema",
+        "_models.RequestError",
+    ]:
+        """Create a new user.
+
+        Create an user as part of your account.
+
+        :param username:
+        :type username: str
+        :param id:
+        :type id: int
+        :param name:
+        :type name: str
+        :param email:
+        :type email: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema or RequestError, or the
+         result of cls(response)
+        :rtype: ~affinda.models.PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema or
+         ~affinda.models.RequestError
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Union["_models.PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema", "_models.RequestError"]]
+        error_map = {
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+        }
+        error_map.update(kwargs.pop("error_map", {}))
+
+        content_type = kwargs.pop("content_type", None)  # type: Optional[str]
+
+        # Construct form data
+        _files = {
+            "id": id,
+            "name": name,
+            "username": username,
+            "email": email,
+        }
+
+        request = build_create_user_request(
+            content_type=content_type,
+            files=_files,
+            template_url=self.create_user.metadata["url"],
+        )
+        request = _convert_request(request, _files)
+        request.url = self._client.format_url(request.url)
+
+        pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
+        response = pipeline_response.http_response
+
+        if response.status_code not in [201, 400, 401]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if response.status_code == 201:
+            deserialized = self._deserialize(
+                "PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema", pipeline_response
+            )
+
+        if response.status_code == 400:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if response.status_code == 401:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    create_user.metadata = {"url": "/users"}  # type: ignore

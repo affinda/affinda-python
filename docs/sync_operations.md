@@ -15,6 +15,8 @@ Affinda API client for Python.
 **Arguments**:
 
 - `credential` (`~azure.core.credentials.TokenCredential`): Credential needed for the client to connect to Azure.
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+- `limit` (`int`): The numbers of results to return.
 - `base_url` (`str`): Service URL. Default value is 'https://api.affinda.com/v2'.
 
 <a id="operations._affinda_api_operations"></a>
@@ -34,18 +36,14 @@ class AffindaAPIOperationsMixin(object)
 #### get\_all\_resumes
 
 ```python
-def get_all_resumes(offset=None, limit=300, **kwargs)
+def get_all_resumes(**kwargs)
 ```
 
 Get list of all resumes.
 
 Returns all the resume summaries for that user, limited to 300 per page.
 
-**Arguments**:
-
 :keyword callable cls: A custom type or function that will be passed the direct response
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-- `limit` (`int`): The numbers of results to return.
 
 **Returns**:
 
@@ -56,12 +54,15 @@ Returns all the resume summaries for that user, limited to 300 per page.
 #### create\_resume
 
 ```python
-def create_resume(file=None, identifier=None, file_name=None, url=None, wait=True, language=None, expiry_time=None, **kwargs)
+def create_resume(file=None, url=None, data=None, identifier=None, file_name=None, wait=True, language=None, expiry_time=None, **kwargs)
 ```
 
 Upload a resume for parsing.
 
 Uploads a resume for parsing.
+Provide ``file`` for uploading a resume file, or ``url`` for getting resume file from an url,
+or ``data`` if you want to upload resume data directly without parsing any resume file.
+For uploading resume data, the ``data`` argument provided must be a JSON-encoded string.
 When successful, returns an ``identifier`` in the response for subsequent use with the
 `/resumes/{identifier} <#operation/getResume>`_ endpoint to check processing status and
 retrieve results.
@@ -70,9 +71,10 @@ retrieve results.
 
 :keyword callable cls: A custom type or function that will be passed the direct response
 - `file` (`IO`): 
+- `url` (`str`): 
+- `data` (`~affinda.models.ResumeData`): A JSON-encoded string of the ``ResumeData`` object.
 - `identifier` (`str`): 
 - `file_name` (`str`): 
-- `url` (`str`): 
 - `wait` (`bool`): 
 - `language` (`str`): 
 - `expiry_time` (`~datetime.datetime`): 
@@ -104,6 +106,30 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the `
 
 `~affinda.models.Resume or ~affinda.models.RequestError`: Resume or RequestError, or the result of cls(response)
 
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_resume_data"></a>
+
+#### update\_resume\_data
+
+```python
+def update_resume_data(identifier, body, **kwargs)
+```
+
+Update a resume's data.
+
+Update data of a parsed resume.
+The ``identifier`` is the unique ID returned after POST-ing the resume via the `/resumes
+<#operation/createResume>`_ endpoint.
+
+**Arguments**:
+
+:keyword callable cls: A custom type or function that will be passed the direct response
+- `identifier` (`str`): Resume identifier.
+- `body` (`~affinda.models.ResumeData`): Resume data to update.
+
+**Returns**:
+
+`~affinda.models.ResumeData or None or ~affinda.models.RequestError`: ResumeData or None or RequestError, or the result of cls(response)
+
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_resume"></a>
 
 #### delete\_resume
@@ -130,18 +156,14 @@ Deletes the specified resume from the database.
 #### get\_all\_redacted\_resumes
 
 ```python
-def get_all_redacted_resumes(offset=None, limit=300, **kwargs)
+def get_all_redacted_resumes(**kwargs)
 ```
 
 Get list of all redacted resumes.
 
 Returns all the redacted resume information for that resume.
 
-**Arguments**:
-
 :keyword callable cls: A custom type or function that will be passed the direct response
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-- `limit` (`int`): The numbers of results to return.
 
 **Returns**:
 
@@ -231,18 +253,14 @@ Deletes the specified resume from the database.
 #### get\_all\_resume\_formats
 
 ```python
-def get_all_resume_formats(offset=None, limit=300, **kwargs)
+def get_all_resume_formats(**kwargs)
 ```
 
 Get list of all resume formats.
 
 Returns all the resume formats.
 
-**Arguments**:
-
 :keyword callable cls: A custom type or function that will be passed the direct response
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-- `limit` (`int`): The numbers of results to return.
 
 **Returns**:
 
@@ -253,18 +271,14 @@ Returns all the resume formats.
 #### get\_all\_reformatted\_resumes
 
 ```python
-def get_all_reformatted_resumes(offset=None, limit=300, **kwargs)
+def get_all_reformatted_resumes(**kwargs)
 ```
 
 Get list of all reformatted resumes.
 
 Returns all the reformatted resume information for that resume.
 
-**Arguments**:
-
 :keyword callable cls: A custom type or function that will be passed the direct response
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-- `limit` (`int`): The numbers of results to return.
 
 **Returns**:
 
@@ -346,7 +360,7 @@ Delete the specified resume from the database.
 #### create\_resume\_search
 
 ```python
-def create_resume_search(body, offset=None, limit=20, **kwargs)
+def create_resume_search(body, **kwargs)
 ```
 
 Search through parsed resumes.
@@ -357,30 +371,49 @@ Searches through parsed resumes.
 
 :keyword callable cls: A custom type or function that will be passed the direct response
 - `body` (`~affinda.models.ResumeSearchParameters`): Search parameters.
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-- `limit` (`int`): The numbers of results to return.
 
 **Returns**:
 
 `~affinda.models.ResumeSearch or ~affinda.models.RequestError`: ResumeSearch or RequestError, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_detail"></a>
+
+#### get\_resume\_search\_detail
+
+```python
+def get_resume_search_detail(identifier, body, **kwargs)
+```
+
+Get search result of specific resume.
+
+This contains more detailed information about the matching score of the search criteria, or
+which search criteria is missing in this resume.
+The ``identifier`` is the unique ID returned via the `/resume_search
+<#operation/createResumeSearch>`_ endpoint.
+
+**Arguments**:
+
+:keyword callable cls: A custom type or function that will be passed the direct response
+- `identifier` (`str`): Resume identifier.
+- `body` (`~affinda.models.ResumeSearchParameters`): Search parameters.
+
+**Returns**:
+
+`~affinda.models.ResumeSearchDetail or ~affinda.models.RequestError`: ResumeSearchDetail or RequestError, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_job_descriptions"></a>
 
 #### get\_all\_job\_descriptions
 
 ```python
-def get_all_job_descriptions(offset=None, limit=300, **kwargs)
+def get_all_job_descriptions(**kwargs)
 ```
 
 Get list of all job descriptions.
 
 Returns all the job descriptions for that user, limited to 300 per page.
 
-**Arguments**:
-
 :keyword callable cls: A custom type or function that will be passed the direct response
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-- `limit` (`int`): The numbers of results to return.
 
 **Returns**:
 
@@ -465,18 +498,14 @@ Deletes the specified job description from the database.
 #### get\_all\_indexes
 
 ```python
-def get_all_indexes(offset=None, limit=300, **kwargs)
+def get_all_indexes(**kwargs)
 ```
 
 Get list of all indexes.
 
 Returns all the indexes.
 
-**Arguments**:
-
 :keyword callable cls: A custom type or function that will be passed the direct response
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-- `limit` (`int`): The numbers of results to return.
 
 **Returns**:
 
@@ -595,18 +624,14 @@ Delete the specified indexed document from the database.
 #### get\_all\_invoices
 
 ```python
-def get_all_invoices(offset=None, limit=300, **kwargs)
+def get_all_invoices(**kwargs)
 ```
 
 Get list of all invoices.
 
 Returns all the invoice summaries for that user, limited to 300 per page.
 
-**Arguments**:
-
 :keyword callable cls: A custom type or function that will be passed the direct response
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-- `limit` (`int`): The numbers of results to return.
 
 **Returns**:
 
@@ -702,5 +727,47 @@ TODO TODO TODO.
 
 **Returns**:
 
-`~affinda.models.OccupationGroup or ~affinda.models.RequestError`: OccupationGroup or RequestError, or the result of cls(response)
+`list[~affinda.models.OccupationGroup] or ~affinda.models.RequestError`: list of OccupationGroup or RequestError, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_users"></a>
+
+#### get\_all\_users
+
+```python
+def get_all_users(**kwargs)
+```
+
+Get list of all users.
+
+Returns all the users.
+
+:keyword callable cls: A custom type or function that will be passed the direct response
+
+**Returns**:
+
+`~affinda.models.PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema or`: PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema or RequestError, or the
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_user"></a>
+
+#### create\_user
+
+```python
+def create_user(username, id=None, name=None, email=None, **kwargs)
+```
+
+Create a new user.
+
+Create an user as part of your account.
+
+**Arguments**:
+
+:keyword callable cls: A custom type or function that will be passed the direct response
+- `username` (`str`): 
+- `id` (`int`): 
+- `name` (`str`): 
+- `email` (`str`): 
+
+**Returns**:
+
+`~affinda.models.PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema or`: PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema or RequestError, or the
 

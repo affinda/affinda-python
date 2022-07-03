@@ -25,15 +25,30 @@ from pathlib import Path
 from affinda import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
-file_pth = Path("path_to_file.pdf")
-
 credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
+
+# Create resume with file
+file_pth = Path("path_to_file.pdf")
 
 with open(file_pth, "rb") as f:
     resume = client.create_resume(file=f)
 
 print(resume.as_dict())
+
+# Create resume with url
+url = "REPLACE_URL"
+resume = client.create_resume(url=url)
+print(resume.as_dict())
+
+# Create resume with data (for direct import of resume data, no parsing is performed)
+import json
+from affinda.models import ResumeData
+
+data = ResumeData(date_of_birth="1999-11-01")
+data = json.dumps(data.as_dict())
+res = client.create_resume(data=data, file_name="test_resume.pdf")
+print(res.as_dict())
 ```
 
 ### getResume - Get parse results for a specific resume
@@ -49,6 +64,33 @@ client = AffindaAPI(credential=credential)
 resume = client.get_resume(identifier=identifier)
 
 print(resume.as_dict())
+```
+
+### updateResumeData - Update a resume's data
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+# Update resume
+from affinda.models import ResumeDataResumeDataSkillsItem
+
+resume = client.get_resume(identifier=identifier)
+updated_data = resume.data
+updated_data.date_of_birth = "1980-08-15"  # Update some attributes
+
+# For lists, you can update, create new, or delete objects
+updated_data.skills[0].last_used = "2022-06-01"  # Update the first skill
+updated_data.skills.pop(-1)  # Delete the last skill
+updated_data.skills.append(ResumeDataResumeDataSkillsItem(name="git", number_of_months=24))  # Create a new skill
+
+resp = client.update_resume_data(identifier=identifier, body=updated_data)
+print(resp.as_dict())
 ```
 
 ### deleteResume - Delete a resume
@@ -447,6 +489,24 @@ identifier = "REPLACE_IDENTIFIER"
 credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
 response = client.delete_invoice(identifier=identifier)
+
+print(response.as_dict())
+```
+
+Users
+-----
+
+### createUser - Create a new user
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+response = client.create_user(email="myuser@gmail.com")
 
 print(response.as_dict())
 ```

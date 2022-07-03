@@ -5,10 +5,14 @@
 # --------------------------------------------------------------------------
 
 try:
+    from ._models_py3 import Accreditation
     from ._models_py3 import Annotation
     from ._models_py3 import Components11Zi81FSchemasInvoicedataPropertiesBankswiftAllof2
     from ._models_py3 import Components14Dm0XSchemasInvoicedataPropertiesBankaccountnumberAllof2
     from ._models_py3 import Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2
+    from ._models_py3 import (
+        Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1,
+    )
     from ._models_py3 import Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2
     from ._models_py3 import Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2
     from ._models_py3 import Components17Ashz6SchemasInvoicePropertiesMetaAllof1
@@ -32,11 +36,23 @@ try:
     from ._models_py3 import Components7CqvqpSchemasInvoicedataPropertiesInvoicenumberAllof2
     from ._models_py3 import ComponentsBvthtoSchemasInvoicedataPropertiesSupplierphonenumberAllof2
     from ._models_py3 import ComponentsE6Bjv3SchemasInvoicedataPropertiesBankibanAllof2
+    from ._models_py3 import (
+        ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1,
+    )
+    from ._models_py3 import (
+        ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1,
+    )
+    from ._models_py3 import (
+        ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1,
+    )
     from ._models_py3 import ComponentsPs8Uo7SchemasInvoicedataPropertiesCustomerphonenumberAllof2
     from ._models_py3 import (
         ComponentsRft7JdSchemasInvoicedataPropertiesCustomerbusinessnumberAllof2,
     )
     from ._models_py3 import ComponentsRsi73USchemasInvoicedataPropertiesCustomervatAllof2
+    from ._models_py3 import (
+        ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1,
+    )
     from ._models_py3 import ComponentsTz04ToSchemasInvoicedataPropertiesPaymentamountbaseAllof2
     from ._models_py3 import ComponentsUilt2MSchemasInvoicedataPropertiesBankbsbAllof2
     from ._models_py3 import ComponentsVyrnzuSchemasInvoicedataPropertiesSupplieremailAllof2
@@ -46,6 +62,8 @@ try:
         ComponentsYe0TzySchemasInvoicedataPropertiesSupplierbusinessnumberAllof2,
     )
     from ._models_py3 import DateAnnotation
+    from ._models_py3 import Education
+    from ._models_py3 import EducationDates
     from ._models_py3 import Error
     from ._models_py3 import ExpectedRemunerationAnnotation
     from ._models_py3 import ExpectedRemunerationAnnotationParsed
@@ -98,6 +116,7 @@ try:
     from ._models_py3 import Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema
     from ._models_py3 import Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema
     from ._models_py3 import Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema
+    from ._models_py3 import Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1
     from ._models_py3 import Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema
     from ._models_py3 import Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema
     from ._models_py3 import (
@@ -116,6 +135,8 @@ try:
         PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema,
     )
     from ._models_py3 import PathsSot11NIndexPostRequestbodyContentMultipartFormDataSchema
+    from ._models_py3 import PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema
+    from ._models_py3 import PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema
     from ._models_py3 import PathsYlw96JobDescriptionsPostRequestbodyContentMultipartFormDataSchema
     from ._models_py3 import (
         PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema,
@@ -126,6 +147,7 @@ try:
     from ._models_py3 import ReformattedResume
     from ._models_py3 import ReformattedResumeData
     from ._models_py3 import RequestError
+    from ._models_py3 import RequestErrorErrorsItem
     from ._models_py3 import Resume
     from ._models_py3 import ResumeData
     from ._models_py3 import ResumeDataEducationItem
@@ -141,20 +163,41 @@ try:
     from ._models_py3 import ResumeDataWorkExperienceItemDates
     from ._models_py3 import ResumeDataWorkExperienceItemOccupation
     from ._models_py3 import ResumeSearch
+    from ._models_py3 import ResumeSearchDetail
+    from ._models_py3 import ResumeSearchDetailEducation
+    from ._models_py3 import ResumeSearchDetailEducationMissing
+    from ._models_py3 import ResumeSearchDetailEducationValueItem
+    from ._models_py3 import ResumeSearchDetailExperience
+    from ._models_py3 import ResumeSearchDetailJobTitle
+    from ._models_py3 import ResumeSearchDetailJobTitleValueItem
+    from ._models_py3 import ResumeSearchDetailLanguages
+    from ._models_py3 import ResumeSearchDetailLanguagesValueItem
+    from ._models_py3 import ResumeSearchDetailLocation
+    from ._models_py3 import ResumeSearchDetailLocationValue
+    from ._models_py3 import ResumeSearchDetailManagementLevel
+    from ._models_py3 import ResumeSearchDetailOccupationGroup
+    from ._models_py3 import ResumeSearchDetailOccupationGroupValueItem
+    from ._models_py3 import ResumeSearchDetailSearchExpression
+    from ._models_py3 import ResumeSearchDetailSkills
+    from ._models_py3 import ResumeSearchDetailSkillsValueItem
     from ._models_py3 import ResumeSearchParameters
-    from ._models_py3 import ResumeSearchParametersLanguagesItem
-    from ._models_py3 import ResumeSearchParametersLocationsItem
-    from ._models_py3 import ResumeSearchParametersLocationsItemCoordinates
-    from ._models_py3 import ResumeSearchParametersSkillsItem
+    from ._models_py3 import ResumeSearchParametersLocation
+    from ._models_py3 import ResumeSearchParametersLocationCoordinates
+    from ._models_py3 import ResumeSearchParametersSkill
     from ._models_py3 import ResumeSearchResult
     from ._models_py3 import ResumeSearchScoreComponent
+    from ._models_py3 import ResumeSkill
+    from ._models_py3 import ResumeSkillSourcesItem
     from ._models_py3 import SkillAnnotation
     from ._models_py3 import TextAnnotation
+    from ._models_py3 import User
 except (SyntaxError, ImportError):
+    from ._models import Accreditation  # type: ignore
     from ._models import Annotation  # type: ignore
     from ._models import Components11Zi81FSchemasInvoicedataPropertiesBankswiftAllof2  # type: ignore
     from ._models import Components14Dm0XSchemasInvoicedataPropertiesBankaccountnumberAllof2  # type: ignore
     from ._models import Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2  # type: ignore
+    from ._models import Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1  # type: ignore
     from ._models import Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2  # type: ignore
     from ._models import Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2  # type: ignore
     from ._models import Components17Ashz6SchemasInvoicePropertiesMetaAllof1  # type: ignore
@@ -174,9 +217,13 @@ except (SyntaxError, ImportError):
     from ._models import Components7CqvqpSchemasInvoicedataPropertiesInvoicenumberAllof2  # type: ignore
     from ._models import ComponentsBvthtoSchemasInvoicedataPropertiesSupplierphonenumberAllof2  # type: ignore
     from ._models import ComponentsE6Bjv3SchemasInvoicedataPropertiesBankibanAllof2  # type: ignore
+    from ._models import ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1  # type: ignore
+    from ._models import ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1  # type: ignore
+    from ._models import ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1  # type: ignore
     from ._models import ComponentsPs8Uo7SchemasInvoicedataPropertiesCustomerphonenumberAllof2  # type: ignore
     from ._models import ComponentsRft7JdSchemasInvoicedataPropertiesCustomerbusinessnumberAllof2  # type: ignore
     from ._models import ComponentsRsi73USchemasInvoicedataPropertiesCustomervatAllof2  # type: ignore
+    from ._models import ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1  # type: ignore
     from ._models import ComponentsTz04ToSchemasInvoicedataPropertiesPaymentamountbaseAllof2  # type: ignore
     from ._models import ComponentsUilt2MSchemasInvoicedataPropertiesBankbsbAllof2  # type: ignore
     from ._models import ComponentsVyrnzuSchemasInvoicedataPropertiesSupplieremailAllof2  # type: ignore
@@ -184,6 +231,8 @@ except (SyntaxError, ImportError):
     from ._models import ComponentsY49P83SchemasInvoicedataPropertiesPaymentamounttaxAllof2  # type: ignore
     from ._models import ComponentsYe0TzySchemasInvoicedataPropertiesSupplierbusinessnumberAllof2  # type: ignore
     from ._models import DateAnnotation  # type: ignore
+    from ._models import Education  # type: ignore
+    from ._models import EducationDates  # type: ignore
     from ._models import Error  # type: ignore
     from ._models import ExpectedRemunerationAnnotation  # type: ignore
     from ._models import ExpectedRemunerationAnnotationParsed  # type: ignore
@@ -234,6 +283,7 @@ except (SyntaxError, ImportError):
     from ._models import Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema  # type: ignore
     from ._models import Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema  # type: ignore
     from ._models import Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema  # type: ignore
+    from ._models import Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1  # type: ignore
     from ._models import Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema  # type: ignore
     from ._models import Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema  # type: ignore
@@ -242,6 +292,8 @@ except (SyntaxError, ImportError):
     from ._models import PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems  # type: ignore
     from ._models import PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsSot11NIndexPostRequestbodyContentMultipartFormDataSchema  # type: ignore
+    from ._models import PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema  # type: ignore
+    from ._models import PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsYlw96JobDescriptionsPostRequestbodyContentMultipartFormDataSchema  # type: ignore
     from ._models import PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema  # type: ignore
     from ._models import Rectangle  # type: ignore
@@ -250,6 +302,7 @@ except (SyntaxError, ImportError):
     from ._models import ReformattedResume  # type: ignore
     from ._models import ReformattedResumeData  # type: ignore
     from ._models import RequestError  # type: ignore
+    from ._models import RequestErrorErrorsItem  # type: ignore
     from ._models import Resume  # type: ignore
     from ._models import ResumeData  # type: ignore
     from ._models import ResumeDataEducationItem  # type: ignore
@@ -265,27 +318,49 @@ except (SyntaxError, ImportError):
     from ._models import ResumeDataWorkExperienceItemDates  # type: ignore
     from ._models import ResumeDataWorkExperienceItemOccupation  # type: ignore
     from ._models import ResumeSearch  # type: ignore
+    from ._models import ResumeSearchDetail  # type: ignore
+    from ._models import ResumeSearchDetailEducation  # type: ignore
+    from ._models import ResumeSearchDetailEducationMissing  # type: ignore
+    from ._models import ResumeSearchDetailEducationValueItem  # type: ignore
+    from ._models import ResumeSearchDetailExperience  # type: ignore
+    from ._models import ResumeSearchDetailJobTitle  # type: ignore
+    from ._models import ResumeSearchDetailJobTitleValueItem  # type: ignore
+    from ._models import ResumeSearchDetailLanguages  # type: ignore
+    from ._models import ResumeSearchDetailLanguagesValueItem  # type: ignore
+    from ._models import ResumeSearchDetailLocation  # type: ignore
+    from ._models import ResumeSearchDetailLocationValue  # type: ignore
+    from ._models import ResumeSearchDetailManagementLevel  # type: ignore
+    from ._models import ResumeSearchDetailOccupationGroup  # type: ignore
+    from ._models import ResumeSearchDetailOccupationGroupValueItem  # type: ignore
+    from ._models import ResumeSearchDetailSearchExpression  # type: ignore
+    from ._models import ResumeSearchDetailSkills  # type: ignore
+    from ._models import ResumeSearchDetailSkillsValueItem  # type: ignore
     from ._models import ResumeSearchParameters  # type: ignore
-    from ._models import ResumeSearchParametersLanguagesItem  # type: ignore
-    from ._models import ResumeSearchParametersLocationsItem  # type: ignore
-    from ._models import ResumeSearchParametersLocationsItemCoordinates  # type: ignore
-    from ._models import ResumeSearchParametersSkillsItem  # type: ignore
+    from ._models import ResumeSearchParametersLocation  # type: ignore
+    from ._models import ResumeSearchParametersLocationCoordinates  # type: ignore
+    from ._models import ResumeSearchParametersSkill  # type: ignore
     from ._models import ResumeSearchResult  # type: ignore
     from ._models import ResumeSearchScoreComponent  # type: ignore
+    from ._models import ResumeSkill  # type: ignore
+    from ._models import ResumeSkillSourcesItem  # type: ignore
     from ._models import SkillAnnotation  # type: ignore
     from ._models import TextAnnotation  # type: ignore
+    from ._models import User  # type: ignore
 
 from ._affinda_api_enums import (
     EducationLevel,
     ManagementLevel,
+    ResumeSkillSourcesItemSection,
     SearchLocationUnit,
 )
 
 __all__ = [
+    "Accreditation",
     "Annotation",
     "Components11Zi81FSchemasInvoicedataPropertiesBankswiftAllof2",
     "Components14Dm0XSchemasInvoicedataPropertiesBankaccountnumberAllof2",
     "Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2",
+    "Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1",
     "Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2",
     "Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2",
     "Components17Ashz6SchemasInvoicePropertiesMetaAllof1",
@@ -305,9 +380,13 @@ __all__ = [
     "Components7CqvqpSchemasInvoicedataPropertiesInvoicenumberAllof2",
     "ComponentsBvthtoSchemasInvoicedataPropertiesSupplierphonenumberAllof2",
     "ComponentsE6Bjv3SchemasInvoicedataPropertiesBankibanAllof2",
+    "ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1",
+    "ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1",
+    "ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1",
     "ComponentsPs8Uo7SchemasInvoicedataPropertiesCustomerphonenumberAllof2",
     "ComponentsRft7JdSchemasInvoicedataPropertiesCustomerbusinessnumberAllof2",
     "ComponentsRsi73USchemasInvoicedataPropertiesCustomervatAllof2",
+    "ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1",
     "ComponentsTz04ToSchemasInvoicedataPropertiesPaymentamountbaseAllof2",
     "ComponentsUilt2MSchemasInvoicedataPropertiesBankbsbAllof2",
     "ComponentsVyrnzuSchemasInvoicedataPropertiesSupplieremailAllof2",
@@ -315,6 +394,8 @@ __all__ = [
     "ComponentsY49P83SchemasInvoicedataPropertiesPaymentamounttaxAllof2",
     "ComponentsYe0TzySchemasInvoicedataPropertiesSupplierbusinessnumberAllof2",
     "DateAnnotation",
+    "Education",
+    "EducationDates",
     "Error",
     "ExpectedRemunerationAnnotation",
     "ExpectedRemunerationAnnotationParsed",
@@ -365,6 +446,7 @@ __all__ = [
     "Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema",
     "Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema",
     "Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema",
+    "Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1",
     "Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema",
     "Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema",
     "Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema",
@@ -373,6 +455,8 @@ __all__ = [
     "PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems",
     "PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema",
     "PathsSot11NIndexPostRequestbodyContentMultipartFormDataSchema",
+    "PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema",
+    "PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema",
     "PathsYlw96JobDescriptionsPostRequestbodyContentMultipartFormDataSchema",
     "PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema",
     "Rectangle",
@@ -381,6 +465,7 @@ __all__ = [
     "ReformattedResume",
     "ReformattedResumeData",
     "RequestError",
+    "RequestErrorErrorsItem",
     "Resume",
     "ResumeData",
     "ResumeDataEducationItem",
@@ -396,16 +481,36 @@ __all__ = [
     "ResumeDataWorkExperienceItemDates",
     "ResumeDataWorkExperienceItemOccupation",
     "ResumeSearch",
+    "ResumeSearchDetail",
+    "ResumeSearchDetailEducation",
+    "ResumeSearchDetailEducationMissing",
+    "ResumeSearchDetailEducationValueItem",
+    "ResumeSearchDetailExperience",
+    "ResumeSearchDetailJobTitle",
+    "ResumeSearchDetailJobTitleValueItem",
+    "ResumeSearchDetailLanguages",
+    "ResumeSearchDetailLanguagesValueItem",
+    "ResumeSearchDetailLocation",
+    "ResumeSearchDetailLocationValue",
+    "ResumeSearchDetailManagementLevel",
+    "ResumeSearchDetailOccupationGroup",
+    "ResumeSearchDetailOccupationGroupValueItem",
+    "ResumeSearchDetailSearchExpression",
+    "ResumeSearchDetailSkills",
+    "ResumeSearchDetailSkillsValueItem",
     "ResumeSearchParameters",
-    "ResumeSearchParametersLanguagesItem",
-    "ResumeSearchParametersLocationsItem",
-    "ResumeSearchParametersLocationsItemCoordinates",
-    "ResumeSearchParametersSkillsItem",
+    "ResumeSearchParametersLocation",
+    "ResumeSearchParametersLocationCoordinates",
+    "ResumeSearchParametersSkill",
     "ResumeSearchResult",
     "ResumeSearchScoreComponent",
+    "ResumeSkill",
+    "ResumeSkillSourcesItem",
     "SkillAnnotation",
     "TextAnnotation",
+    "User",
     "EducationLevel",
     "ManagementLevel",
+    "ResumeSkillSourcesItemSection",
     "SearchLocationUnit",
 ]
