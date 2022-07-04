@@ -102,6 +102,7 @@ try:
     from ._models_py3 import InvoiceDataSupplierPhoneNumber
     from ._models_py3 import InvoiceDataSupplierVAT
     from ._models_py3 import InvoiceDataSupplierWebsite
+    from ._models_py3 import InvoiceDataTablesItem
     from ._models_py3 import InvoiceMeta
     from ._models_py3 import JobDescription
     from ._models_py3 import JobDescriptionData
@@ -188,6 +189,7 @@ try:
     from ._models_py3 import ResumeSearchScoreComponent
     from ._models_py3 import ResumeSkill
     from ._models_py3 import ResumeSkillSourcesItem
+    from ._models_py3 import RowAnnotation
     from ._models_py3 import SkillAnnotation
     from ._models_py3 import TextAnnotation
     from ._models_py3 import User
@@ -271,6 +273,7 @@ except (SyntaxError, ImportError):
     from ._models import InvoiceDataSupplierPhoneNumber  # type: ignore
     from ._models import InvoiceDataSupplierVAT  # type: ignore
     from ._models import InvoiceDataSupplierWebsite  # type: ignore
+    from ._models import InvoiceDataTablesItem  # type: ignore
     from ._models import InvoiceMeta  # type: ignore
     from ._models import JobDescription  # type: ignore
     from ._models import JobDescriptionData  # type: ignore
@@ -343,6 +346,7 @@ except (SyntaxError, ImportError):
     from ._models import ResumeSearchScoreComponent  # type: ignore
     from ._models import ResumeSkill  # type: ignore
     from ._models import ResumeSkillSourcesItem  # type: ignore
+    from ._models import RowAnnotation  # type: ignore
     from ._models import SkillAnnotation  # type: ignore
     from ._models import TextAnnotation  # type: ignore
     from ._models import User  # type: ignore
@@ -434,6 +438,7 @@ __all__ = [
     "InvoiceDataSupplierPhoneNumber",
     "InvoiceDataSupplierVAT",
     "InvoiceDataSupplierWebsite",
+    "InvoiceDataTablesItem",
     "InvoiceMeta",
     "JobDescription",
     "JobDescriptionData",
@@ -506,6 +511,7 @@ __all__ = [
     "ResumeSearchScoreComponent",
     "ResumeSkill",
     "ResumeSkillSourcesItem",
+    "RowAnnotation",
     "SkillAnnotation",
     "TextAnnotation",
     "User",

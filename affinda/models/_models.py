@@ -1618,6 +1618,8 @@ class Invoice(msrest.serialization.Model):
 class InvoiceData(msrest.serialization.Model):
     """InvoiceData.
 
+    :ivar tables:
+    :vartype tables: list[~affinda.models.InvoiceDataTablesItem]
     :ivar invoice_date:
     :vartype invoice_date: ~affinda.models.DateAnnotation
     :ivar invoice_order_date:
@@ -1691,6 +1693,7 @@ class InvoiceData(msrest.serialization.Model):
     """
 
     _attribute_map = {
+        "tables": {"key": "tables", "type": "[InvoiceDataTablesItem]"},
         "invoice_date": {"key": "invoiceDate", "type": "DateAnnotation"},
         "invoice_order_date": {"key": "invoiceOrderDate", "type": "DateAnnotation"},
         "payment_date_due": {"key": "paymentDateDue", "type": "DateAnnotation"},
@@ -1772,6 +1775,8 @@ class InvoiceData(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
+        :keyword tables:
+        :paramtype tables: list[~affinda.models.InvoiceDataTablesItem]
         :keyword invoice_date:
         :paramtype invoice_date: ~affinda.models.DateAnnotation
         :keyword invoice_order_date:
@@ -1844,6 +1849,7 @@ class InvoiceData(msrest.serialization.Model):
         :paramtype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
         """
         super(InvoiceData, self).__init__(**kwargs)
+        self.tables = kwargs.get("tables", None)
         self.invoice_date = kwargs.get("invoice_date", None)
         self.invoice_order_date = kwargs.get("invoice_order_date", None)
         self.payment_date_due = kwargs.get("payment_date_due", None)
@@ -4180,6 +4186,26 @@ class InvoiceDataSupplierWebsite(
         self.is_verified = kwargs["is_verified"]
         self.classification = kwargs["classification"]
         self.parsed = kwargs.get("parsed", None)
+
+
+class InvoiceDataTablesItem(msrest.serialization.Model):
+    """InvoiceDataTablesItem.
+
+    :ivar rows:
+    :vartype rows: list[~affinda.models.RowAnnotation]
+    """
+
+    _attribute_map = {
+        "rows": {"key": "rows", "type": "[RowAnnotation]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword rows:
+        :paramtype rows: list[~affinda.models.RowAnnotation]
+        """
+        super(InvoiceDataTablesItem, self).__init__(**kwargs)
+        self.rows = kwargs.get("rows", None)
 
 
 class Meta(msrest.serialization.Model):
@@ -7808,6 +7834,92 @@ class ResumeSkillSourcesItem(msrest.serialization.Model):
         super(ResumeSkillSourcesItem, self).__init__(**kwargs)
         self.section = kwargs.get("section", None)
         self.position = kwargs.get("position", None)
+
+
+class RowAnnotation(msrest.serialization.Model):
+    """RowAnnotation.
+
+    :ivar code:
+    :vartype code: str
+    :ivar date:
+    :vartype date: str
+    :ivar description:
+    :vartype description: str
+    :ivar unit:
+    :vartype unit: str
+    :ivar unit_price:
+    :vartype unit_price: float
+    :ivar quantity:
+    :vartype quantity: float
+    :ivar discount:
+    :vartype discount: str
+    :ivar base_total:
+    :vartype base_total: float
+    :ivar tax_rate:
+    :vartype tax_rate: str
+    :ivar tax_total:
+    :vartype tax_total: float
+    :ivar total:
+    :vartype total: float
+    :ivar other:
+    :vartype other: str
+    """
+
+    _attribute_map = {
+        "code": {"key": "code", "type": "str"},
+        "date": {"key": "date", "type": "str"},
+        "description": {"key": "description", "type": "str"},
+        "unit": {"key": "unit", "type": "str"},
+        "unit_price": {"key": "unitPrice", "type": "float"},
+        "quantity": {"key": "quantity", "type": "float"},
+        "discount": {"key": "discount", "type": "str"},
+        "base_total": {"key": "baseTotal", "type": "float"},
+        "tax_rate": {"key": "taxRate", "type": "str"},
+        "tax_total": {"key": "taxTotal", "type": "float"},
+        "total": {"key": "total", "type": "float"},
+        "other": {"key": "other", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword code:
+        :paramtype code: str
+        :keyword date:
+        :paramtype date: str
+        :keyword description:
+        :paramtype description: str
+        :keyword unit:
+        :paramtype unit: str
+        :keyword unit_price:
+        :paramtype unit_price: float
+        :keyword quantity:
+        :paramtype quantity: float
+        :keyword discount:
+        :paramtype discount: str
+        :keyword base_total:
+        :paramtype base_total: float
+        :keyword tax_rate:
+        :paramtype tax_rate: str
+        :keyword tax_total:
+        :paramtype tax_total: float
+        :keyword total:
+        :paramtype total: float
+        :keyword other:
+        :paramtype other: str
+        """
+        super(RowAnnotation, self).__init__(**kwargs)
+        self.code = kwargs.get("code", None)
+        self.date = kwargs.get("date", None)
+        self.description = kwargs.get("description", None)
+        self.unit = kwargs.get("unit", None)
+        self.unit_price = kwargs.get("unit_price", None)
+        self.quantity = kwargs.get("quantity", None)
+        self.discount = kwargs.get("discount", None)
+        self.base_total = kwargs.get("base_total", None)
+        self.tax_rate = kwargs.get("tax_rate", None)
+        self.tax_total = kwargs.get("tax_total", None)
+        self.total = kwargs.get("total", None)
+        self.other = kwargs.get("other", None)
 
 
 class SkillAnnotation(Annotation):

@@ -1518,6 +1518,8 @@ class InvoiceData(msrest.serialization.Model)
 
 InvoiceData.
 
+:ivar tables:
+:vartype tables: list[~affinda.models.InvoiceDataTablesItem]
 :ivar invoice_date:
 :vartype invoice_date: ~affinda.models.DateAnnotation
 :ivar invoice_order_date:
@@ -1597,6 +1599,8 @@ InvoiceData.
 def __init__(**kwargs)
 ```
 
+:keyword tables:
+:paramtype tables: list[~affinda.models.InvoiceDataTablesItem]
 :keyword invoice_date:
 :paramtype invoice_date: ~affinda.models.DateAnnotation
 :keyword invoice_order_date:
@@ -3347,6 +3351,30 @@ collection.
 :paramtype classification: str
 :keyword parsed:
 :paramtype parsed: str
+
+<a id="models._models.InvoiceDataTablesItem"></a>
+
+## InvoiceDataTablesItem Objects
+
+```python
+class InvoiceDataTablesItem(msrest.serialization.Model)
+```
+
+InvoiceDataTablesItem.
+
+:ivar rows:
+:vartype rows: list[~affinda.models.RowAnnotation]
+
+<a id="models._models.InvoiceDataTablesItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword rows:
+:paramtype rows: list[~affinda.models.RowAnnotation]
 
 <a id="models._models.Meta"></a>
 
@@ -6399,6 +6427,74 @@ def __init__(**kwargs)
 :paramtype section: str or ~affinda.models.ResumeSkillSourcesItemSection
 :keyword position:
 :paramtype position: int
+
+<a id="models._models.RowAnnotation"></a>
+
+## RowAnnotation Objects
+
+```python
+class RowAnnotation(msrest.serialization.Model)
+```
+
+RowAnnotation.
+
+:ivar code:
+:vartype code: str
+:ivar date:
+:vartype date: str
+:ivar description:
+:vartype description: str
+:ivar unit:
+:vartype unit: str
+:ivar unit_price:
+:vartype unit_price: float
+:ivar quantity:
+:vartype quantity: float
+:ivar discount:
+:vartype discount: str
+:ivar base_total:
+:vartype base_total: float
+:ivar tax_rate:
+:vartype tax_rate: str
+:ivar tax_total:
+:vartype tax_total: float
+:ivar total:
+:vartype total: float
+:ivar other:
+:vartype other: str
+
+<a id="models._models.RowAnnotation.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword code:
+:paramtype code: str
+:keyword date:
+:paramtype date: str
+:keyword description:
+:paramtype description: str
+:keyword unit:
+:paramtype unit: str
+:keyword unit_price:
+:paramtype unit_price: float
+:keyword quantity:
+:paramtype quantity: float
+:keyword discount:
+:paramtype discount: str
+:keyword base_total:
+:paramtype base_total: float
+:keyword tax_rate:
+:paramtype tax_rate: str
+:keyword tax_total:
+:paramtype tax_total: float
+:keyword total:
+:paramtype total: float
+:keyword other:
+:paramtype other: str
 
 <a id="models._models.SkillAnnotation"></a>
 
