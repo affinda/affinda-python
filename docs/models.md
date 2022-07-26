@@ -53,6 +53,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -77,6 +79,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -90,22 +94,22 @@ collection.
 :keyword classification: Required.
 :paramtype classification: str
 
-<a id="models._models.Components11Zi81FSchemasInvoicedataPropertiesBankswiftAllof2"></a>
+<a id="models._models.Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1"></a>
 
-## Components11Zi81FSchemasInvoicedataPropertiesBankswiftAllof2 Objects
+## Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1 Objects
 
 ```python
-class Components11Zi81FSchemasInvoicedataPropertiesBankswiftAllof2(msrest.serialization.Model)
+class Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1(msrest.serialization.Model)
 ```
 
-Components11Zi81FSchemasInvoicedataPropertiesBankswiftAllof2.
+Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.Components11Zi81FSchemasInvoicedataPropertiesBankswiftAllof2.__init__"></a>
+<a id="models._models.Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -118,22 +122,22 @@ def __init__(**kwargs)
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.Components14Dm0XSchemasInvoicedataPropertiesBankaccountnumberAllof2"></a>
+<a id="models._models.Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1"></a>
 
-## Components14Dm0XSchemasInvoicedataPropertiesBankaccountnumberAllof2 Objects
+## Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1 Objects
 
 ```python
-class Components14Dm0XSchemasInvoicedataPropertiesBankaccountnumberAllof2(msrest.serialization.Model)
+class Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1(msrest.serialization.Model)
 ```
 
-Components14Dm0XSchemasInvoicedataPropertiesBankaccountnumberAllof2.
+Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.Components14Dm0XSchemasInvoicedataPropertiesBankaccountnumberAllof2.__init__"></a>
+<a id="models._models.Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -146,22 +150,50 @@ def __init__(**kwargs)
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2"></a>
+<a id="models._models.Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1"></a>
 
-## Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2 Objects
+## Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1 Objects
 
 ```python
-class Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2(msrest.serialization.Model)
+class Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1(msrest.serialization.Model)
 ```
 
-Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2.
+Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2.__init__"></a>
+<a id="models._models.Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1"></a>
+
+## Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1 Objects
+
+```python
+class Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1(msrest.serialization.Model)
+```
+
+Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -198,62 +230,6 @@ def __init__(**kwargs)
 :keyword match:
 :paramtype match: bool
 
-<a id="models._models.Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2"></a>
-
-## Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2 Objects
-
-```python
-class Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2(msrest.serialization.Model)
-```
-
-Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2.
-
-:ivar raw:
-:vartype raw: str
-:ivar parsed:
-:vartype parsed: str
-
-<a id="models._models.Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
-
-<a id="models._models.Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2"></a>
-
-## Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2 Objects
-
-```python
-class Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2(msrest.serialization.Model)
-```
-
-Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2.
-
-:ivar raw:
-:vartype raw: str
-:ivar parsed:
-:vartype parsed: str
-
-<a id="models._models.Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
-
 <a id="models._models.Components17Ashz6SchemasInvoicePropertiesMetaAllof1"></a>
 
 ## Components17Ashz6SchemasInvoicePropertiesMetaAllof1 Objects
@@ -264,6 +240,8 @@ class Components17Ashz6SchemasInvoicePropertiesMetaAllof1(msrest.serialization.M
 
 Components17Ashz6SchemasInvoicePropertiesMetaAllof1.
 
+:ivar client_verified_dt:
+:vartype client_verified_dt: str
 :ivar review_url: Signed URL (valid for 60 minutes) to access the invoice review tool.
 :vartype review_url: str
 
@@ -275,25 +253,27 @@ Components17Ashz6SchemasInvoicePropertiesMetaAllof1.
 def __init__(**kwargs)
 ```
 
+:keyword client_verified_dt:
+:paramtype client_verified_dt: str
 :keyword review_url: Signed URL (valid for 60 minutes) to access the invoice review tool.
 :paramtype review_url: str
 
-<a id="models._models.Components1Bh8NlbSchemasInvoicedataPropertiesBpaybillercodeAllof2"></a>
+<a id="models._models.Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1"></a>
 
-## Components1Bh8NlbSchemasInvoicedataPropertiesBpaybillercodeAllof2 Objects
+## Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1 Objects
 
 ```python
-class Components1Bh8NlbSchemasInvoicedataPropertiesBpaybillercodeAllof2(msrest.serialization.Model)
+class Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1(msrest.serialization.Model)
 ```
 
-Components1Bh8NlbSchemasInvoicedataPropertiesBpaybillercodeAllof2.
+Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.Components1Bh8NlbSchemasInvoicedataPropertiesBpaybillercodeAllof2.__init__"></a>
+<a id="models._models.Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -306,22 +286,22 @@ def __init__(**kwargs)
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.Components1ByjheSchemasInvoicedataPropertiesSupplierfaxAllof2"></a>
+<a id="models._models.Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1"></a>
 
-## Components1ByjheSchemasInvoicedataPropertiesSupplierfaxAllof2 Objects
+## Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1 Objects
 
 ```python
-class Components1ByjheSchemasInvoicedataPropertiesSupplierfaxAllof2(msrest.serialization.Model)
+class Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1(msrest.serialization.Model)
 ```
 
-Components1ByjheSchemasInvoicedataPropertiesSupplierfaxAllof2.
+Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.Components1ByjheSchemasInvoicedataPropertiesSupplierfaxAllof2.__init__"></a>
+<a id="models._models.Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -334,22 +314,22 @@ def __init__(**kwargs)
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.Components1Fdmi0OSchemasInvoicedataPropertiesSuppliervatAllof2"></a>
+<a id="models._models.Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1"></a>
 
-## Components1Fdmi0OSchemasInvoicedataPropertiesSuppliervatAllof2 Objects
+## Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1 Objects
 
 ```python
-class Components1Fdmi0OSchemasInvoicedataPropertiesSuppliervatAllof2(msrest.serialization.Model)
+class Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1(msrest.serialization.Model)
 ```
 
-Components1Fdmi0OSchemasInvoicedataPropertiesSuppliervatAllof2.
+Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.Components1Fdmi0OSchemasInvoicedataPropertiesSuppliervatAllof2.__init__"></a>
+<a id="models._models.Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -362,22 +342,22 @@ def __init__(**kwargs)
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.Components1LdfgdeSchemasInvoicedataPropertiesPaymentamountpaidAllof2"></a>
+<a id="models._models.Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1"></a>
 
-## Components1LdfgdeSchemasInvoicedataPropertiesPaymentamountpaidAllof2 Objects
+## Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1 Objects
 
 ```python
-class Components1LdfgdeSchemasInvoicedataPropertiesPaymentamountpaidAllof2(msrest.serialization.Model)
+class Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1(msrest.serialization.Model)
 ```
 
-Components1LdfgdeSchemasInvoicedataPropertiesPaymentamountpaidAllof2.
+Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.Components1LdfgdeSchemasInvoicedataPropertiesPaymentamountpaidAllof2.__init__"></a>
+<a id="models._models.Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -390,22 +370,22 @@ def __init__(**kwargs)
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.Components1O4BmpySchemasInvoicedataPropertiesSuppliercompanynameAllof2"></a>
+<a id="models._models.Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1"></a>
 
-## Components1O4BmpySchemasInvoicedataPropertiesSuppliercompanynameAllof2 Objects
+## Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1 Objects
 
 ```python
-class Components1O4BmpySchemasInvoicedataPropertiesSuppliercompanynameAllof2(msrest.serialization.Model)
+class Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1(msrest.serialization.Model)
 ```
 
-Components1O4BmpySchemasInvoicedataPropertiesSuppliercompanynameAllof2.
+Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.Components1O4BmpySchemasInvoicedataPropertiesSuppliercompanynameAllof2.__init__"></a>
+<a id="models._models.Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -418,22 +398,22 @@ def __init__(**kwargs)
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.Components1OmsnpSchemasInvoicedataPropertiesBpayreferenceAllof2"></a>
+<a id="models._models.Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1"></a>
 
-## Components1OmsnpSchemasInvoicedataPropertiesBpayreferenceAllof2 Objects
+## Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1 Objects
 
 ```python
-class Components1OmsnpSchemasInvoicedataPropertiesBpayreferenceAllof2(msrest.serialization.Model)
+class Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1(msrest.serialization.Model)
 ```
 
-Components1OmsnpSchemasInvoicedataPropertiesBpayreferenceAllof2.
+Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.Components1OmsnpSchemasInvoicedataPropertiesBpayreferenceAllof2.__init__"></a>
+<a id="models._models.Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -446,22 +426,50 @@ def __init__(**kwargs)
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.Components1Rbm6P1SchemasInvoicedataPropertiesBanksortcodeAllof2"></a>
+<a id="models._models.Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1"></a>
 
-## Components1Rbm6P1SchemasInvoicedataPropertiesBanksortcodeAllof2 Objects
+## Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1 Objects
 
 ```python
-class Components1Rbm6P1SchemasInvoicedataPropertiesBanksortcodeAllof2(msrest.serialization.Model)
+class Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1(msrest.serialization.Model)
 ```
 
-Components1Rbm6P1SchemasInvoicedataPropertiesBanksortcodeAllof2.
+Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.Components1Rbm6P1SchemasInvoicedataPropertiesBanksortcodeAllof2.__init__"></a>
+<a id="models._models.Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1"></a>
+
+## Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1 Objects
+
+```python
+class Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1(msrest.serialization.Model)
+```
+
+Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -514,22 +522,22 @@ def __init__(**kwargs)
 :keyword soc_code: The 4 digit code representing the SOC2020 classification for this job title.
 :paramtype soc_code: int
 
-<a id="models._models.Components1Wx56HlSchemasInvoicedataPropertiesPaymentreferenceAllof2"></a>
+<a id="models._models.Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1"></a>
 
-## Components1Wx56HlSchemasInvoicedataPropertiesPaymentreferenceAllof2 Objects
+## Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1 Objects
 
 ```python
-class Components1Wx56HlSchemasInvoicedataPropertiesPaymentreferenceAllof2(msrest.serialization.Model)
+class Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1(msrest.serialization.Model)
 ```
 
-Components1Wx56HlSchemasInvoicedataPropertiesPaymentreferenceAllof2.
+Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.Components1Wx56HlSchemasInvoicedataPropertiesPaymentreferenceAllof2.__init__"></a>
+<a id="models._models.Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -542,22 +550,22 @@ def __init__(**kwargs)
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.Components2Hu973SchemasInvoicedataPropertiesCustomernumberAllof2"></a>
+<a id="models._models.Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1"></a>
 
-## Components2Hu973SchemasInvoicedataPropertiesCustomernumberAllof2 Objects
+## Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1 Objects
 
 ```python
-class Components2Hu973SchemasInvoicedataPropertiesCustomernumberAllof2(msrest.serialization.Model)
+class Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1(msrest.serialization.Model)
 ```
 
-Components2Hu973SchemasInvoicedataPropertiesCustomernumberAllof2.
+Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.Components2Hu973SchemasInvoicedataPropertiesCustomernumberAllof2.__init__"></a>
+<a id="models._models.Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -570,22 +578,22 @@ def __init__(**kwargs)
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.Components55Nj82SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof2"></a>
+<a id="models._models.Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1"></a>
 
-## Components55Nj82SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof2 Objects
+## Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1 Objects
 
 ```python
-class Components55Nj82SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof2(msrest.serialization.Model)
+class Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1(msrest.serialization.Model)
 ```
 
-Components55Nj82SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof2.
+Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.Components55Nj82SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof2.__init__"></a>
+<a id="models._models.Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -598,22 +606,22 @@ def __init__(**kwargs)
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.Components5PwavySchemasInvoicedataPropertiesCustomeremailAllof2"></a>
+<a id="models._models.Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1"></a>
 
-## Components5PwavySchemasInvoicedataPropertiesCustomeremailAllof2 Objects
+## Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1 Objects
 
 ```python
-class Components5PwavySchemasInvoicedataPropertiesCustomeremailAllof2(msrest.serialization.Model)
+class Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1(msrest.serialization.Model)
 ```
 
-Components5PwavySchemasInvoicedataPropertiesCustomeremailAllof2.
+Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.Components5PwavySchemasInvoicedataPropertiesCustomeremailAllof2.__init__"></a>
+<a id="models._models.Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -626,22 +634,22 @@ def __init__(**kwargs)
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.Components6DhvidSchemasInvoicedataPropertiesCustomercompanynameAllof2"></a>
+<a id="models._models.Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1"></a>
 
-## Components6DhvidSchemasInvoicedataPropertiesCustomercompanynameAllof2 Objects
+## Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1 Objects
 
 ```python
-class Components6DhvidSchemasInvoicedataPropertiesCustomercompanynameAllof2(msrest.serialization.Model)
+class Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1(msrest.serialization.Model)
 ```
 
-Components6DhvidSchemasInvoicedataPropertiesCustomercompanynameAllof2.
+Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.Components6DhvidSchemasInvoicedataPropertiesCustomercompanynameAllof2.__init__"></a>
+<a id="models._models.Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -654,22 +662,22 @@ def __init__(**kwargs)
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.Components7CqvqpSchemasInvoicedataPropertiesInvoicenumberAllof2"></a>
+<a id="models._models.Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1"></a>
 
-## Components7CqvqpSchemasInvoicedataPropertiesInvoicenumberAllof2 Objects
+## Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1 Objects
 
 ```python
-class Components7CqvqpSchemasInvoicedataPropertiesInvoicenumberAllof2(msrest.serialization.Model)
+class Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1(msrest.serialization.Model)
 ```
 
-Components7CqvqpSchemasInvoicedataPropertiesInvoicenumberAllof2.
+Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.Components7CqvqpSchemasInvoicedataPropertiesInvoicenumberAllof2.__init__"></a>
+<a id="models._models.Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -682,22 +690,22 @@ def __init__(**kwargs)
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.ComponentsBvthtoSchemasInvoicedataPropertiesSupplierphonenumberAllof2"></a>
+<a id="models._models.Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1"></a>
 
-## ComponentsBvthtoSchemasInvoicedataPropertiesSupplierphonenumberAllof2 Objects
+## Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1 Objects
 
 ```python
-class ComponentsBvthtoSchemasInvoicedataPropertiesSupplierphonenumberAllof2(msrest.serialization.Model)
+class Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1(msrest.serialization.Model)
 ```
 
-ComponentsBvthtoSchemasInvoicedataPropertiesSupplierphonenumberAllof2.
+Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.ComponentsBvthtoSchemasInvoicedataPropertiesSupplierphonenumberAllof2.__init__"></a>
+<a id="models._models.Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -710,22 +718,218 @@ def __init__(**kwargs)
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.ComponentsE6Bjv3SchemasInvoicedataPropertiesBankibanAllof2"></a>
+<a id="models._models.Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1"></a>
 
-## ComponentsE6Bjv3SchemasInvoicedataPropertiesBankibanAllof2 Objects
+## Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1 Objects
 
 ```python
-class ComponentsE6Bjv3SchemasInvoicedataPropertiesBankibanAllof2(msrest.serialization.Model)
+class Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1(msrest.serialization.Model)
 ```
 
-ComponentsE6Bjv3SchemasInvoicedataPropertiesBankibanAllof2.
+Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.ComponentsE6Bjv3SchemasInvoicedataPropertiesBankibanAllof2.__init__"></a>
+<a id="models._models.Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1"></a>
+
+## Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1 Objects
+
+```python
+class Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1(msrest.serialization.Model)
+```
+
+Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1"></a>
+
+## Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1 Objects
+
+```python
+class Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1(msrest.serialization.Model)
+```
+
+Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1"></a>
+
+## ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1 Objects
+
+```python
+class ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1(msrest.serialization.Model)
+```
+
+ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1"></a>
+
+## ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1 Objects
+
+```python
+class ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1(msrest.serialization.Model)
+```
+
+ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1"></a>
+
+## ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1 Objects
+
+```python
+class ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.serialization.Model)
+```
+
+ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1"></a>
+
+## ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1 Objects
+
+```python
+class ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1(msrest.serialization.Model)
+```
+
+ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
+
+<a id="models._models.ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1"></a>
+
+## ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1 Objects
+
+```python
+class ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1(msrest.serialization.Model)
+```
+
+ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -810,90 +1014,6 @@ def __init__(**kwargs)
 :keyword match:
 :paramtype match: bool
 
-<a id="models._models.ComponentsPs8Uo7SchemasInvoicedataPropertiesCustomerphonenumberAllof2"></a>
-
-## ComponentsPs8Uo7SchemasInvoicedataPropertiesCustomerphonenumberAllof2 Objects
-
-```python
-class ComponentsPs8Uo7SchemasInvoicedataPropertiesCustomerphonenumberAllof2(msrest.serialization.Model)
-```
-
-ComponentsPs8Uo7SchemasInvoicedataPropertiesCustomerphonenumberAllof2.
-
-:ivar raw:
-:vartype raw: str
-:ivar parsed:
-:vartype parsed: str
-
-<a id="models._models.ComponentsPs8Uo7SchemasInvoicedataPropertiesCustomerphonenumberAllof2.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
-
-<a id="models._models.ComponentsRft7JdSchemasInvoicedataPropertiesCustomerbusinessnumberAllof2"></a>
-
-## ComponentsRft7JdSchemasInvoicedataPropertiesCustomerbusinessnumberAllof2 Objects
-
-```python
-class ComponentsRft7JdSchemasInvoicedataPropertiesCustomerbusinessnumberAllof2(msrest.serialization.Model)
-```
-
-ComponentsRft7JdSchemasInvoicedataPropertiesCustomerbusinessnumberAllof2.
-
-:ivar raw:
-:vartype raw: str
-:ivar parsed:
-:vartype parsed: str
-
-<a id="models._models.ComponentsRft7JdSchemasInvoicedataPropertiesCustomerbusinessnumberAllof2.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
-
-<a id="models._models.ComponentsRsi73USchemasInvoicedataPropertiesCustomervatAllof2"></a>
-
-## ComponentsRsi73USchemasInvoicedataPropertiesCustomervatAllof2 Objects
-
-```python
-class ComponentsRsi73USchemasInvoicedataPropertiesCustomervatAllof2(msrest.serialization.Model)
-```
-
-ComponentsRsi73USchemasInvoicedataPropertiesCustomervatAllof2.
-
-:ivar raw:
-:vartype raw: str
-:ivar parsed:
-:vartype parsed: str
-
-<a id="models._models.ComponentsRsi73USchemasInvoicedataPropertiesCustomervatAllof2.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
-
 <a id="models._models.ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1"></a>
 
 ## ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1 Objects
@@ -918,22 +1038,22 @@ def __init__(**kwargs)
 :keyword match:
 :paramtype match: bool
 
-<a id="models._models.ComponentsTz04ToSchemasInvoicedataPropertiesPaymentamountbaseAllof2"></a>
+<a id="models._models.ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1"></a>
 
-## ComponentsTz04ToSchemasInvoicedataPropertiesPaymentamountbaseAllof2 Objects
+## ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1 Objects
 
 ```python
-class ComponentsTz04ToSchemasInvoicedataPropertiesPaymentamountbaseAllof2(msrest.serialization.Model)
+class ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1(msrest.serialization.Model)
 ```
 
-ComponentsTz04ToSchemasInvoicedataPropertiesPaymentamountbaseAllof2.
+ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.ComponentsTz04ToSchemasInvoicedataPropertiesPaymentamountbaseAllof2.__init__"></a>
+<a id="models._models.ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -946,134 +1066,22 @@ def __init__(**kwargs)
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.ComponentsUilt2MSchemasInvoicedataPropertiesBankbsbAllof2"></a>
+<a id="models._models.ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1"></a>
 
-## ComponentsUilt2MSchemasInvoicedataPropertiesBankbsbAllof2 Objects
+## ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1 Objects
 
 ```python
-class ComponentsUilt2MSchemasInvoicedataPropertiesBankbsbAllof2(msrest.serialization.Model)
+class ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1(msrest.serialization.Model)
 ```
 
-ComponentsUilt2MSchemasInvoicedataPropertiesBankbsbAllof2.
+ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.ComponentsUilt2MSchemasInvoicedataPropertiesBankbsbAllof2.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
-
-<a id="models._models.ComponentsVyrnzuSchemasInvoicedataPropertiesSupplieremailAllof2"></a>
-
-## ComponentsVyrnzuSchemasInvoicedataPropertiesSupplieremailAllof2 Objects
-
-```python
-class ComponentsVyrnzuSchemasInvoicedataPropertiesSupplieremailAllof2(msrest.serialization.Model)
-```
-
-ComponentsVyrnzuSchemasInvoicedataPropertiesSupplieremailAllof2.
-
-:ivar raw:
-:vartype raw: str
-:ivar parsed:
-:vartype parsed: str
-
-<a id="models._models.ComponentsVyrnzuSchemasInvoicedataPropertiesSupplieremailAllof2.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
-
-<a id="models._models.ComponentsWywi9WSchemasInvoicedataPropertiesCustomercontactnameAllof2"></a>
-
-## ComponentsWywi9WSchemasInvoicedataPropertiesCustomercontactnameAllof2 Objects
-
-```python
-class ComponentsWywi9WSchemasInvoicedataPropertiesCustomercontactnameAllof2(msrest.serialization.Model)
-```
-
-ComponentsWywi9WSchemasInvoicedataPropertiesCustomercontactnameAllof2.
-
-:ivar raw:
-:vartype raw: str
-:ivar parsed:
-:vartype parsed: str
-
-<a id="models._models.ComponentsWywi9WSchemasInvoicedataPropertiesCustomercontactnameAllof2.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
-
-<a id="models._models.ComponentsY49P83SchemasInvoicedataPropertiesPaymentamounttaxAllof2"></a>
-
-## ComponentsY49P83SchemasInvoicedataPropertiesPaymentamounttaxAllof2 Objects
-
-```python
-class ComponentsY49P83SchemasInvoicedataPropertiesPaymentamounttaxAllof2(msrest.serialization.Model)
-```
-
-ComponentsY49P83SchemasInvoicedataPropertiesPaymentamounttaxAllof2.
-
-:ivar raw:
-:vartype raw: str
-:ivar parsed:
-:vartype parsed: str
-
-<a id="models._models.ComponentsY49P83SchemasInvoicedataPropertiesPaymentamounttaxAllof2.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
-
-<a id="models._models.ComponentsYe0TzySchemasInvoicedataPropertiesSupplierbusinessnumberAllof2"></a>
-
-## ComponentsYe0TzySchemasInvoicedataPropertiesSupplierbusinessnumberAllof2 Objects
-
-```python
-class ComponentsYe0TzySchemasInvoicedataPropertiesSupplierbusinessnumberAllof2(msrest.serialization.Model)
-```
-
-ComponentsYe0TzySchemasInvoicedataPropertiesSupplierbusinessnumberAllof2.
-
-:ivar raw:
-:vartype raw: str
-:ivar parsed:
-:vartype parsed: str
-
-<a id="models._models.ComponentsYe0TzySchemasInvoicedataPropertiesSupplierbusinessnumberAllof2.__init__"></a>
+<a id="models._models.ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -1101,6 +1109,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -1127,6 +1137,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -1157,7 +1169,7 @@ Education.
 :ivar accreditation:
 :vartype accreditation: ~affinda.models.Accreditation
 :ivar grade:
-:vartype grade: str
+:vartype grade: ~affinda.models.EducationGrade
 :ivar location:
 :vartype location: ~affinda.models.Location
 :ivar dates:
@@ -1176,7 +1188,7 @@ def __init__(**kwargs)
 :keyword accreditation:
 :paramtype accreditation: ~affinda.models.Accreditation
 :keyword grade:
-:paramtype grade: str
+:paramtype grade: ~affinda.models.EducationGrade
 :keyword location:
 :paramtype location: ~affinda.models.Location
 :keyword dates:
@@ -1213,6 +1225,98 @@ def __init__(**kwargs)
 :paramtype completion_date: str
 :keyword is_current:
 :paramtype is_current: bool
+
+<a id="models._models.EducationGrade"></a>
+
+## EducationGrade Objects
+
+```python
+class EducationGrade(msrest.serialization.Model)
+```
+
+EducationGrade.
+
+:ivar raw:
+:vartype raw: str
+:ivar value:
+:vartype value: str
+:ivar metric:
+:vartype metric: str
+
+<a id="models._models.EducationGrade.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword value:
+:paramtype value: str
+:keyword metric:
+:paramtype metric: str
+
+<a id="models._models.EnumAnnotationSerializer"></a>
+
+## EnumAnnotationSerializer Objects
+
+```python
+class EnumAnnotationSerializer(Annotation)
+```
+
+EnumAnnotationSerializer.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.EnumAnnotationSerializer.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.Error"></a>
 
@@ -1257,6 +1361,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -1283,6 +1389,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -1486,6 +1594,8 @@ Invoice.
 
 All required parameters must be populated in order to send to Azure.
 
+:ivar client_verified_dt: Required.
+:vartype client_verified_dt: str
 :ivar data: Required.
 :vartype data: ~affinda.models.InvoiceData
 :ivar meta: Required.
@@ -1501,6 +1611,8 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
+:keyword client_verified_dt: Required.
+:paramtype client_verified_dt: str
 :keyword data: Required.
 :paramtype data: ~affinda.models.InvoiceData
 :keyword meta: Required.
@@ -1551,9 +1663,9 @@ InvoiceData.
 :ivar bank_account_number:
 :vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
 :ivar supplier_vat:
-:vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVAT
+:vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
 :ivar customer_vat:
-:vartype customer_vat: ~affinda.models.InvoiceDataCustomerVAT
+:vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
 :ivar bpay_biller_code:
 :vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
 :ivar bpay_reference:
@@ -1561,11 +1673,11 @@ InvoiceData.
 :ivar bank_sort_code:
 :vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
 :ivar bank_iban:
-:vartype bank_iban: ~affinda.models.InvoiceDataBankIBAN
+:vartype bank_iban: ~affinda.models.InvoiceDataBankIban
 :ivar bank_swift:
 :vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
 :ivar bank_bsb:
-:vartype bank_bsb: ~affinda.models.InvoiceDataBankBSB
+:vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
 :ivar customer_contact_name:
 :vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
 :ivar customer_company_name:
@@ -1590,6 +1702,10 @@ InvoiceData.
 :vartype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
 :ivar supplier_website:
 :vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
+:ivar currency_code:
+:vartype currency_code: ~affinda.models.EnumAnnotationSerializer
+:ivar custom_fields: Dictionary of :code:`<any>`.
+:vartype custom_fields: dict[str, any]
 
 <a id="models._models.InvoiceData.__init__"></a>
 
@@ -1632,9 +1748,9 @@ def __init__(**kwargs)
 :keyword bank_account_number:
 :paramtype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
 :keyword supplier_vat:
-:paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVAT
+:paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
 :keyword customer_vat:
-:paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVAT
+:paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVat
 :keyword bpay_biller_code:
 :paramtype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
 :keyword bpay_reference:
@@ -1642,11 +1758,11 @@ def __init__(**kwargs)
 :keyword bank_sort_code:
 :paramtype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
 :keyword bank_iban:
-:paramtype bank_iban: ~affinda.models.InvoiceDataBankIBAN
+:paramtype bank_iban: ~affinda.models.InvoiceDataBankIban
 :keyword bank_swift:
 :paramtype bank_swift: ~affinda.models.InvoiceDataBankSwift
 :keyword bank_bsb:
-:paramtype bank_bsb: ~affinda.models.InvoiceDataBankBSB
+:paramtype bank_bsb: ~affinda.models.InvoiceDataBankBsb
 :keyword customer_contact_name:
 :paramtype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
 :keyword customer_company_name:
@@ -1671,6 +1787,10 @@ def __init__(**kwargs)
 :paramtype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
 :keyword supplier_website:
 :paramtype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
+:keyword currency_code:
+:paramtype currency_code: ~affinda.models.EnumAnnotationSerializer
+:keyword custom_fields: Dictionary of :code:`<any>`.
+:paramtype custom_fields: dict[str, any]
 
 <a id="models._models.TextAnnotation"></a>
 
@@ -1687,6 +1807,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -1713,6 +1835,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -1733,7 +1857,7 @@ collection.
 ## InvoiceDataBankAccountNumber Objects
 
 ```python
-class InvoiceDataBankAccountNumber(TextAnnotation,  Components14Dm0XSchemasInvoicedataPropertiesBankaccountnumberAllof2)
+class InvoiceDataBankAccountNumber(TextAnnotation,  Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1)
 ```
 
 InvoiceDataBankAccountNumber.
@@ -1743,6 +1867,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -1769,6 +1895,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -1784,21 +1912,23 @@ collection.
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.InvoiceDataBankBSB"></a>
+<a id="models._models.InvoiceDataBankBsb"></a>
 
-## InvoiceDataBankBSB Objects
+## InvoiceDataBankBsb Objects
 
 ```python
-class InvoiceDataBankBSB(TextAnnotation,  ComponentsUilt2MSchemasInvoicedataPropertiesBankbsbAllof2)
+class InvoiceDataBankBsb(TextAnnotation,  Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1)
 ```
 
-InvoiceDataBankBSB.
+InvoiceDataBankBsb.
 
 All required parameters must be populated in order to send to Azure.
 
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -1814,7 +1944,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.InvoiceDataBankBSB.__init__"></a>
+<a id="models._models.InvoiceDataBankBsb.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -1825,6 +1955,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -1840,21 +1972,23 @@ collection.
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.InvoiceDataBankIBAN"></a>
+<a id="models._models.InvoiceDataBankIban"></a>
 
-## InvoiceDataBankIBAN Objects
+## InvoiceDataBankIban Objects
 
 ```python
-class InvoiceDataBankIBAN(TextAnnotation,  ComponentsE6Bjv3SchemasInvoicedataPropertiesBankibanAllof2)
+class InvoiceDataBankIban(TextAnnotation,  Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1)
 ```
 
-InvoiceDataBankIBAN.
+InvoiceDataBankIban.
 
 All required parameters must be populated in order to send to Azure.
 
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -1870,7 +2004,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.InvoiceDataBankIBAN.__init__"></a>
+<a id="models._models.InvoiceDataBankIban.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -1881,6 +2015,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -1901,7 +2037,7 @@ collection.
 ## InvoiceDataBankSortCode Objects
 
 ```python
-class InvoiceDataBankSortCode(TextAnnotation,  Components1Rbm6P1SchemasInvoicedataPropertiesBanksortcodeAllof2)
+class InvoiceDataBankSortCode(TextAnnotation,  Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1)
 ```
 
 InvoiceDataBankSortCode.
@@ -1911,6 +2047,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -1937,6 +2075,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -1957,7 +2097,7 @@ collection.
 ## InvoiceDataBankSwift Objects
 
 ```python
-class InvoiceDataBankSwift(TextAnnotation,  Components11Zi81FSchemasInvoicedataPropertiesBankswiftAllof2)
+class InvoiceDataBankSwift(TextAnnotation,  Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1)
 ```
 
 InvoiceDataBankSwift.
@@ -1967,6 +2107,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -1993,6 +2135,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -2013,7 +2157,7 @@ collection.
 ## InvoiceDataBpayBillerCode Objects
 
 ```python
-class InvoiceDataBpayBillerCode(TextAnnotation,  Components1Bh8NlbSchemasInvoicedataPropertiesBpaybillercodeAllof2)
+class InvoiceDataBpayBillerCode(TextAnnotation,  ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1)
 ```
 
 InvoiceDataBpayBillerCode.
@@ -2023,6 +2167,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -2049,6 +2195,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -2069,7 +2217,7 @@ collection.
 ## InvoiceDataBpayReference Objects
 
 ```python
-class InvoiceDataBpayReference(TextAnnotation,  Components1OmsnpSchemasInvoicedataPropertiesBpayreferenceAllof2)
+class InvoiceDataBpayReference(TextAnnotation,  ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1)
 ```
 
 InvoiceDataBpayReference.
@@ -2079,6 +2227,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -2105,6 +2255,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -2125,7 +2277,7 @@ collection.
 ## InvoiceDataCustomerBusinessNumber Objects
 
 ```python
-class InvoiceDataCustomerBusinessNumber(TextAnnotation,  ComponentsRft7JdSchemasInvoicedataPropertiesCustomerbusinessnumberAllof2)
+class InvoiceDataCustomerBusinessNumber(TextAnnotation,  Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1)
 ```
 
 InvoiceDataCustomerBusinessNumber.
@@ -2135,6 +2287,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -2161,6 +2315,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -2181,7 +2337,7 @@ collection.
 ## InvoiceDataCustomerCompanyName Objects
 
 ```python
-class InvoiceDataCustomerCompanyName(TextAnnotation,  Components6DhvidSchemasInvoicedataPropertiesCustomercompanynameAllof2)
+class InvoiceDataCustomerCompanyName(TextAnnotation,  Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1)
 ```
 
 InvoiceDataCustomerCompanyName.
@@ -2191,6 +2347,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -2217,6 +2375,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -2237,7 +2397,7 @@ collection.
 ## InvoiceDataCustomerContactName Objects
 
 ```python
-class InvoiceDataCustomerContactName(TextAnnotation,  ComponentsWywi9WSchemasInvoicedataPropertiesCustomercontactnameAllof2)
+class InvoiceDataCustomerContactName(TextAnnotation,  ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1)
 ```
 
 InvoiceDataCustomerContactName.
@@ -2247,6 +2407,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -2273,6 +2435,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -2293,7 +2457,7 @@ collection.
 ## InvoiceDataCustomerEmail Objects
 
 ```python
-class InvoiceDataCustomerEmail(TextAnnotation,  Components5PwavySchemasInvoicedataPropertiesCustomeremailAllof2)
+class InvoiceDataCustomerEmail(TextAnnotation,  Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1)
 ```
 
 InvoiceDataCustomerEmail.
@@ -2303,6 +2467,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -2329,6 +2495,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -2349,7 +2517,7 @@ collection.
 ## InvoiceDataCustomerNumber Objects
 
 ```python
-class InvoiceDataCustomerNumber(TextAnnotation,  Components2Hu973SchemasInvoicedataPropertiesCustomernumberAllof2)
+class InvoiceDataCustomerNumber(TextAnnotation,  Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1)
 ```
 
 InvoiceDataCustomerNumber.
@@ -2359,6 +2527,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -2385,6 +2555,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -2405,7 +2577,7 @@ collection.
 ## InvoiceDataCustomerPhoneNumber Objects
 
 ```python
-class InvoiceDataCustomerPhoneNumber(TextAnnotation,  ComponentsPs8Uo7SchemasInvoicedataPropertiesCustomerphonenumberAllof2)
+class InvoiceDataCustomerPhoneNumber(TextAnnotation,  Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1)
 ```
 
 InvoiceDataCustomerPhoneNumber.
@@ -2415,6 +2587,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -2441,6 +2615,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -2456,21 +2632,23 @@ collection.
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.InvoiceDataCustomerVAT"></a>
+<a id="models._models.InvoiceDataCustomerVat"></a>
 
-## InvoiceDataCustomerVAT Objects
+## InvoiceDataCustomerVat Objects
 
 ```python
-class InvoiceDataCustomerVAT(TextAnnotation,  ComponentsRsi73USchemasInvoicedataPropertiesCustomervatAllof2)
+class InvoiceDataCustomerVat(TextAnnotation,  ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1)
 ```
 
-InvoiceDataCustomerVAT.
+InvoiceDataCustomerVat.
 
 All required parameters must be populated in order to send to Azure.
 
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -2486,7 +2664,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.InvoiceDataCustomerVAT.__init__"></a>
+<a id="models._models.InvoiceDataCustomerVat.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -2497,6 +2675,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -2517,7 +2697,7 @@ collection.
 ## InvoiceDataInvoiceNumber Objects
 
 ```python
-class InvoiceDataInvoiceNumber(TextAnnotation,  Components7CqvqpSchemasInvoicedataPropertiesInvoicenumberAllof2)
+class InvoiceDataInvoiceNumber(TextAnnotation,  Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1)
 ```
 
 InvoiceDataInvoiceNumber.
@@ -2527,6 +2707,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -2553,6 +2735,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -2573,7 +2757,7 @@ collection.
 ## InvoiceDataInvoicePurchaseOrderNumber Objects
 
 ```python
-class InvoiceDataInvoicePurchaseOrderNumber(TextAnnotation,  Components55Nj82SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof2)
+class InvoiceDataInvoicePurchaseOrderNumber(TextAnnotation,  ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1)
 ```
 
 InvoiceDataInvoicePurchaseOrderNumber.
@@ -2583,6 +2767,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -2609,6 +2795,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -2629,7 +2817,7 @@ collection.
 ## InvoiceDataPaymentAmountBase Objects
 
 ```python
-class InvoiceDataPaymentAmountBase(TextAnnotation,  ComponentsTz04ToSchemasInvoicedataPropertiesPaymentamountbaseAllof2)
+class InvoiceDataPaymentAmountBase(TextAnnotation,  Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1)
 ```
 
 InvoiceDataPaymentAmountBase.
@@ -2639,6 +2827,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -2665,6 +2855,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -2685,7 +2877,7 @@ collection.
 ## InvoiceDataPaymentAmountDue Objects
 
 ```python
-class InvoiceDataPaymentAmountDue(TextAnnotation,  Components14V23KqSchemasInvoicedataPropertiesPaymentamountdueAllof2)
+class InvoiceDataPaymentAmountDue(TextAnnotation,  ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1)
 ```
 
 InvoiceDataPaymentAmountDue.
@@ -2695,6 +2887,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -2721,6 +2915,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -2741,7 +2937,7 @@ collection.
 ## InvoiceDataPaymentAmountPaid Objects
 
 ```python
-class InvoiceDataPaymentAmountPaid(TextAnnotation,  Components1LdfgdeSchemasInvoicedataPropertiesPaymentamountpaidAllof2)
+class InvoiceDataPaymentAmountPaid(TextAnnotation,  Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1)
 ```
 
 InvoiceDataPaymentAmountPaid.
@@ -2751,6 +2947,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -2777,6 +2975,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -2797,7 +2997,7 @@ collection.
 ## InvoiceDataPaymentAmountTax Objects
 
 ```python
-class InvoiceDataPaymentAmountTax(TextAnnotation,  ComponentsY49P83SchemasInvoicedataPropertiesPaymentamounttaxAllof2)
+class InvoiceDataPaymentAmountTax(TextAnnotation,  Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1)
 ```
 
 InvoiceDataPaymentAmountTax.
@@ -2807,6 +3007,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -2833,6 +3035,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -2853,7 +3057,7 @@ collection.
 ## InvoiceDataPaymentAmountTotal Objects
 
 ```python
-class InvoiceDataPaymentAmountTotal(TextAnnotation,  Components15Ayv0YSchemasInvoicedataPropertiesPaymentamounttotalAllof2)
+class InvoiceDataPaymentAmountTotal(TextAnnotation,  Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1)
 ```
 
 InvoiceDataPaymentAmountTotal.
@@ -2863,6 +3067,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -2889,6 +3095,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -2909,7 +3117,7 @@ collection.
 ## InvoiceDataPaymentReference Objects
 
 ```python
-class InvoiceDataPaymentReference(TextAnnotation,  Components1Wx56HlSchemasInvoicedataPropertiesPaymentreferenceAllof2)
+class InvoiceDataPaymentReference(TextAnnotation,  Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1)
 ```
 
 InvoiceDataPaymentReference.
@@ -2919,6 +3127,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -2945,6 +3155,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -2965,7 +3177,7 @@ collection.
 ## InvoiceDataSupplierBusinessNumber Objects
 
 ```python
-class InvoiceDataSupplierBusinessNumber(TextAnnotation,  ComponentsYe0TzySchemasInvoicedataPropertiesSupplierbusinessnumberAllof2)
+class InvoiceDataSupplierBusinessNumber(TextAnnotation,  Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1)
 ```
 
 InvoiceDataSupplierBusinessNumber.
@@ -2975,6 +3187,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -3001,6 +3215,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -3021,7 +3237,7 @@ collection.
 ## InvoiceDataSupplierCompanyName Objects
 
 ```python
-class InvoiceDataSupplierCompanyName(TextAnnotation,  Components1O4BmpySchemasInvoicedataPropertiesSuppliercompanynameAllof2)
+class InvoiceDataSupplierCompanyName(TextAnnotation,  Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1)
 ```
 
 InvoiceDataSupplierCompanyName.
@@ -3031,6 +3247,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -3057,6 +3275,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -3077,7 +3297,7 @@ collection.
 ## InvoiceDataSupplierEmail Objects
 
 ```python
-class InvoiceDataSupplierEmail(TextAnnotation,  ComponentsVyrnzuSchemasInvoicedataPropertiesSupplieremailAllof2)
+class InvoiceDataSupplierEmail(TextAnnotation,  Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1)
 ```
 
 InvoiceDataSupplierEmail.
@@ -3087,6 +3307,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -3113,6 +3335,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -3133,7 +3357,7 @@ collection.
 ## InvoiceDataSupplierFax Objects
 
 ```python
-class InvoiceDataSupplierFax(TextAnnotation,  Components1ByjheSchemasInvoicedataPropertiesSupplierfaxAllof2)
+class InvoiceDataSupplierFax(TextAnnotation,  Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1)
 ```
 
 InvoiceDataSupplierFax.
@@ -3143,6 +3367,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -3169,6 +3395,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -3189,7 +3417,7 @@ collection.
 ## InvoiceDataSupplierPhoneNumber Objects
 
 ```python
-class InvoiceDataSupplierPhoneNumber(TextAnnotation,  ComponentsBvthtoSchemasInvoicedataPropertiesSupplierphonenumberAllof2)
+class InvoiceDataSupplierPhoneNumber(TextAnnotation,  Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1)
 ```
 
 InvoiceDataSupplierPhoneNumber.
@@ -3199,6 +3427,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -3225,6 +3455,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -3240,21 +3472,23 @@ collection.
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.InvoiceDataSupplierVAT"></a>
+<a id="models._models.InvoiceDataSupplierVat"></a>
 
-## InvoiceDataSupplierVAT Objects
+## InvoiceDataSupplierVat Objects
 
 ```python
-class InvoiceDataSupplierVAT(TextAnnotation,  Components1Fdmi0OSchemasInvoicedataPropertiesSuppliervatAllof2)
+class InvoiceDataSupplierVat(TextAnnotation,  ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1)
 ```
 
-InvoiceDataSupplierVAT.
+InvoiceDataSupplierVat.
 
 All required parameters must be populated in order to send to Azure.
 
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -3270,7 +3504,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.InvoiceDataSupplierVAT.__init__"></a>
+<a id="models._models.InvoiceDataSupplierVat.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -3281,6 +3515,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -3301,7 +3537,7 @@ collection.
 ## InvoiceDataSupplierWebsite Objects
 
 ```python
-class InvoiceDataSupplierWebsite(TextAnnotation,  Components179Pdz6SchemasInvoicedataPropertiesSupplierwebsiteAllof2)
+class InvoiceDataSupplierWebsite(TextAnnotation,  Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1)
 ```
 
 InvoiceDataSupplierWebsite.
@@ -3311,6 +3547,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -3337,6 +3575,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -3388,6 +3628,9 @@ Meta.
 
 All required parameters must be populated in order to send to Azure.
 
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
 :ivar identifier: Required. Unique identifier for the document. If creating a document and left
  blank, one will be automatically generated.
 :vartype identifier: str
@@ -3414,6 +3657,9 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
 :keyword identifier: Required. Unique identifier for the document. If creating a document and
 left blank, one will be automatically generated.
 :paramtype identifier: str
@@ -3444,8 +3690,13 @@ InvoiceMeta.
 
 All required parameters must be populated in order to send to Azure.
 
+:ivar client_verified_dt:
+:vartype client_verified_dt: str
 :ivar review_url: Signed URL (valid for 60 minutes) to access the invoice review tool.
 :vartype review_url: str
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
 :ivar identifier: Required. Unique identifier for the document. If creating a document and left
  blank, one will be automatically generated.
 :vartype identifier: str
@@ -3472,8 +3723,13 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
+:keyword client_verified_dt:
+:paramtype client_verified_dt: str
 :keyword review_url: Signed URL (valid for 60 minutes) to access the invoice review tool.
 :paramtype review_url: str
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
 :keyword identifier: Required. Unique identifier for the document. If creating a document and
 left blank, one will be automatically generated.
 :paramtype identifier: str
@@ -3536,6 +3792,8 @@ class JobDescriptionData(msrest.serialization.Model)
 
 JobDescriptionData.
 
+:ivar job_title:
+:vartype job_title: ~affinda.models.JobTitleAnnotation
 :ivar contact_email:
 :vartype contact_email: ~affinda.models.TextAnnotation
 :ivar contact_name:
@@ -3566,6 +3824,8 @@ JobDescriptionData.
 :vartype location: ~affinda.models.LocationAnnotation
 :ivar certifications:
 :vartype certifications: list[~affinda.models.TextAnnotation]
+:ivar years_experience:
+:vartype years_experience: ~affinda.models.YearsExperienceAnnotation
 
 <a id="models._models.JobDescriptionData.__init__"></a>
 
@@ -3575,6 +3835,8 @@ JobDescriptionData.
 def __init__(**kwargs)
 ```
 
+:keyword job_title:
+:paramtype job_title: ~affinda.models.JobTitleAnnotation
 :keyword contact_email:
 :paramtype contact_email: ~affinda.models.TextAnnotation
 :keyword contact_name:
@@ -3605,6 +3867,140 @@ def __init__(**kwargs)
 :paramtype location: ~affinda.models.LocationAnnotation
 :keyword certifications:
 :paramtype certifications: list[~affinda.models.TextAnnotation]
+:keyword years_experience:
+:paramtype years_experience: ~affinda.models.YearsExperienceAnnotation
+
+<a id="models._models.JobTitleAnnotation"></a>
+
+## JobTitleAnnotation Objects
+
+```python
+class JobTitleAnnotation(Annotation)
+```
+
+JobTitleAnnotation.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+:ivar parsed: Years of experience range.
+:vartype parsed: ~affinda.models.JobTitleAnnotationParsed
+
+<a id="models._models.JobTitleAnnotation.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+:keyword parsed: Years of experience range.
+:paramtype parsed: ~affinda.models.JobTitleAnnotationParsed
+
+<a id="models._models.JobTitleAnnotationParsed"></a>
+
+## JobTitleAnnotationParsed Objects
+
+```python
+class JobTitleAnnotationParsed(msrest.serialization.Model)
+```
+
+Years of experience range.
+
+:ivar name:
+:vartype name: str
+:ivar management_level:
+:vartype management_level: str
+:ivar classification:
+:vartype classification: ~affinda.models.JobTitleAnnotationParsedClassification
+
+<a id="models._models.JobTitleAnnotationParsed.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword name:
+:paramtype name: str
+:keyword management_level:
+:paramtype management_level: str
+:keyword classification:
+:paramtype classification: ~affinda.models.JobTitleAnnotationParsedClassification
+
+<a id="models._models.JobTitleAnnotationParsedClassification"></a>
+
+## JobTitleAnnotationParsedClassification Objects
+
+```python
+class JobTitleAnnotationParsedClassification(msrest.serialization.Model)
+```
+
+JobTitleAnnotationParsedClassification.
+
+:ivar soc_code:
+:vartype soc_code: float
+:ivar title:
+:vartype title: str
+:ivar minor_group:
+:vartype minor_group: str
+:ivar sub_major_group:
+:vartype sub_major_group: str
+:ivar major_group:
+:vartype major_group: str
+
+<a id="models._models.JobTitleAnnotationParsedClassification.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword soc_code:
+:paramtype soc_code: float
+:keyword title:
+:paramtype title: str
+:keyword minor_group:
+:paramtype minor_group: str
+:keyword sub_major_group:
+:paramtype sub_major_group: str
+:keyword major_group:
+:paramtype major_group: str
 
 <a id="models._models.LanguageAnnotation"></a>
 
@@ -3621,6 +4017,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -3647,6 +4045,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -3723,6 +4123,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -3749,6 +4151,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -4312,6 +4716,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype username: str
 :ivar email:
 :vartype email: str
+:ivar api_key:
+:vartype api_key: str
 
 <a id="models._models.User.__init__"></a>
 
@@ -4329,6 +4735,8 @@ def __init__(**kwargs)
 :paramtype username: str
 :keyword email:
 :paramtype email: str
+:keyword api_key:
+:paramtype api_key: str
 
 <a id="models._models.PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema"></a>
 
@@ -4342,9 +4750,6 @@ PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema.
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar api_key: API key used to authenticate for future requests.  This key is only retrievable
- at the initial creation of the user.
-:vartype api_key: str
 :ivar id:
 :vartype id: int
 :ivar name:
@@ -4353,6 +4758,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype username: str
 :ivar email:
 :vartype email: str
+:ivar api_key:
+:vartype api_key: str
 
 <a id="models._models.PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema.__init__"></a>
 
@@ -4362,9 +4769,6 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword api_key: API key used to authenticate for future requests.  This key is only
-retrievable at the initial creation of the user.
-:paramtype api_key: str
 :keyword id:
 :paramtype id: int
 :keyword name:
@@ -4373,6 +4777,8 @@ retrievable at the initial creation of the user.
 :paramtype username: str
 :keyword email:
 :paramtype email: str
+:keyword api_key:
+:paramtype api_key: str
 
 <a id="models._models.PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema"></a>
 
@@ -5299,7 +5705,7 @@ ResumeDataWorkExperienceItemOccupation.
 :ivar job_title_normalized: Mapped onto the EMSI job title taxonomy if a sufficiently close
  match exists.
 :vartype job_title_normalized: str
-:ivar management_level: Possible values include: "Low", "Mid", "Upper".
+:ivar management_level: Known values are: "None", "Low", "Mid", "Upper".
 :vartype management_level: str or ~affinda.models.ManagementLevel
 :ivar classification:
 :vartype classification:
@@ -5318,7 +5724,7 @@ def __init__(**kwargs)
 :keyword job_title_normalized: Mapped onto the EMSI job title taxonomy if a sufficiently close
 match exists.
 :paramtype job_title_normalized: str
-:keyword management_level: Possible values include: "Low", "Mid", "Upper".
+:keyword management_level: Known values are: "None", "Low", "Mid", "Upper".
 :paramtype management_level: str or ~affinda.models.ManagementLevel
 :keyword classification:
 :paramtype classification:
@@ -5505,7 +5911,7 @@ ResumeSearchDetailEducationValueItem.
 :ivar accreditation:
 :vartype accreditation: ~affinda.models.Accreditation
 :ivar grade:
-:vartype grade: str
+:vartype grade: ~affinda.models.EducationGrade
 :ivar location:
 :vartype location: ~affinda.models.Location
 :ivar dates:
@@ -5526,7 +5932,7 @@ def __init__(**kwargs)
 :keyword accreditation:
 :paramtype accreditation: ~affinda.models.Accreditation
 :keyword grade:
-:paramtype grade: str
+:paramtype grade: ~affinda.models.EducationGrade
 :keyword location:
 :paramtype location: ~affinda.models.Location
 :keyword dates:
@@ -5828,7 +6234,7 @@ class ResumeSearchDetailManagementLevel(msrest.serialization.Model)
 
 ResumeSearchDetailManagementLevel.
 
-:ivar level: Possible values include: "Low", "Mid", "Upper".
+:ivar level: Known values are: "None", "Low", "Mid", "Upper".
 :vartype level: str or ~affinda.models.ManagementLevel
 :ivar match:
 :vartype match: bool
@@ -5841,7 +6247,7 @@ ResumeSearchDetailManagementLevel.
 def __init__(**kwargs)
 ```
 
-:keyword level: Possible values include: "Low", "Mid", "Upper".
+:keyword level: Known values are: "None", "Low", "Mid", "Upper".
 :paramtype level: str or ~affinda.models.ManagementLevel
 :keyword match:
 :paramtype match: bool
@@ -6012,6 +6418,90 @@ def __init__(**kwargs)
 :keyword sources:
 :paramtype sources: list[~affinda.models.ResumeSkillSourcesItem]
 
+<a id="models._models.ResumeSearchMatch"></a>
+
+## ResumeSearchMatch Objects
+
+```python
+class ResumeSearchMatch(msrest.serialization.Model)
+```
+
+ResumeSearchMatch.
+
+:ivar score: The matching score between the provided resume and job description.
+:vartype score: float
+:ivar details:
+:vartype details: ~affinda.models.ResumeSearchMatchDetails
+
+<a id="models._models.ResumeSearchMatch.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword score: The matching score between the provided resume and job description.
+:paramtype score: float
+:keyword details:
+:paramtype details: ~affinda.models.ResumeSearchMatchDetails
+
+<a id="models._models.ResumeSearchMatchDetails"></a>
+
+## ResumeSearchMatchDetails Objects
+
+```python
+class ResumeSearchMatchDetails(msrest.serialization.Model)
+```
+
+ResumeSearchMatchDetails.
+
+:ivar job_title:
+:vartype job_title: ~affinda.models.ResumeSearchScoreComponent
+:ivar management_level:
+:vartype management_level: ~affinda.models.ResumeSearchScoreComponent
+:ivar experience:
+:vartype experience: ~affinda.models.ResumeSearchScoreComponent
+:ivar skills:
+:vartype skills: ~affinda.models.ResumeSearchScoreComponent
+:ivar languages:
+:vartype languages: ~affinda.models.ResumeSearchScoreComponent
+:ivar location:
+:vartype location: ~affinda.models.ResumeSearchScoreComponent
+:ivar education:
+:vartype education: ~affinda.models.ResumeSearchScoreComponent
+:ivar occupation_group:
+:vartype occupation_group: ~affinda.models.ResumeSearchScoreComponent
+:ivar search_expression:
+:vartype search_expression: ~affinda.models.ResumeSearchScoreComponent
+
+<a id="models._models.ResumeSearchMatchDetails.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword job_title:
+:paramtype job_title: ~affinda.models.ResumeSearchScoreComponent
+:keyword management_level:
+:paramtype management_level: ~affinda.models.ResumeSearchScoreComponent
+:keyword experience:
+:paramtype experience: ~affinda.models.ResumeSearchScoreComponent
+:keyword skills:
+:paramtype skills: ~affinda.models.ResumeSearchScoreComponent
+:keyword languages:
+:paramtype languages: ~affinda.models.ResumeSearchScoreComponent
+:keyword location:
+:paramtype location: ~affinda.models.ResumeSearchScoreComponent
+:keyword education:
+:paramtype education: ~affinda.models.ResumeSearchScoreComponent
+:keyword occupation_group:
+:paramtype occupation_group: ~affinda.models.ResumeSearchScoreComponent
+:keyword search_expression:
+:paramtype search_expression: ~affinda.models.ResumeSearchScoreComponent
+
 <a id="models._models.ResumeSearchParameters"></a>
 
 ## ResumeSearchParameters Objects
@@ -6029,6 +6519,9 @@ All required parameters must be populated in order to send to Azure.
 :ivar job_description: Unique identifier for the document. If creating a document and left
  blank, one will be automatically generated.
 :vartype job_description: str
+:ivar resume: Unique identifier for the document. If creating a document and left blank, one
+ will be automatically generated.
+:vartype resume: str
 :ivar job_titles:
 :vartype job_titles: list[str]
 :ivar job_titles_current_only:
@@ -6097,7 +6590,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype soc_codes_weight: float
 :ivar soc_codes_required:
 :vartype soc_codes_required: bool
-:ivar management_level: Possible values include: "Low", "Mid", "Upper".
+:ivar management_level: Known values are: "None", "Low", "Mid", "Upper".
 :vartype management_level: str or ~affinda.models.ManagementLevel
 :ivar management_level_required:
 :vartype management_level_required: bool
@@ -6117,6 +6610,9 @@ def __init__(**kwargs)
 :keyword job_description: Unique identifier for the document. If creating a document and left
 blank, one will be automatically generated.
 :paramtype job_description: str
+:keyword resume: Unique identifier for the document. If creating a document and left blank, one
+will be automatically generated.
+:paramtype resume: str
 :keyword job_titles:
 :paramtype job_titles: list[str]
 :keyword job_titles_current_only:
@@ -6185,7 +6681,7 @@ blank, one will be automatically generated.
 :paramtype soc_codes_weight: float
 :keyword soc_codes_required:
 :paramtype soc_codes_required: bool
-:keyword management_level: Possible values include: "Low", "Mid", "Upper".
+:keyword management_level: Known values are: "None", "Low", "Mid", "Upper".
 :paramtype management_level: str or ~affinda.models.ManagementLevel
 :keyword management_level_required:
 :paramtype management_level_required: bool
@@ -6208,7 +6704,7 @@ ResumeSearchParametersLocation.
 :vartype coordinates: ~affinda.models.ResumeSearchParametersLocationCoordinates
 :ivar distance:
 :vartype distance: int
-:ivar unit: Possible values include: "km", "mi".
+:ivar unit: Known values are: "km", "mi".
 :vartype unit: str or ~affinda.models.SearchLocationUnit
 
 <a id="models._models.ResumeSearchParametersLocation.__init__"></a>
@@ -6225,7 +6721,7 @@ def __init__(**kwargs)
 :paramtype coordinates: ~affinda.models.ResumeSearchParametersLocationCoordinates
 :keyword distance:
 :paramtype distance: int
-:keyword unit: Possible values include: "km", "mi".
+:keyword unit: Known values are: "km", "mi".
 :paramtype unit: str or ~affinda.models.SearchLocationUnit
 
 <a id="models._models.ResumeSearchParametersLocationCoordinates"></a>
@@ -6404,7 +6900,7 @@ class ResumeSkillSourcesItem(msrest.serialization.Model)
 
 ResumeSkillSourcesItem.
 
-:ivar section: Possible values include: "Achievements", "AdditionalInformation", "Education",
+:ivar section: Known values are: "Achievements", "AdditionalInformation", "Education",
  "Extracurriculars", "Organisations", "Other", "PersonalDetails", "Projects", "Publications",
  "Referees", "Skills", "Summary", "Training", "WorkExperience", "NotPopulated", "Header",
  "Footer".
@@ -6420,10 +6916,10 @@ ResumeSkillSourcesItem.
 def __init__(**kwargs)
 ```
 
-:keyword section: Possible values include: "Achievements", "AdditionalInformation",
-"Education", "Extracurriculars", "Organisations", "Other", "PersonalDetails", "Projects",
-"Publications", "Referees", "Skills", "Summary", "Training", "WorkExperience", "NotPopulated",
-"Header", "Footer".
+:keyword section: Known values are: "Achievements", "AdditionalInformation", "Education",
+"Extracurriculars", "Organisations", "Other", "PersonalDetails", "Projects", "Publications",
+"Referees", "Skills", "Summary", "Training", "WorkExperience", "NotPopulated", "Header",
+"Footer".
 :paramtype section: str or ~affinda.models.ResumeSkillSourcesItemSection
 :keyword position:
 :paramtype position: int
@@ -6462,6 +6958,8 @@ RowAnnotation.
 :vartype total: float
 :ivar other:
 :vartype other: str
+:ivar custom_fields: Dictionary of :code:`<any>`.
+:vartype custom_fields: dict[str, any]
 
 <a id="models._models.RowAnnotation.__init__"></a>
 
@@ -6495,6 +6993,8 @@ def __init__(**kwargs)
 :paramtype total: float
 :keyword other:
 :paramtype other: str
+:keyword custom_fields: Dictionary of :code:`<any>`.
+:paramtype custom_fields: dict[str, any]
 
 <a id="models._models.SkillAnnotation"></a>
 
@@ -6511,6 +7011,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar page_index: Required.
@@ -6537,6 +7039,8 @@ def __init__(**kwargs)
 :keyword additional_properties: Unmatched properties from the message are deserialized to this
 collection.
 :paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
 :keyword rectangle: Required.
 :paramtype rectangle: ~affinda.models.Rectangle
 :keyword page_index: Required.
@@ -6551,4 +7055,92 @@ collection.
 :paramtype classification: str
 :keyword parsed:
 :paramtype parsed: str
+
+<a id="models._models.YearsExperienceAnnotation"></a>
+
+## YearsExperienceAnnotation Objects
+
+```python
+class YearsExperienceAnnotation(Annotation)
+```
+
+YearsExperienceAnnotation.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar id:
+:vartype id: int
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar confidence: Required.
+:vartype confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar classification: Required.
+:vartype classification: str
+:ivar parsed: Years of experience range.
+:vartype parsed: ~affinda.models.YearsExperienceAnnotationParsed
+
+<a id="models._models.YearsExperienceAnnotation.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword additional_properties: Unmatched properties from the message are deserialized to this
+collection.
+:paramtype additional_properties: dict[str, any]
+:keyword id:
+:paramtype id: int
+:keyword rectangle: Required.
+:paramtype rectangle: ~affinda.models.Rectangle
+:keyword page_index: Required.
+:paramtype page_index: int
+:keyword raw: Required.
+:paramtype raw: str
+:keyword confidence: Required.
+:paramtype confidence: float
+:keyword is_verified: Required.
+:paramtype is_verified: bool
+:keyword classification: Required.
+:paramtype classification: str
+:keyword parsed: Years of experience range.
+:paramtype parsed: ~affinda.models.YearsExperienceAnnotationParsed
+
+<a id="models._models.YearsExperienceAnnotationParsed"></a>
+
+## YearsExperienceAnnotationParsed Objects
+
+```python
+class YearsExperienceAnnotationParsed(msrest.serialization.Model)
+```
+
+Years of experience range.
+
+:ivar minimum: Minimum years of experience.
+:vartype minimum: float
+:ivar maximum: Maximum years of experience.
+:vartype maximum: float
+
+<a id="models._models.YearsExperienceAnnotationParsed.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword minimum: Minimum years of experience.
+:paramtype minimum: float
+:keyword maximum: Maximum years of experience.
+:paramtype maximum: float
 

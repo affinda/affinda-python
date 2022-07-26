@@ -262,22 +262,58 @@ Resume Search
 
 ```python
 from affinda import AffindaAPI, TokenCredential
+from affinda.models import ResumeSearchParameters
 
 token = "REPLACE_TOKEN"
 
 credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
 
-request_body = {
-    "indices": ["MyIndex"],
-    "job_titles": ["Senior Java Software Developer"],
-    "institutions": ["Boston University"],
-}
+# Search with custom criterias
+parameters = ResumeSearchParameters(
+    indices=["All Resumes"],
+    job_titles=["Senior Java Software Developer"],
+    institutions=["Boston University"],
+    # Many more criterias are available, refer to ResumeSearchParameters
+)
+resp = client.create_resume_search(parameters)
+print(resp.as_dict())
 
+# Search with a job description
+job_description_identifier = "REPLACE_JOB_DESCRIPTION_IDENTIFIER"
+parameters = ResumeSearchParameters(
+    indices=["All Resumes"],
+    job_description=job_description_identifier,
+)
+resp = client.create_resume_search(parameters)
+print(resp.as_dict())
 
-resp = client.create_resume_search(body=request_body)
+# Search with a resume
+resume_identifier = "REPLACE_RESUME_IDENTIFIER"
+parameters = ResumeSearchParameters(
+    indices=["All Resumes"],
+    resume=resume_identifier,
+)
+resp = client.create_resume_search(parameters)
+print(resp.as_dict())
+```
 
-print(resp[0].as_dict())
+### getResumeSearchMatch - Resume and job description 1:1 match
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+resume_identifier = "REPLACE_RESUME_IDENTIFIER"
+job_description_identifier = "REPLACE_JOB_DESCRIPTION_IDENTIFIER"
+index_name = "REPLACE_INDEX_NAME"  # Optional
+
+result = client.get_resume_search_match(resume_identifier, job_description_identifier, index_name=index_name)
+print(result.score)
 ```
 
 ### getAllIndexes - Get list of all indexes

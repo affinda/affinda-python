@@ -15,9 +15,7 @@ Affinda API client for Python.
 **Arguments**:
 
 - `credential` (`~azure.core.credentials.TokenCredential`): Credential needed for the client to connect to Azure.
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-- `limit` (`int`): The numbers of results to return.
-- `base_url` (`str`): Service URL. Default value is 'https://api.affinda.com/v2'.
+- `base_url` (`str`): Service URL. Default value is "https://api.affinda.com/v2".
 
 <a id="operations._affinda_api_operations"></a>
 
@@ -36,14 +34,19 @@ class AffindaAPIOperationsMixin(object)
 #### get\_all\_resumes
 
 ```python
-def get_all_resumes(**kwargs)
+def get_all_resumes(offset=None, limit=300, **kwargs)
 ```
 
 Get list of all resumes.
 
 Returns all the resume summaries for that user, limited to 300 per page.
 
+**Arguments**:
+
+Default value is None.
 :keyword callable cls: A custom type or function that will be passed the direct response
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
 
 **Returns**:
 
@@ -70,14 +73,14 @@ retrieve results.
 **Arguments**:
 
 :keyword callable cls: A custom type or function that will be passed the direct response
-- `file` (`IO`): 
-- `url` (`str`): 
-- `data` (`~affinda.models.ResumeData`): A JSON-encoded string of the ``ResumeData`` object.
-- `identifier` (`str`): 
-- `file_name` (`str`): 
-- `wait` (`bool`): 
-- `language` (`str`): 
-- `expiry_time` (`~datetime.datetime`): 
+- `file` (`IO`): Default value is None.
+- `url` (`str`): Default value is None.
+- `data` (`~affinda.models.ResumeData`): A JSON-encoded string of the ``ResumeData`` object. Default value is None.
+- `identifier` (`str`): Default value is None.
+- `file_name` (`str`): Default value is None.
+- `wait` (`bool`): Default value is True.
+- `language` (`str`): Default value is None.
+- `expiry_time` (`~datetime.datetime`): Default value is None.
 
 **Returns**:
 
@@ -156,14 +159,19 @@ Deletes the specified resume from the database.
 #### get\_all\_redacted\_resumes
 
 ```python
-def get_all_redacted_resumes(**kwargs)
+def get_all_redacted_resumes(offset=None, limit=300, **kwargs)
 ```
 
 Get list of all redacted resumes.
 
 Returns all the redacted resume information for that resume.
 
+**Arguments**:
+
+Default value is None.
 :keyword callable cls: A custom type or function that will be passed the direct response
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
 
 **Returns**:
 
@@ -183,22 +191,25 @@ Uploads a resume for redacting.
 
 **Arguments**:
 
+Default value is True.
+is True.
+Default value is True.
 :keyword callable cls: A custom type or function that will be passed the direct response
-- `file` (`IO`): 
-- `identifier` (`str`): 
-- `file_name` (`str`): 
-- `url` (`str`): 
-- `language` (`str`): 
-- `wait` (`bool`): 
-- `redact_headshot` (`bool`): Whether to redact headshot.
+- `file` (`IO`): Default value is None.
+- `identifier` (`str`): Default value is None.
+- `file_name` (`str`): Default value is None.
+- `url` (`str`): Default value is None.
+- `language` (`str`): Default value is None.
+- `wait` (`bool`): Default value is True.
+- `redact_headshot` (`bool`): Whether to redact headshot. Default value is True.
 - `redact_personal_details` (`bool`): Whether to redact personal details (e.g. name, address).
-- `redact_work_details` (`bool`): Whether to redact work details (e.g. company names).
+- `redact_work_details` (`bool`): Whether to redact work details (e.g. company names). Default value
 - `redact_education_details` (`bool`): Whether to redact education details (e.g. university names).
-- `redact_referees` (`bool`): Whether to redact referee details.
-- `redact_locations` (`bool`): Whether to redact location names.
-- `redact_dates` (`bool`): Whether to redact dates.
-- `redact_gender` (`bool`): Whether to redact gender.
-- `expiry_time` (`~datetime.datetime`): 
+- `redact_referees` (`bool`): Whether to redact referee details. Default value is True.
+- `redact_locations` (`bool`): Whether to redact location names. Default value is True.
+- `redact_dates` (`bool`): Whether to redact dates. Default value is True.
+- `redact_gender` (`bool`): Whether to redact gender. Default value is True.
+- `expiry_time` (`~datetime.datetime`): Default value is None.
 
 **Returns**:
 
@@ -253,14 +264,19 @@ Deletes the specified resume from the database.
 #### get\_all\_resume\_formats
 
 ```python
-def get_all_resume_formats(**kwargs)
+def get_all_resume_formats(offset=None, limit=300, **kwargs)
 ```
 
 Get list of all resume formats.
 
 Returns all the resume formats.
 
+**Arguments**:
+
+Default value is None.
 :keyword callable cls: A custom type or function that will be passed the direct response
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
 
 **Returns**:
 
@@ -271,14 +287,19 @@ Returns all the resume formats.
 #### get\_all\_reformatted\_resumes
 
 ```python
-def get_all_reformatted_resumes(**kwargs)
+def get_all_reformatted_resumes(offset=None, limit=300, **kwargs)
 ```
 
 Get list of all reformatted resumes.
 
 Returns all the reformatted resume information for that resume.
 
+**Arguments**:
+
+Default value is None.
 :keyword callable cls: A custom type or function that will be passed the direct response
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
 
 **Returns**:
 
@@ -300,12 +321,12 @@ Upload a resume for reformatting.
 
 :keyword callable cls: A custom type or function that will be passed the direct response
 - `resume_format` (`str`): 
-- `file` (`IO`): 
-- `identifier` (`str`): 
-- `file_name` (`str`): 
-- `url` (`str`): 
-- `language` (`str`): 
-- `wait` (`bool`): 
+- `file` (`IO`): Default value is None.
+- `identifier` (`str`): Default value is None.
+- `file_name` (`str`): Default value is None.
+- `url` (`str`): Default value is None.
+- `language` (`str`): Default value is None.
+- `wait` (`bool`): Default value is True.
 
 **Returns**:
 
@@ -360,17 +381,25 @@ Delete the specified resume from the database.
 #### create\_resume\_search
 
 ```python
-def create_resume_search(body, **kwargs)
+def create_resume_search(body, offset=None, limit=300, **kwargs)
 ```
 
 Search through parsed resumes.
 
-Searches through parsed resumes.
+Searches through parsed resumes. You can search with custom criterias, a job description, or a
+resume.
+When searching with a job description, a parsed job description is used to find candidates that
+suit it.
+When searching with a resume, a parsed resume is used to find other candidates that have
+similar attributes.
 
 **Arguments**:
 
+Default value is None.
 :keyword callable cls: A custom type or function that will be passed the direct response
 - `body` (`~affinda.models.ResumeSearchParameters`): Search parameters.
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
 
 **Returns**:
 
@@ -401,19 +430,67 @@ The ``identifier`` is the unique ID returned via the `/resume_search
 
 `~affinda.models.ResumeSearchDetail or ~affinda.models.RequestError`: ResumeSearchDetail or RequestError, or the result of cls(response)
 
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_match"></a>
+
+#### get\_resume\_search\_match
+
+```python
+def get_resume_search_match(resume, job_description, index=None, job_titles_weight=None, years_experience_weight=None, locations_weight=None, languages_weight=None, skills_weight=None, education_weight=None, search_expression_weight=None, soc_codes_weight=None, management_level_weight=None, **kwargs)
+```
+
+Resume and job description 1:1 match.
+
+Get the matching score between a resume and a job description. The score ranges between 0 and
+1, with 0 being not a match at all, and 1 being perfect match.
+
+**Arguments**:
+
+indexes. Default value is None.
+1. Default value is None.
+from 0 to 1. Default value is None.
+1. Default value is None.
+1. Default value is None.
+Default value is None.
+1. Default value is None.
+from 0 to 1. Default value is None.
+1. Default value is None.
+from 0 to 1. Default value is None.
+:keyword callable cls: A custom type or function that will be passed the direct response
+- `resume` (`str`): Identify the resume to match.
+- `job_description` (`str`): Identify the job description to match.
+- `index` (`str`): Optionally, specify an index to search in. If not specified, will search in all
+- `job_titles_weight` (`float`): How important is this criteria to the matching score, range from 0 to
+- `years_experience_weight` (`float`): How important is this criteria to the matching score, range
+- `locations_weight` (`float`): How important is this criteria to the matching score, range from 0 to
+- `languages_weight` (`float`): How important is this criteria to the matching score, range from 0 to
+- `skills_weight` (`float`): How important is this criteria to the matching score, range from 0 to 1.
+- `education_weight` (`float`): How important is this criteria to the matching score, range from 0 to
+- `search_expression_weight` (`float`): How important is this criteria to the matching score, range
+- `soc_codes_weight` (`float`): How important is this criteria to the matching score, range from 0 to
+- `management_level_weight` (`float`): How important is this criteria to the matching score, range
+
+**Returns**:
+
+`~affinda.models.ResumeSearchMatch or ~affinda.models.RequestError`: ResumeSearchMatch or RequestError, or the result of cls(response)
+
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_job_descriptions"></a>
 
 #### get\_all\_job\_descriptions
 
 ```python
-def get_all_job_descriptions(**kwargs)
+def get_all_job_descriptions(offset=None, limit=300, **kwargs)
 ```
 
 Get list of all job descriptions.
 
 Returns all the job descriptions for that user, limited to 300 per page.
 
+**Arguments**:
+
+Default value is None.
 :keyword callable cls: A custom type or function that will be passed the direct response
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
 
 **Returns**:
 
@@ -437,13 +514,13 @@ and retrieve results.
 **Arguments**:
 
 :keyword callable cls: A custom type or function that will be passed the direct response
-- `file` (`IO`): 
-- `identifier` (`str`): 
-- `file_name` (`str`): 
-- `url` (`str`): 
-- `wait` (`bool`): 
-- `language` (`str`): 
-- `expiry_time` (`~datetime.datetime`): 
+- `file` (`IO`): Default value is None.
+- `identifier` (`str`): Default value is None.
+- `file_name` (`str`): Default value is None.
+- `url` (`str`): Default value is None.
+- `wait` (`bool`): Default value is True.
+- `language` (`str`): Default value is None.
+- `expiry_time` (`~datetime.datetime`): Default value is None.
 
 **Returns**:
 
@@ -498,14 +575,19 @@ Deletes the specified job description from the database.
 #### get\_all\_indexes
 
 ```python
-def get_all_indexes(**kwargs)
+def get_all_indexes(offset=None, limit=300, **kwargs)
 ```
 
 Get list of all indexes.
 
 Returns all the indexes.
 
+**Arguments**:
+
+Default value is None.
 :keyword callable cls: A custom type or function that will be passed the direct response
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
 
 **Returns**:
 
@@ -526,7 +608,7 @@ Create an index for the search tool.
 **Arguments**:
 
 :keyword callable cls: A custom type or function that will be passed the direct response
-- `name` (`bool`): 
+- `name` (`bool`): Default value is True.
 
 **Returns**:
 
@@ -624,14 +706,19 @@ Delete the specified indexed document from the database.
 #### get\_all\_invoices
 
 ```python
-def get_all_invoices(**kwargs)
+def get_all_invoices(offset=None, limit=300, **kwargs)
 ```
 
 Get list of all invoices.
 
 Returns all the invoice summaries for that user, limited to 300 per page.
 
+**Arguments**:
+
+Default value is None.
 :keyword callable cls: A custom type or function that will be passed the direct response
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
 
 **Returns**:
 
@@ -655,13 +742,13 @@ retrieve results.
 **Arguments**:
 
 :keyword callable cls: A custom type or function that will be passed the direct response
-- `file` (`IO`): 
-- `identifier` (`str`): 
-- `file_name` (`str`): 
-- `url` (`str`): 
-- `wait` (`bool`): 
-- `language` (`str`): 
-- `expiry_time` (`~datetime.datetime`): 
+- `file` (`IO`): Default value is None.
+- `identifier` (`str`): Default value is None.
+- `file_name` (`str`): Default value is None.
+- `url` (`str`): Default value is None.
+- `wait` (`bool`): Default value is True.
+- `language` (`str`): Default value is None.
+- `expiry_time` (`~datetime.datetime`): Default value is None.
 
 **Returns**:
 
@@ -734,14 +821,19 @@ TODO TODO TODO.
 #### get\_all\_users
 
 ```python
-def get_all_users(**kwargs)
+def get_all_users(offset=None, limit=300, **kwargs)
 ```
 
 Get list of all users.
 
 Returns all the users.
 
+**Arguments**:
+
+Default value is None.
 :keyword callable cls: A custom type or function that will be passed the direct response
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
 
 **Returns**:
 
@@ -752,7 +844,7 @@ Returns all the users.
 #### create\_user
 
 ```python
-def create_user(username, id=None, name=None, email=None, **kwargs)
+def create_user(username, id=None, name=None, email=None, api_key=None, **kwargs)
 ```
 
 Create a new user.
@@ -763,9 +855,10 @@ Create an user as part of your account.
 
 :keyword callable cls: A custom type or function that will be passed the direct response
 - `username` (`str`): 
-- `id` (`int`): 
-- `name` (`str`): 
-- `email` (`str`): 
+- `id` (`int`): Default value is None.
+- `name` (`str`): Default value is None.
+- `email` (`str`): Default value is None.
+- `api_key` (`str`): Default value is None.
 
 **Returns**:
 
