@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.3.0] - 2022-07-27
 ### Added
 - Add ability to find other candidates that have similar attributes to a resume
 - Add an endpoint to get the matching score between a resume and a job description
@@ -114,4 +116,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.2] - 2021-08-18
 * Initial release
-
