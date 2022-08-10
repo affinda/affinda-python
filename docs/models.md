@@ -3648,6 +3648,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
  deleted.  Defaults to no expiry.
 :vartype expiry_time: ~datetime.datetime
+:ivar language: The resume's language.
+:vartype language: str
 
 <a id="models._models.Meta.__init__"></a>
 
@@ -3677,6 +3679,8 @@ stop polling.
 :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
 :paramtype expiry_time: ~datetime.datetime
+:keyword language: The resume's language.
+:paramtype language: str
 
 <a id="models._models.InvoiceMeta"></a>
 
@@ -3714,6 +3718,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
  deleted.  Defaults to no expiry.
 :vartype expiry_time: ~datetime.datetime
+:ivar language: The resume's language.
+:vartype language: str
 
 <a id="models._models.InvoiceMeta.__init__"></a>
 
@@ -3747,6 +3753,8 @@ stop polling.
 :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
 :paramtype expiry_time: ~datetime.datetime
+:keyword language: The resume's language.
+:paramtype language: str
 
 <a id="models._models.JobDescription"></a>
 
@@ -4371,6 +4379,30 @@ def __init__(**kwargs)
 :keyword api_key: API key used to authenticate for future requests.  This key is only
 retrievable at the initial creation of the user.
 :paramtype api_key: str
+
+<a id="models._models.Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema"></a>
+
+## Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema Objects
+
+```python
+class Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema(msrest.serialization.Model)
+```
+
+Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema.
+
+:ivar config_override:
+:vartype config_override: ~affinda.models.ResumeSearchConfig
+
+<a id="models._models.Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword config_override:
+:paramtype config_override: ~affinda.models.ResumeSearchConfig
 
 <a id="models._models.Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema"></a>
 
@@ -5212,6 +5244,8 @@ Variables are only populated by the server, and will be ignored when sending a r
 :vartype objective: str
 :ivar languages:
 :vartype languages: list[str]
+:ivar language_codes:
+:vartype language_codes: list[str]
 :ivar summary:
 :vartype summary: str
 :ivar total_years_experience:
@@ -5550,6 +5584,8 @@ Variables are only populated by the server, and will be ignored when sending a r
 
 :ivar id:
 :vartype id: int
+:ivar emsi_id: EMSI id of this skill.
+:vartype emsi_id: str
 :ivar name:
 :vartype name: str
 :ivar last_used:
@@ -5558,6 +5594,10 @@ Variables are only populated by the server, and will be ignored when sending a r
 :vartype number_of_months: int
 :ivar type:
 :vartype type: str
+:ivar count:
+:vartype count: int
+:ivar weighting:
+:vartype weighting: float
 :ivar sources:
 :vartype sources: list[~affinda.models.ResumeDataSkillsPropertiesItemsItem]
 
@@ -5590,8 +5630,13 @@ ResumeDataSkillsPropertiesItemsItem.
 
 :ivar section:
 :vartype section: str
-:ivar position:
+:ivar position: If this skill is extracted from a "workExperience" section, the "position" is
+ the index of the work experience where this skill is found, with 0 being the first work
+ experience, 1 being the second work experience, and so on.
 :vartype position: int
+:ivar work_experience_id: If this skill is extracted from a "workExperience" section, the
+ "workExperienceId" is the id of the work experience where this skill is found.
+:vartype work_experience_id: int
 
 <a id="models._models.ResumeDataSkillsPropertiesItemsItem.__init__"></a>
 
@@ -5603,8 +5648,13 @@ def __init__(**kwargs)
 
 :keyword section:
 :paramtype section: str
-:keyword position:
+:keyword position: If this skill is extracted from a "workExperience" section, the "position"
+is the index of the work experience where this skill is found, with 0 being the first work
+experience, 1 being the second work experience, and so on.
 :paramtype position: int
+:keyword work_experience_id: If this skill is extracted from a "workExperience" section, the
+"workExperienceId" is the id of the work experience where this skill is found.
+:paramtype work_experience_id: int
 
 <a id="models._models.ResumeDataWorkExperienceItem"></a>
 
@@ -5622,8 +5672,14 @@ Variables are only populated by the server, and will be ignored when sending a r
 :vartype id: int
 :ivar job_title:
 :vartype job_title: str
+:ivar soc_code:
+:vartype soc_code: str
+:ivar soc_name:
+:vartype soc_name: str
 :ivar organization:
 :vartype organization: str
+:ivar industry:
+:vartype industry: str
 :ivar location:
 :vartype location: ~affinda.models.Location
 :ivar job_description:
@@ -5769,6 +5825,122 @@ def __init__(**kwargs)
 :paramtype parameters: ~affinda.models.ResumeSearchParameters
 :keyword results:
 :paramtype results: list[~affinda.models.ResumeSearchResult]
+
+<a id="models._models.ResumeSearchConfig"></a>
+
+## ResumeSearchConfig Objects
+
+```python
+class ResumeSearchConfig(msrest.serialization.Model)
+```
+
+ResumeSearchConfig.
+
+Variables are only populated by the server, and will be ignored when sending a request.
+
+:ivar allow_pdf_download:
+:vartype allow_pdf_download: bool
+:ivar max_results: Maximum number of results that can be returned. Setting to "null" means no
+ limitation.
+:vartype max_results: int
+:ivar display_job_title:
+:vartype display_job_title: bool
+:ivar display_location:
+:vartype display_location: bool
+:ivar display_years_experience:
+:vartype display_years_experience: bool
+:ivar display_occupation_group:
+:vartype display_occupation_group: bool
+:ivar display_education:
+:vartype display_education: bool
+:ivar display_skills:
+:vartype display_skills: bool
+:ivar display_languages:
+:vartype display_languages: bool
+:ivar display_management_level:
+:vartype display_management_level: bool
+:ivar display_keywords:
+:vartype display_keywords: bool
+:ivar weight_job_title:
+:vartype weight_job_title: float
+:ivar weight_location:
+:vartype weight_location: float
+:ivar weight_years_experience:
+:vartype weight_years_experience: float
+:ivar weight_occupation_group:
+:vartype weight_occupation_group: float
+:ivar weight_education:
+:vartype weight_education: float
+:ivar weight_skills:
+:vartype weight_skills: float
+:ivar weight_languages:
+:vartype weight_languages: float
+:ivar weight_management_level:
+:vartype weight_management_level: float
+:ivar weight_keywords:
+:vartype weight_keywords: float
+:ivar indices: List of index names.
+:vartype indices: list[str]
+:ivar search_tool_theme: Customize the theme of the embeded search tool.
+:vartype search_tool_theme: dict[str, any]
+:ivar user_id: ID of the logged in user.
+:vartype user_id: int
+:ivar username: Username of the logged in user.
+:vartype username: str
+
+<a id="models._models.ResumeSearchConfig.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword allow_pdf_download:
+:paramtype allow_pdf_download: bool
+:keyword max_results: Maximum number of results that can be returned. Setting to "null" means
+no limitation.
+:paramtype max_results: int
+:keyword display_job_title:
+:paramtype display_job_title: bool
+:keyword display_location:
+:paramtype display_location: bool
+:keyword display_years_experience:
+:paramtype display_years_experience: bool
+:keyword display_occupation_group:
+:paramtype display_occupation_group: bool
+:keyword display_education:
+:paramtype display_education: bool
+:keyword display_skills:
+:paramtype display_skills: bool
+:keyword display_languages:
+:paramtype display_languages: bool
+:keyword display_management_level:
+:paramtype display_management_level: bool
+:keyword display_keywords:
+:paramtype display_keywords: bool
+:keyword weight_job_title:
+:paramtype weight_job_title: float
+:keyword weight_location:
+:paramtype weight_location: float
+:keyword weight_years_experience:
+:paramtype weight_years_experience: float
+:keyword weight_occupation_group:
+:paramtype weight_occupation_group: float
+:keyword weight_education:
+:paramtype weight_education: float
+:keyword weight_skills:
+:paramtype weight_skills: float
+:keyword weight_languages:
+:paramtype weight_languages: float
+:keyword weight_management_level:
+:paramtype weight_management_level: float
+:keyword weight_keywords:
+:paramtype weight_keywords: float
+:keyword indices: List of index names.
+:paramtype indices: list[str]
+:keyword search_tool_theme: Customize the theme of the embeded search tool.
+:paramtype search_tool_theme: dict[str, any]
 
 <a id="models._models.ResumeSearchDetail"></a>
 
@@ -6417,6 +6589,30 @@ def __init__(**kwargs)
 :paramtype type: str
 :keyword sources:
 :paramtype sources: list[~affinda.models.ResumeSkillSourcesItem]
+
+<a id="models._models.ResumeSearchEmbed"></a>
+
+## ResumeSearchEmbed Objects
+
+```python
+class ResumeSearchEmbed(msrest.serialization.Model)
+```
+
+ResumeSearchEmbed.
+
+:ivar url: The signed URL for the embedable search tool.
+:vartype url: str
+
+<a id="models._models.ResumeSearchEmbed.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword url: The signed URL for the embedable search tool.
+:paramtype url: str
 
 <a id="models._models.ResumeSearchMatch"></a>
 

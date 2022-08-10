@@ -123,6 +123,9 @@ try:
     from ._models_py3 import Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema
     from ._models_py3 import Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema
     from ._models_py3 import Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1
+    from ._models_py3 import (
+        Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema,
+    )
     from ._models_py3 import Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema
     from ._models_py3 import Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema
     from ._models_py3 import (
@@ -169,6 +172,7 @@ try:
     from ._models_py3 import ResumeDataWorkExperienceItemDates
     from ._models_py3 import ResumeDataWorkExperienceItemOccupation
     from ._models_py3 import ResumeSearch
+    from ._models_py3 import ResumeSearchConfig
     from ._models_py3 import ResumeSearchDetail
     from ._models_py3 import ResumeSearchDetailEducation
     from ._models_py3 import ResumeSearchDetailEducationMissing
@@ -186,6 +190,7 @@ try:
     from ._models_py3 import ResumeSearchDetailSearchExpression
     from ._models_py3 import ResumeSearchDetailSkills
     from ._models_py3 import ResumeSearchDetailSkillsValueItem
+    from ._models_py3 import ResumeSearchEmbed
     from ._models_py3 import ResumeSearchMatch
     from ._models_py3 import ResumeSearchMatchDetails
     from ._models_py3 import ResumeSearchParameters
@@ -301,6 +306,7 @@ except (SyntaxError, ImportError):
     from ._models import Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema  # type: ignore
     from ._models import Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1  # type: ignore
+    from ._models import Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema  # type: ignore
     from ._models import Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema  # type: ignore
     from ._models import Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema  # type: ignore
@@ -335,6 +341,7 @@ except (SyntaxError, ImportError):
     from ._models import ResumeDataWorkExperienceItemDates  # type: ignore
     from ._models import ResumeDataWorkExperienceItemOccupation  # type: ignore
     from ._models import ResumeSearch  # type: ignore
+    from ._models import ResumeSearchConfig  # type: ignore
     from ._models import ResumeSearchDetail  # type: ignore
     from ._models import ResumeSearchDetailEducation  # type: ignore
     from ._models import ResumeSearchDetailEducationMissing  # type: ignore
@@ -352,6 +359,7 @@ except (SyntaxError, ImportError):
     from ._models import ResumeSearchDetailSearchExpression  # type: ignore
     from ._models import ResumeSearchDetailSkills  # type: ignore
     from ._models import ResumeSearchDetailSkillsValueItem  # type: ignore
+    from ._models import ResumeSearchEmbed  # type: ignore
     from ._models import ResumeSearchMatch  # type: ignore
     from ._models import ResumeSearchMatchDetails  # type: ignore
     from ._models import ResumeSearchParameters  # type: ignore
@@ -478,6 +486,7 @@ __all__ = [
     "Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema",
     "Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema",
     "Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1",
+    "Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema",
     "Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema",
     "Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema",
     "Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema",
@@ -512,6 +521,7 @@ __all__ = [
     "ResumeDataWorkExperienceItemDates",
     "ResumeDataWorkExperienceItemOccupation",
     "ResumeSearch",
+    "ResumeSearchConfig",
     "ResumeSearchDetail",
     "ResumeSearchDetailEducation",
     "ResumeSearchDetailEducationMissing",
@@ -529,6 +539,7 @@ __all__ = [
     "ResumeSearchDetailSearchExpression",
     "ResumeSearchDetailSkills",
     "ResumeSearchDetailSkillsValueItem",
+    "ResumeSearchEmbed",
     "ResumeSearchMatch",
     "ResumeSearchMatchDetails",
     "ResumeSearchParameters",

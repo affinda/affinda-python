@@ -435,7 +435,7 @@ The ``identifier`` is the unique ID returned via the `/resume_search
 #### get\_resume\_search\_match
 
 ```python
-def get_resume_search_match(resume, job_description, index=None, job_titles_weight=None, years_experience_weight=None, locations_weight=None, languages_weight=None, skills_weight=None, education_weight=None, search_expression_weight=None, soc_codes_weight=None, management_level_weight=None, **kwargs)
+def get_resume_search_match(resume, job_description, index=None, search_expression=None, job_titles_weight=None, years_experience_weight=None, locations_weight=None, languages_weight=None, skills_weight=None, education_weight=None, search_expression_weight=None, soc_codes_weight=None, management_level_weight=None, **kwargs)
 ```
 
 Resume and job description 1:1 match.
@@ -459,6 +459,7 @@ from 0 to 1. Default value is None.
 - `resume` (`str`): Identify the resume to match.
 - `job_description` (`str`): Identify the job description to match.
 - `index` (`str`): Optionally, specify an index to search in. If not specified, will search in all
+- `search_expression` (`str`): Add keywords to the search criteria. Default value is None.
 - `job_titles_weight` (`float`): How important is this criteria to the matching score, range from 0 to
 - `years_experience_weight` (`float`): How important is this criteria to the matching score, range
 - `locations_weight` (`float`): How important is this criteria to the matching score, range from 0 to
@@ -472,6 +473,73 @@ from 0 to 1. Default value is None.
 **Returns**:
 
 `~affinda.models.ResumeSearchMatch or ~affinda.models.RequestError`: ResumeSearchMatch or RequestError, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_config"></a>
+
+#### get\_resume\_search\_config
+
+```python
+def get_resume_search_config(**kwargs)
+```
+
+Get the config for the logged in user's embedable search tool.
+
+Return configurations such as which fields can be displayed in the logged in user's embedable
+search tool, what are their weights, what is the maximum number of results that can be
+returned, etc.
+
+:keyword callable cls: A custom type or function that will be passed the direct response
+
+**Returns**:
+
+`~affinda.models.ResumeSearchConfig or ~affinda.models.RequestError`: ResumeSearchConfig or RequestError, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_resume_search_config"></a>
+
+#### update\_resume\_search\_config
+
+```python
+def update_resume_search_config(body, **kwargs)
+```
+
+Update the config for the logged in user's embedable search tool.
+
+Update configurations such as which fields can be displayed in the logged in user's embedable
+search tool, what are their weights, what is the maximum number of results that can be
+returned, etc.
+
+**Arguments**:
+
+:keyword callable cls: A custom type or function that will be passed the direct response
+- `body` (`~affinda.models.ResumeSearchConfig`): 
+
+**Returns**:
+
+`~affinda.models.ResumeSearchConfig or ~affinda.models.RequestError`: ResumeSearchConfig or RequestError, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resume_search_embed_url"></a>
+
+#### create\_resume\_search\_embed\_url
+
+```python
+def create_resume_search_embed_url(body=None, **kwargs)
+```
+
+Create a signed URL for the embedable search tool.
+
+Create and return a signed URL of the resume search tool which then can be embedded on a web
+page. An optional parameter ``config_override`` can be passed to override the user-level
+configurations of the embedable search tool.
+
+**Arguments**:
+
+~affinda.models.Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema
+:keyword callable cls: A custom type or function that will be passed the direct response
+- `body`: Default value is None.
+
+**Returns**:
+
+`~affinda.models.ResumeSearchEmbed or ~affinda.models.RequestError`: ResumeSearchEmbed or RequestError, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_job_descriptions"></a>
 

@@ -29,6 +29,7 @@ from ...operations._affinda_api_operations import (
     build_create_redacted_resume_request,
     build_create_reformatted_resume_request,
     build_create_resume_request,
+    build_create_resume_search_embed_url_request,
     build_create_resume_search_request,
     build_create_user_request,
     build_delete_index_document_request,
@@ -52,10 +53,12 @@ from ...operations._affinda_api_operations import (
     build_get_redacted_resume_request,
     build_get_reformatted_resume_request,
     build_get_resume_request,
+    build_get_resume_search_config_request,
     build_get_resume_search_detail_request,
     build_get_resume_search_match_request,
     build_list_occupation_groups_request,
     build_update_resume_data_request,
+    build_update_resume_search_config_request,
 )
 
 T = TypeVar("T")
@@ -1296,6 +1299,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         resume: str,
         job_description: str,
         index: Optional[str] = None,
+        search_expression: Optional[str] = None,
         job_titles_weight: Optional[float] = None,
         years_experience_weight: Optional[float] = None,
         locations_weight: Optional[float] = None,
@@ -1319,6 +1323,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param index: Optionally, specify an index to search in. If not specified, will search in all
          indexes. Default value is None.
         :type index: str
+        :param search_expression: Add keywords to the search criteria. Default value is None.
+        :type search_expression: str
         :param job_titles_weight: How important is this criteria to the matching score, range from 0 to
          1. Default value is None.
         :type job_titles_weight: float
@@ -1369,6 +1375,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             resume=resume,
             job_description=job_description,
             index=index,
+            search_expression=search_expression,
             job_titles_weight=job_titles_weight,
             years_experience_weight=years_experience_weight,
             locations_weight=locations_weight,
@@ -1410,6 +1417,214 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         return deserialized
 
     get_resume_search_match.metadata = {"url": "/resume_search/match"}  # type: ignore
+
+    async def get_resume_search_config(
+        self, **kwargs: Any
+    ) -> Union[_models.ResumeSearchConfig, _models.RequestError]:
+        """Get the config for the logged in user's embedable search tool.
+
+        Return configurations such as which fields can be displayed in the logged in user's embedable
+        search tool, what are their weights, what is the maximum number of results that can be
+        returned, etc.
+
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: ResumeSearchConfig or RequestError, or the result of cls(response)
+        :rtype: ~affinda.models.ResumeSearchConfig or ~affinda.models.RequestError
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Union[_models.ResumeSearchConfig, _models.RequestError]]
+
+        request = build_get_resume_search_config_request(
+            template_url=self.get_resume_search_config.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        request.url = self._client.format_url(request.url)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200, 401]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if response.status_code == 200:
+            deserialized = self._deserialize("ResumeSearchConfig", pipeline_response)
+
+        if response.status_code == 401:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_resume_search_config.metadata = {"url": "/resume_search/config"}  # type: ignore
+
+    async def update_resume_search_config(
+        self, body: _models.ResumeSearchConfig, **kwargs: Any
+    ) -> Union[_models.ResumeSearchConfig, _models.RequestError]:
+        """Update the config for the logged in user's embedable search tool.
+
+        Update configurations such as which fields can be displayed in the logged in user's embedable
+        search tool, what are their weights, what is the maximum number of results that can be
+        returned, etc.
+
+        :param body:
+        :type body: ~affinda.models.ResumeSearchConfig
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: ResumeSearchConfig or RequestError, or the result of cls(response)
+        :rtype: ~affinda.models.ResumeSearchConfig or ~affinda.models.RequestError
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop(
+            "content_type", _headers.pop("Content-Type", "application/json")
+        )  # type: Optional[str]
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Union[_models.ResumeSearchConfig, _models.RequestError]]
+
+        _json = self._serialize.body(body, "ResumeSearchConfig")
+
+        request = build_update_resume_search_config_request(
+            content_type=content_type,
+            json=_json,
+            template_url=self.update_resume_search_config.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        request.url = self._client.format_url(request.url)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200, 400, 401]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if response.status_code == 200:
+            deserialized = self._deserialize("ResumeSearchConfig", pipeline_response)
+
+        if response.status_code == 400:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if response.status_code == 401:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    update_resume_search_config.metadata = {"url": "/resume_search/config"}  # type: ignore
+
+    async def create_resume_search_embed_url(
+        self,
+        body: Optional[
+            _models.Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema
+        ] = None,
+        **kwargs: Any,
+    ) -> Union[_models.ResumeSearchEmbed, _models.RequestError]:
+        """Create a signed URL for the embedable search tool.
+
+        Create and return a signed URL of the resume search tool which then can be embedded on a web
+        page. An optional parameter ``config_override`` can be passed to override the user-level
+        configurations of the embedable search tool.
+
+        :param body:  Default value is None.
+        :type body:
+         ~affinda.models.Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: ResumeSearchEmbed or RequestError, or the result of cls(response)
+        :rtype: ~affinda.models.ResumeSearchEmbed or ~affinda.models.RequestError
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop(
+            "content_type", _headers.pop("Content-Type", "application/json")
+        )  # type: Optional[str]
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Union[_models.ResumeSearchEmbed, _models.RequestError]]
+
+        if body is not None:
+            _json = self._serialize.body(
+                body, "Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema"
+            )
+        else:
+            _json = None
+
+        request = build_create_resume_search_embed_url_request(
+            content_type=content_type,
+            json=_json,
+            template_url=self.create_resume_search_embed_url.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        request.url = self._client.format_url(request.url)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200, 401]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if response.status_code == 200:
+            deserialized = self._deserialize("ResumeSearchEmbed", pipeline_response)
+
+        if response.status_code == 401:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    create_resume_search_embed_url.metadata = {"url": "/resume_search/embed"}  # type: ignore
 
     async def get_all_job_descriptions(
         self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any

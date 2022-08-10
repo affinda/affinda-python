@@ -308,12 +308,75 @@ token = "REPLACE_TOKEN"
 credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
 
-resume_identifier = "REPLACE_RESUME_IDENTIFIER"
-job_description_identifier = "REPLACE_JOB_DESCRIPTION_IDENTIFIER"
-index_name = "REPLACE_INDEX_NAME"  # Optional
+resume = "REPLACE_RESUME_IDENTIFIER"
+job_description = "REPLACE_JOB_DESCRIPTION_IDENTIFIER"
+index = "REPLACE_INDEX_NAME"  # Optional
 
-result = client.get_resume_search_match(resume_identifier, job_description_identifier, index_name=index_name)
+result = client.get_resume_search_match(resume, job_description, index=index)
 print(result.score)
+```
+
+### getResumeSearchConfig - Get the config for the logged in user's embedable search tool.
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+result = client.get_resume_search_config()
+print(result.as_dict())
+```
+
+### updateResumeSearchConfig - Update the config for the logged in user's embedable search tool.
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import ResumeSearchConfig
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+config = ResumeSearchConfig(
+    indices=["my-index"],
+    max_results=10,
+    display_job_title=False,
+    weight_location=0.8,
+    # etc.
+)
+
+result = client.update_resume_search_config(config)
+print(result.as_dict())
+```
+
+### createResumeSearchEmbedUrl - Create a signed URL for the embedable search tool.
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import ResumeSearchConfig
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+# Config override is optional
+request_body = {
+    "config_override": ResumeSearchConfig(
+        indices=["my-index"],
+        max_results=10,
+        display_job_title=False,
+        weight_location=0.8,
+        # etc.
+    )
+}
+
+result = client.create_resume_search_embed_url(body=request_body)
+print(result.url)
 ```
 
 ### getAllIndexes - Get list of all indexes

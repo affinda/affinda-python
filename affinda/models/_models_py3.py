@@ -5497,6 +5497,8 @@ class Meta(msrest.serialization.Model):
     :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
      deleted.  Defaults to no expiry.
     :vartype expiry_time: ~datetime.datetime
+    :ivar language: The resume's language.
+    :vartype language: str
     """
 
     _validation = {
@@ -5513,6 +5515,7 @@ class Meta(msrest.serialization.Model):
         "ready_dt": {"key": "readyDt", "type": "iso-8601"},
         "failed": {"key": "failed", "type": "bool"},
         "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
+        "language": {"key": "language", "type": "str"},
     }
 
     def __init__(
@@ -5525,6 +5528,7 @@ class Meta(msrest.serialization.Model):
         file_name: Optional[str] = None,
         ready_dt: Optional[datetime.datetime] = None,
         expiry_time: Optional[datetime.datetime] = None,
+        language: Optional[str] = None,
         **kwargs,
     ):
         """
@@ -5548,6 +5552,8 @@ class Meta(msrest.serialization.Model):
         :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
          deleted.  Defaults to no expiry.
         :paramtype expiry_time: ~datetime.datetime
+        :keyword language: The resume's language.
+        :paramtype language: str
         """
         super(Meta, self).__init__(**kwargs)
         self.additional_properties = additional_properties
@@ -5557,6 +5563,7 @@ class Meta(msrest.serialization.Model):
         self.ready_dt = ready_dt
         self.failed = failed
         self.expiry_time = expiry_time
+        self.language = language
 
 
 class InvoiceMeta(Meta, Components17Ashz6SchemasInvoicePropertiesMetaAllof1):
@@ -5588,6 +5595,8 @@ class InvoiceMeta(Meta, Components17Ashz6SchemasInvoicePropertiesMetaAllof1):
     :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
      deleted.  Defaults to no expiry.
     :vartype expiry_time: ~datetime.datetime
+    :ivar language: The resume's language.
+    :vartype language: str
     """
 
     _validation = {
@@ -5606,6 +5615,7 @@ class InvoiceMeta(Meta, Components17Ashz6SchemasInvoicePropertiesMetaAllof1):
         "ready_dt": {"key": "readyDt", "type": "iso-8601"},
         "failed": {"key": "failed", "type": "bool"},
         "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
+        "language": {"key": "language", "type": "str"},
     }
 
     def __init__(
@@ -5620,6 +5630,7 @@ class InvoiceMeta(Meta, Components17Ashz6SchemasInvoicePropertiesMetaAllof1):
         file_name: Optional[str] = None,
         ready_dt: Optional[datetime.datetime] = None,
         expiry_time: Optional[datetime.datetime] = None,
+        language: Optional[str] = None,
         **kwargs,
     ):
         """
@@ -5647,6 +5658,8 @@ class InvoiceMeta(Meta, Components17Ashz6SchemasInvoicePropertiesMetaAllof1):
         :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
          deleted.  Defaults to no expiry.
         :paramtype expiry_time: ~datetime.datetime
+        :keyword language: The resume's language.
+        :paramtype language: str
         """
         super(InvoiceMeta, self).__init__(
             additional_properties=additional_properties,
@@ -5656,6 +5669,7 @@ class InvoiceMeta(Meta, Components17Ashz6SchemasInvoicePropertiesMetaAllof1):
             ready_dt=ready_dt,
             failed=failed,
             expiry_time=expiry_time,
+            language=language,
             client_verified_dt=client_verified_dt,
             review_url=review_url,
             **kwargs,
@@ -5669,6 +5683,7 @@ class InvoiceMeta(Meta, Components17Ashz6SchemasInvoicePropertiesMetaAllof1):
         self.ready_dt = ready_dt
         self.failed = failed
         self.expiry_time = expiry_time
+        self.language = language
 
 
 class JobDescription(msrest.serialization.Model):
@@ -6564,6 +6579,32 @@ class Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1(
             **kwargs
         )
         self.api_key = api_key
+
+
+class Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema(
+    msrest.serialization.Model
+):
+    """Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema.
+
+    :ivar config_override:
+    :vartype config_override: ~affinda.models.ResumeSearchConfig
+    """
+
+    _attribute_map = {
+        "config_override": {"key": "configOverride", "type": "ResumeSearchConfig"},
+    }
+
+    def __init__(
+        self, *, config_override: Optional["_models.ResumeSearchConfig"] = None, **kwargs
+    ):
+        """
+        :keyword config_override:
+        :paramtype config_override: ~affinda.models.ResumeSearchConfig
+        """
+        super(
+            Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema, self
+        ).__init__(**kwargs)
+        self.config_override = config_override
 
 
 class Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model):
@@ -7649,6 +7690,8 @@ class ResumeData(msrest.serialization.Model):
     :vartype objective: str
     :ivar languages:
     :vartype languages: list[str]
+    :ivar language_codes:
+    :vartype language_codes: list[str]
     :ivar summary:
     :vartype summary: str
     :ivar total_years_experience:
@@ -7682,6 +7725,7 @@ class ResumeData(msrest.serialization.Model):
 
     _validation = {
         "languages": {"readonly": True},
+        "language_codes": {"readonly": True},
         "head_shot": {"readonly": True},
         "profession": {"readonly": True},
         "linkedin": {"readonly": True},
@@ -7698,6 +7742,7 @@ class ResumeData(msrest.serialization.Model):
         "location": {"key": "location", "type": "Location"},
         "objective": {"key": "objective", "type": "str"},
         "languages": {"key": "languages", "type": "[str]"},
+        "language_codes": {"key": "languageCodes", "type": "[str]"},
         "summary": {"key": "summary", "type": "str"},
         "total_years_experience": {"key": "totalYearsExperience", "type": "int"},
         "head_shot": {"key": "headShot", "type": "bytearray"},
@@ -7779,6 +7824,7 @@ class ResumeData(msrest.serialization.Model):
         self.location = location
         self.objective = objective
         self.languages = None
+        self.language_codes = None
         self.summary = summary
         self.total_years_experience = total_years_experience
         self.head_shot = None
@@ -8129,6 +8175,8 @@ class ResumeDataSkillsItem(msrest.serialization.Model):
 
     :ivar id:
     :vartype id: int
+    :ivar emsi_id: EMSI id of this skill.
+    :vartype emsi_id: str
     :ivar name:
     :vartype name: str
     :ivar last_used:
@@ -8137,21 +8185,31 @@ class ResumeDataSkillsItem(msrest.serialization.Model):
     :vartype number_of_months: int
     :ivar type:
     :vartype type: str
+    :ivar count:
+    :vartype count: int
+    :ivar weighting:
+    :vartype weighting: float
     :ivar sources:
     :vartype sources: list[~affinda.models.ResumeDataSkillsPropertiesItemsItem]
     """
 
     _validation = {
+        "emsi_id": {"readonly": True},
         "type": {"readonly": True},
+        "count": {"readonly": True},
+        "weighting": {"readonly": True},
         "sources": {"readonly": True},
     }
 
     _attribute_map = {
         "id": {"key": "id", "type": "int"},
+        "emsi_id": {"key": "emsiId", "type": "str"},
         "name": {"key": "name", "type": "str"},
         "last_used": {"key": "lastUsed", "type": "str"},
         "number_of_months": {"key": "numberOfMonths", "type": "int"},
         "type": {"key": "type", "type": "str"},
+        "count": {"key": "count", "type": "int"},
+        "weighting": {"key": "weighting", "type": "float"},
         "sources": {"key": "sources", "type": "[ResumeDataSkillsPropertiesItemsItem]"},
     }
 
@@ -8176,10 +8234,13 @@ class ResumeDataSkillsItem(msrest.serialization.Model):
         """
         super(ResumeDataSkillsItem, self).__init__(**kwargs)
         self.id = id
+        self.emsi_id = None
         self.name = name
         self.last_used = last_used
         self.number_of_months = number_of_months
         self.type = None
+        self.count = None
+        self.weighting = None
         self.sources = None
 
 
@@ -8188,25 +8249,44 @@ class ResumeDataSkillsPropertiesItemsItem(msrest.serialization.Model):
 
     :ivar section:
     :vartype section: str
-    :ivar position:
+    :ivar position: If this skill is extracted from a "workExperience" section, the "position" is
+     the index of the work experience where this skill is found, with 0 being the first work
+     experience, 1 being the second work experience, and so on.
     :vartype position: int
+    :ivar work_experience_id: If this skill is extracted from a "workExperience" section, the
+     "workExperienceId" is the id of the work experience where this skill is found.
+    :vartype work_experience_id: int
     """
 
     _attribute_map = {
         "section": {"key": "section", "type": "str"},
         "position": {"key": "position", "type": "int"},
+        "work_experience_id": {"key": "workExperienceId", "type": "int"},
     }
 
-    def __init__(self, *, section: Optional[str] = None, position: Optional[int] = None, **kwargs):
+    def __init__(
+        self,
+        *,
+        section: Optional[str] = None,
+        position: Optional[int] = None,
+        work_experience_id: Optional[int] = None,
+        **kwargs,
+    ):
         """
         :keyword section:
         :paramtype section: str
-        :keyword position:
+        :keyword position: If this skill is extracted from a "workExperience" section, the "position"
+         is the index of the work experience where this skill is found, with 0 being the first work
+         experience, 1 being the second work experience, and so on.
         :paramtype position: int
+        :keyword work_experience_id: If this skill is extracted from a "workExperience" section, the
+         "workExperienceId" is the id of the work experience where this skill is found.
+        :paramtype work_experience_id: int
         """
         super(ResumeDataSkillsPropertiesItemsItem, self).__init__(**kwargs)
         self.section = section
         self.position = position
+        self.work_experience_id = work_experience_id
 
 
 class ResumeDataWorkExperienceItem(msrest.serialization.Model):
@@ -8218,8 +8298,14 @@ class ResumeDataWorkExperienceItem(msrest.serialization.Model):
     :vartype id: int
     :ivar job_title:
     :vartype job_title: str
+    :ivar soc_code:
+    :vartype soc_code: str
+    :ivar soc_name:
+    :vartype soc_name: str
     :ivar organization:
     :vartype organization: str
+    :ivar industry:
+    :vartype industry: str
     :ivar location:
     :vartype location: ~affinda.models.Location
     :ivar job_description:
@@ -8231,13 +8317,19 @@ class ResumeDataWorkExperienceItem(msrest.serialization.Model):
     """
 
     _validation = {
+        "soc_code": {"readonly": True},
+        "soc_name": {"readonly": True},
+        "industry": {"readonly": True},
         "occupation": {"readonly": True},
     }
 
     _attribute_map = {
         "id": {"key": "id", "type": "int"},
         "job_title": {"key": "jobTitle", "type": "str"},
+        "soc_code": {"key": "socCode", "type": "str"},
+        "soc_name": {"key": "socName", "type": "str"},
         "organization": {"key": "organization", "type": "str"},
+        "industry": {"key": "industry", "type": "str"},
         "location": {"key": "location", "type": "Location"},
         "job_description": {"key": "jobDescription", "type": "str"},
         "dates": {"key": "dates", "type": "ResumeDataWorkExperienceItemDates"},
@@ -8272,7 +8364,10 @@ class ResumeDataWorkExperienceItem(msrest.serialization.Model):
         super(ResumeDataWorkExperienceItem, self).__init__(**kwargs)
         self.id = id
         self.job_title = job_title
+        self.soc_code = None
+        self.soc_name = None
         self.organization = organization
+        self.industry = None
         self.location = location
         self.job_description = job_description
         self.dates = dates
@@ -8431,6 +8526,195 @@ class ResumeSearch(msrest.serialization.Model):
         self.previous = previous
         self.parameters = parameters
         self.results = results
+
+
+class ResumeSearchConfig(msrest.serialization.Model):
+    """ResumeSearchConfig.
+
+    Variables are only populated by the server, and will be ignored when sending a request.
+
+    :ivar allow_pdf_download:
+    :vartype allow_pdf_download: bool
+    :ivar max_results: Maximum number of results that can be returned. Setting to "null" means no
+     limitation.
+    :vartype max_results: int
+    :ivar display_job_title:
+    :vartype display_job_title: bool
+    :ivar display_location:
+    :vartype display_location: bool
+    :ivar display_years_experience:
+    :vartype display_years_experience: bool
+    :ivar display_occupation_group:
+    :vartype display_occupation_group: bool
+    :ivar display_education:
+    :vartype display_education: bool
+    :ivar display_skills:
+    :vartype display_skills: bool
+    :ivar display_languages:
+    :vartype display_languages: bool
+    :ivar display_management_level:
+    :vartype display_management_level: bool
+    :ivar display_keywords:
+    :vartype display_keywords: bool
+    :ivar weight_job_title:
+    :vartype weight_job_title: float
+    :ivar weight_location:
+    :vartype weight_location: float
+    :ivar weight_years_experience:
+    :vartype weight_years_experience: float
+    :ivar weight_occupation_group:
+    :vartype weight_occupation_group: float
+    :ivar weight_education:
+    :vartype weight_education: float
+    :ivar weight_skills:
+    :vartype weight_skills: float
+    :ivar weight_languages:
+    :vartype weight_languages: float
+    :ivar weight_management_level:
+    :vartype weight_management_level: float
+    :ivar weight_keywords:
+    :vartype weight_keywords: float
+    :ivar indices: List of index names.
+    :vartype indices: list[str]
+    :ivar search_tool_theme: Customize the theme of the embeded search tool.
+    :vartype search_tool_theme: dict[str, any]
+    :ivar user_id: ID of the logged in user.
+    :vartype user_id: int
+    :ivar username: Username of the logged in user.
+    :vartype username: str
+    """
+
+    _validation = {
+        "user_id": {"readonly": True},
+        "username": {"readonly": True},
+    }
+
+    _attribute_map = {
+        "allow_pdf_download": {"key": "allowPdfDownload", "type": "bool"},
+        "max_results": {"key": "maxResults", "type": "int"},
+        "display_job_title": {"key": "displayJobTitle", "type": "bool"},
+        "display_location": {"key": "displayLocation", "type": "bool"},
+        "display_years_experience": {"key": "displayYearsExperience", "type": "bool"},
+        "display_occupation_group": {"key": "displayOccupationGroup", "type": "bool"},
+        "display_education": {"key": "displayEducation", "type": "bool"},
+        "display_skills": {"key": "displaySkills", "type": "bool"},
+        "display_languages": {"key": "displayLanguages", "type": "bool"},
+        "display_management_level": {"key": "displayManagementLevel", "type": "bool"},
+        "display_keywords": {"key": "displayKeywords", "type": "bool"},
+        "weight_job_title": {"key": "weightJobTitle", "type": "float"},
+        "weight_location": {"key": "weightLocation", "type": "float"},
+        "weight_years_experience": {"key": "weightYearsExperience", "type": "float"},
+        "weight_occupation_group": {"key": "weightOccupationGroup", "type": "float"},
+        "weight_education": {"key": "weightEducation", "type": "float"},
+        "weight_skills": {"key": "weightSkills", "type": "float"},
+        "weight_languages": {"key": "weightLanguages", "type": "float"},
+        "weight_management_level": {"key": "weightManagementLevel", "type": "float"},
+        "weight_keywords": {"key": "weightKeywords", "type": "float"},
+        "indices": {"key": "indices", "type": "[str]"},
+        "search_tool_theme": {"key": "searchToolTheme", "type": "{object}"},
+        "user_id": {"key": "userId", "type": "int"},
+        "username": {"key": "username", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        allow_pdf_download: Optional[bool] = None,
+        max_results: Optional[int] = None,
+        display_job_title: Optional[bool] = None,
+        display_location: Optional[bool] = None,
+        display_years_experience: Optional[bool] = None,
+        display_occupation_group: Optional[bool] = None,
+        display_education: Optional[bool] = None,
+        display_skills: Optional[bool] = None,
+        display_languages: Optional[bool] = None,
+        display_management_level: Optional[bool] = None,
+        display_keywords: Optional[bool] = None,
+        weight_job_title: Optional[float] = None,
+        weight_location: Optional[float] = None,
+        weight_years_experience: Optional[float] = None,
+        weight_occupation_group: Optional[float] = None,
+        weight_education: Optional[float] = None,
+        weight_skills: Optional[float] = None,
+        weight_languages: Optional[float] = None,
+        weight_management_level: Optional[float] = None,
+        weight_keywords: Optional[float] = None,
+        indices: Optional[List[str]] = None,
+        search_tool_theme: Optional[Dict[str, Any]] = None,
+        **kwargs,
+    ):
+        """
+        :keyword allow_pdf_download:
+        :paramtype allow_pdf_download: bool
+        :keyword max_results: Maximum number of results that can be returned. Setting to "null" means
+         no limitation.
+        :paramtype max_results: int
+        :keyword display_job_title:
+        :paramtype display_job_title: bool
+        :keyword display_location:
+        :paramtype display_location: bool
+        :keyword display_years_experience:
+        :paramtype display_years_experience: bool
+        :keyword display_occupation_group:
+        :paramtype display_occupation_group: bool
+        :keyword display_education:
+        :paramtype display_education: bool
+        :keyword display_skills:
+        :paramtype display_skills: bool
+        :keyword display_languages:
+        :paramtype display_languages: bool
+        :keyword display_management_level:
+        :paramtype display_management_level: bool
+        :keyword display_keywords:
+        :paramtype display_keywords: bool
+        :keyword weight_job_title:
+        :paramtype weight_job_title: float
+        :keyword weight_location:
+        :paramtype weight_location: float
+        :keyword weight_years_experience:
+        :paramtype weight_years_experience: float
+        :keyword weight_occupation_group:
+        :paramtype weight_occupation_group: float
+        :keyword weight_education:
+        :paramtype weight_education: float
+        :keyword weight_skills:
+        :paramtype weight_skills: float
+        :keyword weight_languages:
+        :paramtype weight_languages: float
+        :keyword weight_management_level:
+        :paramtype weight_management_level: float
+        :keyword weight_keywords:
+        :paramtype weight_keywords: float
+        :keyword indices: List of index names.
+        :paramtype indices: list[str]
+        :keyword search_tool_theme: Customize the theme of the embeded search tool.
+        :paramtype search_tool_theme: dict[str, any]
+        """
+        super(ResumeSearchConfig, self).__init__(**kwargs)
+        self.allow_pdf_download = allow_pdf_download
+        self.max_results = max_results
+        self.display_job_title = display_job_title
+        self.display_location = display_location
+        self.display_years_experience = display_years_experience
+        self.display_occupation_group = display_occupation_group
+        self.display_education = display_education
+        self.display_skills = display_skills
+        self.display_languages = display_languages
+        self.display_management_level = display_management_level
+        self.display_keywords = display_keywords
+        self.weight_job_title = weight_job_title
+        self.weight_location = weight_location
+        self.weight_years_experience = weight_years_experience
+        self.weight_occupation_group = weight_occupation_group
+        self.weight_education = weight_education
+        self.weight_skills = weight_skills
+        self.weight_languages = weight_languages
+        self.weight_management_level = weight_management_level
+        self.weight_keywords = weight_keywords
+        self.indices = indices
+        self.search_tool_theme = search_tool_theme
+        self.user_id = None
+        self.username = None
 
 
 class ResumeSearchDetail(msrest.serialization.Model):
@@ -9313,6 +9597,26 @@ class ResumeSearchDetailSkillsValueItem(
         self.number_of_months = number_of_months
         self.type = type
         self.sources = sources
+
+
+class ResumeSearchEmbed(msrest.serialization.Model):
+    """ResumeSearchEmbed.
+
+    :ivar url: The signed URL for the embedable search tool.
+    :vartype url: str
+    """
+
+    _attribute_map = {
+        "url": {"key": "url", "type": "str"},
+    }
+
+    def __init__(self, *, url: Optional[str] = None, **kwargs):
+        """
+        :keyword url: The signed URL for the embedable search tool.
+        :paramtype url: str
+        """
+        super(ResumeSearchEmbed, self).__init__(**kwargs)
+        self.url = url
 
 
 class ResumeSearchMatch(msrest.serialization.Model):
