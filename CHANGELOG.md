@@ -7,9 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - Update modelerfour version to latest
-- Update types of objects for some endpoins using AllOf attributes for better client library generation
-- Changed and updated tag order to better match documentaiton needs
+- Update types of objects for some endpoints using AllOf attributes for better client library generation
+- Changed and updated tag order to better match documentation needs
 - Updated autorest client version
+
+### Deprecated
+- Depreciated resume_formats and reformatted_resumes endpoints
 
 ## [1.3.1] - 2022-08-10
 ### Added
