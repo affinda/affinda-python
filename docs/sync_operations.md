@@ -62,20 +62,20 @@ def create_resume(file=None, url=None, data=None, identifier=None, file_name=Non
 
 Upload a resume for parsing.
 
-Uploads a resume for parsing.
-Provide ``file`` for uploading a resume file, or ``url`` for getting resume file from an url,
-or ``data`` if you want to upload resume data directly without parsing any resume file.
-For uploading resume data, the ``data`` argument provided must be a JSON-encoded string.
-When successful, returns an ``identifier`` in the response for subsequent use with the
-`/resumes/{identifier} <#operation/getResume>`_ endpoint to check processing status and
-retrieve results.
+Uploads a resume for parsing. When successful, returns an ``identifier`` in the response for
+subsequent use with the `/resumes/{identifier} <#get-/resumes/-identifier->`_ endpoint to check
+processing status and retrieve results.:code:`<br/>`
+Resumes can be uploaded as a file or a URL. In addition, data can be added directly if users
+want to upload directly without parsing any resume file. For uploading resume data, the
+``data`` argument provided must be a JSON-encoded string. Data uploads will not impact upon
+parsing credits.
 
 **Arguments**:
 
 :keyword callable cls: A custom type or function that will be passed the direct response
 - `file` (`IO`): Default value is None.
 - `url` (`str`): Default value is None.
-- `data` (`~affinda.models.ResumeData`): A JSON-encoded string of the ``ResumeData`` object. Default value is None.
+- `data` (`~affinda.models.ResumeData`): Default value is None.
 - `identifier` (`str`): Default value is None.
 - `file_name` (`str`): Default value is None.
 - `wait` (`bool`): Default value is True.
@@ -91,19 +91,21 @@ retrieve results.
 #### get\_resume
 
 ```python
-def get_resume(identifier, **kwargs)
+def get_resume(identifier, format=None, **kwargs)
 ```
 
 Get parse results for a specific resume.
 
 Returns all the parse results for that resume if processing is completed.
 The ``identifier`` is the unique ID returned after POST-ing the resume via the `/resumes
-<#operation/createResume>`_ endpoint.
+<#post-/resumes>`_ endpoint.
 
 **Arguments**:
 
+supported value for this parameter is "hr-xml". Default value is None.
 :keyword callable cls: A custom type or function that will be passed the direct response
 - `identifier` (`str`): Document identifier.
+- `format` (`str`): Set this to "hr-xml" to get the response in HR-XML format. Currently the only
 
 **Returns**:
 
@@ -121,7 +123,7 @@ Update a resume's data.
 
 Update data of a parsed resume.
 The ``identifier`` is the unique ID returned after POST-ing the resume via the `/resumes
-<#operation/createResume>`_ endpoint.
+<#post-/resumes>`_ endpoint.
 
 **Arguments**:
 
@@ -227,7 +229,7 @@ Get redaction results for a specific resume.
 
 Returns all the redaction results for that resume if processing is completed.
 The ``identifier`` is the unique ID returned after POST-ing the resume via the
-`/redacted_resumes <#operation/createRedactedResume>`_ endpoint.
+`/redacted_resumes <#post-/redacted_resumes>`_ endpoint.
 
 **Arguments**:
 
@@ -259,123 +261,6 @@ Deletes the specified resume from the database.
 
 `~affinda.models.RequestError or None`: RequestError, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_resume_formats"></a>
-
-#### get\_all\_resume\_formats
-
-```python
-def get_all_resume_formats(offset=None, limit=300, **kwargs)
-```
-
-Get list of all resume formats.
-
-Returns all the resume formats.
-
-**Arguments**:
-
-Default value is None.
-:keyword callable cls: A custom type or function that will be passed the direct response
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
-
-**Returns**:
-
-`~affinda.models.Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema or`: Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema or RequestError,
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_reformatted_resumes"></a>
-
-#### get\_all\_reformatted\_resumes
-
-```python
-def get_all_reformatted_resumes(offset=None, limit=300, **kwargs)
-```
-
-Get list of all reformatted resumes.
-
-Returns all the reformatted resume information for that resume.
-
-**Arguments**:
-
-Default value is None.
-:keyword callable cls: A custom type or function that will be passed the direct response
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
-
-**Returns**:
-
-`~affinda.models.GetAllDocumentsResults or ~affinda.models.RequestError`: GetAllDocumentsResults or RequestError, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_reformatted_resume"></a>
-
-#### create\_reformatted\_resume
-
-```python
-def create_reformatted_resume(resume_format, file=None, identifier=None, file_name=None, url=None, language=None, wait=True, **kwargs)
-```
-
-Upload a resume for reformatting.
-
-Upload a resume for reformatting.
-
-**Arguments**:
-
-:keyword callable cls: A custom type or function that will be passed the direct response
-- `resume_format` (`str`): 
-- `file` (`IO`): Default value is None.
-- `identifier` (`str`): Default value is None.
-- `file_name` (`str`): Default value is None.
-- `url` (`str`): Default value is None.
-- `language` (`str`): Default value is None.
-- `wait` (`bool`): Default value is True.
-
-**Returns**:
-
-`~affinda.models.ReformattedResume or ~affinda.models.RequestError`: ReformattedResume or RequestError, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_reformatted_resume"></a>
-
-#### get\_reformatted\_resume
-
-```python
-def get_reformatted_resume(identifier, **kwargs)
-```
-
-Get reformatting results for a specific resume.
-
-Returns all the reformatting results for that resume if processing is completed.
-The ``identifier`` is the unique ID returned after POST-ing the resume via the
-`/reformatted_resumes <#operation/createReformattedResume>`_ endpoint.
-
-**Arguments**:
-
-:keyword callable cls: A custom type or function that will be passed the direct response
-- `identifier` (`str`): Document identifier.
-
-**Returns**:
-
-`~affinda.models.ReformattedResume or ~affinda.models.RequestError`: ReformattedResume or RequestError, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_reformatted_resume"></a>
-
-#### delete\_reformatted\_resume
-
-```python
-def delete_reformatted_resume(identifier, **kwargs)
-```
-
-Delete a reformatted resume.
-
-Delete the specified resume from the database.
-
-**Arguments**:
-
-:keyword callable cls: A custom type or function that will be passed the direct response
-- `identifier` (`str`): Document identifier.
-
-**Returns**:
-
-`~affinda.models.RequestError or None`: RequestError, or the result of cls(response)
-
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resume_search"></a>
 
 #### create\_resume\_search
@@ -386,12 +271,12 @@ def create_resume_search(body, offset=None, limit=300, **kwargs)
 
 Search through parsed resumes.
 
-Searches through parsed resumes. You can search with custom criterias, a job description, or a
-resume.
-When searching with a job description, a parsed job description is used to find candidates that
-suit it.
-When searching with a resume, a parsed resume is used to find other candidates that have
-similar attributes.
+Searches through parsed resumes. Users have 3 options to create a search::code:`<br
+/>`:code:`<br />` 1.    Match to a job description - a parsed job description is used to find
+candidates that suit it:code:`<br />` 2.  Match to a resume - a parsed resume is used to find
+other candidates that have similar attributes:code:`<br />` 3.  Search using custom
+criteria:code:`<br />`:code:`<br />` Users should only populate 1 of jobDescription, resume or
+the custom criteria.
 
 **Arguments**:
 
@@ -417,8 +302,8 @@ Get search result of specific resume.
 
 This contains more detailed information about the matching score of the search criteria, or
 which search criteria is missing in this resume.
-The ``identifier`` is the unique ID returned via the `/resume_search
-<#operation/createResumeSearch>`_ endpoint.
+The ``identifier`` is the unique ID returned via the `/resume_search <#post-/resume_search>`_
+endpoint.
 
 **Arguments**:
 
@@ -438,10 +323,12 @@ The ``identifier`` is the unique ID returned via the `/resume_search
 def get_resume_search_match(resume, job_description, index=None, search_expression=None, job_titles_weight=None, years_experience_weight=None, locations_weight=None, languages_weight=None, skills_weight=None, education_weight=None, search_expression_weight=None, soc_codes_weight=None, management_level_weight=None, **kwargs)
 ```
 
-Resume and job description 1:1 match.
+Match a single resume and job description.
 
 Get the matching score between a resume and a job description. The score ranges between 0 and
-1, with 0 being not a match at all, and 1 being perfect match.
+1, with 0 being not a match at all, and 1 being perfect match.:code:`<br/>` Note, this score
+will not directly match the score returned from POST `/resume_search/details/{identifier}
+<#post-/resume_search/details/-identifier->`_.
 
 **Arguments**:
 
@@ -569,23 +456,24 @@ Default value is None.
 #### create\_job\_description
 
 ```python
-def create_job_description(file=None, identifier=None, file_name=None, url=None, wait=True, language=None, expiry_time=None, **kwargs)
+def create_job_description(file=None, url=None, identifier=None, file_name=None, wait=True, language=None, expiry_time=None, **kwargs)
 ```
 
 Upload a job description for parsing.
 
 Uploads a job description for parsing.
 When successful, returns an ``identifier`` in the response for subsequent use with the
-`/job_descriptions/{identifier} <#operation/getResume>`_ endpoint to check processing status
-and retrieve results.
+`/job_descriptions/{identifier} <#get-/job_descriptions/-identifier->`_ endpoint to check
+processing status and retrieve results.
+Job Descriptions can be uploaded as a file or a URL.
 
 **Arguments**:
 
 :keyword callable cls: A custom type or function that will be passed the direct response
 - `file` (`IO`): Default value is None.
+- `url` (`str`): Default value is None.
 - `identifier` (`str`): Default value is None.
 - `file_name` (`str`): Default value is None.
-- `url` (`str`): Default value is None.
 - `wait` (`bool`): Default value is True.
 - `language` (`str`): Default value is None.
 - `expiry_time` (`~datetime.datetime`): Default value is None.
@@ -606,7 +494,7 @@ Get job description results for a specific job description file.
 
 Returns all the results for that job description if processing is completed.
 The ``identifier`` is the unique ID returned after POST-ing the resume via the
-`/job_descriptions <#operation/createJobDescription>`_ endpoint.
+`/job_descriptions <#post-/job_descriptions>`_ endpoint.
 
 **Arguments**:
 
@@ -637,6 +525,30 @@ Deletes the specified job description from the database.
 **Returns**:
 
 `~affinda.models.RequestError or None`: RequestError, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_job_description_search"></a>
+
+#### create\_job\_description\_search
+
+```python
+def create_job_description_search(body, offset=None, limit=300, **kwargs)
+```
+
+Search through parsed job descriptions.
+
+Searches through parsed job descriptions. You can search with custom criterias or a resume.
+
+**Arguments**:
+
+Default value is None.
+:keyword callable cls: A custom type or function that will be passed the direct response
+- `body` (`~affinda.models.JobDescriptionSearchParameters`): Search parameters.
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
+
+**Returns**:
+
+`~affinda.models.JobDescriptionSearch or ~affinda.models.RequestError`: JobDescriptionSearch or RequestError, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_indexes"></a>
 
@@ -797,23 +709,23 @@ Default value is None.
 #### create\_invoice
 
 ```python
-def create_invoice(file=None, identifier=None, file_name=None, url=None, wait=True, language=None, expiry_time=None, **kwargs)
+def create_invoice(file=None, url=None, identifier=None, file_name=None, wait=True, language=None, expiry_time=None, **kwargs)
 ```
 
 Upload an invoice for parsing.
 
 Uploads an invoice for parsing.
 When successful, returns an ``identifier`` in the response for subsequent use with the
-`/invoices/{identifier} <#operation/getInvoice>`_ endpoint to check processing status and
+`/invoices/{identifier} <#get-/invoices/-identifier->`_ endpoint to check processing status and
 retrieve results.
 
 **Arguments**:
 
 :keyword callable cls: A custom type or function that will be passed the direct response
 - `file` (`IO`): Default value is None.
+- `url` (`str`): Default value is None.
 - `identifier` (`str`): Default value is None.
 - `file_name` (`str`): Default value is None.
-- `url` (`str`): Default value is None.
 - `wait` (`bool`): Default value is True.
 - `language` (`str`): Default value is None.
 - `expiry_time` (`~datetime.datetime`): Default value is None.
@@ -834,7 +746,7 @@ Get parse results for a specific invoice.
 
 Returns all the parse results for that invoice if processing is completed.
 The ``identifier`` is the unique ID returned after POST-ing the invoice via the `/invoices
-<#operation/createInvoice>`_ endpoint.
+<#post-/invoices>`_ endpoint.
 
 **Arguments**:
 
@@ -855,7 +767,8 @@ def delete_invoice(identifier, **kwargs)
 
 Delete an invoice.
 
-Delete the specified invoice from the database.
+Delete the specified invoice from the database. Note, any invoices deleted from the database
+will no longer be used in any tailored customer models.
 
 **Arguments**:
 
@@ -876,7 +789,7 @@ def list_occupation_groups(**kwargs)
 
 List occupation groups.
 
-TODO TODO TODO.
+Returns the list of searchable occupation groups.
 
 :keyword callable cls: A custom type or function that will be passed the direct response
 

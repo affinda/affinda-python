@@ -174,89 +174,8 @@ response = client.delete_redacted_resume(identifier=identifier)
 print(response.as_dict())
 ```
 
-Resume Reformatter
-------------------
-
-### getAllResumeFormats - Get list of all resume formats
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-resume_formats = client.get_all_resume_formats()
-
-print(resume_formats.as_dict())
-```
-
-### getAllReformattedResumes - Get list of all reformatted resumes
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-all_reformatted_resumes = client.get_all_reformatted_resumes()
-
-print(all_reformatted_resumes.as_dict())
-```
-
-### createReformattedResume - Upload a resume for reformatting
-
-```python
-from pathlib import Path
-
-from affinda import TokenCredential, AffindaAPI
-
-token = "REPLACE_TOKEN"
-resume_format = "REPLACE_FORMAT_IDENTIFIER"
-file_pth = Path("path_to_file.pdf")
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-with open(file_pth, "rb") as f:
-    reformatted_resume = client.create_reformatted_resume(file=f, file_name=file_pth.name, resume_format=resume_format)
-
-print(reformatted_resume.as_dict())
-```
-
-### getReformattedResume - Get reformatting results for a specific resume
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-reformatted_resume = client.get_reformatted_resume(identifier=identifier)
-
-print(reformatted_resume.as_dict())
-```
-
-### deleteReformattedResume - Delete a reformatted resume
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-response = client.delete_reformatted_resume(identifier=identifier)
-
-print(response.as_dict())
-```
-
-Resume Search
--------------
+Search & Match - Searching
+--------------------------
 
 ### createResumeSearch - Search through parsed resumes
 
@@ -298,7 +217,7 @@ resp = client.create_resume_search(parameters)
 print(resp.as_dict())
 ```
 
-### getResumeSearchMatch - Resume and job description 1:1 match
+### getResumeSearchMatch - Match a single resume and job description
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -316,7 +235,10 @@ result = client.get_resume_search_match(resume, job_description, index=index)
 print(result.score)
 ```
 
-### getResumeSearchConfig - Get the config for the logged in user's embedable search tool.
+Search & Match - Embedding
+--------------------------
+
+### getResumeSearchConfig - Get the config for the logged in user's embedable search tool
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -330,7 +252,7 @@ result = client.get_resume_search_config()
 print(result.as_dict())
 ```
 
-### updateResumeSearchConfig - Update the config for the logged in user's embedable search tool.
+### updateResumeSearchConfig - Update the config for the logged in user's embedable search tool
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -353,7 +275,7 @@ result = client.update_resume_search_config(config)
 print(result.as_dict())
 ```
 
-### createResumeSearchEmbedUrl - Create a signed URL for the embedable search tool.
+### createResumeSearchEmbedUrl - Create a signed URL for the embedable search tool
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -378,6 +300,75 @@ request_body = {
 result = client.create_resume_search_embed_url(body=request_body)
 print(result.url)
 ```
+
+Job Description Parser
+----------------------
+
+### getAllJobDescriptions - Get list of all job descriptions
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+all_job_descriptions = client.get_all_job_descriptions()
+
+print(all_job_descriptions.as_dict())
+```
+
+### createJobDescription - Upload a job description for parsing
+
+```python
+from pathlib import Path
+
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+file_pth = Path("path_to_file.pdf")
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+with open(file_pth, "rb") as f:
+    job_description = client.create_job_description(file=f)
+
+print(job_description.as_dict())
+```
+
+### getJobDescription - Get job description results for a specific job description file
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+job_description = client.get_job_description(identifier=identifier)
+
+print(job_description.as_dict())
+```
+
+### deleteJobDescription - Delete a job description
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+response = client.delete_job_description(identifier=identifier)
+
+print(response.as_dict())
+```
+
+Search & Match - Indexing
+-------------------------
 
 ### getAllIndexes - Get list of all indexes
 
@@ -460,74 +451,8 @@ client = AffindaAPI(credential=credential)
 client.delete_index_document(name=index_name, identifier=identifier)
 ```
 
-Job Descriptions
-----------------
-
-### getAllJobDescriptions - Get list of all job descriptions
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-all_job_descriptions = client.get_all_job_descriptions()
-
-print(all_job_descriptions.as_dict())
-```
-
-### createJobDescription - Upload a job description for parsing
-
-```python
-from pathlib import Path
-
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-file_pth = Path("path_to_file.pdf")
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-with open(file_pth, "rb") as f:
-    job_description = client.create_job_description(file=f)
-
-print(job_description.as_dict())
-```
-
-### getJobDescription - Get job description results for a specific job description file
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-job_description = client.get_job_description(identifier=identifier)
-
-print(job_description.as_dict())
-```
-
-### deleteJobDescription - Delete a job description
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-response = client.delete_job_description(identifier=identifier)
-
-print(response.as_dict())
-```
-
-Invoice Parser
---------------
+Invoice Extractor
+-----------------
 
 ### getAllInvoices - Get list of all invoices
 

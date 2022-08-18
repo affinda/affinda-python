@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Update modelerfour version to latest
+- Update types of objects for some endpoins using AllOf attributes for better client library generation
+- Changed and updated tag order to better match documentaiton needs
+- Updated autorest client version
 
 ## [1.3.1] - 2022-08-10
 ### Added
@@ -120,3 +125,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.2] - 2021-08-18
 * Initial release
+

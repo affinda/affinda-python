@@ -150,34 +150,6 @@ def __init__(**kwargs)
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1"></a>
-
-## Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1 Objects
-
-```python
-class Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1(msrest.serialization.Model)
-```
-
-Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1.
-
-:ivar raw:
-:vartype raw: str
-:ivar parsed:
-:vartype parsed: str
-
-<a id="models._models.Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
-
 <a id="models._models.Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1"></a>
 
 ## Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1 Objects
@@ -454,22 +426,22 @@ def __init__(**kwargs)
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1"></a>
+<a id="models._models.Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1"></a>
 
-## Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1 Objects
+## Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1 Objects
 
 ```python
-class Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1(msrest.serialization.Model)
+class Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1(msrest.serialization.Model)
 ```
 
-Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1.
+Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1.__init__"></a>
+<a id="models._models.Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -858,22 +830,22 @@ def __init__(**kwargs)
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1"></a>
+<a id="models._models.ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1"></a>
 
-## ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1 Objects
+## ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1 Objects
 
 ```python
-class ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.serialization.Model)
+class ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1(msrest.serialization.Model)
 ```
 
-ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1.
+ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1.__init__"></a>
+<a id="models._models.ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -886,22 +858,22 @@ def __init__(**kwargs)
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1"></a>
+<a id="models._models.ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1"></a>
 
-## ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1 Objects
+## ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1 Objects
 
 ```python
-class ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1(msrest.serialization.Model)
+class ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.serialization.Model)
 ```
 
-ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1.
+ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1.__init__"></a>
+<a id="models._models.ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -1037,6 +1009,34 @@ def __init__(**kwargs)
 
 :keyword match:
 :paramtype match: bool
+
+<a id="models._models.ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1"></a>
+
+## ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1 Objects
+
+```python
+class ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1(msrest.serialization.Model)
+```
+
+ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw:
+:paramtype raw: str
+:keyword parsed:
+:paramtype parsed: str
 
 <a id="models._models.ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1"></a>
 
@@ -1258,6 +1258,40 @@ def __init__(**kwargs)
 :keyword metric:
 :paramtype metric: str
 
+<a id="models._models.EducationSearchScoreComponent"></a>
+
+## EducationSearchScoreComponent Objects
+
+```python
+class EducationSearchScoreComponent(msrest.serialization.Model)
+```
+
+EducationSearchScoreComponent.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar value:
+:vartype value: str
+:ivar label: Required.
+:vartype label: str
+:ivar score:
+:vartype score: float
+
+<a id="models._models.EducationSearchScoreComponent.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword value:
+:paramtype value: str
+:keyword label: Required.
+:paramtype label: str
+:keyword score:
+:paramtype score: float
+
 <a id="models._models.EnumAnnotationSerializer"></a>
 
 ## EnumAnnotationSerializer Objects
@@ -1442,6 +1476,40 @@ def __init__(**kwargs)
 :keyword unit:
 :paramtype unit: str
 
+<a id="models._models.ExperienceSearchScoreComponent"></a>
+
+## ExperienceSearchScoreComponent Objects
+
+```python
+class ExperienceSearchScoreComponent(msrest.serialization.Model)
+```
+
+ExperienceSearchScoreComponent.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar value:
+:vartype value: str
+:ivar label: Required.
+:vartype label: str
+:ivar score:
+:vartype score: float
+
+<a id="models._models.ExperienceSearchScoreComponent.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword value:
+:paramtype value: str
+:keyword label: Required.
+:paramtype label: str
+:keyword score:
+:paramtype score: float
+
 <a id="models._models.Get200ApplicationJsonPropertiesItemsItem"></a>
 
 ## Get200ApplicationJsonPropertiesItemsItem Objects
@@ -1454,11 +1522,8 @@ Get200ApplicationJsonPropertiesItemsItem.
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar identifier: Required. Unique identifier for the document. If creating a document and left
- blank, one will be automatically generated.
-:vartype identifier: str
-:ivar format_file: Required. URL to a template to apply.
-:vartype format_file: str
+:ivar name: Required.
+:vartype name: str
 
 <a id="models._models.Get200ApplicationJsonPropertiesItemsItem.__init__"></a>
 
@@ -1468,11 +1533,8 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword identifier: Required. Unique identifier for the document. If creating a document and
-left blank, one will be automatically generated.
-:paramtype identifier: str
-:keyword format_file: Required. URL to a template to apply.
-:paramtype format_file: str
+:keyword name: Required.
+:paramtype name: str
 
 <a id="models._models.GetAllDocumentsResults"></a>
 
@@ -1582,6 +1644,30 @@ def __init__(**kwargs)
 :keyword results:
 :paramtype results: list[~affinda.models.Meta]
 
+<a id="models._models.IndexRequestBody"></a>
+
+## IndexRequestBody Objects
+
+```python
+class IndexRequestBody(msrest.serialization.Model)
+```
+
+IndexRequestBody.
+
+:ivar name:
+:vartype name: bool
+
+<a id="models._models.IndexRequestBody.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword name:
+:paramtype name: bool
+
 <a id="models._models.Invoice"></a>
 
 ## Invoice Objects
@@ -1663,9 +1749,9 @@ InvoiceData.
 :ivar bank_account_number:
 :vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
 :ivar supplier_vat:
-:vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
+:vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVAT
 :ivar customer_vat:
-:vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
+:vartype customer_vat: ~affinda.models.InvoiceDataCustomerVAT
 :ivar bpay_biller_code:
 :vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
 :ivar bpay_reference:
@@ -1673,11 +1759,11 @@ InvoiceData.
 :ivar bank_sort_code:
 :vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
 :ivar bank_iban:
-:vartype bank_iban: ~affinda.models.InvoiceDataBankIban
+:vartype bank_iban: ~affinda.models.InvoiceDataBankIBAN
 :ivar bank_swift:
 :vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
 :ivar bank_bsb:
-:vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
+:vartype bank_bsb: ~affinda.models.InvoiceDataBankBSB
 :ivar customer_contact_name:
 :vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
 :ivar customer_company_name:
@@ -1748,9 +1834,9 @@ def __init__(**kwargs)
 :keyword bank_account_number:
 :paramtype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
 :keyword supplier_vat:
-:paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
+:paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVAT
 :keyword customer_vat:
-:paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVat
+:paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVAT
 :keyword bpay_biller_code:
 :paramtype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
 :keyword bpay_reference:
@@ -1758,11 +1844,11 @@ def __init__(**kwargs)
 :keyword bank_sort_code:
 :paramtype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
 :keyword bank_iban:
-:paramtype bank_iban: ~affinda.models.InvoiceDataBankIban
+:paramtype bank_iban: ~affinda.models.InvoiceDataBankIBAN
 :keyword bank_swift:
 :paramtype bank_swift: ~affinda.models.InvoiceDataBankSwift
 :keyword bank_bsb:
-:paramtype bank_bsb: ~affinda.models.InvoiceDataBankBsb
+:paramtype bank_bsb: ~affinda.models.InvoiceDataBankBSB
 :keyword customer_contact_name:
 :paramtype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
 :keyword customer_company_name:
@@ -1912,15 +1998,15 @@ collection.
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.InvoiceDataBankBsb"></a>
+<a id="models._models.InvoiceDataBankBSB"></a>
 
-## InvoiceDataBankBsb Objects
+## InvoiceDataBankBSB Objects
 
 ```python
-class InvoiceDataBankBsb(TextAnnotation,  Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1)
+class InvoiceDataBankBSB(TextAnnotation,  Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1)
 ```
 
-InvoiceDataBankBsb.
+InvoiceDataBankBSB.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -1944,7 +2030,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.InvoiceDataBankBsb.__init__"></a>
+<a id="models._models.InvoiceDataBankBSB.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -1972,15 +2058,15 @@ collection.
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.InvoiceDataBankIban"></a>
+<a id="models._models.InvoiceDataBankIBAN"></a>
 
-## InvoiceDataBankIban Objects
+## InvoiceDataBankIBAN Objects
 
 ```python
-class InvoiceDataBankIban(TextAnnotation,  Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1)
+class InvoiceDataBankIBAN(TextAnnotation,  ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1)
 ```
 
-InvoiceDataBankIban.
+InvoiceDataBankIBAN.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -2004,7 +2090,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.InvoiceDataBankIban.__init__"></a>
+<a id="models._models.InvoiceDataBankIBAN.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -2632,15 +2718,15 @@ collection.
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.InvoiceDataCustomerVat"></a>
+<a id="models._models.InvoiceDataCustomerVAT"></a>
 
-## InvoiceDataCustomerVat Objects
+## InvoiceDataCustomerVAT Objects
 
 ```python
-class InvoiceDataCustomerVat(TextAnnotation,  ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1)
+class InvoiceDataCustomerVAT(TextAnnotation,  ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1)
 ```
 
-InvoiceDataCustomerVat.
+InvoiceDataCustomerVAT.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -2664,7 +2750,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.InvoiceDataCustomerVat.__init__"></a>
+<a id="models._models.InvoiceDataCustomerVAT.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -3472,15 +3558,15 @@ collection.
 :keyword parsed:
 :paramtype parsed: str
 
-<a id="models._models.InvoiceDataSupplierVat"></a>
+<a id="models._models.InvoiceDataSupplierVAT"></a>
 
-## InvoiceDataSupplierVat Objects
+## InvoiceDataSupplierVAT Objects
 
 ```python
-class InvoiceDataSupplierVat(TextAnnotation,  ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1)
+class InvoiceDataSupplierVAT(TextAnnotation,  ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1)
 ```
 
-InvoiceDataSupplierVat.
+InvoiceDataSupplierVAT.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -3504,7 +3590,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.InvoiceDataSupplierVat.__init__"></a>
+<a id="models._models.InvoiceDataSupplierVAT.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -3756,6 +3842,64 @@ deleted.  Defaults to no expiry.
 :keyword language: The resume's language.
 :paramtype language: str
 
+<a id="models._models.InvoiceRequestBody"></a>
+
+## InvoiceRequestBody Objects
+
+```python
+class InvoiceRequestBody(msrest.serialization.Model)
+```
+
+InvoiceRequestBody.
+
+:ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
+ JPG.
+:vartype file: IO
+:ivar url: URL to an invoice to download and process.
+:vartype url: str
+:ivar identifier: Unique identifier for the document. If creating a document and left blank,
+ one will be automatically generated.
+:vartype identifier: str
+:ivar file_name: Optional filename of the file.
+:vartype file_name: str
+:ivar wait: If "true" (default), will return a response only after processing has completed. If
+ "false", will return an empty data object which can be polled at the GET endpoint until
+ processing is complete.
+:vartype wait: bool
+:ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+:vartype language: str
+:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+ deleted.  Defaults to no expiry.
+:vartype expiry_time: ~datetime.datetime
+
+<a id="models._models.InvoiceRequestBody.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+PNG, JPG.
+:paramtype file: IO
+:keyword url: URL to an invoice to download and process.
+:paramtype url: str
+:keyword identifier: Unique identifier for the document. If creating a document and left blank,
+one will be automatically generated.
+:paramtype identifier: str
+:keyword file_name: Optional filename of the file.
+:paramtype file_name: str
+:keyword wait: If "true" (default), will return a response only after processing has completed.
+If "false", will return an empty data object which can be polled at the GET endpoint until
+processing is complete.
+:paramtype wait: bool
+:keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+:paramtype language: str
+:keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+deleted.  Defaults to no expiry.
+:paramtype expiry_time: ~datetime.datetime
+
 <a id="models._models.JobDescription"></a>
 
 ## JobDescription Objects
@@ -3877,6 +4021,316 @@ def __init__(**kwargs)
 :paramtype certifications: list[~affinda.models.TextAnnotation]
 :keyword years_experience:
 :paramtype years_experience: ~affinda.models.YearsExperienceAnnotation
+
+<a id="models._models.JobDescriptionRequestBody"></a>
+
+## JobDescriptionRequestBody Objects
+
+```python
+class JobDescriptionRequestBody(msrest.serialization.Model)
+```
+
+JobDescriptionRequestBody.
+
+:ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
+ JPG.
+:vartype file: IO
+:ivar url: URL to a job description to download and process.
+:vartype url: str
+:ivar identifier: Unique identifier for the document. If creating a document and left blank,
+ one will be automatically generated.
+:vartype identifier: str
+:ivar file_name: Optional filename of the file.
+:vartype file_name: str
+:ivar wait: If "true" (default), will return a response only after processing has completed. If
+ "false", will return an empty data object which can be polled at the GET endpoint until
+ processing is complete.
+:vartype wait: bool
+:ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+:vartype language: str
+:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+ deleted.  Defaults to no expiry.
+:vartype expiry_time: ~datetime.datetime
+
+<a id="models._models.JobDescriptionRequestBody.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+PNG, JPG.
+:paramtype file: IO
+:keyword url: URL to a job description to download and process.
+:paramtype url: str
+:keyword identifier: Unique identifier for the document. If creating a document and left blank,
+one will be automatically generated.
+:paramtype identifier: str
+:keyword file_name: Optional filename of the file.
+:paramtype file_name: str
+:keyword wait: If "true" (default), will return a response only after processing has completed.
+If "false", will return an empty data object which can be polled at the GET endpoint until
+processing is complete.
+:paramtype wait: bool
+:keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+:paramtype language: str
+:keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+deleted.  Defaults to no expiry.
+:paramtype expiry_time: ~datetime.datetime
+
+<a id="models._models.JobDescriptionSearch"></a>
+
+## JobDescriptionSearch Objects
+
+```python
+class JobDescriptionSearch(msrest.serialization.Model)
+```
+
+JobDescriptionSearch.
+
+:ivar count: Total number of results.
+:vartype count: int
+:ivar next: URL to request next page of results.
+:vartype next: str
+:ivar previous: URL to request previous page of results.
+:vartype previous: str
+:ivar parameters:
+:vartype parameters: ~affinda.models.JobDescriptionSearchParameters
+:ivar results:
+:vartype results: list[~affinda.models.JobDescriptionSearchResult]
+
+<a id="models._models.JobDescriptionSearch.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword count: Total number of results.
+:paramtype count: int
+:keyword next: URL to request next page of results.
+:paramtype next: str
+:keyword previous: URL to request previous page of results.
+:paramtype previous: str
+:keyword parameters:
+:paramtype parameters: ~affinda.models.JobDescriptionSearchParameters
+:keyword results:
+:paramtype results: list[~affinda.models.JobDescriptionSearchResult]
+
+<a id="models._models.JobDescriptionSearchParameters"></a>
+
+## JobDescriptionSearchParameters Objects
+
+```python
+class JobDescriptionSearchParameters(msrest.serialization.Model)
+```
+
+JobDescriptionSearchParameters.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar indices: Required.
+:vartype indices: list[str]
+:ivar resume: Unique identifier for the document. If creating a document and left blank, one
+ will be automatically generated.
+:vartype resume: str
+:ivar job_titles:
+:vartype job_titles: list[str]
+:ivar job_titles_required:
+:vartype job_titles_required: bool
+:ivar job_titles_weight:
+:vartype job_titles_weight: float
+:ivar total_years_experience:
+:vartype total_years_experience: float
+:ivar years_experience_required:
+:vartype years_experience_required: bool
+:ivar years_experience_weight:
+:vartype years_experience_weight: float
+:ivar locations:
+:vartype locations: list[~affinda.models.ResumeSearchParametersLocation]
+:ivar locations_weight:
+:vartype locations_weight: float
+:ivar locations_required:
+:vartype locations_required: bool
+:ivar skills:
+:vartype skills: list[~affinda.models.ResumeSearchParametersSkill]
+:ivar skills_weight:
+:vartype skills_weight: float
+:ivar languages:
+:vartype languages: list[~affinda.models.ResumeSearchParametersSkill]
+:ivar languages_weight:
+:vartype languages_weight: float
+:ivar degrees:
+:vartype degrees: list[str]
+:ivar degrees_required:
+:vartype degrees_required: bool
+:ivar degree_types:
+:vartype degree_types: list[str or ~affinda.models.EducationLevel]
+:ivar degree_types_required:
+:vartype degree_types_required: bool
+:ivar education_weight:
+:vartype education_weight: float
+:ivar search_expression:
+:vartype search_expression: str
+:ivar search_expression_required:
+:vartype search_expression_required: bool
+:ivar search_expression_weight:
+:vartype search_expression_weight: float
+:ivar soc_codes:
+:vartype soc_codes: list[int]
+:ivar soc_codes_weight:
+:vartype soc_codes_weight: float
+:ivar soc_codes_required:
+:vartype soc_codes_required: bool
+:ivar management_level: Known values are: "None", "Low", "Mid", "Upper".
+:vartype management_level: str or ~affinda.models.ManagementLevel
+:ivar management_level_required:
+:vartype management_level_required: bool
+:ivar management_level_weight:
+:vartype management_level_weight: float
+
+<a id="models._models.JobDescriptionSearchParameters.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword indices: Required.
+:paramtype indices: list[str]
+:keyword resume: Unique identifier for the document. If creating a document and left blank, one
+will be automatically generated.
+:paramtype resume: str
+:keyword job_titles:
+:paramtype job_titles: list[str]
+:keyword job_titles_required:
+:paramtype job_titles_required: bool
+:keyword job_titles_weight:
+:paramtype job_titles_weight: float
+:keyword total_years_experience:
+:paramtype total_years_experience: float
+:keyword years_experience_required:
+:paramtype years_experience_required: bool
+:keyword years_experience_weight:
+:paramtype years_experience_weight: float
+:keyword locations:
+:paramtype locations: list[~affinda.models.ResumeSearchParametersLocation]
+:keyword locations_weight:
+:paramtype locations_weight: float
+:keyword locations_required:
+:paramtype locations_required: bool
+:keyword skills:
+:paramtype skills: list[~affinda.models.ResumeSearchParametersSkill]
+:keyword skills_weight:
+:paramtype skills_weight: float
+:keyword languages:
+:paramtype languages: list[~affinda.models.ResumeSearchParametersSkill]
+:keyword languages_weight:
+:paramtype languages_weight: float
+:keyword degrees:
+:paramtype degrees: list[str]
+:keyword degrees_required:
+:paramtype degrees_required: bool
+:keyword degree_types:
+:paramtype degree_types: list[str or ~affinda.models.EducationLevel]
+:keyword degree_types_required:
+:paramtype degree_types_required: bool
+:keyword education_weight:
+:paramtype education_weight: float
+:keyword search_expression:
+:paramtype search_expression: str
+:keyword search_expression_required:
+:paramtype search_expression_required: bool
+:keyword search_expression_weight:
+:paramtype search_expression_weight: float
+:keyword soc_codes:
+:paramtype soc_codes: list[int]
+:keyword soc_codes_weight:
+:paramtype soc_codes_weight: float
+:keyword soc_codes_required:
+:paramtype soc_codes_required: bool
+:keyword management_level: Known values are: "None", "Low", "Mid", "Upper".
+:paramtype management_level: str or ~affinda.models.ManagementLevel
+:keyword management_level_required:
+:paramtype management_level_required: bool
+:keyword management_level_weight:
+:paramtype management_level_weight: float
+
+<a id="models._models.JobDescriptionSearchResult"></a>
+
+## JobDescriptionSearchResult Objects
+
+```python
+class JobDescriptionSearchResult(msrest.serialization.Model)
+```
+
+JobDescriptionSearchResult.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar identifier: Required. Unique identifier for the document. If creating a document and left
+ blank, one will be automatically generated.
+:vartype identifier: str
+:ivar score: Required.
+:vartype score: float
+:ivar pdf: Required.
+:vartype pdf: str
+:ivar job_title: Required.
+:vartype job_title: ~affinda.models.JobTitleSearchScoreComponent
+:ivar management_level: Required.
+:vartype management_level: ~affinda.models.ManagementLevelSearchScoreComponent
+:ivar experience: Required.
+:vartype experience: ~affinda.models.ExperienceSearchScoreComponent
+:ivar skills: Required.
+:vartype skills: ~affinda.models.SkillsSearchScoreComponent
+:ivar languages: Required.
+:vartype languages: ~affinda.models.LanguagesSearchScoreComponent
+:ivar location: Required.
+:vartype location: ~affinda.models.LocationSearchScoreComponent
+:ivar education: Required.
+:vartype education: ~affinda.models.EducationSearchScoreComponent
+:ivar occupation_group:
+:vartype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
+:ivar search_expression: Required.
+:vartype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
+
+<a id="models._models.JobDescriptionSearchResult.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword identifier: Required. Unique identifier for the document. If creating a document and
+left blank, one will be automatically generated.
+:paramtype identifier: str
+:keyword score: Required.
+:paramtype score: float
+:keyword pdf: Required.
+:paramtype pdf: str
+:keyword job_title: Required.
+:paramtype job_title: ~affinda.models.JobTitleSearchScoreComponent
+:keyword management_level: Required.
+:paramtype management_level: ~affinda.models.ManagementLevelSearchScoreComponent
+:keyword experience: Required.
+:paramtype experience: ~affinda.models.ExperienceSearchScoreComponent
+:keyword skills: Required.
+:paramtype skills: ~affinda.models.SkillsSearchScoreComponent
+:keyword languages: Required.
+:paramtype languages: ~affinda.models.LanguagesSearchScoreComponent
+:keyword location: Required.
+:paramtype location: ~affinda.models.LocationSearchScoreComponent
+:keyword education: Required.
+:paramtype education: ~affinda.models.EducationSearchScoreComponent
+:keyword occupation_group:
+:paramtype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
+:keyword search_expression: Required.
+:paramtype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
 
 <a id="models._models.JobTitleAnnotation"></a>
 
@@ -4010,6 +4464,40 @@ def __init__(**kwargs)
 :keyword major_group:
 :paramtype major_group: str
 
+<a id="models._models.JobTitleSearchScoreComponent"></a>
+
+## JobTitleSearchScoreComponent Objects
+
+```python
+class JobTitleSearchScoreComponent(msrest.serialization.Model)
+```
+
+JobTitleSearchScoreComponent.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar value:
+:vartype value: str
+:ivar label: Required.
+:vartype label: str
+:ivar score:
+:vartype score: float
+
+<a id="models._models.JobTitleSearchScoreComponent.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword value:
+:paramtype value: str
+:keyword label: Required.
+:paramtype label: str
+:keyword score:
+:paramtype score: float
+
 <a id="models._models.LanguageAnnotation"></a>
 
 ## LanguageAnnotation Objects
@@ -4069,6 +4557,40 @@ collection.
 :paramtype classification: str
 :keyword parsed:
 :paramtype parsed: str
+
+<a id="models._models.LanguagesSearchScoreComponent"></a>
+
+## LanguagesSearchScoreComponent Objects
+
+```python
+class LanguagesSearchScoreComponent(msrest.serialization.Model)
+```
+
+LanguagesSearchScoreComponent.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar value:
+:vartype value: str
+:ivar label: Required.
+:vartype label: str
+:ivar score:
+:vartype score: float
+
+<a id="models._models.LanguagesSearchScoreComponent.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword value:
+:paramtype value: str
+:keyword label: Required.
+:paramtype label: str
+:keyword score:
+:paramtype score: float
 
 <a id="models._models.Location"></a>
 
@@ -4176,6 +4698,74 @@ collection.
 :keyword parsed:
 :paramtype parsed: ~affinda.models.Location
 
+<a id="models._models.LocationSearchScoreComponent"></a>
+
+## LocationSearchScoreComponent Objects
+
+```python
+class LocationSearchScoreComponent(msrest.serialization.Model)
+```
+
+LocationSearchScoreComponent.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar value:
+:vartype value: str
+:ivar label: Required.
+:vartype label: str
+:ivar score:
+:vartype score: float
+
+<a id="models._models.LocationSearchScoreComponent.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword value:
+:paramtype value: str
+:keyword label: Required.
+:paramtype label: str
+:keyword score:
+:paramtype score: float
+
+<a id="models._models.ManagementLevelSearchScoreComponent"></a>
+
+## ManagementLevelSearchScoreComponent Objects
+
+```python
+class ManagementLevelSearchScoreComponent(msrest.serialization.Model)
+```
+
+ManagementLevelSearchScoreComponent.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar value:
+:vartype value: str
+:ivar label: Required.
+:vartype label: str
+:ivar score:
+:vartype score: float
+
+<a id="models._models.ManagementLevelSearchScoreComponent.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword value:
+:paramtype value: str
+:keyword label: Required.
+:paramtype label: str
+:keyword score:
+:paramtype score: float
+
 <a id="models._models.OccupationGroup"></a>
 
 ## OccupationGroup Objects
@@ -4210,63 +4800,26 @@ def __init__(**kwargs)
 :keyword children: Required.
 :paramtype children: list[~affinda.models.OccupationGroup]
 
-<a id="models._models.Paths108CfgmIndexGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems"></a>
+<a id="models._models.OccupationGroupSearchScoreComponent"></a>
 
-## Paths108CfgmIndexGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems Objects
+## OccupationGroupSearchScoreComponent Objects
 
 ```python
-class Paths108CfgmIndexGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems(msrest.serialization.Model)
+class OccupationGroupSearchScoreComponent(msrest.serialization.Model)
 ```
 
-Paths108CfgmIndexGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems.
+OccupationGroupSearchScoreComponent.
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar name: Required.
-:vartype name: str
+:ivar value:
+:vartype value: str
+:ivar label: Required.
+:vartype label: str
+:ivar score:
+:vartype score: float
 
-<a id="models._models.Paths108CfgmIndexGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-:keyword name: Required.
-:paramtype name: str
-
-<a id="models._models.Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema"></a>
-
-## Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema Objects
-
-```python
-class Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema(msrest.serialization.Model)
-```
-
-Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema.
-
-:ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
- JPG.
-:vartype file: IO
-:ivar identifier: Unique identifier for the document. If creating a document and left blank,
- one will be automatically generated.
-:vartype identifier: str
-:ivar file_name: Optional filename of the file.
-:vartype file_name: str
-:ivar url: URL to file to download and process.
-:vartype url: str
-:ivar wait: If "true" (default), will return a response only after processing has completed. If
- "false", will return an empty data object which can be polled at the GET endpoint until
- processing is complete.
-:vartype wait: bool
-:ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-:vartype language: str
-:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
- deleted.  Defaults to no expiry.
-:vartype expiry_time: ~datetime.datetime
-
-<a id="models._models.Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema.__init__"></a>
+<a id="models._models.OccupationGroupSearchScoreComponent.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -4274,25 +4827,12 @@ Paths1BwrvmkInvoicesPostRequestbodyContentMultipartFormDataSchema.
 def __init__(**kwargs)
 ```
 
-:keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
-PNG, JPG.
-:paramtype file: IO
-:keyword identifier: Unique identifier for the document. If creating a document and left blank,
-one will be automatically generated.
-:paramtype identifier: str
-:keyword file_name: Optional filename of the file.
-:paramtype file_name: str
-:keyword url: URL to file to download and process.
-:paramtype url: str
-:keyword wait: If "true" (default), will return a response only after processing has completed.
-If "false", will return an empty data object which can be polled at the GET endpoint until
-processing is complete.
-:paramtype wait: bool
-:keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-:paramtype language: str
-:keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
-deleted.  Defaults to no expiry.
-:paramtype expiry_time: ~datetime.datetime
+:keyword value:
+:paramtype value: str
+:keyword label: Required.
+:paramtype label: str
+:keyword score:
+:paramtype score: float
 
 <a id="models._models.Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema"></a>
 
@@ -4317,42 +4857,6 @@ def __init__(**kwargs)
 
 :keyword name:
 :paramtype name: str
-
-<a id="models._models.Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema"></a>
-
-## Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema Objects
-
-```python
-class Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model)
-```
-
-Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema.
-
-:ivar count: Number of documents in result.
-:vartype count: int
-:ivar next: URL to request next page of results.
-:vartype next: str
-:ivar previous: URL to request previous page of results.
-:vartype previous: str
-:ivar results:
-:vartype results: list[~affinda.models.Get200ApplicationJsonPropertiesItemsItem]
-
-<a id="models._models.Paths1UtuacyResumeFormatsGetResponses200ContentApplicationJsonSchema.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-:keyword count: Number of documents in result.
-:paramtype count: int
-:keyword next: URL to request next page of results.
-:paramtype next: str
-:keyword previous: URL to request previous page of results.
-:paramtype previous: str
-:keyword results:
-:paramtype results: list[~affinda.models.Get200ApplicationJsonPropertiesItemsItem]
 
 <a id="models._models.Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1"></a>
 
@@ -4421,8 +4925,7 @@ Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema.
 :ivar previous: URL to request previous page of results.
 :vartype previous: str
 :ivar results:
-:vartype results:
- list[~affinda.models.Paths108CfgmIndexGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]
+:vartype results: list[~affinda.models.Get200ApplicationJsonPropertiesItemsItem]
 
 <a id="models._models.Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema.__init__"></a>
 
@@ -4439,160 +4942,7 @@ def __init__(**kwargs)
 :keyword previous: URL to request previous page of results.
 :paramtype previous: str
 :keyword results:
-:paramtype results:
-list[~affinda.models.Paths108CfgmIndexGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]
-
-<a id="models._models.Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema"></a>
-
-## Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema Objects
-
-```python
-class Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema(msrest.serialization.Model)
-```
-
-Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema.
-
-:ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
- JPG.
-:vartype file: IO
-:ivar url: URL to file to download and process.
-:vartype url: str
-:ivar data: A JSON-encoded string of the ``ResumeData`` object.
-:vartype data: ~affinda.models.ResumeData
-:ivar identifier: Unique identifier for the document. If creating a document and left blank,
- one will be automatically generated.
-:vartype identifier: str
-:ivar file_name: Optional filename of the file.
-:vartype file_name: str
-:ivar wait: If "true" (default), will return a response only after processing has completed. If
- "false", will return an empty data object which can be polled at the GET endpoint until
- processing is complete.
-:vartype wait: bool
-:ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-:vartype language: str
-:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
- deleted.  Defaults to no expiry.
-:vartype expiry_time: ~datetime.datetime
-
-<a id="models._models.Paths7EskthResumesPostRequestbodyContentMultipartFormDataSchema.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-:keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
-PNG, JPG.
-:paramtype file: IO
-:keyword url: URL to file to download and process.
-:paramtype url: str
-:keyword data: A JSON-encoded string of the ``ResumeData`` object.
-:paramtype data: ~affinda.models.ResumeData
-:keyword identifier: Unique identifier for the document. If creating a document and left blank,
-one will be automatically generated.
-:paramtype identifier: str
-:keyword file_name: Optional filename of the file.
-:paramtype file_name: str
-:keyword wait: If "true" (default), will return a response only after processing has completed.
-If "false", will return an empty data object which can be polled at the GET endpoint until
-processing is complete.
-:paramtype wait: bool
-:keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-:paramtype language: str
-:keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
-deleted.  Defaults to no expiry.
-:paramtype expiry_time: ~datetime.datetime
-
-<a id="models._models.Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema"></a>
-
-## Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema Objects
-
-```python
-class Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema(msrest.serialization.Model)
-```
-
-Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema.
-
-:ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
- JPG.
-:vartype file: IO
-:ivar identifier: Unique identifier for the document. If creating a document and left blank,
- one will be automatically generated.
-:vartype identifier: str
-:ivar file_name: Optional filename of the file.
-:vartype file_name: str
-:ivar url: URL to file to download and process.
-:vartype url: str
-:ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-:vartype language: str
-:ivar wait: If "true" (default), will return a response only after processing has completed. If
- "false", will return an empty data object which can be polled at the GET endpoint until
- processing is complete.
-:vartype wait: bool
-:ivar redact_headshot: Whether to redact headshot.
-:vartype redact_headshot: bool
-:ivar redact_personal_details: Whether to redact personal details (e.g. name, address).
-:vartype redact_personal_details: bool
-:ivar redact_work_details: Whether to redact work details (e.g. company names).
-:vartype redact_work_details: bool
-:ivar redact_education_details: Whether to redact education details (e.g. university names).
-:vartype redact_education_details: bool
-:ivar redact_referees: Whether to redact referee details.
-:vartype redact_referees: bool
-:ivar redact_locations: Whether to redact location names.
-:vartype redact_locations: bool
-:ivar redact_dates: Whether to redact dates.
-:vartype redact_dates: bool
-:ivar redact_gender: Whether to redact gender.
-:vartype redact_gender: bool
-:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
- deleted.  Defaults to no expiry.
-:vartype expiry_time: ~datetime.datetime
-
-<a id="models._models.Paths8DdhfcRedactedResumesPostRequestbodyContentMultipartFormDataSchema.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-:keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
-PNG, JPG.
-:paramtype file: IO
-:keyword identifier: Unique identifier for the document. If creating a document and left blank,
-one will be automatically generated.
-:paramtype identifier: str
-:keyword file_name: Optional filename of the file.
-:paramtype file_name: str
-:keyword url: URL to file to download and process.
-:paramtype url: str
-:keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-:paramtype language: str
-:keyword wait: If "true" (default), will return a response only after processing has completed.
-If "false", will return an empty data object which can be polled at the GET endpoint until
-processing is complete.
-:paramtype wait: bool
-:keyword redact_headshot: Whether to redact headshot.
-:paramtype redact_headshot: bool
-:keyword redact_personal_details: Whether to redact personal details (e.g. name, address).
-:paramtype redact_personal_details: bool
-:keyword redact_work_details: Whether to redact work details (e.g. company names).
-:paramtype redact_work_details: bool
-:keyword redact_education_details: Whether to redact education details (e.g. university names).
-:paramtype redact_education_details: bool
-:keyword redact_referees: Whether to redact referee details.
-:paramtype redact_referees: bool
-:keyword redact_locations: Whether to redact location names.
-:paramtype redact_locations: bool
-:keyword redact_dates: Whether to redact dates.
-:paramtype redact_dates: bool
-:keyword redact_gender: Whether to redact gender.
-:paramtype redact_gender: bool
-:keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
-deleted.  Defaults to no expiry.
-:paramtype expiry_time: ~datetime.datetime
+:paramtype results: list[~affinda.models.Get200ApplicationJsonPropertiesItemsItem]
 
 <a id="models._models.PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema"></a>
 
@@ -4703,30 +5053,6 @@ def __init__(**kwargs)
 :keyword results:
 :paramtype results:
 list[~affinda.models.PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]
-
-<a id="models._models.PathsSot11NIndexPostRequestbodyContentMultipartFormDataSchema"></a>
-
-## PathsSot11NIndexPostRequestbodyContentMultipartFormDataSchema Objects
-
-```python
-class PathsSot11NIndexPostRequestbodyContentMultipartFormDataSchema(msrest.serialization.Model)
-```
-
-PathsSot11NIndexPostRequestbodyContentMultipartFormDataSchema.
-
-:ivar name:
-:vartype name: bool
-
-<a id="models._models.PathsSot11NIndexPostRequestbodyContentMultipartFormDataSchema.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-:keyword name:
-:paramtype name: bool
 
 <a id="models._models.User"></a>
 
@@ -4848,122 +5174,6 @@ def __init__(**kwargs)
 :keyword results:
 :paramtype results: list[~affinda.models.User]
 
-<a id="models._models.PathsYlw96JobDescriptionsPostRequestbodyContentMultipartFormDataSchema"></a>
-
-## PathsYlw96JobDescriptionsPostRequestbodyContentMultipartFormDataSchema Objects
-
-```python
-class PathsYlw96JobDescriptionsPostRequestbodyContentMultipartFormDataSchema(msrest.serialization.Model)
-```
-
-PathsYlw96JobDescriptionsPostRequestbodyContentMultipartFormDataSchema.
-
-:ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
- JPG.
-:vartype file: IO
-:ivar identifier: Unique identifier for the document. If creating a document and left blank,
- one will be automatically generated.
-:vartype identifier: str
-:ivar file_name: Optional filename of the file.
-:vartype file_name: str
-:ivar url: URL to file to download and process.
-:vartype url: str
-:ivar wait: If "true" (default), will return a response only after processing has completed. If
- "false", will return an empty data object which can be polled at the GET endpoint until
- processing is complete.
-:vartype wait: bool
-:ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-:vartype language: str
-:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
- deleted.  Defaults to no expiry.
-:vartype expiry_time: ~datetime.datetime
-
-<a id="models._models.PathsYlw96JobDescriptionsPostRequestbodyContentMultipartFormDataSchema.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-:keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
-PNG, JPG.
-:paramtype file: IO
-:keyword identifier: Unique identifier for the document. If creating a document and left blank,
-one will be automatically generated.
-:paramtype identifier: str
-:keyword file_name: Optional filename of the file.
-:paramtype file_name: str
-:keyword url: URL to file to download and process.
-:paramtype url: str
-:keyword wait: If "true" (default), will return a response only after processing has completed.
-If "false", will return an empty data object which can be polled at the GET endpoint until
-processing is complete.
-:paramtype wait: bool
-:keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-:paramtype language: str
-:keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
-deleted.  Defaults to no expiry.
-:paramtype expiry_time: ~datetime.datetime
-
-<a id="models._models.PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema"></a>
-
-## PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema Objects
-
-```python
-class PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema(msrest.serialization.Model)
-```
-
-PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
- JPG.
-:vartype file: IO
-:ivar identifier: Unique identifier for the document. If creating a document and left blank,
- one will be automatically generated.
-:vartype identifier: str
-:ivar file_name: Optional filename of the file.
-:vartype file_name: str
-:ivar url: URL to file to download and process.
-:vartype url: str
-:ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-:vartype language: str
-:ivar resume_format: Required. Identifier of the format used.
-:vartype resume_format: str
-:ivar wait: If "true" (default), will return a response only after processing has completed. If
- "false", will return an empty data object which can be polled at the GET endpoint until
- processing is complete.
-:vartype wait: bool
-
-<a id="models._models.PathsYzn84IReformattedResumesPostRequestbodyContentMultipartFormDataSchema.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-:keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
-PNG, JPG.
-:paramtype file: IO
-:keyword identifier: Unique identifier for the document. If creating a document and left blank,
-one will be automatically generated.
-:paramtype identifier: str
-:keyword file_name: Optional filename of the file.
-:paramtype file_name: str
-:keyword url: URL to file to download and process.
-:paramtype url: str
-:keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-:paramtype language: str
-:keyword resume_format: Required. Identifier of the format used.
-:paramtype resume_format: str
-:keyword wait: If "true" (default), will return a response only after processing has completed.
-If "false", will return an empty data object which can be polled at the GET endpoint until
-processing is complete.
-:paramtype wait: bool
-
 <a id="models._models.Rectangle"></a>
 
 ## Rectangle Objects
@@ -5060,26 +5270,53 @@ def __init__(**kwargs)
 :keyword redacted_pdf: URL to redacted PDF.
 :paramtype redacted_pdf: str
 
-<a id="models._models.ReformattedResume"></a>
+<a id="models._models.RedactedResumeRequestBody"></a>
 
-## ReformattedResume Objects
+## RedactedResumeRequestBody Objects
 
 ```python
-class ReformattedResume(msrest.serialization.Model)
+class RedactedResumeRequestBody(msrest.serialization.Model)
 ```
 
-ReformattedResume.
+RedactedResumeRequestBody.
 
-All required parameters must be populated in order to send to Azure.
+:ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
+ JPG.
+:vartype file: IO
+:ivar identifier: Unique identifier for the document. If creating a document and left blank,
+ one will be automatically generated.
+:vartype identifier: str
+:ivar file_name: Optional filename of the file.
+:vartype file_name: str
+:ivar url: URL to a resume to download and process.
+:vartype url: str
+:ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+:vartype language: str
+:ivar wait: If "true" (default), will return a response only after processing has completed. If
+ "false", will return an empty data object which can be polled at the GET endpoint until
+ processing is complete.
+:vartype wait: bool
+:ivar redact_headshot: Whether to redact headshot.
+:vartype redact_headshot: bool
+:ivar redact_personal_details: Whether to redact personal details (e.g. name, address).
+:vartype redact_personal_details: bool
+:ivar redact_work_details: Whether to redact work details (e.g. company names).
+:vartype redact_work_details: bool
+:ivar redact_education_details: Whether to redact education details (e.g. university names).
+:vartype redact_education_details: bool
+:ivar redact_referees: Whether to redact referee details.
+:vartype redact_referees: bool
+:ivar redact_locations: Whether to redact location names.
+:vartype redact_locations: bool
+:ivar redact_dates: Whether to redact dates.
+:vartype redact_dates: bool
+:ivar redact_gender: Whether to redact gender.
+:vartype redact_gender: bool
+:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+ deleted.  Defaults to no expiry.
+:vartype expiry_time: ~datetime.datetime
 
-:ivar data: Required.
-:vartype data: ~affinda.models.ReformattedResumeData
-:ivar meta: Required.
-:vartype meta: ~affinda.models.Meta
-:ivar error: Required.
-:vartype error: ~affinda.models.Error
-
-<a id="models._models.ReformattedResume.__init__"></a>
+<a id="models._models.RedactedResumeRequestBody.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -5087,36 +5324,41 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword data: Required.
-:paramtype data: ~affinda.models.ReformattedResumeData
-:keyword meta: Required.
-:paramtype meta: ~affinda.models.Meta
-:keyword error: Required.
-:paramtype error: ~affinda.models.Error
-
-<a id="models._models.ReformattedResumeData"></a>
-
-## ReformattedResumeData Objects
-
-```python
-class ReformattedResumeData(msrest.serialization.Model)
-```
-
-ReformattedResumeData.
-
-:ivar reformatted_file:
-:vartype reformatted_file: str
-
-<a id="models._models.ReformattedResumeData.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-:keyword reformatted_file:
-:paramtype reformatted_file: str
+:keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+PNG, JPG.
+:paramtype file: IO
+:keyword identifier: Unique identifier for the document. If creating a document and left blank,
+one will be automatically generated.
+:paramtype identifier: str
+:keyword file_name: Optional filename of the file.
+:paramtype file_name: str
+:keyword url: URL to a resume to download and process.
+:paramtype url: str
+:keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+:paramtype language: str
+:keyword wait: If "true" (default), will return a response only after processing has completed.
+If "false", will return an empty data object which can be polled at the GET endpoint until
+processing is complete.
+:paramtype wait: bool
+:keyword redact_headshot: Whether to redact headshot.
+:paramtype redact_headshot: bool
+:keyword redact_personal_details: Whether to redact personal details (e.g. name, address).
+:paramtype redact_personal_details: bool
+:keyword redact_work_details: Whether to redact work details (e.g. company names).
+:paramtype redact_work_details: bool
+:keyword redact_education_details: Whether to redact education details (e.g. university names).
+:paramtype redact_education_details: bool
+:keyword redact_referees: Whether to redact referee details.
+:paramtype redact_referees: bool
+:keyword redact_locations: Whether to redact location names.
+:paramtype redact_locations: bool
+:keyword redact_dates: Whether to redact dates.
+:paramtype redact_dates: bool
+:keyword redact_gender: Whether to redact gender.
+:paramtype redact_gender: bool
+:keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+deleted.  Defaults to no expiry.
+:paramtype expiry_time: ~datetime.datetime
 
 <a id="models._models.RequestError"></a>
 
@@ -5194,7 +5436,7 @@ Resume.
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar data: Required.
+:ivar data: Required. A JSON-encoded string of the ``ResumeData`` object.
 :vartype data: ~affinda.models.ResumeData
 :ivar meta: Required.
 :vartype meta: ~affinda.models.Meta
@@ -5209,7 +5451,7 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword data: Required.
+:keyword data: Required. A JSON-encoded string of the ``ResumeData`` object.
 :paramtype data: ~affinda.models.ResumeData
 :keyword meta: Required.
 :paramtype meta: ~affinda.models.Meta
@@ -5224,7 +5466,7 @@ def __init__(**kwargs)
 class ResumeData(msrest.serialization.Model)
 ```
 
-ResumeData.
+A JSON-encoded string of the ``ResumeData`` object.
 
 Variables are only populated by the server, and will be ignored when sending a request.
 
@@ -5785,6 +6027,68 @@ match exists.
 :keyword classification:
 :paramtype classification:
 ~affinda.models.Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification
+
+<a id="models._models.ResumeRequestBody"></a>
+
+## ResumeRequestBody Objects
+
+```python
+class ResumeRequestBody(msrest.serialization.Model)
+```
+
+ResumeRequestBody.
+
+:ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
+ JPG.
+:vartype file: IO
+:ivar url: URL to a resume to download and process.
+:vartype url: str
+:ivar data: A JSON-encoded string of the ``ResumeData`` object.
+:vartype data: ~affinda.models.ResumeData
+:ivar identifier: Unique identifier for the document. If creating a document and left blank,
+ one will be automatically generated.
+:vartype identifier: str
+:ivar file_name: Optional filename of the file.
+:vartype file_name: str
+:ivar wait: If "true" (default), will return a response only after processing has completed. If
+ "false", will return an empty data object which can be polled at the GET endpoint until
+ processing is complete.
+:vartype wait: bool
+:ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+:vartype language: str
+:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+ deleted.  Defaults to no expiry.
+:vartype expiry_time: ~datetime.datetime
+
+<a id="models._models.ResumeRequestBody.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+PNG, JPG.
+:paramtype file: IO
+:keyword url: URL to a resume to download and process.
+:paramtype url: str
+:keyword data: A JSON-encoded string of the ``ResumeData`` object.
+:paramtype data: ~affinda.models.ResumeData
+:keyword identifier: Unique identifier for the document. If creating a document and left blank,
+one will be automatically generated.
+:paramtype identifier: str
+:keyword file_name: Optional filename of the file.
+:paramtype file_name: str
+:keyword wait: If "true" (default), will return a response only after processing has completed.
+If "false", will return an empty data object which can be polled at the GET endpoint until
+processing is complete.
+:paramtype wait: bool
+:keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+:paramtype language: str
+:keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+deleted.  Defaults to no expiry.
+:paramtype expiry_time: ~datetime.datetime
 
 <a id="models._models.ResumeSearch"></a>
 
@@ -6653,23 +6957,23 @@ class ResumeSearchMatchDetails(msrest.serialization.Model)
 ResumeSearchMatchDetails.
 
 :ivar job_title:
-:vartype job_title: ~affinda.models.ResumeSearchScoreComponent
+:vartype job_title: ~affinda.models.JobTitleSearchScoreComponent
 :ivar management_level:
-:vartype management_level: ~affinda.models.ResumeSearchScoreComponent
+:vartype management_level: ~affinda.models.ManagementLevelSearchScoreComponent
 :ivar experience:
-:vartype experience: ~affinda.models.ResumeSearchScoreComponent
+:vartype experience: ~affinda.models.ExperienceSearchScoreComponent
 :ivar skills:
-:vartype skills: ~affinda.models.ResumeSearchScoreComponent
+:vartype skills: ~affinda.models.SkillsSearchScoreComponent
 :ivar languages:
-:vartype languages: ~affinda.models.ResumeSearchScoreComponent
+:vartype languages: ~affinda.models.LanguagesSearchScoreComponent
 :ivar location:
-:vartype location: ~affinda.models.ResumeSearchScoreComponent
+:vartype location: ~affinda.models.LocationSearchScoreComponent
 :ivar education:
-:vartype education: ~affinda.models.ResumeSearchScoreComponent
+:vartype education: ~affinda.models.EducationSearchScoreComponent
 :ivar occupation_group:
-:vartype occupation_group: ~affinda.models.ResumeSearchScoreComponent
+:vartype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
 :ivar search_expression:
-:vartype search_expression: ~affinda.models.ResumeSearchScoreComponent
+:vartype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
 
 <a id="models._models.ResumeSearchMatchDetails.__init__"></a>
 
@@ -6680,23 +6984,23 @@ def __init__(**kwargs)
 ```
 
 :keyword job_title:
-:paramtype job_title: ~affinda.models.ResumeSearchScoreComponent
+:paramtype job_title: ~affinda.models.JobTitleSearchScoreComponent
 :keyword management_level:
-:paramtype management_level: ~affinda.models.ResumeSearchScoreComponent
+:paramtype management_level: ~affinda.models.ManagementLevelSearchScoreComponent
 :keyword experience:
-:paramtype experience: ~affinda.models.ResumeSearchScoreComponent
+:paramtype experience: ~affinda.models.ExperienceSearchScoreComponent
 :keyword skills:
-:paramtype skills: ~affinda.models.ResumeSearchScoreComponent
+:paramtype skills: ~affinda.models.SkillsSearchScoreComponent
 :keyword languages:
-:paramtype languages: ~affinda.models.ResumeSearchScoreComponent
+:paramtype languages: ~affinda.models.LanguagesSearchScoreComponent
 :keyword location:
-:paramtype location: ~affinda.models.ResumeSearchScoreComponent
+:paramtype location: ~affinda.models.LocationSearchScoreComponent
 :keyword education:
-:paramtype education: ~affinda.models.ResumeSearchScoreComponent
+:paramtype education: ~affinda.models.EducationSearchScoreComponent
 :keyword occupation_group:
-:paramtype occupation_group: ~affinda.models.ResumeSearchScoreComponent
+:paramtype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
 :keyword search_expression:
-:paramtype search_expression: ~affinda.models.ResumeSearchScoreComponent
+:paramtype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
 
 <a id="models._models.ResumeSearchParameters"></a>
 
@@ -6998,23 +7302,23 @@ All required parameters must be populated in order to send to Azure.
 :ivar name:
 :vartype name: str
 :ivar job_title: Required.
-:vartype job_title: ~affinda.models.ResumeSearchScoreComponent
+:vartype job_title: ~affinda.models.JobTitleSearchScoreComponent
 :ivar management_level: Required.
-:vartype management_level: ~affinda.models.ResumeSearchScoreComponent
+:vartype management_level: ~affinda.models.ManagementLevelSearchScoreComponent
 :ivar experience: Required.
-:vartype experience: ~affinda.models.ResumeSearchScoreComponent
+:vartype experience: ~affinda.models.ExperienceSearchScoreComponent
 :ivar skills: Required.
-:vartype skills: ~affinda.models.ResumeSearchScoreComponent
+:vartype skills: ~affinda.models.SkillsSearchScoreComponent
 :ivar languages: Required.
-:vartype languages: ~affinda.models.ResumeSearchScoreComponent
+:vartype languages: ~affinda.models.LanguagesSearchScoreComponent
 :ivar location: Required.
-:vartype location: ~affinda.models.ResumeSearchScoreComponent
+:vartype location: ~affinda.models.LocationSearchScoreComponent
 :ivar education: Required.
-:vartype education: ~affinda.models.ResumeSearchScoreComponent
+:vartype education: ~affinda.models.EducationSearchScoreComponent
 :ivar occupation_group: Required.
-:vartype occupation_group: ~affinda.models.ResumeSearchScoreComponent
+:vartype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
 :ivar search_expression: Required.
-:vartype search_expression: ~affinda.models.ResumeSearchScoreComponent
+:vartype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
 
 <a id="models._models.ResumeSearchResult.__init__"></a>
 
@@ -7034,57 +7338,23 @@ left blank, one will be automatically generated.
 :keyword name:
 :paramtype name: str
 :keyword job_title: Required.
-:paramtype job_title: ~affinda.models.ResumeSearchScoreComponent
+:paramtype job_title: ~affinda.models.JobTitleSearchScoreComponent
 :keyword management_level: Required.
-:paramtype management_level: ~affinda.models.ResumeSearchScoreComponent
+:paramtype management_level: ~affinda.models.ManagementLevelSearchScoreComponent
 :keyword experience: Required.
-:paramtype experience: ~affinda.models.ResumeSearchScoreComponent
+:paramtype experience: ~affinda.models.ExperienceSearchScoreComponent
 :keyword skills: Required.
-:paramtype skills: ~affinda.models.ResumeSearchScoreComponent
+:paramtype skills: ~affinda.models.SkillsSearchScoreComponent
 :keyword languages: Required.
-:paramtype languages: ~affinda.models.ResumeSearchScoreComponent
+:paramtype languages: ~affinda.models.LanguagesSearchScoreComponent
 :keyword location: Required.
-:paramtype location: ~affinda.models.ResumeSearchScoreComponent
+:paramtype location: ~affinda.models.LocationSearchScoreComponent
 :keyword education: Required.
-:paramtype education: ~affinda.models.ResumeSearchScoreComponent
+:paramtype education: ~affinda.models.EducationSearchScoreComponent
 :keyword occupation_group: Required.
-:paramtype occupation_group: ~affinda.models.ResumeSearchScoreComponent
+:paramtype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
 :keyword search_expression: Required.
-:paramtype search_expression: ~affinda.models.ResumeSearchScoreComponent
-
-<a id="models._models.ResumeSearchScoreComponent"></a>
-
-## ResumeSearchScoreComponent Objects
-
-```python
-class ResumeSearchScoreComponent(msrest.serialization.Model)
-```
-
-ResumeSearchScoreComponent.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar label: Required.
-:vartype label: str
-:ivar value:
-:vartype value: str
-:ivar score:
-:vartype score: float
-
-<a id="models._models.ResumeSearchScoreComponent.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-:keyword label: Required.
-:paramtype label: str
-:keyword value:
-:paramtype value: str
-:keyword score:
-:paramtype score: float
+:paramtype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
 
 <a id="models._models.ResumeSkillSourcesItem"></a>
 
@@ -7192,6 +7462,40 @@ def __init__(**kwargs)
 :keyword custom_fields: Dictionary of :code:`<any>`.
 :paramtype custom_fields: dict[str, any]
 
+<a id="models._models.SearchExpressionSearchScoreComponent"></a>
+
+## SearchExpressionSearchScoreComponent Objects
+
+```python
+class SearchExpressionSearchScoreComponent(msrest.serialization.Model)
+```
+
+SearchExpressionSearchScoreComponent.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar label: Required.
+:vartype label: str
+:ivar value:
+:vartype value: str
+:ivar score:
+:vartype score: float
+
+<a id="models._models.SearchExpressionSearchScoreComponent.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword label: Required.
+:paramtype label: str
+:keyword value:
+:paramtype value: str
+:keyword score:
+:paramtype score: float
+
 <a id="models._models.SkillAnnotation"></a>
 
 ## SkillAnnotation Objects
@@ -7251,6 +7555,40 @@ collection.
 :paramtype classification: str
 :keyword parsed:
 :paramtype parsed: str
+
+<a id="models._models.SkillsSearchScoreComponent"></a>
+
+## SkillsSearchScoreComponent Objects
+
+```python
+class SkillsSearchScoreComponent(msrest.serialization.Model)
+```
+
+SkillsSearchScoreComponent.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar value:
+:vartype value: str
+:ivar label: Required.
+:vartype label: str
+:ivar score:
+:vartype score: float
+
+<a id="models._models.SkillsSearchScoreComponent.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword value:
+:paramtype value: str
+:keyword label: Required.
+:paramtype label: str
+:keyword score:
+:paramtype score: float
 
 <a id="models._models.YearsExperienceAnnotation"></a>
 
