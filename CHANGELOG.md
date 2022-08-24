@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.4.0] - 2022-08-25
 ### Changed
 - Update modelerfour version to latest
 - Update types of objects for some endpoints using AllOf attributes for better client library generation
@@ -131,4 +133,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.2] - 2021-08-18
 * Initial release
-
