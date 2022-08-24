@@ -550,6 +550,31 @@ Default value is None.
 
 `~affinda.models.JobDescriptionSearch or ~affinda.models.RequestError`: JobDescriptionSearch or RequestError, or the result of cls(response)
 
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_job_description_search_detail"></a>
+
+#### get\_job\_description\_search\_detail
+
+```python
+def get_job_description_search_detail(identifier, body, **kwargs)
+```
+
+Get search result of specific job description.
+
+This contains more detailed information about the matching score of the search criteria, or
+which search criteria is missing in this job description.
+The ``identifier`` is the unique ID returned via the `/job_description_search
+<#post-/job_description_search>`_ endpoint.
+
+**Arguments**:
+
+:keyword callable cls: A custom type or function that will be passed the direct response
+- `identifier` (`str`): Job Description identifier.
+- `body` (`~affinda.models.JobDescriptionSearchParameters`): Search parameters.
+
+**Returns**:
+
+`~affinda.models.JobDescriptionSearchDetail or ~affinda.models.RequestError`: JobDescriptionSearchDetail or RequestError, or the result of cls(response)
+
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_indexes"></a>
 
 #### get\_all\_indexes

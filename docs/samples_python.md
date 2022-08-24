@@ -217,6 +217,29 @@ resp = client.create_resume_search(parameters)
 print(resp.as_dict())
 ```
 
+### getResumeSearchDetail - Get search result of specific resume
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import ResumeSearchParameters
+
+token = "REPLACE_TOKEN"
+resume_identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+# Search with custom criterias
+parameters = ResumeSearchParameters(
+    indices=["All Resumes"],
+    job_titles=["Senior Java Software Developer"],
+    institutions=["Boston University"],
+    # Many more criterias are available, refer to ResumeSearchParameters
+)
+resp = client.get_resume_search_detail(body=parameters, identifier=resume_identifier)
+print(resp.as_dict())
+```
+
 ### getResumeSearchMatch - Match a single resume and job description
 
 ```python
@@ -233,6 +256,60 @@ index = "REPLACE_INDEX_NAME"  # Optional
 
 result = client.get_resume_search_match(resume, job_description, index=index)
 print(result.score)
+```
+
+### createJobDescriptionSearch - Search through parsed job descriptions
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import JobDescriptionSearchParameters
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+# Search with custom criterias
+parameters = JobDescriptionSearchParameters(
+    indices=["All Job Descriptions"],
+    job_titles=["Senior Java Software Developer"],
+    skills=["Java Programming"],
+    # Many more criterias are available, refer to JobDescriptionSearchParameters
+)
+resp = client.create_job_description_search(parameters)
+print(resp.as_dict())
+
+# Search with a resume
+resume_identifier = "REPLACE_RESUME_IDENTIFIER"
+parameters = JobDescriptionSearchParameters(
+    indices=["All Job Descriptions"],
+    resume=resume_identifier,
+)
+resp = client.create_job_description_search(parameters)
+print(resp.as_dict())
+```
+
+### getJobDescriptionSearchDetail - Get search result of specific job description
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import JobDescriptionSearchParameters
+
+token = "REPLACE_TOKEN"
+job_description_identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+# Search with custom criterias
+parameters = JobDescriptionSearchParameters(
+    indices=["All Job Descriptions"],
+    job_titles=["Senior Java Software Developer"],
+    degrees=["Bachelors"],
+    # Many more criterias are available, refer to JobDescriptionSearchParameters
+)
+resp = client.get_job_description_search_detail(body=parameters, identifier=job_description_identifier)
+print(resp.as_dict())
 ```
 
 Search & Match - Embedding

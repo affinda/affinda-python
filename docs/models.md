@@ -258,6 +258,30 @@ def __init__(**kwargs)
 :keyword parsed:
 :paramtype parsed: str
 
+<a id="models._models.Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1"></a>
+
+## Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1 Objects
+
+```python
+class Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1(msrest.serialization.Model)
+```
+
+Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1.
+
+:ivar match:
+:vartype match: bool
+
+<a id="models._models.Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword match:
+:paramtype match: bool
+
 <a id="models._models.Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1"></a>
 
 ## Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1 Objects
@@ -453,6 +477,30 @@ def __init__(**kwargs)
 :paramtype raw: str
 :keyword parsed:
 :paramtype parsed: str
+
+<a id="models._models.Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1"></a>
+
+## Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1 Objects
+
+```python
+class Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1(msrest.serialization.Model)
+```
+
+Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1.
+
+:ivar match:
+:vartype match: bool
+
+<a id="models._models.Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword match:
+:paramtype match: bool
 
 <a id="models._models.Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification"></a>
 
@@ -4120,6 +4168,634 @@ def __init__(**kwargs)
 :keyword results:
 :paramtype results: list[~affinda.models.JobDescriptionSearchResult]
 
+<a id="models._models.JobDescriptionSearchDetail"></a>
+
+## JobDescriptionSearchDetail Objects
+
+```python
+class JobDescriptionSearchDetail(msrest.serialization.Model)
+```
+
+JobDescriptionSearchDetail.
+
+:ivar job_title:
+:vartype job_title: ~affinda.models.JobDescriptionSearchDetailJobTitle
+:ivar location:
+:vartype location: ~affinda.models.JobDescriptionSearchDetailLocation
+:ivar education:
+:vartype education: ~affinda.models.JobDescriptionSearchDetailEducation
+:ivar skills:
+:vartype skills: ~affinda.models.JobDescriptionSearchDetailSkills
+:ivar experience:
+:vartype experience: ~affinda.models.JobDescriptionSearchDetailExperience
+:ivar occupation_group:
+:vartype occupation_group: ~affinda.models.JobDescriptionSearchDetailOccupationGroup
+:ivar languages:
+:vartype languages: ~affinda.models.JobDescriptionSearchDetailLanguages
+:ivar management_level:
+:vartype management_level: ~affinda.models.JobDescriptionSearchDetailManagementLevel
+:ivar search_expression:
+:vartype search_expression: ~affinda.models.JobDescriptionSearchDetailSearchExpression
+
+<a id="models._models.JobDescriptionSearchDetail.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword job_title:
+:paramtype job_title: ~affinda.models.JobDescriptionSearchDetailJobTitle
+:keyword location:
+:paramtype location: ~affinda.models.JobDescriptionSearchDetailLocation
+:keyword education:
+:paramtype education: ~affinda.models.JobDescriptionSearchDetailEducation
+:keyword skills:
+:paramtype skills: ~affinda.models.JobDescriptionSearchDetailSkills
+:keyword experience:
+:paramtype experience: ~affinda.models.JobDescriptionSearchDetailExperience
+:keyword occupation_group:
+:paramtype occupation_group: ~affinda.models.JobDescriptionSearchDetailOccupationGroup
+:keyword languages:
+:paramtype languages: ~affinda.models.JobDescriptionSearchDetailLanguages
+:keyword management_level:
+:paramtype management_level: ~affinda.models.JobDescriptionSearchDetailManagementLevel
+:keyword search_expression:
+:paramtype search_expression: ~affinda.models.JobDescriptionSearchDetailSearchExpression
+
+<a id="models._models.JobDescriptionSearchDetailEducation"></a>
+
+## JobDescriptionSearchDetailEducation Objects
+
+```python
+class JobDescriptionSearchDetailEducation(msrest.serialization.Model)
+```
+
+JobDescriptionSearchDetailEducation.
+
+:ivar missing:
+:vartype missing: ~affinda.models.JobDescriptionSearchDetailEducationMissing
+:ivar value:
+:vartype value: ~affinda.models.JobDescriptionSearchDetailEducationValue
+
+<a id="models._models.JobDescriptionSearchDetailEducation.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword missing:
+:paramtype missing: ~affinda.models.JobDescriptionSearchDetailEducationMissing
+:keyword value:
+:paramtype value: ~affinda.models.JobDescriptionSearchDetailEducationValue
+
+<a id="models._models.JobDescriptionSearchDetailEducationMissing"></a>
+
+## JobDescriptionSearchDetailEducationMissing Objects
+
+```python
+class JobDescriptionSearchDetailEducationMissing(msrest.serialization.Model)
+```
+
+JobDescriptionSearchDetailEducationMissing.
+
+:ivar degrees:
+:vartype degrees: list[str]
+:ivar degree_types:
+:vartype degree_types: list[str]
+
+<a id="models._models.JobDescriptionSearchDetailEducationMissing.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword degrees:
+:paramtype degrees: list[str]
+:keyword degree_types:
+:paramtype degree_types: list[str]
+
+<a id="models._models.JobDescriptionSearchDetailEducationValue"></a>
+
+## JobDescriptionSearchDetailEducationValue Objects
+
+```python
+class JobDescriptionSearchDetailEducationValue(msrest.serialization.Model)
+```
+
+JobDescriptionSearchDetailEducationValue.
+
+:ivar degrees:
+:vartype degrees: list[str]
+:ivar degree_types:
+:vartype degree_types: list[str]
+:ivar match:
+:vartype match: bool
+
+<a id="models._models.JobDescriptionSearchDetailEducationValue.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword degrees:
+:paramtype degrees: list[str]
+:keyword degree_types:
+:paramtype degree_types: list[str]
+:keyword match:
+:paramtype match: bool
+
+<a id="models._models.JobDescriptionSearchDetailExperience"></a>
+
+## JobDescriptionSearchDetailExperience Objects
+
+```python
+class JobDescriptionSearchDetailExperience(msrest.serialization.Model)
+```
+
+JobDescriptionSearchDetailExperience.
+
+:ivar minimum_experience:
+:vartype minimum_experience: int
+:ivar maximum_experience:
+:vartype maximum_experience: int
+:ivar match:
+:vartype match: bool
+
+<a id="models._models.JobDescriptionSearchDetailExperience.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword minimum_experience:
+:paramtype minimum_experience: int
+:keyword maximum_experience:
+:paramtype maximum_experience: int
+:keyword match:
+:paramtype match: bool
+
+<a id="models._models.JobDescriptionSearchDetailJobTitle"></a>
+
+## JobDescriptionSearchDetailJobTitle Objects
+
+```python
+class JobDescriptionSearchDetailJobTitle(msrest.serialization.Model)
+```
+
+JobDescriptionSearchDetailJobTitle.
+
+:ivar missing:
+:vartype missing: list[str]
+:ivar value:
+:vartype value: ~affinda.models.JobDescriptionSearchDetailJobTitleValue
+
+<a id="models._models.JobDescriptionSearchDetailJobTitle.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword missing:
+:paramtype missing: list[str]
+:keyword value:
+:paramtype value: ~affinda.models.JobDescriptionSearchDetailJobTitleValue
+
+<a id="models._models.JobDescriptionSearchDetailJobTitleValue"></a>
+
+## JobDescriptionSearchDetailJobTitleValue Objects
+
+```python
+class JobDescriptionSearchDetailJobTitleValue(msrest.serialization.Model)
+```
+
+JobDescriptionSearchDetailJobTitleValue.
+
+:ivar name:
+:vartype name: str
+:ivar company_name:
+:vartype company_name: str
+:ivar match:
+:vartype match: bool
+
+<a id="models._models.JobDescriptionSearchDetailJobTitleValue.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword name:
+:paramtype name: str
+:keyword company_name:
+:paramtype company_name: str
+:keyword match:
+:paramtype match: bool
+
+<a id="models._models.JobDescriptionSearchDetailLanguages"></a>
+
+## JobDescriptionSearchDetailLanguages Objects
+
+```python
+class JobDescriptionSearchDetailLanguages(msrest.serialization.Model)
+```
+
+JobDescriptionSearchDetailLanguages.
+
+:ivar missing:
+:vartype missing: list[~affinda.models.ResumeSearchParametersSkill]
+:ivar value:
+:vartype value: list[~affinda.models.JobDescriptionSearchDetailLanguagesValueItem]
+
+<a id="models._models.JobDescriptionSearchDetailLanguages.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword missing:
+:paramtype missing: list[~affinda.models.ResumeSearchParametersSkill]
+:keyword value:
+:paramtype value: list[~affinda.models.JobDescriptionSearchDetailLanguagesValueItem]
+
+<a id="models._models.JobDescriptionSearchDetailLanguagesValueItem"></a>
+
+## JobDescriptionSearchDetailLanguagesValueItem Objects
+
+```python
+class JobDescriptionSearchDetailLanguagesValueItem(msrest.serialization.Model)
+```
+
+JobDescriptionSearchDetailLanguagesValueItem.
+
+:ivar name:
+:vartype name: str
+:ivar match:
+:vartype match: bool
+
+<a id="models._models.JobDescriptionSearchDetailLanguagesValueItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword name:
+:paramtype name: str
+:keyword match:
+:paramtype match: bool
+
+<a id="models._models.JobDescriptionSearchDetailLocation"></a>
+
+## JobDescriptionSearchDetailLocation Objects
+
+```python
+class JobDescriptionSearchDetailLocation(msrest.serialization.Model)
+```
+
+JobDescriptionSearchDetailLocation.
+
+:ivar missing:
+:vartype missing: list[~affinda.models.ResumeSearchParametersLocation]
+:ivar value:
+:vartype value: ~affinda.models.JobDescriptionSearchDetailLocationValue
+
+<a id="models._models.JobDescriptionSearchDetailLocation.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword missing:
+:paramtype missing: list[~affinda.models.ResumeSearchParametersLocation]
+:keyword value:
+:paramtype value: ~affinda.models.JobDescriptionSearchDetailLocationValue
+
+<a id="models._models.Location"></a>
+
+## Location Objects
+
+```python
+class Location(msrest.serialization.Model)
+```
+
+Location.
+
+Variables are only populated by the server, and will be ignored when sending a request.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar formatted:
+:vartype formatted: str
+:ivar postal_code:
+:vartype postal_code: str
+:ivar state:
+:vartype state: str
+:ivar country:
+:vartype country: str
+:ivar country_code: Two letter country code (ISO 3166-1 alpha-2).
+:vartype country_code: str
+:ivar raw_input: Required.
+:vartype raw_input: str
+:ivar street_number:
+:vartype street_number: str
+:ivar street:
+:vartype street: str
+:ivar apartment_number:
+:vartype apartment_number: str
+:ivar city:
+:vartype city: str
+
+<a id="models._models.Location.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword raw_input: Required.
+:paramtype raw_input: str
+
+<a id="models._models.JobDescriptionSearchDetailLocationValue"></a>
+
+## JobDescriptionSearchDetailLocationValue Objects
+
+```python
+class JobDescriptionSearchDetailLocationValue(Location,  Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1)
+```
+
+JobDescriptionSearchDetailLocationValue.
+
+Variables are only populated by the server, and will be ignored when sending a request.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar match:
+:vartype match: bool
+:ivar formatted:
+:vartype formatted: str
+:ivar postal_code:
+:vartype postal_code: str
+:ivar state:
+:vartype state: str
+:ivar country:
+:vartype country: str
+:ivar country_code: Two letter country code (ISO 3166-1 alpha-2).
+:vartype country_code: str
+:ivar raw_input: Required.
+:vartype raw_input: str
+:ivar street_number:
+:vartype street_number: str
+:ivar street:
+:vartype street: str
+:ivar apartment_number:
+:vartype apartment_number: str
+:ivar city:
+:vartype city: str
+
+<a id="models._models.JobDescriptionSearchDetailLocationValue.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword match:
+:paramtype match: bool
+:keyword raw_input: Required.
+:paramtype raw_input: str
+
+<a id="models._models.JobDescriptionSearchDetailManagementLevel"></a>
+
+## JobDescriptionSearchDetailManagementLevel Objects
+
+```python
+class JobDescriptionSearchDetailManagementLevel(msrest.serialization.Model)
+```
+
+JobDescriptionSearchDetailManagementLevel.
+
+:ivar level: Known values are: "None", "Low", "Mid", "Upper".
+:vartype level: str or ~affinda.models.ManagementLevel
+:ivar match:
+:vartype match: bool
+
+<a id="models._models.JobDescriptionSearchDetailManagementLevel.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword level: Known values are: "None", "Low", "Mid", "Upper".
+:paramtype level: str or ~affinda.models.ManagementLevel
+:keyword match:
+:paramtype match: bool
+
+<a id="models._models.JobDescriptionSearchDetailOccupationGroup"></a>
+
+## JobDescriptionSearchDetailOccupationGroup Objects
+
+```python
+class JobDescriptionSearchDetailOccupationGroup(msrest.serialization.Model)
+```
+
+JobDescriptionSearchDetailOccupationGroup.
+
+:ivar missing:
+:vartype missing: list[int]
+:ivar value:
+:vartype value: list[~affinda.models.JobDescriptionSearchDetailOccupationGroupValueItem]
+
+<a id="models._models.JobDescriptionSearchDetailOccupationGroup.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword missing:
+:paramtype missing: list[int]
+:keyword value:
+:paramtype value: list[~affinda.models.JobDescriptionSearchDetailOccupationGroupValueItem]
+
+<a id="models._models.OccupationGroup"></a>
+
+## OccupationGroup Objects
+
+```python
+class OccupationGroup(msrest.serialization.Model)
+```
+
+OccupationGroup.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar code: Required.
+:vartype code: int
+:ivar name: Required.
+:vartype name: str
+:ivar children: Required.
+:vartype children: list[~affinda.models.OccupationGroup]
+
+<a id="models._models.OccupationGroup.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword code: Required.
+:paramtype code: int
+:keyword name: Required.
+:paramtype name: str
+:keyword children: Required.
+:paramtype children: list[~affinda.models.OccupationGroup]
+
+<a id="models._models.JobDescriptionSearchDetailOccupationGroupValueItem"></a>
+
+## JobDescriptionSearchDetailOccupationGroupValueItem Objects
+
+```python
+class JobDescriptionSearchDetailOccupationGroupValueItem(OccupationGroup,  Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1)
+```
+
+JobDescriptionSearchDetailOccupationGroupValueItem.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar match:
+:vartype match: bool
+:ivar code: Required.
+:vartype code: int
+:ivar name: Required.
+:vartype name: str
+:ivar children: Required.
+:vartype children: list[~affinda.models.OccupationGroup]
+
+<a id="models._models.JobDescriptionSearchDetailOccupationGroupValueItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword match:
+:paramtype match: bool
+:keyword code: Required.
+:paramtype code: int
+:keyword name: Required.
+:paramtype name: str
+:keyword children: Required.
+:paramtype children: list[~affinda.models.OccupationGroup]
+
+<a id="models._models.JobDescriptionSearchDetailSearchExpression"></a>
+
+## JobDescriptionSearchDetailSearchExpression Objects
+
+```python
+class JobDescriptionSearchDetailSearchExpression(msrest.serialization.Model)
+```
+
+JobDescriptionSearchDetailSearchExpression.
+
+:ivar missing:
+:vartype missing: list[str]
+:ivar value:
+:vartype value: list[str]
+
+<a id="models._models.JobDescriptionSearchDetailSearchExpression.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword missing:
+:paramtype missing: list[str]
+:keyword value:
+:paramtype value: list[str]
+
+<a id="models._models.JobDescriptionSearchDetailSkills"></a>
+
+## JobDescriptionSearchDetailSkills Objects
+
+```python
+class JobDescriptionSearchDetailSkills(msrest.serialization.Model)
+```
+
+JobDescriptionSearchDetailSkills.
+
+:ivar missing:
+:vartype missing: list[~affinda.models.ResumeSearchParametersSkill]
+:ivar value:
+:vartype value: list[~affinda.models.JobDescriptionSearchDetailSkillsValueItem]
+
+<a id="models._models.JobDescriptionSearchDetailSkills.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword missing:
+:paramtype missing: list[~affinda.models.ResumeSearchParametersSkill]
+:keyword value:
+:paramtype value: list[~affinda.models.JobDescriptionSearchDetailSkillsValueItem]
+
+<a id="models._models.JobDescriptionSearchDetailSkillsValueItem"></a>
+
+## JobDescriptionSearchDetailSkillsValueItem Objects
+
+```python
+class JobDescriptionSearchDetailSkillsValueItem(msrest.serialization.Model)
+```
+
+JobDescriptionSearchDetailSkillsValueItem.
+
+:ivar name:
+:vartype name: str
+:ivar match:
+:vartype match: bool
+
+<a id="models._models.JobDescriptionSearchDetailSkillsValueItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+:keyword name:
+:paramtype name: str
+:keyword match:
+:paramtype match: bool
+
 <a id="models._models.JobDescriptionSearchParameters"></a>
 
 ## JobDescriptionSearchParameters Objects
@@ -4592,52 +5268,6 @@ def __init__(**kwargs)
 :keyword score:
 :paramtype score: float
 
-<a id="models._models.Location"></a>
-
-## Location Objects
-
-```python
-class Location(msrest.serialization.Model)
-```
-
-Location.
-
-Variables are only populated by the server, and will be ignored when sending a request.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar formatted:
-:vartype formatted: str
-:ivar postal_code:
-:vartype postal_code: str
-:ivar state:
-:vartype state: str
-:ivar country:
-:vartype country: str
-:ivar country_code: Two letter country code (ISO 3166-1 alpha-2).
-:vartype country_code: str
-:ivar raw_input: Required.
-:vartype raw_input: str
-:ivar street_number:
-:vartype street_number: str
-:ivar street:
-:vartype street: str
-:ivar apartment_number:
-:vartype apartment_number: str
-:ivar city:
-:vartype city: str
-
-<a id="models._models.Location.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-:keyword raw_input: Required.
-:paramtype raw_input: str
-
 <a id="models._models.LocationAnnotation"></a>
 
 ## LocationAnnotation Objects
@@ -4765,40 +5395,6 @@ def __init__(**kwargs)
 :paramtype label: str
 :keyword score:
 :paramtype score: float
-
-<a id="models._models.OccupationGroup"></a>
-
-## OccupationGroup Objects
-
-```python
-class OccupationGroup(msrest.serialization.Model)
-```
-
-OccupationGroup.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar code: Required.
-:vartype code: int
-:ivar name: Required.
-:vartype name: str
-:ivar children: Required.
-:vartype children: list[~affinda.models.OccupationGroup]
-
-<a id="models._models.OccupationGroup.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-:keyword code: Required.
-:paramtype code: int
-:keyword name: Required.
-:paramtype name: str
-:keyword children: Required.
-:paramtype children: list[~affinda.models.OccupationGroup]
 
 <a id="models._models.OccupationGroupSearchScoreComponent"></a>
 
