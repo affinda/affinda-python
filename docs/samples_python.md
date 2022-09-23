@@ -190,7 +190,7 @@ client = AffindaAPI(credential=credential)
 
 # Search with custom criterias
 parameters = ResumeSearchParameters(
-    indices=["All Resumes"],
+    indices=["Resume-Search-Demo"],
     job_titles=["Senior Java Software Developer"],
     institutions=["Boston University"],
     # Many more criterias are available, refer to ResumeSearchParameters
@@ -201,7 +201,7 @@ print(resp.as_dict())
 # Search with a job description
 job_description_identifier = "REPLACE_JOB_DESCRIPTION_IDENTIFIER"
 parameters = ResumeSearchParameters(
-    indices=["All Resumes"],
+    indices=["Resume-Search-Demo"],
     job_description=job_description_identifier,
 )
 resp = client.create_resume_search(parameters)
@@ -210,7 +210,7 @@ print(resp.as_dict())
 # Search with a resume
 resume_identifier = "REPLACE_RESUME_IDENTIFIER"
 parameters = ResumeSearchParameters(
-    indices=["All Resumes"],
+    indices=["Resume-Search-Demo"],
     resume=resume_identifier,
 )
 resp = client.create_resume_search(parameters)
@@ -231,7 +231,7 @@ client = AffindaAPI(credential=credential)
 
 # Search with custom criterias
 parameters = ResumeSearchParameters(
-    indices=["All Resumes"],
+    indices=["Resume-Search-Demo"],
     job_titles=["Senior Java Software Developer"],
     institutions=["Boston University"],
     # Many more criterias are available, refer to ResumeSearchParameters
@@ -271,7 +271,7 @@ client = AffindaAPI(credential=credential)
 
 # Search with custom criterias
 parameters = JobDescriptionSearchParameters(
-    indices=["All Job Descriptions"],
+    indices=["Job-Description-Search-Demo"],
     job_titles=["Senior Java Software Developer"],
     skills=["Java Programming"],
     # Many more criterias are available, refer to JobDescriptionSearchParameters
@@ -282,7 +282,7 @@ print(resp.as_dict())
 # Search with a resume
 resume_identifier = "REPLACE_RESUME_IDENTIFIER"
 parameters = JobDescriptionSearchParameters(
-    indices=["All Job Descriptions"],
+    indices=["Job-Description-Search-Demo"],
     resume=resume_identifier,
 )
 resp = client.create_job_description_search(parameters)
@@ -303,7 +303,7 @@ client = AffindaAPI(credential=credential)
 
 # Search with custom criterias
 parameters = JobDescriptionSearchParameters(
-    indices=["All Job Descriptions"],
+    indices=["Job-Description-Search-Demo"],
     job_titles=["Senior Java Software Developer"],
     degrees=["Bachelors"],
     # Many more criterias are available, refer to JobDescriptionSearchParameters
@@ -315,7 +315,7 @@ print(resp.as_dict())
 Search & Match - Embedding
 --------------------------
 
-### getResumeSearchConfig - Get the config for the logged in user's embedable search tool
+### getResumeSearchConfig - Get the config for the logged in user's embeddable resume search tool
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -329,7 +329,7 @@ result = client.get_resume_search_config()
 print(result.as_dict())
 ```
 
-### updateResumeSearchConfig - Update the config for the logged in user's embedable search tool
+### updateResumeSearchConfig - Update the config for the logged in user's embeddable resume search tool
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -352,7 +352,7 @@ result = client.update_resume_search_config(config)
 print(result.as_dict())
 ```
 
-### createResumeSearchEmbedUrl - Create a signed URL for the embedable search tool
+### createResumeSearchEmbedUrl - Create a signed URL for the embeddable resume search tool
 
 ```python
 from affinda import AffindaAPI, TokenCredential

@@ -17,12 +17,38 @@ class EducationLevel(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     DOCTORAL = "doctoral"
 
 
+class Enum1(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+
+    RESUMES = "resumes"
+    JOB_DESCRIPTIONS = "job_descriptions"
+
+
+class Enum4(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+
+    RESUMES = "resumes"
+    JOB_DESCRIPTIONS = "job_descriptions"
+
+
+class GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType(
+    str, Enum, metaclass=CaseInsensitiveEnumMeta
+):
+
+    RESUMES = "resumes"
+    JOB_DESCRIPTIONS = "job_descriptions"
+
+
 class ManagementLevel(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     NONE = "None"
     LOW = "Low"
     MID = "Mid"
     UPPER = "Upper"
+
+
+class PostContentSchemaDocumentType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+
+    RESUMES = "resumes"
+    JOB_DESCRIPTIONS = "job_descriptions"
 
 
 class ResumeSkillSourcesItemSection(str, Enum, metaclass=CaseInsensitiveEnumMeta):

@@ -29,14 +29,12 @@ Accreditation.
 def __init__(**kwargs)
 ```
 
-:keyword education:
-:paramtype education: str
-:keyword education_level:
-:paramtype education_level: str
-:keyword input_str:
-:paramtype input_str: str
-:keyword match_str:
-:paramtype match_str: str
+**Arguments**:
+
+- `education`: 
+- `education_level`: 
+- `input_str`: 
+- `match_str`: 
 
 <a id="models._models.Annotation"></a>
 
@@ -76,23 +74,17 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
 
 <a id="models._models.Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1"></a>
 
@@ -117,10 +109,10 @@ Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1"></a>
 
@@ -145,10 +137,38 @@ Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
+
+<a id="models._models.Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1"></a>
+
+## Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1 Objects
+
+```python
+class Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1(msrest.serialization.Model)
+```
+
+Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1"></a>
 
@@ -173,10 +193,10 @@ Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1"></a>
 
@@ -199,8 +219,9 @@ Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItem
 def __init__(**kwargs)
 ```
 
-:keyword match:
-:paramtype match: bool
+**Arguments**:
+
+- `match`: 
 
 <a id="models._models.Components17Ashz6SchemasInvoicePropertiesMetaAllof1"></a>
 
@@ -225,10 +246,10 @@ Components17Ashz6SchemasInvoicePropertiesMetaAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword client_verified_dt:
-:paramtype client_verified_dt: str
-:keyword review_url: Signed URL (valid for 60 minutes) to access the invoice review tool.
-:paramtype review_url: str
+**Arguments**:
+
+- `client_verified_dt`: 
+- `review_url`: Signed URL (valid for 60 minutes) to access the invoice review tool.
 
 <a id="models._models.Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1"></a>
 
@@ -253,10 +274,10 @@ Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1"></a>
 
@@ -279,8 +300,9 @@ Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPrope
 def __init__(**kwargs)
 ```
 
-:keyword match:
-:paramtype match: bool
+**Arguments**:
+
+- `match`: 
 
 <a id="models._models.Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1"></a>
 
@@ -305,10 +327,10 @@ Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1"></a>
 
@@ -333,10 +355,10 @@ Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1"></a>
 
@@ -361,10 +383,10 @@ Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1"></a>
 
@@ -389,10 +411,10 @@ Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1"></a>
 
@@ -417,10 +439,10 @@ Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1"></a>
 
@@ -445,27 +467,27 @@ Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
 
-<a id="models._models.Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1"></a>
+- `raw`: 
+- `parsed`: 
 
-## Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1 Objects
+<a id="models._models.Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1"></a>
+
+## Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1 Objects
 
 ```python
-class Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1(msrest.serialization.Model)
+class Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1(msrest.serialization.Model)
 ```
 
-Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1.
+Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1.__init__"></a>
+<a id="models._models.Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -473,10 +495,10 @@ Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1"></a>
 
@@ -499,8 +521,9 @@ Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesVa
 def __init__(**kwargs)
 ```
 
-:keyword match:
-:paramtype match: bool
+**Arguments**:
+
+- `match`: 
 
 <a id="models._models.Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification"></a>
 
@@ -531,16 +554,13 @@ Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupat
 def __init__(**kwargs)
 ```
 
-:keyword title: SOC2020 classification for this job title.
-:paramtype title: str
-:keyword minor_group: SOC2020 minor group.
-:paramtype minor_group: str
-:keyword sub_major_group: SOC2020 sub major group.
-:paramtype sub_major_group: str
-:keyword major_group: SOC2020 major group.
-:paramtype major_group: str
-:keyword soc_code: The 4 digit code representing the SOC2020 classification for this job title.
-:paramtype soc_code: int
+**Arguments**:
+
+- `title`: SOC2020 classification for this job title.
+- `minor_group`: SOC2020 minor group.
+- `sub_major_group`: SOC2020 sub major group.
+- `major_group`: SOC2020 major group.
+- `soc_code`: The 4 digit code representing the SOC2020 classification for this job title.
 
 <a id="models._models.Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1"></a>
 
@@ -565,10 +585,10 @@ Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1"></a>
 
@@ -593,10 +613,10 @@ Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1"></a>
 
@@ -621,10 +641,10 @@ Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1"></a>
 
@@ -649,10 +669,10 @@ Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1"></a>
 
@@ -677,10 +697,10 @@ Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1"></a>
 
@@ -705,10 +725,10 @@ Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1"></a>
 
@@ -733,10 +753,10 @@ Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1"></a>
 
@@ -761,10 +781,10 @@ Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1"></a>
 
@@ -789,10 +809,10 @@ Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1"></a>
 
@@ -817,10 +837,10 @@ Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1"></a>
 
@@ -845,10 +865,10 @@ ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1"></a>
 
@@ -873,27 +893,27 @@ ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
 
-<a id="models._models.ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1"></a>
+- `raw`: 
+- `parsed`: 
 
-## ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1 Objects
+<a id="models._models.ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1"></a>
+
+## ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1 Objects
 
 ```python
-class ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1(msrest.serialization.Model)
+class ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.serialization.Model)
 ```
 
-ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1.
+ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1.__init__"></a>
+<a id="models._models.ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -901,27 +921,27 @@ ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
 
-<a id="models._models.ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1"></a>
+- `raw`: 
+- `parsed`: 
 
-## ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1 Objects
+<a id="models._models.ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1"></a>
+
+## ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1 Objects
 
 ```python
-class ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.serialization.Model)
+class ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1(msrest.serialization.Model)
 ```
 
-ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1.
+ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1.__init__"></a>
+<a id="models._models.ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -929,10 +949,10 @@ ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1"></a>
 
@@ -957,10 +977,10 @@ ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1"></a>
 
@@ -983,8 +1003,9 @@ ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAll
 def __init__(**kwargs)
 ```
 
-:keyword match:
-:paramtype match: bool
+**Arguments**:
+
+- `match`: 
 
 <a id="models._models.ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1"></a>
 
@@ -1007,8 +1028,9 @@ ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValu
 def __init__(**kwargs)
 ```
 
-:keyword match:
-:paramtype match: bool
+**Arguments**:
+
+- `match`: 
 
 <a id="models._models.ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1"></a>
 
@@ -1031,8 +1053,9 @@ ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1
 def __init__(**kwargs)
 ```
 
-:keyword match:
-:paramtype match: bool
+**Arguments**:
+
+- `match`: 
 
 <a id="models._models.ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1"></a>
 
@@ -1055,36 +1078,9 @@ ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItems
 def __init__(**kwargs)
 ```
 
-:keyword match:
-:paramtype match: bool
+**Arguments**:
 
-<a id="models._models.ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1"></a>
-
-## ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1 Objects
-
-```python
-class ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1(msrest.serialization.Model)
-```
-
-ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1.
-
-:ivar raw:
-:vartype raw: str
-:ivar parsed:
-:vartype parsed: str
-
-<a id="models._models.ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+- `match`: 
 
 <a id="models._models.ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1"></a>
 
@@ -1109,10 +1105,10 @@ ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1"></a>
 
@@ -1137,10 +1133,10 @@ ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword parsed:
-:paramtype parsed: str
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.DateAnnotation"></a>
 
@@ -1182,25 +1178,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: ~datetime.date
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.Education"></a>
 
@@ -1231,16 +1220,13 @@ Education.
 def __init__(**kwargs)
 ```
 
-:keyword organization:
-:paramtype organization: str
-:keyword accreditation:
-:paramtype accreditation: ~affinda.models.Accreditation
-:keyword grade:
-:paramtype grade: ~affinda.models.EducationGrade
-:keyword location:
-:paramtype location: ~affinda.models.Location
-:keyword dates:
-:paramtype dates: ~affinda.models.EducationDates
+**Arguments**:
+
+- `organization`: 
+- `accreditation`: 
+- `grade`: 
+- `location`: 
+- `dates`: 
 
 <a id="models._models.EducationDates"></a>
 
@@ -1267,12 +1253,11 @@ EducationDates.
 def __init__(**kwargs)
 ```
 
-:keyword start_date:
-:paramtype start_date: str
-:keyword completion_date:
-:paramtype completion_date: str
-:keyword is_current:
-:paramtype is_current: bool
+**Arguments**:
+
+- `start_date`: 
+- `completion_date`: 
+- `is_current`: 
 
 <a id="models._models.EducationGrade"></a>
 
@@ -1299,12 +1284,11 @@ EducationGrade.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword value:
-:paramtype value: str
-:keyword metric:
-:paramtype metric: str
+**Arguments**:
+
+- `raw`: 
+- `value`: 
+- `metric`: 
 
 <a id="models._models.EducationSearchScoreComponent"></a>
 
@@ -1333,12 +1317,11 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword value:
-:paramtype value: str
-:keyword label: Required.
-:paramtype label: str
-:keyword score:
-:paramtype score: float
+**Arguments**:
+
+- `value`: 
+- `label`: Required.
+- `score`: 
 
 <a id="models._models.EnumAnnotationSerializer"></a>
 
@@ -1380,25 +1363,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.Error"></a>
 
@@ -1423,10 +1399,10 @@ Error.
 def __init__(**kwargs)
 ```
 
-:keyword error_code:
-:paramtype error_code: str
-:keyword error_detail:
-:paramtype error_detail: str
+**Arguments**:
+
+- `error_code`: 
+- `error_detail`: 
 
 <a id="models._models.ExpectedRemunerationAnnotation"></a>
 
@@ -1468,25 +1444,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: ~affinda.models.ExpectedRemunerationAnnotationParsed
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.ExpectedRemunerationAnnotationParsed"></a>
 
@@ -1515,14 +1484,12 @@ ExpectedRemunerationAnnotationParsed.
 def __init__(**kwargs)
 ```
 
-:keyword minimum:
-:paramtype minimum: float
-:keyword maximum:
-:paramtype maximum: float
-:keyword currency:
-:paramtype currency: str
-:keyword unit:
-:paramtype unit: str
+**Arguments**:
+
+- `minimum`: 
+- `maximum`: 
+- `currency`: 
+- `unit`: 
 
 <a id="models._models.ExperienceSearchScoreComponent"></a>
 
@@ -1551,12 +1518,11 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword value:
-:paramtype value: str
-:keyword label: Required.
-:paramtype label: str
-:keyword score:
-:paramtype score: float
+**Arguments**:
+
+- `value`: 
+- `label`: Required.
+- `score`: 
 
 <a id="models._models.Get200ApplicationJsonPropertiesItemsItem"></a>
 
@@ -1572,6 +1538,9 @@ All required parameters must be populated in order to send to Azure.
 
 :ivar name: Required.
 :vartype name: str
+:ivar document_type: Known values are: "resumes", "job_descriptions".
+:vartype document_type: str or
+ ~affinda.models.GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType
 
 <a id="models._models.Get200ApplicationJsonPropertiesItemsItem.__init__"></a>
 
@@ -1581,8 +1550,10 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword name: Required.
-:paramtype name: str
+**Arguments**:
+
+- `name`: Required.
+- `document_type`: Known values are: "resumes", "job_descriptions".
 
 <a id="models._models.GetAllDocumentsResults"></a>
 
@@ -1611,14 +1582,12 @@ GetAllDocumentsResults.
 def __init__(**kwargs)
 ```
 
-:keyword count: Number of documents in result.
-:paramtype count: int
-:keyword next: URL to request next page of results.
-:paramtype next: str
-:keyword previous: URL to request previous page of results.
-:paramtype previous: str
-:keyword results:
-:paramtype results: list[~affinda.models.Meta]
+**Arguments**:
+
+- `count`: Number of documents in result.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
+- `results`: 
 
 <a id="models._models.GetAllInvoicesResults"></a>
 
@@ -1647,14 +1616,12 @@ GetAllInvoicesResults.
 def __init__(**kwargs)
 ```
 
-:keyword count: Number of documents in result.
-:paramtype count: int
-:keyword next: URL to request next page of results.
-:paramtype next: str
-:keyword previous: URL to request previous page of results.
-:paramtype previous: str
-:keyword results:
-:paramtype results: list[~affinda.models.Meta]
+**Arguments**:
+
+- `count`: Number of documents in result.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
+- `results`: 
 
 <a id="models._models.GetAllJobDescriptionsResults"></a>
 
@@ -1683,14 +1650,12 @@ GetAllJobDescriptionsResults.
 def __init__(**kwargs)
 ```
 
-:keyword count: Number of documents in result.
-:paramtype count: int
-:keyword next: URL to request next page of results.
-:paramtype next: str
-:keyword previous: URL to request previous page of results.
-:paramtype previous: str
-:keyword results:
-:paramtype results: list[~affinda.models.Meta]
+**Arguments**:
+
+- `count`: Number of documents in result.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
+- `results`: 
 
 <a id="models._models.IndexRequestBody"></a>
 
@@ -1703,7 +1668,9 @@ class IndexRequestBody(msrest.serialization.Model)
 IndexRequestBody.
 
 :ivar name:
-:vartype name: bool
+:vartype name: str
+:ivar document_type: Known values are: "resumes", "job_descriptions".
+:vartype document_type: str or ~affinda.models.PostContentSchemaDocumentType
 
 <a id="models._models.IndexRequestBody.__init__"></a>
 
@@ -1713,8 +1680,10 @@ IndexRequestBody.
 def __init__(**kwargs)
 ```
 
-:keyword name:
-:paramtype name: bool
+**Arguments**:
+
+- `name`: 
+- `document_type`: Known values are: "resumes", "job_descriptions".
 
 <a id="models._models.Invoice"></a>
 
@@ -1745,14 +1714,12 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword client_verified_dt: Required.
-:paramtype client_verified_dt: str
-:keyword data: Required.
-:paramtype data: ~affinda.models.InvoiceData
-:keyword meta: Required.
-:paramtype meta: ~affinda.models.InvoiceMeta
-:keyword error: Required.
-:paramtype error: ~affinda.models.Error
+**Arguments**:
+
+- `client_verified_dt`: Required.
+- `data`: Required.
+- `meta`: Required.
+- `error`: Required.
 
 <a id="models._models.InvoiceData"></a>
 
@@ -1797,9 +1764,9 @@ InvoiceData.
 :ivar bank_account_number:
 :vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
 :ivar supplier_vat:
-:vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVAT
+:vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
 :ivar customer_vat:
-:vartype customer_vat: ~affinda.models.InvoiceDataCustomerVAT
+:vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
 :ivar bpay_biller_code:
 :vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
 :ivar bpay_reference:
@@ -1807,11 +1774,11 @@ InvoiceData.
 :ivar bank_sort_code:
 :vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
 :ivar bank_iban:
-:vartype bank_iban: ~affinda.models.InvoiceDataBankIBAN
+:vartype bank_iban: ~affinda.models.InvoiceDataBankIban
 :ivar bank_swift:
 :vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
 :ivar bank_bsb:
-:vartype bank_bsb: ~affinda.models.InvoiceDataBankBSB
+:vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
 :ivar customer_contact_name:
 :vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
 :ivar customer_company_name:
@@ -1849,82 +1816,46 @@ InvoiceData.
 def __init__(**kwargs)
 ```
 
-:keyword tables:
-:paramtype tables: list[~affinda.models.InvoiceDataTablesItem]
-:keyword invoice_date:
-:paramtype invoice_date: ~affinda.models.DateAnnotation
-:keyword invoice_order_date:
-:paramtype invoice_order_date: ~affinda.models.DateAnnotation
-:keyword payment_date_due:
-:paramtype payment_date_due: ~affinda.models.DateAnnotation
-:keyword payment_amount_base:
-:paramtype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
-:keyword payment_amount_tax:
-:paramtype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
-:keyword payment_amount_total:
-:paramtype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
-:keyword payment_amount_paid:
-:paramtype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
-:keyword payment_amount_due:
-:paramtype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
-:keyword invoice_number:
-:paramtype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
-:keyword invoice_purchase_order_number:
-:paramtype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
-:keyword supplier_business_number:
-:paramtype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
-:keyword customer_number:
-:paramtype customer_number: ~affinda.models.InvoiceDataCustomerNumber
-:keyword customer_business_number:
-:paramtype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
-:keyword payment_reference:
-:paramtype payment_reference: ~affinda.models.InvoiceDataPaymentReference
-:keyword bank_account_number:
-:paramtype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
-:keyword supplier_vat:
-:paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVAT
-:keyword customer_vat:
-:paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVAT
-:keyword bpay_biller_code:
-:paramtype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
-:keyword bpay_reference:
-:paramtype bpay_reference: ~affinda.models.InvoiceDataBpayReference
-:keyword bank_sort_code:
-:paramtype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
-:keyword bank_iban:
-:paramtype bank_iban: ~affinda.models.InvoiceDataBankIBAN
-:keyword bank_swift:
-:paramtype bank_swift: ~affinda.models.InvoiceDataBankSwift
-:keyword bank_bsb:
-:paramtype bank_bsb: ~affinda.models.InvoiceDataBankBSB
-:keyword customer_contact_name:
-:paramtype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
-:keyword customer_company_name:
-:paramtype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
-:keyword supplier_company_name:
-:paramtype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
-:keyword customer_billing_address:
-:paramtype customer_billing_address: ~affinda.models.LocationAnnotation
-:keyword customer_delivery_address:
-:paramtype customer_delivery_address: ~affinda.models.LocationAnnotation
-:keyword supplier_address:
-:paramtype supplier_address: ~affinda.models.LocationAnnotation
-:keyword customer_phone_number:
-:paramtype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
-:keyword supplier_phone_number:
-:paramtype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
-:keyword supplier_fax:
-:paramtype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
-:keyword customer_email:
-:paramtype customer_email: ~affinda.models.InvoiceDataCustomerEmail
-:keyword supplier_email:
-:paramtype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
-:keyword supplier_website:
-:paramtype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
-:keyword currency_code:
-:paramtype currency_code: ~affinda.models.EnumAnnotationSerializer
-:keyword custom_fields: Dictionary of :code:`<any>`.
-:paramtype custom_fields: dict[str, any]
+**Arguments**:
+
+- `tables`: 
+- `invoice_date`: 
+- `invoice_order_date`: 
+- `payment_date_due`: 
+- `payment_amount_base`: 
+- `payment_amount_tax`: 
+- `payment_amount_total`: 
+- `payment_amount_paid`: 
+- `payment_amount_due`: 
+- `invoice_number`: 
+- `invoice_purchase_order_number`: 
+- `supplier_business_number`: 
+- `customer_number`: 
+- `customer_business_number`: 
+- `payment_reference`: 
+- `bank_account_number`: 
+- `supplier_vat`: 
+- `customer_vat`: 
+- `bpay_biller_code`: 
+- `bpay_reference`: 
+- `bank_sort_code`: 
+- `bank_iban`: 
+- `bank_swift`: 
+- `bank_bsb`: 
+- `customer_contact_name`: 
+- `customer_company_name`: 
+- `supplier_company_name`: 
+- `customer_billing_address`: 
+- `customer_delivery_address`: 
+- `supplier_address`: 
+- `customer_phone_number`: 
+- `supplier_phone_number`: 
+- `supplier_fax`: 
+- `customer_email`: 
+- `supplier_email`: 
+- `supplier_website`: 
+- `currency_code`: 
+- `custom_fields`: Dictionary of :code:`<any>`.
 
 <a id="models._models.TextAnnotation"></a>
 
@@ -1966,25 +1897,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataBankAccountNumber"></a>
 
@@ -2026,35 +1950,28 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
-<a id="models._models.InvoiceDataBankBSB"></a>
+<a id="models._models.InvoiceDataBankBsb"></a>
 
-## InvoiceDataBankBSB Objects
+## InvoiceDataBankBsb Objects
 
 ```python
-class InvoiceDataBankBSB(TextAnnotation,  Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1)
+class InvoiceDataBankBsb(TextAnnotation,  Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1)
 ```
 
-InvoiceDataBankBSB.
+InvoiceDataBankBsb.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -2078,7 +1995,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.InvoiceDataBankBSB.__init__"></a>
+<a id="models._models.InvoiceDataBankBsb.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -2086,35 +2003,28 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
-<a id="models._models.InvoiceDataBankIBAN"></a>
+<a id="models._models.InvoiceDataBankIban"></a>
 
-## InvoiceDataBankIBAN Objects
+## InvoiceDataBankIban Objects
 
 ```python
-class InvoiceDataBankIBAN(TextAnnotation,  ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1)
+class InvoiceDataBankIban(TextAnnotation,  Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1)
 ```
 
-InvoiceDataBankIBAN.
+InvoiceDataBankIban.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -2138,7 +2048,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.InvoiceDataBankIBAN.__init__"></a>
+<a id="models._models.InvoiceDataBankIban.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -2146,25 +2056,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataBankSortCode"></a>
 
@@ -2206,25 +2109,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataBankSwift"></a>
 
@@ -2266,25 +2162,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataBpayBillerCode"></a>
 
@@ -2326,25 +2215,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataBpayReference"></a>
 
@@ -2386,25 +2268,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerBusinessNumber"></a>
 
@@ -2446,25 +2321,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerCompanyName"></a>
 
@@ -2506,25 +2374,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerContactName"></a>
 
@@ -2566,25 +2427,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerEmail"></a>
 
@@ -2626,25 +2480,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerNumber"></a>
 
@@ -2686,25 +2533,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerPhoneNumber"></a>
 
@@ -2746,35 +2586,28 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
-<a id="models._models.InvoiceDataCustomerVAT"></a>
+<a id="models._models.InvoiceDataCustomerVat"></a>
 
-## InvoiceDataCustomerVAT Objects
+## InvoiceDataCustomerVat Objects
 
 ```python
-class InvoiceDataCustomerVAT(TextAnnotation,  ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1)
+class InvoiceDataCustomerVat(TextAnnotation,  ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1)
 ```
 
-InvoiceDataCustomerVAT.
+InvoiceDataCustomerVat.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -2798,7 +2631,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.InvoiceDataCustomerVAT.__init__"></a>
+<a id="models._models.InvoiceDataCustomerVat.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -2806,25 +2639,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataInvoiceNumber"></a>
 
@@ -2866,25 +2692,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataInvoicePurchaseOrderNumber"></a>
 
@@ -2926,25 +2745,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataPaymentAmountBase"></a>
 
@@ -2986,25 +2798,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataPaymentAmountDue"></a>
 
@@ -3046,25 +2851,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataPaymentAmountPaid"></a>
 
@@ -3106,25 +2904,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataPaymentAmountTax"></a>
 
@@ -3166,25 +2957,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataPaymentAmountTotal"></a>
 
@@ -3226,25 +3010,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataPaymentReference"></a>
 
@@ -3286,25 +3063,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierBusinessNumber"></a>
 
@@ -3346,25 +3116,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierCompanyName"></a>
 
@@ -3406,25 +3169,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierEmail"></a>
 
@@ -3466,25 +3222,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierFax"></a>
 
@@ -3526,25 +3275,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierPhoneNumber"></a>
 
@@ -3586,35 +3328,28 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
-<a id="models._models.InvoiceDataSupplierVAT"></a>
+<a id="models._models.InvoiceDataSupplierVat"></a>
 
-## InvoiceDataSupplierVAT Objects
+## InvoiceDataSupplierVat Objects
 
 ```python
-class InvoiceDataSupplierVAT(TextAnnotation,  ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1)
+class InvoiceDataSupplierVat(TextAnnotation,  ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1)
 ```
 
-InvoiceDataSupplierVAT.
+InvoiceDataSupplierVat.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -3638,7 +3373,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.InvoiceDataSupplierVAT.__init__"></a>
+<a id="models._models.InvoiceDataSupplierVat.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -3646,25 +3381,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierWebsite"></a>
 
@@ -3706,25 +3434,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.InvoiceDataTablesItem"></a>
 
@@ -3747,8 +3468,9 @@ InvoiceDataTablesItem.
 def __init__(**kwargs)
 ```
 
-:keyword rows:
-:paramtype rows: list[~affinda.models.RowAnnotation]
+**Arguments**:
+
+- `rows`: 
 
 <a id="models._models.Meta"></a>
 
@@ -3759,6 +3481,8 @@ class Meta(msrest.serialization.Model)
 ```
 
 Meta.
+
+Variables are only populated by the server, and will be ignored when sending a request.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -3782,8 +3506,19 @@ All required parameters must be populated in order to send to Azure.
 :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
  deleted.  Defaults to no expiry.
 :vartype expiry_time: ~datetime.datetime
-:ivar language: The resume's language.
+:ivar language: The document's language.
 :vartype language: str
+:ivar pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
+ converted to pdf as part of the parsing process).
+:vartype pdf: str
+:ivar parent_document: If this document is part of a splitted document, this attribute points
+ to the original document that this document is splitted from.
+:vartype parent_document: ~affinda.models.SplitRelation
+:ivar child_documents: If this document has been splitted into a number of child documents,
+ this attribute points to those child documents.
+:vartype child_documents: list[~affinda.models.SplitRelation]
+:ivar pages: The document's pages.
+:vartype pages: list[~affinda.models.PageMeta]
 
 <a id="models._models.Meta.__init__"></a>
 
@@ -3793,28 +3528,23 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword identifier: Required. Unique identifier for the document. If creating a document and
+- `identifier`: Required. Unique identifier for the document. If creating a document and
 left blank, one will be automatically generated.
-:paramtype identifier: str
-:keyword file_name: Optional filename of the file.
-:paramtype file_name: str
-:keyword ready: Required. If true, the document has finished processing. Particularly useful if
+- `file_name`: Optional filename of the file.
+- `ready`: Required. If true, the document has finished processing. Particularly useful if
 an endpoint request specified wait=False, when polling use this variable to determine when to
 stop polling.
-:paramtype ready: bool
-:keyword ready_dt: The datetime when the document was ready.
-:paramtype ready_dt: ~datetime.datetime
-:keyword failed: Required. If true, some exception was raised during processing. Check the
+- `ready_dt`: The datetime when the document was ready.
+- `failed`: Required. If true, some exception was raised during processing. Check the
 'error' field of the main return object.
-:paramtype failed: bool
-:keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
-:paramtype expiry_time: ~datetime.datetime
-:keyword language: The resume's language.
-:paramtype language: str
+- `language`: The document's language.
+- `pages`: The document's pages.
 
 <a id="models._models.InvoiceMeta"></a>
 
@@ -3825,6 +3555,8 @@ class InvoiceMeta(Meta,  Components17Ashz6SchemasInvoicePropertiesMetaAllof1)
 ```
 
 InvoiceMeta.
+
+Variables are only populated by the server, and will be ignored when sending a request.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -3852,8 +3584,19 @@ All required parameters must be populated in order to send to Azure.
 :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
  deleted.  Defaults to no expiry.
 :vartype expiry_time: ~datetime.datetime
-:ivar language: The resume's language.
+:ivar language: The document's language.
 :vartype language: str
+:ivar pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
+ converted to pdf as part of the parsing process).
+:vartype pdf: str
+:ivar parent_document: If this document is part of a splitted document, this attribute points
+ to the original document that this document is splitted from.
+:vartype parent_document: ~affinda.models.SplitRelation
+:ivar child_documents: If this document has been splitted into a number of child documents,
+ this attribute points to those child documents.
+:vartype child_documents: list[~affinda.models.SplitRelation]
+:ivar pages: The document's pages.
+:vartype pages: list[~affinda.models.PageMeta]
 
 <a id="models._models.InvoiceMeta.__init__"></a>
 
@@ -3863,32 +3606,25 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword client_verified_dt:
-:paramtype client_verified_dt: str
-:keyword review_url: Signed URL (valid for 60 minutes) to access the invoice review tool.
-:paramtype review_url: str
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `client_verified_dt`: 
+- `review_url`: Signed URL (valid for 60 minutes) to access the invoice review tool.
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword identifier: Required. Unique identifier for the document. If creating a document and
+- `identifier`: Required. Unique identifier for the document. If creating a document and
 left blank, one will be automatically generated.
-:paramtype identifier: str
-:keyword file_name: Optional filename of the file.
-:paramtype file_name: str
-:keyword ready: Required. If true, the document has finished processing. Particularly useful if
+- `file_name`: Optional filename of the file.
+- `ready`: Required. If true, the document has finished processing. Particularly useful if
 an endpoint request specified wait=False, when polling use this variable to determine when to
 stop polling.
-:paramtype ready: bool
-:keyword ready_dt: The datetime when the document was ready.
-:paramtype ready_dt: ~datetime.datetime
-:keyword failed: Required. If true, some exception was raised during processing. Check the
+- `ready_dt`: The datetime when the document was ready.
+- `failed`: Required. If true, some exception was raised during processing. Check the
 'error' field of the main return object.
-:paramtype failed: bool
-:keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
-:paramtype expiry_time: ~datetime.datetime
-:keyword language: The resume's language.
-:paramtype language: str
+- `language`: The document's language.
+- `pages`: The document's pages.
 
 <a id="models._models.InvoiceRequestBody"></a>
 
@@ -3928,25 +3664,20 @@ InvoiceRequestBody.
 def __init__(**kwargs)
 ```
 
-:keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+**Arguments**:
+
+- `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
 PNG, JPG.
-:paramtype file: IO
-:keyword url: URL to an invoice to download and process.
-:paramtype url: str
-:keyword identifier: Unique identifier for the document. If creating a document and left blank,
+- `url`: URL to an invoice to download and process.
+- `identifier`: Unique identifier for the document. If creating a document and left blank,
 one will be automatically generated.
-:paramtype identifier: str
-:keyword file_name: Optional filename of the file.
-:paramtype file_name: str
-:keyword wait: If "true" (default), will return a response only after processing has completed.
+- `file_name`: Optional filename of the file.
+- `wait`: If "true" (default), will return a response only after processing has completed.
 If "false", will return an empty data object which can be polled at the GET endpoint until
 processing is complete.
-:paramtype wait: bool
-:keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-:paramtype language: str
-:keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+- `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
-:paramtype expiry_time: ~datetime.datetime
 
 <a id="models._models.JobDescription"></a>
 
@@ -3975,12 +3706,11 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword data: Required.
-:paramtype data: ~affinda.models.JobDescriptionData
-:keyword meta: Required.
-:paramtype meta: ~affinda.models.Meta
-:keyword error: Required.
-:paramtype error: ~affinda.models.Error
+**Arguments**:
+
+- `data`: Required.
+- `meta`: Required.
+- `error`: Required.
 
 <a id="models._models.JobDescriptionData"></a>
 
@@ -4035,40 +3765,25 @@ JobDescriptionData.
 def __init__(**kwargs)
 ```
 
-:keyword job_title:
-:paramtype job_title: ~affinda.models.JobTitleAnnotation
-:keyword contact_email:
-:paramtype contact_email: ~affinda.models.TextAnnotation
-:keyword contact_name:
-:paramtype contact_name: ~affinda.models.TextAnnotation
-:keyword contact_phone:
-:paramtype contact_phone: ~affinda.models.TextAnnotation
-:keyword start_date:
-:paramtype start_date: ~affinda.models.DateAnnotation
-:keyword end_date:
-:paramtype end_date: ~affinda.models.DateAnnotation
-:keyword job_type:
-:paramtype job_type: ~affinda.models.TextAnnotation
-:keyword languages:
-:paramtype languages: list[~affinda.models.LanguageAnnotation]
-:keyword skills:
-:paramtype skills: list[~affinda.models.SkillAnnotation]
-:keyword organization_name:
-:paramtype organization_name: ~affinda.models.TextAnnotation
-:keyword organization_website:
-:paramtype organization_website: ~affinda.models.TextAnnotation
-:keyword education_level:
-:paramtype education_level: ~affinda.models.TextAnnotation
-:keyword education_accreditation:
-:paramtype education_accreditation: ~affinda.models.TextAnnotation
-:keyword expected_remuneration:
-:paramtype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotation
-:keyword location:
-:paramtype location: ~affinda.models.LocationAnnotation
-:keyword certifications:
-:paramtype certifications: list[~affinda.models.TextAnnotation]
-:keyword years_experience:
-:paramtype years_experience: ~affinda.models.YearsExperienceAnnotation
+**Arguments**:
+
+- `job_title`: 
+- `contact_email`: 
+- `contact_name`: 
+- `contact_phone`: 
+- `start_date`: 
+- `end_date`: 
+- `job_type`: 
+- `languages`: 
+- `skills`: 
+- `organization_name`: 
+- `organization_website`: 
+- `education_level`: 
+- `education_accreditation`: 
+- `expected_remuneration`: 
+- `location`: 
+- `certifications`: 
+- `years_experience`: 
 
 <a id="models._models.JobDescriptionRequestBody"></a>
 
@@ -4108,25 +3823,20 @@ JobDescriptionRequestBody.
 def __init__(**kwargs)
 ```
 
-:keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+**Arguments**:
+
+- `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
 PNG, JPG.
-:paramtype file: IO
-:keyword url: URL to a job description to download and process.
-:paramtype url: str
-:keyword identifier: Unique identifier for the document. If creating a document and left blank,
+- `url`: URL to a job description to download and process.
+- `identifier`: Unique identifier for the document. If creating a document and left blank,
 one will be automatically generated.
-:paramtype identifier: str
-:keyword file_name: Optional filename of the file.
-:paramtype file_name: str
-:keyword wait: If "true" (default), will return a response only after processing has completed.
+- `file_name`: Optional filename of the file.
+- `wait`: If "true" (default), will return a response only after processing has completed.
 If "false", will return an empty data object which can be polled at the GET endpoint until
 processing is complete.
-:paramtype wait: bool
-:keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-:paramtype language: str
-:keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+- `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
-:paramtype expiry_time: ~datetime.datetime
 
 <a id="models._models.JobDescriptionSearch"></a>
 
@@ -4157,16 +3867,109 @@ JobDescriptionSearch.
 def __init__(**kwargs)
 ```
 
-:keyword count: Total number of results.
-:paramtype count: int
-:keyword next: URL to request next page of results.
-:paramtype next: str
-:keyword previous: URL to request previous page of results.
-:paramtype previous: str
-:keyword parameters:
-:paramtype parameters: ~affinda.models.JobDescriptionSearchParameters
-:keyword results:
-:paramtype results: list[~affinda.models.JobDescriptionSearchResult]
+**Arguments**:
+
+- `count`: Total number of results.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
+- `parameters`: 
+- `results`: 
+
+<a id="models._models.JobDescriptionSearchConfig"></a>
+
+## JobDescriptionSearchConfig Objects
+
+```python
+class JobDescriptionSearchConfig(msrest.serialization.Model)
+```
+
+JobDescriptionSearchConfig.
+
+Variables are only populated by the server, and will be ignored when sending a request.
+
+:ivar allow_pdf_download:
+:vartype allow_pdf_download: bool
+:ivar max_results: Maximum number of results that can be returned. Setting to "null" means no
+ limitation.
+:vartype max_results: int
+:ivar display_job_title:
+:vartype display_job_title: bool
+:ivar display_location:
+:vartype display_location: bool
+:ivar display_years_experience:
+:vartype display_years_experience: bool
+:ivar display_occupation_group:
+:vartype display_occupation_group: bool
+:ivar display_education:
+:vartype display_education: bool
+:ivar display_skills:
+:vartype display_skills: bool
+:ivar display_languages:
+:vartype display_languages: bool
+:ivar display_management_level:
+:vartype display_management_level: bool
+:ivar display_keywords:
+:vartype display_keywords: bool
+:ivar weight_job_title:
+:vartype weight_job_title: float
+:ivar weight_location:
+:vartype weight_location: float
+:ivar weight_years_experience:
+:vartype weight_years_experience: float
+:ivar weight_occupation_group:
+:vartype weight_occupation_group: float
+:ivar weight_education:
+:vartype weight_education: float
+:ivar weight_skills:
+:vartype weight_skills: float
+:ivar weight_languages:
+:vartype weight_languages: float
+:ivar weight_management_level:
+:vartype weight_management_level: float
+:ivar weight_keywords:
+:vartype weight_keywords: float
+:ivar indices: List of index names.
+:vartype indices: list[str]
+:ivar search_tool_theme: Customize the theme of the embeded search tool.
+:vartype search_tool_theme: dict[str, any]
+:ivar user_id: ID of the logged in user.
+:vartype user_id: int
+:ivar username: Username of the logged in user.
+:vartype username: str
+
+<a id="models._models.JobDescriptionSearchConfig.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `allow_pdf_download`: 
+- `max_results`: Maximum number of results that can be returned. Setting to "null" means
+no limitation.
+- `display_job_title`: 
+- `display_location`: 
+- `display_years_experience`: 
+- `display_occupation_group`: 
+- `display_education`: 
+- `display_skills`: 
+- `display_languages`: 
+- `display_management_level`: 
+- `display_keywords`: 
+- `weight_job_title`: 
+- `weight_location`: 
+- `weight_years_experience`: 
+- `weight_occupation_group`: 
+- `weight_education`: 
+- `weight_skills`: 
+- `weight_languages`: 
+- `weight_management_level`: 
+- `weight_keywords`: 
+- `indices`: List of index names.
+- `search_tool_theme`: Customize the theme of the embeded search tool.
 
 <a id="models._models.JobDescriptionSearchDetail"></a>
 
@@ -4205,24 +4008,17 @@ JobDescriptionSearchDetail.
 def __init__(**kwargs)
 ```
 
-:keyword job_title:
-:paramtype job_title: ~affinda.models.JobDescriptionSearchDetailJobTitle
-:keyword location:
-:paramtype location: ~affinda.models.JobDescriptionSearchDetailLocation
-:keyword education:
-:paramtype education: ~affinda.models.JobDescriptionSearchDetailEducation
-:keyword skills:
-:paramtype skills: ~affinda.models.JobDescriptionSearchDetailSkills
-:keyword experience:
-:paramtype experience: ~affinda.models.JobDescriptionSearchDetailExperience
-:keyword occupation_group:
-:paramtype occupation_group: ~affinda.models.JobDescriptionSearchDetailOccupationGroup
-:keyword languages:
-:paramtype languages: ~affinda.models.JobDescriptionSearchDetailLanguages
-:keyword management_level:
-:paramtype management_level: ~affinda.models.JobDescriptionSearchDetailManagementLevel
-:keyword search_expression:
-:paramtype search_expression: ~affinda.models.JobDescriptionSearchDetailSearchExpression
+**Arguments**:
+
+- `job_title`: 
+- `location`: 
+- `education`: 
+- `skills`: 
+- `experience`: 
+- `occupation_group`: 
+- `languages`: 
+- `management_level`: 
+- `search_expression`: 
 
 <a id="models._models.JobDescriptionSearchDetailEducation"></a>
 
@@ -4247,10 +4043,10 @@ JobDescriptionSearchDetailEducation.
 def __init__(**kwargs)
 ```
 
-:keyword missing:
-:paramtype missing: ~affinda.models.JobDescriptionSearchDetailEducationMissing
-:keyword value:
-:paramtype value: ~affinda.models.JobDescriptionSearchDetailEducationValue
+**Arguments**:
+
+- `missing`: 
+- `value`: 
 
 <a id="models._models.JobDescriptionSearchDetailEducationMissing"></a>
 
@@ -4275,10 +4071,10 @@ JobDescriptionSearchDetailEducationMissing.
 def __init__(**kwargs)
 ```
 
-:keyword degrees:
-:paramtype degrees: list[str]
-:keyword degree_types:
-:paramtype degree_types: list[str]
+**Arguments**:
+
+- `degrees`: 
+- `degree_types`: 
 
 <a id="models._models.JobDescriptionSearchDetailEducationValue"></a>
 
@@ -4305,12 +4101,11 @@ JobDescriptionSearchDetailEducationValue.
 def __init__(**kwargs)
 ```
 
-:keyword degrees:
-:paramtype degrees: list[str]
-:keyword degree_types:
-:paramtype degree_types: list[str]
-:keyword match:
-:paramtype match: bool
+**Arguments**:
+
+- `degrees`: 
+- `degree_types`: 
+- `match`: 
 
 <a id="models._models.JobDescriptionSearchDetailExperience"></a>
 
@@ -4337,12 +4132,11 @@ JobDescriptionSearchDetailExperience.
 def __init__(**kwargs)
 ```
 
-:keyword minimum_experience:
-:paramtype minimum_experience: int
-:keyword maximum_experience:
-:paramtype maximum_experience: int
-:keyword match:
-:paramtype match: bool
+**Arguments**:
+
+- `minimum_experience`: 
+- `maximum_experience`: 
+- `match`: 
 
 <a id="models._models.JobDescriptionSearchDetailJobTitle"></a>
 
@@ -4367,10 +4161,10 @@ JobDescriptionSearchDetailJobTitle.
 def __init__(**kwargs)
 ```
 
-:keyword missing:
-:paramtype missing: list[str]
-:keyword value:
-:paramtype value: ~affinda.models.JobDescriptionSearchDetailJobTitleValue
+**Arguments**:
+
+- `missing`: 
+- `value`: 
 
 <a id="models._models.JobDescriptionSearchDetailJobTitleValue"></a>
 
@@ -4397,12 +4191,11 @@ JobDescriptionSearchDetailJobTitleValue.
 def __init__(**kwargs)
 ```
 
-:keyword name:
-:paramtype name: str
-:keyword company_name:
-:paramtype company_name: str
-:keyword match:
-:paramtype match: bool
+**Arguments**:
+
+- `name`: 
+- `company_name`: 
+- `match`: 
 
 <a id="models._models.JobDescriptionSearchDetailLanguages"></a>
 
@@ -4427,10 +4220,10 @@ JobDescriptionSearchDetailLanguages.
 def __init__(**kwargs)
 ```
 
-:keyword missing:
-:paramtype missing: list[~affinda.models.ResumeSearchParametersSkill]
-:keyword value:
-:paramtype value: list[~affinda.models.JobDescriptionSearchDetailLanguagesValueItem]
+**Arguments**:
+
+- `missing`: 
+- `value`: 
 
 <a id="models._models.JobDescriptionSearchDetailLanguagesValueItem"></a>
 
@@ -4455,10 +4248,10 @@ JobDescriptionSearchDetailLanguagesValueItem.
 def __init__(**kwargs)
 ```
 
-:keyword name:
-:paramtype name: str
-:keyword match:
-:paramtype match: bool
+**Arguments**:
+
+- `name`: 
+- `match`: 
 
 <a id="models._models.JobDescriptionSearchDetailLocation"></a>
 
@@ -4483,10 +4276,10 @@ JobDescriptionSearchDetailLocation.
 def __init__(**kwargs)
 ```
 
-:keyword missing:
-:paramtype missing: list[~affinda.models.ResumeSearchParametersLocation]
-:keyword value:
-:paramtype value: ~affinda.models.JobDescriptionSearchDetailLocationValue
+**Arguments**:
+
+- `missing`: 
+- `value`: 
 
 <a id="models._models.Location"></a>
 
@@ -4531,8 +4324,9 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword raw_input: Required.
-:paramtype raw_input: str
+**Arguments**:
+
+- `raw_input`: Required.
 
 <a id="models._models.JobDescriptionSearchDetailLocationValue"></a>
 
@@ -4579,10 +4373,10 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword match:
-:paramtype match: bool
-:keyword raw_input: Required.
-:paramtype raw_input: str
+**Arguments**:
+
+- `match`: 
+- `raw_input`: Required.
 
 <a id="models._models.JobDescriptionSearchDetailManagementLevel"></a>
 
@@ -4607,10 +4401,10 @@ JobDescriptionSearchDetailManagementLevel.
 def __init__(**kwargs)
 ```
 
-:keyword level: Known values are: "None", "Low", "Mid", "Upper".
-:paramtype level: str or ~affinda.models.ManagementLevel
-:keyword match:
-:paramtype match: bool
+**Arguments**:
+
+- `level`: Known values are: "None", "Low", "Mid", "Upper".
+- `match`: 
 
 <a id="models._models.JobDescriptionSearchDetailOccupationGroup"></a>
 
@@ -4635,10 +4429,10 @@ JobDescriptionSearchDetailOccupationGroup.
 def __init__(**kwargs)
 ```
 
-:keyword missing:
-:paramtype missing: list[int]
-:keyword value:
-:paramtype value: list[~affinda.models.JobDescriptionSearchDetailOccupationGroupValueItem]
+**Arguments**:
+
+- `missing`: 
+- `value`: 
 
 <a id="models._models.OccupationGroup"></a>
 
@@ -4667,12 +4461,11 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword code: Required.
-:paramtype code: int
-:keyword name: Required.
-:paramtype name: str
-:keyword children: Required.
-:paramtype children: list[~affinda.models.OccupationGroup]
+**Arguments**:
+
+- `code`: Required.
+- `name`: Required.
+- `children`: Required.
 
 <a id="models._models.JobDescriptionSearchDetailOccupationGroupValueItem"></a>
 
@@ -4703,14 +4496,12 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword match:
-:paramtype match: bool
-:keyword code: Required.
-:paramtype code: int
-:keyword name: Required.
-:paramtype name: str
-:keyword children: Required.
-:paramtype children: list[~affinda.models.OccupationGroup]
+**Arguments**:
+
+- `match`: 
+- `code`: Required.
+- `name`: Required.
+- `children`: Required.
 
 <a id="models._models.JobDescriptionSearchDetailSearchExpression"></a>
 
@@ -4735,10 +4526,10 @@ JobDescriptionSearchDetailSearchExpression.
 def __init__(**kwargs)
 ```
 
-:keyword missing:
-:paramtype missing: list[str]
-:keyword value:
-:paramtype value: list[str]
+**Arguments**:
+
+- `missing`: 
+- `value`: 
 
 <a id="models._models.JobDescriptionSearchDetailSkills"></a>
 
@@ -4763,10 +4554,10 @@ JobDescriptionSearchDetailSkills.
 def __init__(**kwargs)
 ```
 
-:keyword missing:
-:paramtype missing: list[~affinda.models.ResumeSearchParametersSkill]
-:keyword value:
-:paramtype value: list[~affinda.models.JobDescriptionSearchDetailSkillsValueItem]
+**Arguments**:
+
+- `missing`: 
+- `value`: 
 
 <a id="models._models.JobDescriptionSearchDetailSkillsValueItem"></a>
 
@@ -4791,10 +4582,35 @@ JobDescriptionSearchDetailSkillsValueItem.
 def __init__(**kwargs)
 ```
 
-:keyword name:
-:paramtype name: str
-:keyword match:
-:paramtype match: bool
+**Arguments**:
+
+- `name`: 
+- `match`: 
+
+<a id="models._models.JobDescriptionSearchEmbed"></a>
+
+## JobDescriptionSearchEmbed Objects
+
+```python
+class JobDescriptionSearchEmbed(msrest.serialization.Model)
+```
+
+JobDescriptionSearchEmbed.
+
+:ivar url: The signed URL for the embedable search tool.
+:vartype url: str
+
+<a id="models._models.JobDescriptionSearchEmbed.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `url`: The signed URL for the embedable search tool.
 
 <a id="models._models.JobDescriptionSearchParameters"></a>
 
@@ -4876,65 +4692,38 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword indices: Required.
-:paramtype indices: list[str]
-:keyword resume: Unique identifier for the document. If creating a document and left blank, one
+**Arguments**:
+
+- `indices`: Required.
+- `resume`: Unique identifier for the document. If creating a document and left blank, one
 will be automatically generated.
-:paramtype resume: str
-:keyword job_titles:
-:paramtype job_titles: list[str]
-:keyword job_titles_required:
-:paramtype job_titles_required: bool
-:keyword job_titles_weight:
-:paramtype job_titles_weight: float
-:keyword total_years_experience:
-:paramtype total_years_experience: float
-:keyword years_experience_required:
-:paramtype years_experience_required: bool
-:keyword years_experience_weight:
-:paramtype years_experience_weight: float
-:keyword locations:
-:paramtype locations: list[~affinda.models.ResumeSearchParametersLocation]
-:keyword locations_weight:
-:paramtype locations_weight: float
-:keyword locations_required:
-:paramtype locations_required: bool
-:keyword skills:
-:paramtype skills: list[~affinda.models.ResumeSearchParametersSkill]
-:keyword skills_weight:
-:paramtype skills_weight: float
-:keyword languages:
-:paramtype languages: list[~affinda.models.ResumeSearchParametersSkill]
-:keyword languages_weight:
-:paramtype languages_weight: float
-:keyword degrees:
-:paramtype degrees: list[str]
-:keyword degrees_required:
-:paramtype degrees_required: bool
-:keyword degree_types:
-:paramtype degree_types: list[str or ~affinda.models.EducationLevel]
-:keyword degree_types_required:
-:paramtype degree_types_required: bool
-:keyword education_weight:
-:paramtype education_weight: float
-:keyword search_expression:
-:paramtype search_expression: str
-:keyword search_expression_required:
-:paramtype search_expression_required: bool
-:keyword search_expression_weight:
-:paramtype search_expression_weight: float
-:keyword soc_codes:
-:paramtype soc_codes: list[int]
-:keyword soc_codes_weight:
-:paramtype soc_codes_weight: float
-:keyword soc_codes_required:
-:paramtype soc_codes_required: bool
-:keyword management_level: Known values are: "None", "Low", "Mid", "Upper".
-:paramtype management_level: str or ~affinda.models.ManagementLevel
-:keyword management_level_required:
-:paramtype management_level_required: bool
-:keyword management_level_weight:
-:paramtype management_level_weight: float
+- `job_titles`: 
+- `job_titles_required`: 
+- `job_titles_weight`: 
+- `total_years_experience`: 
+- `years_experience_required`: 
+- `years_experience_weight`: 
+- `locations`: 
+- `locations_weight`: 
+- `locations_required`: 
+- `skills`: 
+- `skills_weight`: 
+- `languages`: 
+- `languages_weight`: 
+- `degrees`: 
+- `degrees_required`: 
+- `degree_types`: 
+- `degree_types_required`: 
+- `education_weight`: 
+- `search_expression`: 
+- `search_expression_required`: 
+- `search_expression_weight`: 
+- `soc_codes`: 
+- `soc_codes_weight`: 
+- `soc_codes_required`: 
+- `management_level`: Known values are: "None", "Low", "Mid", "Upper".
+- `management_level_required`: 
+- `management_level_weight`: 
 
 <a id="models._models.JobDescriptionSearchResult"></a>
 
@@ -4982,31 +4771,21 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword identifier: Required. Unique identifier for the document. If creating a document and
+**Arguments**:
+
+- `identifier`: Required. Unique identifier for the document. If creating a document and
 left blank, one will be automatically generated.
-:paramtype identifier: str
-:keyword score: Required.
-:paramtype score: float
-:keyword pdf: Required.
-:paramtype pdf: str
-:keyword job_title: Required.
-:paramtype job_title: ~affinda.models.JobTitleSearchScoreComponent
-:keyword management_level: Required.
-:paramtype management_level: ~affinda.models.ManagementLevelSearchScoreComponent
-:keyword experience: Required.
-:paramtype experience: ~affinda.models.ExperienceSearchScoreComponent
-:keyword skills: Required.
-:paramtype skills: ~affinda.models.SkillsSearchScoreComponent
-:keyword languages: Required.
-:paramtype languages: ~affinda.models.LanguagesSearchScoreComponent
-:keyword location: Required.
-:paramtype location: ~affinda.models.LocationSearchScoreComponent
-:keyword education: Required.
-:paramtype education: ~affinda.models.EducationSearchScoreComponent
-:keyword occupation_group:
-:paramtype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
-:keyword search_expression: Required.
-:paramtype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
+- `score`: Required.
+- `pdf`: Required.
+- `job_title`: Required.
+- `management_level`: Required.
+- `experience`: Required.
+- `skills`: Required.
+- `languages`: Required.
+- `location`: Required.
+- `education`: Required.
+- `occupation_group`: 
+- `search_expression`: Required.
 
 <a id="models._models.JobTitleAnnotation"></a>
 
@@ -5048,25 +4827,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed: Years of experience range.
-:paramtype parsed: ~affinda.models.JobTitleAnnotationParsed
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: Years of experience range.
 
 <a id="models._models.JobTitleAnnotationParsed"></a>
 
@@ -5093,12 +4865,11 @@ Years of experience range.
 def __init__(**kwargs)
 ```
 
-:keyword name:
-:paramtype name: str
-:keyword management_level:
-:paramtype management_level: str
-:keyword classification:
-:paramtype classification: ~affinda.models.JobTitleAnnotationParsedClassification
+**Arguments**:
+
+- `name`: 
+- `management_level`: 
+- `classification`: 
 
 <a id="models._models.JobTitleAnnotationParsedClassification"></a>
 
@@ -5129,16 +4900,13 @@ JobTitleAnnotationParsedClassification.
 def __init__(**kwargs)
 ```
 
-:keyword soc_code:
-:paramtype soc_code: float
-:keyword title:
-:paramtype title: str
-:keyword minor_group:
-:paramtype minor_group: str
-:keyword sub_major_group:
-:paramtype sub_major_group: str
-:keyword major_group:
-:paramtype major_group: str
+**Arguments**:
+
+- `soc_code`: 
+- `title`: 
+- `minor_group`: 
+- `sub_major_group`: 
+- `major_group`: 
 
 <a id="models._models.JobTitleSearchScoreComponent"></a>
 
@@ -5167,12 +4935,11 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword value:
-:paramtype value: str
-:keyword label: Required.
-:paramtype label: str
-:keyword score:
-:paramtype score: float
+**Arguments**:
+
+- `value`: 
+- `label`: Required.
+- `score`: 
 
 <a id="models._models.LanguageAnnotation"></a>
 
@@ -5214,25 +4981,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.LanguagesSearchScoreComponent"></a>
 
@@ -5261,12 +5021,11 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword value:
-:paramtype value: str
-:keyword label: Required.
-:paramtype label: str
-:keyword score:
-:paramtype score: float
+**Arguments**:
+
+- `value`: 
+- `label`: Required.
+- `score`: 
 
 <a id="models._models.LocationAnnotation"></a>
 
@@ -5308,25 +5067,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: ~affinda.models.Location
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.LocationSearchScoreComponent"></a>
 
@@ -5355,12 +5107,11 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword value:
-:paramtype value: str
-:keyword label: Required.
-:paramtype label: str
-:keyword score:
-:paramtype score: float
+**Arguments**:
+
+- `value`: 
+- `label`: Required.
+- `score`: 
 
 <a id="models._models.ManagementLevelSearchScoreComponent"></a>
 
@@ -5389,12 +5140,11 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword value:
-:paramtype value: str
-:keyword label: Required.
-:paramtype label: str
-:keyword score:
-:paramtype score: float
+**Arguments**:
+
+- `value`: 
+- `label`: Required.
+- `score`: 
 
 <a id="models._models.OccupationGroupSearchScoreComponent"></a>
 
@@ -5423,12 +5173,53 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword value:
-:paramtype value: str
-:keyword label: Required.
-:paramtype label: str
-:keyword score:
-:paramtype score: float
+**Arguments**:
+
+- `value`: 
+- `label`: Required.
+- `score`: 
+
+<a id="models._models.PageMeta"></a>
+
+## PageMeta Objects
+
+```python
+class PageMeta(msrest.serialization.Model)
+```
+
+PageMeta.
+
+:ivar id:
+:vartype id: int
+:ivar page_index: Page number within the document, starts from 0.
+:vartype page_index: int
+:ivar image: The URL to the image of the page.
+:vartype image: str
+:ivar height: Height of the page's image in px.
+:vartype height: float
+:ivar width: Width of the page's image in px.
+:vartype width: float
+:ivar rotation: The degree of rotation applied to the page. Greater than 0 indicates clockwise
+ rotation. Less than 0 indicates counter-clockwise rotation.
+:vartype rotation: int
+
+<a id="models._models.PageMeta.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `id`: 
+- `page_index`: Page number within the document, starts from 0.
+- `image`: The URL to the image of the page.
+- `height`: Height of the page's image in px.
+- `width`: Width of the page's image in px.
+- `rotation`: The degree of rotation applied to the page. Greater than 0 indicates
+clockwise rotation. Less than 0 indicates counter-clockwise rotation.
 
 <a id="models._models.Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema"></a>
 
@@ -5442,6 +5233,8 @@ Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema.
 
 :ivar name:
 :vartype name: str
+:ivar document_type: Known values are: "resumes", "job_descriptions".
+:vartype document_type: str or ~affinda.models.Enum4
 
 <a id="models._models.Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema.__init__"></a>
 
@@ -5451,8 +5244,10 @@ Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema.
 def __init__(**kwargs)
 ```
 
-:keyword name:
-:paramtype name: str
+**Arguments**:
+
+- `name`: 
+- `document_type`: Known values are: "resumes", "job_descriptions".
 
 <a id="models._models.Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1"></a>
 
@@ -5476,9 +5271,10 @@ Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1.
 def __init__(**kwargs)
 ```
 
-:keyword api_key: API key used to authenticate for future requests.  This key is only
+**Arguments**:
+
+- `api_key`: API key used to authenticate for future requests.  This key is only
 retrievable at the initial creation of the user.
-:paramtype api_key: str
 
 <a id="models._models.Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema"></a>
 
@@ -5501,8 +5297,9 @@ Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema.
 def __init__(**kwargs)
 ```
 
-:keyword config_override:
-:paramtype config_override: ~affinda.models.ResumeSearchConfig
+**Arguments**:
+
+- `config_override`: 
 
 <a id="models._models.Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema"></a>
 
@@ -5531,14 +5328,12 @@ Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema.
 def __init__(**kwargs)
 ```
 
-:keyword count: Number of indexes in result.
-:paramtype count: int
-:keyword next: URL to request next page of results.
-:paramtype next: str
-:keyword previous: URL to request previous page of results.
-:paramtype previous: str
-:keyword results:
-:paramtype results: list[~affinda.models.Get200ApplicationJsonPropertiesItemsItem]
+**Arguments**:
+
+- `count`: Number of indexes in result.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
+- `results`: 
 
 <a id="models._models.PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema"></a>
 
@@ -5561,8 +5356,34 @@ PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema.
 def __init__(**kwargs)
 ```
 
-:keyword document: Unique identifier for the document.
-:paramtype document: str
+**Arguments**:
+
+- `document`: Unique identifier for the document.
+
+<a id="models._models.PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema"></a>
+
+## PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema Objects
+
+```python
+class PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema(msrest.serialization.Model)
+```
+
+PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema.
+
+:ivar config_override:
+:vartype config_override: ~affinda.models.JobDescriptionSearchConfig
+
+<a id="models._models.PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `config_override`: 
 
 <a id="models._models.PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema"></a>
 
@@ -5585,8 +5406,9 @@ PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema.
 def __init__(**kwargs)
 ```
 
-:keyword document:
-:paramtype document: str
+**Arguments**:
+
+- `document`: 
 
 <a id="models._models.PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems"></a>
 
@@ -5609,8 +5431,9 @@ PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertie
 def __init__(**kwargs)
 ```
 
-:keyword document:
-:paramtype document: str
+**Arguments**:
+
+- `document`: 
 
 <a id="models._models.PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema"></a>
 
@@ -5640,15 +5463,12 @@ PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema.
 def __init__(**kwargs)
 ```
 
-:keyword count: Number of indexed documents in result.
-:paramtype count: int
-:keyword next: URL to request next page of results.
-:paramtype next: str
-:keyword previous: URL to request previous page of results.
-:paramtype previous: str
-:keyword results:
-:paramtype results:
-list[~affinda.models.PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]
+**Arguments**:
+
+- `count`: Number of indexed documents in result.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
+- `results`: 
 
 <a id="models._models.User"></a>
 
@@ -5681,16 +5501,13 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword id:
-:paramtype id: int
-:keyword name:
-:paramtype name: str
-:keyword username: Required.
-:paramtype username: str
-:keyword email:
-:paramtype email: str
-:keyword api_key:
-:paramtype api_key: str
+**Arguments**:
+
+- `id`: 
+- `name`: 
+- `username`: Required.
+- `email`: 
+- `api_key`: 
 
 <a id="models._models.PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema"></a>
 
@@ -5723,16 +5540,13 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword id:
-:paramtype id: int
-:keyword name:
-:paramtype name: str
-:keyword username: Required.
-:paramtype username: str
-:keyword email:
-:paramtype email: str
-:keyword api_key:
-:paramtype api_key: str
+**Arguments**:
+
+- `id`: 
+- `name`: 
+- `username`: Required.
+- `email`: 
+- `api_key`: 
 
 <a id="models._models.PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema"></a>
 
@@ -5761,14 +5575,12 @@ PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema.
 def __init__(**kwargs)
 ```
 
-:keyword count: Number of indexes in result.
-:paramtype count: int
-:keyword next: URL to request next page of results.
-:paramtype next: str
-:keyword previous: URL to request previous page of results.
-:paramtype previous: str
-:keyword results:
-:paramtype results: list[~affinda.models.User]
+**Arguments**:
+
+- `count`: Number of indexes in result.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
+- `results`: 
 
 <a id="models._models.Rectangle"></a>
 
@@ -5799,14 +5611,12 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword x0: Required.
-:paramtype x0: float
-:keyword y0: Required.
-:paramtype y0: float
-:keyword x1: Required.
-:paramtype x1: float
-:keyword y1: Required.
-:paramtype y1: float
+**Arguments**:
+
+- `x0`: Required.
+- `y0`: Required.
+- `x1`: Required.
+- `y1`: Required.
 
 <a id="models._models.RedactedResume"></a>
 
@@ -5835,12 +5645,11 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword data: Required.
-:paramtype data: ~affinda.models.RedactedResumeData
-:keyword meta: Required.
-:paramtype meta: ~affinda.models.Meta
-:keyword error: Required.
-:paramtype error: ~affinda.models.Error
+**Arguments**:
+
+- `data`: Required.
+- `meta`: Required.
+- `error`: Required.
 
 <a id="models._models.RedactedResumeData"></a>
 
@@ -5863,8 +5672,9 @@ RedactedResumeData.
 def __init__(**kwargs)
 ```
 
-:keyword redacted_pdf: URL to redacted PDF.
-:paramtype redacted_pdf: str
+**Arguments**:
+
+- `redacted_pdf`: URL to redacted PDF.
 
 <a id="models._models.RedactedResumeRequestBody"></a>
 
@@ -5907,7 +5717,7 @@ RedactedResumeRequestBody.
 :ivar redact_dates: Whether to redact dates.
 :vartype redact_dates: bool
 :ivar redact_gender: Whether to redact gender.
-:vartype redact_gender: bool
+:vartype redact_gender: str
 :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
  deleted.  Defaults to no expiry.
 :vartype expiry_time: ~datetime.datetime
@@ -5920,41 +5730,28 @@ RedactedResumeRequestBody.
 def __init__(**kwargs)
 ```
 
-:keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+**Arguments**:
+
+- `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
 PNG, JPG.
-:paramtype file: IO
-:keyword identifier: Unique identifier for the document. If creating a document and left blank,
+- `identifier`: Unique identifier for the document. If creating a document and left blank,
 one will be automatically generated.
-:paramtype identifier: str
-:keyword file_name: Optional filename of the file.
-:paramtype file_name: str
-:keyword url: URL to a resume to download and process.
-:paramtype url: str
-:keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-:paramtype language: str
-:keyword wait: If "true" (default), will return a response only after processing has completed.
+- `file_name`: Optional filename of the file.
+- `url`: URL to a resume to download and process.
+- `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+- `wait`: If "true" (default), will return a response only after processing has completed.
 If "false", will return an empty data object which can be polled at the GET endpoint until
 processing is complete.
-:paramtype wait: bool
-:keyword redact_headshot: Whether to redact headshot.
-:paramtype redact_headshot: bool
-:keyword redact_personal_details: Whether to redact personal details (e.g. name, address).
-:paramtype redact_personal_details: bool
-:keyword redact_work_details: Whether to redact work details (e.g. company names).
-:paramtype redact_work_details: bool
-:keyword redact_education_details: Whether to redact education details (e.g. university names).
-:paramtype redact_education_details: bool
-:keyword redact_referees: Whether to redact referee details.
-:paramtype redact_referees: bool
-:keyword redact_locations: Whether to redact location names.
-:paramtype redact_locations: bool
-:keyword redact_dates: Whether to redact dates.
-:paramtype redact_dates: bool
-:keyword redact_gender: Whether to redact gender.
-:paramtype redact_gender: bool
-:keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+- `redact_headshot`: Whether to redact headshot.
+- `redact_personal_details`: Whether to redact personal details (e.g. name, address).
+- `redact_work_details`: Whether to redact work details (e.g. company names).
+- `redact_education_details`: Whether to redact education details (e.g. university names).
+- `redact_referees`: Whether to redact referee details.
+- `redact_locations`: Whether to redact location names.
+- `redact_dates`: Whether to redact dates.
+- `redact_gender`: Whether to redact gender.
+- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
-:paramtype expiry_time: ~datetime.datetime
 
 <a id="models._models.RequestError"></a>
 
@@ -5981,10 +5778,10 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword type: Required.
-:paramtype type: str
-:keyword errors: Required.
-:paramtype errors: list[~affinda.models.RequestErrorErrorsItem]
+**Arguments**:
+
+- `type`: Required.
+- `errors`: Required.
 
 <a id="models._models.RequestErrorErrorsItem"></a>
 
@@ -6013,12 +5810,11 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword attr: Required.
-:paramtype attr: str
-:keyword code: Required.
-:paramtype code: str
-:keyword detail: Required.
-:paramtype detail: str
+**Arguments**:
+
+- `attr`: Required.
+- `code`: Required.
+- `detail`: Required.
 
 <a id="models._models.Resume"></a>
 
@@ -6047,12 +5843,11 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword data: Required. A JSON-encoded string of the ``ResumeData`` object.
-:paramtype data: ~affinda.models.ResumeData
-:keyword meta: Required.
-:paramtype meta: ~affinda.models.Meta
-:keyword error: Required.
-:paramtype error: ~affinda.models.Error
+**Arguments**:
+
+- `data`: Required. A JSON-encoded string of the ``ResumeData`` object.
+- `meta`: Required.
+- `error`: Required.
 
 <a id="models._models.ResumeData"></a>
 
@@ -6122,39 +5917,25 @@ Variables are only populated by the server, and will be ignored when sending a r
 def __init__(**kwargs)
 ```
 
-:keyword name:
-:paramtype name: ~affinda.models.ResumeDataName
-:keyword phone_numbers:
-:paramtype phone_numbers: list[str]
-:keyword websites:
-:paramtype websites: list[str]
-:keyword emails:
-:paramtype emails: list[str]
-:keyword date_of_birth:
-:paramtype date_of_birth: str
-:keyword location:
-:paramtype location: ~affinda.models.Location
-:keyword objective:
-:paramtype objective: str
-:keyword summary:
-:paramtype summary: str
-:keyword total_years_experience:
-:paramtype total_years_experience: int
-:keyword education:
-:paramtype education: list[~affinda.models.ResumeDataEducationItem]
-:keyword work_experience:
-:paramtype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
-:keyword skills:
-:paramtype skills: list[~affinda.models.ResumeDataSkillsItem]
-:keyword certifications:
-:paramtype certifications: list[str]
-:keyword publications:
-:paramtype publications: list[str]
-:keyword referees:
-:paramtype referees: list[~affinda.models.ResumeDataRefereesItem]
-:keyword raw_text: All of the raw text of the parsed resume, example is shortened for
+**Arguments**:
+
+- `name`: 
+- `phone_numbers`: 
+- `websites`: 
+- `emails`: 
+- `date_of_birth`: 
+- `location`: 
+- `objective`: 
+- `summary`: 
+- `total_years_experience`: 
+- `education`: 
+- `work_experience`: 
+- `skills`: 
+- `certifications`: 
+- `publications`: 
+- `referees`: 
+- `raw_text`: All of the raw text of the parsed resume, example is shortened for
 readiblity.
-:paramtype raw_text: str
 
 <a id="models._models.ResumeDataEducationItem"></a>
 
@@ -6187,18 +5968,14 @@ ResumeDataEducationItem.
 def __init__(**kwargs)
 ```
 
-:keyword id:
-:paramtype id: int
-:keyword organization:
-:paramtype organization: str
-:keyword accreditation:
-:paramtype accreditation: ~affinda.models.ResumeDataEducationItemAccreditation
-:keyword grade:
-:paramtype grade: ~affinda.models.ResumeDataEducationItemGrade
-:keyword location:
-:paramtype location: ~affinda.models.Location
-:keyword dates:
-:paramtype dates: ~affinda.models.ResumeDataEducationItemDates
+**Arguments**:
+
+- `id`: 
+- `organization`: 
+- `accreditation`: 
+- `grade`: 
+- `location`: 
+- `dates`: 
 
 <a id="models._models.ResumeDataEducationItemAccreditation"></a>
 
@@ -6229,8 +6006,9 @@ Variables are only populated by the server, and will be ignored when sending a r
 def __init__(**kwargs)
 ```
 
-:keyword education:
-:paramtype education: str
+**Arguments**:
+
+- `education`: 
 
 <a id="models._models.ResumeDataEducationItemDates"></a>
 
@@ -6257,12 +6035,11 @@ ResumeDataEducationItemDates.
 def __init__(**kwargs)
 ```
 
-:keyword completion_date:
-:paramtype completion_date: ~datetime.date
-:keyword is_current:
-:paramtype is_current: bool
-:keyword start_date:
-:paramtype start_date: ~datetime.date
+**Arguments**:
+
+- `completion_date`: 
+- `is_current`: 
+- `start_date`: 
 
 <a id="models._models.ResumeDataEducationItemGrade"></a>
 
@@ -6289,12 +6066,11 @@ ResumeDataEducationItemGrade.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword metric:
-:paramtype metric: str
-:keyword value:
-:paramtype value: str
+**Arguments**:
+
+- `raw`: 
+- `metric`: 
+- `value`: 
 
 <a id="models._models.ResumeDataName"></a>
 
@@ -6325,16 +6101,13 @@ ResumeDataName.
 def __init__(**kwargs)
 ```
 
-:keyword raw:
-:paramtype raw: str
-:keyword first:
-:paramtype first: str
-:keyword last:
-:paramtype last: str
-:keyword middle:
-:paramtype middle: str
-:keyword title:
-:paramtype title: str
+**Arguments**:
+
+- `raw`: 
+- `first`: 
+- `last`: 
+- `middle`: 
+- `title`: 
 
 <a id="models._models.ResumeDataRefereesItem"></a>
 
@@ -6363,14 +6136,12 @@ ResumeDataRefereesItem.
 def __init__(**kwargs)
 ```
 
-:keyword name:
-:paramtype name: str
-:keyword text:
-:paramtype text: str
-:keyword email:
-:paramtype email: str
-:keyword number:
-:paramtype number: str
+**Arguments**:
+
+- `name`: 
+- `text`: 
+- `email`: 
+- `number`: 
 
 <a id="models._models.ResumeDataSectionsItem"></a>
 
@@ -6399,14 +6170,12 @@ ResumeDataSectionsItem.
 def __init__(**kwargs)
 ```
 
-:keyword section_type:
-:paramtype section_type: str
-:keyword bbox:
-:paramtype bbox: list[float]
-:keyword page_index:
-:paramtype page_index: int
-:keyword text:
-:paramtype text: str
+**Arguments**:
+
+- `section_type`: 
+- `bbox`: 
+- `page_index`: 
+- `text`: 
 
 <a id="models._models.ResumeDataSkillsItem"></a>
 
@@ -6447,14 +6216,12 @@ Variables are only populated by the server, and will be ignored when sending a r
 def __init__(**kwargs)
 ```
 
-:keyword id:
-:paramtype id: int
-:keyword name:
-:paramtype name: str
-:keyword last_used:
-:paramtype last_used: str
-:keyword number_of_months:
-:paramtype number_of_months: int
+**Arguments**:
+
+- `id`: 
+- `name`: 
+- `last_used`: 
+- `number_of_months`: 
 
 <a id="models._models.ResumeDataSkillsPropertiesItemsItem"></a>
 
@@ -6484,15 +6251,14 @@ ResumeDataSkillsPropertiesItemsItem.
 def __init__(**kwargs)
 ```
 
-:keyword section:
-:paramtype section: str
-:keyword position: If this skill is extracted from a "workExperience" section, the "position"
+**Arguments**:
+
+- `section`: 
+- `position`: If this skill is extracted from a "workExperience" section, the "position"
 is the index of the work experience where this skill is found, with 0 being the first work
 experience, 1 being the second work experience, and so on.
-:paramtype position: int
-:keyword work_experience_id: If this skill is extracted from a "workExperience" section, the
+- `work_experience_id`: If this skill is extracted from a "workExperience" section, the
 "workExperienceId" is the id of the work experience where this skill is found.
-:paramtype work_experience_id: int
 
 <a id="models._models.ResumeDataWorkExperienceItem"></a>
 
@@ -6535,18 +6301,14 @@ Variables are only populated by the server, and will be ignored when sending a r
 def __init__(**kwargs)
 ```
 
-:keyword id:
-:paramtype id: int
-:keyword job_title:
-:paramtype job_title: str
-:keyword organization:
-:paramtype organization: str
-:keyword location:
-:paramtype location: ~affinda.models.Location
-:keyword job_description:
-:paramtype job_description: str
-:keyword dates:
-:paramtype dates: ~affinda.models.ResumeDataWorkExperienceItemDates
+**Arguments**:
+
+- `id`: 
+- `job_title`: 
+- `organization`: 
+- `location`: 
+- `job_description`: 
+- `dates`: 
 
 <a id="models._models.ResumeDataWorkExperienceItemDates"></a>
 
@@ -6575,14 +6337,12 @@ ResumeDataWorkExperienceItemDates.
 def __init__(**kwargs)
 ```
 
-:keyword start_date:
-:paramtype start_date: ~datetime.date
-:keyword end_date:
-:paramtype end_date: ~datetime.date
-:keyword months_in_position:
-:paramtype months_in_position: int
-:keyword is_current:
-:paramtype is_current: bool
+**Arguments**:
+
+- `start_date`: 
+- `end_date`: 
+- `months_in_position`: 
+- `is_current`: 
 
 <a id="models._models.ResumeDataWorkExperienceItemOccupation"></a>
 
@@ -6613,16 +6373,13 @@ ResumeDataWorkExperienceItemOccupation.
 def __init__(**kwargs)
 ```
 
-:keyword job_title: The raw (not normalized) job title pulled from the work experience entry.
-:paramtype job_title: str
-:keyword job_title_normalized: Mapped onto the EMSI job title taxonomy if a sufficiently close
+**Arguments**:
+
+- `job_title`: The raw (not normalized) job title pulled from the work experience entry.
+- `job_title_normalized`: Mapped onto the EMSI job title taxonomy if a sufficiently close
 match exists.
-:paramtype job_title_normalized: str
-:keyword management_level: Known values are: "None", "Low", "Mid", "Upper".
-:paramtype management_level: str or ~affinda.models.ManagementLevel
-:keyword classification:
-:paramtype classification:
-~affinda.models.Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification
+- `management_level`: Known values are: "None", "Low", "Mid", "Upper".
+- `classification`: 
 
 <a id="models._models.ResumeRequestBody"></a>
 
@@ -6664,27 +6421,21 @@ ResumeRequestBody.
 def __init__(**kwargs)
 ```
 
-:keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+**Arguments**:
+
+- `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
 PNG, JPG.
-:paramtype file: IO
-:keyword url: URL to a resume to download and process.
-:paramtype url: str
-:keyword data: A JSON-encoded string of the ``ResumeData`` object.
-:paramtype data: ~affinda.models.ResumeData
-:keyword identifier: Unique identifier for the document. If creating a document and left blank,
+- `url`: URL to a resume to download and process.
+- `data`: A JSON-encoded string of the ``ResumeData`` object.
+- `identifier`: Unique identifier for the document. If creating a document and left blank,
 one will be automatically generated.
-:paramtype identifier: str
-:keyword file_name: Optional filename of the file.
-:paramtype file_name: str
-:keyword wait: If "true" (default), will return a response only after processing has completed.
+- `file_name`: Optional filename of the file.
+- `wait`: If "true" (default), will return a response only after processing has completed.
 If "false", will return an empty data object which can be polled at the GET endpoint until
 processing is complete.
-:paramtype wait: bool
-:keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-:paramtype language: str
-:keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+- `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
-:paramtype expiry_time: ~datetime.datetime
 
 <a id="models._models.ResumeSearch"></a>
 
@@ -6715,16 +6466,13 @@ ResumeSearch.
 def __init__(**kwargs)
 ```
 
-:keyword count: Total number of results.
-:paramtype count: int
-:keyword next: URL to request next page of results.
-:paramtype next: str
-:keyword previous: URL to request previous page of results.
-:paramtype previous: str
-:keyword parameters:
-:paramtype parameters: ~affinda.models.ResumeSearchParameters
-:keyword results:
-:paramtype results: list[~affinda.models.ResumeSearchResult]
+**Arguments**:
+
+- `count`: Total number of results.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
+- `parameters`: 
+- `results`: 
 
 <a id="models._models.ResumeSearchConfig"></a>
 
@@ -6796,51 +6544,31 @@ Variables are only populated by the server, and will be ignored when sending a r
 def __init__(**kwargs)
 ```
 
-:keyword allow_pdf_download:
-:paramtype allow_pdf_download: bool
-:keyword max_results: Maximum number of results that can be returned. Setting to "null" means
+**Arguments**:
+
+- `allow_pdf_download`: 
+- `max_results`: Maximum number of results that can be returned. Setting to "null" means
 no limitation.
-:paramtype max_results: int
-:keyword display_job_title:
-:paramtype display_job_title: bool
-:keyword display_location:
-:paramtype display_location: bool
-:keyword display_years_experience:
-:paramtype display_years_experience: bool
-:keyword display_occupation_group:
-:paramtype display_occupation_group: bool
-:keyword display_education:
-:paramtype display_education: bool
-:keyword display_skills:
-:paramtype display_skills: bool
-:keyword display_languages:
-:paramtype display_languages: bool
-:keyword display_management_level:
-:paramtype display_management_level: bool
-:keyword display_keywords:
-:paramtype display_keywords: bool
-:keyword weight_job_title:
-:paramtype weight_job_title: float
-:keyword weight_location:
-:paramtype weight_location: float
-:keyword weight_years_experience:
-:paramtype weight_years_experience: float
-:keyword weight_occupation_group:
-:paramtype weight_occupation_group: float
-:keyword weight_education:
-:paramtype weight_education: float
-:keyword weight_skills:
-:paramtype weight_skills: float
-:keyword weight_languages:
-:paramtype weight_languages: float
-:keyword weight_management_level:
-:paramtype weight_management_level: float
-:keyword weight_keywords:
-:paramtype weight_keywords: float
-:keyword indices: List of index names.
-:paramtype indices: list[str]
-:keyword search_tool_theme: Customize the theme of the embeded search tool.
-:paramtype search_tool_theme: dict[str, any]
+- `display_job_title`: 
+- `display_location`: 
+- `display_years_experience`: 
+- `display_occupation_group`: 
+- `display_education`: 
+- `display_skills`: 
+- `display_languages`: 
+- `display_management_level`: 
+- `display_keywords`: 
+- `weight_job_title`: 
+- `weight_location`: 
+- `weight_years_experience`: 
+- `weight_occupation_group`: 
+- `weight_education`: 
+- `weight_skills`: 
+- `weight_languages`: 
+- `weight_management_level`: 
+- `weight_keywords`: 
+- `indices`: List of index names.
+- `search_tool_theme`: Customize the theme of the embeded search tool.
 
 <a id="models._models.ResumeSearchDetail"></a>
 
@@ -6879,24 +6607,17 @@ ResumeSearchDetail.
 def __init__(**kwargs)
 ```
 
-:keyword job_title:
-:paramtype job_title: ~affinda.models.ResumeSearchDetailJobTitle
-:keyword location:
-:paramtype location: ~affinda.models.ResumeSearchDetailLocation
-:keyword education:
-:paramtype education: ~affinda.models.ResumeSearchDetailEducation
-:keyword skills:
-:paramtype skills: ~affinda.models.ResumeSearchDetailSkills
-:keyword experience:
-:paramtype experience: ~affinda.models.ResumeSearchDetailExperience
-:keyword occupation_group:
-:paramtype occupation_group: ~affinda.models.ResumeSearchDetailOccupationGroup
-:keyword languages:
-:paramtype languages: ~affinda.models.ResumeSearchDetailLanguages
-:keyword management_level:
-:paramtype management_level: ~affinda.models.ResumeSearchDetailManagementLevel
-:keyword search_expression:
-:paramtype search_expression: ~affinda.models.ResumeSearchDetailSearchExpression
+**Arguments**:
+
+- `job_title`: 
+- `location`: 
+- `education`: 
+- `skills`: 
+- `experience`: 
+- `occupation_group`: 
+- `languages`: 
+- `management_level`: 
+- `search_expression`: 
 
 <a id="models._models.ResumeSearchDetailEducation"></a>
 
@@ -6921,10 +6642,10 @@ ResumeSearchDetailEducation.
 def __init__(**kwargs)
 ```
 
-:keyword missing:
-:paramtype missing: ~affinda.models.ResumeSearchDetailEducationMissing
-:keyword value:
-:paramtype value: list[~affinda.models.ResumeSearchDetailEducationValueItem]
+**Arguments**:
+
+- `missing`: 
+- `value`: 
 
 <a id="models._models.ResumeSearchDetailEducationMissing"></a>
 
@@ -6955,16 +6676,13 @@ ResumeSearchDetailEducationMissing.
 def __init__(**kwargs)
 ```
 
-:keyword degrees:
-:paramtype degrees: list[str]
-:keyword highest_degree_types:
-:paramtype highest_degree_types: list[str]
-:keyword institutions:
-:paramtype institutions: list[str]
-:keyword current_student:
-:paramtype current_student: bool
-:keyword recent_graduate:
-:paramtype recent_graduate: bool
+**Arguments**:
+
+- `degrees`: 
+- `highest_degree_types`: 
+- `institutions`: 
+- `current_student`: 
+- `recent_graduate`: 
 
 <a id="models._models.ResumeSearchDetailEducationValueItem"></a>
 
@@ -6997,18 +6715,14 @@ ResumeSearchDetailEducationValueItem.
 def __init__(**kwargs)
 ```
 
-:keyword match:
-:paramtype match: bool
-:keyword organization:
-:paramtype organization: str
-:keyword accreditation:
-:paramtype accreditation: ~affinda.models.Accreditation
-:keyword grade:
-:paramtype grade: ~affinda.models.EducationGrade
-:keyword location:
-:paramtype location: ~affinda.models.Location
-:keyword dates:
-:paramtype dates: ~affinda.models.EducationDates
+**Arguments**:
+
+- `match`: 
+- `organization`: 
+- `accreditation`: 
+- `grade`: 
+- `location`: 
+- `dates`: 
 
 <a id="models._models.ResumeSearchDetailExperience"></a>
 
@@ -7033,10 +6747,10 @@ ResumeSearchDetailExperience.
 def __init__(**kwargs)
 ```
 
-:keyword years:
-:paramtype years: int
-:keyword match:
-:paramtype match: bool
+**Arguments**:
+
+- `years`: 
+- `match`: 
 
 <a id="models._models.ResumeSearchDetailJobTitle"></a>
 
@@ -7061,10 +6775,10 @@ ResumeSearchDetailJobTitle.
 def __init__(**kwargs)
 ```
 
-:keyword missing:
-:paramtype missing: list[str]
-:keyword value:
-:paramtype value: list[~affinda.models.ResumeSearchDetailJobTitleValueItem]
+**Arguments**:
+
+- `missing`: 
+- `value`: 
 
 <a id="models._models.ResumeSearchDetailJobTitleValueItem"></a>
 
@@ -7095,16 +6809,13 @@ ResumeSearchDetailJobTitleValueItem.
 def __init__(**kwargs)
 ```
 
-:keyword name:
-:paramtype name: str
-:keyword start_date:
-:paramtype start_date: str
-:keyword end_date:
-:paramtype end_date: str
-:keyword company_name:
-:paramtype company_name: str
-:keyword match:
-:paramtype match: bool
+**Arguments**:
+
+- `name`: 
+- `start_date`: 
+- `end_date`: 
+- `company_name`: 
+- `match`: 
 
 <a id="models._models.ResumeSearchDetailLanguages"></a>
 
@@ -7129,10 +6840,10 @@ ResumeSearchDetailLanguages.
 def __init__(**kwargs)
 ```
 
-:keyword missing:
-:paramtype missing: list[~affinda.models.ResumeSearchParametersSkill]
-:keyword value:
-:paramtype value: list[~affinda.models.ResumeSearchDetailLanguagesValueItem]
+**Arguments**:
+
+- `missing`: 
+- `value`: 
 
 <a id="models._models.ResumeSkill"></a>
 
@@ -7163,16 +6874,13 @@ ResumeSkill.
 def __init__(**kwargs)
 ```
 
-:keyword name:
-:paramtype name: str
-:keyword last_used:
-:paramtype last_used: str
-:keyword number_of_months:
-:paramtype number_of_months: int
-:keyword type:
-:paramtype type: str
-:keyword sources:
-:paramtype sources: list[~affinda.models.ResumeSkillSourcesItem]
+**Arguments**:
+
+- `name`: 
+- `last_used`: 
+- `number_of_months`: 
+- `type`: 
+- `sources`: 
 
 <a id="models._models.ResumeSearchDetailLanguagesValueItem"></a>
 
@@ -7205,18 +6913,14 @@ ResumeSearchDetailLanguagesValueItem.
 def __init__(**kwargs)
 ```
 
-:keyword match:
-:paramtype match: bool
-:keyword name:
-:paramtype name: str
-:keyword last_used:
-:paramtype last_used: str
-:keyword number_of_months:
-:paramtype number_of_months: int
-:keyword type:
-:paramtype type: str
-:keyword sources:
-:paramtype sources: list[~affinda.models.ResumeSkillSourcesItem]
+**Arguments**:
+
+- `match`: 
+- `name`: 
+- `last_used`: 
+- `number_of_months`: 
+- `type`: 
+- `sources`: 
 
 <a id="models._models.ResumeSearchDetailLocation"></a>
 
@@ -7241,10 +6945,10 @@ ResumeSearchDetailLocation.
 def __init__(**kwargs)
 ```
 
-:keyword missing:
-:paramtype missing: list[~affinda.models.ResumeSearchParametersLocation]
-:keyword value:
-:paramtype value: ~affinda.models.ResumeSearchDetailLocationValue
+**Arguments**:
+
+- `missing`: 
+- `value`: 
 
 <a id="models._models.ResumeSearchDetailLocationValue"></a>
 
@@ -7291,10 +6995,10 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword match:
-:paramtype match: bool
-:keyword raw_input: Required.
-:paramtype raw_input: str
+**Arguments**:
+
+- `match`: 
+- `raw_input`: Required.
 
 <a id="models._models.ResumeSearchDetailManagementLevel"></a>
 
@@ -7319,10 +7023,10 @@ ResumeSearchDetailManagementLevel.
 def __init__(**kwargs)
 ```
 
-:keyword level: Known values are: "None", "Low", "Mid", "Upper".
-:paramtype level: str or ~affinda.models.ManagementLevel
-:keyword match:
-:paramtype match: bool
+**Arguments**:
+
+- `level`: Known values are: "None", "Low", "Mid", "Upper".
+- `match`: 
 
 <a id="models._models.ResumeSearchDetailOccupationGroup"></a>
 
@@ -7347,10 +7051,10 @@ ResumeSearchDetailOccupationGroup.
 def __init__(**kwargs)
 ```
 
-:keyword missing:
-:paramtype missing: list[int]
-:keyword value:
-:paramtype value: list[~affinda.models.ResumeSearchDetailOccupationGroupValueItem]
+**Arguments**:
+
+- `missing`: 
+- `value`: 
 
 <a id="models._models.ResumeSearchDetailOccupationGroupValueItem"></a>
 
@@ -7381,14 +7085,12 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword match:
-:paramtype match: bool
-:keyword code: Required.
-:paramtype code: int
-:keyword name: Required.
-:paramtype name: str
-:keyword children: Required.
-:paramtype children: list[~affinda.models.OccupationGroup]
+**Arguments**:
+
+- `match`: 
+- `code`: Required.
+- `name`: Required.
+- `children`: Required.
 
 <a id="models._models.ResumeSearchDetailSearchExpression"></a>
 
@@ -7413,10 +7115,10 @@ ResumeSearchDetailSearchExpression.
 def __init__(**kwargs)
 ```
 
-:keyword missing:
-:paramtype missing: list[str]
-:keyword value:
-:paramtype value: list[str]
+**Arguments**:
+
+- `missing`: 
+- `value`: 
 
 <a id="models._models.ResumeSearchDetailSkills"></a>
 
@@ -7441,10 +7143,10 @@ ResumeSearchDetailSkills.
 def __init__(**kwargs)
 ```
 
-:keyword missing:
-:paramtype missing: list[~affinda.models.ResumeSearchParametersSkill]
-:keyword value:
-:paramtype value: list[~affinda.models.ResumeSearchDetailSkillsValueItem]
+**Arguments**:
+
+- `missing`: 
+- `value`: 
 
 <a id="models._models.ResumeSearchDetailSkillsValueItem"></a>
 
@@ -7477,18 +7179,14 @@ ResumeSearchDetailSkillsValueItem.
 def __init__(**kwargs)
 ```
 
-:keyword match:
-:paramtype match: bool
-:keyword name:
-:paramtype name: str
-:keyword last_used:
-:paramtype last_used: str
-:keyword number_of_months:
-:paramtype number_of_months: int
-:keyword type:
-:paramtype type: str
-:keyword sources:
-:paramtype sources: list[~affinda.models.ResumeSkillSourcesItem]
+**Arguments**:
+
+- `match`: 
+- `name`: 
+- `last_used`: 
+- `number_of_months`: 
+- `type`: 
+- `sources`: 
 
 <a id="models._models.ResumeSearchEmbed"></a>
 
@@ -7511,8 +7209,9 @@ ResumeSearchEmbed.
 def __init__(**kwargs)
 ```
 
-:keyword url: The signed URL for the embedable search tool.
-:paramtype url: str
+**Arguments**:
+
+- `url`: The signed URL for the embedable search tool.
 
 <a id="models._models.ResumeSearchMatch"></a>
 
@@ -7537,10 +7236,10 @@ ResumeSearchMatch.
 def __init__(**kwargs)
 ```
 
-:keyword score: The matching score between the provided resume and job description.
-:paramtype score: float
-:keyword details:
-:paramtype details: ~affinda.models.ResumeSearchMatchDetails
+**Arguments**:
+
+- `score`: The matching score between the provided resume and job description.
+- `details`: 
 
 <a id="models._models.ResumeSearchMatchDetails"></a>
 
@@ -7579,24 +7278,17 @@ ResumeSearchMatchDetails.
 def __init__(**kwargs)
 ```
 
-:keyword job_title:
-:paramtype job_title: ~affinda.models.JobTitleSearchScoreComponent
-:keyword management_level:
-:paramtype management_level: ~affinda.models.ManagementLevelSearchScoreComponent
-:keyword experience:
-:paramtype experience: ~affinda.models.ExperienceSearchScoreComponent
-:keyword skills:
-:paramtype skills: ~affinda.models.SkillsSearchScoreComponent
-:keyword languages:
-:paramtype languages: ~affinda.models.LanguagesSearchScoreComponent
-:keyword location:
-:paramtype location: ~affinda.models.LocationSearchScoreComponent
-:keyword education:
-:paramtype education: ~affinda.models.EducationSearchScoreComponent
-:keyword occupation_group:
-:paramtype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
-:keyword search_expression:
-:paramtype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
+**Arguments**:
+
+- `job_title`: 
+- `management_level`: 
+- `experience`: 
+- `skills`: 
+- `languages`: 
+- `location`: 
+- `education`: 
+- `occupation_group`: 
+- `search_expression`: 
 
 <a id="models._models.ResumeSearchParameters"></a>
 
@@ -7701,88 +7393,50 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword indices: Required.
-:paramtype indices: list[str]
-:keyword job_description: Unique identifier for the document. If creating a document and left
+**Arguments**:
+
+- `indices`: Required.
+- `job_description`: Unique identifier for the document. If creating a document and left
 blank, one will be automatically generated.
-:paramtype job_description: str
-:keyword resume: Unique identifier for the document. If creating a document and left blank, one
+- `resume`: Unique identifier for the document. If creating a document and left blank, one
 will be automatically generated.
-:paramtype resume: str
-:keyword job_titles:
-:paramtype job_titles: list[str]
-:keyword job_titles_current_only:
-:paramtype job_titles_current_only: bool
-:keyword job_titles_required:
-:paramtype job_titles_required: bool
-:keyword job_titles_weight:
-:paramtype job_titles_weight: float
-:keyword years_experience_min:
-:paramtype years_experience_min: int
-:keyword years_experience_max:
-:paramtype years_experience_max: int
-:keyword years_experience_required:
-:paramtype years_experience_required: bool
-:keyword years_experience_weight:
-:paramtype years_experience_weight: float
-:keyword locations:
-:paramtype locations: list[~affinda.models.ResumeSearchParametersLocation]
-:keyword locations_weight:
-:paramtype locations_weight: float
-:keyword locations_required:
-:paramtype locations_required: bool
-:keyword skills:
-:paramtype skills: list[~affinda.models.ResumeSearchParametersSkill]
-:keyword skills_weight:
-:paramtype skills_weight: float
-:keyword languages:
-:paramtype languages: list[~affinda.models.ResumeSearchParametersSkill]
-:keyword languages_weight:
-:paramtype languages_weight: float
-:keyword institutions:
-:paramtype institutions: list[str]
-:keyword institutions_required:
-:paramtype institutions_required: bool
-:keyword degrees:
-:paramtype degrees: list[str]
-:keyword degrees_required:
-:paramtype degrees_required: bool
-:keyword highest_degree_types:
-:paramtype highest_degree_types: list[str or ~affinda.models.EducationLevel]
-:keyword highest_degree_types_required:
-:paramtype highest_degree_types_required: bool
-:keyword is_current_student:
-:paramtype is_current_student: bool
-:keyword is_current_student_required:
-:paramtype is_current_student_required: bool
-:keyword is_recent_graduate:
-:paramtype is_recent_graduate: bool
-:keyword is_recent_graduate_required:
-:paramtype is_recent_graduate_required: bool
-:keyword is_top_student:
-:paramtype is_top_student: bool
-:keyword is_top_student_required:
-:paramtype is_top_student_required: bool
-:keyword education_weight:
-:paramtype education_weight: float
-:keyword search_expression:
-:paramtype search_expression: str
-:keyword search_expression_required:
-:paramtype search_expression_required: bool
-:keyword search_expression_weight:
-:paramtype search_expression_weight: float
-:keyword soc_codes:
-:paramtype soc_codes: list[int]
-:keyword soc_codes_weight:
-:paramtype soc_codes_weight: float
-:keyword soc_codes_required:
-:paramtype soc_codes_required: bool
-:keyword management_level: Known values are: "None", "Low", "Mid", "Upper".
-:paramtype management_level: str or ~affinda.models.ManagementLevel
-:keyword management_level_required:
-:paramtype management_level_required: bool
-:keyword management_level_weight:
-:paramtype management_level_weight: float
+- `job_titles`: 
+- `job_titles_current_only`: 
+- `job_titles_required`: 
+- `job_titles_weight`: 
+- `years_experience_min`: 
+- `years_experience_max`: 
+- `years_experience_required`: 
+- `years_experience_weight`: 
+- `locations`: 
+- `locations_weight`: 
+- `locations_required`: 
+- `skills`: 
+- `skills_weight`: 
+- `languages`: 
+- `languages_weight`: 
+- `institutions`: 
+- `institutions_required`: 
+- `degrees`: 
+- `degrees_required`: 
+- `highest_degree_types`: 
+- `highest_degree_types_required`: 
+- `is_current_student`: 
+- `is_current_student_required`: 
+- `is_recent_graduate`: 
+- `is_recent_graduate_required`: 
+- `is_top_student`: 
+- `is_top_student_required`: 
+- `education_weight`: 
+- `search_expression`: 
+- `search_expression_required`: 
+- `search_expression_weight`: 
+- `soc_codes`: 
+- `soc_codes_weight`: 
+- `soc_codes_required`: 
+- `management_level`: Known values are: "None", "Low", "Mid", "Upper".
+- `management_level_required`: 
+- `management_level_weight`: 
 
 <a id="models._models.ResumeSearchParametersLocation"></a>
 
@@ -7811,14 +7465,12 @@ ResumeSearchParametersLocation.
 def __init__(**kwargs)
 ```
 
-:keyword name:
-:paramtype name: str
-:keyword coordinates:
-:paramtype coordinates: ~affinda.models.ResumeSearchParametersLocationCoordinates
-:keyword distance:
-:paramtype distance: int
-:keyword unit: Known values are: "km", "mi".
-:paramtype unit: str or ~affinda.models.SearchLocationUnit
+**Arguments**:
+
+- `name`: 
+- `coordinates`: 
+- `distance`: 
+- `unit`: Known values are: "km", "mi".
 
 <a id="models._models.ResumeSearchParametersLocationCoordinates"></a>
 
@@ -7843,10 +7495,10 @@ ResumeSearchParametersLocationCoordinates.
 def __init__(**kwargs)
 ```
 
-:keyword latitude:
-:paramtype latitude: float
-:keyword longitude:
-:paramtype longitude: float
+**Arguments**:
+
+- `latitude`: 
+- `longitude`: 
 
 <a id="models._models.ResumeSearchParametersSkill"></a>
 
@@ -7871,10 +7523,10 @@ ResumeSearchParametersSkill.
 def __init__(**kwargs)
 ```
 
-:keyword name:
-:paramtype name: str
-:keyword required:
-:paramtype required: bool
+**Arguments**:
+
+- `name`: 
+- `required`: 
 
 <a id="models._models.ResumeSearchResult"></a>
 
@@ -7924,33 +7576,22 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword identifier: Required. Unique identifier for the document. If creating a document and
+**Arguments**:
+
+- `identifier`: Required. Unique identifier for the document. If creating a document and
 left blank, one will be automatically generated.
-:paramtype identifier: str
-:keyword score: Required.
-:paramtype score: float
-:keyword pdf: Required.
-:paramtype pdf: str
-:keyword name:
-:paramtype name: str
-:keyword job_title: Required.
-:paramtype job_title: ~affinda.models.JobTitleSearchScoreComponent
-:keyword management_level: Required.
-:paramtype management_level: ~affinda.models.ManagementLevelSearchScoreComponent
-:keyword experience: Required.
-:paramtype experience: ~affinda.models.ExperienceSearchScoreComponent
-:keyword skills: Required.
-:paramtype skills: ~affinda.models.SkillsSearchScoreComponent
-:keyword languages: Required.
-:paramtype languages: ~affinda.models.LanguagesSearchScoreComponent
-:keyword location: Required.
-:paramtype location: ~affinda.models.LocationSearchScoreComponent
-:keyword education: Required.
-:paramtype education: ~affinda.models.EducationSearchScoreComponent
-:keyword occupation_group: Required.
-:paramtype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
-:keyword search_expression: Required.
-:paramtype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
+- `score`: Required.
+- `pdf`: Required.
+- `name`: 
+- `job_title`: Required.
+- `management_level`: Required.
+- `experience`: Required.
+- `skills`: Required.
+- `languages`: Required.
+- `location`: Required.
+- `education`: Required.
+- `occupation_group`: Required.
+- `search_expression`: Required.
 
 <a id="models._models.ResumeSkillSourcesItem"></a>
 
@@ -7978,13 +7619,13 @@ ResumeSkillSourcesItem.
 def __init__(**kwargs)
 ```
 
-:keyword section: Known values are: "Achievements", "AdditionalInformation", "Education",
+**Arguments**:
+
+- `section`: Known values are: "Achievements", "AdditionalInformation", "Education",
 "Extracurriculars", "Organisations", "Other", "PersonalDetails", "Projects", "Publications",
 "Referees", "Skills", "Summary", "Training", "WorkExperience", "NotPopulated", "Header",
 "Footer".
-:paramtype section: str or ~affinda.models.ResumeSkillSourcesItemSection
-:keyword position:
-:paramtype position: int
+- `position`: 
 
 <a id="models._models.RowAnnotation"></a>
 
@@ -8031,32 +7672,21 @@ RowAnnotation.
 def __init__(**kwargs)
 ```
 
-:keyword code:
-:paramtype code: str
-:keyword date:
-:paramtype date: str
-:keyword description:
-:paramtype description: str
-:keyword unit:
-:paramtype unit: str
-:keyword unit_price:
-:paramtype unit_price: float
-:keyword quantity:
-:paramtype quantity: float
-:keyword discount:
-:paramtype discount: str
-:keyword base_total:
-:paramtype base_total: float
-:keyword tax_rate:
-:paramtype tax_rate: str
-:keyword tax_total:
-:paramtype tax_total: float
-:keyword total:
-:paramtype total: float
-:keyword other:
-:paramtype other: str
-:keyword custom_fields: Dictionary of :code:`<any>`.
-:paramtype custom_fields: dict[str, any]
+**Arguments**:
+
+- `code`: 
+- `date`: 
+- `description`: 
+- `unit`: 
+- `unit_price`: 
+- `quantity`: 
+- `discount`: 
+- `base_total`: 
+- `tax_rate`: 
+- `tax_total`: 
+- `total`: 
+- `other`: 
+- `custom_fields`: Dictionary of :code:`<any>`.
 
 <a id="models._models.SearchExpressionSearchScoreComponent"></a>
 
@@ -8085,12 +7715,11 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword label: Required.
-:paramtype label: str
-:keyword value:
-:paramtype value: str
-:keyword score:
-:paramtype score: float
+**Arguments**:
+
+- `label`: Required.
+- `value`: 
+- `score`: 
 
 <a id="models._models.SkillAnnotation"></a>
 
@@ -8132,25 +7761,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed:
-:paramtype parsed: str
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: 
 
 <a id="models._models.SkillsSearchScoreComponent"></a>
 
@@ -8179,12 +7801,38 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword value:
-:paramtype value: str
-:keyword label: Required.
-:paramtype label: str
-:keyword score:
-:paramtype score: float
+**Arguments**:
+
+- `value`: 
+- `label`: Required.
+- `score`: 
+
+<a id="models._models.SplitRelation"></a>
+
+## SplitRelation Objects
+
+```python
+class SplitRelation(msrest.serialization.Model)
+```
+
+SplitRelation.
+
+:ivar identifier: Unique identifier for the document. If creating a document and left blank,
+ one will be automatically generated.
+:vartype identifier: str
+
+<a id="models._models.SplitRelation.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Unique identifier for the document. If creating a document and left blank,
+one will be automatically generated.
 
 <a id="models._models.YearsExperienceAnnotation"></a>
 
@@ -8226,25 +7874,18 @@ All required parameters must be populated in order to send to Azure.
 def __init__(**kwargs)
 ```
 
-:keyword additional_properties: Unmatched properties from the message are deserialized to this
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-:paramtype additional_properties: dict[str, any]
-:keyword id:
-:paramtype id: int
-:keyword rectangle: Required.
-:paramtype rectangle: ~affinda.models.Rectangle
-:keyword page_index: Required.
-:paramtype page_index: int
-:keyword raw: Required.
-:paramtype raw: str
-:keyword confidence: Required.
-:paramtype confidence: float
-:keyword is_verified: Required.
-:paramtype is_verified: bool
-:keyword classification: Required.
-:paramtype classification: str
-:keyword parsed: Years of experience range.
-:paramtype parsed: ~affinda.models.YearsExperienceAnnotationParsed
+- `id`: 
+- `rectangle`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required.
+- `is_verified`: Required.
+- `classification`: Required.
+- `parsed`: Years of experience range.
 
 <a id="models._models.YearsExperienceAnnotationParsed"></a>
 
@@ -8269,8 +7910,8 @@ Years of experience range.
 def __init__(**kwargs)
 ```
 
-:keyword minimum: Minimum years of experience.
-:paramtype minimum: float
-:keyword maximum: Maximum years of experience.
-:paramtype maximum: float
+**Arguments**:
+
+- `minimum`: Minimum years of experience.
+- `maximum`: Maximum years of experience.
 

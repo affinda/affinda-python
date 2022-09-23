@@ -9,6 +9,7 @@ try:
     from ._models_py3 import Annotation
     from ._models_py3 import Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1
     from ._models_py3 import Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1
+    from ._models_py3 import Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1
     from ._models_py3 import (
         Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1,
     )
@@ -26,7 +27,7 @@ try:
     from ._models_py3 import Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1
     from ._models_py3 import Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1
     from ._models_py3 import Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1
-    from ._models_py3 import Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1
+    from ._models_py3 import Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1
     from ._models_py3 import (
         Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1,
     )
@@ -49,8 +50,8 @@ try:
     from ._models_py3 import (
         ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1,
     )
-    from ._models_py3 import ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1
-    from ._models_py3 import ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1
+    from ._models_py3 import ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1
+    from ._models_py3 import ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1
     from ._models_py3 import ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1
     from ._models_py3 import (
         ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1,
@@ -64,7 +65,6 @@ try:
     from ._models_py3 import (
         ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1,
     )
-    from ._models_py3 import ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1
     from ._models_py3 import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1
     from ._models_py3 import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1
     from ._models_py3 import DateAnnotation
@@ -85,8 +85,8 @@ try:
     from ._models_py3 import Invoice
     from ._models_py3 import InvoiceData
     from ._models_py3 import InvoiceDataBankAccountNumber
-    from ._models_py3 import InvoiceDataBankBSB
-    from ._models_py3 import InvoiceDataBankIBAN
+    from ._models_py3 import InvoiceDataBankBsb
+    from ._models_py3 import InvoiceDataBankIban
     from ._models_py3 import InvoiceDataBankSortCode
     from ._models_py3 import InvoiceDataBankSwift
     from ._models_py3 import InvoiceDataBpayBillerCode
@@ -97,7 +97,7 @@ try:
     from ._models_py3 import InvoiceDataCustomerEmail
     from ._models_py3 import InvoiceDataCustomerNumber
     from ._models_py3 import InvoiceDataCustomerPhoneNumber
-    from ._models_py3 import InvoiceDataCustomerVAT
+    from ._models_py3 import InvoiceDataCustomerVat
     from ._models_py3 import InvoiceDataInvoiceNumber
     from ._models_py3 import InvoiceDataInvoicePurchaseOrderNumber
     from ._models_py3 import InvoiceDataPaymentAmountBase
@@ -111,7 +111,7 @@ try:
     from ._models_py3 import InvoiceDataSupplierEmail
     from ._models_py3 import InvoiceDataSupplierFax
     from ._models_py3 import InvoiceDataSupplierPhoneNumber
-    from ._models_py3 import InvoiceDataSupplierVAT
+    from ._models_py3 import InvoiceDataSupplierVat
     from ._models_py3 import InvoiceDataSupplierWebsite
     from ._models_py3 import InvoiceDataTablesItem
     from ._models_py3 import InvoiceMeta
@@ -120,6 +120,7 @@ try:
     from ._models_py3 import JobDescriptionData
     from ._models_py3 import JobDescriptionRequestBody
     from ._models_py3 import JobDescriptionSearch
+    from ._models_py3 import JobDescriptionSearchConfig
     from ._models_py3 import JobDescriptionSearchDetail
     from ._models_py3 import JobDescriptionSearchDetailEducation
     from ._models_py3 import JobDescriptionSearchDetailEducationMissing
@@ -137,6 +138,7 @@ try:
     from ._models_py3 import JobDescriptionSearchDetailSearchExpression
     from ._models_py3 import JobDescriptionSearchDetailSkills
     from ._models_py3 import JobDescriptionSearchDetailSkillsValueItem
+    from ._models_py3 import JobDescriptionSearchEmbed
     from ._models_py3 import JobDescriptionSearchParameters
     from ._models_py3 import JobDescriptionSearchResult
     from ._models_py3 import JobTitleAnnotation
@@ -152,6 +154,7 @@ try:
     from ._models_py3 import Meta
     from ._models_py3 import OccupationGroup
     from ._models_py3 import OccupationGroupSearchScoreComponent
+    from ._models_py3 import PageMeta
     from ._models_py3 import Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema
     from ._models_py3 import Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1
     from ._models_py3 import (
@@ -160,6 +163,9 @@ try:
     from ._models_py3 import Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema
     from ._models_py3 import (
         PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema,
+    )
+    from ._models_py3 import (
+        PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema,
     )
     from ._models_py3 import (
         PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema,
@@ -226,6 +232,7 @@ try:
     from ._models_py3 import SearchExpressionSearchScoreComponent
     from ._models_py3 import SkillAnnotation
     from ._models_py3 import SkillsSearchScoreComponent
+    from ._models_py3 import SplitRelation
     from ._models_py3 import TextAnnotation
     from ._models_py3 import User
     from ._models_py3 import YearsExperienceAnnotation
@@ -235,6 +242,7 @@ except (SyntaxError, ImportError):
     from ._models import Annotation  # type: ignore
     from ._models import Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1  # type: ignore
     from ._models import Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1  # type: ignore
+    from ._models import Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1  # type: ignore
     from ._models import Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1  # type: ignore
     from ._models import Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1  # type: ignore
     from ._models import Components17Ashz6SchemasInvoicePropertiesMetaAllof1  # type: ignore
@@ -246,7 +254,7 @@ except (SyntaxError, ImportError):
     from ._models import Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1  # type: ignore
     from ._models import Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1  # type: ignore
     from ._models import Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1  # type: ignore
-    from ._models import Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1  # type: ignore
+    from ._models import Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1  # type: ignore
     from ._models import Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1  # type: ignore
     from ._models import Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification  # type: ignore
     from ._models import Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1  # type: ignore
@@ -261,14 +269,13 @@ except (SyntaxError, ImportError):
     from ._models import Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1  # type: ignore
     from ._models import ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1  # type: ignore
     from ._models import ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1  # type: ignore
-    from ._models import ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1  # type: ignore
-    from ._models import ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1  # type: ignore
+    from ._models import ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1  # type: ignore
+    from ._models import ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1  # type: ignore
     from ._models import ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1  # type: ignore
     from ._models import ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1  # type: ignore
     from ._models import ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1  # type: ignore
     from ._models import ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1  # type: ignore
     from ._models import ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1  # type: ignore
-    from ._models import ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1  # type: ignore
     from ._models import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1  # type: ignore
     from ._models import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1  # type: ignore
     from ._models import DateAnnotation  # type: ignore
@@ -289,8 +296,8 @@ except (SyntaxError, ImportError):
     from ._models import Invoice  # type: ignore
     from ._models import InvoiceData  # type: ignore
     from ._models import InvoiceDataBankAccountNumber  # type: ignore
-    from ._models import InvoiceDataBankBSB  # type: ignore
-    from ._models import InvoiceDataBankIBAN  # type: ignore
+    from ._models import InvoiceDataBankBsb  # type: ignore
+    from ._models import InvoiceDataBankIban  # type: ignore
     from ._models import InvoiceDataBankSortCode  # type: ignore
     from ._models import InvoiceDataBankSwift  # type: ignore
     from ._models import InvoiceDataBpayBillerCode  # type: ignore
@@ -301,7 +308,7 @@ except (SyntaxError, ImportError):
     from ._models import InvoiceDataCustomerEmail  # type: ignore
     from ._models import InvoiceDataCustomerNumber  # type: ignore
     from ._models import InvoiceDataCustomerPhoneNumber  # type: ignore
-    from ._models import InvoiceDataCustomerVAT  # type: ignore
+    from ._models import InvoiceDataCustomerVat  # type: ignore
     from ._models import InvoiceDataInvoiceNumber  # type: ignore
     from ._models import InvoiceDataInvoicePurchaseOrderNumber  # type: ignore
     from ._models import InvoiceDataPaymentAmountBase  # type: ignore
@@ -315,7 +322,7 @@ except (SyntaxError, ImportError):
     from ._models import InvoiceDataSupplierEmail  # type: ignore
     from ._models import InvoiceDataSupplierFax  # type: ignore
     from ._models import InvoiceDataSupplierPhoneNumber  # type: ignore
-    from ._models import InvoiceDataSupplierVAT  # type: ignore
+    from ._models import InvoiceDataSupplierVat  # type: ignore
     from ._models import InvoiceDataSupplierWebsite  # type: ignore
     from ._models import InvoiceDataTablesItem  # type: ignore
     from ._models import InvoiceMeta  # type: ignore
@@ -324,6 +331,7 @@ except (SyntaxError, ImportError):
     from ._models import JobDescriptionData  # type: ignore
     from ._models import JobDescriptionRequestBody  # type: ignore
     from ._models import JobDescriptionSearch  # type: ignore
+    from ._models import JobDescriptionSearchConfig  # type: ignore
     from ._models import JobDescriptionSearchDetail  # type: ignore
     from ._models import JobDescriptionSearchDetailEducation  # type: ignore
     from ._models import JobDescriptionSearchDetailEducationMissing  # type: ignore
@@ -341,6 +349,7 @@ except (SyntaxError, ImportError):
     from ._models import JobDescriptionSearchDetailSearchExpression  # type: ignore
     from ._models import JobDescriptionSearchDetailSkills  # type: ignore
     from ._models import JobDescriptionSearchDetailSkillsValueItem  # type: ignore
+    from ._models import JobDescriptionSearchEmbed  # type: ignore
     from ._models import JobDescriptionSearchParameters  # type: ignore
     from ._models import JobDescriptionSearchResult  # type: ignore
     from ._models import JobTitleAnnotation  # type: ignore
@@ -356,11 +365,13 @@ except (SyntaxError, ImportError):
     from ._models import Meta  # type: ignore
     from ._models import OccupationGroup  # type: ignore
     from ._models import OccupationGroupSearchScoreComponent  # type: ignore
+    from ._models import PageMeta  # type: ignore
     from ._models import Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema  # type: ignore
     from ._models import Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1  # type: ignore
     from ._models import Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema  # type: ignore
     from ._models import Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema  # type: ignore
+    from ._models import PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema  # type: ignore
     from ._models import PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema  # type: ignore
     from ._models import PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems  # type: ignore
     from ._models import PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema  # type: ignore
@@ -420,6 +431,7 @@ except (SyntaxError, ImportError):
     from ._models import SearchExpressionSearchScoreComponent  # type: ignore
     from ._models import SkillAnnotation  # type: ignore
     from ._models import SkillsSearchScoreComponent  # type: ignore
+    from ._models import SplitRelation  # type: ignore
     from ._models import TextAnnotation  # type: ignore
     from ._models import User  # type: ignore
     from ._models import YearsExperienceAnnotation  # type: ignore
@@ -427,7 +439,11 @@ except (SyntaxError, ImportError):
 
 from ._affinda_api_enums import (
     EducationLevel,
+    Enum1,
+    Enum4,
+    GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType,
     ManagementLevel,
+    PostContentSchemaDocumentType,
     ResumeSkillSourcesItemSection,
     SearchLocationUnit,
 )
@@ -440,6 +456,7 @@ __all__ = [
     "Annotation",
     "Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1",
     "Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1",
+    "Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1",
     "Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1",
     "Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1",
     "Components17Ashz6SchemasInvoicePropertiesMetaAllof1",
@@ -451,7 +468,7 @@ __all__ = [
     "Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1",
     "Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1",
     "Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1",
-    "Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1",
+    "Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1",
     "Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1",
     "Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification",
     "Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1",
@@ -466,14 +483,13 @@ __all__ = [
     "Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1",
     "ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1",
     "ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1",
-    "ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1",
-    "ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1",
+    "ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1",
+    "ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1",
     "ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1",
     "ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1",
     "ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1",
     "ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1",
     "ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1",
-    "ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1",
     "ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1",
     "ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1",
     "DateAnnotation",
@@ -494,8 +510,8 @@ __all__ = [
     "Invoice",
     "InvoiceData",
     "InvoiceDataBankAccountNumber",
-    "InvoiceDataBankBSB",
-    "InvoiceDataBankIBAN",
+    "InvoiceDataBankBsb",
+    "InvoiceDataBankIban",
     "InvoiceDataBankSortCode",
     "InvoiceDataBankSwift",
     "InvoiceDataBpayBillerCode",
@@ -506,7 +522,7 @@ __all__ = [
     "InvoiceDataCustomerEmail",
     "InvoiceDataCustomerNumber",
     "InvoiceDataCustomerPhoneNumber",
-    "InvoiceDataCustomerVAT",
+    "InvoiceDataCustomerVat",
     "InvoiceDataInvoiceNumber",
     "InvoiceDataInvoicePurchaseOrderNumber",
     "InvoiceDataPaymentAmountBase",
@@ -520,7 +536,7 @@ __all__ = [
     "InvoiceDataSupplierEmail",
     "InvoiceDataSupplierFax",
     "InvoiceDataSupplierPhoneNumber",
-    "InvoiceDataSupplierVAT",
+    "InvoiceDataSupplierVat",
     "InvoiceDataSupplierWebsite",
     "InvoiceDataTablesItem",
     "InvoiceMeta",
@@ -529,6 +545,7 @@ __all__ = [
     "JobDescriptionData",
     "JobDescriptionRequestBody",
     "JobDescriptionSearch",
+    "JobDescriptionSearchConfig",
     "JobDescriptionSearchDetail",
     "JobDescriptionSearchDetailEducation",
     "JobDescriptionSearchDetailEducationMissing",
@@ -546,6 +563,7 @@ __all__ = [
     "JobDescriptionSearchDetailSearchExpression",
     "JobDescriptionSearchDetailSkills",
     "JobDescriptionSearchDetailSkillsValueItem",
+    "JobDescriptionSearchEmbed",
     "JobDescriptionSearchParameters",
     "JobDescriptionSearchResult",
     "JobTitleAnnotation",
@@ -561,11 +579,13 @@ __all__ = [
     "Meta",
     "OccupationGroup",
     "OccupationGroupSearchScoreComponent",
+    "PageMeta",
     "Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema",
     "Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1",
     "Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema",
     "Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema",
     "PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema",
+    "PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema",
     "PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema",
     "PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems",
     "PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema",
@@ -625,12 +645,17 @@ __all__ = [
     "SearchExpressionSearchScoreComponent",
     "SkillAnnotation",
     "SkillsSearchScoreComponent",
+    "SplitRelation",
     "TextAnnotation",
     "User",
     "YearsExperienceAnnotation",
     "YearsExperienceAnnotationParsed",
     "EducationLevel",
+    "Enum1",
+    "Enum4",
+    "GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType",
     "ManagementLevel",
+    "PostContentSchemaDocumentType",
     "ResumeSkillSourcesItemSection",
     "SearchLocationUnit",
 ]

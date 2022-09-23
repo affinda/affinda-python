@@ -43,10 +43,14 @@ Returns all the resume summaries for that user, limited to 300 per page.
 
 **Arguments**:
 
-Default value is None.
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -72,7 +76,6 @@ parsing credits.
 
 **Arguments**:
 
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `file` (`IO`): Default value is None.
 - `url` (`str`): Default value is None.
 - `data` (`~affinda.models.ResumeData`): Default value is None.
@@ -81,6 +84,11 @@ parsing credits.
 - `wait` (`bool`): Default value is True.
 - `language` (`str`): Default value is None.
 - `expiry_time` (`~datetime.datetime`): Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -102,10 +110,14 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the `
 
 **Arguments**:
 
-supported value for this parameter is "hr-xml". Default value is None.
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `identifier` (`str`): Document identifier.
 - `format` (`str`): Set this to "hr-xml" to get the response in HR-XML format. Currently the only
+supported value for this parameter is "hr-xml". Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -127,9 +139,13 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the `
 
 **Arguments**:
 
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `identifier` (`str`): Resume identifier.
 - `body` (`~affinda.models.ResumeData`): Resume data to update.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -149,8 +165,12 @@ Deletes the specified resume from the database.
 
 **Arguments**:
 
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `identifier` (`str`): Resume identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -170,10 +190,14 @@ Returns all the redacted resume information for that resume.
 
 **Arguments**:
 
-Default value is None.
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -184,7 +208,7 @@ Default value is None.
 #### create\_redacted\_resume
 
 ```python
-def create_redacted_resume(file=None, identifier=None, file_name=None, url=None, language=None, wait=True, redact_headshot=True, redact_personal_details=True, redact_work_details=True, redact_education_details=True, redact_referees=True, redact_locations=True, redact_dates=True, redact_gender=True, expiry_time=None, **kwargs)
+def create_redacted_resume(file=None, identifier=None, file_name=None, url=None, language=None, wait=True, redact_headshot=True, redact_personal_details=True, redact_work_details=True, redact_education_details=True, redact_referees=True, redact_locations=True, redact_dates=True, redact_gender="true", expiry_time=None, **kwargs)
 ```
 
 Upload a resume for redacting.
@@ -193,10 +217,6 @@ Uploads a resume for redacting.
 
 **Arguments**:
 
-Default value is True.
-is True.
-Default value is True.
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `file` (`IO`): Default value is None.
 - `identifier` (`str`): Default value is None.
 - `file_name` (`str`): Default value is None.
@@ -205,13 +225,21 @@ Default value is True.
 - `wait` (`bool`): Default value is True.
 - `redact_headshot` (`bool`): Whether to redact headshot. Default value is True.
 - `redact_personal_details` (`bool`): Whether to redact personal details (e.g. name, address).
+Default value is True.
 - `redact_work_details` (`bool`): Whether to redact work details (e.g. company names). Default value
+is True.
 - `redact_education_details` (`bool`): Whether to redact education details (e.g. university names).
+Default value is True.
 - `redact_referees` (`bool`): Whether to redact referee details. Default value is True.
 - `redact_locations` (`bool`): Whether to redact location names. Default value is True.
 - `redact_dates` (`bool`): Whether to redact dates. Default value is True.
-- `redact_gender` (`bool`): Whether to redact gender. Default value is True.
+- `redact_gender` (`str`): Whether to redact gender. Default value is "true".
 - `expiry_time` (`~datetime.datetime`): Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -233,8 +261,12 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the
 
 **Arguments**:
 
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `identifier` (`str`): Document identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -254,8 +286,12 @@ Deletes the specified resume from the database.
 
 **Arguments**:
 
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `identifier` (`str`): Document identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -280,11 +316,15 @@ the custom criteria.
 
 **Arguments**:
 
-Default value is None.
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `body` (`~affinda.models.ResumeSearchParameters`): Search parameters.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -307,9 +347,13 @@ endpoint.
 
 **Arguments**:
 
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `identifier` (`str`): Resume identifier.
 - `body` (`~affinda.models.ResumeSearchParameters`): Search parameters.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -332,30 +376,34 @@ will not directly match the score returned from POST `/resume_search/details/{id
 
 **Arguments**:
 
-indexes. Default value is None.
-1. Default value is None.
-from 0 to 1. Default value is None.
-1. Default value is None.
-1. Default value is None.
-Default value is None.
-1. Default value is None.
-from 0 to 1. Default value is None.
-1. Default value is None.
-from 0 to 1. Default value is None.
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `resume` (`str`): Identify the resume to match.
 - `job_description` (`str`): Identify the job description to match.
 - `index` (`str`): Optionally, specify an index to search in. If not specified, will search in all
+indexes. Default value is None.
 - `search_expression` (`str`): Add keywords to the search criteria. Default value is None.
 - `job_titles_weight` (`float`): How important is this criteria to the matching score, range from 0 to
+1. Default value is None.
 - `years_experience_weight` (`float`): How important is this criteria to the matching score, range
+from 0 to 1. Default value is None.
 - `locations_weight` (`float`): How important is this criteria to the matching score, range from 0 to
+1. Default value is None.
 - `languages_weight` (`float`): How important is this criteria to the matching score, range from 0 to
+1. Default value is None.
 - `skills_weight` (`float`): How important is this criteria to the matching score, range from 0 to 1.
+Default value is None.
 - `education_weight` (`float`): How important is this criteria to the matching score, range from 0 to
+1. Default value is None.
 - `search_expression_weight` (`float`): How important is this criteria to the matching score, range
+from 0 to 1. Default value is None.
 - `soc_codes_weight` (`float`): How important is this criteria to the matching score, range from 0 to
+1. Default value is None.
 - `management_level_weight` (`float`): How important is this criteria to the matching score, range
+from 0 to 1. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -369,13 +417,19 @@ from 0 to 1. Default value is None.
 def get_resume_search_config(**kwargs)
 ```
 
-Get the config for the logged in user's embedable search tool.
+Get the config for the logged in user's embeddable resume search tool.
 
-Return configurations such as which fields can be displayed in the logged in user's embedable
-search tool, what are their weights, what is the maximum number of results that can be
+Return configurations such as which fields can be displayed in the logged in user's embeddable
+resume search tool, what are their weights, what is the maximum number of results that can be
 returned, etc.
 
-:keyword callable cls: A custom type or function that will be passed the direct response
+**Arguments**:
+
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -389,16 +443,20 @@ returned, etc.
 def update_resume_search_config(body, **kwargs)
 ```
 
-Update the config for the logged in user's embedable search tool.
+Update the config for the logged in user's embeddable resume search tool.
 
-Update configurations such as which fields can be displayed in the logged in user's embedable
-search tool, what are their weights, what is the maximum number of results that can be
+Update configurations such as which fields can be displayed in the logged in user's embeddable
+resume search tool, what are their weights, what is the maximum number of results that can be
 returned, etc.
 
 **Arguments**:
 
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `body` (`~affinda.models.ResumeSearchConfig`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -412,17 +470,20 @@ returned, etc.
 def create_resume_search_embed_url(body=None, **kwargs)
 ```
 
-Create a signed URL for the embedable search tool.
+Create a signed URL for the embeddable resume search tool.
 
 Create and return a signed URL of the resume search tool which then can be embedded on a web
 page. An optional parameter ``config_override`` can be passed to override the user-level
-configurations of the embedable search tool.
+configurations of the embeddable resume search tool.
 
 **Arguments**:
 
-~affinda.models.Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema
-:keyword callable cls: A custom type or function that will be passed the direct response
-- `body`: Default value is None.
+- `body` (`~affinda.models.Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema`): Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -442,10 +503,14 @@ Returns all the job descriptions for that user, limited to 300 per page.
 
 **Arguments**:
 
-Default value is None.
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -469,7 +534,6 @@ Job Descriptions can be uploaded as a file or a URL.
 
 **Arguments**:
 
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `file` (`IO`): Default value is None.
 - `url` (`str`): Default value is None.
 - `identifier` (`str`): Default value is None.
@@ -477,6 +541,11 @@ Job Descriptions can be uploaded as a file or a URL.
 - `wait` (`bool`): Default value is True.
 - `language` (`str`): Default value is None.
 - `expiry_time` (`~datetime.datetime`): Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -498,8 +567,12 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the
 
 **Arguments**:
 
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `identifier` (`str`): Document identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -519,8 +592,12 @@ Deletes the specified job description from the database.
 
 **Arguments**:
 
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `identifier` (`str`): Document identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -540,11 +617,15 @@ Searches through parsed job descriptions. You can search with custom criterias o
 
 **Arguments**:
 
-Default value is None.
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `body` (`~affinda.models.JobDescriptionSearchParameters`): Search parameters.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -567,20 +648,104 @@ The ``identifier`` is the unique ID returned via the `/job_description_search
 
 **Arguments**:
 
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `identifier` (`str`): Job Description identifier.
 - `body` (`~affinda.models.JobDescriptionSearchParameters`): Search parameters.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
 `~affinda.models.JobDescriptionSearchDetail or ~affinda.models.RequestError`: JobDescriptionSearchDetail or RequestError, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_job_description_search_config"></a>
+
+#### get\_job\_description\_search\_config
+
+```python
+def get_job_description_search_config(**kwargs)
+```
+
+Get the config for the logged in user's embeddable job description search tool.
+
+Return configurations such as which fields can be displayed in the logged in user's embeddable
+job description search tool, what are their weights, what is the maximum number of results that
+can be returned, etc.
+
+**Arguments**:
+
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.JobDescriptionSearchConfig or ~affinda.models.RequestError`: JobDescriptionSearchConfig or RequestError, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_job_description_search_config"></a>
+
+#### update\_job\_description\_search\_config
+
+```python
+def update_job_description_search_config(body, **kwargs)
+```
+
+Update the config for the logged in user's embeddable job description search tool.
+
+Update configurations such as which fields can be displayed in the logged in user's embeddable
+job description search tool, what are their weights, what is the maximum number of results that
+can be returned, etc.
+
+**Arguments**:
+
+- `body` (`~affinda.models.JobDescriptionSearchConfig`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.JobDescriptionSearchConfig or ~affinda.models.RequestError`: JobDescriptionSearchConfig or RequestError, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_job_description_search_embed_url"></a>
+
+#### create\_job\_description\_search\_embed\_url
+
+```python
+def create_job_description_search_embed_url(body=None, **kwargs)
+```
+
+Create a signed URL for the embeddable job description search tool.
+
+Create and return a signed URL of the job description search tool which then can be embedded on
+a web page. An optional parameter ``config_override`` can be passed to override the user-level
+configurations of the embeddable search tool.
+
+**Arguments**:
+
+- `body` (`~affinda.models.PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema`): Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.JobDescriptionSearchEmbed or ~affinda.models.RequestError`: JobDescriptionSearchEmbed or RequestError, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_indexes"></a>
 
 #### get\_all\_indexes
 
 ```python
-def get_all_indexes(offset=None, limit=300, **kwargs)
+def get_all_indexes(offset=None, limit=300, document_type=None, **kwargs)
 ```
 
 Get list of all indexes.
@@ -589,21 +754,28 @@ Returns all the indexes.
 
 **Arguments**:
 
-Default value is None.
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
+- `document_type` (`str or ~affinda.models.Enum1`): Filter indices by a document type. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
-`~affinda.models.Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema or`: Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema or RequestError, or the
+`~affinda.models.Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema or
+~affinda.models.RequestError`: Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema or RequestError, or the
+result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_index"></a>
 
 #### create\_index
 
 ```python
-def create_index(name=True, **kwargs)
+def create_index(name=None, document_type=None, **kwargs)
 ```
 
 Create a new index.
@@ -612,12 +784,19 @@ Create an index for the search tool.
 
 **Arguments**:
 
-:keyword callable cls: A custom type or function that will be passed the direct response
-- `name` (`bool`): Default value is True.
+- `name` (`str`): Default value is None.
+- `document_type` (`str or ~affinda.models.PostContentSchemaDocumentType`): Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
-`~affinda.models.Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema or`: Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema or RequestError, or the
+`~affinda.models.Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema or
+~affinda.models.RequestError`: Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema or RequestError, or the
+result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_index"></a>
 
@@ -633,8 +812,12 @@ Deletes the specified index from the database.
 
 **Arguments**:
 
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `name` (`str`): Index name.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -654,12 +837,18 @@ Returns all the indexed documents for that index.
 
 **Arguments**:
 
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `name` (`str`): Index name.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
-PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema or
+`~affinda.models.PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema or
+~affinda.models.RequestError`: PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema or
+RequestError, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_index_document"></a>
 
@@ -675,14 +864,19 @@ Create an indexed document for the search tool.
 
 **Arguments**:
 
-~affinda.models.PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `name` (`str`): Index name.
-- `body`: Document to index.
+- `body` (`~affinda.models.PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema`): Document to index.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
-PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema or
+`~affinda.models.PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema or
+~affinda.models.RequestError`: PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema or
+RequestError, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_index_document"></a>
 
@@ -698,9 +892,13 @@ Delete the specified indexed document from the database.
 
 **Arguments**:
 
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `name` (`str`): Index name.
 - `identifier` (`str`): Document identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -720,10 +918,14 @@ Returns all the invoice summaries for that user, limited to 300 per page.
 
 **Arguments**:
 
-Default value is None.
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -746,7 +948,6 @@ retrieve results.
 
 **Arguments**:
 
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `file` (`IO`): Default value is None.
 - `url` (`str`): Default value is None.
 - `identifier` (`str`): Default value is None.
@@ -754,6 +955,11 @@ retrieve results.
 - `wait` (`bool`): Default value is True.
 - `language` (`str`): Default value is None.
 - `expiry_time` (`~datetime.datetime`): Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -775,8 +981,12 @@ The ``identifier`` is the unique ID returned after POST-ing the invoice via the 
 
 **Arguments**:
 
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `identifier` (`str`): Document identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -797,8 +1007,12 @@ will no longer be used in any tailored customer models.
 
 **Arguments**:
 
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `identifier` (`str`): Invoice identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -816,7 +1030,13 @@ List occupation groups.
 
 Returns the list of searchable occupation groups.
 
-:keyword callable cls: A custom type or function that will be passed the direct response
+**Arguments**:
+
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
@@ -836,14 +1056,20 @@ Returns all the users.
 
 **Arguments**:
 
-Default value is None.
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
-`~affinda.models.PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema or`: PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema or RequestError, or the
+`~affinda.models.PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema or
+~affinda.models.RequestError`: PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema or RequestError, or the
+result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_user"></a>
 
@@ -859,14 +1085,20 @@ Create an user as part of your account.
 
 **Arguments**:
 
-:keyword callable cls: A custom type or function that will be passed the direct response
 - `username` (`str`): 
 - `id` (`int`): Default value is None.
 - `name` (`str`): Default value is None.
 - `email` (`str`): Default value is None.
 - `api_key` (`str`): Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
 
 **Returns**:
 
-`~affinda.models.PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema or`: PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema or RequestError, or the
+`~affinda.models.PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema or
+~affinda.models.RequestError`: PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema or RequestError, or the
+result of cls(response)
 

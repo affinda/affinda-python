@@ -206,6 +206,32 @@ class Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1(msrest.se
         self.parsed = parsed
 
 
+class Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1(msrest.serialization.Model):
+    """Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1.
+
+    :ivar raw:
+    :vartype raw: str
+    :ivar parsed:
+    :vartype parsed: str
+    """
+
+    _attribute_map = {
+        "raw": {"key": "raw", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
+    }
+
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
+        """
+        :keyword raw:
+        :paramtype raw: str
+        :keyword parsed:
+        :paramtype parsed: str
+        """
+        super(Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1, self).__init__(**kwargs)
+        self.raw = raw
+        self.parsed = parsed
+
+
 class Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1(
     msrest.serialization.Model
 ):
@@ -522,8 +548,8 @@ class Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1(msrest.serial
         self.parsed = parsed
 
 
-class Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1(msrest.serialization.Model):
-    """Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1.
+class Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1(msrest.serialization.Model):
+    """Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1.
 
     :ivar raw:
     :vartype raw: str
@@ -543,7 +569,7 @@ class Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1(msrest.serializ
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1, self).__init__(**kwargs)
+        super(Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1, self).__init__(**kwargs)
         self.raw = raw
         self.parsed = parsed
 
@@ -985,8 +1011,8 @@ class ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllo
         self.parsed = parsed
 
 
-class ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1(msrest.serialization.Model):
-    """ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1.
+class ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.serialization.Model):
+    """ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1.
 
     :ivar raw:
     :vartype raw: str
@@ -1006,15 +1032,15 @@ class ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1(msrest.seria
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1, self).__init__(
+        super(ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1, self).__init__(
             **kwargs
         )
         self.raw = raw
         self.parsed = parsed
 
 
-class ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.serialization.Model):
-    """ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1.
+class ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1(msrest.serialization.Model):
+    """ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1.
 
     :ivar raw:
     :vartype raw: str
@@ -1034,7 +1060,7 @@ class ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.seria
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1, self).__init__(
+        super(ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1, self).__init__(
             **kwargs
         )
         self.raw = raw
@@ -1168,32 +1194,6 @@ class ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValu
             self,
         ).__init__(**kwargs)
         self.match = match
-
-
-class ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1(msrest.serialization.Model):
-    """ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1.
-
-    :ivar raw:
-    :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
-    """
-
-    _attribute_map = {
-        "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
-    }
-
-    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
-        """
-        :keyword raw:
-        :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
-        """
-        super(ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1, self).__init__(**kwargs)
-        self.raw = raw
-        self.parsed = parsed
 
 
 class ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1(msrest.serialization.Model):
@@ -1834,6 +1834,9 @@ class Get200ApplicationJsonPropertiesItemsItem(msrest.serialization.Model):
 
     :ivar name: Required.
     :vartype name: str
+    :ivar document_type: Known values are: "resumes", "job_descriptions".
+    :vartype document_type: str or
+     ~affinda.models.GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType
     """
 
     _validation = {
@@ -1842,15 +1845,30 @@ class Get200ApplicationJsonPropertiesItemsItem(msrest.serialization.Model):
 
     _attribute_map = {
         "name": {"key": "name", "type": "str"},
+        "document_type": {"key": "documentType", "type": "str"},
     }
 
-    def __init__(self, *, name: str, **kwargs):
+    def __init__(
+        self,
+        *,
+        name: str,
+        document_type: Optional[
+            Union[
+                str, "_models.GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType"
+            ]
+        ] = None,
+        **kwargs,
+    ):
         """
         :keyword name: Required.
         :paramtype name: str
+        :keyword document_type: Known values are: "resumes", "job_descriptions".
+        :paramtype document_type: str or
+         ~affinda.models.GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType
         """
         super(Get200ApplicationJsonPropertiesItemsItem, self).__init__(**kwargs)
         self.name = name
+        self.document_type = document_type
 
 
 class GetAllDocumentsResults(msrest.serialization.Model):
@@ -1995,20 +2013,32 @@ class IndexRequestBody(msrest.serialization.Model):
     """IndexRequestBody.
 
     :ivar name:
-    :vartype name: bool
+    :vartype name: str
+    :ivar document_type: Known values are: "resumes", "job_descriptions".
+    :vartype document_type: str or ~affinda.models.PostContentSchemaDocumentType
     """
 
     _attribute_map = {
-        "name": {"key": "name", "type": "bool"},
+        "name": {"key": "name", "type": "str"},
+        "document_type": {"key": "documentType", "type": "str"},
     }
 
-    def __init__(self, *, name: Optional[bool] = True, **kwargs):
+    def __init__(
+        self,
+        *,
+        name: Optional[str] = None,
+        document_type: Optional[Union[str, "_models.PostContentSchemaDocumentType"]] = None,
+        **kwargs,
+    ):
         """
         :keyword name:
-        :paramtype name: bool
+        :paramtype name: str
+        :keyword document_type: Known values are: "resumes", "job_descriptions".
+        :paramtype document_type: str or ~affinda.models.PostContentSchemaDocumentType
         """
         super(IndexRequestBody, self).__init__(**kwargs)
         self.name = name
+        self.document_type = document_type
 
 
 class Invoice(msrest.serialization.Model):
@@ -2102,9 +2132,9 @@ class InvoiceData(msrest.serialization.Model):
     :ivar bank_account_number:
     :vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
     :ivar supplier_vat:
-    :vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVAT
+    :vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
     :ivar customer_vat:
-    :vartype customer_vat: ~affinda.models.InvoiceDataCustomerVAT
+    :vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
     :ivar bpay_biller_code:
     :vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
     :ivar bpay_reference:
@@ -2112,11 +2142,11 @@ class InvoiceData(msrest.serialization.Model):
     :ivar bank_sort_code:
     :vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
     :ivar bank_iban:
-    :vartype bank_iban: ~affinda.models.InvoiceDataBankIBAN
+    :vartype bank_iban: ~affinda.models.InvoiceDataBankIban
     :ivar bank_swift:
     :vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
     :ivar bank_bsb:
-    :vartype bank_bsb: ~affinda.models.InvoiceDataBankBSB
+    :vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
     :ivar customer_contact_name:
     :vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
     :ivar customer_company_name:
@@ -2185,14 +2215,14 @@ class InvoiceData(msrest.serialization.Model):
             "key": "bankAccountNumber",
             "type": "InvoiceDataBankAccountNumber",
         },
-        "supplier_vat": {"key": "supplierVAT", "type": "InvoiceDataSupplierVAT"},
-        "customer_vat": {"key": "customerVAT", "type": "InvoiceDataCustomerVAT"},
+        "supplier_vat": {"key": "supplierVat", "type": "InvoiceDataSupplierVat"},
+        "customer_vat": {"key": "customerVat", "type": "InvoiceDataCustomerVat"},
         "bpay_biller_code": {"key": "bpayBillerCode", "type": "InvoiceDataBpayBillerCode"},
         "bpay_reference": {"key": "bpayReference", "type": "InvoiceDataBpayReference"},
         "bank_sort_code": {"key": "bankSortCode", "type": "InvoiceDataBankSortCode"},
-        "bank_iban": {"key": "bankIBAN", "type": "InvoiceDataBankIBAN"},
+        "bank_iban": {"key": "bankIban", "type": "InvoiceDataBankIban"},
         "bank_swift": {"key": "bankSwift", "type": "InvoiceDataBankSwift"},
-        "bank_bsb": {"key": "bankBSB", "type": "InvoiceDataBankBSB"},
+        "bank_bsb": {"key": "bankBsb", "type": "InvoiceDataBankBsb"},
         "customer_contact_name": {
             "key": "customerContactName",
             "type": "InvoiceDataCustomerContactName",
@@ -2251,14 +2281,14 @@ class InvoiceData(msrest.serialization.Model):
         customer_business_number: Optional["_models.InvoiceDataCustomerBusinessNumber"] = None,
         payment_reference: Optional["_models.InvoiceDataPaymentReference"] = None,
         bank_account_number: Optional["_models.InvoiceDataBankAccountNumber"] = None,
-        supplier_vat: Optional["_models.InvoiceDataSupplierVAT"] = None,
-        customer_vat: Optional["_models.InvoiceDataCustomerVAT"] = None,
+        supplier_vat: Optional["_models.InvoiceDataSupplierVat"] = None,
+        customer_vat: Optional["_models.InvoiceDataCustomerVat"] = None,
         bpay_biller_code: Optional["_models.InvoiceDataBpayBillerCode"] = None,
         bpay_reference: Optional["_models.InvoiceDataBpayReference"] = None,
         bank_sort_code: Optional["_models.InvoiceDataBankSortCode"] = None,
-        bank_iban: Optional["_models.InvoiceDataBankIBAN"] = None,
+        bank_iban: Optional["_models.InvoiceDataBankIban"] = None,
         bank_swift: Optional["_models.InvoiceDataBankSwift"] = None,
-        bank_bsb: Optional["_models.InvoiceDataBankBSB"] = None,
+        bank_bsb: Optional["_models.InvoiceDataBankBsb"] = None,
         customer_contact_name: Optional["_models.InvoiceDataCustomerContactName"] = None,
         customer_company_name: Optional["_models.InvoiceDataCustomerCompanyName"] = None,
         supplier_company_name: Optional["_models.InvoiceDataSupplierCompanyName"] = None,
@@ -2309,9 +2339,9 @@ class InvoiceData(msrest.serialization.Model):
         :keyword bank_account_number:
         :paramtype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
         :keyword supplier_vat:
-        :paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVAT
+        :paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
         :keyword customer_vat:
-        :paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVAT
+        :paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVat
         :keyword bpay_biller_code:
         :paramtype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
         :keyword bpay_reference:
@@ -2319,11 +2349,11 @@ class InvoiceData(msrest.serialization.Model):
         :keyword bank_sort_code:
         :paramtype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
         :keyword bank_iban:
-        :paramtype bank_iban: ~affinda.models.InvoiceDataBankIBAN
+        :paramtype bank_iban: ~affinda.models.InvoiceDataBankIban
         :keyword bank_swift:
         :paramtype bank_swift: ~affinda.models.InvoiceDataBankSwift
         :keyword bank_bsb:
-        :paramtype bank_bsb: ~affinda.models.InvoiceDataBankBSB
+        :paramtype bank_bsb: ~affinda.models.InvoiceDataBankBsb
         :keyword customer_contact_name:
         :paramtype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
         :keyword customer_company_name:
@@ -2597,10 +2627,10 @@ class InvoiceDataBankAccountNumber(
         self.parsed = parsed
 
 
-class InvoiceDataBankBSB(
-    TextAnnotation, Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1
+class InvoiceDataBankBsb(
+    TextAnnotation, Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1
 ):
-    """InvoiceDataBankBSB.
+    """InvoiceDataBankBsb.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -2681,7 +2711,7 @@ class InvoiceDataBankBSB(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataBankBSB, self).__init__(
+        super(InvoiceDataBankBsb, self).__init__(
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
@@ -2704,10 +2734,10 @@ class InvoiceDataBankBSB(
         self.parsed = parsed
 
 
-class InvoiceDataBankIBAN(
-    TextAnnotation, ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1
+class InvoiceDataBankIban(
+    TextAnnotation, Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1
 ):
-    """InvoiceDataBankIBAN.
+    """InvoiceDataBankIban.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -2788,7 +2818,7 @@ class InvoiceDataBankIBAN(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataBankIBAN, self).__init__(
+        super(InvoiceDataBankIban, self).__init__(
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
@@ -3881,10 +3911,10 @@ class InvoiceDataCustomerPhoneNumber(
         self.parsed = parsed
 
 
-class InvoiceDataCustomerVAT(
-    TextAnnotation, ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1
+class InvoiceDataCustomerVat(
+    TextAnnotation, ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1
 ):
-    """InvoiceDataCustomerVAT.
+    """InvoiceDataCustomerVat.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -3965,7 +3995,7 @@ class InvoiceDataCustomerVAT(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataCustomerVAT, self).__init__(
+        super(InvoiceDataCustomerVat, self).__init__(
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
@@ -5379,10 +5409,10 @@ class InvoiceDataSupplierPhoneNumber(
         self.parsed = parsed
 
 
-class InvoiceDataSupplierVAT(
-    TextAnnotation, ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1
+class InvoiceDataSupplierVat(
+    TextAnnotation, ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1
 ):
-    """InvoiceDataSupplierVAT.
+    """InvoiceDataSupplierVat.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -5463,7 +5493,7 @@ class InvoiceDataSupplierVAT(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataSupplierVAT, self).__init__(
+        super(InvoiceDataSupplierVat, self).__init__(
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
@@ -5616,6 +5646,8 @@ class InvoiceDataTablesItem(msrest.serialization.Model):
 class Meta(msrest.serialization.Model):
     """Meta.
 
+    Variables are only populated by the server, and will be ignored when sending a request.
+
     All required parameters must be populated in order to send to Azure.
 
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
@@ -5638,14 +5670,28 @@ class Meta(msrest.serialization.Model):
     :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
      deleted.  Defaults to no expiry.
     :vartype expiry_time: ~datetime.datetime
-    :ivar language: The resume's language.
+    :ivar language: The document's language.
     :vartype language: str
+    :ivar pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
+     converted to pdf as part of the parsing process).
+    :vartype pdf: str
+    :ivar parent_document: If this document is part of a splitted document, this attribute points
+     to the original document that this document is splitted from.
+    :vartype parent_document: ~affinda.models.SplitRelation
+    :ivar child_documents: If this document has been splitted into a number of child documents,
+     this attribute points to those child documents.
+    :vartype child_documents: list[~affinda.models.SplitRelation]
+    :ivar pages: The document's pages.
+    :vartype pages: list[~affinda.models.PageMeta]
     """
 
     _validation = {
         "identifier": {"required": True},
         "ready": {"required": True},
         "failed": {"required": True},
+        "pdf": {"readonly": True},
+        "parent_document": {"readonly": True},
+        "child_documents": {"readonly": True},
     }
 
     _attribute_map = {
@@ -5657,6 +5703,10 @@ class Meta(msrest.serialization.Model):
         "failed": {"key": "failed", "type": "bool"},
         "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
         "language": {"key": "language", "type": "str"},
+        "pdf": {"key": "pdf", "type": "str"},
+        "parent_document": {"key": "parentDocument", "type": "SplitRelation"},
+        "child_documents": {"key": "childDocuments", "type": "[SplitRelation]"},
+        "pages": {"key": "pages", "type": "[PageMeta]"},
     }
 
     def __init__(
@@ -5670,6 +5720,7 @@ class Meta(msrest.serialization.Model):
         ready_dt: Optional[datetime.datetime] = None,
         expiry_time: Optional[datetime.datetime] = None,
         language: Optional[str] = None,
+        pages: Optional[List["_models.PageMeta"]] = None,
         **kwargs,
     ):
         """
@@ -5693,8 +5744,10 @@ class Meta(msrest.serialization.Model):
         :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
          deleted.  Defaults to no expiry.
         :paramtype expiry_time: ~datetime.datetime
-        :keyword language: The resume's language.
+        :keyword language: The document's language.
         :paramtype language: str
+        :keyword pages: The document's pages.
+        :paramtype pages: list[~affinda.models.PageMeta]
         """
         super(Meta, self).__init__(**kwargs)
         self.additional_properties = additional_properties
@@ -5705,10 +5758,16 @@ class Meta(msrest.serialization.Model):
         self.failed = failed
         self.expiry_time = expiry_time
         self.language = language
+        self.pdf = None
+        self.parent_document = None
+        self.child_documents = None
+        self.pages = pages
 
 
 class InvoiceMeta(Meta, Components17Ashz6SchemasInvoicePropertiesMetaAllof1):
     """InvoiceMeta.
+
+    Variables are only populated by the server, and will be ignored when sending a request.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -5736,14 +5795,28 @@ class InvoiceMeta(Meta, Components17Ashz6SchemasInvoicePropertiesMetaAllof1):
     :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
      deleted.  Defaults to no expiry.
     :vartype expiry_time: ~datetime.datetime
-    :ivar language: The resume's language.
+    :ivar language: The document's language.
     :vartype language: str
+    :ivar pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
+     converted to pdf as part of the parsing process).
+    :vartype pdf: str
+    :ivar parent_document: If this document is part of a splitted document, this attribute points
+     to the original document that this document is splitted from.
+    :vartype parent_document: ~affinda.models.SplitRelation
+    :ivar child_documents: If this document has been splitted into a number of child documents,
+     this attribute points to those child documents.
+    :vartype child_documents: list[~affinda.models.SplitRelation]
+    :ivar pages: The document's pages.
+    :vartype pages: list[~affinda.models.PageMeta]
     """
 
     _validation = {
         "identifier": {"required": True},
         "ready": {"required": True},
         "failed": {"required": True},
+        "pdf": {"readonly": True},
+        "parent_document": {"readonly": True},
+        "child_documents": {"readonly": True},
     }
 
     _attribute_map = {
@@ -5757,6 +5830,10 @@ class InvoiceMeta(Meta, Components17Ashz6SchemasInvoicePropertiesMetaAllof1):
         "failed": {"key": "failed", "type": "bool"},
         "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
         "language": {"key": "language", "type": "str"},
+        "pdf": {"key": "pdf", "type": "str"},
+        "parent_document": {"key": "parentDocument", "type": "SplitRelation"},
+        "child_documents": {"key": "childDocuments", "type": "[SplitRelation]"},
+        "pages": {"key": "pages", "type": "[PageMeta]"},
     }
 
     def __init__(
@@ -5772,6 +5849,7 @@ class InvoiceMeta(Meta, Components17Ashz6SchemasInvoicePropertiesMetaAllof1):
         ready_dt: Optional[datetime.datetime] = None,
         expiry_time: Optional[datetime.datetime] = None,
         language: Optional[str] = None,
+        pages: Optional[List["_models.PageMeta"]] = None,
         **kwargs,
     ):
         """
@@ -5799,8 +5877,10 @@ class InvoiceMeta(Meta, Components17Ashz6SchemasInvoicePropertiesMetaAllof1):
         :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
          deleted.  Defaults to no expiry.
         :paramtype expiry_time: ~datetime.datetime
-        :keyword language: The resume's language.
+        :keyword language: The document's language.
         :paramtype language: str
+        :keyword pages: The document's pages.
+        :paramtype pages: list[~affinda.models.PageMeta]
         """
         super(InvoiceMeta, self).__init__(
             additional_properties=additional_properties,
@@ -5811,6 +5891,7 @@ class InvoiceMeta(Meta, Components17Ashz6SchemasInvoicePropertiesMetaAllof1):
             failed=failed,
             expiry_time=expiry_time,
             language=language,
+            pages=pages,
             client_verified_dt=client_verified_dt,
             review_url=review_url,
             **kwargs,
@@ -5825,6 +5906,10 @@ class InvoiceMeta(Meta, Components17Ashz6SchemasInvoicePropertiesMetaAllof1):
         self.failed = failed
         self.expiry_time = expiry_time
         self.language = language
+        self.pdf = None
+        self.parent_document = None
+        self.child_documents = None
+        self.pages = pages
 
 
 class InvoiceRequestBody(msrest.serialization.Model):
@@ -6219,6 +6304,195 @@ class JobDescriptionSearch(msrest.serialization.Model):
         self.previous = previous
         self.parameters = parameters
         self.results = results
+
+
+class JobDescriptionSearchConfig(msrest.serialization.Model):
+    """JobDescriptionSearchConfig.
+
+    Variables are only populated by the server, and will be ignored when sending a request.
+
+    :ivar allow_pdf_download:
+    :vartype allow_pdf_download: bool
+    :ivar max_results: Maximum number of results that can be returned. Setting to "null" means no
+     limitation.
+    :vartype max_results: int
+    :ivar display_job_title:
+    :vartype display_job_title: bool
+    :ivar display_location:
+    :vartype display_location: bool
+    :ivar display_years_experience:
+    :vartype display_years_experience: bool
+    :ivar display_occupation_group:
+    :vartype display_occupation_group: bool
+    :ivar display_education:
+    :vartype display_education: bool
+    :ivar display_skills:
+    :vartype display_skills: bool
+    :ivar display_languages:
+    :vartype display_languages: bool
+    :ivar display_management_level:
+    :vartype display_management_level: bool
+    :ivar display_keywords:
+    :vartype display_keywords: bool
+    :ivar weight_job_title:
+    :vartype weight_job_title: float
+    :ivar weight_location:
+    :vartype weight_location: float
+    :ivar weight_years_experience:
+    :vartype weight_years_experience: float
+    :ivar weight_occupation_group:
+    :vartype weight_occupation_group: float
+    :ivar weight_education:
+    :vartype weight_education: float
+    :ivar weight_skills:
+    :vartype weight_skills: float
+    :ivar weight_languages:
+    :vartype weight_languages: float
+    :ivar weight_management_level:
+    :vartype weight_management_level: float
+    :ivar weight_keywords:
+    :vartype weight_keywords: float
+    :ivar indices: List of index names.
+    :vartype indices: list[str]
+    :ivar search_tool_theme: Customize the theme of the embeded search tool.
+    :vartype search_tool_theme: dict[str, any]
+    :ivar user_id: ID of the logged in user.
+    :vartype user_id: int
+    :ivar username: Username of the logged in user.
+    :vartype username: str
+    """
+
+    _validation = {
+        "user_id": {"readonly": True},
+        "username": {"readonly": True},
+    }
+
+    _attribute_map = {
+        "allow_pdf_download": {"key": "allowPdfDownload", "type": "bool"},
+        "max_results": {"key": "maxResults", "type": "int"},
+        "display_job_title": {"key": "displayJobTitle", "type": "bool"},
+        "display_location": {"key": "displayLocation", "type": "bool"},
+        "display_years_experience": {"key": "displayYearsExperience", "type": "bool"},
+        "display_occupation_group": {"key": "displayOccupationGroup", "type": "bool"},
+        "display_education": {"key": "displayEducation", "type": "bool"},
+        "display_skills": {"key": "displaySkills", "type": "bool"},
+        "display_languages": {"key": "displayLanguages", "type": "bool"},
+        "display_management_level": {"key": "displayManagementLevel", "type": "bool"},
+        "display_keywords": {"key": "displayKeywords", "type": "bool"},
+        "weight_job_title": {"key": "weightJobTitle", "type": "float"},
+        "weight_location": {"key": "weightLocation", "type": "float"},
+        "weight_years_experience": {"key": "weightYearsExperience", "type": "float"},
+        "weight_occupation_group": {"key": "weightOccupationGroup", "type": "float"},
+        "weight_education": {"key": "weightEducation", "type": "float"},
+        "weight_skills": {"key": "weightSkills", "type": "float"},
+        "weight_languages": {"key": "weightLanguages", "type": "float"},
+        "weight_management_level": {"key": "weightManagementLevel", "type": "float"},
+        "weight_keywords": {"key": "weightKeywords", "type": "float"},
+        "indices": {"key": "indices", "type": "[str]"},
+        "search_tool_theme": {"key": "searchToolTheme", "type": "{object}"},
+        "user_id": {"key": "userId", "type": "int"},
+        "username": {"key": "username", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        allow_pdf_download: Optional[bool] = None,
+        max_results: Optional[int] = None,
+        display_job_title: Optional[bool] = None,
+        display_location: Optional[bool] = None,
+        display_years_experience: Optional[bool] = None,
+        display_occupation_group: Optional[bool] = None,
+        display_education: Optional[bool] = None,
+        display_skills: Optional[bool] = None,
+        display_languages: Optional[bool] = None,
+        display_management_level: Optional[bool] = None,
+        display_keywords: Optional[bool] = None,
+        weight_job_title: Optional[float] = None,
+        weight_location: Optional[float] = None,
+        weight_years_experience: Optional[float] = None,
+        weight_occupation_group: Optional[float] = None,
+        weight_education: Optional[float] = None,
+        weight_skills: Optional[float] = None,
+        weight_languages: Optional[float] = None,
+        weight_management_level: Optional[float] = None,
+        weight_keywords: Optional[float] = None,
+        indices: Optional[List[str]] = None,
+        search_tool_theme: Optional[Dict[str, Any]] = None,
+        **kwargs,
+    ):
+        """
+        :keyword allow_pdf_download:
+        :paramtype allow_pdf_download: bool
+        :keyword max_results: Maximum number of results that can be returned. Setting to "null" means
+         no limitation.
+        :paramtype max_results: int
+        :keyword display_job_title:
+        :paramtype display_job_title: bool
+        :keyword display_location:
+        :paramtype display_location: bool
+        :keyword display_years_experience:
+        :paramtype display_years_experience: bool
+        :keyword display_occupation_group:
+        :paramtype display_occupation_group: bool
+        :keyword display_education:
+        :paramtype display_education: bool
+        :keyword display_skills:
+        :paramtype display_skills: bool
+        :keyword display_languages:
+        :paramtype display_languages: bool
+        :keyword display_management_level:
+        :paramtype display_management_level: bool
+        :keyword display_keywords:
+        :paramtype display_keywords: bool
+        :keyword weight_job_title:
+        :paramtype weight_job_title: float
+        :keyword weight_location:
+        :paramtype weight_location: float
+        :keyword weight_years_experience:
+        :paramtype weight_years_experience: float
+        :keyword weight_occupation_group:
+        :paramtype weight_occupation_group: float
+        :keyword weight_education:
+        :paramtype weight_education: float
+        :keyword weight_skills:
+        :paramtype weight_skills: float
+        :keyword weight_languages:
+        :paramtype weight_languages: float
+        :keyword weight_management_level:
+        :paramtype weight_management_level: float
+        :keyword weight_keywords:
+        :paramtype weight_keywords: float
+        :keyword indices: List of index names.
+        :paramtype indices: list[str]
+        :keyword search_tool_theme: Customize the theme of the embeded search tool.
+        :paramtype search_tool_theme: dict[str, any]
+        """
+        super(JobDescriptionSearchConfig, self).__init__(**kwargs)
+        self.allow_pdf_download = allow_pdf_download
+        self.max_results = max_results
+        self.display_job_title = display_job_title
+        self.display_location = display_location
+        self.display_years_experience = display_years_experience
+        self.display_occupation_group = display_occupation_group
+        self.display_education = display_education
+        self.display_skills = display_skills
+        self.display_languages = display_languages
+        self.display_management_level = display_management_level
+        self.display_keywords = display_keywords
+        self.weight_job_title = weight_job_title
+        self.weight_location = weight_location
+        self.weight_years_experience = weight_years_experience
+        self.weight_occupation_group = weight_occupation_group
+        self.weight_education = weight_education
+        self.weight_skills = weight_skills
+        self.weight_languages = weight_languages
+        self.weight_management_level = weight_management_level
+        self.weight_keywords = weight_keywords
+        self.indices = indices
+        self.search_tool_theme = search_tool_theme
+        self.user_id = None
+        self.username = None
 
 
 class JobDescriptionSearchDetail(msrest.serialization.Model):
@@ -7020,6 +7294,26 @@ class JobDescriptionSearchDetailSkillsValueItem(msrest.serialization.Model):
         super(JobDescriptionSearchDetailSkillsValueItem, self).__init__(**kwargs)
         self.name = name
         self.match = match
+
+
+class JobDescriptionSearchEmbed(msrest.serialization.Model):
+    """JobDescriptionSearchEmbed.
+
+    :ivar url: The signed URL for the embedable search tool.
+    :vartype url: str
+    """
+
+    _attribute_map = {
+        "url": {"key": "url", "type": "str"},
+    }
+
+    def __init__(self, *, url: Optional[str] = None, **kwargs):
+        """
+        :keyword url: The signed URL for the embedable search tool.
+        :paramtype url: str
+        """
+        super(JobDescriptionSearchEmbed, self).__init__(**kwargs)
+        self.url = url
 
 
 class JobDescriptionSearchParameters(msrest.serialization.Model):
@@ -7973,26 +8267,100 @@ class OccupationGroupSearchScoreComponent(msrest.serialization.Model):
         self.score = score
 
 
+class PageMeta(msrest.serialization.Model):
+    """PageMeta.
+
+    :ivar id:
+    :vartype id: int
+    :ivar page_index: Page number within the document, starts from 0.
+    :vartype page_index: int
+    :ivar image: The URL to the image of the page.
+    :vartype image: str
+    :ivar height: Height of the page's image in px.
+    :vartype height: float
+    :ivar width: Width of the page's image in px.
+    :vartype width: float
+    :ivar rotation: The degree of rotation applied to the page. Greater than 0 indicates clockwise
+     rotation. Less than 0 indicates counter-clockwise rotation.
+    :vartype rotation: int
+    """
+
+    _attribute_map = {
+        "id": {"key": "id", "type": "int"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "image": {"key": "image", "type": "str"},
+        "height": {"key": "height", "type": "float"},
+        "width": {"key": "width", "type": "float"},
+        "rotation": {"key": "rotation", "type": "int"},
+    }
+
+    def __init__(
+        self,
+        *,
+        id: Optional[int] = None,
+        page_index: Optional[int] = None,
+        image: Optional[str] = None,
+        height: Optional[float] = None,
+        width: Optional[float] = None,
+        rotation: Optional[int] = None,
+        **kwargs,
+    ):
+        """
+        :keyword id:
+        :paramtype id: int
+        :keyword page_index: Page number within the document, starts from 0.
+        :paramtype page_index: int
+        :keyword image: The URL to the image of the page.
+        :paramtype image: str
+        :keyword height: Height of the page's image in px.
+        :paramtype height: float
+        :keyword width: Width of the page's image in px.
+        :paramtype width: float
+        :keyword rotation: The degree of rotation applied to the page. Greater than 0 indicates
+         clockwise rotation. Less than 0 indicates counter-clockwise rotation.
+        :paramtype rotation: int
+        """
+        super(PageMeta, self).__init__(**kwargs)
+        self.id = id
+        self.page_index = page_index
+        self.image = image
+        self.height = height
+        self.width = width
+        self.rotation = rotation
+
+
 class Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema(msrest.serialization.Model):
     """Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema.
 
     :ivar name:
     :vartype name: str
+    :ivar document_type: Known values are: "resumes", "job_descriptions".
+    :vartype document_type: str or ~affinda.models.Enum4
     """
 
     _attribute_map = {
         "name": {"key": "name", "type": "str"},
+        "document_type": {"key": "documentType", "type": "str"},
     }
 
-    def __init__(self, *, name: Optional[str] = None, **kwargs):
+    def __init__(
+        self,
+        *,
+        name: Optional[str] = None,
+        document_type: Optional[Union[str, "_models.Enum4"]] = None,
+        **kwargs,
+    ):
         """
         :keyword name:
         :paramtype name: str
+        :keyword document_type: Known values are: "resumes", "job_descriptions".
+        :paramtype document_type: str or ~affinda.models.Enum4
         """
         super(Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema, self).__init__(
             **kwargs
         )
         self.name = name
+        self.document_type = document_type
 
 
 class Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1(
@@ -8115,6 +8483,32 @@ class PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema(
             PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema, self
         ).__init__(**kwargs)
         self.document = document
+
+
+class PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema(
+    msrest.serialization.Model
+):
+    """PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema.
+
+    :ivar config_override:
+    :vartype config_override: ~affinda.models.JobDescriptionSearchConfig
+    """
+
+    _attribute_map = {
+        "config_override": {"key": "configOverride", "type": "JobDescriptionSearchConfig"},
+    }
+
+    def __init__(
+        self, *, config_override: Optional["_models.JobDescriptionSearchConfig"] = None, **kwargs
+    ):
+        """
+        :keyword config_override:
+        :paramtype config_override: ~affinda.models.JobDescriptionSearchConfig
+        """
+        super(
+            PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema, self
+        ).__init__(**kwargs)
+        self.config_override = config_override
 
 
 class PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema(
@@ -8541,7 +8935,7 @@ class RedactedResumeRequestBody(msrest.serialization.Model):
     :ivar redact_dates: Whether to redact dates.
     :vartype redact_dates: bool
     :ivar redact_gender: Whether to redact gender.
-    :vartype redact_gender: bool
+    :vartype redact_gender: str
     :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
      deleted.  Defaults to no expiry.
     :vartype expiry_time: ~datetime.datetime
@@ -8561,7 +8955,7 @@ class RedactedResumeRequestBody(msrest.serialization.Model):
         "redact_referees": {"key": "redactReferees", "type": "bool"},
         "redact_locations": {"key": "redactLocations", "type": "bool"},
         "redact_dates": {"key": "redactDates", "type": "bool"},
-        "redact_gender": {"key": "redactGender", "type": "bool"},
+        "redact_gender": {"key": "redactGender", "type": "str"},
         "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
     }
 
@@ -8581,7 +8975,7 @@ class RedactedResumeRequestBody(msrest.serialization.Model):
         redact_referees: Optional[bool] = True,
         redact_locations: Optional[bool] = True,
         redact_dates: Optional[bool] = True,
-        redact_gender: Optional[bool] = True,
+        redact_gender: Optional[str] = "true",
         expiry_time: Optional[datetime.datetime] = None,
         **kwargs,
     ):
@@ -8617,7 +9011,7 @@ class RedactedResumeRequestBody(msrest.serialization.Model):
         :keyword redact_dates: Whether to redact dates.
         :paramtype redact_dates: bool
         :keyword redact_gender: Whether to redact gender.
-        :paramtype redact_gender: bool
+        :paramtype redact_gender: str
         :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
          deleted.  Defaults to no expiry.
         :paramtype expiry_time: ~datetime.datetime
@@ -11791,6 +12185,28 @@ class SkillsSearchScoreComponent(msrest.serialization.Model):
         self.value = value
         self.label = label
         self.score = score
+
+
+class SplitRelation(msrest.serialization.Model):
+    """SplitRelation.
+
+    :ivar identifier: Unique identifier for the document. If creating a document and left blank,
+     one will be automatically generated.
+    :vartype identifier: str
+    """
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+    }
+
+    def __init__(self, *, identifier: Optional[str] = None, **kwargs):
+        """
+        :keyword identifier: Unique identifier for the document. If creating a document and left blank,
+         one will be automatically generated.
+        :paramtype identifier: str
+        """
+        super(SplitRelation, self).__init__(**kwargs)
+        self.identifier = identifier
 
 
 class YearsExperienceAnnotation(Annotation):

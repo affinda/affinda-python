@@ -681,6 +681,78 @@ def build_get_job_description_search_detail_request(
     )
 
 
+def build_get_job_description_search_config_request(
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+
+    accept = _headers.pop('Accept', "application/json")
+
+    # Construct URL
+    _url = kwargs.pop("template_url", "/job_description_search/config")
+
+    # Construct headers
+    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="GET",
+        url=_url,
+        headers=_headers,
+        **kwargs
+    )
+
+
+def build_update_job_description_search_config_request(
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+
+    content_type = kwargs.pop('content_type', _headers.pop('Content-Type', None))  # type: Optional[str]
+    accept = _headers.pop('Accept', "application/json")
+
+    # Construct URL
+    _url = kwargs.pop("template_url", "/job_description_search/config")
+
+    # Construct headers
+    if content_type is not None:
+        _headers['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="PATCH",
+        url=_url,
+        headers=_headers,
+        **kwargs
+    )
+
+
+def build_create_job_description_search_embed_url_request(
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+
+    content_type = kwargs.pop('content_type', _headers.pop('Content-Type', None))  # type: Optional[str]
+    accept = _headers.pop('Accept', "application/json")
+
+    # Construct URL
+    _url = kwargs.pop("template_url", "/job_description_search/embed")
+
+    # Construct headers
+    if content_type is not None:
+        _headers['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="POST",
+        url=_url,
+        headers=_headers,
+        **kwargs
+    )
+
+
 def build_get_all_indexes_request(
     **kwargs  # type: Any
 ):
@@ -690,6 +762,7 @@ def build_get_all_indexes_request(
 
     offset = kwargs.pop('offset', _params.pop('offset', None))  # type: Optional[int]
     limit = kwargs.pop('limit', _params.pop('limit', 300))  # type: Optional[int]
+    document_type = kwargs.pop('document_type', _params.pop('document_type', None))  # type: Optional[Union[str, "_models.Enum1"]]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
@@ -700,6 +773,8 @@ def build_get_all_indexes_request(
         _params['offset'] = _SERIALIZER.query("offset", offset, 'int', minimum=0)
     if limit is not None:
         _params['limit'] = _SERIALIZER.query("limit", limit, 'int', maximum=300, minimum=1)
+    if document_type is not None:
+        _params['document_type'] = _SERIALIZER.query("document_type", document_type, 'str')
 
     # Construct headers
     _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
@@ -1526,7 +1601,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         redact_referees=True,  # type: Optional[bool]
         redact_locations=True,  # type: Optional[bool]
         redact_dates=True,  # type: Optional[bool]
-        redact_gender=True,  # type: Optional[bool]
+        redact_gender="true",  # type: Optional[str]
         expiry_time=None,  # type: Optional[datetime.datetime]
         **kwargs,  # type: Any
     ):
@@ -1564,8 +1639,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type redact_locations: bool
         :param redact_dates: Whether to redact dates. Default value is True.
         :type redact_dates: bool
-        :param redact_gender: Whether to redact gender. Default value is True.
-        :type redact_gender: bool
+        :param redact_gender: Whether to redact gender. Default value is "true".
+        :type redact_gender: str
         :param expiry_time:  Default value is None.
         :type expiry_time: ~datetime.datetime
         :keyword callable cls: A custom type or function that will be passed the direct response
@@ -2074,10 +2149,10 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         self, **kwargs  # type: Any
     ):
         # type: (...) -> Union[_models.ResumeSearchConfig, _models.RequestError]
-        """Get the config for the logged in user's embedable search tool.
+        """Get the config for the logged in user's embeddable resume search tool.
 
-        Return configurations such as which fields can be displayed in the logged in user's embedable
-        search tool, what are their weights, what is the maximum number of results that can be
+        Return configurations such as which fields can be displayed in the logged in user's embeddable
+        resume search tool, what are their weights, what is the maximum number of results that can be
         returned, etc.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
@@ -2136,10 +2211,10 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         **kwargs,  # type: Any
     ):
         # type: (...) -> Union[_models.ResumeSearchConfig, _models.RequestError]
-        """Update the config for the logged in user's embedable search tool.
+        """Update the config for the logged in user's embeddable resume search tool.
 
-        Update configurations such as which fields can be displayed in the logged in user's embedable
-        search tool, what are their weights, what is the maximum number of results that can be
+        Update configurations such as which fields can be displayed in the logged in user's embeddable
+        resume search tool, what are their weights, what is the maximum number of results that can be
         returned, etc.
 
         :param body:
@@ -2210,11 +2285,11 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         **kwargs,  # type: Any
     ):
         # type: (...) -> Union[_models.ResumeSearchEmbed, _models.RequestError]
-        """Create a signed URL for the embedable search tool.
+        """Create a signed URL for the embeddable resume search tool.
 
         Create and return a signed URL of the resume search tool which then can be embedded on a web
         page. An optional parameter ``config_override`` can be passed to override the user-level
-        configurations of the embedable search tool.
+        configurations of the embeddable resume search tool.
 
         :param body:  Default value is None.
         :type body:
@@ -2748,10 +2823,223 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
     get_job_description_search_detail.metadata = {"url": "/job_description_search/details/{identifier}"}  # type: ignore
 
+    def get_job_description_search_config(
+        self, **kwargs  # type: Any
+    ):
+        # type: (...) -> Union[_models.JobDescriptionSearchConfig, _models.RequestError]
+        """Get the config for the logged in user's embeddable job description search tool.
+
+        Return configurations such as which fields can be displayed in the logged in user's embeddable
+        job description search tool, what are their weights, what is the maximum number of results that
+        can be returned, etc.
+
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: JobDescriptionSearchConfig or RequestError, or the result of cls(response)
+        :rtype: ~affinda.models.JobDescriptionSearchConfig or ~affinda.models.RequestError
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Union[_models.JobDescriptionSearchConfig, _models.RequestError]]
+
+        request = build_get_job_description_search_config_request(
+            template_url=self.get_job_description_search_config.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        request.url = self._client.format_url(request.url)  # type: ignore
+
+        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200, 401]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if response.status_code == 200:
+            deserialized = self._deserialize("JobDescriptionSearchConfig", pipeline_response)
+
+        if response.status_code == 401:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_job_description_search_config.metadata = {"url": "/job_description_search/config"}  # type: ignore
+
+    def update_job_description_search_config(
+        self,
+        body,  # type: _models.JobDescriptionSearchConfig
+        **kwargs,  # type: Any
+    ):
+        # type: (...) -> Union[_models.JobDescriptionSearchConfig, _models.RequestError]
+        """Update the config for the logged in user's embeddable job description search tool.
+
+        Update configurations such as which fields can be displayed in the logged in user's embeddable
+        job description search tool, what are their weights, what is the maximum number of results that
+        can be returned, etc.
+
+        :param body:
+        :type body: ~affinda.models.JobDescriptionSearchConfig
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: JobDescriptionSearchConfig or RequestError, or the result of cls(response)
+        :rtype: ~affinda.models.JobDescriptionSearchConfig or ~affinda.models.RequestError
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop(
+            "content_type", _headers.pop("Content-Type", "application/json")
+        )  # type: Optional[str]
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Union[_models.JobDescriptionSearchConfig, _models.RequestError]]
+
+        _json = self._serialize.body(body, "JobDescriptionSearchConfig")
+
+        request = build_update_job_description_search_config_request(
+            content_type=content_type,
+            json=_json,
+            template_url=self.update_job_description_search_config.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        request.url = self._client.format_url(request.url)  # type: ignore
+
+        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200, 400, 401]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if response.status_code == 200:
+            deserialized = self._deserialize("JobDescriptionSearchConfig", pipeline_response)
+
+        if response.status_code == 400:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if response.status_code == 401:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    update_job_description_search_config.metadata = {"url": "/job_description_search/config"}  # type: ignore
+
+    def create_job_description_search_embed_url(
+        self,
+        body=None,  # type: Optional[_models.PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema]
+        **kwargs,  # type: Any
+    ):
+        # type: (...) -> Union[_models.JobDescriptionSearchEmbed, _models.RequestError]
+        """Create a signed URL for the embeddable job description search tool.
+
+        Create and return a signed URL of the job description search tool which then can be embedded on
+        a web page. An optional parameter ``config_override`` can be passed to override the user-level
+        configurations of the embeddable search tool.
+
+        :param body:  Default value is None.
+        :type body:
+         ~affinda.models.PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: JobDescriptionSearchEmbed or RequestError, or the result of cls(response)
+        :rtype: ~affinda.models.JobDescriptionSearchEmbed or ~affinda.models.RequestError
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop(
+            "content_type", _headers.pop("Content-Type", "application/json")
+        )  # type: Optional[str]
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Union[_models.JobDescriptionSearchEmbed, _models.RequestError]]
+
+        if body is not None:
+            _json = self._serialize.body(
+                body,
+                "PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema",
+            )
+        else:
+            _json = None
+
+        request = build_create_job_description_search_embed_url_request(
+            content_type=content_type,
+            json=_json,
+            template_url=self.create_job_description_search_embed_url.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        request.url = self._client.format_url(request.url)  # type: ignore
+
+        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200, 401]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if response.status_code == 200:
+            deserialized = self._deserialize("JobDescriptionSearchEmbed", pipeline_response)
+
+        if response.status_code == 401:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    create_job_description_search_embed_url.metadata = {"url": "/job_description_search/embed"}  # type: ignore
+
     def get_all_indexes(
         self,
         offset=None,  # type: Optional[int]
         limit=300,  # type: Optional[int]
+        document_type=None,  # type: Optional[Union[str, "_models.Enum1"]]
         **kwargs,  # type: Any
     ):
         # type: (...) -> Union[_models.Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema, _models.RequestError]
@@ -2764,6 +3052,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type offset: int
         :param limit: The numbers of results to return. Default value is 300.
         :type limit: int
+        :param document_type: Filter indices by a document type. Default value is None.
+        :type document_type: str or ~affinda.models.Enum1
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema or RequestError, or the
          result of cls(response)
@@ -2788,6 +3078,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         request = build_get_all_indexes_request(
             offset=offset,
             limit=limit,
+            document_type=document_type,
             template_url=self.get_all_indexes.metadata["url"],
             headers=_headers,
             params=_params,
@@ -2825,7 +3116,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
     def create_index(
         self,
-        name=True,  # type: Optional[bool]
+        name=None,  # type: Optional[str]
+        document_type=None,  # type: Optional[Union[str, "_models.PostContentSchemaDocumentType"]]
         **kwargs,  # type: Any
     ):
         # type: (...) -> Union[_models.Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema, _models.RequestError]
@@ -2833,8 +3125,10 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
         Create an index for the search tool.
 
-        :param name:  Default value is True.
-        :type name: bool
+        :param name:  Default value is None.
+        :type name: str
+        :param document_type:  Default value is None.
+        :type document_type: str or ~affinda.models.PostContentSchemaDocumentType
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema or RequestError, or the
          result of cls(response)
@@ -2862,6 +3156,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         # Construct form data
         _files = {
             "name": name,
+            "documentType": document_type,
         }
 
         request = build_create_index_request(
