@@ -234,7 +234,7 @@ class Components17Ashz6SchemasInvoicePropertiesMetaAllof1(msrest.serialization.M
 Components17Ashz6SchemasInvoicePropertiesMetaAllof1.
 
 :ivar client_verified_dt:
-:vartype client_verified_dt: str
+:vartype client_verified_dt: bool
 :ivar review_url: Signed URL (valid for 60 minutes) to access the invoice review tool.
 :vartype review_url: str
 
@@ -3561,7 +3561,7 @@ Variables are only populated by the server, and will be ignored when sending a r
 All required parameters must be populated in order to send to Azure.
 
 :ivar client_verified_dt:
-:vartype client_verified_dt: str
+:vartype client_verified_dt: bool
 :ivar review_url: Signed URL (valid for 60 minutes) to access the invoice review tool.
 :vartype review_url: str
 :ivar additional_properties: Unmatched properties from the message are deserialized to this

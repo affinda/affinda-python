@@ -291,26 +291,26 @@ class Components17Ashz6SchemasInvoicePropertiesMetaAllof1(msrest.serialization.M
     """Components17Ashz6SchemasInvoicePropertiesMetaAllof1.
 
     :ivar client_verified_dt:
-    :vartype client_verified_dt: str
+    :vartype client_verified_dt: bool
     :ivar review_url: Signed URL (valid for 60 minutes) to access the invoice review tool.
     :vartype review_url: str
     """
 
     _attribute_map = {
-        "client_verified_dt": {"key": "clientVerifiedDt", "type": "str"},
+        "client_verified_dt": {"key": "clientVerifiedDt", "type": "bool"},
         "review_url": {"key": "reviewUrl", "type": "str"},
     }
 
     def __init__(
         self,
         *,
-        client_verified_dt: Optional[str] = None,
+        client_verified_dt: Optional[bool] = None,
         review_url: Optional[str] = None,
         **kwargs,
     ):
         """
         :keyword client_verified_dt:
-        :paramtype client_verified_dt: str
+        :paramtype client_verified_dt: bool
         :keyword review_url: Signed URL (valid for 60 minutes) to access the invoice review tool.
         :paramtype review_url: str
         """
@@ -5772,7 +5772,7 @@ class InvoiceMeta(Meta, Components17Ashz6SchemasInvoicePropertiesMetaAllof1):
     All required parameters must be populated in order to send to Azure.
 
     :ivar client_verified_dt:
-    :vartype client_verified_dt: str
+    :vartype client_verified_dt: bool
     :ivar review_url: Signed URL (valid for 60 minutes) to access the invoice review tool.
     :vartype review_url: str
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
@@ -5820,7 +5820,7 @@ class InvoiceMeta(Meta, Components17Ashz6SchemasInvoicePropertiesMetaAllof1):
     }
 
     _attribute_map = {
-        "client_verified_dt": {"key": "clientVerifiedDt", "type": "str"},
+        "client_verified_dt": {"key": "clientVerifiedDt", "type": "bool"},
         "review_url": {"key": "reviewUrl", "type": "str"},
         "additional_properties": {"key": "", "type": "{object}"},
         "identifier": {"key": "identifier", "type": "str"},
@@ -5842,7 +5842,7 @@ class InvoiceMeta(Meta, Components17Ashz6SchemasInvoicePropertiesMetaAllof1):
         identifier: str,
         ready: bool,
         failed: bool,
-        client_verified_dt: Optional[str] = None,
+        client_verified_dt: Optional[bool] = None,
         review_url: Optional[str] = None,
         additional_properties: Optional[Dict[str, Any]] = None,
         file_name: Optional[str] = None,
@@ -5854,7 +5854,7 @@ class InvoiceMeta(Meta, Components17Ashz6SchemasInvoicePropertiesMetaAllof1):
     ):
         """
         :keyword client_verified_dt:
-        :paramtype client_verified_dt: str
+        :paramtype client_verified_dt: bool
         :keyword review_url: Signed URL (valid for 60 minutes) to access the invoice review tool.
         :paramtype review_url: str
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
