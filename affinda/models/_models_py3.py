@@ -81,6 +81,10 @@ class Annotation(msrest.serialization.Model):
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     """
@@ -102,6 +106,8 @@ class Annotation(msrest.serialization.Model):
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
     }
 
@@ -116,6 +122,8 @@ class Annotation(msrest.serialization.Model):
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         **kwargs,
     ):
         """
@@ -134,6 +142,10 @@ class Annotation(msrest.serialization.Model):
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         """
@@ -145,6 +157,8 @@ class Annotation(msrest.serialization.Model):
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
 
 
@@ -1274,6 +1288,10 @@ class DateAnnotation(Annotation):
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -1297,6 +1315,8 @@ class DateAnnotation(Annotation):
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "date"},
     }
@@ -1312,6 +1332,8 @@ class DateAnnotation(Annotation):
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[datetime.date] = None,
         **kwargs,
     ):
@@ -1331,6 +1353,10 @@ class DateAnnotation(Annotation):
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -1344,6 +1370,8 @@ class DateAnnotation(Annotation):
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             **kwargs,
         )
@@ -1541,6 +1569,10 @@ class EnumAnnotationSerializer(Annotation):
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -1564,6 +1596,8 @@ class EnumAnnotationSerializer(Annotation):
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -1579,6 +1613,8 @@ class EnumAnnotationSerializer(Annotation):
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -1598,6 +1634,10 @@ class EnumAnnotationSerializer(Annotation):
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -1611,6 +1651,8 @@ class EnumAnnotationSerializer(Annotation):
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             **kwargs,
         )
@@ -1665,6 +1707,10 @@ class ExpectedRemunerationAnnotation(Annotation):
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -1688,6 +1734,8 @@ class ExpectedRemunerationAnnotation(Annotation):
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "ExpectedRemunerationAnnotationParsed"},
     }
@@ -1703,6 +1751,8 @@ class ExpectedRemunerationAnnotation(Annotation):
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional["_models.ExpectedRemunerationAnnotationParsed"] = None,
         **kwargs,
     ):
@@ -1722,6 +1772,10 @@ class ExpectedRemunerationAnnotation(Annotation):
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -1735,6 +1789,8 @@ class ExpectedRemunerationAnnotation(Annotation):
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             **kwargs,
         )
@@ -2444,6 +2500,10 @@ class TextAnnotation(Annotation):
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -2467,6 +2527,8 @@ class TextAnnotation(Annotation):
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -2482,6 +2544,8 @@ class TextAnnotation(Annotation):
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -2501,6 +2565,10 @@ class TextAnnotation(Annotation):
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -2514,6 +2582,8 @@ class TextAnnotation(Annotation):
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             **kwargs,
         )
@@ -2542,6 +2612,10 @@ class InvoiceDataBankAccountNumber(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -2565,6 +2639,8 @@ class InvoiceDataBankAccountNumber(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -2580,6 +2656,8 @@ class InvoiceDataBankAccountNumber(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -2599,6 +2677,10 @@ class InvoiceDataBankAccountNumber(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -2612,6 +2694,8 @@ class InvoiceDataBankAccountNumber(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -2623,6 +2707,8 @@ class InvoiceDataBankAccountNumber(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -2649,6 +2735,10 @@ class InvoiceDataBankBsb(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -2672,6 +2762,8 @@ class InvoiceDataBankBsb(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -2687,6 +2779,8 @@ class InvoiceDataBankBsb(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -2706,6 +2800,10 @@ class InvoiceDataBankBsb(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -2719,6 +2817,8 @@ class InvoiceDataBankBsb(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -2730,6 +2830,8 @@ class InvoiceDataBankBsb(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -2756,6 +2858,10 @@ class InvoiceDataBankIban(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -2779,6 +2885,8 @@ class InvoiceDataBankIban(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -2794,6 +2902,8 @@ class InvoiceDataBankIban(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -2813,6 +2923,10 @@ class InvoiceDataBankIban(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -2826,6 +2940,8 @@ class InvoiceDataBankIban(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -2837,6 +2953,8 @@ class InvoiceDataBankIban(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -2863,6 +2981,10 @@ class InvoiceDataBankSortCode(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -2886,6 +3008,8 @@ class InvoiceDataBankSortCode(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -2901,6 +3025,8 @@ class InvoiceDataBankSortCode(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -2920,6 +3046,10 @@ class InvoiceDataBankSortCode(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -2933,6 +3063,8 @@ class InvoiceDataBankSortCode(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -2944,6 +3076,8 @@ class InvoiceDataBankSortCode(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -2970,6 +3104,10 @@ class InvoiceDataBankSwift(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -2993,6 +3131,8 @@ class InvoiceDataBankSwift(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -3008,6 +3148,8 @@ class InvoiceDataBankSwift(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -3027,6 +3169,10 @@ class InvoiceDataBankSwift(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -3040,6 +3186,8 @@ class InvoiceDataBankSwift(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -3051,6 +3199,8 @@ class InvoiceDataBankSwift(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -3077,6 +3227,10 @@ class InvoiceDataBpayBillerCode(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -3100,6 +3254,8 @@ class InvoiceDataBpayBillerCode(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -3115,6 +3271,8 @@ class InvoiceDataBpayBillerCode(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -3134,6 +3292,10 @@ class InvoiceDataBpayBillerCode(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -3147,6 +3309,8 @@ class InvoiceDataBpayBillerCode(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -3158,6 +3322,8 @@ class InvoiceDataBpayBillerCode(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -3184,6 +3350,10 @@ class InvoiceDataBpayReference(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -3207,6 +3377,8 @@ class InvoiceDataBpayReference(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -3222,6 +3394,8 @@ class InvoiceDataBpayReference(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -3241,6 +3415,10 @@ class InvoiceDataBpayReference(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -3254,6 +3432,8 @@ class InvoiceDataBpayReference(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -3265,6 +3445,8 @@ class InvoiceDataBpayReference(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -3291,6 +3473,10 @@ class InvoiceDataCustomerBusinessNumber(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -3314,6 +3500,8 @@ class InvoiceDataCustomerBusinessNumber(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -3329,6 +3517,8 @@ class InvoiceDataCustomerBusinessNumber(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -3348,6 +3538,10 @@ class InvoiceDataCustomerBusinessNumber(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -3361,6 +3555,8 @@ class InvoiceDataCustomerBusinessNumber(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -3372,6 +3568,8 @@ class InvoiceDataCustomerBusinessNumber(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -3398,6 +3596,10 @@ class InvoiceDataCustomerCompanyName(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -3421,6 +3623,8 @@ class InvoiceDataCustomerCompanyName(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -3436,6 +3640,8 @@ class InvoiceDataCustomerCompanyName(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -3455,6 +3661,10 @@ class InvoiceDataCustomerCompanyName(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -3468,6 +3678,8 @@ class InvoiceDataCustomerCompanyName(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -3479,6 +3691,8 @@ class InvoiceDataCustomerCompanyName(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -3505,6 +3719,10 @@ class InvoiceDataCustomerContactName(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -3528,6 +3746,8 @@ class InvoiceDataCustomerContactName(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -3543,6 +3763,8 @@ class InvoiceDataCustomerContactName(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -3562,6 +3784,10 @@ class InvoiceDataCustomerContactName(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -3575,6 +3801,8 @@ class InvoiceDataCustomerContactName(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -3586,6 +3814,8 @@ class InvoiceDataCustomerContactName(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -3612,6 +3842,10 @@ class InvoiceDataCustomerEmail(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -3635,6 +3869,8 @@ class InvoiceDataCustomerEmail(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -3650,6 +3886,8 @@ class InvoiceDataCustomerEmail(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -3669,6 +3907,10 @@ class InvoiceDataCustomerEmail(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -3682,6 +3924,8 @@ class InvoiceDataCustomerEmail(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -3693,6 +3937,8 @@ class InvoiceDataCustomerEmail(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -3719,6 +3965,10 @@ class InvoiceDataCustomerNumber(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -3742,6 +3992,8 @@ class InvoiceDataCustomerNumber(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -3757,6 +4009,8 @@ class InvoiceDataCustomerNumber(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -3776,6 +4030,10 @@ class InvoiceDataCustomerNumber(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -3789,6 +4047,8 @@ class InvoiceDataCustomerNumber(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -3800,6 +4060,8 @@ class InvoiceDataCustomerNumber(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -3826,6 +4088,10 @@ class InvoiceDataCustomerPhoneNumber(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -3849,6 +4115,8 @@ class InvoiceDataCustomerPhoneNumber(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -3864,6 +4132,8 @@ class InvoiceDataCustomerPhoneNumber(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -3883,6 +4153,10 @@ class InvoiceDataCustomerPhoneNumber(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -3896,6 +4170,8 @@ class InvoiceDataCustomerPhoneNumber(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -3907,6 +4183,8 @@ class InvoiceDataCustomerPhoneNumber(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -3933,6 +4211,10 @@ class InvoiceDataCustomerVat(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -3956,6 +4238,8 @@ class InvoiceDataCustomerVat(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -3971,6 +4255,8 @@ class InvoiceDataCustomerVat(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -3990,6 +4276,10 @@ class InvoiceDataCustomerVat(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -4003,6 +4293,8 @@ class InvoiceDataCustomerVat(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -4014,6 +4306,8 @@ class InvoiceDataCustomerVat(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -4040,6 +4334,10 @@ class InvoiceDataInvoiceNumber(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -4063,6 +4361,8 @@ class InvoiceDataInvoiceNumber(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -4078,6 +4378,8 @@ class InvoiceDataInvoiceNumber(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -4097,6 +4399,10 @@ class InvoiceDataInvoiceNumber(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -4110,6 +4416,8 @@ class InvoiceDataInvoiceNumber(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -4121,6 +4429,8 @@ class InvoiceDataInvoiceNumber(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -4147,6 +4457,10 @@ class InvoiceDataInvoicePurchaseOrderNumber(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -4170,6 +4484,8 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -4185,6 +4501,8 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -4204,6 +4522,10 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -4217,6 +4539,8 @@ class InvoiceDataInvoicePurchaseOrderNumber(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -4228,6 +4552,8 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -4254,6 +4580,10 @@ class InvoiceDataPaymentAmountBase(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -4277,6 +4607,8 @@ class InvoiceDataPaymentAmountBase(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -4292,6 +4624,8 @@ class InvoiceDataPaymentAmountBase(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -4311,6 +4645,10 @@ class InvoiceDataPaymentAmountBase(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -4324,6 +4662,8 @@ class InvoiceDataPaymentAmountBase(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -4335,6 +4675,8 @@ class InvoiceDataPaymentAmountBase(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -4361,6 +4703,10 @@ class InvoiceDataPaymentAmountDue(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -4384,6 +4730,8 @@ class InvoiceDataPaymentAmountDue(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -4399,6 +4747,8 @@ class InvoiceDataPaymentAmountDue(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -4418,6 +4768,10 @@ class InvoiceDataPaymentAmountDue(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -4431,6 +4785,8 @@ class InvoiceDataPaymentAmountDue(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -4442,6 +4798,8 @@ class InvoiceDataPaymentAmountDue(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -4468,6 +4826,10 @@ class InvoiceDataPaymentAmountPaid(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -4491,6 +4853,8 @@ class InvoiceDataPaymentAmountPaid(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -4506,6 +4870,8 @@ class InvoiceDataPaymentAmountPaid(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -4525,6 +4891,10 @@ class InvoiceDataPaymentAmountPaid(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -4538,6 +4908,8 @@ class InvoiceDataPaymentAmountPaid(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -4549,6 +4921,8 @@ class InvoiceDataPaymentAmountPaid(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -4575,6 +4949,10 @@ class InvoiceDataPaymentAmountTax(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -4598,6 +4976,8 @@ class InvoiceDataPaymentAmountTax(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -4613,6 +4993,8 @@ class InvoiceDataPaymentAmountTax(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -4632,6 +5014,10 @@ class InvoiceDataPaymentAmountTax(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -4645,6 +5031,8 @@ class InvoiceDataPaymentAmountTax(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -4656,6 +5044,8 @@ class InvoiceDataPaymentAmountTax(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -4682,6 +5072,10 @@ class InvoiceDataPaymentAmountTotal(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -4705,6 +5099,8 @@ class InvoiceDataPaymentAmountTotal(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -4720,6 +5116,8 @@ class InvoiceDataPaymentAmountTotal(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -4739,6 +5137,10 @@ class InvoiceDataPaymentAmountTotal(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -4752,6 +5154,8 @@ class InvoiceDataPaymentAmountTotal(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -4763,6 +5167,8 @@ class InvoiceDataPaymentAmountTotal(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -4789,6 +5195,10 @@ class InvoiceDataPaymentReference(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -4812,6 +5222,8 @@ class InvoiceDataPaymentReference(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -4827,6 +5239,8 @@ class InvoiceDataPaymentReference(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -4846,6 +5260,10 @@ class InvoiceDataPaymentReference(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -4859,6 +5277,8 @@ class InvoiceDataPaymentReference(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -4870,6 +5290,8 @@ class InvoiceDataPaymentReference(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -4896,6 +5318,10 @@ class InvoiceDataSupplierBusinessNumber(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -4919,6 +5345,8 @@ class InvoiceDataSupplierBusinessNumber(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -4934,6 +5362,8 @@ class InvoiceDataSupplierBusinessNumber(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -4953,6 +5383,10 @@ class InvoiceDataSupplierBusinessNumber(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -4966,6 +5400,8 @@ class InvoiceDataSupplierBusinessNumber(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -4977,6 +5413,8 @@ class InvoiceDataSupplierBusinessNumber(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -5003,6 +5441,10 @@ class InvoiceDataSupplierCompanyName(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -5026,6 +5468,8 @@ class InvoiceDataSupplierCompanyName(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -5041,6 +5485,8 @@ class InvoiceDataSupplierCompanyName(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -5060,6 +5506,10 @@ class InvoiceDataSupplierCompanyName(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -5073,6 +5523,8 @@ class InvoiceDataSupplierCompanyName(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -5084,6 +5536,8 @@ class InvoiceDataSupplierCompanyName(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -5110,6 +5564,10 @@ class InvoiceDataSupplierEmail(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -5133,6 +5591,8 @@ class InvoiceDataSupplierEmail(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -5148,6 +5608,8 @@ class InvoiceDataSupplierEmail(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -5167,6 +5629,10 @@ class InvoiceDataSupplierEmail(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -5180,6 +5646,8 @@ class InvoiceDataSupplierEmail(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -5191,6 +5659,8 @@ class InvoiceDataSupplierEmail(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -5217,6 +5687,10 @@ class InvoiceDataSupplierFax(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -5240,6 +5714,8 @@ class InvoiceDataSupplierFax(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -5255,6 +5731,8 @@ class InvoiceDataSupplierFax(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -5274,6 +5752,10 @@ class InvoiceDataSupplierFax(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -5287,6 +5769,8 @@ class InvoiceDataSupplierFax(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -5298,6 +5782,8 @@ class InvoiceDataSupplierFax(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -5324,6 +5810,10 @@ class InvoiceDataSupplierPhoneNumber(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -5347,6 +5837,8 @@ class InvoiceDataSupplierPhoneNumber(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -5362,6 +5854,8 @@ class InvoiceDataSupplierPhoneNumber(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -5381,6 +5875,10 @@ class InvoiceDataSupplierPhoneNumber(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -5394,6 +5892,8 @@ class InvoiceDataSupplierPhoneNumber(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -5405,6 +5905,8 @@ class InvoiceDataSupplierPhoneNumber(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -5431,6 +5933,10 @@ class InvoiceDataSupplierVat(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -5454,6 +5960,8 @@ class InvoiceDataSupplierVat(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -5469,6 +5977,8 @@ class InvoiceDataSupplierVat(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -5488,6 +5998,10 @@ class InvoiceDataSupplierVat(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -5501,6 +6015,8 @@ class InvoiceDataSupplierVat(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -5512,6 +6028,8 @@ class InvoiceDataSupplierVat(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -5538,6 +6056,10 @@ class InvoiceDataSupplierWebsite(
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -5561,6 +6083,8 @@ class InvoiceDataSupplierWebsite(
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -5576,6 +6100,8 @@ class InvoiceDataSupplierWebsite(
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -5595,6 +6121,10 @@ class InvoiceDataSupplierWebsite(
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -5608,6 +6138,8 @@ class InvoiceDataSupplierWebsite(
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             parsed=parsed,
             **kwargs,
@@ -5619,6 +6151,8 @@ class InvoiceDataSupplierWebsite(
         self.raw = raw
         self.confidence = confidence
         self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
         self.classification = classification
         self.parsed = parsed
 
@@ -7704,6 +8238,10 @@ class JobTitleAnnotation(Annotation):
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed: Years of experience range.
@@ -7727,6 +8265,8 @@ class JobTitleAnnotation(Annotation):
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "JobTitleAnnotationParsed"},
     }
@@ -7742,6 +8282,8 @@ class JobTitleAnnotation(Annotation):
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional["_models.JobTitleAnnotationParsed"] = None,
         **kwargs,
     ):
@@ -7761,6 +8303,10 @@ class JobTitleAnnotation(Annotation):
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed: Years of experience range.
@@ -7774,6 +8320,8 @@ class JobTitleAnnotation(Annotation):
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             **kwargs,
         )
@@ -7935,6 +8483,10 @@ class LanguageAnnotation(Annotation):
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -7958,6 +8510,8 @@ class LanguageAnnotation(Annotation):
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -7973,6 +8527,8 @@ class LanguageAnnotation(Annotation):
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -7992,6 +8548,10 @@ class LanguageAnnotation(Annotation):
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -8005,6 +8565,8 @@ class LanguageAnnotation(Annotation):
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             **kwargs,
         )
@@ -8071,6 +8633,10 @@ class LocationAnnotation(Annotation):
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -8094,6 +8660,8 @@ class LocationAnnotation(Annotation):
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "Location"},
     }
@@ -8109,6 +8677,8 @@ class LocationAnnotation(Annotation):
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional["_models.Location"] = None,
         **kwargs,
     ):
@@ -8128,6 +8698,10 @@ class LocationAnnotation(Annotation):
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -8141,6 +8715,8 @@ class LocationAnnotation(Annotation):
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             **kwargs,
         )
@@ -12071,6 +12647,10 @@ class SkillAnnotation(Annotation):
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed:
@@ -12094,6 +12674,8 @@ class SkillAnnotation(Annotation):
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
@@ -12109,6 +12691,8 @@ class SkillAnnotation(Annotation):
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -12128,6 +12712,10 @@ class SkillAnnotation(Annotation):
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed:
@@ -12141,6 +12729,8 @@ class SkillAnnotation(Annotation):
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             **kwargs,
         )
@@ -12229,6 +12819,10 @@ class YearsExperienceAnnotation(Annotation):
     :vartype confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
     :ivar classification: Required.
     :vartype classification: str
     :ivar parsed: Years of experience range.
@@ -12252,6 +12846,8 @@ class YearsExperienceAnnotation(Annotation):
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
         "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "classification": {"key": "classification", "type": "str"},
         "parsed": {"key": "parsed", "type": "YearsExperienceAnnotationParsed"},
     }
@@ -12267,6 +12863,8 @@ class YearsExperienceAnnotation(Annotation):
         classification: str,
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
         parsed: Optional["_models.YearsExperienceAnnotationParsed"] = None,
         **kwargs,
     ):
@@ -12286,6 +12884,10 @@ class YearsExperienceAnnotation(Annotation):
         :paramtype confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
         :keyword classification: Required.
         :paramtype classification: str
         :keyword parsed: Years of experience range.
@@ -12299,6 +12901,8 @@ class YearsExperienceAnnotation(Annotation):
             raw=raw,
             confidence=confidence,
             is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
             classification=classification,
             **kwargs,
         )

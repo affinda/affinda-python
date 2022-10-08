@@ -63,6 +63,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 
@@ -84,6 +88,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 
 <a id="models._models.Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1"></a>
@@ -1165,6 +1171,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -1188,6 +1198,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -1350,6 +1362,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -1373,6 +1389,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -1431,6 +1449,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -1454,6 +1476,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -1884,6 +1908,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -1907,6 +1935,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -1937,6 +1967,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -1960,6 +1994,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -1990,6 +2026,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -2013,6 +2053,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -2043,6 +2085,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -2066,6 +2112,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -2096,6 +2144,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -2119,6 +2171,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -2149,6 +2203,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -2172,6 +2230,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -2202,6 +2262,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -2225,6 +2289,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -2255,6 +2321,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -2278,6 +2348,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -2308,6 +2380,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -2331,6 +2407,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -2361,6 +2439,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -2384,6 +2466,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -2414,6 +2498,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -2437,6 +2525,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -2467,6 +2557,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -2490,6 +2584,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -2520,6 +2616,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -2543,6 +2643,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -2573,6 +2675,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -2596,6 +2702,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -2626,6 +2734,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -2649,6 +2761,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -2679,6 +2793,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -2702,6 +2820,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -2732,6 +2852,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -2755,6 +2879,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -2785,6 +2911,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -2808,6 +2938,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -2838,6 +2970,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -2861,6 +2997,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -2891,6 +3029,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -2914,6 +3056,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -2944,6 +3088,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -2967,6 +3115,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -2997,6 +3147,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -3020,6 +3174,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -3050,6 +3206,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -3073,6 +3233,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -3103,6 +3265,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -3126,6 +3292,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -3156,6 +3324,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -3179,6 +3351,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -3209,6 +3383,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -3232,6 +3410,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -3262,6 +3442,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -3285,6 +3469,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -3315,6 +3501,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -3338,6 +3528,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -3368,6 +3560,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -3391,6 +3587,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -3421,6 +3619,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -3444,6 +3646,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -4814,6 +5018,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed: Years of experience range.
@@ -4837,6 +5045,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: Years of experience range.
 
@@ -4968,6 +5178,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -4991,6 +5205,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -5054,6 +5270,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -5077,6 +5297,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -7748,6 +7970,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed:
@@ -7771,6 +7997,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: 
 
@@ -7861,6 +8089,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
+:ivar is_client_verified:
+:vartype is_client_verified: bool
+:ivar is_auto_verified:
+:vartype is_auto_verified: bool
 :ivar classification: Required.
 :vartype classification: str
 :ivar parsed: Years of experience range.
@@ -7884,6 +8116,8 @@ collection.
 - `raw`: Required.
 - `confidence`: Required.
 - `is_verified`: Required.
+- `is_client_verified`: 
+- `is_auto_verified`: 
 - `classification`: Required.
 - `parsed`: Years of experience range.
 
