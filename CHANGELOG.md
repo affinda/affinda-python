@@ -7,8 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Add "reject_duplicates" flag to document upload endpoint
+- Add "reject_duplicates" flag to document upload endpoint
 
 ### Changed
+- Modify document upload endpoint parameters
 - Modify document upload endpoint parameters
 
 ## [1.4.2] - 2022-09-23
