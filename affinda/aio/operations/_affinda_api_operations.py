@@ -143,6 +143,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         identifier: Optional[str] = None,
         file_name: Optional[str] = None,
         wait: Optional[bool] = True,
+        reject_duplicates: Optional[bool] = False,
         language: Optional[str] = None,
         expiry_time: Optional[datetime.datetime] = None,
         **kwargs: Any,
@@ -169,6 +170,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type file_name: str
         :param wait:  Default value is True.
         :type wait: bool
+        :param reject_duplicates:  Default value is False.
+        :type reject_duplicates: bool
         :param language:  Default value is None.
         :type language: str
         :param expiry_time:  Default value is None.
@@ -201,6 +204,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             "identifier": identifier,
             "fileName": file_name,
             "wait": wait,
+            "rejectDuplicates": reject_duplicates,
             "language": language,
             "expiryTime": expiry_time,
         }
@@ -1339,6 +1343,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         identifier: Optional[str] = None,
         file_name: Optional[str] = None,
         wait: Optional[bool] = True,
+        reject_duplicates: Optional[bool] = False,
         language: Optional[str] = None,
         expiry_time: Optional[datetime.datetime] = None,
         **kwargs: Any,
@@ -1361,6 +1366,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type file_name: str
         :param wait:  Default value is True.
         :type wait: bool
+        :param reject_duplicates:  Default value is False.
+        :type reject_duplicates: bool
         :param language:  Default value is None.
         :type language: str
         :param expiry_time:  Default value is None.
@@ -1394,6 +1401,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             "identifier": identifier,
             "fileName": file_name,
             "wait": wait,
+            "rejectDuplicates": reject_duplicates,
             "language": language,
             "expiryTime": expiry_time,
         }
@@ -2441,6 +2449,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         identifier: Optional[str] = None,
         file_name: Optional[str] = None,
         wait: Optional[bool] = True,
+        reject_duplicates: Optional[bool] = False,
         language: Optional[str] = None,
         expiry_time: Optional[datetime.datetime] = None,
         **kwargs: Any,
@@ -2462,6 +2471,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type file_name: str
         :param wait:  Default value is True.
         :type wait: bool
+        :param reject_duplicates:  Default value is False.
+        :type reject_duplicates: bool
         :param language:  Default value is None.
         :type language: str
         :param expiry_time:  Default value is None.
@@ -2495,6 +2506,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             "identifier": identifier,
             "fileName": file_name,
             "wait": wait,
+            "rejectDuplicates": reject_duplicates,
             "language": language,
             "expiryTime": expiry_time,
         }

@@ -3854,6 +3854,10 @@ InvoiceRequestBody.
  "false", will return an empty data object which can be polled at the GET endpoint until
  processing is complete.
 :vartype wait: bool
+:ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
+ of an existing document. If "false" (default), will parse the document normally whether its a
+ duplicate or not.
+:vartype reject_duplicates: bool
 :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 :vartype language: str
 :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
@@ -3879,6 +3883,9 @@ one will be automatically generated.
 - `wait`: If "true" (default), will return a response only after processing has completed.
 If "false", will return an empty data object which can be polled at the GET endpoint until
 processing is complete.
+- `reject_duplicates`: If "true", parsing will fail when the uploaded document is
+duplicate of an existing document. If "false" (default), will parse the document normally
+whether its a duplicate or not.
 - `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 - `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
@@ -4013,6 +4020,10 @@ JobDescriptionRequestBody.
  "false", will return an empty data object which can be polled at the GET endpoint until
  processing is complete.
 :vartype wait: bool
+:ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
+ of an existing document. If "false" (default), will parse the document normally whether its a
+ duplicate or not.
+:vartype reject_duplicates: bool
 :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 :vartype language: str
 :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
@@ -4038,6 +4049,9 @@ one will be automatically generated.
 - `wait`: If "true" (default), will return a response only after processing has completed.
 If "false", will return an empty data object which can be polled at the GET endpoint until
 processing is complete.
+- `reject_duplicates`: If "true", parsing will fail when the uploaded document is
+duplicate of an existing document. If "false" (default), will parse the document normally
+whether its a duplicate or not.
 - `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 - `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
@@ -6629,6 +6643,10 @@ ResumeRequestBody.
  "false", will return an empty data object which can be polled at the GET endpoint until
  processing is complete.
 :vartype wait: bool
+:ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
+ of an existing document. If "false" (default), will parse the document normally whether its a
+ duplicate or not.
+:vartype reject_duplicates: bool
 :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 :vartype language: str
 :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
@@ -6655,6 +6673,9 @@ one will be automatically generated.
 - `wait`: If "true" (default), will return a response only after processing has completed.
 If "false", will return an empty data object which can be polled at the GET endpoint until
 processing is complete.
+- `reject_duplicates`: If "true", parsing will fail when the uploaded document is
+duplicate of an existing document. If "false" (default), will parse the document normally
+whether its a duplicate or not.
 - `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 - `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.

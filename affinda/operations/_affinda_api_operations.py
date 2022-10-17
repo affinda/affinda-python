@@ -1202,6 +1202,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         identifier=None,  # type: Optional[str]
         file_name=None,  # type: Optional[str]
         wait=True,  # type: Optional[bool]
+        reject_duplicates=False,  # type: Optional[bool]
         language=None,  # type: Optional[str]
         expiry_time=None,  # type: Optional[datetime.datetime]
         **kwargs,  # type: Any
@@ -1229,6 +1230,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type file_name: str
         :param wait:  Default value is True.
         :type wait: bool
+        :param reject_duplicates:  Default value is False.
+        :type reject_duplicates: bool
         :param language:  Default value is None.
         :type language: str
         :param expiry_time:  Default value is None.
@@ -1261,6 +1264,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             "identifier": identifier,
             "fileName": file_name,
             "wait": wait,
+            "rejectDuplicates": reject_duplicates,
             "language": language,
             "expiryTime": expiry_time,
         }
@@ -2434,6 +2438,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         identifier=None,  # type: Optional[str]
         file_name=None,  # type: Optional[str]
         wait=True,  # type: Optional[bool]
+        reject_duplicates=False,  # type: Optional[bool]
         language=None,  # type: Optional[str]
         expiry_time=None,  # type: Optional[datetime.datetime]
         **kwargs,  # type: Any
@@ -2457,6 +2462,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type file_name: str
         :param wait:  Default value is True.
         :type wait: bool
+        :param reject_duplicates:  Default value is False.
+        :type reject_duplicates: bool
         :param language:  Default value is None.
         :type language: str
         :param expiry_time:  Default value is None.
@@ -2490,6 +2497,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             "identifier": identifier,
             "fileName": file_name,
             "wait": wait,
+            "rejectDuplicates": reject_duplicates,
             "language": language,
             "expiryTime": expiry_time,
         }
@@ -3560,6 +3568,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         identifier=None,  # type: Optional[str]
         file_name=None,  # type: Optional[str]
         wait=True,  # type: Optional[bool]
+        reject_duplicates=False,  # type: Optional[bool]
         language=None,  # type: Optional[str]
         expiry_time=None,  # type: Optional[datetime.datetime]
         **kwargs,  # type: Any
@@ -3582,6 +3591,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type file_name: str
         :param wait:  Default value is True.
         :type wait: bool
+        :param reject_duplicates:  Default value is False.
+        :type reject_duplicates: bool
         :param language:  Default value is None.
         :type language: str
         :param expiry_time:  Default value is None.
@@ -3615,6 +3626,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             "identifier": identifier,
             "fileName": file_name,
             "wait": wait,
+            "rejectDuplicates": reject_duplicates,
             "language": language,
             "expiryTime": expiry_time,
         }

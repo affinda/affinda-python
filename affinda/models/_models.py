@@ -5329,6 +5329,10 @@ class InvoiceRequestBody(msrest.serialization.Model):
      "false", will return an empty data object which can be polled at the GET endpoint until
      processing is complete.
     :vartype wait: bool
+    :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
+     of an existing document. If "false" (default), will parse the document normally whether its a
+     duplicate or not.
+    :vartype reject_duplicates: bool
     :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
     :vartype language: str
     :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
@@ -5342,6 +5346,7 @@ class InvoiceRequestBody(msrest.serialization.Model):
         "identifier": {"key": "identifier", "type": "str"},
         "file_name": {"key": "fileName", "type": "str"},
         "wait": {"key": "wait", "type": "bool"},
+        "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
         "language": {"key": "language", "type": "str"},
         "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
     }
@@ -5362,6 +5367,10 @@ class InvoiceRequestBody(msrest.serialization.Model):
          If "false", will return an empty data object which can be polled at the GET endpoint until
          processing is complete.
         :paramtype wait: bool
+        :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
+         duplicate of an existing document. If "false" (default), will parse the document normally
+         whether its a duplicate or not.
+        :paramtype reject_duplicates: bool
         :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
         :paramtype language: str
         :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
@@ -5374,6 +5383,7 @@ class InvoiceRequestBody(msrest.serialization.Model):
         self.identifier = kwargs.get("identifier", None)
         self.file_name = kwargs.get("file_name", None)
         self.wait = kwargs.get("wait", True)
+        self.reject_duplicates = kwargs.get("reject_duplicates", False)
         self.language = kwargs.get("language", None)
         self.expiry_time = kwargs.get("expiry_time", None)
 
@@ -5554,6 +5564,10 @@ class JobDescriptionRequestBody(msrest.serialization.Model):
      "false", will return an empty data object which can be polled at the GET endpoint until
      processing is complete.
     :vartype wait: bool
+    :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
+     of an existing document. If "false" (default), will parse the document normally whether its a
+     duplicate or not.
+    :vartype reject_duplicates: bool
     :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
     :vartype language: str
     :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
@@ -5567,6 +5581,7 @@ class JobDescriptionRequestBody(msrest.serialization.Model):
         "identifier": {"key": "identifier", "type": "str"},
         "file_name": {"key": "fileName", "type": "str"},
         "wait": {"key": "wait", "type": "bool"},
+        "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
         "language": {"key": "language", "type": "str"},
         "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
     }
@@ -5587,6 +5602,10 @@ class JobDescriptionRequestBody(msrest.serialization.Model):
          If "false", will return an empty data object which can be polled at the GET endpoint until
          processing is complete.
         :paramtype wait: bool
+        :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
+         duplicate of an existing document. If "false" (default), will parse the document normally
+         whether its a duplicate or not.
+        :paramtype reject_duplicates: bool
         :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
         :paramtype language: str
         :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
@@ -5599,6 +5618,7 @@ class JobDescriptionRequestBody(msrest.serialization.Model):
         self.identifier = kwargs.get("identifier", None)
         self.file_name = kwargs.get("file_name", None)
         self.wait = kwargs.get("wait", True)
+        self.reject_duplicates = kwargs.get("reject_duplicates", False)
         self.language = kwargs.get("language", None)
         self.expiry_time = kwargs.get("expiry_time", None)
 
@@ -8871,6 +8891,10 @@ class ResumeRequestBody(msrest.serialization.Model):
      "false", will return an empty data object which can be polled at the GET endpoint until
      processing is complete.
     :vartype wait: bool
+    :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
+     of an existing document. If "false" (default), will parse the document normally whether its a
+     duplicate or not.
+    :vartype reject_duplicates: bool
     :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
     :vartype language: str
     :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
@@ -8885,6 +8909,7 @@ class ResumeRequestBody(msrest.serialization.Model):
         "identifier": {"key": "identifier", "type": "str"},
         "file_name": {"key": "fileName", "type": "str"},
         "wait": {"key": "wait", "type": "bool"},
+        "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
         "language": {"key": "language", "type": "str"},
         "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
     }
@@ -8907,6 +8932,10 @@ class ResumeRequestBody(msrest.serialization.Model):
          If "false", will return an empty data object which can be polled at the GET endpoint until
          processing is complete.
         :paramtype wait: bool
+        :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
+         duplicate of an existing document. If "false" (default), will parse the document normally
+         whether its a duplicate or not.
+        :paramtype reject_duplicates: bool
         :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
         :paramtype language: str
         :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
@@ -8920,6 +8949,7 @@ class ResumeRequestBody(msrest.serialization.Model):
         self.identifier = kwargs.get("identifier", None)
         self.file_name = kwargs.get("file_name", None)
         self.wait = kwargs.get("wait", True)
+        self.reject_duplicates = kwargs.get("reject_duplicates", False)
         self.language = kwargs.get("language", None)
         self.expiry_time = kwargs.get("expiry_time", None)
 

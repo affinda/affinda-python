@@ -61,7 +61,7 @@ Default value is None.
 #### create\_resume
 
 ```python
-def create_resume(file=None, url=None, data=None, identifier=None, file_name=None, wait=True, language=None, expiry_time=None, **kwargs)
+def create_resume(file=None, url=None, data=None, identifier=None, file_name=None, wait=True, reject_duplicates=False, language=None, expiry_time=None, **kwargs)
 ```
 
 Upload a resume for parsing.
@@ -82,6 +82,7 @@ parsing credits.
 - `identifier` (`str`): Default value is None.
 - `file_name` (`str`): Default value is None.
 - `wait` (`bool`): Default value is True.
+- `reject_duplicates` (`bool`): Default value is False.
 - `language` (`str`): Default value is None.
 - `expiry_time` (`~datetime.datetime`): Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
@@ -521,7 +522,7 @@ Default value is None.
 #### create\_job\_description
 
 ```python
-def create_job_description(file=None, url=None, identifier=None, file_name=None, wait=True, language=None, expiry_time=None, **kwargs)
+def create_job_description(file=None, url=None, identifier=None, file_name=None, wait=True, reject_duplicates=False, language=None, expiry_time=None, **kwargs)
 ```
 
 Upload a job description for parsing.
@@ -539,6 +540,7 @@ Job Descriptions can be uploaded as a file or a URL.
 - `identifier` (`str`): Default value is None.
 - `file_name` (`str`): Default value is None.
 - `wait` (`bool`): Default value is True.
+- `reject_duplicates` (`bool`): Default value is False.
 - `language` (`str`): Default value is None.
 - `expiry_time` (`~datetime.datetime`): Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
@@ -936,7 +938,7 @@ Default value is None.
 #### create\_invoice
 
 ```python
-def create_invoice(file=None, url=None, identifier=None, file_name=None, wait=True, language=None, expiry_time=None, **kwargs)
+def create_invoice(file=None, url=None, identifier=None, file_name=None, wait=True, reject_duplicates=False, language=None, expiry_time=None, **kwargs)
 ```
 
 Upload an invoice for parsing.
@@ -953,6 +955,7 @@ retrieve results.
 - `identifier` (`str`): Default value is None.
 - `file_name` (`str`): Default value is None.
 - `wait` (`bool`): Default value is True.
+- `reject_duplicates` (`bool`): Default value is False.
 - `language` (`str`): Default value is None.
 - `expiry_time` (`~datetime.datetime`): Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
