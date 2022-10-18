@@ -5,13 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-### Added
-- Add "reject_duplicates" flag to document upload endpoint
-- Add "reject_duplicates" flag to document upload endpoint
-
 ### Changed
-- Modify document upload endpoint parameters
-- Modify document upload endpoint parameters
+- Add reject_duplicates to document upload endpoint
 
 ## [1.4.2] - 2022-09-23
 ### Changed
