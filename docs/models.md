@@ -229,34 +229,6 @@ def __init__(**kwargs)
 
 - `match`: 
 
-<a id="models._models.Components17Ashz6SchemasInvoicePropertiesMetaAllof1"></a>
-
-## Components17Ashz6SchemasInvoicePropertiesMetaAllof1 Objects
-
-```python
-class Components17Ashz6SchemasInvoicePropertiesMetaAllof1(msrest.serialization.Model)
-```
-
-Components17Ashz6SchemasInvoicePropertiesMetaAllof1.
-
-:ivar client_verified_dt:
-:vartype client_verified_dt: bool
-:ivar review_url: Signed URL (valid for 60 minutes) to access the invoice review tool.
-:vartype review_url: str
-
-<a id="models._models.Components17Ashz6SchemasInvoicePropertiesMetaAllof1.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `client_verified_dt`: 
-- `review_url`: Signed URL (valid for 60 minutes) to access the invoice review tool.
-
 <a id="models._models.Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1"></a>
 
 ## Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1 Objects
@@ -1726,7 +1698,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar data: Required.
 :vartype data: ~affinda.models.InvoiceData
 :ivar meta: Required.
-:vartype meta: ~affinda.models.InvoiceMeta
+:vartype meta: ~affinda.models.Meta
 :ivar error: Required.
 :vartype error: ~affinda.models.Error
 
@@ -3676,160 +3648,6 @@ def __init__(**kwargs)
 
 - `rows`: 
 
-<a id="models._models.Meta"></a>
-
-## Meta Objects
-
-```python
-class Meta(msrest.serialization.Model)
-```
-
-Meta.
-
-Variables are only populated by the server, and will be ignored when sending a request.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar additional_properties: Unmatched properties from the message are deserialized to this
- collection.
-:vartype additional_properties: dict[str, any]
-:ivar identifier: Required. Unique identifier for the document. If creating a document and left
- blank, one will be automatically generated.
-:vartype identifier: str
-:ivar file_name: Optional filename of the file.
-:vartype file_name: str
-:ivar ready: Required. If true, the document has finished processing. Particularly useful if an
- endpoint request specified wait=False, when polling use this variable to determine when to stop
- polling.
-:vartype ready: bool
-:ivar ready_dt: The datetime when the document was ready.
-:vartype ready_dt: ~datetime.datetime
-:ivar failed: Required. If true, some exception was raised during processing. Check the 'error'
- field of the main return object.
-:vartype failed: bool
-:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
- deleted.  Defaults to no expiry.
-:vartype expiry_time: ~datetime.datetime
-:ivar language: The document's language.
-:vartype language: str
-:ivar pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
- converted to pdf as part of the parsing process).
-:vartype pdf: str
-:ivar parent_document: If this document is part of a splitted document, this attribute points
- to the original document that this document is splitted from.
-:vartype parent_document: ~affinda.models.SplitRelation
-:ivar child_documents: If this document has been splitted into a number of child documents,
- this attribute points to those child documents.
-:vartype child_documents: list[~affinda.models.SplitRelation]
-:ivar pages: The document's pages.
-:vartype pages: list[~affinda.models.PageMeta]
-
-<a id="models._models.Meta.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `additional_properties`: Unmatched properties from the message are deserialized to this
-collection.
-- `identifier`: Required. Unique identifier for the document. If creating a document and
-left blank, one will be automatically generated.
-- `file_name`: Optional filename of the file.
-- `ready`: Required. If true, the document has finished processing. Particularly useful if
-an endpoint request specified wait=False, when polling use this variable to determine when to
-stop polling.
-- `ready_dt`: The datetime when the document was ready.
-- `failed`: Required. If true, some exception was raised during processing. Check the
-'error' field of the main return object.
-- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
-deleted.  Defaults to no expiry.
-- `language`: The document's language.
-- `pages`: The document's pages.
-
-<a id="models._models.InvoiceMeta"></a>
-
-## InvoiceMeta Objects
-
-```python
-class InvoiceMeta(Meta,  Components17Ashz6SchemasInvoicePropertiesMetaAllof1)
-```
-
-InvoiceMeta.
-
-Variables are only populated by the server, and will be ignored when sending a request.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar client_verified_dt:
-:vartype client_verified_dt: bool
-:ivar review_url: Signed URL (valid for 60 minutes) to access the invoice review tool.
-:vartype review_url: str
-:ivar additional_properties: Unmatched properties from the message are deserialized to this
- collection.
-:vartype additional_properties: dict[str, any]
-:ivar identifier: Required. Unique identifier for the document. If creating a document and left
- blank, one will be automatically generated.
-:vartype identifier: str
-:ivar file_name: Optional filename of the file.
-:vartype file_name: str
-:ivar ready: Required. If true, the document has finished processing. Particularly useful if an
- endpoint request specified wait=False, when polling use this variable to determine when to stop
- polling.
-:vartype ready: bool
-:ivar ready_dt: The datetime when the document was ready.
-:vartype ready_dt: ~datetime.datetime
-:ivar failed: Required. If true, some exception was raised during processing. Check the 'error'
- field of the main return object.
-:vartype failed: bool
-:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
- deleted.  Defaults to no expiry.
-:vartype expiry_time: ~datetime.datetime
-:ivar language: The document's language.
-:vartype language: str
-:ivar pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
- converted to pdf as part of the parsing process).
-:vartype pdf: str
-:ivar parent_document: If this document is part of a splitted document, this attribute points
- to the original document that this document is splitted from.
-:vartype parent_document: ~affinda.models.SplitRelation
-:ivar child_documents: If this document has been splitted into a number of child documents,
- this attribute points to those child documents.
-:vartype child_documents: list[~affinda.models.SplitRelation]
-:ivar pages: The document's pages.
-:vartype pages: list[~affinda.models.PageMeta]
-
-<a id="models._models.InvoiceMeta.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `client_verified_dt`: 
-- `review_url`: Signed URL (valid for 60 minutes) to access the invoice review tool.
-- `additional_properties`: Unmatched properties from the message are deserialized to this
-collection.
-- `identifier`: Required. Unique identifier for the document. If creating a document and
-left blank, one will be automatically generated.
-- `file_name`: Optional filename of the file.
-- `ready`: Required. If true, the document has finished processing. Particularly useful if
-an endpoint request specified wait=False, when polling use this variable to determine when to
-stop polling.
-- `ready_dt`: The datetime when the document was ready.
-- `failed`: Required. If true, some exception was raised during processing. Check the
-'error' field of the main return object.
-- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
-deleted.  Defaults to no expiry.
-- `language`: The document's language.
-- `pages`: The document's pages.
-
 <a id="models._models.InvoiceRequestBody"></a>
 
 ## InvoiceRequestBody Objects
@@ -5381,6 +5199,95 @@ def __init__(**kwargs)
 - `value`: 
 - `label`: Required.
 - `score`: 
+
+<a id="models._models.Meta"></a>
+
+## Meta Objects
+
+```python
+class Meta(msrest.serialization.Model)
+```
+
+Meta.
+
+Variables are only populated by the server, and will be ignored when sending a request.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar identifier: Required. Unique identifier for the document. If creating a document and left
+ blank, one will be automatically generated.
+:vartype identifier: str
+:ivar file_name: Optional filename of the file.
+:vartype file_name: str
+:ivar ready: Required. If true, the document has finished processing. Particularly useful if an
+ endpoint request specified wait=False, when polling use this variable to determine when to stop
+ polling.
+:vartype ready: bool
+:ivar ready_dt: The datetime when the document was ready.
+:vartype ready_dt: ~datetime.datetime
+:ivar failed: Required. If true, some exception was raised during processing. Check the 'error'
+ field of the main return object.
+:vartype failed: bool
+:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+ deleted.  Defaults to no expiry.
+:vartype expiry_time: ~datetime.datetime
+:ivar language: The document's language.
+:vartype language: str
+:ivar pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
+ converted to pdf as part of the parsing process).
+:vartype pdf: str
+:ivar parent_document: If this document is part of a splitted document, this attribute points
+ to the original document that this document is splitted from.
+:vartype parent_document: ~affinda.models.SplitRelation
+:ivar child_documents: If this document has been splitted into a number of child documents,
+ this attribute points to those child documents.
+:vartype child_documents: list[~affinda.models.SplitRelation]
+:ivar pages: The document's pages.
+:vartype pages: list[~affinda.models.PageMeta]
+:ivar is_verified: This is true if the "confirm" button has been clicked in the Affinda
+ validation tool.
+:vartype is_verified: bool
+:ivar review_url: Signed URL (valid for 60 minutes) to access the validation tool.  Not
+ applicable for documents types such a resumes.
+:vartype review_url: str
+:ivar ocr_confidence: The overall confidence in the conversion of image to text.  (only
+ applicable for images or PDF documents without a text layer).
+:vartype ocr_confidence: float
+
+<a id="models._models.Meta.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
+collection.
+- `identifier`: Required. Unique identifier for the document. If creating a document and
+left blank, one will be automatically generated.
+- `file_name`: Optional filename of the file.
+- `ready`: Required. If true, the document has finished processing. Particularly useful if
+an endpoint request specified wait=False, when polling use this variable to determine when to
+stop polling.
+- `ready_dt`: The datetime when the document was ready.
+- `failed`: Required. If true, some exception was raised during processing. Check the
+'error' field of the main return object.
+- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
+deleted.  Defaults to no expiry.
+- `language`: The document's language.
+- `pages`: The document's pages.
+- `is_verified`: This is true if the "confirm" button has been clicked in the Affinda
+validation tool.
+- `review_url`: Signed URL (valid for 60 minutes) to access the validation tool.  Not
+applicable for documents types such a resumes.
+- `ocr_confidence`: The overall confidence in the conversion of image to text.  (only
+applicable for images or PDF documents without a text layer).
 
 <a id="models._models.OccupationGroupSearchScoreComponent"></a>
 

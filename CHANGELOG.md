@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add reject_duplicates to document upload endpoint
 
+### Changed
+- Update spec to allow XML content-type return from resumes, make totalYearsExperience nullable
+
 ## [1.4.2] - 2022-09-23
 ### Changed
 - Update API spec to match API response.
