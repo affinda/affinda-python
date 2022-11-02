@@ -184,10 +184,6 @@ try:
     from ._models_py3 import RequestErrorErrorsItem
     from ._models_py3 import Resume
     from ._models_py3 import ResumeData
-    from ._models_py3 import ResumeDataEducationItem
-    from ._models_py3 import ResumeDataEducationItemAccreditation
-    from ._models_py3 import ResumeDataEducationItemDates
-    from ._models_py3 import ResumeDataEducationItemGrade
     from ._models_py3 import ResumeDataName
     from ._models_py3 import ResumeDataRefereesItem
     from ._models_py3 import ResumeDataSectionsItem
@@ -381,10 +377,6 @@ except (SyntaxError, ImportError):
     from ._models import RequestErrorErrorsItem  # type: ignore
     from ._models import Resume  # type: ignore
     from ._models import ResumeData  # type: ignore
-    from ._models import ResumeDataEducationItem  # type: ignore
-    from ._models import ResumeDataEducationItemAccreditation  # type: ignore
-    from ._models import ResumeDataEducationItemDates  # type: ignore
-    from ._models import ResumeDataEducationItemGrade  # type: ignore
     from ._models import ResumeDataName  # type: ignore
     from ._models import ResumeDataRefereesItem  # type: ignore
     from ._models import ResumeDataSectionsItem  # type: ignore
@@ -593,10 +585,6 @@ __all__ = [
     "RequestErrorErrorsItem",
     "Resume",
     "ResumeData",
-    "ResumeDataEducationItem",
-    "ResumeDataEducationItemAccreditation",
-    "ResumeDataEducationItemDates",
-    "ResumeDataEducationItemGrade",
     "ResumeDataName",
     "ResumeDataRefereesItem",
     "ResumeDataSectionsItem",

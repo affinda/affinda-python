@@ -18,47 +18,41 @@ if TYPE_CHECKING:
 class Accreditation(msrest.serialization.Model):
     """Accreditation.
 
+    Variables are only populated by the server, and will be ignored when sending a request.
+
     :ivar education:
     :vartype education: str
-    :ivar education_level:
-    :vartype education_level: str
     :ivar input_str:
     :vartype input_str: str
     :ivar match_str:
     :vartype match_str: str
+    :ivar education_level:
+    :vartype education_level: str
     """
+
+    _validation = {
+        "input_str": {"readonly": True},
+        "match_str": {"readonly": True},
+        "education_level": {"readonly": True},
+    }
 
     _attribute_map = {
         "education": {"key": "education", "type": "str"},
-        "education_level": {"key": "educationLevel", "type": "str"},
         "input_str": {"key": "inputStr", "type": "str"},
         "match_str": {"key": "matchStr", "type": "str"},
+        "education_level": {"key": "educationLevel", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        education: Optional[str] = None,
-        education_level: Optional[str] = None,
-        input_str: Optional[str] = None,
-        match_str: Optional[str] = None,
-        **kwargs,
-    ):
+    def __init__(self, *, education: Optional[str] = None, **kwargs):
         """
         :keyword education:
         :paramtype education: str
-        :keyword education_level:
-        :paramtype education_level: str
-        :keyword input_str:
-        :paramtype input_str: str
-        :keyword match_str:
-        :paramtype match_str: str
         """
         super(Accreditation, self).__init__(**kwargs)
         self.education = education
-        self.education_level = education_level
-        self.input_str = input_str
-        self.match_str = match_str
+        self.input_str = None
+        self.match_str = None
+        self.education_level = None
 
 
 class Annotation(msrest.serialization.Model):
@@ -1349,6 +1343,8 @@ class DateAnnotation(Annotation):
 class Education(msrest.serialization.Model):
     """Education.
 
+    :ivar id:
+    :vartype id: int
     :ivar organization:
     :vartype organization: str
     :ivar accreditation:
@@ -1362,6 +1358,7 @@ class Education(msrest.serialization.Model):
     """
 
     _attribute_map = {
+        "id": {"key": "id", "type": "int"},
         "organization": {"key": "organization", "type": "str"},
         "accreditation": {"key": "accreditation", "type": "Accreditation"},
         "grade": {"key": "grade", "type": "EducationGrade"},
@@ -1372,6 +1369,7 @@ class Education(msrest.serialization.Model):
     def __init__(
         self,
         *,
+        id: Optional[int] = None,
         organization: Optional[str] = None,
         accreditation: Optional["_models.Accreditation"] = None,
         grade: Optional["_models.EducationGrade"] = None,
@@ -1380,6 +1378,8 @@ class Education(msrest.serialization.Model):
         **kwargs,
     ):
         """
+        :keyword id:
+        :paramtype id: int
         :keyword organization:
         :paramtype organization: str
         :keyword accreditation:
@@ -1392,6 +1392,7 @@ class Education(msrest.serialization.Model):
         :paramtype dates: ~affinda.models.EducationDates
         """
         super(Education, self).__init__(**kwargs)
+        self.id = id
         self.organization = organization
         self.accreditation = accreditation
         self.grade = grade
@@ -1402,40 +1403,40 @@ class Education(msrest.serialization.Model):
 class EducationDates(msrest.serialization.Model):
     """EducationDates.
 
-    :ivar start_date:
-    :vartype start_date: str
     :ivar completion_date:
-    :vartype completion_date: str
+    :vartype completion_date: ~datetime.date
     :ivar is_current:
     :vartype is_current: bool
+    :ivar start_date:
+    :vartype start_date: ~datetime.date
     """
 
     _attribute_map = {
-        "start_date": {"key": "startDate", "type": "str"},
-        "completion_date": {"key": "completionDate", "type": "str"},
+        "completion_date": {"key": "completionDate", "type": "date"},
         "is_current": {"key": "isCurrent", "type": "bool"},
+        "start_date": {"key": "startDate", "type": "date"},
     }
 
     def __init__(
         self,
         *,
-        start_date: Optional[str] = None,
-        completion_date: Optional[str] = None,
+        completion_date: Optional[datetime.date] = None,
         is_current: Optional[bool] = None,
+        start_date: Optional[datetime.date] = None,
         **kwargs,
     ):
         """
-        :keyword start_date:
-        :paramtype start_date: str
         :keyword completion_date:
-        :paramtype completion_date: str
+        :paramtype completion_date: ~datetime.date
         :keyword is_current:
         :paramtype is_current: bool
+        :keyword start_date:
+        :paramtype start_date: ~datetime.date
         """
         super(EducationDates, self).__init__(**kwargs)
-        self.start_date = start_date
         self.completion_date = completion_date
         self.is_current = is_current
+        self.start_date = start_date
 
 
 class EducationGrade(msrest.serialization.Model):
@@ -1443,38 +1444,38 @@ class EducationGrade(msrest.serialization.Model):
 
     :ivar raw:
     :vartype raw: str
-    :ivar value:
-    :vartype value: str
     :ivar metric:
     :vartype metric: str
+    :ivar value:
+    :vartype value: str
     """
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
-        "value": {"key": "value", "type": "str"},
         "metric": {"key": "metric", "type": "str"},
+        "value": {"key": "value", "type": "str"},
     }
 
     def __init__(
         self,
         *,
         raw: Optional[str] = None,
-        value: Optional[str] = None,
         metric: Optional[str] = None,
+        value: Optional[str] = None,
         **kwargs,
     ):
         """
         :keyword raw:
         :paramtype raw: str
-        :keyword value:
-        :paramtype value: str
         :keyword metric:
         :paramtype metric: str
+        :keyword value:
+        :paramtype value: str
         """
         super(EducationGrade, self).__init__(**kwargs)
         self.raw = raw
-        self.value = value
         self.metric = metric
+        self.value = value
 
 
 class EducationSearchScoreComponent(msrest.serialization.Model):
@@ -9624,7 +9625,7 @@ class ResumeData(msrest.serialization.Model):
     :ivar head_shot: base64 encoded string.
     :vartype head_shot: bytearray
     :ivar education:
-    :vartype education: list[~affinda.models.ResumeDataEducationItem]
+    :vartype education: list[~affinda.models.Education]
     :ivar profession: Prediction of the candidate's profession based on recent work experience.
     :vartype profession: str
     :ivar linkedin: Linkedin account associated with the candidate.
@@ -9671,7 +9672,7 @@ class ResumeData(msrest.serialization.Model):
         "summary": {"key": "summary", "type": "str"},
         "total_years_experience": {"key": "totalYearsExperience", "type": "int"},
         "head_shot": {"key": "headShot", "type": "bytearray"},
-        "education": {"key": "education", "type": "[ResumeDataEducationItem]"},
+        "education": {"key": "education", "type": "[Education]"},
         "profession": {"key": "profession", "type": "str"},
         "linkedin": {"key": "linkedin", "type": "str"},
         "work_experience": {"key": "workExperience", "type": "[ResumeDataWorkExperienceItem]"},
@@ -9696,7 +9697,7 @@ class ResumeData(msrest.serialization.Model):
         objective: Optional[str] = None,
         summary: Optional[str] = None,
         total_years_experience: Optional[int] = None,
-        education: Optional[List["_models.ResumeDataEducationItem"]] = None,
+        education: Optional[List["_models.Education"]] = None,
         work_experience: Optional[List["_models.ResumeDataWorkExperienceItem"]] = None,
         skills: Optional[List["_models.ResumeDataSkillsItem"]] = None,
         certifications: Optional[List[str]] = None,
@@ -9725,7 +9726,7 @@ class ResumeData(msrest.serialization.Model):
         :keyword total_years_experience:
         :paramtype total_years_experience: int
         :keyword education:
-        :paramtype education: list[~affinda.models.ResumeDataEducationItem]
+        :paramtype education: list[~affinda.models.Education]
         :keyword work_experience:
         :paramtype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
         :keyword skills:
@@ -9764,184 +9765,6 @@ class ResumeData(msrest.serialization.Model):
         self.sections = None
         self.is_resume_probability = None
         self.raw_text = raw_text
-
-
-class ResumeDataEducationItem(msrest.serialization.Model):
-    """ResumeDataEducationItem.
-
-    :ivar id:
-    :vartype id: int
-    :ivar organization:
-    :vartype organization: str
-    :ivar accreditation:
-    :vartype accreditation: ~affinda.models.ResumeDataEducationItemAccreditation
-    :ivar grade:
-    :vartype grade: ~affinda.models.ResumeDataEducationItemGrade
-    :ivar location:
-    :vartype location: ~affinda.models.Location
-    :ivar dates:
-    :vartype dates: ~affinda.models.ResumeDataEducationItemDates
-    """
-
-    _attribute_map = {
-        "id": {"key": "id", "type": "int"},
-        "organization": {"key": "organization", "type": "str"},
-        "accreditation": {"key": "accreditation", "type": "ResumeDataEducationItemAccreditation"},
-        "grade": {"key": "grade", "type": "ResumeDataEducationItemGrade"},
-        "location": {"key": "location", "type": "Location"},
-        "dates": {"key": "dates", "type": "ResumeDataEducationItemDates"},
-    }
-
-    def __init__(
-        self,
-        *,
-        id: Optional[int] = None,
-        organization: Optional[str] = None,
-        accreditation: Optional["_models.ResumeDataEducationItemAccreditation"] = None,
-        grade: Optional["_models.ResumeDataEducationItemGrade"] = None,
-        location: Optional["_models.Location"] = None,
-        dates: Optional["_models.ResumeDataEducationItemDates"] = None,
-        **kwargs,
-    ):
-        """
-        :keyword id:
-        :paramtype id: int
-        :keyword organization:
-        :paramtype organization: str
-        :keyword accreditation:
-        :paramtype accreditation: ~affinda.models.ResumeDataEducationItemAccreditation
-        :keyword grade:
-        :paramtype grade: ~affinda.models.ResumeDataEducationItemGrade
-        :keyword location:
-        :paramtype location: ~affinda.models.Location
-        :keyword dates:
-        :paramtype dates: ~affinda.models.ResumeDataEducationItemDates
-        """
-        super(ResumeDataEducationItem, self).__init__(**kwargs)
-        self.id = id
-        self.organization = organization
-        self.accreditation = accreditation
-        self.grade = grade
-        self.location = location
-        self.dates = dates
-
-
-class ResumeDataEducationItemAccreditation(msrest.serialization.Model):
-    """ResumeDataEducationItemAccreditation.
-
-    Variables are only populated by the server, and will be ignored when sending a request.
-
-    :ivar education:
-    :vartype education: str
-    :ivar input_str:
-    :vartype input_str: str
-    :ivar match_str:
-    :vartype match_str: str
-    :ivar education_level:
-    :vartype education_level: str
-    """
-
-    _validation = {
-        "input_str": {"readonly": True},
-        "match_str": {"readonly": True},
-        "education_level": {"readonly": True},
-    }
-
-    _attribute_map = {
-        "education": {"key": "education", "type": "str"},
-        "input_str": {"key": "inputStr", "type": "str"},
-        "match_str": {"key": "matchStr", "type": "str"},
-        "education_level": {"key": "educationLevel", "type": "str"},
-    }
-
-    def __init__(self, *, education: Optional[str] = None, **kwargs):
-        """
-        :keyword education:
-        :paramtype education: str
-        """
-        super(ResumeDataEducationItemAccreditation, self).__init__(**kwargs)
-        self.education = education
-        self.input_str = None
-        self.match_str = None
-        self.education_level = None
-
-
-class ResumeDataEducationItemDates(msrest.serialization.Model):
-    """ResumeDataEducationItemDates.
-
-    :ivar completion_date:
-    :vartype completion_date: ~datetime.date
-    :ivar is_current:
-    :vartype is_current: bool
-    :ivar start_date:
-    :vartype start_date: ~datetime.date
-    """
-
-    _attribute_map = {
-        "completion_date": {"key": "completionDate", "type": "date"},
-        "is_current": {"key": "isCurrent", "type": "bool"},
-        "start_date": {"key": "startDate", "type": "date"},
-    }
-
-    def __init__(
-        self,
-        *,
-        completion_date: Optional[datetime.date] = None,
-        is_current: Optional[bool] = None,
-        start_date: Optional[datetime.date] = None,
-        **kwargs,
-    ):
-        """
-        :keyword completion_date:
-        :paramtype completion_date: ~datetime.date
-        :keyword is_current:
-        :paramtype is_current: bool
-        :keyword start_date:
-        :paramtype start_date: ~datetime.date
-        """
-        super(ResumeDataEducationItemDates, self).__init__(**kwargs)
-        self.completion_date = completion_date
-        self.is_current = is_current
-        self.start_date = start_date
-
-
-class ResumeDataEducationItemGrade(msrest.serialization.Model):
-    """ResumeDataEducationItemGrade.
-
-    :ivar raw:
-    :vartype raw: str
-    :ivar metric:
-    :vartype metric: str
-    :ivar value:
-    :vartype value: str
-    """
-
-    _attribute_map = {
-        "raw": {"key": "raw", "type": "str"},
-        "metric": {"key": "metric", "type": "str"},
-        "value": {"key": "value", "type": "str"},
-    }
-
-    def __init__(
-        self,
-        *,
-        raw: Optional[str] = None,
-        metric: Optional[str] = None,
-        value: Optional[str] = None,
-        **kwargs,
-    ):
-        """
-        :keyword raw:
-        :paramtype raw: str
-        :keyword metric:
-        :paramtype metric: str
-        :keyword value:
-        :paramtype value: str
-        """
-        super(ResumeDataEducationItemGrade, self).__init__(**kwargs)
-        self.raw = raw
-        self.metric = metric
-        self.value = value
 
 
 class ResumeDataName(msrest.serialization.Model):
@@ -10920,6 +10743,8 @@ class ResumeSearchDetailEducationValueItem(
 
     :ivar match:
     :vartype match: bool
+    :ivar id:
+    :vartype id: int
     :ivar organization:
     :vartype organization: str
     :ivar accreditation:
@@ -10934,6 +10759,7 @@ class ResumeSearchDetailEducationValueItem(
 
     _attribute_map = {
         "match": {"key": "match", "type": "bool"},
+        "id": {"key": "id", "type": "int"},
         "organization": {"key": "organization", "type": "str"},
         "accreditation": {"key": "accreditation", "type": "Accreditation"},
         "grade": {"key": "grade", "type": "EducationGrade"},
@@ -10945,6 +10771,7 @@ class ResumeSearchDetailEducationValueItem(
         self,
         *,
         match: Optional[bool] = None,
+        id: Optional[int] = None,
         organization: Optional[str] = None,
         accreditation: Optional["_models.Accreditation"] = None,
         grade: Optional["_models.EducationGrade"] = None,
@@ -10955,6 +10782,8 @@ class ResumeSearchDetailEducationValueItem(
         """
         :keyword match:
         :paramtype match: bool
+        :keyword id:
+        :paramtype id: int
         :keyword organization:
         :paramtype organization: str
         :keyword accreditation:
@@ -10967,6 +10796,7 @@ class ResumeSearchDetailEducationValueItem(
         :paramtype dates: ~affinda.models.EducationDates
         """
         super(ResumeSearchDetailEducationValueItem, self).__init__(
+            id=id,
             organization=organization,
             accreditation=accreditation,
             grade=grade,
@@ -10976,6 +10806,7 @@ class ResumeSearchDetailEducationValueItem(
             **kwargs,
         )
         self.match = match
+        self.id = id
         self.organization = organization
         self.accreditation = accreditation
         self.grade = grade

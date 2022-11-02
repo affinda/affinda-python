@@ -12,14 +12,16 @@ class Accreditation(msrest.serialization.Model)
 
 Accreditation.
 
+Variables are only populated by the server, and will be ignored when sending a request.
+
 :ivar education:
 :vartype education: str
-:ivar education_level:
-:vartype education_level: str
 :ivar input_str:
 :vartype input_str: str
 :ivar match_str:
 :vartype match_str: str
+:ivar education_level:
+:vartype education_level: str
 
 <a id="models._models.Accreditation.__init__"></a>
 
@@ -32,9 +34,6 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `education`: 
-- `education_level`: 
-- `input_str`: 
-- `match_str`: 
 
 <a id="models._models.Annotation"></a>
 
@@ -1185,6 +1184,8 @@ class Education(msrest.serialization.Model)
 
 Education.
 
+:ivar id:
+:vartype id: int
 :ivar organization:
 :vartype organization: str
 :ivar accreditation:
@@ -1206,6 +1207,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
+- `id`: 
 - `organization`: 
 - `accreditation`: 
 - `grade`: 
@@ -1222,12 +1224,12 @@ class EducationDates(msrest.serialization.Model)
 
 EducationDates.
 
-:ivar start_date:
-:vartype start_date: str
 :ivar completion_date:
-:vartype completion_date: str
+:vartype completion_date: ~datetime.date
 :ivar is_current:
 :vartype is_current: bool
+:ivar start_date:
+:vartype start_date: ~datetime.date
 
 <a id="models._models.EducationDates.__init__"></a>
 
@@ -1239,9 +1241,9 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `start_date`: 
 - `completion_date`: 
 - `is_current`: 
+- `start_date`: 
 
 <a id="models._models.EducationGrade"></a>
 
@@ -1255,10 +1257,10 @@ EducationGrade.
 
 :ivar raw:
 :vartype raw: str
-:ivar value:
-:vartype value: str
 :ivar metric:
 :vartype metric: str
+:ivar value:
+:vartype value: str
 
 <a id="models._models.EducationGrade.__init__"></a>
 
@@ -1271,8 +1273,8 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `raw`: 
-- `value`: 
 - `metric`: 
+- `value`: 
 
 <a id="models._models.EducationSearchScoreComponent"></a>
 
@@ -6029,7 +6031,7 @@ Variables are only populated by the server, and will be ignored when sending a r
 :ivar head_shot: base64 encoded string.
 :vartype head_shot: bytearray
 :ivar education:
-:vartype education: list[~affinda.models.ResumeDataEducationItem]
+:vartype education: list[~affinda.models.Education]
 :ivar profession: Prediction of the candidate's profession based on recent work experience.
 :vartype profession: str
 :ivar linkedin: Linkedin account associated with the candidate.
@@ -6079,141 +6081,6 @@ def __init__(**kwargs)
 - `referees`: 
 - `raw_text`: All of the raw text of the parsed resume, example is shortened for
 readiblity.
-
-<a id="models._models.ResumeDataEducationItem"></a>
-
-## ResumeDataEducationItem Objects
-
-```python
-class ResumeDataEducationItem(msrest.serialization.Model)
-```
-
-ResumeDataEducationItem.
-
-:ivar id:
-:vartype id: int
-:ivar organization:
-:vartype organization: str
-:ivar accreditation:
-:vartype accreditation: ~affinda.models.ResumeDataEducationItemAccreditation
-:ivar grade:
-:vartype grade: ~affinda.models.ResumeDataEducationItemGrade
-:ivar location:
-:vartype location: ~affinda.models.Location
-:ivar dates:
-:vartype dates: ~affinda.models.ResumeDataEducationItemDates
-
-<a id="models._models.ResumeDataEducationItem.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `id`: 
-- `organization`: 
-- `accreditation`: 
-- `grade`: 
-- `location`: 
-- `dates`: 
-
-<a id="models._models.ResumeDataEducationItemAccreditation"></a>
-
-## ResumeDataEducationItemAccreditation Objects
-
-```python
-class ResumeDataEducationItemAccreditation(msrest.serialization.Model)
-```
-
-ResumeDataEducationItemAccreditation.
-
-Variables are only populated by the server, and will be ignored when sending a request.
-
-:ivar education:
-:vartype education: str
-:ivar input_str:
-:vartype input_str: str
-:ivar match_str:
-:vartype match_str: str
-:ivar education_level:
-:vartype education_level: str
-
-<a id="models._models.ResumeDataEducationItemAccreditation.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `education`: 
-
-<a id="models._models.ResumeDataEducationItemDates"></a>
-
-## ResumeDataEducationItemDates Objects
-
-```python
-class ResumeDataEducationItemDates(msrest.serialization.Model)
-```
-
-ResumeDataEducationItemDates.
-
-:ivar completion_date:
-:vartype completion_date: ~datetime.date
-:ivar is_current:
-:vartype is_current: bool
-:ivar start_date:
-:vartype start_date: ~datetime.date
-
-<a id="models._models.ResumeDataEducationItemDates.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `completion_date`: 
-- `is_current`: 
-- `start_date`: 
-
-<a id="models._models.ResumeDataEducationItemGrade"></a>
-
-## ResumeDataEducationItemGrade Objects
-
-```python
-class ResumeDataEducationItemGrade(msrest.serialization.Model)
-```
-
-ResumeDataEducationItemGrade.
-
-:ivar raw:
-:vartype raw: str
-:ivar metric:
-:vartype metric: str
-:ivar value:
-:vartype value: str
-
-<a id="models._models.ResumeDataEducationItemGrade.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `raw`: 
-- `metric`: 
-- `value`: 
 
 <a id="models._models.ResumeDataName"></a>
 
@@ -6846,6 +6713,8 @@ ResumeSearchDetailEducationValueItem.
 
 :ivar match:
 :vartype match: bool
+:ivar id:
+:vartype id: int
 :ivar organization:
 :vartype organization: str
 :ivar accreditation:
@@ -6868,6 +6737,7 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `match`: 
+- `id`: 
 - `organization`: 
 - `accreditation`: 
 - `grade`: 
