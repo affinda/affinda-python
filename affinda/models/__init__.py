@@ -62,6 +62,9 @@ try:
         ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1,
     )
     from ._models_py3 import (
+        ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties,
+    )
+    from ._models_py3 import (
         ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1,
     )
     from ._models_py3 import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1
@@ -216,6 +219,7 @@ try:
     from ._models_py3 import ResumeSearchMatch
     from ._models_py3 import ResumeSearchMatchDetails
     from ._models_py3 import ResumeSearchParameters
+    from ._models_py3 import ResumeSearchParametersCustomData
     from ._models_py3 import ResumeSearchParametersLocation
     from ._models_py3 import ResumeSearchParametersLocationCoordinates
     from ._models_py3 import ResumeSearchParametersSkill
@@ -268,6 +272,7 @@ except (SyntaxError, ImportError):
     from ._models import ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1  # type: ignore
     from ._models import ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1  # type: ignore
     from ._models import ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1  # type: ignore
+    from ._models import ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties  # type: ignore
     from ._models import ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1  # type: ignore
     from ._models import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1  # type: ignore
     from ._models import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1  # type: ignore
@@ -409,6 +414,7 @@ except (SyntaxError, ImportError):
     from ._models import ResumeSearchMatch  # type: ignore
     from ._models import ResumeSearchMatchDetails  # type: ignore
     from ._models import ResumeSearchParameters  # type: ignore
+    from ._models import ResumeSearchParametersCustomData  # type: ignore
     from ._models import ResumeSearchParametersLocation  # type: ignore
     from ._models import ResumeSearchParametersLocationCoordinates  # type: ignore
     from ._models import ResumeSearchParametersSkill  # type: ignore
@@ -476,6 +482,7 @@ __all__ = [
     "ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1",
     "ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1",
     "ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1",
+    "ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties",
     "ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1",
     "ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1",
     "ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1",
@@ -617,6 +624,7 @@ __all__ = [
     "ResumeSearchMatch",
     "ResumeSearchMatchDetails",
     "ResumeSearchParameters",
+    "ResumeSearchParametersCustomData",
     "ResumeSearchParametersLocation",
     "ResumeSearchParametersLocationCoordinates",
     "ResumeSearchParametersSkill",

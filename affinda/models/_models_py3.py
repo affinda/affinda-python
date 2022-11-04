@@ -1147,6 +1147,50 @@ class ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValue
         self.match = match
 
 
+class ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties(
+    msrest.serialization.Model
+):
+    """ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar value:
+    :vartype value: str
+    :ivar label: Required.
+    :vartype label: str
+    :ivar score:
+    :vartype score: float
+    """
+
+    _validation = {
+        "label": {"required": True},
+    }
+
+    _attribute_map = {
+        "value": {"key": "value", "type": "str"},
+        "label": {"key": "label", "type": "str"},
+        "score": {"key": "score", "type": "float"},
+    }
+
+    def __init__(
+        self, *, label: str, value: Optional[str] = None, score: Optional[float] = None, **kwargs
+    ):
+        """
+        :keyword value:
+        :paramtype value: str
+        :keyword label: Required.
+        :paramtype label: str
+        :keyword score:
+        :paramtype score: float
+        """
+        super(
+            ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties, self
+        ).__init__(**kwargs)
+        self.value = value
+        self.label = label
+        self.score = score
+
+
 class ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1(
     msrest.serialization.Model
 ):
@@ -7841,6 +7885,8 @@ class JobDescriptionSearchResult(msrest.serialization.Model):
     :vartype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
     :ivar search_expression: Required.
     :vartype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
+    :ivar organization_name: Required.
+    :vartype organization_name: str
     """
 
     _validation = {
@@ -7855,6 +7901,7 @@ class JobDescriptionSearchResult(msrest.serialization.Model):
         "location": {"required": True},
         "education": {"required": True},
         "search_expression": {"required": True},
+        "organization_name": {"required": True},
     }
 
     _attribute_map = {
@@ -7879,6 +7926,7 @@ class JobDescriptionSearchResult(msrest.serialization.Model):
             "key": "searchExpression",
             "type": "SearchExpressionSearchScoreComponent",
         },
+        "organization_name": {"key": "organizationName", "type": "str"},
     }
 
     def __init__(
@@ -7895,6 +7943,7 @@ class JobDescriptionSearchResult(msrest.serialization.Model):
         location: "_models.LocationSearchScoreComponent",
         education: "_models.EducationSearchScoreComponent",
         search_expression: "_models.SearchExpressionSearchScoreComponent",
+        organization_name: str,
         occupation_group: Optional["_models.OccupationGroupSearchScoreComponent"] = None,
         **kwargs,
     ):
@@ -7924,6 +7973,8 @@ class JobDescriptionSearchResult(msrest.serialization.Model):
         :paramtype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
         :keyword search_expression: Required.
         :paramtype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
+        :keyword organization_name: Required.
+        :paramtype organization_name: str
         """
         super(JobDescriptionSearchResult, self).__init__(**kwargs)
         self.identifier = identifier
@@ -7938,6 +7989,7 @@ class JobDescriptionSearchResult(msrest.serialization.Model):
         self.education = education
         self.occupation_group = occupation_group
         self.search_expression = search_expression
+        self.organization_name = organization_name
 
 
 class JobTitleAnnotation(Annotation):
@@ -11683,6 +11735,8 @@ class ResumeSearchParameters(msrest.serialization.Model):
     :vartype management_level_required: bool
     :ivar management_level_weight:
     :vartype management_level_weight: float
+    :ivar custom_data:
+    :vartype custom_data: list[~affinda.models.ResumeSearchParametersCustomData]
     """
 
     _validation = {
@@ -11740,6 +11794,7 @@ class ResumeSearchParameters(msrest.serialization.Model):
         "management_level": {"key": "managementLevel", "type": "str"},
         "management_level_required": {"key": "managementLevelRequired", "type": "bool"},
         "management_level_weight": {"key": "managementLevelWeight", "type": "float"},
+        "custom_data": {"key": "customData", "type": "[ResumeSearchParametersCustomData]"},
     }
 
     def __init__(
@@ -11785,6 +11840,7 @@ class ResumeSearchParameters(msrest.serialization.Model):
         management_level: Optional[Union[str, "_models.ManagementLevel"]] = None,
         management_level_required: Optional[bool] = None,
         management_level_weight: Optional[float] = None,
+        custom_data: Optional[List["_models.ResumeSearchParametersCustomData"]] = None,
         **kwargs,
     ):
         """
@@ -11870,6 +11926,8 @@ class ResumeSearchParameters(msrest.serialization.Model):
         :paramtype management_level_required: bool
         :keyword management_level_weight:
         :paramtype management_level_weight: float
+        :keyword custom_data:
+        :paramtype custom_data: list[~affinda.models.ResumeSearchParametersCustomData]
         """
         super(ResumeSearchParameters, self).__init__(**kwargs)
         self.indices = indices
@@ -11912,6 +11970,69 @@ class ResumeSearchParameters(msrest.serialization.Model):
         self.management_level = management_level
         self.management_level_required = management_level_required
         self.management_level_weight = management_level_weight
+        self.custom_data = custom_data
+
+
+class ResumeSearchParametersCustomData(msrest.serialization.Model):
+    """ResumeSearchParametersCustomData.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar filter_type: Required.
+    :vartype filter_type: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar query: Required. Any object.
+    :vartype query: any
+    :ivar required:
+    :vartype required: bool
+    :ivar weight:
+    :vartype weight: float
+    """
+
+    _validation = {
+        "filter_type": {"required": True},
+        "data_point": {"required": True},
+        "query": {"required": True},
+        "weight": {"maximum": 1, "minimum": 0},
+    }
+
+    _attribute_map = {
+        "filter_type": {"key": "filterType", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "query": {"key": "query", "type": "object"},
+        "required": {"key": "required", "type": "bool"},
+        "weight": {"key": "weight", "type": "float"},
+    }
+
+    def __init__(
+        self,
+        *,
+        filter_type: str,
+        data_point: str,
+        query: Any,
+        required: Optional[bool] = None,
+        weight: Optional[float] = None,
+        **kwargs,
+    ):
+        """
+        :keyword filter_type: Required.
+        :paramtype filter_type: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword query: Required. Any object.
+        :paramtype query: any
+        :keyword required:
+        :paramtype required: bool
+        :keyword weight:
+        :paramtype weight: float
+        """
+        super(ResumeSearchParametersCustomData, self).__init__(**kwargs)
+        self.filter_type = filter_type
+        self.data_point = data_point
+        self.query = query
+        self.required = required
+        self.weight = weight
 
 
 class ResumeSearchParametersLocation(msrest.serialization.Model):
@@ -12046,6 +12167,10 @@ class ResumeSearchResult(msrest.serialization.Model):
     :vartype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
     :ivar search_expression: Required.
     :vartype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
+    :ivar custom_data: Required. Dictionary of
+     <components·nqbw24·schemas·customdatasearchscorecomponent·additionalproperties>.
+    :vartype custom_data: dict[str,
+     ~affinda.models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties]
     """
 
     _validation = {
@@ -12061,6 +12186,7 @@ class ResumeSearchResult(msrest.serialization.Model):
         "education": {"required": True},
         "occupation_group": {"required": True},
         "search_expression": {"required": True},
+        "custom_data": {"required": True},
     }
 
     _attribute_map = {
@@ -12086,6 +12212,10 @@ class ResumeSearchResult(msrest.serialization.Model):
             "key": "searchExpression",
             "type": "SearchExpressionSearchScoreComponent",
         },
+        "custom_data": {
+            "key": "customData",
+            "type": "{ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties}",
+        },
     }
 
     def __init__(
@@ -12103,6 +12233,10 @@ class ResumeSearchResult(msrest.serialization.Model):
         education: "_models.EducationSearchScoreComponent",
         occupation_group: "_models.OccupationGroupSearchScoreComponent",
         search_expression: "_models.SearchExpressionSearchScoreComponent",
+        custom_data: Dict[
+            str,
+            "_models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties",
+        ],
         name: Optional[str] = None,
         **kwargs,
     ):
@@ -12134,6 +12268,10 @@ class ResumeSearchResult(msrest.serialization.Model):
         :paramtype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
         :keyword search_expression: Required.
         :paramtype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
+        :keyword custom_data: Required. Dictionary of
+         <components·nqbw24·schemas·customdatasearchscorecomponent·additionalproperties>.
+        :paramtype custom_data: dict[str,
+         ~affinda.models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties]
         """
         super(ResumeSearchResult, self).__init__(**kwargs)
         self.identifier = identifier
@@ -12149,6 +12287,7 @@ class ResumeSearchResult(msrest.serialization.Model):
         self.education = education
         self.occupation_group = occupation_group
         self.search_expression = search_expression
+        self.custom_data = custom_data
 
 
 class ResumeSkillSourcesItem(msrest.serialization.Model):

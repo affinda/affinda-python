@@ -1034,6 +1034,39 @@ def __init__(**kwargs)
 
 - `match`: 
 
+<a id="models._models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties"></a>
+
+## ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties Objects
+
+```python
+class ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties(msrest.serialization.Model)
+```
+
+ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar value:
+:vartype value: str
+:ivar label: Required.
+:vartype label: str
+:ivar score:
+:vartype score: float
+
+<a id="models._models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `value`: 
+- `label`: Required.
+- `score`: 
+
 <a id="models._models.ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1"></a>
 
 ## ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1 Objects
@@ -4800,6 +4833,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
 :ivar search_expression: Required.
 :vartype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
+:ivar organization_name: Required.
+:vartype organization_name: str
 
 <a id="models._models.JobDescriptionSearchResult.__init__"></a>
 
@@ -4824,6 +4859,7 @@ left blank, one will be automatically generated.
 - `education`: Required.
 - `occupation_group`: 
 - `search_expression`: Required.
+- `organization_name`: Required.
 
 <a id="models._models.JobTitleAnnotation"></a>
 
@@ -7404,6 +7440,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype management_level_required: bool
 :ivar management_level_weight:
 :vartype management_level_weight: float
+:ivar custom_data:
+:vartype custom_data: list[~affinda.models.ResumeSearchParametersCustomData]
 
 <a id="models._models.ResumeSearchParameters.__init__"></a>
 
@@ -7457,6 +7495,46 @@ will be automatically generated.
 - `management_level`: Known values are: "None", "Low", "Mid", "Upper".
 - `management_level_required`: 
 - `management_level_weight`: 
+- `custom_data`: 
+
+<a id="models._models.ResumeSearchParametersCustomData"></a>
+
+## ResumeSearchParametersCustomData Objects
+
+```python
+class ResumeSearchParametersCustomData(msrest.serialization.Model)
+```
+
+ResumeSearchParametersCustomData.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar filter_type: Required.
+:vartype filter_type: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar query: Required. Any object.
+:vartype query: any
+:ivar required:
+:vartype required: bool
+:ivar weight:
+:vartype weight: float
+
+<a id="models._models.ResumeSearchParametersCustomData.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `filter_type`: Required.
+- `data_point`: Required.
+- `query`: Required. Any object.
+- `required`: 
+- `weight`: 
 
 <a id="models._models.ResumeSearchParametersLocation"></a>
 
@@ -7587,6 +7665,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
 :ivar search_expression: Required.
 :vartype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
+:ivar custom_data: Required. Dictionary of
+ <components·nqbw24·schemas·customdatasearchscorecomponent·additionalproperties>.
+:vartype custom_data: dict[str,
+ ~affinda.models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties]
 
 <a id="models._models.ResumeSearchResult.__init__"></a>
 
@@ -7612,6 +7694,8 @@ left blank, one will be automatically generated.
 - `education`: Required.
 - `occupation_group`: Required.
 - `search_expression`: Required.
+- `custom_data`: Required. Dictionary of
+<components·nqbw24·schemas·customdatasearchscorecomponent·additionalproperties>.
 
 <a id="models._models.ResumeSkillSourcesItem"></a>
 

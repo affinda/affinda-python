@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Document meta pages without images should be nullable
 - Small fixes for accreditiation and education return objects
+- Various nullable fields in the API spec
 
 ### Security
 - Bumped package versions for patch reasons
@@ -15,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add reject_duplicates to document upload endpoint
 - XML 404 response schema
+- CustomData to resume search spec
 
 ### Changed
 - Update spec to allow XML content-type return from resumes, make totalYearsExperience nullable
