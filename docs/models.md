@@ -5415,7 +5415,7 @@ Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema.
 :ivar name:
 :vartype name: str
 :ivar document_type: Known values are: "resumes", "job_descriptions".
-:vartype document_type: str or ~affinda.models.Enum4
+:vartype document_type: str or ~affinda.models.Enum5
 
 <a id="models._models.Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema.__init__"></a>
 
@@ -6042,6 +6042,9 @@ A JSON-encoded string of the ``ResumeData`` object.
 
 Variables are only populated by the server, and will be ignored when sending a request.
 
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
 :ivar name:
 :vartype name: ~affinda.models.ResumeDataName
 :ivar phone_numbers:
@@ -6100,6 +6103,8 @@ def __init__(**kwargs)
 
 **Arguments**:
 
+- `additional_properties`: Unmatched properties from the message are deserialized to this
+collection.
 - `name`: 
 - `phone_numbers`: 
 - `websites`: 
@@ -7509,11 +7514,12 @@ ResumeSearchParametersCustomData.
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar filter_type: Required.
-:vartype filter_type: str
+:ivar filter_type: Required. Known values are: "equals", "range".
+:vartype filter_type: str or ~affinda.models.ResumeSearchParametersCustomDataFilterType
 :ivar data_point: Required.
 :vartype data_point: str
-:ivar query: Required. Any object.
+:ivar query: Required. "equals" searches require the "value" key inside the query, and "range"
+ searches require at least one of "gte" (greater than or equal) and "lte" (less than or equal).
 :vartype query: any
 :ivar required:
 :vartype required: bool
@@ -7530,9 +7536,11 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `filter_type`: Required.
+- `filter_type`: Required. Known values are: "equals", "range".
 - `data_point`: Required.
-- `query`: Required. Any object.
+- `query`: Required. "equals" searches require the "value" key inside the query, and
+"range" searches require at least one of "gte" (greater than or equal) and "lte" (less than or
+equal).
 - `required`: 
 - `weight`: 
 

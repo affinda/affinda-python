@@ -258,6 +258,32 @@ result = client.get_resume_search_match(resume, job_description, index=index)
 print(result.score)
 ```
 
+### getResumeSearchSuggestionJobTitle - Get job title suggestions based on provided job title(s)
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+suggested_job_titles = client.get_resume_search_suggestion_job_title(["Software Developer", "Team Lead"])
+print(suggested_job_titles)
+```
+
+### getResumeSearchSuggestionSkill - Get skill suggestions based on provided skill(s)
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+suggested_skills = client.get_resume_search_suggestion_skill(["Javascript", "Python"])
+print(suggested_skills)
+```
+
 ### createJobDescriptionSearch - Search through parsed job descriptions
 
 ```python

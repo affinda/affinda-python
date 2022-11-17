@@ -433,11 +433,12 @@ except (SyntaxError, ImportError):
 
 from ._affinda_api_enums import (
     EducationLevel,
-    Enum1,
-    Enum4,
+    Enum2,
+    Enum5,
     GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType,
     ManagementLevel,
     PostContentSchemaDocumentType,
+    ResumeSearchParametersCustomDataFilterType,
     ResumeSkillSourcesItemSection,
     SearchLocationUnit,
 )
@@ -641,11 +642,12 @@ __all__ = [
     "YearsExperienceAnnotation",
     "YearsExperienceAnnotationParsed",
     "EducationLevel",
-    "Enum1",
-    "Enum4",
+    "Enum2",
+    "Enum5",
     "GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType",
     "ManagementLevel",
     "PostContentSchemaDocumentType",
+    "ResumeSearchParametersCustomDataFilterType",
     "ResumeSkillSourcesItemSection",
     "SearchLocationUnit",
 ]

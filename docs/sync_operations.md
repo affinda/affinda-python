@@ -490,6 +490,56 @@ configurations of the embeddable resume search tool.
 
 `~affinda.models.ResumeSearchEmbed or ~affinda.models.RequestError`: ResumeSearchEmbed or RequestError, or the result of cls(response)
 
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_suggestion_job_title"></a>
+
+#### get\_resume\_search\_suggestion\_job\_title
+
+```python
+def get_resume_search_suggestion_job_title(job_titles, **kwargs)
+```
+
+Get job title suggestions based on provided job title(s).
+
+Provided one or more job titles, get related suggestions for your search.
+
+**Arguments**:
+
+- `job_titles` (`list[str]`): Job title to query suggestions for.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[str] or ~affinda.models.RequestError`: list of str or RequestError, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_suggestion_skill"></a>
+
+#### get\_resume\_search\_suggestion\_skill
+
+```python
+def get_resume_search_suggestion_skill(skills, **kwargs)
+```
+
+Get skill suggestions based on provided skill(s).
+
+Provided one or more skills, get related suggestions for your search.
+
+**Arguments**:
+
+- `skills` (`list[str]`): Skill to query suggestions for.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[str] or ~affinda.models.RequestError`: list of str or RequestError, or the result of cls(response)
+
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_job_descriptions"></a>
 
 #### get\_all\_job\_descriptions
@@ -759,7 +809,7 @@ Returns all the indexes.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
-- `document_type` (`str or ~affinda.models.Enum1`): Filter indices by a document type. Default value is None.
+- `document_type` (`str or ~affinda.models.Enum2`): Filter indices by a document type. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:

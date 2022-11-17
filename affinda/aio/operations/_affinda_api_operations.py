@@ -55,6 +55,8 @@ from ...operations._affinda_api_operations import (
     build_get_resume_search_config_request,
     build_get_resume_search_detail_request,
     build_get_resume_search_match_request,
+    build_get_resume_search_suggestion_job_title_request,
+    build_get_resume_search_suggestion_skill_request,
     build_list_occupation_groups_request,
     build_update_job_description_search_config_request,
     build_update_resume_data_request,
@@ -1284,6 +1286,128 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
     create_resume_search_embed_url.metadata = {"url": "/resume_search/embed"}  # type: ignore
 
+    async def get_resume_search_suggestion_job_title(
+        self, job_titles: List[str], **kwargs: Any
+    ) -> Union[List[str], _models.RequestError]:
+        """Get job title suggestions based on provided job title(s).
+
+        Provided one or more job titles, get related suggestions for your search.
+
+        :param job_titles: Job title to query suggestions for.
+        :type job_titles: list[str]
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: list of str or RequestError, or the result of cls(response)
+        :rtype: list[str] or ~affinda.models.RequestError
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[Union[List[str], _models.RequestError]]
+
+        request = build_get_resume_search_suggestion_job_title_request(
+            job_titles=job_titles,
+            template_url=self.get_resume_search_suggestion_job_title.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        request.url = self._client.format_url(request.url)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200, 400, 401]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if response.status_code == 200:
+            deserialized = self._deserialize("[str]", pipeline_response)
+
+        if response.status_code == 400:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if response.status_code == 401:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_resume_search_suggestion_job_title.metadata = {"url": "/resume_search/suggestion_job_title"}  # type: ignore
+
+    async def get_resume_search_suggestion_skill(
+        self, skills: List[str], **kwargs: Any
+    ) -> Union[List[str], _models.RequestError]:
+        """Get skill suggestions based on provided skill(s).
+
+        Provided one or more skills, get related suggestions for your search.
+
+        :param skills: Skill to query suggestions for.
+        :type skills: list[str]
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: list of str or RequestError, or the result of cls(response)
+        :rtype: list[str] or ~affinda.models.RequestError
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[Union[List[str], _models.RequestError]]
+
+        request = build_get_resume_search_suggestion_skill_request(
+            skills=skills,
+            template_url=self.get_resume_search_suggestion_skill.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        request.url = self._client.format_url(request.url)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200, 400, 401]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if response.status_code == 200:
+            deserialized = self._deserialize("[str]", pipeline_response)
+
+        if response.status_code == 400:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if response.status_code == 401:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_resume_search_suggestion_skill.metadata = {"url": "/resume_search/suggestion_skill"}  # type: ignore
+
     async def get_all_job_descriptions(
         self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any
     ) -> Union[_models.GetAllJobDescriptionsResults, _models.RequestError]:
@@ -1952,7 +2076,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         self,
         offset: Optional[int] = None,
         limit: Optional[int] = 300,
-        document_type: Optional[Union[str, "_models.Enum1"]] = None,
+        document_type: Optional[Union[str, "_models.Enum2"]] = None,
         **kwargs: Any,
     ) -> Union[
         _models.Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema, _models.RequestError
@@ -1967,7 +2091,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param limit: The numbers of results to return. Default value is 300.
         :type limit: int
         :param document_type: Filter indices by a document type. Default value is None.
-        :type document_type: str or ~affinda.models.Enum1
+        :type document_type: str or ~affinda.models.Enum2
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema or RequestError, or the
          result of cls(response)

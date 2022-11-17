@@ -17,13 +17,13 @@ class EducationLevel(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     DOCTORAL = "doctoral"
 
 
-class Enum1(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class Enum2(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     RESUMES = "resumes"
     JOB_DESCRIPTIONS = "job_descriptions"
 
 
-class Enum4(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class Enum5(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     RESUMES = "resumes"
     JOB_DESCRIPTIONS = "job_descriptions"
@@ -49,6 +49,12 @@ class PostContentSchemaDocumentType(str, Enum, metaclass=CaseInsensitiveEnumMeta
 
     RESUMES = "resumes"
     JOB_DESCRIPTIONS = "job_descriptions"
+
+
+class ResumeSearchParametersCustomDataFilterType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+
+    EQUALS = "equals"
+    RANGE = "range"
 
 
 class ResumeSkillSourcesItemSection(str, Enum, metaclass=CaseInsensitiveEnumMeta):

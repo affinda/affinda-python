@@ -17,9 +17,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add reject_duplicates to document upload endpoint
 - XML 404 response schema
 - CustomData to resume search spec
+- suggest skills and job titles endpoints
 
 ### Changed
 - Update spec to allow XML content-type return from resumes, make totalYearsExperience nullable
+- Allow additonalproperties for custom data upload (resumes) and search
 
 ## [1.4.2] - 2022-09-23
 ### Changed

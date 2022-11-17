@@ -8833,7 +8833,7 @@ class Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema(msrest.seria
     :ivar name:
     :vartype name: str
     :ivar document_type: Known values are: "resumes", "job_descriptions".
-    :vartype document_type: str or ~affinda.models.Enum4
+    :vartype document_type: str or ~affinda.models.Enum5
     """
 
     _attribute_map = {
@@ -8845,14 +8845,14 @@ class Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema(msrest.seria
         self,
         *,
         name: Optional[str] = None,
-        document_type: Optional[Union[str, "_models.Enum4"]] = None,
+        document_type: Optional[Union[str, "_models.Enum5"]] = None,
         **kwargs,
     ):
         """
         :keyword name:
         :paramtype name: str
         :keyword document_type: Known values are: "resumes", "job_descriptions".
-        :paramtype document_type: str or ~affinda.models.Enum4
+        :paramtype document_type: str or ~affinda.models.Enum5
         """
         super(Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema, self).__init__(
             **kwargs
@@ -9652,6 +9652,9 @@ class ResumeData(msrest.serialization.Model):
 
     Variables are only populated by the server, and will be ignored when sending a request.
 
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
     :ivar name:
     :vartype name: ~affinda.models.ResumeDataName
     :ivar phone_numbers:
@@ -9712,6 +9715,7 @@ class ResumeData(msrest.serialization.Model):
     }
 
     _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
         "name": {"key": "name", "type": "ResumeDataName"},
         "phone_numbers": {"key": "phoneNumbers", "type": "[str]"},
         "websites": {"key": "websites", "type": "[str]"},
@@ -9740,6 +9744,7 @@ class ResumeData(msrest.serialization.Model):
     def __init__(
         self,
         *,
+        additional_properties: Optional[Dict[str, Any]] = None,
         name: Optional["_models.ResumeDataName"] = None,
         phone_numbers: Optional[List[str]] = None,
         websites: Optional[List[str]] = None,
@@ -9759,6 +9764,9 @@ class ResumeData(msrest.serialization.Model):
         **kwargs,
     ):
         """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
         :keyword name:
         :paramtype name: ~affinda.models.ResumeDataName
         :keyword phone_numbers:
@@ -9794,6 +9802,7 @@ class ResumeData(msrest.serialization.Model):
         :paramtype raw_text: str
         """
         super(ResumeData, self).__init__(**kwargs)
+        self.additional_properties = additional_properties
         self.name = name
         self.phone_numbers = phone_numbers
         self.websites = websites
@@ -11978,11 +11987,12 @@ class ResumeSearchParametersCustomData(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
-    :ivar filter_type: Required.
-    :vartype filter_type: str
+    :ivar filter_type: Required. Known values are: "equals", "range".
+    :vartype filter_type: str or ~affinda.models.ResumeSearchParametersCustomDataFilterType
     :ivar data_point: Required.
     :vartype data_point: str
-    :ivar query: Required. Any object.
+    :ivar query: Required. "equals" searches require the "value" key inside the query, and "range"
+     searches require at least one of "gte" (greater than or equal) and "lte" (less than or equal).
     :vartype query: any
     :ivar required:
     :vartype required: bool
@@ -12008,7 +12018,7 @@ class ResumeSearchParametersCustomData(msrest.serialization.Model):
     def __init__(
         self,
         *,
-        filter_type: str,
+        filter_type: Union[str, "_models.ResumeSearchParametersCustomDataFilterType"],
         data_point: str,
         query: Any,
         required: Optional[bool] = None,
@@ -12016,11 +12026,13 @@ class ResumeSearchParametersCustomData(msrest.serialization.Model):
         **kwargs,
     ):
         """
-        :keyword filter_type: Required.
-        :paramtype filter_type: str
+        :keyword filter_type: Required. Known values are: "equals", "range".
+        :paramtype filter_type: str or ~affinda.models.ResumeSearchParametersCustomDataFilterType
         :keyword data_point: Required.
         :paramtype data_point: str
-        :keyword query: Required. Any object.
+        :keyword query: Required. "equals" searches require the "value" key inside the query, and
+         "range" searches require at least one of "gte" (greater than or equal) and "lte" (less than or
+         equal).
         :paramtype query: any
         :keyword required:
         :paramtype required: bool
