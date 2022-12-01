@@ -8166,7 +8166,7 @@ class ResumeData(msrest.serialization.Model):
     :ivar is_resume_probability: Probability that the given document is a resume. Values below 30
      suggest that the document is not a resume.
     :vartype is_resume_probability: int
-    :ivar raw_text: All of the raw text of the parsed resume, example is shortened for readiblity.
+    :ivar raw_text: All of the raw text of the parsed resume, example is shortened for readability.
     :vartype raw_text: str
     """
 
@@ -8243,7 +8243,7 @@ class ResumeData(msrest.serialization.Model):
         :keyword referees:
         :paramtype referees: list[~affinda.models.ResumeDataRefereesItem]
         :keyword raw_text: All of the raw text of the parsed resume, example is shortened for
-         readiblity.
+         readability.
         :paramtype raw_text: str
         """
         super(ResumeData, self).__init__(**kwargs)
@@ -9830,21 +9830,21 @@ class ResumeSearchParameters(msrest.serialization.Model):
     :vartype resume: str
     :ivar job_titles:
     :vartype job_titles: list[str]
-    :ivar job_titles_current_only:
+    :ivar job_titles_current_only: Search only through the canditate's current job.
     :vartype job_titles_current_only: bool
     :ivar job_titles_required:
     :vartype job_titles_required: bool
     :ivar job_titles_weight:
     :vartype job_titles_weight: float
-    :ivar years_experience_min:
+    :ivar years_experience_min: Minimum years of total work experience.
     :vartype years_experience_min: int
-    :ivar years_experience_max:
+    :ivar years_experience_max: Maximum years of total work experience.
     :vartype years_experience_max: int
     :ivar years_experience_required:
     :vartype years_experience_required: bool
     :ivar years_experience_weight:
     :vartype years_experience_weight: float
-    :ivar locations:
+    :ivar locations: Search by location name or by coordinates.
     :vartype locations: list[~affinda.models.ResumeSearchParametersLocation]
     :ivar locations_weight:
     :vartype locations_weight: float
@@ -9870,21 +9870,17 @@ class ResumeSearchParameters(msrest.serialization.Model):
     :vartype highest_degree_types: list[str or ~affinda.models.EducationLevel]
     :ivar highest_degree_types_required:
     :vartype highest_degree_types_required: bool
-    :ivar is_current_student:
+    :ivar is_current_student: Search for student canditates.
     :vartype is_current_student: bool
     :ivar is_current_student_required:
     :vartype is_current_student_required: bool
-    :ivar is_recent_graduate:
+    :ivar is_recent_graduate: Search for canditates that graduated less than a year ago.
     :vartype is_recent_graduate: bool
     :ivar is_recent_graduate_required:
     :vartype is_recent_graduate_required: bool
-    :ivar is_top_student:
-    :vartype is_top_student: bool
-    :ivar is_top_student_required:
-    :vartype is_top_student_required: bool
     :ivar education_weight:
     :vartype education_weight: float
-    :ivar search_expression:
+    :ivar search_expression: Search through resumes' raw text.
     :vartype search_expression: str
     :ivar search_expression_required:
     :vartype search_expression_required: bool
@@ -9949,8 +9945,6 @@ class ResumeSearchParameters(msrest.serialization.Model):
         "is_current_student_required": {"key": "isCurrentStudentRequired", "type": "bool"},
         "is_recent_graduate": {"key": "isRecentGraduate", "type": "bool"},
         "is_recent_graduate_required": {"key": "isRecentGraduateRequired", "type": "bool"},
-        "is_top_student": {"key": "isTopStudent", "type": "bool"},
-        "is_top_student_required": {"key": "isTopStudentRequired", "type": "bool"},
         "education_weight": {"key": "educationWeight", "type": "float"},
         "search_expression": {"key": "searchExpression", "type": "str"},
         "search_expression_required": {"key": "searchExpressionRequired", "type": "bool"},
@@ -9976,21 +9970,21 @@ class ResumeSearchParameters(msrest.serialization.Model):
         :paramtype resume: str
         :keyword job_titles:
         :paramtype job_titles: list[str]
-        :keyword job_titles_current_only:
+        :keyword job_titles_current_only: Search only through the canditate's current job.
         :paramtype job_titles_current_only: bool
         :keyword job_titles_required:
         :paramtype job_titles_required: bool
         :keyword job_titles_weight:
         :paramtype job_titles_weight: float
-        :keyword years_experience_min:
+        :keyword years_experience_min: Minimum years of total work experience.
         :paramtype years_experience_min: int
-        :keyword years_experience_max:
+        :keyword years_experience_max: Maximum years of total work experience.
         :paramtype years_experience_max: int
         :keyword years_experience_required:
         :paramtype years_experience_required: bool
         :keyword years_experience_weight:
         :paramtype years_experience_weight: float
-        :keyword locations:
+        :keyword locations: Search by location name or by coordinates.
         :paramtype locations: list[~affinda.models.ResumeSearchParametersLocation]
         :keyword locations_weight:
         :paramtype locations_weight: float
@@ -10016,21 +10010,17 @@ class ResumeSearchParameters(msrest.serialization.Model):
         :paramtype highest_degree_types: list[str or ~affinda.models.EducationLevel]
         :keyword highest_degree_types_required:
         :paramtype highest_degree_types_required: bool
-        :keyword is_current_student:
+        :keyword is_current_student: Search for student canditates.
         :paramtype is_current_student: bool
         :keyword is_current_student_required:
         :paramtype is_current_student_required: bool
-        :keyword is_recent_graduate:
+        :keyword is_recent_graduate: Search for canditates that graduated less than a year ago.
         :paramtype is_recent_graduate: bool
         :keyword is_recent_graduate_required:
         :paramtype is_recent_graduate_required: bool
-        :keyword is_top_student:
-        :paramtype is_top_student: bool
-        :keyword is_top_student_required:
-        :paramtype is_top_student_required: bool
         :keyword education_weight:
         :paramtype education_weight: float
-        :keyword search_expression:
+        :keyword search_expression: Search through resumes' raw text.
         :paramtype search_expression: str
         :keyword search_expression_required:
         :paramtype search_expression_required: bool
@@ -10080,8 +10070,6 @@ class ResumeSearchParameters(msrest.serialization.Model):
         self.is_current_student_required = kwargs.get("is_current_student_required", None)
         self.is_recent_graduate = kwargs.get("is_recent_graduate", None)
         self.is_recent_graduate_required = kwargs.get("is_recent_graduate_required", None)
-        self.is_top_student = kwargs.get("is_top_student", None)
-        self.is_top_student_required = kwargs.get("is_top_student_required", None)
         self.education_weight = kwargs.get("education_weight", None)
         self.search_expression = kwargs.get("search_expression", None)
         self.search_expression_required = kwargs.get("search_expression_required", None)
@@ -10160,7 +10148,7 @@ class ResumeSearchParametersLocation(msrest.serialization.Model):
     :vartype coordinates: ~affinda.models.ResumeSearchParametersLocationCoordinates
     :ivar distance:
     :vartype distance: int
-    :ivar unit: Known values are: "km", "mi".
+    :ivar unit: Known values are: "km", "mi". Default value: "km".
     :vartype unit: str or ~affinda.models.SearchLocationUnit
     """
 
@@ -10179,14 +10167,14 @@ class ResumeSearchParametersLocation(msrest.serialization.Model):
         :paramtype coordinates: ~affinda.models.ResumeSearchParametersLocationCoordinates
         :keyword distance:
         :paramtype distance: int
-        :keyword unit: Known values are: "km", "mi".
+        :keyword unit: Known values are: "km", "mi". Default value: "km".
         :paramtype unit: str or ~affinda.models.SearchLocationUnit
         """
         super(ResumeSearchParametersLocation, self).__init__(**kwargs)
-        self.name = kwargs.get("name", None)
+        self.name = kwargs.get("name", "")
         self.coordinates = kwargs.get("coordinates", None)
-        self.distance = kwargs.get("distance", None)
-        self.unit = kwargs.get("unit", None)
+        self.distance = kwargs.get("distance", 100)
+        self.unit = kwargs.get("unit", "km")
 
 
 class ResumeSearchParametersLocationCoordinates(msrest.serialization.Model):

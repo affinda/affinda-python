@@ -6090,7 +6090,7 @@ Variables are only populated by the server, and will be ignored when sending a r
 :ivar is_resume_probability: Probability that the given document is a resume. Values below 30
  suggest that the document is not a resume.
 :vartype is_resume_probability: int
-:ivar raw_text: All of the raw text of the parsed resume, example is shortened for readiblity.
+:ivar raw_text: All of the raw text of the parsed resume, example is shortened for readability.
 :vartype raw_text: str
 
 <a id="models._models.ResumeData.__init__"></a>
@@ -6121,7 +6121,7 @@ collection.
 - `publications`: 
 - `referees`: 
 - `raw_text`: All of the raw text of the parsed resume, example is shortened for
-readiblity.
+readability.
 
 <a id="models._models.ResumeDataName"></a>
 
@@ -7373,21 +7373,21 @@ All required parameters must be populated in order to send to Azure.
 :vartype resume: str
 :ivar job_titles:
 :vartype job_titles: list[str]
-:ivar job_titles_current_only:
+:ivar job_titles_current_only: Search only through the canditate's current job.
 :vartype job_titles_current_only: bool
 :ivar job_titles_required:
 :vartype job_titles_required: bool
 :ivar job_titles_weight:
 :vartype job_titles_weight: float
-:ivar years_experience_min:
+:ivar years_experience_min: Minimum years of total work experience.
 :vartype years_experience_min: int
-:ivar years_experience_max:
+:ivar years_experience_max: Maximum years of total work experience.
 :vartype years_experience_max: int
 :ivar years_experience_required:
 :vartype years_experience_required: bool
 :ivar years_experience_weight:
 :vartype years_experience_weight: float
-:ivar locations:
+:ivar locations: Search by location name or by coordinates.
 :vartype locations: list[~affinda.models.ResumeSearchParametersLocation]
 :ivar locations_weight:
 :vartype locations_weight: float
@@ -7413,21 +7413,17 @@ All required parameters must be populated in order to send to Azure.
 :vartype highest_degree_types: list[str or ~affinda.models.EducationLevel]
 :ivar highest_degree_types_required:
 :vartype highest_degree_types_required: bool
-:ivar is_current_student:
+:ivar is_current_student: Search for student canditates.
 :vartype is_current_student: bool
 :ivar is_current_student_required:
 :vartype is_current_student_required: bool
-:ivar is_recent_graduate:
+:ivar is_recent_graduate: Search for canditates that graduated less than a year ago.
 :vartype is_recent_graduate: bool
 :ivar is_recent_graduate_required:
 :vartype is_recent_graduate_required: bool
-:ivar is_top_student:
-:vartype is_top_student: bool
-:ivar is_top_student_required:
-:vartype is_top_student_required: bool
 :ivar education_weight:
 :vartype education_weight: float
-:ivar search_expression:
+:ivar search_expression: Search through resumes' raw text.
 :vartype search_expression: str
 :ivar search_expression_required:
 :vartype search_expression_required: bool
@@ -7464,14 +7460,14 @@ blank, one will be automatically generated.
 - `resume`: Unique identifier for the document. If creating a document and left blank, one
 will be automatically generated.
 - `job_titles`: 
-- `job_titles_current_only`: 
+- `job_titles_current_only`: Search only through the canditate's current job.
 - `job_titles_required`: 
 - `job_titles_weight`: 
-- `years_experience_min`: 
-- `years_experience_max`: 
+- `years_experience_min`: Minimum years of total work experience.
+- `years_experience_max`: Maximum years of total work experience.
 - `years_experience_required`: 
 - `years_experience_weight`: 
-- `locations`: 
+- `locations`: Search by location name or by coordinates.
 - `locations_weight`: 
 - `locations_required`: 
 - `skills`: 
@@ -7484,14 +7480,12 @@ will be automatically generated.
 - `degrees_required`: 
 - `highest_degree_types`: 
 - `highest_degree_types_required`: 
-- `is_current_student`: 
+- `is_current_student`: Search for student canditates.
 - `is_current_student_required`: 
-- `is_recent_graduate`: 
+- `is_recent_graduate`: Search for canditates that graduated less than a year ago.
 - `is_recent_graduate_required`: 
-- `is_top_student`: 
-- `is_top_student_required`: 
 - `education_weight`: 
-- `search_expression`: 
+- `search_expression`: Search through resumes' raw text.
 - `search_expression_required`: 
 - `search_expression_weight`: 
 - `soc_codes`: 
@@ -7560,7 +7554,7 @@ ResumeSearchParametersLocation.
 :vartype coordinates: ~affinda.models.ResumeSearchParametersLocationCoordinates
 :ivar distance:
 :vartype distance: int
-:ivar unit: Known values are: "km", "mi".
+:ivar unit: Known values are: "km", "mi". Default value: "km".
 :vartype unit: str or ~affinda.models.SearchLocationUnit
 
 <a id="models._models.ResumeSearchParametersLocation.__init__"></a>
@@ -7576,7 +7570,7 @@ def __init__(**kwargs)
 - `name`: 
 - `coordinates`: 
 - `distance`: 
-- `unit`: Known values are: "km", "mi".
+- `unit`: Known values are: "km", "mi". Default value: "km".
 
 <a id="models._models.ResumeSearchParametersLocationCoordinates"></a>
 
