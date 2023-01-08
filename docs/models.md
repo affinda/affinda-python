@@ -58,8 +58,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -85,7 +90,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -1171,8 +1179,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -1200,7 +1213,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -1365,8 +1381,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -1394,7 +1415,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -1452,8 +1476,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -1481,7 +1510,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -1911,8 +1943,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -1940,7 +1977,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -1970,8 +2010,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -1999,7 +2044,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2029,8 +2077,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -2058,7 +2111,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2088,8 +2144,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -2117,7 +2178,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2147,8 +2211,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -2176,7 +2245,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2206,8 +2278,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -2235,7 +2312,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2265,8 +2345,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -2294,7 +2379,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2324,8 +2412,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -2353,7 +2446,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2383,8 +2479,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -2412,7 +2513,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2442,8 +2546,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -2471,7 +2580,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2501,8 +2613,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -2530,7 +2647,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2560,8 +2680,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -2589,7 +2714,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2619,8 +2747,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -2648,7 +2781,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2678,8 +2814,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -2707,7 +2848,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2737,8 +2881,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -2766,7 +2915,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2796,8 +2948,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -2825,7 +2982,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2855,8 +3015,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -2884,7 +3049,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2914,8 +3082,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -2943,7 +3116,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2973,8 +3149,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -3002,7 +3183,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3032,8 +3216,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -3061,7 +3250,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3091,8 +3283,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -3120,7 +3317,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3150,8 +3350,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -3179,7 +3384,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3209,8 +3417,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -3238,7 +3451,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3268,8 +3484,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -3297,7 +3518,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3327,8 +3551,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -3356,7 +3585,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3386,8 +3618,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -3415,7 +3652,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3445,8 +3685,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -3474,7 +3719,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3504,8 +3752,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -3533,7 +3786,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3563,8 +3819,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -3592,7 +3853,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3622,8 +3886,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -3651,7 +3920,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -4884,8 +5156,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -4913,7 +5190,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -5044,8 +5324,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -5073,7 +5358,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -5136,8 +5424,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -5165,7 +5458,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -7850,8 +8146,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -7879,7 +8180,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -7969,8 +8273,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required.
+:ivar confidence: Required. Combined confidence from the model confidence and the OCR
+ confidence.
 :vartype confidence: float
+:ivar classification_confidence: Required. The AI model confidence.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. The OCR confidence.
+:vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
 :ivar is_client_verified:
@@ -7998,7 +8307,10 @@ collection.
 - `rectangle`: Required.
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required.
+- `confidence`: Required. Combined confidence from the model confidence and the OCR
+confidence.
+- `classification_confidence`: Required. The AI model confidence.
+- `text_extraction_confidence`: Required. The OCR confidence.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 

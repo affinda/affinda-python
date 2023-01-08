@@ -1,7 +1,7 @@
 Python Client Library for Affinda Resume Parser API
 ===================================================
 
-![affinda logo](https://raw.githubusercontent.com/affinda/affinda-python/main/affinda_logo.png)
+![affinda logo](https://raw.githubusercontent.com/affinda/affinda-python/master/affinda_logo.png)
 
 [![pypi ver](https://img.shields.io/pypi/v/affinda)](https://pypi.org/project/affinda/)
 [![pypi pyver](https://img.shields.io/pypi/pyversions/affinda)](https://pypi.org/affinda/)
