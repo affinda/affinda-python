@@ -54,16 +54,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -88,12 +91,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -1175,16 +1180,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -1211,12 +1219,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -1377,16 +1387,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -1413,12 +1426,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -1472,16 +1487,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -1508,12 +1526,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -1939,16 +1959,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -1975,12 +1998,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2006,16 +2031,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -2042,12 +2070,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2073,16 +2103,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -2109,12 +2142,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2140,16 +2175,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -2176,12 +2214,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2207,16 +2247,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -2243,12 +2286,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2274,16 +2319,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -2310,12 +2358,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2341,16 +2391,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -2377,12 +2430,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2408,16 +2463,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -2444,12 +2502,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2475,16 +2535,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -2511,12 +2574,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2542,16 +2607,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -2578,12 +2646,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2609,16 +2679,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -2645,12 +2718,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2676,16 +2751,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -2712,12 +2790,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2743,16 +2823,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -2779,12 +2862,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2810,16 +2895,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -2846,12 +2934,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2877,16 +2967,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -2913,12 +3006,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -2944,16 +3039,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -2980,12 +3078,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3011,16 +3111,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -3047,12 +3150,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3078,16 +3183,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -3114,12 +3222,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3145,16 +3255,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -3181,12 +3294,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3212,16 +3327,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -3248,12 +3366,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3279,16 +3399,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -3315,12 +3438,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3346,16 +3471,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -3382,12 +3510,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3413,16 +3543,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -3449,12 +3582,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3480,16 +3615,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -3516,12 +3654,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3547,16 +3687,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -3583,12 +3726,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3614,16 +3759,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -3650,12 +3798,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3681,16 +3831,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -3717,12 +3870,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3748,16 +3903,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -3784,12 +3942,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3815,16 +3975,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -3851,12 +4014,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -3882,16 +4047,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -3918,12 +4086,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -4279,6 +4449,8 @@ Variables are only populated by the server, and will be ignored when sending a r
 :vartype user_id: int
 :ivar username: Username of the logged in user.
 :vartype username: str
+:ivar actions: A list of actions to show in the dropdown in the embedded search tool.
+:vartype actions: list[~affinda.models.JobDescriptionSearchConfigActionsItem]
 
 <a id="models._models.JobDescriptionSearchConfig.__init__"></a>
 
@@ -4313,6 +4485,35 @@ no limitation.
 - `weight_keywords`: 
 - `indices`: List of index names.
 - `search_tool_theme`: Customize the theme of the embeded search tool.
+- `actions`: A list of actions to show in the dropdown in the embedded search tool.
+
+<a id="models._models.JobDescriptionSearchConfigActionsItem"></a>
+
+## JobDescriptionSearchConfigActionsItem Objects
+
+```python
+class JobDescriptionSearchConfigActionsItem(msrest.serialization.Model)
+```
+
+JobDescriptionSearchConfigActionsItem.
+
+:ivar label: Human readable label to display in the UI.
+:vartype label: str
+:ivar event_name: Name of the event to be triggered.
+:vartype event_name: str
+
+<a id="models._models.JobDescriptionSearchConfigActionsItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `label`: Human readable label to display in the UI.
+- `event_name`: Name of the event to be triggered.
 
 <a id="models._models.JobDescriptionSearchDetail"></a>
 
@@ -5152,16 +5353,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -5188,12 +5392,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -5320,16 +5526,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -5356,12 +5565,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -5420,16 +5631,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -5456,12 +5670,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -6474,6 +6690,8 @@ ResumeDataRefereesItem.
 :vartype email: str
 :ivar number:
 :vartype number: str
+:ivar position:
+:vartype position: str
 
 <a id="models._models.ResumeDataRefereesItem.__init__"></a>
 
@@ -6489,6 +6707,7 @@ def __init__(**kwargs)
 - `text`: 
 - `email`: 
 - `number`: 
+- `position`: 
 
 <a id="models._models.ResumeDataSectionsItem"></a>
 
@@ -8142,16 +8361,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -8178,12 +8400,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
@@ -8269,16 +8493,19 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles:
+:vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
 :ivar raw: Required.
 :vartype raw: str
-:ivar confidence: Required. Combined confidence from the model confidence and the OCR
- confidence.
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
-:ivar classification_confidence: Required. The AI model confidence.
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
 :vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. The OCR confidence.
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
@@ -8305,12 +8532,14 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: Required.
+- `rectangles`: 
 - `page_index`: Required.
 - `raw`: Required.
-- `confidence`: Required. Combined confidence from the model confidence and the OCR
-confidence.
-- `classification_confidence`: Required. The AI model confidence.
-- `text_extraction_confidence`: Required. The OCR confidence.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
 - `is_client_verified`: 
 - `is_auto_verified`: 
