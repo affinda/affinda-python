@@ -4,7 +4,7 @@
 # MODIFIED BY post_gen script
 # --------------------------------------------------------------------------
 
-from ._affinda_api import AffindaAPI
+from ._patch import AffindaAPI
 from .token_credential import TokenCredential
 from ._version import VERSION
 

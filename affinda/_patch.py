@@ -6,15 +6,43 @@
 
 Follow our quickstart for examples: https://aka.ms/azsdk/python/dpcodegen/python/customize
 """
-from typing import TYPE_CHECKING
+from typing import Any
 
-if TYPE_CHECKING:
-    # pylint: disable=unused-import,ungrouped-imports
-    from typing import List
+from ._affinda_api import AffindaAPI as AffindaAPIGenerated
+from azure.core.pipeline import PipelineRequest
+from azure.core.pipeline.policies import BearerTokenCredentialPolicy
+from .token_credential import TokenCredential
 
-__all__ = (
-    []
-)  # type: List[str]  # Add all objects you want publicly available to users at this package level
+
+class BearerTokenWithoutTLSEnforcementPolicy(BearerTokenCredentialPolicy):
+    """
+    Patch the credential policy to no longer enforce https, allows the client lib
+    to be used with http://localhost etc
+    """
+
+    def on_request(self, request: PipelineRequest):
+        request.context.options["enforce_https"] = False
+        return super().on_request(request)
+
+
+class AffindaAPI(AffindaAPIGenerated):
+    def __init__(
+        self,
+        credential: TokenCredential,
+        base_url="https://api.affinda.com/v2",  # type: str
+        **kwargs,  # type: Any
+    ):
+        super().__init__(
+            credential=credential,
+            base_url=base_url,
+            authentication_policy=kwargs.pop(
+                "authentication_policy", BearerTokenWithoutTLSEnforcementPolicy(credential)
+            ),
+            **kwargs,
+        )
+
+
+__all__ = ["AffindaAPI"]
 
 
 def patch_sdk():
