@@ -5,8 +5,8 @@
 # --------------------------------------------------------------------------
 
 from ._patch import AffindaAPI
-from .token_credential import TokenCredential
 from ._version import VERSION
+from .token_credential import TokenCredential
 
 __version__ = VERSION
 __all__ = ["AffindaAPI", "TokenCredential"]

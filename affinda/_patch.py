@@ -8,9 +8,10 @@ Follow our quickstart for examples: https://aka.ms/azsdk/python/dpcodegen/python
 """
 from typing import Any
 
-from ._affinda_api import AffindaAPI as AffindaAPIGenerated
 from azure.core.pipeline import PipelineRequest
 from azure.core.pipeline.policies import BearerTokenCredentialPolicy
+
+from ._affinda_api import AffindaAPI as AffindaAPIGenerated
 from .token_credential import TokenCredential
 
 
