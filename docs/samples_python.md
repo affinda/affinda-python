@@ -637,3 +637,21 @@ response = client.create_user(email="myuser@gmail.com")
 
 print(response.as_dict())
 ```
+
+### createOrganization - Create a new organization
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+response = client.create_organization(name="Grove Street King")
+
+print(response.as_dict())
+```
+
+Documents API
+-------------

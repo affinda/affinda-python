@@ -56,11 +56,11 @@ class Annotation(msrest.serialization.Model):
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -76,23 +76,30 @@ class Annotation(msrest.serialization.Model):
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -108,7 +115,8 @@ class Annotation(msrest.serialization.Model):
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -116,11 +124,11 @@ class Annotation(msrest.serialization.Model):
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -136,27 +144,346 @@ class Annotation(msrest.serialization.Model):
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         """
         super(Annotation, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
+
+
+class BaseExtractor(msrest.serialization.Model):
+    """BaseExtractor.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar id: Required.
+    :vartype id: int
+    :ivar identifier: Required.
+    :vartype identifier: str
+    :ivar name: Required.
+    :vartype name: str
+    :ivar name_plural: Required.
+    :vartype name_plural: str
+    :ivar validatable: Required.
+    :vartype validatable: bool
+    :ivar is_custom:
+    :vartype is_custom: bool
+    :ivar created_dt:
+    :vartype created_dt: ~datetime.datetime
+    """
+
+    _validation = {
+        "id": {"required": True},
+        "identifier": {"required": True},
+        "name": {"required": True},
+        "name_plural": {"required": True},
+        "validatable": {"required": True},
+    }
+
+    _attribute_map = {
+        "id": {"key": "id", "type": "int"},
+        "identifier": {"key": "identifier", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "name_plural": {"key": "namePlural", "type": "str"},
+        "validatable": {"key": "validatable", "type": "bool"},
+        "is_custom": {"key": "isCustom", "type": "bool"},
+        "created_dt": {"key": "createdDt", "type": "iso-8601"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword id: Required.
+        :paramtype id: int
+        :keyword identifier: Required.
+        :paramtype identifier: str
+        :keyword name: Required.
+        :paramtype name: str
+        :keyword name_plural: Required.
+        :paramtype name_plural: str
+        :keyword validatable: Required.
+        :paramtype validatable: bool
+        :keyword is_custom:
+        :paramtype is_custom: bool
+        :keyword created_dt:
+        :paramtype created_dt: ~datetime.datetime
+        """
+        super(BaseExtractor, self).__init__(**kwargs)
+        self.id = kwargs["id"]
+        self.identifier = kwargs["identifier"]
+        self.name = kwargs["name"]
+        self.name_plural = kwargs["name_plural"]
+        self.validatable = kwargs["validatable"]
+        self.is_custom = kwargs.get("is_custom", None)
+        self.created_dt = kwargs.get("created_dt", None)
+
+
+class Collection(msrest.serialization.Model):
+    """Collection.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar identifier: Required. Uniquely identify a collection.
+    :vartype identifier: str
+    :ivar name:
+    :vartype name: str
+    :ivar workspace:
+    :vartype workspace: ~affinda.models.CollectionWorkspace
+    :ivar extractor:
+    :vartype extractor: ~affinda.models.Extractor
+    :ivar auto_validation_threshold:
+    :vartype auto_validation_threshold: float
+    :ivar fields:
+    :vartype fields: list[~affinda.models.FieldGroup]
+    :ivar fields_configured:
+    :vartype fields_configured: bool
+    :ivar date_format_preference: Known values are: "DMY", "MDY", "YMD".
+    :vartype date_format_preference: str or ~affinda.models.CollectionDateFormatPreference
+    :ivar date_format_from_document: Predict the date format from any dates in the document that is
+     not ambiguous.
+    :vartype date_format_from_document: bool
+    :ivar extractor_config: Extra configurations specific to an extractor.
+    :vartype extractor_config: dict[str, any]
+    :ivar unvalidated_docs_count: Number of unvalidated documents in the collection.
+    :vartype unvalidated_docs_count: int
+    :ivar confirmed_docs_count: Number of validated documents in the collection.
+    :vartype confirmed_docs_count: int
+    """
+
+    _validation = {
+        "identifier": {"required": True},
+    }
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "workspace": {"key": "workspace", "type": "CollectionWorkspace"},
+        "extractor": {"key": "extractor", "type": "Extractor"},
+        "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
+        "fields": {"key": "fields", "type": "[FieldGroup]"},
+        "fields_configured": {"key": "fieldsConfigured", "type": "bool"},
+        "date_format_preference": {"key": "dateFormatPreference", "type": "str"},
+        "date_format_from_document": {"key": "dateFormatFromDocument", "type": "bool"},
+        "extractor_config": {"key": "extractorConfig", "type": "{object}"},
+        "unvalidated_docs_count": {"key": "unvalidatedDocsCount", "type": "int"},
+        "confirmed_docs_count": {"key": "confirmedDocsCount", "type": "int"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Required. Uniquely identify a collection.
+        :paramtype identifier: str
+        :keyword name:
+        :paramtype name: str
+        :keyword workspace:
+        :paramtype workspace: ~affinda.models.CollectionWorkspace
+        :keyword extractor:
+        :paramtype extractor: ~affinda.models.Extractor
+        :keyword auto_validation_threshold:
+        :paramtype auto_validation_threshold: float
+        :keyword fields:
+        :paramtype fields: list[~affinda.models.FieldGroup]
+        :keyword fields_configured:
+        :paramtype fields_configured: bool
+        :keyword date_format_preference: Known values are: "DMY", "MDY", "YMD".
+        :paramtype date_format_preference: str or ~affinda.models.CollectionDateFormatPreference
+        :keyword date_format_from_document: Predict the date format from any dates in the document that
+         is not ambiguous.
+        :paramtype date_format_from_document: bool
+        :keyword extractor_config: Extra configurations specific to an extractor.
+        :paramtype extractor_config: dict[str, any]
+        :keyword unvalidated_docs_count: Number of unvalidated documents in the collection.
+        :paramtype unvalidated_docs_count: int
+        :keyword confirmed_docs_count: Number of validated documents in the collection.
+        :paramtype confirmed_docs_count: int
+        """
+        super(Collection, self).__init__(**kwargs)
+        self.identifier = kwargs["identifier"]
+        self.name = kwargs.get("name", None)
+        self.workspace = kwargs.get("workspace", None)
+        self.extractor = kwargs.get("extractor", None)
+        self.auto_validation_threshold = kwargs.get("auto_validation_threshold", None)
+        self.fields = kwargs.get("fields", None)
+        self.fields_configured = kwargs.get("fields_configured", None)
+        self.date_format_preference = kwargs.get("date_format_preference", None)
+        self.date_format_from_document = kwargs.get("date_format_from_document", None)
+        self.extractor_config = kwargs.get("extractor_config", None)
+        self.unvalidated_docs_count = kwargs.get("unvalidated_docs_count", None)
+        self.confirmed_docs_count = kwargs.get("confirmed_docs_count", None)
+
+
+class CollectionCreate(msrest.serialization.Model):
+    """CollectionCreate.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar name: Required.
+    :vartype name: str
+    :ivar workspace: Required. Uniquely identify a workspace.
+    :vartype workspace: str
+    :ivar extractor: Required. Extractor's ID.
+    :vartype extractor: int
+    :ivar auto_validation_threshold:
+    :vartype auto_validation_threshold: float
+    :ivar fields:
+    :vartype fields: list[~affinda.models.FieldGroup]
+    :ivar date_format_preference: Known values are: "DMY", "MDY", "YMD".
+    :vartype date_format_preference: str or ~affinda.models.DateFormatPreference
+    :ivar date_format_from_document: Predict the date format from any dates in the document that is
+     not ambiguous.
+    :vartype date_format_from_document: bool
+    :ivar extractor_config: Extra configurations specific to an extractor.
+    :vartype extractor_config: dict[str, any]
+    """
+
+    _validation = {
+        "name": {"required": True},
+        "workspace": {"required": True},
+        "extractor": {"required": True},
+    }
+
+    _attribute_map = {
+        "name": {"key": "name", "type": "str"},
+        "workspace": {"key": "workspace", "type": "str"},
+        "extractor": {"key": "extractor", "type": "int"},
+        "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
+        "fields": {"key": "fields", "type": "[FieldGroup]"},
+        "date_format_preference": {"key": "dateFormatPreference", "type": "str"},
+        "date_format_from_document": {"key": "dateFormatFromDocument", "type": "bool"},
+        "extractor_config": {"key": "extractorConfig", "type": "{object}"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name: Required.
+        :paramtype name: str
+        :keyword workspace: Required. Uniquely identify a workspace.
+        :paramtype workspace: str
+        :keyword extractor: Required. Extractor's ID.
+        :paramtype extractor: int
+        :keyword auto_validation_threshold:
+        :paramtype auto_validation_threshold: float
+        :keyword fields:
+        :paramtype fields: list[~affinda.models.FieldGroup]
+        :keyword date_format_preference: Known values are: "DMY", "MDY", "YMD".
+        :paramtype date_format_preference: str or ~affinda.models.DateFormatPreference
+        :keyword date_format_from_document: Predict the date format from any dates in the document that
+         is not ambiguous.
+        :paramtype date_format_from_document: bool
+        :keyword extractor_config: Extra configurations specific to an extractor.
+        :paramtype extractor_config: dict[str, any]
+        """
+        super(CollectionCreate, self).__init__(**kwargs)
+        self.name = kwargs["name"]
+        self.workspace = kwargs["workspace"]
+        self.extractor = kwargs["extractor"]
+        self.auto_validation_threshold = kwargs.get("auto_validation_threshold", None)
+        self.fields = kwargs.get("fields", None)
+        self.date_format_preference = kwargs.get("date_format_preference", None)
+        self.date_format_from_document = kwargs.get("date_format_from_document", None)
+        self.extractor_config = kwargs.get("extractor_config", None)
+
+
+class CollectionUpdate(msrest.serialization.Model):
+    """CollectionUpdate.
+
+    :ivar name:
+    :vartype name: str
+    :ivar auto_validation_threshold:
+    :vartype auto_validation_threshold: float
+    :ivar fields:
+    :vartype fields: list[~affinda.models.FieldGroup]
+    :ivar date_format_preference: Known values are: "DMY", "MDY", "YMD".
+    :vartype date_format_preference: str or ~affinda.models.DateFormatPreference
+    :ivar date_format_from_document: Predict the date format from any dates in the document that is
+     not ambiguous.
+    :vartype date_format_from_document: bool
+    :ivar extractor_config: Extra configurations specific to an extractor.
+    :vartype extractor_config: dict[str, any]
+    """
+
+    _attribute_map = {
+        "name": {"key": "name", "type": "str"},
+        "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
+        "fields": {"key": "fields", "type": "[FieldGroup]"},
+        "date_format_preference": {"key": "dateFormatPreference", "type": "str"},
+        "date_format_from_document": {"key": "dateFormatFromDocument", "type": "bool"},
+        "extractor_config": {"key": "extractorConfig", "type": "{object}"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name:
+        :paramtype name: str
+        :keyword auto_validation_threshold:
+        :paramtype auto_validation_threshold: float
+        :keyword fields:
+        :paramtype fields: list[~affinda.models.FieldGroup]
+        :keyword date_format_preference: Known values are: "DMY", "MDY", "YMD".
+        :paramtype date_format_preference: str or ~affinda.models.DateFormatPreference
+        :keyword date_format_from_document: Predict the date format from any dates in the document that
+         is not ambiguous.
+        :paramtype date_format_from_document: bool
+        :keyword extractor_config: Extra configurations specific to an extractor.
+        :paramtype extractor_config: dict[str, any]
+        """
+        super(CollectionUpdate, self).__init__(**kwargs)
+        self.name = kwargs.get("name", None)
+        self.auto_validation_threshold = kwargs.get("auto_validation_threshold", None)
+        self.fields = kwargs.get("fields", None)
+        self.date_format_preference = kwargs.get("date_format_preference", None)
+        self.date_format_from_document = kwargs.get("date_format_from_document", None)
+        self.extractor_config = kwargs.get("extractor_config", None)
+
+
+class CollectionWorkspace(msrest.serialization.Model):
+    """CollectionWorkspace.
+
+    :ivar identifier: Uniquely identify a workspace.
+    :vartype identifier: str
+    :ivar organization:
+    :vartype organization: ~affinda.models.Organization
+    :ivar name:
+    :vartype name: str
+    """
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "organization": {"key": "organization", "type": "Organization"},
+        "name": {"key": "name", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Uniquely identify a workspace.
+        :paramtype identifier: str
+        :keyword organization:
+        :paramtype organization: ~affinda.models.Organization
+        :keyword name:
+        :paramtype name: str
+        """
+        super(CollectionWorkspace, self).__init__(**kwargs)
+        self.identifier = kwargs.get("identifier", None)
+        self.organization = kwargs.get("organization", None)
+        self.name = kwargs.get("name", None)
 
 
 class Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1(
@@ -1266,6 +1593,235 @@ class ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1(
         self.parsed = kwargs.get("parsed", None)
 
 
+class DataPoint(msrest.serialization.Model):
+    """DataPoint.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar identifier: Required. Uniquely identify a data point.
+    :vartype identifier: str
+    :ivar name: Required.
+    :vartype name: str
+    :ivar slug:
+    :vartype slug: str
+    :ivar description:
+    :vartype description: str
+    :ivar annotation_content_type: Required. Known values are: "text", "integer", "float",
+     "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table".
+    :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
+    :ivar organization:
+    :vartype organization: ~affinda.models.Organization
+    :ivar extractor: Required. Extractor's ID.
+    :vartype extractor: int
+    :ivar multiple:
+    :vartype multiple: bool
+    :ivar no_rect:
+    :vartype no_rect: bool
+    :ivar similar_to: Required.
+    :vartype similar_to: list[str]
+    :ivar choices:
+    :vartype choices: list[~affinda.models.DataPointChoicesItem]
+    :ivar children:
+    :vartype children: list[~affinda.models.DataPoint]
+    """
+
+    _validation = {
+        "identifier": {"required": True},
+        "name": {"required": True},
+        "annotation_content_type": {"required": True},
+        "extractor": {"required": True},
+        "similar_to": {"required": True},
+    }
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "slug": {"key": "slug", "type": "str"},
+        "description": {"key": "description", "type": "str"},
+        "annotation_content_type": {"key": "annotationContentType", "type": "str"},
+        "organization": {"key": "organization", "type": "Organization"},
+        "extractor": {"key": "extractor", "type": "int"},
+        "multiple": {"key": "multiple", "type": "bool"},
+        "no_rect": {"key": "noRect", "type": "bool"},
+        "similar_to": {"key": "similarTo", "type": "[str]"},
+        "choices": {"key": "choices", "type": "[DataPointChoicesItem]"},
+        "children": {"key": "children", "type": "[DataPoint]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Required. Uniquely identify a data point.
+        :paramtype identifier: str
+        :keyword name: Required.
+        :paramtype name: str
+        :keyword slug:
+        :paramtype slug: str
+        :keyword description:
+        :paramtype description: str
+        :keyword annotation_content_type: Required. Known values are: "text", "integer", "float",
+         "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table".
+        :paramtype annotation_content_type: str or ~affinda.models.AnnotationContentType
+        :keyword organization:
+        :paramtype organization: ~affinda.models.Organization
+        :keyword extractor: Required. Extractor's ID.
+        :paramtype extractor: int
+        :keyword multiple:
+        :paramtype multiple: bool
+        :keyword no_rect:
+        :paramtype no_rect: bool
+        :keyword similar_to: Required.
+        :paramtype similar_to: list[str]
+        :keyword choices:
+        :paramtype choices: list[~affinda.models.DataPointChoicesItem]
+        :keyword children:
+        :paramtype children: list[~affinda.models.DataPoint]
+        """
+        super(DataPoint, self).__init__(**kwargs)
+        self.identifier = kwargs["identifier"]
+        self.name = kwargs["name"]
+        self.slug = kwargs.get("slug", None)
+        self.description = kwargs.get("description", None)
+        self.annotation_content_type = kwargs["annotation_content_type"]
+        self.organization = kwargs.get("organization", None)
+        self.extractor = kwargs["extractor"]
+        self.multiple = kwargs.get("multiple", None)
+        self.no_rect = kwargs.get("no_rect", None)
+        self.similar_to = kwargs["similar_to"]
+        self.choices = kwargs.get("choices", None)
+        self.children = kwargs.get("children", None)
+
+
+class DataPointChoicesItem(msrest.serialization.Model):
+    """DataPointChoicesItem.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar label: Required.
+    :vartype label: str
+    """
+
+    _validation = {
+        "label": {"required": True},
+    }
+
+    _attribute_map = {
+        "label": {"key": "label", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword label: Required.
+        :paramtype label: str
+        """
+        super(DataPointChoicesItem, self).__init__(**kwargs)
+        self.label = kwargs["label"]
+
+
+class DataPointCreate(msrest.serialization.Model):
+    """DataPointCreate.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar name:
+    :vartype name: str
+    :ivar slug: Required.
+    :vartype slug: str
+    :ivar description:
+    :vartype description: str
+    :ivar annotation_content_type: Required. Known values are: "text", "integer", "float",
+     "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table".
+    :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
+    :ivar organization: Required. Uniquely identify an organization.
+    :vartype organization: str
+    :ivar extractor: Required. Extractor's ID.
+    :vartype extractor: int
+    :ivar multiple:
+    :vartype multiple: bool
+    :ivar no_rect:
+    :vartype no_rect: bool
+    """
+
+    _validation = {
+        "slug": {"required": True},
+        "annotation_content_type": {"required": True},
+        "organization": {"required": True},
+        "extractor": {"required": True},
+    }
+
+    _attribute_map = {
+        "name": {"key": "name", "type": "str"},
+        "slug": {"key": "slug", "type": "str"},
+        "description": {"key": "description", "type": "str"},
+        "annotation_content_type": {"key": "annotationContentType", "type": "str"},
+        "organization": {"key": "organization", "type": "str"},
+        "extractor": {"key": "extractor", "type": "int"},
+        "multiple": {"key": "multiple", "type": "bool"},
+        "no_rect": {"key": "noRect", "type": "bool"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name:
+        :paramtype name: str
+        :keyword slug: Required.
+        :paramtype slug: str
+        :keyword description:
+        :paramtype description: str
+        :keyword annotation_content_type: Required. Known values are: "text", "integer", "float",
+         "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table".
+        :paramtype annotation_content_type: str or ~affinda.models.AnnotationContentType
+        :keyword organization: Required. Uniquely identify an organization.
+        :paramtype organization: str
+        :keyword extractor: Required. Extractor's ID.
+        :paramtype extractor: int
+        :keyword multiple:
+        :paramtype multiple: bool
+        :keyword no_rect:
+        :paramtype no_rect: bool
+        """
+        super(DataPointCreate, self).__init__(**kwargs)
+        self.name = kwargs.get("name", None)
+        self.slug = kwargs["slug"]
+        self.description = kwargs.get("description", None)
+        self.annotation_content_type = kwargs["annotation_content_type"]
+        self.organization = kwargs["organization"]
+        self.extractor = kwargs["extractor"]
+        self.multiple = kwargs.get("multiple", None)
+        self.no_rect = kwargs.get("no_rect", None)
+
+
+class DataPointUpdate(msrest.serialization.Model):
+    """DataPointUpdate.
+
+    :ivar name:
+    :vartype name: str
+    :ivar slug:
+    :vartype slug: str
+    :ivar description:
+    :vartype description: str
+    """
+
+    _attribute_map = {
+        "name": {"key": "name", "type": "str"},
+        "slug": {"key": "slug", "type": "str"},
+        "description": {"key": "description", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name:
+        :paramtype name: str
+        :keyword slug:
+        :paramtype slug: str
+        :keyword description:
+        :paramtype description: str
+        """
+        super(DataPointUpdate, self).__init__(**kwargs)
+        self.name = kwargs.get("name", None)
+        self.slug = kwargs.get("slug", None)
+        self.description = kwargs.get("description", None)
+
+
 class DateAnnotation(Annotation):
     """DateAnnotation.
 
@@ -1274,11 +1830,11 @@ class DateAnnotation(Annotation):
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -1294,25 +1850,32 @@ class DateAnnotation(Annotation):
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: ~datetime.date
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -1328,7 +1891,8 @@ class DateAnnotation(Annotation):
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "date"},
     }
 
@@ -1337,11 +1901,11 @@ class DateAnnotation(Annotation):
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -1357,17 +1921,668 @@ class DateAnnotation(Annotation):
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: ~datetime.date
         """
         super(DateAnnotation, self).__init__(**kwargs)
         self.parsed = kwargs.get("parsed", None)
+
+
+class DocumentMeta(msrest.serialization.Model):
+    """DocumentMeta.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar identifier: Required. Uniquely identify a document.
+    :vartype identifier: str
+    :ivar file_name: Optional filename of the file.
+    :vartype file_name: str
+    :ivar ready: If true, the document has finished processing. Particularly useful if an endpoint
+     request specified wait=False, when polling use this variable to determine when to stop polling.
+    :vartype ready: bool
+    :ivar ready_dt: The datetime when the document was ready.
+    :vartype ready_dt: ~datetime.datetime
+    :ivar failed: If true, some exception was raised during processing. Check the 'error' field of
+     the main return object.
+    :vartype failed: bool
+    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+     deleted.  Defaults to no expiry.
+    :vartype expiry_time: ~datetime.datetime
+    :ivar language: The document's language.
+    :vartype language: str
+    :ivar pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
+     converted to pdf as part of the parsing process).
+    :vartype pdf: str
+    :ivar parent_document: If this document is part of a splitted document, this attribute points
+     to the original document that this document is splitted from.
+    :vartype parent_document: ~affinda.models.DocumentMetaParentDocument
+    :ivar child_documents: If this document has been splitted into a number of child documents,
+     this attribute points to those child documents.
+    :vartype child_documents: list[~affinda.models.DocumentMetaChildDocumentsItem]
+    :ivar pages: Required. The document's pages.
+    :vartype pages: list[~affinda.models.PageMeta]
+    :ivar is_ocrd:
+    :vartype is_ocrd: bool
+    :ivar ocr_confidence:
+    :vartype ocr_confidence: float
+    :ivar review_url:
+    :vartype review_url: str
+    :ivar collection:
+    :vartype collection: ~affinda.models.DocumentMetaCollection
+    :ivar workspace: Required.
+    :vartype workspace: ~affinda.models.DocumentMetaWorkspace
+    :ivar archived_dt:
+    :vartype archived_dt: ~datetime.datetime
+    :ivar is_archived:
+    :vartype is_archived: bool
+    :ivar confirmed_dt:
+    :vartype confirmed_dt: ~datetime.datetime
+    :ivar is_confirmed:
+    :vartype is_confirmed: bool
+    :ivar rejected_dt:
+    :vartype rejected_dt: ~datetime.datetime
+    :ivar is_rejected:
+    :vartype is_rejected: bool
+    :ivar created_dt:
+    :vartype created_dt: ~datetime.datetime
+    :ivar error_code:
+    :vartype error_code: str
+    :ivar error_detail:
+    :vartype error_detail: str
+    :ivar file: URL to view the file.
+    :vartype file: str
+    :ivar tags: A set of tags.
+    :vartype tags: list[~affinda.models.Tag]
+    """
+
+    _validation = {
+        "identifier": {"required": True},
+        "pages": {"required": True},
+        "workspace": {"required": True},
+    }
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "file_name": {"key": "fileName", "type": "str"},
+        "ready": {"key": "ready", "type": "bool"},
+        "ready_dt": {"key": "readyDt", "type": "iso-8601"},
+        "failed": {"key": "failed", "type": "bool"},
+        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
+        "language": {"key": "language", "type": "str"},
+        "pdf": {"key": "pdf", "type": "str"},
+        "parent_document": {"key": "parentDocument", "type": "DocumentMetaParentDocument"},
+        "child_documents": {"key": "childDocuments", "type": "[DocumentMetaChildDocumentsItem]"},
+        "pages": {"key": "pages", "type": "[PageMeta]"},
+        "is_ocrd": {"key": "isOcrd", "type": "bool"},
+        "ocr_confidence": {"key": "ocrConfidence", "type": "float"},
+        "review_url": {"key": "reviewUrl", "type": "str"},
+        "collection": {"key": "collection", "type": "DocumentMetaCollection"},
+        "workspace": {"key": "workspace", "type": "DocumentMetaWorkspace"},
+        "archived_dt": {"key": "archivedDt", "type": "iso-8601"},
+        "is_archived": {"key": "isArchived", "type": "bool"},
+        "confirmed_dt": {"key": "confirmedDt", "type": "iso-8601"},
+        "is_confirmed": {"key": "isConfirmed", "type": "bool"},
+        "rejected_dt": {"key": "rejectedDt", "type": "iso-8601"},
+        "is_rejected": {"key": "isRejected", "type": "bool"},
+        "created_dt": {"key": "createdDt", "type": "iso-8601"},
+        "error_code": {"key": "errorCode", "type": "str"},
+        "error_detail": {"key": "errorDetail", "type": "str"},
+        "file": {"key": "file", "type": "str"},
+        "tags": {"key": "tags", "type": "[Tag]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Required. Uniquely identify a document.
+        :paramtype identifier: str
+        :keyword file_name: Optional filename of the file.
+        :paramtype file_name: str
+        :keyword ready: If true, the document has finished processing. Particularly useful if an
+         endpoint request specified wait=False, when polling use this variable to determine when to stop
+         polling.
+        :paramtype ready: bool
+        :keyword ready_dt: The datetime when the document was ready.
+        :paramtype ready_dt: ~datetime.datetime
+        :keyword failed: If true, some exception was raised during processing. Check the 'error' field
+         of the main return object.
+        :paramtype failed: bool
+        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+         deleted.  Defaults to no expiry.
+        :paramtype expiry_time: ~datetime.datetime
+        :keyword language: The document's language.
+        :paramtype language: str
+        :keyword pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
+         converted to pdf as part of the parsing process).
+        :paramtype pdf: str
+        :keyword parent_document: If this document is part of a splitted document, this attribute
+         points to the original document that this document is splitted from.
+        :paramtype parent_document: ~affinda.models.DocumentMetaParentDocument
+        :keyword child_documents: If this document has been splitted into a number of child documents,
+         this attribute points to those child documents.
+        :paramtype child_documents: list[~affinda.models.DocumentMetaChildDocumentsItem]
+        :keyword pages: Required. The document's pages.
+        :paramtype pages: list[~affinda.models.PageMeta]
+        :keyword is_ocrd:
+        :paramtype is_ocrd: bool
+        :keyword ocr_confidence:
+        :paramtype ocr_confidence: float
+        :keyword review_url:
+        :paramtype review_url: str
+        :keyword collection:
+        :paramtype collection: ~affinda.models.DocumentMetaCollection
+        :keyword workspace: Required.
+        :paramtype workspace: ~affinda.models.DocumentMetaWorkspace
+        :keyword archived_dt:
+        :paramtype archived_dt: ~datetime.datetime
+        :keyword is_archived:
+        :paramtype is_archived: bool
+        :keyword confirmed_dt:
+        :paramtype confirmed_dt: ~datetime.datetime
+        :keyword is_confirmed:
+        :paramtype is_confirmed: bool
+        :keyword rejected_dt:
+        :paramtype rejected_dt: ~datetime.datetime
+        :keyword is_rejected:
+        :paramtype is_rejected: bool
+        :keyword created_dt:
+        :paramtype created_dt: ~datetime.datetime
+        :keyword error_code:
+        :paramtype error_code: str
+        :keyword error_detail:
+        :paramtype error_detail: str
+        :keyword file: URL to view the file.
+        :paramtype file: str
+        :keyword tags: A set of tags.
+        :paramtype tags: list[~affinda.models.Tag]
+        """
+        super(DocumentMeta, self).__init__(**kwargs)
+        self.identifier = kwargs["identifier"]
+        self.file_name = kwargs.get("file_name", None)
+        self.ready = kwargs.get("ready", None)
+        self.ready_dt = kwargs.get("ready_dt", None)
+        self.failed = kwargs.get("failed", None)
+        self.expiry_time = kwargs.get("expiry_time", None)
+        self.language = kwargs.get("language", None)
+        self.pdf = kwargs.get("pdf", None)
+        self.parent_document = kwargs.get("parent_document", None)
+        self.child_documents = kwargs.get("child_documents", None)
+        self.pages = kwargs["pages"]
+        self.is_ocrd = kwargs.get("is_ocrd", None)
+        self.ocr_confidence = kwargs.get("ocr_confidence", None)
+        self.review_url = kwargs.get("review_url", None)
+        self.collection = kwargs.get("collection", None)
+        self.workspace = kwargs["workspace"]
+        self.archived_dt = kwargs.get("archived_dt", None)
+        self.is_archived = kwargs.get("is_archived", None)
+        self.confirmed_dt = kwargs.get("confirmed_dt", None)
+        self.is_confirmed = kwargs.get("is_confirmed", None)
+        self.rejected_dt = kwargs.get("rejected_dt", None)
+        self.is_rejected = kwargs.get("is_rejected", None)
+        self.created_dt = kwargs.get("created_dt", None)
+        self.error_code = kwargs.get("error_code", None)
+        self.error_detail = kwargs.get("error_detail", None)
+        self.file = kwargs.get("file", None)
+        self.tags = kwargs.get("tags", None)
+
+
+class Document(DocumentMeta):
+    """Document.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar identifier: Required. Uniquely identify a document.
+    :vartype identifier: str
+    :ivar file_name: Optional filename of the file.
+    :vartype file_name: str
+    :ivar ready: If true, the document has finished processing. Particularly useful if an endpoint
+     request specified wait=False, when polling use this variable to determine when to stop polling.
+    :vartype ready: bool
+    :ivar ready_dt: The datetime when the document was ready.
+    :vartype ready_dt: ~datetime.datetime
+    :ivar failed: If true, some exception was raised during processing. Check the 'error' field of
+     the main return object.
+    :vartype failed: bool
+    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+     deleted.  Defaults to no expiry.
+    :vartype expiry_time: ~datetime.datetime
+    :ivar language: The document's language.
+    :vartype language: str
+    :ivar pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
+     converted to pdf as part of the parsing process).
+    :vartype pdf: str
+    :ivar parent_document: If this document is part of a splitted document, this attribute points
+     to the original document that this document is splitted from.
+    :vartype parent_document: ~affinda.models.DocumentMetaParentDocument
+    :ivar child_documents: If this document has been splitted into a number of child documents,
+     this attribute points to those child documents.
+    :vartype child_documents: list[~affinda.models.DocumentMetaChildDocumentsItem]
+    :ivar pages: Required. The document's pages.
+    :vartype pages: list[~affinda.models.PageMeta]
+    :ivar is_ocrd:
+    :vartype is_ocrd: bool
+    :ivar ocr_confidence:
+    :vartype ocr_confidence: float
+    :ivar review_url:
+    :vartype review_url: str
+    :ivar collection:
+    :vartype collection: ~affinda.models.DocumentMetaCollection
+    :ivar workspace: Required.
+    :vartype workspace: ~affinda.models.DocumentMetaWorkspace
+    :ivar archived_dt:
+    :vartype archived_dt: ~datetime.datetime
+    :ivar is_archived:
+    :vartype is_archived: bool
+    :ivar confirmed_dt:
+    :vartype confirmed_dt: ~datetime.datetime
+    :ivar is_confirmed:
+    :vartype is_confirmed: bool
+    :ivar rejected_dt:
+    :vartype rejected_dt: ~datetime.datetime
+    :ivar is_rejected:
+    :vartype is_rejected: bool
+    :ivar created_dt:
+    :vartype created_dt: ~datetime.datetime
+    :ivar error_code:
+    :vartype error_code: str
+    :ivar error_detail:
+    :vartype error_detail: str
+    :ivar file: URL to view the file.
+    :vartype file: str
+    :ivar tags: A set of tags.
+    :vartype tags: list[~affinda.models.Tag]
+    :ivar data: Dictionary of :code:`<any>`.
+    :vartype data: dict[str, any]
+    """
+
+    _validation = {
+        "identifier": {"required": True},
+        "pages": {"required": True},
+        "workspace": {"required": True},
+    }
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "file_name": {"key": "fileName", "type": "str"},
+        "ready": {"key": "ready", "type": "bool"},
+        "ready_dt": {"key": "readyDt", "type": "iso-8601"},
+        "failed": {"key": "failed", "type": "bool"},
+        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
+        "language": {"key": "language", "type": "str"},
+        "pdf": {"key": "pdf", "type": "str"},
+        "parent_document": {"key": "parentDocument", "type": "DocumentMetaParentDocument"},
+        "child_documents": {"key": "childDocuments", "type": "[DocumentMetaChildDocumentsItem]"},
+        "pages": {"key": "pages", "type": "[PageMeta]"},
+        "is_ocrd": {"key": "isOcrd", "type": "bool"},
+        "ocr_confidence": {"key": "ocrConfidence", "type": "float"},
+        "review_url": {"key": "reviewUrl", "type": "str"},
+        "collection": {"key": "collection", "type": "DocumentMetaCollection"},
+        "workspace": {"key": "workspace", "type": "DocumentMetaWorkspace"},
+        "archived_dt": {"key": "archivedDt", "type": "iso-8601"},
+        "is_archived": {"key": "isArchived", "type": "bool"},
+        "confirmed_dt": {"key": "confirmedDt", "type": "iso-8601"},
+        "is_confirmed": {"key": "isConfirmed", "type": "bool"},
+        "rejected_dt": {"key": "rejectedDt", "type": "iso-8601"},
+        "is_rejected": {"key": "isRejected", "type": "bool"},
+        "created_dt": {"key": "createdDt", "type": "iso-8601"},
+        "error_code": {"key": "errorCode", "type": "str"},
+        "error_detail": {"key": "errorDetail", "type": "str"},
+        "file": {"key": "file", "type": "str"},
+        "tags": {"key": "tags", "type": "[Tag]"},
+        "data": {"key": "data", "type": "{object}"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Required. Uniquely identify a document.
+        :paramtype identifier: str
+        :keyword file_name: Optional filename of the file.
+        :paramtype file_name: str
+        :keyword ready: If true, the document has finished processing. Particularly useful if an
+         endpoint request specified wait=False, when polling use this variable to determine when to stop
+         polling.
+        :paramtype ready: bool
+        :keyword ready_dt: The datetime when the document was ready.
+        :paramtype ready_dt: ~datetime.datetime
+        :keyword failed: If true, some exception was raised during processing. Check the 'error' field
+         of the main return object.
+        :paramtype failed: bool
+        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+         deleted.  Defaults to no expiry.
+        :paramtype expiry_time: ~datetime.datetime
+        :keyword language: The document's language.
+        :paramtype language: str
+        :keyword pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
+         converted to pdf as part of the parsing process).
+        :paramtype pdf: str
+        :keyword parent_document: If this document is part of a splitted document, this attribute
+         points to the original document that this document is splitted from.
+        :paramtype parent_document: ~affinda.models.DocumentMetaParentDocument
+        :keyword child_documents: If this document has been splitted into a number of child documents,
+         this attribute points to those child documents.
+        :paramtype child_documents: list[~affinda.models.DocumentMetaChildDocumentsItem]
+        :keyword pages: Required. The document's pages.
+        :paramtype pages: list[~affinda.models.PageMeta]
+        :keyword is_ocrd:
+        :paramtype is_ocrd: bool
+        :keyword ocr_confidence:
+        :paramtype ocr_confidence: float
+        :keyword review_url:
+        :paramtype review_url: str
+        :keyword collection:
+        :paramtype collection: ~affinda.models.DocumentMetaCollection
+        :keyword workspace: Required.
+        :paramtype workspace: ~affinda.models.DocumentMetaWorkspace
+        :keyword archived_dt:
+        :paramtype archived_dt: ~datetime.datetime
+        :keyword is_archived:
+        :paramtype is_archived: bool
+        :keyword confirmed_dt:
+        :paramtype confirmed_dt: ~datetime.datetime
+        :keyword is_confirmed:
+        :paramtype is_confirmed: bool
+        :keyword rejected_dt:
+        :paramtype rejected_dt: ~datetime.datetime
+        :keyword is_rejected:
+        :paramtype is_rejected: bool
+        :keyword created_dt:
+        :paramtype created_dt: ~datetime.datetime
+        :keyword error_code:
+        :paramtype error_code: str
+        :keyword error_detail:
+        :paramtype error_detail: str
+        :keyword file: URL to view the file.
+        :paramtype file: str
+        :keyword tags: A set of tags.
+        :paramtype tags: list[~affinda.models.Tag]
+        :keyword data: Dictionary of :code:`<any>`.
+        :paramtype data: dict[str, any]
+        """
+        super(Document, self).__init__(**kwargs)
+        self.data = kwargs.get("data", None)
+
+
+class DocumentCreate(msrest.serialization.Model):
+    """DocumentCreate.
+
+    :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
+     JPG.
+    :vartype file: IO
+    :ivar url: URL to a resume to download and process.
+    :vartype url: str
+    :ivar collection: Uniquely identify a collection.
+    :vartype collection: str
+    :ivar workspace: Uniquely identify a workspace.
+    :vartype workspace: str
+    :ivar wait: If "true" (default), will return a response only after processing has completed. If
+     "false", will return an empty data object which can be polled at the GET endpoint until
+     processing is complete.
+    :vartype wait: bool
+    :ivar identifier: Specify a custom identifier for the document.
+    :vartype identifier: str
+    :ivar file_name: Optional filename of the file.
+    :vartype file_name: str
+    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+     deleted.  Defaults to no expiry.
+    :vartype expiry_time: ~datetime.datetime
+    :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+    :vartype language: str
+    """
+
+    _attribute_map = {
+        "file": {"key": "file", "type": "IO"},
+        "url": {"key": "url", "type": "str"},
+        "collection": {"key": "collection", "type": "str"},
+        "workspace": {"key": "workspace", "type": "str"},
+        "wait": {"key": "wait", "type": "bool"},
+        "identifier": {"key": "identifier", "type": "str"},
+        "file_name": {"key": "fileName", "type": "str"},
+        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
+        "language": {"key": "language", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+         PNG, JPG.
+        :paramtype file: IO
+        :keyword url: URL to a resume to download and process.
+        :paramtype url: str
+        :keyword collection: Uniquely identify a collection.
+        :paramtype collection: str
+        :keyword workspace: Uniquely identify a workspace.
+        :paramtype workspace: str
+        :keyword wait: If "true" (default), will return a response only after processing has completed.
+         If "false", will return an empty data object which can be polled at the GET endpoint until
+         processing is complete.
+        :paramtype wait: bool
+        :keyword identifier: Specify a custom identifier for the document.
+        :paramtype identifier: str
+        :keyword file_name: Optional filename of the file.
+        :paramtype file_name: str
+        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+         deleted.  Defaults to no expiry.
+        :paramtype expiry_time: ~datetime.datetime
+        :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+        :paramtype language: str
+        """
+        super(DocumentCreate, self).__init__(**kwargs)
+        self.file = kwargs.get("file", None)
+        self.url = kwargs.get("url", None)
+        self.collection = kwargs.get("collection", None)
+        self.workspace = kwargs.get("workspace", None)
+        self.wait = kwargs.get("wait", True)
+        self.identifier = kwargs.get("identifier", None)
+        self.file_name = kwargs.get("file_name", None)
+        self.expiry_time = kwargs.get("expiry_time", None)
+        self.language = kwargs.get("language", None)
+
+
+class DocumentMetaChildDocumentsItem(msrest.serialization.Model):
+    """DocumentMetaChildDocumentsItem.
+
+    :ivar identifier: Uniquely identify a document.
+    :vartype identifier: str
+    """
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Uniquely identify a document.
+        :paramtype identifier: str
+        """
+        super(DocumentMetaChildDocumentsItem, self).__init__(**kwargs)
+        self.identifier = kwargs.get("identifier", None)
+
+
+class DocumentMetaCollection(msrest.serialization.Model):
+    """DocumentMetaCollection.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar identifier: Required. Uniquely identify a collection.
+    :vartype identifier: str
+    :ivar name:
+    :vartype name: str
+    :ivar extractor:
+    :vartype extractor: ~affinda.models.DocumentMetaCollectionExtractor
+    """
+
+    _validation = {
+        "identifier": {"required": True},
+    }
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "extractor": {"key": "extractor", "type": "DocumentMetaCollectionExtractor"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Required. Uniquely identify a collection.
+        :paramtype identifier: str
+        :keyword name:
+        :paramtype name: str
+        :keyword extractor:
+        :paramtype extractor: ~affinda.models.DocumentMetaCollectionExtractor
+        """
+        super(DocumentMetaCollection, self).__init__(**kwargs)
+        self.identifier = kwargs["identifier"]
+        self.name = kwargs.get("name", None)
+        self.extractor = kwargs.get("extractor", None)
+
+
+class DocumentMetaCollectionExtractor(msrest.serialization.Model):
+    """DocumentMetaCollectionExtractor.
+
+    :ivar id: Extractor's ID.
+    :vartype id: int
+    :ivar name:
+    :vartype name: str
+    :ivar base_extractor: Base extractor's ID.
+    :vartype base_extractor: int
+    :ivar validatable:
+    :vartype validatable: bool
+    """
+
+    _attribute_map = {
+        "id": {"key": "id", "type": "int"},
+        "name": {"key": "name", "type": "str"},
+        "base_extractor": {"key": "baseExtractor", "type": "int"},
+        "validatable": {"key": "validatable", "type": "bool"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword id: Extractor's ID.
+        :paramtype id: int
+        :keyword name:
+        :paramtype name: str
+        :keyword base_extractor: Base extractor's ID.
+        :paramtype base_extractor: int
+        :keyword validatable:
+        :paramtype validatable: bool
+        """
+        super(DocumentMetaCollectionExtractor, self).__init__(**kwargs)
+        self.id = kwargs.get("id", None)
+        self.name = kwargs.get("name", None)
+        self.base_extractor = kwargs.get("base_extractor", None)
+        self.validatable = kwargs.get("validatable", None)
+
+
+class DocumentMetaParentDocument(msrest.serialization.Model):
+    """If this document is part of a splitted document, this attribute points to the original document that this document is splitted from.
+
+    :ivar identifier: Uniquely identify a document.
+    :vartype identifier: str
+    """
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Uniquely identify a document.
+        :paramtype identifier: str
+        """
+        super(DocumentMetaParentDocument, self).__init__(**kwargs)
+        self.identifier = kwargs.get("identifier", None)
+
+
+class DocumentMetaWorkspace(msrest.serialization.Model):
+    """DocumentMetaWorkspace.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar identifier: Required. Uniquely identify a workspace.
+    :vartype identifier: str
+    :ivar name:
+    :vartype name: str
+    """
+
+    _validation = {
+        "identifier": {"required": True},
+    }
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Required. Uniquely identify a workspace.
+        :paramtype identifier: str
+        :keyword name:
+        :paramtype name: str
+        """
+        super(DocumentMetaWorkspace, self).__init__(**kwargs)
+        self.identifier = kwargs["identifier"]
+        self.name = kwargs.get("name", None)
+
+
+class DocumentUpdate(msrest.serialization.Model):
+    """DocumentUpdate.
+
+    :ivar collection: Uniquely identify a collection.
+    :vartype collection: str
+    :ivar file_name: Optional filename of the file.
+    :vartype file_name: str
+    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+     deleted.  Defaults to no expiry.
+    :vartype expiry_time: ~datetime.datetime
+    :ivar is_confirmed:
+    :vartype is_confirmed: bool
+    :ivar is_rejected:
+    :vartype is_rejected: bool
+    :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+    :vartype language: str
+    """
+
+    _attribute_map = {
+        "collection": {"key": "collection", "type": "str"},
+        "file_name": {"key": "fileName", "type": "str"},
+        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
+        "is_confirmed": {"key": "isConfirmed", "type": "bool"},
+        "is_rejected": {"key": "isRejected", "type": "bool"},
+        "language": {"key": "language", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword collection: Uniquely identify a collection.
+        :paramtype collection: str
+        :keyword file_name: Optional filename of the file.
+        :paramtype file_name: str
+        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+         deleted.  Defaults to no expiry.
+        :paramtype expiry_time: ~datetime.datetime
+        :keyword is_confirmed:
+        :paramtype is_confirmed: bool
+        :keyword is_rejected:
+        :paramtype is_rejected: bool
+        :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+        :paramtype language: str
+        """
+        super(DocumentUpdate, self).__init__(**kwargs)
+        self.collection = kwargs.get("collection", None)
+        self.file_name = kwargs.get("file_name", None)
+        self.expiry_time = kwargs.get("expiry_time", None)
+        self.is_confirmed = kwargs.get("is_confirmed", None)
+        self.is_rejected = kwargs.get("is_rejected", None)
+        self.language = kwargs.get("language", None)
 
 
 class Education(msrest.serialization.Model):
@@ -1530,11 +2745,11 @@ class EnumAnnotationSerializer(Annotation):
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -1550,25 +2765,32 @@ class EnumAnnotationSerializer(Annotation):
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -1584,7 +2806,8 @@ class EnumAnnotationSerializer(Annotation):
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -1593,11 +2816,11 @@ class EnumAnnotationSerializer(Annotation):
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -1613,12 +2836,14 @@ class EnumAnnotationSerializer(Annotation):
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -1660,11 +2885,11 @@ class ExpectedRemunerationAnnotation(Annotation):
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -1680,25 +2905,32 @@ class ExpectedRemunerationAnnotation(Annotation):
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: ~affinda.models.ExpectedRemunerationAnnotationParsed
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -1714,7 +2946,8 @@ class ExpectedRemunerationAnnotation(Annotation):
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "ExpectedRemunerationAnnotationParsed"},
     }
 
@@ -1723,11 +2956,11 @@ class ExpectedRemunerationAnnotation(Annotation):
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -1743,12 +2976,14 @@ class ExpectedRemunerationAnnotation(Annotation):
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: ~affinda.models.ExpectedRemunerationAnnotationParsed
         """
@@ -1832,6 +3067,434 @@ class ExperienceSearchScoreComponent(msrest.serialization.Model):
         self.score = kwargs.get("score", None)
 
 
+class Extractor(msrest.serialization.Model):
+    """Extractor.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar id: Required. Extractor's ID.
+    :vartype id: int
+    :ivar identifier: Required.
+    :vartype identifier: str
+    :ivar name: Required.
+    :vartype name: str
+    :ivar name_plural: Required.
+    :vartype name_plural: str
+    :ivar base_extractor:
+    :vartype base_extractor: ~affinda.models.ExtractorBaseExtractor
+    :ivar organization:
+    :vartype organization: ~affinda.models.Organization
+    :ivar category:
+    :vartype category: str
+    :ivar validatable: Required.
+    :vartype validatable: bool
+    :ivar is_custom:
+    :vartype is_custom: bool
+    :ivar field_groups:
+    :vartype field_groups: ~affinda.models.ExtractorFieldGroups
+    :ivar created_dt:
+    :vartype created_dt: ~datetime.datetime
+    """
+
+    _validation = {
+        "id": {"required": True},
+        "identifier": {"required": True},
+        "name": {"required": True},
+        "name_plural": {"required": True},
+        "validatable": {"required": True},
+    }
+
+    _attribute_map = {
+        "id": {"key": "id", "type": "int"},
+        "identifier": {"key": "identifier", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "name_plural": {"key": "namePlural", "type": "str"},
+        "base_extractor": {"key": "baseExtractor", "type": "ExtractorBaseExtractor"},
+        "organization": {"key": "organization", "type": "Organization"},
+        "category": {"key": "category", "type": "str"},
+        "validatable": {"key": "validatable", "type": "bool"},
+        "is_custom": {"key": "isCustom", "type": "bool"},
+        "field_groups": {"key": "fieldGroups", "type": "ExtractorFieldGroups"},
+        "created_dt": {"key": "createdDt", "type": "iso-8601"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword id: Required. Extractor's ID.
+        :paramtype id: int
+        :keyword identifier: Required.
+        :paramtype identifier: str
+        :keyword name: Required.
+        :paramtype name: str
+        :keyword name_plural: Required.
+        :paramtype name_plural: str
+        :keyword base_extractor:
+        :paramtype base_extractor: ~affinda.models.ExtractorBaseExtractor
+        :keyword organization:
+        :paramtype organization: ~affinda.models.Organization
+        :keyword category:
+        :paramtype category: str
+        :keyword validatable: Required.
+        :paramtype validatable: bool
+        :keyword is_custom:
+        :paramtype is_custom: bool
+        :keyword field_groups:
+        :paramtype field_groups: ~affinda.models.ExtractorFieldGroups
+        :keyword created_dt:
+        :paramtype created_dt: ~datetime.datetime
+        """
+        super(Extractor, self).__init__(**kwargs)
+        self.id = kwargs["id"]
+        self.identifier = kwargs["identifier"]
+        self.name = kwargs["name"]
+        self.name_plural = kwargs["name_plural"]
+        self.base_extractor = kwargs.get("base_extractor", None)
+        self.organization = kwargs.get("organization", None)
+        self.category = kwargs.get("category", None)
+        self.validatable = kwargs["validatable"]
+        self.is_custom = kwargs.get("is_custom", None)
+        self.field_groups = kwargs.get("field_groups", None)
+        self.created_dt = kwargs.get("created_dt", None)
+
+
+class ExtractorBaseExtractor(msrest.serialization.Model):
+    """ExtractorBaseExtractor.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar id: Required.
+    :vartype id: int
+    :ivar identifier: Required.
+    :vartype identifier: str
+    :ivar name: Required.
+    :vartype name: str
+    :ivar name_plural: Required.
+    :vartype name_plural: str
+    :ivar validatable: Required.
+    :vartype validatable: bool
+    :ivar is_custom:
+    :vartype is_custom: bool
+    :ivar created_dt:
+    :vartype created_dt: ~datetime.datetime
+    """
+
+    _validation = {
+        "id": {"required": True},
+        "identifier": {"required": True},
+        "name": {"required": True},
+        "name_plural": {"required": True},
+        "validatable": {"required": True},
+    }
+
+    _attribute_map = {
+        "id": {"key": "id", "type": "int"},
+        "identifier": {"key": "identifier", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "name_plural": {"key": "namePlural", "type": "str"},
+        "validatable": {"key": "validatable", "type": "bool"},
+        "is_custom": {"key": "isCustom", "type": "bool"},
+        "created_dt": {"key": "createdDt", "type": "iso-8601"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword id: Required.
+        :paramtype id: int
+        :keyword identifier: Required.
+        :paramtype identifier: str
+        :keyword name: Required.
+        :paramtype name: str
+        :keyword name_plural: Required.
+        :paramtype name_plural: str
+        :keyword validatable: Required.
+        :paramtype validatable: bool
+        :keyword is_custom:
+        :paramtype is_custom: bool
+        :keyword created_dt:
+        :paramtype created_dt: ~datetime.datetime
+        """
+        super(ExtractorBaseExtractor, self).__init__(**kwargs)
+        self.id = kwargs["id"]
+        self.identifier = kwargs["identifier"]
+        self.name = kwargs["name"]
+        self.name_plural = kwargs["name_plural"]
+        self.validatable = kwargs["validatable"]
+        self.is_custom = kwargs.get("is_custom", None)
+        self.created_dt = kwargs.get("created_dt", None)
+
+
+class ExtractorCreate(msrest.serialization.Model):
+    """ExtractorCreate.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar name: Required.
+    :vartype name: str
+    :ivar name_plural:
+    :vartype name_plural: str
+    :ivar base_extractor: The base extractor's ID.
+    :vartype base_extractor: int
+    :ivar organization: Required. Uniquely identify an organization.
+    :vartype organization: str
+    :ivar category:
+    :vartype category: str
+    :ivar validatable:
+    :vartype validatable: bool
+    :ivar field_groups:
+    :vartype field_groups: ~affinda.models.FieldGroups
+    """
+
+    _validation = {
+        "name": {"required": True},
+        "organization": {"required": True},
+    }
+
+    _attribute_map = {
+        "name": {"key": "name", "type": "str"},
+        "name_plural": {"key": "namePlural", "type": "str"},
+        "base_extractor": {"key": "baseExtractor", "type": "int"},
+        "organization": {"key": "organization", "type": "str"},
+        "category": {"key": "category", "type": "str"},
+        "validatable": {"key": "validatable", "type": "bool"},
+        "field_groups": {"key": "fieldGroups", "type": "FieldGroups"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name: Required.
+        :paramtype name: str
+        :keyword name_plural:
+        :paramtype name_plural: str
+        :keyword base_extractor: The base extractor's ID.
+        :paramtype base_extractor: int
+        :keyword organization: Required. Uniquely identify an organization.
+        :paramtype organization: str
+        :keyword category:
+        :paramtype category: str
+        :keyword validatable:
+        :paramtype validatable: bool
+        :keyword field_groups:
+        :paramtype field_groups: ~affinda.models.FieldGroups
+        """
+        super(ExtractorCreate, self).__init__(**kwargs)
+        self.name = kwargs["name"]
+        self.name_plural = kwargs.get("name_plural", None)
+        self.base_extractor = kwargs.get("base_extractor", None)
+        self.organization = kwargs["organization"]
+        self.category = kwargs.get("category", None)
+        self.validatable = kwargs.get("validatable", None)
+        self.field_groups = kwargs.get("field_groups", None)
+
+
+class FieldGroup(msrest.serialization.Model):
+    """FieldGroup.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar label: Required.
+    :vartype label: str
+    :ivar fields: Required.
+    :vartype fields: list[~affinda.models.Field]
+    """
+
+    _validation = {
+        "label": {"required": True},
+        "fields": {"required": True},
+    }
+
+    _attribute_map = {
+        "label": {"key": "label", "type": "str"},
+        "fields": {"key": "fields", "type": "[Field]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword label: Required.
+        :paramtype label: str
+        :keyword fields: Required.
+        :paramtype fields: list[~affinda.models.Field]
+        """
+        super(FieldGroup, self).__init__(**kwargs)
+        self.label = kwargs["label"]
+        self.fields = kwargs["fields"]
+
+
+class ExtractorFieldGroups(FieldGroup):
+    """ExtractorFieldGroups.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar label: Required.
+    :vartype label: str
+    :ivar fields: Required.
+    :vartype fields: list[~affinda.models.Field]
+    """
+
+    _validation = {
+        "label": {"required": True},
+        "fields": {"required": True},
+    }
+
+    _attribute_map = {
+        "label": {"key": "label", "type": "str"},
+        "fields": {"key": "fields", "type": "[Field]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword label: Required.
+        :paramtype label: str
+        :keyword fields: Required.
+        :paramtype fields: list[~affinda.models.Field]
+        """
+        super(ExtractorFieldGroups, self).__init__(**kwargs)
+
+
+class ExtractorUpdate(msrest.serialization.Model):
+    """ExtractorUpdate.
+
+    :ivar name:
+    :vartype name: str
+    :ivar name_plural:
+    :vartype name_plural: str
+    :ivar base_extractor: The base extractor's ID.
+    :vartype base_extractor: int
+    :ivar category:
+    :vartype category: str
+    :ivar validatable:
+    :vartype validatable: bool
+    :ivar field_groups:
+    :vartype field_groups: ~affinda.models.FieldGroups
+    """
+
+    _attribute_map = {
+        "name": {"key": "name", "type": "str"},
+        "name_plural": {"key": "namePlural", "type": "str"},
+        "base_extractor": {"key": "baseExtractor", "type": "int"},
+        "category": {"key": "category", "type": "str"},
+        "validatable": {"key": "validatable", "type": "bool"},
+        "field_groups": {"key": "fieldGroups", "type": "FieldGroups"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name:
+        :paramtype name: str
+        :keyword name_plural:
+        :paramtype name_plural: str
+        :keyword base_extractor: The base extractor's ID.
+        :paramtype base_extractor: int
+        :keyword category:
+        :paramtype category: str
+        :keyword validatable:
+        :paramtype validatable: bool
+        :keyword field_groups:
+        :paramtype field_groups: ~affinda.models.FieldGroups
+        """
+        super(ExtractorUpdate, self).__init__(**kwargs)
+        self.name = kwargs.get("name", None)
+        self.name_plural = kwargs.get("name_plural", None)
+        self.base_extractor = kwargs.get("base_extractor", None)
+        self.category = kwargs.get("category", None)
+        self.validatable = kwargs.get("validatable", None)
+        self.field_groups = kwargs.get("field_groups", None)
+
+
+class Field(msrest.serialization.Model):
+    """Field.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar label: Required.
+    :vartype label: str
+    :ivar slug: Required.
+    :vartype slug: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar mandatory:
+    :vartype mandatory: bool
+    :ivar disabled:
+    :vartype disabled: bool
+    :ivar auto_validation_threshold:
+    :vartype auto_validation_threshold: float
+    :ivar fields:
+    :vartype fields: list[~affinda.models.Field]
+    """
+
+    _validation = {
+        "label": {"required": True},
+        "slug": {"required": True},
+        "data_point": {"required": True},
+    }
+
+    _attribute_map = {
+        "label": {"key": "label", "type": "str"},
+        "slug": {"key": "slug", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "mandatory": {"key": "mandatory", "type": "bool"},
+        "disabled": {"key": "disabled", "type": "bool"},
+        "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
+        "fields": {"key": "fields", "type": "[Field]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword label: Required.
+        :paramtype label: str
+        :keyword slug: Required.
+        :paramtype slug: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword mandatory:
+        :paramtype mandatory: bool
+        :keyword disabled:
+        :paramtype disabled: bool
+        :keyword auto_validation_threshold:
+        :paramtype auto_validation_threshold: float
+        :keyword fields:
+        :paramtype fields: list[~affinda.models.Field]
+        """
+        super(Field, self).__init__(**kwargs)
+        self.label = kwargs["label"]
+        self.slug = kwargs["slug"]
+        self.data_point = kwargs["data_point"]
+        self.mandatory = kwargs.get("mandatory", None)
+        self.disabled = kwargs.get("disabled", None)
+        self.auto_validation_threshold = kwargs.get("auto_validation_threshold", None)
+        self.fields = kwargs.get("fields", None)
+
+
+class FieldGroups(FieldGroup):
+    """FieldGroups.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar label: Required.
+    :vartype label: str
+    :ivar fields: Required.
+    :vartype fields: list[~affinda.models.Field]
+    """
+
+    _validation = {
+        "label": {"required": True},
+        "fields": {"required": True},
+    }
+
+    _attribute_map = {
+        "label": {"key": "label", "type": "str"},
+        "fields": {"key": "fields", "type": "[Field]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword label: Required.
+        :paramtype label: str
+        :keyword fields: Required.
+        :paramtype fields: list[~affinda.models.Field]
+        """
+        super(FieldGroups, self).__init__(**kwargs)
+
+
 class Get200ApplicationJsonPropertiesItemsItem(msrest.serialization.Model):
     """Get200ApplicationJsonPropertiesItemsItem.
 
@@ -1869,39 +3532,46 @@ class Get200ApplicationJsonPropertiesItemsItem(msrest.serialization.Model):
 class GetAllDocumentsResults(msrest.serialization.Model):
     """GetAllDocumentsResults.
 
-    :ivar count: Number of documents in result.
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar count: Required. Number of documents in result.
     :vartype count: int
     :ivar next: URL to request next page of results.
     :vartype next: str
     :ivar previous: URL to request previous page of results.
     :vartype previous: str
-    :ivar results:
-    :vartype results: list[~affinda.models.Meta]
+    :ivar results: Required.
+    :vartype results: list[~affinda.models.Document]
     """
+
+    _validation = {
+        "count": {"required": True},
+        "results": {"required": True},
+    }
 
     _attribute_map = {
         "count": {"key": "count", "type": "int"},
         "next": {"key": "next", "type": "str"},
         "previous": {"key": "previous", "type": "str"},
-        "results": {"key": "results", "type": "[Meta]"},
+        "results": {"key": "results", "type": "[Document]"},
     }
 
     def __init__(self, **kwargs):
         """
-        :keyword count: Number of documents in result.
+        :keyword count: Required. Number of documents in result.
         :paramtype count: int
         :keyword next: URL to request next page of results.
         :paramtype next: str
         :keyword previous: URL to request previous page of results.
         :paramtype previous: str
-        :keyword results:
-        :paramtype results: list[~affinda.models.Meta]
+        :keyword results: Required.
+        :paramtype results: list[~affinda.models.Document]
         """
         super(GetAllDocumentsResults, self).__init__(**kwargs)
-        self.count = kwargs.get("count", None)
+        self.count = kwargs["count"]
         self.next = kwargs.get("next", None)
         self.previous = kwargs.get("previous", None)
-        self.results = kwargs.get("results", None)
+        self.results = kwargs["results"]
 
 
 class GetAllInvoicesResults(msrest.serialization.Model):
@@ -2004,6 +3674,217 @@ class IndexRequestBody(msrest.serialization.Model):
         super(IndexRequestBody, self).__init__(**kwargs)
         self.name = kwargs.get("name", None)
         self.document_type = kwargs.get("document_type", None)
+
+
+class Invitation(msrest.serialization.Model):
+    """Invitation.
+
+    :ivar identifier: Uniquely identify an invitation.
+    :vartype identifier: str
+    :ivar organization:
+    :vartype organization: ~affinda.models.Organization
+    :ivar email: The email which the invitation is sent to.
+    :vartype email: str
+    :ivar role: Known values are: "admin", "member".
+    :vartype role: str or ~affinda.models.OrganizationRole
+    :ivar status: Known values are: "pending", "accepted", "declined".
+    :vartype status: str or ~affinda.models.InvitationStatus
+    :ivar expiry_date: The date after which the invitation expires. Default is 10 days from now.
+    :vartype expiry_date: ~datetime.date
+    :ivar invited_by:
+    :vartype invited_by: ~affinda.models.User
+    :ivar responded_by:
+    :vartype responded_by: ~affinda.models.InvitationRespondedBy
+    :ivar created_dt:
+    :vartype created_dt: ~datetime.datetime
+    """
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "organization": {"key": "organization", "type": "Organization"},
+        "email": {"key": "email", "type": "str"},
+        "role": {"key": "role", "type": "str"},
+        "status": {"key": "status", "type": "str"},
+        "expiry_date": {"key": "expiryDate", "type": "date"},
+        "invited_by": {"key": "invitedBy", "type": "User"},
+        "responded_by": {"key": "respondedBy", "type": "InvitationRespondedBy"},
+        "created_dt": {"key": "createdDt", "type": "iso-8601"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Uniquely identify an invitation.
+        :paramtype identifier: str
+        :keyword organization:
+        :paramtype organization: ~affinda.models.Organization
+        :keyword email: The email which the invitation is sent to.
+        :paramtype email: str
+        :keyword role: Known values are: "admin", "member".
+        :paramtype role: str or ~affinda.models.OrganizationRole
+        :keyword status: Known values are: "pending", "accepted", "declined".
+        :paramtype status: str or ~affinda.models.InvitationStatus
+        :keyword expiry_date: The date after which the invitation expires. Default is 10 days from now.
+        :paramtype expiry_date: ~datetime.date
+        :keyword invited_by:
+        :paramtype invited_by: ~affinda.models.User
+        :keyword responded_by:
+        :paramtype responded_by: ~affinda.models.InvitationRespondedBy
+        :keyword created_dt:
+        :paramtype created_dt: ~datetime.datetime
+        """
+        super(Invitation, self).__init__(**kwargs)
+        self.identifier = kwargs.get("identifier", None)
+        self.organization = kwargs.get("organization", None)
+        self.email = kwargs.get("email", None)
+        self.role = kwargs.get("role", None)
+        self.status = kwargs.get("status", None)
+        self.expiry_date = kwargs.get("expiry_date", None)
+        self.invited_by = kwargs.get("invited_by", None)
+        self.responded_by = kwargs.get("responded_by", None)
+        self.created_dt = kwargs.get("created_dt", None)
+
+
+class InvitationCreate(msrest.serialization.Model):
+    """InvitationCreate.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar organization: Required. Uniquely identify an organization.
+    :vartype organization: str
+    :ivar email: Required. The email which the invitation is sent to.
+    :vartype email: str
+    :ivar role: Required. Known values are: "admin", "member".
+    :vartype role: str or ~affinda.models.OrganizationRole
+    """
+
+    _validation = {
+        "organization": {"required": True},
+        "email": {"required": True},
+        "role": {"required": True},
+    }
+
+    _attribute_map = {
+        "organization": {"key": "organization", "type": "str"},
+        "email": {"key": "email", "type": "str"},
+        "role": {"key": "role", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword organization: Required. Uniquely identify an organization.
+        :paramtype organization: str
+        :keyword email: Required. The email which the invitation is sent to.
+        :paramtype email: str
+        :keyword role: Required. Known values are: "admin", "member".
+        :paramtype role: str or ~affinda.models.OrganizationRole
+        """
+        super(InvitationCreate, self).__init__(**kwargs)
+        self.organization = kwargs["organization"]
+        self.email = kwargs["email"]
+        self.role = kwargs["role"]
+
+
+class User(msrest.serialization.Model):
+    """User.
+
+    :ivar id: Uniquely identify a user.
+    :vartype id: int
+    :ivar name:
+    :vartype name: str
+    :ivar username:
+    :vartype username: str
+    :ivar email:
+    :vartype email: str
+    :ivar avatar: URL of the user's avatar.
+    :vartype avatar: str
+    """
+
+    _attribute_map = {
+        "id": {"key": "id", "type": "int"},
+        "name": {"key": "name", "type": "str"},
+        "username": {"key": "username", "type": "str"},
+        "email": {"key": "email", "type": "str"},
+        "avatar": {"key": "avatar", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword id: Uniquely identify a user.
+        :paramtype id: int
+        :keyword name:
+        :paramtype name: str
+        :keyword username:
+        :paramtype username: str
+        :keyword email:
+        :paramtype email: str
+        :keyword avatar: URL of the user's avatar.
+        :paramtype avatar: str
+        """
+        super(User, self).__init__(**kwargs)
+        self.id = kwargs.get("id", None)
+        self.name = kwargs.get("name", None)
+        self.username = kwargs.get("username", None)
+        self.email = kwargs.get("email", None)
+        self.avatar = kwargs.get("avatar", None)
+
+
+class InvitationRespondedBy(User):
+    """InvitationRespondedBy.
+
+    :ivar id: Uniquely identify a user.
+    :vartype id: int
+    :ivar name:
+    :vartype name: str
+    :ivar username:
+    :vartype username: str
+    :ivar email:
+    :vartype email: str
+    :ivar avatar: URL of the user's avatar.
+    :vartype avatar: str
+    """
+
+    _attribute_map = {
+        "id": {"key": "id", "type": "int"},
+        "name": {"key": "name", "type": "str"},
+        "username": {"key": "username", "type": "str"},
+        "email": {"key": "email", "type": "str"},
+        "avatar": {"key": "avatar", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword id: Uniquely identify a user.
+        :paramtype id: int
+        :keyword name:
+        :paramtype name: str
+        :keyword username:
+        :paramtype username: str
+        :keyword email:
+        :paramtype email: str
+        :keyword avatar: URL of the user's avatar.
+        :paramtype avatar: str
+        """
+        super(InvitationRespondedBy, self).__init__(**kwargs)
+
+
+class InvitationUpdate(msrest.serialization.Model):
+    """InvitationUpdate.
+
+    :ivar role: Known values are: "admin", "member".
+    :vartype role: str or ~affinda.models.OrganizationRole
+    """
+
+    _attribute_map = {
+        "role": {"key": "role", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword role: Known values are: "admin", "member".
+        :paramtype role: str or ~affinda.models.OrganizationRole
+        """
+        super(InvitationUpdate, self).__init__(**kwargs)
+        self.role = kwargs.get("role", None)
 
 
 class Invoice(msrest.serialization.Model):
@@ -2345,11 +4226,11 @@ class TextAnnotation(Annotation):
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -2365,25 +4246,32 @@ class TextAnnotation(Annotation):
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -2399,7 +4287,8 @@ class TextAnnotation(Annotation):
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -2408,11 +4297,11 @@ class TextAnnotation(Annotation):
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -2428,12 +4317,14 @@ class TextAnnotation(Annotation):
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -2451,11 +4342,11 @@ class InvoiceDataBankAccountNumber(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -2471,25 +4362,32 @@ class InvoiceDataBankAccountNumber(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -2505,7 +4403,8 @@ class InvoiceDataBankAccountNumber(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -2514,11 +4413,11 @@ class InvoiceDataBankAccountNumber(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -2534,29 +4433,32 @@ class InvoiceDataBankAccountNumber(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataBankAccountNumber, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -2570,11 +4472,11 @@ class InvoiceDataBankBsb(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -2590,25 +4492,32 @@ class InvoiceDataBankBsb(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -2624,7 +4533,8 @@ class InvoiceDataBankBsb(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -2633,11 +4543,11 @@ class InvoiceDataBankBsb(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -2653,29 +4563,32 @@ class InvoiceDataBankBsb(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataBankBsb, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -2689,11 +4602,11 @@ class InvoiceDataBankIban(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -2709,25 +4622,32 @@ class InvoiceDataBankIban(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -2743,7 +4663,8 @@ class InvoiceDataBankIban(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -2752,11 +4673,11 @@ class InvoiceDataBankIban(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -2772,29 +4693,32 @@ class InvoiceDataBankIban(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataBankIban, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -2808,11 +4732,11 @@ class InvoiceDataBankSortCode(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -2828,25 +4752,32 @@ class InvoiceDataBankSortCode(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -2862,7 +4793,8 @@ class InvoiceDataBankSortCode(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -2871,11 +4803,11 @@ class InvoiceDataBankSortCode(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -2891,29 +4823,32 @@ class InvoiceDataBankSortCode(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataBankSortCode, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -2927,11 +4862,11 @@ class InvoiceDataBankSwift(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -2947,25 +4882,32 @@ class InvoiceDataBankSwift(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -2981,7 +4923,8 @@ class InvoiceDataBankSwift(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -2990,11 +4933,11 @@ class InvoiceDataBankSwift(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -3010,29 +4953,32 @@ class InvoiceDataBankSwift(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataBankSwift, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -3046,11 +4992,11 @@ class InvoiceDataBpayBillerCode(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -3066,25 +5012,32 @@ class InvoiceDataBpayBillerCode(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -3100,7 +5053,8 @@ class InvoiceDataBpayBillerCode(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -3109,11 +5063,11 @@ class InvoiceDataBpayBillerCode(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -3129,29 +5083,32 @@ class InvoiceDataBpayBillerCode(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataBpayBillerCode, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -3165,11 +5122,11 @@ class InvoiceDataBpayReference(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -3185,25 +5142,32 @@ class InvoiceDataBpayReference(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -3219,7 +5183,8 @@ class InvoiceDataBpayReference(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -3228,11 +5193,11 @@ class InvoiceDataBpayReference(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -3248,29 +5213,32 @@ class InvoiceDataBpayReference(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataBpayReference, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -3284,11 +5252,11 @@ class InvoiceDataCustomerBusinessNumber(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -3304,25 +5272,32 @@ class InvoiceDataCustomerBusinessNumber(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -3338,7 +5313,8 @@ class InvoiceDataCustomerBusinessNumber(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -3347,11 +5323,11 @@ class InvoiceDataCustomerBusinessNumber(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -3367,29 +5343,32 @@ class InvoiceDataCustomerBusinessNumber(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataCustomerBusinessNumber, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -3403,11 +5382,11 @@ class InvoiceDataCustomerCompanyName(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -3423,25 +5402,32 @@ class InvoiceDataCustomerCompanyName(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -3457,7 +5443,8 @@ class InvoiceDataCustomerCompanyName(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -3466,11 +5453,11 @@ class InvoiceDataCustomerCompanyName(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -3486,29 +5473,32 @@ class InvoiceDataCustomerCompanyName(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataCustomerCompanyName, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -3522,11 +5512,11 @@ class InvoiceDataCustomerContactName(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -3542,25 +5532,32 @@ class InvoiceDataCustomerContactName(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -3576,7 +5573,8 @@ class InvoiceDataCustomerContactName(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -3585,11 +5583,11 @@ class InvoiceDataCustomerContactName(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -3605,29 +5603,32 @@ class InvoiceDataCustomerContactName(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataCustomerContactName, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -3641,11 +5642,11 @@ class InvoiceDataCustomerEmail(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -3661,25 +5662,32 @@ class InvoiceDataCustomerEmail(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -3695,7 +5703,8 @@ class InvoiceDataCustomerEmail(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -3704,11 +5713,11 @@ class InvoiceDataCustomerEmail(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -3724,29 +5733,32 @@ class InvoiceDataCustomerEmail(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataCustomerEmail, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -3760,11 +5772,11 @@ class InvoiceDataCustomerNumber(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -3780,25 +5792,32 @@ class InvoiceDataCustomerNumber(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -3814,7 +5833,8 @@ class InvoiceDataCustomerNumber(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -3823,11 +5843,11 @@ class InvoiceDataCustomerNumber(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -3843,29 +5863,32 @@ class InvoiceDataCustomerNumber(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataCustomerNumber, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -3879,11 +5902,11 @@ class InvoiceDataCustomerPhoneNumber(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -3899,25 +5922,32 @@ class InvoiceDataCustomerPhoneNumber(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -3933,7 +5963,8 @@ class InvoiceDataCustomerPhoneNumber(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -3942,11 +5973,11 @@ class InvoiceDataCustomerPhoneNumber(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -3962,29 +5993,32 @@ class InvoiceDataCustomerPhoneNumber(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataCustomerPhoneNumber, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -3998,11 +6032,11 @@ class InvoiceDataCustomerVat(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -4018,25 +6052,32 @@ class InvoiceDataCustomerVat(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -4052,7 +6093,8 @@ class InvoiceDataCustomerVat(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -4061,11 +6103,11 @@ class InvoiceDataCustomerVat(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -4081,29 +6123,32 @@ class InvoiceDataCustomerVat(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataCustomerVat, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -4117,11 +6162,11 @@ class InvoiceDataInvoiceNumber(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -4137,25 +6182,32 @@ class InvoiceDataInvoiceNumber(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -4171,7 +6223,8 @@ class InvoiceDataInvoiceNumber(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -4180,11 +6233,11 @@ class InvoiceDataInvoiceNumber(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -4200,29 +6253,32 @@ class InvoiceDataInvoiceNumber(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataInvoiceNumber, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -4236,11 +6292,11 @@ class InvoiceDataInvoicePurchaseOrderNumber(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -4256,25 +6312,32 @@ class InvoiceDataInvoicePurchaseOrderNumber(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -4290,7 +6353,8 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -4299,11 +6363,11 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -4319,29 +6383,32 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataInvoicePurchaseOrderNumber, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -4355,11 +6422,11 @@ class InvoiceDataPaymentAmountBase(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -4375,25 +6442,32 @@ class InvoiceDataPaymentAmountBase(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -4409,7 +6483,8 @@ class InvoiceDataPaymentAmountBase(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -4418,11 +6493,11 @@ class InvoiceDataPaymentAmountBase(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -4438,29 +6513,32 @@ class InvoiceDataPaymentAmountBase(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataPaymentAmountBase, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -4474,11 +6552,11 @@ class InvoiceDataPaymentAmountDue(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -4494,25 +6572,32 @@ class InvoiceDataPaymentAmountDue(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -4528,7 +6613,8 @@ class InvoiceDataPaymentAmountDue(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -4537,11 +6623,11 @@ class InvoiceDataPaymentAmountDue(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -4557,29 +6643,32 @@ class InvoiceDataPaymentAmountDue(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataPaymentAmountDue, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -4593,11 +6682,11 @@ class InvoiceDataPaymentAmountPaid(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -4613,25 +6702,32 @@ class InvoiceDataPaymentAmountPaid(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -4647,7 +6743,8 @@ class InvoiceDataPaymentAmountPaid(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -4656,11 +6753,11 @@ class InvoiceDataPaymentAmountPaid(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -4676,29 +6773,32 @@ class InvoiceDataPaymentAmountPaid(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataPaymentAmountPaid, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -4712,11 +6812,11 @@ class InvoiceDataPaymentAmountTax(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -4732,25 +6832,32 @@ class InvoiceDataPaymentAmountTax(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -4766,7 +6873,8 @@ class InvoiceDataPaymentAmountTax(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -4775,11 +6883,11 @@ class InvoiceDataPaymentAmountTax(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -4795,29 +6903,32 @@ class InvoiceDataPaymentAmountTax(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataPaymentAmountTax, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -4831,11 +6942,11 @@ class InvoiceDataPaymentAmountTotal(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -4851,25 +6962,32 @@ class InvoiceDataPaymentAmountTotal(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -4885,7 +7003,8 @@ class InvoiceDataPaymentAmountTotal(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -4894,11 +7013,11 @@ class InvoiceDataPaymentAmountTotal(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -4914,29 +7033,32 @@ class InvoiceDataPaymentAmountTotal(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataPaymentAmountTotal, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -4950,11 +7072,11 @@ class InvoiceDataPaymentReference(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -4970,25 +7092,32 @@ class InvoiceDataPaymentReference(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -5004,7 +7133,8 @@ class InvoiceDataPaymentReference(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -5013,11 +7143,11 @@ class InvoiceDataPaymentReference(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -5033,29 +7163,32 @@ class InvoiceDataPaymentReference(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataPaymentReference, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -5069,11 +7202,11 @@ class InvoiceDataSupplierBusinessNumber(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -5089,25 +7222,32 @@ class InvoiceDataSupplierBusinessNumber(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -5123,7 +7263,8 @@ class InvoiceDataSupplierBusinessNumber(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -5132,11 +7273,11 @@ class InvoiceDataSupplierBusinessNumber(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -5152,29 +7293,32 @@ class InvoiceDataSupplierBusinessNumber(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataSupplierBusinessNumber, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -5188,11 +7332,11 @@ class InvoiceDataSupplierCompanyName(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -5208,25 +7352,32 @@ class InvoiceDataSupplierCompanyName(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -5242,7 +7393,8 @@ class InvoiceDataSupplierCompanyName(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -5251,11 +7403,11 @@ class InvoiceDataSupplierCompanyName(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -5271,29 +7423,32 @@ class InvoiceDataSupplierCompanyName(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataSupplierCompanyName, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -5307,11 +7462,11 @@ class InvoiceDataSupplierEmail(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -5327,25 +7482,32 @@ class InvoiceDataSupplierEmail(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -5361,7 +7523,8 @@ class InvoiceDataSupplierEmail(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -5370,11 +7533,11 @@ class InvoiceDataSupplierEmail(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -5390,29 +7553,32 @@ class InvoiceDataSupplierEmail(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataSupplierEmail, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -5426,11 +7592,11 @@ class InvoiceDataSupplierFax(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -5446,25 +7612,32 @@ class InvoiceDataSupplierFax(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -5480,7 +7653,8 @@ class InvoiceDataSupplierFax(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -5489,11 +7663,11 @@ class InvoiceDataSupplierFax(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -5509,29 +7683,32 @@ class InvoiceDataSupplierFax(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataSupplierFax, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -5545,11 +7722,11 @@ class InvoiceDataSupplierPhoneNumber(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -5565,25 +7742,32 @@ class InvoiceDataSupplierPhoneNumber(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -5599,7 +7783,8 @@ class InvoiceDataSupplierPhoneNumber(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -5608,11 +7793,11 @@ class InvoiceDataSupplierPhoneNumber(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -5628,29 +7813,32 @@ class InvoiceDataSupplierPhoneNumber(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataSupplierPhoneNumber, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -5664,11 +7852,11 @@ class InvoiceDataSupplierVat(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -5684,25 +7872,32 @@ class InvoiceDataSupplierVat(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -5718,7 +7913,8 @@ class InvoiceDataSupplierVat(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -5727,11 +7923,11 @@ class InvoiceDataSupplierVat(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -5747,29 +7943,32 @@ class InvoiceDataSupplierVat(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataSupplierVat, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -5783,11 +7982,11 @@ class InvoiceDataSupplierWebsite(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -5803,25 +8002,32 @@ class InvoiceDataSupplierWebsite(
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -5837,7 +8043,8 @@ class InvoiceDataSupplierWebsite(
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -5846,11 +8053,11 @@ class InvoiceDataSupplierWebsite(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -5866,29 +8073,32 @@ class InvoiceDataSupplierWebsite(
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(InvoiceDataSupplierWebsite, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
+        self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs.get("rectangles", None)
+        self.rectangles = kwargs["rectangles"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
         self.classification_confidence = kwargs["classification_confidence"]
         self.text_extraction_confidence = kwargs["text_extraction_confidence"]
         self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.classification = kwargs["classification"]
+        self.is_client_verified = kwargs["is_client_verified"]
+        self.is_auto_verified = kwargs["is_auto_verified"]
+        self.data_point = kwargs["data_point"]
+        self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -5920,8 +8130,7 @@ class InvoiceRequestBody(msrest.serialization.Model):
     :vartype file: IO
     :ivar url: URL to an invoice to download and process.
     :vartype url: str
-    :ivar identifier: Unique identifier for the document. If creating a document and left blank,
-     one will be automatically generated.
+    :ivar identifier: A random string that uniquely identify the resource.
     :vartype identifier: str
     :ivar file_name: Optional filename of the file.
     :vartype file_name: str
@@ -5958,8 +8167,7 @@ class InvoiceRequestBody(msrest.serialization.Model):
         :paramtype file: IO
         :keyword url: URL to an invoice to download and process.
         :paramtype url: str
-        :keyword identifier: Unique identifier for the document. If creating a document and left blank,
-         one will be automatically generated.
+        :keyword identifier: A random string that uniquely identify the resource.
         :paramtype identifier: str
         :keyword file_name: Optional filename of the file.
         :paramtype file_name: str
@@ -6155,8 +8363,7 @@ class JobDescriptionRequestBody(msrest.serialization.Model):
     :vartype file: IO
     :ivar url: URL to a job description to download and process.
     :vartype url: str
-    :ivar identifier: Unique identifier for the document. If creating a document and left blank,
-     one will be automatically generated.
+    :ivar identifier: A random string that uniquely identify the resource.
     :vartype identifier: str
     :ivar file_name: Optional filename of the file.
     :vartype file_name: str
@@ -6193,8 +8400,7 @@ class JobDescriptionRequestBody(msrest.serialization.Model):
         :paramtype file: IO
         :keyword url: URL to a job description to download and process.
         :paramtype url: str
-        :keyword identifier: Unique identifier for the document. If creating a document and left blank,
-         one will be automatically generated.
+        :keyword identifier: A random string that uniquely identify the resource.
         :paramtype identifier: str
         :keyword file_name: Optional filename of the file.
         :paramtype file_name: str
@@ -7192,8 +9398,7 @@ class JobDescriptionSearchParameters(msrest.serialization.Model):
 
     :ivar indices: Required.
     :vartype indices: list[str]
-    :ivar resume: Unique identifier for the document. If creating a document and left blank, one
-     will be automatically generated.
+    :ivar resume: A random string that uniquely identify the resource.
     :vartype resume: str
     :ivar job_titles:
     :vartype job_titles: list[str]
@@ -7301,8 +9506,7 @@ class JobDescriptionSearchParameters(msrest.serialization.Model):
         """
         :keyword indices: Required.
         :paramtype indices: list[str]
-        :keyword resume: Unique identifier for the document. If creating a document and left blank, one
-         will be automatically generated.
+        :keyword resume: A random string that uniquely identify the resource.
         :paramtype resume: str
         :keyword job_titles:
         :paramtype job_titles: list[str]
@@ -7396,8 +9600,7 @@ class JobDescriptionSearchResult(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
-    :ivar identifier: Required. Unique identifier for the document. If creating a document and left
-     blank, one will be automatically generated.
+    :ivar identifier: Required. A random string that uniquely identify the resource.
     :vartype identifier: str
     :ivar score: Required.
     :vartype score: float
@@ -7467,8 +9670,7 @@ class JobDescriptionSearchResult(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
-        :keyword identifier: Required. Unique identifier for the document. If creating a document and
-         left blank, one will be automatically generated.
+        :keyword identifier: Required. A random string that uniquely identify the resource.
         :paramtype identifier: str
         :keyword score: Required.
         :paramtype score: float
@@ -7519,11 +9721,11 @@ class JobTitleAnnotation(Annotation):
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -7539,25 +9741,32 @@ class JobTitleAnnotation(Annotation):
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed: Years of experience range.
     :vartype parsed: ~affinda.models.JobTitleAnnotationParsed
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -7573,7 +9782,8 @@ class JobTitleAnnotation(Annotation):
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "JobTitleAnnotationParsed"},
     }
 
@@ -7582,11 +9792,11 @@ class JobTitleAnnotation(Annotation):
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -7602,12 +9812,14 @@ class JobTitleAnnotation(Annotation):
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed: Years of experience range.
         :paramtype parsed: ~affinda.models.JobTitleAnnotationParsed
         """
@@ -7740,11 +9952,11 @@ class LanguageAnnotation(Annotation):
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -7760,25 +9972,32 @@ class LanguageAnnotation(Annotation):
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -7794,7 +10013,8 @@ class LanguageAnnotation(Annotation):
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -7803,11 +10023,11 @@ class LanguageAnnotation(Annotation):
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -7823,12 +10043,14 @@ class LanguageAnnotation(Annotation):
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -7874,6 +10096,44 @@ class LanguagesSearchScoreComponent(msrest.serialization.Model):
         self.score = kwargs.get("score", None)
 
 
+class ListResult(msrest.serialization.Model):
+    """ListResult.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar count: Required. Number of items in results.
+    :vartype count: int
+    :ivar next: URL to request next page of results.
+    :vartype next: str
+    :ivar previous: URL to request previous page of results.
+    :vartype previous: str
+    """
+
+    _validation = {
+        "count": {"required": True},
+    }
+
+    _attribute_map = {
+        "count": {"key": "count", "type": "int"},
+        "next": {"key": "next", "type": "str"},
+        "previous": {"key": "previous", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword count: Required. Number of items in results.
+        :paramtype count: int
+        :keyword next: URL to request next page of results.
+        :paramtype next: str
+        :keyword previous: URL to request previous page of results.
+        :paramtype previous: str
+        """
+        super(ListResult, self).__init__(**kwargs)
+        self.count = kwargs["count"]
+        self.next = kwargs.get("next", None)
+        self.previous = kwargs.get("previous", None)
+
+
 class LocationAnnotation(Annotation):
     """LocationAnnotation.
 
@@ -7882,11 +10142,11 @@ class LocationAnnotation(Annotation):
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -7902,25 +10162,32 @@ class LocationAnnotation(Annotation):
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: ~affinda.models.Location
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -7936,7 +10203,8 @@ class LocationAnnotation(Annotation):
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "Location"},
     }
 
@@ -7945,11 +10213,11 @@ class LocationAnnotation(Annotation):
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -7965,12 +10233,14 @@ class LocationAnnotation(Annotation):
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: ~affinda.models.Location
         """
@@ -8057,26 +10327,17 @@ class ManagementLevelSearchScoreComponent(msrest.serialization.Model):
 class Meta(msrest.serialization.Model):
     """Meta.
 
-    Variables are only populated by the server, and will be ignored when sending a request.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar additional_properties: Unmatched properties from the message are deserialized to this
-     collection.
-    :vartype additional_properties: dict[str, any]
-    :ivar identifier: Required. Unique identifier for the document. If creating a document and left
-     blank, one will be automatically generated.
+    :ivar identifier: Uniquely identify a document.
     :vartype identifier: str
     :ivar file_name: Optional filename of the file.
     :vartype file_name: str
-    :ivar ready: Required. If true, the document has finished processing. Particularly useful if an
-     endpoint request specified wait=False, when polling use this variable to determine when to stop
-     polling.
+    :ivar ready: If true, the document has finished processing. Particularly useful if an endpoint
+     request specified wait=False, when polling use this variable to determine when to stop polling.
     :vartype ready: bool
     :ivar ready_dt: The datetime when the document was ready.
     :vartype ready_dt: ~datetime.datetime
-    :ivar failed: Required. If true, some exception was raised during processing. Check the 'error'
-     field of the main return object.
+    :ivar failed: If true, some exception was raised during processing. Check the 'error' field of
+     the main return object.
     :vartype failed: bool
     :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
      deleted.  Defaults to no expiry.
@@ -8088,10 +10349,10 @@ class Meta(msrest.serialization.Model):
     :vartype pdf: str
     :ivar parent_document: If this document is part of a splitted document, this attribute points
      to the original document that this document is splitted from.
-    :vartype parent_document: ~affinda.models.SplitRelation
+    :vartype parent_document: ~affinda.models.MetaParentDocument
     :ivar child_documents: If this document has been splitted into a number of child documents,
      this attribute points to those child documents.
-    :vartype child_documents: list[~affinda.models.SplitRelation]
+    :vartype child_documents: list[~affinda.models.MetaChildDocumentsItem]
     :ivar pages: The document's pages.
     :vartype pages: list[~affinda.models.PageMeta]
     :ivar is_verified: This is true if the "confirm" button has been clicked in the Affinda
@@ -8105,17 +10366,7 @@ class Meta(msrest.serialization.Model):
     :vartype ocr_confidence: float
     """
 
-    _validation = {
-        "identifier": {"required": True},
-        "ready": {"required": True},
-        "failed": {"required": True},
-        "pdf": {"readonly": True},
-        "parent_document": {"readonly": True},
-        "child_documents": {"readonly": True},
-    }
-
     _attribute_map = {
-        "additional_properties": {"key": "", "type": "{object}"},
         "identifier": {"key": "identifier", "type": "str"},
         "file_name": {"key": "fileName", "type": "str"},
         "ready": {"key": "ready", "type": "bool"},
@@ -8124,8 +10375,8 @@ class Meta(msrest.serialization.Model):
         "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
         "language": {"key": "language", "type": "str"},
         "pdf": {"key": "pdf", "type": "str"},
-        "parent_document": {"key": "parentDocument", "type": "SplitRelation"},
-        "child_documents": {"key": "childDocuments", "type": "[SplitRelation]"},
+        "parent_document": {"key": "parentDocument", "type": "MetaParentDocument"},
+        "child_documents": {"key": "childDocuments", "type": "[MetaChildDocumentsItem]"},
         "pages": {"key": "pages", "type": "[PageMeta]"},
         "is_verified": {"key": "isVerified", "type": "bool"},
         "review_url": {"key": "reviewUrl", "type": "str"},
@@ -8134,28 +10385,33 @@ class Meta(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
-        :keyword additional_properties: Unmatched properties from the message are deserialized to this
-         collection.
-        :paramtype additional_properties: dict[str, any]
-        :keyword identifier: Required. Unique identifier for the document. If creating a document and
-         left blank, one will be automatically generated.
+        :keyword identifier: Uniquely identify a document.
         :paramtype identifier: str
         :keyword file_name: Optional filename of the file.
         :paramtype file_name: str
-        :keyword ready: Required. If true, the document has finished processing. Particularly useful if
-         an endpoint request specified wait=False, when polling use this variable to determine when to
-         stop polling.
+        :keyword ready: If true, the document has finished processing. Particularly useful if an
+         endpoint request specified wait=False, when polling use this variable to determine when to stop
+         polling.
         :paramtype ready: bool
         :keyword ready_dt: The datetime when the document was ready.
         :paramtype ready_dt: ~datetime.datetime
-        :keyword failed: Required. If true, some exception was raised during processing. Check the
-         'error' field of the main return object.
+        :keyword failed: If true, some exception was raised during processing. Check the 'error' field
+         of the main return object.
         :paramtype failed: bool
         :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
          deleted.  Defaults to no expiry.
         :paramtype expiry_time: ~datetime.datetime
         :keyword language: The document's language.
         :paramtype language: str
+        :keyword pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
+         converted to pdf as part of the parsing process).
+        :paramtype pdf: str
+        :keyword parent_document: If this document is part of a splitted document, this attribute
+         points to the original document that this document is splitted from.
+        :paramtype parent_document: ~affinda.models.MetaParentDocument
+        :keyword child_documents: If this document has been splitted into a number of child documents,
+         this attribute points to those child documents.
+        :paramtype child_documents: list[~affinda.models.MetaChildDocumentsItem]
         :keyword pages: The document's pages.
         :paramtype pages: list[~affinda.models.PageMeta]
         :keyword is_verified: This is true if the "confirm" button has been clicked in the Affinda
@@ -8169,21 +10425,60 @@ class Meta(msrest.serialization.Model):
         :paramtype ocr_confidence: float
         """
         super(Meta, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.identifier = kwargs["identifier"]
+        self.identifier = kwargs.get("identifier", None)
         self.file_name = kwargs.get("file_name", None)
-        self.ready = kwargs["ready"]
+        self.ready = kwargs.get("ready", None)
         self.ready_dt = kwargs.get("ready_dt", None)
-        self.failed = kwargs["failed"]
+        self.failed = kwargs.get("failed", None)
         self.expiry_time = kwargs.get("expiry_time", None)
         self.language = kwargs.get("language", None)
-        self.pdf = None
-        self.parent_document = None
-        self.child_documents = None
+        self.pdf = kwargs.get("pdf", None)
+        self.parent_document = kwargs.get("parent_document", None)
+        self.child_documents = kwargs.get("child_documents", None)
         self.pages = kwargs.get("pages", None)
         self.is_verified = kwargs.get("is_verified", None)
         self.review_url = kwargs.get("review_url", None)
         self.ocr_confidence = kwargs.get("ocr_confidence", None)
+
+
+class MetaChildDocumentsItem(msrest.serialization.Model):
+    """MetaChildDocumentsItem.
+
+    :ivar identifier: Uniquely identify a document.
+    :vartype identifier: str
+    """
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Uniquely identify a document.
+        :paramtype identifier: str
+        """
+        super(MetaChildDocumentsItem, self).__init__(**kwargs)
+        self.identifier = kwargs.get("identifier", None)
+
+
+class MetaParentDocument(msrest.serialization.Model):
+    """If this document is part of a splitted document, this attribute points to the original document that this document is splitted from.
+
+    :ivar identifier: Uniquely identify a document.
+    :vartype identifier: str
+    """
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Uniquely identify a document.
+        :paramtype identifier: str
+        """
+        super(MetaParentDocument, self).__init__(**kwargs)
+        self.identifier = kwargs.get("identifier", None)
 
 
 class OccupationGroupSearchScoreComponent(msrest.serialization.Model):
@@ -8224,23 +10519,226 @@ class OccupationGroupSearchScoreComponent(msrest.serialization.Model):
         self.score = kwargs.get("score", None)
 
 
+class Organization(msrest.serialization.Model):
+    """Organization.
+
+    :ivar identifier: Uniquely identify an organization.
+    :vartype identifier: str
+    :ivar name:
+    :vartype name: str
+    :ivar user_role: The role of the logged in user within the organization. Known values are:
+     "admin", "member".
+    :vartype user_role: str or ~affinda.models.OrganizationUserRole
+    :ivar avatar: URL of the organization's avatar.
+    :vartype avatar: str
+    :ivar resthook_signature_key: Used to sign webhook payloads so you can verify their integrity.
+    :vartype resthook_signature_key: str
+    :ivar is_trial:
+    :vartype is_trial: bool
+    """
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "user_role": {"key": "userRole", "type": "str"},
+        "avatar": {"key": "avatar", "type": "str"},
+        "resthook_signature_key": {"key": "resthookSignatureKey", "type": "str"},
+        "is_trial": {"key": "isTrial", "type": "bool"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Uniquely identify an organization.
+        :paramtype identifier: str
+        :keyword name:
+        :paramtype name: str
+        :keyword user_role: The role of the logged in user within the organization. Known values are:
+         "admin", "member".
+        :paramtype user_role: str or ~affinda.models.OrganizationUserRole
+        :keyword avatar: URL of the organization's avatar.
+        :paramtype avatar: str
+        :keyword resthook_signature_key: Used to sign webhook payloads so you can verify their
+         integrity.
+        :paramtype resthook_signature_key: str
+        :keyword is_trial:
+        :paramtype is_trial: bool
+        """
+        super(Organization, self).__init__(**kwargs)
+        self.identifier = kwargs.get("identifier", None)
+        self.name = kwargs.get("name", None)
+        self.user_role = kwargs.get("user_role", None)
+        self.avatar = kwargs.get("avatar", None)
+        self.resthook_signature_key = kwargs.get("resthook_signature_key", None)
+        self.is_trial = kwargs.get("is_trial", None)
+
+
+class OrganizationCreate(msrest.serialization.Model):
+    """OrganizationCreate.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar name: Required.
+    :vartype name: str
+    :ivar avatar: Upload avatar for the organization.
+    :vartype avatar: IO
+    :ivar resthook_signature_key: Used to sign webhook payloads so you can verify their integrity.
+    :vartype resthook_signature_key: str
+    """
+
+    _validation = {
+        "name": {"required": True},
+    }
+
+    _attribute_map = {
+        "name": {"key": "name", "type": "str"},
+        "avatar": {"key": "avatar", "type": "IO"},
+        "resthook_signature_key": {"key": "resthookSignatureKey", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name: Required.
+        :paramtype name: str
+        :keyword avatar: Upload avatar for the organization.
+        :paramtype avatar: IO
+        :keyword resthook_signature_key: Used to sign webhook payloads so you can verify their
+         integrity.
+        :paramtype resthook_signature_key: str
+        """
+        super(OrganizationCreate, self).__init__(**kwargs)
+        self.name = kwargs["name"]
+        self.avatar = kwargs.get("avatar", None)
+        self.resthook_signature_key = kwargs.get("resthook_signature_key", None)
+
+
+class OrganizationMembership(msrest.serialization.Model):
+    """OrganizationMembership.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar identifier: Required. A random string that uniquely identify the resource.
+    :vartype identifier: str
+    :ivar organization: Required. Uniquely identify an organization.
+    :vartype organization: str
+    :ivar user: Required.
+    :vartype user: ~affinda.models.User
+    :ivar role: Required. Known values are: "admin", "member".
+    :vartype role: str or ~affinda.models.OrganizationRole
+    """
+
+    _validation = {
+        "identifier": {"required": True},
+        "organization": {"required": True},
+        "user": {"required": True},
+        "role": {"required": True},
+    }
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "organization": {"key": "organization", "type": "str"},
+        "user": {"key": "user", "type": "User"},
+        "role": {"key": "role", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Required. A random string that uniquely identify the resource.
+        :paramtype identifier: str
+        :keyword organization: Required. Uniquely identify an organization.
+        :paramtype organization: str
+        :keyword user: Required.
+        :paramtype user: ~affinda.models.User
+        :keyword role: Required. Known values are: "admin", "member".
+        :paramtype role: str or ~affinda.models.OrganizationRole
+        """
+        super(OrganizationMembership, self).__init__(**kwargs)
+        self.identifier = kwargs["identifier"]
+        self.organization = kwargs["organization"]
+        self.user = kwargs["user"]
+        self.role = kwargs["role"]
+
+
+class OrganizationMembershipUpdate(msrest.serialization.Model):
+    """OrganizationMembershipUpdate.
+
+    :ivar role: Known values are: "admin", "member".
+    :vartype role: str or ~affinda.models.OrganizationRole
+    """
+
+    _attribute_map = {
+        "role": {"key": "role", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword role: Known values are: "admin", "member".
+        :paramtype role: str or ~affinda.models.OrganizationRole
+        """
+        super(OrganizationMembershipUpdate, self).__init__(**kwargs)
+        self.role = kwargs.get("role", None)
+
+
+class OrganizationUpdate(msrest.serialization.Model):
+    """OrganizationUpdate.
+
+    :ivar name:
+    :vartype name: str
+    :ivar avatar: Upload avatar for the organization.
+    :vartype avatar: IO
+    :ivar resthook_signature_key: Used to sign webhook payloads so you can verify their integrity.
+    :vartype resthook_signature_key: str
+    """
+
+    _attribute_map = {
+        "name": {"key": "name", "type": "str"},
+        "avatar": {"key": "avatar", "type": "IO"},
+        "resthook_signature_key": {"key": "resthookSignatureKey", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name:
+        :paramtype name: str
+        :keyword avatar: Upload avatar for the organization.
+        :paramtype avatar: IO
+        :keyword resthook_signature_key: Used to sign webhook payloads so you can verify their
+         integrity.
+        :paramtype resthook_signature_key: str
+        """
+        super(OrganizationUpdate, self).__init__(**kwargs)
+        self.name = kwargs.get("name", None)
+        self.avatar = kwargs.get("avatar", None)
+        self.resthook_signature_key = kwargs.get("resthook_signature_key", None)
+
+
 class PageMeta(msrest.serialization.Model):
     """PageMeta.
 
-    :ivar id:
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar id: Required.
     :vartype id: int
-    :ivar page_index: Page number within the document, starts from 0.
+    :ivar page_index: Required. Page number within the document, starts from 0.
     :vartype page_index: int
-    :ivar image: The URL to the image of the page.
+    :ivar image: Required. The URL to the image of the page.
     :vartype image: str
-    :ivar height: Height of the page's image in px.
+    :ivar height: Required. Height of the page's image in px.
     :vartype height: float
-    :ivar width: Width of the page's image in px.
+    :ivar width: Required. Width of the page's image in px.
     :vartype width: float
-    :ivar rotation: The degree of rotation applied to the page. Greater than 0 indicates clockwise
-     rotation. Less than 0 indicates counter-clockwise rotation.
+    :ivar rotation: Required. The degree of rotation applied to the page. Greater than 0 indicates
+     clockwise rotation. Less than 0 indicates counter-clockwise rotation.
     :vartype rotation: int
     """
+
+    _validation = {
+        "id": {"required": True},
+        "page_index": {"required": True},
+        "image": {"required": True},
+        "height": {"required": True},
+        "width": {"required": True},
+        "rotation": {"required": True},
+    }
 
     _attribute_map = {
         "id": {"key": "id", "type": "int"},
@@ -8253,27 +10751,90 @@ class PageMeta(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
-        :keyword page_index: Page number within the document, starts from 0.
+        :keyword page_index: Required. Page number within the document, starts from 0.
         :paramtype page_index: int
-        :keyword image: The URL to the image of the page.
+        :keyword image: Required. The URL to the image of the page.
         :paramtype image: str
-        :keyword height: Height of the page's image in px.
+        :keyword height: Required. Height of the page's image in px.
         :paramtype height: float
-        :keyword width: Width of the page's image in px.
+        :keyword width: Required. Width of the page's image in px.
         :paramtype width: float
-        :keyword rotation: The degree of rotation applied to the page. Greater than 0 indicates
-         clockwise rotation. Less than 0 indicates counter-clockwise rotation.
+        :keyword rotation: Required. The degree of rotation applied to the page. Greater than 0
+         indicates clockwise rotation. Less than 0 indicates counter-clockwise rotation.
         :paramtype rotation: int
         """
         super(PageMeta, self).__init__(**kwargs)
-        self.id = kwargs.get("id", None)
-        self.page_index = kwargs.get("page_index", None)
-        self.image = kwargs.get("image", None)
-        self.height = kwargs.get("height", None)
-        self.width = kwargs.get("width", None)
-        self.rotation = kwargs.get("rotation", None)
+        self.id = kwargs["id"]
+        self.page_index = kwargs["page_index"]
+        self.image = kwargs["image"]
+        self.height = kwargs["height"]
+        self.width = kwargs["width"]
+        self.rotation = kwargs["rotation"]
+
+
+class PaginatedResponse(msrest.serialization.Model):
+    """PaginatedResponse.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar count: Required. Number of items in results.
+    :vartype count: int
+    :ivar next: URL to request next page of results.
+    :vartype next: str
+    :ivar previous: URL to request previous page of results.
+    :vartype previous: str
+    """
+
+    _validation = {
+        "count": {"required": True},
+    }
+
+    _attribute_map = {
+        "count": {"key": "count", "type": "int"},
+        "next": {"key": "next", "type": "str"},
+        "previous": {"key": "previous", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword count: Required. Number of items in results.
+        :paramtype count: int
+        :keyword next: URL to request next page of results.
+        :paramtype next: str
+        :keyword previous: URL to request previous page of results.
+        :paramtype previous: str
+        """
+        super(PaginatedResponse, self).__init__(**kwargs)
+        self.count = kwargs["count"]
+        self.next = kwargs.get("next", None)
+        self.previous = kwargs.get("previous", None)
+
+
+class Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1(
+    msrest.serialization.Model
+):
+    """Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.
+
+    :ivar results:
+    :vartype results: list[~affinda.models.OrganizationMembership]
+    """
+
+    _attribute_map = {
+        "results": {"key": "results", "type": "[OrganizationMembership]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword results:
+        :paramtype results: list[~affinda.models.OrganizationMembership]
+        """
+        super(
+            Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1,
+            self,
+        ).__init__(**kwargs)
+        self.results = kwargs.get("results", None)
 
 
 class Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema(msrest.serialization.Model):
@@ -8304,30 +10865,34 @@ class Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema(msrest.seria
         self.document_type = kwargs.get("document_type", None)
 
 
-class Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1(
+class Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1(
     msrest.serialization.Model
 ):
-    """Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1.
+    """Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.
 
-    :ivar api_key: API key used to authenticate for future requests.  This key is only retrievable
-     at the initial creation of the user.
-    :vartype api_key: str
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar results: Required.
+    :vartype results: list[~affinda.models.WorkspaceMembership]
     """
 
+    _validation = {
+        "results": {"required": True},
+    }
+
     _attribute_map = {
-        "api_key": {"key": "apiKey", "type": "str"},
+        "results": {"key": "results", "type": "[WorkspaceMembership]"},
     }
 
     def __init__(self, **kwargs):
         """
-        :keyword api_key: API key used to authenticate for future requests.  This key is only
-         retrievable at the initial creation of the user.
-        :paramtype api_key: str
+        :keyword results: Required.
+        :paramtype results: list[~affinda.models.WorkspaceMembership]
         """
-        super(Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1, self).__init__(
-            **kwargs
-        )
-        self.api_key = kwargs.get("api_key", None)
+        super(
+            Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1, self
+        ).__init__(**kwargs)
+        self.results = kwargs["results"]
 
 
 class Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema(
@@ -8390,6 +10955,104 @@ class Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema(msrest.seriali
         self.next = kwargs.get("next", None)
         self.previous = kwargs.get("previous", None)
         self.results = kwargs.get("results", None)
+
+
+class PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema(
+    ListResult, Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1
+):
+    """PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar results: Required.
+    :vartype results: list[~affinda.models.WorkspaceMembership]
+    :ivar count: Required. Number of items in results.
+    :vartype count: int
+    :ivar next: URL to request next page of results.
+    :vartype next: str
+    :ivar previous: URL to request previous page of results.
+    :vartype previous: str
+    """
+
+    _validation = {
+        "results": {"required": True},
+        "count": {"required": True},
+    }
+
+    _attribute_map = {
+        "results": {"key": "results", "type": "[WorkspaceMembership]"},
+        "count": {"key": "count", "type": "int"},
+        "next": {"key": "next", "type": "str"},
+        "previous": {"key": "previous", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword results: Required.
+        :paramtype results: list[~affinda.models.WorkspaceMembership]
+        :keyword count: Required. Number of items in results.
+        :paramtype count: int
+        :keyword next: URL to request next page of results.
+        :paramtype next: str
+        :keyword previous: URL to request previous page of results.
+        :paramtype previous: str
+        """
+        super(
+            PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema, self
+        ).__init__(**kwargs)
+        self.results = kwargs["results"]
+        self.count = kwargs["count"]
+        self.next = kwargs.get("next", None)
+        self.previous = kwargs.get("previous", None)
+
+
+class PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema(
+    PaginatedResponse,
+    Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1,
+):
+    """PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar results:
+    :vartype results: list[~affinda.models.OrganizationMembership]
+    :ivar count: Required. Number of items in results.
+    :vartype count: int
+    :ivar next: URL to request next page of results.
+    :vartype next: str
+    :ivar previous: URL to request previous page of results.
+    :vartype previous: str
+    """
+
+    _validation = {
+        "count": {"required": True},
+    }
+
+    _attribute_map = {
+        "results": {"key": "results", "type": "[OrganizationMembership]"},
+        "count": {"key": "count", "type": "int"},
+        "next": {"key": "next", "type": "str"},
+        "previous": {"key": "previous", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword results:
+        :paramtype results: list[~affinda.models.OrganizationMembership]
+        :keyword count: Required. Number of items in results.
+        :paramtype count: int
+        :keyword next: URL to request next page of results.
+        :paramtype next: str
+        :keyword previous: URL to request previous page of results.
+        :paramtype previous: str
+        """
+        super(
+            PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema, self
+        ).__init__(**kwargs)
+        self.results = kwargs.get("results", None)
+        self.count = kwargs["count"]
+        self.next = kwargs.get("next", None)
+        self.previous = kwargs.get("previous", None)
 
 
 class PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema(
@@ -8536,108 +11199,52 @@ class PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema(
         self.results = kwargs.get("results", None)
 
 
-class User(msrest.serialization.Model):
-    """User.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar id:
-    :vartype id: int
-    :ivar name:
-    :vartype name: str
-    :ivar username: Required.
-    :vartype username: str
-    :ivar email:
-    :vartype email: str
-    :ivar api_key:
-    :vartype api_key: str
-    """
-
-    _validation = {
-        "username": {"required": True},
-    }
-
-    _attribute_map = {
-        "id": {"key": "id", "type": "int"},
-        "name": {"key": "name", "type": "str"},
-        "username": {"key": "username", "type": "str"},
-        "email": {"key": "email", "type": "str"},
-        "api_key": {"key": "apiKey", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword id:
-        :paramtype id: int
-        :keyword name:
-        :paramtype name: str
-        :keyword username: Required.
-        :paramtype username: str
-        :keyword email:
-        :paramtype email: str
-        :keyword api_key:
-        :paramtype api_key: str
-        """
-        super(User, self).__init__(**kwargs)
-        self.id = kwargs.get("id", None)
-        self.name = kwargs.get("name", None)
-        self.username = kwargs["username"]
-        self.email = kwargs.get("email", None)
-        self.api_key = kwargs.get("api_key", None)
-
-
-class PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema(
-    User, Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1
+class PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1(
+    msrest.serialization.Model
 ):
-    """PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema.
+    """PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar id:
-    :vartype id: int
-    :ivar name:
-    :vartype name: str
-    :ivar username: Required.
-    :vartype username: str
-    :ivar email:
-    :vartype email: str
-    :ivar api_key:
-    :vartype api_key: str
+    :ivar results:
+    :vartype results: list[~affinda.models.Invitation]
     """
 
-    _validation = {
-        "username": {"required": True},
-    }
-
     _attribute_map = {
-        "id": {"key": "id", "type": "int"},
-        "name": {"key": "name", "type": "str"},
-        "username": {"key": "username", "type": "str"},
-        "email": {"key": "email", "type": "str"},
-        "api_key": {"key": "apiKey", "type": "str"},
+        "results": {"key": "results", "type": "[Invitation]"},
     }
 
     def __init__(self, **kwargs):
         """
-        :keyword id:
-        :paramtype id: int
-        :keyword name:
-        :paramtype name: str
-        :keyword username: Required.
-        :paramtype username: str
-        :keyword email:
-        :paramtype email: str
-        :keyword api_key:
-        :paramtype api_key: str
+        :keyword results:
+        :paramtype results: list[~affinda.models.Invitation]
         """
-        super(PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema, self).__init__(
-            **kwargs
-        )
-        self.id = kwargs.get("id", None)
-        self.name = kwargs.get("name", None)
-        self.username = kwargs["username"]
-        self.email = kwargs.get("email", None)
-        self.api_key = kwargs.get("api_key", None)
+        super(
+            PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1, self
+        ).__init__(**kwargs)
+        self.results = kwargs.get("results", None)
+
+
+class PathsW51LnrInvitationsTokenPatchRequestbodyContentApplicationJsonSchema(
+    msrest.serialization.Model
+):
+    """PathsW51LnrInvitationsTokenPatchRequestbodyContentApplicationJsonSchema.
+
+    :ivar status: Known values are: "accepted", "declined".
+    :vartype status: str or ~affinda.models.PatchContentSchemaStatus
+    """
+
+    _attribute_map = {
+        "status": {"key": "status", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword status: Known values are: "accepted", "declined".
+        :paramtype status: str or ~affinda.models.PatchContentSchemaStatus
+        """
+        super(
+            PathsW51LnrInvitationsTokenPatchRequestbodyContentApplicationJsonSchema, self
+        ).__init__(**kwargs)
+        self.status = kwargs.get("status", None)
 
 
 class PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model):
@@ -8676,6 +11283,54 @@ class PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema(msrest.seriali
         self.next = kwargs.get("next", None)
         self.previous = kwargs.get("previous", None)
         self.results = kwargs.get("results", None)
+
+
+class PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema(
+    PaginatedResponse, PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1
+):
+    """PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar results:
+    :vartype results: list[~affinda.models.Invitation]
+    :ivar count: Required. Number of items in results.
+    :vartype count: int
+    :ivar next: URL to request next page of results.
+    :vartype next: str
+    :ivar previous: URL to request previous page of results.
+    :vartype previous: str
+    """
+
+    _validation = {
+        "count": {"required": True},
+    }
+
+    _attribute_map = {
+        "results": {"key": "results", "type": "[Invitation]"},
+        "count": {"key": "count", "type": "int"},
+        "next": {"key": "next", "type": "str"},
+        "previous": {"key": "previous", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword results:
+        :paramtype results: list[~affinda.models.Invitation]
+        :keyword count: Required. Number of items in results.
+        :paramtype count: int
+        :keyword next: URL to request next page of results.
+        :paramtype next: str
+        :keyword previous: URL to request previous page of results.
+        :paramtype previous: str
+        """
+        super(PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema, self).__init__(
+            **kwargs
+        )
+        self.results = kwargs.get("results", None)
+        self.count = kwargs["count"]
+        self.next = kwargs.get("next", None)
+        self.previous = kwargs.get("previous", None)
 
 
 class Rectangle(msrest.serialization.Model):
@@ -8791,8 +11446,7 @@ class RedactedResumeRequestBody(msrest.serialization.Model):
     :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
      JPG.
     :vartype file: IO
-    :ivar identifier: Unique identifier for the document. If creating a document and left blank,
-     one will be automatically generated.
+    :ivar identifier: A random string that uniquely identify the resource.
     :vartype identifier: str
     :ivar file_name: Optional filename of the file.
     :vartype file_name: str
@@ -8848,8 +11502,7 @@ class RedactedResumeRequestBody(msrest.serialization.Model):
         :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
          PNG, JPG.
         :paramtype file: IO
-        :keyword identifier: Unique identifier for the document. If creating a document and left blank,
-         one will be automatically generated.
+        :keyword identifier: A random string that uniquely identify the resource.
         :paramtype identifier: str
         :keyword file_name: Optional filename of the file.
         :paramtype file_name: str
@@ -9576,8 +12229,7 @@ class ResumeRequestBody(msrest.serialization.Model):
     :vartype url: str
     :ivar data: A JSON-encoded string of the ``ResumeData`` object.
     :vartype data: ~affinda.models.ResumeData
-    :ivar identifier: Unique identifier for the document. If creating a document and left blank,
-     one will be automatically generated.
+    :ivar identifier: A random string that uniquely identify the resource.
     :vartype identifier: str
     :ivar file_name: Optional filename of the file.
     :vartype file_name: str
@@ -9617,8 +12269,7 @@ class ResumeRequestBody(msrest.serialization.Model):
         :paramtype url: str
         :keyword data: A JSON-encoded string of the ``ResumeData`` object.
         :paramtype data: ~affinda.models.ResumeData
-        :keyword identifier: Unique identifier for the document. If creating a document and left blank,
-         one will be automatically generated.
+        :keyword identifier: A random string that uniquely identify the resource.
         :paramtype identifier: str
         :keyword file_name: Optional filename of the file.
         :paramtype file_name: str
@@ -10727,11 +13378,9 @@ class ResumeSearchParameters(msrest.serialization.Model):
 
     :ivar indices: Required.
     :vartype indices: list[str]
-    :ivar job_description: Unique identifier for the document. If creating a document and left
-     blank, one will be automatically generated.
+    :ivar job_description: A random string that uniquely identify the resource.
     :vartype job_description: str
-    :ivar resume: Unique identifier for the document. If creating a document and left blank, one
-     will be automatically generated.
+    :ivar resume: A random string that uniquely identify the resource.
     :vartype resume: str
     :ivar job_titles:
     :vartype job_titles: list[str]
@@ -10867,11 +13516,9 @@ class ResumeSearchParameters(msrest.serialization.Model):
         """
         :keyword indices: Required.
         :paramtype indices: list[str]
-        :keyword job_description: Unique identifier for the document. If creating a document and left
-         blank, one will be automatically generated.
+        :keyword job_description: A random string that uniquely identify the resource.
         :paramtype job_description: str
-        :keyword resume: Unique identifier for the document. If creating a document and left blank, one
-         will be automatically generated.
+        :keyword resume: A random string that uniquely identify the resource.
         :paramtype resume: str
         :keyword job_titles:
         :paramtype job_titles: list[str]
@@ -11139,8 +13786,7 @@ class ResumeSearchResult(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
-    :ivar identifier: Required. Unique identifier for the document. If creating a document and left
-     blank, one will be automatically generated.
+    :ivar identifier: Required. A random string that uniquely identify the resource.
     :vartype identifier: str
     :ivar score: Required.
     :vartype score: float
@@ -11219,8 +13865,7 @@ class ResumeSearchResult(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
-        :keyword identifier: Required. Unique identifier for the document. If creating a document and
-         left blank, one will be automatically generated.
+        :keyword identifier: Required. A random string that uniquely identify the resource.
         :paramtype identifier: str
         :keyword score: Required.
         :paramtype score: float
@@ -11438,11 +14083,11 @@ class SkillAnnotation(Annotation):
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -11458,25 +14103,32 @@ class SkillAnnotation(Annotation):
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -11492,7 +14144,8 @@ class SkillAnnotation(Annotation):
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -11501,11 +14154,11 @@ class SkillAnnotation(Annotation):
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -11521,12 +14174,14 @@ class SkillAnnotation(Annotation):
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -11572,26 +14227,562 @@ class SkillsSearchScoreComponent(msrest.serialization.Model):
         self.score = kwargs.get("score", None)
 
 
-class SplitRelation(msrest.serialization.Model):
-    """SplitRelation.
+class Tag(msrest.serialization.Model):
+    """Tag.
 
-    :ivar identifier: Unique identifier for the document. If creating a document and left blank,
-     one will be automatically generated.
-    :vartype identifier: str
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar id: Required. Uniquely identify a tag.
+    :vartype id: int
+    :ivar name: Required.
+    :vartype name: str
+    :ivar workspace: Required. Uniquely identify a workspace.
+    :vartype workspace: str
+    :ivar document_count: Required. Number of documents tagged with this.
+    :vartype document_count: int
     """
 
+    _validation = {
+        "id": {"required": True},
+        "name": {"required": True},
+        "workspace": {"required": True},
+        "document_count": {"required": True},
+    }
+
     _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
+        "id": {"key": "id", "type": "int"},
+        "name": {"key": "name", "type": "str"},
+        "workspace": {"key": "workspace", "type": "str"},
+        "document_count": {"key": "documentCount", "type": "int"},
     }
 
     def __init__(self, **kwargs):
         """
-        :keyword identifier: Unique identifier for the document. If creating a document and left blank,
-         one will be automatically generated.
-        :paramtype identifier: str
+        :keyword id: Required. Uniquely identify a tag.
+        :paramtype id: int
+        :keyword name: Required.
+        :paramtype name: str
+        :keyword workspace: Required. Uniquely identify a workspace.
+        :paramtype workspace: str
+        :keyword document_count: Required. Number of documents tagged with this.
+        :paramtype document_count: int
         """
-        super(SplitRelation, self).__init__(**kwargs)
+        super(Tag, self).__init__(**kwargs)
+        self.id = kwargs["id"]
+        self.name = kwargs["name"]
+        self.workspace = kwargs["workspace"]
+        self.document_count = kwargs["document_count"]
+
+
+class TagCreate(msrest.serialization.Model):
+    """TagCreate.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar name: Required.
+    :vartype name: str
+    :ivar workspace: Required. Uniquely identify a workspace.
+    :vartype workspace: str
+    """
+
+    _validation = {
+        "name": {"required": True},
+        "workspace": {"required": True},
+    }
+
+    _attribute_map = {
+        "name": {"key": "name", "type": "str"},
+        "workspace": {"key": "workspace", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name: Required.
+        :paramtype name: str
+        :keyword workspace: Required. Uniquely identify a workspace.
+        :paramtype workspace: str
+        """
+        super(TagCreate, self).__init__(**kwargs)
+        self.name = kwargs["name"]
+        self.workspace = kwargs["workspace"]
+
+
+class TagUpdate(msrest.serialization.Model):
+    """TagUpdate.
+
+    :ivar name:
+    :vartype name: str
+    :ivar workspace: Uniquely identify a workspace.
+    :vartype workspace: str
+    """
+
+    _attribute_map = {
+        "name": {"key": "name", "type": "str"},
+        "workspace": {"key": "workspace", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name:
+        :paramtype name: str
+        :keyword workspace: Uniquely identify a workspace.
+        :paramtype workspace: str
+        """
+        super(TagUpdate, self).__init__(**kwargs)
+        self.name = kwargs.get("name", None)
+        self.workspace = kwargs.get("workspace", None)
+
+
+class UserCreateRequest(msrest.serialization.Model):
+    """UserCreateRequest.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar name:
+    :vartype name: str
+    :ivar username: Required.
+    :vartype username: str
+    :ivar email: Required.
+    :vartype email: str
+    :ivar avatar: Upload avatar for the user.
+    :vartype avatar: IO
+    """
+
+    _validation = {
+        "username": {"required": True},
+        "email": {"required": True},
+    }
+
+    _attribute_map = {
+        "name": {"key": "name", "type": "str"},
+        "username": {"key": "username", "type": "str"},
+        "email": {"key": "email", "type": "str"},
+        "avatar": {"key": "avatar", "type": "IO"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name:
+        :paramtype name: str
+        :keyword username: Required.
+        :paramtype username: str
+        :keyword email: Required.
+        :paramtype email: str
+        :keyword avatar: Upload avatar for the user.
+        :paramtype avatar: IO
+        """
+        super(UserCreateRequest, self).__init__(**kwargs)
+        self.name = kwargs.get("name", None)
+        self.username = kwargs["username"]
+        self.email = kwargs["email"]
+        self.avatar = kwargs.get("avatar", None)
+
+
+class UserCreateResponse(User):
+    """UserCreateResponse.
+
+    :ivar id: Uniquely identify a user.
+    :vartype id: int
+    :ivar name:
+    :vartype name: str
+    :ivar username:
+    :vartype username: str
+    :ivar email:
+    :vartype email: str
+    :ivar avatar: URL of the user's avatar.
+    :vartype avatar: str
+    :ivar api_key: API key used to authenticate for future requests. This key is only retrievable
+     at the initial creation of the user.
+    :vartype api_key: str
+    """
+
+    _attribute_map = {
+        "id": {"key": "id", "type": "int"},
+        "name": {"key": "name", "type": "str"},
+        "username": {"key": "username", "type": "str"},
+        "email": {"key": "email", "type": "str"},
+        "avatar": {"key": "avatar", "type": "str"},
+        "api_key": {"key": "apiKey", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword id: Uniquely identify a user.
+        :paramtype id: int
+        :keyword name:
+        :paramtype name: str
+        :keyword username:
+        :paramtype username: str
+        :keyword email:
+        :paramtype email: str
+        :keyword avatar: URL of the user's avatar.
+        :paramtype avatar: str
+        :keyword api_key: API key used to authenticate for future requests. This key is only
+         retrievable at the initial creation of the user.
+        :paramtype api_key: str
+        """
+        super(UserCreateResponse, self).__init__(**kwargs)
+        self.api_key = kwargs.get("api_key", None)
+
+
+class Workspace(msrest.serialization.Model):
+    """Workspace.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar identifier: Required. Uniquely identify a workspace.
+    :vartype identifier: str
+    :ivar organization:
+    :vartype organization: ~affinda.models.Organization
+    :ivar name:
+    :vartype name: str
+    :ivar visibility: Visibility "organization" means everyone in the organization can access the
+     workspace. Visibility "private" means only people explicitly added can access the workspace.
+     Known values are: "organization", "private".
+    :vartype visibility: str or ~affinda.models.WorkspaceVisibility
+    :ivar collections:
+    :vartype collections: list[~affinda.models.WorkspaceCollectionsItem]
+    :ivar reject_invalid_documents: If true, the uploaded document will be rejected if it's of the
+     wrong document type, or if its document type cannot be determined. No credits will be consumed.
+    :vartype reject_invalid_documents: bool
+    :ivar members:
+    :vartype members: list[~affinda.models.User]
+    :ivar unvalidated_docs_count: Number of unvalidated documents in the workspace.
+    :vartype unvalidated_docs_count: int
+    :ivar confirmed_docs_count: Number of validated documents in the workspace.
+    :vartype confirmed_docs_count: int
+    """
+
+    _validation = {
+        "identifier": {"required": True},
+    }
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "organization": {"key": "organization", "type": "Organization"},
+        "name": {"key": "name", "type": "str"},
+        "visibility": {"key": "visibility", "type": "str"},
+        "collections": {"key": "collections", "type": "[WorkspaceCollectionsItem]"},
+        "reject_invalid_documents": {"key": "rejectInvalidDocuments", "type": "bool"},
+        "members": {"key": "members", "type": "[User]"},
+        "unvalidated_docs_count": {"key": "unvalidatedDocsCount", "type": "int"},
+        "confirmed_docs_count": {"key": "confirmedDocsCount", "type": "int"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Required. Uniquely identify a workspace.
+        :paramtype identifier: str
+        :keyword organization:
+        :paramtype organization: ~affinda.models.Organization
+        :keyword name:
+        :paramtype name: str
+        :keyword visibility: Visibility "organization" means everyone in the organization can access
+         the workspace. Visibility "private" means only people explicitly added can access the
+         workspace. Known values are: "organization", "private".
+        :paramtype visibility: str or ~affinda.models.WorkspaceVisibility
+        :keyword collections:
+        :paramtype collections: list[~affinda.models.WorkspaceCollectionsItem]
+        :keyword reject_invalid_documents: If true, the uploaded document will be rejected if it's of
+         the wrong document type, or if its document type cannot be determined. No credits will be
+         consumed.
+        :paramtype reject_invalid_documents: bool
+        :keyword members:
+        :paramtype members: list[~affinda.models.User]
+        :keyword unvalidated_docs_count: Number of unvalidated documents in the workspace.
+        :paramtype unvalidated_docs_count: int
+        :keyword confirmed_docs_count: Number of validated documents in the workspace.
+        :paramtype confirmed_docs_count: int
+        """
+        super(Workspace, self).__init__(**kwargs)
+        self.identifier = kwargs["identifier"]
+        self.organization = kwargs.get("organization", None)
+        self.name = kwargs.get("name", None)
+        self.visibility = kwargs.get("visibility", None)
+        self.collections = kwargs.get("collections", None)
+        self.reject_invalid_documents = kwargs.get("reject_invalid_documents", None)
+        self.members = kwargs.get("members", None)
+        self.unvalidated_docs_count = kwargs.get("unvalidated_docs_count", None)
+        self.confirmed_docs_count = kwargs.get("confirmed_docs_count", None)
+
+
+class WorkspaceCollectionsItem(msrest.serialization.Model):
+    """WorkspaceCollectionsItem.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar identifier: Required. Uniquely identify a collection.
+    :vartype identifier: str
+    :ivar name: Required.
+    :vartype name: str
+    :ivar extractor: Required.
+    :vartype extractor: ~affinda.models.WorkspaceCollectionsItemExtractor
+    :ivar unvalidated_docs_count: Number of unvalidated documents in the collection.
+    :vartype unvalidated_docs_count: int
+    :ivar confirmed_docs_count: Number of validated documents in the collection.
+    :vartype confirmed_docs_count: int
+    """
+
+    _validation = {
+        "identifier": {"required": True},
+        "name": {"required": True},
+        "extractor": {"required": True},
+    }
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "extractor": {"key": "extractor", "type": "WorkspaceCollectionsItemExtractor"},
+        "unvalidated_docs_count": {"key": "unvalidatedDocsCount", "type": "int"},
+        "confirmed_docs_count": {"key": "confirmedDocsCount", "type": "int"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Required. Uniquely identify a collection.
+        :paramtype identifier: str
+        :keyword name: Required.
+        :paramtype name: str
+        :keyword extractor: Required.
+        :paramtype extractor: ~affinda.models.WorkspaceCollectionsItemExtractor
+        :keyword unvalidated_docs_count: Number of unvalidated documents in the collection.
+        :paramtype unvalidated_docs_count: int
+        :keyword confirmed_docs_count: Number of validated documents in the collection.
+        :paramtype confirmed_docs_count: int
+        """
+        super(WorkspaceCollectionsItem, self).__init__(**kwargs)
+        self.identifier = kwargs["identifier"]
+        self.name = kwargs["name"]
+        self.extractor = kwargs["extractor"]
+        self.unvalidated_docs_count = kwargs.get("unvalidated_docs_count", None)
+        self.confirmed_docs_count = kwargs.get("confirmed_docs_count", None)
+
+
+class WorkspaceCollectionsItemExtractor(msrest.serialization.Model):
+    """WorkspaceCollectionsItemExtractor.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar id: Required. Extractor's ID.
+    :vartype id: int
+    :ivar identifier: Required.
+    :vartype identifier: str
+    :ivar name: Required.
+    :vartype name: str
+    :ivar name_plural: Required.
+    :vartype name_plural: str
+    :ivar base_extractor:
+    :vartype base_extractor: ~affinda.models.BaseExtractor
+    :ivar category:
+    :vartype category: str
+    :ivar validatable: Required.
+    :vartype validatable: bool
+    :ivar is_custom:
+    :vartype is_custom: bool
+    :ivar created_dt:
+    :vartype created_dt: ~datetime.datetime
+    """
+
+    _validation = {
+        "id": {"required": True},
+        "identifier": {"required": True},
+        "name": {"required": True},
+        "name_plural": {"required": True},
+        "validatable": {"required": True},
+    }
+
+    _attribute_map = {
+        "id": {"key": "id", "type": "int"},
+        "identifier": {"key": "identifier", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "name_plural": {"key": "namePlural", "type": "str"},
+        "base_extractor": {"key": "baseExtractor", "type": "BaseExtractor"},
+        "category": {"key": "category", "type": "str"},
+        "validatable": {"key": "validatable", "type": "bool"},
+        "is_custom": {"key": "isCustom", "type": "bool"},
+        "created_dt": {"key": "createdDt", "type": "iso-8601"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword id: Required. Extractor's ID.
+        :paramtype id: int
+        :keyword identifier: Required.
+        :paramtype identifier: str
+        :keyword name: Required.
+        :paramtype name: str
+        :keyword name_plural: Required.
+        :paramtype name_plural: str
+        :keyword base_extractor:
+        :paramtype base_extractor: ~affinda.models.BaseExtractor
+        :keyword category:
+        :paramtype category: str
+        :keyword validatable: Required.
+        :paramtype validatable: bool
+        :keyword is_custom:
+        :paramtype is_custom: bool
+        :keyword created_dt:
+        :paramtype created_dt: ~datetime.datetime
+        """
+        super(WorkspaceCollectionsItemExtractor, self).__init__(**kwargs)
+        self.id = kwargs["id"]
+        self.identifier = kwargs["identifier"]
+        self.name = kwargs["name"]
+        self.name_plural = kwargs["name_plural"]
+        self.base_extractor = kwargs.get("base_extractor", None)
+        self.category = kwargs.get("category", None)
+        self.validatable = kwargs["validatable"]
+        self.is_custom = kwargs.get("is_custom", None)
+        self.created_dt = kwargs.get("created_dt", None)
+
+
+class WorkspaceCreate(msrest.serialization.Model):
+    """WorkspaceCreate.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar organization: Required. Uniquely identify an organization.
+    :vartype organization: str
+    :ivar name: Required.
+    :vartype name: str
+    :ivar visibility: Visibility "organization" means everyone in the organization can access the
+     workspace. Visibility "private" means only people explicitly added can access the workspace.
+     Known values are: "organization", "private".
+    :vartype visibility: str or ~affinda.models.WorkspaceVisibility
+    :ivar reject_invalid_documents: If true, the uploaded document will be rejected if it's of the
+     wrong document type, or if its document type cannot be determined. No credits will be consumed.
+    :vartype reject_invalid_documents: bool
+    """
+
+    _validation = {
+        "organization": {"required": True},
+        "name": {"required": True},
+    }
+
+    _attribute_map = {
+        "organization": {"key": "organization", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "visibility": {"key": "visibility", "type": "str"},
+        "reject_invalid_documents": {"key": "rejectInvalidDocuments", "type": "bool"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword organization: Required. Uniquely identify an organization.
+        :paramtype organization: str
+        :keyword name: Required.
+        :paramtype name: str
+        :keyword visibility: Visibility "organization" means everyone in the organization can access
+         the workspace. Visibility "private" means only people explicitly added can access the
+         workspace. Known values are: "organization", "private".
+        :paramtype visibility: str or ~affinda.models.WorkspaceVisibility
+        :keyword reject_invalid_documents: If true, the uploaded document will be rejected if it's of
+         the wrong document type, or if its document type cannot be determined. No credits will be
+         consumed.
+        :paramtype reject_invalid_documents: bool
+        """
+        super(WorkspaceCreate, self).__init__(**kwargs)
+        self.organization = kwargs["organization"]
+        self.name = kwargs["name"]
+        self.visibility = kwargs.get("visibility", None)
+        self.reject_invalid_documents = kwargs.get("reject_invalid_documents", None)
+
+
+class WorkspaceMembership(msrest.serialization.Model):
+    """WorkspaceMembership.
+
+    :ivar identifier: Uniquely identify a membership.
+    :vartype identifier: str
+    :ivar workspace: Uniquely identify a workspace.
+    :vartype workspace: str
+    :ivar user:
+    :vartype user: ~affinda.models.User
+    """
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "workspace": {"key": "workspace", "type": "str"},
+        "user": {"key": "user", "type": "User"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Uniquely identify a membership.
+        :paramtype identifier: str
+        :keyword workspace: Uniquely identify a workspace.
+        :paramtype workspace: str
+        :keyword user:
+        :paramtype user: ~affinda.models.User
+        """
+        super(WorkspaceMembership, self).__init__(**kwargs)
         self.identifier = kwargs.get("identifier", None)
+        self.workspace = kwargs.get("workspace", None)
+        self.user = kwargs.get("user", None)
+
+
+class WorkspaceMembershipCreate(msrest.serialization.Model):
+    """WorkspaceMembershipCreate.
+
+    :ivar workspace: Uniquely identify a workspace.
+    :vartype workspace: str
+    :ivar user: Uniquely identify a user.
+    :vartype user: int
+    """
+
+    _attribute_map = {
+        "workspace": {"key": "workspace", "type": "str"},
+        "user": {"key": "user", "type": "int"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword workspace: Uniquely identify a workspace.
+        :paramtype workspace: str
+        :keyword user: Uniquely identify a user.
+        :paramtype user: int
+        """
+        super(WorkspaceMembershipCreate, self).__init__(**kwargs)
+        self.workspace = kwargs.get("workspace", None)
+        self.user = kwargs.get("user", None)
+
+
+class WorkspaceUpdate(msrest.serialization.Model):
+    """WorkspaceUpdate.
+
+    :ivar name:
+    :vartype name: str
+    :ivar visibility: Visibility "organization" means everyone in the organization can access the
+     workspace. Visibility "private" means only people explicitly added can access the workspace.
+     Known values are: "organization", "private".
+    :vartype visibility: str or ~affinda.models.WorkspaceVisibility
+    :ivar reject_invalid_documents: If true, the uploaded document will be rejected if it's of the
+     wrong document type, or if its document type cannot be determined. No credits will be consumed.
+    :vartype reject_invalid_documents: bool
+    """
+
+    _attribute_map = {
+        "name": {"key": "name", "type": "str"},
+        "visibility": {"key": "visibility", "type": "str"},
+        "reject_invalid_documents": {"key": "rejectInvalidDocuments", "type": "bool"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name:
+        :paramtype name: str
+        :keyword visibility: Visibility "organization" means everyone in the organization can access
+         the workspace. Visibility "private" means only people explicitly added can access the
+         workspace. Known values are: "organization", "private".
+        :paramtype visibility: str or ~affinda.models.WorkspaceVisibility
+        :keyword reject_invalid_documents: If true, the uploaded document will be rejected if it's of
+         the wrong document type, or if its document type cannot be determined. No credits will be
+         consumed.
+        :paramtype reject_invalid_documents: bool
+        """
+        super(WorkspaceUpdate, self).__init__(**kwargs)
+        self.name = kwargs.get("name", None)
+        self.visibility = kwargs.get("visibility", None)
+        self.reject_invalid_documents = kwargs.get("reject_invalid_documents", None)
 
 
 class YearsExperienceAnnotation(Annotation):
@@ -11602,11 +14793,11 @@ class YearsExperienceAnnotation(Annotation):
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id:
+    :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
+    :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
@@ -11622,25 +14813,32 @@ class YearsExperienceAnnotation(Annotation):
     :vartype text_extraction_confidence: float
     :ivar is_verified: Required.
     :vartype is_verified: bool
-    :ivar is_client_verified:
+    :ivar is_client_verified: Required.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified:
+    :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar classification: Required.
-    :vartype classification: str
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
     :ivar parsed: Years of experience range.
     :vartype parsed: ~affinda.models.YearsExperienceAnnotationParsed
     """
 
     _validation = {
+        "id": {"required": True},
         "rectangle": {"required": True},
+        "rectangles": {"required": True},
         "page_index": {"required": True},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
         "text_extraction_confidence": {"required": True},
         "is_verified": {"required": True},
-        "classification": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
     }
 
     _attribute_map = {
@@ -11656,7 +14854,8 @@ class YearsExperienceAnnotation(Annotation):
         "is_verified": {"key": "isVerified", "type": "bool"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "classification": {"key": "classification", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
         "parsed": {"key": "parsed", "type": "YearsExperienceAnnotationParsed"},
     }
 
@@ -11665,11 +14864,11 @@ class YearsExperienceAnnotation(Annotation):
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id:
+        :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
+        :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
@@ -11685,12 +14884,14 @@ class YearsExperienceAnnotation(Annotation):
         :paramtype text_extraction_confidence: float
         :keyword is_verified: Required.
         :paramtype is_verified: bool
-        :keyword is_client_verified:
+        :keyword is_client_verified: Required.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
+        :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword classification: Required.
-        :paramtype classification: str
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
         :keyword parsed: Years of experience range.
         :paramtype parsed: ~affinda.models.YearsExperienceAnnotationParsed
         """

@@ -50,11 +50,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -70,12 +70,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 
 <a id="models._models.Annotation.__init__"></a>
 
@@ -89,9 +91,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -100,9 +102,240 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
+
+<a id="models._models.BaseExtractor"></a>
+
+## BaseExtractor Objects
+
+```python
+class BaseExtractor(msrest.serialization.Model)
+```
+
+BaseExtractor.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar id: Required.
+:vartype id: int
+:ivar identifier: Required.
+:vartype identifier: str
+:ivar name: Required.
+:vartype name: str
+:ivar name_plural: Required.
+:vartype name_plural: str
+:ivar validatable: Required.
+:vartype validatable: bool
+:ivar is_custom:
+:vartype is_custom: bool
+:ivar created_dt:
+:vartype created_dt: ~datetime.datetime
+
+<a id="models._models.BaseExtractor.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `id`: Required.
+- `identifier`: Required.
+- `name`: Required.
+- `name_plural`: Required.
+- `validatable`: Required.
+- `is_custom`: 
+- `created_dt`: 
+
+<a id="models._models.Collection"></a>
+
+## Collection Objects
+
+```python
+class Collection(msrest.serialization.Model)
+```
+
+Collection.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar identifier: Required. Uniquely identify a collection.
+:vartype identifier: str
+:ivar name:
+:vartype name: str
+:ivar workspace:
+:vartype workspace: ~affinda.models.CollectionWorkspace
+:ivar extractor:
+:vartype extractor: ~affinda.models.Extractor
+:ivar auto_validation_threshold:
+:vartype auto_validation_threshold: float
+:ivar fields:
+:vartype fields: list[~affinda.models.FieldGroup]
+:ivar fields_configured:
+:vartype fields_configured: bool
+:ivar date_format_preference: Known values are: "DMY", "MDY", "YMD".
+:vartype date_format_preference: str or ~affinda.models.CollectionDateFormatPreference
+:ivar date_format_from_document: Predict the date format from any dates in the document that is
+ not ambiguous.
+:vartype date_format_from_document: bool
+:ivar extractor_config: Extra configurations specific to an extractor.
+:vartype extractor_config: dict[str, any]
+:ivar unvalidated_docs_count: Number of unvalidated documents in the collection.
+:vartype unvalidated_docs_count: int
+:ivar confirmed_docs_count: Number of validated documents in the collection.
+:vartype confirmed_docs_count: int
+
+<a id="models._models.Collection.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Required. Uniquely identify a collection.
+- `name`: 
+- `workspace`: 
+- `extractor`: 
+- `auto_validation_threshold`: 
+- `fields`: 
+- `fields_configured`: 
+- `date_format_preference`: Known values are: "DMY", "MDY", "YMD".
+- `date_format_from_document`: Predict the date format from any dates in the document that
+is not ambiguous.
+- `extractor_config`: Extra configurations specific to an extractor.
+- `unvalidated_docs_count`: Number of unvalidated documents in the collection.
+- `confirmed_docs_count`: Number of validated documents in the collection.
+
+<a id="models._models.CollectionCreate"></a>
+
+## CollectionCreate Objects
+
+```python
+class CollectionCreate(msrest.serialization.Model)
+```
+
+CollectionCreate.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar name: Required.
+:vartype name: str
+:ivar workspace: Required. Uniquely identify a workspace.
+:vartype workspace: str
+:ivar extractor: Required. Extractor's ID.
+:vartype extractor: int
+:ivar auto_validation_threshold:
+:vartype auto_validation_threshold: float
+:ivar fields:
+:vartype fields: list[~affinda.models.FieldGroup]
+:ivar date_format_preference: Known values are: "DMY", "MDY", "YMD".
+:vartype date_format_preference: str or ~affinda.models.DateFormatPreference
+:ivar date_format_from_document: Predict the date format from any dates in the document that is
+ not ambiguous.
+:vartype date_format_from_document: bool
+:ivar extractor_config: Extra configurations specific to an extractor.
+:vartype extractor_config: dict[str, any]
+
+<a id="models._models.CollectionCreate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `name`: Required.
+- `workspace`: Required. Uniquely identify a workspace.
+- `extractor`: Required. Extractor's ID.
+- `auto_validation_threshold`: 
+- `fields`: 
+- `date_format_preference`: Known values are: "DMY", "MDY", "YMD".
+- `date_format_from_document`: Predict the date format from any dates in the document that
+is not ambiguous.
+- `extractor_config`: Extra configurations specific to an extractor.
+
+<a id="models._models.CollectionUpdate"></a>
+
+## CollectionUpdate Objects
+
+```python
+class CollectionUpdate(msrest.serialization.Model)
+```
+
+CollectionUpdate.
+
+:ivar name:
+:vartype name: str
+:ivar auto_validation_threshold:
+:vartype auto_validation_threshold: float
+:ivar fields:
+:vartype fields: list[~affinda.models.FieldGroup]
+:ivar date_format_preference: Known values are: "DMY", "MDY", "YMD".
+:vartype date_format_preference: str or ~affinda.models.DateFormatPreference
+:ivar date_format_from_document: Predict the date format from any dates in the document that is
+ not ambiguous.
+:vartype date_format_from_document: bool
+:ivar extractor_config: Extra configurations specific to an extractor.
+:vartype extractor_config: dict[str, any]
+
+<a id="models._models.CollectionUpdate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `name`: 
+- `auto_validation_threshold`: 
+- `fields`: 
+- `date_format_preference`: Known values are: "DMY", "MDY", "YMD".
+- `date_format_from_document`: Predict the date format from any dates in the document that
+is not ambiguous.
+- `extractor_config`: Extra configurations specific to an extractor.
+
+<a id="models._models.CollectionWorkspace"></a>
+
+## CollectionWorkspace Objects
+
+```python
+class CollectionWorkspace(msrest.serialization.Model)
+```
+
+CollectionWorkspace.
+
+:ivar identifier: Uniquely identify a workspace.
+:vartype identifier: str
+:ivar organization:
+:vartype organization: ~affinda.models.Organization
+:ivar name:
+:vartype name: str
+
+<a id="models._models.CollectionWorkspace.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Uniquely identify a workspace.
+- `organization`: 
+- `name`: 
 
 <a id="models._models.Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1"></a>
 
@@ -1161,6 +1394,176 @@ def __init__(**kwargs)
 - `raw`: 
 - `parsed`: 
 
+<a id="models._models.DataPoint"></a>
+
+## DataPoint Objects
+
+```python
+class DataPoint(msrest.serialization.Model)
+```
+
+DataPoint.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar identifier: Required. Uniquely identify a data point.
+:vartype identifier: str
+:ivar name: Required.
+:vartype name: str
+:ivar slug:
+:vartype slug: str
+:ivar description:
+:vartype description: str
+:ivar annotation_content_type: Required. Known values are: "text", "integer", "float",
+ "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table".
+:vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
+:ivar organization:
+:vartype organization: ~affinda.models.Organization
+:ivar extractor: Required. Extractor's ID.
+:vartype extractor: int
+:ivar multiple:
+:vartype multiple: bool
+:ivar no_rect:
+:vartype no_rect: bool
+:ivar similar_to: Required.
+:vartype similar_to: list[str]
+:ivar choices:
+:vartype choices: list[~affinda.models.DataPointChoicesItem]
+:ivar children:
+:vartype children: list[~affinda.models.DataPoint]
+
+<a id="models._models.DataPoint.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Required. Uniquely identify a data point.
+- `name`: Required.
+- `slug`: 
+- `description`: 
+- `annotation_content_type`: Required. Known values are: "text", "integer", "float",
+"decimal", "date", "datetime", "boolean", "enum", "location", "json", "table".
+- `organization`: 
+- `extractor`: Required. Extractor's ID.
+- `multiple`: 
+- `no_rect`: 
+- `similar_to`: Required.
+- `choices`: 
+- `children`: 
+
+<a id="models._models.DataPointChoicesItem"></a>
+
+## DataPointChoicesItem Objects
+
+```python
+class DataPointChoicesItem(msrest.serialization.Model)
+```
+
+DataPointChoicesItem.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar label: Required.
+:vartype label: str
+
+<a id="models._models.DataPointChoicesItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `label`: Required.
+
+<a id="models._models.DataPointCreate"></a>
+
+## DataPointCreate Objects
+
+```python
+class DataPointCreate(msrest.serialization.Model)
+```
+
+DataPointCreate.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar name:
+:vartype name: str
+:ivar slug: Required.
+:vartype slug: str
+:ivar description:
+:vartype description: str
+:ivar annotation_content_type: Required. Known values are: "text", "integer", "float",
+ "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table".
+:vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
+:ivar organization: Required. Uniquely identify an organization.
+:vartype organization: str
+:ivar extractor: Required. Extractor's ID.
+:vartype extractor: int
+:ivar multiple:
+:vartype multiple: bool
+:ivar no_rect:
+:vartype no_rect: bool
+
+<a id="models._models.DataPointCreate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `name`: 
+- `slug`: Required.
+- `description`: 
+- `annotation_content_type`: Required. Known values are: "text", "integer", "float",
+"decimal", "date", "datetime", "boolean", "enum", "location", "json", "table".
+- `organization`: Required. Uniquely identify an organization.
+- `extractor`: Required. Extractor's ID.
+- `multiple`: 
+- `no_rect`: 
+
+<a id="models._models.DataPointUpdate"></a>
+
+## DataPointUpdate Objects
+
+```python
+class DataPointUpdate(msrest.serialization.Model)
+```
+
+DataPointUpdate.
+
+:ivar name:
+:vartype name: str
+:ivar slug:
+:vartype slug: str
+:ivar description:
+:vartype description: str
+
+<a id="models._models.DataPointUpdate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `name`: 
+- `slug`: 
+- `description`: 
+
 <a id="models._models.DateAnnotation"></a>
 
 ## DateAnnotation Objects
@@ -1176,11 +1579,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -1196,12 +1599,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: ~datetime.date
 
@@ -1217,9 +1622,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -1228,10 +1633,496 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
+
+<a id="models._models.DocumentMeta"></a>
+
+## DocumentMeta Objects
+
+```python
+class DocumentMeta(msrest.serialization.Model)
+```
+
+DocumentMeta.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar identifier: Required. Uniquely identify a document.
+:vartype identifier: str
+:ivar file_name: Optional filename of the file.
+:vartype file_name: str
+:ivar ready: If true, the document has finished processing. Particularly useful if an endpoint
+ request specified wait=False, when polling use this variable to determine when to stop polling.
+:vartype ready: bool
+:ivar ready_dt: The datetime when the document was ready.
+:vartype ready_dt: ~datetime.datetime
+:ivar failed: If true, some exception was raised during processing. Check the 'error' field of
+ the main return object.
+:vartype failed: bool
+:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+ deleted.  Defaults to no expiry.
+:vartype expiry_time: ~datetime.datetime
+:ivar language: The document's language.
+:vartype language: str
+:ivar pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
+ converted to pdf as part of the parsing process).
+:vartype pdf: str
+:ivar parent_document: If this document is part of a splitted document, this attribute points
+ to the original document that this document is splitted from.
+:vartype parent_document: ~affinda.models.DocumentMetaParentDocument
+:ivar child_documents: If this document has been splitted into a number of child documents,
+ this attribute points to those child documents.
+:vartype child_documents: list[~affinda.models.DocumentMetaChildDocumentsItem]
+:ivar pages: Required. The document's pages.
+:vartype pages: list[~affinda.models.PageMeta]
+:ivar is_ocrd:
+:vartype is_ocrd: bool
+:ivar ocr_confidence:
+:vartype ocr_confidence: float
+:ivar review_url:
+:vartype review_url: str
+:ivar collection:
+:vartype collection: ~affinda.models.DocumentMetaCollection
+:ivar workspace: Required.
+:vartype workspace: ~affinda.models.DocumentMetaWorkspace
+:ivar archived_dt:
+:vartype archived_dt: ~datetime.datetime
+:ivar is_archived:
+:vartype is_archived: bool
+:ivar confirmed_dt:
+:vartype confirmed_dt: ~datetime.datetime
+:ivar is_confirmed:
+:vartype is_confirmed: bool
+:ivar rejected_dt:
+:vartype rejected_dt: ~datetime.datetime
+:ivar is_rejected:
+:vartype is_rejected: bool
+:ivar created_dt:
+:vartype created_dt: ~datetime.datetime
+:ivar error_code:
+:vartype error_code: str
+:ivar error_detail:
+:vartype error_detail: str
+:ivar file: URL to view the file.
+:vartype file: str
+:ivar tags: A set of tags.
+:vartype tags: list[~affinda.models.Tag]
+
+<a id="models._models.DocumentMeta.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Required. Uniquely identify a document.
+- `file_name`: Optional filename of the file.
+- `ready`: If true, the document has finished processing. Particularly useful if an
+endpoint request specified wait=False, when polling use this variable to determine when to stop
+polling.
+- `ready_dt`: The datetime when the document was ready.
+- `failed`: If true, some exception was raised during processing. Check the 'error' field
+of the main return object.
+- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
+deleted.  Defaults to no expiry.
+- `language`: The document's language.
+- `pdf`: The URL to the document's pdf (if the uploaded document is not already pdf, it's
+converted to pdf as part of the parsing process).
+- `parent_document`: If this document is part of a splitted document, this attribute
+points to the original document that this document is splitted from.
+- `child_documents`: If this document has been splitted into a number of child documents,
+this attribute points to those child documents.
+- `pages`: Required. The document's pages.
+- `is_ocrd`: 
+- `ocr_confidence`: 
+- `review_url`: 
+- `collection`: 
+- `workspace`: Required.
+- `archived_dt`: 
+- `is_archived`: 
+- `confirmed_dt`: 
+- `is_confirmed`: 
+- `rejected_dt`: 
+- `is_rejected`: 
+- `created_dt`: 
+- `error_code`: 
+- `error_detail`: 
+- `file`: URL to view the file.
+- `tags`: A set of tags.
+
+<a id="models._models.Document"></a>
+
+## Document Objects
+
+```python
+class Document(DocumentMeta)
+```
+
+Document.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar identifier: Required. Uniquely identify a document.
+:vartype identifier: str
+:ivar file_name: Optional filename of the file.
+:vartype file_name: str
+:ivar ready: If true, the document has finished processing. Particularly useful if an endpoint
+ request specified wait=False, when polling use this variable to determine when to stop polling.
+:vartype ready: bool
+:ivar ready_dt: The datetime when the document was ready.
+:vartype ready_dt: ~datetime.datetime
+:ivar failed: If true, some exception was raised during processing. Check the 'error' field of
+ the main return object.
+:vartype failed: bool
+:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+ deleted.  Defaults to no expiry.
+:vartype expiry_time: ~datetime.datetime
+:ivar language: The document's language.
+:vartype language: str
+:ivar pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
+ converted to pdf as part of the parsing process).
+:vartype pdf: str
+:ivar parent_document: If this document is part of a splitted document, this attribute points
+ to the original document that this document is splitted from.
+:vartype parent_document: ~affinda.models.DocumentMetaParentDocument
+:ivar child_documents: If this document has been splitted into a number of child documents,
+ this attribute points to those child documents.
+:vartype child_documents: list[~affinda.models.DocumentMetaChildDocumentsItem]
+:ivar pages: Required. The document's pages.
+:vartype pages: list[~affinda.models.PageMeta]
+:ivar is_ocrd:
+:vartype is_ocrd: bool
+:ivar ocr_confidence:
+:vartype ocr_confidence: float
+:ivar review_url:
+:vartype review_url: str
+:ivar collection:
+:vartype collection: ~affinda.models.DocumentMetaCollection
+:ivar workspace: Required.
+:vartype workspace: ~affinda.models.DocumentMetaWorkspace
+:ivar archived_dt:
+:vartype archived_dt: ~datetime.datetime
+:ivar is_archived:
+:vartype is_archived: bool
+:ivar confirmed_dt:
+:vartype confirmed_dt: ~datetime.datetime
+:ivar is_confirmed:
+:vartype is_confirmed: bool
+:ivar rejected_dt:
+:vartype rejected_dt: ~datetime.datetime
+:ivar is_rejected:
+:vartype is_rejected: bool
+:ivar created_dt:
+:vartype created_dt: ~datetime.datetime
+:ivar error_code:
+:vartype error_code: str
+:ivar error_detail:
+:vartype error_detail: str
+:ivar file: URL to view the file.
+:vartype file: str
+:ivar tags: A set of tags.
+:vartype tags: list[~affinda.models.Tag]
+:ivar data: Dictionary of :code:`<any>`.
+:vartype data: dict[str, any]
+
+<a id="models._models.Document.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Required. Uniquely identify a document.
+- `file_name`: Optional filename of the file.
+- `ready`: If true, the document has finished processing. Particularly useful if an
+endpoint request specified wait=False, when polling use this variable to determine when to stop
+polling.
+- `ready_dt`: The datetime when the document was ready.
+- `failed`: If true, some exception was raised during processing. Check the 'error' field
+of the main return object.
+- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
+deleted.  Defaults to no expiry.
+- `language`: The document's language.
+- `pdf`: The URL to the document's pdf (if the uploaded document is not already pdf, it's
+converted to pdf as part of the parsing process).
+- `parent_document`: If this document is part of a splitted document, this attribute
+points to the original document that this document is splitted from.
+- `child_documents`: If this document has been splitted into a number of child documents,
+this attribute points to those child documents.
+- `pages`: Required. The document's pages.
+- `is_ocrd`: 
+- `ocr_confidence`: 
+- `review_url`: 
+- `collection`: 
+- `workspace`: Required.
+- `archived_dt`: 
+- `is_archived`: 
+- `confirmed_dt`: 
+- `is_confirmed`: 
+- `rejected_dt`: 
+- `is_rejected`: 
+- `created_dt`: 
+- `error_code`: 
+- `error_detail`: 
+- `file`: URL to view the file.
+- `tags`: A set of tags.
+- `data`: Dictionary of :code:`<any>`.
+
+<a id="models._models.DocumentCreate"></a>
+
+## DocumentCreate Objects
+
+```python
+class DocumentCreate(msrest.serialization.Model)
+```
+
+DocumentCreate.
+
+:ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
+ JPG.
+:vartype file: IO
+:ivar url: URL to a resume to download and process.
+:vartype url: str
+:ivar collection: Uniquely identify a collection.
+:vartype collection: str
+:ivar workspace: Uniquely identify a workspace.
+:vartype workspace: str
+:ivar wait: If "true" (default), will return a response only after processing has completed. If
+ "false", will return an empty data object which can be polled at the GET endpoint until
+ processing is complete.
+:vartype wait: bool
+:ivar identifier: Specify a custom identifier for the document.
+:vartype identifier: str
+:ivar file_name: Optional filename of the file.
+:vartype file_name: str
+:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+ deleted.  Defaults to no expiry.
+:vartype expiry_time: ~datetime.datetime
+:ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+:vartype language: str
+
+<a id="models._models.DocumentCreate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+PNG, JPG.
+- `url`: URL to a resume to download and process.
+- `collection`: Uniquely identify a collection.
+- `workspace`: Uniquely identify a workspace.
+- `wait`: If "true" (default), will return a response only after processing has completed.
+If "false", will return an empty data object which can be polled at the GET endpoint until
+processing is complete.
+- `identifier`: Specify a custom identifier for the document.
+- `file_name`: Optional filename of the file.
+- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
+deleted.  Defaults to no expiry.
+- `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+
+<a id="models._models.DocumentMetaChildDocumentsItem"></a>
+
+## DocumentMetaChildDocumentsItem Objects
+
+```python
+class DocumentMetaChildDocumentsItem(msrest.serialization.Model)
+```
+
+DocumentMetaChildDocumentsItem.
+
+:ivar identifier: Uniquely identify a document.
+:vartype identifier: str
+
+<a id="models._models.DocumentMetaChildDocumentsItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Uniquely identify a document.
+
+<a id="models._models.DocumentMetaCollection"></a>
+
+## DocumentMetaCollection Objects
+
+```python
+class DocumentMetaCollection(msrest.serialization.Model)
+```
+
+DocumentMetaCollection.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar identifier: Required. Uniquely identify a collection.
+:vartype identifier: str
+:ivar name:
+:vartype name: str
+:ivar extractor:
+:vartype extractor: ~affinda.models.DocumentMetaCollectionExtractor
+
+<a id="models._models.DocumentMetaCollection.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Required. Uniquely identify a collection.
+- `name`: 
+- `extractor`: 
+
+<a id="models._models.DocumentMetaCollectionExtractor"></a>
+
+## DocumentMetaCollectionExtractor Objects
+
+```python
+class DocumentMetaCollectionExtractor(msrest.serialization.Model)
+```
+
+DocumentMetaCollectionExtractor.
+
+:ivar id: Extractor's ID.
+:vartype id: int
+:ivar name:
+:vartype name: str
+:ivar base_extractor: Base extractor's ID.
+:vartype base_extractor: int
+:ivar validatable:
+:vartype validatable: bool
+
+<a id="models._models.DocumentMetaCollectionExtractor.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `id`: Extractor's ID.
+- `name`: 
+- `base_extractor`: Base extractor's ID.
+- `validatable`: 
+
+<a id="models._models.DocumentMetaParentDocument"></a>
+
+## DocumentMetaParentDocument Objects
+
+```python
+class DocumentMetaParentDocument(msrest.serialization.Model)
+```
+
+If this document is part of a splitted document, this attribute points to the original document that this document is splitted from.
+
+:ivar identifier: Uniquely identify a document.
+:vartype identifier: str
+
+<a id="models._models.DocumentMetaParentDocument.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Uniquely identify a document.
+
+<a id="models._models.DocumentMetaWorkspace"></a>
+
+## DocumentMetaWorkspace Objects
+
+```python
+class DocumentMetaWorkspace(msrest.serialization.Model)
+```
+
+DocumentMetaWorkspace.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar identifier: Required. Uniquely identify a workspace.
+:vartype identifier: str
+:ivar name:
+:vartype name: str
+
+<a id="models._models.DocumentMetaWorkspace.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Required. Uniquely identify a workspace.
+- `name`: 
+
+<a id="models._models.DocumentUpdate"></a>
+
+## DocumentUpdate Objects
+
+```python
+class DocumentUpdate(msrest.serialization.Model)
+```
+
+DocumentUpdate.
+
+:ivar collection: Uniquely identify a collection.
+:vartype collection: str
+:ivar file_name: Optional filename of the file.
+:vartype file_name: str
+:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+ deleted.  Defaults to no expiry.
+:vartype expiry_time: ~datetime.datetime
+:ivar is_confirmed:
+:vartype is_confirmed: bool
+:ivar is_rejected:
+:vartype is_rejected: bool
+:ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+:vartype language: str
+
+<a id="models._models.DocumentUpdate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `collection`: Uniquely identify a collection.
+- `file_name`: Optional filename of the file.
+- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
+deleted.  Defaults to no expiry.
+- `is_confirmed`: 
+- `is_rejected`: 
+- `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 
 <a id="models._models.Education"></a>
 
@@ -1383,11 +2274,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -1403,12 +2294,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -1424,9 +2317,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -1435,9 +2328,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.Error"></a>
@@ -1483,11 +2377,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -1503,12 +2397,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: ~affinda.models.ExpectedRemunerationAnnotationParsed
 
@@ -1524,9 +2420,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -1535,9 +2431,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.ExpectedRemunerationAnnotationParsed"></a>
@@ -1607,6 +2504,328 @@ def __init__(**kwargs)
 - `label`: Required.
 - `score`: 
 
+<a id="models._models.Extractor"></a>
+
+## Extractor Objects
+
+```python
+class Extractor(msrest.serialization.Model)
+```
+
+Extractor.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar id: Required. Extractor's ID.
+:vartype id: int
+:ivar identifier: Required.
+:vartype identifier: str
+:ivar name: Required.
+:vartype name: str
+:ivar name_plural: Required.
+:vartype name_plural: str
+:ivar base_extractor:
+:vartype base_extractor: ~affinda.models.ExtractorBaseExtractor
+:ivar organization:
+:vartype organization: ~affinda.models.Organization
+:ivar category:
+:vartype category: str
+:ivar validatable: Required.
+:vartype validatable: bool
+:ivar is_custom:
+:vartype is_custom: bool
+:ivar field_groups:
+:vartype field_groups: ~affinda.models.ExtractorFieldGroups
+:ivar created_dt:
+:vartype created_dt: ~datetime.datetime
+
+<a id="models._models.Extractor.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `id`: Required. Extractor's ID.
+- `identifier`: Required.
+- `name`: Required.
+- `name_plural`: Required.
+- `base_extractor`: 
+- `organization`: 
+- `category`: 
+- `validatable`: Required.
+- `is_custom`: 
+- `field_groups`: 
+- `created_dt`: 
+
+<a id="models._models.ExtractorBaseExtractor"></a>
+
+## ExtractorBaseExtractor Objects
+
+```python
+class ExtractorBaseExtractor(msrest.serialization.Model)
+```
+
+ExtractorBaseExtractor.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar id: Required.
+:vartype id: int
+:ivar identifier: Required.
+:vartype identifier: str
+:ivar name: Required.
+:vartype name: str
+:ivar name_plural: Required.
+:vartype name_plural: str
+:ivar validatable: Required.
+:vartype validatable: bool
+:ivar is_custom:
+:vartype is_custom: bool
+:ivar created_dt:
+:vartype created_dt: ~datetime.datetime
+
+<a id="models._models.ExtractorBaseExtractor.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `id`: Required.
+- `identifier`: Required.
+- `name`: Required.
+- `name_plural`: Required.
+- `validatable`: Required.
+- `is_custom`: 
+- `created_dt`: 
+
+<a id="models._models.ExtractorCreate"></a>
+
+## ExtractorCreate Objects
+
+```python
+class ExtractorCreate(msrest.serialization.Model)
+```
+
+ExtractorCreate.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar name: Required.
+:vartype name: str
+:ivar name_plural:
+:vartype name_plural: str
+:ivar base_extractor: The base extractor's ID.
+:vartype base_extractor: int
+:ivar organization: Required. Uniquely identify an organization.
+:vartype organization: str
+:ivar category:
+:vartype category: str
+:ivar validatable:
+:vartype validatable: bool
+:ivar field_groups:
+:vartype field_groups: ~affinda.models.FieldGroups
+
+<a id="models._models.ExtractorCreate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `name`: Required.
+- `name_plural`: 
+- `base_extractor`: The base extractor's ID.
+- `organization`: Required. Uniquely identify an organization.
+- `category`: 
+- `validatable`: 
+- `field_groups`: 
+
+<a id="models._models.FieldGroup"></a>
+
+## FieldGroup Objects
+
+```python
+class FieldGroup(msrest.serialization.Model)
+```
+
+FieldGroup.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar label: Required.
+:vartype label: str
+:ivar fields: Required.
+:vartype fields: list[~affinda.models.Field]
+
+<a id="models._models.FieldGroup.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `label`: Required.
+- `fields`: Required.
+
+<a id="models._models.ExtractorFieldGroups"></a>
+
+## ExtractorFieldGroups Objects
+
+```python
+class ExtractorFieldGroups(FieldGroup)
+```
+
+ExtractorFieldGroups.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar label: Required.
+:vartype label: str
+:ivar fields: Required.
+:vartype fields: list[~affinda.models.Field]
+
+<a id="models._models.ExtractorFieldGroups.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `label`: Required.
+- `fields`: Required.
+
+<a id="models._models.ExtractorUpdate"></a>
+
+## ExtractorUpdate Objects
+
+```python
+class ExtractorUpdate(msrest.serialization.Model)
+```
+
+ExtractorUpdate.
+
+:ivar name:
+:vartype name: str
+:ivar name_plural:
+:vartype name_plural: str
+:ivar base_extractor: The base extractor's ID.
+:vartype base_extractor: int
+:ivar category:
+:vartype category: str
+:ivar validatable:
+:vartype validatable: bool
+:ivar field_groups:
+:vartype field_groups: ~affinda.models.FieldGroups
+
+<a id="models._models.ExtractorUpdate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `name`: 
+- `name_plural`: 
+- `base_extractor`: The base extractor's ID.
+- `category`: 
+- `validatable`: 
+- `field_groups`: 
+
+<a id="models._models.Field"></a>
+
+## Field Objects
+
+```python
+class Field(msrest.serialization.Model)
+```
+
+Field.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar label: Required.
+:vartype label: str
+:ivar slug: Required.
+:vartype slug: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar mandatory:
+:vartype mandatory: bool
+:ivar disabled:
+:vartype disabled: bool
+:ivar auto_validation_threshold:
+:vartype auto_validation_threshold: float
+:ivar fields:
+:vartype fields: list[~affinda.models.Field]
+
+<a id="models._models.Field.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `label`: Required.
+- `slug`: Required.
+- `data_point`: Required.
+- `mandatory`: 
+- `disabled`: 
+- `auto_validation_threshold`: 
+- `fields`: 
+
+<a id="models._models.FieldGroups"></a>
+
+## FieldGroups Objects
+
+```python
+class FieldGroups(FieldGroup)
+```
+
+FieldGroups.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar label: Required.
+:vartype label: str
+:ivar fields: Required.
+:vartype fields: list[~affinda.models.Field]
+
+<a id="models._models.FieldGroups.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `label`: Required.
+- `fields`: Required.
+
 <a id="models._models.Get200ApplicationJsonPropertiesItemsItem"></a>
 
 ## Get200ApplicationJsonPropertiesItemsItem Objects
@@ -1648,14 +2867,16 @@ class GetAllDocumentsResults(msrest.serialization.Model)
 
 GetAllDocumentsResults.
 
-:ivar count: Number of documents in result.
+All required parameters must be populated in order to send to Azure.
+
+:ivar count: Required. Number of documents in result.
 :vartype count: int
 :ivar next: URL to request next page of results.
 :vartype next: str
 :ivar previous: URL to request previous page of results.
 :vartype previous: str
-:ivar results:
-:vartype results: list[~affinda.models.Meta]
+:ivar results: Required.
+:vartype results: list[~affinda.models.Document]
 
 <a id="models._models.GetAllDocumentsResults.__init__"></a>
 
@@ -1667,10 +2888,10 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `count`: Number of documents in result.
+- `count`: Required. Number of documents in result.
 - `next`: URL to request next page of results.
 - `previous`: URL to request previous page of results.
-- `results`: 
+- `results`: Required.
 
 <a id="models._models.GetAllInvoicesResults"></a>
 
@@ -1767,6 +2988,187 @@ def __init__(**kwargs)
 
 - `name`: 
 - `document_type`: Known values are: "resumes", "job_descriptions".
+
+<a id="models._models.Invitation"></a>
+
+## Invitation Objects
+
+```python
+class Invitation(msrest.serialization.Model)
+```
+
+Invitation.
+
+:ivar identifier: Uniquely identify an invitation.
+:vartype identifier: str
+:ivar organization:
+:vartype organization: ~affinda.models.Organization
+:ivar email: The email which the invitation is sent to.
+:vartype email: str
+:ivar role: Known values are: "admin", "member".
+:vartype role: str or ~affinda.models.OrganizationRole
+:ivar status: Known values are: "pending", "accepted", "declined".
+:vartype status: str or ~affinda.models.InvitationStatus
+:ivar expiry_date: The date after which the invitation expires. Default is 10 days from now.
+:vartype expiry_date: ~datetime.date
+:ivar invited_by:
+:vartype invited_by: ~affinda.models.User
+:ivar responded_by:
+:vartype responded_by: ~affinda.models.InvitationRespondedBy
+:ivar created_dt:
+:vartype created_dt: ~datetime.datetime
+
+<a id="models._models.Invitation.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Uniquely identify an invitation.
+- `organization`: 
+- `email`: The email which the invitation is sent to.
+- `role`: Known values are: "admin", "member".
+- `status`: Known values are: "pending", "accepted", "declined".
+- `expiry_date`: The date after which the invitation expires. Default is 10 days from now.
+- `invited_by`: 
+- `responded_by`: 
+- `created_dt`: 
+
+<a id="models._models.InvitationCreate"></a>
+
+## InvitationCreate Objects
+
+```python
+class InvitationCreate(msrest.serialization.Model)
+```
+
+InvitationCreate.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar organization: Required. Uniquely identify an organization.
+:vartype organization: str
+:ivar email: Required. The email which the invitation is sent to.
+:vartype email: str
+:ivar role: Required. Known values are: "admin", "member".
+:vartype role: str or ~affinda.models.OrganizationRole
+
+<a id="models._models.InvitationCreate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `organization`: Required. Uniquely identify an organization.
+- `email`: Required. The email which the invitation is sent to.
+- `role`: Required. Known values are: "admin", "member".
+
+<a id="models._models.User"></a>
+
+## User Objects
+
+```python
+class User(msrest.serialization.Model)
+```
+
+User.
+
+:ivar id: Uniquely identify a user.
+:vartype id: int
+:ivar name:
+:vartype name: str
+:ivar username:
+:vartype username: str
+:ivar email:
+:vartype email: str
+:ivar avatar: URL of the user's avatar.
+:vartype avatar: str
+
+<a id="models._models.User.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `id`: Uniquely identify a user.
+- `name`: 
+- `username`: 
+- `email`: 
+- `avatar`: URL of the user's avatar.
+
+<a id="models._models.InvitationRespondedBy"></a>
+
+## InvitationRespondedBy Objects
+
+```python
+class InvitationRespondedBy(User)
+```
+
+InvitationRespondedBy.
+
+:ivar id: Uniquely identify a user.
+:vartype id: int
+:ivar name:
+:vartype name: str
+:ivar username:
+:vartype username: str
+:ivar email:
+:vartype email: str
+:ivar avatar: URL of the user's avatar.
+:vartype avatar: str
+
+<a id="models._models.InvitationRespondedBy.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `id`: Uniquely identify a user.
+- `name`: 
+- `username`: 
+- `email`: 
+- `avatar`: URL of the user's avatar.
+
+<a id="models._models.InvitationUpdate"></a>
+
+## InvitationUpdate Objects
+
+```python
+class InvitationUpdate(msrest.serialization.Model)
+```
+
+InvitationUpdate.
+
+:ivar role: Known values are: "admin", "member".
+:vartype role: str or ~affinda.models.OrganizationRole
+
+<a id="models._models.InvitationUpdate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `role`: Known values are: "admin", "member".
 
 <a id="models._models.Invoice"></a>
 
@@ -1955,11 +3357,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -1975,12 +3377,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -1996,9 +3400,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -2007,9 +3411,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataBankAccountNumber"></a>
@@ -2027,11 +3432,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -2047,12 +3452,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -2068,9 +3475,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -2079,9 +3486,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataBankBsb"></a>
@@ -2099,11 +3507,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -2119,12 +3527,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -2140,9 +3550,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -2151,9 +3561,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataBankIban"></a>
@@ -2171,11 +3582,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -2191,12 +3602,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -2212,9 +3625,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -2223,9 +3636,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataBankSortCode"></a>
@@ -2243,11 +3657,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -2263,12 +3677,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -2284,9 +3700,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -2295,9 +3711,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataBankSwift"></a>
@@ -2315,11 +3732,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -2335,12 +3752,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -2356,9 +3775,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -2367,9 +3786,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataBpayBillerCode"></a>
@@ -2387,11 +3807,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -2407,12 +3827,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -2428,9 +3850,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -2439,9 +3861,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataBpayReference"></a>
@@ -2459,11 +3882,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -2479,12 +3902,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -2500,9 +3925,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -2511,9 +3936,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerBusinessNumber"></a>
@@ -2531,11 +3957,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -2551,12 +3977,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -2572,9 +4000,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -2583,9 +4011,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerCompanyName"></a>
@@ -2603,11 +4032,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -2623,12 +4052,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -2644,9 +4075,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -2655,9 +4086,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerContactName"></a>
@@ -2675,11 +4107,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -2695,12 +4127,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -2716,9 +4150,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -2727,9 +4161,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerEmail"></a>
@@ -2747,11 +4182,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -2767,12 +4202,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -2788,9 +4225,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -2799,9 +4236,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerNumber"></a>
@@ -2819,11 +4257,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -2839,12 +4277,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -2860,9 +4300,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -2871,9 +4311,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerPhoneNumber"></a>
@@ -2891,11 +4332,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -2911,12 +4352,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -2932,9 +4375,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -2943,9 +4386,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerVat"></a>
@@ -2963,11 +4407,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -2983,12 +4427,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -3004,9 +4450,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -3015,9 +4461,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataInvoiceNumber"></a>
@@ -3035,11 +4482,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -3055,12 +4502,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -3076,9 +4525,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -3087,9 +4536,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataInvoicePurchaseOrderNumber"></a>
@@ -3107,11 +4557,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -3127,12 +4577,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -3148,9 +4600,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -3159,9 +4611,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataPaymentAmountBase"></a>
@@ -3179,11 +4632,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -3199,12 +4652,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -3220,9 +4675,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -3231,9 +4686,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataPaymentAmountDue"></a>
@@ -3251,11 +4707,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -3271,12 +4727,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -3292,9 +4750,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -3303,9 +4761,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataPaymentAmountPaid"></a>
@@ -3323,11 +4782,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -3343,12 +4802,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -3364,9 +4825,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -3375,9 +4836,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataPaymentAmountTax"></a>
@@ -3395,11 +4857,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -3415,12 +4877,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -3436,9 +4900,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -3447,9 +4911,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataPaymentAmountTotal"></a>
@@ -3467,11 +4932,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -3487,12 +4952,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -3508,9 +4975,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -3519,9 +4986,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataPaymentReference"></a>
@@ -3539,11 +5007,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -3559,12 +5027,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -3580,9 +5050,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -3591,9 +5061,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierBusinessNumber"></a>
@@ -3611,11 +5082,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -3631,12 +5102,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -3652,9 +5125,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -3663,9 +5136,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierCompanyName"></a>
@@ -3683,11 +5157,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -3703,12 +5177,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -3724,9 +5200,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -3735,9 +5211,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierEmail"></a>
@@ -3755,11 +5232,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -3775,12 +5252,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -3796,9 +5275,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -3807,9 +5286,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierFax"></a>
@@ -3827,11 +5307,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -3847,12 +5327,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -3868,9 +5350,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -3879,9 +5361,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierPhoneNumber"></a>
@@ -3899,11 +5382,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -3919,12 +5402,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -3940,9 +5425,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -3951,9 +5436,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierVat"></a>
@@ -3971,11 +5457,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -3991,12 +5477,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -4012,9 +5500,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -4023,9 +5511,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierWebsite"></a>
@@ -4043,11 +5532,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -4063,12 +5552,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -4084,9 +5575,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -4095,9 +5586,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataTablesItem"></a>
@@ -4140,8 +5632,7 @@ InvoiceRequestBody.
 :vartype file: IO
 :ivar url: URL to an invoice to download and process.
 :vartype url: str
-:ivar identifier: Unique identifier for the document. If creating a document and left blank,
- one will be automatically generated.
+:ivar identifier: A random string that uniquely identify the resource.
 :vartype identifier: str
 :ivar file_name: Optional filename of the file.
 :vartype file_name: str
@@ -4172,8 +5663,7 @@ def __init__(**kwargs)
 - `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
 PNG, JPG.
 - `url`: URL to an invoice to download and process.
-- `identifier`: Unique identifier for the document. If creating a document and left blank,
-one will be automatically generated.
+- `identifier`: A random string that uniquely identify the resource.
 - `file_name`: Optional filename of the file.
 - `wait`: If "true" (default), will return a response only after processing has completed.
 If "false", will return an empty data object which can be polled at the GET endpoint until
@@ -4306,8 +5796,7 @@ JobDescriptionRequestBody.
 :vartype file: IO
 :ivar url: URL to a job description to download and process.
 :vartype url: str
-:ivar identifier: Unique identifier for the document. If creating a document and left blank,
- one will be automatically generated.
+:ivar identifier: A random string that uniquely identify the resource.
 :vartype identifier: str
 :ivar file_name: Optional filename of the file.
 :vartype file_name: str
@@ -4338,8 +5827,7 @@ def __init__(**kwargs)
 - `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
 PNG, JPG.
 - `url`: URL to a job description to download and process.
-- `identifier`: Unique identifier for the document. If creating a document and left blank,
-one will be automatically generated.
+- `identifier`: A random string that uniquely identify the resource.
 - `file_name`: Optional filename of the file.
 - `wait`: If "true" (default), will return a response only after processing has completed.
 If "false", will return an empty data object which can be polled at the GET endpoint until
@@ -5170,8 +6658,7 @@ All required parameters must be populated in order to send to Azure.
 
 :ivar indices: Required.
 :vartype indices: list[str]
-:ivar resume: Unique identifier for the document. If creating a document and left blank, one
- will be automatically generated.
+:ivar resume: A random string that uniquely identify the resource.
 :vartype resume: str
 :ivar job_titles:
 :vartype job_titles: list[str]
@@ -5239,8 +6726,7 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `indices`: Required.
-- `resume`: Unique identifier for the document. If creating a document and left blank, one
-will be automatically generated.
+- `resume`: A random string that uniquely identify the resource.
 - `job_titles`: 
 - `job_titles_required`: 
 - `job_titles_weight`: 
@@ -5281,8 +6767,7 @@ JobDescriptionSearchResult.
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar identifier: Required. Unique identifier for the document. If creating a document and left
- blank, one will be automatically generated.
+:ivar identifier: Required. A random string that uniquely identify the resource.
 :vartype identifier: str
 :ivar score: Required.
 :vartype score: float
@@ -5319,8 +6804,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `identifier`: Required. Unique identifier for the document. If creating a document and
-left blank, one will be automatically generated.
+- `identifier`: Required. A random string that uniquely identify the resource.
 - `score`: Required.
 - `pdf`: Required.
 - `job_title`: Required.
@@ -5349,11 +6833,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -5369,12 +6853,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed: Years of experience range.
 :vartype parsed: ~affinda.models.JobTitleAnnotationParsed
 
@@ -5390,9 +6876,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5401,9 +6887,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: Years of experience range.
 
 <a id="models._models.JobTitleAnnotationParsed"></a>
@@ -5522,11 +7009,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -5542,12 +7029,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -5563,9 +7052,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5574,9 +7063,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.LanguagesSearchScoreComponent"></a>
@@ -5612,6 +7102,39 @@ def __init__(**kwargs)
 - `label`: Required.
 - `score`: 
 
+<a id="models._models.ListResult"></a>
+
+## ListResult Objects
+
+```python
+class ListResult(msrest.serialization.Model)
+```
+
+ListResult.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar count: Required. Number of items in results.
+:vartype count: int
+:ivar next: URL to request next page of results.
+:vartype next: str
+:ivar previous: URL to request previous page of results.
+:vartype previous: str
+
+<a id="models._models.ListResult.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `count`: Required. Number of items in results.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
+
 <a id="models._models.LocationAnnotation"></a>
 
 ## LocationAnnotation Objects
@@ -5627,11 +7150,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -5647,12 +7170,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: ~affinda.models.Location
 
@@ -5668,9 +7193,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5679,9 +7204,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.LocationSearchScoreComponent"></a>
@@ -5760,26 +7286,17 @@ class Meta(msrest.serialization.Model)
 
 Meta.
 
-Variables are only populated by the server, and will be ignored when sending a request.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar additional_properties: Unmatched properties from the message are deserialized to this
- collection.
-:vartype additional_properties: dict[str, any]
-:ivar identifier: Required. Unique identifier for the document. If creating a document and left
- blank, one will be automatically generated.
+:ivar identifier: Uniquely identify a document.
 :vartype identifier: str
 :ivar file_name: Optional filename of the file.
 :vartype file_name: str
-:ivar ready: Required. If true, the document has finished processing. Particularly useful if an
- endpoint request specified wait=False, when polling use this variable to determine when to stop
- polling.
+:ivar ready: If true, the document has finished processing. Particularly useful if an endpoint
+ request specified wait=False, when polling use this variable to determine when to stop polling.
 :vartype ready: bool
 :ivar ready_dt: The datetime when the document was ready.
 :vartype ready_dt: ~datetime.datetime
-:ivar failed: Required. If true, some exception was raised during processing. Check the 'error'
- field of the main return object.
+:ivar failed: If true, some exception was raised during processing. Check the 'error' field of
+ the main return object.
 :vartype failed: bool
 :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
  deleted.  Defaults to no expiry.
@@ -5791,10 +7308,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype pdf: str
 :ivar parent_document: If this document is part of a splitted document, this attribute points
  to the original document that this document is splitted from.
-:vartype parent_document: ~affinda.models.SplitRelation
+:vartype parent_document: ~affinda.models.MetaParentDocument
 :ivar child_documents: If this document has been splitted into a number of child documents,
  this attribute points to those child documents.
-:vartype child_documents: list[~affinda.models.SplitRelation]
+:vartype child_documents: list[~affinda.models.MetaChildDocumentsItem]
 :ivar pages: The document's pages.
 :vartype pages: list[~affinda.models.PageMeta]
 :ivar is_verified: This is true if the "confirm" button has been clicked in the Affinda
@@ -5817,20 +7334,23 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `additional_properties`: Unmatched properties from the message are deserialized to this
-collection.
-- `identifier`: Required. Unique identifier for the document. If creating a document and
-left blank, one will be automatically generated.
+- `identifier`: Uniquely identify a document.
 - `file_name`: Optional filename of the file.
-- `ready`: Required. If true, the document has finished processing. Particularly useful if
-an endpoint request specified wait=False, when polling use this variable to determine when to
-stop polling.
+- `ready`: If true, the document has finished processing. Particularly useful if an
+endpoint request specified wait=False, when polling use this variable to determine when to stop
+polling.
 - `ready_dt`: The datetime when the document was ready.
-- `failed`: Required. If true, some exception was raised during processing. Check the
-'error' field of the main return object.
+- `failed`: If true, some exception was raised during processing. Check the 'error' field
+of the main return object.
 - `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
 - `language`: The document's language.
+- `pdf`: The URL to the document's pdf (if the uploaded document is not already pdf, it's
+converted to pdf as part of the parsing process).
+- `parent_document`: If this document is part of a splitted document, this attribute
+points to the original document that this document is splitted from.
+- `child_documents`: If this document has been splitted into a number of child documents,
+this attribute points to those child documents.
 - `pages`: The document's pages.
 - `is_verified`: This is true if the "confirm" button has been clicked in the Affinda
 validation tool.
@@ -5838,6 +7358,56 @@ validation tool.
 applicable for documents types such a resumes.
 - `ocr_confidence`: The overall confidence in the conversion of image to text.  (only
 applicable for images or PDF documents without a text layer).
+
+<a id="models._models.MetaChildDocumentsItem"></a>
+
+## MetaChildDocumentsItem Objects
+
+```python
+class MetaChildDocumentsItem(msrest.serialization.Model)
+```
+
+MetaChildDocumentsItem.
+
+:ivar identifier: Uniquely identify a document.
+:vartype identifier: str
+
+<a id="models._models.MetaChildDocumentsItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Uniquely identify a document.
+
+<a id="models._models.MetaParentDocument"></a>
+
+## MetaParentDocument Objects
+
+```python
+class MetaParentDocument(msrest.serialization.Model)
+```
+
+If this document is part of a splitted document, this attribute points to the original document that this document is splitted from.
+
+:ivar identifier: Uniquely identify a document.
+:vartype identifier: str
+
+<a id="models._models.MetaParentDocument.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Uniquely identify a document.
 
 <a id="models._models.OccupationGroupSearchScoreComponent"></a>
 
@@ -5872,6 +7442,176 @@ def __init__(**kwargs)
 - `label`: Required.
 - `score`: 
 
+<a id="models._models.Organization"></a>
+
+## Organization Objects
+
+```python
+class Organization(msrest.serialization.Model)
+```
+
+Organization.
+
+:ivar identifier: Uniquely identify an organization.
+:vartype identifier: str
+:ivar name:
+:vartype name: str
+:ivar user_role: The role of the logged in user within the organization. Known values are:
+ "admin", "member".
+:vartype user_role: str or ~affinda.models.OrganizationUserRole
+:ivar avatar: URL of the organization's avatar.
+:vartype avatar: str
+:ivar resthook_signature_key: Used to sign webhook payloads so you can verify their integrity.
+:vartype resthook_signature_key: str
+:ivar is_trial:
+:vartype is_trial: bool
+
+<a id="models._models.Organization.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Uniquely identify an organization.
+- `name`: 
+- `user_role`: The role of the logged in user within the organization. Known values are:
+"admin", "member".
+- `avatar`: URL of the organization's avatar.
+- `resthook_signature_key`: Used to sign webhook payloads so you can verify their
+integrity.
+- `is_trial`: 
+
+<a id="models._models.OrganizationCreate"></a>
+
+## OrganizationCreate Objects
+
+```python
+class OrganizationCreate(msrest.serialization.Model)
+```
+
+OrganizationCreate.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar name: Required.
+:vartype name: str
+:ivar avatar: Upload avatar for the organization.
+:vartype avatar: IO
+:ivar resthook_signature_key: Used to sign webhook payloads so you can verify their integrity.
+:vartype resthook_signature_key: str
+
+<a id="models._models.OrganizationCreate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `name`: Required.
+- `avatar`: Upload avatar for the organization.
+- `resthook_signature_key`: Used to sign webhook payloads so you can verify their
+integrity.
+
+<a id="models._models.OrganizationMembership"></a>
+
+## OrganizationMembership Objects
+
+```python
+class OrganizationMembership(msrest.serialization.Model)
+```
+
+OrganizationMembership.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar identifier: Required. A random string that uniquely identify the resource.
+:vartype identifier: str
+:ivar organization: Required. Uniquely identify an organization.
+:vartype organization: str
+:ivar user: Required.
+:vartype user: ~affinda.models.User
+:ivar role: Required. Known values are: "admin", "member".
+:vartype role: str or ~affinda.models.OrganizationRole
+
+<a id="models._models.OrganizationMembership.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Required. A random string that uniquely identify the resource.
+- `organization`: Required. Uniquely identify an organization.
+- `user`: Required.
+- `role`: Required. Known values are: "admin", "member".
+
+<a id="models._models.OrganizationMembershipUpdate"></a>
+
+## OrganizationMembershipUpdate Objects
+
+```python
+class OrganizationMembershipUpdate(msrest.serialization.Model)
+```
+
+OrganizationMembershipUpdate.
+
+:ivar role: Known values are: "admin", "member".
+:vartype role: str or ~affinda.models.OrganizationRole
+
+<a id="models._models.OrganizationMembershipUpdate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `role`: Known values are: "admin", "member".
+
+<a id="models._models.OrganizationUpdate"></a>
+
+## OrganizationUpdate Objects
+
+```python
+class OrganizationUpdate(msrest.serialization.Model)
+```
+
+OrganizationUpdate.
+
+:ivar name:
+:vartype name: str
+:ivar avatar: Upload avatar for the organization.
+:vartype avatar: IO
+:ivar resthook_signature_key: Used to sign webhook payloads so you can verify their integrity.
+:vartype resthook_signature_key: str
+
+<a id="models._models.OrganizationUpdate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `name`: 
+- `avatar`: Upload avatar for the organization.
+- `resthook_signature_key`: Used to sign webhook payloads so you can verify their
+integrity.
+
 <a id="models._models.PageMeta"></a>
 
 ## PageMeta Objects
@@ -5882,18 +7622,20 @@ class PageMeta(msrest.serialization.Model)
 
 PageMeta.
 
-:ivar id:
+All required parameters must be populated in order to send to Azure.
+
+:ivar id: Required.
 :vartype id: int
-:ivar page_index: Page number within the document, starts from 0.
+:ivar page_index: Required. Page number within the document, starts from 0.
 :vartype page_index: int
-:ivar image: The URL to the image of the page.
+:ivar image: Required. The URL to the image of the page.
 :vartype image: str
-:ivar height: Height of the page's image in px.
+:ivar height: Required. Height of the page's image in px.
 :vartype height: float
-:ivar width: Width of the page's image in px.
+:ivar width: Required. Width of the page's image in px.
 :vartype width: float
-:ivar rotation: The degree of rotation applied to the page. Greater than 0 indicates clockwise
- rotation. Less than 0 indicates counter-clockwise rotation.
+:ivar rotation: Required. The degree of rotation applied to the page. Greater than 0 indicates
+ clockwise rotation. Less than 0 indicates counter-clockwise rotation.
 :vartype rotation: int
 
 <a id="models._models.PageMeta.__init__"></a>
@@ -5906,13 +7648,71 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `id`: 
-- `page_index`: Page number within the document, starts from 0.
-- `image`: The URL to the image of the page.
-- `height`: Height of the page's image in px.
-- `width`: Width of the page's image in px.
-- `rotation`: The degree of rotation applied to the page. Greater than 0 indicates
-clockwise rotation. Less than 0 indicates counter-clockwise rotation.
+- `id`: Required.
+- `page_index`: Required. Page number within the document, starts from 0.
+- `image`: Required. The URL to the image of the page.
+- `height`: Required. Height of the page's image in px.
+- `width`: Required. Width of the page's image in px.
+- `rotation`: Required. The degree of rotation applied to the page. Greater than 0
+indicates clockwise rotation. Less than 0 indicates counter-clockwise rotation.
+
+<a id="models._models.PaginatedResponse"></a>
+
+## PaginatedResponse Objects
+
+```python
+class PaginatedResponse(msrest.serialization.Model)
+```
+
+PaginatedResponse.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar count: Required. Number of items in results.
+:vartype count: int
+:ivar next: URL to request next page of results.
+:vartype next: str
+:ivar previous: URL to request previous page of results.
+:vartype previous: str
+
+<a id="models._models.PaginatedResponse.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `count`: Required. Number of items in results.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
+
+<a id="models._models.Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
+
+## Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
+
+```python
+class Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
+```
+
+Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.
+
+:ivar results:
+:vartype results: list[~affinda.models.OrganizationMembership]
+
+<a id="models._models.Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: 
 
 <a id="models._models.Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema"></a>
 
@@ -5942,21 +7742,22 @@ def __init__(**kwargs)
 - `name`: 
 - `document_type`: Known values are: "resumes", "job_descriptions".
 
-<a id="models._models.Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1"></a>
+<a id="models._models.Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
 
-## Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1 Objects
+## Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
 
 ```python
-class Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
+class Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
 ```
 
-Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1.
+Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.
 
-:ivar api_key: API key used to authenticate for future requests.  This key is only retrievable
- at the initial creation of the user.
-:vartype api_key: str
+All required parameters must be populated in order to send to Azure.
 
-<a id="models._models.Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1.__init__"></a>
+:ivar results: Required.
+:vartype results: list[~affinda.models.WorkspaceMembership]
+
+<a id="models._models.Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -5966,8 +7767,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `api_key`: API key used to authenticate for future requests.  This key is only
-retrievable at the initial creation of the user.
+- `results`: Required.
 
 <a id="models._models.Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema"></a>
 
@@ -6027,6 +7827,78 @@ def __init__(**kwargs)
 - `next`: URL to request next page of results.
 - `previous`: URL to request previous page of results.
 - `results`: 
+
+<a id="models._models.PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema"></a>
+
+## PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema Objects
+
+```python
+class PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema(ListResult,  Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1)
+```
+
+PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar results: Required.
+:vartype results: list[~affinda.models.WorkspaceMembership]
+:ivar count: Required. Number of items in results.
+:vartype count: int
+:ivar next: URL to request next page of results.
+:vartype next: str
+:ivar previous: URL to request previous page of results.
+:vartype previous: str
+
+<a id="models._models.PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: Required.
+- `count`: Required. Number of items in results.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
+
+<a id="models._models.PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema"></a>
+
+## PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema Objects
+
+```python
+class PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1)
+```
+
+PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar results:
+:vartype results: list[~affinda.models.OrganizationMembership]
+:ivar count: Required. Number of items in results.
+:vartype count: int
+:ivar next: URL to request next page of results.
+:vartype next: str
+:ivar previous: URL to request previous page of results.
+:vartype previous: str
+
+<a id="models._models.PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: 
+- `count`: Required. Number of items in results.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
 
 <a id="models._models.PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema"></a>
 
@@ -6163,30 +8035,20 @@ def __init__(**kwargs)
 - `previous`: URL to request previous page of results.
 - `results`: 
 
-<a id="models._models.User"></a>
+<a id="models._models.PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
 
-## User Objects
+## PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
 
 ```python
-class User(msrest.serialization.Model)
+class PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
 ```
 
-User.
+PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1.
 
-All required parameters must be populated in order to send to Azure.
+:ivar results:
+:vartype results: list[~affinda.models.Invitation]
 
-:ivar id:
-:vartype id: int
-:ivar name:
-:vartype name: str
-:ivar username: Required.
-:vartype username: str
-:ivar email:
-:vartype email: str
-:ivar api_key:
-:vartype api_key: str
-
-<a id="models._models.User.__init__"></a>
+<a id="models._models.PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -6196,36 +8058,22 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `id`: 
-- `name`: 
-- `username`: Required.
-- `email`: 
-- `api_key`: 
+- `results`: 
 
-<a id="models._models.PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema"></a>
+<a id="models._models.PathsW51LnrInvitationsTokenPatchRequestbodyContentApplicationJsonSchema"></a>
 
-## PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema Objects
+## PathsW51LnrInvitationsTokenPatchRequestbodyContentApplicationJsonSchema Objects
 
 ```python
-class PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema(User,  Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1)
+class PathsW51LnrInvitationsTokenPatchRequestbodyContentApplicationJsonSchema(msrest.serialization.Model)
 ```
 
-PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema.
+PathsW51LnrInvitationsTokenPatchRequestbodyContentApplicationJsonSchema.
 
-All required parameters must be populated in order to send to Azure.
+:ivar status: Known values are: "accepted", "declined".
+:vartype status: str or ~affinda.models.PatchContentSchemaStatus
 
-:ivar id:
-:vartype id: int
-:ivar name:
-:vartype name: str
-:ivar username: Required.
-:vartype username: str
-:ivar email:
-:vartype email: str
-:ivar api_key:
-:vartype api_key: str
-
-<a id="models._models.PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema.__init__"></a>
+<a id="models._models.PathsW51LnrInvitationsTokenPatchRequestbodyContentApplicationJsonSchema.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -6235,11 +8083,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `id`: 
-- `name`: 
-- `username`: Required.
-- `email`: 
-- `api_key`: 
+- `status`: Known values are: "accepted", "declined".
 
 <a id="models._models.PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema"></a>
 
@@ -6274,6 +8118,42 @@ def __init__(**kwargs)
 - `next`: URL to request next page of results.
 - `previous`: URL to request previous page of results.
 - `results`: 
+
+<a id="models._models.PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema"></a>
+
+## PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema Objects
+
+```python
+class PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1)
+```
+
+PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar results:
+:vartype results: list[~affinda.models.Invitation]
+:ivar count: Required. Number of items in results.
+:vartype count: int
+:ivar next: URL to request next page of results.
+:vartype next: str
+:ivar previous: URL to request previous page of results.
+:vartype previous: str
+
+<a id="models._models.PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: 
+- `count`: Required. Number of items in results.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
 
 <a id="models._models.Rectangle"></a>
 
@@ -6382,8 +8262,7 @@ RedactedResumeRequestBody.
 :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
  JPG.
 :vartype file: IO
-:ivar identifier: Unique identifier for the document. If creating a document and left blank,
- one will be automatically generated.
+:ivar identifier: A random string that uniquely identify the resource.
 :vartype identifier: str
 :ivar file_name: Optional filename of the file.
 :vartype file_name: str
@@ -6427,8 +8306,7 @@ def __init__(**kwargs)
 
 - `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
 PNG, JPG.
-- `identifier`: Unique identifier for the document. If creating a document and left blank,
-one will be automatically generated.
+- `identifier`: A random string that uniquely identify the resource.
 - `file_name`: Optional filename of the file.
 - `url`: URL to a resume to download and process.
 - `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
@@ -6964,8 +8842,7 @@ ResumeRequestBody.
 :vartype url: str
 :ivar data: A JSON-encoded string of the ``ResumeData`` object.
 :vartype data: ~affinda.models.ResumeData
-:ivar identifier: Unique identifier for the document. If creating a document and left blank,
- one will be automatically generated.
+:ivar identifier: A random string that uniquely identify the resource.
 :vartype identifier: str
 :ivar file_name: Optional filename of the file.
 :vartype file_name: str
@@ -6997,8 +8874,7 @@ def __init__(**kwargs)
 PNG, JPG.
 - `url`: URL to a resume to download and process.
 - `data`: A JSON-encoded string of the ``ResumeData`` object.
-- `identifier`: Unique identifier for the document. If creating a document and left blank,
-one will be automatically generated.
+- `identifier`: A random string that uniquely identify the resource.
 - `file_name`: Optional filename of the file.
 - `wait`: If "true" (default), will return a response only after processing has completed.
 If "false", will return an empty data object which can be polled at the GET endpoint until
@@ -7880,11 +9756,9 @@ All required parameters must be populated in order to send to Azure.
 
 :ivar indices: Required.
 :vartype indices: list[str]
-:ivar job_description: Unique identifier for the document. If creating a document and left
- blank, one will be automatically generated.
+:ivar job_description: A random string that uniquely identify the resource.
 :vartype job_description: str
-:ivar resume: Unique identifier for the document. If creating a document and left blank, one
- will be automatically generated.
+:ivar resume: A random string that uniquely identify the resource.
 :vartype resume: str
 :ivar job_titles:
 :vartype job_titles: list[str]
@@ -7970,10 +9844,8 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `indices`: Required.
-- `job_description`: Unique identifier for the document. If creating a document and left
-blank, one will be automatically generated.
-- `resume`: Unique identifier for the document. If creating a document and left blank, one
-will be automatically generated.
+- `job_description`: A random string that uniquely identify the resource.
+- `resume`: A random string that uniquely identify the resource.
 - `job_titles`: 
 - `job_titles_current_only`: Search only through the canditate's current job.
 - `job_titles_required`: 
@@ -8155,8 +10027,7 @@ ResumeSearchResult.
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar identifier: Required. Unique identifier for the document. If creating a document and left
- blank, one will be automatically generated.
+:ivar identifier: Required. A random string that uniquely identify the resource.
 :vartype identifier: str
 :ivar score: Required.
 :vartype score: float
@@ -8197,8 +10068,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `identifier`: Required. Unique identifier for the document. If creating a document and
-left blank, one will be automatically generated.
+- `identifier`: Required. A random string that uniquely identify the resource.
 - `score`: Required.
 - `pdf`: Required.
 - `name`: 
@@ -8357,11 +10227,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -8377,12 +10247,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
@@ -8398,9 +10270,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -8409,9 +10281,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: 
 
 <a id="models._models.SkillsSearchScoreComponent"></a>
@@ -8447,21 +10320,28 @@ def __init__(**kwargs)
 - `label`: Required.
 - `score`: 
 
-<a id="models._models.SplitRelation"></a>
+<a id="models._models.Tag"></a>
 
-## SplitRelation Objects
+## Tag Objects
 
 ```python
-class SplitRelation(msrest.serialization.Model)
+class Tag(msrest.serialization.Model)
 ```
 
-SplitRelation.
+Tag.
 
-:ivar identifier: Unique identifier for the document. If creating a document and left blank,
- one will be automatically generated.
-:vartype identifier: str
+All required parameters must be populated in order to send to Azure.
 
-<a id="models._models.SplitRelation.__init__"></a>
+:ivar id: Required. Uniquely identify a tag.
+:vartype id: int
+:ivar name: Required.
+:vartype name: str
+:ivar workspace: Required. Uniquely identify a workspace.
+:vartype workspace: str
+:ivar document_count: Required. Number of documents tagged with this.
+:vartype document_count: int
+
+<a id="models._models.Tag.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -8471,8 +10351,434 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `identifier`: Unique identifier for the document. If creating a document and left blank,
-one will be automatically generated.
+- `id`: Required. Uniquely identify a tag.
+- `name`: Required.
+- `workspace`: Required. Uniquely identify a workspace.
+- `document_count`: Required. Number of documents tagged with this.
+
+<a id="models._models.TagCreate"></a>
+
+## TagCreate Objects
+
+```python
+class TagCreate(msrest.serialization.Model)
+```
+
+TagCreate.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar name: Required.
+:vartype name: str
+:ivar workspace: Required. Uniquely identify a workspace.
+:vartype workspace: str
+
+<a id="models._models.TagCreate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `name`: Required.
+- `workspace`: Required. Uniquely identify a workspace.
+
+<a id="models._models.TagUpdate"></a>
+
+## TagUpdate Objects
+
+```python
+class TagUpdate(msrest.serialization.Model)
+```
+
+TagUpdate.
+
+:ivar name:
+:vartype name: str
+:ivar workspace: Uniquely identify a workspace.
+:vartype workspace: str
+
+<a id="models._models.TagUpdate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `name`: 
+- `workspace`: Uniquely identify a workspace.
+
+<a id="models._models.UserCreateRequest"></a>
+
+## UserCreateRequest Objects
+
+```python
+class UserCreateRequest(msrest.serialization.Model)
+```
+
+UserCreateRequest.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar name:
+:vartype name: str
+:ivar username: Required.
+:vartype username: str
+:ivar email: Required.
+:vartype email: str
+:ivar avatar: Upload avatar for the user.
+:vartype avatar: IO
+
+<a id="models._models.UserCreateRequest.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `name`: 
+- `username`: Required.
+- `email`: Required.
+- `avatar`: Upload avatar for the user.
+
+<a id="models._models.UserCreateResponse"></a>
+
+## UserCreateResponse Objects
+
+```python
+class UserCreateResponse(User)
+```
+
+UserCreateResponse.
+
+:ivar id: Uniquely identify a user.
+:vartype id: int
+:ivar name:
+:vartype name: str
+:ivar username:
+:vartype username: str
+:ivar email:
+:vartype email: str
+:ivar avatar: URL of the user's avatar.
+:vartype avatar: str
+:ivar api_key: API key used to authenticate for future requests. This key is only retrievable
+ at the initial creation of the user.
+:vartype api_key: str
+
+<a id="models._models.UserCreateResponse.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `id`: Uniquely identify a user.
+- `name`: 
+- `username`: 
+- `email`: 
+- `avatar`: URL of the user's avatar.
+- `api_key`: API key used to authenticate for future requests. This key is only
+retrievable at the initial creation of the user.
+
+<a id="models._models.Workspace"></a>
+
+## Workspace Objects
+
+```python
+class Workspace(msrest.serialization.Model)
+```
+
+Workspace.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar identifier: Required. Uniquely identify a workspace.
+:vartype identifier: str
+:ivar organization:
+:vartype organization: ~affinda.models.Organization
+:ivar name:
+:vartype name: str
+:ivar visibility: Visibility "organization" means everyone in the organization can access the
+ workspace. Visibility "private" means only people explicitly added can access the workspace.
+ Known values are: "organization", "private".
+:vartype visibility: str or ~affinda.models.WorkspaceVisibility
+:ivar collections:
+:vartype collections: list[~affinda.models.WorkspaceCollectionsItem]
+:ivar reject_invalid_documents: If true, the uploaded document will be rejected if it's of the
+ wrong document type, or if its document type cannot be determined. No credits will be consumed.
+:vartype reject_invalid_documents: bool
+:ivar members:
+:vartype members: list[~affinda.models.User]
+:ivar unvalidated_docs_count: Number of unvalidated documents in the workspace.
+:vartype unvalidated_docs_count: int
+:ivar confirmed_docs_count: Number of validated documents in the workspace.
+:vartype confirmed_docs_count: int
+
+<a id="models._models.Workspace.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Required. Uniquely identify a workspace.
+- `organization`: 
+- `name`: 
+- `visibility`: Visibility "organization" means everyone in the organization can access
+the workspace. Visibility "private" means only people explicitly added can access the
+workspace. Known values are: "organization", "private".
+- `collections`: 
+- `reject_invalid_documents`: If true, the uploaded document will be rejected if it's of
+the wrong document type, or if its document type cannot be determined. No credits will be
+consumed.
+- `members`: 
+- `unvalidated_docs_count`: Number of unvalidated documents in the workspace.
+- `confirmed_docs_count`: Number of validated documents in the workspace.
+
+<a id="models._models.WorkspaceCollectionsItem"></a>
+
+## WorkspaceCollectionsItem Objects
+
+```python
+class WorkspaceCollectionsItem(msrest.serialization.Model)
+```
+
+WorkspaceCollectionsItem.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar identifier: Required. Uniquely identify a collection.
+:vartype identifier: str
+:ivar name: Required.
+:vartype name: str
+:ivar extractor: Required.
+:vartype extractor: ~affinda.models.WorkspaceCollectionsItemExtractor
+:ivar unvalidated_docs_count: Number of unvalidated documents in the collection.
+:vartype unvalidated_docs_count: int
+:ivar confirmed_docs_count: Number of validated documents in the collection.
+:vartype confirmed_docs_count: int
+
+<a id="models._models.WorkspaceCollectionsItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Required. Uniquely identify a collection.
+- `name`: Required.
+- `extractor`: Required.
+- `unvalidated_docs_count`: Number of unvalidated documents in the collection.
+- `confirmed_docs_count`: Number of validated documents in the collection.
+
+<a id="models._models.WorkspaceCollectionsItemExtractor"></a>
+
+## WorkspaceCollectionsItemExtractor Objects
+
+```python
+class WorkspaceCollectionsItemExtractor(msrest.serialization.Model)
+```
+
+WorkspaceCollectionsItemExtractor.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar id: Required. Extractor's ID.
+:vartype id: int
+:ivar identifier: Required.
+:vartype identifier: str
+:ivar name: Required.
+:vartype name: str
+:ivar name_plural: Required.
+:vartype name_plural: str
+:ivar base_extractor:
+:vartype base_extractor: ~affinda.models.BaseExtractor
+:ivar category:
+:vartype category: str
+:ivar validatable: Required.
+:vartype validatable: bool
+:ivar is_custom:
+:vartype is_custom: bool
+:ivar created_dt:
+:vartype created_dt: ~datetime.datetime
+
+<a id="models._models.WorkspaceCollectionsItemExtractor.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `id`: Required. Extractor's ID.
+- `identifier`: Required.
+- `name`: Required.
+- `name_plural`: Required.
+- `base_extractor`: 
+- `category`: 
+- `validatable`: Required.
+- `is_custom`: 
+- `created_dt`: 
+
+<a id="models._models.WorkspaceCreate"></a>
+
+## WorkspaceCreate Objects
+
+```python
+class WorkspaceCreate(msrest.serialization.Model)
+```
+
+WorkspaceCreate.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar organization: Required. Uniquely identify an organization.
+:vartype organization: str
+:ivar name: Required.
+:vartype name: str
+:ivar visibility: Visibility "organization" means everyone in the organization can access the
+ workspace. Visibility "private" means only people explicitly added can access the workspace.
+ Known values are: "organization", "private".
+:vartype visibility: str or ~affinda.models.WorkspaceVisibility
+:ivar reject_invalid_documents: If true, the uploaded document will be rejected if it's of the
+ wrong document type, or if its document type cannot be determined. No credits will be consumed.
+:vartype reject_invalid_documents: bool
+
+<a id="models._models.WorkspaceCreate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `organization`: Required. Uniquely identify an organization.
+- `name`: Required.
+- `visibility`: Visibility "organization" means everyone in the organization can access
+the workspace. Visibility "private" means only people explicitly added can access the
+workspace. Known values are: "organization", "private".
+- `reject_invalid_documents`: If true, the uploaded document will be rejected if it's of
+the wrong document type, or if its document type cannot be determined. No credits will be
+consumed.
+
+<a id="models._models.WorkspaceMembership"></a>
+
+## WorkspaceMembership Objects
+
+```python
+class WorkspaceMembership(msrest.serialization.Model)
+```
+
+WorkspaceMembership.
+
+:ivar identifier: Uniquely identify a membership.
+:vartype identifier: str
+:ivar workspace: Uniquely identify a workspace.
+:vartype workspace: str
+:ivar user:
+:vartype user: ~affinda.models.User
+
+<a id="models._models.WorkspaceMembership.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Uniquely identify a membership.
+- `workspace`: Uniquely identify a workspace.
+- `user`: 
+
+<a id="models._models.WorkspaceMembershipCreate"></a>
+
+## WorkspaceMembershipCreate Objects
+
+```python
+class WorkspaceMembershipCreate(msrest.serialization.Model)
+```
+
+WorkspaceMembershipCreate.
+
+:ivar workspace: Uniquely identify a workspace.
+:vartype workspace: str
+:ivar user: Uniquely identify a user.
+:vartype user: int
+
+<a id="models._models.WorkspaceMembershipCreate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `workspace`: Uniquely identify a workspace.
+- `user`: Uniquely identify a user.
+
+<a id="models._models.WorkspaceUpdate"></a>
+
+## WorkspaceUpdate Objects
+
+```python
+class WorkspaceUpdate(msrest.serialization.Model)
+```
+
+WorkspaceUpdate.
+
+:ivar name:
+:vartype name: str
+:ivar visibility: Visibility "organization" means everyone in the organization can access the
+ workspace. Visibility "private" means only people explicitly added can access the workspace.
+ Known values are: "organization", "private".
+:vartype visibility: str or ~affinda.models.WorkspaceVisibility
+:ivar reject_invalid_documents: If true, the uploaded document will be rejected if it's of the
+ wrong document type, or if its document type cannot be determined. No credits will be consumed.
+:vartype reject_invalid_documents: bool
+
+<a id="models._models.WorkspaceUpdate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `name`: 
+- `visibility`: Visibility "organization" means everyone in the organization can access
+the workspace. Visibility "private" means only people explicitly added can access the
+workspace. Known values are: "organization", "private".
+- `reject_invalid_documents`: If true, the uploaded document will be rejected if it's of
+the wrong document type, or if its document type cannot be determined. No credits will be
+consumed.
 
 <a id="models._models.YearsExperienceAnnotation"></a>
 
@@ -8489,11 +10795,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id:
+:ivar id: Required.
 :vartype id: int
 :ivar rectangle: Required.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles:
+:ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
 :ivar page_index: Required.
 :vartype page_index: int
@@ -8509,12 +10815,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype text_extraction_confidence: float
 :ivar is_verified: Required.
 :vartype is_verified: bool
-:ivar is_client_verified:
+:ivar is_client_verified: Required.
 :vartype is_client_verified: bool
-:ivar is_auto_verified:
+:ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar classification: Required.
-:vartype classification: str
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
 :ivar parsed: Years of experience range.
 :vartype parsed: ~affinda.models.YearsExperienceAnnotationParsed
 
@@ -8530,9 +10838,9 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: 
+- `id`: Required.
 - `rectangle`: Required.
-- `rectangles`: 
+- `rectangles`: Required.
 - `page_index`: Required.
 - `raw`: Required.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -8541,9 +10849,10 @@ classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
 - `is_verified`: Required.
-- `is_client_verified`: 
-- `is_auto_verified`: 
-- `classification`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: Required.
+- `content_type`: Required.
 - `parsed`: Years of experience range.
 
 <a id="models._models.YearsExperienceAnnotationParsed"></a>

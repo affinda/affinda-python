@@ -5,6 +5,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Added endpoints: Organization, Membership, Invitation, tags
+- Added name, organization to DataPoint, change id to identifier
+- Add new objects schemas Organization, OrganizationMembership, Invitation
+
+### Changed
+- Identifier instead of id as URL param
+- Update data point filters
+- Allow unlimited nesting in field config
+- Change document state from "export" to "archive"
+
+### Fixed
+- Collection identifier should be nullable
+- Don't paginate extractors endpoint
+- Fix avatar uploads
+- Allow writing resthookSignatureKey
 
 ## [1.8.0] - 2023-01-12
 ### Changed

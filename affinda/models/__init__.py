@@ -7,6 +7,11 @@
 try:
     from ._models_py3 import Accreditation
     from ._models_py3 import Annotation
+    from ._models_py3 import BaseExtractor
+    from ._models_py3 import Collection
+    from ._models_py3 import CollectionCreate
+    from ._models_py3 import CollectionUpdate
+    from ._models_py3 import CollectionWorkspace
     from ._models_py3 import Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1
     from ._models_py3 import Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1
     from ._models_py3 import Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1
@@ -69,7 +74,20 @@ try:
     )
     from ._models_py3 import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1
     from ._models_py3 import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1
+    from ._models_py3 import DataPoint
+    from ._models_py3 import DataPointChoicesItem
+    from ._models_py3 import DataPointCreate
+    from ._models_py3 import DataPointUpdate
     from ._models_py3 import DateAnnotation
+    from ._models_py3 import Document
+    from ._models_py3 import DocumentCreate
+    from ._models_py3 import DocumentMeta
+    from ._models_py3 import DocumentMetaChildDocumentsItem
+    from ._models_py3 import DocumentMetaCollection
+    from ._models_py3 import DocumentMetaCollectionExtractor
+    from ._models_py3 import DocumentMetaParentDocument
+    from ._models_py3 import DocumentMetaWorkspace
+    from ._models_py3 import DocumentUpdate
     from ._models_py3 import Education
     from ._models_py3 import EducationDates
     from ._models_py3 import EducationGrade
@@ -79,11 +97,23 @@ try:
     from ._models_py3 import ExpectedRemunerationAnnotation
     from ._models_py3 import ExpectedRemunerationAnnotationParsed
     from ._models_py3 import ExperienceSearchScoreComponent
+    from ._models_py3 import Extractor
+    from ._models_py3 import ExtractorBaseExtractor
+    from ._models_py3 import ExtractorCreate
+    from ._models_py3 import ExtractorFieldGroups
+    from ._models_py3 import ExtractorUpdate
+    from ._models_py3 import Field
+    from ._models_py3 import FieldGroup
+    from ._models_py3 import FieldGroups
     from ._models_py3 import Get200ApplicationJsonPropertiesItemsItem
     from ._models_py3 import GetAllDocumentsResults
     from ._models_py3 import GetAllInvoicesResults
     from ._models_py3 import GetAllJobDescriptionsResults
     from ._models_py3 import IndexRequestBody
+    from ._models_py3 import Invitation
+    from ._models_py3 import InvitationCreate
+    from ._models_py3 import InvitationRespondedBy
+    from ._models_py3 import InvitationUpdate
     from ._models_py3 import Invoice
     from ._models_py3 import InvoiceData
     from ._models_py3 import InvoiceDataBankAccountNumber
@@ -149,20 +179,40 @@ try:
     from ._models_py3 import JobTitleSearchScoreComponent
     from ._models_py3 import LanguageAnnotation
     from ._models_py3 import LanguagesSearchScoreComponent
+    from ._models_py3 import ListResult
     from ._models_py3 import Location
     from ._models_py3 import LocationAnnotation
     from ._models_py3 import LocationSearchScoreComponent
     from ._models_py3 import ManagementLevelSearchScoreComponent
     from ._models_py3 import Meta
+    from ._models_py3 import MetaChildDocumentsItem
+    from ._models_py3 import MetaParentDocument
     from ._models_py3 import OccupationGroup
     from ._models_py3 import OccupationGroupSearchScoreComponent
+    from ._models_py3 import Organization
+    from ._models_py3 import OrganizationCreate
+    from ._models_py3 import OrganizationMembership
+    from ._models_py3 import OrganizationMembershipUpdate
+    from ._models_py3 import OrganizationUpdate
     from ._models_py3 import PageMeta
+    from ._models_py3 import PaginatedResponse
+    from ._models_py3 import (
+        Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1,
+    )
     from ._models_py3 import Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema
-    from ._models_py3 import Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1
+    from ._models_py3 import (
+        Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1,
+    )
     from ._models_py3 import (
         Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema,
     )
     from ._models_py3 import Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema
+    from ._models_py3 import (
+        PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema,
+    )
+    from ._models_py3 import (
+        PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema,
+    )
     from ._models_py3 import (
         PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema,
     )
@@ -178,8 +228,14 @@ try:
     from ._models_py3 import (
         PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema,
     )
-    from ._models_py3 import PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema
+    from ._models_py3 import (
+        PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1,
+    )
+    from ._models_py3 import (
+        PathsW51LnrInvitationsTokenPatchRequestbodyContentApplicationJsonSchema,
+    )
     from ._models_py3 import PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema
+    from ._models_py3 import PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema
     from ._models_py3 import Rectangle
     from ._models_py3 import RedactedResume
     from ._models_py3 import RedactedResumeData
@@ -231,14 +287,30 @@ try:
     from ._models_py3 import SearchExpressionSearchScoreComponent
     from ._models_py3 import SkillAnnotation
     from ._models_py3 import SkillsSearchScoreComponent
-    from ._models_py3 import SplitRelation
+    from ._models_py3 import Tag
+    from ._models_py3 import TagCreate
+    from ._models_py3 import TagUpdate
     from ._models_py3 import TextAnnotation
     from ._models_py3 import User
+    from ._models_py3 import UserCreateRequest
+    from ._models_py3 import UserCreateResponse
+    from ._models_py3 import Workspace
+    from ._models_py3 import WorkspaceCollectionsItem
+    from ._models_py3 import WorkspaceCollectionsItemExtractor
+    from ._models_py3 import WorkspaceCreate
+    from ._models_py3 import WorkspaceMembership
+    from ._models_py3 import WorkspaceMembershipCreate
+    from ._models_py3 import WorkspaceUpdate
     from ._models_py3 import YearsExperienceAnnotation
     from ._models_py3 import YearsExperienceAnnotationParsed
 except (SyntaxError, ImportError):
     from ._models import Accreditation  # type: ignore
     from ._models import Annotation  # type: ignore
+    from ._models import BaseExtractor  # type: ignore
+    from ._models import Collection  # type: ignore
+    from ._models import CollectionCreate  # type: ignore
+    from ._models import CollectionUpdate  # type: ignore
+    from ._models import CollectionWorkspace  # type: ignore
     from ._models import Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1  # type: ignore
     from ._models import Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1  # type: ignore
     from ._models import Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1  # type: ignore
@@ -277,7 +349,20 @@ except (SyntaxError, ImportError):
     from ._models import ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1  # type: ignore
     from ._models import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1  # type: ignore
     from ._models import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1  # type: ignore
+    from ._models import DataPoint  # type: ignore
+    from ._models import DataPointChoicesItem  # type: ignore
+    from ._models import DataPointCreate  # type: ignore
+    from ._models import DataPointUpdate  # type: ignore
     from ._models import DateAnnotation  # type: ignore
+    from ._models import Document  # type: ignore
+    from ._models import DocumentCreate  # type: ignore
+    from ._models import DocumentMeta  # type: ignore
+    from ._models import DocumentMetaChildDocumentsItem  # type: ignore
+    from ._models import DocumentMetaCollection  # type: ignore
+    from ._models import DocumentMetaCollectionExtractor  # type: ignore
+    from ._models import DocumentMetaParentDocument  # type: ignore
+    from ._models import DocumentMetaWorkspace  # type: ignore
+    from ._models import DocumentUpdate  # type: ignore
     from ._models import Education  # type: ignore
     from ._models import EducationDates  # type: ignore
     from ._models import EducationGrade  # type: ignore
@@ -287,11 +372,23 @@ except (SyntaxError, ImportError):
     from ._models import ExpectedRemunerationAnnotation  # type: ignore
     from ._models import ExpectedRemunerationAnnotationParsed  # type: ignore
     from ._models import ExperienceSearchScoreComponent  # type: ignore
+    from ._models import Extractor  # type: ignore
+    from ._models import ExtractorBaseExtractor  # type: ignore
+    from ._models import ExtractorCreate  # type: ignore
+    from ._models import ExtractorFieldGroups  # type: ignore
+    from ._models import ExtractorUpdate  # type: ignore
+    from ._models import Field  # type: ignore
+    from ._models import FieldGroup  # type: ignore
+    from ._models import FieldGroups  # type: ignore
     from ._models import Get200ApplicationJsonPropertiesItemsItem  # type: ignore
     from ._models import GetAllDocumentsResults  # type: ignore
     from ._models import GetAllInvoicesResults  # type: ignore
     from ._models import GetAllJobDescriptionsResults  # type: ignore
     from ._models import IndexRequestBody  # type: ignore
+    from ._models import Invitation  # type: ignore
+    from ._models import InvitationCreate  # type: ignore
+    from ._models import InvitationRespondedBy  # type: ignore
+    from ._models import InvitationUpdate  # type: ignore
     from ._models import Invoice  # type: ignore
     from ._models import InvoiceData  # type: ignore
     from ._models import InvoiceDataBankAccountNumber  # type: ignore
@@ -357,25 +454,39 @@ except (SyntaxError, ImportError):
     from ._models import JobTitleSearchScoreComponent  # type: ignore
     from ._models import LanguageAnnotation  # type: ignore
     from ._models import LanguagesSearchScoreComponent  # type: ignore
+    from ._models import ListResult  # type: ignore
     from ._models import Location  # type: ignore
     from ._models import LocationAnnotation  # type: ignore
     from ._models import LocationSearchScoreComponent  # type: ignore
     from ._models import ManagementLevelSearchScoreComponent  # type: ignore
     from ._models import Meta  # type: ignore
+    from ._models import MetaChildDocumentsItem  # type: ignore
+    from ._models import MetaParentDocument  # type: ignore
     from ._models import OccupationGroup  # type: ignore
     from ._models import OccupationGroupSearchScoreComponent  # type: ignore
+    from ._models import Organization  # type: ignore
+    from ._models import OrganizationCreate  # type: ignore
+    from ._models import OrganizationMembership  # type: ignore
+    from ._models import OrganizationMembershipUpdate  # type: ignore
+    from ._models import OrganizationUpdate  # type: ignore
     from ._models import PageMeta  # type: ignore
+    from ._models import PaginatedResponse  # type: ignore
+    from ._models import Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
     from ._models import Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema  # type: ignore
-    from ._models import Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1  # type: ignore
+    from ._models import Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
     from ._models import Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema  # type: ignore
     from ._models import Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema  # type: ignore
+    from ._models import PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema  # type: ignore
+    from ._models import PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema  # type: ignore
     from ._models import PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema  # type: ignore
     from ._models import PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems  # type: ignore
     from ._models import PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema  # type: ignore
-    from ._models import PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema  # type: ignore
+    from ._models import PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
+    from ._models import PathsW51LnrInvitationsTokenPatchRequestbodyContentApplicationJsonSchema  # type: ignore
     from ._models import PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema  # type: ignore
+    from ._models import PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import Rectangle  # type: ignore
     from ._models import RedactedResume  # type: ignore
     from ._models import RedactedResumeData  # type: ignore
@@ -427,22 +538,44 @@ except (SyntaxError, ImportError):
     from ._models import SearchExpressionSearchScoreComponent  # type: ignore
     from ._models import SkillAnnotation  # type: ignore
     from ._models import SkillsSearchScoreComponent  # type: ignore
-    from ._models import SplitRelation  # type: ignore
+    from ._models import Tag  # type: ignore
+    from ._models import TagCreate  # type: ignore
+    from ._models import TagUpdate  # type: ignore
     from ._models import TextAnnotation  # type: ignore
     from ._models import User  # type: ignore
+    from ._models import UserCreateRequest  # type: ignore
+    from ._models import UserCreateResponse  # type: ignore
+    from ._models import Workspace  # type: ignore
+    from ._models import WorkspaceCollectionsItem  # type: ignore
+    from ._models import WorkspaceCollectionsItemExtractor  # type: ignore
+    from ._models import WorkspaceCreate  # type: ignore
+    from ._models import WorkspaceMembership  # type: ignore
+    from ._models import WorkspaceMembershipCreate  # type: ignore
+    from ._models import WorkspaceUpdate  # type: ignore
     from ._models import YearsExperienceAnnotation  # type: ignore
     from ._models import YearsExperienceAnnotationParsed  # type: ignore
 
 from ._affinda_api_enums import (
+    AnnotationContentType,
+    CollectionDateFormatPreference,
+    DateFormatPreference,
+    DateRange,
+    DocumentState,
     EducationLevel,
     Enum2,
     Enum5,
+    Get8ItemsItem,
     GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType,
+    InvitationStatus,
     ManagementLevel,
+    OrganizationRole,
+    OrganizationUserRole,
+    PatchContentSchemaStatus,
     PostContentSchemaDocumentType,
     ResumeSearchParametersCustomDataFilterType,
     ResumeSkillSourcesItemSection,
     SearchLocationUnit,
+    WorkspaceVisibility,
 )
 from ._patch import __all__ as _patch_all
 from ._patch import *  # type: ignore # pylint: disable=unused-wildcard-import
@@ -451,6 +584,11 @@ from ._patch import patch_sdk as _patch_sdk
 __all__ = [
     "Accreditation",
     "Annotation",
+    "BaseExtractor",
+    "Collection",
+    "CollectionCreate",
+    "CollectionUpdate",
+    "CollectionWorkspace",
     "Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1",
     "Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1",
     "Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1",
@@ -489,7 +627,20 @@ __all__ = [
     "ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1",
     "ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1",
     "ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1",
+    "DataPoint",
+    "DataPointChoicesItem",
+    "DataPointCreate",
+    "DataPointUpdate",
     "DateAnnotation",
+    "Document",
+    "DocumentCreate",
+    "DocumentMeta",
+    "DocumentMetaChildDocumentsItem",
+    "DocumentMetaCollection",
+    "DocumentMetaCollectionExtractor",
+    "DocumentMetaParentDocument",
+    "DocumentMetaWorkspace",
+    "DocumentUpdate",
     "Education",
     "EducationDates",
     "EducationGrade",
@@ -499,11 +650,23 @@ __all__ = [
     "ExpectedRemunerationAnnotation",
     "ExpectedRemunerationAnnotationParsed",
     "ExperienceSearchScoreComponent",
+    "Extractor",
+    "ExtractorBaseExtractor",
+    "ExtractorCreate",
+    "ExtractorFieldGroups",
+    "ExtractorUpdate",
+    "Field",
+    "FieldGroup",
+    "FieldGroups",
     "Get200ApplicationJsonPropertiesItemsItem",
     "GetAllDocumentsResults",
     "GetAllInvoicesResults",
     "GetAllJobDescriptionsResults",
     "IndexRequestBody",
+    "Invitation",
+    "InvitationCreate",
+    "InvitationRespondedBy",
+    "InvitationUpdate",
     "Invoice",
     "InvoiceData",
     "InvoiceDataBankAccountNumber",
@@ -569,25 +732,39 @@ __all__ = [
     "JobTitleSearchScoreComponent",
     "LanguageAnnotation",
     "LanguagesSearchScoreComponent",
+    "ListResult",
     "Location",
     "LocationAnnotation",
     "LocationSearchScoreComponent",
     "ManagementLevelSearchScoreComponent",
     "Meta",
+    "MetaChildDocumentsItem",
+    "MetaParentDocument",
     "OccupationGroup",
     "OccupationGroupSearchScoreComponent",
+    "Organization",
+    "OrganizationCreate",
+    "OrganizationMembership",
+    "OrganizationMembershipUpdate",
+    "OrganizationUpdate",
     "PageMeta",
+    "PaginatedResponse",
+    "Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1",
     "Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema",
-    "Paths1Y6A2MfUsersPostResponses201ContentApplicationJsonSchemaAllof1",
+    "Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1",
     "Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema",
     "Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema",
+    "PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema",
+    "PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema",
     "PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema",
     "PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema",
     "PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema",
     "PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems",
     "PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema",
-    "PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema",
+    "PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1",
+    "PathsW51LnrInvitationsTokenPatchRequestbodyContentApplicationJsonSchema",
     "PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema",
+    "PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema",
     "Rectangle",
     "RedactedResume",
     "RedactedResumeData",
@@ -639,20 +816,42 @@ __all__ = [
     "SearchExpressionSearchScoreComponent",
     "SkillAnnotation",
     "SkillsSearchScoreComponent",
-    "SplitRelation",
+    "Tag",
+    "TagCreate",
+    "TagUpdate",
     "TextAnnotation",
     "User",
+    "UserCreateRequest",
+    "UserCreateResponse",
+    "Workspace",
+    "WorkspaceCollectionsItem",
+    "WorkspaceCollectionsItemExtractor",
+    "WorkspaceCreate",
+    "WorkspaceMembership",
+    "WorkspaceMembershipCreate",
+    "WorkspaceUpdate",
     "YearsExperienceAnnotation",
     "YearsExperienceAnnotationParsed",
+    "AnnotationContentType",
+    "CollectionDateFormatPreference",
+    "DateFormatPreference",
+    "DateRange",
+    "DocumentState",
     "EducationLevel",
     "Enum2",
     "Enum5",
+    "Get8ItemsItem",
     "GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType",
+    "InvitationStatus",
     "ManagementLevel",
+    "OrganizationRole",
+    "OrganizationUserRole",
+    "PatchContentSchemaStatus",
     "PostContentSchemaDocumentType",
     "ResumeSearchParametersCustomDataFilterType",
     "ResumeSkillSourcesItemSection",
     "SearchLocationUnit",
+    "WorkspaceVisibility",
 ]
 __all__.extend([p for p in _patch_all if p not in __all__])
 _patch_sdk()

@@ -54,7 +54,7 @@ Default value is None.
 
 **Returns**:
 
-`~affinda.models.GetAllDocumentsResults or ~affinda.models.RequestError`: GetAllDocumentsResults or RequestError, or the result of cls(response)
+`~affinda.models.GetAllDocumentsResults`: GetAllDocumentsResults, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resume"></a>
 
@@ -93,7 +93,7 @@ parsing credits.
 
 **Returns**:
 
-`~affinda.models.Resume or ~affinda.models.RequestError`: Resume or RequestError, or the result of cls(response)
+`~affinda.models.Resume`: Resume, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume"></a>
 
@@ -150,7 +150,7 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the `
 
 **Returns**:
 
-`~affinda.models.ResumeData or None or ~affinda.models.RequestError`: ResumeData or None or RequestError, or the result of cls(response)
+`~affinda.models.ResumeData or None`: ResumeData or None, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_resume"></a>
 
@@ -175,7 +175,7 @@ Deletes the specified resume from the database.
 
 **Returns**:
 
-`~affinda.models.RequestError or None`: RequestError, or the result of cls(response)
+`None`: None, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_redacted_resumes"></a>
 
@@ -202,7 +202,7 @@ Default value is None.
 
 **Returns**:
 
-`~affinda.models.GetAllDocumentsResults or ~affinda.models.RequestError`: GetAllDocumentsResults or RequestError, or the result of cls(response)
+`~affinda.models.GetAllDocumentsResults`: GetAllDocumentsResults, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_redacted_resume"></a>
 
@@ -244,7 +244,7 @@ Default value is True.
 
 **Returns**:
 
-`~affinda.models.RedactedResume or ~affinda.models.RequestError`: RedactedResume or RequestError, or the result of cls(response)
+`~affinda.models.RedactedResume`: RedactedResume, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_redacted_resume"></a>
 
@@ -271,7 +271,7 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the
 
 **Returns**:
 
-`~affinda.models.RedactedResume or ~affinda.models.RequestError`: RedactedResume or RequestError, or the result of cls(response)
+`~affinda.models.RedactedResume`: RedactedResume, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_redacted_resume"></a>
 
@@ -296,7 +296,7 @@ Deletes the specified resume from the database.
 
 **Returns**:
 
-`~affinda.models.RequestError or None`: RequestError, or the result of cls(response)
+`None`: None, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resume_search"></a>
 
@@ -329,7 +329,7 @@ Default value is None.
 
 **Returns**:
 
-`~affinda.models.ResumeSearch or ~affinda.models.RequestError`: ResumeSearch or RequestError, or the result of cls(response)
+`~affinda.models.ResumeSearch`: ResumeSearch, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_detail"></a>
 
@@ -358,7 +358,7 @@ endpoint.
 
 **Returns**:
 
-`~affinda.models.ResumeSearchDetail or ~affinda.models.RequestError`: ResumeSearchDetail or RequestError, or the result of cls(response)
+`~affinda.models.ResumeSearchDetail`: ResumeSearchDetail, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_match"></a>
 
@@ -408,7 +408,7 @@ from 0 to 1. Default value is None.
 
 **Returns**:
 
-`~affinda.models.ResumeSearchMatch or ~affinda.models.RequestError`: ResumeSearchMatch or RequestError, or the result of cls(response)
+`~affinda.models.ResumeSearchMatch`: ResumeSearchMatch, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_config"></a>
 
@@ -434,7 +434,7 @@ returned, etc.
 
 **Returns**:
 
-`~affinda.models.ResumeSearchConfig or ~affinda.models.RequestError`: ResumeSearchConfig or RequestError, or the result of cls(response)
+`~affinda.models.ResumeSearchConfig`: ResumeSearchConfig, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_resume_search_config"></a>
 
@@ -461,7 +461,7 @@ returned, etc.
 
 **Returns**:
 
-`~affinda.models.ResumeSearchConfig or ~affinda.models.RequestError`: ResumeSearchConfig or RequestError, or the result of cls(response)
+`~affinda.models.ResumeSearchConfig`: ResumeSearchConfig, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resume_search_embed_url"></a>
 
@@ -488,7 +488,7 @@ configurations of the embeddable resume search tool.
 
 **Returns**:
 
-`~affinda.models.ResumeSearchEmbed or ~affinda.models.RequestError`: ResumeSearchEmbed or RequestError, or the result of cls(response)
+`~affinda.models.ResumeSearchEmbed`: ResumeSearchEmbed, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_suggestion_job_title"></a>
 
@@ -513,7 +513,7 @@ Provided one or more job titles, get related suggestions for your search.
 
 **Returns**:
 
-`list[str] or ~affinda.models.RequestError`: list of str or RequestError, or the result of cls(response)
+`list[str]`: list of str, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_suggestion_skill"></a>
 
@@ -538,7 +538,7 @@ Provided one or more skills, get related suggestions for your search.
 
 **Returns**:
 
-`list[str] or ~affinda.models.RequestError`: list of str or RequestError, or the result of cls(response)
+`list[str]`: list of str, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_job_descriptions"></a>
 
@@ -565,7 +565,7 @@ Default value is None.
 
 **Returns**:
 
-`~affinda.models.GetAllJobDescriptionsResults or ~affinda.models.RequestError`: GetAllJobDescriptionsResults or RequestError, or the result of cls(response)
+`~affinda.models.GetAllJobDescriptionsResults`: GetAllJobDescriptionsResults, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_job_description"></a>
 
@@ -601,7 +601,7 @@ Job Descriptions can be uploaded as a file or a URL.
 
 **Returns**:
 
-`~affinda.models.JobDescription or ~affinda.models.RequestError`: JobDescription or RequestError, or the result of cls(response)
+`~affinda.models.JobDescription`: JobDescription, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_job_description"></a>
 
@@ -628,7 +628,7 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the
 
 **Returns**:
 
-`~affinda.models.JobDescription or ~affinda.models.RequestError`: JobDescription or RequestError, or the result of cls(response)
+`~affinda.models.JobDescription`: JobDescription, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_job_description"></a>
 
@@ -653,7 +653,7 @@ Deletes the specified job description from the database.
 
 **Returns**:
 
-`~affinda.models.RequestError or None`: RequestError, or the result of cls(response)
+`None`: None, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_job_description_search"></a>
 
@@ -681,7 +681,7 @@ Default value is None.
 
 **Returns**:
 
-`~affinda.models.JobDescriptionSearch or ~affinda.models.RequestError`: JobDescriptionSearch or RequestError, or the result of cls(response)
+`~affinda.models.JobDescriptionSearch`: JobDescriptionSearch, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_job_description_search_detail"></a>
 
@@ -710,7 +710,7 @@ The ``identifier`` is the unique ID returned via the `/job_description_search
 
 **Returns**:
 
-`~affinda.models.JobDescriptionSearchDetail or ~affinda.models.RequestError`: JobDescriptionSearchDetail or RequestError, or the result of cls(response)
+`~affinda.models.JobDescriptionSearchDetail`: JobDescriptionSearchDetail, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_job_description_search_config"></a>
 
@@ -736,7 +736,7 @@ can be returned, etc.
 
 **Returns**:
 
-`~affinda.models.JobDescriptionSearchConfig or ~affinda.models.RequestError`: JobDescriptionSearchConfig or RequestError, or the result of cls(response)
+`~affinda.models.JobDescriptionSearchConfig`: JobDescriptionSearchConfig, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_job_description_search_config"></a>
 
@@ -763,7 +763,7 @@ can be returned, etc.
 
 **Returns**:
 
-`~affinda.models.JobDescriptionSearchConfig or ~affinda.models.RequestError`: JobDescriptionSearchConfig or RequestError, or the result of cls(response)
+`~affinda.models.JobDescriptionSearchConfig`: JobDescriptionSearchConfig, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_job_description_search_embed_url"></a>
 
@@ -790,7 +790,7 @@ configurations of the embeddable search tool.
 
 **Returns**:
 
-`~affinda.models.JobDescriptionSearchEmbed or ~affinda.models.RequestError`: JobDescriptionSearchEmbed or RequestError, or the result of cls(response)
+`~affinda.models.JobDescriptionSearchEmbed`: JobDescriptionSearchEmbed, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_indexes"></a>
 
@@ -818,9 +818,8 @@ Default value is None.
 
 **Returns**:
 
-`~affinda.models.Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema or
-~affinda.models.RequestError`: Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema or RequestError, or the
-result of cls(response)
+`~affinda.models.Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema`: Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema, or the result of
+cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_index"></a>
 
@@ -846,9 +845,8 @@ Create an index for the search tool.
 
 **Returns**:
 
-`~affinda.models.Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema or
-~affinda.models.RequestError`: Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema or RequestError, or the
-result of cls(response)
+`~affinda.models.Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema`: Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema, or the result of
+cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_index"></a>
 
@@ -873,7 +871,7 @@ Deletes the specified index from the database.
 
 **Returns**:
 
-`~affinda.models.RequestError or None`: RequestError, or the result of cls(response)
+`None`: None, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_index_documents"></a>
 
@@ -898,9 +896,8 @@ Returns all the indexed documents for that index.
 
 **Returns**:
 
-`~affinda.models.PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema or
-~affinda.models.RequestError`: PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema or
-RequestError, or the result of cls(response)
+`~affinda.models.PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema`: PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema, or the
+result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_index_document"></a>
 
@@ -926,9 +923,8 @@ Create an indexed document for the search tool.
 
 **Returns**:
 
-`~affinda.models.PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema or
-~affinda.models.RequestError`: PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema or
-RequestError, or the result of cls(response)
+`~affinda.models.PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema`: PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema, or the
+result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_index_document"></a>
 
@@ -954,7 +950,7 @@ Delete the specified indexed document from the database.
 
 **Returns**:
 
-`~affinda.models.RequestError or None`: RequestError, or the result of cls(response)
+`None`: None, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_invoices"></a>
 
@@ -981,7 +977,7 @@ Default value is None.
 
 **Returns**:
 
-`~affinda.models.GetAllInvoicesResults or ~affinda.models.RequestError`: GetAllInvoicesResults or RequestError, or the result of cls(response)
+`~affinda.models.GetAllInvoicesResults`: GetAllInvoicesResults, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_invoice"></a>
 
@@ -1016,7 +1012,7 @@ retrieve results.
 
 **Returns**:
 
-`~affinda.models.Invoice or ~affinda.models.RequestError`: Invoice or RequestError, or the result of cls(response)
+`~affinda.models.Invoice`: Invoice, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_invoice"></a>
 
@@ -1043,7 +1039,7 @@ The ``identifier`` is the unique ID returned after POST-ing the invoice via the 
 
 **Returns**:
 
-`~affinda.models.Invoice or ~affinda.models.RequestError`: Invoice or RequestError, or the result of cls(response)
+`~affinda.models.Invoice`: Invoice, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_invoice"></a>
 
@@ -1069,7 +1065,7 @@ will no longer be used in any tailored customer models.
 
 **Returns**:
 
-`~affinda.models.RequestError or None`: RequestError, or the result of cls(response)
+`None`: None, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.list_occupation_groups"></a>
 
@@ -1093,7 +1089,7 @@ Returns the list of searchable occupation groups.
 
 **Returns**:
 
-`list[~affinda.models.OccupationGroup] or ~affinda.models.RequestError`: list of OccupationGroup or RequestError, or the result of cls(response)
+`list[~affinda.models.OccupationGroup]`: list of OccupationGroup, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_users"></a>
 
@@ -1120,16 +1116,15 @@ Default value is None.
 
 **Returns**:
 
-`~affinda.models.PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema or
-~affinda.models.RequestError`: PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema or RequestError, or the
-result of cls(response)
+`~affinda.models.PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema`: PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema, or the result of
+cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_user"></a>
 
 #### create\_user
 
 ```python
-def create_user(username, id=None, name=None, email=None, api_key=None, **kwargs)
+def create_user(username, email, name=None, avatar=None, **kwargs)
 ```
 
 Create a new user.
@@ -1139,10 +1134,9 @@ Create an user as part of your account.
 **Arguments**:
 
 - `username` (`str`): 
-- `id` (`int`): Default value is None.
+- `email` (`str`): 
 - `name` (`str`): Default value is None.
-- `email` (`str`): Default value is None.
-- `api_key` (`str`): Default value is None.
+- `avatar` (`IO`): Upload avatar for the user. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1151,7 +1145,1327 @@ Create an user as part of your account.
 
 **Returns**:
 
-`~affinda.models.PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema or
-~affinda.models.RequestError`: PathsTop5ZkUsersPostResponses201ContentApplicationJsonSchema or RequestError, or the
+`~affinda.models.UserCreateResponse`: UserCreateResponse, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_organizations"></a>
+
+#### get\_all\_organizations
+
+```python
+def get_all_organizations(**kwargs)
+```
+
+Get list of all organizations.
+
+Returns all the organizations.
+
+**Arguments**:
+
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[~affinda.models.Organization]`: list of Organization, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_organization"></a>
+
+#### create\_organization
+
+```python
+def create_organization(name, avatar=None, resthook_signature_key=None, **kwargs)
+```
+
+Create a new organization.
+
+Create a new organization.
+
+**Arguments**:
+
+- `name` (`str`): 
+- `avatar` (`IO`): Upload avatar for the organization. Default value is None.
+- `resthook_signature_key` (`str`): Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Organization`: Organization, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_organization"></a>
+
+#### get\_organization
+
+```python
+def get_organization(identifier, **kwargs)
+```
+
+Get detail of an organization.
+
+Get detail of an organization.
+
+**Arguments**:
+
+- `identifier` (`str`): Organization identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Organization`: Organization, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_organization"></a>
+
+#### update\_organization
+
+```python
+def update_organization(identifier, name=None, avatar=None, resthook_signature_key=None, **kwargs)
+```
+
+Update an organization.
+
+Update the detail of an organization.
+
+**Arguments**:
+
+- `identifier` (`str`): Organization identifier.
+- `name` (`str`): Default value is None.
+- `avatar` (`IO`): Default value is None.
+- `resthook_signature_key` (`str`): Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Organization`: Organization, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_organization"></a>
+
+#### delete\_organization
+
+```python
+def delete_organization(identifier, **kwargs)
+```
+
+Delete an organization.
+
+Delete the specified organization from the database.
+
+**Arguments**:
+
+- `identifier` (`str`): Organization identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_organization_memberships"></a>
+
+#### get\_all\_organization\_memberships
+
+```python
+def get_all_organization_memberships(offset=None, limit=300, organization=None, role=None, **kwargs)
+```
+
+Get list of all organization memberships.
+
+Returns all the organization memberships.
+
+**Arguments**:
+
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `organization` (`str`): Filter by organization. Default value is None.
+- `role` (`str or ~affinda.models.OrganizationRole`): Filter by role. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema`: PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema, or the
 result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_organization_membership"></a>
+
+#### get\_organization\_membership
+
+```python
+def get_organization_membership(identifier, **kwargs)
+```
+
+Get detail of an organization membership.
+
+Get detail of an organization membership.
+
+**Arguments**:
+
+- `identifier` (`str`): Membership identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.OrganizationMembership`: OrganizationMembership, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_organization_membership"></a>
+
+#### update\_organization\_membership
+
+```python
+def update_organization_membership(identifier, body, **kwargs)
+```
+
+Update an organization membership.
+
+The admin users can use this endpoint to update the role of the members within their
+organization.
+
+**Arguments**:
+
+- `identifier` (`str`): Membership identifier.
+- `body` (`~affinda.models.OrganizationMembershipUpdate`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.OrganizationMembership`: OrganizationMembership, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_organization_membership"></a>
+
+#### delete\_organization\_membership
+
+```python
+def delete_organization_membership(identifier, **kwargs)
+```
+
+Delete an organization membership.
+
+The admin users can use this endpoint to remove member from their organization. Other users can
+also use this to leave their organization.
+
+**Arguments**:
+
+- `identifier` (`str`): Membership identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_invitations"></a>
+
+#### get\_all\_invitations
+
+```python
+def get_all_invitations(offset=None, limit=300, organization=None, status=None, role=None, **kwargs)
+```
+
+Get list of all invitations.
+
+Get list of all invitations you created or sent to you.
+
+**Arguments**:
+
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `organization` (`str`): Filter by organization. Default value is None.
+- `status` (`str or ~affinda.models.InvitationStatus`): Filter by status. Default value is None.
+- `role` (`str or ~affinda.models.OrganizationRole`): Filter by role. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema`: PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema, or the result of
+cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_invitation"></a>
+
+#### create\_invitation
+
+```python
+def create_invitation(body, **kwargs)
+```
+
+Create a new invitation.
+
+Create a new invitation.
+
+**Arguments**:
+
+- `body` (`~affinda.models.InvitationCreate`): Invitation to create.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Invitation`: Invitation, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_invitation"></a>
+
+#### get\_invitation
+
+```python
+def get_invitation(identifier, **kwargs)
+```
+
+Get detail of an invitation.
+
+Get detail of an invitation.
+
+**Arguments**:
+
+- `identifier` (`str`): Invitation identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Invitation`: Invitation, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_invitation"></a>
+
+#### update\_invitation
+
+```python
+def update_invitation(identifier, body, **kwargs)
+```
+
+Update an invitation.
+
+Update the detail of an invitation.
+
+**Arguments**:
+
+- `identifier` (`str`): Invitation identifier.
+- `body` (`~affinda.models.InvitationUpdate`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Invitation`: Invitation, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_invitation"></a>
+
+#### delete\_invitation
+
+```python
+def delete_invitation(identifier, **kwargs)
+```
+
+Delete an invitation.
+
+Delete the specified invitation from the database.
+
+**Arguments**:
+
+- `identifier` (`str`): Invitation identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_invitation_by_token"></a>
+
+#### get\_invitation\_by\_token
+
+```python
+def get_invitation_by_token(token, **kwargs)
+```
+
+Get detail of an invitation by token.
+
+Get detail of an invitation using a secret token. This allows users who have not
+registered/logged in to view the invitation.
+
+**Arguments**:
+
+- `token` (`str`): Invitation token.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Invitation`: Invitation, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.respond_to_invitation"></a>
+
+#### respond\_to\_invitation
+
+```python
+def respond_to_invitation(token, body, **kwargs)
+```
+
+Respond to an invitation.
+
+Choose to accept or decline an invitation.
+
+**Arguments**:
+
+- `token` (`str`): Invitation token.
+- `body` (`~affinda.models.PathsW51LnrInvitationsTokenPatchRequestbodyContentApplicationJsonSchema`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Invitation`: Invitation, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_extractors"></a>
+
+#### get\_all\_extractors
+
+```python
+def get_all_extractors(organization, include_public_extractors=None, name=None, validatable=None, **kwargs)
+```
+
+Get list of all extractors.
+
+Returns your custom extractors as well as Affinda's off-the-shelf extractors.
+
+**Arguments**:
+
+- `organization` (`str`): Filter by organization.
+- `include_public_extractors` (`bool`): Whether to include Affinda's off-the-shelf extractors.
+Default value is None.
+- `name` (`str`): Filter by name. Default value is None.
+- `validatable` (`bool`): Filter by validatable. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[~affinda.models.Extractor]`: list of Extractor, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_extractor"></a>
+
+#### create\_extractor
+
+```python
+def create_extractor(body=None, **kwargs)
+```
+
+Create an extractor.
+
+Create a custom extractor.
+
+**Arguments**:
+
+- `body` (`~affinda.models.ExtractorCreate`): Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Extractor`: Extractor, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_extractor"></a>
+
+#### get\_extractor
+
+```python
+def get_extractor(id, **kwargs)
+```
+
+Get specific extractor.
+
+Return a specific extractor.
+
+**Arguments**:
+
+- `id` (`int`): Extractor's ID.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Extractor`: Extractor, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_extractor_data"></a>
+
+#### update\_extractor\_data
+
+```python
+def update_extractor_data(id, body, **kwargs)
+```
+
+Update an extractor's data.
+
+Update data of an extractor.
+
+**Arguments**:
+
+- `id` (`int`): Extractor's ID.
+- `body` (`~affinda.models.ExtractorUpdate`): Extractor data to update.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Extractor`: Extractor, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_extractor"></a>
+
+#### delete\_extractor
+
+```python
+def delete_extractor(id, **kwargs)
+```
+
+Delete an extractor.
+
+Deletes the specified extractor from the database.
+
+**Arguments**:
+
+- `id` (`int`): Extractor's ID.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_data_points"></a>
+
+#### get\_all\_data\_points
+
+```python
+def get_all_data_points(offset=None, limit=300, organization=None, extractor=None, slug=None, description=None, annotation_content_type=None, **kwargs)
+```
+
+Get list of all data points.
+
+Returns your custom data points as well as Affinda's off-the-shelf data points.
+
+**Arguments**:
+
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `organization` (`str`): Filter by organization. Default value is None.
+- `extractor` (`int`): Filter by extractor. Default value is None.
+- `slug` (`str`): Filter by slug. Default value is None.
+- `description` (`str`): Filter by description. Default value is None.
+- `annotation_content_type` (`str`): Filter by annotation content type, e.g. text, integer, float,
+date, etc. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[~affinda.models.DataPoint]`: list of DataPoint, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_data_point"></a>
+
+#### create\_data\_point
+
+```python
+def create_data_point(body=None, **kwargs)
+```
+
+Create a data point.
+
+Create a custom data point.
+
+**Arguments**:
+
+- `body` (`~affinda.models.DataPointCreate`): Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.DataPoint`: DataPoint, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_data_point"></a>
+
+#### get\_data\_point
+
+```python
+def get_data_point(identifier, **kwargs)
+```
+
+Get specific data point.
+
+Return a specific data point.
+
+**Arguments**:
+
+- `identifier` (`str`): Data point's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.DataPoint`: DataPoint, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_data_point_data"></a>
+
+#### update\_data\_point\_data
+
+```python
+def update_data_point_data(identifier, body, **kwargs)
+```
+
+Update a data point's data.
+
+Update data of a data point.
+
+**Arguments**:
+
+- `identifier` (`str`): DataPoint's identifier.
+- `body` (`~affinda.models.DataPointUpdate`): Data point to update.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.DataPoint`: DataPoint, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_data_point"></a>
+
+#### delete\_data\_point
+
+```python
+def delete_data_point(identifier, **kwargs)
+```
+
+Delete a data point.
+
+Deletes the specified data point from the database.
+
+**Arguments**:
+
+- `identifier` (`str`): DataPoint's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_workspaces"></a>
+
+#### get\_all\_workspaces
+
+```python
+def get_all_workspaces(organization, name=None, **kwargs)
+```
+
+Get list of all workspaces.
+
+Returns your workspaces.
+
+**Arguments**:
+
+- `organization` (`str`): Filter by organization.
+- `name` (`str`): Filter by name. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[~affinda.models.Workspace]`: list of Workspace, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_workspace"></a>
+
+#### create\_workspace
+
+```python
+def create_workspace(body, **kwargs)
+```
+
+Create a workspace.
+
+Create a workspace.
+
+**Arguments**:
+
+- `body` (`~affinda.models.WorkspaceCreate`): Workspace to create.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Workspace`: Workspace, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_workspace"></a>
+
+#### get\_workspace
+
+```python
+def get_workspace(identifier, **kwargs)
+```
+
+Get specific workspace.
+
+Return a specific workspace.
+
+**Arguments**:
+
+- `identifier` (`str`): Workspace's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Workspace`: Workspace, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_workspace"></a>
+
+#### update\_workspace
+
+```python
+def update_workspace(identifier, body, **kwargs)
+```
+
+Update a workspace.
+
+Update a workspace.
+
+**Arguments**:
+
+- `identifier` (`str`): Workspace's identifier.
+- `body` (`~affinda.models.WorkspaceUpdate`): Workspace data to update.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Workspace`: Workspace, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_workspace"></a>
+
+#### delete\_workspace
+
+```python
+def delete_workspace(identifier, **kwargs)
+```
+
+Delete a workspace.
+
+Deletes the specified workspace from the database.
+
+**Arguments**:
+
+- `identifier` (`str`): Workspace's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_workspace_memberships"></a>
+
+#### get\_all\_workspace\_memberships
+
+```python
+def get_all_workspace_memberships(offset=None, limit=300, workspace=None, user=None, **kwargs)
+```
+
+Get list of all workspace memberships.
+
+Returns the memberships of your workspaces.
+
+**Arguments**:
+
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `workspace` (`str`): Filter by workspace. Default value is None.
+- `user` (`str`): Partial text match on user's email, case-insensitive. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema`: PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema, or the
+result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_workspace_membership"></a>
+
+#### create\_workspace\_membership
+
+```python
+def create_workspace_membership(body, **kwargs)
+```
+
+Create a workspace membership.
+
+Create a workspace membership.
+
+**Arguments**:
+
+- `body` (`~affinda.models.WorkspaceMembershipCreate`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.WorkspaceMembership`: WorkspaceMembership, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_workspace_membership"></a>
+
+#### get\_workspace\_membership
+
+```python
+def get_workspace_membership(identifier, **kwargs)
+```
+
+Get specific workspace membership.
+
+Return a specific workspace membership.
+
+**Arguments**:
+
+- `identifier` (`str`): Workspace membership's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.WorkspaceMembership`: WorkspaceMembership, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_workspace_membership"></a>
+
+#### delete\_workspace\_membership
+
+```python
+def delete_workspace_membership(identifier, **kwargs)
+```
+
+Delete a workspace membership.
+
+Remove an user from a workspace.
+
+**Arguments**:
+
+- `identifier` (`str`): Workspace membership's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_collections"></a>
+
+#### get\_all\_collections
+
+```python
+def get_all_collections(workspace, **kwargs)
+```
+
+Get list of all collections.
+
+Returns your collections.
+
+**Arguments**:
+
+- `workspace` (`str`): Filter by workspace.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[~affinda.models.Collection]`: list of Collection, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_collection"></a>
+
+#### create\_collection
+
+```python
+def create_collection(body, **kwargs)
+```
+
+Create a collection.
+
+Create a collection.
+
+**Arguments**:
+
+- `body` (`~affinda.models.CollectionCreate`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Collection`: Collection, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_collection"></a>
+
+#### get\_collection
+
+```python
+def get_collection(identifier, **kwargs)
+```
+
+Get specific collection.
+
+Return a specific collection.
+
+**Arguments**:
+
+- `identifier` (`str`): Collection's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Collection`: Collection, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_collection_data"></a>
+
+#### update\_collection\_data
+
+```python
+def update_collection_data(identifier, body, **kwargs)
+```
+
+Update a collection's data.
+
+Update data of a collection.
+
+**Arguments**:
+
+- `identifier` (`str`): Collection's identifier.
+- `body` (`~affinda.models.CollectionUpdate`): Collection data to update.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Collection`: Collection, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_collection"></a>
+
+#### delete\_collection
+
+```python
+def delete_collection(identifier, **kwargs)
+```
+
+Delete a collection.
+
+Deletes the specified collection from the database.
+
+**Arguments**:
+
+- `identifier` (`str`): Collection's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_documents"></a>
+
+#### get\_all\_documents
+
+```python
+def get_all_documents(offset=None, limit=300, workspace=None, collection=None, state=None, tags=None, created_dt=None, search=None, ordering=None, include_data=None, **kwargs)
+```
+
+Get list of all documents.
+
+Returns all the document summaries for that user, limited to 300 per page.
+
+**Arguments**:
+
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `workspace` (`str`): Filter by workspace. Default value is None.
+- `collection` (`str`): Filter by collection. Default value is None.
+- `state` (`str or ~affinda.models.DocumentState`): Filter by the document's state. Default value is None.
+- `tags` (`list[int]`): Filter by tags. Default value is None.
+- `created_dt` (`str or ~affinda.models.DateRange`): Filter by created datetime. Default value is None.
+- `search` (`str`): Partial, case-insensitive match with file name or tag name. Default value is
+None.
+- `ordering` (`list[str or ~affinda.models.Get8ItemsItem]`): Sort the result set. A "-" at the beginning denotes DESC sort, e.g.
+-created_dt. Sort by multiple fields is supported. Default value is None.
+- `include_data` (`bool`): By default, this endpoint returns only the meta data of the documents. Set
+this to ``true`` will return the detailed data that was parsed, at a performance cost. Default
+value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.GetAllDocumentsResults`: GetAllDocumentsResults, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_document"></a>
+
+#### create\_document
+
+```python
+def create_document(file=None, url=None, collection=None, workspace=None, wait=True, identifier=None, file_name=None, expiry_time=None, language=None, **kwargs)
+```
+
+Upload a document for parsing.
+
+Uploads a document for parsing. When successful, returns an ``identifier`` in the response for
+subsequent use with the `/documents/{identifier} <#get-/documents/-identifier->`_ endpoint to
+check processing status and retrieve results.:code:`<br/>`.
+
+**Arguments**:
+
+- `file` (`IO`): Default value is None.
+- `url` (`str`): Default value is None.
+- `collection` (`str`): Default value is None.
+- `workspace` (`str`): Default value is None.
+- `wait` (`bool`): Default value is True.
+- `identifier` (`str`): Specify a custom identifier for the document. Default value is None.
+- `file_name` (`str`): Default value is None.
+- `expiry_time` (`~datetime.datetime`): Default value is None.
+- `language` (`str`): Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Document`: Document, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_document"></a>
+
+#### get\_document
+
+```python
+def get_document(identifier, **kwargs)
+```
+
+Get specific document.
+
+Return a specific document.
+
+**Arguments**:
+
+- `identifier` (`str`): Document's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Document`: Document, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_document_data"></a>
+
+#### update\_document\_data
+
+```python
+def update_document_data(identifier, body, **kwargs)
+```
+
+Update a document's data.
+
+Update file name, expiry time, or move to another collection, etc.
+
+**Arguments**:
+
+- `identifier` (`str`): Document's identifier.
+- `body` (`~affinda.models.DocumentUpdate`): Document data to update.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Document`: Document, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_document"></a>
+
+#### delete\_document
+
+```python
+def delete_document(identifier, **kwargs)
+```
+
+Delete a document.
+
+Deletes the specified document from the database.
+
+**Arguments**:
+
+- `identifier` (`str`): Document's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_tags"></a>
+
+#### get\_all\_tags
+
+```python
+def get_all_tags(limit=300, offset=None, workspace=None, **kwargs)
+```
+
+Get list of all tags.
+
+Returns your tags.
+
+**Arguments**:
+
+- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `workspace` (`str`): Filter by workspace. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[~affinda.models.Tag]`: list of Tag, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_tag"></a>
+
+#### create\_tag
+
+```python
+def create_tag(body, **kwargs)
+```
+
+Create a tag.
+
+Create a tag.
+
+**Arguments**:
+
+- `body` (`~affinda.models.TagCreate`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Tag`: Tag, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_tag"></a>
+
+#### get\_tag
+
+```python
+def get_tag(id, **kwargs)
+```
+
+Get specific tag.
+
+Return a specific tag.
+
+**Arguments**:
+
+- `id` (`int`): Tag's ID.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Tag`: Tag, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_tag_data"></a>
+
+#### update\_tag\_data
+
+```python
+def update_tag_data(id, body, **kwargs)
+```
+
+Update an tag's data.
+
+Update data of an tag.
+
+**Arguments**:
+
+- `id` (`int`): Tag's ID.
+- `body` (`~affinda.models.TagUpdate`): Tag data to update.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Tag`: Tag, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_tag"></a>
+
+#### delete\_tag
+
+```python
+def delete_tag(id, **kwargs)
+```
+
+Delete an tag.
+
+Deletes the specified tag from the database.
+
+**Arguments**:
+
+- `id` (`int`): Tag's ID.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
 

@@ -8,6 +8,53 @@ from enum import Enum
 from azure.core import CaseInsensitiveEnumMeta
 
 
+class AnnotationContentType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+
+    TEXT = "text"
+    INTEGER = "integer"
+    FLOAT = "float"
+    DECIMAL = "decimal"
+    DATE = "date"
+    DATETIME = "datetime"
+    BOOLEAN = "boolean"
+    ENUM = "enum"
+    LOCATION = "location"
+    JSON = "json"
+    TABLE = "table"
+
+
+class CollectionDateFormatPreference(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+
+    DMY = "DMY"
+    MDY = "MDY"
+    YMD = "YMD"
+
+
+class DateFormatPreference(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+
+    DMY = "DMY"
+    MDY = "MDY"
+    YMD = "YMD"
+
+
+class DateRange(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+
+    TODAY = "today"
+    YESTERDAY = "yesterday"
+    WEEK = "week"
+    MONTH = "month"
+    YEAR = "year"
+
+
+class DocumentState(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+
+    UPLOADED = "uploaded"
+    REVIEW = "review"
+    VALIDATED = "validated"
+    ARCHIVED = "archived"
+    REJECTED = "rejected"
+
+
 class EducationLevel(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     SCHOOL = "school"
@@ -29,6 +76,13 @@ class Enum5(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     JOB_DESCRIPTIONS = "job_descriptions"
 
 
+class Get8ItemsItem(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+
+    FILE_NAME = "file_name"
+    EXTRACTOR = "extractor"
+    CREATED_DT = "created_dt"
+
+
 class GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType(
     str, Enum, metaclass=CaseInsensitiveEnumMeta
 ):
@@ -37,12 +91,38 @@ class GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType(
     JOB_DESCRIPTIONS = "job_descriptions"
 
 
+class InvitationStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+
+    PENDING = "pending"
+    ACCEPTED = "accepted"
+    DECLINED = "declined"
+
+
 class ManagementLevel(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     NONE = "None"
     LOW = "Low"
     MID = "Mid"
     UPPER = "Upper"
+
+
+class OrganizationRole(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+
+    ADMIN = "admin"
+    MEMBER = "member"
+
+
+class OrganizationUserRole(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+    """The role of the logged in user within the organization."""
+
+    ADMIN = "admin"
+    MEMBER = "member"
+
+
+class PatchContentSchemaStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+
+    ACCEPTED = "accepted"
+    DECLINED = "declined"
 
 
 class PostContentSchemaDocumentType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
@@ -82,3 +162,12 @@ class SearchLocationUnit(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     KM = "km"
     MI = "mi"
+
+
+class WorkspaceVisibility(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+    """Visibility "organization" means everyone in the organization can access the workspace.
+    Visibility "private" means only people explicitly added can access the workspace.
+    """
+
+    ORGANIZATION = "organization"
+    PRIVATE = "private"
