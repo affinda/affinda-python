@@ -107,6 +107,78 @@ is the confidence that the text in the image has been correctly read by the mode
 - `data_point`: Required.
 - `content_type`: Required.
 
+<a id="models._models.AnnotationV2"></a>
+
+## AnnotationV2 Objects
+
+```python
+class AnnotationV2(msrest.serialization.Model)
+```
+
+AnnotationV2.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar id: Required.
+:vartype id: int
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles: Required.
+:vartype rectangles: list[~affinda.models.Rectangle]
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
+:vartype confidence: float
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
+:vartype text_extraction_confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar is_client_verified: Required.
+:vartype is_client_verified: bool
+:ivar is_auto_verified: Required.
+:vartype is_auto_verified: bool
+:ivar data_point:
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
+
+<a id="models._models.AnnotationV2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
+collection.
+- `id`: Required.
+- `rectangle`: Required.
+- `rectangles`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
+- `is_verified`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: 
+- `content_type`: Required.
+
 <a id="models._models.BaseExtractor"></a>
 
 ## BaseExtractor Objects
@@ -1639,6 +1711,81 @@ is the confidence that the text in the image has been correctly read by the mode
 - `content_type`: Required.
 - `parsed`: 
 
+<a id="models._models.DateAnnotationV2"></a>
+
+## DateAnnotationV2 Objects
+
+```python
+class DateAnnotationV2(AnnotationV2)
+```
+
+DateAnnotationV2.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar id: Required.
+:vartype id: int
+:ivar rectangle: Required.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles: Required.
+:vartype rectangles: list[~affinda.models.Rectangle]
+:ivar page_index: Required.
+:vartype page_index: int
+:ivar raw: Required.
+:vartype raw: str
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
+:vartype confidence: float
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
+:vartype text_extraction_confidence: float
+:ivar is_verified: Required.
+:vartype is_verified: bool
+:ivar is_client_verified: Required.
+:vartype is_client_verified: bool
+:ivar is_auto_verified: Required.
+:vartype is_auto_verified: bool
+:ivar data_point:
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
+:ivar parsed:
+:vartype parsed: ~datetime.date
+
+<a id="models._models.DateAnnotationV2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
+collection.
+- `id`: Required.
+- `rectangle`: Required.
+- `rectangles`: Required.
+- `page_index`: Required.
+- `raw`: Required.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
+- `is_verified`: Required.
+- `is_client_verified`: Required.
+- `is_auto_verified`: Required.
+- `data_point`: 
+- `content_type`: Required.
+- `parsed`: 
+
 <a id="models._models.DocumentMeta"></a>
 
 ## DocumentMeta Objects
@@ -2005,6 +2152,8 @@ DocumentMetaCollectionExtractor.
 
 :ivar id: Extractor's ID.
 :vartype id: int
+:ivar identifier:
+:vartype identifier: str
 :ivar name:
 :vartype name: str
 :ivar base_extractor: Base extractor's ID.
@@ -2023,6 +2172,7 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `id`: Extractor's ID.
+- `identifier`: 
 - `name`: 
 - `base_extractor`: Base extractor's ID.
 - `validatable`: 
@@ -2259,15 +2409,15 @@ def __init__(**kwargs)
 - `label`: Required.
 - `score`: 
 
-<a id="models._models.EnumAnnotationSerializer"></a>
+<a id="models._models.EnumAnnotationSerializerV2"></a>
 
-## EnumAnnotationSerializer Objects
+## EnumAnnotationSerializerV2 Objects
 
 ```python
-class EnumAnnotationSerializer(Annotation)
+class EnumAnnotationSerializerV2(AnnotationV2)
 ```
 
-EnumAnnotationSerializer.
+EnumAnnotationSerializerV2.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -2298,14 +2448,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.EnumAnnotationSerializer.__init__"></a>
+<a id="models._models.EnumAnnotationSerializerV2.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -2330,7 +2480,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -2362,15 +2512,15 @@ def __init__(**kwargs)
 - `error_code`: 
 - `error_detail`: 
 
-<a id="models._models.ExpectedRemunerationAnnotation"></a>
+<a id="models._models.ExpectedRemunerationAnnotationV2"></a>
 
-## ExpectedRemunerationAnnotation Objects
+## ExpectedRemunerationAnnotationV2 Objects
 
 ```python
-class ExpectedRemunerationAnnotation(Annotation)
+class ExpectedRemunerationAnnotationV2(AnnotationV2)
 ```
 
-ExpectedRemunerationAnnotation.
+ExpectedRemunerationAnnotationV2.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -2401,14 +2551,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
 :ivar parsed:
-:vartype parsed: ~affinda.models.ExpectedRemunerationAnnotationParsed
+:vartype parsed: ~affinda.models.ExpectedRemunerationAnnotationV2Parsed
 
-<a id="models._models.ExpectedRemunerationAnnotation.__init__"></a>
+<a id="models._models.ExpectedRemunerationAnnotationV2.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -2433,19 +2583,19 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
-<a id="models._models.ExpectedRemunerationAnnotationParsed"></a>
+<a id="models._models.ExpectedRemunerationAnnotationV2Parsed"></a>
 
-## ExpectedRemunerationAnnotationParsed Objects
+## ExpectedRemunerationAnnotationV2Parsed Objects
 
 ```python
-class ExpectedRemunerationAnnotationParsed(msrest.serialization.Model)
+class ExpectedRemunerationAnnotationV2Parsed(msrest.serialization.Model)
 ```
 
-ExpectedRemunerationAnnotationParsed.
+ExpectedRemunerationAnnotationV2Parsed.
 
 :ivar minimum:
 :vartype minimum: float
@@ -2456,7 +2606,7 @@ ExpectedRemunerationAnnotationParsed.
 :ivar unit:
 :vartype unit: str
 
-<a id="models._models.ExpectedRemunerationAnnotationParsed.__init__"></a>
+<a id="models._models.ExpectedRemunerationAnnotationV2Parsed.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -2893,6 +3043,42 @@ def __init__(**kwargs)
 - `previous`: URL to request previous page of results.
 - `results`: Required.
 
+<a id="models._models.GetAllDocumentsResultsV2"></a>
+
+## GetAllDocumentsResultsV2 Objects
+
+```python
+class GetAllDocumentsResultsV2(msrest.serialization.Model)
+```
+
+GetAllDocumentsResultsV2.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar count: Required. Number of documents in result.
+:vartype count: int
+:ivar next: URL to request next page of results.
+:vartype next: str
+:ivar previous: URL to request previous page of results.
+:vartype previous: str
+:ivar results: Required.
+:vartype results: list[~affinda.models.Meta]
+
+<a id="models._models.GetAllDocumentsResultsV2.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `count`: Required. Number of documents in result.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
+- `results`: Required.
+
 <a id="models._models.GetAllInvoicesResults"></a>
 
 ## GetAllInvoicesResults Objects
@@ -3219,11 +3405,11 @@ InvoiceData.
 :ivar tables:
 :vartype tables: list[~affinda.models.InvoiceDataTablesItem]
 :ivar invoice_date:
-:vartype invoice_date: ~affinda.models.DateAnnotation
+:vartype invoice_date: ~affinda.models.DateAnnotationV2
 :ivar invoice_order_date:
-:vartype invoice_order_date: ~affinda.models.DateAnnotation
+:vartype invoice_order_date: ~affinda.models.DateAnnotationV2
 :ivar payment_date_due:
-:vartype payment_date_due: ~affinda.models.DateAnnotation
+:vartype payment_date_due: ~affinda.models.DateAnnotationV2
 :ivar payment_amount_base:
 :vartype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
 :ivar payment_amount_tax:
@@ -3271,11 +3457,11 @@ InvoiceData.
 :ivar supplier_company_name:
 :vartype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
 :ivar customer_billing_address:
-:vartype customer_billing_address: ~affinda.models.LocationAnnotation
+:vartype customer_billing_address: ~affinda.models.LocationAnnotationV2
 :ivar customer_delivery_address:
-:vartype customer_delivery_address: ~affinda.models.LocationAnnotation
+:vartype customer_delivery_address: ~affinda.models.LocationAnnotationV2
 :ivar supplier_address:
-:vartype supplier_address: ~affinda.models.LocationAnnotation
+:vartype supplier_address: ~affinda.models.LocationAnnotationV2
 :ivar customer_phone_number:
 :vartype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
 :ivar supplier_phone_number:
@@ -3289,7 +3475,7 @@ InvoiceData.
 :ivar supplier_website:
 :vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
 :ivar currency_code:
-:vartype currency_code: ~affinda.models.EnumAnnotationSerializer
+:vartype currency_code: ~affinda.models.EnumAnnotationSerializerV2
 :ivar custom_fields: Dictionary of :code:`<any>`.
 :vartype custom_fields: dict[str, any]
 
@@ -3342,15 +3528,15 @@ def __init__(**kwargs)
 - `currency_code`: 
 - `custom_fields`: Dictionary of :code:`<any>`.
 
-<a id="models._models.TextAnnotation"></a>
+<a id="models._models.TextAnnotationV2"></a>
 
-## TextAnnotation Objects
+## TextAnnotationV2 Objects
 
 ```python
-class TextAnnotation(Annotation)
+class TextAnnotationV2(AnnotationV2)
 ```
 
-TextAnnotation.
+TextAnnotationV2.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -3381,14 +3567,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.TextAnnotation.__init__"></a>
+<a id="models._models.TextAnnotationV2.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -3413,7 +3599,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -3422,7 +3608,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataBankAccountNumber Objects
 
 ```python
-class InvoiceDataBankAccountNumber(TextAnnotation,  Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1)
+class InvoiceDataBankAccountNumber(TextAnnotationV2,  Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1)
 ```
 
 InvoiceDataBankAccountNumber.
@@ -3456,7 +3642,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -3488,7 +3674,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -3497,7 +3683,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataBankBsb Objects
 
 ```python
-class InvoiceDataBankBsb(TextAnnotation,  Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1)
+class InvoiceDataBankBsb(TextAnnotationV2,  Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1)
 ```
 
 InvoiceDataBankBsb.
@@ -3531,7 +3717,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -3563,7 +3749,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -3572,7 +3758,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataBankIban Objects
 
 ```python
-class InvoiceDataBankIban(TextAnnotation,  Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1)
+class InvoiceDataBankIban(TextAnnotationV2,  Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1)
 ```
 
 InvoiceDataBankIban.
@@ -3606,7 +3792,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -3638,7 +3824,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -3647,7 +3833,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataBankSortCode Objects
 
 ```python
-class InvoiceDataBankSortCode(TextAnnotation,  Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1)
+class InvoiceDataBankSortCode(TextAnnotationV2,  Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1)
 ```
 
 InvoiceDataBankSortCode.
@@ -3681,7 +3867,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -3713,7 +3899,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -3722,7 +3908,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataBankSwift Objects
 
 ```python
-class InvoiceDataBankSwift(TextAnnotation,  Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1)
+class InvoiceDataBankSwift(TextAnnotationV2,  Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1)
 ```
 
 InvoiceDataBankSwift.
@@ -3756,7 +3942,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -3788,7 +3974,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -3797,7 +3983,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataBpayBillerCode Objects
 
 ```python
-class InvoiceDataBpayBillerCode(TextAnnotation,  ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1)
+class InvoiceDataBpayBillerCode(TextAnnotationV2,  ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1)
 ```
 
 InvoiceDataBpayBillerCode.
@@ -3831,7 +4017,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -3863,7 +4049,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -3872,7 +4058,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataBpayReference Objects
 
 ```python
-class InvoiceDataBpayReference(TextAnnotation,  ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1)
+class InvoiceDataBpayReference(TextAnnotationV2,  ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1)
 ```
 
 InvoiceDataBpayReference.
@@ -3906,7 +4092,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -3938,7 +4124,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -3947,7 +4133,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataCustomerBusinessNumber Objects
 
 ```python
-class InvoiceDataCustomerBusinessNumber(TextAnnotation,  Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1)
+class InvoiceDataCustomerBusinessNumber(TextAnnotationV2,  Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1)
 ```
 
 InvoiceDataCustomerBusinessNumber.
@@ -3981,7 +4167,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4013,7 +4199,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4022,7 +4208,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataCustomerCompanyName Objects
 
 ```python
-class InvoiceDataCustomerCompanyName(TextAnnotation,  Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1)
+class InvoiceDataCustomerCompanyName(TextAnnotationV2,  Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1)
 ```
 
 InvoiceDataCustomerCompanyName.
@@ -4056,7 +4242,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4088,7 +4274,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4097,7 +4283,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataCustomerContactName Objects
 
 ```python
-class InvoiceDataCustomerContactName(TextAnnotation,  ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1)
+class InvoiceDataCustomerContactName(TextAnnotationV2,  ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1)
 ```
 
 InvoiceDataCustomerContactName.
@@ -4131,7 +4317,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4163,7 +4349,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4172,7 +4358,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataCustomerEmail Objects
 
 ```python
-class InvoiceDataCustomerEmail(TextAnnotation,  Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1)
+class InvoiceDataCustomerEmail(TextAnnotationV2,  Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1)
 ```
 
 InvoiceDataCustomerEmail.
@@ -4206,7 +4392,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4238,7 +4424,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4247,7 +4433,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataCustomerNumber Objects
 
 ```python
-class InvoiceDataCustomerNumber(TextAnnotation,  Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1)
+class InvoiceDataCustomerNumber(TextAnnotationV2,  Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1)
 ```
 
 InvoiceDataCustomerNumber.
@@ -4281,7 +4467,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4313,7 +4499,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4322,7 +4508,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataCustomerPhoneNumber Objects
 
 ```python
-class InvoiceDataCustomerPhoneNumber(TextAnnotation,  Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1)
+class InvoiceDataCustomerPhoneNumber(TextAnnotationV2,  Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1)
 ```
 
 InvoiceDataCustomerPhoneNumber.
@@ -4356,7 +4542,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4388,7 +4574,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4397,7 +4583,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataCustomerVat Objects
 
 ```python
-class InvoiceDataCustomerVat(TextAnnotation,  ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1)
+class InvoiceDataCustomerVat(TextAnnotationV2,  ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1)
 ```
 
 InvoiceDataCustomerVat.
@@ -4431,7 +4617,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4463,7 +4649,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4472,7 +4658,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataInvoiceNumber Objects
 
 ```python
-class InvoiceDataInvoiceNumber(TextAnnotation,  Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1)
+class InvoiceDataInvoiceNumber(TextAnnotationV2,  Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1)
 ```
 
 InvoiceDataInvoiceNumber.
@@ -4506,7 +4692,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4538,7 +4724,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4547,7 +4733,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataInvoicePurchaseOrderNumber Objects
 
 ```python
-class InvoiceDataInvoicePurchaseOrderNumber(TextAnnotation,  ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1)
+class InvoiceDataInvoicePurchaseOrderNumber(TextAnnotationV2,  ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1)
 ```
 
 InvoiceDataInvoicePurchaseOrderNumber.
@@ -4581,7 +4767,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4613,7 +4799,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4622,7 +4808,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataPaymentAmountBase Objects
 
 ```python
-class InvoiceDataPaymentAmountBase(TextAnnotation,  Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1)
+class InvoiceDataPaymentAmountBase(TextAnnotationV2,  Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1)
 ```
 
 InvoiceDataPaymentAmountBase.
@@ -4656,7 +4842,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4688,7 +4874,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4697,7 +4883,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataPaymentAmountDue Objects
 
 ```python
-class InvoiceDataPaymentAmountDue(TextAnnotation,  ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1)
+class InvoiceDataPaymentAmountDue(TextAnnotationV2,  ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1)
 ```
 
 InvoiceDataPaymentAmountDue.
@@ -4731,7 +4917,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4763,7 +4949,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4772,7 +4958,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataPaymentAmountPaid Objects
 
 ```python
-class InvoiceDataPaymentAmountPaid(TextAnnotation,  Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1)
+class InvoiceDataPaymentAmountPaid(TextAnnotationV2,  Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1)
 ```
 
 InvoiceDataPaymentAmountPaid.
@@ -4806,7 +4992,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4838,7 +5024,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4847,7 +5033,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataPaymentAmountTax Objects
 
 ```python
-class InvoiceDataPaymentAmountTax(TextAnnotation,  Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1)
+class InvoiceDataPaymentAmountTax(TextAnnotationV2,  Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1)
 ```
 
 InvoiceDataPaymentAmountTax.
@@ -4881,7 +5067,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4913,7 +5099,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4922,7 +5108,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataPaymentAmountTotal Objects
 
 ```python
-class InvoiceDataPaymentAmountTotal(TextAnnotation,  Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1)
+class InvoiceDataPaymentAmountTotal(TextAnnotationV2,  Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1)
 ```
 
 InvoiceDataPaymentAmountTotal.
@@ -4956,7 +5142,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4988,7 +5174,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4997,7 +5183,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataPaymentReference Objects
 
 ```python
-class InvoiceDataPaymentReference(TextAnnotation,  Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1)
+class InvoiceDataPaymentReference(TextAnnotationV2,  Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1)
 ```
 
 InvoiceDataPaymentReference.
@@ -5031,7 +5217,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -5063,7 +5249,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -5072,7 +5258,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataSupplierBusinessNumber Objects
 
 ```python
-class InvoiceDataSupplierBusinessNumber(TextAnnotation,  Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1)
+class InvoiceDataSupplierBusinessNumber(TextAnnotationV2,  Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1)
 ```
 
 InvoiceDataSupplierBusinessNumber.
@@ -5106,7 +5292,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -5138,7 +5324,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -5147,7 +5333,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataSupplierCompanyName Objects
 
 ```python
-class InvoiceDataSupplierCompanyName(TextAnnotation,  Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1)
+class InvoiceDataSupplierCompanyName(TextAnnotationV2,  Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1)
 ```
 
 InvoiceDataSupplierCompanyName.
@@ -5181,7 +5367,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -5213,7 +5399,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -5222,7 +5408,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataSupplierEmail Objects
 
 ```python
-class InvoiceDataSupplierEmail(TextAnnotation,  Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1)
+class InvoiceDataSupplierEmail(TextAnnotationV2,  Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1)
 ```
 
 InvoiceDataSupplierEmail.
@@ -5256,7 +5442,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -5288,7 +5474,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -5297,7 +5483,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataSupplierFax Objects
 
 ```python
-class InvoiceDataSupplierFax(TextAnnotation,  Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1)
+class InvoiceDataSupplierFax(TextAnnotationV2,  Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1)
 ```
 
 InvoiceDataSupplierFax.
@@ -5331,7 +5517,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -5363,7 +5549,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -5372,7 +5558,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataSupplierPhoneNumber Objects
 
 ```python
-class InvoiceDataSupplierPhoneNumber(TextAnnotation,  Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1)
+class InvoiceDataSupplierPhoneNumber(TextAnnotationV2,  Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1)
 ```
 
 InvoiceDataSupplierPhoneNumber.
@@ -5406,7 +5592,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -5438,7 +5624,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -5447,7 +5633,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataSupplierVat Objects
 
 ```python
-class InvoiceDataSupplierVat(TextAnnotation,  ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1)
+class InvoiceDataSupplierVat(TextAnnotationV2,  ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1)
 ```
 
 InvoiceDataSupplierVat.
@@ -5481,7 +5667,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -5513,7 +5699,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -5522,7 +5708,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataSupplierWebsite Objects
 
 ```python
-class InvoiceDataSupplierWebsite(TextAnnotation,  Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1)
+class InvoiceDataSupplierWebsite(TextAnnotationV2,  Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1)
 ```
 
 InvoiceDataSupplierWebsite.
@@ -5556,7 +5742,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -5588,7 +5774,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -5721,37 +5907,37 @@ JobDescriptionData.
 :ivar job_title:
 :vartype job_title: ~affinda.models.JobTitleAnnotation
 :ivar contact_email:
-:vartype contact_email: ~affinda.models.TextAnnotation
+:vartype contact_email: ~affinda.models.TextAnnotationV2
 :ivar contact_name:
-:vartype contact_name: ~affinda.models.TextAnnotation
+:vartype contact_name: ~affinda.models.TextAnnotationV2
 :ivar contact_phone:
-:vartype contact_phone: ~affinda.models.TextAnnotation
+:vartype contact_phone: ~affinda.models.TextAnnotationV2
 :ivar start_date:
 :vartype start_date: ~affinda.models.DateAnnotation
 :ivar end_date:
 :vartype end_date: ~affinda.models.DateAnnotation
 :ivar job_type:
-:vartype job_type: ~affinda.models.TextAnnotation
+:vartype job_type: ~affinda.models.TextAnnotationV2
 :ivar languages:
-:vartype languages: list[~affinda.models.LanguageAnnotation]
+:vartype languages: list[~affinda.models.LanguageAnnotationV2]
 :ivar skills:
-:vartype skills: list[~affinda.models.SkillAnnotation]
+:vartype skills: list[~affinda.models.SkillAnnotationV2]
 :ivar organization_name:
-:vartype organization_name: ~affinda.models.TextAnnotation
+:vartype organization_name: ~affinda.models.TextAnnotationV2
 :ivar organization_website:
-:vartype organization_website: ~affinda.models.TextAnnotation
+:vartype organization_website: ~affinda.models.TextAnnotationV2
 :ivar education_level:
-:vartype education_level: ~affinda.models.TextAnnotation
+:vartype education_level: ~affinda.models.TextAnnotationV2
 :ivar education_accreditation:
-:vartype education_accreditation: ~affinda.models.TextAnnotation
+:vartype education_accreditation: ~affinda.models.TextAnnotationV2
 :ivar expected_remuneration:
-:vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotation
+:vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2
 :ivar location:
-:vartype location: ~affinda.models.LocationAnnotation
+:vartype location: ~affinda.models.LocationAnnotationV2
 :ivar certifications:
-:vartype certifications: list[~affinda.models.TextAnnotation]
+:vartype certifications: list[~affinda.models.TextAnnotationV2]
 :ivar years_experience:
-:vartype years_experience: ~affinda.models.YearsExperienceAnnotation
+:vartype years_experience: ~affinda.models.YearsExperienceAnnotationV2
 
 <a id="models._models.JobDescriptionData.__init__"></a>
 
@@ -6823,7 +7009,7 @@ def __init__(**kwargs)
 ## JobTitleAnnotation Objects
 
 ```python
-class JobTitleAnnotation(Annotation)
+class JobTitleAnnotation(AnnotationV2)
 ```
 
 JobTitleAnnotation.
@@ -6857,7 +7043,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -6889,7 +7075,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: Years of experience range.
 
@@ -6994,15 +7180,15 @@ def __init__(**kwargs)
 - `label`: Required.
 - `score`: 
 
-<a id="models._models.LanguageAnnotation"></a>
+<a id="models._models.LanguageAnnotationV2"></a>
 
-## LanguageAnnotation Objects
+## LanguageAnnotationV2 Objects
 
 ```python
-class LanguageAnnotation(Annotation)
+class LanguageAnnotationV2(AnnotationV2)
 ```
 
-LanguageAnnotation.
+LanguageAnnotationV2.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -7033,14 +7219,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.LanguageAnnotation.__init__"></a>
+<a id="models._models.LanguageAnnotationV2.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -7065,7 +7251,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -7135,15 +7321,15 @@ def __init__(**kwargs)
 - `next`: URL to request next page of results.
 - `previous`: URL to request previous page of results.
 
-<a id="models._models.LocationAnnotation"></a>
+<a id="models._models.LocationAnnotationV2"></a>
 
-## LocationAnnotation Objects
+## LocationAnnotationV2 Objects
 
 ```python
-class LocationAnnotation(Annotation)
+class LocationAnnotationV2(AnnotationV2)
 ```
 
-LocationAnnotation.
+LocationAnnotationV2.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -7174,14 +7360,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
 :ivar parsed:
 :vartype parsed: ~affinda.models.Location
 
-<a id="models._models.LocationAnnotation.__init__"></a>
+<a id="models._models.LocationAnnotationV2.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -7206,7 +7392,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -7314,7 +7500,7 @@ Meta.
 :vartype child_documents: list[~affinda.models.MetaChildDocumentsItem]
 :ivar pages: The document's pages.
 :vartype pages: list[~affinda.models.PageMeta]
-:ivar is_verified: This is true if the "confirm" button has been clicked in the Affinda
+:ivar is_verified: This is true if the 'confirm' button has been clicked in the Affinda
  validation tool.
 :vartype is_verified: bool
 :ivar review_url: Signed URL (valid for 60 minutes) to access the validation tool.  Not
@@ -7352,7 +7538,7 @@ points to the original document that this document is splitted from.
 - `child_documents`: If this document has been splitted into a number of child documents,
 this attribute points to those child documents.
 - `pages`: The document's pages.
-- `is_verified`: This is true if the "confirm" button has been clicked in the Affinda
+- `is_verified`: This is true if the 'confirm' button has been clicked in the Affinda
 validation tool.
 - `review_url`: Signed URL (valid for 60 minutes) to access the validation tool.  Not
 applicable for documents types such a resumes.
@@ -7689,20 +7875,45 @@ def __init__(**kwargs)
 - `next`: URL to request next page of results.
 - `previous`: URL to request previous page of results.
 
-<a id="models._models.Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
+<a id="models._models.Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema"></a>
 
-## Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
+## Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema Objects
 
 ```python
-class Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
+class Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema(msrest.serialization.Model)
 ```
 
-Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.
+Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema.
+
+:ivar config_override:
+:vartype config_override: ~affinda.models.JobDescriptionSearchConfig
+
+<a id="models._models.Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `config_override`: 
+
+<a id="models._models.PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
+
+## PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
+
+```python
+class PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
+```
+
+PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1.
 
 :ivar results:
-:vartype results: list[~affinda.models.OrganizationMembership]
+:vartype results: list[~affinda.models.Invitation]
 
-<a id="models._models.Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
+<a id="models._models.PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -7714,22 +7925,108 @@ def __init__(**kwargs)
 
 - `results`: 
 
-<a id="models._models.Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema"></a>
+<a id="models._models.Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema"></a>
 
-## Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema Objects
+## Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema Objects
 
 ```python
-class Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema(msrest.serialization.Model)
+class Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1)
 ```
 
-Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema.
+Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar results:
+:vartype results: list[~affinda.models.Invitation]
+:ivar count: Required. Number of items in results.
+:vartype count: int
+:ivar next: URL to request next page of results.
+:vartype next: str
+:ivar previous: URL to request previous page of results.
+:vartype previous: str
+
+<a id="models._models.Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: 
+- `count`: Required. Number of items in results.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
+
+<a id="models._models.Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema"></a>
+
+## Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema Objects
+
+```python
+class Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema(msrest.serialization.Model)
+```
+
+Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema.
+
+:ivar config_override:
+:vartype config_override: ~affinda.models.ResumeSearchConfig
+
+<a id="models._models.Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `config_override`: 
+
+<a id="models._models.Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems"></a>
+
+## Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems Objects
+
+```python
+class Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems(msrest.serialization.Model)
+```
+
+Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems.
+
+:ivar document:
+:vartype document: str
+
+<a id="models._models.Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `document`: 
+
+<a id="models._models.Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema"></a>
+
+## Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema Objects
+
+```python
+class Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema(msrest.serialization.Model)
+```
+
+Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema.
 
 :ivar name:
 :vartype name: str
 :ivar document_type: Known values are: "resumes", "job_descriptions".
 :vartype document_type: str or ~affinda.models.Enum5
 
-<a id="models._models.Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema.__init__"></a>
+<a id="models._models.Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -7742,22 +8039,22 @@ def __init__(**kwargs)
 - `name`: 
 - `document_type`: Known values are: "resumes", "job_descriptions".
 
-<a id="models._models.Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
+<a id="models._models.Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
 
-## Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
+## Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
 
 ```python
-class Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
+class Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
 ```
 
-Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.
+Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.
 
 All required parameters must be populated in order to send to Azure.
 
 :ivar results: Required.
 :vartype results: list[~affinda.models.WorkspaceMembership]
 
-<a id="models._models.Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
+<a id="models._models.Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -7769,20 +8066,20 @@ def __init__(**kwargs)
 
 - `results`: Required.
 
-<a id="models._models.Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema"></a>
+<a id="models._models.Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
 
-## Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema Objects
+## Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
 
 ```python
-class Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema(msrest.serialization.Model)
+class Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
 ```
 
-Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema.
+Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.
 
-:ivar config_override:
-:vartype config_override: ~affinda.models.ResumeSearchConfig
+:ivar results:
+:vartype results: list[~affinda.models.OrganizationMembership]
 
-<a id="models._models.Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema.__init__"></a>
+<a id="models._models.Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -7792,17 +8089,17 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `config_override`: 
+- `results`: 
 
-<a id="models._models.Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema"></a>
+<a id="models._models.Paths9K2ZxlV3UsersGetResponses200ContentApplicationJsonSchema"></a>
 
-## Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema Objects
+## Paths9K2ZxlV3UsersGetResponses200ContentApplicationJsonSchema Objects
 
 ```python
-class Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model)
+class Paths9K2ZxlV3UsersGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model)
 ```
 
-Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema.
+Paths9K2ZxlV3UsersGetResponses200ContentApplicationJsonSchema.
 
 :ivar count: Number of indexes in result.
 :vartype count: int
@@ -7811,9 +8108,9 @@ Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema.
 :ivar previous: URL to request previous page of results.
 :vartype previous: str
 :ivar results:
-:vartype results: list[~affinda.models.Get200ApplicationJsonPropertiesItemsItem]
+:vartype results: list[~affinda.models.User]
 
-<a id="models._models.Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema.__init__"></a>
+<a id="models._models.Paths9K2ZxlV3UsersGetResponses200ContentApplicationJsonSchema.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -7828,28 +8125,20 @@ def __init__(**kwargs)
 - `previous`: URL to request previous page of results.
 - `results`: 
 
-<a id="models._models.PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema"></a>
+<a id="models._models.PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema"></a>
 
-## PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema Objects
+## PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema Objects
 
 ```python
-class PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema(ListResult,  Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1)
+class PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema(msrest.serialization.Model)
 ```
 
-PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema.
+PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema.
 
-All required parameters must be populated in order to send to Azure.
+:ivar document:
+:vartype document: str
 
-:ivar results: Required.
-:vartype results: list[~affinda.models.WorkspaceMembership]
-:ivar count: Required. Number of items in results.
-:vartype count: int
-:ivar next: URL to request next page of results.
-:vartype next: str
-:ivar previous: URL to request previous page of results.
-:vartype previous: str
-
-<a id="models._models.PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema.__init__"></a>
+<a id="models._models.PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -7859,33 +8148,53 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `results`: Required.
-- `count`: Required. Number of items in results.
-- `next`: URL to request next page of results.
-- `previous`: URL to request previous page of results.
+- `document`: 
 
-<a id="models._models.PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema"></a>
+<a id="models._models.PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema"></a>
 
-## PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema Objects
+## PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema Objects
 
 ```python
-class PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1)
+class PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema(msrest.serialization.Model)
 ```
 
-PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema.
+PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema.
 
-All required parameters must be populated in order to send to Azure.
+:ivar status: Known values are: "accepted", "declined".
+:vartype status: str or ~affinda.models.PatchContentSchemaStatus
 
+<a id="models._models.PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `status`: Known values are: "accepted", "declined".
+
+<a id="models._models.PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema"></a>
+
+## PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema Objects
+
+```python
+class PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model)
+```
+
+PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema.
+
+:ivar count: Number of indexes in result.
+:vartype count: int
+:ivar next: URL to request next page of results.
+:vartype next: str
+:ivar previous: URL to request previous page of results.
+:vartype previous: str
 :ivar results:
-:vartype results: list[~affinda.models.OrganizationMembership]
-:ivar count: Required. Number of items in results.
-:vartype count: int
-:ivar next: URL to request next page of results.
-:vartype next: str
-:ivar previous: URL to request previous page of results.
-:vartype previous: str
+:vartype results: list[~affinda.models.Get200ApplicationJsonPropertiesItemsItem]
 
-<a id="models._models.PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema.__init__"></a>
+<a id="models._models.PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -7895,25 +8204,25 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `results`: 
-- `count`: Required. Number of items in results.
+- `count`: Number of indexes in result.
 - `next`: URL to request next page of results.
 - `previous`: URL to request previous page of results.
+- `results`: 
 
-<a id="models._models.PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema"></a>
+<a id="models._models.PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema"></a>
 
-## PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema Objects
+## PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema Objects
 
 ```python
-class PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema(msrest.serialization.Model)
+class PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema(msrest.serialization.Model)
 ```
 
-PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema.
+PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema.
 
 :ivar document: Unique identifier for the document.
 :vartype document: str
 
-<a id="models._models.PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema.__init__"></a>
+<a id="models._models.PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -7925,90 +8234,15 @@ def __init__(**kwargs)
 
 - `document`: Unique identifier for the document.
 
-<a id="models._models.PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema"></a>
+<a id="models._models.PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema"></a>
 
-## PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema Objects
-
-```python
-class PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema(msrest.serialization.Model)
-```
-
-PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema.
-
-:ivar config_override:
-:vartype config_override: ~affinda.models.JobDescriptionSearchConfig
-
-<a id="models._models.PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema.__init__"></a>
-
-#### \_\_init\_\_
+## PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema Objects
 
 ```python
-def __init__(**kwargs)
+class PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model)
 ```
 
-**Arguments**:
-
-- `config_override`: 
-
-<a id="models._models.PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema"></a>
-
-## PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema Objects
-
-```python
-class PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema(msrest.serialization.Model)
-```
-
-PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema.
-
-:ivar document:
-:vartype document: str
-
-<a id="models._models.PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `document`: 
-
-<a id="models._models.PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems"></a>
-
-## PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems Objects
-
-```python
-class PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems(msrest.serialization.Model)
-```
-
-PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems.
-
-:ivar document:
-:vartype document: str
-
-<a id="models._models.PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `document`: 
-
-<a id="models._models.PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema"></a>
-
-## PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema Objects
-
-```python
-class PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model)
-```
-
-PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema.
+PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema.
 
 :ivar count: Number of indexed documents in result.
 :vartype count: int
@@ -8018,9 +8252,9 @@ PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema.
 :vartype previous: str
 :ivar results:
 :vartype results:
- list[~affinda.models.PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]
+ list[~affinda.models.Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]
 
-<a id="models._models.PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema.__init__"></a>
+<a id="models._models.PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -8035,104 +8269,20 @@ def __init__(**kwargs)
 - `previous`: URL to request previous page of results.
 - `results`: 
 
-<a id="models._models.PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
+<a id="models._models.PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema"></a>
 
-## PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
-
-```python
-class PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
-```
-
-PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1.
-
-:ivar results:
-:vartype results: list[~affinda.models.Invitation]
-
-<a id="models._models.PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
-
-#### \_\_init\_\_
+## PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema Objects
 
 ```python
-def __init__(**kwargs)
+class PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1)
 ```
 
-**Arguments**:
-
-- `results`: 
-
-<a id="models._models.PathsW51LnrInvitationsTokenPatchRequestbodyContentApplicationJsonSchema"></a>
-
-## PathsW51LnrInvitationsTokenPatchRequestbodyContentApplicationJsonSchema Objects
-
-```python
-class PathsW51LnrInvitationsTokenPatchRequestbodyContentApplicationJsonSchema(msrest.serialization.Model)
-```
-
-PathsW51LnrInvitationsTokenPatchRequestbodyContentApplicationJsonSchema.
-
-:ivar status: Known values are: "accepted", "declined".
-:vartype status: str or ~affinda.models.PatchContentSchemaStatus
-
-<a id="models._models.PathsW51LnrInvitationsTokenPatchRequestbodyContentApplicationJsonSchema.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `status`: Known values are: "accepted", "declined".
-
-<a id="models._models.PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema"></a>
-
-## PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema Objects
-
-```python
-class PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model)
-```
-
-PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema.
-
-:ivar count: Number of indexes in result.
-:vartype count: int
-:ivar next: URL to request next page of results.
-:vartype next: str
-:ivar previous: URL to request previous page of results.
-:vartype previous: str
-:ivar results:
-:vartype results: list[~affinda.models.User]
-
-<a id="models._models.PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `count`: Number of indexes in result.
-- `next`: URL to request next page of results.
-- `previous`: URL to request previous page of results.
-- `results`: 
-
-<a id="models._models.PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema"></a>
-
-## PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema Objects
-
-```python
-class PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1)
-```
-
-PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema.
+PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema.
 
 All required parameters must be populated in order to send to Azure.
 
 :ivar results:
-:vartype results: list[~affinda.models.Invitation]
+:vartype results: list[~affinda.models.OrganizationMembership]
 :ivar count: Required. Number of items in results.
 :vartype count: int
 :ivar next: URL to request next page of results.
@@ -8140,7 +8290,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar previous: URL to request previous page of results.
 :vartype previous: str
 
-<a id="models._models.PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema.__init__"></a>
+<a id="models._models.PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -8151,6 +8301,42 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `results`: 
+- `count`: Required. Number of items in results.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
+
+<a id="models._models.PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema"></a>
+
+## PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema Objects
+
+```python
+class PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema(ListResult,  Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1)
+```
+
+PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar results: Required.
+:vartype results: list[~affinda.models.WorkspaceMembership]
+:ivar count: Required. Number of items in results.
+:vartype count: int
+:ivar next: URL to request next page of results.
+:vartype next: str
+:ivar previous: URL to request previous page of results.
+:vartype previous: str
+
+<a id="models._models.PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: Required.
 - `count`: Required. Number of items in results.
 - `next`: URL to request next page of results.
 - `previous`: URL to request previous page of results.
@@ -8275,19 +8461,19 @@ RedactedResumeRequestBody.
  processing is complete.
 :vartype wait: bool
 :ivar redact_headshot: Whether to redact headshot.
-:vartype redact_headshot: bool
+:vartype redact_headshot: str
 :ivar redact_personal_details: Whether to redact personal details (e.g. name, address).
-:vartype redact_personal_details: bool
+:vartype redact_personal_details: str
 :ivar redact_work_details: Whether to redact work details (e.g. company names).
-:vartype redact_work_details: bool
+:vartype redact_work_details: str
 :ivar redact_education_details: Whether to redact education details (e.g. university names).
-:vartype redact_education_details: bool
+:vartype redact_education_details: str
 :ivar redact_referees: Whether to redact referee details.
-:vartype redact_referees: bool
+:vartype redact_referees: str
 :ivar redact_locations: Whether to redact location names.
-:vartype redact_locations: bool
+:vartype redact_locations: str
 :ivar redact_dates: Whether to redact dates.
-:vartype redact_dates: bool
+:vartype redact_dates: str
 :ivar redact_gender: Whether to redact gender.
 :vartype redact_gender: str
 :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
@@ -8984,6 +9170,8 @@ Variables are only populated by the server, and will be ignored when sending a r
 :vartype user_id: int
 :ivar username: Username of the logged in user.
 :vartype username: str
+:ivar actions: A list of actions to show in the dropdown in the embedded search tool.
+:vartype actions: list[~affinda.models.ResumeSearchConfigActionsItem]
 
 <a id="models._models.ResumeSearchConfig.__init__"></a>
 
@@ -9018,6 +9206,35 @@ no limitation.
 - `weight_keywords`: 
 - `indices`: List of index names.
 - `search_tool_theme`: Customize the theme of the embeded search tool.
+- `actions`: A list of actions to show in the dropdown in the embedded search tool.
+
+<a id="models._models.ResumeSearchConfigActionsItem"></a>
+
+## ResumeSearchConfigActionsItem Objects
+
+```python
+class ResumeSearchConfigActionsItem(msrest.serialization.Model)
+```
+
+ResumeSearchConfigActionsItem.
+
+:ivar label: Human readable label to display in the UI.
+:vartype label: str
+:ivar event_name: Name of the event to be triggered.
+:vartype event_name: str
+
+<a id="models._models.ResumeSearchConfigActionsItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `label`: Human readable label to display in the UI.
+- `event_name`: Name of the event to be triggered.
 
 <a id="models._models.ResumeSearchDetail"></a>
 
@@ -9899,8 +10116,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype filter_type: str or ~affinda.models.ResumeSearchParametersCustomDataFilterType
 :ivar data_point: Required.
 :vartype data_point: str
-:ivar query: Required. "equals" searches require the "value" key inside the query, and "range"
- searches require at least one of "gte" (greater than or equal) and "lte" (less than or equal).
+:ivar query: Required. 'equals' searches require the 'value' key inside the query, and 'range'
+ searches require at least one of 'gte' (greater than or equal) and 'lte' (less than or equal).
 :vartype query: any
 :ivar required:
 :vartype required: bool
@@ -9919,8 +10136,8 @@ def __init__(**kwargs)
 
 - `filter_type`: Required. Known values are: "equals", "range".
 - `data_point`: Required.
-- `query`: Required. "equals" searches require the "value" key inside the query, and
-"range" searches require at least one of "gte" (greater than or equal) and "lte" (less than or
+- `query`: Required. 'equals' searches require the 'value' key inside the query, and
+'range' searches require at least one of 'gte' (greater than or equal) and 'lte' (less than or
 equal).
 - `required`: 
 - `weight`: 
@@ -10097,7 +10314,8 @@ ResumeSkillSourcesItem.
 :ivar section: Known values are: "Achievements", "AdditionalInformation", "Education",
  "Extracurriculars", "Organisations", "Other", "PersonalDetails", "Projects", "Publications",
  "Referees", "Skills", "Summary", "Training", "WorkExperience", "NotPopulated", "Header",
- "Footer".
+ "Footer", "Skills/Interests/Languages", "Training/Certifications",
+ "Extracurriculars/Leadership".
 :vartype section: str or ~affinda.models.ResumeSkillSourcesItemSection
 :ivar position:
 :vartype position: int
@@ -10115,7 +10333,8 @@ def __init__(**kwargs)
 - `section`: Known values are: "Achievements", "AdditionalInformation", "Education",
 "Extracurriculars", "Organisations", "Other", "PersonalDetails", "Projects", "Publications",
 "Referees", "Skills", "Summary", "Training", "WorkExperience", "NotPopulated", "Header",
-"Footer".
+"Footer", "Skills/Interests/Languages", "Training/Certifications",
+"Extracurriculars/Leadership".
 - `position`: 
 
 <a id="models._models.RowAnnotation"></a>
@@ -10212,15 +10431,15 @@ def __init__(**kwargs)
 - `value`: 
 - `score`: 
 
-<a id="models._models.SkillAnnotation"></a>
+<a id="models._models.SkillAnnotationV2"></a>
 
-## SkillAnnotation Objects
+## SkillAnnotationV2 Objects
 
 ```python
-class SkillAnnotation(Annotation)
+class SkillAnnotationV2(AnnotationV2)
 ```
 
-SkillAnnotation.
+SkillAnnotationV2.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -10251,14 +10470,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.SkillAnnotation.__init__"></a>
+<a id="models._models.SkillAnnotationV2.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -10283,7 +10502,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
 
@@ -10780,15 +10999,15 @@ workspace. Known values are: "organization", "private".
 the wrong document type, or if its document type cannot be determined. No credits will be
 consumed.
 
-<a id="models._models.YearsExperienceAnnotation"></a>
+<a id="models._models.YearsExperienceAnnotationV2"></a>
 
-## YearsExperienceAnnotation Objects
+## YearsExperienceAnnotationV2 Objects
 
 ```python
-class YearsExperienceAnnotation(Annotation)
+class YearsExperienceAnnotationV2(AnnotationV2)
 ```
 
-YearsExperienceAnnotation.
+YearsExperienceAnnotationV2.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -10819,14 +11038,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point:
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
 :ivar parsed: Years of experience range.
-:vartype parsed: ~affinda.models.YearsExperienceAnnotationParsed
+:vartype parsed: ~affinda.models.YearsExperienceAnnotationV2Parsed
 
-<a id="models._models.YearsExperienceAnnotation.__init__"></a>
+<a id="models._models.YearsExperienceAnnotationV2.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -10851,16 +11070,16 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_verified`: Required.
 - `is_client_verified`: Required.
 - `is_auto_verified`: Required.
-- `data_point`: Required.
+- `data_point`: 
 - `content_type`: Required.
 - `parsed`: Years of experience range.
 
-<a id="models._models.YearsExperienceAnnotationParsed"></a>
+<a id="models._models.YearsExperienceAnnotationV2Parsed"></a>
 
-## YearsExperienceAnnotationParsed Objects
+## YearsExperienceAnnotationV2Parsed Objects
 
 ```python
-class YearsExperienceAnnotationParsed(msrest.serialization.Model)
+class YearsExperienceAnnotationV2Parsed(msrest.serialization.Model)
 ```
 
 Years of experience range.
@@ -10870,7 +11089,7 @@ Years of experience range.
 :ivar maximum: Maximum years of experience.
 :vartype maximum: float
 
-<a id="models._models.YearsExperienceAnnotationParsed.__init__"></a>
+<a id="models._models.YearsExperienceAnnotationV2Parsed.__init__"></a>
 
 #### \_\_init\_\_
 

@@ -174,8 +174,194 @@ response = client.delete_redacted_resume(identifier=identifier)
 print(response.as_dict())
 ```
 
+Invoice Extractor
+-----------------
+
+### getAllInvoices - Get list of all invoices
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+all_invoices = client.get_all_invoices()
+
+print(all_invoices.as_dict())
+```
+
+### createInvoice - Upload an invoice for parsing
+
+```python
+from pathlib import Path
+
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+file_pth = Path("path_to_file.pdf")
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+with open(file_pth, "rb") as f:
+    invoice = client.create_invoice(file=f)
+
+print(invoice.as_dict())
+```
+
+### getInvoice - Get parse results for a specific invoice
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+invoice = client.get_invoice(identifier=identifier)
+
+print(invoice.as_dict())
+```
+
+### deleteInvoice - Delete an invoice
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+response = client.delete_invoice(identifier=identifier)
+
+print(response.as_dict())
+```
+
+Job Description Parser
+----------------------
+
+### getAllJobDescriptions - Get list of all job descriptions
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+all_job_descriptions = client.get_all_job_descriptions()
+
+print(all_job_descriptions.as_dict())
+```
+
+### createJobDescription - Upload a job description for parsing
+
+```python
+from pathlib import Path
+
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+file_pth = Path("path_to_file.pdf")
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+with open(file_pth, "rb") as f:
+    job_description = client.create_job_description(file=f)
+
+print(job_description.as_dict())
+```
+
+### getJobDescription - Get job description results for a specific job description file
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+job_description = client.get_job_description(identifier=identifier)
+
+print(job_description.as_dict())
+```
+
+### deleteJobDescription - Delete a job description
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+response = client.delete_job_description(identifier=identifier)
+
+print(response.as_dict())
+```
+
 Search & Match - Searching
 --------------------------
+
+### createJobDescriptionSearch - Search through parsed job descriptions
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import JobDescriptionSearchParameters
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+# Search with custom criterias
+parameters = JobDescriptionSearchParameters(
+    indices=["Job-Description-Search-Demo"],
+    job_titles=["Senior Java Software Developer"],
+    skills=["Java Programming"],
+    # Many more criterias are available, refer to JobDescriptionSearchParameters
+)
+resp = client.create_job_description_search(parameters)
+print(resp.as_dict())
+
+# Search with a resume
+resume_identifier = "REPLACE_RESUME_IDENTIFIER"
+parameters = JobDescriptionSearchParameters(
+    indices=["Job-Description-Search-Demo"],
+    resume=resume_identifier,
+)
+resp = client.create_job_description_search(parameters)
+print(resp.as_dict())
+```
+
+### getJobDescriptionSearchDetail - Get search result of specific job description
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import JobDescriptionSearchParameters
+
+token = "REPLACE_TOKEN"
+job_description_identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+# Search with custom criterias
+parameters = JobDescriptionSearchParameters(
+    indices=["Job-Description-Search-Demo"],
+    job_titles=["Senior Java Software Developer"],
+    degrees=["Bachelors"],
+    # Many more criterias are available, refer to JobDescriptionSearchParameters
+)
+resp = client.get_job_description_search_detail(body=parameters, identifier=job_description_identifier)
+print(resp.as_dict())
+```
 
 ### createResumeSearch - Search through parsed resumes
 
@@ -284,60 +470,6 @@ suggested_skills = client.get_resume_search_suggestion_skill(["Javascript", "Pyt
 print(suggested_skills)
 ```
 
-### createJobDescriptionSearch - Search through parsed job descriptions
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import JobDescriptionSearchParameters
-
-token = "REPLACE_TOKEN"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-# Search with custom criterias
-parameters = JobDescriptionSearchParameters(
-    indices=["Job-Description-Search-Demo"],
-    job_titles=["Senior Java Software Developer"],
-    skills=["Java Programming"],
-    # Many more criterias are available, refer to JobDescriptionSearchParameters
-)
-resp = client.create_job_description_search(parameters)
-print(resp.as_dict())
-
-# Search with a resume
-resume_identifier = "REPLACE_RESUME_IDENTIFIER"
-parameters = JobDescriptionSearchParameters(
-    indices=["Job-Description-Search-Demo"],
-    resume=resume_identifier,
-)
-resp = client.create_job_description_search(parameters)
-print(resp.as_dict())
-```
-
-### getJobDescriptionSearchDetail - Get search result of specific job description
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import JobDescriptionSearchParameters
-
-token = "REPLACE_TOKEN"
-job_description_identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-# Search with custom criterias
-parameters = JobDescriptionSearchParameters(
-    indices=["Job-Description-Search-Demo"],
-    job_titles=["Senior Java Software Developer"],
-    degrees=["Bachelors"],
-    # Many more criterias are available, refer to JobDescriptionSearchParameters
-)
-resp = client.get_job_description_search_detail(body=parameters, identifier=job_description_identifier)
-print(resp.as_dict())
-```
-
 Search & Match - Embedding
 --------------------------
 
@@ -402,72 +534,6 @@ request_body = {
 
 result = client.create_resume_search_embed_url(body=request_body)
 print(result.url)
-```
-
-Job Description Parser
-----------------------
-
-### getAllJobDescriptions - Get list of all job descriptions
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-all_job_descriptions = client.get_all_job_descriptions()
-
-print(all_job_descriptions.as_dict())
-```
-
-### createJobDescription - Upload a job description for parsing
-
-```python
-from pathlib import Path
-
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-file_pth = Path("path_to_file.pdf")
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-with open(file_pth, "rb") as f:
-    job_description = client.create_job_description(file=f)
-
-print(job_description.as_dict())
-```
-
-### getJobDescription - Get job description results for a specific job description file
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-job_description = client.get_job_description(identifier=identifier)
-
-print(job_description.as_dict())
-```
-
-### deleteJobDescription - Delete a job description
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-response = client.delete_job_description(identifier=identifier)
-
-print(response.as_dict())
 ```
 
 Search & Match - Indexing
@@ -552,72 +618,6 @@ credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
 
 client.delete_index_document(name=index_name, identifier=identifier)
-```
-
-Invoice Extractor
------------------
-
-### getAllInvoices - Get list of all invoices
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-all_invoices = client.get_all_invoices()
-
-print(all_invoices.as_dict())
-```
-
-### createInvoice - Upload an invoice for parsing
-
-```python
-from pathlib import Path
-
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-file_pth = Path("path_to_file.pdf")
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-with open(file_pth, "rb") as f:
-    invoice = client.create_invoice(file=f)
-
-print(invoice.as_dict())
-```
-
-### getInvoice - Get parse results for a specific invoice
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-invoice = client.get_invoice(identifier=identifier)
-
-print(invoice.as_dict())
-```
-
-### deleteInvoice - Delete an invoice
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-response = client.delete_invoice(identifier=identifier)
-
-print(response.as_dict())
 ```
 
 Users

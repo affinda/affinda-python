@@ -195,6 +195,145 @@ class Annotation(msrest.serialization.Model):
         self.content_type = content_type
 
 
+class AnnotationV2(msrest.serialization.Model):
+    """AnnotationV2.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar id: Required.
+    :vartype id: int
+    :ivar rectangle: Required.
+    :vartype rectangle: ~affinda.models.Rectangle
+    :ivar rectangles: Required.
+    :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar page_index: Required.
+    :vartype page_index: int
+    :ivar raw: Required.
+    :vartype raw: str
+    :ivar confidence: Required. The overall confidence that the model's prediction is correct.
+    :vartype confidence: float
+    :ivar classification_confidence: Required. The model's confidence that the text has been
+     classified correctly.
+    :vartype classification_confidence: float
+    :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+     the confidence that the text in the image has been correctly read by the model.
+    :vartype text_extraction_confidence: float
+    :ivar is_verified: Required.
+    :vartype is_verified: bool
+    :ivar is_client_verified: Required.
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified: Required.
+    :vartype is_auto_verified: bool
+    :ivar data_point:
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
+    """
+
+    _validation = {
+        "id": {"required": True},
+        "rectangle": {"required": True},
+        "rectangles": {"required": True},
+        "page_index": {"required": True},
+        "raw": {"required": True},
+        "confidence": {"required": True},
+        "classification_confidence": {"required": True},
+        "text_extraction_confidence": {"required": True},
+        "is_verified": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "content_type": {"required": True},
+    }
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "id": {"key": "id", "type": "int"},
+        "rectangle": {"key": "rectangle", "type": "Rectangle"},
+        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "raw": {"key": "raw", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
+        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        **kwargs,
+    ):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword id: Required.
+        :paramtype id: int
+        :keyword rectangle: Required.
+        :paramtype rectangle: ~affinda.models.Rectangle
+        :keyword rectangles: Required.
+        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword page_index: Required.
+        :paramtype page_index: int
+        :keyword raw: Required.
+        :paramtype raw: str
+        :keyword confidence: Required. The overall confidence that the model's prediction is correct.
+        :paramtype confidence: float
+        :keyword classification_confidence: Required. The model's confidence that the text has been
+         classified correctly.
+        :paramtype classification_confidence: float
+        :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
+         is the confidence that the text in the image has been correctly read by the model.
+        :paramtype text_extraction_confidence: float
+        :keyword is_verified: Required.
+        :paramtype is_verified: bool
+        :keyword is_client_verified: Required.
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified: Required.
+        :paramtype is_auto_verified: bool
+        :keyword data_point:
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
+        """
+        super(AnnotationV2, self).__init__(**kwargs)
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+
+
 class BaseExtractor(msrest.serialization.Model):
     """BaseExtractor.
 
@@ -2100,6 +2239,154 @@ class DateAnnotation(Annotation):
         self.parsed = parsed
 
 
+class DateAnnotationV2(AnnotationV2):
+    """DateAnnotationV2.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar id: Required.
+    :vartype id: int
+    :ivar rectangle: Required.
+    :vartype rectangle: ~affinda.models.Rectangle
+    :ivar rectangles: Required.
+    :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar page_index: Required.
+    :vartype page_index: int
+    :ivar raw: Required.
+    :vartype raw: str
+    :ivar confidence: Required. The overall confidence that the model's prediction is correct.
+    :vartype confidence: float
+    :ivar classification_confidence: Required. The model's confidence that the text has been
+     classified correctly.
+    :vartype classification_confidence: float
+    :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+     the confidence that the text in the image has been correctly read by the model.
+    :vartype text_extraction_confidence: float
+    :ivar is_verified: Required.
+    :vartype is_verified: bool
+    :ivar is_client_verified: Required.
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified: Required.
+    :vartype is_auto_verified: bool
+    :ivar data_point:
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
+    :ivar parsed:
+    :vartype parsed: ~datetime.date
+    """
+
+    _validation = {
+        "id": {"required": True},
+        "rectangle": {"required": True},
+        "rectangles": {"required": True},
+        "page_index": {"required": True},
+        "raw": {"required": True},
+        "confidence": {"required": True},
+        "classification_confidence": {"required": True},
+        "text_extraction_confidence": {"required": True},
+        "is_verified": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "content_type": {"required": True},
+    }
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "id": {"key": "id", "type": "int"},
+        "rectangle": {"key": "rectangle", "type": "Rectangle"},
+        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "raw": {"key": "raw", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
+        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
+        "parsed": {"key": "parsed", "type": "date"},
+    }
+
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[datetime.date] = None,
+        **kwargs,
+    ):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword id: Required.
+        :paramtype id: int
+        :keyword rectangle: Required.
+        :paramtype rectangle: ~affinda.models.Rectangle
+        :keyword rectangles: Required.
+        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword page_index: Required.
+        :paramtype page_index: int
+        :keyword raw: Required.
+        :paramtype raw: str
+        :keyword confidence: Required. The overall confidence that the model's prediction is correct.
+        :paramtype confidence: float
+        :keyword classification_confidence: Required. The model's confidence that the text has been
+         classified correctly.
+        :paramtype classification_confidence: float
+        :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
+         is the confidence that the text in the image has been correctly read by the model.
+        :paramtype text_extraction_confidence: float
+        :keyword is_verified: Required.
+        :paramtype is_verified: bool
+        :keyword is_client_verified: Required.
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified: Required.
+        :paramtype is_auto_verified: bool
+        :keyword data_point:
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
+        :keyword parsed:
+        :paramtype parsed: ~datetime.date
+        """
+        super(DateAnnotationV2, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            **kwargs,
+        )
+        self.parsed = parsed
+
+
 class DocumentMeta(msrest.serialization.Model):
     """DocumentMeta.
 
@@ -2724,6 +3011,8 @@ class DocumentMetaCollectionExtractor(msrest.serialization.Model):
 
     :ivar id: Extractor's ID.
     :vartype id: int
+    :ivar identifier:
+    :vartype identifier: str
     :ivar name:
     :vartype name: str
     :ivar base_extractor: Base extractor's ID.
@@ -2734,6 +3023,7 @@ class DocumentMetaCollectionExtractor(msrest.serialization.Model):
 
     _attribute_map = {
         "id": {"key": "id", "type": "int"},
+        "identifier": {"key": "identifier", "type": "str"},
         "name": {"key": "name", "type": "str"},
         "base_extractor": {"key": "baseExtractor", "type": "int"},
         "validatable": {"key": "validatable", "type": "bool"},
@@ -2743,6 +3033,7 @@ class DocumentMetaCollectionExtractor(msrest.serialization.Model):
         self,
         *,
         id: Optional[int] = None,
+        identifier: Optional[str] = None,
         name: Optional[str] = None,
         base_extractor: Optional[int] = None,
         validatable: Optional[bool] = None,
@@ -2751,6 +3042,8 @@ class DocumentMetaCollectionExtractor(msrest.serialization.Model):
         """
         :keyword id: Extractor's ID.
         :paramtype id: int
+        :keyword identifier:
+        :paramtype identifier: str
         :keyword name:
         :paramtype name: str
         :keyword base_extractor: Base extractor's ID.
@@ -2760,6 +3053,7 @@ class DocumentMetaCollectionExtractor(msrest.serialization.Model):
         """
         super(DocumentMetaCollectionExtractor, self).__init__(**kwargs)
         self.id = id
+        self.identifier = identifier
         self.name = name
         self.base_extractor = base_extractor
         self.validatable = validatable
@@ -3057,8 +3351,8 @@ class EducationSearchScoreComponent(msrest.serialization.Model):
         self.score = score
 
 
-class EnumAnnotationSerializer(Annotation):
-    """EnumAnnotationSerializer.
+class EnumAnnotationSerializerV2(AnnotationV2):
+    """EnumAnnotationSerializerV2.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -3089,7 +3383,7 @@ class EnumAnnotationSerializer(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -3109,7 +3403,6 @@ class EnumAnnotationSerializer(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -3145,9 +3438,9 @@ class EnumAnnotationSerializer(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -3179,14 +3472,14 @@ class EnumAnnotationSerializer(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(EnumAnnotationSerializer, self).__init__(
+        super(EnumAnnotationSerializerV2, self).__init__(
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
@@ -3234,8 +3527,8 @@ class Error(msrest.serialization.Model):
         self.error_detail = error_detail
 
 
-class ExpectedRemunerationAnnotation(Annotation):
-    """ExpectedRemunerationAnnotation.
+class ExpectedRemunerationAnnotationV2(AnnotationV2):
+    """ExpectedRemunerationAnnotationV2.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -3266,12 +3559,12 @@ class ExpectedRemunerationAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
     :ivar parsed:
-    :vartype parsed: ~affinda.models.ExpectedRemunerationAnnotationParsed
+    :vartype parsed: ~affinda.models.ExpectedRemunerationAnnotationV2Parsed
     """
 
     _validation = {
@@ -3286,7 +3579,6 @@ class ExpectedRemunerationAnnotation(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -3305,7 +3597,7 @@ class ExpectedRemunerationAnnotation(Annotation):
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
-        "parsed": {"key": "parsed", "type": "ExpectedRemunerationAnnotationParsed"},
+        "parsed": {"key": "parsed", "type": "ExpectedRemunerationAnnotationV2Parsed"},
     }
 
     def __init__(
@@ -3322,10 +3614,10 @@ class ExpectedRemunerationAnnotation(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
-        parsed: Optional["_models.ExpectedRemunerationAnnotationParsed"] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional["_models.ExpectedRemunerationAnnotationV2Parsed"] = None,
         **kwargs,
     ):
         """
@@ -3356,14 +3648,14 @@ class ExpectedRemunerationAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
         :keyword parsed:
-        :paramtype parsed: ~affinda.models.ExpectedRemunerationAnnotationParsed
+        :paramtype parsed: ~affinda.models.ExpectedRemunerationAnnotationV2Parsed
         """
-        super(ExpectedRemunerationAnnotation, self).__init__(
+        super(ExpectedRemunerationAnnotationV2, self).__init__(
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
@@ -3383,8 +3675,8 @@ class ExpectedRemunerationAnnotation(Annotation):
         self.parsed = parsed
 
 
-class ExpectedRemunerationAnnotationParsed(msrest.serialization.Model):
-    """ExpectedRemunerationAnnotationParsed.
+class ExpectedRemunerationAnnotationV2Parsed(msrest.serialization.Model):
+    """ExpectedRemunerationAnnotationV2Parsed.
 
     :ivar minimum:
     :vartype minimum: float
@@ -3422,7 +3714,7 @@ class ExpectedRemunerationAnnotationParsed(msrest.serialization.Model):
         :keyword unit:
         :paramtype unit: str
         """
-        super(ExpectedRemunerationAnnotationParsed, self).__init__(**kwargs)
+        super(ExpectedRemunerationAnnotationV2Parsed, self).__init__(**kwargs)
         self.minimum = minimum
         self.maximum = maximum
         self.currency = currency
@@ -4052,6 +4344,59 @@ class GetAllDocumentsResults(msrest.serialization.Model):
         self.results = results
 
 
+class GetAllDocumentsResultsV2(msrest.serialization.Model):
+    """GetAllDocumentsResultsV2.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar count: Required. Number of documents in result.
+    :vartype count: int
+    :ivar next: URL to request next page of results.
+    :vartype next: str
+    :ivar previous: URL to request previous page of results.
+    :vartype previous: str
+    :ivar results: Required.
+    :vartype results: list[~affinda.models.Meta]
+    """
+
+    _validation = {
+        "count": {"required": True},
+        "results": {"required": True},
+    }
+
+    _attribute_map = {
+        "count": {"key": "count", "type": "int"},
+        "next": {"key": "next", "type": "str"},
+        "previous": {"key": "previous", "type": "str"},
+        "results": {"key": "results", "type": "[Meta]"},
+    }
+
+    def __init__(
+        self,
+        *,
+        count: int,
+        results: List["_models.Meta"],
+        next: Optional[str] = None,
+        previous: Optional[str] = None,
+        **kwargs,
+    ):
+        """
+        :keyword count: Required. Number of documents in result.
+        :paramtype count: int
+        :keyword next: URL to request next page of results.
+        :paramtype next: str
+        :keyword previous: URL to request previous page of results.
+        :paramtype previous: str
+        :keyword results: Required.
+        :paramtype results: list[~affinda.models.Meta]
+        """
+        super(GetAllDocumentsResultsV2, self).__init__(**kwargs)
+        self.count = count
+        self.next = next
+        self.previous = previous
+        self.results = results
+
+
 class GetAllInvoicesResults(msrest.serialization.Model):
     """GetAllInvoicesResults.
 
@@ -4488,11 +4833,11 @@ class InvoiceData(msrest.serialization.Model):
     :ivar tables:
     :vartype tables: list[~affinda.models.InvoiceDataTablesItem]
     :ivar invoice_date:
-    :vartype invoice_date: ~affinda.models.DateAnnotation
+    :vartype invoice_date: ~affinda.models.DateAnnotationV2
     :ivar invoice_order_date:
-    :vartype invoice_order_date: ~affinda.models.DateAnnotation
+    :vartype invoice_order_date: ~affinda.models.DateAnnotationV2
     :ivar payment_date_due:
-    :vartype payment_date_due: ~affinda.models.DateAnnotation
+    :vartype payment_date_due: ~affinda.models.DateAnnotationV2
     :ivar payment_amount_base:
     :vartype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
     :ivar payment_amount_tax:
@@ -4540,11 +4885,11 @@ class InvoiceData(msrest.serialization.Model):
     :ivar supplier_company_name:
     :vartype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
     :ivar customer_billing_address:
-    :vartype customer_billing_address: ~affinda.models.LocationAnnotation
+    :vartype customer_billing_address: ~affinda.models.LocationAnnotationV2
     :ivar customer_delivery_address:
-    :vartype customer_delivery_address: ~affinda.models.LocationAnnotation
+    :vartype customer_delivery_address: ~affinda.models.LocationAnnotationV2
     :ivar supplier_address:
-    :vartype supplier_address: ~affinda.models.LocationAnnotation
+    :vartype supplier_address: ~affinda.models.LocationAnnotationV2
     :ivar customer_phone_number:
     :vartype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
     :ivar supplier_phone_number:
@@ -4558,16 +4903,16 @@ class InvoiceData(msrest.serialization.Model):
     :ivar supplier_website:
     :vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
     :ivar currency_code:
-    :vartype currency_code: ~affinda.models.EnumAnnotationSerializer
+    :vartype currency_code: ~affinda.models.EnumAnnotationSerializerV2
     :ivar custom_fields: Dictionary of :code:`<any>`.
     :vartype custom_fields: dict[str, any]
     """
 
     _attribute_map = {
         "tables": {"key": "tables", "type": "[InvoiceDataTablesItem]"},
-        "invoice_date": {"key": "invoiceDate", "type": "DateAnnotation"},
-        "invoice_order_date": {"key": "invoiceOrderDate", "type": "DateAnnotation"},
-        "payment_date_due": {"key": "paymentDateDue", "type": "DateAnnotation"},
+        "invoice_date": {"key": "invoiceDate", "type": "DateAnnotationV2"},
+        "invoice_order_date": {"key": "invoiceOrderDate", "type": "DateAnnotationV2"},
+        "payment_date_due": {"key": "paymentDateDue", "type": "DateAnnotationV2"},
         "payment_amount_base": {
             "key": "paymentAmountBase",
             "type": "InvoiceDataPaymentAmountBase",
@@ -4623,13 +4968,13 @@ class InvoiceData(msrest.serialization.Model):
         },
         "customer_billing_address": {
             "key": "customerBillingAddress",
-            "type": "LocationAnnotation",
+            "type": "LocationAnnotationV2",
         },
         "customer_delivery_address": {
             "key": "customerDeliveryAddress",
-            "type": "LocationAnnotation",
+            "type": "LocationAnnotationV2",
         },
-        "supplier_address": {"key": "supplierAddress", "type": "LocationAnnotation"},
+        "supplier_address": {"key": "supplierAddress", "type": "LocationAnnotationV2"},
         "customer_phone_number": {
             "key": "customerPhoneNumber",
             "type": "InvoiceDataCustomerPhoneNumber",
@@ -4642,7 +4987,7 @@ class InvoiceData(msrest.serialization.Model):
         "customer_email": {"key": "customerEmail", "type": "InvoiceDataCustomerEmail"},
         "supplier_email": {"key": "supplierEmail", "type": "InvoiceDataSupplierEmail"},
         "supplier_website": {"key": "supplierWebsite", "type": "InvoiceDataSupplierWebsite"},
-        "currency_code": {"key": "currencyCode", "type": "EnumAnnotationSerializer"},
+        "currency_code": {"key": "currencyCode", "type": "EnumAnnotationSerializerV2"},
         "custom_fields": {"key": "customFields", "type": "{object}"},
     }
 
@@ -4650,9 +4995,9 @@ class InvoiceData(msrest.serialization.Model):
         self,
         *,
         tables: Optional[List["_models.InvoiceDataTablesItem"]] = None,
-        invoice_date: Optional["_models.DateAnnotation"] = None,
-        invoice_order_date: Optional["_models.DateAnnotation"] = None,
-        payment_date_due: Optional["_models.DateAnnotation"] = None,
+        invoice_date: Optional["_models.DateAnnotationV2"] = None,
+        invoice_order_date: Optional["_models.DateAnnotationV2"] = None,
+        payment_date_due: Optional["_models.DateAnnotationV2"] = None,
         payment_amount_base: Optional["_models.InvoiceDataPaymentAmountBase"] = None,
         payment_amount_tax: Optional["_models.InvoiceDataPaymentAmountTax"] = None,
         payment_amount_total: Optional["_models.InvoiceDataPaymentAmountTotal"] = None,
@@ -4678,16 +5023,16 @@ class InvoiceData(msrest.serialization.Model):
         customer_contact_name: Optional["_models.InvoiceDataCustomerContactName"] = None,
         customer_company_name: Optional["_models.InvoiceDataCustomerCompanyName"] = None,
         supplier_company_name: Optional["_models.InvoiceDataSupplierCompanyName"] = None,
-        customer_billing_address: Optional["_models.LocationAnnotation"] = None,
-        customer_delivery_address: Optional["_models.LocationAnnotation"] = None,
-        supplier_address: Optional["_models.LocationAnnotation"] = None,
+        customer_billing_address: Optional["_models.LocationAnnotationV2"] = None,
+        customer_delivery_address: Optional["_models.LocationAnnotationV2"] = None,
+        supplier_address: Optional["_models.LocationAnnotationV2"] = None,
         customer_phone_number: Optional["_models.InvoiceDataCustomerPhoneNumber"] = None,
         supplier_phone_number: Optional["_models.InvoiceDataSupplierPhoneNumber"] = None,
         supplier_fax: Optional["_models.InvoiceDataSupplierFax"] = None,
         customer_email: Optional["_models.InvoiceDataCustomerEmail"] = None,
         supplier_email: Optional["_models.InvoiceDataSupplierEmail"] = None,
         supplier_website: Optional["_models.InvoiceDataSupplierWebsite"] = None,
-        currency_code: Optional["_models.EnumAnnotationSerializer"] = None,
+        currency_code: Optional["_models.EnumAnnotationSerializerV2"] = None,
         custom_fields: Optional[Dict[str, Any]] = None,
         **kwargs,
     ):
@@ -4695,11 +5040,11 @@ class InvoiceData(msrest.serialization.Model):
         :keyword tables:
         :paramtype tables: list[~affinda.models.InvoiceDataTablesItem]
         :keyword invoice_date:
-        :paramtype invoice_date: ~affinda.models.DateAnnotation
+        :paramtype invoice_date: ~affinda.models.DateAnnotationV2
         :keyword invoice_order_date:
-        :paramtype invoice_order_date: ~affinda.models.DateAnnotation
+        :paramtype invoice_order_date: ~affinda.models.DateAnnotationV2
         :keyword payment_date_due:
-        :paramtype payment_date_due: ~affinda.models.DateAnnotation
+        :paramtype payment_date_due: ~affinda.models.DateAnnotationV2
         :keyword payment_amount_base:
         :paramtype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
         :keyword payment_amount_tax:
@@ -4747,11 +5092,11 @@ class InvoiceData(msrest.serialization.Model):
         :keyword supplier_company_name:
         :paramtype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
         :keyword customer_billing_address:
-        :paramtype customer_billing_address: ~affinda.models.LocationAnnotation
+        :paramtype customer_billing_address: ~affinda.models.LocationAnnotationV2
         :keyword customer_delivery_address:
-        :paramtype customer_delivery_address: ~affinda.models.LocationAnnotation
+        :paramtype customer_delivery_address: ~affinda.models.LocationAnnotationV2
         :keyword supplier_address:
-        :paramtype supplier_address: ~affinda.models.LocationAnnotation
+        :paramtype supplier_address: ~affinda.models.LocationAnnotationV2
         :keyword customer_phone_number:
         :paramtype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
         :keyword supplier_phone_number:
@@ -4765,7 +5110,7 @@ class InvoiceData(msrest.serialization.Model):
         :keyword supplier_website:
         :paramtype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
         :keyword currency_code:
-        :paramtype currency_code: ~affinda.models.EnumAnnotationSerializer
+        :paramtype currency_code: ~affinda.models.EnumAnnotationSerializerV2
         :keyword custom_fields: Dictionary of :code:`<any>`.
         :paramtype custom_fields: dict[str, any]
         """
@@ -4810,8 +5155,8 @@ class InvoiceData(msrest.serialization.Model):
         self.custom_fields = custom_fields
 
 
-class TextAnnotation(Annotation):
-    """TextAnnotation.
+class TextAnnotationV2(AnnotationV2):
+    """TextAnnotationV2.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -4842,7 +5187,7 @@ class TextAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -4862,7 +5207,6 @@ class TextAnnotation(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -4898,9 +5242,9 @@ class TextAnnotation(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -4932,14 +5276,14 @@ class TextAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(TextAnnotation, self).__init__(
+        super(TextAnnotationV2, self).__init__(
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
@@ -4960,7 +5304,7 @@ class TextAnnotation(Annotation):
 
 
 class InvoiceDataBankAccountNumber(
-    TextAnnotation, Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1
+    TextAnnotationV2, Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1
 ):
     """InvoiceDataBankAccountNumber.
 
@@ -4993,7 +5337,7 @@ class InvoiceDataBankAccountNumber(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -5013,7 +5357,6 @@ class InvoiceDataBankAccountNumber(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -5049,9 +5392,9 @@ class InvoiceDataBankAccountNumber(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -5083,7 +5426,7 @@ class InvoiceDataBankAccountNumber(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -5126,7 +5469,7 @@ class InvoiceDataBankAccountNumber(
 
 
 class InvoiceDataBankBsb(
-    TextAnnotation, Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1
+    TextAnnotationV2, Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1
 ):
     """InvoiceDataBankBsb.
 
@@ -5159,7 +5502,7 @@ class InvoiceDataBankBsb(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -5179,7 +5522,6 @@ class InvoiceDataBankBsb(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -5215,9 +5557,9 @@ class InvoiceDataBankBsb(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -5249,7 +5591,7 @@ class InvoiceDataBankBsb(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -5292,7 +5634,7 @@ class InvoiceDataBankBsb(
 
 
 class InvoiceDataBankIban(
-    TextAnnotation, Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1
+    TextAnnotationV2, Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1
 ):
     """InvoiceDataBankIban.
 
@@ -5325,7 +5667,7 @@ class InvoiceDataBankIban(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -5345,7 +5687,6 @@ class InvoiceDataBankIban(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -5381,9 +5722,9 @@ class InvoiceDataBankIban(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -5415,7 +5756,7 @@ class InvoiceDataBankIban(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -5458,7 +5799,7 @@ class InvoiceDataBankIban(
 
 
 class InvoiceDataBankSortCode(
-    TextAnnotation, Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1
+    TextAnnotationV2, Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1
 ):
     """InvoiceDataBankSortCode.
 
@@ -5491,7 +5832,7 @@ class InvoiceDataBankSortCode(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -5511,7 +5852,6 @@ class InvoiceDataBankSortCode(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -5547,9 +5887,9 @@ class InvoiceDataBankSortCode(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -5581,7 +5921,7 @@ class InvoiceDataBankSortCode(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -5624,7 +5964,7 @@ class InvoiceDataBankSortCode(
 
 
 class InvoiceDataBankSwift(
-    TextAnnotation, Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1
+    TextAnnotationV2, Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1
 ):
     """InvoiceDataBankSwift.
 
@@ -5657,7 +5997,7 @@ class InvoiceDataBankSwift(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -5677,7 +6017,6 @@ class InvoiceDataBankSwift(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -5713,9 +6052,9 @@ class InvoiceDataBankSwift(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -5747,7 +6086,7 @@ class InvoiceDataBankSwift(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -5790,7 +6129,7 @@ class InvoiceDataBankSwift(
 
 
 class InvoiceDataBpayBillerCode(
-    TextAnnotation, ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1
+    TextAnnotationV2, ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1
 ):
     """InvoiceDataBpayBillerCode.
 
@@ -5823,7 +6162,7 @@ class InvoiceDataBpayBillerCode(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -5843,7 +6182,6 @@ class InvoiceDataBpayBillerCode(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -5879,9 +6217,9 @@ class InvoiceDataBpayBillerCode(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -5913,7 +6251,7 @@ class InvoiceDataBpayBillerCode(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -5956,7 +6294,7 @@ class InvoiceDataBpayBillerCode(
 
 
 class InvoiceDataBpayReference(
-    TextAnnotation, ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1
+    TextAnnotationV2, ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1
 ):
     """InvoiceDataBpayReference.
 
@@ -5989,7 +6327,7 @@ class InvoiceDataBpayReference(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -6009,7 +6347,6 @@ class InvoiceDataBpayReference(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -6045,9 +6382,9 @@ class InvoiceDataBpayReference(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -6079,7 +6416,7 @@ class InvoiceDataBpayReference(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -6122,7 +6459,7 @@ class InvoiceDataBpayReference(
 
 
 class InvoiceDataCustomerBusinessNumber(
-    TextAnnotation, Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1
+    TextAnnotationV2, Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1
 ):
     """InvoiceDataCustomerBusinessNumber.
 
@@ -6155,7 +6492,7 @@ class InvoiceDataCustomerBusinessNumber(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -6175,7 +6512,6 @@ class InvoiceDataCustomerBusinessNumber(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -6211,9 +6547,9 @@ class InvoiceDataCustomerBusinessNumber(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -6245,7 +6581,7 @@ class InvoiceDataCustomerBusinessNumber(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -6288,7 +6624,7 @@ class InvoiceDataCustomerBusinessNumber(
 
 
 class InvoiceDataCustomerCompanyName(
-    TextAnnotation, Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1
+    TextAnnotationV2, Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1
 ):
     """InvoiceDataCustomerCompanyName.
 
@@ -6321,7 +6657,7 @@ class InvoiceDataCustomerCompanyName(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -6341,7 +6677,6 @@ class InvoiceDataCustomerCompanyName(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -6377,9 +6712,9 @@ class InvoiceDataCustomerCompanyName(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -6411,7 +6746,7 @@ class InvoiceDataCustomerCompanyName(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -6454,7 +6789,7 @@ class InvoiceDataCustomerCompanyName(
 
 
 class InvoiceDataCustomerContactName(
-    TextAnnotation, ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1
+    TextAnnotationV2, ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1
 ):
     """InvoiceDataCustomerContactName.
 
@@ -6487,7 +6822,7 @@ class InvoiceDataCustomerContactName(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -6507,7 +6842,6 @@ class InvoiceDataCustomerContactName(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -6543,9 +6877,9 @@ class InvoiceDataCustomerContactName(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -6577,7 +6911,7 @@ class InvoiceDataCustomerContactName(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -6620,7 +6954,7 @@ class InvoiceDataCustomerContactName(
 
 
 class InvoiceDataCustomerEmail(
-    TextAnnotation, Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1
+    TextAnnotationV2, Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1
 ):
     """InvoiceDataCustomerEmail.
 
@@ -6653,7 +6987,7 @@ class InvoiceDataCustomerEmail(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -6673,7 +7007,6 @@ class InvoiceDataCustomerEmail(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -6709,9 +7042,9 @@ class InvoiceDataCustomerEmail(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -6743,7 +7076,7 @@ class InvoiceDataCustomerEmail(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -6786,7 +7119,7 @@ class InvoiceDataCustomerEmail(
 
 
 class InvoiceDataCustomerNumber(
-    TextAnnotation, Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1
+    TextAnnotationV2, Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1
 ):
     """InvoiceDataCustomerNumber.
 
@@ -6819,7 +7152,7 @@ class InvoiceDataCustomerNumber(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -6839,7 +7172,6 @@ class InvoiceDataCustomerNumber(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -6875,9 +7207,9 @@ class InvoiceDataCustomerNumber(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -6909,7 +7241,7 @@ class InvoiceDataCustomerNumber(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -6952,7 +7284,7 @@ class InvoiceDataCustomerNumber(
 
 
 class InvoiceDataCustomerPhoneNumber(
-    TextAnnotation, Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1
+    TextAnnotationV2, Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1
 ):
     """InvoiceDataCustomerPhoneNumber.
 
@@ -6985,7 +7317,7 @@ class InvoiceDataCustomerPhoneNumber(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -7005,7 +7337,6 @@ class InvoiceDataCustomerPhoneNumber(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -7041,9 +7372,9 @@ class InvoiceDataCustomerPhoneNumber(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -7075,7 +7406,7 @@ class InvoiceDataCustomerPhoneNumber(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -7118,7 +7449,7 @@ class InvoiceDataCustomerPhoneNumber(
 
 
 class InvoiceDataCustomerVat(
-    TextAnnotation, ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1
+    TextAnnotationV2, ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1
 ):
     """InvoiceDataCustomerVat.
 
@@ -7151,7 +7482,7 @@ class InvoiceDataCustomerVat(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -7171,7 +7502,6 @@ class InvoiceDataCustomerVat(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -7207,9 +7537,9 @@ class InvoiceDataCustomerVat(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -7241,7 +7571,7 @@ class InvoiceDataCustomerVat(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -7284,7 +7614,7 @@ class InvoiceDataCustomerVat(
 
 
 class InvoiceDataInvoiceNumber(
-    TextAnnotation, Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1
+    TextAnnotationV2, Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1
 ):
     """InvoiceDataInvoiceNumber.
 
@@ -7317,7 +7647,7 @@ class InvoiceDataInvoiceNumber(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -7337,7 +7667,6 @@ class InvoiceDataInvoiceNumber(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -7373,9 +7702,9 @@ class InvoiceDataInvoiceNumber(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -7407,7 +7736,7 @@ class InvoiceDataInvoiceNumber(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -7450,7 +7779,7 @@ class InvoiceDataInvoiceNumber(
 
 
 class InvoiceDataInvoicePurchaseOrderNumber(
-    TextAnnotation, ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1
+    TextAnnotationV2, ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1
 ):
     """InvoiceDataInvoicePurchaseOrderNumber.
 
@@ -7483,7 +7812,7 @@ class InvoiceDataInvoicePurchaseOrderNumber(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -7503,7 +7832,6 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -7539,9 +7867,9 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -7573,7 +7901,7 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -7616,7 +7944,7 @@ class InvoiceDataInvoicePurchaseOrderNumber(
 
 
 class InvoiceDataPaymentAmountBase(
-    TextAnnotation, Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1
+    TextAnnotationV2, Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1
 ):
     """InvoiceDataPaymentAmountBase.
 
@@ -7649,7 +7977,7 @@ class InvoiceDataPaymentAmountBase(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -7669,7 +7997,6 @@ class InvoiceDataPaymentAmountBase(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -7705,9 +8032,9 @@ class InvoiceDataPaymentAmountBase(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -7739,7 +8066,7 @@ class InvoiceDataPaymentAmountBase(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -7782,7 +8109,7 @@ class InvoiceDataPaymentAmountBase(
 
 
 class InvoiceDataPaymentAmountDue(
-    TextAnnotation, ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1
+    TextAnnotationV2, ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1
 ):
     """InvoiceDataPaymentAmountDue.
 
@@ -7815,7 +8142,7 @@ class InvoiceDataPaymentAmountDue(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -7835,7 +8162,6 @@ class InvoiceDataPaymentAmountDue(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -7871,9 +8197,9 @@ class InvoiceDataPaymentAmountDue(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -7905,7 +8231,7 @@ class InvoiceDataPaymentAmountDue(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -7948,7 +8274,7 @@ class InvoiceDataPaymentAmountDue(
 
 
 class InvoiceDataPaymentAmountPaid(
-    TextAnnotation, Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1
+    TextAnnotationV2, Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1
 ):
     """InvoiceDataPaymentAmountPaid.
 
@@ -7981,7 +8307,7 @@ class InvoiceDataPaymentAmountPaid(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -8001,7 +8327,6 @@ class InvoiceDataPaymentAmountPaid(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -8037,9 +8362,9 @@ class InvoiceDataPaymentAmountPaid(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -8071,7 +8396,7 @@ class InvoiceDataPaymentAmountPaid(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -8114,7 +8439,7 @@ class InvoiceDataPaymentAmountPaid(
 
 
 class InvoiceDataPaymentAmountTax(
-    TextAnnotation, Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1
+    TextAnnotationV2, Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1
 ):
     """InvoiceDataPaymentAmountTax.
 
@@ -8147,7 +8472,7 @@ class InvoiceDataPaymentAmountTax(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -8167,7 +8492,6 @@ class InvoiceDataPaymentAmountTax(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -8203,9 +8527,9 @@ class InvoiceDataPaymentAmountTax(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -8237,7 +8561,7 @@ class InvoiceDataPaymentAmountTax(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -8280,7 +8604,7 @@ class InvoiceDataPaymentAmountTax(
 
 
 class InvoiceDataPaymentAmountTotal(
-    TextAnnotation, Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1
+    TextAnnotationV2, Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1
 ):
     """InvoiceDataPaymentAmountTotal.
 
@@ -8313,7 +8637,7 @@ class InvoiceDataPaymentAmountTotal(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -8333,7 +8657,6 @@ class InvoiceDataPaymentAmountTotal(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -8369,9 +8692,9 @@ class InvoiceDataPaymentAmountTotal(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -8403,7 +8726,7 @@ class InvoiceDataPaymentAmountTotal(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -8446,7 +8769,7 @@ class InvoiceDataPaymentAmountTotal(
 
 
 class InvoiceDataPaymentReference(
-    TextAnnotation, Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1
+    TextAnnotationV2, Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1
 ):
     """InvoiceDataPaymentReference.
 
@@ -8479,7 +8802,7 @@ class InvoiceDataPaymentReference(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -8499,7 +8822,6 @@ class InvoiceDataPaymentReference(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -8535,9 +8857,9 @@ class InvoiceDataPaymentReference(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -8569,7 +8891,7 @@ class InvoiceDataPaymentReference(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -8612,7 +8934,7 @@ class InvoiceDataPaymentReference(
 
 
 class InvoiceDataSupplierBusinessNumber(
-    TextAnnotation, Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1
+    TextAnnotationV2, Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1
 ):
     """InvoiceDataSupplierBusinessNumber.
 
@@ -8645,7 +8967,7 @@ class InvoiceDataSupplierBusinessNumber(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -8665,7 +8987,6 @@ class InvoiceDataSupplierBusinessNumber(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -8701,9 +9022,9 @@ class InvoiceDataSupplierBusinessNumber(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -8735,7 +9056,7 @@ class InvoiceDataSupplierBusinessNumber(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -8778,7 +9099,7 @@ class InvoiceDataSupplierBusinessNumber(
 
 
 class InvoiceDataSupplierCompanyName(
-    TextAnnotation, Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1
+    TextAnnotationV2, Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1
 ):
     """InvoiceDataSupplierCompanyName.
 
@@ -8811,7 +9132,7 @@ class InvoiceDataSupplierCompanyName(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -8831,7 +9152,6 @@ class InvoiceDataSupplierCompanyName(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -8867,9 +9187,9 @@ class InvoiceDataSupplierCompanyName(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -8901,7 +9221,7 @@ class InvoiceDataSupplierCompanyName(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -8944,7 +9264,7 @@ class InvoiceDataSupplierCompanyName(
 
 
 class InvoiceDataSupplierEmail(
-    TextAnnotation, Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1
+    TextAnnotationV2, Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1
 ):
     """InvoiceDataSupplierEmail.
 
@@ -8977,7 +9297,7 @@ class InvoiceDataSupplierEmail(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -8997,7 +9317,6 @@ class InvoiceDataSupplierEmail(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -9033,9 +9352,9 @@ class InvoiceDataSupplierEmail(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -9067,7 +9386,7 @@ class InvoiceDataSupplierEmail(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -9110,7 +9429,7 @@ class InvoiceDataSupplierEmail(
 
 
 class InvoiceDataSupplierFax(
-    TextAnnotation, Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1
+    TextAnnotationV2, Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1
 ):
     """InvoiceDataSupplierFax.
 
@@ -9143,7 +9462,7 @@ class InvoiceDataSupplierFax(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -9163,7 +9482,6 @@ class InvoiceDataSupplierFax(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -9199,9 +9517,9 @@ class InvoiceDataSupplierFax(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -9233,7 +9551,7 @@ class InvoiceDataSupplierFax(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -9276,7 +9594,7 @@ class InvoiceDataSupplierFax(
 
 
 class InvoiceDataSupplierPhoneNumber(
-    TextAnnotation, Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1
+    TextAnnotationV2, Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1
 ):
     """InvoiceDataSupplierPhoneNumber.
 
@@ -9309,7 +9627,7 @@ class InvoiceDataSupplierPhoneNumber(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -9329,7 +9647,6 @@ class InvoiceDataSupplierPhoneNumber(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -9365,9 +9682,9 @@ class InvoiceDataSupplierPhoneNumber(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -9399,7 +9716,7 @@ class InvoiceDataSupplierPhoneNumber(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -9442,7 +9759,7 @@ class InvoiceDataSupplierPhoneNumber(
 
 
 class InvoiceDataSupplierVat(
-    TextAnnotation, ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1
+    TextAnnotationV2, ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1
 ):
     """InvoiceDataSupplierVat.
 
@@ -9475,7 +9792,7 @@ class InvoiceDataSupplierVat(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -9495,7 +9812,6 @@ class InvoiceDataSupplierVat(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -9531,9 +9847,9 @@ class InvoiceDataSupplierVat(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -9565,7 +9881,7 @@ class InvoiceDataSupplierVat(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -9608,7 +9924,7 @@ class InvoiceDataSupplierVat(
 
 
 class InvoiceDataSupplierWebsite(
-    TextAnnotation, Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1
+    TextAnnotationV2, Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1
 ):
     """InvoiceDataSupplierWebsite.
 
@@ -9641,7 +9957,7 @@ class InvoiceDataSupplierWebsite(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -9661,7 +9977,6 @@ class InvoiceDataSupplierWebsite(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -9697,9 +10012,9 @@ class InvoiceDataSupplierWebsite(
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -9731,7 +10046,7 @@ class InvoiceDataSupplierWebsite(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -9932,119 +10247,119 @@ class JobDescriptionData(msrest.serialization.Model):
     :ivar job_title:
     :vartype job_title: ~affinda.models.JobTitleAnnotation
     :ivar contact_email:
-    :vartype contact_email: ~affinda.models.TextAnnotation
+    :vartype contact_email: ~affinda.models.TextAnnotationV2
     :ivar contact_name:
-    :vartype contact_name: ~affinda.models.TextAnnotation
+    :vartype contact_name: ~affinda.models.TextAnnotationV2
     :ivar contact_phone:
-    :vartype contact_phone: ~affinda.models.TextAnnotation
+    :vartype contact_phone: ~affinda.models.TextAnnotationV2
     :ivar start_date:
     :vartype start_date: ~affinda.models.DateAnnotation
     :ivar end_date:
     :vartype end_date: ~affinda.models.DateAnnotation
     :ivar job_type:
-    :vartype job_type: ~affinda.models.TextAnnotation
+    :vartype job_type: ~affinda.models.TextAnnotationV2
     :ivar languages:
-    :vartype languages: list[~affinda.models.LanguageAnnotation]
+    :vartype languages: list[~affinda.models.LanguageAnnotationV2]
     :ivar skills:
-    :vartype skills: list[~affinda.models.SkillAnnotation]
+    :vartype skills: list[~affinda.models.SkillAnnotationV2]
     :ivar organization_name:
-    :vartype organization_name: ~affinda.models.TextAnnotation
+    :vartype organization_name: ~affinda.models.TextAnnotationV2
     :ivar organization_website:
-    :vartype organization_website: ~affinda.models.TextAnnotation
+    :vartype organization_website: ~affinda.models.TextAnnotationV2
     :ivar education_level:
-    :vartype education_level: ~affinda.models.TextAnnotation
+    :vartype education_level: ~affinda.models.TextAnnotationV2
     :ivar education_accreditation:
-    :vartype education_accreditation: ~affinda.models.TextAnnotation
+    :vartype education_accreditation: ~affinda.models.TextAnnotationV2
     :ivar expected_remuneration:
-    :vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotation
+    :vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2
     :ivar location:
-    :vartype location: ~affinda.models.LocationAnnotation
+    :vartype location: ~affinda.models.LocationAnnotationV2
     :ivar certifications:
-    :vartype certifications: list[~affinda.models.TextAnnotation]
+    :vartype certifications: list[~affinda.models.TextAnnotationV2]
     :ivar years_experience:
-    :vartype years_experience: ~affinda.models.YearsExperienceAnnotation
+    :vartype years_experience: ~affinda.models.YearsExperienceAnnotationV2
     """
 
     _attribute_map = {
         "job_title": {"key": "jobTitle", "type": "JobTitleAnnotation"},
-        "contact_email": {"key": "contactEmail", "type": "TextAnnotation"},
-        "contact_name": {"key": "contactName", "type": "TextAnnotation"},
-        "contact_phone": {"key": "contactPhone", "type": "TextAnnotation"},
+        "contact_email": {"key": "contactEmail", "type": "TextAnnotationV2"},
+        "contact_name": {"key": "contactName", "type": "TextAnnotationV2"},
+        "contact_phone": {"key": "contactPhone", "type": "TextAnnotationV2"},
         "start_date": {"key": "startDate", "type": "DateAnnotation"},
         "end_date": {"key": "endDate", "type": "DateAnnotation"},
-        "job_type": {"key": "jobType", "type": "TextAnnotation"},
-        "languages": {"key": "languages", "type": "[LanguageAnnotation]"},
-        "skills": {"key": "skills", "type": "[SkillAnnotation]"},
-        "organization_name": {"key": "organizationName", "type": "TextAnnotation"},
-        "organization_website": {"key": "organizationWebsite", "type": "TextAnnotation"},
-        "education_level": {"key": "educationLevel", "type": "TextAnnotation"},
-        "education_accreditation": {"key": "educationAccreditation", "type": "TextAnnotation"},
+        "job_type": {"key": "jobType", "type": "TextAnnotationV2"},
+        "languages": {"key": "languages", "type": "[LanguageAnnotationV2]"},
+        "skills": {"key": "skills", "type": "[SkillAnnotationV2]"},
+        "organization_name": {"key": "organizationName", "type": "TextAnnotationV2"},
+        "organization_website": {"key": "organizationWebsite", "type": "TextAnnotationV2"},
+        "education_level": {"key": "educationLevel", "type": "TextAnnotationV2"},
+        "education_accreditation": {"key": "educationAccreditation", "type": "TextAnnotationV2"},
         "expected_remuneration": {
             "key": "expectedRemuneration",
-            "type": "ExpectedRemunerationAnnotation",
+            "type": "ExpectedRemunerationAnnotationV2",
         },
-        "location": {"key": "location", "type": "LocationAnnotation"},
-        "certifications": {"key": "certifications", "type": "[TextAnnotation]"},
-        "years_experience": {"key": "yearsExperience", "type": "YearsExperienceAnnotation"},
+        "location": {"key": "location", "type": "LocationAnnotationV2"},
+        "certifications": {"key": "certifications", "type": "[TextAnnotationV2]"},
+        "years_experience": {"key": "yearsExperience", "type": "YearsExperienceAnnotationV2"},
     }
 
     def __init__(
         self,
         *,
         job_title: Optional["_models.JobTitleAnnotation"] = None,
-        contact_email: Optional["_models.TextAnnotation"] = None,
-        contact_name: Optional["_models.TextAnnotation"] = None,
-        contact_phone: Optional["_models.TextAnnotation"] = None,
+        contact_email: Optional["_models.TextAnnotationV2"] = None,
+        contact_name: Optional["_models.TextAnnotationV2"] = None,
+        contact_phone: Optional["_models.TextAnnotationV2"] = None,
         start_date: Optional["_models.DateAnnotation"] = None,
         end_date: Optional["_models.DateAnnotation"] = None,
-        job_type: Optional["_models.TextAnnotation"] = None,
-        languages: Optional[List["_models.LanguageAnnotation"]] = None,
-        skills: Optional[List["_models.SkillAnnotation"]] = None,
-        organization_name: Optional["_models.TextAnnotation"] = None,
-        organization_website: Optional["_models.TextAnnotation"] = None,
-        education_level: Optional["_models.TextAnnotation"] = None,
-        education_accreditation: Optional["_models.TextAnnotation"] = None,
-        expected_remuneration: Optional["_models.ExpectedRemunerationAnnotation"] = None,
-        location: Optional["_models.LocationAnnotation"] = None,
-        certifications: Optional[List["_models.TextAnnotation"]] = None,
-        years_experience: Optional["_models.YearsExperienceAnnotation"] = None,
+        job_type: Optional["_models.TextAnnotationV2"] = None,
+        languages: Optional[List["_models.LanguageAnnotationV2"]] = None,
+        skills: Optional[List["_models.SkillAnnotationV2"]] = None,
+        organization_name: Optional["_models.TextAnnotationV2"] = None,
+        organization_website: Optional["_models.TextAnnotationV2"] = None,
+        education_level: Optional["_models.TextAnnotationV2"] = None,
+        education_accreditation: Optional["_models.TextAnnotationV2"] = None,
+        expected_remuneration: Optional["_models.ExpectedRemunerationAnnotationV2"] = None,
+        location: Optional["_models.LocationAnnotationV2"] = None,
+        certifications: Optional[List["_models.TextAnnotationV2"]] = None,
+        years_experience: Optional["_models.YearsExperienceAnnotationV2"] = None,
         **kwargs,
     ):
         """
         :keyword job_title:
         :paramtype job_title: ~affinda.models.JobTitleAnnotation
         :keyword contact_email:
-        :paramtype contact_email: ~affinda.models.TextAnnotation
+        :paramtype contact_email: ~affinda.models.TextAnnotationV2
         :keyword contact_name:
-        :paramtype contact_name: ~affinda.models.TextAnnotation
+        :paramtype contact_name: ~affinda.models.TextAnnotationV2
         :keyword contact_phone:
-        :paramtype contact_phone: ~affinda.models.TextAnnotation
+        :paramtype contact_phone: ~affinda.models.TextAnnotationV2
         :keyword start_date:
         :paramtype start_date: ~affinda.models.DateAnnotation
         :keyword end_date:
         :paramtype end_date: ~affinda.models.DateAnnotation
         :keyword job_type:
-        :paramtype job_type: ~affinda.models.TextAnnotation
+        :paramtype job_type: ~affinda.models.TextAnnotationV2
         :keyword languages:
-        :paramtype languages: list[~affinda.models.LanguageAnnotation]
+        :paramtype languages: list[~affinda.models.LanguageAnnotationV2]
         :keyword skills:
-        :paramtype skills: list[~affinda.models.SkillAnnotation]
+        :paramtype skills: list[~affinda.models.SkillAnnotationV2]
         :keyword organization_name:
-        :paramtype organization_name: ~affinda.models.TextAnnotation
+        :paramtype organization_name: ~affinda.models.TextAnnotationV2
         :keyword organization_website:
-        :paramtype organization_website: ~affinda.models.TextAnnotation
+        :paramtype organization_website: ~affinda.models.TextAnnotationV2
         :keyword education_level:
-        :paramtype education_level: ~affinda.models.TextAnnotation
+        :paramtype education_level: ~affinda.models.TextAnnotationV2
         :keyword education_accreditation:
-        :paramtype education_accreditation: ~affinda.models.TextAnnotation
+        :paramtype education_accreditation: ~affinda.models.TextAnnotationV2
         :keyword expected_remuneration:
-        :paramtype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotation
+        :paramtype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2
         :keyword location:
-        :paramtype location: ~affinda.models.LocationAnnotation
+        :paramtype location: ~affinda.models.LocationAnnotationV2
         :keyword certifications:
-        :paramtype certifications: list[~affinda.models.TextAnnotation]
+        :paramtype certifications: list[~affinda.models.TextAnnotationV2]
         :keyword years_experience:
-        :paramtype years_experience: ~affinda.models.YearsExperienceAnnotation
+        :paramtype years_experience: ~affinda.models.YearsExperienceAnnotationV2
         """
         super(JobDescriptionData, self).__init__(**kwargs)
         self.job_title = job_title
@@ -11620,7 +11935,7 @@ class JobDescriptionSearchResult(msrest.serialization.Model):
         self.organization_name = organization_name
 
 
-class JobTitleAnnotation(Annotation):
+class JobTitleAnnotation(AnnotationV2):
     """JobTitleAnnotation.
 
     All required parameters must be populated in order to send to Azure.
@@ -11652,7 +11967,7 @@ class JobTitleAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -11672,7 +11987,6 @@ class JobTitleAnnotation(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -11708,9 +12022,9 @@ class JobTitleAnnotation(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional["_models.JobTitleAnnotationParsed"] = None,
         **kwargs,
     ):
@@ -11742,7 +12056,7 @@ class JobTitleAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -11904,8 +12218,8 @@ class JobTitleSearchScoreComponent(msrest.serialization.Model):
         self.score = score
 
 
-class LanguageAnnotation(Annotation):
-    """LanguageAnnotation.
+class LanguageAnnotationV2(AnnotationV2):
+    """LanguageAnnotationV2.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -11936,7 +12250,7 @@ class LanguageAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -11956,7 +12270,6 @@ class LanguageAnnotation(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -11992,9 +12305,9 @@ class LanguageAnnotation(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -12026,14 +12339,14 @@ class LanguageAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(LanguageAnnotation, self).__init__(
+        super(LanguageAnnotationV2, self).__init__(
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
@@ -12133,8 +12446,8 @@ class ListResult(msrest.serialization.Model):
         self.previous = previous
 
 
-class LocationAnnotation(Annotation):
-    """LocationAnnotation.
+class LocationAnnotationV2(AnnotationV2):
+    """LocationAnnotationV2.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -12165,7 +12478,7 @@ class LocationAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -12185,7 +12498,6 @@ class LocationAnnotation(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -12221,9 +12533,9 @@ class LocationAnnotation(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional["_models.Location"] = None,
         **kwargs,
     ):
@@ -12255,14 +12567,14 @@ class LocationAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: ~affinda.models.Location
         """
-        super(LocationAnnotation, self).__init__(
+        super(LocationAnnotationV2, self).__init__(
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
@@ -12393,7 +12705,7 @@ class Meta(msrest.serialization.Model):
     :vartype child_documents: list[~affinda.models.MetaChildDocumentsItem]
     :ivar pages: The document's pages.
     :vartype pages: list[~affinda.models.PageMeta]
-    :ivar is_verified: This is true if the "confirm" button has been clicked in the Affinda
+    :ivar is_verified: This is true if the 'confirm' button has been clicked in the Affinda
      validation tool.
     :vartype is_verified: bool
     :ivar review_url: Signed URL (valid for 60 minutes) to access the validation tool.  Not
@@ -12470,7 +12782,7 @@ class Meta(msrest.serialization.Model):
         :paramtype child_documents: list[~affinda.models.MetaChildDocumentsItem]
         :keyword pages: The document's pages.
         :paramtype pages: list[~affinda.models.PageMeta]
-        :keyword is_verified: This is true if the "confirm" button has been clicked in the Affinda
+        :keyword is_verified: This is true if the 'confirm' button has been clicked in the Affinda
          validation tool.
         :paramtype is_verified: bool
         :keyword review_url: Signed URL (valid for 60 minutes) to access the validation tool.  Not
@@ -12914,35 +13226,166 @@ class PaginatedResponse(msrest.serialization.Model):
         self.previous = previous
 
 
-class Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1(
+class Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema(
     msrest.serialization.Model
 ):
-    """Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.
+    """Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema.
 
-    :ivar results:
-    :vartype results: list[~affinda.models.OrganizationMembership]
+    :ivar config_override:
+    :vartype config_override: ~affinda.models.JobDescriptionSearchConfig
     """
 
     _attribute_map = {
-        "results": {"key": "results", "type": "[OrganizationMembership]"},
+        "config_override": {"key": "configOverride", "type": "JobDescriptionSearchConfig"},
     }
 
     def __init__(
-        self, *, results: Optional[List["_models.OrganizationMembership"]] = None, **kwargs
+        self, *, config_override: Optional["_models.JobDescriptionSearchConfig"] = None, **kwargs
     ):
         """
-        :keyword results:
-        :paramtype results: list[~affinda.models.OrganizationMembership]
+        :keyword config_override:
+        :paramtype config_override: ~affinda.models.JobDescriptionSearchConfig
         """
         super(
-            Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1,
+            Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema,
             self,
+        ).__init__(**kwargs)
+        self.config_override = config_override
+
+
+class PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1(
+    msrest.serialization.Model
+):
+    """PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1.
+
+    :ivar results:
+    :vartype results: list[~affinda.models.Invitation]
+    """
+
+    _attribute_map = {
+        "results": {"key": "results", "type": "[Invitation]"},
+    }
+
+    def __init__(self, *, results: Optional[List["_models.Invitation"]] = None, **kwargs):
+        """
+        :keyword results:
+        :paramtype results: list[~affinda.models.Invitation]
+        """
+        super(
+            PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1, self
         ).__init__(**kwargs)
         self.results = results
 
 
-class Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema(msrest.serialization.Model):
-    """Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema.
+class Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema(
+    PaginatedResponse, PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1
+):
+    """Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar results:
+    :vartype results: list[~affinda.models.Invitation]
+    :ivar count: Required. Number of items in results.
+    :vartype count: int
+    :ivar next: URL to request next page of results.
+    :vartype next: str
+    :ivar previous: URL to request previous page of results.
+    :vartype previous: str
+    """
+
+    _validation = {
+        "count": {"required": True},
+    }
+
+    _attribute_map = {
+        "results": {"key": "results", "type": "[Invitation]"},
+        "count": {"key": "count", "type": "int"},
+        "next": {"key": "next", "type": "str"},
+        "previous": {"key": "previous", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        count: int,
+        results: Optional[List["_models.Invitation"]] = None,
+        next: Optional[str] = None,
+        previous: Optional[str] = None,
+        **kwargs,
+    ):
+        """
+        :keyword results:
+        :paramtype results: list[~affinda.models.Invitation]
+        :keyword count: Required. Number of items in results.
+        :paramtype count: int
+        :keyword next: URL to request next page of results.
+        :paramtype next: str
+        :keyword previous: URL to request previous page of results.
+        :paramtype previous: str
+        """
+        super(Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema, self).__init__(
+            count=count, next=next, previous=previous, results=results, **kwargs
+        )
+        self.results = results
+        self.count = count
+        self.next = next
+        self.previous = previous
+
+
+class Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema(
+    msrest.serialization.Model
+):
+    """Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema.
+
+    :ivar config_override:
+    :vartype config_override: ~affinda.models.ResumeSearchConfig
+    """
+
+    _attribute_map = {
+        "config_override": {"key": "configOverride", "type": "ResumeSearchConfig"},
+    }
+
+    def __init__(
+        self, *, config_override: Optional["_models.ResumeSearchConfig"] = None, **kwargs
+    ):
+        """
+        :keyword config_override:
+        :paramtype config_override: ~affinda.models.ResumeSearchConfig
+        """
+        super(
+            Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema, self
+        ).__init__(**kwargs)
+        self.config_override = config_override
+
+
+class Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems(
+    msrest.serialization.Model
+):
+    """Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems.
+
+    :ivar document:
+    :vartype document: str
+    """
+
+    _attribute_map = {
+        "document": {"key": "document", "type": "str"},
+    }
+
+    def __init__(self, *, document: Optional[str] = None, **kwargs):
+        """
+        :keyword document:
+        :paramtype document: str
+        """
+        super(
+            Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems,
+            self,
+        ).__init__(**kwargs)
+        self.document = document
+
+
+class Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema(msrest.serialization.Model):
+    """Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema.
 
     :ivar name:
     :vartype name: str
@@ -12968,17 +13411,17 @@ class Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema(msrest.seria
         :keyword document_type: Known values are: "resumes", "job_descriptions".
         :paramtype document_type: str or ~affinda.models.Enum5
         """
-        super(Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema, self).__init__(
+        super(Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema, self).__init__(
             **kwargs
         )
         self.name = name
         self.document_type = document_type
 
 
-class Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1(
+class Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1(
     msrest.serialization.Model
 ):
-    """Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.
+    """Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -13000,39 +13443,139 @@ class Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchem
         :paramtype results: list[~affinda.models.WorkspaceMembership]
         """
         super(
-            Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1, self
+            Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1,
+            self,
         ).__init__(**kwargs)
         self.results = results
 
 
-class Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema(
+class Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1(
     msrest.serialization.Model
 ):
-    """Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema.
+    """Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.
 
-    :ivar config_override:
-    :vartype config_override: ~affinda.models.ResumeSearchConfig
+    :ivar results:
+    :vartype results: list[~affinda.models.OrganizationMembership]
     """
 
     _attribute_map = {
-        "config_override": {"key": "configOverride", "type": "ResumeSearchConfig"},
+        "results": {"key": "results", "type": "[OrganizationMembership]"},
     }
 
     def __init__(
-        self, *, config_override: Optional["_models.ResumeSearchConfig"] = None, **kwargs
+        self, *, results: Optional[List["_models.OrganizationMembership"]] = None, **kwargs
     ):
         """
-        :keyword config_override:
-        :paramtype config_override: ~affinda.models.ResumeSearchConfig
+        :keyword results:
+        :paramtype results: list[~affinda.models.OrganizationMembership]
         """
         super(
-            Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema, self
+            Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1,
+            self,
         ).__init__(**kwargs)
-        self.config_override = config_override
+        self.results = results
 
 
-class Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model):
-    """Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema.
+class Paths9K2ZxlV3UsersGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model):
+    """Paths9K2ZxlV3UsersGetResponses200ContentApplicationJsonSchema.
+
+    :ivar count: Number of indexes in result.
+    :vartype count: int
+    :ivar next: URL to request next page of results.
+    :vartype next: str
+    :ivar previous: URL to request previous page of results.
+    :vartype previous: str
+    :ivar results:
+    :vartype results: list[~affinda.models.User]
+    """
+
+    _attribute_map = {
+        "count": {"key": "count", "type": "int"},
+        "next": {"key": "next", "type": "str"},
+        "previous": {"key": "previous", "type": "str"},
+        "results": {"key": "results", "type": "[User]"},
+    }
+
+    def __init__(
+        self,
+        *,
+        count: Optional[int] = None,
+        next: Optional[str] = None,
+        previous: Optional[str] = None,
+        results: Optional[List["_models.User"]] = None,
+        **kwargs,
+    ):
+        """
+        :keyword count: Number of indexes in result.
+        :paramtype count: int
+        :keyword next: URL to request next page of results.
+        :paramtype next: str
+        :keyword previous: URL to request previous page of results.
+        :paramtype previous: str
+        :keyword results:
+        :paramtype results: list[~affinda.models.User]
+        """
+        super(Paths9K2ZxlV3UsersGetResponses200ContentApplicationJsonSchema, self).__init__(
+            **kwargs
+        )
+        self.count = count
+        self.next = next
+        self.previous = previous
+        self.results = results
+
+
+class PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema(
+    msrest.serialization.Model
+):
+    """PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema.
+
+    :ivar document:
+    :vartype document: str
+    """
+
+    _attribute_map = {
+        "document": {"key": "document", "type": "str"},
+    }
+
+    def __init__(self, *, document: Optional[str] = None, **kwargs):
+        """
+        :keyword document:
+        :paramtype document: str
+        """
+        super(
+            PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema, self
+        ).__init__(**kwargs)
+        self.document = document
+
+
+class PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema(
+    msrest.serialization.Model
+):
+    """PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema.
+
+    :ivar status: Known values are: "accepted", "declined".
+    :vartype status: str or ~affinda.models.PatchContentSchemaStatus
+    """
+
+    _attribute_map = {
+        "status": {"key": "status", "type": "str"},
+    }
+
+    def __init__(
+        self, *, status: Optional[Union[str, "_models.PatchContentSchemaStatus"]] = None, **kwargs
+    ):
+        """
+        :keyword status: Known values are: "accepted", "declined".
+        :paramtype status: str or ~affinda.models.PatchContentSchemaStatus
+        """
+        super(
+            PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema, self
+        ).__init__(**kwargs)
+        self.status = status
+
+
+class PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model):
+    """PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema.
 
     :ivar count: Number of indexes in result.
     :vartype count: int
@@ -13070,17 +13613,159 @@ class Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema(msrest.seriali
         :keyword results:
         :paramtype results: list[~affinda.models.Get200ApplicationJsonPropertiesItemsItem]
         """
-        super(Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema, self).__init__(**kwargs)
+        super(PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema, self).__init__(
+            **kwargs
+        )
         self.count = count
         self.next = next
         self.previous = previous
         self.results = results
 
 
-class PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema(
-    ListResult, Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1
+class PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema(
+    msrest.serialization.Model
 ):
-    """PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema.
+    """PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema.
+
+    :ivar document: Unique identifier for the document.
+    :vartype document: str
+    """
+
+    _attribute_map = {
+        "document": {"key": "document", "type": "str"},
+    }
+
+    def __init__(self, *, document: Optional[str] = None, **kwargs):
+        """
+        :keyword document: Unique identifier for the document.
+        :paramtype document: str
+        """
+        super(
+            PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema, self
+        ).__init__(**kwargs)
+        self.document = document
+
+
+class PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema(
+    msrest.serialization.Model
+):
+    """PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema.
+
+    :ivar count: Number of indexed documents in result.
+    :vartype count: int
+    :ivar next: URL to request next page of results.
+    :vartype next: str
+    :ivar previous: URL to request previous page of results.
+    :vartype previous: str
+    :ivar results:
+    :vartype results:
+     list[~affinda.models.Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]
+    """
+
+    _attribute_map = {
+        "count": {"key": "count", "type": "int"},
+        "next": {"key": "next", "type": "str"},
+        "previous": {"key": "previous", "type": "str"},
+        "results": {
+            "key": "results",
+            "type": "[Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]",
+        },
+    }
+
+    def __init__(
+        self,
+        *,
+        count: Optional[int] = None,
+        next: Optional[str] = None,
+        previous: Optional[str] = None,
+        results: Optional[
+            List[
+                "_models.Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems"
+            ]
+        ] = None,
+        **kwargs,
+    ):
+        """
+        :keyword count: Number of indexed documents in result.
+        :paramtype count: int
+        :keyword next: URL to request next page of results.
+        :paramtype next: str
+        :keyword previous: URL to request previous page of results.
+        :paramtype previous: str
+        :keyword results:
+        :paramtype results:
+         list[~affinda.models.Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]
+        """
+        super(
+            PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema, self
+        ).__init__(**kwargs)
+        self.count = count
+        self.next = next
+        self.previous = previous
+        self.results = results
+
+
+class PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema(
+    PaginatedResponse,
+    Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1,
+):
+    """PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar results:
+    :vartype results: list[~affinda.models.OrganizationMembership]
+    :ivar count: Required. Number of items in results.
+    :vartype count: int
+    :ivar next: URL to request next page of results.
+    :vartype next: str
+    :ivar previous: URL to request previous page of results.
+    :vartype previous: str
+    """
+
+    _validation = {
+        "count": {"required": True},
+    }
+
+    _attribute_map = {
+        "results": {"key": "results", "type": "[OrganizationMembership]"},
+        "count": {"key": "count", "type": "int"},
+        "next": {"key": "next", "type": "str"},
+        "previous": {"key": "previous", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        count: int,
+        results: Optional[List["_models.OrganizationMembership"]] = None,
+        next: Optional[str] = None,
+        previous: Optional[str] = None,
+        **kwargs,
+    ):
+        """
+        :keyword results:
+        :paramtype results: list[~affinda.models.OrganizationMembership]
+        :keyword count: Required. Number of items in results.
+        :paramtype count: int
+        :keyword next: URL to request next page of results.
+        :paramtype next: str
+        :keyword previous: URL to request previous page of results.
+        :paramtype previous: str
+        """
+        super(
+            PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema, self
+        ).__init__(count=count, next=next, previous=previous, results=results, **kwargs)
+        self.results = results
+        self.count = count
+        self.next = next
+        self.previous = previous
+
+
+class PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema(
+    ListResult, Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1
+):
+    """PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -13126,375 +13811,8 @@ class PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema
         :paramtype previous: str
         """
         super(
-            PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema, self
+            PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema, self
         ).__init__(count=count, next=next, previous=previous, results=results, **kwargs)
-        self.results = results
-        self.count = count
-        self.next = next
-        self.previous = previous
-
-
-class PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema(
-    PaginatedResponse,
-    Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1,
-):
-    """PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar results:
-    :vartype results: list[~affinda.models.OrganizationMembership]
-    :ivar count: Required. Number of items in results.
-    :vartype count: int
-    :ivar next: URL to request next page of results.
-    :vartype next: str
-    :ivar previous: URL to request previous page of results.
-    :vartype previous: str
-    """
-
-    _validation = {
-        "count": {"required": True},
-    }
-
-    _attribute_map = {
-        "results": {"key": "results", "type": "[OrganizationMembership]"},
-        "count": {"key": "count", "type": "int"},
-        "next": {"key": "next", "type": "str"},
-        "previous": {"key": "previous", "type": "str"},
-    }
-
-    def __init__(
-        self,
-        *,
-        count: int,
-        results: Optional[List["_models.OrganizationMembership"]] = None,
-        next: Optional[str] = None,
-        previous: Optional[str] = None,
-        **kwargs,
-    ):
-        """
-        :keyword results:
-        :paramtype results: list[~affinda.models.OrganizationMembership]
-        :keyword count: Required. Number of items in results.
-        :paramtype count: int
-        :keyword next: URL to request next page of results.
-        :paramtype next: str
-        :keyword previous: URL to request previous page of results.
-        :paramtype previous: str
-        """
-        super(
-            PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema, self
-        ).__init__(count=count, next=next, previous=previous, results=results, **kwargs)
-        self.results = results
-        self.count = count
-        self.next = next
-        self.previous = previous
-
-
-class PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema(
-    msrest.serialization.Model
-):
-    """PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema.
-
-    :ivar document: Unique identifier for the document.
-    :vartype document: str
-    """
-
-    _attribute_map = {
-        "document": {"key": "document", "type": "str"},
-    }
-
-    def __init__(self, *, document: Optional[str] = None, **kwargs):
-        """
-        :keyword document: Unique identifier for the document.
-        :paramtype document: str
-        """
-        super(
-            PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema, self
-        ).__init__(**kwargs)
-        self.document = document
-
-
-class PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema(
-    msrest.serialization.Model
-):
-    """PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema.
-
-    :ivar config_override:
-    :vartype config_override: ~affinda.models.JobDescriptionSearchConfig
-    """
-
-    _attribute_map = {
-        "config_override": {"key": "configOverride", "type": "JobDescriptionSearchConfig"},
-    }
-
-    def __init__(
-        self, *, config_override: Optional["_models.JobDescriptionSearchConfig"] = None, **kwargs
-    ):
-        """
-        :keyword config_override:
-        :paramtype config_override: ~affinda.models.JobDescriptionSearchConfig
-        """
-        super(
-            PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema, self
-        ).__init__(**kwargs)
-        self.config_override = config_override
-
-
-class PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema(
-    msrest.serialization.Model
-):
-    """PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema.
-
-    :ivar document:
-    :vartype document: str
-    """
-
-    _attribute_map = {
-        "document": {"key": "document", "type": "str"},
-    }
-
-    def __init__(self, *, document: Optional[str] = None, **kwargs):
-        """
-        :keyword document:
-        :paramtype document: str
-        """
-        super(
-            PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema, self
-        ).__init__(**kwargs)
-        self.document = document
-
-
-class PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems(
-    msrest.serialization.Model
-):
-    """PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems.
-
-    :ivar document:
-    :vartype document: str
-    """
-
-    _attribute_map = {
-        "document": {"key": "document", "type": "str"},
-    }
-
-    def __init__(self, *, document: Optional[str] = None, **kwargs):
-        """
-        :keyword document:
-        :paramtype document: str
-        """
-        super(
-            PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems,
-            self,
-        ).__init__(**kwargs)
-        self.document = document
-
-
-class PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema(
-    msrest.serialization.Model
-):
-    """PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema.
-
-    :ivar count: Number of indexed documents in result.
-    :vartype count: int
-    :ivar next: URL to request next page of results.
-    :vartype next: str
-    :ivar previous: URL to request previous page of results.
-    :vartype previous: str
-    :ivar results:
-    :vartype results:
-     list[~affinda.models.PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]
-    """
-
-    _attribute_map = {
-        "count": {"key": "count", "type": "int"},
-        "next": {"key": "next", "type": "str"},
-        "previous": {"key": "previous", "type": "str"},
-        "results": {
-            "key": "results",
-            "type": "[PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]",
-        },
-    }
-
-    def __init__(
-        self,
-        *,
-        count: Optional[int] = None,
-        next: Optional[str] = None,
-        previous: Optional[str] = None,
-        results: Optional[
-            List[
-                "_models.PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems"
-            ]
-        ] = None,
-        **kwargs,
-    ):
-        """
-        :keyword count: Number of indexed documents in result.
-        :paramtype count: int
-        :keyword next: URL to request next page of results.
-        :paramtype next: str
-        :keyword previous: URL to request previous page of results.
-        :paramtype previous: str
-        :keyword results:
-        :paramtype results:
-         list[~affinda.models.PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]
-        """
-        super(
-            PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema, self
-        ).__init__(**kwargs)
-        self.count = count
-        self.next = next
-        self.previous = previous
-        self.results = results
-
-
-class PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1(
-    msrest.serialization.Model
-):
-    """PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1.
-
-    :ivar results:
-    :vartype results: list[~affinda.models.Invitation]
-    """
-
-    _attribute_map = {
-        "results": {"key": "results", "type": "[Invitation]"},
-    }
-
-    def __init__(self, *, results: Optional[List["_models.Invitation"]] = None, **kwargs):
-        """
-        :keyword results:
-        :paramtype results: list[~affinda.models.Invitation]
-        """
-        super(
-            PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1, self
-        ).__init__(**kwargs)
-        self.results = results
-
-
-class PathsW51LnrInvitationsTokenPatchRequestbodyContentApplicationJsonSchema(
-    msrest.serialization.Model
-):
-    """PathsW51LnrInvitationsTokenPatchRequestbodyContentApplicationJsonSchema.
-
-    :ivar status: Known values are: "accepted", "declined".
-    :vartype status: str or ~affinda.models.PatchContentSchemaStatus
-    """
-
-    _attribute_map = {
-        "status": {"key": "status", "type": "str"},
-    }
-
-    def __init__(
-        self, *, status: Optional[Union[str, "_models.PatchContentSchemaStatus"]] = None, **kwargs
-    ):
-        """
-        :keyword status: Known values are: "accepted", "declined".
-        :paramtype status: str or ~affinda.models.PatchContentSchemaStatus
-        """
-        super(
-            PathsW51LnrInvitationsTokenPatchRequestbodyContentApplicationJsonSchema, self
-        ).__init__(**kwargs)
-        self.status = status
-
-
-class PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model):
-    """PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema.
-
-    :ivar count: Number of indexes in result.
-    :vartype count: int
-    :ivar next: URL to request next page of results.
-    :vartype next: str
-    :ivar previous: URL to request previous page of results.
-    :vartype previous: str
-    :ivar results:
-    :vartype results: list[~affinda.models.User]
-    """
-
-    _attribute_map = {
-        "count": {"key": "count", "type": "int"},
-        "next": {"key": "next", "type": "str"},
-        "previous": {"key": "previous", "type": "str"},
-        "results": {"key": "results", "type": "[User]"},
-    }
-
-    def __init__(
-        self,
-        *,
-        count: Optional[int] = None,
-        next: Optional[str] = None,
-        previous: Optional[str] = None,
-        results: Optional[List["_models.User"]] = None,
-        **kwargs,
-    ):
-        """
-        :keyword count: Number of indexes in result.
-        :paramtype count: int
-        :keyword next: URL to request next page of results.
-        :paramtype next: str
-        :keyword previous: URL to request previous page of results.
-        :paramtype previous: str
-        :keyword results:
-        :paramtype results: list[~affinda.models.User]
-        """
-        super(PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema, self).__init__(**kwargs)
-        self.count = count
-        self.next = next
-        self.previous = previous
-        self.results = results
-
-
-class PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema(
-    PaginatedResponse, PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1
-):
-    """PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar results:
-    :vartype results: list[~affinda.models.Invitation]
-    :ivar count: Required. Number of items in results.
-    :vartype count: int
-    :ivar next: URL to request next page of results.
-    :vartype next: str
-    :ivar previous: URL to request previous page of results.
-    :vartype previous: str
-    """
-
-    _validation = {
-        "count": {"required": True},
-    }
-
-    _attribute_map = {
-        "results": {"key": "results", "type": "[Invitation]"},
-        "count": {"key": "count", "type": "int"},
-        "next": {"key": "next", "type": "str"},
-        "previous": {"key": "previous", "type": "str"},
-    }
-
-    def __init__(
-        self,
-        *,
-        count: int,
-        results: Optional[List["_models.Invitation"]] = None,
-        next: Optional[str] = None,
-        previous: Optional[str] = None,
-        **kwargs,
-    ):
-        """
-        :keyword results:
-        :paramtype results: list[~affinda.models.Invitation]
-        :keyword count: Required. Number of items in results.
-        :paramtype count: int
-        :keyword next: URL to request next page of results.
-        :paramtype next: str
-        :keyword previous: URL to request previous page of results.
-        :paramtype previous: str
-        """
-        super(PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema, self).__init__(
-            count=count, next=next, previous=previous, results=results, **kwargs
-        )
         self.results = results
         self.count = count
         self.next = next
@@ -13634,19 +13952,19 @@ class RedactedResumeRequestBody(msrest.serialization.Model):
      processing is complete.
     :vartype wait: bool
     :ivar redact_headshot: Whether to redact headshot.
-    :vartype redact_headshot: bool
+    :vartype redact_headshot: str
     :ivar redact_personal_details: Whether to redact personal details (e.g. name, address).
-    :vartype redact_personal_details: bool
+    :vartype redact_personal_details: str
     :ivar redact_work_details: Whether to redact work details (e.g. company names).
-    :vartype redact_work_details: bool
+    :vartype redact_work_details: str
     :ivar redact_education_details: Whether to redact education details (e.g. university names).
-    :vartype redact_education_details: bool
+    :vartype redact_education_details: str
     :ivar redact_referees: Whether to redact referee details.
-    :vartype redact_referees: bool
+    :vartype redact_referees: str
     :ivar redact_locations: Whether to redact location names.
-    :vartype redact_locations: bool
+    :vartype redact_locations: str
     :ivar redact_dates: Whether to redact dates.
-    :vartype redact_dates: bool
+    :vartype redact_dates: str
     :ivar redact_gender: Whether to redact gender.
     :vartype redact_gender: str
     :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
@@ -13661,13 +13979,13 @@ class RedactedResumeRequestBody(msrest.serialization.Model):
         "url": {"key": "url", "type": "str"},
         "language": {"key": "language", "type": "str"},
         "wait": {"key": "wait", "type": "bool"},
-        "redact_headshot": {"key": "redactHeadshot", "type": "bool"},
-        "redact_personal_details": {"key": "redactPersonalDetails", "type": "bool"},
-        "redact_work_details": {"key": "redactWorkDetails", "type": "bool"},
-        "redact_education_details": {"key": "redactEducationDetails", "type": "bool"},
-        "redact_referees": {"key": "redactReferees", "type": "bool"},
-        "redact_locations": {"key": "redactLocations", "type": "bool"},
-        "redact_dates": {"key": "redactDates", "type": "bool"},
+        "redact_headshot": {"key": "redactHeadshot", "type": "str"},
+        "redact_personal_details": {"key": "redactPersonalDetails", "type": "str"},
+        "redact_work_details": {"key": "redactWorkDetails", "type": "str"},
+        "redact_education_details": {"key": "redactEducationDetails", "type": "str"},
+        "redact_referees": {"key": "redactReferees", "type": "str"},
+        "redact_locations": {"key": "redactLocations", "type": "str"},
+        "redact_dates": {"key": "redactDates", "type": "str"},
         "redact_gender": {"key": "redactGender", "type": "str"},
         "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
     }
@@ -13681,13 +13999,13 @@ class RedactedResumeRequestBody(msrest.serialization.Model):
         url: Optional[str] = None,
         language: Optional[str] = None,
         wait: Optional[bool] = True,
-        redact_headshot: Optional[bool] = True,
-        redact_personal_details: Optional[bool] = True,
-        redact_work_details: Optional[bool] = True,
-        redact_education_details: Optional[bool] = True,
-        redact_referees: Optional[bool] = True,
-        redact_locations: Optional[bool] = True,
-        redact_dates: Optional[bool] = True,
+        redact_headshot: Optional[str] = "true",
+        redact_personal_details: Optional[str] = "true",
+        redact_work_details: Optional[str] = "true",
+        redact_education_details: Optional[str] = "true",
+        redact_referees: Optional[str] = "true",
+        redact_locations: Optional[str] = "true",
+        redact_dates: Optional[str] = "true",
         redact_gender: Optional[str] = "true",
         expiry_time: Optional[datetime.datetime] = None,
         **kwargs,
@@ -13709,19 +14027,19 @@ class RedactedResumeRequestBody(msrest.serialization.Model):
          processing is complete.
         :paramtype wait: bool
         :keyword redact_headshot: Whether to redact headshot.
-        :paramtype redact_headshot: bool
+        :paramtype redact_headshot: str
         :keyword redact_personal_details: Whether to redact personal details (e.g. name, address).
-        :paramtype redact_personal_details: bool
+        :paramtype redact_personal_details: str
         :keyword redact_work_details: Whether to redact work details (e.g. company names).
-        :paramtype redact_work_details: bool
+        :paramtype redact_work_details: str
         :keyword redact_education_details: Whether to redact education details (e.g. university names).
-        :paramtype redact_education_details: bool
+        :paramtype redact_education_details: str
         :keyword redact_referees: Whether to redact referee details.
-        :paramtype redact_referees: bool
+        :paramtype redact_referees: str
         :keyword redact_locations: Whether to redact location names.
-        :paramtype redact_locations: bool
+        :paramtype redact_locations: str
         :keyword redact_dates: Whether to redact dates.
-        :paramtype redact_dates: bool
+        :paramtype redact_dates: str
         :keyword redact_gender: Whether to redact gender.
         :paramtype redact_gender: str
         :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
@@ -14705,6 +15023,8 @@ class ResumeSearchConfig(msrest.serialization.Model):
     :vartype user_id: int
     :ivar username: Username of the logged in user.
     :vartype username: str
+    :ivar actions: A list of actions to show in the dropdown in the embedded search tool.
+    :vartype actions: list[~affinda.models.ResumeSearchConfigActionsItem]
     """
 
     _validation = {
@@ -14737,6 +15057,7 @@ class ResumeSearchConfig(msrest.serialization.Model):
         "search_tool_theme": {"key": "searchToolTheme", "type": "{object}"},
         "user_id": {"key": "userId", "type": "int"},
         "username": {"key": "username", "type": "str"},
+        "actions": {"key": "actions", "type": "[ResumeSearchConfigActionsItem]"},
     }
 
     def __init__(
@@ -14764,6 +15085,7 @@ class ResumeSearchConfig(msrest.serialization.Model):
         weight_keywords: Optional[float] = None,
         indices: Optional[List[str]] = None,
         search_tool_theme: Optional[Dict[str, Any]] = None,
+        actions: Optional[List["_models.ResumeSearchConfigActionsItem"]] = None,
         **kwargs,
     ):
         """
@@ -14812,6 +15134,8 @@ class ResumeSearchConfig(msrest.serialization.Model):
         :paramtype indices: list[str]
         :keyword search_tool_theme: Customize the theme of the embeded search tool.
         :paramtype search_tool_theme: dict[str, any]
+        :keyword actions: A list of actions to show in the dropdown in the embedded search tool.
+        :paramtype actions: list[~affinda.models.ResumeSearchConfigActionsItem]
         """
         super(ResumeSearchConfig, self).__init__(**kwargs)
         self.allow_pdf_download = allow_pdf_download
@@ -14838,6 +15162,33 @@ class ResumeSearchConfig(msrest.serialization.Model):
         self.search_tool_theme = search_tool_theme
         self.user_id = None
         self.username = None
+        self.actions = actions
+
+
+class ResumeSearchConfigActionsItem(msrest.serialization.Model):
+    """ResumeSearchConfigActionsItem.
+
+    :ivar label: Human readable label to display in the UI.
+    :vartype label: str
+    :ivar event_name: Name of the event to be triggered.
+    :vartype event_name: str
+    """
+
+    _attribute_map = {
+        "label": {"key": "label", "type": "str"},
+        "event_name": {"key": "eventName", "type": "str"},
+    }
+
+    def __init__(self, *, label: Optional[str] = None, event_name: Optional[str] = None, **kwargs):
+        """
+        :keyword label: Human readable label to display in the UI.
+        :paramtype label: str
+        :keyword event_name: Name of the event to be triggered.
+        :paramtype event_name: str
+        """
+        super(ResumeSearchConfigActionsItem, self).__init__(**kwargs)
+        self.label = label
+        self.event_name = event_name
 
 
 class ResumeSearchDetail(msrest.serialization.Model):
@@ -16192,8 +16543,8 @@ class ResumeSearchParametersCustomData(msrest.serialization.Model):
     :vartype filter_type: str or ~affinda.models.ResumeSearchParametersCustomDataFilterType
     :ivar data_point: Required.
     :vartype data_point: str
-    :ivar query: Required. "equals" searches require the "value" key inside the query, and "range"
-     searches require at least one of "gte" (greater than or equal) and "lte" (less than or equal).
+    :ivar query: Required. 'equals' searches require the 'value' key inside the query, and 'range'
+     searches require at least one of 'gte' (greater than or equal) and 'lte' (less than or equal).
     :vartype query: any
     :ivar required:
     :vartype required: bool
@@ -16231,8 +16582,8 @@ class ResumeSearchParametersCustomData(msrest.serialization.Model):
         :paramtype filter_type: str or ~affinda.models.ResumeSearchParametersCustomDataFilterType
         :keyword data_point: Required.
         :paramtype data_point: str
-        :keyword query: Required. "equals" searches require the "value" key inside the query, and
-         "range" searches require at least one of "gte" (greater than or equal) and "lte" (less than or
+        :keyword query: Required. 'equals' searches require the 'value' key inside the query, and
+         'range' searches require at least one of 'gte' (greater than or equal) and 'lte' (less than or
          equal).
         :paramtype query: any
         :keyword required:
@@ -16507,7 +16858,8 @@ class ResumeSkillSourcesItem(msrest.serialization.Model):
     :ivar section: Known values are: "Achievements", "AdditionalInformation", "Education",
      "Extracurriculars", "Organisations", "Other", "PersonalDetails", "Projects", "Publications",
      "Referees", "Skills", "Summary", "Training", "WorkExperience", "NotPopulated", "Header",
-     "Footer".
+     "Footer", "Skills/Interests/Languages", "Training/Certifications",
+     "Extracurriculars/Leadership".
     :vartype section: str or ~affinda.models.ResumeSkillSourcesItemSection
     :ivar position:
     :vartype position: int
@@ -16529,7 +16881,8 @@ class ResumeSkillSourcesItem(msrest.serialization.Model):
         :keyword section: Known values are: "Achievements", "AdditionalInformation", "Education",
          "Extracurriculars", "Organisations", "Other", "PersonalDetails", "Projects", "Publications",
          "Referees", "Skills", "Summary", "Training", "WorkExperience", "NotPopulated", "Header",
-         "Footer".
+         "Footer", "Skills/Interests/Languages", "Training/Certifications",
+         "Extracurriculars/Leadership".
         :paramtype section: str or ~affinda.models.ResumeSkillSourcesItemSection
         :keyword position:
         :paramtype position: int
@@ -16688,8 +17041,8 @@ class SearchExpressionSearchScoreComponent(msrest.serialization.Model):
         self.score = score
 
 
-class SkillAnnotation(Annotation):
-    """SkillAnnotation.
+class SkillAnnotationV2(AnnotationV2):
+    """SkillAnnotationV2.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -16720,7 +17073,7 @@ class SkillAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -16740,7 +17093,6 @@ class SkillAnnotation(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -16776,9 +17128,9 @@ class SkillAnnotation(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
         parsed: Optional[str] = None,
         **kwargs,
     ):
@@ -16810,14 +17162,14 @@ class SkillAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(SkillAnnotation, self).__init__(
+        super(SkillAnnotationV2, self).__init__(
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
@@ -17512,8 +17864,8 @@ class WorkspaceUpdate(msrest.serialization.Model):
         self.reject_invalid_documents = reject_invalid_documents
 
 
-class YearsExperienceAnnotation(Annotation):
-    """YearsExperienceAnnotation.
+class YearsExperienceAnnotationV2(AnnotationV2):
+    """YearsExperienceAnnotationV2.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -17544,12 +17896,12 @@ class YearsExperienceAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point:
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
     :ivar parsed: Years of experience range.
-    :vartype parsed: ~affinda.models.YearsExperienceAnnotationParsed
+    :vartype parsed: ~affinda.models.YearsExperienceAnnotationV2Parsed
     """
 
     _validation = {
@@ -17564,7 +17916,6 @@ class YearsExperienceAnnotation(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -17583,7 +17934,7 @@ class YearsExperienceAnnotation(Annotation):
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
-        "parsed": {"key": "parsed", "type": "YearsExperienceAnnotationParsed"},
+        "parsed": {"key": "parsed", "type": "YearsExperienceAnnotationV2Parsed"},
     }
 
     def __init__(
@@ -17600,10 +17951,10 @@ class YearsExperienceAnnotation(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: str,
         additional_properties: Optional[Dict[str, Any]] = None,
-        parsed: Optional["_models.YearsExperienceAnnotationParsed"] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional["_models.YearsExperienceAnnotationV2Parsed"] = None,
         **kwargs,
     ):
         """
@@ -17634,14 +17985,14 @@ class YearsExperienceAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point:
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
         :keyword parsed: Years of experience range.
-        :paramtype parsed: ~affinda.models.YearsExperienceAnnotationParsed
+        :paramtype parsed: ~affinda.models.YearsExperienceAnnotationV2Parsed
         """
-        super(YearsExperienceAnnotation, self).__init__(
+        super(YearsExperienceAnnotationV2, self).__init__(
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
@@ -17661,7 +18012,7 @@ class YearsExperienceAnnotation(Annotation):
         self.parsed = parsed
 
 
-class YearsExperienceAnnotationParsed(msrest.serialization.Model):
+class YearsExperienceAnnotationV2Parsed(msrest.serialization.Model):
     """Years of experience range.
 
     :ivar minimum: Minimum years of experience.
@@ -17684,6 +18035,6 @@ class YearsExperienceAnnotationParsed(msrest.serialization.Model):
         :keyword maximum: Maximum years of experience.
         :paramtype maximum: float
         """
-        super(YearsExperienceAnnotationParsed, self).__init__(**kwargs)
+        super(YearsExperienceAnnotationV2Parsed, self).__init__(**kwargs)
         self.minimum = minimum
         self.maximum = maximum

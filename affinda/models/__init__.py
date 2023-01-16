@@ -7,6 +7,7 @@
 try:
     from ._models_py3 import Accreditation
     from ._models_py3 import Annotation
+    from ._models_py3 import AnnotationV2
     from ._models_py3 import BaseExtractor
     from ._models_py3 import Collection
     from ._models_py3 import CollectionCreate
@@ -79,6 +80,7 @@ try:
     from ._models_py3 import DataPointCreate
     from ._models_py3 import DataPointUpdate
     from ._models_py3 import DateAnnotation
+    from ._models_py3 import DateAnnotationV2
     from ._models_py3 import Document
     from ._models_py3 import DocumentCreate
     from ._models_py3 import DocumentMeta
@@ -92,10 +94,10 @@ try:
     from ._models_py3 import EducationDates
     from ._models_py3 import EducationGrade
     from ._models_py3 import EducationSearchScoreComponent
-    from ._models_py3 import EnumAnnotationSerializer
+    from ._models_py3 import EnumAnnotationSerializerV2
     from ._models_py3 import Error
-    from ._models_py3 import ExpectedRemunerationAnnotation
-    from ._models_py3 import ExpectedRemunerationAnnotationParsed
+    from ._models_py3 import ExpectedRemunerationAnnotationV2
+    from ._models_py3 import ExpectedRemunerationAnnotationV2Parsed
     from ._models_py3 import ExperienceSearchScoreComponent
     from ._models_py3 import Extractor
     from ._models_py3 import ExtractorBaseExtractor
@@ -107,6 +109,7 @@ try:
     from ._models_py3 import FieldGroups
     from ._models_py3 import Get200ApplicationJsonPropertiesItemsItem
     from ._models_py3 import GetAllDocumentsResults
+    from ._models_py3 import GetAllDocumentsResultsV2
     from ._models_py3 import GetAllInvoicesResults
     from ._models_py3 import GetAllJobDescriptionsResults
     from ._models_py3 import IndexRequestBody
@@ -177,11 +180,11 @@ try:
     from ._models_py3 import JobTitleAnnotationParsed
     from ._models_py3 import JobTitleAnnotationParsedClassification
     from ._models_py3 import JobTitleSearchScoreComponent
-    from ._models_py3 import LanguageAnnotation
+    from ._models_py3 import LanguageAnnotationV2
     from ._models_py3 import LanguagesSearchScoreComponent
     from ._models_py3 import ListResult
     from ._models_py3 import Location
-    from ._models_py3 import LocationAnnotation
+    from ._models_py3 import LocationAnnotationV2
     from ._models_py3 import LocationSearchScoreComponent
     from ._models_py3 import ManagementLevelSearchScoreComponent
     from ._models_py3 import Meta
@@ -197,45 +200,45 @@ try:
     from ._models_py3 import PageMeta
     from ._models_py3 import PaginatedResponse
     from ._models_py3 import (
-        Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1,
+        Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema,
     )
-    from ._models_py3 import Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema
+    from ._models_py3 import Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema
     from ._models_py3 import (
-        Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1,
-    )
-    from ._models_py3 import (
-        Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema,
-    )
-    from ._models_py3 import Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema
-    from ._models_py3 import (
-        PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema,
+        Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema,
     )
     from ._models_py3 import (
-        PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema,
+        Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems,
+    )
+    from ._models_py3 import Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema
+    from ._models_py3 import (
+        Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1,
     )
     from ._models_py3 import (
-        PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema,
+        Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1,
+    )
+    from ._models_py3 import Paths9K2ZxlV3UsersGetResponses200ContentApplicationJsonSchema
+    from ._models_py3 import (
+        PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema,
     )
     from ._models_py3 import (
-        PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema,
+        PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema,
+    )
+    from ._models_py3 import PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema
+    from ._models_py3 import (
+        PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema,
     )
     from ._models_py3 import (
-        PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema,
+        PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1,
     )
     from ._models_py3 import (
-        PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems,
+        PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema,
     )
     from ._models_py3 import (
-        PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema,
+        PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema,
     )
     from ._models_py3 import (
-        PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1,
+        PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema,
     )
-    from ._models_py3 import (
-        PathsW51LnrInvitationsTokenPatchRequestbodyContentApplicationJsonSchema,
-    )
-    from ._models_py3 import PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema
-    from ._models_py3 import PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema
     from ._models_py3 import Rectangle
     from ._models_py3 import RedactedResume
     from ._models_py3 import RedactedResumeData
@@ -255,6 +258,7 @@ try:
     from ._models_py3 import ResumeRequestBody
     from ._models_py3 import ResumeSearch
     from ._models_py3 import ResumeSearchConfig
+    from ._models_py3 import ResumeSearchConfigActionsItem
     from ._models_py3 import ResumeSearchDetail
     from ._models_py3 import ResumeSearchDetailEducation
     from ._models_py3 import ResumeSearchDetailEducationMissing
@@ -285,12 +289,12 @@ try:
     from ._models_py3 import ResumeSkillSourcesItem
     from ._models_py3 import RowAnnotation
     from ._models_py3 import SearchExpressionSearchScoreComponent
-    from ._models_py3 import SkillAnnotation
+    from ._models_py3 import SkillAnnotationV2
     from ._models_py3 import SkillsSearchScoreComponent
     from ._models_py3 import Tag
     from ._models_py3 import TagCreate
     from ._models_py3 import TagUpdate
-    from ._models_py3 import TextAnnotation
+    from ._models_py3 import TextAnnotationV2
     from ._models_py3 import User
     from ._models_py3 import UserCreateRequest
     from ._models_py3 import UserCreateResponse
@@ -301,11 +305,12 @@ try:
     from ._models_py3 import WorkspaceMembership
     from ._models_py3 import WorkspaceMembershipCreate
     from ._models_py3 import WorkspaceUpdate
-    from ._models_py3 import YearsExperienceAnnotation
-    from ._models_py3 import YearsExperienceAnnotationParsed
+    from ._models_py3 import YearsExperienceAnnotationV2
+    from ._models_py3 import YearsExperienceAnnotationV2Parsed
 except (SyntaxError, ImportError):
     from ._models import Accreditation  # type: ignore
     from ._models import Annotation  # type: ignore
+    from ._models import AnnotationV2  # type: ignore
     from ._models import BaseExtractor  # type: ignore
     from ._models import Collection  # type: ignore
     from ._models import CollectionCreate  # type: ignore
@@ -354,6 +359,7 @@ except (SyntaxError, ImportError):
     from ._models import DataPointCreate  # type: ignore
     from ._models import DataPointUpdate  # type: ignore
     from ._models import DateAnnotation  # type: ignore
+    from ._models import DateAnnotationV2  # type: ignore
     from ._models import Document  # type: ignore
     from ._models import DocumentCreate  # type: ignore
     from ._models import DocumentMeta  # type: ignore
@@ -367,10 +373,10 @@ except (SyntaxError, ImportError):
     from ._models import EducationDates  # type: ignore
     from ._models import EducationGrade  # type: ignore
     from ._models import EducationSearchScoreComponent  # type: ignore
-    from ._models import EnumAnnotationSerializer  # type: ignore
+    from ._models import EnumAnnotationSerializerV2  # type: ignore
     from ._models import Error  # type: ignore
-    from ._models import ExpectedRemunerationAnnotation  # type: ignore
-    from ._models import ExpectedRemunerationAnnotationParsed  # type: ignore
+    from ._models import ExpectedRemunerationAnnotationV2  # type: ignore
+    from ._models import ExpectedRemunerationAnnotationV2Parsed  # type: ignore
     from ._models import ExperienceSearchScoreComponent  # type: ignore
     from ._models import Extractor  # type: ignore
     from ._models import ExtractorBaseExtractor  # type: ignore
@@ -382,6 +388,7 @@ except (SyntaxError, ImportError):
     from ._models import FieldGroups  # type: ignore
     from ._models import Get200ApplicationJsonPropertiesItemsItem  # type: ignore
     from ._models import GetAllDocumentsResults  # type: ignore
+    from ._models import GetAllDocumentsResultsV2  # type: ignore
     from ._models import GetAllInvoicesResults  # type: ignore
     from ._models import GetAllJobDescriptionsResults  # type: ignore
     from ._models import IndexRequestBody  # type: ignore
@@ -452,11 +459,11 @@ except (SyntaxError, ImportError):
     from ._models import JobTitleAnnotationParsed  # type: ignore
     from ._models import JobTitleAnnotationParsedClassification  # type: ignore
     from ._models import JobTitleSearchScoreComponent  # type: ignore
-    from ._models import LanguageAnnotation  # type: ignore
+    from ._models import LanguageAnnotationV2  # type: ignore
     from ._models import LanguagesSearchScoreComponent  # type: ignore
     from ._models import ListResult  # type: ignore
     from ._models import Location  # type: ignore
-    from ._models import LocationAnnotation  # type: ignore
+    from ._models import LocationAnnotationV2  # type: ignore
     from ._models import LocationSearchScoreComponent  # type: ignore
     from ._models import ManagementLevelSearchScoreComponent  # type: ignore
     from ._models import Meta  # type: ignore
@@ -471,22 +478,22 @@ except (SyntaxError, ImportError):
     from ._models import OrganizationUpdate  # type: ignore
     from ._models import PageMeta  # type: ignore
     from ._models import PaginatedResponse  # type: ignore
-    from ._models import Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
-    from ._models import Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema  # type: ignore
-    from ._models import Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
-    from ._models import Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema  # type: ignore
-    from ._models import Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema  # type: ignore
-    from ._models import PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema  # type: ignore
-    from ._models import PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema  # type: ignore
-    from ._models import PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema  # type: ignore
-    from ._models import PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema  # type: ignore
-    from ._models import PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema  # type: ignore
-    from ._models import PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems  # type: ignore
-    from ._models import PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema  # type: ignore
-    from ._models import PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
-    from ._models import PathsW51LnrInvitationsTokenPatchRequestbodyContentApplicationJsonSchema  # type: ignore
-    from ._models import PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema  # type: ignore
-    from ._models import PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema  # type: ignore
+    from ._models import Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema  # type: ignore
+    from ._models import Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema  # type: ignore
+    from ._models import Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema  # type: ignore
+    from ._models import Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems  # type: ignore
+    from ._models import Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema  # type: ignore
+    from ._models import Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
+    from ._models import Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
+    from ._models import Paths9K2ZxlV3UsersGetResponses200ContentApplicationJsonSchema  # type: ignore
+    from ._models import PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema  # type: ignore
+    from ._models import PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema  # type: ignore
+    from ._models import PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema  # type: ignore
+    from ._models import PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema  # type: ignore
+    from ._models import PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
+    from ._models import PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema  # type: ignore
+    from ._models import PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema  # type: ignore
+    from ._models import PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import Rectangle  # type: ignore
     from ._models import RedactedResume  # type: ignore
     from ._models import RedactedResumeData  # type: ignore
@@ -506,6 +513,7 @@ except (SyntaxError, ImportError):
     from ._models import ResumeRequestBody  # type: ignore
     from ._models import ResumeSearch  # type: ignore
     from ._models import ResumeSearchConfig  # type: ignore
+    from ._models import ResumeSearchConfigActionsItem  # type: ignore
     from ._models import ResumeSearchDetail  # type: ignore
     from ._models import ResumeSearchDetailEducation  # type: ignore
     from ._models import ResumeSearchDetailEducationMissing  # type: ignore
@@ -536,12 +544,12 @@ except (SyntaxError, ImportError):
     from ._models import ResumeSkillSourcesItem  # type: ignore
     from ._models import RowAnnotation  # type: ignore
     from ._models import SearchExpressionSearchScoreComponent  # type: ignore
-    from ._models import SkillAnnotation  # type: ignore
+    from ._models import SkillAnnotationV2  # type: ignore
     from ._models import SkillsSearchScoreComponent  # type: ignore
     from ._models import Tag  # type: ignore
     from ._models import TagCreate  # type: ignore
     from ._models import TagUpdate  # type: ignore
-    from ._models import TextAnnotation  # type: ignore
+    from ._models import TextAnnotationV2  # type: ignore
     from ._models import User  # type: ignore
     from ._models import UserCreateRequest  # type: ignore
     from ._models import UserCreateResponse  # type: ignore
@@ -552,8 +560,8 @@ except (SyntaxError, ImportError):
     from ._models import WorkspaceMembership  # type: ignore
     from ._models import WorkspaceMembershipCreate  # type: ignore
     from ._models import WorkspaceUpdate  # type: ignore
-    from ._models import YearsExperienceAnnotation  # type: ignore
-    from ._models import YearsExperienceAnnotationParsed  # type: ignore
+    from ._models import YearsExperienceAnnotationV2  # type: ignore
+    from ._models import YearsExperienceAnnotationV2Parsed  # type: ignore
 
 from ._affinda_api_enums import (
     AnnotationContentType,
@@ -584,6 +592,7 @@ from ._patch import patch_sdk as _patch_sdk
 __all__ = [
     "Accreditation",
     "Annotation",
+    "AnnotationV2",
     "BaseExtractor",
     "Collection",
     "CollectionCreate",
@@ -632,6 +641,7 @@ __all__ = [
     "DataPointCreate",
     "DataPointUpdate",
     "DateAnnotation",
+    "DateAnnotationV2",
     "Document",
     "DocumentCreate",
     "DocumentMeta",
@@ -645,10 +655,10 @@ __all__ = [
     "EducationDates",
     "EducationGrade",
     "EducationSearchScoreComponent",
-    "EnumAnnotationSerializer",
+    "EnumAnnotationSerializerV2",
     "Error",
-    "ExpectedRemunerationAnnotation",
-    "ExpectedRemunerationAnnotationParsed",
+    "ExpectedRemunerationAnnotationV2",
+    "ExpectedRemunerationAnnotationV2Parsed",
     "ExperienceSearchScoreComponent",
     "Extractor",
     "ExtractorBaseExtractor",
@@ -660,6 +670,7 @@ __all__ = [
     "FieldGroups",
     "Get200ApplicationJsonPropertiesItemsItem",
     "GetAllDocumentsResults",
+    "GetAllDocumentsResultsV2",
     "GetAllInvoicesResults",
     "GetAllJobDescriptionsResults",
     "IndexRequestBody",
@@ -730,11 +741,11 @@ __all__ = [
     "JobTitleAnnotationParsed",
     "JobTitleAnnotationParsedClassification",
     "JobTitleSearchScoreComponent",
-    "LanguageAnnotation",
+    "LanguageAnnotationV2",
     "LanguagesSearchScoreComponent",
     "ListResult",
     "Location",
-    "LocationAnnotation",
+    "LocationAnnotationV2",
     "LocationSearchScoreComponent",
     "ManagementLevelSearchScoreComponent",
     "Meta",
@@ -749,22 +760,22 @@ __all__ = [
     "OrganizationUpdate",
     "PageMeta",
     "PaginatedResponse",
-    "Paths171Dpm5OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1",
-    "Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema",
-    "Paths1Vlpqy9WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1",
-    "Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema",
-    "Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema",
-    "PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema",
-    "PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema",
-    "PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema",
-    "PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema",
-    "PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema",
-    "PathsHryo8IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems",
-    "PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema",
-    "PathsSnpek6InvitationsGetResponses200ContentApplicationJsonSchemaAllof1",
-    "PathsW51LnrInvitationsTokenPatchRequestbodyContentApplicationJsonSchema",
-    "PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema",
-    "PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema",
+    "Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema",
+    "Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema",
+    "Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema",
+    "Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems",
+    "Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema",
+    "Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1",
+    "Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1",
+    "Paths9K2ZxlV3UsersGetResponses200ContentApplicationJsonSchema",
+    "PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema",
+    "PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema",
+    "PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema",
+    "PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema",
+    "PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1",
+    "PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema",
+    "PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema",
+    "PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema",
     "Rectangle",
     "RedactedResume",
     "RedactedResumeData",
@@ -784,6 +795,7 @@ __all__ = [
     "ResumeRequestBody",
     "ResumeSearch",
     "ResumeSearchConfig",
+    "ResumeSearchConfigActionsItem",
     "ResumeSearchDetail",
     "ResumeSearchDetailEducation",
     "ResumeSearchDetailEducationMissing",
@@ -814,12 +826,12 @@ __all__ = [
     "ResumeSkillSourcesItem",
     "RowAnnotation",
     "SearchExpressionSearchScoreComponent",
-    "SkillAnnotation",
+    "SkillAnnotationV2",
     "SkillsSearchScoreComponent",
     "Tag",
     "TagCreate",
     "TagUpdate",
-    "TextAnnotation",
+    "TextAnnotationV2",
     "User",
     "UserCreateRequest",
     "UserCreateResponse",
@@ -830,8 +842,8 @@ __all__ = [
     "WorkspaceMembership",
     "WorkspaceMembershipCreate",
     "WorkspaceUpdate",
-    "YearsExperienceAnnotation",
-    "YearsExperienceAnnotationParsed",
+    "YearsExperienceAnnotationV2",
+    "YearsExperienceAnnotationV2Parsed",
     "AnnotationContentType",
     "CollectionDateFormatPreference",
     "DateFormatPreference",

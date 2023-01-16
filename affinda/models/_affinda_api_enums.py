@@ -156,6 +156,9 @@ class ResumeSkillSourcesItemSection(str, Enum, metaclass=CaseInsensitiveEnumMeta
     NOT_POPULATED = "NotPopulated"
     HEADER = "Header"
     FOOTER = "Footer"
+    SKILLS_INTERESTS_LANGUAGES = "Skills/Interests/Languages"
+    TRAINING_CERTIFICATIONS = "Training/Certifications"
+    EXTRACURRICULARS_LEADERSHIP = "Extracurriculars/Leadership"
 
 
 class SearchLocationUnit(str, Enum, metaclass=CaseInsensitiveEnumMeta):

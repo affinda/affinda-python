@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Add document.collection.extractor.identifier to DocumentMeta
+
+### Changed
+- Updated endpoints for old v2 and newer v3 to point to the correct places.
 
 ## [2.0.0] - 2023-01-13
 ### Added
@@ -25,7 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Allow writing resthookSignatureKey
 
 ## [1.9.0] - 2023-01-12
-- Yanked as this was a breaking release, see newer release for more info
+* Yanked as this was a breaking release, see newer release for more info
 
 ## [1.8.0] - 2023-01-12
 ### Changed

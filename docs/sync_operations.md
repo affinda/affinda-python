@@ -15,7 +15,7 @@ Affinda API client for Python.
 **Arguments**:
 
 - `credential` (`~azure.core.credentials.TokenCredential`): Credential needed for the client to connect to Azure.
-- `base_url` (`str`): Service URL. Default value is "https://api.affinda.com/v2".
+- `base_url` (`str`): Service URL. Default value is "https://api.affinda.com".
 
 <a id="operations._affinda_api_operations"></a>
 
@@ -54,7 +54,7 @@ Default value is None.
 
 **Returns**:
 
-`~affinda.models.GetAllDocumentsResults`: GetAllDocumentsResults, or the result of cls(response)
+`~affinda.models.GetAllDocumentsResultsV2`: GetAllDocumentsResultsV2, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resume"></a>
 
@@ -202,14 +202,14 @@ Default value is None.
 
 **Returns**:
 
-`~affinda.models.GetAllDocumentsResults`: GetAllDocumentsResults, or the result of cls(response)
+`~affinda.models.GetAllDocumentsResultsV2`: GetAllDocumentsResultsV2, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_redacted_resume"></a>
 
 #### create\_redacted\_resume
 
 ```python
-def create_redacted_resume(file=None, identifier=None, file_name=None, url=None, language=None, wait=True, redact_headshot=True, redact_personal_details=True, redact_work_details=True, redact_education_details=True, redact_referees=True, redact_locations=True, redact_dates=True, redact_gender="true", expiry_time=None, **kwargs)
+def create_redacted_resume(file=None, identifier=None, file_name=None, url=None, language=None, wait=True, redact_headshot="true", redact_personal_details="true", redact_work_details="true", redact_education_details="true", redact_referees="true", redact_locations="true", redact_dates="true", redact_gender="true", expiry_time=None, **kwargs)
 ```
 
 Upload a resume for redacting.
@@ -224,16 +224,16 @@ Uploads a resume for redacting.
 - `url` (`str`): Default value is None.
 - `language` (`str`): Default value is None.
 - `wait` (`bool`): Default value is True.
-- `redact_headshot` (`bool`): Whether to redact headshot. Default value is True.
-- `redact_personal_details` (`bool`): Whether to redact personal details (e.g. name, address).
-Default value is True.
-- `redact_work_details` (`bool`): Whether to redact work details (e.g. company names). Default value
-is True.
-- `redact_education_details` (`bool`): Whether to redact education details (e.g. university names).
-Default value is True.
-- `redact_referees` (`bool`): Whether to redact referee details. Default value is True.
-- `redact_locations` (`bool`): Whether to redact location names. Default value is True.
-- `redact_dates` (`bool`): Whether to redact dates. Default value is True.
+- `redact_headshot` (`str`): Whether to redact headshot. Default value is "true".
+- `redact_personal_details` (`str`): Whether to redact personal details (e.g. name, address).
+Default value is "true".
+- `redact_work_details` (`str`): Whether to redact work details (e.g. company names). Default value
+is "true".
+- `redact_education_details` (`str`): Whether to redact education details (e.g. university names).
+Default value is "true".
+- `redact_referees` (`str`): Whether to redact referee details. Default value is "true".
+- `redact_locations` (`str`): Whether to redact location names. Default value is "true".
+- `redact_dates` (`str`): Whether to redact dates. Default value is "true".
 - `redact_gender` (`str`): Whether to redact gender. Default value is "true".
 - `expiry_time` (`~datetime.datetime`): Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
@@ -298,26 +298,20 @@ Deletes the specified resume from the database.
 
 `None`: None, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resume_search"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_invoices"></a>
 
-#### create\_resume\_search
+#### get\_all\_invoices
 
 ```python
-def create_resume_search(body, offset=None, limit=300, **kwargs)
+def get_all_invoices(offset=None, limit=300, **kwargs)
 ```
 
-Search through parsed resumes.
+Get list of all invoices.
 
-Searches through parsed resumes. Users have 3 options to create a search::code:`<br
-/>`:code:`<br />` 1.    Match to a job description - a parsed job description is used to find
-candidates that suit it:code:`<br />` 2.  Match to a resume - a parsed resume is used to find
-other candidates that have similar attributes:code:`<br />` 3.  Search using custom
-criteria:code:`<br />`:code:`<br />` Users should only populate 1 of jobDescription, resume or
-the custom criteria.
+Returns all the invoice summaries for that user, limited to 300 per page.
 
 **Arguments**:
 
-- `body` (`~affinda.models.ResumeSearchParameters`): Search parameters.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
@@ -329,27 +323,33 @@ Default value is None.
 
 **Returns**:
 
-`~affinda.models.ResumeSearch`: ResumeSearch, or the result of cls(response)
+`~affinda.models.GetAllInvoicesResults`: GetAllInvoicesResults, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_detail"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_invoice"></a>
 
-#### get\_resume\_search\_detail
+#### create\_invoice
 
 ```python
-def get_resume_search_detail(identifier, body, **kwargs)
+def create_invoice(file=None, url=None, identifier=None, file_name=None, wait=True, reject_duplicates=False, language=None, expiry_time=None, **kwargs)
 ```
 
-Get search result of specific resume.
+Upload an invoice for parsing.
 
-This contains more detailed information about the matching score of the search criteria, or
-which search criteria is missing in this resume.
-The ``identifier`` is the unique ID returned via the `/resume_search <#post-/resume_search>`_
-endpoint.
+Uploads an invoice for parsing.
+When successful, returns an ``identifier`` in the response for subsequent use with the
+`/invoices/{identifier} <#get-/invoices/-identifier->`_ endpoint to check processing status and
+retrieve results.
 
 **Arguments**:
 
-- `identifier` (`str`): Resume identifier.
-- `body` (`~affinda.models.ResumeSearchParameters`): Search parameters.
+- `file` (`IO`): Default value is None.
+- `url` (`str`): Default value is None.
+- `identifier` (`str`): Default value is None.
+- `file_name` (`str`): Default value is None.
+- `wait` (`bool`): Default value is True.
+- `reject_duplicates` (`bool`): Default value is False.
+- `language` (`str`): Default value is None.
+- `expiry_time` (`~datetime.datetime`): Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -358,48 +358,25 @@ endpoint.
 
 **Returns**:
 
-`~affinda.models.ResumeSearchDetail`: ResumeSearchDetail, or the result of cls(response)
+`~affinda.models.Invoice`: Invoice, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_match"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_invoice"></a>
 
-#### get\_resume\_search\_match
+#### get\_invoice
 
 ```python
-def get_resume_search_match(resume, job_description, index=None, search_expression=None, job_titles_weight=None, years_experience_weight=None, locations_weight=None, languages_weight=None, skills_weight=None, education_weight=None, search_expression_weight=None, soc_codes_weight=None, management_level_weight=None, **kwargs)
+def get_invoice(identifier, **kwargs)
 ```
 
-Match a single resume and job description.
+Get parse results for a specific invoice.
 
-Get the matching score between a resume and a job description. The score ranges between 0 and
-1, with 0 being not a match at all, and 1 being perfect match.:code:`<br/>` Note, this score
-will not directly match the score returned from POST `/resume_search/details/{identifier}
-<#post-/resume_search/details/-identifier->`_.
+Returns all the parse results for that invoice if processing is completed.
+The ``identifier`` is the unique ID returned after POST-ing the invoice via the `/invoices
+<#post-/invoices>`_ endpoint.
 
 **Arguments**:
 
-- `resume` (`str`): Identify the resume to match.
-- `job_description` (`str`): Identify the job description to match.
-- `index` (`str`): Optionally, specify an index to search in. If not specified, will search in all
-indexes. Default value is None.
-- `search_expression` (`str`): Add keywords to the search criteria. Default value is None.
-- `job_titles_weight` (`float`): How important is this criteria to the matching score, range from 0 to
-1. Default value is None.
-- `years_experience_weight` (`float`): How important is this criteria to the matching score, range
-from 0 to 1. Default value is None.
-- `locations_weight` (`float`): How important is this criteria to the matching score, range from 0 to
-1. Default value is None.
-- `languages_weight` (`float`): How important is this criteria to the matching score, range from 0 to
-1. Default value is None.
-- `skills_weight` (`float`): How important is this criteria to the matching score, range from 0 to 1.
-Default value is None.
-- `education_weight` (`float`): How important is this criteria to the matching score, range from 0 to
-1. Default value is None.
-- `search_expression_weight` (`float`): How important is this criteria to the matching score, range
-from 0 to 1. Default value is None.
-- `soc_codes_weight` (`float`): How important is this criteria to the matching score, range from 0 to
-1. Default value is None.
-- `management_level_weight` (`float`): How important is this criteria to the matching score, range
-from 0 to 1. Default value is None.
+- `identifier` (`str`): Document identifier.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -408,24 +385,24 @@ from 0 to 1. Default value is None.
 
 **Returns**:
 
-`~affinda.models.ResumeSearchMatch`: ResumeSearchMatch, or the result of cls(response)
+`~affinda.models.Invoice`: Invoice, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_config"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_invoice"></a>
 
-#### get\_resume\_search\_config
+#### delete\_invoice
 
 ```python
-def get_resume_search_config(**kwargs)
+def delete_invoice(identifier, **kwargs)
 ```
 
-Get the config for the logged in user's embeddable resume search tool.
+Delete an invoice.
 
-Return configurations such as which fields can be displayed in the logged in user's embeddable
-resume search tool, what are their weights, what is the maximum number of results that can be
-returned, etc.
+Delete the specified invoice from the database. Note, any invoices deleted from the database
+will no longer be used in any tailored customer models.
 
 **Arguments**:
 
+- `identifier` (`str`): Invoice identifier.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -434,111 +411,7 @@ returned, etc.
 
 **Returns**:
 
-`~affinda.models.ResumeSearchConfig`: ResumeSearchConfig, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_resume_search_config"></a>
-
-#### update\_resume\_search\_config
-
-```python
-def update_resume_search_config(body, **kwargs)
-```
-
-Update the config for the logged in user's embeddable resume search tool.
-
-Update configurations such as which fields can be displayed in the logged in user's embeddable
-resume search tool, what are their weights, what is the maximum number of results that can be
-returned, etc.
-
-**Arguments**:
-
-- `body` (`~affinda.models.ResumeSearchConfig`): 
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.ResumeSearchConfig`: ResumeSearchConfig, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resume_search_embed_url"></a>
-
-#### create\_resume\_search\_embed\_url
-
-```python
-def create_resume_search_embed_url(body=None, **kwargs)
-```
-
-Create a signed URL for the embeddable resume search tool.
-
-Create and return a signed URL of the resume search tool which then can be embedded on a web
-page. An optional parameter ``config_override`` can be passed to override the user-level
-configurations of the embeddable resume search tool.
-
-**Arguments**:
-
-- `body` (`~affinda.models.Paths2T1Oc0ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema`): Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.ResumeSearchEmbed`: ResumeSearchEmbed, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_suggestion_job_title"></a>
-
-#### get\_resume\_search\_suggestion\_job\_title
-
-```python
-def get_resume_search_suggestion_job_title(job_titles, **kwargs)
-```
-
-Get job title suggestions based on provided job title(s).
-
-Provided one or more job titles, get related suggestions for your search.
-
-**Arguments**:
-
-- `job_titles` (`list[str]`): Job title to query suggestions for.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`list[str]`: list of str, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_suggestion_skill"></a>
-
-#### get\_resume\_search\_suggestion\_skill
-
-```python
-def get_resume_search_suggestion_skill(skills, **kwargs)
-```
-
-Get skill suggestions based on provided skill(s).
-
-Provided one or more skills, get related suggestions for your search.
-
-**Arguments**:
-
-- `skills` (`list[str]`): Skill to query suggestions for.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`list[str]`: list of str, or the result of cls(response)
+`None`: None, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_job_descriptions"></a>
 
@@ -781,7 +654,7 @@ configurations of the embeddable search tool.
 
 **Arguments**:
 
-- `body` (`~affinda.models.PathsFqn8P8JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema`): Default value is None.
+- `body` (`~affinda.models.Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema`): Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -791,6 +664,248 @@ configurations of the embeddable search tool.
 **Returns**:
 
 `~affinda.models.JobDescriptionSearchEmbed`: JobDescriptionSearchEmbed, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resume_search"></a>
+
+#### create\_resume\_search
+
+```python
+def create_resume_search(body, offset=None, limit=300, **kwargs)
+```
+
+Search through parsed resumes.
+
+Searches through parsed resumes. Users have 3 options to create a search::code:`<br
+/>`:code:`<br />` 1.    Match to a job description - a parsed job description is used to find
+candidates that suit it:code:`<br />` 2.  Match to a resume - a parsed resume is used to find
+other candidates that have similar attributes:code:`<br />` 3.  Search using custom
+criteria:code:`<br />`:code:`<br />` Users should only populate 1 of jobDescription, resume or
+the custom criteria.
+
+**Arguments**:
+
+- `body` (`~affinda.models.ResumeSearchParameters`): Search parameters.
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ResumeSearch`: ResumeSearch, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_detail"></a>
+
+#### get\_resume\_search\_detail
+
+```python
+def get_resume_search_detail(identifier, body, **kwargs)
+```
+
+Get search result of specific resume.
+
+This contains more detailed information about the matching score of the search criteria, or
+which search criteria is missing in this resume.
+The ``identifier`` is the unique ID returned via the `/resume_search <#post-/resume_search>`_
+endpoint.
+
+**Arguments**:
+
+- `identifier` (`str`): Resume identifier.
+- `body` (`~affinda.models.ResumeSearchParameters`): Search parameters.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ResumeSearchDetail`: ResumeSearchDetail, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_match"></a>
+
+#### get\_resume\_search\_match
+
+```python
+def get_resume_search_match(resume, job_description, index=None, search_expression=None, job_titles_weight=None, years_experience_weight=None, locations_weight=None, languages_weight=None, skills_weight=None, education_weight=None, search_expression_weight=None, soc_codes_weight=None, management_level_weight=None, **kwargs)
+```
+
+Match a single resume and job description.
+
+Get the matching score between a resume and a job description. The score ranges between 0 and
+1, with 0 being not a match at all, and 1 being perfect match.:code:`<br/>` Note, this score
+will not directly match the score returned from POST `/resume_search/details/{identifier}
+<#post-/resume_search/details/-identifier->`_.
+
+**Arguments**:
+
+- `resume` (`str`): Identify the resume to match.
+- `job_description` (`str`): Identify the job description to match.
+- `index` (`str`): Optionally, specify an index to search in. If not specified, will search in all
+indexes. Default value is None.
+- `search_expression` (`str`): Add keywords to the search criteria. Default value is None.
+- `job_titles_weight` (`float`): How important is this criteria to the matching score, range from 0 to
+1. Default value is None.
+- `years_experience_weight` (`float`): How important is this criteria to the matching score, range
+from 0 to 1. Default value is None.
+- `locations_weight` (`float`): How important is this criteria to the matching score, range from 0 to
+1. Default value is None.
+- `languages_weight` (`float`): How important is this criteria to the matching score, range from 0 to
+1. Default value is None.
+- `skills_weight` (`float`): How important is this criteria to the matching score, range from 0 to 1.
+Default value is None.
+- `education_weight` (`float`): How important is this criteria to the matching score, range from 0 to
+1. Default value is None.
+- `search_expression_weight` (`float`): How important is this criteria to the matching score, range
+from 0 to 1. Default value is None.
+- `soc_codes_weight` (`float`): How important is this criteria to the matching score, range from 0 to
+1. Default value is None.
+- `management_level_weight` (`float`): How important is this criteria to the matching score, range
+from 0 to 1. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ResumeSearchMatch`: ResumeSearchMatch, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_config"></a>
+
+#### get\_resume\_search\_config
+
+```python
+def get_resume_search_config(**kwargs)
+```
+
+Get the config for the logged in user's embeddable resume search tool.
+
+Return configurations such as which fields can be displayed in the logged in user's embeddable
+resume search tool, what are their weights, what is the maximum number of results that can be
+returned, etc.
+
+**Arguments**:
+
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ResumeSearchConfig`: ResumeSearchConfig, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_resume_search_config"></a>
+
+#### update\_resume\_search\_config
+
+```python
+def update_resume_search_config(body, **kwargs)
+```
+
+Update the config for the logged in user's embeddable resume search tool.
+
+Update configurations such as which fields can be displayed in the logged in user's embeddable
+resume search tool, what are their weights, what is the maximum number of results that can be
+returned, etc.
+
+**Arguments**:
+
+- `body` (`~affinda.models.ResumeSearchConfig`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ResumeSearchConfig`: ResumeSearchConfig, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resume_search_embed_url"></a>
+
+#### create\_resume\_search\_embed\_url
+
+```python
+def create_resume_search_embed_url(body=None, **kwargs)
+```
+
+Create a signed URL for the embeddable resume search tool.
+
+Create and return a signed URL of the resume search tool which then can be embedded on a web
+page. An optional parameter ``config_override`` can be passed to override the user-level
+configurations of the embeddable resume search tool.
+
+**Arguments**:
+
+- `body` (`~affinda.models.Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema`): Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ResumeSearchEmbed`: ResumeSearchEmbed, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_suggestion_job_title"></a>
+
+#### get\_resume\_search\_suggestion\_job\_title
+
+```python
+def get_resume_search_suggestion_job_title(job_titles, **kwargs)
+```
+
+Get job title suggestions based on provided job title(s).
+
+Provided one or more job titles, get related suggestions for your search.
+
+**Arguments**:
+
+- `job_titles` (`list[str]`): Job title to query suggestions for.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[str]`: list of str, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_suggestion_skill"></a>
+
+#### get\_resume\_search\_suggestion\_skill
+
+```python
+def get_resume_search_suggestion_skill(skills, **kwargs)
+```
+
+Get skill suggestions based on provided skill(s).
+
+Provided one or more skills, get related suggestions for your search.
+
+**Arguments**:
+
+- `skills` (`list[str]`): Skill to query suggestions for.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[str]`: list of str, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_indexes"></a>
 
@@ -818,7 +933,7 @@ Default value is None.
 
 **Returns**:
 
-`~affinda.models.Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema`: Paths6Pypg5IndexGetResponses200ContentApplicationJsonSchema, or the result of
+`~affinda.models.PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema`: PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema, or the result of
 cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_index"></a>
@@ -845,7 +960,7 @@ Create an index for the search tool.
 
 **Returns**:
 
-`~affinda.models.Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema`: Paths1Mc0Je6IndexPostResponses201ContentApplicationJsonSchema, or the result of
+`~affinda.models.Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema`: Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema, or the result of
 cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_index"></a>
@@ -896,7 +1011,7 @@ Returns all the indexed documents for that index.
 
 **Returns**:
 
-`~affinda.models.PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema`: PathsRvverlIndexNameDocumentsGetResponses200ContentApplicationJsonSchema, or the
+`~affinda.models.PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema`: PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema, or the
 result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_index_document"></a>
@@ -914,7 +1029,7 @@ Create an indexed document for the search tool.
 **Arguments**:
 
 - `name` (`str`): Index name.
-- `body` (`~affinda.models.PathsGpptmIndexNameDocumentsPostRequestbodyContentApplicationJsonSchema`): Document to index.
+- `body` (`~affinda.models.PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema`): Document to index.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -923,7 +1038,7 @@ Create an indexed document for the search tool.
 
 **Returns**:
 
-`~affinda.models.PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema`: PathsCoo0XpIndexNameDocumentsPostResponses201ContentApplicationJsonSchema, or the
+`~affinda.models.PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema`: PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema, or the
 result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_index_document"></a>
@@ -942,121 +1057,6 @@ Delete the specified indexed document from the database.
 
 - `name` (`str`): Index name.
 - `identifier` (`str`): Document identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`None`: None, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_invoices"></a>
-
-#### get\_all\_invoices
-
-```python
-def get_all_invoices(offset=None, limit=300, **kwargs)
-```
-
-Get list of all invoices.
-
-Returns all the invoice summaries for that user, limited to 300 per page.
-
-**Arguments**:
-
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.GetAllInvoicesResults`: GetAllInvoicesResults, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_invoice"></a>
-
-#### create\_invoice
-
-```python
-def create_invoice(file=None, url=None, identifier=None, file_name=None, wait=True, reject_duplicates=False, language=None, expiry_time=None, **kwargs)
-```
-
-Upload an invoice for parsing.
-
-Uploads an invoice for parsing.
-When successful, returns an ``identifier`` in the response for subsequent use with the
-`/invoices/{identifier} <#get-/invoices/-identifier->`_ endpoint to check processing status and
-retrieve results.
-
-**Arguments**:
-
-- `file` (`IO`): Default value is None.
-- `url` (`str`): Default value is None.
-- `identifier` (`str`): Default value is None.
-- `file_name` (`str`): Default value is None.
-- `wait` (`bool`): Default value is True.
-- `reject_duplicates` (`bool`): Default value is False.
-- `language` (`str`): Default value is None.
-- `expiry_time` (`~datetime.datetime`): Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Invoice`: Invoice, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_invoice"></a>
-
-#### get\_invoice
-
-```python
-def get_invoice(identifier, **kwargs)
-```
-
-Get parse results for a specific invoice.
-
-Returns all the parse results for that invoice if processing is completed.
-The ``identifier`` is the unique ID returned after POST-ing the invoice via the `/invoices
-<#post-/invoices>`_ endpoint.
-
-**Arguments**:
-
-- `identifier` (`str`): Document identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Invoice`: Invoice, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_invoice"></a>
-
-#### delete\_invoice
-
-```python
-def delete_invoice(identifier, **kwargs)
-```
-
-Delete an invoice.
-
-Delete the specified invoice from the database. Note, any invoices deleted from the database
-will no longer be used in any tailored customer models.
-
-**Arguments**:
-
-- `identifier` (`str`): Invoice identifier.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1116,7 +1116,7 @@ Default value is None.
 
 **Returns**:
 
-`~affinda.models.PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema`: PathsWjaaeuUsersGetResponses200ContentApplicationJsonSchema, or the result of
+`~affinda.models.Paths9K2ZxlV3UsersGetResponses200ContentApplicationJsonSchema`: Paths9K2ZxlV3UsersGetResponses200ContentApplicationJsonSchema, or the result of
 cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_user"></a>
@@ -1303,8 +1303,8 @@ Default value is None.
 
 **Returns**:
 
-`~affinda.models.PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema`: PathsCkdzu3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema, or the
-result of cls(response)
+`~affinda.models.PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema`: PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema, or
+the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_organization_membership"></a>
 
@@ -1412,7 +1412,7 @@ Default value is None.
 
 **Returns**:
 
-`~affinda.models.PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema`: PathsZt2JhiInvitationsGetResponses200ContentApplicationJsonSchema, or the result of
+`~affinda.models.Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema`: Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema, or the result of
 cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_invitation"></a>
@@ -1557,7 +1557,7 @@ Choose to accept or decline an invitation.
 **Arguments**:
 
 - `token` (`str`): Invitation token.
-- `body` (`~affinda.models.PathsW51LnrInvitationsTokenPatchRequestbodyContentApplicationJsonSchema`): 
+- `body` (`~affinda.models.PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema`): 
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1986,7 +1986,7 @@ Default value is None.
 
 **Returns**:
 
-`~affinda.models.PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema`: PathsAdr1YhWorkspaceMembershipsGetResponses200ContentApplicationJsonSchema, or the
+`~affinda.models.PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema`: PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema, or the
 result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_workspace_membership"></a>
