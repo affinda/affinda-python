@@ -22,6 +22,11 @@ class AnnotationContentType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     JSON = "json"
     TABLE = "table"
     CELL = "cell"
+    EXPECTEDREMUNERATION = "expectedremuneration"
+    JOBTITLE = "jobtitle"
+    LANGUAGE = "language"
+    SKILL = "skill"
+    YEARSEXPERIENCE = "yearsexperience"
 
 
 class CollectionDateFormatPreference(str, Enum, metaclass=CaseInsensitiveEnumMeta):

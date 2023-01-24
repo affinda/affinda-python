@@ -1840,7 +1840,8 @@ class DataPoint(msrest.serialization.Model):
     :ivar description:
     :vartype description: str
     :ivar annotation_content_type: Required. Known values are: "text", "integer", "float",
-     "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell".
+     "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
+     "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience".
     :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
     :ivar organization:
     :vartype organization: ~affinda.models.Organization
@@ -1903,7 +1904,8 @@ class DataPoint(msrest.serialization.Model):
         :keyword description:
         :paramtype description: str
         :keyword annotation_content_type: Required. Known values are: "text", "integer", "float",
-         "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell".
+         "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
+         "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience".
         :paramtype annotation_content_type: str or ~affinda.models.AnnotationContentType
         :keyword organization:
         :paramtype organization: ~affinda.models.Organization
@@ -1970,7 +1972,8 @@ class DataPointCreate(msrest.serialization.Model):
     :ivar description:
     :vartype description: str
     :ivar annotation_content_type: Required. Known values are: "text", "integer", "float",
-     "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell".
+     "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
+     "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience".
     :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
     :ivar organization: Required. Uniquely identify an organization.
     :vartype organization: str
@@ -2021,7 +2024,8 @@ class DataPointCreate(msrest.serialization.Model):
         :keyword description:
         :paramtype description: str
         :keyword annotation_content_type: Required. Known values are: "text", "integer", "float",
-         "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell".
+         "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
+         "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience".
         :paramtype annotation_content_type: str or ~affinda.models.AnnotationContentType
         :keyword organization: Required. Uniquely identify an organization.
         :paramtype organization: str

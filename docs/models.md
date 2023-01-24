@@ -1487,7 +1487,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar description:
 :vartype description: str
 :ivar annotation_content_type: Required. Known values are: "text", "integer", "float",
- "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell".
+ "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
+ "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience".
 :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
 :ivar organization:
 :vartype organization: ~affinda.models.Organization
@@ -1517,7 +1518,8 @@ def __init__(**kwargs)
 - `slug`: 
 - `description`: 
 - `annotation_content_type`: Required. Known values are: "text", "integer", "float",
-"decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell".
+"decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
+"expectedremuneration", "jobtitle", "language", "skill", "yearsexperience".
 - `organization`: 
 - `extractor`: Required. Extractor's ID.
 - `multiple`: 
@@ -1571,7 +1573,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar description:
 :vartype description: str
 :ivar annotation_content_type: Required. Known values are: "text", "integer", "float",
- "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell".
+ "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
+ "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience".
 :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
 :ivar organization: Required. Uniquely identify an organization.
 :vartype organization: str
@@ -1596,7 +1599,8 @@ def __init__(**kwargs)
 - `slug`: Required.
 - `description`: 
 - `annotation_content_type`: Required. Known values are: "text", "integer", "float",
-"decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell".
+"decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
+"expectedremuneration", "jobtitle", "language", "skill", "yearsexperience".
 - `organization`: Required. Uniquely identify an organization.
 - `extractor`: Required. Extractor's ID.
 - `multiple`: 

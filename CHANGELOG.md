@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add cell to valid content types
 - Add EU API server to api docs
 - Add latitude and longtitude to Location
+- Add expectedremuneration, jobtitle, language, skill and yearsexperience to AnnotationContentType
 
 ### Changed
 - Updated endpoints for old v2 and newer v3 to point to the correct places.
