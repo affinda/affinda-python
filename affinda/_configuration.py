@@ -13,7 +13,7 @@ from ._version import VERSION
 
 if TYPE_CHECKING:
     # pylint: disable=unused-import,ungrouped-imports
-    from typing import Any
+    from typing import Any, Union
 
     from azure.core.credentials import TokenCredential
 
@@ -26,19 +26,25 @@ class AffindaAPIConfiguration(Configuration):  # pylint: disable=too-many-instan
 
     :param credential: Credential needed for the client to connect to Azure.
     :type credential: ~azure.core.credentials.TokenCredential
+    :param region: region - server parameter. Default value is "api".
+    :type region: str or ~affinda.models.Region
     """
 
     def __init__(
         self,
         credential,  # type: "TokenCredential"
+        region="api",  # type: Union[str, "_models.Region"]
         **kwargs,  # type: Any
     ):
         # type: (...) -> None
         super(AffindaAPIConfiguration, self).__init__(**kwargs)
         if credential is None:
             raise ValueError("Parameter 'credential' must not be None.")
+        if region is None:
+            raise ValueError("Parameter 'region' must not be None.")
 
         self.credential = credential
+        self.region = region
         self.credential_scopes = kwargs.pop(
             "credential_scopes", ["https://management.azure.com/.default"]
         )

@@ -21,6 +21,7 @@ class AnnotationContentType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     LOCATION = "location"
     JSON = "json"
     TABLE = "table"
+    CELL = "cell"
 
 
 class CollectionDateFormatPreference(str, Enum, metaclass=CaseInsensitiveEnumMeta):
@@ -64,13 +65,13 @@ class EducationLevel(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     DOCTORAL = "doctoral"
 
 
-class Enum2(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class Enum3(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     RESUMES = "resumes"
     JOB_DESCRIPTIONS = "job_descriptions"
 
 
-class Enum5(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class Enum6(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     RESUMES = "resumes"
     JOB_DESCRIPTIONS = "job_descriptions"
@@ -129,6 +130,13 @@ class PostContentSchemaDocumentType(str, Enum, metaclass=CaseInsensitiveEnumMeta
 
     RESUMES = "resumes"
     JOB_DESCRIPTIONS = "job_descriptions"
+
+
+class Region(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+    """region - server parameter"""
+
+    API = "api"
+    API_EU1 = "api.eu1"
 
 
 class ResumeSearchParametersCustomDataFilterType(str, Enum, metaclass=CaseInsensitiveEnumMeta):

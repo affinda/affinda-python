@@ -1487,7 +1487,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar description:
 :vartype description: str
 :ivar annotation_content_type: Required. Known values are: "text", "integer", "float",
- "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table".
+ "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell".
 :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
 :ivar organization:
 :vartype organization: ~affinda.models.Organization
@@ -1497,8 +1497,6 @@ All required parameters must be populated in order to send to Azure.
 :vartype multiple: bool
 :ivar no_rect:
 :vartype no_rect: bool
-:ivar similar_to: Required.
-:vartype similar_to: list[str]
 :ivar choices:
 :vartype choices: list[~affinda.models.DataPointChoicesItem]
 :ivar children:
@@ -1519,12 +1517,11 @@ def __init__(**kwargs)
 - `slug`: 
 - `description`: 
 - `annotation_content_type`: Required. Known values are: "text", "integer", "float",
-"decimal", "date", "datetime", "boolean", "enum", "location", "json", "table".
+"decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell".
 - `organization`: 
 - `extractor`: Required. Extractor's ID.
 - `multiple`: 
 - `no_rect`: 
-- `similar_to`: Required.
 - `choices`: 
 - `children`: 
 
@@ -1574,7 +1571,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar description:
 :vartype description: str
 :ivar annotation_content_type: Required. Known values are: "text", "integer", "float",
- "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table".
+ "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell".
 :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
 :ivar organization: Required. Uniquely identify an organization.
 :vartype organization: str
@@ -1599,7 +1596,7 @@ def __init__(**kwargs)
 - `slug`: Required.
 - `description`: 
 - `annotation_content_type`: Required. Known values are: "text", "integer", "float",
-"decimal", "date", "datetime", "boolean", "enum", "location", "json", "table".
+"decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell".
 - `organization`: Required. Uniquely identify an organization.
 - `extractor`: Required. Extractor's ID.
 - `multiple`: 
@@ -1786,6 +1783,96 @@ is the confidence that the text in the image has been correctly read by the mode
 - `content_type`: Required.
 - `parsed`: 
 
+<a id="models._models.Document"></a>
+
+## Document Objects
+
+```python
+class Document(msrest.serialization.Model)
+```
+
+Document.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar meta: Required.
+:vartype meta: ~affinda.models.DocumentMeta
+:ivar data: Dictionary of :code:`<any>`.
+:vartype data: dict[str, any]
+:ivar error:
+:vartype error: ~affinda.models.Error
+
+<a id="models._models.Document.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `meta`: Required.
+- `data`: Dictionary of :code:`<any>`.
+- `error`: 
+
+<a id="models._models.DocumentCreate"></a>
+
+## DocumentCreate Objects
+
+```python
+class DocumentCreate(msrest.serialization.Model)
+```
+
+DocumentCreate.
+
+:ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
+ JPG.
+:vartype file: IO
+:ivar url: URL to a resume to download and process.
+:vartype url: str
+:ivar collection: Uniquely identify a collection.
+:vartype collection: str
+:ivar workspace: Uniquely identify a workspace.
+:vartype workspace: str
+:ivar wait: If "true" (default), will return a response only after processing has completed. If
+ "false", will return an empty data object which can be polled at the GET endpoint until
+ processing is complete.
+:vartype wait: bool
+:ivar identifier: Specify a custom identifier for the document.
+:vartype identifier: str
+:ivar file_name: Optional filename of the file.
+:vartype file_name: str
+:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+ deleted.  Defaults to no expiry.
+:vartype expiry_time: ~datetime.datetime
+:ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+:vartype language: str
+
+<a id="models._models.DocumentCreate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+PNG, JPG.
+- `url`: URL to a resume to download and process.
+- `collection`: Uniquely identify a collection.
+- `workspace`: Uniquely identify a workspace.
+- `wait`: If "true" (default), will return a response only after processing has completed.
+If "false", will return an empty data object which can be polled at the GET endpoint until
+processing is complete.
+- `identifier`: Specify a custom identifier for the document.
+- `file_name`: Optional filename of the file.
+- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
+deleted.  Defaults to no expiry.
+- `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+
 <a id="models._models.DocumentMeta"></a>
 
 ## DocumentMeta Objects
@@ -1903,184 +1990,6 @@ this attribute points to those child documents.
 - `error_detail`: 
 - `file`: URL to view the file.
 - `tags`: A set of tags.
-
-<a id="models._models.Document"></a>
-
-## Document Objects
-
-```python
-class Document(DocumentMeta)
-```
-
-Document.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar identifier: Required. Uniquely identify a document.
-:vartype identifier: str
-:ivar file_name: Optional filename of the file.
-:vartype file_name: str
-:ivar ready: If true, the document has finished processing. Particularly useful if an endpoint
- request specified wait=False, when polling use this variable to determine when to stop polling.
-:vartype ready: bool
-:ivar ready_dt: The datetime when the document was ready.
-:vartype ready_dt: ~datetime.datetime
-:ivar failed: If true, some exception was raised during processing. Check the 'error' field of
- the main return object.
-:vartype failed: bool
-:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
- deleted.  Defaults to no expiry.
-:vartype expiry_time: ~datetime.datetime
-:ivar language: The document's language.
-:vartype language: str
-:ivar pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
- converted to pdf as part of the parsing process).
-:vartype pdf: str
-:ivar parent_document: If this document is part of a splitted document, this attribute points
- to the original document that this document is splitted from.
-:vartype parent_document: ~affinda.models.DocumentMetaParentDocument
-:ivar child_documents: If this document has been splitted into a number of child documents,
- this attribute points to those child documents.
-:vartype child_documents: list[~affinda.models.DocumentMetaChildDocumentsItem]
-:ivar pages: Required. The document's pages.
-:vartype pages: list[~affinda.models.PageMeta]
-:ivar is_ocrd:
-:vartype is_ocrd: bool
-:ivar ocr_confidence:
-:vartype ocr_confidence: float
-:ivar review_url:
-:vartype review_url: str
-:ivar collection:
-:vartype collection: ~affinda.models.DocumentMetaCollection
-:ivar workspace: Required.
-:vartype workspace: ~affinda.models.DocumentMetaWorkspace
-:ivar archived_dt:
-:vartype archived_dt: ~datetime.datetime
-:ivar is_archived:
-:vartype is_archived: bool
-:ivar confirmed_dt:
-:vartype confirmed_dt: ~datetime.datetime
-:ivar is_confirmed:
-:vartype is_confirmed: bool
-:ivar rejected_dt:
-:vartype rejected_dt: ~datetime.datetime
-:ivar is_rejected:
-:vartype is_rejected: bool
-:ivar created_dt:
-:vartype created_dt: ~datetime.datetime
-:ivar error_code:
-:vartype error_code: str
-:ivar error_detail:
-:vartype error_detail: str
-:ivar file: URL to view the file.
-:vartype file: str
-:ivar tags: A set of tags.
-:vartype tags: list[~affinda.models.Tag]
-:ivar data: Dictionary of :code:`<any>`.
-:vartype data: dict[str, any]
-
-<a id="models._models.Document.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `identifier`: Required. Uniquely identify a document.
-- `file_name`: Optional filename of the file.
-- `ready`: If true, the document has finished processing. Particularly useful if an
-endpoint request specified wait=False, when polling use this variable to determine when to stop
-polling.
-- `ready_dt`: The datetime when the document was ready.
-- `failed`: If true, some exception was raised during processing. Check the 'error' field
-of the main return object.
-- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
-deleted.  Defaults to no expiry.
-- `language`: The document's language.
-- `pdf`: The URL to the document's pdf (if the uploaded document is not already pdf, it's
-converted to pdf as part of the parsing process).
-- `parent_document`: If this document is part of a splitted document, this attribute
-points to the original document that this document is splitted from.
-- `child_documents`: If this document has been splitted into a number of child documents,
-this attribute points to those child documents.
-- `pages`: Required. The document's pages.
-- `is_ocrd`: 
-- `ocr_confidence`: 
-- `review_url`: 
-- `collection`: 
-- `workspace`: Required.
-- `archived_dt`: 
-- `is_archived`: 
-- `confirmed_dt`: 
-- `is_confirmed`: 
-- `rejected_dt`: 
-- `is_rejected`: 
-- `created_dt`: 
-- `error_code`: 
-- `error_detail`: 
-- `file`: URL to view the file.
-- `tags`: A set of tags.
-- `data`: Dictionary of :code:`<any>`.
-
-<a id="models._models.DocumentCreate"></a>
-
-## DocumentCreate Objects
-
-```python
-class DocumentCreate(msrest.serialization.Model)
-```
-
-DocumentCreate.
-
-:ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
- JPG.
-:vartype file: IO
-:ivar url: URL to a resume to download and process.
-:vartype url: str
-:ivar collection: Uniquely identify a collection.
-:vartype collection: str
-:ivar workspace: Uniquely identify a workspace.
-:vartype workspace: str
-:ivar wait: If "true" (default), will return a response only after processing has completed. If
- "false", will return an empty data object which can be polled at the GET endpoint until
- processing is complete.
-:vartype wait: bool
-:ivar identifier: Specify a custom identifier for the document.
-:vartype identifier: str
-:ivar file_name: Optional filename of the file.
-:vartype file_name: str
-:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
- deleted.  Defaults to no expiry.
-:vartype expiry_time: ~datetime.datetime
-:ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-:vartype language: str
-
-<a id="models._models.DocumentCreate.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
-PNG, JPG.
-- `url`: URL to a resume to download and process.
-- `collection`: Uniquely identify a collection.
-- `workspace`: Uniquely identify a workspace.
-- `wait`: If "true" (default), will return a response only after processing has completed.
-If "false", will return an empty data object which can be polled at the GET endpoint until
-processing is complete.
-- `identifier`: Specify a custom identifier for the document.
-- `file_name`: Optional filename of the file.
-- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
-deleted.  Defaults to no expiry.
-- `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 
 <a id="models._models.DocumentMetaChildDocumentsItem"></a>
 
@@ -6117,6 +6026,8 @@ Variables are only populated by the server, and will be ignored when sending a r
 :vartype weight_keywords: float
 :ivar indices: List of index names.
 :vartype indices: list[str]
+:ivar show_index_dropdown: Controls whether or not the index dropdown is displayed to the user.
+:vartype show_index_dropdown: bool
 :ivar search_tool_theme: Customize the theme of the embeded search tool.
 :vartype search_tool_theme: dict[str, any]
 :ivar user_id: ID of the logged in user.
@@ -6158,6 +6069,8 @@ no limitation.
 - `weight_management_level`: 
 - `weight_keywords`: 
 - `indices`: List of index names.
+- `show_index_dropdown`: Controls whether or not the index dropdown is displayed to the
+user.
 - `search_tool_theme`: Customize the theme of the embeded search tool.
 - `actions`: A list of actions to show in the dropdown in the embedded search tool.
 
@@ -6533,6 +6446,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype apartment_number: str
 :ivar city:
 :vartype city: str
+:ivar latitude:
+:vartype latitude: float
+:ivar longitude:
+:vartype longitude: float
 
 <a id="models._models.Location.__init__"></a>
 
@@ -6582,6 +6499,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype apartment_number: str
 :ivar city:
 :vartype city: str
+:ivar latitude:
+:vartype latitude: float
+:ivar longitude:
+:vartype longitude: float
 
 <a id="models._models.JobDescriptionSearchDetailLocationValue.__init__"></a>
 
@@ -8024,7 +7945,7 @@ Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema.
 :ivar name:
 :vartype name: str
 :ivar document_type: Known values are: "resumes", "job_descriptions".
-:vartype document_type: str or ~affinda.models.Enum5
+:vartype document_type: str or ~affinda.models.Enum6
 
 <a id="models._models.Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema.__init__"></a>
 
@@ -9164,6 +9085,8 @@ Variables are only populated by the server, and will be ignored when sending a r
 :vartype weight_keywords: float
 :ivar indices: List of index names.
 :vartype indices: list[str]
+:ivar show_index_dropdown: Controls whether or not the index dropdown is displayed to the user.
+:vartype show_index_dropdown: bool
 :ivar search_tool_theme: Customize the theme of the embeded search tool.
 :vartype search_tool_theme: dict[str, any]
 :ivar user_id: ID of the logged in user.
@@ -9205,6 +9128,8 @@ no limitation.
 - `weight_management_level`: 
 - `weight_keywords`: 
 - `indices`: List of index names.
+- `show_index_dropdown`: Controls whether or not the index dropdown is displayed to the
+user.
 - `search_tool_theme`: Customize the theme of the embeded search tool.
 - `actions`: A list of actions to show in the dropdown in the embedded search tool.
 
@@ -9655,6 +9580,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype apartment_number: str
 :ivar city:
 :vartype city: str
+:ivar latitude:
+:vartype latitude: float
+:ivar longitude:
+:vartype longitude: float
 
 <a id="models._models.ResumeSearchDetailLocationValue.__init__"></a>
 

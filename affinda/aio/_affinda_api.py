@@ -5,7 +5,7 @@
 # --------------------------------------------------------------------------
 
 from copy import deepcopy
-from typing import Any, Awaitable, TYPE_CHECKING
+from typing import Any, Awaitable, TYPE_CHECKING, Union
 
 from msrest import Deserializer, Serializer
 
@@ -26,18 +26,19 @@ class AffindaAPI(AffindaAPIOperationsMixin):
 
     :param credential: Credential needed for the client to connect to Azure.
     :type credential: ~azure.core.credentials_async.AsyncTokenCredential
-    :param base_url: Service URL. Default value is "https://api.affinda.com".
-    :type base_url: str
+    :param region: region - server parameter. Default value is "api".
+    :type region: str or ~affinda.models.Region
     """
 
     def __init__(
         self,
         credential: "AsyncTokenCredential",
-        base_url: str = "https://api.affinda.com",
+        region: Union[str, "_models.Region"] = "api",
         **kwargs: Any,
     ) -> None:
-        self._config = AffindaAPIConfiguration(credential=credential, **kwargs)
-        self._client = AsyncPipelineClient(base_url=base_url, config=self._config, **kwargs)
+        _base_url = "https://{region}.affinda.com"
+        self._config = AffindaAPIConfiguration(credential=credential, region=region, **kwargs)
+        self._client = AsyncPipelineClient(base_url=_base_url, config=self._config, **kwargs)
 
         client_models = {k: v for k, v in models.__dict__.items() if isinstance(v, type)}
         self._serialize = Serializer(client_models)
@@ -63,7 +64,11 @@ class AffindaAPI(AffindaAPIOperationsMixin):
         """
 
         request_copy = deepcopy(request)
-        request_copy.url = self._client.format_url(request_copy.url)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+
+        request_copy.url = self._client.format_url(request_copy.url, **path_format_arguments)
         return self._client.send_request(request_copy, **kwargs)
 
     async def close(self) -> None:

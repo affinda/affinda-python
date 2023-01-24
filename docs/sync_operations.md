@@ -15,7 +15,7 @@ Affinda API client for Python.
 **Arguments**:
 
 - `credential` (`~azure.core.credentials.TokenCredential`): Credential needed for the client to connect to Azure.
-- `base_url` (`str`): Service URL. Default value is "https://api.affinda.com".
+- `region` (`str or ~affinda.models.Region`): region - server parameter. Default value is "api".
 
 <a id="operations._affinda_api_operations"></a>
 
@@ -924,7 +924,7 @@ Returns all the indexes.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
-- `document_type` (`str or ~affinda.models.Enum2`): Filter indices by a document type. Default value is None.
+- `document_type` (`str or ~affinda.models.Enum3`): Filter indices by a document type. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:

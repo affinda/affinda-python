@@ -17,7 +17,7 @@ from .operations import AffindaAPIOperationsMixin
 
 if TYPE_CHECKING:
     # pylint: disable=unused-import,ungrouped-imports
-    from typing import Any
+    from typing import Any, Union
 
     from azure.core.credentials import TokenCredential
     from azure.core.rest import HttpRequest, HttpResponse
@@ -28,19 +28,20 @@ class AffindaAPI(AffindaAPIOperationsMixin):
 
     :param credential: Credential needed for the client to connect to Azure.
     :type credential: ~azure.core.credentials.TokenCredential
-    :param base_url: Service URL. Default value is "https://api.affinda.com".
-    :type base_url: str
+    :param region: region - server parameter. Default value is "api".
+    :type region: str or ~affinda.models.Region
     """
 
     def __init__(
         self,
         credential,  # type: "TokenCredential"
-        base_url="https://api.affinda.com",  # type: str
+        region="api",  # type: Union[str, "_models.Region"]
         **kwargs,  # type: Any
     ):
         # type: (...) -> None
-        self._config = AffindaAPIConfiguration(credential=credential, **kwargs)
-        self._client = PipelineClient(base_url=base_url, config=self._config, **kwargs)
+        _base_url = "https://{region}.affinda.com"
+        self._config = AffindaAPIConfiguration(credential=credential, region=region, **kwargs)
+        self._client = PipelineClient(base_url=_base_url, config=self._config, **kwargs)
 
         client_models = {k: v for k, v in models.__dict__.items() if isinstance(v, type)}
         self._serialize = Serializer(client_models)
@@ -71,7 +72,11 @@ class AffindaAPI(AffindaAPIOperationsMixin):
         """
 
         request_copy = deepcopy(request)
-        request_copy.url = self._client.format_url(request_copy.url)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+
+        request_copy.url = self._client.format_url(request_copy.url, **path_format_arguments)
         return self._client.send_request(request_copy, **kwargs)
 
     def close(self):

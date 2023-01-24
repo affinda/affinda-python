@@ -1728,7 +1728,7 @@ class DataPoint(msrest.serialization.Model):
     :ivar description:
     :vartype description: str
     :ivar annotation_content_type: Required. Known values are: "text", "integer", "float",
-     "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table".
+     "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell".
     :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
     :ivar organization:
     :vartype organization: ~affinda.models.Organization
@@ -1738,8 +1738,6 @@ class DataPoint(msrest.serialization.Model):
     :vartype multiple: bool
     :ivar no_rect:
     :vartype no_rect: bool
-    :ivar similar_to: Required.
-    :vartype similar_to: list[str]
     :ivar choices:
     :vartype choices: list[~affinda.models.DataPointChoicesItem]
     :ivar children:
@@ -1751,7 +1749,6 @@ class DataPoint(msrest.serialization.Model):
         "name": {"required": True},
         "annotation_content_type": {"required": True},
         "extractor": {"required": True},
-        "similar_to": {"required": True},
     }
 
     _attribute_map = {
@@ -1764,7 +1761,6 @@ class DataPoint(msrest.serialization.Model):
         "extractor": {"key": "extractor", "type": "int"},
         "multiple": {"key": "multiple", "type": "bool"},
         "no_rect": {"key": "noRect", "type": "bool"},
-        "similar_to": {"key": "similarTo", "type": "[str]"},
         "choices": {"key": "choices", "type": "[DataPointChoicesItem]"},
         "children": {"key": "children", "type": "[DataPoint]"},
     }
@@ -1780,7 +1776,7 @@ class DataPoint(msrest.serialization.Model):
         :keyword description:
         :paramtype description: str
         :keyword annotation_content_type: Required. Known values are: "text", "integer", "float",
-         "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table".
+         "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell".
         :paramtype annotation_content_type: str or ~affinda.models.AnnotationContentType
         :keyword organization:
         :paramtype organization: ~affinda.models.Organization
@@ -1790,8 +1786,6 @@ class DataPoint(msrest.serialization.Model):
         :paramtype multiple: bool
         :keyword no_rect:
         :paramtype no_rect: bool
-        :keyword similar_to: Required.
-        :paramtype similar_to: list[str]
         :keyword choices:
         :paramtype choices: list[~affinda.models.DataPointChoicesItem]
         :keyword children:
@@ -1807,7 +1801,6 @@ class DataPoint(msrest.serialization.Model):
         self.extractor = kwargs["extractor"]
         self.multiple = kwargs.get("multiple", None)
         self.no_rect = kwargs.get("no_rect", None)
-        self.similar_to = kwargs["similar_to"]
         self.choices = kwargs.get("choices", None)
         self.children = kwargs.get("children", None)
 
@@ -1850,7 +1843,7 @@ class DataPointCreate(msrest.serialization.Model):
     :ivar description:
     :vartype description: str
     :ivar annotation_content_type: Required. Known values are: "text", "integer", "float",
-     "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table".
+     "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell".
     :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
     :ivar organization: Required. Uniquely identify an organization.
     :vartype organization: str
@@ -1889,7 +1882,7 @@ class DataPointCreate(msrest.serialization.Model):
         :keyword description:
         :paramtype description: str
         :keyword annotation_content_type: Required. Known values are: "text", "integer", "float",
-         "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table".
+         "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell".
         :paramtype annotation_content_type: str or ~affinda.models.AnnotationContentType
         :keyword organization: Required. Uniquely identify an organization.
         :paramtype organization: str
@@ -2170,6 +2163,120 @@ class DateAnnotationV2(AnnotationV2):
         self.parsed = kwargs.get("parsed", None)
 
 
+class Document(msrest.serialization.Model):
+    """Document.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar meta: Required.
+    :vartype meta: ~affinda.models.DocumentMeta
+    :ivar data: Dictionary of :code:`<any>`.
+    :vartype data: dict[str, any]
+    :ivar error:
+    :vartype error: ~affinda.models.Error
+    """
+
+    _validation = {
+        "meta": {"required": True},
+    }
+
+    _attribute_map = {
+        "meta": {"key": "meta", "type": "DocumentMeta"},
+        "data": {"key": "data", "type": "{object}"},
+        "error": {"key": "error", "type": "Error"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword meta: Required.
+        :paramtype meta: ~affinda.models.DocumentMeta
+        :keyword data: Dictionary of :code:`<any>`.
+        :paramtype data: dict[str, any]
+        :keyword error:
+        :paramtype error: ~affinda.models.Error
+        """
+        super(Document, self).__init__(**kwargs)
+        self.meta = kwargs["meta"]
+        self.data = kwargs.get("data", None)
+        self.error = kwargs.get("error", None)
+
+
+class DocumentCreate(msrest.serialization.Model):
+    """DocumentCreate.
+
+    :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
+     JPG.
+    :vartype file: IO
+    :ivar url: URL to a resume to download and process.
+    :vartype url: str
+    :ivar collection: Uniquely identify a collection.
+    :vartype collection: str
+    :ivar workspace: Uniquely identify a workspace.
+    :vartype workspace: str
+    :ivar wait: If "true" (default), will return a response only after processing has completed. If
+     "false", will return an empty data object which can be polled at the GET endpoint until
+     processing is complete.
+    :vartype wait: bool
+    :ivar identifier: Specify a custom identifier for the document.
+    :vartype identifier: str
+    :ivar file_name: Optional filename of the file.
+    :vartype file_name: str
+    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+     deleted.  Defaults to no expiry.
+    :vartype expiry_time: ~datetime.datetime
+    :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+    :vartype language: str
+    """
+
+    _attribute_map = {
+        "file": {"key": "file", "type": "IO"},
+        "url": {"key": "url", "type": "str"},
+        "collection": {"key": "collection", "type": "str"},
+        "workspace": {"key": "workspace", "type": "str"},
+        "wait": {"key": "wait", "type": "bool"},
+        "identifier": {"key": "identifier", "type": "str"},
+        "file_name": {"key": "fileName", "type": "str"},
+        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
+        "language": {"key": "language", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+         PNG, JPG.
+        :paramtype file: IO
+        :keyword url: URL to a resume to download and process.
+        :paramtype url: str
+        :keyword collection: Uniquely identify a collection.
+        :paramtype collection: str
+        :keyword workspace: Uniquely identify a workspace.
+        :paramtype workspace: str
+        :keyword wait: If "true" (default), will return a response only after processing has completed.
+         If "false", will return an empty data object which can be polled at the GET endpoint until
+         processing is complete.
+        :paramtype wait: bool
+        :keyword identifier: Specify a custom identifier for the document.
+        :paramtype identifier: str
+        :keyword file_name: Optional filename of the file.
+        :paramtype file_name: str
+        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+         deleted.  Defaults to no expiry.
+        :paramtype expiry_time: ~datetime.datetime
+        :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+        :paramtype language: str
+        """
+        super(DocumentCreate, self).__init__(**kwargs)
+        self.file = kwargs.get("file", None)
+        self.url = kwargs.get("url", None)
+        self.collection = kwargs.get("collection", None)
+        self.workspace = kwargs.get("workspace", None)
+        self.wait = kwargs.get("wait", True)
+        self.identifier = kwargs.get("identifier", None)
+        self.file_name = kwargs.get("file_name", None)
+        self.expiry_time = kwargs.get("expiry_time", None)
+        self.language = kwargs.get("language", None)
+
+
 class DocumentMeta(msrest.serialization.Model):
     """DocumentMeta.
 
@@ -2365,258 +2472,6 @@ class DocumentMeta(msrest.serialization.Model):
         self.error_detail = kwargs.get("error_detail", None)
         self.file = kwargs.get("file", None)
         self.tags = kwargs.get("tags", None)
-
-
-class Document(DocumentMeta):
-    """Document.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar identifier: Required. Uniquely identify a document.
-    :vartype identifier: str
-    :ivar file_name: Optional filename of the file.
-    :vartype file_name: str
-    :ivar ready: If true, the document has finished processing. Particularly useful if an endpoint
-     request specified wait=False, when polling use this variable to determine when to stop polling.
-    :vartype ready: bool
-    :ivar ready_dt: The datetime when the document was ready.
-    :vartype ready_dt: ~datetime.datetime
-    :ivar failed: If true, some exception was raised during processing. Check the 'error' field of
-     the main return object.
-    :vartype failed: bool
-    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
-     deleted.  Defaults to no expiry.
-    :vartype expiry_time: ~datetime.datetime
-    :ivar language: The document's language.
-    :vartype language: str
-    :ivar pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
-     converted to pdf as part of the parsing process).
-    :vartype pdf: str
-    :ivar parent_document: If this document is part of a splitted document, this attribute points
-     to the original document that this document is splitted from.
-    :vartype parent_document: ~affinda.models.DocumentMetaParentDocument
-    :ivar child_documents: If this document has been splitted into a number of child documents,
-     this attribute points to those child documents.
-    :vartype child_documents: list[~affinda.models.DocumentMetaChildDocumentsItem]
-    :ivar pages: Required. The document's pages.
-    :vartype pages: list[~affinda.models.PageMeta]
-    :ivar is_ocrd:
-    :vartype is_ocrd: bool
-    :ivar ocr_confidence:
-    :vartype ocr_confidence: float
-    :ivar review_url:
-    :vartype review_url: str
-    :ivar collection:
-    :vartype collection: ~affinda.models.DocumentMetaCollection
-    :ivar workspace: Required.
-    :vartype workspace: ~affinda.models.DocumentMetaWorkspace
-    :ivar archived_dt:
-    :vartype archived_dt: ~datetime.datetime
-    :ivar is_archived:
-    :vartype is_archived: bool
-    :ivar confirmed_dt:
-    :vartype confirmed_dt: ~datetime.datetime
-    :ivar is_confirmed:
-    :vartype is_confirmed: bool
-    :ivar rejected_dt:
-    :vartype rejected_dt: ~datetime.datetime
-    :ivar is_rejected:
-    :vartype is_rejected: bool
-    :ivar created_dt:
-    :vartype created_dt: ~datetime.datetime
-    :ivar error_code:
-    :vartype error_code: str
-    :ivar error_detail:
-    :vartype error_detail: str
-    :ivar file: URL to view the file.
-    :vartype file: str
-    :ivar tags: A set of tags.
-    :vartype tags: list[~affinda.models.Tag]
-    :ivar data: Dictionary of :code:`<any>`.
-    :vartype data: dict[str, any]
-    """
-
-    _validation = {
-        "identifier": {"required": True},
-        "pages": {"required": True},
-        "workspace": {"required": True},
-    }
-
-    _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-        "file_name": {"key": "fileName", "type": "str"},
-        "ready": {"key": "ready", "type": "bool"},
-        "ready_dt": {"key": "readyDt", "type": "iso-8601"},
-        "failed": {"key": "failed", "type": "bool"},
-        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
-        "language": {"key": "language", "type": "str"},
-        "pdf": {"key": "pdf", "type": "str"},
-        "parent_document": {"key": "parentDocument", "type": "DocumentMetaParentDocument"},
-        "child_documents": {"key": "childDocuments", "type": "[DocumentMetaChildDocumentsItem]"},
-        "pages": {"key": "pages", "type": "[PageMeta]"},
-        "is_ocrd": {"key": "isOcrd", "type": "bool"},
-        "ocr_confidence": {"key": "ocrConfidence", "type": "float"},
-        "review_url": {"key": "reviewUrl", "type": "str"},
-        "collection": {"key": "collection", "type": "DocumentMetaCollection"},
-        "workspace": {"key": "workspace", "type": "DocumentMetaWorkspace"},
-        "archived_dt": {"key": "archivedDt", "type": "iso-8601"},
-        "is_archived": {"key": "isArchived", "type": "bool"},
-        "confirmed_dt": {"key": "confirmedDt", "type": "iso-8601"},
-        "is_confirmed": {"key": "isConfirmed", "type": "bool"},
-        "rejected_dt": {"key": "rejectedDt", "type": "iso-8601"},
-        "is_rejected": {"key": "isRejected", "type": "bool"},
-        "created_dt": {"key": "createdDt", "type": "iso-8601"},
-        "error_code": {"key": "errorCode", "type": "str"},
-        "error_detail": {"key": "errorDetail", "type": "str"},
-        "file": {"key": "file", "type": "str"},
-        "tags": {"key": "tags", "type": "[Tag]"},
-        "data": {"key": "data", "type": "{object}"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword identifier: Required. Uniquely identify a document.
-        :paramtype identifier: str
-        :keyword file_name: Optional filename of the file.
-        :paramtype file_name: str
-        :keyword ready: If true, the document has finished processing. Particularly useful if an
-         endpoint request specified wait=False, when polling use this variable to determine when to stop
-         polling.
-        :paramtype ready: bool
-        :keyword ready_dt: The datetime when the document was ready.
-        :paramtype ready_dt: ~datetime.datetime
-        :keyword failed: If true, some exception was raised during processing. Check the 'error' field
-         of the main return object.
-        :paramtype failed: bool
-        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
-         deleted.  Defaults to no expiry.
-        :paramtype expiry_time: ~datetime.datetime
-        :keyword language: The document's language.
-        :paramtype language: str
-        :keyword pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
-         converted to pdf as part of the parsing process).
-        :paramtype pdf: str
-        :keyword parent_document: If this document is part of a splitted document, this attribute
-         points to the original document that this document is splitted from.
-        :paramtype parent_document: ~affinda.models.DocumentMetaParentDocument
-        :keyword child_documents: If this document has been splitted into a number of child documents,
-         this attribute points to those child documents.
-        :paramtype child_documents: list[~affinda.models.DocumentMetaChildDocumentsItem]
-        :keyword pages: Required. The document's pages.
-        :paramtype pages: list[~affinda.models.PageMeta]
-        :keyword is_ocrd:
-        :paramtype is_ocrd: bool
-        :keyword ocr_confidence:
-        :paramtype ocr_confidence: float
-        :keyword review_url:
-        :paramtype review_url: str
-        :keyword collection:
-        :paramtype collection: ~affinda.models.DocumentMetaCollection
-        :keyword workspace: Required.
-        :paramtype workspace: ~affinda.models.DocumentMetaWorkspace
-        :keyword archived_dt:
-        :paramtype archived_dt: ~datetime.datetime
-        :keyword is_archived:
-        :paramtype is_archived: bool
-        :keyword confirmed_dt:
-        :paramtype confirmed_dt: ~datetime.datetime
-        :keyword is_confirmed:
-        :paramtype is_confirmed: bool
-        :keyword rejected_dt:
-        :paramtype rejected_dt: ~datetime.datetime
-        :keyword is_rejected:
-        :paramtype is_rejected: bool
-        :keyword created_dt:
-        :paramtype created_dt: ~datetime.datetime
-        :keyword error_code:
-        :paramtype error_code: str
-        :keyword error_detail:
-        :paramtype error_detail: str
-        :keyword file: URL to view the file.
-        :paramtype file: str
-        :keyword tags: A set of tags.
-        :paramtype tags: list[~affinda.models.Tag]
-        :keyword data: Dictionary of :code:`<any>`.
-        :paramtype data: dict[str, any]
-        """
-        super(Document, self).__init__(**kwargs)
-        self.data = kwargs.get("data", None)
-
-
-class DocumentCreate(msrest.serialization.Model):
-    """DocumentCreate.
-
-    :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
-     JPG.
-    :vartype file: IO
-    :ivar url: URL to a resume to download and process.
-    :vartype url: str
-    :ivar collection: Uniquely identify a collection.
-    :vartype collection: str
-    :ivar workspace: Uniquely identify a workspace.
-    :vartype workspace: str
-    :ivar wait: If "true" (default), will return a response only after processing has completed. If
-     "false", will return an empty data object which can be polled at the GET endpoint until
-     processing is complete.
-    :vartype wait: bool
-    :ivar identifier: Specify a custom identifier for the document.
-    :vartype identifier: str
-    :ivar file_name: Optional filename of the file.
-    :vartype file_name: str
-    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
-     deleted.  Defaults to no expiry.
-    :vartype expiry_time: ~datetime.datetime
-    :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-    :vartype language: str
-    """
-
-    _attribute_map = {
-        "file": {"key": "file", "type": "IO"},
-        "url": {"key": "url", "type": "str"},
-        "collection": {"key": "collection", "type": "str"},
-        "workspace": {"key": "workspace", "type": "str"},
-        "wait": {"key": "wait", "type": "bool"},
-        "identifier": {"key": "identifier", "type": "str"},
-        "file_name": {"key": "fileName", "type": "str"},
-        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
-        "language": {"key": "language", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
-         PNG, JPG.
-        :paramtype file: IO
-        :keyword url: URL to a resume to download and process.
-        :paramtype url: str
-        :keyword collection: Uniquely identify a collection.
-        :paramtype collection: str
-        :keyword workspace: Uniquely identify a workspace.
-        :paramtype workspace: str
-        :keyword wait: If "true" (default), will return a response only after processing has completed.
-         If "false", will return an empty data object which can be polled at the GET endpoint until
-         processing is complete.
-        :paramtype wait: bool
-        :keyword identifier: Specify a custom identifier for the document.
-        :paramtype identifier: str
-        :keyword file_name: Optional filename of the file.
-        :paramtype file_name: str
-        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
-         deleted.  Defaults to no expiry.
-        :paramtype expiry_time: ~datetime.datetime
-        :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-        :paramtype language: str
-        """
-        super(DocumentCreate, self).__init__(**kwargs)
-        self.file = kwargs.get("file", None)
-        self.url = kwargs.get("url", None)
-        self.collection = kwargs.get("collection", None)
-        self.workspace = kwargs.get("workspace", None)
-        self.wait = kwargs.get("wait", True)
-        self.identifier = kwargs.get("identifier", None)
-        self.file_name = kwargs.get("file_name", None)
-        self.expiry_time = kwargs.get("expiry_time", None)
-        self.language = kwargs.get("language", None)
 
 
 class DocumentMetaChildDocumentsItem(msrest.serialization.Model):
@@ -8774,6 +8629,8 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
     :vartype weight_keywords: float
     :ivar indices: List of index names.
     :vartype indices: list[str]
+    :ivar show_index_dropdown: Controls whether or not the index dropdown is displayed to the user.
+    :vartype show_index_dropdown: bool
     :ivar search_tool_theme: Customize the theme of the embeded search tool.
     :vartype search_tool_theme: dict[str, any]
     :ivar user_id: ID of the logged in user.
@@ -8811,6 +8668,7 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         "weight_management_level": {"key": "weightManagementLevel", "type": "float"},
         "weight_keywords": {"key": "weightKeywords", "type": "float"},
         "indices": {"key": "indices", "type": "[str]"},
+        "show_index_dropdown": {"key": "showIndexDropdown", "type": "bool"},
         "search_tool_theme": {"key": "searchToolTheme", "type": "{object}"},
         "user_id": {"key": "userId", "type": "int"},
         "username": {"key": "username", "type": "str"},
@@ -8862,6 +8720,9 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         :paramtype weight_keywords: float
         :keyword indices: List of index names.
         :paramtype indices: list[str]
+        :keyword show_index_dropdown: Controls whether or not the index dropdown is displayed to the
+         user.
+        :paramtype show_index_dropdown: bool
         :keyword search_tool_theme: Customize the theme of the embeded search tool.
         :paramtype search_tool_theme: dict[str, any]
         :keyword actions: A list of actions to show in the dropdown in the embedded search tool.
@@ -8889,6 +8750,7 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         self.weight_management_level = kwargs.get("weight_management_level", None)
         self.weight_keywords = kwargs.get("weight_keywords", None)
         self.indices = kwargs.get("indices", None)
+        self.show_index_dropdown = kwargs.get("show_index_dropdown", None)
         self.search_tool_theme = kwargs.get("search_tool_theme", None)
         self.user_id = None
         self.username = None
@@ -9277,6 +9139,10 @@ class Location(msrest.serialization.Model):
     :vartype apartment_number: str
     :ivar city:
     :vartype city: str
+    :ivar latitude:
+    :vartype latitude: float
+    :ivar longitude:
+    :vartype longitude: float
     """
 
     _validation = {
@@ -9290,6 +9156,8 @@ class Location(msrest.serialization.Model):
         "street": {"readonly": True},
         "apartment_number": {"readonly": True},
         "city": {"readonly": True},
+        "latitude": {"readonly": True},
+        "longitude": {"readonly": True},
     }
 
     _attribute_map = {
@@ -9303,6 +9171,8 @@ class Location(msrest.serialization.Model):
         "street": {"key": "street", "type": "str"},
         "apartment_number": {"key": "apartmentNumber", "type": "str"},
         "city": {"key": "city", "type": "str"},
+        "latitude": {"key": "latitude", "type": "float"},
+        "longitude": {"key": "longitude", "type": "float"},
     }
 
     def __init__(self, **kwargs):
@@ -9321,6 +9191,8 @@ class Location(msrest.serialization.Model):
         self.street = None
         self.apartment_number = None
         self.city = None
+        self.latitude = None
+        self.longitude = None
 
 
 class JobDescriptionSearchDetailLocationValue(
@@ -9355,6 +9227,10 @@ class JobDescriptionSearchDetailLocationValue(
     :vartype apartment_number: str
     :ivar city:
     :vartype city: str
+    :ivar latitude:
+    :vartype latitude: float
+    :ivar longitude:
+    :vartype longitude: float
     """
 
     _validation = {
@@ -9368,6 +9244,8 @@ class JobDescriptionSearchDetailLocationValue(
         "street": {"readonly": True},
         "apartment_number": {"readonly": True},
         "city": {"readonly": True},
+        "latitude": {"readonly": True},
+        "longitude": {"readonly": True},
     }
 
     _attribute_map = {
@@ -9382,6 +9260,8 @@ class JobDescriptionSearchDetailLocationValue(
         "street": {"key": "street", "type": "str"},
         "apartment_number": {"key": "apartmentNumber", "type": "str"},
         "city": {"key": "city", "type": "str"},
+        "latitude": {"key": "latitude", "type": "float"},
+        "longitude": {"key": "longitude", "type": "float"},
     }
 
     def __init__(self, **kwargs):
@@ -9403,6 +9283,8 @@ class JobDescriptionSearchDetailLocationValue(
         self.street = None
         self.apartment_number = None
         self.city = None
+        self.latitude = None
+        self.longitude = None
 
 
 class JobDescriptionSearchDetailManagementLevel(msrest.serialization.Model):
@@ -11214,7 +11096,7 @@ class Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema(msrest.ser
     :ivar name:
     :vartype name: str
     :ivar document_type: Known values are: "resumes", "job_descriptions".
-    :vartype document_type: str or ~affinda.models.Enum5
+    :vartype document_type: str or ~affinda.models.Enum6
     """
 
     _attribute_map = {
@@ -11227,7 +11109,7 @@ class Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema(msrest.ser
         :keyword name:
         :paramtype name: str
         :keyword document_type: Known values are: "resumes", "job_descriptions".
-        :paramtype document_type: str or ~affinda.models.Enum5
+        :paramtype document_type: str or ~affinda.models.Enum6
         """
         super(Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema, self).__init__(
             **kwargs
@@ -12062,10 +11944,10 @@ class ResumeData(msrest.serialization.Model):
         self.emails = kwargs.get("emails", None)
         self.date_of_birth = kwargs.get("date_of_birth", None)
         self.location = kwargs.get("location", None)
-        self.objective = kwargs.get("objective", None)
+        self.objective = kwargs.get("objective", "")
         self.languages = None
         self.language_codes = None
-        self.summary = kwargs.get("summary", None)
+        self.summary = kwargs.get("summary", "")
         self.total_years_experience = kwargs.get("total_years_experience", None)
         self.head_shot = None
         self.education = kwargs.get("education", None)
@@ -12647,6 +12529,8 @@ class ResumeSearchConfig(msrest.serialization.Model):
     :vartype weight_keywords: float
     :ivar indices: List of index names.
     :vartype indices: list[str]
+    :ivar show_index_dropdown: Controls whether or not the index dropdown is displayed to the user.
+    :vartype show_index_dropdown: bool
     :ivar search_tool_theme: Customize the theme of the embeded search tool.
     :vartype search_tool_theme: dict[str, any]
     :ivar user_id: ID of the logged in user.
@@ -12684,6 +12568,7 @@ class ResumeSearchConfig(msrest.serialization.Model):
         "weight_management_level": {"key": "weightManagementLevel", "type": "float"},
         "weight_keywords": {"key": "weightKeywords", "type": "float"},
         "indices": {"key": "indices", "type": "[str]"},
+        "show_index_dropdown": {"key": "showIndexDropdown", "type": "bool"},
         "search_tool_theme": {"key": "searchToolTheme", "type": "{object}"},
         "user_id": {"key": "userId", "type": "int"},
         "username": {"key": "username", "type": "str"},
@@ -12735,6 +12620,9 @@ class ResumeSearchConfig(msrest.serialization.Model):
         :paramtype weight_keywords: float
         :keyword indices: List of index names.
         :paramtype indices: list[str]
+        :keyword show_index_dropdown: Controls whether or not the index dropdown is displayed to the
+         user.
+        :paramtype show_index_dropdown: bool
         :keyword search_tool_theme: Customize the theme of the embeded search tool.
         :paramtype search_tool_theme: dict[str, any]
         :keyword actions: A list of actions to show in the dropdown in the embedded search tool.
@@ -12762,6 +12650,7 @@ class ResumeSearchConfig(msrest.serialization.Model):
         self.weight_management_level = kwargs.get("weight_management_level", None)
         self.weight_keywords = kwargs.get("weight_keywords", None)
         self.indices = kwargs.get("indices", None)
+        self.show_index_dropdown = kwargs.get("show_index_dropdown", None)
         self.search_tool_theme = kwargs.get("search_tool_theme", None)
         self.user_id = None
         self.username = None
@@ -13276,6 +13165,10 @@ class ResumeSearchDetailLocationValue(
     :vartype apartment_number: str
     :ivar city:
     :vartype city: str
+    :ivar latitude:
+    :vartype latitude: float
+    :ivar longitude:
+    :vartype longitude: float
     """
 
     _validation = {
@@ -13289,6 +13182,8 @@ class ResumeSearchDetailLocationValue(
         "street": {"readonly": True},
         "apartment_number": {"readonly": True},
         "city": {"readonly": True},
+        "latitude": {"readonly": True},
+        "longitude": {"readonly": True},
     }
 
     _attribute_map = {
@@ -13303,6 +13198,8 @@ class ResumeSearchDetailLocationValue(
         "street": {"key": "street", "type": "str"},
         "apartment_number": {"key": "apartmentNumber", "type": "str"},
         "city": {"key": "city", "type": "str"},
+        "latitude": {"key": "latitude", "type": "float"},
+        "longitude": {"key": "longitude", "type": "float"},
     }
 
     def __init__(self, **kwargs):
@@ -13324,6 +13221,8 @@ class ResumeSearchDetailLocationValue(
         self.street = None
         self.apartment_number = None
         self.city = None
+        self.latitude = None
+        self.longitude = None
 
 
 class ResumeSearchDetailManagementLevel(msrest.serialization.Model):
