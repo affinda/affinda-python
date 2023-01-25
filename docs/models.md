@@ -1498,6 +1498,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype multiple: bool
 :ivar no_rect:
 :vartype no_rect: bool
+:ivar similar_to:
+:vartype similar_to: list[str]
 :ivar choices:
 :vartype choices: list[~affinda.models.DataPointChoicesItem]
 :ivar children:
@@ -1524,6 +1526,7 @@ def __init__(**kwargs)
 - `extractor`: Required. Extractor's ID.
 - `multiple`: 
 - `no_rect`: 
+- `similar_to`: 
 - `choices`: 
 - `children`: 
 

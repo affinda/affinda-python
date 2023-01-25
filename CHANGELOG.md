@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add EU API server to api docs
 - Add latitude and longtitude to Location
 - Add expectedremuneration, jobtitle, language, skill and yearsexperience to AnnotationContentType
+- re-add DataPoint.simlarTo
 
 ### Changed
 - Updated endpoints for old v2 and newer v3 to point to the correct places.

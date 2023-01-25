@@ -1851,6 +1851,8 @@ class DataPoint(msrest.serialization.Model):
     :vartype multiple: bool
     :ivar no_rect:
     :vartype no_rect: bool
+    :ivar similar_to:
+    :vartype similar_to: list[str]
     :ivar choices:
     :vartype choices: list[~affinda.models.DataPointChoicesItem]
     :ivar children:
@@ -1874,6 +1876,7 @@ class DataPoint(msrest.serialization.Model):
         "extractor": {"key": "extractor", "type": "int"},
         "multiple": {"key": "multiple", "type": "bool"},
         "no_rect": {"key": "noRect", "type": "bool"},
+        "similar_to": {"key": "similarTo", "type": "[str]"},
         "choices": {"key": "choices", "type": "[DataPointChoicesItem]"},
         "children": {"key": "children", "type": "[DataPoint]"},
     }
@@ -1890,6 +1893,7 @@ class DataPoint(msrest.serialization.Model):
         organization: Optional["_models.Organization"] = None,
         multiple: Optional[bool] = None,
         no_rect: Optional[bool] = None,
+        similar_to: Optional[List[str]] = None,
         choices: Optional[List["_models.DataPointChoicesItem"]] = None,
         children: Optional[List["_models.DataPoint"]] = None,
         **kwargs,
@@ -1915,6 +1919,8 @@ class DataPoint(msrest.serialization.Model):
         :paramtype multiple: bool
         :keyword no_rect:
         :paramtype no_rect: bool
+        :keyword similar_to:
+        :paramtype similar_to: list[str]
         :keyword choices:
         :paramtype choices: list[~affinda.models.DataPointChoicesItem]
         :keyword children:
@@ -1930,6 +1936,7 @@ class DataPoint(msrest.serialization.Model):
         self.extractor = extractor
         self.multiple = multiple
         self.no_rect = no_rect
+        self.similar_to = similar_to
         self.choices = choices
         self.children = children
 

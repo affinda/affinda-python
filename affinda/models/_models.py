@@ -1739,6 +1739,8 @@ class DataPoint(msrest.serialization.Model):
     :vartype multiple: bool
     :ivar no_rect:
     :vartype no_rect: bool
+    :ivar similar_to:
+    :vartype similar_to: list[str]
     :ivar choices:
     :vartype choices: list[~affinda.models.DataPointChoicesItem]
     :ivar children:
@@ -1762,6 +1764,7 @@ class DataPoint(msrest.serialization.Model):
         "extractor": {"key": "extractor", "type": "int"},
         "multiple": {"key": "multiple", "type": "bool"},
         "no_rect": {"key": "noRect", "type": "bool"},
+        "similar_to": {"key": "similarTo", "type": "[str]"},
         "choices": {"key": "choices", "type": "[DataPointChoicesItem]"},
         "children": {"key": "children", "type": "[DataPoint]"},
     }
@@ -1788,6 +1791,8 @@ class DataPoint(msrest.serialization.Model):
         :paramtype multiple: bool
         :keyword no_rect:
         :paramtype no_rect: bool
+        :keyword similar_to:
+        :paramtype similar_to: list[str]
         :keyword choices:
         :paramtype choices: list[~affinda.models.DataPointChoicesItem]
         :keyword children:
@@ -1803,6 +1808,7 @@ class DataPoint(msrest.serialization.Model):
         self.extractor = kwargs["extractor"]
         self.multiple = kwargs.get("multiple", None)
         self.no_rect = kwargs.get("no_rect", None)
+        self.similar_to = kwargs.get("similar_to", None)
         self.choices = kwargs.get("choices", None)
         self.children = kwargs.get("children", None)
 
