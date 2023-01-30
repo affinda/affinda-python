@@ -216,7 +216,6 @@ try:
     from ._models_py3 import (
         Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1,
     )
-    from ._models_py3 import Paths9K2ZxlV3UsersGetResponses200ContentApplicationJsonSchema
     from ._models_py3 import (
         PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema,
     )
@@ -296,8 +295,6 @@ try:
     from ._models_py3 import TagUpdate
     from ._models_py3 import TextAnnotationV2
     from ._models_py3 import User
-    from ._models_py3 import UserCreateRequest
-    from ._models_py3 import UserCreateResponse
     from ._models_py3 import Workspace
     from ._models_py3 import WorkspaceCollectionsItem
     from ._models_py3 import WorkspaceCollectionsItemExtractor
@@ -485,7 +482,6 @@ except (SyntaxError, ImportError):
     from ._models import Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema  # type: ignore
     from ._models import Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
     from ._models import Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
-    from ._models import Paths9K2ZxlV3UsersGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema  # type: ignore
     from ._models import PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema  # type: ignore
     from ._models import PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema  # type: ignore
@@ -551,8 +547,6 @@ except (SyntaxError, ImportError):
     from ._models import TagUpdate  # type: ignore
     from ._models import TextAnnotationV2  # type: ignore
     from ._models import User  # type: ignore
-    from ._models import UserCreateRequest  # type: ignore
-    from ._models import UserCreateResponse  # type: ignore
     from ._models import Workspace  # type: ignore
     from ._models import WorkspaceCollectionsItem  # type: ignore
     from ._models import WorkspaceCollectionsItemExtractor  # type: ignore
@@ -768,7 +762,6 @@ __all__ = [
     "Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema",
     "Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1",
     "Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1",
-    "Paths9K2ZxlV3UsersGetResponses200ContentApplicationJsonSchema",
     "PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema",
     "PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema",
     "PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema",
@@ -834,8 +827,6 @@ __all__ = [
     "TagUpdate",
     "TextAnnotationV2",
     "User",
-    "UserCreateRequest",
-    "UserCreateResponse",
     "Workspace",
     "WorkspaceCollectionsItem",
     "WorkspaceCollectionsItemExtractor",

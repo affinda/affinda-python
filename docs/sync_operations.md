@@ -1091,62 +1091,6 @@ Returns the list of searchable occupation groups.
 
 `list[~affinda.models.OccupationGroup]`: list of OccupationGroup, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_users"></a>
-
-#### get\_all\_users
-
-```python
-def get_all_users(offset=None, limit=300, **kwargs)
-```
-
-Get list of all users.
-
-Returns all the users.
-
-**Arguments**:
-
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Paths9K2ZxlV3UsersGetResponses200ContentApplicationJsonSchema`: Paths9K2ZxlV3UsersGetResponses200ContentApplicationJsonSchema, or the result of
-cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_user"></a>
-
-#### create\_user
-
-```python
-def create_user(username, email, name=None, avatar=None, **kwargs)
-```
-
-Create a new user.
-
-Create an user as part of your account.
-
-**Arguments**:
-
-- `username` (`str`): 
-- `email` (`str`): 
-- `name` (`str`): Default value is None.
-- `avatar` (`IO`): Upload avatar for the user. Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.UserCreateResponse`: UserCreateResponse, or the result of cls(response)
-
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_organizations"></a>
 
 #### get\_all\_organizations

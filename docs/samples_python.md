@@ -623,21 +623,6 @@ client.delete_index_document(name=index_name, identifier=identifier)
 Users
 -----
 
-### createUser - Create a new user
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-response = client.create_user(email="myuser@gmail.com")
-
-print(response.as_dict())
-```
-
 ### createOrganization - Create a new organization
 
 ```python

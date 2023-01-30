@@ -39,7 +39,6 @@ from ...operations._affinda_api_operations import (
     build_create_resume_search_embed_url_request,
     build_create_resume_search_request,
     build_create_tag_request,
-    build_create_user_request,
     build_create_workspace_membership_request,
     build_create_workspace_request,
     build_delete_collection_request,
@@ -72,7 +71,6 @@ from ...operations._affinda_api_operations import (
     build_get_all_redacted_resumes_request,
     build_get_all_resumes_request,
     build_get_all_tags_request,
-    build_get_all_users_request,
     build_get_all_workspace_memberships_request,
     build_get_all_workspaces_request,
     build_get_collection_request,
@@ -2886,162 +2884,6 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         return deserialized
 
     list_occupation_groups.metadata = {"url": "/v3/occupation_groups"}  # type: ignore
-
-    async def get_all_users(
-        self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any
-    ) -> _models.Paths9K2ZxlV3UsersGetResponses200ContentApplicationJsonSchema:
-        """Get list of all users.
-
-        Returns all the users.
-
-        :param offset: The number of documents to skip before starting to collect the result set.
-         Default value is None.
-        :type offset: int
-        :param limit: The numbers of results to return. Default value is 300.
-        :type limit: int
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: Paths9K2ZxlV3UsersGetResponses200ContentApplicationJsonSchema, or the result of
-         cls(response)
-        :rtype: ~affinda.models.Paths9K2ZxlV3UsersGetResponses200ContentApplicationJsonSchema
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = kwargs.pop("headers", {}) or {}
-        _params = kwargs.pop("params", {}) or {}
-
-        cls = kwargs.pop(
-            "cls", None
-        )  # type: ClsType[_models.Paths9K2ZxlV3UsersGetResponses200ContentApplicationJsonSchema]
-
-        request = build_get_all_users_request(
-            offset=offset,
-            limit=limit,
-            template_url=self.get_all_users.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize(
-            "Paths9K2ZxlV3UsersGetResponses200ContentApplicationJsonSchema", pipeline_response
-        )
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    get_all_users.metadata = {"url": "/v3/users"}  # type: ignore
-
-    async def create_user(
-        self,
-        username: str,
-        email: str,
-        name: Optional[str] = None,
-        avatar: Optional[IO] = None,
-        **kwargs: Any,
-    ) -> _models.UserCreateResponse:
-        """Create a new user.
-
-        Create an user as part of your account.
-
-        :param username:
-        :type username: str
-        :param email:
-        :type email: str
-        :param name:  Default value is None.
-        :type name: str
-        :param avatar: Upload avatar for the user. Default value is None.
-        :type avatar: IO
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: UserCreateResponse, or the result of cls(response)
-        :rtype: ~affinda.models.UserCreateResponse
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-        _params = kwargs.pop("params", {}) or {}
-
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", None)
-        )  # type: Optional[str]
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.UserCreateResponse]
-
-        # Construct form data
-        _files = {
-            "name": name,
-            "username": username,
-            "email": email,
-            "avatar": avatar,
-        }
-
-        request = build_create_user_request(
-            content_type=content_type,
-            files=_files,
-            template_url=self.create_user.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request, _files)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [201]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("UserCreateResponse", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    create_user.metadata = {"url": "/v3/users"}  # type: ignore
 
     async def get_all_organizations(self, **kwargs: Any) -> List[_models.Organization]:
         """Get list of all organizations.

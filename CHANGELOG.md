@@ -22,6 +22,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fixed various nullable fields not being nullable, and vice versa
 
+### Removed
+- Master/child accounts endpoints
+
 ## [2.0.0] - 2023-01-13
 ### Added
 - Added endpoints: Organization, Membership, Invitation, tags
