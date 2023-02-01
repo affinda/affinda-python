@@ -5593,6 +5593,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         search: Optional[str] = None,
         ordering: Optional[List[Union[str, "_models.Get8ItemsItem"]]] = None,
         include_data: Optional[bool] = None,
+        exclude: Optional[List[str]] = None,
         **kwargs: Any,
     ) -> _models.GetAllDocumentsResults:
         """Get list of all documents.
@@ -5624,6 +5625,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
          this to ``true`` will return the detailed data that was parsed, at a performance cost. Default
          value is None.
         :type include_data: bool
+        :param exclude: Exclude some documents from the result. Default value is None.
+        :type exclude: list[str]
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: GetAllDocumentsResults, or the result of cls(response)
         :rtype: ~affinda.models.GetAllDocumentsResults
@@ -5657,6 +5660,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             search=search,
             ordering=ordering,
             include_data=include_data,
+            exclude=exclude,
             template_url=self.get_all_documents.metadata["url"],
             headers=_headers,
             params=_params,

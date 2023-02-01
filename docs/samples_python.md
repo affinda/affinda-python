@@ -324,7 +324,10 @@ client = AffindaAPI(credential=credential)
 parameters = JobDescriptionSearchParameters(
     indices=["Job-Description-Search-Demo"],
     job_titles=["Senior Java Software Developer"],
-    skills=["Java Programming"],
+    skills=[
+        {"name": "Java Programming", "required": True},
+        {"name": "Python Programming", "required": False},
+    ],
     # Many more criterias are available, refer to JobDescriptionSearchParameters
 )
 resp = client.create_job_description_search(parameters)

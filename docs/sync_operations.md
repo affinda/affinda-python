@@ -2139,7 +2139,7 @@ Deletes the specified collection from the database.
 #### get\_all\_documents
 
 ```python
-def get_all_documents(offset=None, limit=300, workspace=None, collection=None, state=None, tags=None, created_dt=None, search=None, ordering=None, include_data=None, **kwargs)
+def get_all_documents(offset=None, limit=300, workspace=None, collection=None, state=None, tags=None, created_dt=None, search=None, ordering=None, include_data=None, exclude=None, **kwargs)
 ```
 
 Get list of all documents.
@@ -2163,6 +2163,7 @@ None.
 - `include_data` (`bool`): By default, this endpoint returns only the meta data of the documents. Set
 this to ``true`` will return the detailed data that was parsed, at a performance cost. Default
 value is None.
+- `exclude` (`list[str]`): Exclude some documents from the result. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:

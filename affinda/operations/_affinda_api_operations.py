@@ -2319,6 +2319,7 @@ def build_get_all_documents_request(
     search = kwargs.pop('search', _params.pop('search', None))  # type: Optional[str]
     ordering = kwargs.pop('ordering', _params.pop('ordering', None))  # type: Optional[List[Union[str, "_models.Get8ItemsItem"]]]
     include_data = kwargs.pop('include_data', _params.pop('include_data', None))  # type: Optional[bool]
+    exclude = kwargs.pop('exclude', _params.pop('exclude', None))  # type: Optional[List[str]]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
@@ -2345,6 +2346,8 @@ def build_get_all_documents_request(
         _params['ordering'] = _SERIALIZER.query("ordering", ordering, '[str]')
     if include_data is not None:
         _params['include_data'] = _SERIALIZER.query("include_data", include_data, 'bool')
+    if exclude is not None:
+        _params['exclude'] = _SERIALIZER.query("exclude", exclude, '[str]')
 
     # Construct headers
     _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
@@ -8316,6 +8319,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         search=None,  # type: Optional[str]
         ordering=None,  # type: Optional[List[Union[str, "_models.Get8ItemsItem"]]]
         include_data=None,  # type: Optional[bool]
+        exclude=None,  # type: Optional[List[str]]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.GetAllDocumentsResults
@@ -8348,6 +8352,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
          this to ``true`` will return the detailed data that was parsed, at a performance cost. Default
          value is None.
         :type include_data: bool
+        :param exclude: Exclude some documents from the result. Default value is None.
+        :type exclude: list[str]
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: GetAllDocumentsResults, or the result of cls(response)
         :rtype: ~affinda.models.GetAllDocumentsResults
@@ -8381,6 +8387,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             search=search,
             ordering=ordering,
             include_data=include_data,
+            exclude=exclude,
             template_url=self.get_all_documents.metadata["url"],
             headers=_headers,
             params=_params,
