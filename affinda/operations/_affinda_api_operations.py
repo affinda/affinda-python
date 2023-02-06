@@ -1900,6 +1900,43 @@ def build_delete_data_point_request(
     )
 
 
+def build_get_data_point_choices_request(
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+    _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
+
+    data_point = kwargs.pop('data_point')  # type: str
+    offset = kwargs.pop('offset', _params.pop('offset', None))  # type: Optional[int]
+    limit = kwargs.pop('limit', _params.pop('limit', 300))  # type: Optional[int]
+    search = kwargs.pop('search', _params.pop('search', None))  # type: Optional[str]
+    accept = _headers.pop('Accept', "application/json")
+
+    # Construct URL
+    _url = kwargs.pop("template_url", "/v3/data_point_choices")
+
+    # Construct parameters
+    if offset is not None:
+        _params['offset'] = _SERIALIZER.query("offset", offset, 'int', minimum=0)
+    if limit is not None:
+        _params['limit'] = _SERIALIZER.query("limit", limit, 'int', maximum=300, minimum=1)
+    _params['data_point'] = _SERIALIZER.query("data_point", data_point, 'str')
+    if search is not None:
+        _params['search'] = _SERIALIZER.query("search", search, 'str')
+
+    # Construct headers
+    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="GET",
+        url=_url,
+        params=_params,
+        headers=_headers,
+        **kwargs
+    )
+
+
 def build_get_all_workspaces_request(
     **kwargs  # type: Any
 ):
@@ -7346,6 +7383,90 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             return cls(pipeline_response, None, {})
 
     delete_data_point.metadata = {"url": "/v3/data_points/{identifier}"}  # type: ignore
+
+    def get_data_point_choices(
+        self,
+        data_point,  # type: str
+        offset=None,  # type: Optional[int]
+        limit=300,  # type: Optional[int]
+        search=None,  # type: Optional[str]
+        **kwargs,  # type: Any
+    ):
+        # type: (...) -> _models.PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema
+        """Get list of data point choices.
+
+        Returns available choices for a specific enum data point.
+
+        :param data_point: The data point to get choices for.
+        :type data_point: str
+        :param offset: The number of documents to skip before starting to collect the result set.
+         Default value is None.
+        :type offset: int
+        :param limit: The numbers of results to return. Default value is 300.
+        :type limit: int
+        :param search: Filter choices by searching for a substring. Default value is None.
+        :type search: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema, or the result
+         of cls(response)
+        :rtype: ~affinda.models.PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[_models.PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema]
+
+        request = build_get_data_point_choices_request(
+            data_point=data_point,
+            offset=offset,
+            limit=limit,
+            search=search,
+            template_url=self.get_data_point_choices.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize(
+            "PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema",
+            pipeline_response,
+        )
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_data_point_choices.metadata = {"url": "/v3/data_point_choices"}  # type: ignore
 
     def get_all_workspaces(
         self,

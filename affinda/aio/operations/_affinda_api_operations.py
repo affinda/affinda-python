@@ -74,6 +74,7 @@ from ...operations._affinda_api_operations import (
     build_get_all_workspace_memberships_request,
     build_get_all_workspaces_request,
     build_get_collection_request,
+    build_get_data_point_choices_request,
     build_get_data_point_request,
     build_get_document_request,
     build_get_extractor_request,
@@ -4669,6 +4670,89 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             return cls(pipeline_response, None, {})
 
     delete_data_point.metadata = {"url": "/v3/data_points/{identifier}"}  # type: ignore
+
+    async def get_data_point_choices(
+        self,
+        data_point: str,
+        offset: Optional[int] = None,
+        limit: Optional[int] = 300,
+        search: Optional[str] = None,
+        **kwargs: Any,
+    ) -> _models.PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema:
+        """Get list of data point choices.
+
+        Returns available choices for a specific enum data point.
+
+        :param data_point: The data point to get choices for.
+        :type data_point: str
+        :param offset: The number of documents to skip before starting to collect the result set.
+         Default value is None.
+        :type offset: int
+        :param limit: The numbers of results to return. Default value is 300.
+        :type limit: int
+        :param search: Filter choices by searching for a substring. Default value is None.
+        :type search: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema, or the result
+         of cls(response)
+        :rtype: ~affinda.models.PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[_models.PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema]
+
+        request = build_get_data_point_choices_request(
+            data_point=data_point,
+            offset=offset,
+            limit=limit,
+            search=search,
+            template_url=self.get_data_point_choices.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize(
+            "PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema",
+            pipeline_response,
+        )
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_data_point_choices.metadata = {"url": "/v3/data_point_choices"}  # type: ignore
 
     async def get_all_workspaces(
         self, organization: str, name: Optional[str] = None, **kwargs: Any

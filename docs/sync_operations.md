@@ -1776,6 +1776,36 @@ Deletes the specified data point from the database.
 
 `None`: None, or the result of cls(response)
 
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_data_point_choices"></a>
+
+#### get\_data\_point\_choices
+
+```python
+def get_data_point_choices(data_point, offset=None, limit=300, search=None, **kwargs)
+```
+
+Get list of data point choices.
+
+Returns available choices for a specific enum data point.
+
+**Arguments**:
+
+- `data_point` (`str`): The data point to get choices for.
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `search` (`str`): Filter choices by searching for a substring. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema`: PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema, or the result
+of cls(response)
+
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_workspaces"></a>
 
 #### get\_all\_workspaces

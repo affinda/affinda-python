@@ -76,7 +76,7 @@ try:
     from ._models_py3 import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1
     from ._models_py3 import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1
     from ._models_py3 import DataPoint
-    from ._models_py3 import DataPointChoicesItem
+    from ._models_py3 import DataPointChoice
     from ._models_py3 import DataPointCreate
     from ._models_py3 import DataPointUpdate
     from ._models_py3 import DateAnnotation
@@ -94,7 +94,6 @@ try:
     from ._models_py3 import EducationDates
     from ._models_py3 import EducationGrade
     from ._models_py3 import EducationSearchScoreComponent
-    from ._models_py3 import EnumAnnotationSerializerV2
     from ._models_py3 import Error
     from ._models_py3 import ExpectedRemunerationAnnotationV2
     from ._models_py3 import ExpectedRemunerationAnnotationV2Parsed
@@ -214,6 +213,9 @@ try:
         Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1,
     )
     from ._models_py3 import (
+        Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1,
+    )
+    from ._models_py3 import (
         Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1,
     )
     from ._models_py3 import (
@@ -228,6 +230,9 @@ try:
     )
     from ._models_py3 import (
         PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1,
+    )
+    from ._models_py3 import (
+        PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema,
     )
     from ._models_py3 import (
         PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema,
@@ -352,7 +357,7 @@ except (SyntaxError, ImportError):
     from ._models import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1  # type: ignore
     from ._models import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1  # type: ignore
     from ._models import DataPoint  # type: ignore
-    from ._models import DataPointChoicesItem  # type: ignore
+    from ._models import DataPointChoice  # type: ignore
     from ._models import DataPointCreate  # type: ignore
     from ._models import DataPointUpdate  # type: ignore
     from ._models import DateAnnotation  # type: ignore
@@ -370,7 +375,6 @@ except (SyntaxError, ImportError):
     from ._models import EducationDates  # type: ignore
     from ._models import EducationGrade  # type: ignore
     from ._models import EducationSearchScoreComponent  # type: ignore
-    from ._models import EnumAnnotationSerializerV2  # type: ignore
     from ._models import Error  # type: ignore
     from ._models import ExpectedRemunerationAnnotationV2  # type: ignore
     from ._models import ExpectedRemunerationAnnotationV2Parsed  # type: ignore
@@ -481,12 +485,14 @@ except (SyntaxError, ImportError):
     from ._models import Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems  # type: ignore
     from ._models import Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema  # type: ignore
     from ._models import Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
+    from ._models import Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
     from ._models import Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
     from ._models import PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema  # type: ignore
     from ._models import PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema  # type: ignore
     from ._models import PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
+    from ._models import PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema  # type: ignore
@@ -632,7 +638,7 @@ __all__ = [
     "ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1",
     "ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1",
     "DataPoint",
-    "DataPointChoicesItem",
+    "DataPointChoice",
     "DataPointCreate",
     "DataPointUpdate",
     "DateAnnotation",
@@ -650,7 +656,6 @@ __all__ = [
     "EducationDates",
     "EducationGrade",
     "EducationSearchScoreComponent",
-    "EnumAnnotationSerializerV2",
     "Error",
     "ExpectedRemunerationAnnotationV2",
     "ExpectedRemunerationAnnotationV2Parsed",
@@ -761,12 +766,14 @@ __all__ = [
     "Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems",
     "Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema",
     "Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1",
+    "Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1",
     "Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1",
     "PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema",
     "PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema",
     "PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema",
     "PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema",
     "PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1",
+    "PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema",
     "PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema",
     "PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema",
     "PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema",

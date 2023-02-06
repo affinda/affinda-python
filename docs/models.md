@@ -261,6 +261,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype unvalidated_docs_count: int
 :ivar confirmed_docs_count: Number of validated documents in the collection.
 :vartype confirmed_docs_count: int
+:ivar ingest_email:
+:vartype ingest_email: str
 
 <a id="models._models.Collection.__init__"></a>
 
@@ -285,6 +287,7 @@ is not ambiguous.
 - `extractor_config`: Extra configurations specific to an extractor.
 - `unvalidated_docs_count`: Number of unvalidated documents in the collection.
 - `confirmed_docs_count`: Number of validated documents in the collection.
+- `ingest_email`: 
 
 <a id="models._models.CollectionCreate"></a>
 
@@ -1500,8 +1503,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype no_rect: bool
 :ivar similar_to:
 :vartype similar_to: list[str]
-:ivar choices:
-:vartype choices: list[~affinda.models.DataPointChoicesItem]
+:ivar display_enum_value:
+:vartype display_enum_value: bool
 :ivar children:
 :vartype children: list[~affinda.models.DataPoint]
 
@@ -1527,25 +1530,29 @@ def __init__(**kwargs)
 - `multiple`: 
 - `no_rect`: 
 - `similar_to`: 
-- `choices`: 
+- `display_enum_value`: 
 - `children`: 
 
-<a id="models._models.DataPointChoicesItem"></a>
+<a id="models._models.DataPointChoice"></a>
 
-## DataPointChoicesItem Objects
+## DataPointChoice Objects
 
 ```python
-class DataPointChoicesItem(msrest.serialization.Model)
+class DataPointChoice(msrest.serialization.Model)
 ```
 
-DataPointChoicesItem.
+DataPointChoice.
 
 All required parameters must be populated in order to send to Azure.
 
+:ivar id: Required.
+:vartype id: float
 :ivar label: Required.
 :vartype label: str
+:ivar value: Required.
+:vartype value: str
 
-<a id="models._models.DataPointChoicesItem.__init__"></a>
+<a id="models._models.DataPointChoice.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -1555,7 +1562,9 @@ def __init__(**kwargs)
 
 **Arguments**:
 
+- `id`: Required.
 - `label`: Required.
+- `value`: Required.
 
 <a id="models._models.DataPointCreate"></a>
 
@@ -2271,6 +2280,9 @@ class EducationGrade(msrest.serialization.Model)
 
 EducationGrade.
 
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
 :ivar raw:
 :vartype raw: str
 :ivar metric:
@@ -2288,6 +2300,8 @@ def __init__(**kwargs)
 
 **Arguments**:
 
+- `additional_properties`: Unmatched properties from the message are deserialized to this
+collection.
 - `raw`: 
 - `metric`: 
 - `value`: 
@@ -2324,81 +2338,6 @@ def __init__(**kwargs)
 - `value`: 
 - `label`: Required.
 - `score`: 
-
-<a id="models._models.EnumAnnotationSerializerV2"></a>
-
-## EnumAnnotationSerializerV2 Objects
-
-```python
-class EnumAnnotationSerializerV2(AnnotationV2)
-```
-
-EnumAnnotationSerializerV2.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar additional_properties: Unmatched properties from the message are deserialized to this
- collection.
-:vartype additional_properties: dict[str, any]
-:ivar id: Required.
-:vartype id: int
-:ivar rectangle: Required.
-:vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
-:vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
-:vartype page_index: int
-:ivar raw: Required.
-:vartype raw: str
-:ivar confidence: Required. The overall confidence that the model's prediction is correct.
-:vartype confidence: float
-:ivar classification_confidence: Required. The model's confidence that the text has been
- classified correctly.
-:vartype classification_confidence: float
-:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
- the confidence that the text in the image has been correctly read by the model.
-:vartype text_extraction_confidence: float
-:ivar is_verified: Required.
-:vartype is_verified: bool
-:ivar is_client_verified: Required.
-:vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
-:vartype is_auto_verified: bool
-:ivar data_point:
-:vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
-:ivar parsed:
-:vartype parsed: str
-
-<a id="models._models.EnumAnnotationSerializerV2.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `additional_properties`: Unmatched properties from the message are deserialized to this
-collection.
-- `id`: Required.
-- `rectangle`: Required.
-- `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
-- `confidence`: Required. The overall confidence that the model's prediction is correct.
-- `classification_confidence`: Required. The model's confidence that the text has been
-classified correctly.
-- `text_extraction_confidence`: Required. If the document was submitted as an image, this
-is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
-- `content_type`: Required.
-- `parsed`: 
 
 <a id="models._models.Error"></a>
 
@@ -3391,7 +3330,7 @@ InvoiceData.
 :ivar supplier_website:
 :vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
 :ivar currency_code:
-:vartype currency_code: ~affinda.models.EnumAnnotationSerializerV2
+:vartype currency_code: ~affinda.models.TextAnnotationV2
 :ivar custom_fields: Dictionary of :code:`<any>`.
 :vartype custom_fields: dict[str, any]
 
@@ -7994,6 +7933,31 @@ def __init__(**kwargs)
 
 - `results`: Required.
 
+<a id="models._models.Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1"></a>
+
+## Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1 Objects
+
+```python
+class Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
+```
+
+Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1.
+
+:ivar results:
+:vartype results: list[~affinda.models.DataPointChoice]
+
+<a id="models._models.Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: 
+
 <a id="models._models.Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
 
 ## Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
@@ -8127,6 +8091,42 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `document`: Unique identifier for the document.
+
+<a id="models._models.PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema"></a>
+
+## PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema Objects
+
+```python
+class PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1)
+```
+
+PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar results:
+:vartype results: list[~affinda.models.DataPointChoice]
+:ivar count: Required. Number of items in results.
+:vartype count: int
+:ivar next: URL to request next page of results.
+:vartype next: str
+:ivar previous: URL to request previous page of results.
+:vartype previous: str
+
+<a id="models._models.PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: 
+- `count`: Required. Number of items in results.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
 
 <a id="models._models.PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema"></a>
 
@@ -8640,6 +8640,9 @@ class ResumeDataRefereesItem(msrest.serialization.Model)
 
 ResumeDataRefereesItem.
 
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
 :ivar name:
 :vartype name: str
 :ivar text:
@@ -8661,6 +8664,8 @@ def __init__(**kwargs)
 
 **Arguments**:
 
+- `additional_properties`: Unmatched properties from the message are deserialized to this
+collection.
 - `name`: 
 - `text`: 
 - `email`: 
@@ -10568,6 +10573,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype unvalidated_docs_count: int
 :ivar confirmed_docs_count: Number of validated documents in the workspace.
 :vartype confirmed_docs_count: int
+:ivar ingest_email:
+:vartype ingest_email: str
 
 <a id="models._models.Workspace.__init__"></a>
 
@@ -10592,6 +10599,7 @@ consumed.
 - `members`: 
 - `unvalidated_docs_count`: Number of unvalidated documents in the workspace.
 - `confirmed_docs_count`: Number of validated documents in the workspace.
+- `ingest_email`: 
 
 <a id="models._models.WorkspaceCollectionsItem"></a>
 

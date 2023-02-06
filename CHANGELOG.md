@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add expectedremuneration, jobtitle, language, skill and yearsexperience to AnnotationContentType
 - re-add DataPoint.simlarTo
 - Add `exclude` parameter to /documents query
+- add ingest email to Workspace and Collection
 
 ### Changed
 - Updated endpoints for old v2 and newer v3 to point to the correct places.

@@ -387,6 +387,8 @@ class Collection(msrest.serialization.Model):
     :vartype unvalidated_docs_count: int
     :ivar confirmed_docs_count: Number of validated documents in the collection.
     :vartype confirmed_docs_count: int
+    :ivar ingest_email:
+    :vartype ingest_email: str
     """
 
     _validation = {
@@ -406,6 +408,7 @@ class Collection(msrest.serialization.Model):
         "extractor_config": {"key": "extractorConfig", "type": "{object}"},
         "unvalidated_docs_count": {"key": "unvalidatedDocsCount", "type": "int"},
         "confirmed_docs_count": {"key": "confirmedDocsCount", "type": "int"},
+        "ingest_email": {"key": "ingestEmail", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -435,6 +438,8 @@ class Collection(msrest.serialization.Model):
         :paramtype unvalidated_docs_count: int
         :keyword confirmed_docs_count: Number of validated documents in the collection.
         :paramtype confirmed_docs_count: int
+        :keyword ingest_email:
+        :paramtype ingest_email: str
         """
         super(Collection, self).__init__(**kwargs)
         self.identifier = kwargs["identifier"]
@@ -449,6 +454,7 @@ class Collection(msrest.serialization.Model):
         self.extractor_config = kwargs.get("extractor_config", None)
         self.unvalidated_docs_count = kwargs.get("unvalidated_docs_count", None)
         self.confirmed_docs_count = kwargs.get("confirmed_docs_count", None)
+        self.ingest_email = kwargs.get("ingest_email", None)
 
 
 class CollectionCreate(msrest.serialization.Model):
@@ -1741,8 +1747,8 @@ class DataPoint(msrest.serialization.Model):
     :vartype no_rect: bool
     :ivar similar_to:
     :vartype similar_to: list[str]
-    :ivar choices:
-    :vartype choices: list[~affinda.models.DataPointChoicesItem]
+    :ivar display_enum_value:
+    :vartype display_enum_value: bool
     :ivar children:
     :vartype children: list[~affinda.models.DataPoint]
     """
@@ -1765,7 +1771,7 @@ class DataPoint(msrest.serialization.Model):
         "multiple": {"key": "multiple", "type": "bool"},
         "no_rect": {"key": "noRect", "type": "bool"},
         "similar_to": {"key": "similarTo", "type": "[str]"},
-        "choices": {"key": "choices", "type": "[DataPointChoicesItem]"},
+        "display_enum_value": {"key": "displayEnumValue", "type": "bool"},
         "children": {"key": "children", "type": "[DataPoint]"},
     }
 
@@ -1793,8 +1799,8 @@ class DataPoint(msrest.serialization.Model):
         :paramtype no_rect: bool
         :keyword similar_to:
         :paramtype similar_to: list[str]
-        :keyword choices:
-        :paramtype choices: list[~affinda.models.DataPointChoicesItem]
+        :keyword display_enum_value:
+        :paramtype display_enum_value: bool
         :keyword children:
         :paramtype children: list[~affinda.models.DataPoint]
         """
@@ -1809,34 +1815,48 @@ class DataPoint(msrest.serialization.Model):
         self.multiple = kwargs.get("multiple", None)
         self.no_rect = kwargs.get("no_rect", None)
         self.similar_to = kwargs.get("similar_to", None)
-        self.choices = kwargs.get("choices", None)
+        self.display_enum_value = kwargs.get("display_enum_value", None)
         self.children = kwargs.get("children", None)
 
 
-class DataPointChoicesItem(msrest.serialization.Model):
-    """DataPointChoicesItem.
+class DataPointChoice(msrest.serialization.Model):
+    """DataPointChoice.
 
     All required parameters must be populated in order to send to Azure.
 
+    :ivar id: Required.
+    :vartype id: float
     :ivar label: Required.
     :vartype label: str
+    :ivar value: Required.
+    :vartype value: str
     """
 
     _validation = {
+        "id": {"required": True},
         "label": {"required": True},
+        "value": {"required": True},
     }
 
     _attribute_map = {
+        "id": {"key": "id", "type": "float"},
         "label": {"key": "label", "type": "str"},
+        "value": {"key": "value", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         """
+        :keyword id: Required.
+        :paramtype id: float
         :keyword label: Required.
         :paramtype label: str
+        :keyword value: Required.
+        :paramtype value: str
         """
-        super(DataPointChoicesItem, self).__init__(**kwargs)
+        super(DataPointChoice, self).__init__(**kwargs)
+        self.id = kwargs["id"]
         self.label = kwargs["label"]
+        self.value = kwargs["value"]
 
 
 class DataPointCreate(msrest.serialization.Model):
@@ -2775,6 +2795,9 @@ class EducationDates(msrest.serialization.Model):
 class EducationGrade(msrest.serialization.Model):
     """EducationGrade.
 
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
     :ivar raw:
     :vartype raw: str
     :ivar metric:
@@ -2784,6 +2807,7 @@ class EducationGrade(msrest.serialization.Model):
     """
 
     _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
         "raw": {"key": "raw", "type": "str"},
         "metric": {"key": "metric", "type": "str"},
         "value": {"key": "value", "type": "str"},
@@ -2791,6 +2815,9 @@ class EducationGrade(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
         :keyword raw:
         :paramtype raw: str
         :keyword metric:
@@ -2799,6 +2826,7 @@ class EducationGrade(msrest.serialization.Model):
         :paramtype value: str
         """
         super(EducationGrade, self).__init__(**kwargs)
+        self.additional_properties = kwargs.get("additional_properties", None)
         self.raw = kwargs.get("raw", None)
         self.metric = kwargs.get("metric", None)
         self.value = kwargs.get("value", None)
@@ -2840,119 +2868,6 @@ class EducationSearchScoreComponent(msrest.serialization.Model):
         self.value = kwargs.get("value", None)
         self.label = kwargs["label"]
         self.score = kwargs.get("score", None)
-
-
-class EnumAnnotationSerializerV2(AnnotationV2):
-    """EnumAnnotationSerializerV2.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar additional_properties: Unmatched properties from the message are deserialized to this
-     collection.
-    :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
-    :vartype id: int
-    :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
-    :vartype page_index: int
-    :ivar raw: Required.
-    :vartype raw: str
-    :ivar confidence: Required. The overall confidence that the model's prediction is correct.
-    :vartype confidence: float
-    :ivar classification_confidence: Required. The model's confidence that the text has been
-     classified correctly.
-    :vartype classification_confidence: float
-    :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
-     the confidence that the text in the image has been correctly read by the model.
-    :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
-    :vartype is_verified: bool
-    :ivar is_client_verified: Required.
-    :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
-    :vartype is_auto_verified: bool
-    :ivar data_point:
-    :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
-    :ivar parsed:
-    :vartype parsed: str
-    """
-
-    _validation = {
-        "id": {"required": True},
-        "rectangle": {"required": True},
-        "rectangles": {"required": True},
-        "page_index": {"required": True},
-        "raw": {"required": True},
-        "confidence": {"required": True},
-        "classification_confidence": {"required": True},
-        "text_extraction_confidence": {"required": True},
-        "is_verified": {"required": True},
-        "is_client_verified": {"required": True},
-        "is_auto_verified": {"required": True},
-        "content_type": {"required": True},
-    }
-
-    _attribute_map = {
-        "additional_properties": {"key": "", "type": "{object}"},
-        "id": {"key": "id", "type": "int"},
-        "rectangle": {"key": "rectangle", "type": "Rectangle"},
-        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
-        "page_index": {"key": "pageIndex", "type": "int"},
-        "raw": {"key": "raw", "type": "str"},
-        "confidence": {"key": "confidence", "type": "float"},
-        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
-        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
-        "is_verified": {"key": "isVerified", "type": "bool"},
-        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
-        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "data_point": {"key": "dataPoint", "type": "str"},
-        "content_type": {"key": "contentType", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword additional_properties: Unmatched properties from the message are deserialized to this
-         collection.
-        :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
-        :paramtype id: int
-        :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
-        :paramtype page_index: int
-        :keyword raw: Required.
-        :paramtype raw: str
-        :keyword confidence: Required. The overall confidence that the model's prediction is correct.
-        :paramtype confidence: float
-        :keyword classification_confidence: Required. The model's confidence that the text has been
-         classified correctly.
-        :paramtype classification_confidence: float
-        :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
-         is the confidence that the text in the image has been correctly read by the model.
-        :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
-        :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
-        :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
-        :paramtype is_auto_verified: bool
-        :keyword data_point:
-        :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
-        :keyword parsed:
-        :paramtype parsed: str
-        """
-        super(EnumAnnotationSerializerV2, self).__init__(**kwargs)
-        self.parsed = kwargs.get("parsed", None)
 
 
 class Error(msrest.serialization.Model):
@@ -4158,7 +4073,7 @@ class InvoiceData(msrest.serialization.Model):
     :ivar supplier_website:
     :vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
     :ivar currency_code:
-    :vartype currency_code: ~affinda.models.EnumAnnotationSerializerV2
+    :vartype currency_code: ~affinda.models.TextAnnotationV2
     :ivar custom_fields: Dictionary of :code:`<any>`.
     :vartype custom_fields: dict[str, any]
     """
@@ -4242,7 +4157,7 @@ class InvoiceData(msrest.serialization.Model):
         "customer_email": {"key": "customerEmail", "type": "InvoiceDataCustomerEmail"},
         "supplier_email": {"key": "supplierEmail", "type": "InvoiceDataSupplierEmail"},
         "supplier_website": {"key": "supplierWebsite", "type": "InvoiceDataSupplierWebsite"},
-        "currency_code": {"key": "currencyCode", "type": "EnumAnnotationSerializerV2"},
+        "currency_code": {"key": "currencyCode", "type": "TextAnnotationV2"},
         "custom_fields": {"key": "customFields", "type": "{object}"},
     }
 
@@ -4321,7 +4236,7 @@ class InvoiceData(msrest.serialization.Model):
         :keyword supplier_website:
         :paramtype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
         :keyword currency_code:
-        :paramtype currency_code: ~affinda.models.EnumAnnotationSerializerV2
+        :paramtype currency_code: ~affinda.models.TextAnnotationV2
         :keyword custom_fields: Dictionary of :code:`<any>`.
         :paramtype custom_fields: dict[str, any]
         """
@@ -11159,6 +11074,30 @@ class Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSche
         self.results = kwargs["results"]
 
 
+class Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1(
+    msrest.serialization.Model
+):
+    """Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1.
+
+    :ivar results:
+    :vartype results: list[~affinda.models.DataPointChoice]
+    """
+
+    _attribute_map = {
+        "results": {"key": "results", "type": "[DataPointChoice]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword results:
+        :paramtype results: list[~affinda.models.DataPointChoice]
+        """
+        super(
+            Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1, self
+        ).__init__(**kwargs)
+        self.results = kwargs.get("results", None)
+
+
 class Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1(
     msrest.serialization.Model
 ):
@@ -11294,6 +11233,55 @@ class PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchem
             PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema, self
         ).__init__(**kwargs)
         self.document = kwargs.get("document", None)
+
+
+class PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema(
+    PaginatedResponse,
+    Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1,
+):
+    """PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar results:
+    :vartype results: list[~affinda.models.DataPointChoice]
+    :ivar count: Required. Number of items in results.
+    :vartype count: int
+    :ivar next: URL to request next page of results.
+    :vartype next: str
+    :ivar previous: URL to request previous page of results.
+    :vartype previous: str
+    """
+
+    _validation = {
+        "count": {"required": True},
+    }
+
+    _attribute_map = {
+        "results": {"key": "results", "type": "[DataPointChoice]"},
+        "count": {"key": "count", "type": "int"},
+        "next": {"key": "next", "type": "str"},
+        "previous": {"key": "previous", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword results:
+        :paramtype results: list[~affinda.models.DataPointChoice]
+        :keyword count: Required. Number of items in results.
+        :paramtype count: int
+        :keyword next: URL to request next page of results.
+        :paramtype next: str
+        :keyword previous: URL to request previous page of results.
+        :paramtype previous: str
+        """
+        super(
+            PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema, self
+        ).__init__(**kwargs)
+        self.results = kwargs.get("results", None)
+        self.count = kwargs["count"]
+        self.next = kwargs.get("next", None)
+        self.previous = kwargs.get("previous", None)
 
 
 class PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema(
@@ -11980,6 +11968,9 @@ class ResumeDataName(msrest.serialization.Model):
 class ResumeDataRefereesItem(msrest.serialization.Model):
     """ResumeDataRefereesItem.
 
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
     :ivar name:
     :vartype name: str
     :ivar text:
@@ -11993,6 +11984,7 @@ class ResumeDataRefereesItem(msrest.serialization.Model):
     """
 
     _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
         "name": {"key": "name", "type": "str"},
         "text": {"key": "text", "type": "str"},
         "email": {"key": "email", "type": "str"},
@@ -12002,6 +11994,9 @@ class ResumeDataRefereesItem(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
         :keyword name:
         :paramtype name: str
         :keyword text:
@@ -12014,6 +12009,7 @@ class ResumeDataRefereesItem(msrest.serialization.Model):
         :paramtype position: str
         """
         super(ResumeDataRefereesItem, self).__init__(**kwargs)
+        self.additional_properties = kwargs.get("additional_properties", None)
         self.name = kwargs.get("name", None)
         self.text = kwargs.get("text", None)
         self.email = kwargs.get("email", None)
@@ -14517,6 +14513,8 @@ class Workspace(msrest.serialization.Model):
     :vartype unvalidated_docs_count: int
     :ivar confirmed_docs_count: Number of validated documents in the workspace.
     :vartype confirmed_docs_count: int
+    :ivar ingest_email:
+    :vartype ingest_email: str
     """
 
     _validation = {
@@ -14533,6 +14531,7 @@ class Workspace(msrest.serialization.Model):
         "members": {"key": "members", "type": "[User]"},
         "unvalidated_docs_count": {"key": "unvalidatedDocsCount", "type": "int"},
         "confirmed_docs_count": {"key": "confirmedDocsCount", "type": "int"},
+        "ingest_email": {"key": "ingestEmail", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -14559,6 +14558,8 @@ class Workspace(msrest.serialization.Model):
         :paramtype unvalidated_docs_count: int
         :keyword confirmed_docs_count: Number of validated documents in the workspace.
         :paramtype confirmed_docs_count: int
+        :keyword ingest_email:
+        :paramtype ingest_email: str
         """
         super(Workspace, self).__init__(**kwargs)
         self.identifier = kwargs["identifier"]
@@ -14570,6 +14571,7 @@ class Workspace(msrest.serialization.Model):
         self.members = kwargs.get("members", None)
         self.unvalidated_docs_count = kwargs.get("unvalidated_docs_count", None)
         self.confirmed_docs_count = kwargs.get("confirmed_docs_count", None)
+        self.ingest_email = kwargs.get("ingest_email", None)
 
 
 class WorkspaceCollectionsItem(msrest.serialization.Model):
