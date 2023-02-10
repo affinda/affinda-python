@@ -101,11 +101,9 @@ try:
     from ._models_py3 import Extractor
     from ._models_py3 import ExtractorBaseExtractor
     from ._models_py3 import ExtractorCreate
-    from ._models_py3 import ExtractorFieldGroups
     from ._models_py3 import ExtractorUpdate
     from ._models_py3 import Field
     from ._models_py3 import FieldGroup
-    from ._models_py3 import FieldGroups
     from ._models_py3 import Get200ApplicationJsonPropertiesItemsItem
     from ._models_py3 import GetAllDocumentsResults
     from ._models_py3 import GetAllDocumentsResultsV2
@@ -249,6 +247,9 @@ try:
     from ._models_py3 import RedactedResumeRequestBody
     from ._models_py3 import RequestError
     from ._models_py3 import RequestErrorErrorsItem
+    from ._models_py3 import ResthookSubscription
+    from ._models_py3 import ResthookSubscriptionCreate
+    from ._models_py3 import ResthookSubscriptionUpdate
     from ._models_py3 import Resume
     from ._models_py3 import ResumeData
     from ._models_py3 import ResumeDataName
@@ -382,11 +383,9 @@ except (SyntaxError, ImportError):
     from ._models import Extractor  # type: ignore
     from ._models import ExtractorBaseExtractor  # type: ignore
     from ._models import ExtractorCreate  # type: ignore
-    from ._models import ExtractorFieldGroups  # type: ignore
     from ._models import ExtractorUpdate  # type: ignore
     from ._models import Field  # type: ignore
     from ._models import FieldGroup  # type: ignore
-    from ._models import FieldGroups  # type: ignore
     from ._models import Get200ApplicationJsonPropertiesItemsItem  # type: ignore
     from ._models import GetAllDocumentsResults  # type: ignore
     from ._models import GetAllDocumentsResultsV2  # type: ignore
@@ -502,6 +501,9 @@ except (SyntaxError, ImportError):
     from ._models import RedactedResumeRequestBody  # type: ignore
     from ._models import RequestError  # type: ignore
     from ._models import RequestErrorErrorsItem  # type: ignore
+    from ._models import ResthookSubscription  # type: ignore
+    from ._models import ResthookSubscriptionCreate  # type: ignore
+    from ._models import ResthookSubscriptionUpdate  # type: ignore
     from ._models import Resume  # type: ignore
     from ._models import ResumeData  # type: ignore
     from ._models import ResumeDataName  # type: ignore
@@ -581,9 +583,12 @@ from ._affinda_api_enums import (
     PatchContentSchemaStatus,
     PostContentSchemaDocumentType,
     Region,
+    ResthookEvent,
+    ResthookSubscriptionVersion,
     ResumeSearchParametersCustomDataFilterType,
     ResumeSkillSourcesItemSection,
     SearchLocationUnit,
+    Version,
     WorkspaceVisibility,
 )
 from ._patch import __all__ as _patch_all
@@ -663,11 +668,9 @@ __all__ = [
     "Extractor",
     "ExtractorBaseExtractor",
     "ExtractorCreate",
-    "ExtractorFieldGroups",
     "ExtractorUpdate",
     "Field",
     "FieldGroup",
-    "FieldGroups",
     "Get200ApplicationJsonPropertiesItemsItem",
     "GetAllDocumentsResults",
     "GetAllDocumentsResultsV2",
@@ -783,6 +786,9 @@ __all__ = [
     "RedactedResumeRequestBody",
     "RequestError",
     "RequestErrorErrorsItem",
+    "ResthookSubscription",
+    "ResthookSubscriptionCreate",
+    "ResthookSubscriptionUpdate",
     "Resume",
     "ResumeData",
     "ResumeDataName",
@@ -860,9 +866,12 @@ __all__ = [
     "PatchContentSchemaStatus",
     "PostContentSchemaDocumentType",
     "Region",
+    "ResthookEvent",
+    "ResthookSubscriptionVersion",
     "ResumeSearchParametersCustomDataFilterType",
     "ResumeSkillSourcesItemSection",
     "SearchLocationUnit",
+    "Version",
     "WorkspaceVisibility",
 ]
 __all__.extend([p for p in _patch_all if p not in __all__])

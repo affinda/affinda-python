@@ -3478,7 +3478,7 @@ class Extractor(msrest.serialization.Model):
     :ivar is_custom:
     :vartype is_custom: bool
     :ivar field_groups:
-    :vartype field_groups: ~affinda.models.ExtractorFieldGroups
+    :vartype field_groups: list[~affinda.models.FieldGroup]
     :ivar created_dt:
     :vartype created_dt: ~datetime.datetime
     """
@@ -3501,7 +3501,7 @@ class Extractor(msrest.serialization.Model):
         "category": {"key": "category", "type": "str"},
         "validatable": {"key": "validatable", "type": "bool"},
         "is_custom": {"key": "isCustom", "type": "bool"},
-        "field_groups": {"key": "fieldGroups", "type": "ExtractorFieldGroups"},
+        "field_groups": {"key": "fieldGroups", "type": "[FieldGroup]"},
         "created_dt": {"key": "createdDt", "type": "iso-8601"},
     }
 
@@ -3517,7 +3517,7 @@ class Extractor(msrest.serialization.Model):
         organization: Optional["_models.Organization"] = None,
         category: Optional[str] = None,
         is_custom: Optional[bool] = None,
-        field_groups: Optional["_models.ExtractorFieldGroups"] = None,
+        field_groups: Optional[List["_models.FieldGroup"]] = None,
         created_dt: Optional[datetime.datetime] = None,
         **kwargs,
     ):
@@ -3541,7 +3541,7 @@ class Extractor(msrest.serialization.Model):
         :keyword is_custom:
         :paramtype is_custom: bool
         :keyword field_groups:
-        :paramtype field_groups: ~affinda.models.ExtractorFieldGroups
+        :paramtype field_groups: list[~affinda.models.FieldGroup]
         :keyword created_dt:
         :paramtype created_dt: ~datetime.datetime
         """
@@ -3654,7 +3654,7 @@ class ExtractorCreate(msrest.serialization.Model):
     :ivar validatable:
     :vartype validatable: bool
     :ivar field_groups:
-    :vartype field_groups: ~affinda.models.FieldGroups
+    :vartype field_groups: list[~affinda.models.FieldGroup]
     """
 
     _validation = {
@@ -3669,7 +3669,7 @@ class ExtractorCreate(msrest.serialization.Model):
         "organization": {"key": "organization", "type": "str"},
         "category": {"key": "category", "type": "str"},
         "validatable": {"key": "validatable", "type": "bool"},
-        "field_groups": {"key": "fieldGroups", "type": "FieldGroups"},
+        "field_groups": {"key": "fieldGroups", "type": "[FieldGroup]"},
     }
 
     def __init__(
@@ -3681,7 +3681,7 @@ class ExtractorCreate(msrest.serialization.Model):
         base_extractor: Optional[int] = None,
         category: Optional[str] = None,
         validatable: Optional[bool] = None,
-        field_groups: Optional["_models.FieldGroups"] = None,
+        field_groups: Optional[List["_models.FieldGroup"]] = None,
         **kwargs,
     ):
         """
@@ -3698,7 +3698,7 @@ class ExtractorCreate(msrest.serialization.Model):
         :keyword validatable:
         :paramtype validatable: bool
         :keyword field_groups:
-        :paramtype field_groups: ~affinda.models.FieldGroups
+        :paramtype field_groups: list[~affinda.models.FieldGroup]
         """
         super(ExtractorCreate, self).__init__(**kwargs)
         self.name = name
@@ -3708,70 +3708,6 @@ class ExtractorCreate(msrest.serialization.Model):
         self.category = category
         self.validatable = validatable
         self.field_groups = field_groups
-
-
-class FieldGroup(msrest.serialization.Model):
-    """FieldGroup.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar label: Required.
-    :vartype label: str
-    :ivar fields: Required.
-    :vartype fields: list[~affinda.models.Field]
-    """
-
-    _validation = {
-        "label": {"required": True},
-        "fields": {"required": True},
-    }
-
-    _attribute_map = {
-        "label": {"key": "label", "type": "str"},
-        "fields": {"key": "fields", "type": "[Field]"},
-    }
-
-    def __init__(self, *, label: str, fields: List["_models.Field"], **kwargs):
-        """
-        :keyword label: Required.
-        :paramtype label: str
-        :keyword fields: Required.
-        :paramtype fields: list[~affinda.models.Field]
-        """
-        super(FieldGroup, self).__init__(**kwargs)
-        self.label = label
-        self.fields = fields
-
-
-class ExtractorFieldGroups(FieldGroup):
-    """ExtractorFieldGroups.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar label: Required.
-    :vartype label: str
-    :ivar fields: Required.
-    :vartype fields: list[~affinda.models.Field]
-    """
-
-    _validation = {
-        "label": {"required": True},
-        "fields": {"required": True},
-    }
-
-    _attribute_map = {
-        "label": {"key": "label", "type": "str"},
-        "fields": {"key": "fields", "type": "[Field]"},
-    }
-
-    def __init__(self, *, label: str, fields: List["_models.Field"], **kwargs):
-        """
-        :keyword label: Required.
-        :paramtype label: str
-        :keyword fields: Required.
-        :paramtype fields: list[~affinda.models.Field]
-        """
-        super(ExtractorFieldGroups, self).__init__(label=label, fields=fields, **kwargs)
 
 
 class ExtractorUpdate(msrest.serialization.Model):
@@ -3788,7 +3724,7 @@ class ExtractorUpdate(msrest.serialization.Model):
     :ivar validatable:
     :vartype validatable: bool
     :ivar field_groups:
-    :vartype field_groups: ~affinda.models.FieldGroups
+    :vartype field_groups: list[~affinda.models.FieldGroup]
     """
 
     _attribute_map = {
@@ -3797,7 +3733,7 @@ class ExtractorUpdate(msrest.serialization.Model):
         "base_extractor": {"key": "baseExtractor", "type": "int"},
         "category": {"key": "category", "type": "str"},
         "validatable": {"key": "validatable", "type": "bool"},
-        "field_groups": {"key": "fieldGroups", "type": "FieldGroups"},
+        "field_groups": {"key": "fieldGroups", "type": "[FieldGroup]"},
     }
 
     def __init__(
@@ -3808,7 +3744,7 @@ class ExtractorUpdate(msrest.serialization.Model):
         base_extractor: Optional[int] = None,
         category: Optional[str] = None,
         validatable: Optional[bool] = None,
-        field_groups: Optional["_models.FieldGroups"] = None,
+        field_groups: Optional[List["_models.FieldGroup"]] = None,
         **kwargs,
     ):
         """
@@ -3823,7 +3759,7 @@ class ExtractorUpdate(msrest.serialization.Model):
         :keyword validatable:
         :paramtype validatable: bool
         :keyword field_groups:
-        :paramtype field_groups: ~affinda.models.FieldGroups
+        :paramtype field_groups: list[~affinda.models.FieldGroup]
         """
         super(ExtractorUpdate, self).__init__(**kwargs)
         self.name = name
@@ -3909,8 +3845,8 @@ class Field(msrest.serialization.Model):
         self.fields = fields
 
 
-class FieldGroups(FieldGroup):
-    """FieldGroups.
+class FieldGroup(msrest.serialization.Model):
+    """FieldGroup.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -3937,7 +3873,9 @@ class FieldGroups(FieldGroup):
         :keyword fields: Required.
         :paramtype fields: list[~affinda.models.Field]
         """
-        super(FieldGroups, self).__init__(label=label, fields=fields, **kwargs)
+        super(FieldGroup, self).__init__(**kwargs)
+        self.label = label
+        self.fields = fields
 
 
 class Get200ApplicationJsonPropertiesItemsItem(msrest.serialization.Model):
@@ -13889,6 +13827,212 @@ class RequestErrorErrorsItem(msrest.serialization.Model):
         self.attr = attr
         self.code = code
         self.detail = detail
+
+
+class ResthookSubscription(msrest.serialization.Model):
+    """ResthookSubscription.
+
+    :ivar id: Resthook subscription's ID.
+    :vartype id: int
+    :ivar event: The event name to subscribe to. Known values are: "resume.parse.succeeded",
+     "resume.parse.failed", "resume.parse.completed", "invoice.parse.succeeded",
+     "invoice.parse.failed", "invoice.parse.completed", "invoice.validate.completed",
+     "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
+     "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
+     "document.classify.completed".
+    :vartype event: str or ~affinda.models.ResthookEvent
+    :ivar organization:
+    :vartype organization: ~affinda.models.Organization
+    :ivar target_url: URL of the resthook's receiver.
+    :vartype target_url: str
+    :ivar active: Resthooks only fire for active subscriptions.
+    :vartype active: bool
+    :ivar auto_deactivated: Resthook subscriptions can be auto deactivated if the receiver
+     continuously returns error status code over a period of time.
+    :vartype auto_deactivated: bool
+    :ivar auto_deactivate_reason: The reason for the subscription being auto deactivated. May
+     contains the error response that the receiver returned.
+    :vartype auto_deactivate_reason: str
+    :ivar version: Version of the resthook subscription. Determines the resthook body being fired.
+     Known values are: "v1", "v2", "v3".
+    :vartype version: str or ~affinda.models.ResthookSubscriptionVersion
+    """
+
+    _attribute_map = {
+        "id": {"key": "id", "type": "int"},
+        "event": {"key": "event", "type": "str"},
+        "organization": {"key": "organization", "type": "Organization"},
+        "target_url": {"key": "targetUrl", "type": "str"},
+        "active": {"key": "active", "type": "bool"},
+        "auto_deactivated": {"key": "autoDeactivated", "type": "bool"},
+        "auto_deactivate_reason": {"key": "autoDeactivateReason", "type": "str"},
+        "version": {"key": "version", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        id: Optional[int] = None,
+        event: Optional[Union[str, "_models.ResthookEvent"]] = None,
+        organization: Optional["_models.Organization"] = None,
+        target_url: Optional[str] = None,
+        active: Optional[bool] = None,
+        auto_deactivated: Optional[bool] = None,
+        auto_deactivate_reason: Optional[str] = None,
+        version: Optional[Union[str, "_models.ResthookSubscriptionVersion"]] = None,
+        **kwargs,
+    ):
+        """
+        :keyword id: Resthook subscription's ID.
+        :paramtype id: int
+        :keyword event: The event name to subscribe to. Known values are: "resume.parse.succeeded",
+         "resume.parse.failed", "resume.parse.completed", "invoice.parse.succeeded",
+         "invoice.parse.failed", "invoice.parse.completed", "invoice.validate.completed",
+         "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
+         "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
+         "document.classify.completed".
+        :paramtype event: str or ~affinda.models.ResthookEvent
+        :keyword organization:
+        :paramtype organization: ~affinda.models.Organization
+        :keyword target_url: URL of the resthook's receiver.
+        :paramtype target_url: str
+        :keyword active: Resthooks only fire for active subscriptions.
+        :paramtype active: bool
+        :keyword auto_deactivated: Resthook subscriptions can be auto deactivated if the receiver
+         continuously returns error status code over a period of time.
+        :paramtype auto_deactivated: bool
+        :keyword auto_deactivate_reason: The reason for the subscription being auto deactivated. May
+         contains the error response that the receiver returned.
+        :paramtype auto_deactivate_reason: str
+        :keyword version: Version of the resthook subscription. Determines the resthook body being
+         fired. Known values are: "v1", "v2", "v3".
+        :paramtype version: str or ~affinda.models.ResthookSubscriptionVersion
+        """
+        super(ResthookSubscription, self).__init__(**kwargs)
+        self.id = id
+        self.event = event
+        self.organization = organization
+        self.target_url = target_url
+        self.active = active
+        self.auto_deactivated = auto_deactivated
+        self.auto_deactivate_reason = auto_deactivate_reason
+        self.version = version
+
+
+class ResthookSubscriptionCreate(msrest.serialization.Model):
+    """ResthookSubscriptionCreate.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar target_url: Required. URL of the resthook's receiver.
+    :vartype target_url: str
+    :ivar event: Required. The event name to subscribe to. Known values are:
+     "resume.parse.succeeded", "resume.parse.failed", "resume.parse.completed",
+     "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
+     "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
+     "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
+     "document.classify.failed", "document.classify.completed".
+    :vartype event: str or ~affinda.models.ResthookEvent
+    :ivar organization:
+    :vartype organization: str
+    :ivar version: Version of the resthook subscription. Determines the resthook body being fired.
+     Known values are: "v1", "v2", "v3".
+    :vartype version: str or ~affinda.models.Version
+    """
+
+    _validation = {
+        "target_url": {"required": True},
+        "event": {"required": True},
+    }
+
+    _attribute_map = {
+        "target_url": {"key": "targetUrl", "type": "str"},
+        "event": {"key": "event", "type": "str"},
+        "organization": {"key": "organization", "type": "str"},
+        "version": {"key": "version", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        target_url: str,
+        event: Union[str, "_models.ResthookEvent"],
+        organization: Optional[str] = None,
+        version: Optional[Union[str, "_models.Version"]] = None,
+        **kwargs,
+    ):
+        """
+        :keyword target_url: Required. URL of the resthook's receiver.
+        :paramtype target_url: str
+        :keyword event: Required. The event name to subscribe to. Known values are:
+         "resume.parse.succeeded", "resume.parse.failed", "resume.parse.completed",
+         "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
+         "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
+         "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
+         "document.classify.failed", "document.classify.completed".
+        :paramtype event: str or ~affinda.models.ResthookEvent
+        :keyword organization:
+        :paramtype organization: str
+        :keyword version: Version of the resthook subscription. Determines the resthook body being
+         fired. Known values are: "v1", "v2", "v3".
+        :paramtype version: str or ~affinda.models.Version
+        """
+        super(ResthookSubscriptionCreate, self).__init__(**kwargs)
+        self.target_url = target_url
+        self.event = event
+        self.organization = organization
+        self.version = version
+
+
+class ResthookSubscriptionUpdate(msrest.serialization.Model):
+    """ResthookSubscriptionUpdate.
+
+    :ivar event: The event name to subscribe to. Known values are: "resume.parse.succeeded",
+     "resume.parse.failed", "resume.parse.completed", "invoice.parse.succeeded",
+     "invoice.parse.failed", "invoice.parse.completed", "invoice.validate.completed",
+     "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
+     "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
+     "document.classify.completed".
+    :vartype event: str or ~affinda.models.ResthookEvent
+    :ivar organization: Uniquely identify an organization.
+    :vartype organization: str
+    :ivar version: Version of the resthook subscription. Determines the resthook body being fired.
+     Known values are: "v1", "v2", "v3".
+    :vartype version: str or ~affinda.models.Version
+    """
+
+    _attribute_map = {
+        "event": {"key": "event", "type": "str"},
+        "organization": {"key": "organization", "type": "str"},
+        "version": {"key": "version", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        event: Optional[Union[str, "_models.ResthookEvent"]] = None,
+        organization: Optional[str] = None,
+        version: Optional[Union[str, "_models.Version"]] = None,
+        **kwargs,
+    ):
+        """
+        :keyword event: The event name to subscribe to. Known values are: "resume.parse.succeeded",
+         "resume.parse.failed", "resume.parse.completed", "invoice.parse.succeeded",
+         "invoice.parse.failed", "invoice.parse.completed", "invoice.validate.completed",
+         "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
+         "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
+         "document.classify.completed".
+        :paramtype event: str or ~affinda.models.ResthookEvent
+        :keyword organization: Uniquely identify an organization.
+        :paramtype organization: str
+        :keyword version: Version of the resthook subscription. Determines the resthook body being
+         fired. Known values are: "v1", "v2", "v3".
+        :paramtype version: str or ~affinda.models.Version
+        """
+        super(ResthookSubscriptionUpdate, self).__init__(**kwargs)
+        self.event = event
+        self.organization = organization
+        self.version = version
 
 
 class Resume(msrest.serialization.Model):

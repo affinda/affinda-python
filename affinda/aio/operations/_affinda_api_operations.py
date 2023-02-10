@@ -35,6 +35,7 @@ from ...operations._affinda_api_operations import (
     build_create_job_description_search_request,
     build_create_organization_request,
     build_create_redacted_resume_request,
+    build_create_resthook_subscription_request,
     build_create_resume_request,
     build_create_resume_search_embed_url_request,
     build_create_resume_search_request,
@@ -53,6 +54,7 @@ from ...operations._affinda_api_operations import (
     build_delete_organization_membership_request,
     build_delete_organization_request,
     build_delete_redacted_resume_request,
+    build_delete_resthook_subscription_request,
     build_delete_resume_request,
     build_delete_tag_request,
     build_delete_workspace_membership_request,
@@ -69,6 +71,7 @@ from ...operations._affinda_api_operations import (
     build_get_all_organization_memberships_request,
     build_get_all_organizations_request,
     build_get_all_redacted_resumes_request,
+    build_get_all_resthook_subscriptions_request,
     build_get_all_resumes_request,
     build_get_all_tags_request,
     build_get_all_workspace_memberships_request,
@@ -87,6 +90,7 @@ from ...operations._affinda_api_operations import (
     build_get_organization_membership_request,
     build_get_organization_request,
     build_get_redacted_resume_request,
+    build_get_resthook_subscription_request,
     build_get_resume_request,
     build_get_resume_search_config_request,
     build_get_resume_search_detail_request,
@@ -106,6 +110,7 @@ from ...operations._affinda_api_operations import (
     build_update_job_description_search_config_request,
     build_update_organization_membership_request,
     build_update_organization_request,
+    build_update_resthook_subscription_data_request,
     build_update_resume_data_request,
     build_update_resume_search_config_request,
     build_update_tag_data_request,
@@ -2885,6 +2890,331 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         return deserialized
 
     list_occupation_groups.metadata = {"url": "/v3/occupation_groups"}  # type: ignore
+
+    async def get_all_resthook_subscriptions(
+        self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any
+    ) -> List[_models.ResthookSubscription]:
+        """Get list of all resthook subscriptions.
+
+        Returns your resthook subscriptions.
+
+        :param offset: The number of documents to skip before starting to collect the result set.
+         Default value is None.
+        :type offset: int
+        :param limit: The numbers of results to return. Default value is 300.
+        :type limit: int
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: list of ResthookSubscription, or the result of cls(response)
+        :rtype: list[~affinda.models.ResthookSubscription]
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[List[_models.ResthookSubscription]]
+
+        request = build_get_all_resthook_subscriptions_request(
+            offset=offset,
+            limit=limit,
+            template_url=self.get_all_resthook_subscriptions.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("[ResthookSubscription]", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_all_resthook_subscriptions.metadata = {"url": "/v3/resthook_subscriptions"}  # type: ignore
+
+    async def create_resthook_subscription(
+        self, body: _models.ResthookSubscriptionCreate, **kwargs: Any
+    ) -> _models.ResthookSubscription:
+        """Create a resthook subscriptions.
+
+        Create a resthook subscriptions.
+
+        :param body:
+        :type body: ~affinda.models.ResthookSubscriptionCreate
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: ResthookSubscription, or the result of cls(response)
+        :rtype: ~affinda.models.ResthookSubscription
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop(
+            "content_type", _headers.pop("Content-Type", "application/json")
+        )  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResthookSubscription]
+
+        _json = self._serialize.body(body, "ResthookSubscriptionCreate")
+
+        request = build_create_resthook_subscription_request(
+            content_type=content_type,
+            json=_json,
+            template_url=self.create_resthook_subscription.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [201]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("ResthookSubscription", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    create_resthook_subscription.metadata = {"url": "/v3/resthook_subscriptions"}  # type: ignore
+
+    async def get_resthook_subscription(
+        self, id: int, **kwargs: Any
+    ) -> _models.ResthookSubscription:
+        """Get specific resthook subscription.
+
+        Return a specific resthook subscription.
+
+        :param id: Resthook subscription's ID.
+        :type id: int
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: ResthookSubscription, or the result of cls(response)
+        :rtype: ~affinda.models.ResthookSubscription
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResthookSubscription]
+
+        request = build_get_resthook_subscription_request(
+            id=id,
+            template_url=self.get_resthook_subscription.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("ResthookSubscription", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_resthook_subscription.metadata = {"url": "/v3/resthook_subscriptions/{id}"}  # type: ignore
+
+    async def update_resthook_subscription_data(
+        self, id: int, body: _models.ResthookSubscriptionUpdate, **kwargs: Any
+    ) -> _models.ResthookSubscription:
+        """Update a resthook subscription's data.
+
+        Update data of a resthook subscription.
+
+        :param id: ResthookSubscription's ID.
+        :type id: int
+        :param body: ResthookSubscription data to update.
+        :type body: ~affinda.models.ResthookSubscriptionUpdate
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: ResthookSubscription, or the result of cls(response)
+        :rtype: ~affinda.models.ResthookSubscription
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop(
+            "content_type", _headers.pop("Content-Type", "application/json")
+        )  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResthookSubscription]
+
+        _json = self._serialize.body(body, "ResthookSubscriptionUpdate")
+
+        request = build_update_resthook_subscription_data_request(
+            id=id,
+            content_type=content_type,
+            json=_json,
+            template_url=self.update_resthook_subscription_data.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("ResthookSubscription", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    update_resthook_subscription_data.metadata = {"url": "/v3/resthook_subscriptions/{id}"}  # type: ignore
+
+    async def delete_resthook_subscription(  # pylint: disable=inconsistent-return-statements
+        self, id: int, **kwargs: Any
+    ) -> None:
+        """Delete a resthook subscription.
+
+        Deletes the specified resthook subscription from the database.
+
+        :param id: ResthookSubscription's ID.
+        :type id: int
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: None, or the result of cls(response)
+        :rtype: None
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[None]
+
+        request = build_delete_resthook_subscription_request(
+            id=id,
+            template_url=self.delete_resthook_subscription.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [204]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if cls:
+            return cls(pipeline_response, None, {})
+
+    delete_resthook_subscription.metadata = {"url": "/v3/resthook_subscriptions/{id}"}  # type: ignore
 
     async def get_all_organizations(self, **kwargs: Any) -> List[_models.Organization]:
         """Get list of all organizations.

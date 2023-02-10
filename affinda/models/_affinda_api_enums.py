@@ -144,6 +144,33 @@ class Region(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     API_EU1 = "api.eu1"
 
 
+class ResthookEvent(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+    """The event name to subscribe to."""
+
+    RESUME_PARSE_SUCCEEDED = "resume.parse.succeeded"
+    RESUME_PARSE_FAILED = "resume.parse.failed"
+    RESUME_PARSE_COMPLETED = "resume.parse.completed"
+    INVOICE_PARSE_SUCCEEDED = "invoice.parse.succeeded"
+    INVOICE_PARSE_FAILED = "invoice.parse.failed"
+    INVOICE_PARSE_COMPLETED = "invoice.parse.completed"
+    INVOICE_VALIDATE_COMPLETED = "invoice.validate.completed"
+    DOCUMENT_PARSE_SUCCEEDED = "document.parse.succeeded"
+    DOCUMENT_PARSE_FAILED = "document.parse.failed"
+    DOCUMENT_PARSE_COMPLETED = "document.parse.completed"
+    DOCUMENT_VALIDATE_COMPLETED = "document.validate.completed"
+    DOCUMENT_CLASSIFY_SUCCEEDED = "document.classify.succeeded"
+    DOCUMENT_CLASSIFY_FAILED = "document.classify.failed"
+    DOCUMENT_CLASSIFY_COMPLETED = "document.classify.completed"
+
+
+class ResthookSubscriptionVersion(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+    """Version of the resthook subscription. Determines the resthook body being fired."""
+
+    V1 = "v1"
+    V2 = "v2"
+    V3 = "v3"
+
+
 class ResumeSearchParametersCustomDataFilterType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     EQUALS = "equals"
@@ -178,6 +205,14 @@ class SearchLocationUnit(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     KM = "km"
     MI = "mi"
+
+
+class Version(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+    """Version of the resthook subscription. Determines the resthook body being fired."""
+
+    V1 = "v1"
+    V2 = "v2"
+    V3 = "v3"
 
 
 class WorkspaceVisibility(str, Enum, metaclass=CaseInsensitiveEnumMeta):

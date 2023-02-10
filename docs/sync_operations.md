@@ -1091,6 +1091,134 @@ Returns the list of searchable occupation groups.
 
 `list[~affinda.models.OccupationGroup]`: list of OccupationGroup, or the result of cls(response)
 
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_resthook_subscriptions"></a>
+
+#### get\_all\_resthook\_subscriptions
+
+```python
+def get_all_resthook_subscriptions(offset=None, limit=300, **kwargs)
+```
+
+Get list of all resthook subscriptions.
+
+Returns your resthook subscriptions.
+
+**Arguments**:
+
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[~affinda.models.ResthookSubscription]`: list of ResthookSubscription, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resthook_subscription"></a>
+
+#### create\_resthook\_subscription
+
+```python
+def create_resthook_subscription(body, **kwargs)
+```
+
+Create a resthook subscriptions.
+
+Create a resthook subscriptions.
+
+**Arguments**:
+
+- `body` (`~affinda.models.ResthookSubscriptionCreate`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ResthookSubscription`: ResthookSubscription, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resthook_subscription"></a>
+
+#### get\_resthook\_subscription
+
+```python
+def get_resthook_subscription(id, **kwargs)
+```
+
+Get specific resthook subscription.
+
+Return a specific resthook subscription.
+
+**Arguments**:
+
+- `id` (`int`): Resthook subscription's ID.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ResthookSubscription`: ResthookSubscription, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_resthook_subscription_data"></a>
+
+#### update\_resthook\_subscription\_data
+
+```python
+def update_resthook_subscription_data(id, body, **kwargs)
+```
+
+Update a resthook subscription's data.
+
+Update data of a resthook subscription.
+
+**Arguments**:
+
+- `id` (`int`): ResthookSubscription's ID.
+- `body` (`~affinda.models.ResthookSubscriptionUpdate`): ResthookSubscription data to update.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ResthookSubscription`: ResthookSubscription, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_resthook_subscription"></a>
+
+#### delete\_resthook\_subscription
+
+```python
+def delete_resthook_subscription(id, **kwargs)
+```
+
+Delete a resthook subscription.
+
+Deletes the specified resthook subscription from the database.
+
+**Arguments**:
+
+- `id` (`int`): ResthookSubscription's ID.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_organizations"></a>
 
 #### get\_all\_organizations

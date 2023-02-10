@@ -623,6 +623,92 @@ client = AffindaAPI(credential=credential)
 client.delete_index_document(name=index_name, identifier=identifier)
 ```
 
+Webhook
+-------
+
+### getAllResthookSubscriptions - Get list of all resthook subscriptions
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+response = client.get_all_resthook_subscriptions()
+
+print(response.as_dict())
+```
+
+### createResthookSubscription - Create a resthook subscriptions
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+response = client.create_resthook_subscription(
+    target_url="https://my-site.com/receive",
+    event="document.parse.succeeded",
+    organization="mEFayXdO",
+)
+
+print(response.as_dict())
+```
+
+### getResthookSubscription - Get specific resthook subscription
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+id = "REPLACE_ID"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+response = client.get_resthook_subscription(id=id)
+
+print(response.as_dict())
+```
+
+### updateResthookSubscriptionData - Update a resthook subscription's data
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+id = "REPLACE_ID"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+response = client.update_resthook_subscription_data(
+    id=id,
+    body={
+        "target_url": "https://my-new-site.com/receive",
+    },
+)
+
+print(response.as_dict())
+```
+
+### deleteResthookSubscription - Delete a resthook subscription
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+id = "REPLACE_ID"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+response = client.delete_resthook_subscription(id=id)
+
+print(response.as_dict())
+```
+
 Users
 -----
 
