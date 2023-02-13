@@ -1116,7 +1116,8 @@ Default value is None.
 
 **Returns**:
 
-`list[~affinda.models.ResthookSubscription]`: list of ResthookSubscription, or the result of cls(response)
+`~affinda.models.PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema`: PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema, or the
+result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resthook_subscription"></a>
 
@@ -1699,7 +1700,7 @@ Create a custom extractor.
 #### get\_extractor
 
 ```python
-def get_extractor(id, **kwargs)
+def get_extractor(identifier, **kwargs)
 ```
 
 Get specific extractor.
@@ -1708,7 +1709,7 @@ Return a specific extractor.
 
 **Arguments**:
 
-- `id` (`int`): Extractor's ID.
+- `identifier` (`str`): Extractor's identifier.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1724,7 +1725,7 @@ Return a specific extractor.
 #### update\_extractor\_data
 
 ```python
-def update_extractor_data(id, body, **kwargs)
+def update_extractor_data(identifier, body, **kwargs)
 ```
 
 Update an extractor's data.
@@ -1733,7 +1734,7 @@ Update data of an extractor.
 
 **Arguments**:
 
-- `id` (`int`): Extractor's ID.
+- `identifier` (`str`): Extractor's identifier.
 - `body` (`~affinda.models.ExtractorUpdate`): Extractor data to update.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
@@ -1750,7 +1751,7 @@ Update data of an extractor.
 #### delete\_extractor
 
 ```python
-def delete_extractor(id, **kwargs)
+def delete_extractor(identifier, **kwargs)
 ```
 
 Delete an extractor.
@@ -1759,7 +1760,7 @@ Deletes the specified extractor from the database.
 
 **Arguments**:
 
-- `id` (`int`): Extractor's ID.
+- `identifier` (`str`): Extractor's identifier.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1788,7 +1789,7 @@ Returns your custom data points as well as Affinda's off-the-shelf data points.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
 - `organization` (`str`): Filter by organization. Default value is None.
-- `extractor` (`int`): Filter by extractor. Default value is None.
+- `extractor` (`str`): Filter by extractor. Default value is None.
 - `slug` (`str`): Filter by slug. Default value is None.
 - `description` (`str`): Filter by description. Default value is None.
 - `annotation_content_type` (`str`): Filter by annotation content type, e.g. text, integer, float,
@@ -2297,7 +2298,7 @@ Deletes the specified collection from the database.
 #### get\_all\_documents
 
 ```python
-def get_all_documents(offset=None, limit=300, workspace=None, collection=None, state=None, tags=None, created_dt=None, search=None, ordering=None, include_data=None, exclude=None, **kwargs)
+def get_all_documents(offset=None, limit=300, workspace=None, collection=None, state=None, tags=None, created_dt=None, search=None, ordering=None, include_data=None, exclude=None, in_review=None, **kwargs)
 ```
 
 Get list of all documents.
@@ -2322,6 +2323,7 @@ None.
 this to ``true`` will return the detailed data that was parsed, at a performance cost. Default
 value is None.
 - `exclude` (`list[str]`): Exclude some documents from the result. Default value is None.
+- `in_review` (`bool`): Exclude documents that are currently being reviewed. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:

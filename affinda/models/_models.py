@@ -296,9 +296,7 @@ class BaseExtractor(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
-    :ivar id: Required.
-    :vartype id: int
-    :ivar identifier: Required.
+    :ivar identifier: Required. Uniquely identify an extractor.
     :vartype identifier: str
     :ivar name: Required.
     :vartype name: str
@@ -313,7 +311,6 @@ class BaseExtractor(msrest.serialization.Model):
     """
 
     _validation = {
-        "id": {"required": True},
         "identifier": {"required": True},
         "name": {"required": True},
         "name_plural": {"required": True},
@@ -321,7 +318,6 @@ class BaseExtractor(msrest.serialization.Model):
     }
 
     _attribute_map = {
-        "id": {"key": "id", "type": "int"},
         "identifier": {"key": "identifier", "type": "str"},
         "name": {"key": "name", "type": "str"},
         "name_plural": {"key": "namePlural", "type": "str"},
@@ -332,9 +328,7 @@ class BaseExtractor(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
-        :keyword id: Required.
-        :paramtype id: int
-        :keyword identifier: Required.
+        :keyword identifier: Required. Uniquely identify an extractor.
         :paramtype identifier: str
         :keyword name: Required.
         :paramtype name: str
@@ -348,7 +342,6 @@ class BaseExtractor(msrest.serialization.Model):
         :paramtype created_dt: ~datetime.datetime
         """
         super(BaseExtractor, self).__init__(**kwargs)
-        self.id = kwargs["id"]
         self.identifier = kwargs["identifier"]
         self.name = kwargs["name"]
         self.name_plural = kwargs["name_plural"]
@@ -466,8 +459,8 @@ class CollectionCreate(msrest.serialization.Model):
     :vartype name: str
     :ivar workspace: Required. Uniquely identify a workspace.
     :vartype workspace: str
-    :ivar extractor: Required. Extractor's ID.
-    :vartype extractor: int
+    :ivar extractor: Required. Uniquely identify an extractor.
+    :vartype extractor: str
     :ivar auto_validation_threshold:
     :vartype auto_validation_threshold: float
     :ivar fields:
@@ -490,7 +483,7 @@ class CollectionCreate(msrest.serialization.Model):
     _attribute_map = {
         "name": {"key": "name", "type": "str"},
         "workspace": {"key": "workspace", "type": "str"},
-        "extractor": {"key": "extractor", "type": "int"},
+        "extractor": {"key": "extractor", "type": "str"},
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
         "fields": {"key": "fields", "type": "[FieldGroup]"},
         "date_format_preference": {"key": "dateFormatPreference", "type": "str"},
@@ -504,8 +497,8 @@ class CollectionCreate(msrest.serialization.Model):
         :paramtype name: str
         :keyword workspace: Required. Uniquely identify a workspace.
         :paramtype workspace: str
-        :keyword extractor: Required. Extractor's ID.
-        :paramtype extractor: int
+        :keyword extractor: Required. Uniquely identify an extractor.
+        :paramtype extractor: str
         :keyword auto_validation_threshold:
         :paramtype auto_validation_threshold: float
         :keyword fields:
@@ -1739,8 +1732,8 @@ class DataPoint(msrest.serialization.Model):
     :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
     :ivar organization:
     :vartype organization: ~affinda.models.Organization
-    :ivar extractor: Required. Extractor's ID.
-    :vartype extractor: int
+    :ivar extractor: Required. Uniquely identify an extractor.
+    :vartype extractor: str
     :ivar multiple:
     :vartype multiple: bool
     :ivar no_rect:
@@ -1767,7 +1760,7 @@ class DataPoint(msrest.serialization.Model):
         "description": {"key": "description", "type": "str"},
         "annotation_content_type": {"key": "annotationContentType", "type": "str"},
         "organization": {"key": "organization", "type": "Organization"},
-        "extractor": {"key": "extractor", "type": "int"},
+        "extractor": {"key": "extractor", "type": "str"},
         "multiple": {"key": "multiple", "type": "bool"},
         "no_rect": {"key": "noRect", "type": "bool"},
         "similar_to": {"key": "similarTo", "type": "[str]"},
@@ -1791,8 +1784,8 @@ class DataPoint(msrest.serialization.Model):
         :paramtype annotation_content_type: str or ~affinda.models.AnnotationContentType
         :keyword organization:
         :paramtype organization: ~affinda.models.Organization
-        :keyword extractor: Required. Extractor's ID.
-        :paramtype extractor: int
+        :keyword extractor: Required. Uniquely identify an extractor.
+        :paramtype extractor: str
         :keyword multiple:
         :paramtype multiple: bool
         :keyword no_rect:
@@ -1876,8 +1869,8 @@ class DataPointCreate(msrest.serialization.Model):
     :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
     :ivar organization: Required. Uniquely identify an organization.
     :vartype organization: str
-    :ivar extractor: Required. Extractor's ID.
-    :vartype extractor: int
+    :ivar extractor: Required. Uniquely identify an extractor.
+    :vartype extractor: str
     :ivar multiple:
     :vartype multiple: bool
     :ivar no_rect:
@@ -1897,7 +1890,7 @@ class DataPointCreate(msrest.serialization.Model):
         "description": {"key": "description", "type": "str"},
         "annotation_content_type": {"key": "annotationContentType", "type": "str"},
         "organization": {"key": "organization", "type": "str"},
-        "extractor": {"key": "extractor", "type": "int"},
+        "extractor": {"key": "extractor", "type": "str"},
         "multiple": {"key": "multiple", "type": "bool"},
         "no_rect": {"key": "noRect", "type": "bool"},
     }
@@ -1916,8 +1909,8 @@ class DataPointCreate(msrest.serialization.Model):
         :paramtype annotation_content_type: str or ~affinda.models.AnnotationContentType
         :keyword organization: Required. Uniquely identify an organization.
         :paramtype organization: str
-        :keyword extractor: Required. Extractor's ID.
-        :paramtype extractor: int
+        :keyword extractor: Required. Uniquely identify an extractor.
+        :paramtype extractor: str
         :keyword multiple:
         :paramtype multiple: bool
         :keyword no_rect:
@@ -2565,41 +2558,35 @@ class DocumentMetaCollection(msrest.serialization.Model):
 class DocumentMetaCollectionExtractor(msrest.serialization.Model):
     """DocumentMetaCollectionExtractor.
 
-    :ivar id: Extractor's ID.
-    :vartype id: int
-    :ivar identifier:
+    :ivar identifier: Uniquely identify an extractor.
     :vartype identifier: str
     :ivar name:
     :vartype name: str
-    :ivar base_extractor: Base extractor's ID.
-    :vartype base_extractor: int
+    :ivar base_extractor: Base extractor's identifier.
+    :vartype base_extractor: str
     :ivar validatable:
     :vartype validatable: bool
     """
 
     _attribute_map = {
-        "id": {"key": "id", "type": "int"},
         "identifier": {"key": "identifier", "type": "str"},
         "name": {"key": "name", "type": "str"},
-        "base_extractor": {"key": "baseExtractor", "type": "int"},
+        "base_extractor": {"key": "baseExtractor", "type": "str"},
         "validatable": {"key": "validatable", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
         """
-        :keyword id: Extractor's ID.
-        :paramtype id: int
-        :keyword identifier:
+        :keyword identifier: Uniquely identify an extractor.
         :paramtype identifier: str
         :keyword name:
         :paramtype name: str
-        :keyword base_extractor: Base extractor's ID.
-        :paramtype base_extractor: int
+        :keyword base_extractor: Base extractor's identifier.
+        :paramtype base_extractor: str
         :keyword validatable:
         :paramtype validatable: bool
         """
         super(DocumentMetaCollectionExtractor, self).__init__(**kwargs)
-        self.id = kwargs.get("id", None)
         self.identifier = kwargs.get("identifier", None)
         self.name = kwargs.get("name", None)
         self.base_extractor = kwargs.get("base_extractor", None)
@@ -3090,9 +3077,7 @@ class Extractor(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
-    :ivar id: Required. Extractor's ID.
-    :vartype id: int
-    :ivar identifier: Required.
+    :ivar identifier: Required. Uniquely identify an extractor.
     :vartype identifier: str
     :ivar name: Required.
     :vartype name: str
@@ -3115,7 +3100,6 @@ class Extractor(msrest.serialization.Model):
     """
 
     _validation = {
-        "id": {"required": True},
         "identifier": {"required": True},
         "name": {"required": True},
         "name_plural": {"required": True},
@@ -3123,7 +3107,6 @@ class Extractor(msrest.serialization.Model):
     }
 
     _attribute_map = {
-        "id": {"key": "id", "type": "int"},
         "identifier": {"key": "identifier", "type": "str"},
         "name": {"key": "name", "type": "str"},
         "name_plural": {"key": "namePlural", "type": "str"},
@@ -3138,9 +3121,7 @@ class Extractor(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
-        :keyword id: Required. Extractor's ID.
-        :paramtype id: int
-        :keyword identifier: Required.
+        :keyword identifier: Required. Uniquely identify an extractor.
         :paramtype identifier: str
         :keyword name: Required.
         :paramtype name: str
@@ -3162,7 +3143,6 @@ class Extractor(msrest.serialization.Model):
         :paramtype created_dt: ~datetime.datetime
         """
         super(Extractor, self).__init__(**kwargs)
-        self.id = kwargs["id"]
         self.identifier = kwargs["identifier"]
         self.name = kwargs["name"]
         self.name_plural = kwargs["name_plural"]
@@ -3180,9 +3160,7 @@ class ExtractorBaseExtractor(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
-    :ivar id: Required.
-    :vartype id: int
-    :ivar identifier: Required.
+    :ivar identifier: Required. Uniquely identify an extractor.
     :vartype identifier: str
     :ivar name: Required.
     :vartype name: str
@@ -3197,7 +3175,6 @@ class ExtractorBaseExtractor(msrest.serialization.Model):
     """
 
     _validation = {
-        "id": {"required": True},
         "identifier": {"required": True},
         "name": {"required": True},
         "name_plural": {"required": True},
@@ -3205,7 +3182,6 @@ class ExtractorBaseExtractor(msrest.serialization.Model):
     }
 
     _attribute_map = {
-        "id": {"key": "id", "type": "int"},
         "identifier": {"key": "identifier", "type": "str"},
         "name": {"key": "name", "type": "str"},
         "name_plural": {"key": "namePlural", "type": "str"},
@@ -3216,9 +3192,7 @@ class ExtractorBaseExtractor(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
-        :keyword id: Required.
-        :paramtype id: int
-        :keyword identifier: Required.
+        :keyword identifier: Required. Uniquely identify an extractor.
         :paramtype identifier: str
         :keyword name: Required.
         :paramtype name: str
@@ -3232,7 +3206,6 @@ class ExtractorBaseExtractor(msrest.serialization.Model):
         :paramtype created_dt: ~datetime.datetime
         """
         super(ExtractorBaseExtractor, self).__init__(**kwargs)
-        self.id = kwargs["id"]
         self.identifier = kwargs["identifier"]
         self.name = kwargs["name"]
         self.name_plural = kwargs["name_plural"]
@@ -3250,8 +3223,8 @@ class ExtractorCreate(msrest.serialization.Model):
     :vartype name: str
     :ivar name_plural:
     :vartype name_plural: str
-    :ivar base_extractor: The base extractor's ID.
-    :vartype base_extractor: int
+    :ivar base_extractor: Uniquely identify an extractor.
+    :vartype base_extractor: str
     :ivar organization: Required. Uniquely identify an organization.
     :vartype organization: str
     :ivar category:
@@ -3270,7 +3243,7 @@ class ExtractorCreate(msrest.serialization.Model):
     _attribute_map = {
         "name": {"key": "name", "type": "str"},
         "name_plural": {"key": "namePlural", "type": "str"},
-        "base_extractor": {"key": "baseExtractor", "type": "int"},
+        "base_extractor": {"key": "baseExtractor", "type": "str"},
         "organization": {"key": "organization", "type": "str"},
         "category": {"key": "category", "type": "str"},
         "validatable": {"key": "validatable", "type": "bool"},
@@ -3283,8 +3256,8 @@ class ExtractorCreate(msrest.serialization.Model):
         :paramtype name: str
         :keyword name_plural:
         :paramtype name_plural: str
-        :keyword base_extractor: The base extractor's ID.
-        :paramtype base_extractor: int
+        :keyword base_extractor: Uniquely identify an extractor.
+        :paramtype base_extractor: str
         :keyword organization: Required. Uniquely identify an organization.
         :paramtype organization: str
         :keyword category:
@@ -3311,8 +3284,8 @@ class ExtractorUpdate(msrest.serialization.Model):
     :vartype name: str
     :ivar name_plural:
     :vartype name_plural: str
-    :ivar base_extractor: The base extractor's ID.
-    :vartype base_extractor: int
+    :ivar base_extractor: Uniquely identify an extractor.
+    :vartype base_extractor: str
     :ivar category:
     :vartype category: str
     :ivar validatable:
@@ -3324,7 +3297,7 @@ class ExtractorUpdate(msrest.serialization.Model):
     _attribute_map = {
         "name": {"key": "name", "type": "str"},
         "name_plural": {"key": "namePlural", "type": "str"},
-        "base_extractor": {"key": "baseExtractor", "type": "int"},
+        "base_extractor": {"key": "baseExtractor", "type": "str"},
         "category": {"key": "category", "type": "str"},
         "validatable": {"key": "validatable", "type": "bool"},
         "field_groups": {"key": "fieldGroups", "type": "[FieldGroup]"},
@@ -3336,8 +3309,8 @@ class ExtractorUpdate(msrest.serialization.Model):
         :paramtype name: str
         :keyword name_plural:
         :paramtype name_plural: str
-        :keyword base_extractor: The base extractor's ID.
-        :paramtype base_extractor: int
+        :keyword base_extractor: Uniquely identify an extractor.
+        :paramtype base_extractor: str
         :keyword category:
         :paramtype category: str
         :keyword validatable:
@@ -10953,6 +10926,31 @@ class Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchem
         self.document = kwargs.get("document", None)
 
 
+class Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1(
+    msrest.serialization.Model
+):
+    """Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1.
+
+    :ivar results:
+    :vartype results: list[~affinda.models.ResthookSubscription]
+    """
+
+    _attribute_map = {
+        "results": {"key": "results", "type": "[ResthookSubscription]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword results:
+        :paramtype results: list[~affinda.models.ResthookSubscription]
+        """
+        super(
+            Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1,
+            self,
+        ).__init__(**kwargs)
+        self.results = kwargs.get("results", None)
+
+
 class Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema(msrest.serialization.Model):
     """Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema.
 
@@ -11311,6 +11309,55 @@ class PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonS
         """
         super(
             PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema, self
+        ).__init__(**kwargs)
+        self.results = kwargs.get("results", None)
+        self.count = kwargs["count"]
+        self.next = kwargs.get("next", None)
+        self.previous = kwargs.get("previous", None)
+
+
+class PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema(
+    PaginatedResponse,
+    Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1,
+):
+    """PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar results:
+    :vartype results: list[~affinda.models.ResthookSubscription]
+    :ivar count: Required. Number of items in results.
+    :vartype count: int
+    :ivar next: URL to request next page of results.
+    :vartype next: str
+    :ivar previous: URL to request previous page of results.
+    :vartype previous: str
+    """
+
+    _validation = {
+        "count": {"required": True},
+    }
+
+    _attribute_map = {
+        "results": {"key": "results", "type": "[ResthookSubscription]"},
+        "count": {"key": "count", "type": "int"},
+        "next": {"key": "next", "type": "str"},
+        "previous": {"key": "previous", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword results:
+        :paramtype results: list[~affinda.models.ResthookSubscription]
+        :keyword count: Required. Number of items in results.
+        :paramtype count: int
+        :keyword next: URL to request next page of results.
+        :paramtype next: str
+        :keyword previous: URL to request previous page of results.
+        :paramtype previous: str
+        """
+        super(
+            PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema, self
         ).__init__(**kwargs)
         self.results = kwargs.get("results", None)
         self.count = kwargs["count"]
@@ -14748,9 +14795,7 @@ class WorkspaceCollectionsItemExtractor(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
-    :ivar id: Required. Extractor's ID.
-    :vartype id: int
-    :ivar identifier: Required.
+    :ivar identifier: Required. Uniquely identify an extractor.
     :vartype identifier: str
     :ivar name: Required.
     :vartype name: str
@@ -14769,7 +14814,6 @@ class WorkspaceCollectionsItemExtractor(msrest.serialization.Model):
     """
 
     _validation = {
-        "id": {"required": True},
         "identifier": {"required": True},
         "name": {"required": True},
         "name_plural": {"required": True},
@@ -14777,7 +14821,6 @@ class WorkspaceCollectionsItemExtractor(msrest.serialization.Model):
     }
 
     _attribute_map = {
-        "id": {"key": "id", "type": "int"},
         "identifier": {"key": "identifier", "type": "str"},
         "name": {"key": "name", "type": "str"},
         "name_plural": {"key": "namePlural", "type": "str"},
@@ -14790,9 +14833,7 @@ class WorkspaceCollectionsItemExtractor(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
-        :keyword id: Required. Extractor's ID.
-        :paramtype id: int
-        :keyword identifier: Required.
+        :keyword identifier: Required. Uniquely identify an extractor.
         :paramtype identifier: str
         :keyword name: Required.
         :paramtype name: str
@@ -14810,7 +14851,6 @@ class WorkspaceCollectionsItemExtractor(msrest.serialization.Model):
         :paramtype created_dt: ~datetime.datetime
         """
         super(WorkspaceCollectionsItemExtractor, self).__init__(**kwargs)
-        self.id = kwargs["id"]
         self.identifier = kwargs["identifier"]
         self.name = kwargs["name"]
         self.name_plural = kwargs["name_plural"]

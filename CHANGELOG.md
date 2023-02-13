@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add resthook subscription endpoints
 
+### Changed
+- Remove extractor's `id` field, use `identifier` field instead
+
+### Removed
+- Remove extractor's `id` field
+
 ## [2.1.0] - 2023-02-06
 ### Added
 - Add document.collection.extractor.identifier to DocumentMeta

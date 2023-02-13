@@ -191,9 +191,7 @@ BaseExtractor.
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar id: Required.
-:vartype id: int
-:ivar identifier: Required.
+:ivar identifier: Required. Uniquely identify an extractor.
 :vartype identifier: str
 :ivar name: Required.
 :vartype name: str
@@ -216,8 +214,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `id`: Required.
-- `identifier`: Required.
+- `identifier`: Required. Uniquely identify an extractor.
 - `name`: Required.
 - `name_plural`: Required.
 - `validatable`: Required.
@@ -305,8 +302,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype name: str
 :ivar workspace: Required. Uniquely identify a workspace.
 :vartype workspace: str
-:ivar extractor: Required. Extractor's ID.
-:vartype extractor: int
+:ivar extractor: Required. Uniquely identify an extractor.
+:vartype extractor: str
 :ivar auto_validation_threshold:
 :vartype auto_validation_threshold: float
 :ivar fields:
@@ -331,7 +328,7 @@ def __init__(**kwargs)
 
 - `name`: Required.
 - `workspace`: Required. Uniquely identify a workspace.
-- `extractor`: Required. Extractor's ID.
+- `extractor`: Required. Uniquely identify an extractor.
 - `auto_validation_threshold`: 
 - `fields`: 
 - `date_format_preference`: Known values are: "DMY", "MDY", "YMD".
@@ -1495,8 +1492,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
 :ivar organization:
 :vartype organization: ~affinda.models.Organization
-:ivar extractor: Required. Extractor's ID.
-:vartype extractor: int
+:ivar extractor: Required. Uniquely identify an extractor.
+:vartype extractor: str
 :ivar multiple:
 :vartype multiple: bool
 :ivar no_rect:
@@ -1526,7 +1523,7 @@ def __init__(**kwargs)
 "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
 "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience".
 - `organization`: 
-- `extractor`: Required. Extractor's ID.
+- `extractor`: Required. Uniquely identify an extractor.
 - `multiple`: 
 - `no_rect`: 
 - `similar_to`: 
@@ -1590,8 +1587,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
 :ivar organization: Required. Uniquely identify an organization.
 :vartype organization: str
-:ivar extractor: Required. Extractor's ID.
-:vartype extractor: int
+:ivar extractor: Required. Uniquely identify an extractor.
+:vartype extractor: str
 :ivar multiple:
 :vartype multiple: bool
 :ivar no_rect:
@@ -1614,7 +1611,7 @@ def __init__(**kwargs)
 "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
 "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience".
 - `organization`: Required. Uniquely identify an organization.
-- `extractor`: Required. Extractor's ID.
+- `extractor`: Required. Uniquely identify an extractor.
 - `multiple`: 
 - `no_rect`: 
 
@@ -2075,14 +2072,12 @@ class DocumentMetaCollectionExtractor(msrest.serialization.Model)
 
 DocumentMetaCollectionExtractor.
 
-:ivar id: Extractor's ID.
-:vartype id: int
-:ivar identifier:
+:ivar identifier: Uniquely identify an extractor.
 :vartype identifier: str
 :ivar name:
 :vartype name: str
-:ivar base_extractor: Base extractor's ID.
-:vartype base_extractor: int
+:ivar base_extractor: Base extractor's identifier.
+:vartype base_extractor: str
 :ivar validatable:
 :vartype validatable: bool
 
@@ -2096,10 +2091,9 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `id`: Extractor's ID.
-- `identifier`: 
+- `identifier`: Uniquely identify an extractor.
 - `name`: 
-- `base_extractor`: Base extractor's ID.
+- `base_extractor`: Base extractor's identifier.
 - `validatable`: 
 
 <a id="models._models.DocumentMetaParentDocument"></a>
@@ -2521,9 +2515,7 @@ Extractor.
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar id: Required. Extractor's ID.
-:vartype id: int
-:ivar identifier: Required.
+:ivar identifier: Required. Uniquely identify an extractor.
 :vartype identifier: str
 :ivar name: Required.
 :vartype name: str
@@ -2554,8 +2546,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `id`: Required. Extractor's ID.
-- `identifier`: Required.
+- `identifier`: Required. Uniquely identify an extractor.
 - `name`: Required.
 - `name_plural`: Required.
 - `base_extractor`: 
@@ -2578,9 +2569,7 @@ ExtractorBaseExtractor.
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar id: Required.
-:vartype id: int
-:ivar identifier: Required.
+:ivar identifier: Required. Uniquely identify an extractor.
 :vartype identifier: str
 :ivar name: Required.
 :vartype name: str
@@ -2603,8 +2592,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `id`: Required.
-- `identifier`: Required.
+- `identifier`: Required. Uniquely identify an extractor.
 - `name`: Required.
 - `name_plural`: Required.
 - `validatable`: Required.
@@ -2627,8 +2615,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype name: str
 :ivar name_plural:
 :vartype name_plural: str
-:ivar base_extractor: The base extractor's ID.
-:vartype base_extractor: int
+:ivar base_extractor: Uniquely identify an extractor.
+:vartype base_extractor: str
 :ivar organization: Required. Uniquely identify an organization.
 :vartype organization: str
 :ivar category:
@@ -2650,7 +2638,7 @@ def __init__(**kwargs)
 
 - `name`: Required.
 - `name_plural`: 
-- `base_extractor`: The base extractor's ID.
+- `base_extractor`: Uniquely identify an extractor.
 - `organization`: Required. Uniquely identify an organization.
 - `category`: 
 - `validatable`: 
@@ -2670,8 +2658,8 @@ ExtractorUpdate.
 :vartype name: str
 :ivar name_plural:
 :vartype name_plural: str
-:ivar base_extractor: The base extractor's ID.
-:vartype base_extractor: int
+:ivar base_extractor: Uniquely identify an extractor.
+:vartype base_extractor: str
 :ivar category:
 :vartype category: str
 :ivar validatable:
@@ -2691,7 +2679,7 @@ def __init__(**kwargs)
 
 - `name`: 
 - `name_plural`: 
-- `base_extractor`: The base extractor's ID.
+- `base_extractor`: Uniquely identify an extractor.
 - `category`: 
 - `validatable`: 
 - `field_groups`: 
@@ -7818,6 +7806,31 @@ def __init__(**kwargs)
 
 - `document`: 
 
+<a id="models._models.Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
+
+## Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
+
+```python
+class Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
+```
+
+Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1.
+
+:ivar results:
+:vartype results: list[~affinda.models.ResthookSubscription]
+
+<a id="models._models.Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: 
+
 <a id="models._models.Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema"></a>
 
 ## Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema Objects
@@ -8125,6 +8138,42 @@ All required parameters must be populated in order to send to Azure.
 :vartype previous: str
 
 <a id="models._models.PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: 
+- `count`: Required. Number of items in results.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
+
+<a id="models._models.PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema"></a>
+
+## PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema Objects
+
+```python
+class PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1)
+```
+
+PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar results:
+:vartype results: list[~affinda.models.ResthookSubscription]
+:ivar count: Required. Number of items in results.
+:vartype count: int
+:ivar next: URL to request next page of results.
+:vartype next: str
+:ivar previous: URL to request previous page of results.
+:vartype previous: str
+
+<a id="models._models.PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -10745,9 +10794,7 @@ WorkspaceCollectionsItemExtractor.
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar id: Required. Extractor's ID.
-:vartype id: int
-:ivar identifier: Required.
+:ivar identifier: Required. Uniquely identify an extractor.
 :vartype identifier: str
 :ivar name: Required.
 :vartype name: str
@@ -10774,8 +10821,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `id`: Required. Extractor's ID.
-- `identifier`: Required.
+- `identifier`: Required. Uniquely identify an extractor.
 - `name`: Required.
 - `name_plural`: Required.
 - `base_extractor`: 

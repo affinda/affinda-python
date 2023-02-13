@@ -206,6 +206,9 @@ try:
     from ._models_py3 import (
         Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems,
     )
+    from ._models_py3 import (
+        Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1,
+    )
     from ._models_py3 import Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema
     from ._models_py3 import (
         Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1,
@@ -237,6 +240,9 @@ try:
     )
     from ._models_py3 import (
         PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema,
+    )
+    from ._models_py3 import (
+        PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema,
     )
     from ._models_py3 import (
         PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema,
@@ -482,6 +488,7 @@ except (SyntaxError, ImportError):
     from ._models import Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema  # type: ignore
     from ._models import Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems  # type: ignore
+    from ._models import Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
     from ._models import Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema  # type: ignore
     from ._models import Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
     from ._models import Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
@@ -494,6 +501,7 @@ except (SyntaxError, ImportError):
     from ._models import PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema  # type: ignore
+    from ._models import PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import Rectangle  # type: ignore
     from ._models import RedactedResume  # type: ignore
@@ -767,6 +775,7 @@ __all__ = [
     "Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema",
     "Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema",
     "Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems",
+    "Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1",
     "Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema",
     "Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1",
     "Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1",
@@ -779,6 +788,7 @@ __all__ = [
     "PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema",
     "PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema",
     "PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema",
+    "PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema",
     "PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema",
     "Rectangle",
     "RedactedResume",

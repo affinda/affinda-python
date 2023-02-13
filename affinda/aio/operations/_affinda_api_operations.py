@@ -2893,7 +2893,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
     async def get_all_resthook_subscriptions(
         self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any
-    ) -> List[_models.ResthookSubscription]:
+    ) -> _models.PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema:
         """Get list of all resthook subscriptions.
 
         Returns your resthook subscriptions.
@@ -2904,8 +2904,10 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param limit: The numbers of results to return. Default value is 300.
         :type limit: int
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of ResthookSubscription, or the result of cls(response)
-        :rtype: list[~affinda.models.ResthookSubscription]
+        :return: PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema, or the
+         result of cls(response)
+        :rtype:
+         ~affinda.models.PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -2923,7 +2925,9 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = kwargs.pop("headers", {}) or {}
         _params = kwargs.pop("params", {}) or {}
 
-        cls = kwargs.pop("cls", None)  # type: ClsType[List[_models.ResthookSubscription]]
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[_models.PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema]
 
         request = build_get_all_resthook_subscriptions_request(
             offset=offset,
@@ -2948,7 +2952,10 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
 
-        deserialized = self._deserialize("[ResthookSubscription]", pipeline_response)
+        deserialized = self._deserialize(
+            "PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema",
+            pipeline_response,
+        )
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -4462,13 +4469,13 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
     create_extractor.metadata = {"url": "/v3/extractors"}  # type: ignore
 
-    async def get_extractor(self, id: int, **kwargs: Any) -> _models.Extractor:
+    async def get_extractor(self, identifier: str, **kwargs: Any) -> _models.Extractor:
         """Get specific extractor.
 
         Return a specific extractor.
 
-        :param id: Extractor's ID.
-        :type id: int
+        :param identifier: Extractor's identifier.
+        :type identifier: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Extractor, or the result of cls(response)
         :rtype: ~affinda.models.Extractor
@@ -4492,7 +4499,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         cls = kwargs.pop("cls", None)  # type: ClsType[_models.Extractor]
 
         request = build_get_extractor_request(
-            id=id,
+            identifier=identifier,
             template_url=self.get_extractor.metadata["url"],
             headers=_headers,
             params=_params,
@@ -4520,17 +4527,17 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
         return deserialized
 
-    get_extractor.metadata = {"url": "/v3/extractors/{id}"}  # type: ignore
+    get_extractor.metadata = {"url": "/v3/extractors/{identifier}"}  # type: ignore
 
     async def update_extractor_data(
-        self, id: int, body: _models.ExtractorUpdate, **kwargs: Any
+        self, identifier: str, body: _models.ExtractorUpdate, **kwargs: Any
     ) -> _models.Extractor:
         """Update an extractor's data.
 
         Update data of an extractor.
 
-        :param id: Extractor's ID.
-        :type id: int
+        :param identifier: Extractor's identifier.
+        :type identifier: str
         :param body: Extractor data to update.
         :type body: ~affinda.models.ExtractorUpdate
         :keyword callable cls: A custom type or function that will be passed the direct response
@@ -4561,7 +4568,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _json = self._serialize.body(body, "ExtractorUpdate")
 
         request = build_update_extractor_data_request(
-            id=id,
+            identifier=identifier,
             content_type=content_type,
             json=_json,
             template_url=self.update_extractor_data.metadata["url"],
@@ -4591,17 +4598,17 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
         return deserialized
 
-    update_extractor_data.metadata = {"url": "/v3/extractors/{id}"}  # type: ignore
+    update_extractor_data.metadata = {"url": "/v3/extractors/{identifier}"}  # type: ignore
 
     async def delete_extractor(  # pylint: disable=inconsistent-return-statements
-        self, id: int, **kwargs: Any
+        self, identifier: str, **kwargs: Any
     ) -> None:
         """Delete an extractor.
 
         Deletes the specified extractor from the database.
 
-        :param id: Extractor's ID.
-        :type id: int
+        :param identifier: Extractor's identifier.
+        :type identifier: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: None, or the result of cls(response)
         :rtype: None
@@ -4625,7 +4632,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         cls = kwargs.pop("cls", None)  # type: ClsType[None]
 
         request = build_delete_extractor_request(
-            id=id,
+            identifier=identifier,
             template_url=self.delete_extractor.metadata["url"],
             headers=_headers,
             params=_params,
@@ -4649,14 +4656,14 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         if cls:
             return cls(pipeline_response, None, {})
 
-    delete_extractor.metadata = {"url": "/v3/extractors/{id}"}  # type: ignore
+    delete_extractor.metadata = {"url": "/v3/extractors/{identifier}"}  # type: ignore
 
     async def get_all_data_points(
         self,
         offset: Optional[int] = None,
         limit: Optional[int] = 300,
         organization: Optional[str] = None,
-        extractor: Optional[int] = None,
+        extractor: Optional[str] = None,
         slug: Optional[str] = None,
         description: Optional[str] = None,
         annotation_content_type: Optional[str] = None,
@@ -4674,7 +4681,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param organization: Filter by organization. Default value is None.
         :type organization: str
         :param extractor: Filter by extractor. Default value is None.
-        :type extractor: int
+        :type extractor: str
         :param slug: Filter by slug. Default value is None.
         :type slug: str
         :param description: Filter by description. Default value is None.
@@ -6008,6 +6015,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         ordering: Optional[List[Union[str, "_models.Get8ItemsItem"]]] = None,
         include_data: Optional[bool] = None,
         exclude: Optional[List[str]] = None,
+        in_review: Optional[bool] = None,
         **kwargs: Any,
     ) -> _models.GetAllDocumentsResults:
         """Get list of all documents.
@@ -6041,6 +6049,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type include_data: bool
         :param exclude: Exclude some documents from the result. Default value is None.
         :type exclude: list[str]
+        :param in_review: Exclude documents that are currently being reviewed. Default value is None.
+        :type in_review: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: GetAllDocumentsResults, or the result of cls(response)
         :rtype: ~affinda.models.GetAllDocumentsResults
@@ -6075,6 +6085,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             ordering=ordering,
             include_data=include_data,
             exclude=exclude,
+            in_review=in_review,
             template_url=self.get_all_documents.metadata["url"],
             headers=_headers,
             params=_params,

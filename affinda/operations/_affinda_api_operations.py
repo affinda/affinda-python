@@ -1799,7 +1799,7 @@ def build_create_extractor_request(
 
 
 def build_get_extractor_request(
-    id,  # type: int
+    identifier,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -1808,9 +1808,9 @@ def build_get_extractor_request(
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
-    _url = kwargs.pop("template_url", "/v3/extractors/{id}")
+    _url = kwargs.pop("template_url", "/v3/extractors/{identifier}")
     path_format_arguments = {
-        "id": _SERIALIZER.url("id", id, 'int'),
+        "identifier": _SERIALIZER.url("identifier", identifier, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -1827,7 +1827,7 @@ def build_get_extractor_request(
 
 
 def build_update_extractor_data_request(
-    id,  # type: int
+    identifier,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -1837,9 +1837,9 @@ def build_update_extractor_data_request(
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
-    _url = kwargs.pop("template_url", "/v3/extractors/{id}")
+    _url = kwargs.pop("template_url", "/v3/extractors/{identifier}")
     path_format_arguments = {
-        "id": _SERIALIZER.url("id", id, 'int'),
+        "identifier": _SERIALIZER.url("identifier", identifier, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -1858,7 +1858,7 @@ def build_update_extractor_data_request(
 
 
 def build_delete_extractor_request(
-    id,  # type: int
+    identifier,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -1867,9 +1867,9 @@ def build_delete_extractor_request(
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
-    _url = kwargs.pop("template_url", "/v3/extractors/{id}")
+    _url = kwargs.pop("template_url", "/v3/extractors/{identifier}")
     path_format_arguments = {
-        "id": _SERIALIZER.url("id", id, 'int'),
+        "identifier": _SERIALIZER.url("identifier", identifier, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -1895,7 +1895,7 @@ def build_get_all_data_points_request(
     offset = kwargs.pop('offset', _params.pop('offset', None))  # type: Optional[int]
     limit = kwargs.pop('limit', _params.pop('limit', 300))  # type: Optional[int]
     organization = kwargs.pop('organization', _params.pop('organization', None))  # type: Optional[str]
-    extractor = kwargs.pop('extractor', _params.pop('extractor', None))  # type: Optional[int]
+    extractor = kwargs.pop('extractor', _params.pop('extractor', None))  # type: Optional[str]
     slug = kwargs.pop('slug', _params.pop('slug', None))  # type: Optional[str]
     description = kwargs.pop('description', _params.pop('description', None))  # type: Optional[str]
     annotation_content_type = kwargs.pop('annotation_content_type', _params.pop('annotation_content_type', None))  # type: Optional[str]
@@ -1912,7 +1912,7 @@ def build_get_all_data_points_request(
     if organization is not None:
         _params['organization'] = _SERIALIZER.query("organization", organization, 'str')
     if extractor is not None:
-        _params['extractor'] = _SERIALIZER.query("extractor", extractor, 'int')
+        _params['extractor'] = _SERIALIZER.query("extractor", extractor, 'str')
     if slug is not None:
         _params['slug'] = _SERIALIZER.query("slug", slug, 'str')
     if description is not None:
@@ -2501,6 +2501,7 @@ def build_get_all_documents_request(
     ordering = kwargs.pop('ordering', _params.pop('ordering', None))  # type: Optional[List[Union[str, "_models.Get8ItemsItem"]]]
     include_data = kwargs.pop('include_data', _params.pop('include_data', None))  # type: Optional[bool]
     exclude = kwargs.pop('exclude', _params.pop('exclude', None))  # type: Optional[List[str]]
+    in_review = kwargs.pop('in_review', _params.pop('in_review', None))  # type: Optional[bool]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
@@ -2529,6 +2530,8 @@ def build_get_all_documents_request(
         _params['include_data'] = _SERIALIZER.query("include_data", include_data, 'bool')
     if exclude is not None:
         _params['exclude'] = _SERIALIZER.query("exclude", exclude, '[str]')
+    if in_review is not None:
+        _params['in_review'] = _SERIALIZER.query("in_review", in_review, 'bool')
 
     # Construct headers
     _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
@@ -5671,7 +5674,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         limit=300,  # type: Optional[int]
         **kwargs,  # type: Any
     ):
-        # type: (...) -> List[_models.ResthookSubscription]
+        # type: (...) -> _models.PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema
         """Get list of all resthook subscriptions.
 
         Returns your resthook subscriptions.
@@ -5682,8 +5685,10 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param limit: The numbers of results to return. Default value is 300.
         :type limit: int
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of ResthookSubscription, or the result of cls(response)
-        :rtype: list[~affinda.models.ResthookSubscription]
+        :return: PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema, or the
+         result of cls(response)
+        :rtype:
+         ~affinda.models.PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -5701,7 +5706,9 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         _headers = kwargs.pop("headers", {}) or {}
         _params = kwargs.pop("params", {}) or {}
 
-        cls = kwargs.pop("cls", None)  # type: ClsType[List[_models.ResthookSubscription]]
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[_models.PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema]
 
         request = build_get_all_resthook_subscriptions_request(
             offset=offset,
@@ -5726,7 +5733,10 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
 
-        deserialized = self._deserialize("[ResthookSubscription]", pipeline_response)
+        deserialized = self._deserialize(
+            "PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema",
+            pipeline_response,
+        )
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -7305,7 +7315,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
     def get_extractor(
         self,
-        id,  # type: int
+        identifier,  # type: str
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.Extractor
@@ -7313,8 +7323,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
         Return a specific extractor.
 
-        :param id: Extractor's ID.
-        :type id: int
+        :param identifier: Extractor's identifier.
+        :type identifier: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Extractor, or the result of cls(response)
         :rtype: ~affinda.models.Extractor
@@ -7338,7 +7348,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         cls = kwargs.pop("cls", None)  # type: ClsType[_models.Extractor]
 
         request = build_get_extractor_request(
-            id=id,
+            identifier=identifier,
             template_url=self.get_extractor.metadata["url"],
             headers=_headers,
             params=_params,
@@ -7366,11 +7376,11 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
         return deserialized
 
-    get_extractor.metadata = {"url": "/v3/extractors/{id}"}  # type: ignore
+    get_extractor.metadata = {"url": "/v3/extractors/{identifier}"}  # type: ignore
 
     def update_extractor_data(
         self,
-        id,  # type: int
+        identifier,  # type: str
         body,  # type: _models.ExtractorUpdate
         **kwargs,  # type: Any
     ):
@@ -7379,8 +7389,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
         Update data of an extractor.
 
-        :param id: Extractor's ID.
-        :type id: int
+        :param identifier: Extractor's identifier.
+        :type identifier: str
         :param body: Extractor data to update.
         :type body: ~affinda.models.ExtractorUpdate
         :keyword callable cls: A custom type or function that will be passed the direct response
@@ -7411,7 +7421,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         _json = self._serialize.body(body, "ExtractorUpdate")
 
         request = build_update_extractor_data_request(
-            id=id,
+            identifier=identifier,
             content_type=content_type,
             json=_json,
             template_url=self.update_extractor_data.metadata["url"],
@@ -7441,11 +7451,11 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
         return deserialized
 
-    update_extractor_data.metadata = {"url": "/v3/extractors/{id}"}  # type: ignore
+    update_extractor_data.metadata = {"url": "/v3/extractors/{identifier}"}  # type: ignore
 
     def delete_extractor(  # pylint: disable=inconsistent-return-statements
         self,
-        id,  # type: int
+        identifier,  # type: str
         **kwargs,  # type: Any
     ):
         # type: (...) -> None
@@ -7453,8 +7463,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
         Deletes the specified extractor from the database.
 
-        :param id: Extractor's ID.
-        :type id: int
+        :param identifier: Extractor's identifier.
+        :type identifier: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: None, or the result of cls(response)
         :rtype: None
@@ -7478,7 +7488,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         cls = kwargs.pop("cls", None)  # type: ClsType[None]
 
         request = build_delete_extractor_request(
-            id=id,
+            identifier=identifier,
             template_url=self.delete_extractor.metadata["url"],
             headers=_headers,
             params=_params,
@@ -7502,14 +7512,14 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         if cls:
             return cls(pipeline_response, None, {})
 
-    delete_extractor.metadata = {"url": "/v3/extractors/{id}"}  # type: ignore
+    delete_extractor.metadata = {"url": "/v3/extractors/{identifier}"}  # type: ignore
 
     def get_all_data_points(
         self,
         offset=None,  # type: Optional[int]
         limit=300,  # type: Optional[int]
         organization=None,  # type: Optional[str]
-        extractor=None,  # type: Optional[int]
+        extractor=None,  # type: Optional[str]
         slug=None,  # type: Optional[str]
         description=None,  # type: Optional[str]
         annotation_content_type=None,  # type: Optional[str]
@@ -7528,7 +7538,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param organization: Filter by organization. Default value is None.
         :type organization: str
         :param extractor: Filter by extractor. Default value is None.
-        :type extractor: int
+        :type extractor: str
         :param slug: Filter by slug. Default value is None.
         :type slug: str
         :param description: Filter by description. Default value is None.
@@ -8927,6 +8937,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         ordering=None,  # type: Optional[List[Union[str, "_models.Get8ItemsItem"]]]
         include_data=None,  # type: Optional[bool]
         exclude=None,  # type: Optional[List[str]]
+        in_review=None,  # type: Optional[bool]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.GetAllDocumentsResults
@@ -8961,6 +8972,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type include_data: bool
         :param exclude: Exclude some documents from the result. Default value is None.
         :type exclude: list[str]
+        :param in_review: Exclude documents that are currently being reviewed. Default value is None.
+        :type in_review: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: GetAllDocumentsResults, or the result of cls(response)
         :rtype: ~affinda.models.GetAllDocumentsResults
@@ -8995,6 +9008,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             ordering=ordering,
             include_data=include_data,
             exclude=exclude,
+            in_review=in_review,
             template_url=self.get_all_documents.metadata["url"],
             headers=_headers,
             params=_params,
