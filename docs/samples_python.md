@@ -687,7 +687,7 @@ client = AffindaAPI(credential=credential)
 response = client.update_resthook_subscription_data(
     id=id,
     body={
-        "target_url": "https://my-new-site.com/receive",
+        "event": "resume.parse.failed",
     },
 )
 

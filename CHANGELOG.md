@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Add resthook subscription endpoints
+- Add py.typed marker file
 
 ### Changed
 - Remove extractor's `id` field, use `identifier` field instead
