@@ -6,8 +6,8 @@
 
 try:
     from ._models_py3 import Accreditation
-    from ._models_py3 import Annotation
     from ._models_py3 import AnnotationV2
+    from ._models_py3 import AnnotationV2Base
     from ._models_py3 import BaseExtractor
     from ._models_py3 import Collection
     from ._models_py3 import CollectionCreate
@@ -79,8 +79,8 @@ try:
     from ._models_py3 import DataPointChoice
     from ._models_py3 import DataPointCreate
     from ._models_py3 import DataPointUpdate
-    from ._models_py3 import DateAnnotation
     from ._models_py3 import DateAnnotationV2
+    from ._models_py3 import DateAnnotationV2Update
     from ._models_py3 import Document
     from ._models_py3 import DocumentCreate
     from ._models_py3 import DocumentMeta
@@ -97,6 +97,8 @@ try:
     from ._models_py3 import Error
     from ._models_py3 import ExpectedRemunerationAnnotationV2
     from ._models_py3 import ExpectedRemunerationAnnotationV2Parsed
+    from ._models_py3 import ExpectedRemunerationAnnotationV2Update
+    from ._models_py3 import ExpectedRemunerationAnnotationV2UpdateParsed
     from ._models_py3 import ExperienceSearchScoreComponent
     from ._models_py3 import Extractor
     from ._models_py3 import ExtractorBaseExtractor
@@ -149,6 +151,7 @@ try:
     from ._models_py3 import InvoiceRequestBody
     from ._models_py3 import JobDescription
     from ._models_py3 import JobDescriptionData
+    from ._models_py3 import JobDescriptionDataUpdate
     from ._models_py3 import JobDescriptionRequestBody
     from ._models_py3 import JobDescriptionSearch
     from ._models_py3 import JobDescriptionSearchConfig
@@ -174,14 +177,20 @@ try:
     from ._models_py3 import JobDescriptionSearchParameters
     from ._models_py3 import JobDescriptionSearchResult
     from ._models_py3 import JobTitleAnnotation
-    from ._models_py3 import JobTitleAnnotationParsed
-    from ._models_py3 import JobTitleAnnotationParsedClassification
+    from ._models_py3 import JobTitleAnnotationUpdate
+    from ._models_py3 import JobTitleParsed
+    from ._models_py3 import JobTitleParsedClassification
+    from ._models_py3 import JobTitleParsedParsed
     from ._models_py3 import JobTitleSearchScoreComponent
     from ._models_py3 import LanguageAnnotationV2
+    from ._models_py3 import LanguageAnnotationV2Update
     from ._models_py3 import LanguagesSearchScoreComponent
     from ._models_py3 import ListResult
     from ._models_py3 import Location
     from ._models_py3 import LocationAnnotationV2
+    from ._models_py3 import LocationAnnotationV2Parsed
+    from ._models_py3 import LocationAnnotationV2Update
+    from ._models_py3 import LocationAnnotationV2UpdateParsed
     from ._models_py3 import LocationSearchScoreComponent
     from ._models_py3 import ManagementLevelSearchScoreComponent
     from ._models_py3 import Meta
@@ -301,11 +310,13 @@ try:
     from ._models_py3 import RowAnnotation
     from ._models_py3 import SearchExpressionSearchScoreComponent
     from ._models_py3 import SkillAnnotationV2
+    from ._models_py3 import SkillAnnotationV2Update
     from ._models_py3 import SkillsSearchScoreComponent
     from ._models_py3 import Tag
     from ._models_py3 import TagCreate
     from ._models_py3 import TagUpdate
     from ._models_py3 import TextAnnotationV2
+    from ._models_py3 import TextAnnotationV2Update
     from ._models_py3 import User
     from ._models_py3 import Workspace
     from ._models_py3 import WorkspaceCollectionsItem
@@ -316,10 +327,12 @@ try:
     from ._models_py3 import WorkspaceUpdate
     from ._models_py3 import YearsExperienceAnnotationV2
     from ._models_py3 import YearsExperienceAnnotationV2Parsed
+    from ._models_py3 import YearsExperienceAnnotationV2Update
+    from ._models_py3 import YearsExperienceAnnotationV2UpdateParsed
 except (SyntaxError, ImportError):
     from ._models import Accreditation  # type: ignore
-    from ._models import Annotation  # type: ignore
     from ._models import AnnotationV2  # type: ignore
+    from ._models import AnnotationV2Base  # type: ignore
     from ._models import BaseExtractor  # type: ignore
     from ._models import Collection  # type: ignore
     from ._models import CollectionCreate  # type: ignore
@@ -367,8 +380,8 @@ except (SyntaxError, ImportError):
     from ._models import DataPointChoice  # type: ignore
     from ._models import DataPointCreate  # type: ignore
     from ._models import DataPointUpdate  # type: ignore
-    from ._models import DateAnnotation  # type: ignore
     from ._models import DateAnnotationV2  # type: ignore
+    from ._models import DateAnnotationV2Update  # type: ignore
     from ._models import Document  # type: ignore
     from ._models import DocumentCreate  # type: ignore
     from ._models import DocumentMeta  # type: ignore
@@ -385,6 +398,8 @@ except (SyntaxError, ImportError):
     from ._models import Error  # type: ignore
     from ._models import ExpectedRemunerationAnnotationV2  # type: ignore
     from ._models import ExpectedRemunerationAnnotationV2Parsed  # type: ignore
+    from ._models import ExpectedRemunerationAnnotationV2Update  # type: ignore
+    from ._models import ExpectedRemunerationAnnotationV2UpdateParsed  # type: ignore
     from ._models import ExperienceSearchScoreComponent  # type: ignore
     from ._models import Extractor  # type: ignore
     from ._models import ExtractorBaseExtractor  # type: ignore
@@ -437,6 +452,7 @@ except (SyntaxError, ImportError):
     from ._models import InvoiceRequestBody  # type: ignore
     from ._models import JobDescription  # type: ignore
     from ._models import JobDescriptionData  # type: ignore
+    from ._models import JobDescriptionDataUpdate  # type: ignore
     from ._models import JobDescriptionRequestBody  # type: ignore
     from ._models import JobDescriptionSearch  # type: ignore
     from ._models import JobDescriptionSearchConfig  # type: ignore
@@ -462,14 +478,20 @@ except (SyntaxError, ImportError):
     from ._models import JobDescriptionSearchParameters  # type: ignore
     from ._models import JobDescriptionSearchResult  # type: ignore
     from ._models import JobTitleAnnotation  # type: ignore
-    from ._models import JobTitleAnnotationParsed  # type: ignore
-    from ._models import JobTitleAnnotationParsedClassification  # type: ignore
+    from ._models import JobTitleAnnotationUpdate  # type: ignore
+    from ._models import JobTitleParsed  # type: ignore
+    from ._models import JobTitleParsedClassification  # type: ignore
+    from ._models import JobTitleParsedParsed  # type: ignore
     from ._models import JobTitleSearchScoreComponent  # type: ignore
     from ._models import LanguageAnnotationV2  # type: ignore
+    from ._models import LanguageAnnotationV2Update  # type: ignore
     from ._models import LanguagesSearchScoreComponent  # type: ignore
     from ._models import ListResult  # type: ignore
     from ._models import Location  # type: ignore
     from ._models import LocationAnnotationV2  # type: ignore
+    from ._models import LocationAnnotationV2Parsed  # type: ignore
+    from ._models import LocationAnnotationV2Update  # type: ignore
+    from ._models import LocationAnnotationV2UpdateParsed  # type: ignore
     from ._models import LocationSearchScoreComponent  # type: ignore
     from ._models import ManagementLevelSearchScoreComponent  # type: ignore
     from ._models import Meta  # type: ignore
@@ -557,11 +579,13 @@ except (SyntaxError, ImportError):
     from ._models import RowAnnotation  # type: ignore
     from ._models import SearchExpressionSearchScoreComponent  # type: ignore
     from ._models import SkillAnnotationV2  # type: ignore
+    from ._models import SkillAnnotationV2Update  # type: ignore
     from ._models import SkillsSearchScoreComponent  # type: ignore
     from ._models import Tag  # type: ignore
     from ._models import TagCreate  # type: ignore
     from ._models import TagUpdate  # type: ignore
     from ._models import TextAnnotationV2  # type: ignore
+    from ._models import TextAnnotationV2Update  # type: ignore
     from ._models import User  # type: ignore
     from ._models import Workspace  # type: ignore
     from ._models import WorkspaceCollectionsItem  # type: ignore
@@ -572,6 +596,8 @@ except (SyntaxError, ImportError):
     from ._models import WorkspaceUpdate  # type: ignore
     from ._models import YearsExperienceAnnotationV2  # type: ignore
     from ._models import YearsExperienceAnnotationV2Parsed  # type: ignore
+    from ._models import YearsExperienceAnnotationV2Update  # type: ignore
+    from ._models import YearsExperienceAnnotationV2UpdateParsed  # type: ignore
 
 from ._affinda_api_enums import (
     AnnotationContentType,
@@ -605,8 +631,8 @@ from ._patch import patch_sdk as _patch_sdk
 
 __all__ = [
     "Accreditation",
-    "Annotation",
     "AnnotationV2",
+    "AnnotationV2Base",
     "BaseExtractor",
     "Collection",
     "CollectionCreate",
@@ -654,8 +680,8 @@ __all__ = [
     "DataPointChoice",
     "DataPointCreate",
     "DataPointUpdate",
-    "DateAnnotation",
     "DateAnnotationV2",
+    "DateAnnotationV2Update",
     "Document",
     "DocumentCreate",
     "DocumentMeta",
@@ -672,6 +698,8 @@ __all__ = [
     "Error",
     "ExpectedRemunerationAnnotationV2",
     "ExpectedRemunerationAnnotationV2Parsed",
+    "ExpectedRemunerationAnnotationV2Update",
+    "ExpectedRemunerationAnnotationV2UpdateParsed",
     "ExperienceSearchScoreComponent",
     "Extractor",
     "ExtractorBaseExtractor",
@@ -724,6 +752,7 @@ __all__ = [
     "InvoiceRequestBody",
     "JobDescription",
     "JobDescriptionData",
+    "JobDescriptionDataUpdate",
     "JobDescriptionRequestBody",
     "JobDescriptionSearch",
     "JobDescriptionSearchConfig",
@@ -749,14 +778,20 @@ __all__ = [
     "JobDescriptionSearchParameters",
     "JobDescriptionSearchResult",
     "JobTitleAnnotation",
-    "JobTitleAnnotationParsed",
-    "JobTitleAnnotationParsedClassification",
+    "JobTitleAnnotationUpdate",
+    "JobTitleParsed",
+    "JobTitleParsedClassification",
+    "JobTitleParsedParsed",
     "JobTitleSearchScoreComponent",
     "LanguageAnnotationV2",
+    "LanguageAnnotationV2Update",
     "LanguagesSearchScoreComponent",
     "ListResult",
     "Location",
     "LocationAnnotationV2",
+    "LocationAnnotationV2Parsed",
+    "LocationAnnotationV2Update",
+    "LocationAnnotationV2UpdateParsed",
     "LocationSearchScoreComponent",
     "ManagementLevelSearchScoreComponent",
     "Meta",
@@ -844,11 +879,13 @@ __all__ = [
     "RowAnnotation",
     "SearchExpressionSearchScoreComponent",
     "SkillAnnotationV2",
+    "SkillAnnotationV2Update",
     "SkillsSearchScoreComponent",
     "Tag",
     "TagCreate",
     "TagUpdate",
     "TextAnnotationV2",
+    "TextAnnotationV2Update",
     "User",
     "Workspace",
     "WorkspaceCollectionsItem",
@@ -859,6 +896,8 @@ __all__ = [
     "WorkspaceUpdate",
     "YearsExperienceAnnotationV2",
     "YearsExperienceAnnotationV2Parsed",
+    "YearsExperienceAnnotationV2Update",
+    "YearsExperienceAnnotationV2UpdateParsed",
     "AnnotationContentType",
     "CollectionDateFormatPreference",
     "DateFormatPreference",

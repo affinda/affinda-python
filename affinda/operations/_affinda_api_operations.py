@@ -499,6 +499,37 @@ def build_get_job_description_request(
     )
 
 
+def build_update_job_description_data_request(
+    identifier,  # type: str
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+
+    content_type = kwargs.pop('content_type', _headers.pop('Content-Type', None))  # type: Optional[str]
+    accept = _headers.pop('Accept', "application/json")
+
+    # Construct URL
+    _url = kwargs.pop("template_url", "/v2/job_descriptions/{identifier}")
+    path_format_arguments = {
+        "identifier": _SERIALIZER.url("identifier", identifier, 'str'),
+    }
+
+    _url = _format_url_section(_url, **path_format_arguments)
+
+    # Construct headers
+    if content_type is not None:
+        _headers['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="PATCH",
+        url=_url,
+        headers=_headers,
+        **kwargs
+    )
+
+
 def build_delete_job_description_request(
     identifier,  # type: str
     **kwargs  # type: Any
@@ -3950,7 +3981,10 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         When successful, returns an ``identifier`` in the response for subsequent use with the
         `/job_descriptions/{identifier} <#get-/job_descriptions/-identifier->`_ endpoint to check
         processing status and retrieve results.
-        Job Descriptions can be uploaded as a file or a URL.
+        Job Descriptions can be uploaded as a file or a URL. In addition, data can be added directly if
+        users want to upload directly without parsing any resume file. For uploading resume data, the
+        ``data`` argument provided must be a JSON-encoded string. Data uploads will not impact upon
+        parsing credits.
 
         :param file:  Default value is None.
         :type file: IO
@@ -4107,6 +4141,83 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         return deserialized
 
     get_job_description.metadata = {"url": "/v2/job_descriptions/{identifier}"}  # type: ignore
+
+    def update_job_description_data(
+        self,
+        identifier,  # type: str
+        body,  # type: _models.JobDescriptionDataUpdate
+        **kwargs,  # type: Any
+    ):
+        # type: (...) -> Optional[_models.JobDescriptionData]
+        """Update a job description's data.
+
+        Update data of a job description.
+        The ``identifier`` is the unique ID returned after POST-ing the job description via the
+        `/job_descriptions <#post-/job_descriptions>`_ endpoint.
+
+        :param identifier: Job description identifier.
+        :type identifier: str
+        :param body: Job description data to update.
+        :type body: ~affinda.models.JobDescriptionDataUpdate
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: JobDescriptionData or None, or the result of cls(response)
+        :rtype: ~affinda.models.JobDescriptionData or None
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop(
+            "content_type", _headers.pop("Content-Type", "application/json")
+        )  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[Optional[_models.JobDescriptionData]]
+
+        _json = self._serialize.body(body, "JobDescriptionDataUpdate")
+
+        request = build_update_job_description_data_request(
+            identifier=identifier,
+            content_type=content_type,
+            json=_json,
+            template_url=self.update_job_description_data.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("JobDescriptionData", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    update_job_description_data.metadata = {"url": "/v2/job_descriptions/{identifier}"}  # type: ignore
 
     def delete_job_description(  # pylint: disable=inconsistent-return-statements
         self,

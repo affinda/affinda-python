@@ -454,7 +454,10 @@ Uploads a job description for parsing.
 When successful, returns an ``identifier`` in the response for subsequent use with the
 `/job_descriptions/{identifier} <#get-/job_descriptions/-identifier->`_ endpoint to check
 processing status and retrieve results.
-Job Descriptions can be uploaded as a file or a URL.
+Job Descriptions can be uploaded as a file or a URL. In addition, data can be added directly if
+users want to upload directly without parsing any resume file. For uploading resume data, the
+``data`` argument provided must be a JSON-encoded string. Data uploads will not impact upon
+parsing credits.
 
 **Arguments**:
 
@@ -502,6 +505,34 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the
 **Returns**:
 
 `~affinda.models.JobDescription`: JobDescription, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_job_description_data"></a>
+
+#### update\_job\_description\_data
+
+```python
+def update_job_description_data(identifier, body, **kwargs)
+```
+
+Update a job description's data.
+
+Update data of a job description.
+The ``identifier`` is the unique ID returned after POST-ing the job description via the
+`/job_descriptions <#post-/job_descriptions>`_ endpoint.
+
+**Arguments**:
+
+- `identifier` (`str`): Job description identifier.
+- `body` (`~affinda.models.JobDescriptionDataUpdate`): Job description data to update.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.JobDescriptionData or None`: JobDescriptionData or None, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_job_description"></a>
 
