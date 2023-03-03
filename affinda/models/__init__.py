@@ -7,7 +7,6 @@
 try:
     from ._models_py3 import Accreditation
     from ._models_py3 import AnnotationV2
-    from ._models_py3 import AnnotationV2Base
     from ._models_py3 import BaseExtractor
     from ._models_py3 import Collection
     from ._models_py3 import CollectionCreate
@@ -28,9 +27,11 @@ try:
     )
     from ._models_py3 import Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1
     from ._models_py3 import Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1
+    from ._models_py3 import Components1Ijdil6SchemasDocumentPropertiesDataOneof0
     from ._models_py3 import Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1
     from ._models_py3 import Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1
     from ._models_py3 import Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1
+    from ._models_py3 import Components1RkulfvSchemasDocumentPropertiesDataOneof1
     from ._models_py3 import Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1
     from ._models_py3 import Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1
     from ._models_py3 import (
@@ -41,6 +42,7 @@ try:
     )
     from ._models_py3 import Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1
     from ._models_py3 import Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1
+    from ._models_py3 import Components1Wco9OeSchemasDocumentPropertiesDataOneof2
     from ._models_py3 import Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1
     from ._models_py3 import Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1
     from ._models_py3 import Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1
@@ -80,7 +82,6 @@ try:
     from ._models_py3 import DataPointCreate
     from ._models_py3 import DataPointUpdate
     from ._models_py3 import DateAnnotationV2
-    from ._models_py3 import DateAnnotationV2Update
     from ._models_py3 import Document
     from ._models_py3 import DocumentCreate
     from ._models_py3 import DocumentMeta
@@ -97,8 +98,6 @@ try:
     from ._models_py3 import Error
     from ._models_py3 import ExpectedRemunerationAnnotationV2
     from ._models_py3 import ExpectedRemunerationAnnotationV2Parsed
-    from ._models_py3 import ExpectedRemunerationAnnotationV2Update
-    from ._models_py3 import ExpectedRemunerationAnnotationV2UpdateParsed
     from ._models_py3 import ExperienceSearchScoreComponent
     from ._models_py3 import Extractor
     from ._models_py3 import ExtractorBaseExtractor
@@ -108,15 +107,12 @@ try:
     from ._models_py3 import FieldGroup
     from ._models_py3 import Get200ApplicationJsonPropertiesItemsItem
     from ._models_py3 import GetAllDocumentsResults
-    from ._models_py3 import GetAllDocumentsResultsV2
-    from ._models_py3 import GetAllInvoicesResults
-    from ._models_py3 import GetAllJobDescriptionsResults
     from ._models_py3 import IndexRequestBody
     from ._models_py3 import Invitation
     from ._models_py3 import InvitationCreate
     from ._models_py3 import InvitationRespondedBy
+    from ._models_py3 import InvitationResponse
     from ._models_py3 import InvitationUpdate
-    from ._models_py3 import Invoice
     from ._models_py3 import InvoiceData
     from ._models_py3 import InvoiceDataBankAccountNumber
     from ._models_py3 import InvoiceDataBankBsb
@@ -148,11 +144,9 @@ try:
     from ._models_py3 import InvoiceDataSupplierVat
     from ._models_py3 import InvoiceDataSupplierWebsite
     from ._models_py3 import InvoiceDataTablesItem
-    from ._models_py3 import InvoiceRequestBody
-    from ._models_py3 import JobDescription
+    from ._models_py3 import InvoiceDocument
     from ._models_py3 import JobDescriptionData
-    from ._models_py3 import JobDescriptionDataUpdate
-    from ._models_py3 import JobDescriptionRequestBody
+    from ._models_py3 import JobDescriptionDocument
     from ._models_py3 import JobDescriptionSearch
     from ._models_py3 import JobDescriptionSearchConfig
     from ._models_py3 import JobDescriptionSearchConfigActionsItem
@@ -177,25 +171,18 @@ try:
     from ._models_py3 import JobDescriptionSearchParameters
     from ._models_py3 import JobDescriptionSearchResult
     from ._models_py3 import JobTitleAnnotation
-    from ._models_py3 import JobTitleAnnotationUpdate
     from ._models_py3 import JobTitleParsed
     from ._models_py3 import JobTitleParsedClassification
     from ._models_py3 import JobTitleParsedParsed
     from ._models_py3 import JobTitleSearchScoreComponent
     from ._models_py3 import LanguageAnnotationV2
-    from ._models_py3 import LanguageAnnotationV2Update
     from ._models_py3 import LanguagesSearchScoreComponent
     from ._models_py3 import ListResult
     from ._models_py3 import Location
     from ._models_py3 import LocationAnnotationV2
     from ._models_py3 import LocationAnnotationV2Parsed
-    from ._models_py3 import LocationAnnotationV2Update
-    from ._models_py3 import LocationAnnotationV2UpdateParsed
     from ._models_py3 import LocationSearchScoreComponent
     from ._models_py3 import ManagementLevelSearchScoreComponent
-    from ._models_py3 import Meta
-    from ._models_py3 import MetaChildDocumentsItem
-    from ._models_py3 import MetaParentDocument
     from ._models_py3 import OccupationGroup
     from ._models_py3 import OccupationGroupSearchScoreComponent
     from ._models_py3 import Organization
@@ -205,9 +192,6 @@ try:
     from ._models_py3 import OrganizationUpdate
     from ._models_py3 import PageMeta
     from ._models_py3 import PaginatedResponse
-    from ._models_py3 import (
-        Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema,
-    )
     from ._models_py3 import Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema
     from ._models_py3 import (
         Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema,
@@ -231,15 +215,15 @@ try:
     from ._models_py3 import (
         PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema,
     )
-    from ._models_py3 import (
-        PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema,
-    )
     from ._models_py3 import PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema
     from ._models_py3 import (
         PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema,
     )
     from ._models_py3 import (
         PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1,
+    )
+    from ._models_py3 import (
+        PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema,
     )
     from ._models_py3 import (
         PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema,
@@ -257,15 +241,11 @@ try:
         PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema,
     )
     from ._models_py3 import Rectangle
-    from ._models_py3 import RedactedResume
-    from ._models_py3 import RedactedResumeData
-    from ._models_py3 import RedactedResumeRequestBody
     from ._models_py3 import RequestError
     from ._models_py3 import RequestErrorErrorsItem
     from ._models_py3 import ResthookSubscription
     from ._models_py3 import ResthookSubscriptionCreate
     from ._models_py3 import ResthookSubscriptionUpdate
-    from ._models_py3 import Resume
     from ._models_py3 import ResumeData
     from ._models_py3 import ResumeDataName
     from ._models_py3 import ResumeDataRefereesItem
@@ -275,7 +255,7 @@ try:
     from ._models_py3 import ResumeDataWorkExperienceItem
     from ._models_py3 import ResumeDataWorkExperienceItemDates
     from ._models_py3 import ResumeDataWorkExperienceItemOccupation
-    from ._models_py3 import ResumeRequestBody
+    from ._models_py3 import ResumeDocument
     from ._models_py3 import ResumeSearch
     from ._models_py3 import ResumeSearchConfig
     from ._models_py3 import ResumeSearchConfigActionsItem
@@ -310,13 +290,11 @@ try:
     from ._models_py3 import RowAnnotation
     from ._models_py3 import SearchExpressionSearchScoreComponent
     from ._models_py3 import SkillAnnotationV2
-    from ._models_py3 import SkillAnnotationV2Update
     from ._models_py3 import SkillsSearchScoreComponent
     from ._models_py3 import Tag
     from ._models_py3 import TagCreate
     from ._models_py3 import TagUpdate
     from ._models_py3 import TextAnnotationV2
-    from ._models_py3 import TextAnnotationV2Update
     from ._models_py3 import User
     from ._models_py3 import Workspace
     from ._models_py3 import WorkspaceCollectionsItem
@@ -327,12 +305,9 @@ try:
     from ._models_py3 import WorkspaceUpdate
     from ._models_py3 import YearsExperienceAnnotationV2
     from ._models_py3 import YearsExperienceAnnotationV2Parsed
-    from ._models_py3 import YearsExperienceAnnotationV2Update
-    from ._models_py3 import YearsExperienceAnnotationV2UpdateParsed
 except (SyntaxError, ImportError):
     from ._models import Accreditation  # type: ignore
     from ._models import AnnotationV2  # type: ignore
-    from ._models import AnnotationV2Base  # type: ignore
     from ._models import BaseExtractor  # type: ignore
     from ._models import Collection  # type: ignore
     from ._models import CollectionCreate  # type: ignore
@@ -347,15 +322,18 @@ except (SyntaxError, ImportError):
     from ._models import Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1  # type: ignore
     from ._models import Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1  # type: ignore
     from ._models import Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1  # type: ignore
+    from ._models import Components1Ijdil6SchemasDocumentPropertiesDataOneof0  # type: ignore
     from ._models import Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1  # type: ignore
     from ._models import Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1  # type: ignore
     from ._models import Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1  # type: ignore
+    from ._models import Components1RkulfvSchemasDocumentPropertiesDataOneof1  # type: ignore
     from ._models import Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1  # type: ignore
     from ._models import Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1  # type: ignore
     from ._models import Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1  # type: ignore
     from ._models import Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification  # type: ignore
     from ._models import Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1  # type: ignore
     from ._models import Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1  # type: ignore
+    from ._models import Components1Wco9OeSchemasDocumentPropertiesDataOneof2  # type: ignore
     from ._models import Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1  # type: ignore
     from ._models import Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1  # type: ignore
     from ._models import Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1  # type: ignore
@@ -381,7 +359,6 @@ except (SyntaxError, ImportError):
     from ._models import DataPointCreate  # type: ignore
     from ._models import DataPointUpdate  # type: ignore
     from ._models import DateAnnotationV2  # type: ignore
-    from ._models import DateAnnotationV2Update  # type: ignore
     from ._models import Document  # type: ignore
     from ._models import DocumentCreate  # type: ignore
     from ._models import DocumentMeta  # type: ignore
@@ -398,8 +375,6 @@ except (SyntaxError, ImportError):
     from ._models import Error  # type: ignore
     from ._models import ExpectedRemunerationAnnotationV2  # type: ignore
     from ._models import ExpectedRemunerationAnnotationV2Parsed  # type: ignore
-    from ._models import ExpectedRemunerationAnnotationV2Update  # type: ignore
-    from ._models import ExpectedRemunerationAnnotationV2UpdateParsed  # type: ignore
     from ._models import ExperienceSearchScoreComponent  # type: ignore
     from ._models import Extractor  # type: ignore
     from ._models import ExtractorBaseExtractor  # type: ignore
@@ -409,15 +384,12 @@ except (SyntaxError, ImportError):
     from ._models import FieldGroup  # type: ignore
     from ._models import Get200ApplicationJsonPropertiesItemsItem  # type: ignore
     from ._models import GetAllDocumentsResults  # type: ignore
-    from ._models import GetAllDocumentsResultsV2  # type: ignore
-    from ._models import GetAllInvoicesResults  # type: ignore
-    from ._models import GetAllJobDescriptionsResults  # type: ignore
     from ._models import IndexRequestBody  # type: ignore
     from ._models import Invitation  # type: ignore
     from ._models import InvitationCreate  # type: ignore
     from ._models import InvitationRespondedBy  # type: ignore
+    from ._models import InvitationResponse  # type: ignore
     from ._models import InvitationUpdate  # type: ignore
-    from ._models import Invoice  # type: ignore
     from ._models import InvoiceData  # type: ignore
     from ._models import InvoiceDataBankAccountNumber  # type: ignore
     from ._models import InvoiceDataBankBsb  # type: ignore
@@ -449,11 +421,9 @@ except (SyntaxError, ImportError):
     from ._models import InvoiceDataSupplierVat  # type: ignore
     from ._models import InvoiceDataSupplierWebsite  # type: ignore
     from ._models import InvoiceDataTablesItem  # type: ignore
-    from ._models import InvoiceRequestBody  # type: ignore
-    from ._models import JobDescription  # type: ignore
+    from ._models import InvoiceDocument  # type: ignore
     from ._models import JobDescriptionData  # type: ignore
-    from ._models import JobDescriptionDataUpdate  # type: ignore
-    from ._models import JobDescriptionRequestBody  # type: ignore
+    from ._models import JobDescriptionDocument  # type: ignore
     from ._models import JobDescriptionSearch  # type: ignore
     from ._models import JobDescriptionSearchConfig  # type: ignore
     from ._models import JobDescriptionSearchConfigActionsItem  # type: ignore
@@ -478,25 +448,18 @@ except (SyntaxError, ImportError):
     from ._models import JobDescriptionSearchParameters  # type: ignore
     from ._models import JobDescriptionSearchResult  # type: ignore
     from ._models import JobTitleAnnotation  # type: ignore
-    from ._models import JobTitleAnnotationUpdate  # type: ignore
     from ._models import JobTitleParsed  # type: ignore
     from ._models import JobTitleParsedClassification  # type: ignore
     from ._models import JobTitleParsedParsed  # type: ignore
     from ._models import JobTitleSearchScoreComponent  # type: ignore
     from ._models import LanguageAnnotationV2  # type: ignore
-    from ._models import LanguageAnnotationV2Update  # type: ignore
     from ._models import LanguagesSearchScoreComponent  # type: ignore
     from ._models import ListResult  # type: ignore
     from ._models import Location  # type: ignore
     from ._models import LocationAnnotationV2  # type: ignore
     from ._models import LocationAnnotationV2Parsed  # type: ignore
-    from ._models import LocationAnnotationV2Update  # type: ignore
-    from ._models import LocationAnnotationV2UpdateParsed  # type: ignore
     from ._models import LocationSearchScoreComponent  # type: ignore
     from ._models import ManagementLevelSearchScoreComponent  # type: ignore
-    from ._models import Meta  # type: ignore
-    from ._models import MetaChildDocumentsItem  # type: ignore
-    from ._models import MetaParentDocument  # type: ignore
     from ._models import OccupationGroup  # type: ignore
     from ._models import OccupationGroupSearchScoreComponent  # type: ignore
     from ._models import Organization  # type: ignore
@@ -506,7 +469,6 @@ except (SyntaxError, ImportError):
     from ._models import OrganizationUpdate  # type: ignore
     from ._models import PageMeta  # type: ignore
     from ._models import PaginatedResponse  # type: ignore
-    from ._models import Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema  # type: ignore
     from ._models import Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema  # type: ignore
     from ._models import Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems  # type: ignore
@@ -516,25 +478,21 @@ except (SyntaxError, ImportError):
     from ._models import Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
     from ._models import Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
     from ._models import PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema  # type: ignore
-    from ._models import PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema  # type: ignore
     from ._models import PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
+    from ._models import PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema  # type: ignore
     from ._models import PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import Rectangle  # type: ignore
-    from ._models import RedactedResume  # type: ignore
-    from ._models import RedactedResumeData  # type: ignore
-    from ._models import RedactedResumeRequestBody  # type: ignore
     from ._models import RequestError  # type: ignore
     from ._models import RequestErrorErrorsItem  # type: ignore
     from ._models import ResthookSubscription  # type: ignore
     from ._models import ResthookSubscriptionCreate  # type: ignore
     from ._models import ResthookSubscriptionUpdate  # type: ignore
-    from ._models import Resume  # type: ignore
     from ._models import ResumeData  # type: ignore
     from ._models import ResumeDataName  # type: ignore
     from ._models import ResumeDataRefereesItem  # type: ignore
@@ -544,7 +502,7 @@ except (SyntaxError, ImportError):
     from ._models import ResumeDataWorkExperienceItem  # type: ignore
     from ._models import ResumeDataWorkExperienceItemDates  # type: ignore
     from ._models import ResumeDataWorkExperienceItemOccupation  # type: ignore
-    from ._models import ResumeRequestBody  # type: ignore
+    from ._models import ResumeDocument  # type: ignore
     from ._models import ResumeSearch  # type: ignore
     from ._models import ResumeSearchConfig  # type: ignore
     from ._models import ResumeSearchConfigActionsItem  # type: ignore
@@ -579,13 +537,11 @@ except (SyntaxError, ImportError):
     from ._models import RowAnnotation  # type: ignore
     from ._models import SearchExpressionSearchScoreComponent  # type: ignore
     from ._models import SkillAnnotationV2  # type: ignore
-    from ._models import SkillAnnotationV2Update  # type: ignore
     from ._models import SkillsSearchScoreComponent  # type: ignore
     from ._models import Tag  # type: ignore
     from ._models import TagCreate  # type: ignore
     from ._models import TagUpdate  # type: ignore
     from ._models import TextAnnotationV2  # type: ignore
-    from ._models import TextAnnotationV2Update  # type: ignore
     from ._models import User  # type: ignore
     from ._models import Workspace  # type: ignore
     from ._models import WorkspaceCollectionsItem  # type: ignore
@@ -596,8 +552,6 @@ except (SyntaxError, ImportError):
     from ._models import WorkspaceUpdate  # type: ignore
     from ._models import YearsExperienceAnnotationV2  # type: ignore
     from ._models import YearsExperienceAnnotationV2Parsed  # type: ignore
-    from ._models import YearsExperienceAnnotationV2Update  # type: ignore
-    from ._models import YearsExperienceAnnotationV2UpdateParsed  # type: ignore
 
 from ._affinda_api_enums import (
     AnnotationContentType,
@@ -610,11 +564,11 @@ from ._affinda_api_enums import (
     Enum6,
     Get8ItemsItem,
     GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType,
+    InvitationResponseStatus,
     InvitationStatus,
     ManagementLevel,
     OrganizationRole,
     OrganizationUserRole,
-    PatchContentSchemaStatus,
     PostContentSchemaDocumentType,
     Region,
     ResthookEvent,
@@ -632,7 +586,6 @@ from ._patch import patch_sdk as _patch_sdk
 __all__ = [
     "Accreditation",
     "AnnotationV2",
-    "AnnotationV2Base",
     "BaseExtractor",
     "Collection",
     "CollectionCreate",
@@ -647,15 +600,18 @@ __all__ = [
     "Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1",
     "Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1",
     "Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1",
+    "Components1Ijdil6SchemasDocumentPropertiesDataOneof0",
     "Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1",
     "Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1",
     "Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1",
+    "Components1RkulfvSchemasDocumentPropertiesDataOneof1",
     "Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1",
     "Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1",
     "Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1",
     "Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification",
     "Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1",
     "Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1",
+    "Components1Wco9OeSchemasDocumentPropertiesDataOneof2",
     "Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1",
     "Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1",
     "Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1",
@@ -681,7 +637,6 @@ __all__ = [
     "DataPointCreate",
     "DataPointUpdate",
     "DateAnnotationV2",
-    "DateAnnotationV2Update",
     "Document",
     "DocumentCreate",
     "DocumentMeta",
@@ -698,8 +653,6 @@ __all__ = [
     "Error",
     "ExpectedRemunerationAnnotationV2",
     "ExpectedRemunerationAnnotationV2Parsed",
-    "ExpectedRemunerationAnnotationV2Update",
-    "ExpectedRemunerationAnnotationV2UpdateParsed",
     "ExperienceSearchScoreComponent",
     "Extractor",
     "ExtractorBaseExtractor",
@@ -709,15 +662,12 @@ __all__ = [
     "FieldGroup",
     "Get200ApplicationJsonPropertiesItemsItem",
     "GetAllDocumentsResults",
-    "GetAllDocumentsResultsV2",
-    "GetAllInvoicesResults",
-    "GetAllJobDescriptionsResults",
     "IndexRequestBody",
     "Invitation",
     "InvitationCreate",
     "InvitationRespondedBy",
+    "InvitationResponse",
     "InvitationUpdate",
-    "Invoice",
     "InvoiceData",
     "InvoiceDataBankAccountNumber",
     "InvoiceDataBankBsb",
@@ -749,11 +699,9 @@ __all__ = [
     "InvoiceDataSupplierVat",
     "InvoiceDataSupplierWebsite",
     "InvoiceDataTablesItem",
-    "InvoiceRequestBody",
-    "JobDescription",
+    "InvoiceDocument",
     "JobDescriptionData",
-    "JobDescriptionDataUpdate",
-    "JobDescriptionRequestBody",
+    "JobDescriptionDocument",
     "JobDescriptionSearch",
     "JobDescriptionSearchConfig",
     "JobDescriptionSearchConfigActionsItem",
@@ -778,25 +726,18 @@ __all__ = [
     "JobDescriptionSearchParameters",
     "JobDescriptionSearchResult",
     "JobTitleAnnotation",
-    "JobTitleAnnotationUpdate",
     "JobTitleParsed",
     "JobTitleParsedClassification",
     "JobTitleParsedParsed",
     "JobTitleSearchScoreComponent",
     "LanguageAnnotationV2",
-    "LanguageAnnotationV2Update",
     "LanguagesSearchScoreComponent",
     "ListResult",
     "Location",
     "LocationAnnotationV2",
     "LocationAnnotationV2Parsed",
-    "LocationAnnotationV2Update",
-    "LocationAnnotationV2UpdateParsed",
     "LocationSearchScoreComponent",
     "ManagementLevelSearchScoreComponent",
-    "Meta",
-    "MetaChildDocumentsItem",
-    "MetaParentDocument",
     "OccupationGroup",
     "OccupationGroupSearchScoreComponent",
     "Organization",
@@ -806,7 +747,6 @@ __all__ = [
     "OrganizationUpdate",
     "PageMeta",
     "PaginatedResponse",
-    "Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema",
     "Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema",
     "Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema",
     "Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems",
@@ -816,25 +756,21 @@ __all__ = [
     "Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1",
     "Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1",
     "PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema",
-    "PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema",
     "PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema",
     "PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema",
     "PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1",
+    "PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema",
     "PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema",
     "PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema",
     "PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema",
     "PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema",
     "PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema",
     "Rectangle",
-    "RedactedResume",
-    "RedactedResumeData",
-    "RedactedResumeRequestBody",
     "RequestError",
     "RequestErrorErrorsItem",
     "ResthookSubscription",
     "ResthookSubscriptionCreate",
     "ResthookSubscriptionUpdate",
-    "Resume",
     "ResumeData",
     "ResumeDataName",
     "ResumeDataRefereesItem",
@@ -844,7 +780,7 @@ __all__ = [
     "ResumeDataWorkExperienceItem",
     "ResumeDataWorkExperienceItemDates",
     "ResumeDataWorkExperienceItemOccupation",
-    "ResumeRequestBody",
+    "ResumeDocument",
     "ResumeSearch",
     "ResumeSearchConfig",
     "ResumeSearchConfigActionsItem",
@@ -879,13 +815,11 @@ __all__ = [
     "RowAnnotation",
     "SearchExpressionSearchScoreComponent",
     "SkillAnnotationV2",
-    "SkillAnnotationV2Update",
     "SkillsSearchScoreComponent",
     "Tag",
     "TagCreate",
     "TagUpdate",
     "TextAnnotationV2",
-    "TextAnnotationV2Update",
     "User",
     "Workspace",
     "WorkspaceCollectionsItem",
@@ -896,8 +830,6 @@ __all__ = [
     "WorkspaceUpdate",
     "YearsExperienceAnnotationV2",
     "YearsExperienceAnnotationV2Parsed",
-    "YearsExperienceAnnotationV2Update",
-    "YearsExperienceAnnotationV2UpdateParsed",
     "AnnotationContentType",
     "CollectionDateFormatPreference",
     "DateFormatPreference",
@@ -908,11 +840,11 @@ __all__ = [
     "Enum6",
     "Get8ItemsItem",
     "GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType",
+    "InvitationResponseStatus",
     "InvitationStatus",
     "ManagementLevel",
     "OrganizationRole",
     "OrganizationUserRole",
-    "PatchContentSchemaStatus",
     "PostContentSchemaDocumentType",
     "Region",
     "ResthookEvent",

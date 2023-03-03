@@ -29,14 +29,10 @@ from ...operations._affinda_api_operations import (
     build_create_index_document_request,
     build_create_index_request,
     build_create_invitation_request,
-    build_create_invoice_request,
-    build_create_job_description_request,
     build_create_job_description_search_embed_url_request,
     build_create_job_description_search_request,
     build_create_organization_request,
-    build_create_redacted_resume_request,
     build_create_resthook_subscription_request,
-    build_create_resume_request,
     build_create_resume_search_embed_url_request,
     build_create_resume_search_request,
     build_create_tag_request,
@@ -49,13 +45,9 @@ from ...operations._affinda_api_operations import (
     build_delete_index_document_request,
     build_delete_index_request,
     build_delete_invitation_request,
-    build_delete_invoice_request,
-    build_delete_job_description_request,
     build_delete_organization_membership_request,
     build_delete_organization_request,
-    build_delete_redacted_resume_request,
     build_delete_resthook_subscription_request,
-    build_delete_resume_request,
     build_delete_tag_request,
     build_delete_workspace_membership_request,
     build_delete_workspace_request,
@@ -66,13 +58,9 @@ from ...operations._affinda_api_operations import (
     build_get_all_index_documents_request,
     build_get_all_indexes_request,
     build_get_all_invitations_request,
-    build_get_all_invoices_request,
-    build_get_all_job_descriptions_request,
     build_get_all_organization_memberships_request,
     build_get_all_organizations_request,
-    build_get_all_redacted_resumes_request,
     build_get_all_resthook_subscriptions_request,
-    build_get_all_resumes_request,
     build_get_all_tags_request,
     build_get_all_workspace_memberships_request,
     build_get_all_workspaces_request,
@@ -83,15 +71,11 @@ from ...operations._affinda_api_operations import (
     build_get_extractor_request,
     build_get_invitation_by_token_request,
     build_get_invitation_request,
-    build_get_invoice_request,
-    build_get_job_description_request,
     build_get_job_description_search_config_request,
     build_get_job_description_search_detail_request,
     build_get_organization_membership_request,
     build_get_organization_request,
-    build_get_redacted_resume_request,
     build_get_resthook_subscription_request,
-    build_get_resume_request,
     build_get_resume_search_config_request,
     build_get_resume_search_detail_request,
     build_get_resume_search_match_request,
@@ -102,19 +86,17 @@ from ...operations._affinda_api_operations import (
     build_get_workspace_request,
     build_list_occupation_groups_request,
     build_respond_to_invitation_request,
-    build_update_collection_data_request,
-    build_update_data_point_data_request,
-    build_update_document_data_request,
-    build_update_extractor_data_request,
+    build_update_collection_request,
+    build_update_data_point_request,
+    build_update_document_request,
+    build_update_extractor_request,
     build_update_invitation_request,
-    build_update_job_description_data_request,
     build_update_job_description_search_config_request,
     build_update_organization_membership_request,
     build_update_organization_request,
-    build_update_resthook_subscription_data_request,
-    build_update_resume_data_request,
+    build_update_resthook_subscription_request,
     build_update_resume_search_config_request,
-    build_update_tag_data_request,
+    build_update_tag_request,
     build_update_workspace_request,
 )
 
@@ -125,1750 +107,6 @@ ClsType = Optional[
 
 
 class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
-    async def get_all_resumes(
-        self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any
-    ) -> _models.GetAllDocumentsResultsV2:
-        """Get list of all resumes.
-
-        Returns all the resume summaries for that user, limited to 300 per page.
-
-        :param offset: The number of documents to skip before starting to collect the result set.
-         Default value is None.
-        :type offset: int
-        :param limit: The numbers of results to return. Default value is 300.
-        :type limit: int
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: GetAllDocumentsResultsV2, or the result of cls(response)
-        :rtype: ~affinda.models.GetAllDocumentsResultsV2
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = kwargs.pop("headers", {}) or {}
-        _params = kwargs.pop("params", {}) or {}
-
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.GetAllDocumentsResultsV2]
-
-        request = build_get_all_resumes_request(
-            offset=offset,
-            limit=limit,
-            template_url=self.get_all_resumes.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("GetAllDocumentsResultsV2", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    get_all_resumes.metadata = {"url": "/v2/resumes"}  # type: ignore
-
-    async def create_resume(
-        self,
-        file: Optional[IO] = None,
-        url: Optional[str] = None,
-        data: Optional[_models.ResumeData] = None,
-        identifier: Optional[str] = None,
-        file_name: Optional[str] = None,
-        wait: Optional[bool] = True,
-        reject_duplicates: Optional[bool] = False,
-        language: Optional[str] = None,
-        expiry_time: Optional[datetime.datetime] = None,
-        **kwargs: Any,
-    ) -> _models.Resume:
-        """Upload a resume for parsing.
-
-        Uploads a resume for parsing. When successful, returns an ``identifier`` in the response for
-        subsequent use with the `/resumes/{identifier} <#get-/resumes/-identifier->`_ endpoint to check
-        processing status and retrieve results.:code:`<br/>`
-        Resumes can be uploaded as a file or a URL. In addition, data can be added directly if users
-        want to upload directly without parsing any resume file. For uploading resume data, the
-        ``data`` argument provided must be a JSON-encoded string. Data uploads will not impact upon
-        parsing credits.
-
-        :param file:  Default value is None.
-        :type file: IO
-        :param url:  Default value is None.
-        :type url: str
-        :param data:  Default value is None.
-        :type data: ~affinda.models.ResumeData
-        :param identifier:  Default value is None.
-        :type identifier: str
-        :param file_name:  Default value is None.
-        :type file_name: str
-        :param wait:  Default value is True.
-        :type wait: bool
-        :param reject_duplicates:  Default value is False.
-        :type reject_duplicates: bool
-        :param language:  Default value is None.
-        :type language: str
-        :param expiry_time:  Default value is None.
-        :type expiry_time: ~datetime.datetime
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: Resume, or the result of cls(response)
-        :rtype: ~affinda.models.Resume
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-        _params = kwargs.pop("params", {}) or {}
-
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", None)
-        )  # type: Optional[str]
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.Resume]
-
-        # Construct form data
-        _files = {
-            "file": file,
-            "url": url,
-            "data": data,
-            "identifier": identifier,
-            "fileName": file_name,
-            "wait": wait,
-            "rejectDuplicates": reject_duplicates,
-            "language": language,
-            "expiryTime": expiry_time,
-        }
-
-        request = build_create_resume_request(
-            content_type=content_type,
-            files=_files,
-            template_url=self.create_resume.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request, _files)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200, 201]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        if response.status_code == 200:
-            deserialized = self._deserialize("Resume", pipeline_response)
-
-        if response.status_code == 201:
-            deserialized = self._deserialize("Resume", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    create_resume.metadata = {"url": "/v2/resumes"}  # type: ignore
-
-    async def get_resume(
-        self, identifier: str, format: Optional[str] = None, **kwargs: Any
-    ) -> Union[_models.Resume, _models.RequestError]:
-        """Get parse results for a specific resume.
-
-        Returns all the parse results for that resume if processing is completed.
-        The ``identifier`` is the unique ID returned after POST-ing the resume via the `/resumes
-        <#post-/resumes>`_ endpoint.
-
-        :param identifier: Document identifier.
-        :type identifier: str
-        :param format: Set this to "hr-xml" to get the response in HR-XML format. Currently the only
-         supported value for this parameter is "hr-xml". Default value is None.
-        :type format: str
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: Resume or RequestError, or the result of cls(response)
-        :rtype: ~affinda.models.Resume or ~affinda.models.RequestError
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            401: ClientAuthenticationError,
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = kwargs.pop("headers", {}) or {}
-        _params = kwargs.pop("params", {}) or {}
-
-        cls = kwargs.pop("cls", None)  # type: ClsType[Union[_models.Resume, _models.RequestError]]
-
-        request = build_get_resume_request(
-            identifier=identifier,
-            format=format,
-            template_url=self.get_resume.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200, 200, 400, 400, 401, 401, 404, 404]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        if response.status_code == 200:
-            deserialized = self._deserialize("Resume", pipeline_response)
-
-        if response.status_code == 200:
-            deserialized = self._deserialize("Resume", pipeline_response)
-
-        if response.status_code == 400:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 400:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    get_resume.metadata = {"url": "/v2/resumes/{identifier}"}  # type: ignore
-
-    async def update_resume_data(
-        self, identifier: str, body: _models.ResumeData, **kwargs: Any
-    ) -> Optional[_models.ResumeData]:
-        """Update a resume's data.
-
-        Update data of a parsed resume.
-        The ``identifier`` is the unique ID returned after POST-ing the resume via the `/resumes
-        <#post-/resumes>`_ endpoint.
-
-        :param identifier: Resume identifier.
-        :type identifier: str
-        :param body: Resume data to update.
-        :type body: ~affinda.models.ResumeData
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: ResumeData or None, or the result of cls(response)
-        :rtype: ~affinda.models.ResumeData or None
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-        _params = kwargs.pop("params", {}) or {}
-
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", "application/json")
-        )  # type: Optional[str]
-        cls = kwargs.pop("cls", None)  # type: ClsType[Optional[_models.ResumeData]]
-
-        _json = self._serialize.body(body, "ResumeData")
-
-        request = build_update_resume_data_request(
-            identifier=identifier,
-            content_type=content_type,
-            json=_json,
-            template_url=self.update_resume_data.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("ResumeData", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    update_resume_data.metadata = {"url": "/v2/resumes/{identifier}"}  # type: ignore
-
-    async def delete_resume(  # pylint: disable=inconsistent-return-statements
-        self, identifier: str, **kwargs: Any
-    ) -> None:
-        """Delete a resume.
-
-        Deletes the specified resume from the database.
-
-        :param identifier: Resume identifier.
-        :type identifier: str
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: None, or the result of cls(response)
-        :rtype: None
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = kwargs.pop("headers", {}) or {}
-        _params = kwargs.pop("params", {}) or {}
-
-        cls = kwargs.pop("cls", None)  # type: ClsType[None]
-
-        request = build_delete_resume_request(
-            identifier=identifier,
-            template_url=self.delete_resume.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [204]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        if cls:
-            return cls(pipeline_response, None, {})
-
-    delete_resume.metadata = {"url": "/v2/resumes/{identifier}"}  # type: ignore
-
-    async def get_all_redacted_resumes(
-        self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any
-    ) -> _models.GetAllDocumentsResultsV2:
-        """Get list of all redacted resumes.
-
-        Returns all the redacted resume information for that resume.
-
-        :param offset: The number of documents to skip before starting to collect the result set.
-         Default value is None.
-        :type offset: int
-        :param limit: The numbers of results to return. Default value is 300.
-        :type limit: int
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: GetAllDocumentsResultsV2, or the result of cls(response)
-        :rtype: ~affinda.models.GetAllDocumentsResultsV2
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = kwargs.pop("headers", {}) or {}
-        _params = kwargs.pop("params", {}) or {}
-
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.GetAllDocumentsResultsV2]
-
-        request = build_get_all_redacted_resumes_request(
-            offset=offset,
-            limit=limit,
-            template_url=self.get_all_redacted_resumes.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("GetAllDocumentsResultsV2", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    get_all_redacted_resumes.metadata = {"url": "/v2/redacted_resumes"}  # type: ignore
-
-    async def create_redacted_resume(
-        self,
-        file: Optional[IO] = None,
-        identifier: Optional[str] = None,
-        file_name: Optional[str] = None,
-        url: Optional[str] = None,
-        language: Optional[str] = None,
-        wait: Optional[bool] = True,
-        redact_headshot: Optional[str] = "true",
-        redact_personal_details: Optional[str] = "true",
-        redact_work_details: Optional[str] = "true",
-        redact_education_details: Optional[str] = "true",
-        redact_referees: Optional[str] = "true",
-        redact_locations: Optional[str] = "true",
-        redact_dates: Optional[str] = "true",
-        redact_gender: Optional[str] = "true",
-        expiry_time: Optional[datetime.datetime] = None,
-        **kwargs: Any,
-    ) -> _models.RedactedResume:
-        """Upload a resume for redacting.
-
-        Uploads a resume for redacting.
-
-        :param file:  Default value is None.
-        :type file: IO
-        :param identifier:  Default value is None.
-        :type identifier: str
-        :param file_name:  Default value is None.
-        :type file_name: str
-        :param url:  Default value is None.
-        :type url: str
-        :param language:  Default value is None.
-        :type language: str
-        :param wait:  Default value is True.
-        :type wait: bool
-        :param redact_headshot: Whether to redact headshot. Default value is "true".
-        :type redact_headshot: str
-        :param redact_personal_details: Whether to redact personal details (e.g. name, address).
-         Default value is "true".
-        :type redact_personal_details: str
-        :param redact_work_details: Whether to redact work details (e.g. company names). Default value
-         is "true".
-        :type redact_work_details: str
-        :param redact_education_details: Whether to redact education details (e.g. university names).
-         Default value is "true".
-        :type redact_education_details: str
-        :param redact_referees: Whether to redact referee details. Default value is "true".
-        :type redact_referees: str
-        :param redact_locations: Whether to redact location names. Default value is "true".
-        :type redact_locations: str
-        :param redact_dates: Whether to redact dates. Default value is "true".
-        :type redact_dates: str
-        :param redact_gender: Whether to redact gender. Default value is "true".
-        :type redact_gender: str
-        :param expiry_time:  Default value is None.
-        :type expiry_time: ~datetime.datetime
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: RedactedResume, or the result of cls(response)
-        :rtype: ~affinda.models.RedactedResume
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-        _params = kwargs.pop("params", {}) or {}
-
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", None)
-        )  # type: Optional[str]
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.RedactedResume]
-
-        # Construct form data
-        _files = {
-            "file": file,
-            "identifier": identifier,
-            "fileName": file_name,
-            "url": url,
-            "language": language,
-            "wait": wait,
-            "redactHeadshot": redact_headshot,
-            "redactPersonalDetails": redact_personal_details,
-            "redactWorkDetails": redact_work_details,
-            "redactEducationDetails": redact_education_details,
-            "redactReferees": redact_referees,
-            "redactLocations": redact_locations,
-            "redactDates": redact_dates,
-            "redactGender": redact_gender,
-            "expiryTime": expiry_time,
-        }
-
-        request = build_create_redacted_resume_request(
-            content_type=content_type,
-            files=_files,
-            template_url=self.create_redacted_resume.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request, _files)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200, 201]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        if response.status_code == 200:
-            deserialized = self._deserialize("RedactedResume", pipeline_response)
-
-        if response.status_code == 201:
-            deserialized = self._deserialize("RedactedResume", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    create_redacted_resume.metadata = {"url": "/v2/redacted_resumes"}  # type: ignore
-
-    async def get_redacted_resume(self, identifier: str, **kwargs: Any) -> _models.RedactedResume:
-        """Get redaction results for a specific resume.
-
-        Returns all the redaction results for that resume if processing is completed.
-        The ``identifier`` is the unique ID returned after POST-ing the resume via the
-        `/redacted_resumes <#post-/redacted_resumes>`_ endpoint.
-
-        :param identifier: Document identifier.
-        :type identifier: str
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: RedactedResume, or the result of cls(response)
-        :rtype: ~affinda.models.RedactedResume
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = kwargs.pop("headers", {}) or {}
-        _params = kwargs.pop("params", {}) or {}
-
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.RedactedResume]
-
-        request = build_get_redacted_resume_request(
-            identifier=identifier,
-            template_url=self.get_redacted_resume.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("RedactedResume", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    get_redacted_resume.metadata = {"url": "/v2/redacted_resumes/{identifier}"}  # type: ignore
-
-    async def delete_redacted_resume(  # pylint: disable=inconsistent-return-statements
-        self, identifier: str, **kwargs: Any
-    ) -> None:
-        """Delete a redacted resume.
-
-        Deletes the specified resume from the database.
-
-        :param identifier: Document identifier.
-        :type identifier: str
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: None, or the result of cls(response)
-        :rtype: None
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = kwargs.pop("headers", {}) or {}
-        _params = kwargs.pop("params", {}) or {}
-
-        cls = kwargs.pop("cls", None)  # type: ClsType[None]
-
-        request = build_delete_redacted_resume_request(
-            identifier=identifier,
-            template_url=self.delete_redacted_resume.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [204]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        if cls:
-            return cls(pipeline_response, None, {})
-
-    delete_redacted_resume.metadata = {"url": "/v2/redacted_resumes/{identifier}"}  # type: ignore
-
-    async def get_all_invoices(
-        self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any
-    ) -> _models.GetAllInvoicesResults:
-        """Get list of all invoices.
-
-        Returns all the invoice summaries for that user, limited to 300 per page.
-
-        :param offset: The number of documents to skip before starting to collect the result set.
-         Default value is None.
-        :type offset: int
-        :param limit: The numbers of results to return. Default value is 300.
-        :type limit: int
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: GetAllInvoicesResults, or the result of cls(response)
-        :rtype: ~affinda.models.GetAllInvoicesResults
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = kwargs.pop("headers", {}) or {}
-        _params = kwargs.pop("params", {}) or {}
-
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.GetAllInvoicesResults]
-
-        request = build_get_all_invoices_request(
-            offset=offset,
-            limit=limit,
-            template_url=self.get_all_invoices.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("GetAllInvoicesResults", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    get_all_invoices.metadata = {"url": "/v2/invoices"}  # type: ignore
-
-    async def create_invoice(
-        self,
-        file: Optional[IO] = None,
-        url: Optional[str] = None,
-        identifier: Optional[str] = None,
-        file_name: Optional[str] = None,
-        wait: Optional[bool] = True,
-        reject_duplicates: Optional[bool] = False,
-        language: Optional[str] = None,
-        expiry_time: Optional[datetime.datetime] = None,
-        **kwargs: Any,
-    ) -> _models.Invoice:
-        """Upload an invoice for parsing.
-
-        Uploads an invoice for parsing.
-        When successful, returns an ``identifier`` in the response for subsequent use with the
-        `/invoices/{identifier} <#get-/invoices/-identifier->`_ endpoint to check processing status and
-        retrieve results.
-
-        :param file:  Default value is None.
-        :type file: IO
-        :param url:  Default value is None.
-        :type url: str
-        :param identifier:  Default value is None.
-        :type identifier: str
-        :param file_name:  Default value is None.
-        :type file_name: str
-        :param wait:  Default value is True.
-        :type wait: bool
-        :param reject_duplicates:  Default value is False.
-        :type reject_duplicates: bool
-        :param language:  Default value is None.
-        :type language: str
-        :param expiry_time:  Default value is None.
-        :type expiry_time: ~datetime.datetime
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: Invoice, or the result of cls(response)
-        :rtype: ~affinda.models.Invoice
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-        _params = kwargs.pop("params", {}) or {}
-
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", None)
-        )  # type: Optional[str]
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.Invoice]
-
-        # Construct form data
-        _files = {
-            "file": file,
-            "url": url,
-            "identifier": identifier,
-            "fileName": file_name,
-            "wait": wait,
-            "rejectDuplicates": reject_duplicates,
-            "language": language,
-            "expiryTime": expiry_time,
-        }
-
-        request = build_create_invoice_request(
-            content_type=content_type,
-            files=_files,
-            template_url=self.create_invoice.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request, _files)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200, 201]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        if response.status_code == 200:
-            deserialized = self._deserialize("Invoice", pipeline_response)
-
-        if response.status_code == 201:
-            deserialized = self._deserialize("Invoice", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    create_invoice.metadata = {"url": "/v2/invoices"}  # type: ignore
-
-    async def get_invoice(self, identifier: str, **kwargs: Any) -> _models.Invoice:
-        """Get parse results for a specific invoice.
-
-        Returns all the parse results for that invoice if processing is completed.
-        The ``identifier`` is the unique ID returned after POST-ing the invoice via the `/invoices
-        <#post-/invoices>`_ endpoint.
-
-        :param identifier: Document identifier.
-        :type identifier: str
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: Invoice, or the result of cls(response)
-        :rtype: ~affinda.models.Invoice
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = kwargs.pop("headers", {}) or {}
-        _params = kwargs.pop("params", {}) or {}
-
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.Invoice]
-
-        request = build_get_invoice_request(
-            identifier=identifier,
-            template_url=self.get_invoice.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("Invoice", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    get_invoice.metadata = {"url": "/v2/invoices/{identifier}"}  # type: ignore
-
-    async def delete_invoice(  # pylint: disable=inconsistent-return-statements
-        self, identifier: str, **kwargs: Any
-    ) -> None:
-        """Delete an invoice.
-
-        Delete the specified invoice from the database. Note, any invoices deleted from the database
-        will no longer be used in any tailored customer models.
-
-        :param identifier: Invoice identifier.
-        :type identifier: str
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: None, or the result of cls(response)
-        :rtype: None
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = kwargs.pop("headers", {}) or {}
-        _params = kwargs.pop("params", {}) or {}
-
-        cls = kwargs.pop("cls", None)  # type: ClsType[None]
-
-        request = build_delete_invoice_request(
-            identifier=identifier,
-            template_url=self.delete_invoice.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [204]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        if cls:
-            return cls(pipeline_response, None, {})
-
-    delete_invoice.metadata = {"url": "/v2/invoices/{identifier}"}  # type: ignore
-
-    async def get_all_job_descriptions(
-        self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any
-    ) -> _models.GetAllJobDescriptionsResults:
-        """Get list of all job descriptions.
-
-        Returns all the job descriptions for that user, limited to 300 per page.
-
-        :param offset: The number of documents to skip before starting to collect the result set.
-         Default value is None.
-        :type offset: int
-        :param limit: The numbers of results to return. Default value is 300.
-        :type limit: int
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: GetAllJobDescriptionsResults, or the result of cls(response)
-        :rtype: ~affinda.models.GetAllJobDescriptionsResults
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = kwargs.pop("headers", {}) or {}
-        _params = kwargs.pop("params", {}) or {}
-
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.GetAllJobDescriptionsResults]
-
-        request = build_get_all_job_descriptions_request(
-            offset=offset,
-            limit=limit,
-            template_url=self.get_all_job_descriptions.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("GetAllJobDescriptionsResults", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    get_all_job_descriptions.metadata = {"url": "/v2/job_descriptions"}  # type: ignore
-
-    async def create_job_description(
-        self,
-        file: Optional[IO] = None,
-        url: Optional[str] = None,
-        identifier: Optional[str] = None,
-        file_name: Optional[str] = None,
-        wait: Optional[bool] = True,
-        reject_duplicates: Optional[bool] = False,
-        language: Optional[str] = None,
-        expiry_time: Optional[datetime.datetime] = None,
-        **kwargs: Any,
-    ) -> _models.JobDescription:
-        """Upload a job description for parsing.
-
-        Uploads a job description for parsing.
-        When successful, returns an ``identifier`` in the response for subsequent use with the
-        `/job_descriptions/{identifier} <#get-/job_descriptions/-identifier->`_ endpoint to check
-        processing status and retrieve results.
-        Job Descriptions can be uploaded as a file or a URL. In addition, data can be added directly if
-        users want to upload directly without parsing any resume file. For uploading resume data, the
-        ``data`` argument provided must be a JSON-encoded string. Data uploads will not impact upon
-        parsing credits.
-
-        :param file:  Default value is None.
-        :type file: IO
-        :param url:  Default value is None.
-        :type url: str
-        :param identifier:  Default value is None.
-        :type identifier: str
-        :param file_name:  Default value is None.
-        :type file_name: str
-        :param wait:  Default value is True.
-        :type wait: bool
-        :param reject_duplicates:  Default value is False.
-        :type reject_duplicates: bool
-        :param language:  Default value is None.
-        :type language: str
-        :param expiry_time:  Default value is None.
-        :type expiry_time: ~datetime.datetime
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: JobDescription, or the result of cls(response)
-        :rtype: ~affinda.models.JobDescription
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-        _params = kwargs.pop("params", {}) or {}
-
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", None)
-        )  # type: Optional[str]
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.JobDescription]
-
-        # Construct form data
-        _files = {
-            "file": file,
-            "url": url,
-            "identifier": identifier,
-            "fileName": file_name,
-            "wait": wait,
-            "rejectDuplicates": reject_duplicates,
-            "language": language,
-            "expiryTime": expiry_time,
-        }
-
-        request = build_create_job_description_request(
-            content_type=content_type,
-            files=_files,
-            template_url=self.create_job_description.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request, _files)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200, 201]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        if response.status_code == 200:
-            deserialized = self._deserialize("JobDescription", pipeline_response)
-
-        if response.status_code == 201:
-            deserialized = self._deserialize("JobDescription", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    create_job_description.metadata = {"url": "/v2/job_descriptions"}  # type: ignore
-
-    async def get_job_description(self, identifier: str, **kwargs: Any) -> _models.JobDescription:
-        """Get job description results for a specific job description file.
-
-        Returns all the results for that job description if processing is completed.
-        The ``identifier`` is the unique ID returned after POST-ing the resume via the
-        `/job_descriptions <#post-/job_descriptions>`_ endpoint.
-
-        :param identifier: Document identifier.
-        :type identifier: str
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: JobDescription, or the result of cls(response)
-        :rtype: ~affinda.models.JobDescription
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = kwargs.pop("headers", {}) or {}
-        _params = kwargs.pop("params", {}) or {}
-
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.JobDescription]
-
-        request = build_get_job_description_request(
-            identifier=identifier,
-            template_url=self.get_job_description.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("JobDescription", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    get_job_description.metadata = {"url": "/v2/job_descriptions/{identifier}"}  # type: ignore
-
-    async def update_job_description_data(
-        self, identifier: str, body: _models.JobDescriptionDataUpdate, **kwargs: Any
-    ) -> Optional[_models.JobDescriptionData]:
-        """Update a job description's data.
-
-        Update data of a job description.
-        The ``identifier`` is the unique ID returned after POST-ing the job description via the
-        `/job_descriptions <#post-/job_descriptions>`_ endpoint.
-
-        :param identifier: Job description identifier.
-        :type identifier: str
-        :param body: Job description data to update.
-        :type body: ~affinda.models.JobDescriptionDataUpdate
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: JobDescriptionData or None, or the result of cls(response)
-        :rtype: ~affinda.models.JobDescriptionData or None
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-        _params = kwargs.pop("params", {}) or {}
-
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", "application/json")
-        )  # type: Optional[str]
-        cls = kwargs.pop("cls", None)  # type: ClsType[Optional[_models.JobDescriptionData]]
-
-        _json = self._serialize.body(body, "JobDescriptionDataUpdate")
-
-        request = build_update_job_description_data_request(
-            identifier=identifier,
-            content_type=content_type,
-            json=_json,
-            template_url=self.update_job_description_data.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("JobDescriptionData", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    update_job_description_data.metadata = {"url": "/v2/job_descriptions/{identifier}"}  # type: ignore
-
-    async def delete_job_description(  # pylint: disable=inconsistent-return-statements
-        self, identifier: str, **kwargs: Any
-    ) -> None:
-        """Delete a job description.
-
-        Deletes the specified job description from the database.
-
-        :param identifier: Document identifier.
-        :type identifier: str
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: None, or the result of cls(response)
-        :rtype: None
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = kwargs.pop("headers", {}) or {}
-        _params = kwargs.pop("params", {}) or {}
-
-        cls = kwargs.pop("cls", None)  # type: ClsType[None]
-
-        request = build_delete_job_description_request(
-            identifier=identifier,
-            template_url=self.delete_job_description.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [204]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        if cls:
-            return cls(pipeline_response, None, {})
-
-    delete_job_description.metadata = {"url": "/v2/job_descriptions/{identifier}"}  # type: ignore
-
-    async def create_job_description_search(
-        self,
-        body: _models.JobDescriptionSearchParameters,
-        offset: Optional[int] = None,
-        limit: Optional[int] = 300,
-        **kwargs: Any,
-    ) -> _models.JobDescriptionSearch:
-        """Search through parsed job descriptions.
-
-        Searches through parsed job descriptions. You can search with custom criterias or a resume.
-
-        :param body: Search parameters.
-        :type body: ~affinda.models.JobDescriptionSearchParameters
-        :param offset: The number of documents to skip before starting to collect the result set.
-         Default value is None.
-        :type offset: int
-        :param limit: The numbers of results to return. Default value is 300.
-        :type limit: int
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: JobDescriptionSearch, or the result of cls(response)
-        :rtype: ~affinda.models.JobDescriptionSearch
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-        _params = kwargs.pop("params", {}) or {}
-
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", "application/json")
-        )  # type: Optional[str]
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.JobDescriptionSearch]
-
-        _json = self._serialize.body(body, "JobDescriptionSearchParameters")
-
-        request = build_create_job_description_search_request(
-            content_type=content_type,
-            json=_json,
-            offset=offset,
-            limit=limit,
-            template_url=self.create_job_description_search.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [201]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("JobDescriptionSearch", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    create_job_description_search.metadata = {"url": "/v2/job_description_search"}  # type: ignore
-
-    async def get_job_description_search_detail(
-        self, identifier: str, body: _models.JobDescriptionSearchParameters, **kwargs: Any
-    ) -> _models.JobDescriptionSearchDetail:
-        """Get search result of specific job description.
-
-        This contains more detailed information about the matching score of the search criteria, or
-        which search criteria is missing in this job description.
-        The ``identifier`` is the unique ID returned via the `/job_description_search
-        <#post-/job_description_search>`_ endpoint.
-
-        :param identifier: Job Description identifier.
-        :type identifier: str
-        :param body: Search parameters.
-        :type body: ~affinda.models.JobDescriptionSearchParameters
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: JobDescriptionSearchDetail, or the result of cls(response)
-        :rtype: ~affinda.models.JobDescriptionSearchDetail
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-        _params = kwargs.pop("params", {}) or {}
-
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", "application/json")
-        )  # type: Optional[str]
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.JobDescriptionSearchDetail]
-
-        _json = self._serialize.body(body, "JobDescriptionSearchParameters")
-
-        request = build_get_job_description_search_detail_request(
-            identifier=identifier,
-            content_type=content_type,
-            json=_json,
-            template_url=self.get_job_description_search_detail.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("JobDescriptionSearchDetail", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    get_job_description_search_detail.metadata = {"url": "/v2/job_description_search/details/{identifier}"}  # type: ignore
-
-    async def get_job_description_search_config(
-        self, **kwargs: Any
-    ) -> _models.JobDescriptionSearchConfig:
-        """Get the config for the logged in user's embeddable job description search tool.
-
-        Return configurations such as which fields can be displayed in the logged in user's embeddable
-        job description search tool, what are their weights, what is the maximum number of results that
-        can be returned, etc.
-
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: JobDescriptionSearchConfig, or the result of cls(response)
-        :rtype: ~affinda.models.JobDescriptionSearchConfig
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = kwargs.pop("headers", {}) or {}
-        _params = kwargs.pop("params", {}) or {}
-
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.JobDescriptionSearchConfig]
-
-        request = build_get_job_description_search_config_request(
-            template_url=self.get_job_description_search_config.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("JobDescriptionSearchConfig", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    get_job_description_search_config.metadata = {"url": "/v2/job_description_search/config"}  # type: ignore
-
-    async def update_job_description_search_config(
-        self, body: _models.JobDescriptionSearchConfig, **kwargs: Any
-    ) -> _models.JobDescriptionSearchConfig:
-        """Update the config for the logged in user's embeddable job description search tool.
-
-        Update configurations such as which fields can be displayed in the logged in user's embeddable
-        job description search tool, what are their weights, what is the maximum number of results that
-        can be returned, etc.
-
-        :param body:
-        :type body: ~affinda.models.JobDescriptionSearchConfig
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: JobDescriptionSearchConfig, or the result of cls(response)
-        :rtype: ~affinda.models.JobDescriptionSearchConfig
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-        _params = kwargs.pop("params", {}) or {}
-
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", "application/json")
-        )  # type: Optional[str]
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.JobDescriptionSearchConfig]
-
-        _json = self._serialize.body(body, "JobDescriptionSearchConfig")
-
-        request = build_update_job_description_search_config_request(
-            content_type=content_type,
-            json=_json,
-            template_url=self.update_job_description_search_config.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("JobDescriptionSearchConfig", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    update_job_description_search_config.metadata = {"url": "/v2/job_description_search/config"}  # type: ignore
-
-    async def create_job_description_search_embed_url(
-        self,
-        body: Optional[
-            _models.Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema
-        ] = None,
-        **kwargs: Any,
-    ) -> _models.JobDescriptionSearchEmbed:
-        """Create a signed URL for the embeddable job description search tool.
-
-        Create and return a signed URL of the job description search tool which then can be embedded on
-        a web page. An optional parameter ``config_override`` can be passed to override the user-level
-        configurations of the embeddable search tool.
-
-        :param body:  Default value is None.
-        :type body:
-         ~affinda.models.Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: JobDescriptionSearchEmbed, or the result of cls(response)
-        :rtype: ~affinda.models.JobDescriptionSearchEmbed
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-        _params = kwargs.pop("params", {}) or {}
-
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", "application/json")
-        )  # type: Optional[str]
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.JobDescriptionSearchEmbed]
-
-        if body is not None:
-            _json = self._serialize.body(
-                body,
-                "Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema",
-            )
-        else:
-            _json = None
-
-        request = build_create_job_description_search_embed_url_request(
-            content_type=content_type,
-            json=_json,
-            template_url=self.create_job_description_search_embed_url.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("JobDescriptionSearchEmbed", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    create_job_description_search_embed_url.metadata = {"url": "/v2/job_description_search/embed"}  # type: ignore
-
     async def create_resume_search(
         self,
         body: _models.ResumeSearchParameters,
@@ -2479,6 +717,365 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
     get_resume_search_suggestion_skill.metadata = {"url": "/v3/resume_search/suggestion_skill"}  # type: ignore
 
+    async def create_job_description_search(
+        self,
+        body: _models.JobDescriptionSearchParameters,
+        offset: Optional[int] = None,
+        limit: Optional[int] = 300,
+        **kwargs: Any,
+    ) -> _models.JobDescriptionSearch:
+        """Search through parsed job descriptions.
+
+        Searches through parsed job descriptions. You can search with custom criterias or a resume.
+
+        :param body: Search parameters.
+        :type body: ~affinda.models.JobDescriptionSearchParameters
+        :param offset: The number of documents to skip before starting to collect the result set.
+         Default value is None.
+        :type offset: int
+        :param limit: The numbers of results to return. Default value is 300.
+        :type limit: int
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: JobDescriptionSearch, or the result of cls(response)
+        :rtype: ~affinda.models.JobDescriptionSearch
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop(
+            "content_type", _headers.pop("Content-Type", "application/json")
+        )  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.JobDescriptionSearch]
+
+        _json = self._serialize.body(body, "JobDescriptionSearchParameters")
+
+        request = build_create_job_description_search_request(
+            content_type=content_type,
+            json=_json,
+            offset=offset,
+            limit=limit,
+            template_url=self.create_job_description_search.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [201]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("JobDescriptionSearch", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    create_job_description_search.metadata = {"url": "/v3/job_description_search"}  # type: ignore
+
+    async def get_job_description_search_detail(
+        self, identifier: str, body: _models.JobDescriptionSearchParameters, **kwargs: Any
+    ) -> _models.JobDescriptionSearchDetail:
+        """Get search result of specific job description.
+
+        This contains more detailed information about the matching score of the search criteria, or
+        which search criteria is missing in this job description.
+        The ``identifier`` is the unique ID returned via the `/job_description_search
+        <#post-/job_description_search>`_ endpoint.
+
+        :param identifier: Job Description identifier.
+        :type identifier: str
+        :param body: Search parameters.
+        :type body: ~affinda.models.JobDescriptionSearchParameters
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: JobDescriptionSearchDetail, or the result of cls(response)
+        :rtype: ~affinda.models.JobDescriptionSearchDetail
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop(
+            "content_type", _headers.pop("Content-Type", "application/json")
+        )  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.JobDescriptionSearchDetail]
+
+        _json = self._serialize.body(body, "JobDescriptionSearchParameters")
+
+        request = build_get_job_description_search_detail_request(
+            identifier=identifier,
+            content_type=content_type,
+            json=_json,
+            template_url=self.get_job_description_search_detail.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("JobDescriptionSearchDetail", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_job_description_search_detail.metadata = {"url": "/v3/job_description_search/details/{identifier}"}  # type: ignore
+
+    async def get_job_description_search_config(
+        self, **kwargs: Any
+    ) -> _models.JobDescriptionSearchConfig:
+        """Get the config for the logged in user's embeddable job description search tool.
+
+        Return configurations such as which fields can be displayed in the logged in user's embeddable
+        job description search tool, what are their weights, what is the maximum number of results that
+        can be returned, etc.
+
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: JobDescriptionSearchConfig, or the result of cls(response)
+        :rtype: ~affinda.models.JobDescriptionSearchConfig
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.JobDescriptionSearchConfig]
+
+        request = build_get_job_description_search_config_request(
+            template_url=self.get_job_description_search_config.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("JobDescriptionSearchConfig", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_job_description_search_config.metadata = {"url": "/v3/job_description_search/config"}  # type: ignore
+
+    async def update_job_description_search_config(
+        self, body: _models.JobDescriptionSearchConfig, **kwargs: Any
+    ) -> _models.JobDescriptionSearchConfig:
+        """Update the config for the logged in user's embeddable job description search tool.
+
+        Update configurations such as which fields can be displayed in the logged in user's embeddable
+        job description search tool, what are their weights, what is the maximum number of results that
+        can be returned, etc.
+
+        :param body:
+        :type body: ~affinda.models.JobDescriptionSearchConfig
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: JobDescriptionSearchConfig, or the result of cls(response)
+        :rtype: ~affinda.models.JobDescriptionSearchConfig
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop(
+            "content_type", _headers.pop("Content-Type", "application/json")
+        )  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.JobDescriptionSearchConfig]
+
+        _json = self._serialize.body(body, "JobDescriptionSearchConfig")
+
+        request = build_update_job_description_search_config_request(
+            content_type=content_type,
+            json=_json,
+            template_url=self.update_job_description_search_config.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("JobDescriptionSearchConfig", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    update_job_description_search_config.metadata = {"url": "/v3/job_description_search/config"}  # type: ignore
+
+    async def create_job_description_search_embed_url(
+        self,
+        body: Optional[
+            _models.PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema
+        ] = None,
+        **kwargs: Any,
+    ) -> _models.JobDescriptionSearchEmbed:
+        """Create a signed URL for the embeddable job description search tool.
+
+        Create and return a signed URL of the job description search tool which then can be embedded on
+        a web page. An optional parameter ``config_override`` can be passed to override the user-level
+        configurations of the embeddable search tool.
+
+        :param body:  Default value is None.
+        :type body:
+         ~affinda.models.PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: JobDescriptionSearchEmbed, or the result of cls(response)
+        :rtype: ~affinda.models.JobDescriptionSearchEmbed
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop(
+            "content_type", _headers.pop("Content-Type", "application/json")
+        )  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.JobDescriptionSearchEmbed]
+
+        if body is not None:
+            _json = self._serialize.body(
+                body,
+                "PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema",
+            )
+        else:
+            _json = None
+
+        request = build_create_job_description_search_embed_url_request(
+            content_type=content_type,
+            json=_json,
+            template_url=self.create_job_description_search_embed_url.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("JobDescriptionSearchEmbed", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    create_job_description_search_embed_url.metadata = {"url": "/v3/job_description_search/embed"}  # type: ignore
+
     async def get_all_indexes(
         self,
         offset: Optional[int] = None,
@@ -2967,338 +1564,6 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         return deserialized
 
     list_occupation_groups.metadata = {"url": "/v3/occupation_groups"}  # type: ignore
-
-    async def get_all_resthook_subscriptions(
-        self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any
-    ) -> _models.PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema:
-        """Get list of all resthook subscriptions.
-
-        Returns your resthook subscriptions.
-
-        :param offset: The number of documents to skip before starting to collect the result set.
-         Default value is None.
-        :type offset: int
-        :param limit: The numbers of results to return. Default value is 300.
-        :type limit: int
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema, or the
-         result of cls(response)
-        :rtype:
-         ~affinda.models.PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = kwargs.pop("headers", {}) or {}
-        _params = kwargs.pop("params", {}) or {}
-
-        cls = kwargs.pop(
-            "cls", None
-        )  # type: ClsType[_models.PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema]
-
-        request = build_get_all_resthook_subscriptions_request(
-            offset=offset,
-            limit=limit,
-            template_url=self.get_all_resthook_subscriptions.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize(
-            "PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema",
-            pipeline_response,
-        )
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    get_all_resthook_subscriptions.metadata = {"url": "/v3/resthook_subscriptions"}  # type: ignore
-
-    async def create_resthook_subscription(
-        self, body: _models.ResthookSubscriptionCreate, **kwargs: Any
-    ) -> _models.ResthookSubscription:
-        """Create a resthook subscriptions.
-
-        Create a resthook subscriptions.
-
-        :param body:
-        :type body: ~affinda.models.ResthookSubscriptionCreate
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: ResthookSubscription, or the result of cls(response)
-        :rtype: ~affinda.models.ResthookSubscription
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-        _params = kwargs.pop("params", {}) or {}
-
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", "application/json")
-        )  # type: Optional[str]
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResthookSubscription]
-
-        _json = self._serialize.body(body, "ResthookSubscriptionCreate")
-
-        request = build_create_resthook_subscription_request(
-            content_type=content_type,
-            json=_json,
-            template_url=self.create_resthook_subscription.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [201]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("ResthookSubscription", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    create_resthook_subscription.metadata = {"url": "/v3/resthook_subscriptions"}  # type: ignore
-
-    async def get_resthook_subscription(
-        self, id: int, **kwargs: Any
-    ) -> _models.ResthookSubscription:
-        """Get specific resthook subscription.
-
-        Return a specific resthook subscription.
-
-        :param id: Resthook subscription's ID.
-        :type id: int
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: ResthookSubscription, or the result of cls(response)
-        :rtype: ~affinda.models.ResthookSubscription
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = kwargs.pop("headers", {}) or {}
-        _params = kwargs.pop("params", {}) or {}
-
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResthookSubscription]
-
-        request = build_get_resthook_subscription_request(
-            id=id,
-            template_url=self.get_resthook_subscription.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("ResthookSubscription", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    get_resthook_subscription.metadata = {"url": "/v3/resthook_subscriptions/{id}"}  # type: ignore
-
-    async def update_resthook_subscription_data(
-        self, id: int, body: _models.ResthookSubscriptionUpdate, **kwargs: Any
-    ) -> _models.ResthookSubscription:
-        """Update a resthook subscription's data.
-
-        Update data of a resthook subscription.
-
-        :param id: ResthookSubscription's ID.
-        :type id: int
-        :param body: ResthookSubscription data to update.
-        :type body: ~affinda.models.ResthookSubscriptionUpdate
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: ResthookSubscription, or the result of cls(response)
-        :rtype: ~affinda.models.ResthookSubscription
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-        _params = kwargs.pop("params", {}) or {}
-
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", "application/json")
-        )  # type: Optional[str]
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResthookSubscription]
-
-        _json = self._serialize.body(body, "ResthookSubscriptionUpdate")
-
-        request = build_update_resthook_subscription_data_request(
-            id=id,
-            content_type=content_type,
-            json=_json,
-            template_url=self.update_resthook_subscription_data.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("ResthookSubscription", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    update_resthook_subscription_data.metadata = {"url": "/v3/resthook_subscriptions/{id}"}  # type: ignore
-
-    async def delete_resthook_subscription(  # pylint: disable=inconsistent-return-statements
-        self, id: int, **kwargs: Any
-    ) -> None:
-        """Delete a resthook subscription.
-
-        Deletes the specified resthook subscription from the database.
-
-        :param id: ResthookSubscription's ID.
-        :type id: int
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: None, or the result of cls(response)
-        :rtype: None
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = kwargs.pop("headers", {}) or {}
-        _params = kwargs.pop("params", {}) or {}
-
-        cls = kwargs.pop("cls", None)  # type: ClsType[None]
-
-        request = build_delete_resthook_subscription_request(
-            id=id,
-            template_url=self.delete_resthook_subscription.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [204]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        if cls:
-            return cls(pipeline_response, None, {})
-
-    delete_resthook_subscription.metadata = {"url": "/v3/resthook_subscriptions/{id}"}  # type: ignore
 
     async def get_all_organizations(self, **kwargs: Any) -> List[_models.Organization]:
         """Get list of all organizations.
@@ -4322,10 +2587,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
     get_invitation_by_token.metadata = {"url": "/v3/invitations/token/{token}"}  # type: ignore
 
     async def respond_to_invitation(
-        self,
-        token: str,
-        body: _models.PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema,
-        **kwargs: Any,
+        self, token: str, body: _models.InvitationResponse, **kwargs: Any
     ) -> _models.Invitation:
         """Respond to an invitation.
 
@@ -4334,8 +2596,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param token: Invitation token.
         :type token: str
         :param body:
-        :type body:
-         ~affinda.models.PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema
+        :type body: ~affinda.models.InvitationResponse
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Invitation, or the result of cls(response)
         :rtype: ~affinda.models.Invitation
@@ -4361,9 +2622,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         )  # type: Optional[str]
         cls = kwargs.pop("cls", None)  # type: ClsType[_models.Invitation]
 
-        _json = self._serialize.body(
-            body, "PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema"
-        )
+        _json = self._serialize.body(body, "InvitationResponse")
 
         request = build_respond_to_invitation_request(
             token=token,
@@ -4606,10 +2865,10 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
     get_extractor.metadata = {"url": "/v3/extractors/{identifier}"}  # type: ignore
 
-    async def update_extractor_data(
+    async def update_extractor(
         self, identifier: str, body: _models.ExtractorUpdate, **kwargs: Any
     ) -> _models.Extractor:
-        """Update an extractor's data.
+        """Update an extractor.
 
         Update data of an extractor.
 
@@ -4644,11 +2903,11 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
         _json = self._serialize.body(body, "ExtractorUpdate")
 
-        request = build_update_extractor_data_request(
+        request = build_update_extractor_request(
             identifier=identifier,
             content_type=content_type,
             json=_json,
-            template_url=self.update_extractor_data.metadata["url"],
+            template_url=self.update_extractor.metadata["url"],
             headers=_headers,
             params=_params,
         )
@@ -4675,7 +2934,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
         return deserialized
 
-    update_extractor_data.metadata = {"url": "/v3/extractors/{identifier}"}  # type: ignore
+    update_extractor.metadata = {"url": "/v3/extractors/{identifier}"}  # type: ignore
 
     async def delete_extractor(  # pylint: disable=inconsistent-return-statements
         self, identifier: str, **kwargs: Any
@@ -4956,10 +3215,10 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
     get_data_point.metadata = {"url": "/v3/data_points/{identifier}"}  # type: ignore
 
-    async def update_data_point_data(
+    async def update_data_point(
         self, identifier: str, body: _models.DataPointUpdate, **kwargs: Any
     ) -> _models.DataPoint:
-        """Update a data point's data.
+        """Update a data point.
 
         Update data of a data point.
 
@@ -4994,11 +3253,11 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
         _json = self._serialize.body(body, "DataPointUpdate")
 
-        request = build_update_data_point_data_request(
+        request = build_update_data_point_request(
             identifier=identifier,
             content_type=content_type,
             json=_json,
-            template_url=self.update_data_point_data.metadata["url"],
+            template_url=self.update_data_point.metadata["url"],
             headers=_headers,
             params=_params,
         )
@@ -5025,7 +3284,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
         return deserialized
 
-    update_data_point_data.metadata = {"url": "/v3/data_points/{identifier}"}  # type: ignore
+    update_data_point.metadata = {"url": "/v3/data_points/{identifier}"}  # type: ignore
 
     async def delete_data_point(  # pylint: disable=inconsistent-return-statements
         self, identifier: str, **kwargs: Any
@@ -5950,10 +4209,10 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
     get_collection.metadata = {"url": "/v3/collections/{identifier}"}  # type: ignore
 
-    async def update_collection_data(
+    async def update_collection(
         self, identifier: str, body: _models.CollectionUpdate, **kwargs: Any
     ) -> _models.Collection:
-        """Update a collection's data.
+        """Update a collection.
 
         Update data of a collection.
 
@@ -5988,11 +4247,11 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
         _json = self._serialize.body(body, "CollectionUpdate")
 
-        request = build_update_collection_data_request(
+        request = build_update_collection_request(
             identifier=identifier,
             content_type=content_type,
             json=_json,
-            template_url=self.update_collection_data.metadata["url"],
+            template_url=self.update_collection.metadata["url"],
             headers=_headers,
             params=_params,
         )
@@ -6019,7 +4278,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
         return deserialized
 
-    update_collection_data.metadata = {"url": "/v3/collections/{identifier}"}  # type: ignore
+    update_collection.metadata = {"url": "/v3/collections/{identifier}"}  # type: ignore
 
     async def delete_collection(  # pylint: disable=inconsistent-return-statements
         self, identifier: str, **kwargs: Any
@@ -6110,7 +4369,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type collection: str
         :param state: Filter by the document's state. Default value is None.
         :type state: str or ~affinda.models.DocumentState
-        :param tags: Filter by tags. Default value is None.
+        :param tags: Filter by tag's IDs. Default value is None.
         :type tags: list[int]
         :param created_dt: Filter by created datetime. Default value is None.
         :type created_dt: str or ~affinda.models.DateRange
@@ -6363,10 +4622,10 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
     get_document.metadata = {"url": "/v3/documents/{identifier}"}  # type: ignore
 
-    async def update_document_data(
+    async def update_document(
         self, identifier: str, body: _models.DocumentUpdate, **kwargs: Any
     ) -> _models.Document:
-        """Update a document's data.
+        """Update a document.
 
         Update file name, expiry time, or move to another collection, etc.
 
@@ -6401,11 +4660,11 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
         _json = self._serialize.body(body, "DocumentUpdate")
 
-        request = build_update_document_data_request(
+        request = build_update_document_request(
             identifier=identifier,
             content_type=content_type,
             json=_json,
-            template_url=self.update_document_data.metadata["url"],
+            template_url=self.update_document.metadata["url"],
             headers=_headers,
             params=_params,
         )
@@ -6432,7 +4691,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
         return deserialized
 
-    update_document_data.metadata = {"url": "/v3/documents/{identifier}"}  # type: ignore
+    update_document.metadata = {"url": "/v3/documents/{identifier}"}  # type: ignore
 
     async def delete_document(  # pylint: disable=inconsistent-return-statements
         self, identifier: str, **kwargs: Any
@@ -6691,10 +4950,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
     get_tag.metadata = {"url": "/v3/tags/{id}"}  # type: ignore
 
-    async def update_tag_data(
-        self, id: int, body: _models.TagUpdate, **kwargs: Any
-    ) -> _models.Tag:
-        """Update an tag's data.
+    async def update_tag(self, id: int, body: _models.TagUpdate, **kwargs: Any) -> _models.Tag:
+        """Update a tag.
 
         Update data of an tag.
 
@@ -6729,11 +4986,11 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
         _json = self._serialize.body(body, "TagUpdate")
 
-        request = build_update_tag_data_request(
+        request = build_update_tag_request(
             id=id,
             content_type=content_type,
             json=_json,
-            template_url=self.update_tag_data.metadata["url"],
+            template_url=self.update_tag.metadata["url"],
             headers=_headers,
             params=_params,
         )
@@ -6760,7 +5017,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
         return deserialized
 
-    update_tag_data.metadata = {"url": "/v3/tags/{id}"}  # type: ignore
+    update_tag.metadata = {"url": "/v3/tags/{id}"}  # type: ignore
 
     async def delete_tag(  # pylint: disable=inconsistent-return-statements
         self, id: int, **kwargs: Any
@@ -6819,3 +5076,335 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             return cls(pipeline_response, None, {})
 
     delete_tag.metadata = {"url": "/v3/tags/{id}"}  # type: ignore
+
+    async def get_all_resthook_subscriptions(
+        self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any
+    ) -> _models.PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema:
+        """Get list of all resthook subscriptions.
+
+        Returns your resthook subscriptions.
+
+        :param offset: The number of documents to skip before starting to collect the result set.
+         Default value is None.
+        :type offset: int
+        :param limit: The numbers of results to return. Default value is 300.
+        :type limit: int
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema, or the
+         result of cls(response)
+        :rtype:
+         ~affinda.models.PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[_models.PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema]
+
+        request = build_get_all_resthook_subscriptions_request(
+            offset=offset,
+            limit=limit,
+            template_url=self.get_all_resthook_subscriptions.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize(
+            "PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema",
+            pipeline_response,
+        )
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_all_resthook_subscriptions.metadata = {"url": "/v3/resthook_subscriptions"}  # type: ignore
+
+    async def create_resthook_subscription(
+        self, body: _models.ResthookSubscriptionCreate, **kwargs: Any
+    ) -> _models.ResthookSubscription:
+        """Create a resthook subscriptions.
+
+        Create a resthook subscriptions.
+
+        :param body:
+        :type body: ~affinda.models.ResthookSubscriptionCreate
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: ResthookSubscription, or the result of cls(response)
+        :rtype: ~affinda.models.ResthookSubscription
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop(
+            "content_type", _headers.pop("Content-Type", "application/json")
+        )  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResthookSubscription]
+
+        _json = self._serialize.body(body, "ResthookSubscriptionCreate")
+
+        request = build_create_resthook_subscription_request(
+            content_type=content_type,
+            json=_json,
+            template_url=self.create_resthook_subscription.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [201]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("ResthookSubscription", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    create_resthook_subscription.metadata = {"url": "/v3/resthook_subscriptions"}  # type: ignore
+
+    async def get_resthook_subscription(
+        self, id: int, **kwargs: Any
+    ) -> _models.ResthookSubscription:
+        """Get specific resthook subscription.
+
+        Return a specific resthook subscription.
+
+        :param id: Resthook subscription's ID.
+        :type id: int
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: ResthookSubscription, or the result of cls(response)
+        :rtype: ~affinda.models.ResthookSubscription
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResthookSubscription]
+
+        request = build_get_resthook_subscription_request(
+            id=id,
+            template_url=self.get_resthook_subscription.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("ResthookSubscription", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_resthook_subscription.metadata = {"url": "/v3/resthook_subscriptions/{id}"}  # type: ignore
+
+    async def update_resthook_subscription(
+        self, id: int, body: _models.ResthookSubscriptionUpdate, **kwargs: Any
+    ) -> _models.ResthookSubscription:
+        """Update a resthook subscription.
+
+        Update data of a resthook subscription.
+
+        :param id: ResthookSubscription's ID.
+        :type id: int
+        :param body: ResthookSubscription data to update.
+        :type body: ~affinda.models.ResthookSubscriptionUpdate
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: ResthookSubscription, or the result of cls(response)
+        :rtype: ~affinda.models.ResthookSubscription
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop(
+            "content_type", _headers.pop("Content-Type", "application/json")
+        )  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResthookSubscription]
+
+        _json = self._serialize.body(body, "ResthookSubscriptionUpdate")
+
+        request = build_update_resthook_subscription_request(
+            id=id,
+            content_type=content_type,
+            json=_json,
+            template_url=self.update_resthook_subscription.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("ResthookSubscription", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    update_resthook_subscription.metadata = {"url": "/v3/resthook_subscriptions/{id}"}  # type: ignore
+
+    async def delete_resthook_subscription(  # pylint: disable=inconsistent-return-statements
+        self, id: int, **kwargs: Any
+    ) -> None:
+        """Delete a resthook subscription.
+
+        Deletes the specified resthook subscription from the database.
+
+        :param id: ResthookSubscription's ID.
+        :type id: int
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: None, or the result of cls(response)
+        :rtype: None
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[None]
+
+        request = build_delete_resthook_subscription_request(
+            id=id,
+            template_url=self.delete_resthook_subscription.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [204]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if cls:
+            return cls(pipeline_response, None, {})
+
+    delete_resthook_subscription.metadata = {"url": "/v3/resthook_subscriptions/{id}"}  # type: ignore

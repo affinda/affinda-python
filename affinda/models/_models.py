@@ -169,110 +169,6 @@ class AnnotationV2(msrest.serialization.Model):
         self.content_type = kwargs["content_type"]
 
 
-class AnnotationV2Base(msrest.serialization.Model):
-    """AnnotationV2Base.
-
-    :ivar additional_properties: Unmatched properties from the message are deserialized to this
-     collection.
-    :vartype additional_properties: dict[str, any]
-    :ivar id:
-    :vartype id: int
-    :ivar rectangle:
-    :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
-    :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index:
-    :vartype page_index: int
-    :ivar raw:
-    :vartype raw: str
-    :ivar confidence: The overall confidence that the model's prediction is correct.
-    :vartype confidence: float
-    :ivar classification_confidence: The model's confidence that the text has been classified
-     correctly.
-    :vartype classification_confidence: float
-    :ivar text_extraction_confidence: If the document was submitted as an image, this is the
-     confidence that the text in the image has been correctly read by the model.
-    :vartype text_extraction_confidence: float
-    :ivar is_verified:
-    :vartype is_verified: bool
-    :ivar is_client_verified:
-    :vartype is_client_verified: bool
-    :ivar is_auto_verified:
-    :vartype is_auto_verified: bool
-    :ivar data_point:
-    :vartype data_point: str
-    :ivar content_type:
-    :vartype content_type: str
-    """
-
-    _attribute_map = {
-        "additional_properties": {"key": "", "type": "{object}"},
-        "id": {"key": "id", "type": "int"},
-        "rectangle": {"key": "rectangle", "type": "Rectangle"},
-        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
-        "page_index": {"key": "pageIndex", "type": "int"},
-        "raw": {"key": "raw", "type": "str"},
-        "confidence": {"key": "confidence", "type": "float"},
-        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
-        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
-        "is_verified": {"key": "isVerified", "type": "bool"},
-        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
-        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "data_point": {"key": "dataPoint", "type": "str"},
-        "content_type": {"key": "contentType", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword additional_properties: Unmatched properties from the message are deserialized to this
-         collection.
-        :paramtype additional_properties: dict[str, any]
-        :keyword id:
-        :paramtype id: int
-        :keyword rectangle:
-        :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
-        :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index:
-        :paramtype page_index: int
-        :keyword raw:
-        :paramtype raw: str
-        :keyword confidence: The overall confidence that the model's prediction is correct.
-        :paramtype confidence: float
-        :keyword classification_confidence: The model's confidence that the text has been classified
-         correctly.
-        :paramtype classification_confidence: float
-        :keyword text_extraction_confidence: If the document was submitted as an image, this is the
-         confidence that the text in the image has been correctly read by the model.
-        :paramtype text_extraction_confidence: float
-        :keyword is_verified:
-        :paramtype is_verified: bool
-        :keyword is_client_verified:
-        :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
-        :paramtype is_auto_verified: bool
-        :keyword data_point:
-        :paramtype data_point: str
-        :keyword content_type:
-        :paramtype content_type: str
-        """
-        super(AnnotationV2Base, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
-        self.rectangle = kwargs.get("rectangle", None)
-        self.rectangles = kwargs.get("rectangles", None)
-        self.page_index = kwargs.get("page_index", None)
-        self.raw = kwargs.get("raw", None)
-        self.confidence = kwargs.get("confidence", None)
-        self.classification_confidence = kwargs.get("classification_confidence", None)
-        self.text_extraction_confidence = kwargs.get("text_extraction_confidence", None)
-        self.is_verified = kwargs.get("is_verified", None)
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs.get("content_type", None)
-
-
 class BaseExtractor(msrest.serialization.Model):
     """BaseExtractor.
 
@@ -840,6 +736,302 @@ class Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1(
         self.parsed = kwargs.get("parsed", None)
 
 
+class ResumeData(msrest.serialization.Model):
+    """A JSON-encoded string of the ``ResumeData`` object.
+
+    Variables are only populated by the server, and will be ignored when sending a request.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar name:
+    :vartype name: ~affinda.models.ResumeDataName
+    :ivar phone_numbers:
+    :vartype phone_numbers: list[str]
+    :ivar websites:
+    :vartype websites: list[str]
+    :ivar emails:
+    :vartype emails: list[str]
+    :ivar date_of_birth:
+    :vartype date_of_birth: str
+    :ivar location:
+    :vartype location: ~affinda.models.Location
+    :ivar objective:
+    :vartype objective: str
+    :ivar languages:
+    :vartype languages: list[str]
+    :ivar language_codes:
+    :vartype language_codes: list[str]
+    :ivar summary:
+    :vartype summary: str
+    :ivar total_years_experience:
+    :vartype total_years_experience: int
+    :ivar head_shot: base64 encoded string.
+    :vartype head_shot: bytearray
+    :ivar education:
+    :vartype education: list[~affinda.models.Education]
+    :ivar profession: Prediction of the candidate's profession based on recent work experience.
+    :vartype profession: str
+    :ivar linkedin: Linkedin account associated with the candidate.
+    :vartype linkedin: str
+    :ivar work_experience:
+    :vartype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
+    :ivar skills:
+    :vartype skills: list[~affinda.models.ResumeDataSkillsItem]
+    :ivar certifications:
+    :vartype certifications: list[str]
+    :ivar publications:
+    :vartype publications: list[str]
+    :ivar referees:
+    :vartype referees: list[~affinda.models.ResumeDataRefereesItem]
+    :ivar sections:
+    :vartype sections: list[~affinda.models.ResumeDataSectionsItem]
+    :ivar is_resume_probability: Probability that the given document is a resume. Values below 30
+     suggest that the document is not a resume.
+    :vartype is_resume_probability: int
+    :ivar raw_text: All of the raw text of the parsed resume, example is shortened for readability.
+    :vartype raw_text: str
+    """
+
+    _validation = {
+        "languages": {"readonly": True},
+        "language_codes": {"readonly": True},
+        "head_shot": {"readonly": True},
+        "profession": {"readonly": True},
+        "linkedin": {"readonly": True},
+        "sections": {"readonly": True},
+        "is_resume_probability": {"readonly": True},
+    }
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "name": {"key": "name", "type": "ResumeDataName"},
+        "phone_numbers": {"key": "phoneNumbers", "type": "[str]"},
+        "websites": {"key": "websites", "type": "[str]"},
+        "emails": {"key": "emails", "type": "[str]"},
+        "date_of_birth": {"key": "dateOfBirth", "type": "str"},
+        "location": {"key": "location", "type": "Location"},
+        "objective": {"key": "objective", "type": "str"},
+        "languages": {"key": "languages", "type": "[str]"},
+        "language_codes": {"key": "languageCodes", "type": "[str]"},
+        "summary": {"key": "summary", "type": "str"},
+        "total_years_experience": {"key": "totalYearsExperience", "type": "int"},
+        "head_shot": {"key": "headShot", "type": "bytearray"},
+        "education": {"key": "education", "type": "[Education]"},
+        "profession": {"key": "profession", "type": "str"},
+        "linkedin": {"key": "linkedin", "type": "str"},
+        "work_experience": {"key": "workExperience", "type": "[ResumeDataWorkExperienceItem]"},
+        "skills": {"key": "skills", "type": "[ResumeDataSkillsItem]"},
+        "certifications": {"key": "certifications", "type": "[str]"},
+        "publications": {"key": "publications", "type": "[str]"},
+        "referees": {"key": "referees", "type": "[ResumeDataRefereesItem]"},
+        "sections": {"key": "sections", "type": "[ResumeDataSectionsItem]"},
+        "is_resume_probability": {"key": "isResumeProbability", "type": "int"},
+        "raw_text": {"key": "rawText", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword name:
+        :paramtype name: ~affinda.models.ResumeDataName
+        :keyword phone_numbers:
+        :paramtype phone_numbers: list[str]
+        :keyword websites:
+        :paramtype websites: list[str]
+        :keyword emails:
+        :paramtype emails: list[str]
+        :keyword date_of_birth:
+        :paramtype date_of_birth: str
+        :keyword location:
+        :paramtype location: ~affinda.models.Location
+        :keyword objective:
+        :paramtype objective: str
+        :keyword summary:
+        :paramtype summary: str
+        :keyword total_years_experience:
+        :paramtype total_years_experience: int
+        :keyword education:
+        :paramtype education: list[~affinda.models.Education]
+        :keyword work_experience:
+        :paramtype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
+        :keyword skills:
+        :paramtype skills: list[~affinda.models.ResumeDataSkillsItem]
+        :keyword certifications:
+        :paramtype certifications: list[str]
+        :keyword publications:
+        :paramtype publications: list[str]
+        :keyword referees:
+        :paramtype referees: list[~affinda.models.ResumeDataRefereesItem]
+        :keyword raw_text: All of the raw text of the parsed resume, example is shortened for
+         readability.
+        :paramtype raw_text: str
+        """
+        super(ResumeData, self).__init__(**kwargs)
+        self.additional_properties = kwargs.get("additional_properties", None)
+        self.name = kwargs.get("name", None)
+        self.phone_numbers = kwargs.get("phone_numbers", None)
+        self.websites = kwargs.get("websites", None)
+        self.emails = kwargs.get("emails", None)
+        self.date_of_birth = kwargs.get("date_of_birth", None)
+        self.location = kwargs.get("location", None)
+        self.objective = kwargs.get("objective", "")
+        self.languages = None
+        self.language_codes = None
+        self.summary = kwargs.get("summary", "")
+        self.total_years_experience = kwargs.get("total_years_experience", None)
+        self.head_shot = None
+        self.education = kwargs.get("education", None)
+        self.profession = None
+        self.linkedin = None
+        self.work_experience = kwargs.get("work_experience", None)
+        self.skills = kwargs.get("skills", None)
+        self.certifications = kwargs.get("certifications", None)
+        self.publications = kwargs.get("publications", None)
+        self.referees = kwargs.get("referees", None)
+        self.sections = None
+        self.is_resume_probability = None
+        self.raw_text = kwargs.get("raw_text", None)
+
+
+class Components1Ijdil6SchemasDocumentPropertiesDataOneof0(ResumeData):
+    """Components1Ijdil6SchemasDocumentPropertiesDataOneof0.
+
+    Variables are only populated by the server, and will be ignored when sending a request.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar name:
+    :vartype name: ~affinda.models.ResumeDataName
+    :ivar phone_numbers:
+    :vartype phone_numbers: list[str]
+    :ivar websites:
+    :vartype websites: list[str]
+    :ivar emails:
+    :vartype emails: list[str]
+    :ivar date_of_birth:
+    :vartype date_of_birth: str
+    :ivar location:
+    :vartype location: ~affinda.models.Location
+    :ivar objective:
+    :vartype objective: str
+    :ivar languages:
+    :vartype languages: list[str]
+    :ivar language_codes:
+    :vartype language_codes: list[str]
+    :ivar summary:
+    :vartype summary: str
+    :ivar total_years_experience:
+    :vartype total_years_experience: int
+    :ivar head_shot: base64 encoded string.
+    :vartype head_shot: bytearray
+    :ivar education:
+    :vartype education: list[~affinda.models.Education]
+    :ivar profession: Prediction of the candidate's profession based on recent work experience.
+    :vartype profession: str
+    :ivar linkedin: Linkedin account associated with the candidate.
+    :vartype linkedin: str
+    :ivar work_experience:
+    :vartype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
+    :ivar skills:
+    :vartype skills: list[~affinda.models.ResumeDataSkillsItem]
+    :ivar certifications:
+    :vartype certifications: list[str]
+    :ivar publications:
+    :vartype publications: list[str]
+    :ivar referees:
+    :vartype referees: list[~affinda.models.ResumeDataRefereesItem]
+    :ivar sections:
+    :vartype sections: list[~affinda.models.ResumeDataSectionsItem]
+    :ivar is_resume_probability: Probability that the given document is a resume. Values below 30
+     suggest that the document is not a resume.
+    :vartype is_resume_probability: int
+    :ivar raw_text: All of the raw text of the parsed resume, example is shortened for readability.
+    :vartype raw_text: str
+    """
+
+    _validation = {
+        "languages": {"readonly": True},
+        "language_codes": {"readonly": True},
+        "head_shot": {"readonly": True},
+        "profession": {"readonly": True},
+        "linkedin": {"readonly": True},
+        "sections": {"readonly": True},
+        "is_resume_probability": {"readonly": True},
+    }
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "name": {"key": "name", "type": "ResumeDataName"},
+        "phone_numbers": {"key": "phoneNumbers", "type": "[str]"},
+        "websites": {"key": "websites", "type": "[str]"},
+        "emails": {"key": "emails", "type": "[str]"},
+        "date_of_birth": {"key": "dateOfBirth", "type": "str"},
+        "location": {"key": "location", "type": "Location"},
+        "objective": {"key": "objective", "type": "str"},
+        "languages": {"key": "languages", "type": "[str]"},
+        "language_codes": {"key": "languageCodes", "type": "[str]"},
+        "summary": {"key": "summary", "type": "str"},
+        "total_years_experience": {"key": "totalYearsExperience", "type": "int"},
+        "head_shot": {"key": "headShot", "type": "bytearray"},
+        "education": {"key": "education", "type": "[Education]"},
+        "profession": {"key": "profession", "type": "str"},
+        "linkedin": {"key": "linkedin", "type": "str"},
+        "work_experience": {"key": "workExperience", "type": "[ResumeDataWorkExperienceItem]"},
+        "skills": {"key": "skills", "type": "[ResumeDataSkillsItem]"},
+        "certifications": {"key": "certifications", "type": "[str]"},
+        "publications": {"key": "publications", "type": "[str]"},
+        "referees": {"key": "referees", "type": "[ResumeDataRefereesItem]"},
+        "sections": {"key": "sections", "type": "[ResumeDataSectionsItem]"},
+        "is_resume_probability": {"key": "isResumeProbability", "type": "int"},
+        "raw_text": {"key": "rawText", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword name:
+        :paramtype name: ~affinda.models.ResumeDataName
+        :keyword phone_numbers:
+        :paramtype phone_numbers: list[str]
+        :keyword websites:
+        :paramtype websites: list[str]
+        :keyword emails:
+        :paramtype emails: list[str]
+        :keyword date_of_birth:
+        :paramtype date_of_birth: str
+        :keyword location:
+        :paramtype location: ~affinda.models.Location
+        :keyword objective:
+        :paramtype objective: str
+        :keyword summary:
+        :paramtype summary: str
+        :keyword total_years_experience:
+        :paramtype total_years_experience: int
+        :keyword education:
+        :paramtype education: list[~affinda.models.Education]
+        :keyword work_experience:
+        :paramtype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
+        :keyword skills:
+        :paramtype skills: list[~affinda.models.ResumeDataSkillsItem]
+        :keyword certifications:
+        :paramtype certifications: list[str]
+        :keyword publications:
+        :paramtype publications: list[str]
+        :keyword referees:
+        :paramtype referees: list[~affinda.models.ResumeDataRefereesItem]
+        :keyword raw_text: All of the raw text of the parsed resume, example is shortened for
+         readability.
+        :paramtype raw_text: str
+        """
+        super(Components1Ijdil6SchemasDocumentPropertiesDataOneof0, self).__init__(**kwargs)
+
+
 class Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1(
     msrest.serialization.Model
 ):
@@ -926,6 +1118,536 @@ class Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1(msrest.ser
         )
         self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
+
+
+class InvoiceData(msrest.serialization.Model):
+    """InvoiceData.
+
+    :ivar tables:
+    :vartype tables: list[~affinda.models.InvoiceDataTablesItem]
+    :ivar invoice_date:
+    :vartype invoice_date: ~affinda.models.DateAnnotationV2
+    :ivar invoice_order_date:
+    :vartype invoice_order_date: ~affinda.models.DateAnnotationV2
+    :ivar payment_date_due:
+    :vartype payment_date_due: ~affinda.models.DateAnnotationV2
+    :ivar payment_amount_base:
+    :vartype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
+    :ivar payment_amount_tax:
+    :vartype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
+    :ivar payment_amount_total:
+    :vartype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
+    :ivar payment_amount_paid:
+    :vartype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
+    :ivar payment_amount_due:
+    :vartype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
+    :ivar invoice_number:
+    :vartype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
+    :ivar invoice_purchase_order_number:
+    :vartype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
+    :ivar supplier_business_number:
+    :vartype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
+    :ivar customer_number:
+    :vartype customer_number: ~affinda.models.InvoiceDataCustomerNumber
+    :ivar customer_business_number:
+    :vartype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
+    :ivar payment_reference:
+    :vartype payment_reference: ~affinda.models.InvoiceDataPaymentReference
+    :ivar bank_account_number:
+    :vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
+    :ivar supplier_vat:
+    :vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
+    :ivar customer_vat:
+    :vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
+    :ivar bpay_biller_code:
+    :vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
+    :ivar bpay_reference:
+    :vartype bpay_reference: ~affinda.models.InvoiceDataBpayReference
+    :ivar bank_sort_code:
+    :vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
+    :ivar bank_iban:
+    :vartype bank_iban: ~affinda.models.InvoiceDataBankIban
+    :ivar bank_swift:
+    :vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
+    :ivar bank_bsb:
+    :vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
+    :ivar customer_contact_name:
+    :vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
+    :ivar customer_company_name:
+    :vartype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
+    :ivar supplier_company_name:
+    :vartype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
+    :ivar customer_billing_address:
+    :vartype customer_billing_address: ~affinda.models.LocationAnnotationV2
+    :ivar customer_delivery_address:
+    :vartype customer_delivery_address: ~affinda.models.LocationAnnotationV2
+    :ivar supplier_address:
+    :vartype supplier_address: ~affinda.models.LocationAnnotationV2
+    :ivar customer_phone_number:
+    :vartype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
+    :ivar supplier_phone_number:
+    :vartype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
+    :ivar supplier_fax:
+    :vartype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
+    :ivar customer_email:
+    :vartype customer_email: ~affinda.models.InvoiceDataCustomerEmail
+    :ivar supplier_email:
+    :vartype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
+    :ivar supplier_website:
+    :vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
+    :ivar currency_code:
+    :vartype currency_code: ~affinda.models.TextAnnotationV2
+    :ivar custom_fields: Dictionary of :code:`<any>`.
+    :vartype custom_fields: dict[str, any]
+    """
+
+    _attribute_map = {
+        "tables": {"key": "tables", "type": "[InvoiceDataTablesItem]"},
+        "invoice_date": {"key": "invoiceDate", "type": "DateAnnotationV2"},
+        "invoice_order_date": {"key": "invoiceOrderDate", "type": "DateAnnotationV2"},
+        "payment_date_due": {"key": "paymentDateDue", "type": "DateAnnotationV2"},
+        "payment_amount_base": {
+            "key": "paymentAmountBase",
+            "type": "InvoiceDataPaymentAmountBase",
+        },
+        "payment_amount_tax": {"key": "paymentAmountTax", "type": "InvoiceDataPaymentAmountTax"},
+        "payment_amount_total": {
+            "key": "paymentAmountTotal",
+            "type": "InvoiceDataPaymentAmountTotal",
+        },
+        "payment_amount_paid": {
+            "key": "paymentAmountPaid",
+            "type": "InvoiceDataPaymentAmountPaid",
+        },
+        "payment_amount_due": {"key": "paymentAmountDue", "type": "InvoiceDataPaymentAmountDue"},
+        "invoice_number": {"key": "invoiceNumber", "type": "InvoiceDataInvoiceNumber"},
+        "invoice_purchase_order_number": {
+            "key": "invoicePurchaseOrderNumber",
+            "type": "InvoiceDataInvoicePurchaseOrderNumber",
+        },
+        "supplier_business_number": {
+            "key": "supplierBusinessNumber",
+            "type": "InvoiceDataSupplierBusinessNumber",
+        },
+        "customer_number": {"key": "customerNumber", "type": "InvoiceDataCustomerNumber"},
+        "customer_business_number": {
+            "key": "customerBusinessNumber",
+            "type": "InvoiceDataCustomerBusinessNumber",
+        },
+        "payment_reference": {"key": "paymentReference", "type": "InvoiceDataPaymentReference"},
+        "bank_account_number": {
+            "key": "bankAccountNumber",
+            "type": "InvoiceDataBankAccountNumber",
+        },
+        "supplier_vat": {"key": "supplierVat", "type": "InvoiceDataSupplierVat"},
+        "customer_vat": {"key": "customerVat", "type": "InvoiceDataCustomerVat"},
+        "bpay_biller_code": {"key": "bpayBillerCode", "type": "InvoiceDataBpayBillerCode"},
+        "bpay_reference": {"key": "bpayReference", "type": "InvoiceDataBpayReference"},
+        "bank_sort_code": {"key": "bankSortCode", "type": "InvoiceDataBankSortCode"},
+        "bank_iban": {"key": "bankIban", "type": "InvoiceDataBankIban"},
+        "bank_swift": {"key": "bankSwift", "type": "InvoiceDataBankSwift"},
+        "bank_bsb": {"key": "bankBsb", "type": "InvoiceDataBankBsb"},
+        "customer_contact_name": {
+            "key": "customerContactName",
+            "type": "InvoiceDataCustomerContactName",
+        },
+        "customer_company_name": {
+            "key": "customerCompanyName",
+            "type": "InvoiceDataCustomerCompanyName",
+        },
+        "supplier_company_name": {
+            "key": "supplierCompanyName",
+            "type": "InvoiceDataSupplierCompanyName",
+        },
+        "customer_billing_address": {
+            "key": "customerBillingAddress",
+            "type": "LocationAnnotationV2",
+        },
+        "customer_delivery_address": {
+            "key": "customerDeliveryAddress",
+            "type": "LocationAnnotationV2",
+        },
+        "supplier_address": {"key": "supplierAddress", "type": "LocationAnnotationV2"},
+        "customer_phone_number": {
+            "key": "customerPhoneNumber",
+            "type": "InvoiceDataCustomerPhoneNumber",
+        },
+        "supplier_phone_number": {
+            "key": "supplierPhoneNumber",
+            "type": "InvoiceDataSupplierPhoneNumber",
+        },
+        "supplier_fax": {"key": "supplierFax", "type": "InvoiceDataSupplierFax"},
+        "customer_email": {"key": "customerEmail", "type": "InvoiceDataCustomerEmail"},
+        "supplier_email": {"key": "supplierEmail", "type": "InvoiceDataSupplierEmail"},
+        "supplier_website": {"key": "supplierWebsite", "type": "InvoiceDataSupplierWebsite"},
+        "currency_code": {"key": "currencyCode", "type": "TextAnnotationV2"},
+        "custom_fields": {"key": "customFields", "type": "{object}"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword tables:
+        :paramtype tables: list[~affinda.models.InvoiceDataTablesItem]
+        :keyword invoice_date:
+        :paramtype invoice_date: ~affinda.models.DateAnnotationV2
+        :keyword invoice_order_date:
+        :paramtype invoice_order_date: ~affinda.models.DateAnnotationV2
+        :keyword payment_date_due:
+        :paramtype payment_date_due: ~affinda.models.DateAnnotationV2
+        :keyword payment_amount_base:
+        :paramtype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
+        :keyword payment_amount_tax:
+        :paramtype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
+        :keyword payment_amount_total:
+        :paramtype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
+        :keyword payment_amount_paid:
+        :paramtype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
+        :keyword payment_amount_due:
+        :paramtype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
+        :keyword invoice_number:
+        :paramtype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
+        :keyword invoice_purchase_order_number:
+        :paramtype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
+        :keyword supplier_business_number:
+        :paramtype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
+        :keyword customer_number:
+        :paramtype customer_number: ~affinda.models.InvoiceDataCustomerNumber
+        :keyword customer_business_number:
+        :paramtype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
+        :keyword payment_reference:
+        :paramtype payment_reference: ~affinda.models.InvoiceDataPaymentReference
+        :keyword bank_account_number:
+        :paramtype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
+        :keyword supplier_vat:
+        :paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
+        :keyword customer_vat:
+        :paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVat
+        :keyword bpay_biller_code:
+        :paramtype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
+        :keyword bpay_reference:
+        :paramtype bpay_reference: ~affinda.models.InvoiceDataBpayReference
+        :keyword bank_sort_code:
+        :paramtype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
+        :keyword bank_iban:
+        :paramtype bank_iban: ~affinda.models.InvoiceDataBankIban
+        :keyword bank_swift:
+        :paramtype bank_swift: ~affinda.models.InvoiceDataBankSwift
+        :keyword bank_bsb:
+        :paramtype bank_bsb: ~affinda.models.InvoiceDataBankBsb
+        :keyword customer_contact_name:
+        :paramtype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
+        :keyword customer_company_name:
+        :paramtype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
+        :keyword supplier_company_name:
+        :paramtype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
+        :keyword customer_billing_address:
+        :paramtype customer_billing_address: ~affinda.models.LocationAnnotationV2
+        :keyword customer_delivery_address:
+        :paramtype customer_delivery_address: ~affinda.models.LocationAnnotationV2
+        :keyword supplier_address:
+        :paramtype supplier_address: ~affinda.models.LocationAnnotationV2
+        :keyword customer_phone_number:
+        :paramtype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
+        :keyword supplier_phone_number:
+        :paramtype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
+        :keyword supplier_fax:
+        :paramtype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
+        :keyword customer_email:
+        :paramtype customer_email: ~affinda.models.InvoiceDataCustomerEmail
+        :keyword supplier_email:
+        :paramtype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
+        :keyword supplier_website:
+        :paramtype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
+        :keyword currency_code:
+        :paramtype currency_code: ~affinda.models.TextAnnotationV2
+        :keyword custom_fields: Dictionary of :code:`<any>`.
+        :paramtype custom_fields: dict[str, any]
+        """
+        super(InvoiceData, self).__init__(**kwargs)
+        self.tables = kwargs.get("tables", None)
+        self.invoice_date = kwargs.get("invoice_date", None)
+        self.invoice_order_date = kwargs.get("invoice_order_date", None)
+        self.payment_date_due = kwargs.get("payment_date_due", None)
+        self.payment_amount_base = kwargs.get("payment_amount_base", None)
+        self.payment_amount_tax = kwargs.get("payment_amount_tax", None)
+        self.payment_amount_total = kwargs.get("payment_amount_total", None)
+        self.payment_amount_paid = kwargs.get("payment_amount_paid", None)
+        self.payment_amount_due = kwargs.get("payment_amount_due", None)
+        self.invoice_number = kwargs.get("invoice_number", None)
+        self.invoice_purchase_order_number = kwargs.get("invoice_purchase_order_number", None)
+        self.supplier_business_number = kwargs.get("supplier_business_number", None)
+        self.customer_number = kwargs.get("customer_number", None)
+        self.customer_business_number = kwargs.get("customer_business_number", None)
+        self.payment_reference = kwargs.get("payment_reference", None)
+        self.bank_account_number = kwargs.get("bank_account_number", None)
+        self.supplier_vat = kwargs.get("supplier_vat", None)
+        self.customer_vat = kwargs.get("customer_vat", None)
+        self.bpay_biller_code = kwargs.get("bpay_biller_code", None)
+        self.bpay_reference = kwargs.get("bpay_reference", None)
+        self.bank_sort_code = kwargs.get("bank_sort_code", None)
+        self.bank_iban = kwargs.get("bank_iban", None)
+        self.bank_swift = kwargs.get("bank_swift", None)
+        self.bank_bsb = kwargs.get("bank_bsb", None)
+        self.customer_contact_name = kwargs.get("customer_contact_name", None)
+        self.customer_company_name = kwargs.get("customer_company_name", None)
+        self.supplier_company_name = kwargs.get("supplier_company_name", None)
+        self.customer_billing_address = kwargs.get("customer_billing_address", None)
+        self.customer_delivery_address = kwargs.get("customer_delivery_address", None)
+        self.supplier_address = kwargs.get("supplier_address", None)
+        self.customer_phone_number = kwargs.get("customer_phone_number", None)
+        self.supplier_phone_number = kwargs.get("supplier_phone_number", None)
+        self.supplier_fax = kwargs.get("supplier_fax", None)
+        self.customer_email = kwargs.get("customer_email", None)
+        self.supplier_email = kwargs.get("supplier_email", None)
+        self.supplier_website = kwargs.get("supplier_website", None)
+        self.currency_code = kwargs.get("currency_code", None)
+        self.custom_fields = kwargs.get("custom_fields", None)
+
+
+class Components1RkulfvSchemasDocumentPropertiesDataOneof1(InvoiceData):
+    """Components1RkulfvSchemasDocumentPropertiesDataOneof1.
+
+    :ivar tables:
+    :vartype tables: list[~affinda.models.InvoiceDataTablesItem]
+    :ivar invoice_date:
+    :vartype invoice_date: ~affinda.models.DateAnnotationV2
+    :ivar invoice_order_date:
+    :vartype invoice_order_date: ~affinda.models.DateAnnotationV2
+    :ivar payment_date_due:
+    :vartype payment_date_due: ~affinda.models.DateAnnotationV2
+    :ivar payment_amount_base:
+    :vartype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
+    :ivar payment_amount_tax:
+    :vartype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
+    :ivar payment_amount_total:
+    :vartype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
+    :ivar payment_amount_paid:
+    :vartype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
+    :ivar payment_amount_due:
+    :vartype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
+    :ivar invoice_number:
+    :vartype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
+    :ivar invoice_purchase_order_number:
+    :vartype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
+    :ivar supplier_business_number:
+    :vartype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
+    :ivar customer_number:
+    :vartype customer_number: ~affinda.models.InvoiceDataCustomerNumber
+    :ivar customer_business_number:
+    :vartype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
+    :ivar payment_reference:
+    :vartype payment_reference: ~affinda.models.InvoiceDataPaymentReference
+    :ivar bank_account_number:
+    :vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
+    :ivar supplier_vat:
+    :vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
+    :ivar customer_vat:
+    :vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
+    :ivar bpay_biller_code:
+    :vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
+    :ivar bpay_reference:
+    :vartype bpay_reference: ~affinda.models.InvoiceDataBpayReference
+    :ivar bank_sort_code:
+    :vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
+    :ivar bank_iban:
+    :vartype bank_iban: ~affinda.models.InvoiceDataBankIban
+    :ivar bank_swift:
+    :vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
+    :ivar bank_bsb:
+    :vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
+    :ivar customer_contact_name:
+    :vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
+    :ivar customer_company_name:
+    :vartype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
+    :ivar supplier_company_name:
+    :vartype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
+    :ivar customer_billing_address:
+    :vartype customer_billing_address: ~affinda.models.LocationAnnotationV2
+    :ivar customer_delivery_address:
+    :vartype customer_delivery_address: ~affinda.models.LocationAnnotationV2
+    :ivar supplier_address:
+    :vartype supplier_address: ~affinda.models.LocationAnnotationV2
+    :ivar customer_phone_number:
+    :vartype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
+    :ivar supplier_phone_number:
+    :vartype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
+    :ivar supplier_fax:
+    :vartype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
+    :ivar customer_email:
+    :vartype customer_email: ~affinda.models.InvoiceDataCustomerEmail
+    :ivar supplier_email:
+    :vartype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
+    :ivar supplier_website:
+    :vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
+    :ivar currency_code:
+    :vartype currency_code: ~affinda.models.TextAnnotationV2
+    :ivar custom_fields: Dictionary of :code:`<any>`.
+    :vartype custom_fields: dict[str, any]
+    """
+
+    _attribute_map = {
+        "tables": {"key": "tables", "type": "[InvoiceDataTablesItem]"},
+        "invoice_date": {"key": "invoiceDate", "type": "DateAnnotationV2"},
+        "invoice_order_date": {"key": "invoiceOrderDate", "type": "DateAnnotationV2"},
+        "payment_date_due": {"key": "paymentDateDue", "type": "DateAnnotationV2"},
+        "payment_amount_base": {
+            "key": "paymentAmountBase",
+            "type": "InvoiceDataPaymentAmountBase",
+        },
+        "payment_amount_tax": {"key": "paymentAmountTax", "type": "InvoiceDataPaymentAmountTax"},
+        "payment_amount_total": {
+            "key": "paymentAmountTotal",
+            "type": "InvoiceDataPaymentAmountTotal",
+        },
+        "payment_amount_paid": {
+            "key": "paymentAmountPaid",
+            "type": "InvoiceDataPaymentAmountPaid",
+        },
+        "payment_amount_due": {"key": "paymentAmountDue", "type": "InvoiceDataPaymentAmountDue"},
+        "invoice_number": {"key": "invoiceNumber", "type": "InvoiceDataInvoiceNumber"},
+        "invoice_purchase_order_number": {
+            "key": "invoicePurchaseOrderNumber",
+            "type": "InvoiceDataInvoicePurchaseOrderNumber",
+        },
+        "supplier_business_number": {
+            "key": "supplierBusinessNumber",
+            "type": "InvoiceDataSupplierBusinessNumber",
+        },
+        "customer_number": {"key": "customerNumber", "type": "InvoiceDataCustomerNumber"},
+        "customer_business_number": {
+            "key": "customerBusinessNumber",
+            "type": "InvoiceDataCustomerBusinessNumber",
+        },
+        "payment_reference": {"key": "paymentReference", "type": "InvoiceDataPaymentReference"},
+        "bank_account_number": {
+            "key": "bankAccountNumber",
+            "type": "InvoiceDataBankAccountNumber",
+        },
+        "supplier_vat": {"key": "supplierVat", "type": "InvoiceDataSupplierVat"},
+        "customer_vat": {"key": "customerVat", "type": "InvoiceDataCustomerVat"},
+        "bpay_biller_code": {"key": "bpayBillerCode", "type": "InvoiceDataBpayBillerCode"},
+        "bpay_reference": {"key": "bpayReference", "type": "InvoiceDataBpayReference"},
+        "bank_sort_code": {"key": "bankSortCode", "type": "InvoiceDataBankSortCode"},
+        "bank_iban": {"key": "bankIban", "type": "InvoiceDataBankIban"},
+        "bank_swift": {"key": "bankSwift", "type": "InvoiceDataBankSwift"},
+        "bank_bsb": {"key": "bankBsb", "type": "InvoiceDataBankBsb"},
+        "customer_contact_name": {
+            "key": "customerContactName",
+            "type": "InvoiceDataCustomerContactName",
+        },
+        "customer_company_name": {
+            "key": "customerCompanyName",
+            "type": "InvoiceDataCustomerCompanyName",
+        },
+        "supplier_company_name": {
+            "key": "supplierCompanyName",
+            "type": "InvoiceDataSupplierCompanyName",
+        },
+        "customer_billing_address": {
+            "key": "customerBillingAddress",
+            "type": "LocationAnnotationV2",
+        },
+        "customer_delivery_address": {
+            "key": "customerDeliveryAddress",
+            "type": "LocationAnnotationV2",
+        },
+        "supplier_address": {"key": "supplierAddress", "type": "LocationAnnotationV2"},
+        "customer_phone_number": {
+            "key": "customerPhoneNumber",
+            "type": "InvoiceDataCustomerPhoneNumber",
+        },
+        "supplier_phone_number": {
+            "key": "supplierPhoneNumber",
+            "type": "InvoiceDataSupplierPhoneNumber",
+        },
+        "supplier_fax": {"key": "supplierFax", "type": "InvoiceDataSupplierFax"},
+        "customer_email": {"key": "customerEmail", "type": "InvoiceDataCustomerEmail"},
+        "supplier_email": {"key": "supplierEmail", "type": "InvoiceDataSupplierEmail"},
+        "supplier_website": {"key": "supplierWebsite", "type": "InvoiceDataSupplierWebsite"},
+        "currency_code": {"key": "currencyCode", "type": "TextAnnotationV2"},
+        "custom_fields": {"key": "customFields", "type": "{object}"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword tables:
+        :paramtype tables: list[~affinda.models.InvoiceDataTablesItem]
+        :keyword invoice_date:
+        :paramtype invoice_date: ~affinda.models.DateAnnotationV2
+        :keyword invoice_order_date:
+        :paramtype invoice_order_date: ~affinda.models.DateAnnotationV2
+        :keyword payment_date_due:
+        :paramtype payment_date_due: ~affinda.models.DateAnnotationV2
+        :keyword payment_amount_base:
+        :paramtype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
+        :keyword payment_amount_tax:
+        :paramtype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
+        :keyword payment_amount_total:
+        :paramtype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
+        :keyword payment_amount_paid:
+        :paramtype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
+        :keyword payment_amount_due:
+        :paramtype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
+        :keyword invoice_number:
+        :paramtype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
+        :keyword invoice_purchase_order_number:
+        :paramtype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
+        :keyword supplier_business_number:
+        :paramtype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
+        :keyword customer_number:
+        :paramtype customer_number: ~affinda.models.InvoiceDataCustomerNumber
+        :keyword customer_business_number:
+        :paramtype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
+        :keyword payment_reference:
+        :paramtype payment_reference: ~affinda.models.InvoiceDataPaymentReference
+        :keyword bank_account_number:
+        :paramtype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
+        :keyword supplier_vat:
+        :paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
+        :keyword customer_vat:
+        :paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVat
+        :keyword bpay_biller_code:
+        :paramtype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
+        :keyword bpay_reference:
+        :paramtype bpay_reference: ~affinda.models.InvoiceDataBpayReference
+        :keyword bank_sort_code:
+        :paramtype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
+        :keyword bank_iban:
+        :paramtype bank_iban: ~affinda.models.InvoiceDataBankIban
+        :keyword bank_swift:
+        :paramtype bank_swift: ~affinda.models.InvoiceDataBankSwift
+        :keyword bank_bsb:
+        :paramtype bank_bsb: ~affinda.models.InvoiceDataBankBsb
+        :keyword customer_contact_name:
+        :paramtype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
+        :keyword customer_company_name:
+        :paramtype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
+        :keyword supplier_company_name:
+        :paramtype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
+        :keyword customer_billing_address:
+        :paramtype customer_billing_address: ~affinda.models.LocationAnnotationV2
+        :keyword customer_delivery_address:
+        :paramtype customer_delivery_address: ~affinda.models.LocationAnnotationV2
+        :keyword supplier_address:
+        :paramtype supplier_address: ~affinda.models.LocationAnnotationV2
+        :keyword customer_phone_number:
+        :paramtype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
+        :keyword supplier_phone_number:
+        :paramtype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
+        :keyword supplier_fax:
+        :paramtype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
+        :keyword customer_email:
+        :paramtype customer_email: ~affinda.models.InvoiceDataCustomerEmail
+        :keyword supplier_email:
+        :paramtype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
+        :keyword supplier_website:
+        :paramtype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
+        :keyword currency_code:
+        :paramtype currency_code: ~affinda.models.TextAnnotationV2
+        :keyword custom_fields: Dictionary of :code:`<any>`.
+        :paramtype custom_fields: dict[str, any]
+        """
+        super(Components1RkulfvSchemasDocumentPropertiesDataOneof1, self).__init__(**kwargs)
 
 
 class Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1(msrest.serialization.Model):
@@ -1114,6 +1836,227 @@ class Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1(
         )
         self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
+
+
+class JobDescriptionData(msrest.serialization.Model):
+    """A JSON-encoded string of the ``JobDescriptionData`` object.
+
+    :ivar job_title:
+    :vartype job_title: ~affinda.models.JobTitleAnnotation
+    :ivar contact_email:
+    :vartype contact_email: ~affinda.models.TextAnnotationV2
+    :ivar contact_name:
+    :vartype contact_name: ~affinda.models.TextAnnotationV2
+    :ivar contact_phone:
+    :vartype contact_phone: ~affinda.models.TextAnnotationV2
+    :ivar start_date:
+    :vartype start_date: ~affinda.models.DateAnnotationV2
+    :ivar end_date:
+    :vartype end_date: ~affinda.models.DateAnnotationV2
+    :ivar job_type:
+    :vartype job_type: ~affinda.models.TextAnnotationV2
+    :ivar languages:
+    :vartype languages: list[~affinda.models.LanguageAnnotationV2]
+    :ivar skills:
+    :vartype skills: list[~affinda.models.SkillAnnotationV2]
+    :ivar organization_name:
+    :vartype organization_name: ~affinda.models.TextAnnotationV2
+    :ivar organization_website:
+    :vartype organization_website: ~affinda.models.TextAnnotationV2
+    :ivar education_level:
+    :vartype education_level: ~affinda.models.TextAnnotationV2
+    :ivar education_accreditation:
+    :vartype education_accreditation: ~affinda.models.TextAnnotationV2
+    :ivar expected_remuneration:
+    :vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2
+    :ivar location:
+    :vartype location: ~affinda.models.LocationAnnotationV2
+    :ivar certifications:
+    :vartype certifications: list[~affinda.models.TextAnnotationV2]
+    :ivar years_experience:
+    :vartype years_experience: ~affinda.models.YearsExperienceAnnotationV2
+    """
+
+    _attribute_map = {
+        "job_title": {"key": "jobTitle", "type": "JobTitleAnnotation"},
+        "contact_email": {"key": "contactEmail", "type": "TextAnnotationV2"},
+        "contact_name": {"key": "contactName", "type": "TextAnnotationV2"},
+        "contact_phone": {"key": "contactPhone", "type": "TextAnnotationV2"},
+        "start_date": {"key": "startDate", "type": "DateAnnotationV2"},
+        "end_date": {"key": "endDate", "type": "DateAnnotationV2"},
+        "job_type": {"key": "jobType", "type": "TextAnnotationV2"},
+        "languages": {"key": "languages", "type": "[LanguageAnnotationV2]"},
+        "skills": {"key": "skills", "type": "[SkillAnnotationV2]"},
+        "organization_name": {"key": "organizationName", "type": "TextAnnotationV2"},
+        "organization_website": {"key": "organizationWebsite", "type": "TextAnnotationV2"},
+        "education_level": {"key": "educationLevel", "type": "TextAnnotationV2"},
+        "education_accreditation": {"key": "educationAccreditation", "type": "TextAnnotationV2"},
+        "expected_remuneration": {
+            "key": "expectedRemuneration",
+            "type": "ExpectedRemunerationAnnotationV2",
+        },
+        "location": {"key": "location", "type": "LocationAnnotationV2"},
+        "certifications": {"key": "certifications", "type": "[TextAnnotationV2]"},
+        "years_experience": {"key": "yearsExperience", "type": "YearsExperienceAnnotationV2"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword job_title:
+        :paramtype job_title: ~affinda.models.JobTitleAnnotation
+        :keyword contact_email:
+        :paramtype contact_email: ~affinda.models.TextAnnotationV2
+        :keyword contact_name:
+        :paramtype contact_name: ~affinda.models.TextAnnotationV2
+        :keyword contact_phone:
+        :paramtype contact_phone: ~affinda.models.TextAnnotationV2
+        :keyword start_date:
+        :paramtype start_date: ~affinda.models.DateAnnotationV2
+        :keyword end_date:
+        :paramtype end_date: ~affinda.models.DateAnnotationV2
+        :keyword job_type:
+        :paramtype job_type: ~affinda.models.TextAnnotationV2
+        :keyword languages:
+        :paramtype languages: list[~affinda.models.LanguageAnnotationV2]
+        :keyword skills:
+        :paramtype skills: list[~affinda.models.SkillAnnotationV2]
+        :keyword organization_name:
+        :paramtype organization_name: ~affinda.models.TextAnnotationV2
+        :keyword organization_website:
+        :paramtype organization_website: ~affinda.models.TextAnnotationV2
+        :keyword education_level:
+        :paramtype education_level: ~affinda.models.TextAnnotationV2
+        :keyword education_accreditation:
+        :paramtype education_accreditation: ~affinda.models.TextAnnotationV2
+        :keyword expected_remuneration:
+        :paramtype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2
+        :keyword location:
+        :paramtype location: ~affinda.models.LocationAnnotationV2
+        :keyword certifications:
+        :paramtype certifications: list[~affinda.models.TextAnnotationV2]
+        :keyword years_experience:
+        :paramtype years_experience: ~affinda.models.YearsExperienceAnnotationV2
+        """
+        super(JobDescriptionData, self).__init__(**kwargs)
+        self.job_title = kwargs.get("job_title", None)
+        self.contact_email = kwargs.get("contact_email", None)
+        self.contact_name = kwargs.get("contact_name", None)
+        self.contact_phone = kwargs.get("contact_phone", None)
+        self.start_date = kwargs.get("start_date", None)
+        self.end_date = kwargs.get("end_date", None)
+        self.job_type = kwargs.get("job_type", None)
+        self.languages = kwargs.get("languages", None)
+        self.skills = kwargs.get("skills", None)
+        self.organization_name = kwargs.get("organization_name", None)
+        self.organization_website = kwargs.get("organization_website", None)
+        self.education_level = kwargs.get("education_level", None)
+        self.education_accreditation = kwargs.get("education_accreditation", None)
+        self.expected_remuneration = kwargs.get("expected_remuneration", None)
+        self.location = kwargs.get("location", None)
+        self.certifications = kwargs.get("certifications", None)
+        self.years_experience = kwargs.get("years_experience", None)
+
+
+class Components1Wco9OeSchemasDocumentPropertiesDataOneof2(JobDescriptionData):
+    """Components1Wco9OeSchemasDocumentPropertiesDataOneof2.
+
+    :ivar job_title:
+    :vartype job_title: ~affinda.models.JobTitleAnnotation
+    :ivar contact_email:
+    :vartype contact_email: ~affinda.models.TextAnnotationV2
+    :ivar contact_name:
+    :vartype contact_name: ~affinda.models.TextAnnotationV2
+    :ivar contact_phone:
+    :vartype contact_phone: ~affinda.models.TextAnnotationV2
+    :ivar start_date:
+    :vartype start_date: ~affinda.models.DateAnnotationV2
+    :ivar end_date:
+    :vartype end_date: ~affinda.models.DateAnnotationV2
+    :ivar job_type:
+    :vartype job_type: ~affinda.models.TextAnnotationV2
+    :ivar languages:
+    :vartype languages: list[~affinda.models.LanguageAnnotationV2]
+    :ivar skills:
+    :vartype skills: list[~affinda.models.SkillAnnotationV2]
+    :ivar organization_name:
+    :vartype organization_name: ~affinda.models.TextAnnotationV2
+    :ivar organization_website:
+    :vartype organization_website: ~affinda.models.TextAnnotationV2
+    :ivar education_level:
+    :vartype education_level: ~affinda.models.TextAnnotationV2
+    :ivar education_accreditation:
+    :vartype education_accreditation: ~affinda.models.TextAnnotationV2
+    :ivar expected_remuneration:
+    :vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2
+    :ivar location:
+    :vartype location: ~affinda.models.LocationAnnotationV2
+    :ivar certifications:
+    :vartype certifications: list[~affinda.models.TextAnnotationV2]
+    :ivar years_experience:
+    :vartype years_experience: ~affinda.models.YearsExperienceAnnotationV2
+    """
+
+    _attribute_map = {
+        "job_title": {"key": "jobTitle", "type": "JobTitleAnnotation"},
+        "contact_email": {"key": "contactEmail", "type": "TextAnnotationV2"},
+        "contact_name": {"key": "contactName", "type": "TextAnnotationV2"},
+        "contact_phone": {"key": "contactPhone", "type": "TextAnnotationV2"},
+        "start_date": {"key": "startDate", "type": "DateAnnotationV2"},
+        "end_date": {"key": "endDate", "type": "DateAnnotationV2"},
+        "job_type": {"key": "jobType", "type": "TextAnnotationV2"},
+        "languages": {"key": "languages", "type": "[LanguageAnnotationV2]"},
+        "skills": {"key": "skills", "type": "[SkillAnnotationV2]"},
+        "organization_name": {"key": "organizationName", "type": "TextAnnotationV2"},
+        "organization_website": {"key": "organizationWebsite", "type": "TextAnnotationV2"},
+        "education_level": {"key": "educationLevel", "type": "TextAnnotationV2"},
+        "education_accreditation": {"key": "educationAccreditation", "type": "TextAnnotationV2"},
+        "expected_remuneration": {
+            "key": "expectedRemuneration",
+            "type": "ExpectedRemunerationAnnotationV2",
+        },
+        "location": {"key": "location", "type": "LocationAnnotationV2"},
+        "certifications": {"key": "certifications", "type": "[TextAnnotationV2]"},
+        "years_experience": {"key": "yearsExperience", "type": "YearsExperienceAnnotationV2"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword job_title:
+        :paramtype job_title: ~affinda.models.JobTitleAnnotation
+        :keyword contact_email:
+        :paramtype contact_email: ~affinda.models.TextAnnotationV2
+        :keyword contact_name:
+        :paramtype contact_name: ~affinda.models.TextAnnotationV2
+        :keyword contact_phone:
+        :paramtype contact_phone: ~affinda.models.TextAnnotationV2
+        :keyword start_date:
+        :paramtype start_date: ~affinda.models.DateAnnotationV2
+        :keyword end_date:
+        :paramtype end_date: ~affinda.models.DateAnnotationV2
+        :keyword job_type:
+        :paramtype job_type: ~affinda.models.TextAnnotationV2
+        :keyword languages:
+        :paramtype languages: list[~affinda.models.LanguageAnnotationV2]
+        :keyword skills:
+        :paramtype skills: list[~affinda.models.SkillAnnotationV2]
+        :keyword organization_name:
+        :paramtype organization_name: ~affinda.models.TextAnnotationV2
+        :keyword organization_website:
+        :paramtype organization_website: ~affinda.models.TextAnnotationV2
+        :keyword education_level:
+        :paramtype education_level: ~affinda.models.TextAnnotationV2
+        :keyword education_accreditation:
+        :paramtype education_accreditation: ~affinda.models.TextAnnotationV2
+        :keyword expected_remuneration:
+        :paramtype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2
+        :keyword location:
+        :paramtype location: ~affinda.models.LocationAnnotationV2
+        :keyword certifications:
+        :paramtype certifications: list[~affinda.models.TextAnnotationV2]
+        :keyword years_experience:
+        :paramtype years_experience: ~affinda.models.YearsExperienceAnnotationV2
+        """
+        super(Components1Wco9OeSchemasDocumentPropertiesDataOneof2, self).__init__(**kwargs)
 
 
 class Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1(msrest.serialization.Model):
@@ -2054,135 +2997,55 @@ class DateAnnotationV2(AnnotationV2):
         self.parsed = kwargs.get("parsed", None)
 
 
-class DateAnnotationV2Update(AnnotationV2Base):
-    """DateAnnotationV2Update.
-
-    :ivar additional_properties: Unmatched properties from the message are deserialized to this
-     collection.
-    :vartype additional_properties: dict[str, any]
-    :ivar id:
-    :vartype id: int
-    :ivar rectangle:
-    :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
-    :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index:
-    :vartype page_index: int
-    :ivar raw:
-    :vartype raw: str
-    :ivar confidence: The overall confidence that the model's prediction is correct.
-    :vartype confidence: float
-    :ivar classification_confidence: The model's confidence that the text has been classified
-     correctly.
-    :vartype classification_confidence: float
-    :ivar text_extraction_confidence: If the document was submitted as an image, this is the
-     confidence that the text in the image has been correctly read by the model.
-    :vartype text_extraction_confidence: float
-    :ivar is_verified:
-    :vartype is_verified: bool
-    :ivar is_client_verified:
-    :vartype is_client_verified: bool
-    :ivar is_auto_verified:
-    :vartype is_auto_verified: bool
-    :ivar data_point:
-    :vartype data_point: str
-    :ivar content_type:
-    :vartype content_type: str
-    :ivar parsed:
-    :vartype parsed: ~datetime.date
-    """
-
-    _attribute_map = {
-        "additional_properties": {"key": "", "type": "{object}"},
-        "id": {"key": "id", "type": "int"},
-        "rectangle": {"key": "rectangle", "type": "Rectangle"},
-        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
-        "page_index": {"key": "pageIndex", "type": "int"},
-        "raw": {"key": "raw", "type": "str"},
-        "confidence": {"key": "confidence", "type": "float"},
-        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
-        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
-        "is_verified": {"key": "isVerified", "type": "bool"},
-        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
-        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "data_point": {"key": "dataPoint", "type": "str"},
-        "content_type": {"key": "contentType", "type": "str"},
-        "parsed": {"key": "parsed", "type": "date"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword additional_properties: Unmatched properties from the message are deserialized to this
-         collection.
-        :paramtype additional_properties: dict[str, any]
-        :keyword id:
-        :paramtype id: int
-        :keyword rectangle:
-        :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
-        :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index:
-        :paramtype page_index: int
-        :keyword raw:
-        :paramtype raw: str
-        :keyword confidence: The overall confidence that the model's prediction is correct.
-        :paramtype confidence: float
-        :keyword classification_confidence: The model's confidence that the text has been classified
-         correctly.
-        :paramtype classification_confidence: float
-        :keyword text_extraction_confidence: If the document was submitted as an image, this is the
-         confidence that the text in the image has been correctly read by the model.
-        :paramtype text_extraction_confidence: float
-        :keyword is_verified:
-        :paramtype is_verified: bool
-        :keyword is_client_verified:
-        :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
-        :paramtype is_auto_verified: bool
-        :keyword data_point:
-        :paramtype data_point: str
-        :keyword content_type:
-        :paramtype content_type: str
-        :keyword parsed:
-        :paramtype parsed: ~datetime.date
-        """
-        super(DateAnnotationV2Update, self).__init__(**kwargs)
-        self.parsed = kwargs.get("parsed", None)
-
-
 class Document(msrest.serialization.Model):
     """Document.
 
+    You probably want to use the sub-classes and not this class directly. Known
+    sub-classes are: InvoiceDocument, JobDescriptionDocument, ResumeDocument.
+
     All required parameters must be populated in order to send to Azure.
 
+    :ivar extractor: Required. Constant filled by server.
+    :vartype extractor: str
     :ivar meta: Required.
     :vartype meta: ~affinda.models.DocumentMeta
-    :ivar data: Dictionary of :code:`<any>`.
-    :vartype data: dict[str, any]
+    :ivar data:
+    :vartype data: any
     :ivar error:
     :vartype error: ~affinda.models.Error
     """
 
     _validation = {
+        "extractor": {"required": True},
         "meta": {"required": True},
     }
 
     _attribute_map = {
+        "extractor": {"key": "extractor", "type": "str"},
         "meta": {"key": "meta", "type": "DocumentMeta"},
-        "data": {"key": "data", "type": "{object}"},
+        "data": {"key": "data", "type": "object"},
         "error": {"key": "error", "type": "Error"},
+    }
+
+    _subtype_map = {
+        "extractor": {
+            "invoice": "InvoiceDocument",
+            "job-description": "JobDescriptionDocument",
+            "resume": "ResumeDocument",
+        }
     }
 
     def __init__(self, **kwargs):
         """
         :keyword meta: Required.
         :paramtype meta: ~affinda.models.DocumentMeta
-        :keyword data: Dictionary of :code:`<any>`.
-        :paramtype data: dict[str, any]
+        :keyword data:
+        :paramtype data: any
         :keyword error:
         :paramtype error: ~affinda.models.Error
         """
         super(Document, self).__init__(**kwargs)
+        self.extractor = None  # type: Optional[str]
         self.meta = kwargs["meta"]
         self.data = kwargs.get("data", None)
         self.error = kwargs.get("error", None)
@@ -2329,6 +3192,8 @@ class DocumentMeta(msrest.serialization.Model):
     :vartype file: str
     :ivar tags: A set of tags.
     :vartype tags: list[~affinda.models.Tag]
+    :ivar confirmed_by:
+    :vartype confirmed_by: ~affinda.models.User
     """
 
     _validation = {
@@ -2365,6 +3230,7 @@ class DocumentMeta(msrest.serialization.Model):
         "error_detail": {"key": "errorDetail", "type": "str"},
         "file": {"key": "file", "type": "str"},
         "tags": {"key": "tags", "type": "[Tag]"},
+        "confirmed_by": {"key": "confirmedBy", "type": "User"},
     }
 
     def __init__(self, **kwargs):
@@ -2430,6 +3296,8 @@ class DocumentMeta(msrest.serialization.Model):
         :paramtype file: str
         :keyword tags: A set of tags.
         :paramtype tags: list[~affinda.models.Tag]
+        :keyword confirmed_by:
+        :paramtype confirmed_by: ~affinda.models.User
         """
         super(DocumentMeta, self).__init__(**kwargs)
         self.identifier = kwargs["identifier"]
@@ -2459,6 +3327,7 @@ class DocumentMeta(msrest.serialization.Model):
         self.error_detail = kwargs.get("error_detail", None)
         self.file = kwargs.get("file", None)
         self.tags = kwargs.get("tags", None)
+        self.confirmed_by = kwargs.get("confirmed_by", None)
 
 
 class DocumentMetaChildDocumentsItem(msrest.serialization.Model):
@@ -2998,140 +3867,6 @@ class ExpectedRemunerationAnnotationV2Parsed(msrest.serialization.Model):
         self.unit = kwargs.get("unit", None)
 
 
-class ExpectedRemunerationAnnotationV2Update(AnnotationV2Base):
-    """ExpectedRemunerationAnnotationV2Update.
-
-    :ivar additional_properties: Unmatched properties from the message are deserialized to this
-     collection.
-    :vartype additional_properties: dict[str, any]
-    :ivar id:
-    :vartype id: int
-    :ivar rectangle:
-    :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
-    :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index:
-    :vartype page_index: int
-    :ivar raw:
-    :vartype raw: str
-    :ivar confidence: The overall confidence that the model's prediction is correct.
-    :vartype confidence: float
-    :ivar classification_confidence: The model's confidence that the text has been classified
-     correctly.
-    :vartype classification_confidence: float
-    :ivar text_extraction_confidence: If the document was submitted as an image, this is the
-     confidence that the text in the image has been correctly read by the model.
-    :vartype text_extraction_confidence: float
-    :ivar is_verified:
-    :vartype is_verified: bool
-    :ivar is_client_verified:
-    :vartype is_client_verified: bool
-    :ivar is_auto_verified:
-    :vartype is_auto_verified: bool
-    :ivar data_point:
-    :vartype data_point: str
-    :ivar content_type:
-    :vartype content_type: str
-    :ivar parsed:
-    :vartype parsed: ~affinda.models.ExpectedRemunerationAnnotationV2UpdateParsed
-    """
-
-    _attribute_map = {
-        "additional_properties": {"key": "", "type": "{object}"},
-        "id": {"key": "id", "type": "int"},
-        "rectangle": {"key": "rectangle", "type": "Rectangle"},
-        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
-        "page_index": {"key": "pageIndex", "type": "int"},
-        "raw": {"key": "raw", "type": "str"},
-        "confidence": {"key": "confidence", "type": "float"},
-        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
-        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
-        "is_verified": {"key": "isVerified", "type": "bool"},
-        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
-        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "data_point": {"key": "dataPoint", "type": "str"},
-        "content_type": {"key": "contentType", "type": "str"},
-        "parsed": {"key": "parsed", "type": "ExpectedRemunerationAnnotationV2UpdateParsed"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword additional_properties: Unmatched properties from the message are deserialized to this
-         collection.
-        :paramtype additional_properties: dict[str, any]
-        :keyword id:
-        :paramtype id: int
-        :keyword rectangle:
-        :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
-        :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index:
-        :paramtype page_index: int
-        :keyword raw:
-        :paramtype raw: str
-        :keyword confidence: The overall confidence that the model's prediction is correct.
-        :paramtype confidence: float
-        :keyword classification_confidence: The model's confidence that the text has been classified
-         correctly.
-        :paramtype classification_confidence: float
-        :keyword text_extraction_confidence: If the document was submitted as an image, this is the
-         confidence that the text in the image has been correctly read by the model.
-        :paramtype text_extraction_confidence: float
-        :keyword is_verified:
-        :paramtype is_verified: bool
-        :keyword is_client_verified:
-        :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
-        :paramtype is_auto_verified: bool
-        :keyword data_point:
-        :paramtype data_point: str
-        :keyword content_type:
-        :paramtype content_type: str
-        :keyword parsed:
-        :paramtype parsed: ~affinda.models.ExpectedRemunerationAnnotationV2UpdateParsed
-        """
-        super(ExpectedRemunerationAnnotationV2Update, self).__init__(**kwargs)
-        self.parsed = kwargs.get("parsed", None)
-
-
-class ExpectedRemunerationAnnotationV2UpdateParsed(msrest.serialization.Model):
-    """ExpectedRemunerationAnnotationV2UpdateParsed.
-
-    :ivar minimum:
-    :vartype minimum: float
-    :ivar maximum:
-    :vartype maximum: float
-    :ivar currency:
-    :vartype currency: str
-    :ivar unit:
-    :vartype unit: str
-    """
-
-    _attribute_map = {
-        "minimum": {"key": "minimum", "type": "float"},
-        "maximum": {"key": "maximum", "type": "float"},
-        "currency": {"key": "currency", "type": "str"},
-        "unit": {"key": "unit", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword minimum:
-        :paramtype minimum: float
-        :keyword maximum:
-        :paramtype maximum: float
-        :keyword currency:
-        :paramtype currency: str
-        :keyword unit:
-        :paramtype unit: str
-        """
-        super(ExpectedRemunerationAnnotationV2UpdateParsed, self).__init__(**kwargs)
-        self.minimum = kwargs.get("minimum", None)
-        self.maximum = kwargs.get("maximum", None)
-        self.currency = kwargs.get("currency", None)
-        self.unit = kwargs.get("unit", None)
-
-
 class ExperienceSearchScoreComponent(msrest.serialization.Model):
     """ExperienceSearchScoreComponent.
 
@@ -3601,127 +4336,6 @@ class GetAllDocumentsResults(msrest.serialization.Model):
         self.results = kwargs["results"]
 
 
-class GetAllDocumentsResultsV2(msrest.serialization.Model):
-    """GetAllDocumentsResultsV2.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar count: Required. Number of documents in result.
-    :vartype count: int
-    :ivar next: URL to request next page of results.
-    :vartype next: str
-    :ivar previous: URL to request previous page of results.
-    :vartype previous: str
-    :ivar results: Required.
-    :vartype results: list[~affinda.models.Meta]
-    """
-
-    _validation = {
-        "count": {"required": True},
-        "results": {"required": True},
-    }
-
-    _attribute_map = {
-        "count": {"key": "count", "type": "int"},
-        "next": {"key": "next", "type": "str"},
-        "previous": {"key": "previous", "type": "str"},
-        "results": {"key": "results", "type": "[Meta]"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword count: Required. Number of documents in result.
-        :paramtype count: int
-        :keyword next: URL to request next page of results.
-        :paramtype next: str
-        :keyword previous: URL to request previous page of results.
-        :paramtype previous: str
-        :keyword results: Required.
-        :paramtype results: list[~affinda.models.Meta]
-        """
-        super(GetAllDocumentsResultsV2, self).__init__(**kwargs)
-        self.count = kwargs["count"]
-        self.next = kwargs.get("next", None)
-        self.previous = kwargs.get("previous", None)
-        self.results = kwargs["results"]
-
-
-class GetAllInvoicesResults(msrest.serialization.Model):
-    """GetAllInvoicesResults.
-
-    :ivar count: Number of documents in result.
-    :vartype count: int
-    :ivar next: URL to request next page of results.
-    :vartype next: str
-    :ivar previous: URL to request previous page of results.
-    :vartype previous: str
-    :ivar results:
-    :vartype results: list[~affinda.models.Meta]
-    """
-
-    _attribute_map = {
-        "count": {"key": "count", "type": "int"},
-        "next": {"key": "next", "type": "str"},
-        "previous": {"key": "previous", "type": "str"},
-        "results": {"key": "results", "type": "[Meta]"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword count: Number of documents in result.
-        :paramtype count: int
-        :keyword next: URL to request next page of results.
-        :paramtype next: str
-        :keyword previous: URL to request previous page of results.
-        :paramtype previous: str
-        :keyword results:
-        :paramtype results: list[~affinda.models.Meta]
-        """
-        super(GetAllInvoicesResults, self).__init__(**kwargs)
-        self.count = kwargs.get("count", None)
-        self.next = kwargs.get("next", None)
-        self.previous = kwargs.get("previous", None)
-        self.results = kwargs.get("results", None)
-
-
-class GetAllJobDescriptionsResults(msrest.serialization.Model):
-    """GetAllJobDescriptionsResults.
-
-    :ivar count: Number of documents in result.
-    :vartype count: int
-    :ivar next: URL to request next page of results.
-    :vartype next: str
-    :ivar previous: URL to request previous page of results.
-    :vartype previous: str
-    :ivar results:
-    :vartype results: list[~affinda.models.Meta]
-    """
-
-    _attribute_map = {
-        "count": {"key": "count", "type": "int"},
-        "next": {"key": "next", "type": "str"},
-        "previous": {"key": "previous", "type": "str"},
-        "results": {"key": "results", "type": "[Meta]"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword count: Number of documents in result.
-        :paramtype count: int
-        :keyword next: URL to request next page of results.
-        :paramtype next: str
-        :keyword previous: URL to request previous page of results.
-        :paramtype previous: str
-        :keyword results:
-        :paramtype results: list[~affinda.models.Meta]
-        """
-        super(GetAllJobDescriptionsResults, self).__init__(**kwargs)
-        self.count = kwargs.get("count", None)
-        self.next = kwargs.get("next", None)
-        self.previous = kwargs.get("previous", None)
-        self.results = kwargs.get("results", None)
-
-
 class IndexRequestBody(msrest.serialization.Model):
     """IndexRequestBody.
 
@@ -3939,6 +4553,26 @@ class InvitationRespondedBy(User):
         super(InvitationRespondedBy, self).__init__(**kwargs)
 
 
+class InvitationResponse(msrest.serialization.Model):
+    """InvitationResponse.
+
+    :ivar status: Known values are: "accepted", "declined".
+    :vartype status: str or ~affinda.models.InvitationResponseStatus
+    """
+
+    _attribute_map = {
+        "status": {"key": "status", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword status: Known values are: "accepted", "declined".
+        :paramtype status: str or ~affinda.models.InvitationResponseStatus
+        """
+        super(InvitationResponse, self).__init__(**kwargs)
+        self.status = kwargs.get("status", None)
+
+
 class InvitationUpdate(msrest.serialization.Model):
     """InvitationUpdate.
 
@@ -3957,337 +4591,6 @@ class InvitationUpdate(msrest.serialization.Model):
         """
         super(InvitationUpdate, self).__init__(**kwargs)
         self.role = kwargs.get("role", None)
-
-
-class Invoice(msrest.serialization.Model):
-    """Invoice.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar client_verified_dt: Required.
-    :vartype client_verified_dt: str
-    :ivar data: Required.
-    :vartype data: ~affinda.models.InvoiceData
-    :ivar meta: Required.
-    :vartype meta: ~affinda.models.Meta
-    :ivar error: Required.
-    :vartype error: ~affinda.models.Error
-    """
-
-    _validation = {
-        "client_verified_dt": {"required": True},
-        "data": {"required": True},
-        "meta": {"required": True},
-        "error": {"required": True},
-    }
-
-    _attribute_map = {
-        "client_verified_dt": {"key": "clientVerifiedDt", "type": "str"},
-        "data": {"key": "data", "type": "InvoiceData"},
-        "meta": {"key": "meta", "type": "Meta"},
-        "error": {"key": "error", "type": "Error"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword client_verified_dt: Required.
-        :paramtype client_verified_dt: str
-        :keyword data: Required.
-        :paramtype data: ~affinda.models.InvoiceData
-        :keyword meta: Required.
-        :paramtype meta: ~affinda.models.Meta
-        :keyword error: Required.
-        :paramtype error: ~affinda.models.Error
-        """
-        super(Invoice, self).__init__(**kwargs)
-        self.client_verified_dt = kwargs["client_verified_dt"]
-        self.data = kwargs["data"]
-        self.meta = kwargs["meta"]
-        self.error = kwargs["error"]
-
-
-class InvoiceData(msrest.serialization.Model):
-    """InvoiceData.
-
-    :ivar tables:
-    :vartype tables: list[~affinda.models.InvoiceDataTablesItem]
-    :ivar invoice_date:
-    :vartype invoice_date: ~affinda.models.DateAnnotationV2
-    :ivar invoice_order_date:
-    :vartype invoice_order_date: ~affinda.models.DateAnnotationV2
-    :ivar payment_date_due:
-    :vartype payment_date_due: ~affinda.models.DateAnnotationV2
-    :ivar payment_amount_base:
-    :vartype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
-    :ivar payment_amount_tax:
-    :vartype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
-    :ivar payment_amount_total:
-    :vartype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
-    :ivar payment_amount_paid:
-    :vartype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
-    :ivar payment_amount_due:
-    :vartype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
-    :ivar invoice_number:
-    :vartype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
-    :ivar invoice_purchase_order_number:
-    :vartype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
-    :ivar supplier_business_number:
-    :vartype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
-    :ivar customer_number:
-    :vartype customer_number: ~affinda.models.InvoiceDataCustomerNumber
-    :ivar customer_business_number:
-    :vartype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
-    :ivar payment_reference:
-    :vartype payment_reference: ~affinda.models.InvoiceDataPaymentReference
-    :ivar bank_account_number:
-    :vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
-    :ivar supplier_vat:
-    :vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
-    :ivar customer_vat:
-    :vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
-    :ivar bpay_biller_code:
-    :vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
-    :ivar bpay_reference:
-    :vartype bpay_reference: ~affinda.models.InvoiceDataBpayReference
-    :ivar bank_sort_code:
-    :vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
-    :ivar bank_iban:
-    :vartype bank_iban: ~affinda.models.InvoiceDataBankIban
-    :ivar bank_swift:
-    :vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
-    :ivar bank_bsb:
-    :vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
-    :ivar customer_contact_name:
-    :vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
-    :ivar customer_company_name:
-    :vartype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
-    :ivar supplier_company_name:
-    :vartype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
-    :ivar customer_billing_address:
-    :vartype customer_billing_address: ~affinda.models.LocationAnnotationV2
-    :ivar customer_delivery_address:
-    :vartype customer_delivery_address: ~affinda.models.LocationAnnotationV2
-    :ivar supplier_address:
-    :vartype supplier_address: ~affinda.models.LocationAnnotationV2
-    :ivar customer_phone_number:
-    :vartype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
-    :ivar supplier_phone_number:
-    :vartype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
-    :ivar supplier_fax:
-    :vartype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
-    :ivar customer_email:
-    :vartype customer_email: ~affinda.models.InvoiceDataCustomerEmail
-    :ivar supplier_email:
-    :vartype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
-    :ivar supplier_website:
-    :vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
-    :ivar currency_code:
-    :vartype currency_code: ~affinda.models.TextAnnotationV2
-    :ivar custom_fields: Dictionary of :code:`<any>`.
-    :vartype custom_fields: dict[str, any]
-    """
-
-    _attribute_map = {
-        "tables": {"key": "tables", "type": "[InvoiceDataTablesItem]"},
-        "invoice_date": {"key": "invoiceDate", "type": "DateAnnotationV2"},
-        "invoice_order_date": {"key": "invoiceOrderDate", "type": "DateAnnotationV2"},
-        "payment_date_due": {"key": "paymentDateDue", "type": "DateAnnotationV2"},
-        "payment_amount_base": {
-            "key": "paymentAmountBase",
-            "type": "InvoiceDataPaymentAmountBase",
-        },
-        "payment_amount_tax": {"key": "paymentAmountTax", "type": "InvoiceDataPaymentAmountTax"},
-        "payment_amount_total": {
-            "key": "paymentAmountTotal",
-            "type": "InvoiceDataPaymentAmountTotal",
-        },
-        "payment_amount_paid": {
-            "key": "paymentAmountPaid",
-            "type": "InvoiceDataPaymentAmountPaid",
-        },
-        "payment_amount_due": {"key": "paymentAmountDue", "type": "InvoiceDataPaymentAmountDue"},
-        "invoice_number": {"key": "invoiceNumber", "type": "InvoiceDataInvoiceNumber"},
-        "invoice_purchase_order_number": {
-            "key": "invoicePurchaseOrderNumber",
-            "type": "InvoiceDataInvoicePurchaseOrderNumber",
-        },
-        "supplier_business_number": {
-            "key": "supplierBusinessNumber",
-            "type": "InvoiceDataSupplierBusinessNumber",
-        },
-        "customer_number": {"key": "customerNumber", "type": "InvoiceDataCustomerNumber"},
-        "customer_business_number": {
-            "key": "customerBusinessNumber",
-            "type": "InvoiceDataCustomerBusinessNumber",
-        },
-        "payment_reference": {"key": "paymentReference", "type": "InvoiceDataPaymentReference"},
-        "bank_account_number": {
-            "key": "bankAccountNumber",
-            "type": "InvoiceDataBankAccountNumber",
-        },
-        "supplier_vat": {"key": "supplierVat", "type": "InvoiceDataSupplierVat"},
-        "customer_vat": {"key": "customerVat", "type": "InvoiceDataCustomerVat"},
-        "bpay_biller_code": {"key": "bpayBillerCode", "type": "InvoiceDataBpayBillerCode"},
-        "bpay_reference": {"key": "bpayReference", "type": "InvoiceDataBpayReference"},
-        "bank_sort_code": {"key": "bankSortCode", "type": "InvoiceDataBankSortCode"},
-        "bank_iban": {"key": "bankIban", "type": "InvoiceDataBankIban"},
-        "bank_swift": {"key": "bankSwift", "type": "InvoiceDataBankSwift"},
-        "bank_bsb": {"key": "bankBsb", "type": "InvoiceDataBankBsb"},
-        "customer_contact_name": {
-            "key": "customerContactName",
-            "type": "InvoiceDataCustomerContactName",
-        },
-        "customer_company_name": {
-            "key": "customerCompanyName",
-            "type": "InvoiceDataCustomerCompanyName",
-        },
-        "supplier_company_name": {
-            "key": "supplierCompanyName",
-            "type": "InvoiceDataSupplierCompanyName",
-        },
-        "customer_billing_address": {
-            "key": "customerBillingAddress",
-            "type": "LocationAnnotationV2",
-        },
-        "customer_delivery_address": {
-            "key": "customerDeliveryAddress",
-            "type": "LocationAnnotationV2",
-        },
-        "supplier_address": {"key": "supplierAddress", "type": "LocationAnnotationV2"},
-        "customer_phone_number": {
-            "key": "customerPhoneNumber",
-            "type": "InvoiceDataCustomerPhoneNumber",
-        },
-        "supplier_phone_number": {
-            "key": "supplierPhoneNumber",
-            "type": "InvoiceDataSupplierPhoneNumber",
-        },
-        "supplier_fax": {"key": "supplierFax", "type": "InvoiceDataSupplierFax"},
-        "customer_email": {"key": "customerEmail", "type": "InvoiceDataCustomerEmail"},
-        "supplier_email": {"key": "supplierEmail", "type": "InvoiceDataSupplierEmail"},
-        "supplier_website": {"key": "supplierWebsite", "type": "InvoiceDataSupplierWebsite"},
-        "currency_code": {"key": "currencyCode", "type": "TextAnnotationV2"},
-        "custom_fields": {"key": "customFields", "type": "{object}"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword tables:
-        :paramtype tables: list[~affinda.models.InvoiceDataTablesItem]
-        :keyword invoice_date:
-        :paramtype invoice_date: ~affinda.models.DateAnnotationV2
-        :keyword invoice_order_date:
-        :paramtype invoice_order_date: ~affinda.models.DateAnnotationV2
-        :keyword payment_date_due:
-        :paramtype payment_date_due: ~affinda.models.DateAnnotationV2
-        :keyword payment_amount_base:
-        :paramtype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
-        :keyword payment_amount_tax:
-        :paramtype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
-        :keyword payment_amount_total:
-        :paramtype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
-        :keyword payment_amount_paid:
-        :paramtype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
-        :keyword payment_amount_due:
-        :paramtype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
-        :keyword invoice_number:
-        :paramtype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
-        :keyword invoice_purchase_order_number:
-        :paramtype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
-        :keyword supplier_business_number:
-        :paramtype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
-        :keyword customer_number:
-        :paramtype customer_number: ~affinda.models.InvoiceDataCustomerNumber
-        :keyword customer_business_number:
-        :paramtype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
-        :keyword payment_reference:
-        :paramtype payment_reference: ~affinda.models.InvoiceDataPaymentReference
-        :keyword bank_account_number:
-        :paramtype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
-        :keyword supplier_vat:
-        :paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
-        :keyword customer_vat:
-        :paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVat
-        :keyword bpay_biller_code:
-        :paramtype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
-        :keyword bpay_reference:
-        :paramtype bpay_reference: ~affinda.models.InvoiceDataBpayReference
-        :keyword bank_sort_code:
-        :paramtype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
-        :keyword bank_iban:
-        :paramtype bank_iban: ~affinda.models.InvoiceDataBankIban
-        :keyword bank_swift:
-        :paramtype bank_swift: ~affinda.models.InvoiceDataBankSwift
-        :keyword bank_bsb:
-        :paramtype bank_bsb: ~affinda.models.InvoiceDataBankBsb
-        :keyword customer_contact_name:
-        :paramtype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
-        :keyword customer_company_name:
-        :paramtype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
-        :keyword supplier_company_name:
-        :paramtype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
-        :keyword customer_billing_address:
-        :paramtype customer_billing_address: ~affinda.models.LocationAnnotationV2
-        :keyword customer_delivery_address:
-        :paramtype customer_delivery_address: ~affinda.models.LocationAnnotationV2
-        :keyword supplier_address:
-        :paramtype supplier_address: ~affinda.models.LocationAnnotationV2
-        :keyword customer_phone_number:
-        :paramtype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
-        :keyword supplier_phone_number:
-        :paramtype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
-        :keyword supplier_fax:
-        :paramtype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
-        :keyword customer_email:
-        :paramtype customer_email: ~affinda.models.InvoiceDataCustomerEmail
-        :keyword supplier_email:
-        :paramtype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
-        :keyword supplier_website:
-        :paramtype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
-        :keyword currency_code:
-        :paramtype currency_code: ~affinda.models.TextAnnotationV2
-        :keyword custom_fields: Dictionary of :code:`<any>`.
-        :paramtype custom_fields: dict[str, any]
-        """
-        super(InvoiceData, self).__init__(**kwargs)
-        self.tables = kwargs.get("tables", None)
-        self.invoice_date = kwargs.get("invoice_date", None)
-        self.invoice_order_date = kwargs.get("invoice_order_date", None)
-        self.payment_date_due = kwargs.get("payment_date_due", None)
-        self.payment_amount_base = kwargs.get("payment_amount_base", None)
-        self.payment_amount_tax = kwargs.get("payment_amount_tax", None)
-        self.payment_amount_total = kwargs.get("payment_amount_total", None)
-        self.payment_amount_paid = kwargs.get("payment_amount_paid", None)
-        self.payment_amount_due = kwargs.get("payment_amount_due", None)
-        self.invoice_number = kwargs.get("invoice_number", None)
-        self.invoice_purchase_order_number = kwargs.get("invoice_purchase_order_number", None)
-        self.supplier_business_number = kwargs.get("supplier_business_number", None)
-        self.customer_number = kwargs.get("customer_number", None)
-        self.customer_business_number = kwargs.get("customer_business_number", None)
-        self.payment_reference = kwargs.get("payment_reference", None)
-        self.bank_account_number = kwargs.get("bank_account_number", None)
-        self.supplier_vat = kwargs.get("supplier_vat", None)
-        self.customer_vat = kwargs.get("customer_vat", None)
-        self.bpay_biller_code = kwargs.get("bpay_biller_code", None)
-        self.bpay_reference = kwargs.get("bpay_reference", None)
-        self.bank_sort_code = kwargs.get("bank_sort_code", None)
-        self.bank_iban = kwargs.get("bank_iban", None)
-        self.bank_swift = kwargs.get("bank_swift", None)
-        self.bank_bsb = kwargs.get("bank_bsb", None)
-        self.customer_contact_name = kwargs.get("customer_contact_name", None)
-        self.customer_company_name = kwargs.get("customer_company_name", None)
-        self.supplier_company_name = kwargs.get("supplier_company_name", None)
-        self.customer_billing_address = kwargs.get("customer_billing_address", None)
-        self.customer_delivery_address = kwargs.get("customer_delivery_address", None)
-        self.supplier_address = kwargs.get("supplier_address", None)
-        self.customer_phone_number = kwargs.get("customer_phone_number", None)
-        self.supplier_phone_number = kwargs.get("supplier_phone_number", None)
-        self.supplier_fax = kwargs.get("supplier_fax", None)
-        self.customer_email = kwargs.get("customer_email", None)
-        self.supplier_email = kwargs.get("supplier_email", None)
-        self.supplier_website = kwargs.get("supplier_website", None)
-        self.currency_code = kwargs.get("currency_code", None)
-        self.custom_fields = kwargs.get("custom_fields", None)
 
 
 class TextAnnotationV2(AnnotationV2):
@@ -8164,436 +8467,104 @@ class InvoiceDataTablesItem(msrest.serialization.Model):
         self.rows = kwargs.get("rows", None)
 
 
-class InvoiceRequestBody(msrest.serialization.Model):
-    """InvoiceRequestBody.
-
-    :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
-     JPG.
-    :vartype file: IO
-    :ivar url: URL to an invoice to download and process.
-    :vartype url: str
-    :ivar identifier: A random string that uniquely identify the resource.
-    :vartype identifier: str
-    :ivar file_name: Optional filename of the file.
-    :vartype file_name: str
-    :ivar wait: If "true" (default), will return a response only after processing has completed. If
-     "false", will return an empty data object which can be polled at the GET endpoint until
-     processing is complete.
-    :vartype wait: bool
-    :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
-     of an existing document. If "false" (default), will parse the document normally whether its a
-     duplicate or not.
-    :vartype reject_duplicates: bool
-    :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-    :vartype language: str
-    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
-     deleted.  Defaults to no expiry.
-    :vartype expiry_time: ~datetime.datetime
-    """
-
-    _attribute_map = {
-        "file": {"key": "file", "type": "IO"},
-        "url": {"key": "url", "type": "str"},
-        "identifier": {"key": "identifier", "type": "str"},
-        "file_name": {"key": "fileName", "type": "str"},
-        "wait": {"key": "wait", "type": "bool"},
-        "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
-        "language": {"key": "language", "type": "str"},
-        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
-         PNG, JPG.
-        :paramtype file: IO
-        :keyword url: URL to an invoice to download and process.
-        :paramtype url: str
-        :keyword identifier: A random string that uniquely identify the resource.
-        :paramtype identifier: str
-        :keyword file_name: Optional filename of the file.
-        :paramtype file_name: str
-        :keyword wait: If "true" (default), will return a response only after processing has completed.
-         If "false", will return an empty data object which can be polled at the GET endpoint until
-         processing is complete.
-        :paramtype wait: bool
-        :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
-         duplicate of an existing document. If "false" (default), will parse the document normally
-         whether its a duplicate or not.
-        :paramtype reject_duplicates: bool
-        :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-        :paramtype language: str
-        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
-         deleted.  Defaults to no expiry.
-        :paramtype expiry_time: ~datetime.datetime
-        """
-        super(InvoiceRequestBody, self).__init__(**kwargs)
-        self.file = kwargs.get("file", None)
-        self.url = kwargs.get("url", None)
-        self.identifier = kwargs.get("identifier", None)
-        self.file_name = kwargs.get("file_name", None)
-        self.wait = kwargs.get("wait", True)
-        self.reject_duplicates = kwargs.get("reject_duplicates", False)
-        self.language = kwargs.get("language", None)
-        self.expiry_time = kwargs.get("expiry_time", None)
-
-
-class JobDescription(msrest.serialization.Model):
-    """JobDescription.
+class InvoiceDocument(Document):
+    """InvoiceDocument.
 
     All required parameters must be populated in order to send to Azure.
 
-    :ivar data: Required. A JSON-encoded string of the ``JobDescriptionData`` object.
-    :vartype data: ~affinda.models.JobDescriptionData
+    :ivar extractor: Required. Constant filled by server.
+    :vartype extractor: str
     :ivar meta: Required.
-    :vartype meta: ~affinda.models.Meta
-    :ivar error: Required.
+    :vartype meta: ~affinda.models.DocumentMeta
+    :ivar error:
     :vartype error: ~affinda.models.Error
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar data: Required.
+    :vartype data: ~affinda.models.InvoiceData
     """
 
     _validation = {
-        "data": {"required": True},
+        "extractor": {"required": True},
         "meta": {"required": True},
-        "error": {"required": True},
+        "data": {"required": True},
     }
 
     _attribute_map = {
-        "data": {"key": "data", "type": "JobDescriptionData"},
-        "meta": {"key": "meta", "type": "Meta"},
+        "extractor": {"key": "extractor", "type": "str"},
+        "meta": {"key": "meta", "type": "DocumentMeta"},
         "error": {"key": "error", "type": "Error"},
+        "additional_properties": {"key": "", "type": "{object}"},
+        "data": {"key": "data", "type": "InvoiceData"},
     }
 
     def __init__(self, **kwargs):
         """
+        :keyword meta: Required.
+        :paramtype meta: ~affinda.models.DocumentMeta
+        :keyword error:
+        :paramtype error: ~affinda.models.Error
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword data: Required.
+        :paramtype data: ~affinda.models.InvoiceData
+        """
+        super(InvoiceDocument, self).__init__(**kwargs)
+        self.extractor = "invoice"  # type: str
+        self.additional_properties = kwargs.get("additional_properties", None)
+        self.data = kwargs["data"]
+
+
+class JobDescriptionDocument(Document):
+    """JobDescriptionDocument.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar extractor: Required. Constant filled by server.
+    :vartype extractor: str
+    :ivar meta: Required.
+    :vartype meta: ~affinda.models.DocumentMeta
+    :ivar error:
+    :vartype error: ~affinda.models.Error
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar data: Required. A JSON-encoded string of the ``JobDescriptionData`` object.
+    :vartype data: ~affinda.models.JobDescriptionData
+    """
+
+    _validation = {
+        "extractor": {"required": True},
+        "meta": {"required": True},
+        "data": {"required": True},
+    }
+
+    _attribute_map = {
+        "extractor": {"key": "extractor", "type": "str"},
+        "meta": {"key": "meta", "type": "DocumentMeta"},
+        "error": {"key": "error", "type": "Error"},
+        "additional_properties": {"key": "", "type": "{object}"},
+        "data": {"key": "data", "type": "JobDescriptionData"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword meta: Required.
+        :paramtype meta: ~affinda.models.DocumentMeta
+        :keyword error:
+        :paramtype error: ~affinda.models.Error
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
         :keyword data: Required. A JSON-encoded string of the ``JobDescriptionData`` object.
         :paramtype data: ~affinda.models.JobDescriptionData
-        :keyword meta: Required.
-        :paramtype meta: ~affinda.models.Meta
-        :keyword error: Required.
-        :paramtype error: ~affinda.models.Error
         """
-        super(JobDescription, self).__init__(**kwargs)
+        super(JobDescriptionDocument, self).__init__(**kwargs)
+        self.extractor = "job-description"  # type: str
+        self.additional_properties = kwargs.get("additional_properties", None)
         self.data = kwargs["data"]
-        self.meta = kwargs["meta"]
-        self.error = kwargs["error"]
-
-
-class JobDescriptionData(msrest.serialization.Model):
-    """A JSON-encoded string of the ``JobDescriptionData`` object.
-
-    :ivar job_title:
-    :vartype job_title: ~affinda.models.JobTitleAnnotation
-    :ivar contact_email:
-    :vartype contact_email: ~affinda.models.TextAnnotationV2
-    :ivar contact_name:
-    :vartype contact_name: ~affinda.models.TextAnnotationV2
-    :ivar contact_phone:
-    :vartype contact_phone: ~affinda.models.TextAnnotationV2
-    :ivar start_date:
-    :vartype start_date: ~affinda.models.DateAnnotationV2
-    :ivar end_date:
-    :vartype end_date: ~affinda.models.DateAnnotationV2
-    :ivar job_type:
-    :vartype job_type: ~affinda.models.TextAnnotationV2
-    :ivar languages:
-    :vartype languages: list[~affinda.models.LanguageAnnotationV2]
-    :ivar skills:
-    :vartype skills: list[~affinda.models.SkillAnnotationV2]
-    :ivar organization_name:
-    :vartype organization_name: ~affinda.models.TextAnnotationV2
-    :ivar organization_website:
-    :vartype organization_website: ~affinda.models.TextAnnotationV2
-    :ivar education_level:
-    :vartype education_level: ~affinda.models.TextAnnotationV2
-    :ivar education_accreditation:
-    :vartype education_accreditation: ~affinda.models.TextAnnotationV2
-    :ivar expected_remuneration:
-    :vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2
-    :ivar location:
-    :vartype location: ~affinda.models.LocationAnnotationV2
-    :ivar certifications:
-    :vartype certifications: list[~affinda.models.TextAnnotationV2]
-    :ivar years_experience:
-    :vartype years_experience: ~affinda.models.YearsExperienceAnnotationV2
-    """
-
-    _attribute_map = {
-        "job_title": {"key": "jobTitle", "type": "JobTitleAnnotation"},
-        "contact_email": {"key": "contactEmail", "type": "TextAnnotationV2"},
-        "contact_name": {"key": "contactName", "type": "TextAnnotationV2"},
-        "contact_phone": {"key": "contactPhone", "type": "TextAnnotationV2"},
-        "start_date": {"key": "startDate", "type": "DateAnnotationV2"},
-        "end_date": {"key": "endDate", "type": "DateAnnotationV2"},
-        "job_type": {"key": "jobType", "type": "TextAnnotationV2"},
-        "languages": {"key": "languages", "type": "[LanguageAnnotationV2]"},
-        "skills": {"key": "skills", "type": "[SkillAnnotationV2]"},
-        "organization_name": {"key": "organizationName", "type": "TextAnnotationV2"},
-        "organization_website": {"key": "organizationWebsite", "type": "TextAnnotationV2"},
-        "education_level": {"key": "educationLevel", "type": "TextAnnotationV2"},
-        "education_accreditation": {"key": "educationAccreditation", "type": "TextAnnotationV2"},
-        "expected_remuneration": {
-            "key": "expectedRemuneration",
-            "type": "ExpectedRemunerationAnnotationV2",
-        },
-        "location": {"key": "location", "type": "LocationAnnotationV2"},
-        "certifications": {"key": "certifications", "type": "[TextAnnotationV2]"},
-        "years_experience": {"key": "yearsExperience", "type": "YearsExperienceAnnotationV2"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword job_title:
-        :paramtype job_title: ~affinda.models.JobTitleAnnotation
-        :keyword contact_email:
-        :paramtype contact_email: ~affinda.models.TextAnnotationV2
-        :keyword contact_name:
-        :paramtype contact_name: ~affinda.models.TextAnnotationV2
-        :keyword contact_phone:
-        :paramtype contact_phone: ~affinda.models.TextAnnotationV2
-        :keyword start_date:
-        :paramtype start_date: ~affinda.models.DateAnnotationV2
-        :keyword end_date:
-        :paramtype end_date: ~affinda.models.DateAnnotationV2
-        :keyword job_type:
-        :paramtype job_type: ~affinda.models.TextAnnotationV2
-        :keyword languages:
-        :paramtype languages: list[~affinda.models.LanguageAnnotationV2]
-        :keyword skills:
-        :paramtype skills: list[~affinda.models.SkillAnnotationV2]
-        :keyword organization_name:
-        :paramtype organization_name: ~affinda.models.TextAnnotationV2
-        :keyword organization_website:
-        :paramtype organization_website: ~affinda.models.TextAnnotationV2
-        :keyword education_level:
-        :paramtype education_level: ~affinda.models.TextAnnotationV2
-        :keyword education_accreditation:
-        :paramtype education_accreditation: ~affinda.models.TextAnnotationV2
-        :keyword expected_remuneration:
-        :paramtype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2
-        :keyword location:
-        :paramtype location: ~affinda.models.LocationAnnotationV2
-        :keyword certifications:
-        :paramtype certifications: list[~affinda.models.TextAnnotationV2]
-        :keyword years_experience:
-        :paramtype years_experience: ~affinda.models.YearsExperienceAnnotationV2
-        """
-        super(JobDescriptionData, self).__init__(**kwargs)
-        self.job_title = kwargs.get("job_title", None)
-        self.contact_email = kwargs.get("contact_email", None)
-        self.contact_name = kwargs.get("contact_name", None)
-        self.contact_phone = kwargs.get("contact_phone", None)
-        self.start_date = kwargs.get("start_date", None)
-        self.end_date = kwargs.get("end_date", None)
-        self.job_type = kwargs.get("job_type", None)
-        self.languages = kwargs.get("languages", None)
-        self.skills = kwargs.get("skills", None)
-        self.organization_name = kwargs.get("organization_name", None)
-        self.organization_website = kwargs.get("organization_website", None)
-        self.education_level = kwargs.get("education_level", None)
-        self.education_accreditation = kwargs.get("education_accreditation", None)
-        self.expected_remuneration = kwargs.get("expected_remuneration", None)
-        self.location = kwargs.get("location", None)
-        self.certifications = kwargs.get("certifications", None)
-        self.years_experience = kwargs.get("years_experience", None)
-
-
-class JobDescriptionDataUpdate(msrest.serialization.Model):
-    """A JSON-encoded string of the ``JobDescriptionData`` object.
-
-    :ivar job_title:
-    :vartype job_title: ~affinda.models.JobTitleAnnotationUpdate
-    :ivar contact_email:
-    :vartype contact_email: ~affinda.models.TextAnnotationV2Update
-    :ivar contact_name:
-    :vartype contact_name: ~affinda.models.TextAnnotationV2Update
-    :ivar contact_phone:
-    :vartype contact_phone: ~affinda.models.TextAnnotationV2Update
-    :ivar start_date:
-    :vartype start_date: ~affinda.models.DateAnnotationV2Update
-    :ivar end_date:
-    :vartype end_date: ~affinda.models.DateAnnotationV2Update
-    :ivar job_type:
-    :vartype job_type: ~affinda.models.TextAnnotationV2Update
-    :ivar languages:
-    :vartype languages: list[~affinda.models.LanguageAnnotationV2Update]
-    :ivar skills:
-    :vartype skills: list[~affinda.models.SkillAnnotationV2Update]
-    :ivar organization_name:
-    :vartype organization_name: ~affinda.models.TextAnnotationV2Update
-    :ivar organization_website:
-    :vartype organization_website: ~affinda.models.TextAnnotationV2Update
-    :ivar education_level:
-    :vartype education_level: ~affinda.models.TextAnnotationV2Update
-    :ivar education_accreditation:
-    :vartype education_accreditation: ~affinda.models.TextAnnotationV2Update
-    :ivar expected_remuneration:
-    :vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2Update
-    :ivar location:
-    :vartype location: ~affinda.models.LocationAnnotationV2Update
-    :ivar certifications:
-    :vartype certifications: list[~affinda.models.TextAnnotationV2Update]
-    :ivar years_experience:
-    :vartype years_experience: ~affinda.models.YearsExperienceAnnotationV2Update
-    """
-
-    _attribute_map = {
-        "job_title": {"key": "jobTitle", "type": "JobTitleAnnotationUpdate"},
-        "contact_email": {"key": "contactEmail", "type": "TextAnnotationV2Update"},
-        "contact_name": {"key": "contactName", "type": "TextAnnotationV2Update"},
-        "contact_phone": {"key": "contactPhone", "type": "TextAnnotationV2Update"},
-        "start_date": {"key": "startDate", "type": "DateAnnotationV2Update"},
-        "end_date": {"key": "endDate", "type": "DateAnnotationV2Update"},
-        "job_type": {"key": "jobType", "type": "TextAnnotationV2Update"},
-        "languages": {"key": "languages", "type": "[LanguageAnnotationV2Update]"},
-        "skills": {"key": "skills", "type": "[SkillAnnotationV2Update]"},
-        "organization_name": {"key": "organizationName", "type": "TextAnnotationV2Update"},
-        "organization_website": {"key": "organizationWebsite", "type": "TextAnnotationV2Update"},
-        "education_level": {"key": "educationLevel", "type": "TextAnnotationV2Update"},
-        "education_accreditation": {
-            "key": "educationAccreditation",
-            "type": "TextAnnotationV2Update",
-        },
-        "expected_remuneration": {
-            "key": "expectedRemuneration",
-            "type": "ExpectedRemunerationAnnotationV2Update",
-        },
-        "location": {"key": "location", "type": "LocationAnnotationV2Update"},
-        "certifications": {"key": "certifications", "type": "[TextAnnotationV2Update]"},
-        "years_experience": {
-            "key": "yearsExperience",
-            "type": "YearsExperienceAnnotationV2Update",
-        },
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword job_title:
-        :paramtype job_title: ~affinda.models.JobTitleAnnotationUpdate
-        :keyword contact_email:
-        :paramtype contact_email: ~affinda.models.TextAnnotationV2Update
-        :keyword contact_name:
-        :paramtype contact_name: ~affinda.models.TextAnnotationV2Update
-        :keyword contact_phone:
-        :paramtype contact_phone: ~affinda.models.TextAnnotationV2Update
-        :keyword start_date:
-        :paramtype start_date: ~affinda.models.DateAnnotationV2Update
-        :keyword end_date:
-        :paramtype end_date: ~affinda.models.DateAnnotationV2Update
-        :keyword job_type:
-        :paramtype job_type: ~affinda.models.TextAnnotationV2Update
-        :keyword languages:
-        :paramtype languages: list[~affinda.models.LanguageAnnotationV2Update]
-        :keyword skills:
-        :paramtype skills: list[~affinda.models.SkillAnnotationV2Update]
-        :keyword organization_name:
-        :paramtype organization_name: ~affinda.models.TextAnnotationV2Update
-        :keyword organization_website:
-        :paramtype organization_website: ~affinda.models.TextAnnotationV2Update
-        :keyword education_level:
-        :paramtype education_level: ~affinda.models.TextAnnotationV2Update
-        :keyword education_accreditation:
-        :paramtype education_accreditation: ~affinda.models.TextAnnotationV2Update
-        :keyword expected_remuneration:
-        :paramtype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2Update
-        :keyword location:
-        :paramtype location: ~affinda.models.LocationAnnotationV2Update
-        :keyword certifications:
-        :paramtype certifications: list[~affinda.models.TextAnnotationV2Update]
-        :keyword years_experience:
-        :paramtype years_experience: ~affinda.models.YearsExperienceAnnotationV2Update
-        """
-        super(JobDescriptionDataUpdate, self).__init__(**kwargs)
-        self.job_title = kwargs.get("job_title", None)
-        self.contact_email = kwargs.get("contact_email", None)
-        self.contact_name = kwargs.get("contact_name", None)
-        self.contact_phone = kwargs.get("contact_phone", None)
-        self.start_date = kwargs.get("start_date", None)
-        self.end_date = kwargs.get("end_date", None)
-        self.job_type = kwargs.get("job_type", None)
-        self.languages = kwargs.get("languages", None)
-        self.skills = kwargs.get("skills", None)
-        self.organization_name = kwargs.get("organization_name", None)
-        self.organization_website = kwargs.get("organization_website", None)
-        self.education_level = kwargs.get("education_level", None)
-        self.education_accreditation = kwargs.get("education_accreditation", None)
-        self.expected_remuneration = kwargs.get("expected_remuneration", None)
-        self.location = kwargs.get("location", None)
-        self.certifications = kwargs.get("certifications", None)
-        self.years_experience = kwargs.get("years_experience", None)
-
-
-class JobDescriptionRequestBody(msrest.serialization.Model):
-    """JobDescriptionRequestBody.
-
-    :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
-     JPG.
-    :vartype file: IO
-    :ivar url: URL to a job description to download and process.
-    :vartype url: str
-    :ivar identifier: A random string that uniquely identify the resource.
-    :vartype identifier: str
-    :ivar file_name: Optional filename of the file.
-    :vartype file_name: str
-    :ivar wait: If "true" (default), will return a response only after processing has completed. If
-     "false", will return an empty data object which can be polled at the GET endpoint until
-     processing is complete.
-    :vartype wait: bool
-    :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
-     of an existing document. If "false" (default), will parse the document normally whether its a
-     duplicate or not.
-    :vartype reject_duplicates: bool
-    :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-    :vartype language: str
-    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
-     deleted.  Defaults to no expiry.
-    :vartype expiry_time: ~datetime.datetime
-    """
-
-    _attribute_map = {
-        "file": {"key": "file", "type": "IO"},
-        "url": {"key": "url", "type": "str"},
-        "identifier": {"key": "identifier", "type": "str"},
-        "file_name": {"key": "fileName", "type": "str"},
-        "wait": {"key": "wait", "type": "bool"},
-        "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
-        "language": {"key": "language", "type": "str"},
-        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
-         PNG, JPG.
-        :paramtype file: IO
-        :keyword url: URL to a job description to download and process.
-        :paramtype url: str
-        :keyword identifier: A random string that uniquely identify the resource.
-        :paramtype identifier: str
-        :keyword file_name: Optional filename of the file.
-        :paramtype file_name: str
-        :keyword wait: If "true" (default), will return a response only after processing has completed.
-         If "false", will return an empty data object which can be polled at the GET endpoint until
-         processing is complete.
-        :paramtype wait: bool
-        :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
-         duplicate of an existing document. If "false" (default), will parse the document normally
-         whether its a duplicate or not.
-        :paramtype reject_duplicates: bool
-        :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-        :paramtype language: str
-        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
-         deleted.  Defaults to no expiry.
-        :paramtype expiry_time: ~datetime.datetime
-        """
-        super(JobDescriptionRequestBody, self).__init__(**kwargs)
-        self.file = kwargs.get("file", None)
-        self.url = kwargs.get("url", None)
-        self.identifier = kwargs.get("identifier", None)
-        self.file_name = kwargs.get("file_name", None)
-        self.wait = kwargs.get("wait", True)
-        self.reject_duplicates = kwargs.get("reject_duplicates", False)
-        self.language = kwargs.get("language", None)
-        self.expiry_time = kwargs.get("expiry_time", None)
 
 
 class JobDescriptionSearch(msrest.serialization.Model):
@@ -10058,120 +10029,6 @@ class JobTitleAnnotation(AnnotationV2, JobTitleParsed):
         self.content_type = kwargs["content_type"]
 
 
-class JobTitleAnnotationUpdate(JobTitleParsed, AnnotationV2Base):
-    """JobTitleAnnotationUpdate.
-
-    Variables are only populated by the server, and will be ignored when sending a request.
-
-    :ivar additional_properties: Unmatched properties from the message are deserialized to this
-     collection.
-    :vartype additional_properties: dict[str, any]
-    :ivar id:
-    :vartype id: int
-    :ivar rectangle:
-    :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
-    :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index:
-    :vartype page_index: int
-    :ivar raw:
-    :vartype raw: str
-    :ivar confidence: The overall confidence that the model's prediction is correct.
-    :vartype confidence: float
-    :ivar classification_confidence: The model's confidence that the text has been classified
-     correctly.
-    :vartype classification_confidence: float
-    :ivar text_extraction_confidence: If the document was submitted as an image, this is the
-     confidence that the text in the image has been correctly read by the model.
-    :vartype text_extraction_confidence: float
-    :ivar is_verified:
-    :vartype is_verified: bool
-    :ivar is_client_verified:
-    :vartype is_client_verified: bool
-    :ivar is_auto_verified:
-    :vartype is_auto_verified: bool
-    :ivar data_point:
-    :vartype data_point: str
-    :ivar content_type:
-    :vartype content_type: str
-    :ivar parsed: Matching job title to extracted text.
-    :vartype parsed: ~affinda.models.JobTitleParsedParsed
-    """
-
-    _validation = {
-        "parsed": {"readonly": True},
-    }
-
-    _attribute_map = {
-        "additional_properties": {"key": "", "type": "{object}"},
-        "id": {"key": "id", "type": "int"},
-        "rectangle": {"key": "rectangle", "type": "Rectangle"},
-        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
-        "page_index": {"key": "pageIndex", "type": "int"},
-        "raw": {"key": "raw", "type": "str"},
-        "confidence": {"key": "confidence", "type": "float"},
-        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
-        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
-        "is_verified": {"key": "isVerified", "type": "bool"},
-        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
-        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "data_point": {"key": "dataPoint", "type": "str"},
-        "content_type": {"key": "contentType", "type": "str"},
-        "parsed": {"key": "parsed", "type": "JobTitleParsedParsed"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword additional_properties: Unmatched properties from the message are deserialized to this
-         collection.
-        :paramtype additional_properties: dict[str, any]
-        :keyword id:
-        :paramtype id: int
-        :keyword rectangle:
-        :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
-        :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index:
-        :paramtype page_index: int
-        :keyword raw:
-        :paramtype raw: str
-        :keyword confidence: The overall confidence that the model's prediction is correct.
-        :paramtype confidence: float
-        :keyword classification_confidence: The model's confidence that the text has been classified
-         correctly.
-        :paramtype classification_confidence: float
-        :keyword text_extraction_confidence: If the document was submitted as an image, this is the
-         confidence that the text in the image has been correctly read by the model.
-        :paramtype text_extraction_confidence: float
-        :keyword is_verified:
-        :paramtype is_verified: bool
-        :keyword is_client_verified:
-        :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
-        :paramtype is_auto_verified: bool
-        :keyword data_point:
-        :paramtype data_point: str
-        :keyword content_type:
-        :paramtype content_type: str
-        """
-        super(JobTitleAnnotationUpdate, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
-        self.rectangle = kwargs.get("rectangle", None)
-        self.rectangles = kwargs.get("rectangles", None)
-        self.page_index = kwargs.get("page_index", None)
-        self.raw = kwargs.get("raw", None)
-        self.confidence = kwargs.get("confidence", None)
-        self.classification_confidence = kwargs.get("classification_confidence", None)
-        self.text_extraction_confidence = kwargs.get("text_extraction_confidence", None)
-        self.is_verified = kwargs.get("is_verified", None)
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs.get("content_type", None)
-        self.parsed = None
-
-
 class JobTitleParsedClassification(msrest.serialization.Model):
     """JobTitleParsedClassification.
 
@@ -10397,106 +10254,6 @@ class LanguageAnnotationV2(AnnotationV2):
         :paramtype content_type: str
         """
         super(LanguageAnnotationV2, self).__init__(**kwargs)
-        self.parsed = None
-
-
-class LanguageAnnotationV2Update(AnnotationV2Base):
-    """LanguageAnnotationV2Update.
-
-    Variables are only populated by the server, and will be ignored when sending a request.
-
-    :ivar additional_properties: Unmatched properties from the message are deserialized to this
-     collection.
-    :vartype additional_properties: dict[str, any]
-    :ivar id:
-    :vartype id: int
-    :ivar rectangle:
-    :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
-    :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index:
-    :vartype page_index: int
-    :ivar raw:
-    :vartype raw: str
-    :ivar confidence: The overall confidence that the model's prediction is correct.
-    :vartype confidence: float
-    :ivar classification_confidence: The model's confidence that the text has been classified
-     correctly.
-    :vartype classification_confidence: float
-    :ivar text_extraction_confidence: If the document was submitted as an image, this is the
-     confidence that the text in the image has been correctly read by the model.
-    :vartype text_extraction_confidence: float
-    :ivar is_verified:
-    :vartype is_verified: bool
-    :ivar is_client_verified:
-    :vartype is_client_verified: bool
-    :ivar is_auto_verified:
-    :vartype is_auto_verified: bool
-    :ivar data_point:
-    :vartype data_point: str
-    :ivar content_type:
-    :vartype content_type: str
-    :ivar parsed:
-    :vartype parsed: str
-    """
-
-    _validation = {
-        "parsed": {"readonly": True},
-    }
-
-    _attribute_map = {
-        "additional_properties": {"key": "", "type": "{object}"},
-        "id": {"key": "id", "type": "int"},
-        "rectangle": {"key": "rectangle", "type": "Rectangle"},
-        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
-        "page_index": {"key": "pageIndex", "type": "int"},
-        "raw": {"key": "raw", "type": "str"},
-        "confidence": {"key": "confidence", "type": "float"},
-        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
-        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
-        "is_verified": {"key": "isVerified", "type": "bool"},
-        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
-        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "data_point": {"key": "dataPoint", "type": "str"},
-        "content_type": {"key": "contentType", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword additional_properties: Unmatched properties from the message are deserialized to this
-         collection.
-        :paramtype additional_properties: dict[str, any]
-        :keyword id:
-        :paramtype id: int
-        :keyword rectangle:
-        :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
-        :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index:
-        :paramtype page_index: int
-        :keyword raw:
-        :paramtype raw: str
-        :keyword confidence: The overall confidence that the model's prediction is correct.
-        :paramtype confidence: float
-        :keyword classification_confidence: The model's confidence that the text has been classified
-         correctly.
-        :paramtype classification_confidence: float
-        :keyword text_extraction_confidence: If the document was submitted as an image, this is the
-         confidence that the text in the image has been correctly read by the model.
-        :paramtype text_extraction_confidence: float
-        :keyword is_verified:
-        :paramtype is_verified: bool
-        :keyword is_client_verified:
-        :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
-        :paramtype is_auto_verified: bool
-        :keyword data_point:
-        :paramtype data_point: str
-        :keyword content_type:
-        :paramtype content_type: str
-        """
-        super(LanguageAnnotationV2Update, self).__init__(**kwargs)
         self.parsed = None
 
 
@@ -10761,177 +10518,6 @@ class LocationAnnotationV2Parsed(Location):
         super(LocationAnnotationV2Parsed, self).__init__(**kwargs)
 
 
-class LocationAnnotationV2Update(AnnotationV2Base):
-    """LocationAnnotationV2Update.
-
-    Variables are only populated by the server, and will be ignored when sending a request.
-
-    :ivar additional_properties: Unmatched properties from the message are deserialized to this
-     collection.
-    :vartype additional_properties: dict[str, any]
-    :ivar id:
-    :vartype id: int
-    :ivar rectangle:
-    :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
-    :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index:
-    :vartype page_index: int
-    :ivar raw:
-    :vartype raw: str
-    :ivar confidence: The overall confidence that the model's prediction is correct.
-    :vartype confidence: float
-    :ivar classification_confidence: The model's confidence that the text has been classified
-     correctly.
-    :vartype classification_confidence: float
-    :ivar text_extraction_confidence: If the document was submitted as an image, this is the
-     confidence that the text in the image has been correctly read by the model.
-    :vartype text_extraction_confidence: float
-    :ivar is_verified:
-    :vartype is_verified: bool
-    :ivar is_client_verified:
-    :vartype is_client_verified: bool
-    :ivar is_auto_verified:
-    :vartype is_auto_verified: bool
-    :ivar data_point:
-    :vartype data_point: str
-    :ivar content_type:
-    :vartype content_type: str
-    :ivar parsed:
-    :vartype parsed: ~affinda.models.LocationAnnotationV2UpdateParsed
-    """
-
-    _validation = {
-        "parsed": {"readonly": True},
-    }
-
-    _attribute_map = {
-        "additional_properties": {"key": "", "type": "{object}"},
-        "id": {"key": "id", "type": "int"},
-        "rectangle": {"key": "rectangle", "type": "Rectangle"},
-        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
-        "page_index": {"key": "pageIndex", "type": "int"},
-        "raw": {"key": "raw", "type": "str"},
-        "confidence": {"key": "confidence", "type": "float"},
-        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
-        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
-        "is_verified": {"key": "isVerified", "type": "bool"},
-        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
-        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "data_point": {"key": "dataPoint", "type": "str"},
-        "content_type": {"key": "contentType", "type": "str"},
-        "parsed": {"key": "parsed", "type": "LocationAnnotationV2UpdateParsed"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword additional_properties: Unmatched properties from the message are deserialized to this
-         collection.
-        :paramtype additional_properties: dict[str, any]
-        :keyword id:
-        :paramtype id: int
-        :keyword rectangle:
-        :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
-        :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index:
-        :paramtype page_index: int
-        :keyword raw:
-        :paramtype raw: str
-        :keyword confidence: The overall confidence that the model's prediction is correct.
-        :paramtype confidence: float
-        :keyword classification_confidence: The model's confidence that the text has been classified
-         correctly.
-        :paramtype classification_confidence: float
-        :keyword text_extraction_confidence: If the document was submitted as an image, this is the
-         confidence that the text in the image has been correctly read by the model.
-        :paramtype text_extraction_confidence: float
-        :keyword is_verified:
-        :paramtype is_verified: bool
-        :keyword is_client_verified:
-        :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
-        :paramtype is_auto_verified: bool
-        :keyword data_point:
-        :paramtype data_point: str
-        :keyword content_type:
-        :paramtype content_type: str
-        """
-        super(LocationAnnotationV2Update, self).__init__(**kwargs)
-        self.parsed = None
-
-
-class LocationAnnotationV2UpdateParsed(Location):
-    """LocationAnnotationV2UpdateParsed.
-
-    Variables are only populated by the server, and will be ignored when sending a request.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar formatted:
-    :vartype formatted: str
-    :ivar postal_code:
-    :vartype postal_code: str
-    :ivar state:
-    :vartype state: str
-    :ivar country:
-    :vartype country: str
-    :ivar country_code: Two letter country code (ISO 3166-1 alpha-2).
-    :vartype country_code: str
-    :ivar raw_input: Required.
-    :vartype raw_input: str
-    :ivar street_number:
-    :vartype street_number: str
-    :ivar street:
-    :vartype street: str
-    :ivar apartment_number:
-    :vartype apartment_number: str
-    :ivar city:
-    :vartype city: str
-    :ivar latitude:
-    :vartype latitude: float
-    :ivar longitude:
-    :vartype longitude: float
-    """
-
-    _validation = {
-        "formatted": {"readonly": True},
-        "postal_code": {"readonly": True},
-        "state": {"readonly": True},
-        "country": {"readonly": True},
-        "country_code": {"readonly": True},
-        "raw_input": {"required": True},
-        "street_number": {"readonly": True},
-        "street": {"readonly": True},
-        "apartment_number": {"readonly": True},
-        "city": {"readonly": True},
-        "latitude": {"readonly": True},
-        "longitude": {"readonly": True},
-    }
-
-    _attribute_map = {
-        "formatted": {"key": "formatted", "type": "str"},
-        "postal_code": {"key": "postalCode", "type": "str"},
-        "state": {"key": "state", "type": "str"},
-        "country": {"key": "country", "type": "str"},
-        "country_code": {"key": "countryCode", "type": "str"},
-        "raw_input": {"key": "rawInput", "type": "str"},
-        "street_number": {"key": "streetNumber", "type": "str"},
-        "street": {"key": "street", "type": "str"},
-        "apartment_number": {"key": "apartmentNumber", "type": "str"},
-        "city": {"key": "city", "type": "str"},
-        "latitude": {"key": "latitude", "type": "float"},
-        "longitude": {"key": "longitude", "type": "float"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword raw_input: Required.
-        :paramtype raw_input: str
-        """
-        super(LocationAnnotationV2UpdateParsed, self).__init__(**kwargs)
-
-
 class LocationSearchScoreComponent(msrest.serialization.Model):
     """LocationSearchScoreComponent.
 
@@ -11006,163 +10592,6 @@ class ManagementLevelSearchScoreComponent(msrest.serialization.Model):
         self.value = kwargs.get("value", None)
         self.label = kwargs["label"]
         self.score = kwargs.get("score", None)
-
-
-class Meta(msrest.serialization.Model):
-    """Meta.
-
-    :ivar identifier: Uniquely identify a document.
-    :vartype identifier: str
-    :ivar file_name: Optional filename of the file.
-    :vartype file_name: str
-    :ivar ready: If true, the document has finished processing. Particularly useful if an endpoint
-     request specified wait=False, when polling use this variable to determine when to stop polling.
-    :vartype ready: bool
-    :ivar ready_dt: The datetime when the document was ready.
-    :vartype ready_dt: ~datetime.datetime
-    :ivar failed: If true, some exception was raised during processing. Check the 'error' field of
-     the main return object.
-    :vartype failed: bool
-    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
-     deleted.  Defaults to no expiry.
-    :vartype expiry_time: ~datetime.datetime
-    :ivar language: The document's language.
-    :vartype language: str
-    :ivar pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
-     converted to pdf as part of the parsing process).
-    :vartype pdf: str
-    :ivar parent_document: If this document is part of a splitted document, this attribute points
-     to the original document that this document is splitted from.
-    :vartype parent_document: ~affinda.models.MetaParentDocument
-    :ivar child_documents: If this document has been splitted into a number of child documents,
-     this attribute points to those child documents.
-    :vartype child_documents: list[~affinda.models.MetaChildDocumentsItem]
-    :ivar pages: The document's pages.
-    :vartype pages: list[~affinda.models.PageMeta]
-    :ivar is_verified: This is true if the 'confirm' button has been clicked in the Affinda
-     validation tool.
-    :vartype is_verified: bool
-    :ivar review_url: Signed URL (valid for 60 minutes) to access the validation tool.  Not
-     applicable for documents types such a resumes.
-    :vartype review_url: str
-    :ivar ocr_confidence: The overall confidence in the conversion of image to text.  (only
-     applicable for images or PDF documents without a text layer).
-    :vartype ocr_confidence: float
-    """
-
-    _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-        "file_name": {"key": "fileName", "type": "str"},
-        "ready": {"key": "ready", "type": "bool"},
-        "ready_dt": {"key": "readyDt", "type": "iso-8601"},
-        "failed": {"key": "failed", "type": "bool"},
-        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
-        "language": {"key": "language", "type": "str"},
-        "pdf": {"key": "pdf", "type": "str"},
-        "parent_document": {"key": "parentDocument", "type": "MetaParentDocument"},
-        "child_documents": {"key": "childDocuments", "type": "[MetaChildDocumentsItem]"},
-        "pages": {"key": "pages", "type": "[PageMeta]"},
-        "is_verified": {"key": "isVerified", "type": "bool"},
-        "review_url": {"key": "reviewUrl", "type": "str"},
-        "ocr_confidence": {"key": "ocrConfidence", "type": "float"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword identifier: Uniquely identify a document.
-        :paramtype identifier: str
-        :keyword file_name: Optional filename of the file.
-        :paramtype file_name: str
-        :keyword ready: If true, the document has finished processing. Particularly useful if an
-         endpoint request specified wait=False, when polling use this variable to determine when to stop
-         polling.
-        :paramtype ready: bool
-        :keyword ready_dt: The datetime when the document was ready.
-        :paramtype ready_dt: ~datetime.datetime
-        :keyword failed: If true, some exception was raised during processing. Check the 'error' field
-         of the main return object.
-        :paramtype failed: bool
-        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
-         deleted.  Defaults to no expiry.
-        :paramtype expiry_time: ~datetime.datetime
-        :keyword language: The document's language.
-        :paramtype language: str
-        :keyword pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
-         converted to pdf as part of the parsing process).
-        :paramtype pdf: str
-        :keyword parent_document: If this document is part of a splitted document, this attribute
-         points to the original document that this document is splitted from.
-        :paramtype parent_document: ~affinda.models.MetaParentDocument
-        :keyword child_documents: If this document has been splitted into a number of child documents,
-         this attribute points to those child documents.
-        :paramtype child_documents: list[~affinda.models.MetaChildDocumentsItem]
-        :keyword pages: The document's pages.
-        :paramtype pages: list[~affinda.models.PageMeta]
-        :keyword is_verified: This is true if the 'confirm' button has been clicked in the Affinda
-         validation tool.
-        :paramtype is_verified: bool
-        :keyword review_url: Signed URL (valid for 60 minutes) to access the validation tool.  Not
-         applicable for documents types such a resumes.
-        :paramtype review_url: str
-        :keyword ocr_confidence: The overall confidence in the conversion of image to text.  (only
-         applicable for images or PDF documents without a text layer).
-        :paramtype ocr_confidence: float
-        """
-        super(Meta, self).__init__(**kwargs)
-        self.identifier = kwargs.get("identifier", None)
-        self.file_name = kwargs.get("file_name", None)
-        self.ready = kwargs.get("ready", None)
-        self.ready_dt = kwargs.get("ready_dt", None)
-        self.failed = kwargs.get("failed", None)
-        self.expiry_time = kwargs.get("expiry_time", None)
-        self.language = kwargs.get("language", None)
-        self.pdf = kwargs.get("pdf", None)
-        self.parent_document = kwargs.get("parent_document", None)
-        self.child_documents = kwargs.get("child_documents", None)
-        self.pages = kwargs.get("pages", None)
-        self.is_verified = kwargs.get("is_verified", None)
-        self.review_url = kwargs.get("review_url", None)
-        self.ocr_confidence = kwargs.get("ocr_confidence", None)
-
-
-class MetaChildDocumentsItem(msrest.serialization.Model):
-    """MetaChildDocumentsItem.
-
-    :ivar identifier: Uniquely identify a document.
-    :vartype identifier: str
-    """
-
-    _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword identifier: Uniquely identify a document.
-        :paramtype identifier: str
-        """
-        super(MetaChildDocumentsItem, self).__init__(**kwargs)
-        self.identifier = kwargs.get("identifier", None)
-
-
-class MetaParentDocument(msrest.serialization.Model):
-    """If this document is part of a splitted document, this attribute points to the original document that this document is splitted from.
-
-    :ivar identifier: Uniquely identify a document.
-    :vartype identifier: str
-    """
-
-    _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword identifier: Uniquely identify a document.
-        :paramtype identifier: str
-        """
-        super(MetaParentDocument, self).__init__(**kwargs)
-        self.identifier = kwargs.get("identifier", None)
 
 
 class OccupationGroupSearchScoreComponent(msrest.serialization.Model):
@@ -11496,31 +10925,6 @@ class PaginatedResponse(msrest.serialization.Model):
         self.previous = kwargs.get("previous", None)
 
 
-class Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema(
-    msrest.serialization.Model
-):
-    """Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema.
-
-    :ivar config_override:
-    :vartype config_override: ~affinda.models.JobDescriptionSearchConfig
-    """
-
-    _attribute_map = {
-        "config_override": {"key": "configOverride", "type": "JobDescriptionSearchConfig"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword config_override:
-        :paramtype config_override: ~affinda.models.JobDescriptionSearchConfig
-        """
-        super(
-            Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema,
-            self,
-        ).__init__(**kwargs)
-        self.config_override = kwargs.get("config_override", None)
-
-
 class PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1(
     msrest.serialization.Model
 ):
@@ -11799,30 +11203,6 @@ class PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema
         self.document = kwargs.get("document", None)
 
 
-class PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema(
-    msrest.serialization.Model
-):
-    """PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema.
-
-    :ivar status: Known values are: "accepted", "declined".
-    :vartype status: str or ~affinda.models.PatchContentSchemaStatus
-    """
-
-    _attribute_map = {
-        "status": {"key": "status", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword status: Known values are: "accepted", "declined".
-        :paramtype status: str or ~affinda.models.PatchContentSchemaStatus
-        """
-        super(
-            PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema, self
-        ).__init__(**kwargs)
-        self.status = kwargs.get("status", None)
-
-
 class PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model):
     """PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema.
 
@@ -11885,6 +11265,30 @@ class PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchem
             PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema, self
         ).__init__(**kwargs)
         self.document = kwargs.get("document", None)
+
+
+class PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema(
+    msrest.serialization.Model
+):
+    """PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema.
+
+    :ivar config_override:
+    :vartype config_override: ~affinda.models.JobDescriptionSearchConfig
+    """
+
+    _attribute_map = {
+        "config_override": {"key": "configOverride", "type": "JobDescriptionSearchConfig"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword config_override:
+        :paramtype config_override: ~affinda.models.JobDescriptionSearchConfig
+        """
+        super(
+            PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema, self
+        ).__init__(**kwargs)
+        self.config_override = kwargs.get("config_override", None)
 
 
 class PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema(
@@ -12177,178 +11581,6 @@ class Rectangle(msrest.serialization.Model):
         self.y1 = kwargs["y1"]
 
 
-class RedactedResume(msrest.serialization.Model):
-    """RedactedResume.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar data: Required.
-    :vartype data: ~affinda.models.RedactedResumeData
-    :ivar meta: Required.
-    :vartype meta: ~affinda.models.Meta
-    :ivar error: Required.
-    :vartype error: ~affinda.models.Error
-    """
-
-    _validation = {
-        "data": {"required": True},
-        "meta": {"required": True},
-        "error": {"required": True},
-    }
-
-    _attribute_map = {
-        "data": {"key": "data", "type": "RedactedResumeData"},
-        "meta": {"key": "meta", "type": "Meta"},
-        "error": {"key": "error", "type": "Error"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword data: Required.
-        :paramtype data: ~affinda.models.RedactedResumeData
-        :keyword meta: Required.
-        :paramtype meta: ~affinda.models.Meta
-        :keyword error: Required.
-        :paramtype error: ~affinda.models.Error
-        """
-        super(RedactedResume, self).__init__(**kwargs)
-        self.data = kwargs["data"]
-        self.meta = kwargs["meta"]
-        self.error = kwargs["error"]
-
-
-class RedactedResumeData(msrest.serialization.Model):
-    """RedactedResumeData.
-
-    :ivar redacted_pdf: URL to redacted PDF.
-    :vartype redacted_pdf: str
-    """
-
-    _attribute_map = {
-        "redacted_pdf": {"key": "redactedPdf", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword redacted_pdf: URL to redacted PDF.
-        :paramtype redacted_pdf: str
-        """
-        super(RedactedResumeData, self).__init__(**kwargs)
-        self.redacted_pdf = kwargs.get("redacted_pdf", None)
-
-
-class RedactedResumeRequestBody(msrest.serialization.Model):
-    """RedactedResumeRequestBody.
-
-    :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
-     JPG.
-    :vartype file: IO
-    :ivar identifier: A random string that uniquely identify the resource.
-    :vartype identifier: str
-    :ivar file_name: Optional filename of the file.
-    :vartype file_name: str
-    :ivar url: URL to a resume to download and process.
-    :vartype url: str
-    :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-    :vartype language: str
-    :ivar wait: If "true" (default), will return a response only after processing has completed. If
-     "false", will return an empty data object which can be polled at the GET endpoint until
-     processing is complete.
-    :vartype wait: bool
-    :ivar redact_headshot: Whether to redact headshot.
-    :vartype redact_headshot: str
-    :ivar redact_personal_details: Whether to redact personal details (e.g. name, address).
-    :vartype redact_personal_details: str
-    :ivar redact_work_details: Whether to redact work details (e.g. company names).
-    :vartype redact_work_details: str
-    :ivar redact_education_details: Whether to redact education details (e.g. university names).
-    :vartype redact_education_details: str
-    :ivar redact_referees: Whether to redact referee details.
-    :vartype redact_referees: str
-    :ivar redact_locations: Whether to redact location names.
-    :vartype redact_locations: str
-    :ivar redact_dates: Whether to redact dates.
-    :vartype redact_dates: str
-    :ivar redact_gender: Whether to redact gender.
-    :vartype redact_gender: str
-    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
-     deleted.  Defaults to no expiry.
-    :vartype expiry_time: ~datetime.datetime
-    """
-
-    _attribute_map = {
-        "file": {"key": "file", "type": "IO"},
-        "identifier": {"key": "identifier", "type": "str"},
-        "file_name": {"key": "fileName", "type": "str"},
-        "url": {"key": "url", "type": "str"},
-        "language": {"key": "language", "type": "str"},
-        "wait": {"key": "wait", "type": "bool"},
-        "redact_headshot": {"key": "redactHeadshot", "type": "str"},
-        "redact_personal_details": {"key": "redactPersonalDetails", "type": "str"},
-        "redact_work_details": {"key": "redactWorkDetails", "type": "str"},
-        "redact_education_details": {"key": "redactEducationDetails", "type": "str"},
-        "redact_referees": {"key": "redactReferees", "type": "str"},
-        "redact_locations": {"key": "redactLocations", "type": "str"},
-        "redact_dates": {"key": "redactDates", "type": "str"},
-        "redact_gender": {"key": "redactGender", "type": "str"},
-        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
-         PNG, JPG.
-        :paramtype file: IO
-        :keyword identifier: A random string that uniquely identify the resource.
-        :paramtype identifier: str
-        :keyword file_name: Optional filename of the file.
-        :paramtype file_name: str
-        :keyword url: URL to a resume to download and process.
-        :paramtype url: str
-        :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-        :paramtype language: str
-        :keyword wait: If "true" (default), will return a response only after processing has completed.
-         If "false", will return an empty data object which can be polled at the GET endpoint until
-         processing is complete.
-        :paramtype wait: bool
-        :keyword redact_headshot: Whether to redact headshot.
-        :paramtype redact_headshot: str
-        :keyword redact_personal_details: Whether to redact personal details (e.g. name, address).
-        :paramtype redact_personal_details: str
-        :keyword redact_work_details: Whether to redact work details (e.g. company names).
-        :paramtype redact_work_details: str
-        :keyword redact_education_details: Whether to redact education details (e.g. university names).
-        :paramtype redact_education_details: str
-        :keyword redact_referees: Whether to redact referee details.
-        :paramtype redact_referees: str
-        :keyword redact_locations: Whether to redact location names.
-        :paramtype redact_locations: str
-        :keyword redact_dates: Whether to redact dates.
-        :paramtype redact_dates: str
-        :keyword redact_gender: Whether to redact gender.
-        :paramtype redact_gender: str
-        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
-         deleted.  Defaults to no expiry.
-        :paramtype expiry_time: ~datetime.datetime
-        """
-        super(RedactedResumeRequestBody, self).__init__(**kwargs)
-        self.file = kwargs.get("file", None)
-        self.identifier = kwargs.get("identifier", None)
-        self.file_name = kwargs.get("file_name", None)
-        self.url = kwargs.get("url", None)
-        self.language = kwargs.get("language", None)
-        self.wait = kwargs.get("wait", True)
-        self.redact_headshot = kwargs.get("redact_headshot", "true")
-        self.redact_personal_details = kwargs.get("redact_personal_details", "true")
-        self.redact_work_details = kwargs.get("redact_work_details", "true")
-        self.redact_education_details = kwargs.get("redact_education_details", "true")
-        self.redact_referees = kwargs.get("redact_referees", "true")
-        self.redact_locations = kwargs.get("redact_locations", "true")
-        self.redact_dates = kwargs.get("redact_dates", "true")
-        self.redact_gender = kwargs.get("redact_gender", "true")
-        self.expiry_time = kwargs.get("expiry_time", None)
-
-
 class RequestError(msrest.serialization.Model):
     """RequestError.
 
@@ -12599,206 +11831,6 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
         self.event = kwargs.get("event", None)
         self.organization = kwargs.get("organization", None)
         self.version = kwargs.get("version", None)
-
-
-class Resume(msrest.serialization.Model):
-    """Resume.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar data: Required. A JSON-encoded string of the ``ResumeData`` object.
-    :vartype data: ~affinda.models.ResumeData
-    :ivar meta: Required.
-    :vartype meta: ~affinda.models.Meta
-    :ivar error: Required.
-    :vartype error: ~affinda.models.Error
-    """
-
-    _validation = {
-        "data": {"required": True},
-        "meta": {"required": True},
-        "error": {"required": True},
-    }
-
-    _attribute_map = {
-        "data": {"key": "data", "type": "ResumeData"},
-        "meta": {"key": "meta", "type": "Meta"},
-        "error": {"key": "error", "type": "Error"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword data: Required. A JSON-encoded string of the ``ResumeData`` object.
-        :paramtype data: ~affinda.models.ResumeData
-        :keyword meta: Required.
-        :paramtype meta: ~affinda.models.Meta
-        :keyword error: Required.
-        :paramtype error: ~affinda.models.Error
-        """
-        super(Resume, self).__init__(**kwargs)
-        self.data = kwargs["data"]
-        self.meta = kwargs["meta"]
-        self.error = kwargs["error"]
-
-
-class ResumeData(msrest.serialization.Model):
-    """A JSON-encoded string of the ``ResumeData`` object.
-
-    Variables are only populated by the server, and will be ignored when sending a request.
-
-    :ivar additional_properties: Unmatched properties from the message are deserialized to this
-     collection.
-    :vartype additional_properties: dict[str, any]
-    :ivar name:
-    :vartype name: ~affinda.models.ResumeDataName
-    :ivar phone_numbers:
-    :vartype phone_numbers: list[str]
-    :ivar websites:
-    :vartype websites: list[str]
-    :ivar emails:
-    :vartype emails: list[str]
-    :ivar date_of_birth:
-    :vartype date_of_birth: str
-    :ivar location:
-    :vartype location: ~affinda.models.Location
-    :ivar objective:
-    :vartype objective: str
-    :ivar languages:
-    :vartype languages: list[str]
-    :ivar language_codes:
-    :vartype language_codes: list[str]
-    :ivar summary:
-    :vartype summary: str
-    :ivar total_years_experience:
-    :vartype total_years_experience: int
-    :ivar head_shot: base64 encoded string.
-    :vartype head_shot: bytearray
-    :ivar education:
-    :vartype education: list[~affinda.models.Education]
-    :ivar profession: Prediction of the candidate's profession based on recent work experience.
-    :vartype profession: str
-    :ivar linkedin: Linkedin account associated with the candidate.
-    :vartype linkedin: str
-    :ivar work_experience:
-    :vartype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
-    :ivar skills:
-    :vartype skills: list[~affinda.models.ResumeDataSkillsItem]
-    :ivar certifications:
-    :vartype certifications: list[str]
-    :ivar publications:
-    :vartype publications: list[str]
-    :ivar referees:
-    :vartype referees: list[~affinda.models.ResumeDataRefereesItem]
-    :ivar sections:
-    :vartype sections: list[~affinda.models.ResumeDataSectionsItem]
-    :ivar is_resume_probability: Probability that the given document is a resume. Values below 30
-     suggest that the document is not a resume.
-    :vartype is_resume_probability: int
-    :ivar raw_text: All of the raw text of the parsed resume, example is shortened for readability.
-    :vartype raw_text: str
-    """
-
-    _validation = {
-        "languages": {"readonly": True},
-        "language_codes": {"readonly": True},
-        "head_shot": {"readonly": True},
-        "profession": {"readonly": True},
-        "linkedin": {"readonly": True},
-        "sections": {"readonly": True},
-        "is_resume_probability": {"readonly": True},
-    }
-
-    _attribute_map = {
-        "additional_properties": {"key": "", "type": "{object}"},
-        "name": {"key": "name", "type": "ResumeDataName"},
-        "phone_numbers": {"key": "phoneNumbers", "type": "[str]"},
-        "websites": {"key": "websites", "type": "[str]"},
-        "emails": {"key": "emails", "type": "[str]"},
-        "date_of_birth": {"key": "dateOfBirth", "type": "str"},
-        "location": {"key": "location", "type": "Location"},
-        "objective": {"key": "objective", "type": "str"},
-        "languages": {"key": "languages", "type": "[str]"},
-        "language_codes": {"key": "languageCodes", "type": "[str]"},
-        "summary": {"key": "summary", "type": "str"},
-        "total_years_experience": {"key": "totalYearsExperience", "type": "int"},
-        "head_shot": {"key": "headShot", "type": "bytearray"},
-        "education": {"key": "education", "type": "[Education]"},
-        "profession": {"key": "profession", "type": "str"},
-        "linkedin": {"key": "linkedin", "type": "str"},
-        "work_experience": {"key": "workExperience", "type": "[ResumeDataWorkExperienceItem]"},
-        "skills": {"key": "skills", "type": "[ResumeDataSkillsItem]"},
-        "certifications": {"key": "certifications", "type": "[str]"},
-        "publications": {"key": "publications", "type": "[str]"},
-        "referees": {"key": "referees", "type": "[ResumeDataRefereesItem]"},
-        "sections": {"key": "sections", "type": "[ResumeDataSectionsItem]"},
-        "is_resume_probability": {"key": "isResumeProbability", "type": "int"},
-        "raw_text": {"key": "rawText", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword additional_properties: Unmatched properties from the message are deserialized to this
-         collection.
-        :paramtype additional_properties: dict[str, any]
-        :keyword name:
-        :paramtype name: ~affinda.models.ResumeDataName
-        :keyword phone_numbers:
-        :paramtype phone_numbers: list[str]
-        :keyword websites:
-        :paramtype websites: list[str]
-        :keyword emails:
-        :paramtype emails: list[str]
-        :keyword date_of_birth:
-        :paramtype date_of_birth: str
-        :keyword location:
-        :paramtype location: ~affinda.models.Location
-        :keyword objective:
-        :paramtype objective: str
-        :keyword summary:
-        :paramtype summary: str
-        :keyword total_years_experience:
-        :paramtype total_years_experience: int
-        :keyword education:
-        :paramtype education: list[~affinda.models.Education]
-        :keyword work_experience:
-        :paramtype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
-        :keyword skills:
-        :paramtype skills: list[~affinda.models.ResumeDataSkillsItem]
-        :keyword certifications:
-        :paramtype certifications: list[str]
-        :keyword publications:
-        :paramtype publications: list[str]
-        :keyword referees:
-        :paramtype referees: list[~affinda.models.ResumeDataRefereesItem]
-        :keyword raw_text: All of the raw text of the parsed resume, example is shortened for
-         readability.
-        :paramtype raw_text: str
-        """
-        super(ResumeData, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.name = kwargs.get("name", None)
-        self.phone_numbers = kwargs.get("phone_numbers", None)
-        self.websites = kwargs.get("websites", None)
-        self.emails = kwargs.get("emails", None)
-        self.date_of_birth = kwargs.get("date_of_birth", None)
-        self.location = kwargs.get("location", None)
-        self.objective = kwargs.get("objective", "")
-        self.languages = None
-        self.language_codes = None
-        self.summary = kwargs.get("summary", "")
-        self.total_years_experience = kwargs.get("total_years_experience", None)
-        self.head_shot = None
-        self.education = kwargs.get("education", None)
-        self.profession = None
-        self.linkedin = None
-        self.work_experience = kwargs.get("work_experience", None)
-        self.skills = kwargs.get("skills", None)
-        self.certifications = kwargs.get("certifications", None)
-        self.publications = kwargs.get("publications", None)
-        self.referees = kwargs.get("referees", None)
-        self.sections = None
-        self.is_resume_probability = None
-        self.raw_text = kwargs.get("raw_text", None)
 
 
 class ResumeDataName(msrest.serialization.Model):
@@ -13203,84 +12235,54 @@ class ResumeDataWorkExperienceItemOccupation(msrest.serialization.Model):
         self.classification = kwargs.get("classification", None)
 
 
-class ResumeRequestBody(msrest.serialization.Model):
-    """ResumeRequestBody.
+class ResumeDocument(Document):
+    """ResumeDocument.
 
-    :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
-     JPG.
-    :vartype file: IO
-    :ivar url: URL to a resume to download and process.
-    :vartype url: str
-    :ivar data: A JSON-encoded string of the ``ResumeData`` object.
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar extractor: Required. Constant filled by server.
+    :vartype extractor: str
+    :ivar meta: Required.
+    :vartype meta: ~affinda.models.DocumentMeta
+    :ivar error:
+    :vartype error: ~affinda.models.Error
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar data: Required. A JSON-encoded string of the ``ResumeData`` object.
     :vartype data: ~affinda.models.ResumeData
-    :ivar identifier: A random string that uniquely identify the resource.
-    :vartype identifier: str
-    :ivar file_name: Optional filename of the file.
-    :vartype file_name: str
-    :ivar wait: If "true" (default), will return a response only after processing has completed. If
-     "false", will return an empty data object which can be polled at the GET endpoint until
-     processing is complete.
-    :vartype wait: bool
-    :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
-     of an existing document. If "false" (default), will parse the document normally whether its a
-     duplicate or not.
-    :vartype reject_duplicates: bool
-    :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-    :vartype language: str
-    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
-     deleted.  Defaults to no expiry.
-    :vartype expiry_time: ~datetime.datetime
     """
 
+    _validation = {
+        "extractor": {"required": True},
+        "meta": {"required": True},
+        "data": {"required": True},
+    }
+
     _attribute_map = {
-        "file": {"key": "file", "type": "IO"},
-        "url": {"key": "url", "type": "str"},
+        "extractor": {"key": "extractor", "type": "str"},
+        "meta": {"key": "meta", "type": "DocumentMeta"},
+        "error": {"key": "error", "type": "Error"},
+        "additional_properties": {"key": "", "type": "{object}"},
         "data": {"key": "data", "type": "ResumeData"},
-        "identifier": {"key": "identifier", "type": "str"},
-        "file_name": {"key": "fileName", "type": "str"},
-        "wait": {"key": "wait", "type": "bool"},
-        "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
-        "language": {"key": "language", "type": "str"},
-        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
     }
 
     def __init__(self, **kwargs):
         """
-        :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
-         PNG, JPG.
-        :paramtype file: IO
-        :keyword url: URL to a resume to download and process.
-        :paramtype url: str
-        :keyword data: A JSON-encoded string of the ``ResumeData`` object.
+        :keyword meta: Required.
+        :paramtype meta: ~affinda.models.DocumentMeta
+        :keyword error:
+        :paramtype error: ~affinda.models.Error
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword data: Required. A JSON-encoded string of the ``ResumeData`` object.
         :paramtype data: ~affinda.models.ResumeData
-        :keyword identifier: A random string that uniquely identify the resource.
-        :paramtype identifier: str
-        :keyword file_name: Optional filename of the file.
-        :paramtype file_name: str
-        :keyword wait: If "true" (default), will return a response only after processing has completed.
-         If "false", will return an empty data object which can be polled at the GET endpoint until
-         processing is complete.
-        :paramtype wait: bool
-        :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
-         duplicate of an existing document. If "false" (default), will parse the document normally
-         whether its a duplicate or not.
-        :paramtype reject_duplicates: bool
-        :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-        :paramtype language: str
-        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
-         deleted.  Defaults to no expiry.
-        :paramtype expiry_time: ~datetime.datetime
         """
-        super(ResumeRequestBody, self).__init__(**kwargs)
-        self.file = kwargs.get("file", None)
-        self.url = kwargs.get("url", None)
-        self.data = kwargs.get("data", None)
-        self.identifier = kwargs.get("identifier", None)
-        self.file_name = kwargs.get("file_name", None)
-        self.wait = kwargs.get("wait", True)
-        self.reject_duplicates = kwargs.get("reject_duplicates", False)
-        self.language = kwargs.get("language", None)
-        self.expiry_time = kwargs.get("expiry_time", None)
+        super(ResumeDocument, self).__init__(**kwargs)
+        self.extractor = "resume"  # type: str
+        self.additional_properties = kwargs.get("additional_properties", None)
+        self.data = kwargs["data"]
 
 
 class ResumeSearch(msrest.serialization.Model):
@@ -15224,106 +14226,6 @@ class SkillAnnotationV2(AnnotationV2):
         self.parsed = None
 
 
-class SkillAnnotationV2Update(AnnotationV2Base):
-    """SkillAnnotationV2Update.
-
-    Variables are only populated by the server, and will be ignored when sending a request.
-
-    :ivar additional_properties: Unmatched properties from the message are deserialized to this
-     collection.
-    :vartype additional_properties: dict[str, any]
-    :ivar id:
-    :vartype id: int
-    :ivar rectangle:
-    :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
-    :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index:
-    :vartype page_index: int
-    :ivar raw:
-    :vartype raw: str
-    :ivar confidence: The overall confidence that the model's prediction is correct.
-    :vartype confidence: float
-    :ivar classification_confidence: The model's confidence that the text has been classified
-     correctly.
-    :vartype classification_confidence: float
-    :ivar text_extraction_confidence: If the document was submitted as an image, this is the
-     confidence that the text in the image has been correctly read by the model.
-    :vartype text_extraction_confidence: float
-    :ivar is_verified:
-    :vartype is_verified: bool
-    :ivar is_client_verified:
-    :vartype is_client_verified: bool
-    :ivar is_auto_verified:
-    :vartype is_auto_verified: bool
-    :ivar data_point:
-    :vartype data_point: str
-    :ivar content_type:
-    :vartype content_type: str
-    :ivar parsed:
-    :vartype parsed: str
-    """
-
-    _validation = {
-        "parsed": {"readonly": True},
-    }
-
-    _attribute_map = {
-        "additional_properties": {"key": "", "type": "{object}"},
-        "id": {"key": "id", "type": "int"},
-        "rectangle": {"key": "rectangle", "type": "Rectangle"},
-        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
-        "page_index": {"key": "pageIndex", "type": "int"},
-        "raw": {"key": "raw", "type": "str"},
-        "confidence": {"key": "confidence", "type": "float"},
-        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
-        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
-        "is_verified": {"key": "isVerified", "type": "bool"},
-        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
-        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "data_point": {"key": "dataPoint", "type": "str"},
-        "content_type": {"key": "contentType", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword additional_properties: Unmatched properties from the message are deserialized to this
-         collection.
-        :paramtype additional_properties: dict[str, any]
-        :keyword id:
-        :paramtype id: int
-        :keyword rectangle:
-        :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
-        :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index:
-        :paramtype page_index: int
-        :keyword raw:
-        :paramtype raw: str
-        :keyword confidence: The overall confidence that the model's prediction is correct.
-        :paramtype confidence: float
-        :keyword classification_confidence: The model's confidence that the text has been classified
-         correctly.
-        :paramtype classification_confidence: float
-        :keyword text_extraction_confidence: If the document was submitted as an image, this is the
-         confidence that the text in the image has been correctly read by the model.
-        :paramtype text_extraction_confidence: float
-        :keyword is_verified:
-        :paramtype is_verified: bool
-        :keyword is_client_verified:
-        :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
-        :paramtype is_auto_verified: bool
-        :keyword data_point:
-        :paramtype data_point: str
-        :keyword content_type:
-        :paramtype content_type: str
-        """
-        super(SkillAnnotationV2Update, self).__init__(**kwargs)
-        self.parsed = None
-
-
 class SkillsSearchScoreComponent(msrest.serialization.Model):
     """SkillsSearchScoreComponent.
 
@@ -15466,102 +14368,6 @@ class TagUpdate(msrest.serialization.Model):
         super(TagUpdate, self).__init__(**kwargs)
         self.name = kwargs.get("name", None)
         self.workspace = kwargs.get("workspace", None)
-
-
-class TextAnnotationV2Update(AnnotationV2Base):
-    """TextAnnotationV2Update.
-
-    :ivar additional_properties: Unmatched properties from the message are deserialized to this
-     collection.
-    :vartype additional_properties: dict[str, any]
-    :ivar id:
-    :vartype id: int
-    :ivar rectangle:
-    :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
-    :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index:
-    :vartype page_index: int
-    :ivar raw:
-    :vartype raw: str
-    :ivar confidence: The overall confidence that the model's prediction is correct.
-    :vartype confidence: float
-    :ivar classification_confidence: The model's confidence that the text has been classified
-     correctly.
-    :vartype classification_confidence: float
-    :ivar text_extraction_confidence: If the document was submitted as an image, this is the
-     confidence that the text in the image has been correctly read by the model.
-    :vartype text_extraction_confidence: float
-    :ivar is_verified:
-    :vartype is_verified: bool
-    :ivar is_client_verified:
-    :vartype is_client_verified: bool
-    :ivar is_auto_verified:
-    :vartype is_auto_verified: bool
-    :ivar data_point:
-    :vartype data_point: str
-    :ivar content_type:
-    :vartype content_type: str
-    :ivar parsed:
-    :vartype parsed: str
-    """
-
-    _attribute_map = {
-        "additional_properties": {"key": "", "type": "{object}"},
-        "id": {"key": "id", "type": "int"},
-        "rectangle": {"key": "rectangle", "type": "Rectangle"},
-        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
-        "page_index": {"key": "pageIndex", "type": "int"},
-        "raw": {"key": "raw", "type": "str"},
-        "confidence": {"key": "confidence", "type": "float"},
-        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
-        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
-        "is_verified": {"key": "isVerified", "type": "bool"},
-        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
-        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "data_point": {"key": "dataPoint", "type": "str"},
-        "content_type": {"key": "contentType", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword additional_properties: Unmatched properties from the message are deserialized to this
-         collection.
-        :paramtype additional_properties: dict[str, any]
-        :keyword id:
-        :paramtype id: int
-        :keyword rectangle:
-        :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
-        :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index:
-        :paramtype page_index: int
-        :keyword raw:
-        :paramtype raw: str
-        :keyword confidence: The overall confidence that the model's prediction is correct.
-        :paramtype confidence: float
-        :keyword classification_confidence: The model's confidence that the text has been classified
-         correctly.
-        :paramtype classification_confidence: float
-        :keyword text_extraction_confidence: If the document was submitted as an image, this is the
-         confidence that the text in the image has been correctly read by the model.
-        :paramtype text_extraction_confidence: float
-        :keyword is_verified:
-        :paramtype is_verified: bool
-        :keyword is_client_verified:
-        :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
-        :paramtype is_auto_verified: bool
-        :keyword data_point:
-        :paramtype data_point: str
-        :keyword content_type:
-        :paramtype content_type: str
-        :keyword parsed:
-        :paramtype parsed: str
-        """
-        super(TextAnnotationV2Update, self).__init__(**kwargs)
-        self.parsed = kwargs.get("parsed", None)
 
 
 class Workspace(msrest.serialization.Model):
@@ -16058,127 +14864,5 @@ class YearsExperienceAnnotationV2Parsed(msrest.serialization.Model):
         :paramtype maximum: float
         """
         super(YearsExperienceAnnotationV2Parsed, self).__init__(**kwargs)
-        self.minimum = kwargs.get("minimum", None)
-        self.maximum = kwargs.get("maximum", None)
-
-
-class YearsExperienceAnnotationV2Update(AnnotationV2Base):
-    """YearsExperienceAnnotationV2Update.
-
-    :ivar additional_properties: Unmatched properties from the message are deserialized to this
-     collection.
-    :vartype additional_properties: dict[str, any]
-    :ivar id:
-    :vartype id: int
-    :ivar rectangle:
-    :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles:
-    :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index:
-    :vartype page_index: int
-    :ivar raw:
-    :vartype raw: str
-    :ivar confidence: The overall confidence that the model's prediction is correct.
-    :vartype confidence: float
-    :ivar classification_confidence: The model's confidence that the text has been classified
-     correctly.
-    :vartype classification_confidence: float
-    :ivar text_extraction_confidence: If the document was submitted as an image, this is the
-     confidence that the text in the image has been correctly read by the model.
-    :vartype text_extraction_confidence: float
-    :ivar is_verified:
-    :vartype is_verified: bool
-    :ivar is_client_verified:
-    :vartype is_client_verified: bool
-    :ivar is_auto_verified:
-    :vartype is_auto_verified: bool
-    :ivar data_point:
-    :vartype data_point: str
-    :ivar content_type:
-    :vartype content_type: str
-    :ivar parsed: Years of experience range.
-    :vartype parsed: ~affinda.models.YearsExperienceAnnotationV2UpdateParsed
-    """
-
-    _attribute_map = {
-        "additional_properties": {"key": "", "type": "{object}"},
-        "id": {"key": "id", "type": "int"},
-        "rectangle": {"key": "rectangle", "type": "Rectangle"},
-        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
-        "page_index": {"key": "pageIndex", "type": "int"},
-        "raw": {"key": "raw", "type": "str"},
-        "confidence": {"key": "confidence", "type": "float"},
-        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
-        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
-        "is_verified": {"key": "isVerified", "type": "bool"},
-        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
-        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
-        "data_point": {"key": "dataPoint", "type": "str"},
-        "content_type": {"key": "contentType", "type": "str"},
-        "parsed": {"key": "parsed", "type": "YearsExperienceAnnotationV2UpdateParsed"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword additional_properties: Unmatched properties from the message are deserialized to this
-         collection.
-        :paramtype additional_properties: dict[str, any]
-        :keyword id:
-        :paramtype id: int
-        :keyword rectangle:
-        :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
-        :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index:
-        :paramtype page_index: int
-        :keyword raw:
-        :paramtype raw: str
-        :keyword confidence: The overall confidence that the model's prediction is correct.
-        :paramtype confidence: float
-        :keyword classification_confidence: The model's confidence that the text has been classified
-         correctly.
-        :paramtype classification_confidence: float
-        :keyword text_extraction_confidence: If the document was submitted as an image, this is the
-         confidence that the text in the image has been correctly read by the model.
-        :paramtype text_extraction_confidence: float
-        :keyword is_verified:
-        :paramtype is_verified: bool
-        :keyword is_client_verified:
-        :paramtype is_client_verified: bool
-        :keyword is_auto_verified:
-        :paramtype is_auto_verified: bool
-        :keyword data_point:
-        :paramtype data_point: str
-        :keyword content_type:
-        :paramtype content_type: str
-        :keyword parsed: Years of experience range.
-        :paramtype parsed: ~affinda.models.YearsExperienceAnnotationV2UpdateParsed
-        """
-        super(YearsExperienceAnnotationV2Update, self).__init__(**kwargs)
-        self.parsed = kwargs.get("parsed", None)
-
-
-class YearsExperienceAnnotationV2UpdateParsed(msrest.serialization.Model):
-    """Years of experience range.
-
-    :ivar minimum: Minimum years of experience.
-    :vartype minimum: float
-    :ivar maximum: Maximum years of experience.
-    :vartype maximum: float
-    """
-
-    _attribute_map = {
-        "minimum": {"key": "minimum", "type": "float"},
-        "maximum": {"key": "maximum", "type": "float"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword minimum: Minimum years of experience.
-        :paramtype minimum: float
-        :keyword maximum: Maximum years of experience.
-        :paramtype maximum: float
-        """
-        super(YearsExperienceAnnotationV2UpdateParsed, self).__init__(**kwargs)
         self.minimum = kwargs.get("minimum", None)
         self.maximum = kwargs.get("maximum", None)

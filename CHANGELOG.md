@@ -9,12 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add resthook subscription endpoints
 - Add py.typed marker file
 - Added PATCH support for Job Descriptions
+- Add `confirmed_by` field to document meta
 
 ### Changed
 - Remove extractor's `id` field, use `identifier` field instead
+- Rework document polymorphism, the model used to deserialize document response is now automatically chosen based on the document's extractor
 
 ### Removed
 - Remove extractor's `id` field
+- Remove API v2 endpoints
 
 ## [2.1.0] - 2023-02-06
 ### Added

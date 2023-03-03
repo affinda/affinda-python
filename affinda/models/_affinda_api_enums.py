@@ -97,6 +97,12 @@ class GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType(
     JOB_DESCRIPTIONS = "job_descriptions"
 
 
+class InvitationResponseStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+
+    ACCEPTED = "accepted"
+    DECLINED = "declined"
+
+
 class InvitationStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     PENDING = "pending"
@@ -123,12 +129,6 @@ class OrganizationUserRole(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     ADMIN = "admin"
     MEMBER = "member"
-
-
-class PatchContentSchemaStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-
-    ACCEPTED = "accepted"
-    DECLINED = "declined"
 
 
 class PostContentSchemaDocumentType(str, Enum, metaclass=CaseInsensitiveEnumMeta):

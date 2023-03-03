@@ -29,673 +29,6 @@ Affinda API client for Python.
 class AffindaAPIOperationsMixin(object)
 ```
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_resumes"></a>
-
-#### get\_all\_resumes
-
-```python
-def get_all_resumes(offset=None, limit=300, **kwargs)
-```
-
-Get list of all resumes.
-
-Returns all the resume summaries for that user, limited to 300 per page.
-
-**Arguments**:
-
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.GetAllDocumentsResultsV2`: GetAllDocumentsResultsV2, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resume"></a>
-
-#### create\_resume
-
-```python
-def create_resume(file=None, url=None, data=None, identifier=None, file_name=None, wait=True, reject_duplicates=False, language=None, expiry_time=None, **kwargs)
-```
-
-Upload a resume for parsing.
-
-Uploads a resume for parsing. When successful, returns an ``identifier`` in the response for
-subsequent use with the `/resumes/{identifier} <#get-/resumes/-identifier->`_ endpoint to check
-processing status and retrieve results.:code:`<br/>`
-Resumes can be uploaded as a file or a URL. In addition, data can be added directly if users
-want to upload directly without parsing any resume file. For uploading resume data, the
-``data`` argument provided must be a JSON-encoded string. Data uploads will not impact upon
-parsing credits.
-
-**Arguments**:
-
-- `file` (`IO`): Default value is None.
-- `url` (`str`): Default value is None.
-- `data` (`~affinda.models.ResumeData`): Default value is None.
-- `identifier` (`str`): Default value is None.
-- `file_name` (`str`): Default value is None.
-- `wait` (`bool`): Default value is True.
-- `reject_duplicates` (`bool`): Default value is False.
-- `language` (`str`): Default value is None.
-- `expiry_time` (`~datetime.datetime`): Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Resume`: Resume, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume"></a>
-
-#### get\_resume
-
-```python
-def get_resume(identifier, format=None, **kwargs)
-```
-
-Get parse results for a specific resume.
-
-Returns all the parse results for that resume if processing is completed.
-The ``identifier`` is the unique ID returned after POST-ing the resume via the `/resumes
-<#post-/resumes>`_ endpoint.
-
-**Arguments**:
-
-- `identifier` (`str`): Document identifier.
-- `format` (`str`): Set this to "hr-xml" to get the response in HR-XML format. Currently the only
-supported value for this parameter is "hr-xml". Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Resume or ~affinda.models.RequestError`: Resume or RequestError, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_resume_data"></a>
-
-#### update\_resume\_data
-
-```python
-def update_resume_data(identifier, body, **kwargs)
-```
-
-Update a resume's data.
-
-Update data of a parsed resume.
-The ``identifier`` is the unique ID returned after POST-ing the resume via the `/resumes
-<#post-/resumes>`_ endpoint.
-
-**Arguments**:
-
-- `identifier` (`str`): Resume identifier.
-- `body` (`~affinda.models.ResumeData`): Resume data to update.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.ResumeData or None`: ResumeData or None, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_resume"></a>
-
-#### delete\_resume
-
-```python
-def delete_resume(identifier, **kwargs)
-```
-
-Delete a resume.
-
-Deletes the specified resume from the database.
-
-**Arguments**:
-
-- `identifier` (`str`): Resume identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`None`: None, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_redacted_resumes"></a>
-
-#### get\_all\_redacted\_resumes
-
-```python
-def get_all_redacted_resumes(offset=None, limit=300, **kwargs)
-```
-
-Get list of all redacted resumes.
-
-Returns all the redacted resume information for that resume.
-
-**Arguments**:
-
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.GetAllDocumentsResultsV2`: GetAllDocumentsResultsV2, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_redacted_resume"></a>
-
-#### create\_redacted\_resume
-
-```python
-def create_redacted_resume(file=None, identifier=None, file_name=None, url=None, language=None, wait=True, redact_headshot="true", redact_personal_details="true", redact_work_details="true", redact_education_details="true", redact_referees="true", redact_locations="true", redact_dates="true", redact_gender="true", expiry_time=None, **kwargs)
-```
-
-Upload a resume for redacting.
-
-Uploads a resume for redacting.
-
-**Arguments**:
-
-- `file` (`IO`): Default value is None.
-- `identifier` (`str`): Default value is None.
-- `file_name` (`str`): Default value is None.
-- `url` (`str`): Default value is None.
-- `language` (`str`): Default value is None.
-- `wait` (`bool`): Default value is True.
-- `redact_headshot` (`str`): Whether to redact headshot. Default value is "true".
-- `redact_personal_details` (`str`): Whether to redact personal details (e.g. name, address).
-Default value is "true".
-- `redact_work_details` (`str`): Whether to redact work details (e.g. company names). Default value
-is "true".
-- `redact_education_details` (`str`): Whether to redact education details (e.g. university names).
-Default value is "true".
-- `redact_referees` (`str`): Whether to redact referee details. Default value is "true".
-- `redact_locations` (`str`): Whether to redact location names. Default value is "true".
-- `redact_dates` (`str`): Whether to redact dates. Default value is "true".
-- `redact_gender` (`str`): Whether to redact gender. Default value is "true".
-- `expiry_time` (`~datetime.datetime`): Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.RedactedResume`: RedactedResume, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_redacted_resume"></a>
-
-#### get\_redacted\_resume
-
-```python
-def get_redacted_resume(identifier, **kwargs)
-```
-
-Get redaction results for a specific resume.
-
-Returns all the redaction results for that resume if processing is completed.
-The ``identifier`` is the unique ID returned after POST-ing the resume via the
-`/redacted_resumes <#post-/redacted_resumes>`_ endpoint.
-
-**Arguments**:
-
-- `identifier` (`str`): Document identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.RedactedResume`: RedactedResume, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_redacted_resume"></a>
-
-#### delete\_redacted\_resume
-
-```python
-def delete_redacted_resume(identifier, **kwargs)
-```
-
-Delete a redacted resume.
-
-Deletes the specified resume from the database.
-
-**Arguments**:
-
-- `identifier` (`str`): Document identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`None`: None, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_invoices"></a>
-
-#### get\_all\_invoices
-
-```python
-def get_all_invoices(offset=None, limit=300, **kwargs)
-```
-
-Get list of all invoices.
-
-Returns all the invoice summaries for that user, limited to 300 per page.
-
-**Arguments**:
-
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.GetAllInvoicesResults`: GetAllInvoicesResults, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_invoice"></a>
-
-#### create\_invoice
-
-```python
-def create_invoice(file=None, url=None, identifier=None, file_name=None, wait=True, reject_duplicates=False, language=None, expiry_time=None, **kwargs)
-```
-
-Upload an invoice for parsing.
-
-Uploads an invoice for parsing.
-When successful, returns an ``identifier`` in the response for subsequent use with the
-`/invoices/{identifier} <#get-/invoices/-identifier->`_ endpoint to check processing status and
-retrieve results.
-
-**Arguments**:
-
-- `file` (`IO`): Default value is None.
-- `url` (`str`): Default value is None.
-- `identifier` (`str`): Default value is None.
-- `file_name` (`str`): Default value is None.
-- `wait` (`bool`): Default value is True.
-- `reject_duplicates` (`bool`): Default value is False.
-- `language` (`str`): Default value is None.
-- `expiry_time` (`~datetime.datetime`): Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Invoice`: Invoice, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_invoice"></a>
-
-#### get\_invoice
-
-```python
-def get_invoice(identifier, **kwargs)
-```
-
-Get parse results for a specific invoice.
-
-Returns all the parse results for that invoice if processing is completed.
-The ``identifier`` is the unique ID returned after POST-ing the invoice via the `/invoices
-<#post-/invoices>`_ endpoint.
-
-**Arguments**:
-
-- `identifier` (`str`): Document identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Invoice`: Invoice, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_invoice"></a>
-
-#### delete\_invoice
-
-```python
-def delete_invoice(identifier, **kwargs)
-```
-
-Delete an invoice.
-
-Delete the specified invoice from the database. Note, any invoices deleted from the database
-will no longer be used in any tailored customer models.
-
-**Arguments**:
-
-- `identifier` (`str`): Invoice identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`None`: None, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_job_descriptions"></a>
-
-#### get\_all\_job\_descriptions
-
-```python
-def get_all_job_descriptions(offset=None, limit=300, **kwargs)
-```
-
-Get list of all job descriptions.
-
-Returns all the job descriptions for that user, limited to 300 per page.
-
-**Arguments**:
-
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.GetAllJobDescriptionsResults`: GetAllJobDescriptionsResults, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_job_description"></a>
-
-#### create\_job\_description
-
-```python
-def create_job_description(file=None, url=None, identifier=None, file_name=None, wait=True, reject_duplicates=False, language=None, expiry_time=None, **kwargs)
-```
-
-Upload a job description for parsing.
-
-Uploads a job description for parsing.
-When successful, returns an ``identifier`` in the response for subsequent use with the
-`/job_descriptions/{identifier} <#get-/job_descriptions/-identifier->`_ endpoint to check
-processing status and retrieve results.
-Job Descriptions can be uploaded as a file or a URL. In addition, data can be added directly if
-users want to upload directly without parsing any resume file. For uploading resume data, the
-``data`` argument provided must be a JSON-encoded string. Data uploads will not impact upon
-parsing credits.
-
-**Arguments**:
-
-- `file` (`IO`): Default value is None.
-- `url` (`str`): Default value is None.
-- `identifier` (`str`): Default value is None.
-- `file_name` (`str`): Default value is None.
-- `wait` (`bool`): Default value is True.
-- `reject_duplicates` (`bool`): Default value is False.
-- `language` (`str`): Default value is None.
-- `expiry_time` (`~datetime.datetime`): Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.JobDescription`: JobDescription, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_job_description"></a>
-
-#### get\_job\_description
-
-```python
-def get_job_description(identifier, **kwargs)
-```
-
-Get job description results for a specific job description file.
-
-Returns all the results for that job description if processing is completed.
-The ``identifier`` is the unique ID returned after POST-ing the resume via the
-`/job_descriptions <#post-/job_descriptions>`_ endpoint.
-
-**Arguments**:
-
-- `identifier` (`str`): Document identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.JobDescription`: JobDescription, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_job_description_data"></a>
-
-#### update\_job\_description\_data
-
-```python
-def update_job_description_data(identifier, body, **kwargs)
-```
-
-Update a job description's data.
-
-Update data of a job description.
-The ``identifier`` is the unique ID returned after POST-ing the job description via the
-`/job_descriptions <#post-/job_descriptions>`_ endpoint.
-
-**Arguments**:
-
-- `identifier` (`str`): Job description identifier.
-- `body` (`~affinda.models.JobDescriptionDataUpdate`): Job description data to update.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.JobDescriptionData or None`: JobDescriptionData or None, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_job_description"></a>
-
-#### delete\_job\_description
-
-```python
-def delete_job_description(identifier, **kwargs)
-```
-
-Delete a job description.
-
-Deletes the specified job description from the database.
-
-**Arguments**:
-
-- `identifier` (`str`): Document identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`None`: None, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_job_description_search"></a>
-
-#### create\_job\_description\_search
-
-```python
-def create_job_description_search(body, offset=None, limit=300, **kwargs)
-```
-
-Search through parsed job descriptions.
-
-Searches through parsed job descriptions. You can search with custom criterias or a resume.
-
-**Arguments**:
-
-- `body` (`~affinda.models.JobDescriptionSearchParameters`): Search parameters.
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.JobDescriptionSearch`: JobDescriptionSearch, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_job_description_search_detail"></a>
-
-#### get\_job\_description\_search\_detail
-
-```python
-def get_job_description_search_detail(identifier, body, **kwargs)
-```
-
-Get search result of specific job description.
-
-This contains more detailed information about the matching score of the search criteria, or
-which search criteria is missing in this job description.
-The ``identifier`` is the unique ID returned via the `/job_description_search
-<#post-/job_description_search>`_ endpoint.
-
-**Arguments**:
-
-- `identifier` (`str`): Job Description identifier.
-- `body` (`~affinda.models.JobDescriptionSearchParameters`): Search parameters.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.JobDescriptionSearchDetail`: JobDescriptionSearchDetail, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_job_description_search_config"></a>
-
-#### get\_job\_description\_search\_config
-
-```python
-def get_job_description_search_config(**kwargs)
-```
-
-Get the config for the logged in user's embeddable job description search tool.
-
-Return configurations such as which fields can be displayed in the logged in user's embeddable
-job description search tool, what are their weights, what is the maximum number of results that
-can be returned, etc.
-
-**Arguments**:
-
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.JobDescriptionSearchConfig`: JobDescriptionSearchConfig, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_job_description_search_config"></a>
-
-#### update\_job\_description\_search\_config
-
-```python
-def update_job_description_search_config(body, **kwargs)
-```
-
-Update the config for the logged in user's embeddable job description search tool.
-
-Update configurations such as which fields can be displayed in the logged in user's embeddable
-job description search tool, what are their weights, what is the maximum number of results that
-can be returned, etc.
-
-**Arguments**:
-
-- `body` (`~affinda.models.JobDescriptionSearchConfig`): 
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.JobDescriptionSearchConfig`: JobDescriptionSearchConfig, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_job_description_search_embed_url"></a>
-
-#### create\_job\_description\_search\_embed\_url
-
-```python
-def create_job_description_search_embed_url(body=None, **kwargs)
-```
-
-Create a signed URL for the embeddable job description search tool.
-
-Create and return a signed URL of the job description search tool which then can be embedded on
-a web page. An optional parameter ``config_override`` can be passed to override the user-level
-configurations of the embeddable search tool.
-
-**Arguments**:
-
-- `body` (`~affinda.models.Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema`): Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.JobDescriptionSearchEmbed`: JobDescriptionSearchEmbed, or the result of cls(response)
-
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resume_search"></a>
 
 #### create\_resume\_search
@@ -938,6 +271,143 @@ Provided one or more skills, get related suggestions for your search.
 
 `list[str]`: list of str, or the result of cls(response)
 
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_job_description_search"></a>
+
+#### create\_job\_description\_search
+
+```python
+def create_job_description_search(body, offset=None, limit=300, **kwargs)
+```
+
+Search through parsed job descriptions.
+
+Searches through parsed job descriptions. You can search with custom criterias or a resume.
+
+**Arguments**:
+
+- `body` (`~affinda.models.JobDescriptionSearchParameters`): Search parameters.
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.JobDescriptionSearch`: JobDescriptionSearch, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_job_description_search_detail"></a>
+
+#### get\_job\_description\_search\_detail
+
+```python
+def get_job_description_search_detail(identifier, body, **kwargs)
+```
+
+Get search result of specific job description.
+
+This contains more detailed information about the matching score of the search criteria, or
+which search criteria is missing in this job description.
+The ``identifier`` is the unique ID returned via the `/job_description_search
+<#post-/job_description_search>`_ endpoint.
+
+**Arguments**:
+
+- `identifier` (`str`): Job Description identifier.
+- `body` (`~affinda.models.JobDescriptionSearchParameters`): Search parameters.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.JobDescriptionSearchDetail`: JobDescriptionSearchDetail, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_job_description_search_config"></a>
+
+#### get\_job\_description\_search\_config
+
+```python
+def get_job_description_search_config(**kwargs)
+```
+
+Get the config for the logged in user's embeddable job description search tool.
+
+Return configurations such as which fields can be displayed in the logged in user's embeddable
+job description search tool, what are their weights, what is the maximum number of results that
+can be returned, etc.
+
+**Arguments**:
+
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.JobDescriptionSearchConfig`: JobDescriptionSearchConfig, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_job_description_search_config"></a>
+
+#### update\_job\_description\_search\_config
+
+```python
+def update_job_description_search_config(body, **kwargs)
+```
+
+Update the config for the logged in user's embeddable job description search tool.
+
+Update configurations such as which fields can be displayed in the logged in user's embeddable
+job description search tool, what are their weights, what is the maximum number of results that
+can be returned, etc.
+
+**Arguments**:
+
+- `body` (`~affinda.models.JobDescriptionSearchConfig`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.JobDescriptionSearchConfig`: JobDescriptionSearchConfig, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_job_description_search_embed_url"></a>
+
+#### create\_job\_description\_search\_embed\_url
+
+```python
+def create_job_description_search_embed_url(body=None, **kwargs)
+```
+
+Create a signed URL for the embeddable job description search tool.
+
+Create and return a signed URL of the job description search tool which then can be embedded on
+a web page. An optional parameter ``config_override`` can be passed to override the user-level
+configurations of the embeddable search tool.
+
+**Arguments**:
+
+- `body` (`~affinda.models.PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema`): Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.JobDescriptionSearchEmbed`: JobDescriptionSearchEmbed, or the result of cls(response)
+
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_indexes"></a>
 
 #### get\_all\_indexes
@@ -1121,135 +591,6 @@ Returns the list of searchable occupation groups.
 **Returns**:
 
 `list[~affinda.models.OccupationGroup]`: list of OccupationGroup, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_resthook_subscriptions"></a>
-
-#### get\_all\_resthook\_subscriptions
-
-```python
-def get_all_resthook_subscriptions(offset=None, limit=300, **kwargs)
-```
-
-Get list of all resthook subscriptions.
-
-Returns your resthook subscriptions.
-
-**Arguments**:
-
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema`: PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema, or the
-result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resthook_subscription"></a>
-
-#### create\_resthook\_subscription
-
-```python
-def create_resthook_subscription(body, **kwargs)
-```
-
-Create a resthook subscriptions.
-
-Create a resthook subscriptions.
-
-**Arguments**:
-
-- `body` (`~affinda.models.ResthookSubscriptionCreate`): 
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.ResthookSubscription`: ResthookSubscription, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resthook_subscription"></a>
-
-#### get\_resthook\_subscription
-
-```python
-def get_resthook_subscription(id, **kwargs)
-```
-
-Get specific resthook subscription.
-
-Return a specific resthook subscription.
-
-**Arguments**:
-
-- `id` (`int`): Resthook subscription's ID.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.ResthookSubscription`: ResthookSubscription, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_resthook_subscription_data"></a>
-
-#### update\_resthook\_subscription\_data
-
-```python
-def update_resthook_subscription_data(id, body, **kwargs)
-```
-
-Update a resthook subscription's data.
-
-Update data of a resthook subscription.
-
-**Arguments**:
-
-- `id` (`int`): ResthookSubscription's ID.
-- `body` (`~affinda.models.ResthookSubscriptionUpdate`): ResthookSubscription data to update.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.ResthookSubscription`: ResthookSubscription, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_resthook_subscription"></a>
-
-#### delete\_resthook\_subscription
-
-```python
-def delete_resthook_subscription(id, **kwargs)
-```
-
-Delete a resthook subscription.
-
-Deletes the specified resthook subscription from the database.
-
-**Arguments**:
-
-- `id` (`int`): ResthookSubscription's ID.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`None`: None, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_organizations"></a>
 
@@ -1661,7 +1002,7 @@ Choose to accept or decline an invitation.
 **Arguments**:
 
 - `token` (`str`): Invitation token.
-- `body` (`~affinda.models.PathsCtl5TcV3InvitationsTokenPatchRequestbodyContentApplicationJsonSchema`): 
+- `body` (`~affinda.models.InvitationResponse`): 
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1751,15 +1092,15 @@ Return a specific extractor.
 
 `~affinda.models.Extractor`: Extractor, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_extractor_data"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_extractor"></a>
 
-#### update\_extractor\_data
+#### update\_extractor
 
 ```python
-def update_extractor_data(identifier, body, **kwargs)
+def update_extractor(identifier, body, **kwargs)
 ```
 
-Update an extractor's data.
+Update an extractor.
 
 Update data of an extractor.
 
@@ -1885,15 +1226,15 @@ Return a specific data point.
 
 `~affinda.models.DataPoint`: DataPoint, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_data_point_data"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_data_point"></a>
 
-#### update\_data\_point\_data
+#### update\_data\_point
 
 ```python
-def update_data_point_data(identifier, body, **kwargs)
+def update_data_point(identifier, body, **kwargs)
 ```
 
-Update a data point's data.
+Update a data point.
 
 Update data of a data point.
 
@@ -2273,15 +1614,15 @@ Return a specific collection.
 
 `~affinda.models.Collection`: Collection, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_collection_data"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_collection"></a>
 
-#### update\_collection\_data
+#### update\_collection
 
 ```python
-def update_collection_data(identifier, body, **kwargs)
+def update_collection(identifier, body, **kwargs)
 ```
 
-Update a collection's data.
+Update a collection.
 
 Update data of a collection.
 
@@ -2344,7 +1685,7 @@ Default value is None.
 - `workspace` (`str`): Filter by workspace. Default value is None.
 - `collection` (`str`): Filter by collection. Default value is None.
 - `state` (`str or ~affinda.models.DocumentState`): Filter by the document's state. Default value is None.
-- `tags` (`list[int]`): Filter by tags. Default value is None.
+- `tags` (`list[int]`): Filter by tag's IDs. Default value is None.
 - `created_dt` (`str or ~affinda.models.DateRange`): Filter by created datetime. Default value is None.
 - `search` (`str`): Partial, case-insensitive match with file name or tag name. Default value is
 None.
@@ -2425,15 +1766,15 @@ Return a specific document.
 
 `~affinda.models.Document`: Document, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_document_data"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_document"></a>
 
-#### update\_document\_data
+#### update\_document
 
 ```python
-def update_document_data(identifier, body, **kwargs)
+def update_document(identifier, body, **kwargs)
 ```
 
-Update a document's data.
+Update a document.
 
 Update file name, expiry time, or move to another collection, etc.
 
@@ -2554,15 +1895,15 @@ Return a specific tag.
 
 `~affinda.models.Tag`: Tag, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_tag_data"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_tag"></a>
 
-#### update\_tag\_data
+#### update\_tag
 
 ```python
-def update_tag_data(id, body, **kwargs)
+def update_tag(id, body, **kwargs)
 ```
 
-Update an tag's data.
+Update a tag.
 
 Update data of an tag.
 
@@ -2595,6 +1936,135 @@ Deletes the specified tag from the database.
 **Arguments**:
 
 - `id` (`int`): Tag's ID.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_resthook_subscriptions"></a>
+
+#### get\_all\_resthook\_subscriptions
+
+```python
+def get_all_resthook_subscriptions(offset=None, limit=300, **kwargs)
+```
+
+Get list of all resthook subscriptions.
+
+Returns your resthook subscriptions.
+
+**Arguments**:
+
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema`: PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema, or the
+result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resthook_subscription"></a>
+
+#### create\_resthook\_subscription
+
+```python
+def create_resthook_subscription(body, **kwargs)
+```
+
+Create a resthook subscriptions.
+
+Create a resthook subscriptions.
+
+**Arguments**:
+
+- `body` (`~affinda.models.ResthookSubscriptionCreate`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ResthookSubscription`: ResthookSubscription, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resthook_subscription"></a>
+
+#### get\_resthook\_subscription
+
+```python
+def get_resthook_subscription(id, **kwargs)
+```
+
+Get specific resthook subscription.
+
+Return a specific resthook subscription.
+
+**Arguments**:
+
+- `id` (`int`): Resthook subscription's ID.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ResthookSubscription`: ResthookSubscription, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_resthook_subscription"></a>
+
+#### update\_resthook\_subscription
+
+```python
+def update_resthook_subscription(id, body, **kwargs)
+```
+
+Update a resthook subscription.
+
+Update data of a resthook subscription.
+
+**Arguments**:
+
+- `id` (`int`): ResthookSubscription's ID.
+- `body` (`~affinda.models.ResthookSubscriptionUpdate`): ResthookSubscription data to update.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ResthookSubscription`: ResthookSubscription, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_resthook_subscription"></a>
+
+#### delete\_resthook\_subscription
+
+```python
+def delete_resthook_subscription(id, **kwargs)
+```
+
+Delete a resthook subscription.
+
+Deletes the specified resthook subscription from the database.
+
+**Arguments**:
+
+- `id` (`int`): ResthookSubscription's ID.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
