@@ -761,64 +761,6 @@ class Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgrou
         self.match = match
 
 
-class Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1(msrest.serialization.Model):
-    """Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1.
-
-    :ivar raw:
-    :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
-    """
-
-    _attribute_map = {
-        "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
-    }
-
-    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
-        """
-        :keyword raw:
-        :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
-        """
-        super(Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1, self).__init__(
-            **kwargs
-        )
-        self.raw = raw
-        self.parsed = parsed
-
-
-class Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1(
-    msrest.serialization.Model
-):
-    """Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1.
-
-    :ivar raw:
-    :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
-    """
-
-    _attribute_map = {
-        "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
-    }
-
-    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
-        """
-        :keyword raw:
-        :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
-        """
-        super(
-            Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1, self
-        ).__init__(**kwargs)
-        self.raw = raw
-        self.parsed = parsed
-
-
 class ResumeData(msrest.serialization.Model):
     """A JSON-encoded string of the ``ResumeData`` object.
 
@@ -1000,8 +942,8 @@ class ResumeData(msrest.serialization.Model):
         self.raw_text = raw_text
 
 
-class Components1Ijdil6SchemasDocumentPropertiesDataOneof0(ResumeData):
-    """Components1Ijdil6SchemasDocumentPropertiesDataOneof0.
+class Components1FbbtzoSchemasDocumentPropertiesDataAnyof0(ResumeData):
+    """Components1FbbtzoSchemasDocumentPropertiesDataAnyof0.
 
     Variables are only populated by the server, and will be ignored when sending a request.
 
@@ -1154,7 +1096,7 @@ class Components1Ijdil6SchemasDocumentPropertiesDataOneof0(ResumeData):
          readability.
         :paramtype raw_text: str
         """
-        super(Components1Ijdil6SchemasDocumentPropertiesDataOneof0, self).__init__(
+        super(Components1FbbtzoSchemasDocumentPropertiesDataAnyof0, self).__init__(
             additional_properties=additional_properties,
             name=name,
             phone_numbers=phone_numbers,
@@ -1174,6 +1116,64 @@ class Components1Ijdil6SchemasDocumentPropertiesDataOneof0(ResumeData):
             raw_text=raw_text,
             **kwargs,
         )
+
+
+class Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1(msrest.serialization.Model):
+    """Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1.
+
+    :ivar raw:
+    :vartype raw: str
+    :ivar parsed:
+    :vartype parsed: str
+    """
+
+    _attribute_map = {
+        "raw": {"key": "raw", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
+    }
+
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
+        """
+        :keyword raw:
+        :paramtype raw: str
+        :keyword parsed:
+        :paramtype parsed: str
+        """
+        super(Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1, self).__init__(
+            **kwargs
+        )
+        self.raw = raw
+        self.parsed = parsed
+
+
+class Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1(
+    msrest.serialization.Model
+):
+    """Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1.
+
+    :ivar raw:
+    :vartype raw: str
+    :ivar parsed:
+    :vartype parsed: str
+    """
+
+    _attribute_map = {
+        "raw": {"key": "raw", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
+    }
+
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
+        """
+        :keyword raw:
+        :paramtype raw: str
+        :keyword parsed:
+        :paramtype parsed: str
+        """
+        super(
+            Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1, self
+        ).__init__(**kwargs)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1(
@@ -1264,664 +1264,6 @@ class Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1(msrest.ser
         self.parsed = parsed
 
 
-class InvoiceData(msrest.serialization.Model):
-    """InvoiceData.
-
-    :ivar tables:
-    :vartype tables: list[~affinda.models.InvoiceDataTablesItem]
-    :ivar invoice_date:
-    :vartype invoice_date: ~affinda.models.DateAnnotationV2
-    :ivar invoice_order_date:
-    :vartype invoice_order_date: ~affinda.models.DateAnnotationV2
-    :ivar payment_date_due:
-    :vartype payment_date_due: ~affinda.models.DateAnnotationV2
-    :ivar payment_amount_base:
-    :vartype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
-    :ivar payment_amount_tax:
-    :vartype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
-    :ivar payment_amount_total:
-    :vartype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
-    :ivar payment_amount_paid:
-    :vartype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
-    :ivar payment_amount_due:
-    :vartype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
-    :ivar invoice_number:
-    :vartype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
-    :ivar invoice_purchase_order_number:
-    :vartype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
-    :ivar supplier_business_number:
-    :vartype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
-    :ivar customer_number:
-    :vartype customer_number: ~affinda.models.InvoiceDataCustomerNumber
-    :ivar customer_business_number:
-    :vartype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
-    :ivar payment_reference:
-    :vartype payment_reference: ~affinda.models.InvoiceDataPaymentReference
-    :ivar bank_account_number:
-    :vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
-    :ivar supplier_vat:
-    :vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
-    :ivar customer_vat:
-    :vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
-    :ivar bpay_biller_code:
-    :vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
-    :ivar bpay_reference:
-    :vartype bpay_reference: ~affinda.models.InvoiceDataBpayReference
-    :ivar bank_sort_code:
-    :vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
-    :ivar bank_iban:
-    :vartype bank_iban: ~affinda.models.InvoiceDataBankIban
-    :ivar bank_swift:
-    :vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
-    :ivar bank_bsb:
-    :vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
-    :ivar customer_contact_name:
-    :vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
-    :ivar customer_company_name:
-    :vartype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
-    :ivar supplier_company_name:
-    :vartype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
-    :ivar customer_billing_address:
-    :vartype customer_billing_address: ~affinda.models.LocationAnnotationV2
-    :ivar customer_delivery_address:
-    :vartype customer_delivery_address: ~affinda.models.LocationAnnotationV2
-    :ivar supplier_address:
-    :vartype supplier_address: ~affinda.models.LocationAnnotationV2
-    :ivar customer_phone_number:
-    :vartype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
-    :ivar supplier_phone_number:
-    :vartype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
-    :ivar supplier_fax:
-    :vartype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
-    :ivar customer_email:
-    :vartype customer_email: ~affinda.models.InvoiceDataCustomerEmail
-    :ivar supplier_email:
-    :vartype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
-    :ivar supplier_website:
-    :vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
-    :ivar currency_code:
-    :vartype currency_code: ~affinda.models.TextAnnotationV2
-    :ivar custom_fields: Dictionary of :code:`<any>`.
-    :vartype custom_fields: dict[str, any]
-    """
-
-    _attribute_map = {
-        "tables": {"key": "tables", "type": "[InvoiceDataTablesItem]"},
-        "invoice_date": {"key": "invoiceDate", "type": "DateAnnotationV2"},
-        "invoice_order_date": {"key": "invoiceOrderDate", "type": "DateAnnotationV2"},
-        "payment_date_due": {"key": "paymentDateDue", "type": "DateAnnotationV2"},
-        "payment_amount_base": {
-            "key": "paymentAmountBase",
-            "type": "InvoiceDataPaymentAmountBase",
-        },
-        "payment_amount_tax": {"key": "paymentAmountTax", "type": "InvoiceDataPaymentAmountTax"},
-        "payment_amount_total": {
-            "key": "paymentAmountTotal",
-            "type": "InvoiceDataPaymentAmountTotal",
-        },
-        "payment_amount_paid": {
-            "key": "paymentAmountPaid",
-            "type": "InvoiceDataPaymentAmountPaid",
-        },
-        "payment_amount_due": {"key": "paymentAmountDue", "type": "InvoiceDataPaymentAmountDue"},
-        "invoice_number": {"key": "invoiceNumber", "type": "InvoiceDataInvoiceNumber"},
-        "invoice_purchase_order_number": {
-            "key": "invoicePurchaseOrderNumber",
-            "type": "InvoiceDataInvoicePurchaseOrderNumber",
-        },
-        "supplier_business_number": {
-            "key": "supplierBusinessNumber",
-            "type": "InvoiceDataSupplierBusinessNumber",
-        },
-        "customer_number": {"key": "customerNumber", "type": "InvoiceDataCustomerNumber"},
-        "customer_business_number": {
-            "key": "customerBusinessNumber",
-            "type": "InvoiceDataCustomerBusinessNumber",
-        },
-        "payment_reference": {"key": "paymentReference", "type": "InvoiceDataPaymentReference"},
-        "bank_account_number": {
-            "key": "bankAccountNumber",
-            "type": "InvoiceDataBankAccountNumber",
-        },
-        "supplier_vat": {"key": "supplierVat", "type": "InvoiceDataSupplierVat"},
-        "customer_vat": {"key": "customerVat", "type": "InvoiceDataCustomerVat"},
-        "bpay_biller_code": {"key": "bpayBillerCode", "type": "InvoiceDataBpayBillerCode"},
-        "bpay_reference": {"key": "bpayReference", "type": "InvoiceDataBpayReference"},
-        "bank_sort_code": {"key": "bankSortCode", "type": "InvoiceDataBankSortCode"},
-        "bank_iban": {"key": "bankIban", "type": "InvoiceDataBankIban"},
-        "bank_swift": {"key": "bankSwift", "type": "InvoiceDataBankSwift"},
-        "bank_bsb": {"key": "bankBsb", "type": "InvoiceDataBankBsb"},
-        "customer_contact_name": {
-            "key": "customerContactName",
-            "type": "InvoiceDataCustomerContactName",
-        },
-        "customer_company_name": {
-            "key": "customerCompanyName",
-            "type": "InvoiceDataCustomerCompanyName",
-        },
-        "supplier_company_name": {
-            "key": "supplierCompanyName",
-            "type": "InvoiceDataSupplierCompanyName",
-        },
-        "customer_billing_address": {
-            "key": "customerBillingAddress",
-            "type": "LocationAnnotationV2",
-        },
-        "customer_delivery_address": {
-            "key": "customerDeliveryAddress",
-            "type": "LocationAnnotationV2",
-        },
-        "supplier_address": {"key": "supplierAddress", "type": "LocationAnnotationV2"},
-        "customer_phone_number": {
-            "key": "customerPhoneNumber",
-            "type": "InvoiceDataCustomerPhoneNumber",
-        },
-        "supplier_phone_number": {
-            "key": "supplierPhoneNumber",
-            "type": "InvoiceDataSupplierPhoneNumber",
-        },
-        "supplier_fax": {"key": "supplierFax", "type": "InvoiceDataSupplierFax"},
-        "customer_email": {"key": "customerEmail", "type": "InvoiceDataCustomerEmail"},
-        "supplier_email": {"key": "supplierEmail", "type": "InvoiceDataSupplierEmail"},
-        "supplier_website": {"key": "supplierWebsite", "type": "InvoiceDataSupplierWebsite"},
-        "currency_code": {"key": "currencyCode", "type": "TextAnnotationV2"},
-        "custom_fields": {"key": "customFields", "type": "{object}"},
-    }
-
-    def __init__(
-        self,
-        *,
-        tables: Optional[List["_models.InvoiceDataTablesItem"]] = None,
-        invoice_date: Optional["_models.DateAnnotationV2"] = None,
-        invoice_order_date: Optional["_models.DateAnnotationV2"] = None,
-        payment_date_due: Optional["_models.DateAnnotationV2"] = None,
-        payment_amount_base: Optional["_models.InvoiceDataPaymentAmountBase"] = None,
-        payment_amount_tax: Optional["_models.InvoiceDataPaymentAmountTax"] = None,
-        payment_amount_total: Optional["_models.InvoiceDataPaymentAmountTotal"] = None,
-        payment_amount_paid: Optional["_models.InvoiceDataPaymentAmountPaid"] = None,
-        payment_amount_due: Optional["_models.InvoiceDataPaymentAmountDue"] = None,
-        invoice_number: Optional["_models.InvoiceDataInvoiceNumber"] = None,
-        invoice_purchase_order_number: Optional[
-            "_models.InvoiceDataInvoicePurchaseOrderNumber"
-        ] = None,
-        supplier_business_number: Optional["_models.InvoiceDataSupplierBusinessNumber"] = None,
-        customer_number: Optional["_models.InvoiceDataCustomerNumber"] = None,
-        customer_business_number: Optional["_models.InvoiceDataCustomerBusinessNumber"] = None,
-        payment_reference: Optional["_models.InvoiceDataPaymentReference"] = None,
-        bank_account_number: Optional["_models.InvoiceDataBankAccountNumber"] = None,
-        supplier_vat: Optional["_models.InvoiceDataSupplierVat"] = None,
-        customer_vat: Optional["_models.InvoiceDataCustomerVat"] = None,
-        bpay_biller_code: Optional["_models.InvoiceDataBpayBillerCode"] = None,
-        bpay_reference: Optional["_models.InvoiceDataBpayReference"] = None,
-        bank_sort_code: Optional["_models.InvoiceDataBankSortCode"] = None,
-        bank_iban: Optional["_models.InvoiceDataBankIban"] = None,
-        bank_swift: Optional["_models.InvoiceDataBankSwift"] = None,
-        bank_bsb: Optional["_models.InvoiceDataBankBsb"] = None,
-        customer_contact_name: Optional["_models.InvoiceDataCustomerContactName"] = None,
-        customer_company_name: Optional["_models.InvoiceDataCustomerCompanyName"] = None,
-        supplier_company_name: Optional["_models.InvoiceDataSupplierCompanyName"] = None,
-        customer_billing_address: Optional["_models.LocationAnnotationV2"] = None,
-        customer_delivery_address: Optional["_models.LocationAnnotationV2"] = None,
-        supplier_address: Optional["_models.LocationAnnotationV2"] = None,
-        customer_phone_number: Optional["_models.InvoiceDataCustomerPhoneNumber"] = None,
-        supplier_phone_number: Optional["_models.InvoiceDataSupplierPhoneNumber"] = None,
-        supplier_fax: Optional["_models.InvoiceDataSupplierFax"] = None,
-        customer_email: Optional["_models.InvoiceDataCustomerEmail"] = None,
-        supplier_email: Optional["_models.InvoiceDataSupplierEmail"] = None,
-        supplier_website: Optional["_models.InvoiceDataSupplierWebsite"] = None,
-        currency_code: Optional["_models.TextAnnotationV2"] = None,
-        custom_fields: Optional[Dict[str, Any]] = None,
-        **kwargs,
-    ):
-        """
-        :keyword tables:
-        :paramtype tables: list[~affinda.models.InvoiceDataTablesItem]
-        :keyword invoice_date:
-        :paramtype invoice_date: ~affinda.models.DateAnnotationV2
-        :keyword invoice_order_date:
-        :paramtype invoice_order_date: ~affinda.models.DateAnnotationV2
-        :keyword payment_date_due:
-        :paramtype payment_date_due: ~affinda.models.DateAnnotationV2
-        :keyword payment_amount_base:
-        :paramtype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
-        :keyword payment_amount_tax:
-        :paramtype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
-        :keyword payment_amount_total:
-        :paramtype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
-        :keyword payment_amount_paid:
-        :paramtype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
-        :keyword payment_amount_due:
-        :paramtype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
-        :keyword invoice_number:
-        :paramtype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
-        :keyword invoice_purchase_order_number:
-        :paramtype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
-        :keyword supplier_business_number:
-        :paramtype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
-        :keyword customer_number:
-        :paramtype customer_number: ~affinda.models.InvoiceDataCustomerNumber
-        :keyword customer_business_number:
-        :paramtype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
-        :keyword payment_reference:
-        :paramtype payment_reference: ~affinda.models.InvoiceDataPaymentReference
-        :keyword bank_account_number:
-        :paramtype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
-        :keyword supplier_vat:
-        :paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
-        :keyword customer_vat:
-        :paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVat
-        :keyword bpay_biller_code:
-        :paramtype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
-        :keyword bpay_reference:
-        :paramtype bpay_reference: ~affinda.models.InvoiceDataBpayReference
-        :keyword bank_sort_code:
-        :paramtype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
-        :keyword bank_iban:
-        :paramtype bank_iban: ~affinda.models.InvoiceDataBankIban
-        :keyword bank_swift:
-        :paramtype bank_swift: ~affinda.models.InvoiceDataBankSwift
-        :keyword bank_bsb:
-        :paramtype bank_bsb: ~affinda.models.InvoiceDataBankBsb
-        :keyword customer_contact_name:
-        :paramtype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
-        :keyword customer_company_name:
-        :paramtype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
-        :keyword supplier_company_name:
-        :paramtype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
-        :keyword customer_billing_address:
-        :paramtype customer_billing_address: ~affinda.models.LocationAnnotationV2
-        :keyword customer_delivery_address:
-        :paramtype customer_delivery_address: ~affinda.models.LocationAnnotationV2
-        :keyword supplier_address:
-        :paramtype supplier_address: ~affinda.models.LocationAnnotationV2
-        :keyword customer_phone_number:
-        :paramtype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
-        :keyword supplier_phone_number:
-        :paramtype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
-        :keyword supplier_fax:
-        :paramtype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
-        :keyword customer_email:
-        :paramtype customer_email: ~affinda.models.InvoiceDataCustomerEmail
-        :keyword supplier_email:
-        :paramtype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
-        :keyword supplier_website:
-        :paramtype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
-        :keyword currency_code:
-        :paramtype currency_code: ~affinda.models.TextAnnotationV2
-        :keyword custom_fields: Dictionary of :code:`<any>`.
-        :paramtype custom_fields: dict[str, any]
-        """
-        super(InvoiceData, self).__init__(**kwargs)
-        self.tables = tables
-        self.invoice_date = invoice_date
-        self.invoice_order_date = invoice_order_date
-        self.payment_date_due = payment_date_due
-        self.payment_amount_base = payment_amount_base
-        self.payment_amount_tax = payment_amount_tax
-        self.payment_amount_total = payment_amount_total
-        self.payment_amount_paid = payment_amount_paid
-        self.payment_amount_due = payment_amount_due
-        self.invoice_number = invoice_number
-        self.invoice_purchase_order_number = invoice_purchase_order_number
-        self.supplier_business_number = supplier_business_number
-        self.customer_number = customer_number
-        self.customer_business_number = customer_business_number
-        self.payment_reference = payment_reference
-        self.bank_account_number = bank_account_number
-        self.supplier_vat = supplier_vat
-        self.customer_vat = customer_vat
-        self.bpay_biller_code = bpay_biller_code
-        self.bpay_reference = bpay_reference
-        self.bank_sort_code = bank_sort_code
-        self.bank_iban = bank_iban
-        self.bank_swift = bank_swift
-        self.bank_bsb = bank_bsb
-        self.customer_contact_name = customer_contact_name
-        self.customer_company_name = customer_company_name
-        self.supplier_company_name = supplier_company_name
-        self.customer_billing_address = customer_billing_address
-        self.customer_delivery_address = customer_delivery_address
-        self.supplier_address = supplier_address
-        self.customer_phone_number = customer_phone_number
-        self.supplier_phone_number = supplier_phone_number
-        self.supplier_fax = supplier_fax
-        self.customer_email = customer_email
-        self.supplier_email = supplier_email
-        self.supplier_website = supplier_website
-        self.currency_code = currency_code
-        self.custom_fields = custom_fields
-
-
-class Components1RkulfvSchemasDocumentPropertiesDataOneof1(InvoiceData):
-    """Components1RkulfvSchemasDocumentPropertiesDataOneof1.
-
-    :ivar tables:
-    :vartype tables: list[~affinda.models.InvoiceDataTablesItem]
-    :ivar invoice_date:
-    :vartype invoice_date: ~affinda.models.DateAnnotationV2
-    :ivar invoice_order_date:
-    :vartype invoice_order_date: ~affinda.models.DateAnnotationV2
-    :ivar payment_date_due:
-    :vartype payment_date_due: ~affinda.models.DateAnnotationV2
-    :ivar payment_amount_base:
-    :vartype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
-    :ivar payment_amount_tax:
-    :vartype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
-    :ivar payment_amount_total:
-    :vartype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
-    :ivar payment_amount_paid:
-    :vartype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
-    :ivar payment_amount_due:
-    :vartype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
-    :ivar invoice_number:
-    :vartype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
-    :ivar invoice_purchase_order_number:
-    :vartype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
-    :ivar supplier_business_number:
-    :vartype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
-    :ivar customer_number:
-    :vartype customer_number: ~affinda.models.InvoiceDataCustomerNumber
-    :ivar customer_business_number:
-    :vartype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
-    :ivar payment_reference:
-    :vartype payment_reference: ~affinda.models.InvoiceDataPaymentReference
-    :ivar bank_account_number:
-    :vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
-    :ivar supplier_vat:
-    :vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
-    :ivar customer_vat:
-    :vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
-    :ivar bpay_biller_code:
-    :vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
-    :ivar bpay_reference:
-    :vartype bpay_reference: ~affinda.models.InvoiceDataBpayReference
-    :ivar bank_sort_code:
-    :vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
-    :ivar bank_iban:
-    :vartype bank_iban: ~affinda.models.InvoiceDataBankIban
-    :ivar bank_swift:
-    :vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
-    :ivar bank_bsb:
-    :vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
-    :ivar customer_contact_name:
-    :vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
-    :ivar customer_company_name:
-    :vartype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
-    :ivar supplier_company_name:
-    :vartype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
-    :ivar customer_billing_address:
-    :vartype customer_billing_address: ~affinda.models.LocationAnnotationV2
-    :ivar customer_delivery_address:
-    :vartype customer_delivery_address: ~affinda.models.LocationAnnotationV2
-    :ivar supplier_address:
-    :vartype supplier_address: ~affinda.models.LocationAnnotationV2
-    :ivar customer_phone_number:
-    :vartype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
-    :ivar supplier_phone_number:
-    :vartype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
-    :ivar supplier_fax:
-    :vartype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
-    :ivar customer_email:
-    :vartype customer_email: ~affinda.models.InvoiceDataCustomerEmail
-    :ivar supplier_email:
-    :vartype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
-    :ivar supplier_website:
-    :vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
-    :ivar currency_code:
-    :vartype currency_code: ~affinda.models.TextAnnotationV2
-    :ivar custom_fields: Dictionary of :code:`<any>`.
-    :vartype custom_fields: dict[str, any]
-    """
-
-    _attribute_map = {
-        "tables": {"key": "tables", "type": "[InvoiceDataTablesItem]"},
-        "invoice_date": {"key": "invoiceDate", "type": "DateAnnotationV2"},
-        "invoice_order_date": {"key": "invoiceOrderDate", "type": "DateAnnotationV2"},
-        "payment_date_due": {"key": "paymentDateDue", "type": "DateAnnotationV2"},
-        "payment_amount_base": {
-            "key": "paymentAmountBase",
-            "type": "InvoiceDataPaymentAmountBase",
-        },
-        "payment_amount_tax": {"key": "paymentAmountTax", "type": "InvoiceDataPaymentAmountTax"},
-        "payment_amount_total": {
-            "key": "paymentAmountTotal",
-            "type": "InvoiceDataPaymentAmountTotal",
-        },
-        "payment_amount_paid": {
-            "key": "paymentAmountPaid",
-            "type": "InvoiceDataPaymentAmountPaid",
-        },
-        "payment_amount_due": {"key": "paymentAmountDue", "type": "InvoiceDataPaymentAmountDue"},
-        "invoice_number": {"key": "invoiceNumber", "type": "InvoiceDataInvoiceNumber"},
-        "invoice_purchase_order_number": {
-            "key": "invoicePurchaseOrderNumber",
-            "type": "InvoiceDataInvoicePurchaseOrderNumber",
-        },
-        "supplier_business_number": {
-            "key": "supplierBusinessNumber",
-            "type": "InvoiceDataSupplierBusinessNumber",
-        },
-        "customer_number": {"key": "customerNumber", "type": "InvoiceDataCustomerNumber"},
-        "customer_business_number": {
-            "key": "customerBusinessNumber",
-            "type": "InvoiceDataCustomerBusinessNumber",
-        },
-        "payment_reference": {"key": "paymentReference", "type": "InvoiceDataPaymentReference"},
-        "bank_account_number": {
-            "key": "bankAccountNumber",
-            "type": "InvoiceDataBankAccountNumber",
-        },
-        "supplier_vat": {"key": "supplierVat", "type": "InvoiceDataSupplierVat"},
-        "customer_vat": {"key": "customerVat", "type": "InvoiceDataCustomerVat"},
-        "bpay_biller_code": {"key": "bpayBillerCode", "type": "InvoiceDataBpayBillerCode"},
-        "bpay_reference": {"key": "bpayReference", "type": "InvoiceDataBpayReference"},
-        "bank_sort_code": {"key": "bankSortCode", "type": "InvoiceDataBankSortCode"},
-        "bank_iban": {"key": "bankIban", "type": "InvoiceDataBankIban"},
-        "bank_swift": {"key": "bankSwift", "type": "InvoiceDataBankSwift"},
-        "bank_bsb": {"key": "bankBsb", "type": "InvoiceDataBankBsb"},
-        "customer_contact_name": {
-            "key": "customerContactName",
-            "type": "InvoiceDataCustomerContactName",
-        },
-        "customer_company_name": {
-            "key": "customerCompanyName",
-            "type": "InvoiceDataCustomerCompanyName",
-        },
-        "supplier_company_name": {
-            "key": "supplierCompanyName",
-            "type": "InvoiceDataSupplierCompanyName",
-        },
-        "customer_billing_address": {
-            "key": "customerBillingAddress",
-            "type": "LocationAnnotationV2",
-        },
-        "customer_delivery_address": {
-            "key": "customerDeliveryAddress",
-            "type": "LocationAnnotationV2",
-        },
-        "supplier_address": {"key": "supplierAddress", "type": "LocationAnnotationV2"},
-        "customer_phone_number": {
-            "key": "customerPhoneNumber",
-            "type": "InvoiceDataCustomerPhoneNumber",
-        },
-        "supplier_phone_number": {
-            "key": "supplierPhoneNumber",
-            "type": "InvoiceDataSupplierPhoneNumber",
-        },
-        "supplier_fax": {"key": "supplierFax", "type": "InvoiceDataSupplierFax"},
-        "customer_email": {"key": "customerEmail", "type": "InvoiceDataCustomerEmail"},
-        "supplier_email": {"key": "supplierEmail", "type": "InvoiceDataSupplierEmail"},
-        "supplier_website": {"key": "supplierWebsite", "type": "InvoiceDataSupplierWebsite"},
-        "currency_code": {"key": "currencyCode", "type": "TextAnnotationV2"},
-        "custom_fields": {"key": "customFields", "type": "{object}"},
-    }
-
-    def __init__(
-        self,
-        *,
-        tables: Optional[List["_models.InvoiceDataTablesItem"]] = None,
-        invoice_date: Optional["_models.DateAnnotationV2"] = None,
-        invoice_order_date: Optional["_models.DateAnnotationV2"] = None,
-        payment_date_due: Optional["_models.DateAnnotationV2"] = None,
-        payment_amount_base: Optional["_models.InvoiceDataPaymentAmountBase"] = None,
-        payment_amount_tax: Optional["_models.InvoiceDataPaymentAmountTax"] = None,
-        payment_amount_total: Optional["_models.InvoiceDataPaymentAmountTotal"] = None,
-        payment_amount_paid: Optional["_models.InvoiceDataPaymentAmountPaid"] = None,
-        payment_amount_due: Optional["_models.InvoiceDataPaymentAmountDue"] = None,
-        invoice_number: Optional["_models.InvoiceDataInvoiceNumber"] = None,
-        invoice_purchase_order_number: Optional[
-            "_models.InvoiceDataInvoicePurchaseOrderNumber"
-        ] = None,
-        supplier_business_number: Optional["_models.InvoiceDataSupplierBusinessNumber"] = None,
-        customer_number: Optional["_models.InvoiceDataCustomerNumber"] = None,
-        customer_business_number: Optional["_models.InvoiceDataCustomerBusinessNumber"] = None,
-        payment_reference: Optional["_models.InvoiceDataPaymentReference"] = None,
-        bank_account_number: Optional["_models.InvoiceDataBankAccountNumber"] = None,
-        supplier_vat: Optional["_models.InvoiceDataSupplierVat"] = None,
-        customer_vat: Optional["_models.InvoiceDataCustomerVat"] = None,
-        bpay_biller_code: Optional["_models.InvoiceDataBpayBillerCode"] = None,
-        bpay_reference: Optional["_models.InvoiceDataBpayReference"] = None,
-        bank_sort_code: Optional["_models.InvoiceDataBankSortCode"] = None,
-        bank_iban: Optional["_models.InvoiceDataBankIban"] = None,
-        bank_swift: Optional["_models.InvoiceDataBankSwift"] = None,
-        bank_bsb: Optional["_models.InvoiceDataBankBsb"] = None,
-        customer_contact_name: Optional["_models.InvoiceDataCustomerContactName"] = None,
-        customer_company_name: Optional["_models.InvoiceDataCustomerCompanyName"] = None,
-        supplier_company_name: Optional["_models.InvoiceDataSupplierCompanyName"] = None,
-        customer_billing_address: Optional["_models.LocationAnnotationV2"] = None,
-        customer_delivery_address: Optional["_models.LocationAnnotationV2"] = None,
-        supplier_address: Optional["_models.LocationAnnotationV2"] = None,
-        customer_phone_number: Optional["_models.InvoiceDataCustomerPhoneNumber"] = None,
-        supplier_phone_number: Optional["_models.InvoiceDataSupplierPhoneNumber"] = None,
-        supplier_fax: Optional["_models.InvoiceDataSupplierFax"] = None,
-        customer_email: Optional["_models.InvoiceDataCustomerEmail"] = None,
-        supplier_email: Optional["_models.InvoiceDataSupplierEmail"] = None,
-        supplier_website: Optional["_models.InvoiceDataSupplierWebsite"] = None,
-        currency_code: Optional["_models.TextAnnotationV2"] = None,
-        custom_fields: Optional[Dict[str, Any]] = None,
-        **kwargs,
-    ):
-        """
-        :keyword tables:
-        :paramtype tables: list[~affinda.models.InvoiceDataTablesItem]
-        :keyword invoice_date:
-        :paramtype invoice_date: ~affinda.models.DateAnnotationV2
-        :keyword invoice_order_date:
-        :paramtype invoice_order_date: ~affinda.models.DateAnnotationV2
-        :keyword payment_date_due:
-        :paramtype payment_date_due: ~affinda.models.DateAnnotationV2
-        :keyword payment_amount_base:
-        :paramtype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
-        :keyword payment_amount_tax:
-        :paramtype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
-        :keyword payment_amount_total:
-        :paramtype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
-        :keyword payment_amount_paid:
-        :paramtype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
-        :keyword payment_amount_due:
-        :paramtype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
-        :keyword invoice_number:
-        :paramtype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
-        :keyword invoice_purchase_order_number:
-        :paramtype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
-        :keyword supplier_business_number:
-        :paramtype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
-        :keyword customer_number:
-        :paramtype customer_number: ~affinda.models.InvoiceDataCustomerNumber
-        :keyword customer_business_number:
-        :paramtype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
-        :keyword payment_reference:
-        :paramtype payment_reference: ~affinda.models.InvoiceDataPaymentReference
-        :keyword bank_account_number:
-        :paramtype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
-        :keyword supplier_vat:
-        :paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
-        :keyword customer_vat:
-        :paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVat
-        :keyword bpay_biller_code:
-        :paramtype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
-        :keyword bpay_reference:
-        :paramtype bpay_reference: ~affinda.models.InvoiceDataBpayReference
-        :keyword bank_sort_code:
-        :paramtype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
-        :keyword bank_iban:
-        :paramtype bank_iban: ~affinda.models.InvoiceDataBankIban
-        :keyword bank_swift:
-        :paramtype bank_swift: ~affinda.models.InvoiceDataBankSwift
-        :keyword bank_bsb:
-        :paramtype bank_bsb: ~affinda.models.InvoiceDataBankBsb
-        :keyword customer_contact_name:
-        :paramtype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
-        :keyword customer_company_name:
-        :paramtype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
-        :keyword supplier_company_name:
-        :paramtype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
-        :keyword customer_billing_address:
-        :paramtype customer_billing_address: ~affinda.models.LocationAnnotationV2
-        :keyword customer_delivery_address:
-        :paramtype customer_delivery_address: ~affinda.models.LocationAnnotationV2
-        :keyword supplier_address:
-        :paramtype supplier_address: ~affinda.models.LocationAnnotationV2
-        :keyword customer_phone_number:
-        :paramtype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
-        :keyword supplier_phone_number:
-        :paramtype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
-        :keyword supplier_fax:
-        :paramtype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
-        :keyword customer_email:
-        :paramtype customer_email: ~affinda.models.InvoiceDataCustomerEmail
-        :keyword supplier_email:
-        :paramtype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
-        :keyword supplier_website:
-        :paramtype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
-        :keyword currency_code:
-        :paramtype currency_code: ~affinda.models.TextAnnotationV2
-        :keyword custom_fields: Dictionary of :code:`<any>`.
-        :paramtype custom_fields: dict[str, any]
-        """
-        super(Components1RkulfvSchemasDocumentPropertiesDataOneof1, self).__init__(
-            tables=tables,
-            invoice_date=invoice_date,
-            invoice_order_date=invoice_order_date,
-            payment_date_due=payment_date_due,
-            payment_amount_base=payment_amount_base,
-            payment_amount_tax=payment_amount_tax,
-            payment_amount_total=payment_amount_total,
-            payment_amount_paid=payment_amount_paid,
-            payment_amount_due=payment_amount_due,
-            invoice_number=invoice_number,
-            invoice_purchase_order_number=invoice_purchase_order_number,
-            supplier_business_number=supplier_business_number,
-            customer_number=customer_number,
-            customer_business_number=customer_business_number,
-            payment_reference=payment_reference,
-            bank_account_number=bank_account_number,
-            supplier_vat=supplier_vat,
-            customer_vat=customer_vat,
-            bpay_biller_code=bpay_biller_code,
-            bpay_reference=bpay_reference,
-            bank_sort_code=bank_sort_code,
-            bank_iban=bank_iban,
-            bank_swift=bank_swift,
-            bank_bsb=bank_bsb,
-            customer_contact_name=customer_contact_name,
-            customer_company_name=customer_company_name,
-            supplier_company_name=supplier_company_name,
-            customer_billing_address=customer_billing_address,
-            customer_delivery_address=customer_delivery_address,
-            supplier_address=supplier_address,
-            customer_phone_number=customer_phone_number,
-            supplier_phone_number=supplier_phone_number,
-            supplier_fax=supplier_fax,
-            customer_email=customer_email,
-            supplier_email=supplier_email,
-            supplier_website=supplier_website,
-            currency_code=currency_code,
-            custom_fields=custom_fields,
-            **kwargs,
-        )
-
-
 class Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1(msrest.serialization.Model):
     """Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1.
 
@@ -1972,149 +1314,6 @@ class Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1(msrest.serializ
         :paramtype parsed: str
         """
         super(Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1, self).__init__(**kwargs)
-        self.raw = raw
-        self.parsed = parsed
-
-
-class Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1(
-    msrest.serialization.Model
-):
-    """Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1.
-
-    :ivar match:
-    :vartype match: bool
-    """
-
-    _attribute_map = {
-        "match": {"key": "match", "type": "bool"},
-    }
-
-    def __init__(self, *, match: Optional[bool] = None, **kwargs):
-        """
-        :keyword match:
-        :paramtype match: bool
-        """
-        super(
-            Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1,
-            self,
-        ).__init__(**kwargs)
-        self.match = match
-
-
-class Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification(
-    msrest.serialization.Model
-):
-    """Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification.
-
-    :ivar title: SOC2020 classification for this job title.
-    :vartype title: str
-    :ivar minor_group: SOC2020 minor group.
-    :vartype minor_group: str
-    :ivar sub_major_group: SOC2020 sub major group.
-    :vartype sub_major_group: str
-    :ivar major_group: SOC2020 major group.
-    :vartype major_group: str
-    :ivar soc_code: The 4 digit code representing the SOC2020 classification for this job title.
-    :vartype soc_code: int
-    """
-
-    _attribute_map = {
-        "title": {"key": "title", "type": "str"},
-        "minor_group": {"key": "minorGroup", "type": "str"},
-        "sub_major_group": {"key": "subMajorGroup", "type": "str"},
-        "major_group": {"key": "majorGroup", "type": "str"},
-        "soc_code": {"key": "socCode", "type": "int"},
-    }
-
-    def __init__(
-        self,
-        *,
-        title: Optional[str] = None,
-        minor_group: Optional[str] = None,
-        sub_major_group: Optional[str] = None,
-        major_group: Optional[str] = None,
-        soc_code: Optional[int] = None,
-        **kwargs,
-    ):
-        """
-        :keyword title: SOC2020 classification for this job title.
-        :paramtype title: str
-        :keyword minor_group: SOC2020 minor group.
-        :paramtype minor_group: str
-        :keyword sub_major_group: SOC2020 sub major group.
-        :paramtype sub_major_group: str
-        :keyword major_group: SOC2020 major group.
-        :paramtype major_group: str
-        :keyword soc_code: The 4 digit code representing the SOC2020 classification for this job title.
-        :paramtype soc_code: int
-        """
-        super(
-            Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification,
-            self,
-        ).__init__(**kwargs)
-        self.title = title
-        self.minor_group = minor_group
-        self.sub_major_group = sub_major_group
-        self.major_group = major_group
-        self.soc_code = soc_code
-
-
-class Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1(
-    msrest.serialization.Model
-):
-    """Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1.
-
-    :ivar raw:
-    :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
-    """
-
-    _attribute_map = {
-        "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
-    }
-
-    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
-        """
-        :keyword raw:
-        :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
-        """
-        super(Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1, self).__init__(
-            **kwargs
-        )
-        self.raw = raw
-        self.parsed = parsed
-
-
-class Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1(
-    msrest.serialization.Model
-):
-    """Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1.
-
-    :ivar raw:
-    :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
-    """
-
-    _attribute_map = {
-        "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
-    }
-
-    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
-        """
-        :keyword raw:
-        :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
-        """
-        super(Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1, self).__init__(
-            **kwargs
-        )
         self.raw = raw
         self.parsed = parsed
 
@@ -2259,8 +1458,8 @@ class JobDescriptionData(msrest.serialization.Model):
         self.years_experience = years_experience
 
 
-class Components1Wco9OeSchemasDocumentPropertiesDataOneof2(JobDescriptionData):
-    """Components1Wco9OeSchemasDocumentPropertiesDataOneof2.
+class Components1S1E4FcSchemasDocumentPropertiesDataAnyof2(JobDescriptionData):
+    """Components1S1E4FcSchemasDocumentPropertiesDataAnyof2.
 
     :ivar job_title:
     :vartype job_title: ~affinda.models.JobTitleAnnotation
@@ -2379,7 +1578,7 @@ class Components1Wco9OeSchemasDocumentPropertiesDataOneof2(JobDescriptionData):
         :keyword years_experience:
         :paramtype years_experience: ~affinda.models.YearsExperienceAnnotationV2
         """
-        super(Components1Wco9OeSchemasDocumentPropertiesDataOneof2, self).__init__(
+        super(Components1S1E4FcSchemasDocumentPropertiesDataAnyof2, self).__init__(
             job_title=job_title,
             contact_email=contact_email,
             contact_name=contact_name,
@@ -2399,6 +1598,149 @@ class Components1Wco9OeSchemasDocumentPropertiesDataOneof2(JobDescriptionData):
             years_experience=years_experience,
             **kwargs,
         )
+
+
+class Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1(
+    msrest.serialization.Model
+):
+    """Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1.
+
+    :ivar match:
+    :vartype match: bool
+    """
+
+    _attribute_map = {
+        "match": {"key": "match", "type": "bool"},
+    }
+
+    def __init__(self, *, match: Optional[bool] = None, **kwargs):
+        """
+        :keyword match:
+        :paramtype match: bool
+        """
+        super(
+            Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1,
+            self,
+        ).__init__(**kwargs)
+        self.match = match
+
+
+class Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification(
+    msrest.serialization.Model
+):
+    """Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification.
+
+    :ivar title: SOC2020 classification for this job title.
+    :vartype title: str
+    :ivar minor_group: SOC2020 minor group.
+    :vartype minor_group: str
+    :ivar sub_major_group: SOC2020 sub major group.
+    :vartype sub_major_group: str
+    :ivar major_group: SOC2020 major group.
+    :vartype major_group: str
+    :ivar soc_code: The 4 digit code representing the SOC2020 classification for this job title.
+    :vartype soc_code: int
+    """
+
+    _attribute_map = {
+        "title": {"key": "title", "type": "str"},
+        "minor_group": {"key": "minorGroup", "type": "str"},
+        "sub_major_group": {"key": "subMajorGroup", "type": "str"},
+        "major_group": {"key": "majorGroup", "type": "str"},
+        "soc_code": {"key": "socCode", "type": "int"},
+    }
+
+    def __init__(
+        self,
+        *,
+        title: Optional[str] = None,
+        minor_group: Optional[str] = None,
+        sub_major_group: Optional[str] = None,
+        major_group: Optional[str] = None,
+        soc_code: Optional[int] = None,
+        **kwargs,
+    ):
+        """
+        :keyword title: SOC2020 classification for this job title.
+        :paramtype title: str
+        :keyword minor_group: SOC2020 minor group.
+        :paramtype minor_group: str
+        :keyword sub_major_group: SOC2020 sub major group.
+        :paramtype sub_major_group: str
+        :keyword major_group: SOC2020 major group.
+        :paramtype major_group: str
+        :keyword soc_code: The 4 digit code representing the SOC2020 classification for this job title.
+        :paramtype soc_code: int
+        """
+        super(
+            Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification,
+            self,
+        ).__init__(**kwargs)
+        self.title = title
+        self.minor_group = minor_group
+        self.sub_major_group = sub_major_group
+        self.major_group = major_group
+        self.soc_code = soc_code
+
+
+class Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1(
+    msrest.serialization.Model
+):
+    """Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1.
+
+    :ivar raw:
+    :vartype raw: str
+    :ivar parsed:
+    :vartype parsed: str
+    """
+
+    _attribute_map = {
+        "raw": {"key": "raw", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
+    }
+
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
+        """
+        :keyword raw:
+        :paramtype raw: str
+        :keyword parsed:
+        :paramtype parsed: str
+        """
+        super(Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1, self).__init__(
+            **kwargs
+        )
+        self.raw = raw
+        self.parsed = parsed
+
+
+class Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1(
+    msrest.serialization.Model
+):
+    """Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1.
+
+    :ivar raw:
+    :vartype raw: str
+    :ivar parsed:
+    :vartype parsed: str
+    """
+
+    _attribute_map = {
+        "raw": {"key": "raw", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
+    }
+
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
+        """
+        :keyword raw:
+        :paramtype raw: str
+        :keyword parsed:
+        :paramtype parsed: str
+        """
+        super(Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1, self).__init__(
+            **kwargs
+        )
+        self.raw = raw
+        self.parsed = parsed
 
 
 class Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1(msrest.serialization.Model):
@@ -2982,6 +2324,664 @@ class ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1(
         self.parsed = parsed
 
 
+class InvoiceData(msrest.serialization.Model):
+    """InvoiceData.
+
+    :ivar tables:
+    :vartype tables: list[~affinda.models.InvoiceDataTablesItem]
+    :ivar invoice_date:
+    :vartype invoice_date: ~affinda.models.DateAnnotationV2
+    :ivar invoice_order_date:
+    :vartype invoice_order_date: ~affinda.models.DateAnnotationV2
+    :ivar payment_date_due:
+    :vartype payment_date_due: ~affinda.models.DateAnnotationV2
+    :ivar payment_amount_base:
+    :vartype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
+    :ivar payment_amount_tax:
+    :vartype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
+    :ivar payment_amount_total:
+    :vartype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
+    :ivar payment_amount_paid:
+    :vartype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
+    :ivar payment_amount_due:
+    :vartype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
+    :ivar invoice_number:
+    :vartype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
+    :ivar invoice_purchase_order_number:
+    :vartype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
+    :ivar supplier_business_number:
+    :vartype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
+    :ivar customer_number:
+    :vartype customer_number: ~affinda.models.InvoiceDataCustomerNumber
+    :ivar customer_business_number:
+    :vartype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
+    :ivar payment_reference:
+    :vartype payment_reference: ~affinda.models.InvoiceDataPaymentReference
+    :ivar bank_account_number:
+    :vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
+    :ivar supplier_vat:
+    :vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
+    :ivar customer_vat:
+    :vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
+    :ivar bpay_biller_code:
+    :vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
+    :ivar bpay_reference:
+    :vartype bpay_reference: ~affinda.models.InvoiceDataBpayReference
+    :ivar bank_sort_code:
+    :vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
+    :ivar bank_iban:
+    :vartype bank_iban: ~affinda.models.InvoiceDataBankIban
+    :ivar bank_swift:
+    :vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
+    :ivar bank_bsb:
+    :vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
+    :ivar customer_contact_name:
+    :vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
+    :ivar customer_company_name:
+    :vartype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
+    :ivar supplier_company_name:
+    :vartype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
+    :ivar customer_billing_address:
+    :vartype customer_billing_address: ~affinda.models.LocationAnnotationV2
+    :ivar customer_delivery_address:
+    :vartype customer_delivery_address: ~affinda.models.LocationAnnotationV2
+    :ivar supplier_address:
+    :vartype supplier_address: ~affinda.models.LocationAnnotationV2
+    :ivar customer_phone_number:
+    :vartype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
+    :ivar supplier_phone_number:
+    :vartype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
+    :ivar supplier_fax:
+    :vartype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
+    :ivar customer_email:
+    :vartype customer_email: ~affinda.models.InvoiceDataCustomerEmail
+    :ivar supplier_email:
+    :vartype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
+    :ivar supplier_website:
+    :vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
+    :ivar currency_code:
+    :vartype currency_code: ~affinda.models.TextAnnotationV2
+    :ivar custom_fields: Dictionary of :code:`<any>`.
+    :vartype custom_fields: dict[str, any]
+    """
+
+    _attribute_map = {
+        "tables": {"key": "tables", "type": "[InvoiceDataTablesItem]"},
+        "invoice_date": {"key": "invoiceDate", "type": "DateAnnotationV2"},
+        "invoice_order_date": {"key": "invoiceOrderDate", "type": "DateAnnotationV2"},
+        "payment_date_due": {"key": "paymentDateDue", "type": "DateAnnotationV2"},
+        "payment_amount_base": {
+            "key": "paymentAmountBase",
+            "type": "InvoiceDataPaymentAmountBase",
+        },
+        "payment_amount_tax": {"key": "paymentAmountTax", "type": "InvoiceDataPaymentAmountTax"},
+        "payment_amount_total": {
+            "key": "paymentAmountTotal",
+            "type": "InvoiceDataPaymentAmountTotal",
+        },
+        "payment_amount_paid": {
+            "key": "paymentAmountPaid",
+            "type": "InvoiceDataPaymentAmountPaid",
+        },
+        "payment_amount_due": {"key": "paymentAmountDue", "type": "InvoiceDataPaymentAmountDue"},
+        "invoice_number": {"key": "invoiceNumber", "type": "InvoiceDataInvoiceNumber"},
+        "invoice_purchase_order_number": {
+            "key": "invoicePurchaseOrderNumber",
+            "type": "InvoiceDataInvoicePurchaseOrderNumber",
+        },
+        "supplier_business_number": {
+            "key": "supplierBusinessNumber",
+            "type": "InvoiceDataSupplierBusinessNumber",
+        },
+        "customer_number": {"key": "customerNumber", "type": "InvoiceDataCustomerNumber"},
+        "customer_business_number": {
+            "key": "customerBusinessNumber",
+            "type": "InvoiceDataCustomerBusinessNumber",
+        },
+        "payment_reference": {"key": "paymentReference", "type": "InvoiceDataPaymentReference"},
+        "bank_account_number": {
+            "key": "bankAccountNumber",
+            "type": "InvoiceDataBankAccountNumber",
+        },
+        "supplier_vat": {"key": "supplierVat", "type": "InvoiceDataSupplierVat"},
+        "customer_vat": {"key": "customerVat", "type": "InvoiceDataCustomerVat"},
+        "bpay_biller_code": {"key": "bpayBillerCode", "type": "InvoiceDataBpayBillerCode"},
+        "bpay_reference": {"key": "bpayReference", "type": "InvoiceDataBpayReference"},
+        "bank_sort_code": {"key": "bankSortCode", "type": "InvoiceDataBankSortCode"},
+        "bank_iban": {"key": "bankIban", "type": "InvoiceDataBankIban"},
+        "bank_swift": {"key": "bankSwift", "type": "InvoiceDataBankSwift"},
+        "bank_bsb": {"key": "bankBsb", "type": "InvoiceDataBankBsb"},
+        "customer_contact_name": {
+            "key": "customerContactName",
+            "type": "InvoiceDataCustomerContactName",
+        },
+        "customer_company_name": {
+            "key": "customerCompanyName",
+            "type": "InvoiceDataCustomerCompanyName",
+        },
+        "supplier_company_name": {
+            "key": "supplierCompanyName",
+            "type": "InvoiceDataSupplierCompanyName",
+        },
+        "customer_billing_address": {
+            "key": "customerBillingAddress",
+            "type": "LocationAnnotationV2",
+        },
+        "customer_delivery_address": {
+            "key": "customerDeliveryAddress",
+            "type": "LocationAnnotationV2",
+        },
+        "supplier_address": {"key": "supplierAddress", "type": "LocationAnnotationV2"},
+        "customer_phone_number": {
+            "key": "customerPhoneNumber",
+            "type": "InvoiceDataCustomerPhoneNumber",
+        },
+        "supplier_phone_number": {
+            "key": "supplierPhoneNumber",
+            "type": "InvoiceDataSupplierPhoneNumber",
+        },
+        "supplier_fax": {"key": "supplierFax", "type": "InvoiceDataSupplierFax"},
+        "customer_email": {"key": "customerEmail", "type": "InvoiceDataCustomerEmail"},
+        "supplier_email": {"key": "supplierEmail", "type": "InvoiceDataSupplierEmail"},
+        "supplier_website": {"key": "supplierWebsite", "type": "InvoiceDataSupplierWebsite"},
+        "currency_code": {"key": "currencyCode", "type": "TextAnnotationV2"},
+        "custom_fields": {"key": "customFields", "type": "{object}"},
+    }
+
+    def __init__(
+        self,
+        *,
+        tables: Optional[List["_models.InvoiceDataTablesItem"]] = None,
+        invoice_date: Optional["_models.DateAnnotationV2"] = None,
+        invoice_order_date: Optional["_models.DateAnnotationV2"] = None,
+        payment_date_due: Optional["_models.DateAnnotationV2"] = None,
+        payment_amount_base: Optional["_models.InvoiceDataPaymentAmountBase"] = None,
+        payment_amount_tax: Optional["_models.InvoiceDataPaymentAmountTax"] = None,
+        payment_amount_total: Optional["_models.InvoiceDataPaymentAmountTotal"] = None,
+        payment_amount_paid: Optional["_models.InvoiceDataPaymentAmountPaid"] = None,
+        payment_amount_due: Optional["_models.InvoiceDataPaymentAmountDue"] = None,
+        invoice_number: Optional["_models.InvoiceDataInvoiceNumber"] = None,
+        invoice_purchase_order_number: Optional[
+            "_models.InvoiceDataInvoicePurchaseOrderNumber"
+        ] = None,
+        supplier_business_number: Optional["_models.InvoiceDataSupplierBusinessNumber"] = None,
+        customer_number: Optional["_models.InvoiceDataCustomerNumber"] = None,
+        customer_business_number: Optional["_models.InvoiceDataCustomerBusinessNumber"] = None,
+        payment_reference: Optional["_models.InvoiceDataPaymentReference"] = None,
+        bank_account_number: Optional["_models.InvoiceDataBankAccountNumber"] = None,
+        supplier_vat: Optional["_models.InvoiceDataSupplierVat"] = None,
+        customer_vat: Optional["_models.InvoiceDataCustomerVat"] = None,
+        bpay_biller_code: Optional["_models.InvoiceDataBpayBillerCode"] = None,
+        bpay_reference: Optional["_models.InvoiceDataBpayReference"] = None,
+        bank_sort_code: Optional["_models.InvoiceDataBankSortCode"] = None,
+        bank_iban: Optional["_models.InvoiceDataBankIban"] = None,
+        bank_swift: Optional["_models.InvoiceDataBankSwift"] = None,
+        bank_bsb: Optional["_models.InvoiceDataBankBsb"] = None,
+        customer_contact_name: Optional["_models.InvoiceDataCustomerContactName"] = None,
+        customer_company_name: Optional["_models.InvoiceDataCustomerCompanyName"] = None,
+        supplier_company_name: Optional["_models.InvoiceDataSupplierCompanyName"] = None,
+        customer_billing_address: Optional["_models.LocationAnnotationV2"] = None,
+        customer_delivery_address: Optional["_models.LocationAnnotationV2"] = None,
+        supplier_address: Optional["_models.LocationAnnotationV2"] = None,
+        customer_phone_number: Optional["_models.InvoiceDataCustomerPhoneNumber"] = None,
+        supplier_phone_number: Optional["_models.InvoiceDataSupplierPhoneNumber"] = None,
+        supplier_fax: Optional["_models.InvoiceDataSupplierFax"] = None,
+        customer_email: Optional["_models.InvoiceDataCustomerEmail"] = None,
+        supplier_email: Optional["_models.InvoiceDataSupplierEmail"] = None,
+        supplier_website: Optional["_models.InvoiceDataSupplierWebsite"] = None,
+        currency_code: Optional["_models.TextAnnotationV2"] = None,
+        custom_fields: Optional[Dict[str, Any]] = None,
+        **kwargs,
+    ):
+        """
+        :keyword tables:
+        :paramtype tables: list[~affinda.models.InvoiceDataTablesItem]
+        :keyword invoice_date:
+        :paramtype invoice_date: ~affinda.models.DateAnnotationV2
+        :keyword invoice_order_date:
+        :paramtype invoice_order_date: ~affinda.models.DateAnnotationV2
+        :keyword payment_date_due:
+        :paramtype payment_date_due: ~affinda.models.DateAnnotationV2
+        :keyword payment_amount_base:
+        :paramtype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
+        :keyword payment_amount_tax:
+        :paramtype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
+        :keyword payment_amount_total:
+        :paramtype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
+        :keyword payment_amount_paid:
+        :paramtype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
+        :keyword payment_amount_due:
+        :paramtype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
+        :keyword invoice_number:
+        :paramtype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
+        :keyword invoice_purchase_order_number:
+        :paramtype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
+        :keyword supplier_business_number:
+        :paramtype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
+        :keyword customer_number:
+        :paramtype customer_number: ~affinda.models.InvoiceDataCustomerNumber
+        :keyword customer_business_number:
+        :paramtype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
+        :keyword payment_reference:
+        :paramtype payment_reference: ~affinda.models.InvoiceDataPaymentReference
+        :keyword bank_account_number:
+        :paramtype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
+        :keyword supplier_vat:
+        :paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
+        :keyword customer_vat:
+        :paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVat
+        :keyword bpay_biller_code:
+        :paramtype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
+        :keyword bpay_reference:
+        :paramtype bpay_reference: ~affinda.models.InvoiceDataBpayReference
+        :keyword bank_sort_code:
+        :paramtype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
+        :keyword bank_iban:
+        :paramtype bank_iban: ~affinda.models.InvoiceDataBankIban
+        :keyword bank_swift:
+        :paramtype bank_swift: ~affinda.models.InvoiceDataBankSwift
+        :keyword bank_bsb:
+        :paramtype bank_bsb: ~affinda.models.InvoiceDataBankBsb
+        :keyword customer_contact_name:
+        :paramtype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
+        :keyword customer_company_name:
+        :paramtype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
+        :keyword supplier_company_name:
+        :paramtype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
+        :keyword customer_billing_address:
+        :paramtype customer_billing_address: ~affinda.models.LocationAnnotationV2
+        :keyword customer_delivery_address:
+        :paramtype customer_delivery_address: ~affinda.models.LocationAnnotationV2
+        :keyword supplier_address:
+        :paramtype supplier_address: ~affinda.models.LocationAnnotationV2
+        :keyword customer_phone_number:
+        :paramtype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
+        :keyword supplier_phone_number:
+        :paramtype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
+        :keyword supplier_fax:
+        :paramtype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
+        :keyword customer_email:
+        :paramtype customer_email: ~affinda.models.InvoiceDataCustomerEmail
+        :keyword supplier_email:
+        :paramtype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
+        :keyword supplier_website:
+        :paramtype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
+        :keyword currency_code:
+        :paramtype currency_code: ~affinda.models.TextAnnotationV2
+        :keyword custom_fields: Dictionary of :code:`<any>`.
+        :paramtype custom_fields: dict[str, any]
+        """
+        super(InvoiceData, self).__init__(**kwargs)
+        self.tables = tables
+        self.invoice_date = invoice_date
+        self.invoice_order_date = invoice_order_date
+        self.payment_date_due = payment_date_due
+        self.payment_amount_base = payment_amount_base
+        self.payment_amount_tax = payment_amount_tax
+        self.payment_amount_total = payment_amount_total
+        self.payment_amount_paid = payment_amount_paid
+        self.payment_amount_due = payment_amount_due
+        self.invoice_number = invoice_number
+        self.invoice_purchase_order_number = invoice_purchase_order_number
+        self.supplier_business_number = supplier_business_number
+        self.customer_number = customer_number
+        self.customer_business_number = customer_business_number
+        self.payment_reference = payment_reference
+        self.bank_account_number = bank_account_number
+        self.supplier_vat = supplier_vat
+        self.customer_vat = customer_vat
+        self.bpay_biller_code = bpay_biller_code
+        self.bpay_reference = bpay_reference
+        self.bank_sort_code = bank_sort_code
+        self.bank_iban = bank_iban
+        self.bank_swift = bank_swift
+        self.bank_bsb = bank_bsb
+        self.customer_contact_name = customer_contact_name
+        self.customer_company_name = customer_company_name
+        self.supplier_company_name = supplier_company_name
+        self.customer_billing_address = customer_billing_address
+        self.customer_delivery_address = customer_delivery_address
+        self.supplier_address = supplier_address
+        self.customer_phone_number = customer_phone_number
+        self.supplier_phone_number = supplier_phone_number
+        self.supplier_fax = supplier_fax
+        self.customer_email = customer_email
+        self.supplier_email = supplier_email
+        self.supplier_website = supplier_website
+        self.currency_code = currency_code
+        self.custom_fields = custom_fields
+
+
+class ComponentsX4QdioSchemasDocumentPropertiesDataAnyof1(InvoiceData):
+    """ComponentsX4QdioSchemasDocumentPropertiesDataAnyof1.
+
+    :ivar tables:
+    :vartype tables: list[~affinda.models.InvoiceDataTablesItem]
+    :ivar invoice_date:
+    :vartype invoice_date: ~affinda.models.DateAnnotationV2
+    :ivar invoice_order_date:
+    :vartype invoice_order_date: ~affinda.models.DateAnnotationV2
+    :ivar payment_date_due:
+    :vartype payment_date_due: ~affinda.models.DateAnnotationV2
+    :ivar payment_amount_base:
+    :vartype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
+    :ivar payment_amount_tax:
+    :vartype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
+    :ivar payment_amount_total:
+    :vartype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
+    :ivar payment_amount_paid:
+    :vartype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
+    :ivar payment_amount_due:
+    :vartype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
+    :ivar invoice_number:
+    :vartype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
+    :ivar invoice_purchase_order_number:
+    :vartype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
+    :ivar supplier_business_number:
+    :vartype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
+    :ivar customer_number:
+    :vartype customer_number: ~affinda.models.InvoiceDataCustomerNumber
+    :ivar customer_business_number:
+    :vartype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
+    :ivar payment_reference:
+    :vartype payment_reference: ~affinda.models.InvoiceDataPaymentReference
+    :ivar bank_account_number:
+    :vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
+    :ivar supplier_vat:
+    :vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
+    :ivar customer_vat:
+    :vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
+    :ivar bpay_biller_code:
+    :vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
+    :ivar bpay_reference:
+    :vartype bpay_reference: ~affinda.models.InvoiceDataBpayReference
+    :ivar bank_sort_code:
+    :vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
+    :ivar bank_iban:
+    :vartype bank_iban: ~affinda.models.InvoiceDataBankIban
+    :ivar bank_swift:
+    :vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
+    :ivar bank_bsb:
+    :vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
+    :ivar customer_contact_name:
+    :vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
+    :ivar customer_company_name:
+    :vartype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
+    :ivar supplier_company_name:
+    :vartype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
+    :ivar customer_billing_address:
+    :vartype customer_billing_address: ~affinda.models.LocationAnnotationV2
+    :ivar customer_delivery_address:
+    :vartype customer_delivery_address: ~affinda.models.LocationAnnotationV2
+    :ivar supplier_address:
+    :vartype supplier_address: ~affinda.models.LocationAnnotationV2
+    :ivar customer_phone_number:
+    :vartype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
+    :ivar supplier_phone_number:
+    :vartype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
+    :ivar supplier_fax:
+    :vartype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
+    :ivar customer_email:
+    :vartype customer_email: ~affinda.models.InvoiceDataCustomerEmail
+    :ivar supplier_email:
+    :vartype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
+    :ivar supplier_website:
+    :vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
+    :ivar currency_code:
+    :vartype currency_code: ~affinda.models.TextAnnotationV2
+    :ivar custom_fields: Dictionary of :code:`<any>`.
+    :vartype custom_fields: dict[str, any]
+    """
+
+    _attribute_map = {
+        "tables": {"key": "tables", "type": "[InvoiceDataTablesItem]"},
+        "invoice_date": {"key": "invoiceDate", "type": "DateAnnotationV2"},
+        "invoice_order_date": {"key": "invoiceOrderDate", "type": "DateAnnotationV2"},
+        "payment_date_due": {"key": "paymentDateDue", "type": "DateAnnotationV2"},
+        "payment_amount_base": {
+            "key": "paymentAmountBase",
+            "type": "InvoiceDataPaymentAmountBase",
+        },
+        "payment_amount_tax": {"key": "paymentAmountTax", "type": "InvoiceDataPaymentAmountTax"},
+        "payment_amount_total": {
+            "key": "paymentAmountTotal",
+            "type": "InvoiceDataPaymentAmountTotal",
+        },
+        "payment_amount_paid": {
+            "key": "paymentAmountPaid",
+            "type": "InvoiceDataPaymentAmountPaid",
+        },
+        "payment_amount_due": {"key": "paymentAmountDue", "type": "InvoiceDataPaymentAmountDue"},
+        "invoice_number": {"key": "invoiceNumber", "type": "InvoiceDataInvoiceNumber"},
+        "invoice_purchase_order_number": {
+            "key": "invoicePurchaseOrderNumber",
+            "type": "InvoiceDataInvoicePurchaseOrderNumber",
+        },
+        "supplier_business_number": {
+            "key": "supplierBusinessNumber",
+            "type": "InvoiceDataSupplierBusinessNumber",
+        },
+        "customer_number": {"key": "customerNumber", "type": "InvoiceDataCustomerNumber"},
+        "customer_business_number": {
+            "key": "customerBusinessNumber",
+            "type": "InvoiceDataCustomerBusinessNumber",
+        },
+        "payment_reference": {"key": "paymentReference", "type": "InvoiceDataPaymentReference"},
+        "bank_account_number": {
+            "key": "bankAccountNumber",
+            "type": "InvoiceDataBankAccountNumber",
+        },
+        "supplier_vat": {"key": "supplierVat", "type": "InvoiceDataSupplierVat"},
+        "customer_vat": {"key": "customerVat", "type": "InvoiceDataCustomerVat"},
+        "bpay_biller_code": {"key": "bpayBillerCode", "type": "InvoiceDataBpayBillerCode"},
+        "bpay_reference": {"key": "bpayReference", "type": "InvoiceDataBpayReference"},
+        "bank_sort_code": {"key": "bankSortCode", "type": "InvoiceDataBankSortCode"},
+        "bank_iban": {"key": "bankIban", "type": "InvoiceDataBankIban"},
+        "bank_swift": {"key": "bankSwift", "type": "InvoiceDataBankSwift"},
+        "bank_bsb": {"key": "bankBsb", "type": "InvoiceDataBankBsb"},
+        "customer_contact_name": {
+            "key": "customerContactName",
+            "type": "InvoiceDataCustomerContactName",
+        },
+        "customer_company_name": {
+            "key": "customerCompanyName",
+            "type": "InvoiceDataCustomerCompanyName",
+        },
+        "supplier_company_name": {
+            "key": "supplierCompanyName",
+            "type": "InvoiceDataSupplierCompanyName",
+        },
+        "customer_billing_address": {
+            "key": "customerBillingAddress",
+            "type": "LocationAnnotationV2",
+        },
+        "customer_delivery_address": {
+            "key": "customerDeliveryAddress",
+            "type": "LocationAnnotationV2",
+        },
+        "supplier_address": {"key": "supplierAddress", "type": "LocationAnnotationV2"},
+        "customer_phone_number": {
+            "key": "customerPhoneNumber",
+            "type": "InvoiceDataCustomerPhoneNumber",
+        },
+        "supplier_phone_number": {
+            "key": "supplierPhoneNumber",
+            "type": "InvoiceDataSupplierPhoneNumber",
+        },
+        "supplier_fax": {"key": "supplierFax", "type": "InvoiceDataSupplierFax"},
+        "customer_email": {"key": "customerEmail", "type": "InvoiceDataCustomerEmail"},
+        "supplier_email": {"key": "supplierEmail", "type": "InvoiceDataSupplierEmail"},
+        "supplier_website": {"key": "supplierWebsite", "type": "InvoiceDataSupplierWebsite"},
+        "currency_code": {"key": "currencyCode", "type": "TextAnnotationV2"},
+        "custom_fields": {"key": "customFields", "type": "{object}"},
+    }
+
+    def __init__(
+        self,
+        *,
+        tables: Optional[List["_models.InvoiceDataTablesItem"]] = None,
+        invoice_date: Optional["_models.DateAnnotationV2"] = None,
+        invoice_order_date: Optional["_models.DateAnnotationV2"] = None,
+        payment_date_due: Optional["_models.DateAnnotationV2"] = None,
+        payment_amount_base: Optional["_models.InvoiceDataPaymentAmountBase"] = None,
+        payment_amount_tax: Optional["_models.InvoiceDataPaymentAmountTax"] = None,
+        payment_amount_total: Optional["_models.InvoiceDataPaymentAmountTotal"] = None,
+        payment_amount_paid: Optional["_models.InvoiceDataPaymentAmountPaid"] = None,
+        payment_amount_due: Optional["_models.InvoiceDataPaymentAmountDue"] = None,
+        invoice_number: Optional["_models.InvoiceDataInvoiceNumber"] = None,
+        invoice_purchase_order_number: Optional[
+            "_models.InvoiceDataInvoicePurchaseOrderNumber"
+        ] = None,
+        supplier_business_number: Optional["_models.InvoiceDataSupplierBusinessNumber"] = None,
+        customer_number: Optional["_models.InvoiceDataCustomerNumber"] = None,
+        customer_business_number: Optional["_models.InvoiceDataCustomerBusinessNumber"] = None,
+        payment_reference: Optional["_models.InvoiceDataPaymentReference"] = None,
+        bank_account_number: Optional["_models.InvoiceDataBankAccountNumber"] = None,
+        supplier_vat: Optional["_models.InvoiceDataSupplierVat"] = None,
+        customer_vat: Optional["_models.InvoiceDataCustomerVat"] = None,
+        bpay_biller_code: Optional["_models.InvoiceDataBpayBillerCode"] = None,
+        bpay_reference: Optional["_models.InvoiceDataBpayReference"] = None,
+        bank_sort_code: Optional["_models.InvoiceDataBankSortCode"] = None,
+        bank_iban: Optional["_models.InvoiceDataBankIban"] = None,
+        bank_swift: Optional["_models.InvoiceDataBankSwift"] = None,
+        bank_bsb: Optional["_models.InvoiceDataBankBsb"] = None,
+        customer_contact_name: Optional["_models.InvoiceDataCustomerContactName"] = None,
+        customer_company_name: Optional["_models.InvoiceDataCustomerCompanyName"] = None,
+        supplier_company_name: Optional["_models.InvoiceDataSupplierCompanyName"] = None,
+        customer_billing_address: Optional["_models.LocationAnnotationV2"] = None,
+        customer_delivery_address: Optional["_models.LocationAnnotationV2"] = None,
+        supplier_address: Optional["_models.LocationAnnotationV2"] = None,
+        customer_phone_number: Optional["_models.InvoiceDataCustomerPhoneNumber"] = None,
+        supplier_phone_number: Optional["_models.InvoiceDataSupplierPhoneNumber"] = None,
+        supplier_fax: Optional["_models.InvoiceDataSupplierFax"] = None,
+        customer_email: Optional["_models.InvoiceDataCustomerEmail"] = None,
+        supplier_email: Optional["_models.InvoiceDataSupplierEmail"] = None,
+        supplier_website: Optional["_models.InvoiceDataSupplierWebsite"] = None,
+        currency_code: Optional["_models.TextAnnotationV2"] = None,
+        custom_fields: Optional[Dict[str, Any]] = None,
+        **kwargs,
+    ):
+        """
+        :keyword tables:
+        :paramtype tables: list[~affinda.models.InvoiceDataTablesItem]
+        :keyword invoice_date:
+        :paramtype invoice_date: ~affinda.models.DateAnnotationV2
+        :keyword invoice_order_date:
+        :paramtype invoice_order_date: ~affinda.models.DateAnnotationV2
+        :keyword payment_date_due:
+        :paramtype payment_date_due: ~affinda.models.DateAnnotationV2
+        :keyword payment_amount_base:
+        :paramtype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
+        :keyword payment_amount_tax:
+        :paramtype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
+        :keyword payment_amount_total:
+        :paramtype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
+        :keyword payment_amount_paid:
+        :paramtype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
+        :keyword payment_amount_due:
+        :paramtype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
+        :keyword invoice_number:
+        :paramtype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
+        :keyword invoice_purchase_order_number:
+        :paramtype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
+        :keyword supplier_business_number:
+        :paramtype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
+        :keyword customer_number:
+        :paramtype customer_number: ~affinda.models.InvoiceDataCustomerNumber
+        :keyword customer_business_number:
+        :paramtype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
+        :keyword payment_reference:
+        :paramtype payment_reference: ~affinda.models.InvoiceDataPaymentReference
+        :keyword bank_account_number:
+        :paramtype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
+        :keyword supplier_vat:
+        :paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
+        :keyword customer_vat:
+        :paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVat
+        :keyword bpay_biller_code:
+        :paramtype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
+        :keyword bpay_reference:
+        :paramtype bpay_reference: ~affinda.models.InvoiceDataBpayReference
+        :keyword bank_sort_code:
+        :paramtype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
+        :keyword bank_iban:
+        :paramtype bank_iban: ~affinda.models.InvoiceDataBankIban
+        :keyword bank_swift:
+        :paramtype bank_swift: ~affinda.models.InvoiceDataBankSwift
+        :keyword bank_bsb:
+        :paramtype bank_bsb: ~affinda.models.InvoiceDataBankBsb
+        :keyword customer_contact_name:
+        :paramtype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
+        :keyword customer_company_name:
+        :paramtype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
+        :keyword supplier_company_name:
+        :paramtype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
+        :keyword customer_billing_address:
+        :paramtype customer_billing_address: ~affinda.models.LocationAnnotationV2
+        :keyword customer_delivery_address:
+        :paramtype customer_delivery_address: ~affinda.models.LocationAnnotationV2
+        :keyword supplier_address:
+        :paramtype supplier_address: ~affinda.models.LocationAnnotationV2
+        :keyword customer_phone_number:
+        :paramtype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
+        :keyword supplier_phone_number:
+        :paramtype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
+        :keyword supplier_fax:
+        :paramtype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
+        :keyword customer_email:
+        :paramtype customer_email: ~affinda.models.InvoiceDataCustomerEmail
+        :keyword supplier_email:
+        :paramtype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
+        :keyword supplier_website:
+        :paramtype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
+        :keyword currency_code:
+        :paramtype currency_code: ~affinda.models.TextAnnotationV2
+        :keyword custom_fields: Dictionary of :code:`<any>`.
+        :paramtype custom_fields: dict[str, any]
+        """
+        super(ComponentsX4QdioSchemasDocumentPropertiesDataAnyof1, self).__init__(
+            tables=tables,
+            invoice_date=invoice_date,
+            invoice_order_date=invoice_order_date,
+            payment_date_due=payment_date_due,
+            payment_amount_base=payment_amount_base,
+            payment_amount_tax=payment_amount_tax,
+            payment_amount_total=payment_amount_total,
+            payment_amount_paid=payment_amount_paid,
+            payment_amount_due=payment_amount_due,
+            invoice_number=invoice_number,
+            invoice_purchase_order_number=invoice_purchase_order_number,
+            supplier_business_number=supplier_business_number,
+            customer_number=customer_number,
+            customer_business_number=customer_business_number,
+            payment_reference=payment_reference,
+            bank_account_number=bank_account_number,
+            supplier_vat=supplier_vat,
+            customer_vat=customer_vat,
+            bpay_biller_code=bpay_biller_code,
+            bpay_reference=bpay_reference,
+            bank_sort_code=bank_sort_code,
+            bank_iban=bank_iban,
+            bank_swift=bank_swift,
+            bank_bsb=bank_bsb,
+            customer_contact_name=customer_contact_name,
+            customer_company_name=customer_company_name,
+            supplier_company_name=supplier_company_name,
+            customer_billing_address=customer_billing_address,
+            customer_delivery_address=customer_delivery_address,
+            supplier_address=supplier_address,
+            customer_phone_number=customer_phone_number,
+            supplier_phone_number=supplier_phone_number,
+            supplier_fax=supplier_fax,
+            customer_email=customer_email,
+            supplier_email=supplier_email,
+            supplier_website=supplier_website,
+            currency_code=currency_code,
+            custom_fields=custom_fields,
+            **kwargs,
+        )
+
+
 class DataPoint(msrest.serialization.Model):
     """DataPoint.
 
@@ -3108,6 +3108,8 @@ class DataPointChoice(msrest.serialization.Model):
     :vartype label: str
     :ivar value: Required.
     :vartype value: str
+    :ivar description:
+    :vartype description: str
     """
 
     _validation = {
@@ -3120,9 +3122,12 @@ class DataPointChoice(msrest.serialization.Model):
         "id": {"key": "id", "type": "float"},
         "label": {"key": "label", "type": "str"},
         "value": {"key": "value", "type": "str"},
+        "description": {"key": "description", "type": "str"},
     }
 
-    def __init__(self, *, id: float, label: str, value: str, **kwargs):
+    def __init__(
+        self, *, id: float, label: str, value: str, description: Optional[str] = None, **kwargs
+    ):
         """
         :keyword id: Required.
         :paramtype id: float
@@ -3130,11 +3135,14 @@ class DataPointChoice(msrest.serialization.Model):
         :paramtype label: str
         :keyword value: Required.
         :paramtype value: str
+        :keyword description:
+        :paramtype description: str
         """
         super(DataPointChoice, self).__init__(**kwargs)
         self.id = id
         self.label = label
         self.value = value
+        self.description = description
 
 
 class DataPointCreate(msrest.serialization.Model):
@@ -3627,7 +3635,7 @@ class DocumentMeta(msrest.serialization.Model):
     :ivar tags: A set of tags.
     :vartype tags: list[~affinda.models.Tag]
     :ivar confirmed_by:
-    :vartype confirmed_by: ~affinda.models.User
+    :vartype confirmed_by: ~affinda.models.UserNullable
     """
 
     _validation = {
@@ -3664,7 +3672,7 @@ class DocumentMeta(msrest.serialization.Model):
         "error_detail": {"key": "errorDetail", "type": "str"},
         "file": {"key": "file", "type": "str"},
         "tags": {"key": "tags", "type": "[Tag]"},
-        "confirmed_by": {"key": "confirmedBy", "type": "User"},
+        "confirmed_by": {"key": "confirmedBy", "type": "UserNullable"},
     }
 
     def __init__(
@@ -3697,7 +3705,7 @@ class DocumentMeta(msrest.serialization.Model):
         error_detail: Optional[str] = None,
         file: Optional[str] = None,
         tags: Optional[List["_models.Tag"]] = None,
-        confirmed_by: Optional["_models.User"] = None,
+        confirmed_by: Optional["_models.UserNullable"] = None,
         **kwargs,
     ):
         """
@@ -3763,7 +3771,7 @@ class DocumentMeta(msrest.serialization.Model):
         :keyword tags: A set of tags.
         :paramtype tags: list[~affinda.models.Tag]
         :keyword confirmed_by:
-        :paramtype confirmed_by: ~affinda.models.User
+        :paramtype confirmed_by: ~affinda.models.UserNullable
         """
         super(DocumentMeta, self).__init__(**kwargs)
         self.identifier = identifier
@@ -4934,7 +4942,7 @@ class GetAllDocumentsResults(msrest.serialization.Model):
     :ivar previous: URL to request previous page of results.
     :vartype previous: str
     :ivar results: Required.
-    :vartype results: list[~affinda.models.Document]
+    :vartype results: list[~affinda.models.GetAllDocumentsResultsItem]
     """
 
     _validation = {
@@ -4946,14 +4954,14 @@ class GetAllDocumentsResults(msrest.serialization.Model):
         "count": {"key": "count", "type": "int"},
         "next": {"key": "next", "type": "str"},
         "previous": {"key": "previous", "type": "str"},
-        "results": {"key": "results", "type": "[Document]"},
+        "results": {"key": "results", "type": "[GetAllDocumentsResultsItem]"},
     }
 
     def __init__(
         self,
         *,
         count: int,
-        results: List["_models.Document"],
+        results: List["_models.GetAllDocumentsResultsItem"],
         next: Optional[str] = None,
         previous: Optional[str] = None,
         **kwargs,
@@ -4966,13 +4974,47 @@ class GetAllDocumentsResults(msrest.serialization.Model):
         :keyword previous: URL to request previous page of results.
         :paramtype previous: str
         :keyword results: Required.
-        :paramtype results: list[~affinda.models.Document]
+        :paramtype results: list[~affinda.models.GetAllDocumentsResultsItem]
         """
         super(GetAllDocumentsResults, self).__init__(**kwargs)
         self.count = count
         self.next = next
         self.previous = previous
         self.results = results
+
+
+class GetAllDocumentsResultsItem(msrest.serialization.Model):
+    """GetAllDocumentsResultsItem.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar meta: Required.
+    :vartype meta: ~affinda.models.DocumentMeta
+    :ivar error:
+    :vartype error: ~affinda.models.Error
+    """
+
+    _validation = {
+        "meta": {"required": True},
+    }
+
+    _attribute_map = {
+        "meta": {"key": "meta", "type": "DocumentMeta"},
+        "error": {"key": "error", "type": "Error"},
+    }
+
+    def __init__(
+        self, *, meta: "_models.DocumentMeta", error: Optional["_models.Error"] = None, **kwargs
+    ):
+        """
+        :keyword meta: Required.
+        :paramtype meta: ~affinda.models.DocumentMeta
+        :keyword error:
+        :paramtype error: ~affinda.models.Error
+        """
+        super(GetAllDocumentsResultsItem, self).__init__(**kwargs)
+        self.meta = meta
+        self.error = error
 
 
 class IndexRequestBody(msrest.serialization.Model):
@@ -17040,6 +17082,59 @@ class TagUpdate(msrest.serialization.Model):
         super(TagUpdate, self).__init__(**kwargs)
         self.name = name
         self.workspace = workspace
+
+
+class UserNullable(msrest.serialization.Model):
+    """UserNullable.
+
+    :ivar id: Uniquely identify a user.
+    :vartype id: int
+    :ivar name:
+    :vartype name: str
+    :ivar username:
+    :vartype username: str
+    :ivar email:
+    :vartype email: str
+    :ivar avatar: URL of the user's avatar.
+    :vartype avatar: str
+    """
+
+    _attribute_map = {
+        "id": {"key": "id", "type": "int"},
+        "name": {"key": "name", "type": "str"},
+        "username": {"key": "username", "type": "str"},
+        "email": {"key": "email", "type": "str"},
+        "avatar": {"key": "avatar", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        id: Optional[int] = None,
+        name: Optional[str] = None,
+        username: Optional[str] = None,
+        email: Optional[str] = None,
+        avatar: Optional[str] = None,
+        **kwargs,
+    ):
+        """
+        :keyword id: Uniquely identify a user.
+        :paramtype id: int
+        :keyword name:
+        :paramtype name: str
+        :keyword username:
+        :paramtype username: str
+        :keyword email:
+        :paramtype email: str
+        :keyword avatar: URL of the user's avatar.
+        :paramtype avatar: str
+        """
+        super(UserNullable, self).__init__(**kwargs)
+        self.id = id
+        self.name = name
+        self.username = username
+        self.email = email
+        self.avatar = avatar
 
 
 class Workspace(msrest.serialization.Model):

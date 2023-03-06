@@ -25,15 +25,15 @@ try:
     from ._models_py3 import (
         Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1,
     )
+    from ._models_py3 import Components1FbbtzoSchemasDocumentPropertiesDataAnyof0
     from ._models_py3 import Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1
     from ._models_py3 import Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1
-    from ._models_py3 import Components1Ijdil6SchemasDocumentPropertiesDataOneof0
     from ._models_py3 import Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1
     from ._models_py3 import Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1
     from ._models_py3 import Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1
-    from ._models_py3 import Components1RkulfvSchemasDocumentPropertiesDataOneof1
     from ._models_py3 import Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1
     from ._models_py3 import Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1
+    from ._models_py3 import Components1S1E4FcSchemasDocumentPropertiesDataAnyof2
     from ._models_py3 import (
         Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1,
     )
@@ -42,7 +42,6 @@ try:
     )
     from ._models_py3 import Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1
     from ._models_py3 import Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1
-    from ._models_py3 import Components1Wco9OeSchemasDocumentPropertiesDataOneof2
     from ._models_py3 import Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1
     from ._models_py3 import Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1
     from ._models_py3 import Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1
@@ -77,6 +76,7 @@ try:
     )
     from ._models_py3 import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1
     from ._models_py3 import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1
+    from ._models_py3 import ComponentsX4QdioSchemasDocumentPropertiesDataAnyof1
     from ._models_py3 import DataPoint
     from ._models_py3 import DataPointChoice
     from ._models_py3 import DataPointCreate
@@ -107,6 +107,7 @@ try:
     from ._models_py3 import FieldGroup
     from ._models_py3 import Get200ApplicationJsonPropertiesItemsItem
     from ._models_py3 import GetAllDocumentsResults
+    from ._models_py3 import GetAllDocumentsResultsItem
     from ._models_py3 import IndexRequestBody
     from ._models_py3 import Invitation
     from ._models_py3 import InvitationCreate
@@ -296,6 +297,7 @@ try:
     from ._models_py3 import TagUpdate
     from ._models_py3 import TextAnnotationV2
     from ._models_py3 import User
+    from ._models_py3 import UserNullable
     from ._models_py3 import Workspace
     from ._models_py3 import WorkspaceCollectionsItem
     from ._models_py3 import WorkspaceCollectionsItemExtractor
@@ -320,20 +322,19 @@ except (SyntaxError, ImportError):
     from ._models import Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1  # type: ignore
     from ._models import Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1  # type: ignore
     from ._models import Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1  # type: ignore
+    from ._models import Components1FbbtzoSchemasDocumentPropertiesDataAnyof0  # type: ignore
     from ._models import Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1  # type: ignore
     from ._models import Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1  # type: ignore
-    from ._models import Components1Ijdil6SchemasDocumentPropertiesDataOneof0  # type: ignore
     from ._models import Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1  # type: ignore
     from ._models import Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1  # type: ignore
     from ._models import Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1  # type: ignore
-    from ._models import Components1RkulfvSchemasDocumentPropertiesDataOneof1  # type: ignore
     from ._models import Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1  # type: ignore
     from ._models import Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1  # type: ignore
+    from ._models import Components1S1E4FcSchemasDocumentPropertiesDataAnyof2  # type: ignore
     from ._models import Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1  # type: ignore
     from ._models import Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification  # type: ignore
     from ._models import Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1  # type: ignore
     from ._models import Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1  # type: ignore
-    from ._models import Components1Wco9OeSchemasDocumentPropertiesDataOneof2  # type: ignore
     from ._models import Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1  # type: ignore
     from ._models import Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1  # type: ignore
     from ._models import Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1  # type: ignore
@@ -354,6 +355,7 @@ except (SyntaxError, ImportError):
     from ._models import ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1  # type: ignore
     from ._models import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1  # type: ignore
     from ._models import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1  # type: ignore
+    from ._models import ComponentsX4QdioSchemasDocumentPropertiesDataAnyof1  # type: ignore
     from ._models import DataPoint  # type: ignore
     from ._models import DataPointChoice  # type: ignore
     from ._models import DataPointCreate  # type: ignore
@@ -384,6 +386,7 @@ except (SyntaxError, ImportError):
     from ._models import FieldGroup  # type: ignore
     from ._models import Get200ApplicationJsonPropertiesItemsItem  # type: ignore
     from ._models import GetAllDocumentsResults  # type: ignore
+    from ._models import GetAllDocumentsResultsItem  # type: ignore
     from ._models import IndexRequestBody  # type: ignore
     from ._models import Invitation  # type: ignore
     from ._models import InvitationCreate  # type: ignore
@@ -543,6 +546,7 @@ except (SyntaxError, ImportError):
     from ._models import TagUpdate  # type: ignore
     from ._models import TextAnnotationV2  # type: ignore
     from ._models import User  # type: ignore
+    from ._models import UserNullable  # type: ignore
     from ._models import Workspace  # type: ignore
     from ._models import WorkspaceCollectionsItem  # type: ignore
     from ._models import WorkspaceCollectionsItemExtractor  # type: ignore
@@ -598,20 +602,19 @@ __all__ = [
     "Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1",
     "Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1",
     "Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1",
+    "Components1FbbtzoSchemasDocumentPropertiesDataAnyof0",
     "Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1",
     "Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1",
-    "Components1Ijdil6SchemasDocumentPropertiesDataOneof0",
     "Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1",
     "Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1",
     "Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1",
-    "Components1RkulfvSchemasDocumentPropertiesDataOneof1",
     "Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1",
     "Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1",
+    "Components1S1E4FcSchemasDocumentPropertiesDataAnyof2",
     "Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1",
     "Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification",
     "Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1",
     "Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1",
-    "Components1Wco9OeSchemasDocumentPropertiesDataOneof2",
     "Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1",
     "Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1",
     "Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1",
@@ -632,6 +635,7 @@ __all__ = [
     "ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1",
     "ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1",
     "ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1",
+    "ComponentsX4QdioSchemasDocumentPropertiesDataAnyof1",
     "DataPoint",
     "DataPointChoice",
     "DataPointCreate",
@@ -662,6 +666,7 @@ __all__ = [
     "FieldGroup",
     "Get200ApplicationJsonPropertiesItemsItem",
     "GetAllDocumentsResults",
+    "GetAllDocumentsResultsItem",
     "IndexRequestBody",
     "Invitation",
     "InvitationCreate",
@@ -821,6 +826,7 @@ __all__ = [
     "TagUpdate",
     "TextAnnotationV2",
     "User",
+    "UserNullable",
     "Workspace",
     "WorkspaceCollectionsItem",
     "WorkspaceCollectionsItemExtractor",
