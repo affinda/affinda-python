@@ -1704,7 +1704,8 @@ value is None.
 
 **Returns**:
 
-`~affinda.models.GetAllDocumentsResults`: GetAllDocumentsResults, or the result of cls(response)
+`~affinda.models.PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema`: PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema, or the result of
+cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_document"></a>
 
@@ -1723,7 +1724,7 @@ check processing status and retrieve results.:code:`<br/>`.
 **Arguments**:
 
 - `file` (`IO`): Default value is None.
-- `url` (`str`): Default value is None.
+- `url` (`str`): URL to download the document. Default value is None.
 - `collection` (`str`): Default value is None.
 - `workspace` (`str`): Default value is None.
 - `wait` (`bool`): Default value is True.

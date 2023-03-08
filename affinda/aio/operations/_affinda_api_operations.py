@@ -4353,7 +4353,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         exclude: Optional[List[str]] = None,
         in_review: Optional[bool] = None,
         **kwargs: Any,
-    ) -> _models.GetAllDocumentsResults:
+    ) -> _models.PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema:
         """Get list of all documents.
 
         Returns all the document summaries for that user, limited to 300 per page.
@@ -4388,8 +4388,9 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param in_review: Exclude documents that are currently being reviewed. Default value is None.
         :type in_review: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: GetAllDocumentsResults, or the result of cls(response)
-        :rtype: ~affinda.models.GetAllDocumentsResults
+        :return: PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema, or the result of
+         cls(response)
+        :rtype: ~affinda.models.PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -4407,7 +4408,9 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = kwargs.pop("headers", {}) or {}
         _params = kwargs.pop("params", {}) or {}
 
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.GetAllDocumentsResults]
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[_models.PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema]
 
         request = build_get_all_documents_request(
             offset=offset,
@@ -4442,7 +4445,9 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
 
-        deserialized = self._deserialize("GetAllDocumentsResults", pipeline_response)
+        deserialized = self._deserialize(
+            "PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema", pipeline_response
+        )
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -4472,7 +4477,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
         :param file:  Default value is None.
         :type file: IO
-        :param url:  Default value is None.
+        :param url: URL to download the document. Default value is None.
         :type url: str
         :param collection:  Default value is None.
         :type collection: str

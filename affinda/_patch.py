@@ -53,7 +53,7 @@ class AffindaAPI(AffindaAPIGenerated):
         self._serialize.client_side_validation = False
 
 
-__all__ = ["AffindaAPI", "TokenCredential"]
+__all__ = ["AffindaAPI"]
 
 
 def patch_sdk():

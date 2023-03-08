@@ -1,7 +1,7 @@
 
 
-Search & Match - Searching
---------------------------
+Search & Match API - Searching
+------------------------------
 
 ### createResumeSearch - Search through parsed resumes
 
@@ -167,8 +167,8 @@ resp = client.get_job_description_search_detail(body=parameters, identifier=job_
 print(resp.as_dict())
 ```
 
-Search & Match - Embedding
---------------------------
+Search & Match API - Embedding
+------------------------------
 
 ### getResumeSearchConfig - Get the config for the logged in user's embeddable resume search tool
 
@@ -233,8 +233,8 @@ result = client.create_resume_search_embed_url(body=request_body)
 print(result.url)
 ```
 
-Search & Match - Indexing
--------------------------
+Search & Match API - Indexing
+-----------------------------
 
 ### getAllIndexes - Get list of all indexes
 
@@ -317,8 +317,8 @@ client = AffindaAPI(credential=credential)
 client.delete_index_document(name=index_name, identifier=identifier)
 ```
 
-Organization & User - Organization
-----------------------------------
+Organization API - Organization
+-------------------------------
 
 ### getAllOrganizations - Get list of all organizations
 
@@ -394,8 +394,8 @@ client = AffindaAPI(credential=credential)
 client.delete_organization(identifier)
 ```
 
-Organization & User - Membership
---------------------------------
+Organization API - Membership
+-----------------------------
 
 ### getAllOrganizationMemberships - Get list of all organization memberships
 
@@ -458,8 +458,8 @@ client = AffindaAPI(credential=credential)
 client.delete_organization_membership(identifier)
 ```
 
-Organization & User - Invitation
---------------------------------
+Organization API - Invitation
+-----------------------------
 
 ### getAllInvitations - Get list of all invitations
 
@@ -1181,8 +1181,8 @@ client = AffindaAPI(credential=credential)
 client.delete_tag(id)
 ```
 
-Webhook
--------
+Webhook API
+-----------
 
 ### getAllResthookSubscriptions - Get list of all resthook subscriptions
 

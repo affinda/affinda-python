@@ -48,8 +48,8 @@ class Accreditation(msrest.serialization.Model):
         self.education_level = None
 
 
-class AnnotationV2(msrest.serialization.Model):
-    """AnnotationV2.
+class Annotation(msrest.serialization.Model):
+    """Annotation.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -58,13 +58,14 @@ class AnnotationV2(msrest.serialization.Model):
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -74,13 +75,14 @@ class AnnotationV2(msrest.serialization.Model):
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -98,6 +100,7 @@ class AnnotationV2(msrest.serialization.Model):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -125,13 +128,14 @@ class AnnotationV2(msrest.serialization.Model):
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -141,18 +145,20 @@ class AnnotationV2(msrest.serialization.Model):
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
         """
-        super(AnnotationV2, self).__init__(**kwargs)
+        super(Annotation, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
@@ -165,7 +171,7 @@ class AnnotationV2(msrest.serialization.Model):
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
 
 
@@ -678,302 +684,6 @@ class Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgrou
         self.match = kwargs.get("match", None)
 
 
-class ResumeData(msrest.serialization.Model):
-    """A JSON-encoded string of the ``ResumeData`` object.
-
-    Variables are only populated by the server, and will be ignored when sending a request.
-
-    :ivar additional_properties: Unmatched properties from the message are deserialized to this
-     collection.
-    :vartype additional_properties: dict[str, any]
-    :ivar name:
-    :vartype name: ~affinda.models.ResumeDataName
-    :ivar phone_numbers:
-    :vartype phone_numbers: list[str]
-    :ivar websites:
-    :vartype websites: list[str]
-    :ivar emails:
-    :vartype emails: list[str]
-    :ivar date_of_birth:
-    :vartype date_of_birth: str
-    :ivar location:
-    :vartype location: ~affinda.models.Location
-    :ivar objective:
-    :vartype objective: str
-    :ivar languages:
-    :vartype languages: list[str]
-    :ivar language_codes:
-    :vartype language_codes: list[str]
-    :ivar summary:
-    :vartype summary: str
-    :ivar total_years_experience:
-    :vartype total_years_experience: int
-    :ivar head_shot: base64 encoded string.
-    :vartype head_shot: bytearray
-    :ivar education:
-    :vartype education: list[~affinda.models.Education]
-    :ivar profession: Prediction of the candidate's profession based on recent work experience.
-    :vartype profession: str
-    :ivar linkedin: Linkedin account associated with the candidate.
-    :vartype linkedin: str
-    :ivar work_experience:
-    :vartype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
-    :ivar skills:
-    :vartype skills: list[~affinda.models.ResumeDataSkillsItem]
-    :ivar certifications:
-    :vartype certifications: list[str]
-    :ivar publications:
-    :vartype publications: list[str]
-    :ivar referees:
-    :vartype referees: list[~affinda.models.ResumeDataRefereesItem]
-    :ivar sections:
-    :vartype sections: list[~affinda.models.ResumeDataSectionsItem]
-    :ivar is_resume_probability: Probability that the given document is a resume. Values below 30
-     suggest that the document is not a resume.
-    :vartype is_resume_probability: int
-    :ivar raw_text: All of the raw text of the parsed resume, example is shortened for readability.
-    :vartype raw_text: str
-    """
-
-    _validation = {
-        "languages": {"readonly": True},
-        "language_codes": {"readonly": True},
-        "head_shot": {"readonly": True},
-        "profession": {"readonly": True},
-        "linkedin": {"readonly": True},
-        "sections": {"readonly": True},
-        "is_resume_probability": {"readonly": True},
-    }
-
-    _attribute_map = {
-        "additional_properties": {"key": "", "type": "{object}"},
-        "name": {"key": "name", "type": "ResumeDataName"},
-        "phone_numbers": {"key": "phoneNumbers", "type": "[str]"},
-        "websites": {"key": "websites", "type": "[str]"},
-        "emails": {"key": "emails", "type": "[str]"},
-        "date_of_birth": {"key": "dateOfBirth", "type": "str"},
-        "location": {"key": "location", "type": "Location"},
-        "objective": {"key": "objective", "type": "str"},
-        "languages": {"key": "languages", "type": "[str]"},
-        "language_codes": {"key": "languageCodes", "type": "[str]"},
-        "summary": {"key": "summary", "type": "str"},
-        "total_years_experience": {"key": "totalYearsExperience", "type": "int"},
-        "head_shot": {"key": "headShot", "type": "bytearray"},
-        "education": {"key": "education", "type": "[Education]"},
-        "profession": {"key": "profession", "type": "str"},
-        "linkedin": {"key": "linkedin", "type": "str"},
-        "work_experience": {"key": "workExperience", "type": "[ResumeDataWorkExperienceItem]"},
-        "skills": {"key": "skills", "type": "[ResumeDataSkillsItem]"},
-        "certifications": {"key": "certifications", "type": "[str]"},
-        "publications": {"key": "publications", "type": "[str]"},
-        "referees": {"key": "referees", "type": "[ResumeDataRefereesItem]"},
-        "sections": {"key": "sections", "type": "[ResumeDataSectionsItem]"},
-        "is_resume_probability": {"key": "isResumeProbability", "type": "int"},
-        "raw_text": {"key": "rawText", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword additional_properties: Unmatched properties from the message are deserialized to this
-         collection.
-        :paramtype additional_properties: dict[str, any]
-        :keyword name:
-        :paramtype name: ~affinda.models.ResumeDataName
-        :keyword phone_numbers:
-        :paramtype phone_numbers: list[str]
-        :keyword websites:
-        :paramtype websites: list[str]
-        :keyword emails:
-        :paramtype emails: list[str]
-        :keyword date_of_birth:
-        :paramtype date_of_birth: str
-        :keyword location:
-        :paramtype location: ~affinda.models.Location
-        :keyword objective:
-        :paramtype objective: str
-        :keyword summary:
-        :paramtype summary: str
-        :keyword total_years_experience:
-        :paramtype total_years_experience: int
-        :keyword education:
-        :paramtype education: list[~affinda.models.Education]
-        :keyword work_experience:
-        :paramtype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
-        :keyword skills:
-        :paramtype skills: list[~affinda.models.ResumeDataSkillsItem]
-        :keyword certifications:
-        :paramtype certifications: list[str]
-        :keyword publications:
-        :paramtype publications: list[str]
-        :keyword referees:
-        :paramtype referees: list[~affinda.models.ResumeDataRefereesItem]
-        :keyword raw_text: All of the raw text of the parsed resume, example is shortened for
-         readability.
-        :paramtype raw_text: str
-        """
-        super(ResumeData, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.name = kwargs.get("name", None)
-        self.phone_numbers = kwargs.get("phone_numbers", None)
-        self.websites = kwargs.get("websites", None)
-        self.emails = kwargs.get("emails", None)
-        self.date_of_birth = kwargs.get("date_of_birth", None)
-        self.location = kwargs.get("location", None)
-        self.objective = kwargs.get("objective", "")
-        self.languages = None
-        self.language_codes = None
-        self.summary = kwargs.get("summary", "")
-        self.total_years_experience = kwargs.get("total_years_experience", None)
-        self.head_shot = None
-        self.education = kwargs.get("education", None)
-        self.profession = None
-        self.linkedin = None
-        self.work_experience = kwargs.get("work_experience", None)
-        self.skills = kwargs.get("skills", None)
-        self.certifications = kwargs.get("certifications", None)
-        self.publications = kwargs.get("publications", None)
-        self.referees = kwargs.get("referees", None)
-        self.sections = None
-        self.is_resume_probability = None
-        self.raw_text = kwargs.get("raw_text", None)
-
-
-class Components1FbbtzoSchemasDocumentPropertiesDataAnyof0(ResumeData):
-    """Components1FbbtzoSchemasDocumentPropertiesDataAnyof0.
-
-    Variables are only populated by the server, and will be ignored when sending a request.
-
-    :ivar additional_properties: Unmatched properties from the message are deserialized to this
-     collection.
-    :vartype additional_properties: dict[str, any]
-    :ivar name:
-    :vartype name: ~affinda.models.ResumeDataName
-    :ivar phone_numbers:
-    :vartype phone_numbers: list[str]
-    :ivar websites:
-    :vartype websites: list[str]
-    :ivar emails:
-    :vartype emails: list[str]
-    :ivar date_of_birth:
-    :vartype date_of_birth: str
-    :ivar location:
-    :vartype location: ~affinda.models.Location
-    :ivar objective:
-    :vartype objective: str
-    :ivar languages:
-    :vartype languages: list[str]
-    :ivar language_codes:
-    :vartype language_codes: list[str]
-    :ivar summary:
-    :vartype summary: str
-    :ivar total_years_experience:
-    :vartype total_years_experience: int
-    :ivar head_shot: base64 encoded string.
-    :vartype head_shot: bytearray
-    :ivar education:
-    :vartype education: list[~affinda.models.Education]
-    :ivar profession: Prediction of the candidate's profession based on recent work experience.
-    :vartype profession: str
-    :ivar linkedin: Linkedin account associated with the candidate.
-    :vartype linkedin: str
-    :ivar work_experience:
-    :vartype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
-    :ivar skills:
-    :vartype skills: list[~affinda.models.ResumeDataSkillsItem]
-    :ivar certifications:
-    :vartype certifications: list[str]
-    :ivar publications:
-    :vartype publications: list[str]
-    :ivar referees:
-    :vartype referees: list[~affinda.models.ResumeDataRefereesItem]
-    :ivar sections:
-    :vartype sections: list[~affinda.models.ResumeDataSectionsItem]
-    :ivar is_resume_probability: Probability that the given document is a resume. Values below 30
-     suggest that the document is not a resume.
-    :vartype is_resume_probability: int
-    :ivar raw_text: All of the raw text of the parsed resume, example is shortened for readability.
-    :vartype raw_text: str
-    """
-
-    _validation = {
-        "languages": {"readonly": True},
-        "language_codes": {"readonly": True},
-        "head_shot": {"readonly": True},
-        "profession": {"readonly": True},
-        "linkedin": {"readonly": True},
-        "sections": {"readonly": True},
-        "is_resume_probability": {"readonly": True},
-    }
-
-    _attribute_map = {
-        "additional_properties": {"key": "", "type": "{object}"},
-        "name": {"key": "name", "type": "ResumeDataName"},
-        "phone_numbers": {"key": "phoneNumbers", "type": "[str]"},
-        "websites": {"key": "websites", "type": "[str]"},
-        "emails": {"key": "emails", "type": "[str]"},
-        "date_of_birth": {"key": "dateOfBirth", "type": "str"},
-        "location": {"key": "location", "type": "Location"},
-        "objective": {"key": "objective", "type": "str"},
-        "languages": {"key": "languages", "type": "[str]"},
-        "language_codes": {"key": "languageCodes", "type": "[str]"},
-        "summary": {"key": "summary", "type": "str"},
-        "total_years_experience": {"key": "totalYearsExperience", "type": "int"},
-        "head_shot": {"key": "headShot", "type": "bytearray"},
-        "education": {"key": "education", "type": "[Education]"},
-        "profession": {"key": "profession", "type": "str"},
-        "linkedin": {"key": "linkedin", "type": "str"},
-        "work_experience": {"key": "workExperience", "type": "[ResumeDataWorkExperienceItem]"},
-        "skills": {"key": "skills", "type": "[ResumeDataSkillsItem]"},
-        "certifications": {"key": "certifications", "type": "[str]"},
-        "publications": {"key": "publications", "type": "[str]"},
-        "referees": {"key": "referees", "type": "[ResumeDataRefereesItem]"},
-        "sections": {"key": "sections", "type": "[ResumeDataSectionsItem]"},
-        "is_resume_probability": {"key": "isResumeProbability", "type": "int"},
-        "raw_text": {"key": "rawText", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword additional_properties: Unmatched properties from the message are deserialized to this
-         collection.
-        :paramtype additional_properties: dict[str, any]
-        :keyword name:
-        :paramtype name: ~affinda.models.ResumeDataName
-        :keyword phone_numbers:
-        :paramtype phone_numbers: list[str]
-        :keyword websites:
-        :paramtype websites: list[str]
-        :keyword emails:
-        :paramtype emails: list[str]
-        :keyword date_of_birth:
-        :paramtype date_of_birth: str
-        :keyword location:
-        :paramtype location: ~affinda.models.Location
-        :keyword objective:
-        :paramtype objective: str
-        :keyword summary:
-        :paramtype summary: str
-        :keyword total_years_experience:
-        :paramtype total_years_experience: int
-        :keyword education:
-        :paramtype education: list[~affinda.models.Education]
-        :keyword work_experience:
-        :paramtype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
-        :keyword skills:
-        :paramtype skills: list[~affinda.models.ResumeDataSkillsItem]
-        :keyword certifications:
-        :paramtype certifications: list[str]
-        :keyword publications:
-        :paramtype publications: list[str]
-        :keyword referees:
-        :paramtype referees: list[~affinda.models.ResumeDataRefereesItem]
-        :keyword raw_text: All of the raw text of the parsed resume, example is shortened for
-         readability.
-        :paramtype raw_text: str
-        """
-        super(Components1FbbtzoSchemasDocumentPropertiesDataAnyof0, self).__init__(**kwargs)
-
-
 class Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1(msrest.serialization.Model):
     """Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1.
 
@@ -1172,227 +882,6 @@ class Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1(msrest.serializ
         super(Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1, self).__init__(**kwargs)
         self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
-
-
-class JobDescriptionData(msrest.serialization.Model):
-    """A JSON-encoded string of the ``JobDescriptionData`` object.
-
-    :ivar job_title:
-    :vartype job_title: ~affinda.models.JobTitleAnnotation
-    :ivar contact_email:
-    :vartype contact_email: ~affinda.models.TextAnnotationV2
-    :ivar contact_name:
-    :vartype contact_name: ~affinda.models.TextAnnotationV2
-    :ivar contact_phone:
-    :vartype contact_phone: ~affinda.models.TextAnnotationV2
-    :ivar start_date:
-    :vartype start_date: ~affinda.models.DateAnnotationV2
-    :ivar end_date:
-    :vartype end_date: ~affinda.models.DateAnnotationV2
-    :ivar job_type:
-    :vartype job_type: ~affinda.models.TextAnnotationV2
-    :ivar languages:
-    :vartype languages: list[~affinda.models.LanguageAnnotationV2]
-    :ivar skills:
-    :vartype skills: list[~affinda.models.SkillAnnotationV2]
-    :ivar organization_name:
-    :vartype organization_name: ~affinda.models.TextAnnotationV2
-    :ivar organization_website:
-    :vartype organization_website: ~affinda.models.TextAnnotationV2
-    :ivar education_level:
-    :vartype education_level: ~affinda.models.TextAnnotationV2
-    :ivar education_accreditation:
-    :vartype education_accreditation: ~affinda.models.TextAnnotationV2
-    :ivar expected_remuneration:
-    :vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2
-    :ivar location:
-    :vartype location: ~affinda.models.LocationAnnotationV2
-    :ivar certifications:
-    :vartype certifications: list[~affinda.models.TextAnnotationV2]
-    :ivar years_experience:
-    :vartype years_experience: ~affinda.models.YearsExperienceAnnotationV2
-    """
-
-    _attribute_map = {
-        "job_title": {"key": "jobTitle", "type": "JobTitleAnnotation"},
-        "contact_email": {"key": "contactEmail", "type": "TextAnnotationV2"},
-        "contact_name": {"key": "contactName", "type": "TextAnnotationV2"},
-        "contact_phone": {"key": "contactPhone", "type": "TextAnnotationV2"},
-        "start_date": {"key": "startDate", "type": "DateAnnotationV2"},
-        "end_date": {"key": "endDate", "type": "DateAnnotationV2"},
-        "job_type": {"key": "jobType", "type": "TextAnnotationV2"},
-        "languages": {"key": "languages", "type": "[LanguageAnnotationV2]"},
-        "skills": {"key": "skills", "type": "[SkillAnnotationV2]"},
-        "organization_name": {"key": "organizationName", "type": "TextAnnotationV2"},
-        "organization_website": {"key": "organizationWebsite", "type": "TextAnnotationV2"},
-        "education_level": {"key": "educationLevel", "type": "TextAnnotationV2"},
-        "education_accreditation": {"key": "educationAccreditation", "type": "TextAnnotationV2"},
-        "expected_remuneration": {
-            "key": "expectedRemuneration",
-            "type": "ExpectedRemunerationAnnotationV2",
-        },
-        "location": {"key": "location", "type": "LocationAnnotationV2"},
-        "certifications": {"key": "certifications", "type": "[TextAnnotationV2]"},
-        "years_experience": {"key": "yearsExperience", "type": "YearsExperienceAnnotationV2"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword job_title:
-        :paramtype job_title: ~affinda.models.JobTitleAnnotation
-        :keyword contact_email:
-        :paramtype contact_email: ~affinda.models.TextAnnotationV2
-        :keyword contact_name:
-        :paramtype contact_name: ~affinda.models.TextAnnotationV2
-        :keyword contact_phone:
-        :paramtype contact_phone: ~affinda.models.TextAnnotationV2
-        :keyword start_date:
-        :paramtype start_date: ~affinda.models.DateAnnotationV2
-        :keyword end_date:
-        :paramtype end_date: ~affinda.models.DateAnnotationV2
-        :keyword job_type:
-        :paramtype job_type: ~affinda.models.TextAnnotationV2
-        :keyword languages:
-        :paramtype languages: list[~affinda.models.LanguageAnnotationV2]
-        :keyword skills:
-        :paramtype skills: list[~affinda.models.SkillAnnotationV2]
-        :keyword organization_name:
-        :paramtype organization_name: ~affinda.models.TextAnnotationV2
-        :keyword organization_website:
-        :paramtype organization_website: ~affinda.models.TextAnnotationV2
-        :keyword education_level:
-        :paramtype education_level: ~affinda.models.TextAnnotationV2
-        :keyword education_accreditation:
-        :paramtype education_accreditation: ~affinda.models.TextAnnotationV2
-        :keyword expected_remuneration:
-        :paramtype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2
-        :keyword location:
-        :paramtype location: ~affinda.models.LocationAnnotationV2
-        :keyword certifications:
-        :paramtype certifications: list[~affinda.models.TextAnnotationV2]
-        :keyword years_experience:
-        :paramtype years_experience: ~affinda.models.YearsExperienceAnnotationV2
-        """
-        super(JobDescriptionData, self).__init__(**kwargs)
-        self.job_title = kwargs.get("job_title", None)
-        self.contact_email = kwargs.get("contact_email", None)
-        self.contact_name = kwargs.get("contact_name", None)
-        self.contact_phone = kwargs.get("contact_phone", None)
-        self.start_date = kwargs.get("start_date", None)
-        self.end_date = kwargs.get("end_date", None)
-        self.job_type = kwargs.get("job_type", None)
-        self.languages = kwargs.get("languages", None)
-        self.skills = kwargs.get("skills", None)
-        self.organization_name = kwargs.get("organization_name", None)
-        self.organization_website = kwargs.get("organization_website", None)
-        self.education_level = kwargs.get("education_level", None)
-        self.education_accreditation = kwargs.get("education_accreditation", None)
-        self.expected_remuneration = kwargs.get("expected_remuneration", None)
-        self.location = kwargs.get("location", None)
-        self.certifications = kwargs.get("certifications", None)
-        self.years_experience = kwargs.get("years_experience", None)
-
-
-class Components1S1E4FcSchemasDocumentPropertiesDataAnyof2(JobDescriptionData):
-    """Components1S1E4FcSchemasDocumentPropertiesDataAnyof2.
-
-    :ivar job_title:
-    :vartype job_title: ~affinda.models.JobTitleAnnotation
-    :ivar contact_email:
-    :vartype contact_email: ~affinda.models.TextAnnotationV2
-    :ivar contact_name:
-    :vartype contact_name: ~affinda.models.TextAnnotationV2
-    :ivar contact_phone:
-    :vartype contact_phone: ~affinda.models.TextAnnotationV2
-    :ivar start_date:
-    :vartype start_date: ~affinda.models.DateAnnotationV2
-    :ivar end_date:
-    :vartype end_date: ~affinda.models.DateAnnotationV2
-    :ivar job_type:
-    :vartype job_type: ~affinda.models.TextAnnotationV2
-    :ivar languages:
-    :vartype languages: list[~affinda.models.LanguageAnnotationV2]
-    :ivar skills:
-    :vartype skills: list[~affinda.models.SkillAnnotationV2]
-    :ivar organization_name:
-    :vartype organization_name: ~affinda.models.TextAnnotationV2
-    :ivar organization_website:
-    :vartype organization_website: ~affinda.models.TextAnnotationV2
-    :ivar education_level:
-    :vartype education_level: ~affinda.models.TextAnnotationV2
-    :ivar education_accreditation:
-    :vartype education_accreditation: ~affinda.models.TextAnnotationV2
-    :ivar expected_remuneration:
-    :vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2
-    :ivar location:
-    :vartype location: ~affinda.models.LocationAnnotationV2
-    :ivar certifications:
-    :vartype certifications: list[~affinda.models.TextAnnotationV2]
-    :ivar years_experience:
-    :vartype years_experience: ~affinda.models.YearsExperienceAnnotationV2
-    """
-
-    _attribute_map = {
-        "job_title": {"key": "jobTitle", "type": "JobTitleAnnotation"},
-        "contact_email": {"key": "contactEmail", "type": "TextAnnotationV2"},
-        "contact_name": {"key": "contactName", "type": "TextAnnotationV2"},
-        "contact_phone": {"key": "contactPhone", "type": "TextAnnotationV2"},
-        "start_date": {"key": "startDate", "type": "DateAnnotationV2"},
-        "end_date": {"key": "endDate", "type": "DateAnnotationV2"},
-        "job_type": {"key": "jobType", "type": "TextAnnotationV2"},
-        "languages": {"key": "languages", "type": "[LanguageAnnotationV2]"},
-        "skills": {"key": "skills", "type": "[SkillAnnotationV2]"},
-        "organization_name": {"key": "organizationName", "type": "TextAnnotationV2"},
-        "organization_website": {"key": "organizationWebsite", "type": "TextAnnotationV2"},
-        "education_level": {"key": "educationLevel", "type": "TextAnnotationV2"},
-        "education_accreditation": {"key": "educationAccreditation", "type": "TextAnnotationV2"},
-        "expected_remuneration": {
-            "key": "expectedRemuneration",
-            "type": "ExpectedRemunerationAnnotationV2",
-        },
-        "location": {"key": "location", "type": "LocationAnnotationV2"},
-        "certifications": {"key": "certifications", "type": "[TextAnnotationV2]"},
-        "years_experience": {"key": "yearsExperience", "type": "YearsExperienceAnnotationV2"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword job_title:
-        :paramtype job_title: ~affinda.models.JobTitleAnnotation
-        :keyword contact_email:
-        :paramtype contact_email: ~affinda.models.TextAnnotationV2
-        :keyword contact_name:
-        :paramtype contact_name: ~affinda.models.TextAnnotationV2
-        :keyword contact_phone:
-        :paramtype contact_phone: ~affinda.models.TextAnnotationV2
-        :keyword start_date:
-        :paramtype start_date: ~affinda.models.DateAnnotationV2
-        :keyword end_date:
-        :paramtype end_date: ~affinda.models.DateAnnotationV2
-        :keyword job_type:
-        :paramtype job_type: ~affinda.models.TextAnnotationV2
-        :keyword languages:
-        :paramtype languages: list[~affinda.models.LanguageAnnotationV2]
-        :keyword skills:
-        :paramtype skills: list[~affinda.models.SkillAnnotationV2]
-        :keyword organization_name:
-        :paramtype organization_name: ~affinda.models.TextAnnotationV2
-        :keyword organization_website:
-        :paramtype organization_website: ~affinda.models.TextAnnotationV2
-        :keyword education_level:
-        :paramtype education_level: ~affinda.models.TextAnnotationV2
-        :keyword education_accreditation:
-        :paramtype education_accreditation: ~affinda.models.TextAnnotationV2
-        :keyword expected_remuneration:
-        :paramtype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2
-        :keyword location:
-        :paramtype location: ~affinda.models.LocationAnnotationV2
-        :keyword certifications:
-        :paramtype certifications: list[~affinda.models.TextAnnotationV2]
-        :keyword years_experience:
-        :paramtype years_experience: ~affinda.models.YearsExperienceAnnotationV2
-        """
-        super(Components1S1E4FcSchemasDocumentPropertiesDataAnyof2, self).__init__(**kwargs)
 
 
 class Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1(
@@ -1983,48 +1472,6 @@ class ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValue
         self.match = kwargs.get("match", None)
 
 
-class ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties(
-    msrest.serialization.Model
-):
-    """ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar value:
-    :vartype value: str
-    :ivar label: Required.
-    :vartype label: str
-    :ivar score:
-    :vartype score: float
-    """
-
-    _validation = {
-        "label": {"required": True},
-    }
-
-    _attribute_map = {
-        "value": {"key": "value", "type": "str"},
-        "label": {"key": "label", "type": "str"},
-        "score": {"key": "score", "type": "float"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword value:
-        :paramtype value: str
-        :keyword label: Required.
-        :paramtype label: str
-        :keyword score:
-        :paramtype score: float
-        """
-        super(
-            ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties, self
-        ).__init__(**kwargs)
-        self.value = kwargs.get("value", None)
-        self.label = kwargs["label"]
-        self.score = kwargs.get("score", None)
-
-
 class ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1(
     msrest.serialization.Model
 ):
@@ -2106,536 +1553,6 @@ class ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1(
         ).__init__(**kwargs)
         self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
-
-
-class InvoiceData(msrest.serialization.Model):
-    """InvoiceData.
-
-    :ivar tables:
-    :vartype tables: list[~affinda.models.InvoiceDataTablesItem]
-    :ivar invoice_date:
-    :vartype invoice_date: ~affinda.models.DateAnnotationV2
-    :ivar invoice_order_date:
-    :vartype invoice_order_date: ~affinda.models.DateAnnotationV2
-    :ivar payment_date_due:
-    :vartype payment_date_due: ~affinda.models.DateAnnotationV2
-    :ivar payment_amount_base:
-    :vartype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
-    :ivar payment_amount_tax:
-    :vartype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
-    :ivar payment_amount_total:
-    :vartype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
-    :ivar payment_amount_paid:
-    :vartype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
-    :ivar payment_amount_due:
-    :vartype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
-    :ivar invoice_number:
-    :vartype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
-    :ivar invoice_purchase_order_number:
-    :vartype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
-    :ivar supplier_business_number:
-    :vartype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
-    :ivar customer_number:
-    :vartype customer_number: ~affinda.models.InvoiceDataCustomerNumber
-    :ivar customer_business_number:
-    :vartype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
-    :ivar payment_reference:
-    :vartype payment_reference: ~affinda.models.InvoiceDataPaymentReference
-    :ivar bank_account_number:
-    :vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
-    :ivar supplier_vat:
-    :vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
-    :ivar customer_vat:
-    :vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
-    :ivar bpay_biller_code:
-    :vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
-    :ivar bpay_reference:
-    :vartype bpay_reference: ~affinda.models.InvoiceDataBpayReference
-    :ivar bank_sort_code:
-    :vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
-    :ivar bank_iban:
-    :vartype bank_iban: ~affinda.models.InvoiceDataBankIban
-    :ivar bank_swift:
-    :vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
-    :ivar bank_bsb:
-    :vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
-    :ivar customer_contact_name:
-    :vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
-    :ivar customer_company_name:
-    :vartype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
-    :ivar supplier_company_name:
-    :vartype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
-    :ivar customer_billing_address:
-    :vartype customer_billing_address: ~affinda.models.LocationAnnotationV2
-    :ivar customer_delivery_address:
-    :vartype customer_delivery_address: ~affinda.models.LocationAnnotationV2
-    :ivar supplier_address:
-    :vartype supplier_address: ~affinda.models.LocationAnnotationV2
-    :ivar customer_phone_number:
-    :vartype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
-    :ivar supplier_phone_number:
-    :vartype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
-    :ivar supplier_fax:
-    :vartype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
-    :ivar customer_email:
-    :vartype customer_email: ~affinda.models.InvoiceDataCustomerEmail
-    :ivar supplier_email:
-    :vartype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
-    :ivar supplier_website:
-    :vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
-    :ivar currency_code:
-    :vartype currency_code: ~affinda.models.TextAnnotationV2
-    :ivar custom_fields: Dictionary of :code:`<any>`.
-    :vartype custom_fields: dict[str, any]
-    """
-
-    _attribute_map = {
-        "tables": {"key": "tables", "type": "[InvoiceDataTablesItem]"},
-        "invoice_date": {"key": "invoiceDate", "type": "DateAnnotationV2"},
-        "invoice_order_date": {"key": "invoiceOrderDate", "type": "DateAnnotationV2"},
-        "payment_date_due": {"key": "paymentDateDue", "type": "DateAnnotationV2"},
-        "payment_amount_base": {
-            "key": "paymentAmountBase",
-            "type": "InvoiceDataPaymentAmountBase",
-        },
-        "payment_amount_tax": {"key": "paymentAmountTax", "type": "InvoiceDataPaymentAmountTax"},
-        "payment_amount_total": {
-            "key": "paymentAmountTotal",
-            "type": "InvoiceDataPaymentAmountTotal",
-        },
-        "payment_amount_paid": {
-            "key": "paymentAmountPaid",
-            "type": "InvoiceDataPaymentAmountPaid",
-        },
-        "payment_amount_due": {"key": "paymentAmountDue", "type": "InvoiceDataPaymentAmountDue"},
-        "invoice_number": {"key": "invoiceNumber", "type": "InvoiceDataInvoiceNumber"},
-        "invoice_purchase_order_number": {
-            "key": "invoicePurchaseOrderNumber",
-            "type": "InvoiceDataInvoicePurchaseOrderNumber",
-        },
-        "supplier_business_number": {
-            "key": "supplierBusinessNumber",
-            "type": "InvoiceDataSupplierBusinessNumber",
-        },
-        "customer_number": {"key": "customerNumber", "type": "InvoiceDataCustomerNumber"},
-        "customer_business_number": {
-            "key": "customerBusinessNumber",
-            "type": "InvoiceDataCustomerBusinessNumber",
-        },
-        "payment_reference": {"key": "paymentReference", "type": "InvoiceDataPaymentReference"},
-        "bank_account_number": {
-            "key": "bankAccountNumber",
-            "type": "InvoiceDataBankAccountNumber",
-        },
-        "supplier_vat": {"key": "supplierVat", "type": "InvoiceDataSupplierVat"},
-        "customer_vat": {"key": "customerVat", "type": "InvoiceDataCustomerVat"},
-        "bpay_biller_code": {"key": "bpayBillerCode", "type": "InvoiceDataBpayBillerCode"},
-        "bpay_reference": {"key": "bpayReference", "type": "InvoiceDataBpayReference"},
-        "bank_sort_code": {"key": "bankSortCode", "type": "InvoiceDataBankSortCode"},
-        "bank_iban": {"key": "bankIban", "type": "InvoiceDataBankIban"},
-        "bank_swift": {"key": "bankSwift", "type": "InvoiceDataBankSwift"},
-        "bank_bsb": {"key": "bankBsb", "type": "InvoiceDataBankBsb"},
-        "customer_contact_name": {
-            "key": "customerContactName",
-            "type": "InvoiceDataCustomerContactName",
-        },
-        "customer_company_name": {
-            "key": "customerCompanyName",
-            "type": "InvoiceDataCustomerCompanyName",
-        },
-        "supplier_company_name": {
-            "key": "supplierCompanyName",
-            "type": "InvoiceDataSupplierCompanyName",
-        },
-        "customer_billing_address": {
-            "key": "customerBillingAddress",
-            "type": "LocationAnnotationV2",
-        },
-        "customer_delivery_address": {
-            "key": "customerDeliveryAddress",
-            "type": "LocationAnnotationV2",
-        },
-        "supplier_address": {"key": "supplierAddress", "type": "LocationAnnotationV2"},
-        "customer_phone_number": {
-            "key": "customerPhoneNumber",
-            "type": "InvoiceDataCustomerPhoneNumber",
-        },
-        "supplier_phone_number": {
-            "key": "supplierPhoneNumber",
-            "type": "InvoiceDataSupplierPhoneNumber",
-        },
-        "supplier_fax": {"key": "supplierFax", "type": "InvoiceDataSupplierFax"},
-        "customer_email": {"key": "customerEmail", "type": "InvoiceDataCustomerEmail"},
-        "supplier_email": {"key": "supplierEmail", "type": "InvoiceDataSupplierEmail"},
-        "supplier_website": {"key": "supplierWebsite", "type": "InvoiceDataSupplierWebsite"},
-        "currency_code": {"key": "currencyCode", "type": "TextAnnotationV2"},
-        "custom_fields": {"key": "customFields", "type": "{object}"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword tables:
-        :paramtype tables: list[~affinda.models.InvoiceDataTablesItem]
-        :keyword invoice_date:
-        :paramtype invoice_date: ~affinda.models.DateAnnotationV2
-        :keyword invoice_order_date:
-        :paramtype invoice_order_date: ~affinda.models.DateAnnotationV2
-        :keyword payment_date_due:
-        :paramtype payment_date_due: ~affinda.models.DateAnnotationV2
-        :keyword payment_amount_base:
-        :paramtype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
-        :keyword payment_amount_tax:
-        :paramtype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
-        :keyword payment_amount_total:
-        :paramtype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
-        :keyword payment_amount_paid:
-        :paramtype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
-        :keyword payment_amount_due:
-        :paramtype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
-        :keyword invoice_number:
-        :paramtype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
-        :keyword invoice_purchase_order_number:
-        :paramtype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
-        :keyword supplier_business_number:
-        :paramtype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
-        :keyword customer_number:
-        :paramtype customer_number: ~affinda.models.InvoiceDataCustomerNumber
-        :keyword customer_business_number:
-        :paramtype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
-        :keyword payment_reference:
-        :paramtype payment_reference: ~affinda.models.InvoiceDataPaymentReference
-        :keyword bank_account_number:
-        :paramtype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
-        :keyword supplier_vat:
-        :paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
-        :keyword customer_vat:
-        :paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVat
-        :keyword bpay_biller_code:
-        :paramtype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
-        :keyword bpay_reference:
-        :paramtype bpay_reference: ~affinda.models.InvoiceDataBpayReference
-        :keyword bank_sort_code:
-        :paramtype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
-        :keyword bank_iban:
-        :paramtype bank_iban: ~affinda.models.InvoiceDataBankIban
-        :keyword bank_swift:
-        :paramtype bank_swift: ~affinda.models.InvoiceDataBankSwift
-        :keyword bank_bsb:
-        :paramtype bank_bsb: ~affinda.models.InvoiceDataBankBsb
-        :keyword customer_contact_name:
-        :paramtype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
-        :keyword customer_company_name:
-        :paramtype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
-        :keyword supplier_company_name:
-        :paramtype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
-        :keyword customer_billing_address:
-        :paramtype customer_billing_address: ~affinda.models.LocationAnnotationV2
-        :keyword customer_delivery_address:
-        :paramtype customer_delivery_address: ~affinda.models.LocationAnnotationV2
-        :keyword supplier_address:
-        :paramtype supplier_address: ~affinda.models.LocationAnnotationV2
-        :keyword customer_phone_number:
-        :paramtype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
-        :keyword supplier_phone_number:
-        :paramtype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
-        :keyword supplier_fax:
-        :paramtype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
-        :keyword customer_email:
-        :paramtype customer_email: ~affinda.models.InvoiceDataCustomerEmail
-        :keyword supplier_email:
-        :paramtype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
-        :keyword supplier_website:
-        :paramtype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
-        :keyword currency_code:
-        :paramtype currency_code: ~affinda.models.TextAnnotationV2
-        :keyword custom_fields: Dictionary of :code:`<any>`.
-        :paramtype custom_fields: dict[str, any]
-        """
-        super(InvoiceData, self).__init__(**kwargs)
-        self.tables = kwargs.get("tables", None)
-        self.invoice_date = kwargs.get("invoice_date", None)
-        self.invoice_order_date = kwargs.get("invoice_order_date", None)
-        self.payment_date_due = kwargs.get("payment_date_due", None)
-        self.payment_amount_base = kwargs.get("payment_amount_base", None)
-        self.payment_amount_tax = kwargs.get("payment_amount_tax", None)
-        self.payment_amount_total = kwargs.get("payment_amount_total", None)
-        self.payment_amount_paid = kwargs.get("payment_amount_paid", None)
-        self.payment_amount_due = kwargs.get("payment_amount_due", None)
-        self.invoice_number = kwargs.get("invoice_number", None)
-        self.invoice_purchase_order_number = kwargs.get("invoice_purchase_order_number", None)
-        self.supplier_business_number = kwargs.get("supplier_business_number", None)
-        self.customer_number = kwargs.get("customer_number", None)
-        self.customer_business_number = kwargs.get("customer_business_number", None)
-        self.payment_reference = kwargs.get("payment_reference", None)
-        self.bank_account_number = kwargs.get("bank_account_number", None)
-        self.supplier_vat = kwargs.get("supplier_vat", None)
-        self.customer_vat = kwargs.get("customer_vat", None)
-        self.bpay_biller_code = kwargs.get("bpay_biller_code", None)
-        self.bpay_reference = kwargs.get("bpay_reference", None)
-        self.bank_sort_code = kwargs.get("bank_sort_code", None)
-        self.bank_iban = kwargs.get("bank_iban", None)
-        self.bank_swift = kwargs.get("bank_swift", None)
-        self.bank_bsb = kwargs.get("bank_bsb", None)
-        self.customer_contact_name = kwargs.get("customer_contact_name", None)
-        self.customer_company_name = kwargs.get("customer_company_name", None)
-        self.supplier_company_name = kwargs.get("supplier_company_name", None)
-        self.customer_billing_address = kwargs.get("customer_billing_address", None)
-        self.customer_delivery_address = kwargs.get("customer_delivery_address", None)
-        self.supplier_address = kwargs.get("supplier_address", None)
-        self.customer_phone_number = kwargs.get("customer_phone_number", None)
-        self.supplier_phone_number = kwargs.get("supplier_phone_number", None)
-        self.supplier_fax = kwargs.get("supplier_fax", None)
-        self.customer_email = kwargs.get("customer_email", None)
-        self.supplier_email = kwargs.get("supplier_email", None)
-        self.supplier_website = kwargs.get("supplier_website", None)
-        self.currency_code = kwargs.get("currency_code", None)
-        self.custom_fields = kwargs.get("custom_fields", None)
-
-
-class ComponentsX4QdioSchemasDocumentPropertiesDataAnyof1(InvoiceData):
-    """ComponentsX4QdioSchemasDocumentPropertiesDataAnyof1.
-
-    :ivar tables:
-    :vartype tables: list[~affinda.models.InvoiceDataTablesItem]
-    :ivar invoice_date:
-    :vartype invoice_date: ~affinda.models.DateAnnotationV2
-    :ivar invoice_order_date:
-    :vartype invoice_order_date: ~affinda.models.DateAnnotationV2
-    :ivar payment_date_due:
-    :vartype payment_date_due: ~affinda.models.DateAnnotationV2
-    :ivar payment_amount_base:
-    :vartype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
-    :ivar payment_amount_tax:
-    :vartype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
-    :ivar payment_amount_total:
-    :vartype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
-    :ivar payment_amount_paid:
-    :vartype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
-    :ivar payment_amount_due:
-    :vartype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
-    :ivar invoice_number:
-    :vartype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
-    :ivar invoice_purchase_order_number:
-    :vartype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
-    :ivar supplier_business_number:
-    :vartype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
-    :ivar customer_number:
-    :vartype customer_number: ~affinda.models.InvoiceDataCustomerNumber
-    :ivar customer_business_number:
-    :vartype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
-    :ivar payment_reference:
-    :vartype payment_reference: ~affinda.models.InvoiceDataPaymentReference
-    :ivar bank_account_number:
-    :vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
-    :ivar supplier_vat:
-    :vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
-    :ivar customer_vat:
-    :vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
-    :ivar bpay_biller_code:
-    :vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
-    :ivar bpay_reference:
-    :vartype bpay_reference: ~affinda.models.InvoiceDataBpayReference
-    :ivar bank_sort_code:
-    :vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
-    :ivar bank_iban:
-    :vartype bank_iban: ~affinda.models.InvoiceDataBankIban
-    :ivar bank_swift:
-    :vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
-    :ivar bank_bsb:
-    :vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
-    :ivar customer_contact_name:
-    :vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
-    :ivar customer_company_name:
-    :vartype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
-    :ivar supplier_company_name:
-    :vartype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
-    :ivar customer_billing_address:
-    :vartype customer_billing_address: ~affinda.models.LocationAnnotationV2
-    :ivar customer_delivery_address:
-    :vartype customer_delivery_address: ~affinda.models.LocationAnnotationV2
-    :ivar supplier_address:
-    :vartype supplier_address: ~affinda.models.LocationAnnotationV2
-    :ivar customer_phone_number:
-    :vartype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
-    :ivar supplier_phone_number:
-    :vartype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
-    :ivar supplier_fax:
-    :vartype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
-    :ivar customer_email:
-    :vartype customer_email: ~affinda.models.InvoiceDataCustomerEmail
-    :ivar supplier_email:
-    :vartype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
-    :ivar supplier_website:
-    :vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
-    :ivar currency_code:
-    :vartype currency_code: ~affinda.models.TextAnnotationV2
-    :ivar custom_fields: Dictionary of :code:`<any>`.
-    :vartype custom_fields: dict[str, any]
-    """
-
-    _attribute_map = {
-        "tables": {"key": "tables", "type": "[InvoiceDataTablesItem]"},
-        "invoice_date": {"key": "invoiceDate", "type": "DateAnnotationV2"},
-        "invoice_order_date": {"key": "invoiceOrderDate", "type": "DateAnnotationV2"},
-        "payment_date_due": {"key": "paymentDateDue", "type": "DateAnnotationV2"},
-        "payment_amount_base": {
-            "key": "paymentAmountBase",
-            "type": "InvoiceDataPaymentAmountBase",
-        },
-        "payment_amount_tax": {"key": "paymentAmountTax", "type": "InvoiceDataPaymentAmountTax"},
-        "payment_amount_total": {
-            "key": "paymentAmountTotal",
-            "type": "InvoiceDataPaymentAmountTotal",
-        },
-        "payment_amount_paid": {
-            "key": "paymentAmountPaid",
-            "type": "InvoiceDataPaymentAmountPaid",
-        },
-        "payment_amount_due": {"key": "paymentAmountDue", "type": "InvoiceDataPaymentAmountDue"},
-        "invoice_number": {"key": "invoiceNumber", "type": "InvoiceDataInvoiceNumber"},
-        "invoice_purchase_order_number": {
-            "key": "invoicePurchaseOrderNumber",
-            "type": "InvoiceDataInvoicePurchaseOrderNumber",
-        },
-        "supplier_business_number": {
-            "key": "supplierBusinessNumber",
-            "type": "InvoiceDataSupplierBusinessNumber",
-        },
-        "customer_number": {"key": "customerNumber", "type": "InvoiceDataCustomerNumber"},
-        "customer_business_number": {
-            "key": "customerBusinessNumber",
-            "type": "InvoiceDataCustomerBusinessNumber",
-        },
-        "payment_reference": {"key": "paymentReference", "type": "InvoiceDataPaymentReference"},
-        "bank_account_number": {
-            "key": "bankAccountNumber",
-            "type": "InvoiceDataBankAccountNumber",
-        },
-        "supplier_vat": {"key": "supplierVat", "type": "InvoiceDataSupplierVat"},
-        "customer_vat": {"key": "customerVat", "type": "InvoiceDataCustomerVat"},
-        "bpay_biller_code": {"key": "bpayBillerCode", "type": "InvoiceDataBpayBillerCode"},
-        "bpay_reference": {"key": "bpayReference", "type": "InvoiceDataBpayReference"},
-        "bank_sort_code": {"key": "bankSortCode", "type": "InvoiceDataBankSortCode"},
-        "bank_iban": {"key": "bankIban", "type": "InvoiceDataBankIban"},
-        "bank_swift": {"key": "bankSwift", "type": "InvoiceDataBankSwift"},
-        "bank_bsb": {"key": "bankBsb", "type": "InvoiceDataBankBsb"},
-        "customer_contact_name": {
-            "key": "customerContactName",
-            "type": "InvoiceDataCustomerContactName",
-        },
-        "customer_company_name": {
-            "key": "customerCompanyName",
-            "type": "InvoiceDataCustomerCompanyName",
-        },
-        "supplier_company_name": {
-            "key": "supplierCompanyName",
-            "type": "InvoiceDataSupplierCompanyName",
-        },
-        "customer_billing_address": {
-            "key": "customerBillingAddress",
-            "type": "LocationAnnotationV2",
-        },
-        "customer_delivery_address": {
-            "key": "customerDeliveryAddress",
-            "type": "LocationAnnotationV2",
-        },
-        "supplier_address": {"key": "supplierAddress", "type": "LocationAnnotationV2"},
-        "customer_phone_number": {
-            "key": "customerPhoneNumber",
-            "type": "InvoiceDataCustomerPhoneNumber",
-        },
-        "supplier_phone_number": {
-            "key": "supplierPhoneNumber",
-            "type": "InvoiceDataSupplierPhoneNumber",
-        },
-        "supplier_fax": {"key": "supplierFax", "type": "InvoiceDataSupplierFax"},
-        "customer_email": {"key": "customerEmail", "type": "InvoiceDataCustomerEmail"},
-        "supplier_email": {"key": "supplierEmail", "type": "InvoiceDataSupplierEmail"},
-        "supplier_website": {"key": "supplierWebsite", "type": "InvoiceDataSupplierWebsite"},
-        "currency_code": {"key": "currencyCode", "type": "TextAnnotationV2"},
-        "custom_fields": {"key": "customFields", "type": "{object}"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword tables:
-        :paramtype tables: list[~affinda.models.InvoiceDataTablesItem]
-        :keyword invoice_date:
-        :paramtype invoice_date: ~affinda.models.DateAnnotationV2
-        :keyword invoice_order_date:
-        :paramtype invoice_order_date: ~affinda.models.DateAnnotationV2
-        :keyword payment_date_due:
-        :paramtype payment_date_due: ~affinda.models.DateAnnotationV2
-        :keyword payment_amount_base:
-        :paramtype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
-        :keyword payment_amount_tax:
-        :paramtype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
-        :keyword payment_amount_total:
-        :paramtype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
-        :keyword payment_amount_paid:
-        :paramtype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
-        :keyword payment_amount_due:
-        :paramtype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
-        :keyword invoice_number:
-        :paramtype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
-        :keyword invoice_purchase_order_number:
-        :paramtype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
-        :keyword supplier_business_number:
-        :paramtype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
-        :keyword customer_number:
-        :paramtype customer_number: ~affinda.models.InvoiceDataCustomerNumber
-        :keyword customer_business_number:
-        :paramtype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
-        :keyword payment_reference:
-        :paramtype payment_reference: ~affinda.models.InvoiceDataPaymentReference
-        :keyword bank_account_number:
-        :paramtype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
-        :keyword supplier_vat:
-        :paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
-        :keyword customer_vat:
-        :paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVat
-        :keyword bpay_biller_code:
-        :paramtype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
-        :keyword bpay_reference:
-        :paramtype bpay_reference: ~affinda.models.InvoiceDataBpayReference
-        :keyword bank_sort_code:
-        :paramtype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
-        :keyword bank_iban:
-        :paramtype bank_iban: ~affinda.models.InvoiceDataBankIban
-        :keyword bank_swift:
-        :paramtype bank_swift: ~affinda.models.InvoiceDataBankSwift
-        :keyword bank_bsb:
-        :paramtype bank_bsb: ~affinda.models.InvoiceDataBankBsb
-        :keyword customer_contact_name:
-        :paramtype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
-        :keyword customer_company_name:
-        :paramtype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
-        :keyword supplier_company_name:
-        :paramtype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
-        :keyword customer_billing_address:
-        :paramtype customer_billing_address: ~affinda.models.LocationAnnotationV2
-        :keyword customer_delivery_address:
-        :paramtype customer_delivery_address: ~affinda.models.LocationAnnotationV2
-        :keyword supplier_address:
-        :paramtype supplier_address: ~affinda.models.LocationAnnotationV2
-        :keyword customer_phone_number:
-        :paramtype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
-        :keyword supplier_phone_number:
-        :paramtype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
-        :keyword supplier_fax:
-        :paramtype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
-        :keyword customer_email:
-        :paramtype customer_email: ~affinda.models.InvoiceDataCustomerEmail
-        :keyword supplier_email:
-        :paramtype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
-        :keyword supplier_website:
-        :paramtype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
-        :keyword currency_code:
-        :paramtype currency_code: ~affinda.models.TextAnnotationV2
-        :keyword custom_fields: Dictionary of :code:`<any>`.
-        :paramtype custom_fields: dict[str, any]
-        """
-        super(ComponentsX4QdioSchemasDocumentPropertiesDataAnyof1, self).__init__(**kwargs)
 
 
 class DataPoint(msrest.serialization.Model):
@@ -2890,8 +1807,8 @@ class DataPointUpdate(msrest.serialization.Model):
         self.description = kwargs.get("description", None)
 
 
-class DateAnnotationV2(AnnotationV2):
-    """DateAnnotationV2.
+class DateAnnotation(Annotation):
+    """DateAnnotation.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -2900,13 +1817,14 @@ class DateAnnotationV2(AnnotationV2):
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -2916,13 +1834,14 @@ class DateAnnotationV2(AnnotationV2):
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -2942,6 +1861,7 @@ class DateAnnotationV2(AnnotationV2):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -2970,13 +1890,14 @@ class DateAnnotationV2(AnnotationV2):
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -2986,20 +1907,22 @@ class DateAnnotationV2(AnnotationV2):
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: ~datetime.date
         """
-        super(DateAnnotationV2, self).__init__(**kwargs)
+        super(DateAnnotation, self).__init__(**kwargs)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -3007,7 +1930,7 @@ class Document(msrest.serialization.Model):
     """Document.
 
     You probably want to use the sub-classes and not this class directly. Known
-    sub-classes are: InvoiceDocument, JobDescriptionDocument, ResumeDocument.
+    sub-classes are: Invoice, JobDescription, Resume.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -3015,10 +1938,8 @@ class Document(msrest.serialization.Model):
     :vartype extractor: str
     :ivar meta: Required.
     :vartype meta: ~affinda.models.DocumentMeta
-    :ivar data:
-    :vartype data: any
     :ivar error:
-    :vartype error: ~affinda.models.Error
+    :vartype error: ~affinda.models.DocumentError
     """
 
     _validation = {
@@ -3029,15 +1950,14 @@ class Document(msrest.serialization.Model):
     _attribute_map = {
         "extractor": {"key": "extractor", "type": "str"},
         "meta": {"key": "meta", "type": "DocumentMeta"},
-        "data": {"key": "data", "type": "object"},
-        "error": {"key": "error", "type": "Error"},
+        "error": {"key": "error", "type": "DocumentError"},
     }
 
     _subtype_map = {
         "extractor": {
-            "invoice": "InvoiceDocument",
-            "job-description": "JobDescriptionDocument",
-            "resume": "ResumeDocument",
+            "invoice": "Invoice",
+            "job-description": "JobDescription",
+            "resume": "Resume",
         }
     }
 
@@ -3045,15 +1965,12 @@ class Document(msrest.serialization.Model):
         """
         :keyword meta: Required.
         :paramtype meta: ~affinda.models.DocumentMeta
-        :keyword data:
-        :paramtype data: any
         :keyword error:
-        :paramtype error: ~affinda.models.Error
+        :paramtype error: ~affinda.models.DocumentError
         """
         super(Document, self).__init__(**kwargs)
         self.extractor = None  # type: Optional[str]
         self.meta = kwargs["meta"]
-        self.data = kwargs.get("data", None)
         self.error = kwargs.get("error", None)
 
 
@@ -3063,7 +1980,7 @@ class DocumentCreate(msrest.serialization.Model):
     :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
      JPG.
     :vartype file: IO
-    :ivar url: URL to a resume to download and process.
+    :ivar url: URL to download the document.
     :vartype url: str
     :ivar collection: Uniquely identify a collection.
     :vartype collection: str
@@ -3101,7 +2018,7 @@ class DocumentCreate(msrest.serialization.Model):
         :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
          PNG, JPG.
         :paramtype file: IO
-        :keyword url: URL to a resume to download and process.
+        :keyword url: URL to download the document.
         :paramtype url: str
         :keyword collection: Uniquely identify a collection.
         :paramtype collection: str
@@ -3131,6 +2048,32 @@ class DocumentCreate(msrest.serialization.Model):
         self.file_name = kwargs.get("file_name", None)
         self.expiry_time = kwargs.get("expiry_time", None)
         self.language = kwargs.get("language", None)
+
+
+class DocumentError(msrest.serialization.Model):
+    """DocumentError.
+
+    :ivar error_code:
+    :vartype error_code: str
+    :ivar error_detail:
+    :vartype error_detail: str
+    """
+
+    _attribute_map = {
+        "error_code": {"key": "errorCode", "type": "str"},
+        "error_detail": {"key": "errorDetail", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword error_code:
+        :paramtype error_code: str
+        :keyword error_detail:
+        :paramtype error_detail: str
+        """
+        super(DocumentError, self).__init__(**kwargs)
+        self.error_code = kwargs.get("error_code", None)
+        self.error_detail = kwargs.get("error_detail", None)
 
 
 class DocumentMeta(msrest.serialization.Model):
@@ -3199,7 +2142,7 @@ class DocumentMeta(msrest.serialization.Model):
     :ivar tags: A set of tags.
     :vartype tags: list[~affinda.models.Tag]
     :ivar confirmed_by:
-    :vartype confirmed_by: ~affinda.models.UserNullable
+    :vartype confirmed_by: ~affinda.models.User
     """
 
     _validation = {
@@ -3236,7 +2179,7 @@ class DocumentMeta(msrest.serialization.Model):
         "error_detail": {"key": "errorDetail", "type": "str"},
         "file": {"key": "file", "type": "str"},
         "tags": {"key": "tags", "type": "[Tag]"},
-        "confirmed_by": {"key": "confirmedBy", "type": "UserNullable"},
+        "confirmed_by": {"key": "confirmedBy", "type": "User"},
     }
 
     def __init__(self, **kwargs):
@@ -3303,7 +2246,7 @@ class DocumentMeta(msrest.serialization.Model):
         :keyword tags: A set of tags.
         :paramtype tags: list[~affinda.models.Tag]
         :keyword confirmed_by:
-        :paramtype confirmed_by: ~affinda.models.UserNullable
+        :paramtype confirmed_by: ~affinda.models.User
         """
         super(DocumentMeta, self).__init__(**kwargs)
         self.identifier = kwargs["identifier"]
@@ -3696,34 +2639,8 @@ class EducationSearchScoreComponent(msrest.serialization.Model):
         self.score = kwargs.get("score", None)
 
 
-class Error(msrest.serialization.Model):
-    """Error.
-
-    :ivar error_code:
-    :vartype error_code: str
-    :ivar error_detail:
-    :vartype error_detail: str
-    """
-
-    _attribute_map = {
-        "error_code": {"key": "errorCode", "type": "str"},
-        "error_detail": {"key": "errorDetail", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword error_code:
-        :paramtype error_code: str
-        :keyword error_detail:
-        :paramtype error_detail: str
-        """
-        super(Error, self).__init__(**kwargs)
-        self.error_code = kwargs.get("error_code", None)
-        self.error_detail = kwargs.get("error_detail", None)
-
-
-class ExpectedRemunerationAnnotationV2(AnnotationV2):
-    """ExpectedRemunerationAnnotationV2.
+class ExpectedRemunerationAnnotation(Annotation):
+    """ExpectedRemunerationAnnotation.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -3732,13 +2649,14 @@ class ExpectedRemunerationAnnotationV2(AnnotationV2):
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -3748,18 +2666,19 @@ class ExpectedRemunerationAnnotationV2(AnnotationV2):
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
     :ivar parsed:
-    :vartype parsed: ~affinda.models.ExpectedRemunerationAnnotationV2Parsed
+    :vartype parsed: ~affinda.models.ExpectedRemunerationAnnotationParsed
     """
 
     _validation = {
@@ -3774,6 +2693,7 @@ class ExpectedRemunerationAnnotationV2(AnnotationV2):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -3792,7 +2712,7 @@ class ExpectedRemunerationAnnotationV2(AnnotationV2):
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
-        "parsed": {"key": "parsed", "type": "ExpectedRemunerationAnnotationV2Parsed"},
+        "parsed": {"key": "parsed", "type": "ExpectedRemunerationAnnotationParsed"},
     }
 
     def __init__(self, **kwargs):
@@ -3802,13 +2722,14 @@ class ExpectedRemunerationAnnotationV2(AnnotationV2):
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -3818,25 +2739,27 @@ class ExpectedRemunerationAnnotationV2(AnnotationV2):
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
         :keyword parsed:
-        :paramtype parsed: ~affinda.models.ExpectedRemunerationAnnotationV2Parsed
+        :paramtype parsed: ~affinda.models.ExpectedRemunerationAnnotationParsed
         """
-        super(ExpectedRemunerationAnnotationV2, self).__init__(**kwargs)
+        super(ExpectedRemunerationAnnotation, self).__init__(**kwargs)
         self.parsed = kwargs.get("parsed", None)
 
 
-class ExpectedRemunerationAnnotationV2Parsed(msrest.serialization.Model):
-    """ExpectedRemunerationAnnotationV2Parsed.
+class ExpectedRemunerationAnnotationParsed(msrest.serialization.Model):
+    """ExpectedRemunerationAnnotationParsed.
 
     :ivar minimum:
     :vartype minimum: float
@@ -3866,7 +2789,7 @@ class ExpectedRemunerationAnnotationV2Parsed(msrest.serialization.Model):
         :keyword unit:
         :paramtype unit: str
         """
-        super(ExpectedRemunerationAnnotationV2Parsed, self).__init__(**kwargs)
+        super(ExpectedRemunerationAnnotationParsed, self).__init__(**kwargs)
         self.minimum = kwargs.get("minimum", None)
         self.maximum = kwargs.get("maximum", None)
         self.currency = kwargs.get("currency", None)
@@ -4297,83 +3220,6 @@ class Get200ApplicationJsonPropertiesItemsItem(msrest.serialization.Model):
         self.document_type = kwargs.get("document_type", None)
 
 
-class GetAllDocumentsResults(msrest.serialization.Model):
-    """GetAllDocumentsResults.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar count: Required. Number of documents in result.
-    :vartype count: int
-    :ivar next: URL to request next page of results.
-    :vartype next: str
-    :ivar previous: URL to request previous page of results.
-    :vartype previous: str
-    :ivar results: Required.
-    :vartype results: list[~affinda.models.GetAllDocumentsResultsItem]
-    """
-
-    _validation = {
-        "count": {"required": True},
-        "results": {"required": True},
-    }
-
-    _attribute_map = {
-        "count": {"key": "count", "type": "int"},
-        "next": {"key": "next", "type": "str"},
-        "previous": {"key": "previous", "type": "str"},
-        "results": {"key": "results", "type": "[GetAllDocumentsResultsItem]"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword count: Required. Number of documents in result.
-        :paramtype count: int
-        :keyword next: URL to request next page of results.
-        :paramtype next: str
-        :keyword previous: URL to request previous page of results.
-        :paramtype previous: str
-        :keyword results: Required.
-        :paramtype results: list[~affinda.models.GetAllDocumentsResultsItem]
-        """
-        super(GetAllDocumentsResults, self).__init__(**kwargs)
-        self.count = kwargs["count"]
-        self.next = kwargs.get("next", None)
-        self.previous = kwargs.get("previous", None)
-        self.results = kwargs["results"]
-
-
-class GetAllDocumentsResultsItem(msrest.serialization.Model):
-    """GetAllDocumentsResultsItem.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar meta: Required.
-    :vartype meta: ~affinda.models.DocumentMeta
-    :ivar error:
-    :vartype error: ~affinda.models.Error
-    """
-
-    _validation = {
-        "meta": {"required": True},
-    }
-
-    _attribute_map = {
-        "meta": {"key": "meta", "type": "DocumentMeta"},
-        "error": {"key": "error", "type": "Error"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword meta: Required.
-        :paramtype meta: ~affinda.models.DocumentMeta
-        :keyword error:
-        :paramtype error: ~affinda.models.Error
-        """
-        super(GetAllDocumentsResultsItem, self).__init__(**kwargs)
-        self.meta = kwargs["meta"]
-        self.error = kwargs.get("error", None)
-
-
 class IndexRequestBody(msrest.serialization.Model):
     """IndexRequestBody.
 
@@ -4631,8 +3477,333 @@ class InvitationUpdate(msrest.serialization.Model):
         self.role = kwargs.get("role", None)
 
 
-class TextAnnotationV2(AnnotationV2):
-    """TextAnnotationV2.
+class Invoice(Document):
+    """Invoice.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar extractor: Required. Constant filled by server.
+    :vartype extractor: str
+    :ivar meta: Required.
+    :vartype meta: ~affinda.models.DocumentMeta
+    :ivar error:
+    :vartype error: ~affinda.models.DocumentError
+    :ivar data:
+    :vartype data: ~affinda.models.InvoiceData
+    """
+
+    _validation = {
+        "extractor": {"required": True},
+        "meta": {"required": True},
+    }
+
+    _attribute_map = {
+        "extractor": {"key": "extractor", "type": "str"},
+        "meta": {"key": "meta", "type": "DocumentMeta"},
+        "error": {"key": "error", "type": "DocumentError"},
+        "data": {"key": "data", "type": "InvoiceData"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword meta: Required.
+        :paramtype meta: ~affinda.models.DocumentMeta
+        :keyword error:
+        :paramtype error: ~affinda.models.DocumentError
+        :keyword data:
+        :paramtype data: ~affinda.models.InvoiceData
+        """
+        super(Invoice, self).__init__(**kwargs)
+        self.extractor = "invoice"  # type: str
+        self.data = kwargs.get("data", None)
+
+
+class InvoiceData(msrest.serialization.Model):
+    """InvoiceData.
+
+    :ivar tables:
+    :vartype tables: list[~affinda.models.InvoiceDataTablesItem]
+    :ivar invoice_date:
+    :vartype invoice_date: ~affinda.models.DateAnnotation
+    :ivar invoice_order_date:
+    :vartype invoice_order_date: ~affinda.models.DateAnnotation
+    :ivar payment_date_due:
+    :vartype payment_date_due: ~affinda.models.DateAnnotation
+    :ivar payment_amount_base:
+    :vartype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
+    :ivar payment_amount_tax:
+    :vartype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
+    :ivar payment_amount_total:
+    :vartype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
+    :ivar payment_amount_paid:
+    :vartype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
+    :ivar payment_amount_due:
+    :vartype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
+    :ivar invoice_number:
+    :vartype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
+    :ivar invoice_purchase_order_number:
+    :vartype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
+    :ivar supplier_business_number:
+    :vartype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
+    :ivar customer_number:
+    :vartype customer_number: ~affinda.models.InvoiceDataCustomerNumber
+    :ivar customer_business_number:
+    :vartype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
+    :ivar payment_reference:
+    :vartype payment_reference: ~affinda.models.InvoiceDataPaymentReference
+    :ivar bank_account_number:
+    :vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
+    :ivar supplier_vat:
+    :vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
+    :ivar customer_vat:
+    :vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
+    :ivar bpay_biller_code:
+    :vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
+    :ivar bpay_reference:
+    :vartype bpay_reference: ~affinda.models.InvoiceDataBpayReference
+    :ivar bank_sort_code:
+    :vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
+    :ivar bank_iban:
+    :vartype bank_iban: ~affinda.models.InvoiceDataBankIban
+    :ivar bank_swift:
+    :vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
+    :ivar bank_bsb:
+    :vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
+    :ivar customer_contact_name:
+    :vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
+    :ivar customer_company_name:
+    :vartype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
+    :ivar supplier_company_name:
+    :vartype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
+    :ivar customer_billing_address:
+    :vartype customer_billing_address: ~affinda.models.LocationAnnotation
+    :ivar customer_delivery_address:
+    :vartype customer_delivery_address: ~affinda.models.LocationAnnotation
+    :ivar supplier_address:
+    :vartype supplier_address: ~affinda.models.LocationAnnotation
+    :ivar customer_phone_number:
+    :vartype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
+    :ivar supplier_phone_number:
+    :vartype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
+    :ivar supplier_fax:
+    :vartype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
+    :ivar customer_email:
+    :vartype customer_email: ~affinda.models.InvoiceDataCustomerEmail
+    :ivar supplier_email:
+    :vartype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
+    :ivar supplier_website:
+    :vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
+    :ivar currency_code:
+    :vartype currency_code: ~affinda.models.TextAnnotation
+    :ivar custom_fields: Dictionary of :code:`<any>`.
+    :vartype custom_fields: dict[str, any]
+    """
+
+    _attribute_map = {
+        "tables": {"key": "tables", "type": "[InvoiceDataTablesItem]"},
+        "invoice_date": {"key": "invoiceDate", "type": "DateAnnotation"},
+        "invoice_order_date": {"key": "invoiceOrderDate", "type": "DateAnnotation"},
+        "payment_date_due": {"key": "paymentDateDue", "type": "DateAnnotation"},
+        "payment_amount_base": {
+            "key": "paymentAmountBase",
+            "type": "InvoiceDataPaymentAmountBase",
+        },
+        "payment_amount_tax": {"key": "paymentAmountTax", "type": "InvoiceDataPaymentAmountTax"},
+        "payment_amount_total": {
+            "key": "paymentAmountTotal",
+            "type": "InvoiceDataPaymentAmountTotal",
+        },
+        "payment_amount_paid": {
+            "key": "paymentAmountPaid",
+            "type": "InvoiceDataPaymentAmountPaid",
+        },
+        "payment_amount_due": {"key": "paymentAmountDue", "type": "InvoiceDataPaymentAmountDue"},
+        "invoice_number": {"key": "invoiceNumber", "type": "InvoiceDataInvoiceNumber"},
+        "invoice_purchase_order_number": {
+            "key": "invoicePurchaseOrderNumber",
+            "type": "InvoiceDataInvoicePurchaseOrderNumber",
+        },
+        "supplier_business_number": {
+            "key": "supplierBusinessNumber",
+            "type": "InvoiceDataSupplierBusinessNumber",
+        },
+        "customer_number": {"key": "customerNumber", "type": "InvoiceDataCustomerNumber"},
+        "customer_business_number": {
+            "key": "customerBusinessNumber",
+            "type": "InvoiceDataCustomerBusinessNumber",
+        },
+        "payment_reference": {"key": "paymentReference", "type": "InvoiceDataPaymentReference"},
+        "bank_account_number": {
+            "key": "bankAccountNumber",
+            "type": "InvoiceDataBankAccountNumber",
+        },
+        "supplier_vat": {"key": "supplierVat", "type": "InvoiceDataSupplierVat"},
+        "customer_vat": {"key": "customerVat", "type": "InvoiceDataCustomerVat"},
+        "bpay_biller_code": {"key": "bpayBillerCode", "type": "InvoiceDataBpayBillerCode"},
+        "bpay_reference": {"key": "bpayReference", "type": "InvoiceDataBpayReference"},
+        "bank_sort_code": {"key": "bankSortCode", "type": "InvoiceDataBankSortCode"},
+        "bank_iban": {"key": "bankIban", "type": "InvoiceDataBankIban"},
+        "bank_swift": {"key": "bankSwift", "type": "InvoiceDataBankSwift"},
+        "bank_bsb": {"key": "bankBsb", "type": "InvoiceDataBankBsb"},
+        "customer_contact_name": {
+            "key": "customerContactName",
+            "type": "InvoiceDataCustomerContactName",
+        },
+        "customer_company_name": {
+            "key": "customerCompanyName",
+            "type": "InvoiceDataCustomerCompanyName",
+        },
+        "supplier_company_name": {
+            "key": "supplierCompanyName",
+            "type": "InvoiceDataSupplierCompanyName",
+        },
+        "customer_billing_address": {
+            "key": "customerBillingAddress",
+            "type": "LocationAnnotation",
+        },
+        "customer_delivery_address": {
+            "key": "customerDeliveryAddress",
+            "type": "LocationAnnotation",
+        },
+        "supplier_address": {"key": "supplierAddress", "type": "LocationAnnotation"},
+        "customer_phone_number": {
+            "key": "customerPhoneNumber",
+            "type": "InvoiceDataCustomerPhoneNumber",
+        },
+        "supplier_phone_number": {
+            "key": "supplierPhoneNumber",
+            "type": "InvoiceDataSupplierPhoneNumber",
+        },
+        "supplier_fax": {"key": "supplierFax", "type": "InvoiceDataSupplierFax"},
+        "customer_email": {"key": "customerEmail", "type": "InvoiceDataCustomerEmail"},
+        "supplier_email": {"key": "supplierEmail", "type": "InvoiceDataSupplierEmail"},
+        "supplier_website": {"key": "supplierWebsite", "type": "InvoiceDataSupplierWebsite"},
+        "currency_code": {"key": "currencyCode", "type": "TextAnnotation"},
+        "custom_fields": {"key": "customFields", "type": "{object}"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword tables:
+        :paramtype tables: list[~affinda.models.InvoiceDataTablesItem]
+        :keyword invoice_date:
+        :paramtype invoice_date: ~affinda.models.DateAnnotation
+        :keyword invoice_order_date:
+        :paramtype invoice_order_date: ~affinda.models.DateAnnotation
+        :keyword payment_date_due:
+        :paramtype payment_date_due: ~affinda.models.DateAnnotation
+        :keyword payment_amount_base:
+        :paramtype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
+        :keyword payment_amount_tax:
+        :paramtype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
+        :keyword payment_amount_total:
+        :paramtype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
+        :keyword payment_amount_paid:
+        :paramtype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
+        :keyword payment_amount_due:
+        :paramtype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
+        :keyword invoice_number:
+        :paramtype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
+        :keyword invoice_purchase_order_number:
+        :paramtype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
+        :keyword supplier_business_number:
+        :paramtype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
+        :keyword customer_number:
+        :paramtype customer_number: ~affinda.models.InvoiceDataCustomerNumber
+        :keyword customer_business_number:
+        :paramtype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
+        :keyword payment_reference:
+        :paramtype payment_reference: ~affinda.models.InvoiceDataPaymentReference
+        :keyword bank_account_number:
+        :paramtype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
+        :keyword supplier_vat:
+        :paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
+        :keyword customer_vat:
+        :paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVat
+        :keyword bpay_biller_code:
+        :paramtype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
+        :keyword bpay_reference:
+        :paramtype bpay_reference: ~affinda.models.InvoiceDataBpayReference
+        :keyword bank_sort_code:
+        :paramtype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
+        :keyword bank_iban:
+        :paramtype bank_iban: ~affinda.models.InvoiceDataBankIban
+        :keyword bank_swift:
+        :paramtype bank_swift: ~affinda.models.InvoiceDataBankSwift
+        :keyword bank_bsb:
+        :paramtype bank_bsb: ~affinda.models.InvoiceDataBankBsb
+        :keyword customer_contact_name:
+        :paramtype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
+        :keyword customer_company_name:
+        :paramtype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
+        :keyword supplier_company_name:
+        :paramtype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
+        :keyword customer_billing_address:
+        :paramtype customer_billing_address: ~affinda.models.LocationAnnotation
+        :keyword customer_delivery_address:
+        :paramtype customer_delivery_address: ~affinda.models.LocationAnnotation
+        :keyword supplier_address:
+        :paramtype supplier_address: ~affinda.models.LocationAnnotation
+        :keyword customer_phone_number:
+        :paramtype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
+        :keyword supplier_phone_number:
+        :paramtype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
+        :keyword supplier_fax:
+        :paramtype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
+        :keyword customer_email:
+        :paramtype customer_email: ~affinda.models.InvoiceDataCustomerEmail
+        :keyword supplier_email:
+        :paramtype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
+        :keyword supplier_website:
+        :paramtype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
+        :keyword currency_code:
+        :paramtype currency_code: ~affinda.models.TextAnnotation
+        :keyword custom_fields: Dictionary of :code:`<any>`.
+        :paramtype custom_fields: dict[str, any]
+        """
+        super(InvoiceData, self).__init__(**kwargs)
+        self.tables = kwargs.get("tables", None)
+        self.invoice_date = kwargs.get("invoice_date", None)
+        self.invoice_order_date = kwargs.get("invoice_order_date", None)
+        self.payment_date_due = kwargs.get("payment_date_due", None)
+        self.payment_amount_base = kwargs.get("payment_amount_base", None)
+        self.payment_amount_tax = kwargs.get("payment_amount_tax", None)
+        self.payment_amount_total = kwargs.get("payment_amount_total", None)
+        self.payment_amount_paid = kwargs.get("payment_amount_paid", None)
+        self.payment_amount_due = kwargs.get("payment_amount_due", None)
+        self.invoice_number = kwargs.get("invoice_number", None)
+        self.invoice_purchase_order_number = kwargs.get("invoice_purchase_order_number", None)
+        self.supplier_business_number = kwargs.get("supplier_business_number", None)
+        self.customer_number = kwargs.get("customer_number", None)
+        self.customer_business_number = kwargs.get("customer_business_number", None)
+        self.payment_reference = kwargs.get("payment_reference", None)
+        self.bank_account_number = kwargs.get("bank_account_number", None)
+        self.supplier_vat = kwargs.get("supplier_vat", None)
+        self.customer_vat = kwargs.get("customer_vat", None)
+        self.bpay_biller_code = kwargs.get("bpay_biller_code", None)
+        self.bpay_reference = kwargs.get("bpay_reference", None)
+        self.bank_sort_code = kwargs.get("bank_sort_code", None)
+        self.bank_iban = kwargs.get("bank_iban", None)
+        self.bank_swift = kwargs.get("bank_swift", None)
+        self.bank_bsb = kwargs.get("bank_bsb", None)
+        self.customer_contact_name = kwargs.get("customer_contact_name", None)
+        self.customer_company_name = kwargs.get("customer_company_name", None)
+        self.supplier_company_name = kwargs.get("supplier_company_name", None)
+        self.customer_billing_address = kwargs.get("customer_billing_address", None)
+        self.customer_delivery_address = kwargs.get("customer_delivery_address", None)
+        self.supplier_address = kwargs.get("supplier_address", None)
+        self.customer_phone_number = kwargs.get("customer_phone_number", None)
+        self.supplier_phone_number = kwargs.get("supplier_phone_number", None)
+        self.supplier_fax = kwargs.get("supplier_fax", None)
+        self.customer_email = kwargs.get("customer_email", None)
+        self.supplier_email = kwargs.get("supplier_email", None)
+        self.supplier_website = kwargs.get("supplier_website", None)
+        self.currency_code = kwargs.get("currency_code", None)
+        self.custom_fields = kwargs.get("custom_fields", None)
+
+
+class TextAnnotation(Annotation):
+    """TextAnnotation.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -4641,13 +3812,14 @@ class TextAnnotationV2(AnnotationV2):
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -4657,13 +3829,14 @@ class TextAnnotationV2(AnnotationV2):
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -4683,6 +3856,7 @@ class TextAnnotationV2(AnnotationV2):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -4711,13 +3885,14 @@ class TextAnnotationV2(AnnotationV2):
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -4727,25 +3902,27 @@ class TextAnnotationV2(AnnotationV2):
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(TextAnnotationV2, self).__init__(**kwargs)
+        super(TextAnnotation, self).__init__(**kwargs)
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataBankAccountNumber(
-    TextAnnotationV2, Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1
+    TextAnnotation, Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1
 ):
     """InvoiceDataBankAccountNumber.
 
@@ -4756,13 +3933,14 @@ class InvoiceDataBankAccountNumber(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -4772,13 +3950,14 @@ class InvoiceDataBankAccountNumber(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -4798,6 +3977,7 @@ class InvoiceDataBankAccountNumber(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -4826,13 +4006,14 @@ class InvoiceDataBankAccountNumber(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -4842,13 +4023,15 @@ class InvoiceDataBankAccountNumber(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -4868,13 +4051,13 @@ class InvoiceDataBankAccountNumber(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataBankBsb(
-    TextAnnotationV2, Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1
+    TextAnnotation, Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1
 ):
     """InvoiceDataBankBsb.
 
@@ -4885,13 +4068,14 @@ class InvoiceDataBankBsb(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -4901,13 +4085,14 @@ class InvoiceDataBankBsb(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -4927,6 +4112,7 @@ class InvoiceDataBankBsb(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -4955,13 +4141,14 @@ class InvoiceDataBankBsb(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -4971,13 +4158,15 @@ class InvoiceDataBankBsb(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -4997,13 +4186,13 @@ class InvoiceDataBankBsb(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataBankIban(
-    TextAnnotationV2, Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1
+    TextAnnotation, Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1
 ):
     """InvoiceDataBankIban.
 
@@ -5014,13 +4203,14 @@ class InvoiceDataBankIban(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -5030,13 +4220,14 @@ class InvoiceDataBankIban(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -5056,6 +4247,7 @@ class InvoiceDataBankIban(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -5084,13 +4276,14 @@ class InvoiceDataBankIban(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -5100,13 +4293,15 @@ class InvoiceDataBankIban(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -5126,13 +4321,13 @@ class InvoiceDataBankIban(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataBankSortCode(
-    TextAnnotationV2, Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1
+    TextAnnotation, Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1
 ):
     """InvoiceDataBankSortCode.
 
@@ -5143,13 +4338,14 @@ class InvoiceDataBankSortCode(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -5159,13 +4355,14 @@ class InvoiceDataBankSortCode(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -5185,6 +4382,7 @@ class InvoiceDataBankSortCode(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -5213,13 +4411,14 @@ class InvoiceDataBankSortCode(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -5229,13 +4428,15 @@ class InvoiceDataBankSortCode(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -5255,13 +4456,13 @@ class InvoiceDataBankSortCode(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataBankSwift(
-    TextAnnotationV2, Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1
+    TextAnnotation, Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1
 ):
     """InvoiceDataBankSwift.
 
@@ -5272,13 +4473,14 @@ class InvoiceDataBankSwift(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -5288,13 +4490,14 @@ class InvoiceDataBankSwift(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -5314,6 +4517,7 @@ class InvoiceDataBankSwift(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -5342,13 +4546,14 @@ class InvoiceDataBankSwift(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -5358,13 +4563,15 @@ class InvoiceDataBankSwift(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -5384,13 +4591,13 @@ class InvoiceDataBankSwift(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataBpayBillerCode(
-    TextAnnotationV2, ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1
+    TextAnnotation, ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1
 ):
     """InvoiceDataBpayBillerCode.
 
@@ -5401,13 +4608,14 @@ class InvoiceDataBpayBillerCode(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -5417,13 +4625,14 @@ class InvoiceDataBpayBillerCode(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -5443,6 +4652,7 @@ class InvoiceDataBpayBillerCode(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -5471,13 +4681,14 @@ class InvoiceDataBpayBillerCode(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -5487,13 +4698,15 @@ class InvoiceDataBpayBillerCode(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -5513,13 +4726,13 @@ class InvoiceDataBpayBillerCode(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataBpayReference(
-    TextAnnotationV2, ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1
+    TextAnnotation, ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1
 ):
     """InvoiceDataBpayReference.
 
@@ -5530,13 +4743,14 @@ class InvoiceDataBpayReference(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -5546,13 +4760,14 @@ class InvoiceDataBpayReference(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -5572,6 +4787,7 @@ class InvoiceDataBpayReference(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -5600,13 +4816,14 @@ class InvoiceDataBpayReference(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -5616,13 +4833,15 @@ class InvoiceDataBpayReference(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -5642,13 +4861,13 @@ class InvoiceDataBpayReference(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataCustomerBusinessNumber(
-    TextAnnotationV2, Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1
+    TextAnnotation, Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1
 ):
     """InvoiceDataCustomerBusinessNumber.
 
@@ -5659,13 +4878,14 @@ class InvoiceDataCustomerBusinessNumber(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -5675,13 +4895,14 @@ class InvoiceDataCustomerBusinessNumber(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -5701,6 +4922,7 @@ class InvoiceDataCustomerBusinessNumber(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -5729,13 +4951,14 @@ class InvoiceDataCustomerBusinessNumber(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -5745,13 +4968,15 @@ class InvoiceDataCustomerBusinessNumber(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -5771,13 +4996,13 @@ class InvoiceDataCustomerBusinessNumber(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataCustomerCompanyName(
-    TextAnnotationV2, Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1
+    TextAnnotation, Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1
 ):
     """InvoiceDataCustomerCompanyName.
 
@@ -5788,13 +5013,14 @@ class InvoiceDataCustomerCompanyName(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -5804,13 +5030,14 @@ class InvoiceDataCustomerCompanyName(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -5830,6 +5057,7 @@ class InvoiceDataCustomerCompanyName(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -5858,13 +5086,14 @@ class InvoiceDataCustomerCompanyName(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -5874,13 +5103,15 @@ class InvoiceDataCustomerCompanyName(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -5900,13 +5131,13 @@ class InvoiceDataCustomerCompanyName(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataCustomerContactName(
-    TextAnnotationV2, ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1
+    TextAnnotation, ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1
 ):
     """InvoiceDataCustomerContactName.
 
@@ -5917,13 +5148,14 @@ class InvoiceDataCustomerContactName(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -5933,13 +5165,14 @@ class InvoiceDataCustomerContactName(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -5959,6 +5192,7 @@ class InvoiceDataCustomerContactName(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -5987,13 +5221,14 @@ class InvoiceDataCustomerContactName(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -6003,13 +5238,15 @@ class InvoiceDataCustomerContactName(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -6029,13 +5266,13 @@ class InvoiceDataCustomerContactName(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataCustomerEmail(
-    TextAnnotationV2, Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1
+    TextAnnotation, Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1
 ):
     """InvoiceDataCustomerEmail.
 
@@ -6046,13 +5283,14 @@ class InvoiceDataCustomerEmail(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -6062,13 +5300,14 @@ class InvoiceDataCustomerEmail(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -6088,6 +5327,7 @@ class InvoiceDataCustomerEmail(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -6116,13 +5356,14 @@ class InvoiceDataCustomerEmail(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -6132,13 +5373,15 @@ class InvoiceDataCustomerEmail(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -6158,13 +5401,13 @@ class InvoiceDataCustomerEmail(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataCustomerNumber(
-    TextAnnotationV2, Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1
+    TextAnnotation, Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1
 ):
     """InvoiceDataCustomerNumber.
 
@@ -6175,13 +5418,14 @@ class InvoiceDataCustomerNumber(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -6191,13 +5435,14 @@ class InvoiceDataCustomerNumber(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -6217,6 +5462,7 @@ class InvoiceDataCustomerNumber(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -6245,13 +5491,14 @@ class InvoiceDataCustomerNumber(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -6261,13 +5508,15 @@ class InvoiceDataCustomerNumber(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -6287,13 +5536,13 @@ class InvoiceDataCustomerNumber(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataCustomerPhoneNumber(
-    TextAnnotationV2, Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1
+    TextAnnotation, Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1
 ):
     """InvoiceDataCustomerPhoneNumber.
 
@@ -6304,13 +5553,14 @@ class InvoiceDataCustomerPhoneNumber(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -6320,13 +5570,14 @@ class InvoiceDataCustomerPhoneNumber(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -6346,6 +5597,7 @@ class InvoiceDataCustomerPhoneNumber(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -6374,13 +5626,14 @@ class InvoiceDataCustomerPhoneNumber(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -6390,13 +5643,15 @@ class InvoiceDataCustomerPhoneNumber(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -6416,13 +5671,13 @@ class InvoiceDataCustomerPhoneNumber(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataCustomerVat(
-    TextAnnotationV2, ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1
+    TextAnnotation, ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1
 ):
     """InvoiceDataCustomerVat.
 
@@ -6433,13 +5688,14 @@ class InvoiceDataCustomerVat(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -6449,13 +5705,14 @@ class InvoiceDataCustomerVat(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -6475,6 +5732,7 @@ class InvoiceDataCustomerVat(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -6503,13 +5761,14 @@ class InvoiceDataCustomerVat(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -6519,13 +5778,15 @@ class InvoiceDataCustomerVat(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -6545,13 +5806,13 @@ class InvoiceDataCustomerVat(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataInvoiceNumber(
-    TextAnnotationV2, Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1
+    TextAnnotation, Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1
 ):
     """InvoiceDataInvoiceNumber.
 
@@ -6562,13 +5823,14 @@ class InvoiceDataInvoiceNumber(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -6578,13 +5840,14 @@ class InvoiceDataInvoiceNumber(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -6604,6 +5867,7 @@ class InvoiceDataInvoiceNumber(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -6632,13 +5896,14 @@ class InvoiceDataInvoiceNumber(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -6648,13 +5913,15 @@ class InvoiceDataInvoiceNumber(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -6674,13 +5941,13 @@ class InvoiceDataInvoiceNumber(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataInvoicePurchaseOrderNumber(
-    TextAnnotationV2, ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1
+    TextAnnotation, ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1
 ):
     """InvoiceDataInvoicePurchaseOrderNumber.
 
@@ -6691,13 +5958,14 @@ class InvoiceDataInvoicePurchaseOrderNumber(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -6707,13 +5975,14 @@ class InvoiceDataInvoicePurchaseOrderNumber(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -6733,6 +6002,7 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -6761,13 +6031,14 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -6777,13 +6048,15 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -6803,13 +6076,13 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataPaymentAmountBase(
-    TextAnnotationV2, Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1
+    TextAnnotation, Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1
 ):
     """InvoiceDataPaymentAmountBase.
 
@@ -6820,13 +6093,14 @@ class InvoiceDataPaymentAmountBase(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -6836,13 +6110,14 @@ class InvoiceDataPaymentAmountBase(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -6862,6 +6137,7 @@ class InvoiceDataPaymentAmountBase(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -6890,13 +6166,14 @@ class InvoiceDataPaymentAmountBase(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -6906,13 +6183,15 @@ class InvoiceDataPaymentAmountBase(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -6932,13 +6211,13 @@ class InvoiceDataPaymentAmountBase(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataPaymentAmountDue(
-    TextAnnotationV2, ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1
+    TextAnnotation, ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1
 ):
     """InvoiceDataPaymentAmountDue.
 
@@ -6949,13 +6228,14 @@ class InvoiceDataPaymentAmountDue(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -6965,13 +6245,14 @@ class InvoiceDataPaymentAmountDue(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -6991,6 +6272,7 @@ class InvoiceDataPaymentAmountDue(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -7019,13 +6301,14 @@ class InvoiceDataPaymentAmountDue(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -7035,13 +6318,15 @@ class InvoiceDataPaymentAmountDue(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -7061,13 +6346,13 @@ class InvoiceDataPaymentAmountDue(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataPaymentAmountPaid(
-    TextAnnotationV2, Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1
+    TextAnnotation, Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1
 ):
     """InvoiceDataPaymentAmountPaid.
 
@@ -7078,13 +6363,14 @@ class InvoiceDataPaymentAmountPaid(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -7094,13 +6380,14 @@ class InvoiceDataPaymentAmountPaid(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -7120,6 +6407,7 @@ class InvoiceDataPaymentAmountPaid(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -7148,13 +6436,14 @@ class InvoiceDataPaymentAmountPaid(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -7164,13 +6453,15 @@ class InvoiceDataPaymentAmountPaid(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -7190,13 +6481,13 @@ class InvoiceDataPaymentAmountPaid(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataPaymentAmountTax(
-    TextAnnotationV2, Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1
+    TextAnnotation, Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1
 ):
     """InvoiceDataPaymentAmountTax.
 
@@ -7207,13 +6498,14 @@ class InvoiceDataPaymentAmountTax(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -7223,13 +6515,14 @@ class InvoiceDataPaymentAmountTax(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -7249,6 +6542,7 @@ class InvoiceDataPaymentAmountTax(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -7277,13 +6571,14 @@ class InvoiceDataPaymentAmountTax(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -7293,13 +6588,15 @@ class InvoiceDataPaymentAmountTax(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -7319,13 +6616,13 @@ class InvoiceDataPaymentAmountTax(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataPaymentAmountTotal(
-    TextAnnotationV2, Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1
+    TextAnnotation, Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1
 ):
     """InvoiceDataPaymentAmountTotal.
 
@@ -7336,13 +6633,14 @@ class InvoiceDataPaymentAmountTotal(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -7352,13 +6650,14 @@ class InvoiceDataPaymentAmountTotal(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -7378,6 +6677,7 @@ class InvoiceDataPaymentAmountTotal(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -7406,13 +6706,14 @@ class InvoiceDataPaymentAmountTotal(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -7422,13 +6723,15 @@ class InvoiceDataPaymentAmountTotal(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -7448,13 +6751,13 @@ class InvoiceDataPaymentAmountTotal(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataPaymentReference(
-    TextAnnotationV2, Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1
+    TextAnnotation, Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1
 ):
     """InvoiceDataPaymentReference.
 
@@ -7465,13 +6768,14 @@ class InvoiceDataPaymentReference(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -7481,13 +6785,14 @@ class InvoiceDataPaymentReference(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -7507,6 +6812,7 @@ class InvoiceDataPaymentReference(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -7535,13 +6841,14 @@ class InvoiceDataPaymentReference(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -7551,13 +6858,15 @@ class InvoiceDataPaymentReference(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -7577,13 +6886,13 @@ class InvoiceDataPaymentReference(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataSupplierBusinessNumber(
-    TextAnnotationV2, Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1
+    TextAnnotation, Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1
 ):
     """InvoiceDataSupplierBusinessNumber.
 
@@ -7594,13 +6903,14 @@ class InvoiceDataSupplierBusinessNumber(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -7610,13 +6920,14 @@ class InvoiceDataSupplierBusinessNumber(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -7636,6 +6947,7 @@ class InvoiceDataSupplierBusinessNumber(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -7664,13 +6976,14 @@ class InvoiceDataSupplierBusinessNumber(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -7680,13 +6993,15 @@ class InvoiceDataSupplierBusinessNumber(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -7706,13 +7021,13 @@ class InvoiceDataSupplierBusinessNumber(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataSupplierCompanyName(
-    TextAnnotationV2, Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1
+    TextAnnotation, Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1
 ):
     """InvoiceDataSupplierCompanyName.
 
@@ -7723,13 +7038,14 @@ class InvoiceDataSupplierCompanyName(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -7739,13 +7055,14 @@ class InvoiceDataSupplierCompanyName(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -7765,6 +7082,7 @@ class InvoiceDataSupplierCompanyName(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -7793,13 +7111,14 @@ class InvoiceDataSupplierCompanyName(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -7809,13 +7128,15 @@ class InvoiceDataSupplierCompanyName(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -7835,13 +7156,13 @@ class InvoiceDataSupplierCompanyName(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataSupplierEmail(
-    TextAnnotationV2, Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1
+    TextAnnotation, Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1
 ):
     """InvoiceDataSupplierEmail.
 
@@ -7852,13 +7173,14 @@ class InvoiceDataSupplierEmail(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -7868,13 +7190,14 @@ class InvoiceDataSupplierEmail(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -7894,6 +7217,7 @@ class InvoiceDataSupplierEmail(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -7922,13 +7246,14 @@ class InvoiceDataSupplierEmail(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -7938,13 +7263,15 @@ class InvoiceDataSupplierEmail(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -7964,13 +7291,13 @@ class InvoiceDataSupplierEmail(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataSupplierFax(
-    TextAnnotationV2, Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1
+    TextAnnotation, Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1
 ):
     """InvoiceDataSupplierFax.
 
@@ -7981,13 +7308,14 @@ class InvoiceDataSupplierFax(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -7997,13 +7325,14 @@ class InvoiceDataSupplierFax(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -8023,6 +7352,7 @@ class InvoiceDataSupplierFax(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -8051,13 +7381,14 @@ class InvoiceDataSupplierFax(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -8067,13 +7398,15 @@ class InvoiceDataSupplierFax(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -8093,13 +7426,13 @@ class InvoiceDataSupplierFax(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataSupplierPhoneNumber(
-    TextAnnotationV2, Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1
+    TextAnnotation, Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1
 ):
     """InvoiceDataSupplierPhoneNumber.
 
@@ -8110,13 +7443,14 @@ class InvoiceDataSupplierPhoneNumber(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -8126,13 +7460,14 @@ class InvoiceDataSupplierPhoneNumber(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -8152,6 +7487,7 @@ class InvoiceDataSupplierPhoneNumber(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -8180,13 +7516,14 @@ class InvoiceDataSupplierPhoneNumber(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -8196,13 +7533,15 @@ class InvoiceDataSupplierPhoneNumber(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -8222,13 +7561,13 @@ class InvoiceDataSupplierPhoneNumber(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataSupplierVat(
-    TextAnnotationV2, ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1
+    TextAnnotation, ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1
 ):
     """InvoiceDataSupplierVat.
 
@@ -8239,13 +7578,14 @@ class InvoiceDataSupplierVat(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -8255,13 +7595,14 @@ class InvoiceDataSupplierVat(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -8281,6 +7622,7 @@ class InvoiceDataSupplierVat(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -8309,13 +7651,14 @@ class InvoiceDataSupplierVat(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -8325,13 +7668,15 @@ class InvoiceDataSupplierVat(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -8351,13 +7696,13 @@ class InvoiceDataSupplierVat(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataSupplierWebsite(
-    TextAnnotationV2, Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1
+    TextAnnotation, Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1
 ):
     """InvoiceDataSupplierWebsite.
 
@@ -8368,13 +7713,14 @@ class InvoiceDataSupplierWebsite(
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -8384,13 +7730,14 @@ class InvoiceDataSupplierWebsite(
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -8410,6 +7757,7 @@ class InvoiceDataSupplierWebsite(
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -8438,13 +7786,14 @@ class InvoiceDataSupplierWebsite(
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -8454,13 +7803,15 @@ class InvoiceDataSupplierWebsite(
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
@@ -8480,7 +7831,7 @@ class InvoiceDataSupplierWebsite(
         self.is_verified = kwargs["is_verified"]
         self.is_client_verified = kwargs["is_client_verified"]
         self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
+        self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
 
@@ -8505,8 +7856,8 @@ class InvoiceDataTablesItem(msrest.serialization.Model):
         self.rows = kwargs.get("rows", None)
 
 
-class InvoiceDocument(Document):
-    """InvoiceDocument.
+class JobDescription(Document):
+    """JobDescription.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -8515,75 +7866,20 @@ class InvoiceDocument(Document):
     :ivar meta: Required.
     :vartype meta: ~affinda.models.DocumentMeta
     :ivar error:
-    :vartype error: ~affinda.models.Error
-    :ivar additional_properties: Unmatched properties from the message are deserialized to this
-     collection.
-    :vartype additional_properties: dict[str, any]
-    :ivar data: Required.
-    :vartype data: ~affinda.models.InvoiceData
-    """
-
-    _validation = {
-        "extractor": {"required": True},
-        "meta": {"required": True},
-        "data": {"required": True},
-    }
-
-    _attribute_map = {
-        "extractor": {"key": "extractor", "type": "str"},
-        "meta": {"key": "meta", "type": "DocumentMeta"},
-        "error": {"key": "error", "type": "Error"},
-        "additional_properties": {"key": "", "type": "{object}"},
-        "data": {"key": "data", "type": "InvoiceData"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword meta: Required.
-        :paramtype meta: ~affinda.models.DocumentMeta
-        :keyword error:
-        :paramtype error: ~affinda.models.Error
-        :keyword additional_properties: Unmatched properties from the message are deserialized to this
-         collection.
-        :paramtype additional_properties: dict[str, any]
-        :keyword data: Required.
-        :paramtype data: ~affinda.models.InvoiceData
-        """
-        super(InvoiceDocument, self).__init__(**kwargs)
-        self.extractor = "invoice"  # type: str
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.data = kwargs["data"]
-
-
-class JobDescriptionDocument(Document):
-    """JobDescriptionDocument.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar extractor: Required. Constant filled by server.
-    :vartype extractor: str
-    :ivar meta: Required.
-    :vartype meta: ~affinda.models.DocumentMeta
-    :ivar error:
-    :vartype error: ~affinda.models.Error
-    :ivar additional_properties: Unmatched properties from the message are deserialized to this
-     collection.
-    :vartype additional_properties: dict[str, any]
-    :ivar data: Required. A JSON-encoded string of the ``JobDescriptionData`` object.
+    :vartype error: ~affinda.models.DocumentError
+    :ivar data:
     :vartype data: ~affinda.models.JobDescriptionData
     """
 
     _validation = {
         "extractor": {"required": True},
         "meta": {"required": True},
-        "data": {"required": True},
     }
 
     _attribute_map = {
         "extractor": {"key": "extractor", "type": "str"},
         "meta": {"key": "meta", "type": "DocumentMeta"},
-        "error": {"key": "error", "type": "Error"},
-        "additional_properties": {"key": "", "type": "{object}"},
+        "error": {"key": "error", "type": "DocumentError"},
         "data": {"key": "data", "type": "JobDescriptionData"},
     }
 
@@ -8592,17 +7888,132 @@ class JobDescriptionDocument(Document):
         :keyword meta: Required.
         :paramtype meta: ~affinda.models.DocumentMeta
         :keyword error:
-        :paramtype error: ~affinda.models.Error
-        :keyword additional_properties: Unmatched properties from the message are deserialized to this
-         collection.
-        :paramtype additional_properties: dict[str, any]
-        :keyword data: Required. A JSON-encoded string of the ``JobDescriptionData`` object.
+        :paramtype error: ~affinda.models.DocumentError
+        :keyword data:
         :paramtype data: ~affinda.models.JobDescriptionData
         """
-        super(JobDescriptionDocument, self).__init__(**kwargs)
+        super(JobDescription, self).__init__(**kwargs)
         self.extractor = "job-description"  # type: str
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.data = kwargs["data"]
+        self.data = kwargs.get("data", None)
+
+
+class JobDescriptionData(msrest.serialization.Model):
+    """JobDescriptionData.
+
+    :ivar job_title:
+    :vartype job_title: ~affinda.models.JobTitleAnnotation
+    :ivar contact_email:
+    :vartype contact_email: ~affinda.models.TextAnnotation
+    :ivar contact_name:
+    :vartype contact_name: ~affinda.models.TextAnnotation
+    :ivar contact_phone:
+    :vartype contact_phone: ~affinda.models.TextAnnotation
+    :ivar start_date:
+    :vartype start_date: ~affinda.models.DateAnnotation
+    :ivar end_date:
+    :vartype end_date: ~affinda.models.DateAnnotation
+    :ivar job_type:
+    :vartype job_type: ~affinda.models.TextAnnotation
+    :ivar languages:
+    :vartype languages: list[~affinda.models.LanguageAnnotation]
+    :ivar skills:
+    :vartype skills: list[~affinda.models.SkillAnnotation]
+    :ivar organization_name:
+    :vartype organization_name: ~affinda.models.TextAnnotation
+    :ivar organization_website:
+    :vartype organization_website: ~affinda.models.TextAnnotation
+    :ivar education_level:
+    :vartype education_level: ~affinda.models.TextAnnotation
+    :ivar education_accreditation:
+    :vartype education_accreditation: ~affinda.models.TextAnnotation
+    :ivar expected_remuneration:
+    :vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotation
+    :ivar location:
+    :vartype location: ~affinda.models.LocationAnnotation
+    :ivar certifications:
+    :vartype certifications: list[~affinda.models.TextAnnotation]
+    :ivar years_experience:
+    :vartype years_experience: ~affinda.models.YearsExperienceAnnotation
+    """
+
+    _attribute_map = {
+        "job_title": {"key": "jobTitle", "type": "JobTitleAnnotation"},
+        "contact_email": {"key": "contactEmail", "type": "TextAnnotation"},
+        "contact_name": {"key": "contactName", "type": "TextAnnotation"},
+        "contact_phone": {"key": "contactPhone", "type": "TextAnnotation"},
+        "start_date": {"key": "startDate", "type": "DateAnnotation"},
+        "end_date": {"key": "endDate", "type": "DateAnnotation"},
+        "job_type": {"key": "jobType", "type": "TextAnnotation"},
+        "languages": {"key": "languages", "type": "[LanguageAnnotation]"},
+        "skills": {"key": "skills", "type": "[SkillAnnotation]"},
+        "organization_name": {"key": "organizationName", "type": "TextAnnotation"},
+        "organization_website": {"key": "organizationWebsite", "type": "TextAnnotation"},
+        "education_level": {"key": "educationLevel", "type": "TextAnnotation"},
+        "education_accreditation": {"key": "educationAccreditation", "type": "TextAnnotation"},
+        "expected_remuneration": {
+            "key": "expectedRemuneration",
+            "type": "ExpectedRemunerationAnnotation",
+        },
+        "location": {"key": "location", "type": "LocationAnnotation"},
+        "certifications": {"key": "certifications", "type": "[TextAnnotation]"},
+        "years_experience": {"key": "yearsExperience", "type": "YearsExperienceAnnotation"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword job_title:
+        :paramtype job_title: ~affinda.models.JobTitleAnnotation
+        :keyword contact_email:
+        :paramtype contact_email: ~affinda.models.TextAnnotation
+        :keyword contact_name:
+        :paramtype contact_name: ~affinda.models.TextAnnotation
+        :keyword contact_phone:
+        :paramtype contact_phone: ~affinda.models.TextAnnotation
+        :keyword start_date:
+        :paramtype start_date: ~affinda.models.DateAnnotation
+        :keyword end_date:
+        :paramtype end_date: ~affinda.models.DateAnnotation
+        :keyword job_type:
+        :paramtype job_type: ~affinda.models.TextAnnotation
+        :keyword languages:
+        :paramtype languages: list[~affinda.models.LanguageAnnotation]
+        :keyword skills:
+        :paramtype skills: list[~affinda.models.SkillAnnotation]
+        :keyword organization_name:
+        :paramtype organization_name: ~affinda.models.TextAnnotation
+        :keyword organization_website:
+        :paramtype organization_website: ~affinda.models.TextAnnotation
+        :keyword education_level:
+        :paramtype education_level: ~affinda.models.TextAnnotation
+        :keyword education_accreditation:
+        :paramtype education_accreditation: ~affinda.models.TextAnnotation
+        :keyword expected_remuneration:
+        :paramtype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotation
+        :keyword location:
+        :paramtype location: ~affinda.models.LocationAnnotation
+        :keyword certifications:
+        :paramtype certifications: list[~affinda.models.TextAnnotation]
+        :keyword years_experience:
+        :paramtype years_experience: ~affinda.models.YearsExperienceAnnotation
+        """
+        super(JobDescriptionData, self).__init__(**kwargs)
+        self.job_title = kwargs.get("job_title", None)
+        self.contact_email = kwargs.get("contact_email", None)
+        self.contact_name = kwargs.get("contact_name", None)
+        self.contact_phone = kwargs.get("contact_phone", None)
+        self.start_date = kwargs.get("start_date", None)
+        self.end_date = kwargs.get("end_date", None)
+        self.job_type = kwargs.get("job_type", None)
+        self.languages = kwargs.get("languages", None)
+        self.skills = kwargs.get("skills", None)
+        self.organization_name = kwargs.get("organization_name", None)
+        self.organization_website = kwargs.get("organization_website", None)
+        self.education_level = kwargs.get("education_level", None)
+        self.education_accreditation = kwargs.get("education_accreditation", None)
+        self.expected_remuneration = kwargs.get("expected_remuneration", None)
+        self.location = kwargs.get("location", None)
+        self.certifications = kwargs.get("certifications", None)
+        self.years_experience = kwargs.get("years_experience", None)
 
 
 class JobDescriptionSearch(msrest.serialization.Model):
@@ -9916,50 +9327,24 @@ class JobDescriptionSearchResult(msrest.serialization.Model):
         self.organization_name = kwargs["organization_name"]
 
 
-class JobTitleParsed(msrest.serialization.Model):
-    """JobTitleParsed.
-
-    Variables are only populated by the server, and will be ignored when sending a request.
-
-    :ivar parsed: Matching job title to extracted text.
-    :vartype parsed: ~affinda.models.JobTitleParsedParsed
-    """
-
-    _validation = {
-        "parsed": {"readonly": True},
-    }
-
-    _attribute_map = {
-        "parsed": {"key": "parsed", "type": "JobTitleParsedParsed"},
-    }
-
-    def __init__(self, **kwargs):
-        """ """
-        super(JobTitleParsed, self).__init__(**kwargs)
-        self.parsed = None
-
-
-class JobTitleAnnotation(AnnotationV2, JobTitleParsed):
+class JobTitleAnnotation(Annotation):
     """JobTitleAnnotation.
-
-    Variables are only populated by the server, and will be ignored when sending a request.
 
     All required parameters must be populated in order to send to Azure.
 
-    :ivar parsed: Matching job title to extracted text.
-    :vartype parsed: ~affinda.models.JobTitleParsedParsed
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -9969,20 +9354,22 @@ class JobTitleAnnotation(AnnotationV2, JobTitleParsed):
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
+    :ivar parsed: Years of experience range.
+    :vartype parsed: ~affinda.models.JobTitleAnnotationParsed
     """
 
     _validation = {
-        "parsed": {"readonly": True},
         "id": {"required": True},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
@@ -9994,11 +9381,11 @@ class JobTitleAnnotation(AnnotationV2, JobTitleParsed):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
     _attribute_map = {
-        "parsed": {"key": "parsed", "type": "JobTitleParsedParsed"},
         "additional_properties": {"key": "", "type": "{object}"},
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
@@ -10013,6 +9400,7 @@ class JobTitleAnnotation(AnnotationV2, JobTitleParsed):
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parsed": {"key": "parsed", "type": "JobTitleAnnotationParsed"},
     }
 
     def __init__(self, **kwargs):
@@ -10022,13 +9410,14 @@ class JobTitleAnnotation(AnnotationV2, JobTitleParsed):
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -10038,37 +9427,62 @@ class JobTitleAnnotation(AnnotationV2, JobTitleParsed):
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
+        :keyword parsed: Years of experience range.
+        :paramtype parsed: ~affinda.models.JobTitleAnnotationParsed
         """
         super(JobTitleAnnotation, self).__init__(**kwargs)
-        self.parsed = None
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
+        self.parsed = kwargs.get("parsed", None)
 
 
-class JobTitleParsedClassification(msrest.serialization.Model):
-    """JobTitleParsedClassification.
+class JobTitleAnnotationParsed(msrest.serialization.Model):
+    """Years of experience range.
+
+    :ivar name:
+    :vartype name: str
+    :ivar management_level:
+    :vartype management_level: str
+    :ivar classification:
+    :vartype classification: ~affinda.models.JobTitleAnnotationParsedClassification
+    """
+
+    _attribute_map = {
+        "name": {"key": "name", "type": "str"},
+        "management_level": {"key": "managementLevel", "type": "str"},
+        "classification": {
+            "key": "classification",
+            "type": "JobTitleAnnotationParsedClassification",
+        },
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name:
+        :paramtype name: str
+        :keyword management_level:
+        :paramtype management_level: str
+        :keyword classification:
+        :paramtype classification: ~affinda.models.JobTitleAnnotationParsedClassification
+        """
+        super(JobTitleAnnotationParsed, self).__init__(**kwargs)
+        self.name = kwargs.get("name", None)
+        self.management_level = kwargs.get("management_level", None)
+        self.classification = kwargs.get("classification", None)
+
+
+class JobTitleAnnotationParsedClassification(msrest.serialization.Model):
+    """JobTitleAnnotationParsedClassification.
 
     :ivar soc_code:
     :vartype soc_code: float
@@ -10103,44 +9517,12 @@ class JobTitleParsedClassification(msrest.serialization.Model):
         :keyword major_group:
         :paramtype major_group: str
         """
-        super(JobTitleParsedClassification, self).__init__(**kwargs)
+        super(JobTitleAnnotationParsedClassification, self).__init__(**kwargs)
         self.soc_code = kwargs.get("soc_code", None)
         self.title = kwargs.get("title", None)
         self.minor_group = kwargs.get("minor_group", None)
         self.sub_major_group = kwargs.get("sub_major_group", None)
         self.major_group = kwargs.get("major_group", None)
-
-
-class JobTitleParsedParsed(msrest.serialization.Model):
-    """Matching job title to extracted text.
-
-    :ivar name:
-    :vartype name: str
-    :ivar management_level:
-    :vartype management_level: str
-    :ivar classification:
-    :vartype classification: ~affinda.models.JobTitleParsedClassification
-    """
-
-    _attribute_map = {
-        "name": {"key": "name", "type": "str"},
-        "management_level": {"key": "managementLevel", "type": "str"},
-        "classification": {"key": "classification", "type": "JobTitleParsedClassification"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword name:
-        :paramtype name: str
-        :keyword management_level:
-        :paramtype management_level: str
-        :keyword classification:
-        :paramtype classification: ~affinda.models.JobTitleParsedClassification
-        """
-        super(JobTitleParsedParsed, self).__init__(**kwargs)
-        self.name = kwargs.get("name", None)
-        self.management_level = kwargs.get("management_level", None)
-        self.classification = kwargs.get("classification", None)
 
 
 class JobTitleSearchScoreComponent(msrest.serialization.Model):
@@ -10181,8 +9563,8 @@ class JobTitleSearchScoreComponent(msrest.serialization.Model):
         self.score = kwargs.get("score", None)
 
 
-class LanguageAnnotationV2(AnnotationV2):
-    """LanguageAnnotationV2.
+class LanguageAnnotation(Annotation):
+    """LanguageAnnotation.
 
     Variables are only populated by the server, and will be ignored when sending a request.
 
@@ -10193,13 +9575,14 @@ class LanguageAnnotationV2(AnnotationV2):
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -10209,13 +9592,14 @@ class LanguageAnnotationV2(AnnotationV2):
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -10235,6 +9619,7 @@ class LanguageAnnotationV2(AnnotationV2):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
         "parsed": {"readonly": True},
     }
@@ -10264,13 +9649,14 @@ class LanguageAnnotationV2(AnnotationV2):
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -10280,18 +9666,20 @@ class LanguageAnnotationV2(AnnotationV2):
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
         """
-        super(LanguageAnnotationV2, self).__init__(**kwargs)
+        super(LanguageAnnotation, self).__init__(**kwargs)
         self.parsed = None
 
 
@@ -10333,48 +9721,8 @@ class LanguagesSearchScoreComponent(msrest.serialization.Model):
         self.score = kwargs.get("score", None)
 
 
-class ListResult(msrest.serialization.Model):
-    """ListResult.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar count: Required. Number of items in results.
-    :vartype count: int
-    :ivar next: URL to request next page of results.
-    :vartype next: str
-    :ivar previous: URL to request previous page of results.
-    :vartype previous: str
-    """
-
-    _validation = {
-        "count": {"required": True},
-    }
-
-    _attribute_map = {
-        "count": {"key": "count", "type": "int"},
-        "next": {"key": "next", "type": "str"},
-        "previous": {"key": "previous", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword count: Required. Number of items in results.
-        :paramtype count: int
-        :keyword next: URL to request next page of results.
-        :paramtype next: str
-        :keyword previous: URL to request previous page of results.
-        :paramtype previous: str
-        """
-        super(ListResult, self).__init__(**kwargs)
-        self.count = kwargs["count"]
-        self.next = kwargs.get("next", None)
-        self.previous = kwargs.get("previous", None)
-
-
-class LocationAnnotationV2(AnnotationV2):
-    """LocationAnnotationV2.
-
-    Variables are only populated by the server, and will be ignored when sending a request.
+class LocationAnnotation(Annotation):
+    """LocationAnnotation.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -10383,13 +9731,14 @@ class LocationAnnotationV2(AnnotationV2):
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -10399,18 +9748,19 @@ class LocationAnnotationV2(AnnotationV2):
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
     :ivar parsed:
-    :vartype parsed: ~affinda.models.LocationAnnotationV2Parsed
+    :vartype parsed: ~affinda.models.Location
     """
 
     _validation = {
@@ -10425,8 +9775,8 @@ class LocationAnnotationV2(AnnotationV2):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
-        "parsed": {"readonly": True},
     }
 
     _attribute_map = {
@@ -10444,7 +9794,7 @@ class LocationAnnotationV2(AnnotationV2):
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
-        "parsed": {"key": "parsed", "type": "LocationAnnotationV2Parsed"},
+        "parsed": {"key": "parsed", "type": "Location"},
     }
 
     def __init__(self, **kwargs):
@@ -10454,13 +9804,14 @@ class LocationAnnotationV2(AnnotationV2):
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -10470,90 +9821,23 @@ class LocationAnnotationV2(AnnotationV2):
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
+        :keyword parsed:
+        :paramtype parsed: ~affinda.models.Location
         """
-        super(LocationAnnotationV2, self).__init__(**kwargs)
-        self.parsed = None
-
-
-class LocationAnnotationV2Parsed(Location):
-    """LocationAnnotationV2Parsed.
-
-    Variables are only populated by the server, and will be ignored when sending a request.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar formatted:
-    :vartype formatted: str
-    :ivar postal_code:
-    :vartype postal_code: str
-    :ivar state:
-    :vartype state: str
-    :ivar country:
-    :vartype country: str
-    :ivar country_code: Two letter country code (ISO 3166-1 alpha-2).
-    :vartype country_code: str
-    :ivar raw_input: Required.
-    :vartype raw_input: str
-    :ivar street_number:
-    :vartype street_number: str
-    :ivar street:
-    :vartype street: str
-    :ivar apartment_number:
-    :vartype apartment_number: str
-    :ivar city:
-    :vartype city: str
-    :ivar latitude:
-    :vartype latitude: float
-    :ivar longitude:
-    :vartype longitude: float
-    """
-
-    _validation = {
-        "formatted": {"readonly": True},
-        "postal_code": {"readonly": True},
-        "state": {"readonly": True},
-        "country": {"readonly": True},
-        "country_code": {"readonly": True},
-        "raw_input": {"required": True},
-        "street_number": {"readonly": True},
-        "street": {"readonly": True},
-        "apartment_number": {"readonly": True},
-        "city": {"readonly": True},
-        "latitude": {"readonly": True},
-        "longitude": {"readonly": True},
-    }
-
-    _attribute_map = {
-        "formatted": {"key": "formatted", "type": "str"},
-        "postal_code": {"key": "postalCode", "type": "str"},
-        "state": {"key": "state", "type": "str"},
-        "country": {"key": "country", "type": "str"},
-        "country_code": {"key": "countryCode", "type": "str"},
-        "raw_input": {"key": "rawInput", "type": "str"},
-        "street_number": {"key": "streetNumber", "type": "str"},
-        "street": {"key": "street", "type": "str"},
-        "apartment_number": {"key": "apartmentNumber", "type": "str"},
-        "city": {"key": "city", "type": "str"},
-        "latitude": {"key": "latitude", "type": "float"},
-        "longitude": {"key": "longitude", "type": "float"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword raw_input: Required.
-        :paramtype raw_input: str
-        """
-        super(LocationAnnotationV2Parsed, self).__init__(**kwargs)
+        super(LocationAnnotation, self).__init__(**kwargs)
+        self.parsed = kwargs.get("parsed", None)
 
 
 class LocationSearchScoreComponent(msrest.serialization.Model):
@@ -11305,6 +10589,30 @@ class PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchem
         self.document = kwargs.get("document", None)
 
 
+class PathsL3R02CV3DocumentsGetResponses200ContentApplicationJsonSchemaAllof1(
+    msrest.serialization.Model
+):
+    """PathsL3R02CV3DocumentsGetResponses200ContentApplicationJsonSchemaAllof1.
+
+    :ivar results:
+    :vartype results: list[~affinda.models.Document]
+    """
+
+    _attribute_map = {
+        "results": {"key": "results", "type": "[Document]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword results:
+        :paramtype results: list[~affinda.models.Document]
+        """
+        super(
+            PathsL3R02CV3DocumentsGetResponses200ContentApplicationJsonSchemaAllof1, self
+        ).__init__(**kwargs)
+        self.results = kwargs.get("results", None)
+
+
 class PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema(
     msrest.serialization.Model
 ):
@@ -11425,6 +10733,54 @@ class PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema
         self.results = kwargs.get("results", None)
 
 
+class PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema(
+    PaginatedResponse, PathsL3R02CV3DocumentsGetResponses200ContentApplicationJsonSchemaAllof1
+):
+    """PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar results:
+    :vartype results: list[~affinda.models.Document]
+    :ivar count: Required. Number of items in results.
+    :vartype count: int
+    :ivar next: URL to request next page of results.
+    :vartype next: str
+    :ivar previous: URL to request previous page of results.
+    :vartype previous: str
+    """
+
+    _validation = {
+        "count": {"required": True},
+    }
+
+    _attribute_map = {
+        "results": {"key": "results", "type": "[Document]"},
+        "count": {"key": "count", "type": "int"},
+        "next": {"key": "next", "type": "str"},
+        "previous": {"key": "previous", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword results:
+        :paramtype results: list[~affinda.models.Document]
+        :keyword count: Required. Number of items in results.
+        :paramtype count: int
+        :keyword next: URL to request next page of results.
+        :paramtype next: str
+        :keyword previous: URL to request previous page of results.
+        :paramtype previous: str
+        """
+        super(PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema, self).__init__(
+            **kwargs
+        )
+        self.results = kwargs.get("results", None)
+        self.count = kwargs["count"]
+        self.next = kwargs.get("next", None)
+        self.previous = kwargs.get("previous", None)
+
+
 class PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema(
     PaginatedResponse,
     Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1,
@@ -11524,7 +10880,8 @@ class PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSch
 
 
 class PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema(
-    ListResult, Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1
+    PaginatedResponse,
+    Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1,
 ):
     """PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema.
 
@@ -11869,6 +11226,207 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
         self.event = kwargs.get("event", None)
         self.organization = kwargs.get("organization", None)
         self.version = kwargs.get("version", None)
+
+
+class Resume(Document):
+    """Resume.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar extractor: Required. Constant filled by server.
+    :vartype extractor: str
+    :ivar meta: Required.
+    :vartype meta: ~affinda.models.DocumentMeta
+    :ivar error:
+    :vartype error: ~affinda.models.DocumentError
+    :ivar data: A JSON-encoded string of the ``ResumeData`` object.
+    :vartype data: ~affinda.models.ResumeData
+    """
+
+    _validation = {
+        "extractor": {"required": True},
+        "meta": {"required": True},
+    }
+
+    _attribute_map = {
+        "extractor": {"key": "extractor", "type": "str"},
+        "meta": {"key": "meta", "type": "DocumentMeta"},
+        "error": {"key": "error", "type": "DocumentError"},
+        "data": {"key": "data", "type": "ResumeData"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword meta: Required.
+        :paramtype meta: ~affinda.models.DocumentMeta
+        :keyword error:
+        :paramtype error: ~affinda.models.DocumentError
+        :keyword data: A JSON-encoded string of the ``ResumeData`` object.
+        :paramtype data: ~affinda.models.ResumeData
+        """
+        super(Resume, self).__init__(**kwargs)
+        self.extractor = "resume"  # type: str
+        self.data = kwargs.get("data", None)
+
+
+class ResumeData(msrest.serialization.Model):
+    """A JSON-encoded string of the ``ResumeData`` object.
+
+    Variables are only populated by the server, and will be ignored when sending a request.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar name:
+    :vartype name: ~affinda.models.ResumeDataName
+    :ivar phone_numbers:
+    :vartype phone_numbers: list[str]
+    :ivar websites:
+    :vartype websites: list[str]
+    :ivar emails:
+    :vartype emails: list[str]
+    :ivar date_of_birth:
+    :vartype date_of_birth: str
+    :ivar location:
+    :vartype location: ~affinda.models.Location
+    :ivar objective:
+    :vartype objective: str
+    :ivar languages:
+    :vartype languages: list[str]
+    :ivar language_codes:
+    :vartype language_codes: list[str]
+    :ivar summary:
+    :vartype summary: str
+    :ivar total_years_experience:
+    :vartype total_years_experience: int
+    :ivar head_shot: base64 encoded string.
+    :vartype head_shot: bytearray
+    :ivar education:
+    :vartype education: list[~affinda.models.Education]
+    :ivar profession: Prediction of the candidate's profession based on recent work experience.
+    :vartype profession: str
+    :ivar linkedin: Linkedin account associated with the candidate.
+    :vartype linkedin: str
+    :ivar work_experience:
+    :vartype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
+    :ivar skills:
+    :vartype skills: list[~affinda.models.ResumeDataSkillsItem]
+    :ivar certifications:
+    :vartype certifications: list[str]
+    :ivar publications:
+    :vartype publications: list[str]
+    :ivar referees:
+    :vartype referees: list[~affinda.models.ResumeDataRefereesItem]
+    :ivar sections:
+    :vartype sections: list[~affinda.models.ResumeDataSectionsItem]
+    :ivar is_resume_probability: Probability that the given document is a resume. Values below 30
+     suggest that the document is not a resume.
+    :vartype is_resume_probability: int
+    :ivar raw_text: All of the raw text of the parsed resume, example is shortened for readability.
+    :vartype raw_text: str
+    """
+
+    _validation = {
+        "languages": {"readonly": True},
+        "language_codes": {"readonly": True},
+        "head_shot": {"readonly": True},
+        "profession": {"readonly": True},
+        "linkedin": {"readonly": True},
+        "sections": {"readonly": True},
+        "is_resume_probability": {"readonly": True},
+    }
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "name": {"key": "name", "type": "ResumeDataName"},
+        "phone_numbers": {"key": "phoneNumbers", "type": "[str]"},
+        "websites": {"key": "websites", "type": "[str]"},
+        "emails": {"key": "emails", "type": "[str]"},
+        "date_of_birth": {"key": "dateOfBirth", "type": "str"},
+        "location": {"key": "location", "type": "Location"},
+        "objective": {"key": "objective", "type": "str"},
+        "languages": {"key": "languages", "type": "[str]"},
+        "language_codes": {"key": "languageCodes", "type": "[str]"},
+        "summary": {"key": "summary", "type": "str"},
+        "total_years_experience": {"key": "totalYearsExperience", "type": "int"},
+        "head_shot": {"key": "headShot", "type": "bytearray"},
+        "education": {"key": "education", "type": "[Education]"},
+        "profession": {"key": "profession", "type": "str"},
+        "linkedin": {"key": "linkedin", "type": "str"},
+        "work_experience": {"key": "workExperience", "type": "[ResumeDataWorkExperienceItem]"},
+        "skills": {"key": "skills", "type": "[ResumeDataSkillsItem]"},
+        "certifications": {"key": "certifications", "type": "[str]"},
+        "publications": {"key": "publications", "type": "[str]"},
+        "referees": {"key": "referees", "type": "[ResumeDataRefereesItem]"},
+        "sections": {"key": "sections", "type": "[ResumeDataSectionsItem]"},
+        "is_resume_probability": {"key": "isResumeProbability", "type": "int"},
+        "raw_text": {"key": "rawText", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword name:
+        :paramtype name: ~affinda.models.ResumeDataName
+        :keyword phone_numbers:
+        :paramtype phone_numbers: list[str]
+        :keyword websites:
+        :paramtype websites: list[str]
+        :keyword emails:
+        :paramtype emails: list[str]
+        :keyword date_of_birth:
+        :paramtype date_of_birth: str
+        :keyword location:
+        :paramtype location: ~affinda.models.Location
+        :keyword objective:
+        :paramtype objective: str
+        :keyword summary:
+        :paramtype summary: str
+        :keyword total_years_experience:
+        :paramtype total_years_experience: int
+        :keyword education:
+        :paramtype education: list[~affinda.models.Education]
+        :keyword work_experience:
+        :paramtype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
+        :keyword skills:
+        :paramtype skills: list[~affinda.models.ResumeDataSkillsItem]
+        :keyword certifications:
+        :paramtype certifications: list[str]
+        :keyword publications:
+        :paramtype publications: list[str]
+        :keyword referees:
+        :paramtype referees: list[~affinda.models.ResumeDataRefereesItem]
+        :keyword raw_text: All of the raw text of the parsed resume, example is shortened for
+         readability.
+        :paramtype raw_text: str
+        """
+        super(ResumeData, self).__init__(**kwargs)
+        self.additional_properties = kwargs.get("additional_properties", None)
+        self.name = kwargs.get("name", None)
+        self.phone_numbers = kwargs.get("phone_numbers", None)
+        self.websites = kwargs.get("websites", None)
+        self.emails = kwargs.get("emails", None)
+        self.date_of_birth = kwargs.get("date_of_birth", None)
+        self.location = kwargs.get("location", None)
+        self.objective = kwargs.get("objective", "")
+        self.languages = None
+        self.language_codes = None
+        self.summary = kwargs.get("summary", "")
+        self.total_years_experience = kwargs.get("total_years_experience", None)
+        self.head_shot = None
+        self.education = kwargs.get("education", None)
+        self.profession = None
+        self.linkedin = None
+        self.work_experience = kwargs.get("work_experience", None)
+        self.skills = kwargs.get("skills", None)
+        self.certifications = kwargs.get("certifications", None)
+        self.publications = kwargs.get("publications", None)
+        self.referees = kwargs.get("referees", None)
+        self.sections = None
+        self.is_resume_probability = None
+        self.raw_text = kwargs.get("raw_text", None)
 
 
 class ResumeDataName(msrest.serialization.Model):
@@ -12273,56 +11831,6 @@ class ResumeDataWorkExperienceItemOccupation(msrest.serialization.Model):
         self.classification = kwargs.get("classification", None)
 
 
-class ResumeDocument(Document):
-    """ResumeDocument.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar extractor: Required. Constant filled by server.
-    :vartype extractor: str
-    :ivar meta: Required.
-    :vartype meta: ~affinda.models.DocumentMeta
-    :ivar error:
-    :vartype error: ~affinda.models.Error
-    :ivar additional_properties: Unmatched properties from the message are deserialized to this
-     collection.
-    :vartype additional_properties: dict[str, any]
-    :ivar data: Required. A JSON-encoded string of the ``ResumeData`` object.
-    :vartype data: ~affinda.models.ResumeData
-    """
-
-    _validation = {
-        "extractor": {"required": True},
-        "meta": {"required": True},
-        "data": {"required": True},
-    }
-
-    _attribute_map = {
-        "extractor": {"key": "extractor", "type": "str"},
-        "meta": {"key": "meta", "type": "DocumentMeta"},
-        "error": {"key": "error", "type": "Error"},
-        "additional_properties": {"key": "", "type": "{object}"},
-        "data": {"key": "data", "type": "ResumeData"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword meta: Required.
-        :paramtype meta: ~affinda.models.DocumentMeta
-        :keyword error:
-        :paramtype error: ~affinda.models.Error
-        :keyword additional_properties: Unmatched properties from the message are deserialized to this
-         collection.
-        :paramtype additional_properties: dict[str, any]
-        :keyword data: Required. A JSON-encoded string of the ``ResumeData`` object.
-        :paramtype data: ~affinda.models.ResumeData
-        """
-        super(ResumeDocument, self).__init__(**kwargs)
-        self.extractor = "resume"  # type: str
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.data = kwargs["data"]
-
-
 class ResumeSearch(msrest.serialization.Model):
     """ResumeSearch.
 
@@ -12335,7 +11843,7 @@ class ResumeSearch(msrest.serialization.Model):
     :ivar parameters:
     :vartype parameters: ~affinda.models.ResumeSearchParameters
     :ivar results:
-    :vartype results: list[~affinda.models.ResumeSearchResult]
+    :vartype results: list[~affinda.models.ResumeSearchResultsItem]
     """
 
     _attribute_map = {
@@ -12343,7 +11851,7 @@ class ResumeSearch(msrest.serialization.Model):
         "next": {"key": "next", "type": "str"},
         "previous": {"key": "previous", "type": "str"},
         "parameters": {"key": "parameters", "type": "ResumeSearchParameters"},
-        "results": {"key": "results", "type": "[ResumeSearchResult]"},
+        "results": {"key": "results", "type": "[ResumeSearchResultsItem]"},
     }
 
     def __init__(self, **kwargs):
@@ -12357,7 +11865,7 @@ class ResumeSearch(msrest.serialization.Model):
         :keyword parameters:
         :paramtype parameters: ~affinda.models.ResumeSearchParameters
         :keyword results:
-        :paramtype results: list[~affinda.models.ResumeSearchResult]
+        :paramtype results: list[~affinda.models.ResumeSearchResultsItem]
         """
         super(ResumeSearch, self).__init__(**kwargs)
         self.count = kwargs.get("count", None)
@@ -13854,136 +13362,36 @@ class ResumeSearchParametersSkill(msrest.serialization.Model):
         self.required = kwargs.get("required", None)
 
 
-class ResumeSearchResult(msrest.serialization.Model):
-    """ResumeSearchResult.
+class ResumeSearchResultsItem(msrest.serialization.Model):
+    """ResumeSearchResultsItem.
 
     All required parameters must be populated in order to send to Azure.
 
-    :ivar identifier: Required. A random string that uniquely identify the resource.
-    :vartype identifier: str
-    :ivar score: Required.
-    :vartype score: float
-    :ivar pdf: Required.
-    :vartype pdf: str
-    :ivar name:
-    :vartype name: str
-    :ivar job_title: Required.
-    :vartype job_title: ~affinda.models.JobTitleSearchScoreComponent
-    :ivar management_level: Required.
-    :vartype management_level: ~affinda.models.ManagementLevelSearchScoreComponent
-    :ivar experience: Required.
-    :vartype experience: ~affinda.models.ExperienceSearchScoreComponent
-    :ivar skills: Required.
-    :vartype skills: ~affinda.models.SkillsSearchScoreComponent
-    :ivar languages: Required.
-    :vartype languages: ~affinda.models.LanguagesSearchScoreComponent
-    :ivar location: Required.
-    :vartype location: ~affinda.models.LocationSearchScoreComponent
-    :ivar education: Required.
-    :vartype education: ~affinda.models.EducationSearchScoreComponent
-    :ivar occupation_group: Required.
-    :vartype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
-    :ivar search_expression: Required.
-    :vartype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
-    :ivar custom_data: Required. Dictionary of
-     <components·nqbw24·schemas·customdatasearchscorecomponent·additionalproperties>.
-    :vartype custom_data: dict[str,
-     ~affinda.models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties]
+    :ivar meta: Required.
+    :vartype meta: ~affinda.models.DocumentMeta
+    :ivar error:
+    :vartype error: ~affinda.models.DocumentError
     """
 
     _validation = {
-        "identifier": {"required": True},
-        "score": {"required": True},
-        "pdf": {"required": True},
-        "job_title": {"required": True},
-        "management_level": {"required": True},
-        "experience": {"required": True},
-        "skills": {"required": True},
-        "languages": {"required": True},
-        "location": {"required": True},
-        "education": {"required": True},
-        "occupation_group": {"required": True},
-        "search_expression": {"required": True},
-        "custom_data": {"required": True},
+        "meta": {"required": True},
     }
 
     _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-        "score": {"key": "score", "type": "float"},
-        "pdf": {"key": "pdf", "type": "str"},
-        "name": {"key": "name", "type": "str"},
-        "job_title": {"key": "jobTitle", "type": "JobTitleSearchScoreComponent"},
-        "management_level": {
-            "key": "managementLevel",
-            "type": "ManagementLevelSearchScoreComponent",
-        },
-        "experience": {"key": "experience", "type": "ExperienceSearchScoreComponent"},
-        "skills": {"key": "skills", "type": "SkillsSearchScoreComponent"},
-        "languages": {"key": "languages", "type": "LanguagesSearchScoreComponent"},
-        "location": {"key": "location", "type": "LocationSearchScoreComponent"},
-        "education": {"key": "education", "type": "EducationSearchScoreComponent"},
-        "occupation_group": {
-            "key": "occupationGroup",
-            "type": "OccupationGroupSearchScoreComponent",
-        },
-        "search_expression": {
-            "key": "searchExpression",
-            "type": "SearchExpressionSearchScoreComponent",
-        },
-        "custom_data": {
-            "key": "customData",
-            "type": "{ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties}",
-        },
+        "meta": {"key": "meta", "type": "DocumentMeta"},
+        "error": {"key": "error", "type": "DocumentError"},
     }
 
     def __init__(self, **kwargs):
         """
-        :keyword identifier: Required. A random string that uniquely identify the resource.
-        :paramtype identifier: str
-        :keyword score: Required.
-        :paramtype score: float
-        :keyword pdf: Required.
-        :paramtype pdf: str
-        :keyword name:
-        :paramtype name: str
-        :keyword job_title: Required.
-        :paramtype job_title: ~affinda.models.JobTitleSearchScoreComponent
-        :keyword management_level: Required.
-        :paramtype management_level: ~affinda.models.ManagementLevelSearchScoreComponent
-        :keyword experience: Required.
-        :paramtype experience: ~affinda.models.ExperienceSearchScoreComponent
-        :keyword skills: Required.
-        :paramtype skills: ~affinda.models.SkillsSearchScoreComponent
-        :keyword languages: Required.
-        :paramtype languages: ~affinda.models.LanguagesSearchScoreComponent
-        :keyword location: Required.
-        :paramtype location: ~affinda.models.LocationSearchScoreComponent
-        :keyword education: Required.
-        :paramtype education: ~affinda.models.EducationSearchScoreComponent
-        :keyword occupation_group: Required.
-        :paramtype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
-        :keyword search_expression: Required.
-        :paramtype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
-        :keyword custom_data: Required. Dictionary of
-         <components·nqbw24·schemas·customdatasearchscorecomponent·additionalproperties>.
-        :paramtype custom_data: dict[str,
-         ~affinda.models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties]
+        :keyword meta: Required.
+        :paramtype meta: ~affinda.models.DocumentMeta
+        :keyword error:
+        :paramtype error: ~affinda.models.DocumentError
         """
-        super(ResumeSearchResult, self).__init__(**kwargs)
-        self.identifier = kwargs["identifier"]
-        self.score = kwargs["score"]
-        self.pdf = kwargs["pdf"]
-        self.name = kwargs.get("name", None)
-        self.job_title = kwargs["job_title"]
-        self.management_level = kwargs["management_level"]
-        self.experience = kwargs["experience"]
-        self.skills = kwargs["skills"]
-        self.languages = kwargs["languages"]
-        self.location = kwargs["location"]
-        self.education = kwargs["education"]
-        self.occupation_group = kwargs["occupation_group"]
-        self.search_expression = kwargs["search_expression"]
-        self.custom_data = kwargs["custom_data"]
+        super(ResumeSearchResultsItem, self).__init__(**kwargs)
+        self.meta = kwargs["meta"]
+        self.error = kwargs.get("error", None)
 
 
 class ResumeSkillSourcesItem(msrest.serialization.Model):
@@ -14150,8 +13558,8 @@ class SearchExpressionSearchScoreComponent(msrest.serialization.Model):
         self.score = kwargs.get("score", None)
 
 
-class SkillAnnotationV2(AnnotationV2):
-    """SkillAnnotationV2.
+class SkillAnnotation(Annotation):
+    """SkillAnnotation.
 
     Variables are only populated by the server, and will be ignored when sending a request.
 
@@ -14162,13 +13570,14 @@ class SkillAnnotationV2(AnnotationV2):
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -14178,13 +13587,14 @@ class SkillAnnotationV2(AnnotationV2):
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
@@ -14204,6 +13614,7 @@ class SkillAnnotationV2(AnnotationV2):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
         "parsed": {"readonly": True},
     }
@@ -14233,13 +13644,14 @@ class SkillAnnotationV2(AnnotationV2):
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -14249,18 +13661,20 @@ class SkillAnnotationV2(AnnotationV2):
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
         """
-        super(SkillAnnotationV2, self).__init__(**kwargs)
+        super(SkillAnnotation, self).__init__(**kwargs)
         self.parsed = None
 
 
@@ -14406,50 +13820,6 @@ class TagUpdate(msrest.serialization.Model):
         super(TagUpdate, self).__init__(**kwargs)
         self.name = kwargs.get("name", None)
         self.workspace = kwargs.get("workspace", None)
-
-
-class UserNullable(msrest.serialization.Model):
-    """UserNullable.
-
-    :ivar id: Uniquely identify a user.
-    :vartype id: int
-    :ivar name:
-    :vartype name: str
-    :ivar username:
-    :vartype username: str
-    :ivar email:
-    :vartype email: str
-    :ivar avatar: URL of the user's avatar.
-    :vartype avatar: str
-    """
-
-    _attribute_map = {
-        "id": {"key": "id", "type": "int"},
-        "name": {"key": "name", "type": "str"},
-        "username": {"key": "username", "type": "str"},
-        "email": {"key": "email", "type": "str"},
-        "avatar": {"key": "avatar", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword id: Uniquely identify a user.
-        :paramtype id: int
-        :keyword name:
-        :paramtype name: str
-        :keyword username:
-        :paramtype username: str
-        :keyword email:
-        :paramtype email: str
-        :keyword avatar: URL of the user's avatar.
-        :paramtype avatar: str
-        """
-        super(UserNullable, self).__init__(**kwargs)
-        self.id = kwargs.get("id", None)
-        self.name = kwargs.get("name", None)
-        self.username = kwargs.get("username", None)
-        self.email = kwargs.get("email", None)
-        self.avatar = kwargs.get("avatar", None)
 
 
 class Workspace(msrest.serialization.Model):
@@ -14811,8 +14181,8 @@ class WorkspaceUpdate(msrest.serialization.Model):
         self.reject_invalid_documents = kwargs.get("reject_invalid_documents", None)
 
 
-class YearsExperienceAnnotationV2(AnnotationV2):
-    """YearsExperienceAnnotationV2.
+class YearsExperienceAnnotation(Annotation):
+    """YearsExperienceAnnotation.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -14821,13 +14191,14 @@ class YearsExperienceAnnotationV2(AnnotationV2):
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
-    :ivar rectangle: Required.
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
     :vartype rectangle: ~affinda.models.Rectangle
     :ivar rectangles: Required.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar page_index: Required.
+    :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar raw: Required.
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar confidence: Required. The overall confidence that the model's prediction is correct.
     :vartype confidence: float
@@ -14837,18 +14208,19 @@ class YearsExperienceAnnotationV2(AnnotationV2):
     :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
      the confidence that the text in the image has been correctly read by the model.
     :vartype text_extraction_confidence: float
-    :ivar is_verified: Required.
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
     :vartype is_verified: bool
-    :ivar is_client_verified: Required.
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
     :vartype is_client_verified: bool
-    :ivar is_auto_verified: Required.
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point:
+    :ivar data_point: Required.
     :vartype data_point: str
     :ivar content_type: Required.
     :vartype content_type: str
     :ivar parsed: Years of experience range.
-    :vartype parsed: ~affinda.models.YearsExperienceAnnotationV2Parsed
+    :vartype parsed: ~affinda.models.YearsExperienceAnnotationParsed
     """
 
     _validation = {
@@ -14863,6 +14235,7 @@ class YearsExperienceAnnotationV2(AnnotationV2):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -14881,7 +14254,7 @@ class YearsExperienceAnnotationV2(AnnotationV2):
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
-        "parsed": {"key": "parsed", "type": "YearsExperienceAnnotationV2Parsed"},
+        "parsed": {"key": "parsed", "type": "YearsExperienceAnnotationParsed"},
     }
 
     def __init__(self, **kwargs):
@@ -14891,13 +14264,14 @@ class YearsExperienceAnnotationV2(AnnotationV2):
         :paramtype additional_properties: dict[str, any]
         :keyword id: Required.
         :paramtype id: int
-        :keyword rectangle: Required.
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
         :paramtype rectangle: ~affinda.models.Rectangle
         :keyword rectangles: Required.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword page_index: Required.
+        :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword raw: Required.
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword confidence: Required. The overall confidence that the model's prediction is correct.
         :paramtype confidence: float
@@ -14907,24 +14281,26 @@ class YearsExperienceAnnotationV2(AnnotationV2):
         :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
          is the confidence that the text in the image has been correctly read by the model.
         :paramtype text_extraction_confidence: float
-        :keyword is_verified: Required.
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
         :paramtype is_verified: bool
-        :keyword is_client_verified: Required.
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
         :paramtype is_client_verified: bool
-        :keyword is_auto_verified: Required.
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point:
+        :keyword data_point: Required.
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
         :keyword parsed: Years of experience range.
-        :paramtype parsed: ~affinda.models.YearsExperienceAnnotationV2Parsed
+        :paramtype parsed: ~affinda.models.YearsExperienceAnnotationParsed
         """
-        super(YearsExperienceAnnotationV2, self).__init__(**kwargs)
+        super(YearsExperienceAnnotation, self).__init__(**kwargs)
         self.parsed = kwargs.get("parsed", None)
 
 
-class YearsExperienceAnnotationV2Parsed(msrest.serialization.Model):
+class YearsExperienceAnnotationParsed(msrest.serialization.Model):
     """Years of experience range.
 
     :ivar minimum: Minimum years of experience.
@@ -14945,6 +14321,6 @@ class YearsExperienceAnnotationV2Parsed(msrest.serialization.Model):
         :keyword maximum: Maximum years of experience.
         :paramtype maximum: float
         """
-        super(YearsExperienceAnnotationV2Parsed, self).__init__(**kwargs)
+        super(YearsExperienceAnnotationParsed, self).__init__(**kwargs)
         self.minimum = kwargs.get("minimum", None)
         self.maximum = kwargs.get("maximum", None)

@@ -35,15 +35,15 @@ def __init__(**kwargs)
 
 - `education`: 
 
-<a id="models._models.AnnotationV2"></a>
+<a id="models._models.Annotation"></a>
 
-## AnnotationV2 Objects
+## Annotation Objects
 
 ```python
-class AnnotationV2(msrest.serialization.Model)
+class Annotation(msrest.serialization.Model)
 ```
 
-AnnotationV2.
+Annotation.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -52,13 +52,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -68,18 +69,19 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
 
-<a id="models._models.AnnotationV2.__init__"></a>
+<a id="models._models.Annotation.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -92,19 +94,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 
 <a id="models._models.BaseExtractor"></a>
@@ -527,192 +532,6 @@ def __init__(**kwargs)
 
 - `match`: 
 
-<a id="models._models.ResumeData"></a>
-
-## ResumeData Objects
-
-```python
-class ResumeData(msrest.serialization.Model)
-```
-
-A JSON-encoded string of the ``ResumeData`` object.
-
-Variables are only populated by the server, and will be ignored when sending a request.
-
-:ivar additional_properties: Unmatched properties from the message are deserialized to this
- collection.
-:vartype additional_properties: dict[str, any]
-:ivar name:
-:vartype name: ~affinda.models.ResumeDataName
-:ivar phone_numbers:
-:vartype phone_numbers: list[str]
-:ivar websites:
-:vartype websites: list[str]
-:ivar emails:
-:vartype emails: list[str]
-:ivar date_of_birth:
-:vartype date_of_birth: str
-:ivar location:
-:vartype location: ~affinda.models.Location
-:ivar objective:
-:vartype objective: str
-:ivar languages:
-:vartype languages: list[str]
-:ivar language_codes:
-:vartype language_codes: list[str]
-:ivar summary:
-:vartype summary: str
-:ivar total_years_experience:
-:vartype total_years_experience: int
-:ivar head_shot: base64 encoded string.
-:vartype head_shot: bytearray
-:ivar education:
-:vartype education: list[~affinda.models.Education]
-:ivar profession: Prediction of the candidate's profession based on recent work experience.
-:vartype profession: str
-:ivar linkedin: Linkedin account associated with the candidate.
-:vartype linkedin: str
-:ivar work_experience:
-:vartype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
-:ivar skills:
-:vartype skills: list[~affinda.models.ResumeDataSkillsItem]
-:ivar certifications:
-:vartype certifications: list[str]
-:ivar publications:
-:vartype publications: list[str]
-:ivar referees:
-:vartype referees: list[~affinda.models.ResumeDataRefereesItem]
-:ivar sections:
-:vartype sections: list[~affinda.models.ResumeDataSectionsItem]
-:ivar is_resume_probability: Probability that the given document is a resume. Values below 30
- suggest that the document is not a resume.
-:vartype is_resume_probability: int
-:ivar raw_text: All of the raw text of the parsed resume, example is shortened for readability.
-:vartype raw_text: str
-
-<a id="models._models.ResumeData.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `additional_properties`: Unmatched properties from the message are deserialized to this
-collection.
-- `name`: 
-- `phone_numbers`: 
-- `websites`: 
-- `emails`: 
-- `date_of_birth`: 
-- `location`: 
-- `objective`: 
-- `summary`: 
-- `total_years_experience`: 
-- `education`: 
-- `work_experience`: 
-- `skills`: 
-- `certifications`: 
-- `publications`: 
-- `referees`: 
-- `raw_text`: All of the raw text of the parsed resume, example is shortened for
-readability.
-
-<a id="models._models.Components1FbbtzoSchemasDocumentPropertiesDataAnyof0"></a>
-
-## Components1FbbtzoSchemasDocumentPropertiesDataAnyof0 Objects
-
-```python
-class Components1FbbtzoSchemasDocumentPropertiesDataAnyof0(ResumeData)
-```
-
-Components1FbbtzoSchemasDocumentPropertiesDataAnyof0.
-
-Variables are only populated by the server, and will be ignored when sending a request.
-
-:ivar additional_properties: Unmatched properties from the message are deserialized to this
- collection.
-:vartype additional_properties: dict[str, any]
-:ivar name:
-:vartype name: ~affinda.models.ResumeDataName
-:ivar phone_numbers:
-:vartype phone_numbers: list[str]
-:ivar websites:
-:vartype websites: list[str]
-:ivar emails:
-:vartype emails: list[str]
-:ivar date_of_birth:
-:vartype date_of_birth: str
-:ivar location:
-:vartype location: ~affinda.models.Location
-:ivar objective:
-:vartype objective: str
-:ivar languages:
-:vartype languages: list[str]
-:ivar language_codes:
-:vartype language_codes: list[str]
-:ivar summary:
-:vartype summary: str
-:ivar total_years_experience:
-:vartype total_years_experience: int
-:ivar head_shot: base64 encoded string.
-:vartype head_shot: bytearray
-:ivar education:
-:vartype education: list[~affinda.models.Education]
-:ivar profession: Prediction of the candidate's profession based on recent work experience.
-:vartype profession: str
-:ivar linkedin: Linkedin account associated with the candidate.
-:vartype linkedin: str
-:ivar work_experience:
-:vartype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
-:ivar skills:
-:vartype skills: list[~affinda.models.ResumeDataSkillsItem]
-:ivar certifications:
-:vartype certifications: list[str]
-:ivar publications:
-:vartype publications: list[str]
-:ivar referees:
-:vartype referees: list[~affinda.models.ResumeDataRefereesItem]
-:ivar sections:
-:vartype sections: list[~affinda.models.ResumeDataSectionsItem]
-:ivar is_resume_probability: Probability that the given document is a resume. Values below 30
- suggest that the document is not a resume.
-:vartype is_resume_probability: int
-:ivar raw_text: All of the raw text of the parsed resume, example is shortened for readability.
-:vartype raw_text: str
-
-<a id="models._models.Components1FbbtzoSchemasDocumentPropertiesDataAnyof0.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `additional_properties`: Unmatched properties from the message are deserialized to this
-collection.
-- `name`: 
-- `phone_numbers`: 
-- `websites`: 
-- `emails`: 
-- `date_of_birth`: 
-- `location`: 
-- `objective`: 
-- `summary`: 
-- `total_years_experience`: 
-- `education`: 
-- `work_experience`: 
-- `skills`: 
-- `certifications`: 
-- `publications`: 
-- `referees`: 
-- `raw_text`: All of the raw text of the parsed resume, example is shortened for
-readability.
-
 <a id="models._models.Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1"></a>
 
 ## Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1 Objects
@@ -908,152 +727,6 @@ def __init__(**kwargs)
 
 - `raw`: 
 - `parsed`: 
-
-<a id="models._models.JobDescriptionData"></a>
-
-## JobDescriptionData Objects
-
-```python
-class JobDescriptionData(msrest.serialization.Model)
-```
-
-A JSON-encoded string of the ``JobDescriptionData`` object.
-
-:ivar job_title:
-:vartype job_title: ~affinda.models.JobTitleAnnotation
-:ivar contact_email:
-:vartype contact_email: ~affinda.models.TextAnnotationV2
-:ivar contact_name:
-:vartype contact_name: ~affinda.models.TextAnnotationV2
-:ivar contact_phone:
-:vartype contact_phone: ~affinda.models.TextAnnotationV2
-:ivar start_date:
-:vartype start_date: ~affinda.models.DateAnnotationV2
-:ivar end_date:
-:vartype end_date: ~affinda.models.DateAnnotationV2
-:ivar job_type:
-:vartype job_type: ~affinda.models.TextAnnotationV2
-:ivar languages:
-:vartype languages: list[~affinda.models.LanguageAnnotationV2]
-:ivar skills:
-:vartype skills: list[~affinda.models.SkillAnnotationV2]
-:ivar organization_name:
-:vartype organization_name: ~affinda.models.TextAnnotationV2
-:ivar organization_website:
-:vartype organization_website: ~affinda.models.TextAnnotationV2
-:ivar education_level:
-:vartype education_level: ~affinda.models.TextAnnotationV2
-:ivar education_accreditation:
-:vartype education_accreditation: ~affinda.models.TextAnnotationV2
-:ivar expected_remuneration:
-:vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2
-:ivar location:
-:vartype location: ~affinda.models.LocationAnnotationV2
-:ivar certifications:
-:vartype certifications: list[~affinda.models.TextAnnotationV2]
-:ivar years_experience:
-:vartype years_experience: ~affinda.models.YearsExperienceAnnotationV2
-
-<a id="models._models.JobDescriptionData.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `job_title`: 
-- `contact_email`: 
-- `contact_name`: 
-- `contact_phone`: 
-- `start_date`: 
-- `end_date`: 
-- `job_type`: 
-- `languages`: 
-- `skills`: 
-- `organization_name`: 
-- `organization_website`: 
-- `education_level`: 
-- `education_accreditation`: 
-- `expected_remuneration`: 
-- `location`: 
-- `certifications`: 
-- `years_experience`: 
-
-<a id="models._models.Components1S1E4FcSchemasDocumentPropertiesDataAnyof2"></a>
-
-## Components1S1E4FcSchemasDocumentPropertiesDataAnyof2 Objects
-
-```python
-class Components1S1E4FcSchemasDocumentPropertiesDataAnyof2(JobDescriptionData)
-```
-
-Components1S1E4FcSchemasDocumentPropertiesDataAnyof2.
-
-:ivar job_title:
-:vartype job_title: ~affinda.models.JobTitleAnnotation
-:ivar contact_email:
-:vartype contact_email: ~affinda.models.TextAnnotationV2
-:ivar contact_name:
-:vartype contact_name: ~affinda.models.TextAnnotationV2
-:ivar contact_phone:
-:vartype contact_phone: ~affinda.models.TextAnnotationV2
-:ivar start_date:
-:vartype start_date: ~affinda.models.DateAnnotationV2
-:ivar end_date:
-:vartype end_date: ~affinda.models.DateAnnotationV2
-:ivar job_type:
-:vartype job_type: ~affinda.models.TextAnnotationV2
-:ivar languages:
-:vartype languages: list[~affinda.models.LanguageAnnotationV2]
-:ivar skills:
-:vartype skills: list[~affinda.models.SkillAnnotationV2]
-:ivar organization_name:
-:vartype organization_name: ~affinda.models.TextAnnotationV2
-:ivar organization_website:
-:vartype organization_website: ~affinda.models.TextAnnotationV2
-:ivar education_level:
-:vartype education_level: ~affinda.models.TextAnnotationV2
-:ivar education_accreditation:
-:vartype education_accreditation: ~affinda.models.TextAnnotationV2
-:ivar expected_remuneration:
-:vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2
-:ivar location:
-:vartype location: ~affinda.models.LocationAnnotationV2
-:ivar certifications:
-:vartype certifications: list[~affinda.models.TextAnnotationV2]
-:ivar years_experience:
-:vartype years_experience: ~affinda.models.YearsExperienceAnnotationV2
-
-<a id="models._models.Components1S1E4FcSchemasDocumentPropertiesDataAnyof2.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `job_title`: 
-- `contact_email`: 
-- `contact_name`: 
-- `contact_phone`: 
-- `start_date`: 
-- `end_date`: 
-- `job_type`: 
-- `languages`: 
-- `skills`: 
-- `organization_name`: 
-- `organization_website`: 
-- `education_level`: 
-- `education_accreditation`: 
-- `expected_remuneration`: 
-- `location`: 
-- `certifications`: 
-- `years_experience`: 
 
 <a id="models._models.Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1"></a>
 
@@ -1612,39 +1285,6 @@ def __init__(**kwargs)
 
 - `match`: 
 
-<a id="models._models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties"></a>
-
-## ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties Objects
-
-```python
-class ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties(msrest.serialization.Model)
-```
-
-ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar value:
-:vartype value: str
-:ivar label: Required.
-:vartype label: str
-:ivar score:
-:vartype score: float
-
-<a id="models._models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `value`: 
-- `label`: Required.
-- `score`: 
-
 <a id="models._models.ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1"></a>
 
 ## ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1 Objects
@@ -1725,278 +1365,6 @@ def __init__(**kwargs)
 
 - `raw`: 
 - `parsed`: 
-
-<a id="models._models.InvoiceData"></a>
-
-## InvoiceData Objects
-
-```python
-class InvoiceData(msrest.serialization.Model)
-```
-
-InvoiceData.
-
-:ivar tables:
-:vartype tables: list[~affinda.models.InvoiceDataTablesItem]
-:ivar invoice_date:
-:vartype invoice_date: ~affinda.models.DateAnnotationV2
-:ivar invoice_order_date:
-:vartype invoice_order_date: ~affinda.models.DateAnnotationV2
-:ivar payment_date_due:
-:vartype payment_date_due: ~affinda.models.DateAnnotationV2
-:ivar payment_amount_base:
-:vartype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
-:ivar payment_amount_tax:
-:vartype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
-:ivar payment_amount_total:
-:vartype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
-:ivar payment_amount_paid:
-:vartype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
-:ivar payment_amount_due:
-:vartype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
-:ivar invoice_number:
-:vartype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
-:ivar invoice_purchase_order_number:
-:vartype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
-:ivar supplier_business_number:
-:vartype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
-:ivar customer_number:
-:vartype customer_number: ~affinda.models.InvoiceDataCustomerNumber
-:ivar customer_business_number:
-:vartype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
-:ivar payment_reference:
-:vartype payment_reference: ~affinda.models.InvoiceDataPaymentReference
-:ivar bank_account_number:
-:vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
-:ivar supplier_vat:
-:vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
-:ivar customer_vat:
-:vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
-:ivar bpay_biller_code:
-:vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
-:ivar bpay_reference:
-:vartype bpay_reference: ~affinda.models.InvoiceDataBpayReference
-:ivar bank_sort_code:
-:vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
-:ivar bank_iban:
-:vartype bank_iban: ~affinda.models.InvoiceDataBankIban
-:ivar bank_swift:
-:vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
-:ivar bank_bsb:
-:vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
-:ivar customer_contact_name:
-:vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
-:ivar customer_company_name:
-:vartype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
-:ivar supplier_company_name:
-:vartype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
-:ivar customer_billing_address:
-:vartype customer_billing_address: ~affinda.models.LocationAnnotationV2
-:ivar customer_delivery_address:
-:vartype customer_delivery_address: ~affinda.models.LocationAnnotationV2
-:ivar supplier_address:
-:vartype supplier_address: ~affinda.models.LocationAnnotationV2
-:ivar customer_phone_number:
-:vartype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
-:ivar supplier_phone_number:
-:vartype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
-:ivar supplier_fax:
-:vartype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
-:ivar customer_email:
-:vartype customer_email: ~affinda.models.InvoiceDataCustomerEmail
-:ivar supplier_email:
-:vartype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
-:ivar supplier_website:
-:vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
-:ivar currency_code:
-:vartype currency_code: ~affinda.models.TextAnnotationV2
-:ivar custom_fields: Dictionary of :code:`<any>`.
-:vartype custom_fields: dict[str, any]
-
-<a id="models._models.InvoiceData.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `tables`: 
-- `invoice_date`: 
-- `invoice_order_date`: 
-- `payment_date_due`: 
-- `payment_amount_base`: 
-- `payment_amount_tax`: 
-- `payment_amount_total`: 
-- `payment_amount_paid`: 
-- `payment_amount_due`: 
-- `invoice_number`: 
-- `invoice_purchase_order_number`: 
-- `supplier_business_number`: 
-- `customer_number`: 
-- `customer_business_number`: 
-- `payment_reference`: 
-- `bank_account_number`: 
-- `supplier_vat`: 
-- `customer_vat`: 
-- `bpay_biller_code`: 
-- `bpay_reference`: 
-- `bank_sort_code`: 
-- `bank_iban`: 
-- `bank_swift`: 
-- `bank_bsb`: 
-- `customer_contact_name`: 
-- `customer_company_name`: 
-- `supplier_company_name`: 
-- `customer_billing_address`: 
-- `customer_delivery_address`: 
-- `supplier_address`: 
-- `customer_phone_number`: 
-- `supplier_phone_number`: 
-- `supplier_fax`: 
-- `customer_email`: 
-- `supplier_email`: 
-- `supplier_website`: 
-- `currency_code`: 
-- `custom_fields`: Dictionary of :code:`<any>`.
-
-<a id="models._models.ComponentsX4QdioSchemasDocumentPropertiesDataAnyof1"></a>
-
-## ComponentsX4QdioSchemasDocumentPropertiesDataAnyof1 Objects
-
-```python
-class ComponentsX4QdioSchemasDocumentPropertiesDataAnyof1(InvoiceData)
-```
-
-ComponentsX4QdioSchemasDocumentPropertiesDataAnyof1.
-
-:ivar tables:
-:vartype tables: list[~affinda.models.InvoiceDataTablesItem]
-:ivar invoice_date:
-:vartype invoice_date: ~affinda.models.DateAnnotationV2
-:ivar invoice_order_date:
-:vartype invoice_order_date: ~affinda.models.DateAnnotationV2
-:ivar payment_date_due:
-:vartype payment_date_due: ~affinda.models.DateAnnotationV2
-:ivar payment_amount_base:
-:vartype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
-:ivar payment_amount_tax:
-:vartype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
-:ivar payment_amount_total:
-:vartype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
-:ivar payment_amount_paid:
-:vartype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
-:ivar payment_amount_due:
-:vartype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
-:ivar invoice_number:
-:vartype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
-:ivar invoice_purchase_order_number:
-:vartype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
-:ivar supplier_business_number:
-:vartype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
-:ivar customer_number:
-:vartype customer_number: ~affinda.models.InvoiceDataCustomerNumber
-:ivar customer_business_number:
-:vartype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
-:ivar payment_reference:
-:vartype payment_reference: ~affinda.models.InvoiceDataPaymentReference
-:ivar bank_account_number:
-:vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
-:ivar supplier_vat:
-:vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
-:ivar customer_vat:
-:vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
-:ivar bpay_biller_code:
-:vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
-:ivar bpay_reference:
-:vartype bpay_reference: ~affinda.models.InvoiceDataBpayReference
-:ivar bank_sort_code:
-:vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
-:ivar bank_iban:
-:vartype bank_iban: ~affinda.models.InvoiceDataBankIban
-:ivar bank_swift:
-:vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
-:ivar bank_bsb:
-:vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
-:ivar customer_contact_name:
-:vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
-:ivar customer_company_name:
-:vartype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
-:ivar supplier_company_name:
-:vartype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
-:ivar customer_billing_address:
-:vartype customer_billing_address: ~affinda.models.LocationAnnotationV2
-:ivar customer_delivery_address:
-:vartype customer_delivery_address: ~affinda.models.LocationAnnotationV2
-:ivar supplier_address:
-:vartype supplier_address: ~affinda.models.LocationAnnotationV2
-:ivar customer_phone_number:
-:vartype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
-:ivar supplier_phone_number:
-:vartype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
-:ivar supplier_fax:
-:vartype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
-:ivar customer_email:
-:vartype customer_email: ~affinda.models.InvoiceDataCustomerEmail
-:ivar supplier_email:
-:vartype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
-:ivar supplier_website:
-:vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
-:ivar currency_code:
-:vartype currency_code: ~affinda.models.TextAnnotationV2
-:ivar custom_fields: Dictionary of :code:`<any>`.
-:vartype custom_fields: dict[str, any]
-
-<a id="models._models.ComponentsX4QdioSchemasDocumentPropertiesDataAnyof1.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `tables`: 
-- `invoice_date`: 
-- `invoice_order_date`: 
-- `payment_date_due`: 
-- `payment_amount_base`: 
-- `payment_amount_tax`: 
-- `payment_amount_total`: 
-- `payment_amount_paid`: 
-- `payment_amount_due`: 
-- `invoice_number`: 
-- `invoice_purchase_order_number`: 
-- `supplier_business_number`: 
-- `customer_number`: 
-- `customer_business_number`: 
-- `payment_reference`: 
-- `bank_account_number`: 
-- `supplier_vat`: 
-- `customer_vat`: 
-- `bpay_biller_code`: 
-- `bpay_reference`: 
-- `bank_sort_code`: 
-- `bank_iban`: 
-- `bank_swift`: 
-- `bank_bsb`: 
-- `customer_contact_name`: 
-- `customer_company_name`: 
-- `supplier_company_name`: 
-- `customer_billing_address`: 
-- `customer_delivery_address`: 
-- `supplier_address`: 
-- `customer_phone_number`: 
-- `supplier_phone_number`: 
-- `supplier_fax`: 
-- `customer_email`: 
-- `supplier_email`: 
-- `supplier_website`: 
-- `currency_code`: 
-- `custom_fields`: Dictionary of :code:`<any>`.
 
 <a id="models._models.DataPoint"></a>
 
@@ -2181,15 +1549,15 @@ def __init__(**kwargs)
 - `slug`: 
 - `description`: 
 
-<a id="models._models.DateAnnotationV2"></a>
+<a id="models._models.DateAnnotation"></a>
 
-## DateAnnotationV2 Objects
+## DateAnnotation Objects
 
 ```python
-class DateAnnotationV2(AnnotationV2)
+class DateAnnotation(Annotation)
 ```
 
-DateAnnotationV2.
+DateAnnotation.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -2198,13 +1566,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -2214,20 +1583,21 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
 :ivar parsed:
 :vartype parsed: ~datetime.date
 
-<a id="models._models.DateAnnotationV2.__init__"></a>
+<a id="models._models.DateAnnotation.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -2240,19 +1610,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -2267,7 +1640,7 @@ class Document(msrest.serialization.Model)
 Document.
 
 You probably want to use the sub-classes and not this class directly. Known
-sub-classes are: InvoiceDocument, JobDescriptionDocument, ResumeDocument.
+sub-classes are: Invoice, JobDescription, Resume.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -2275,10 +1648,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype extractor: str
 :ivar meta: Required.
 :vartype meta: ~affinda.models.DocumentMeta
-:ivar data:
-:vartype data: any
 :ivar error:
-:vartype error: ~affinda.models.Error
+:vartype error: ~affinda.models.DocumentError
 
 <a id="models._models.Document.__init__"></a>
 
@@ -2291,7 +1662,6 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `meta`: Required.
-- `data`: 
 - `error`: 
 
 <a id="models._models.DocumentCreate"></a>
@@ -2307,7 +1677,7 @@ DocumentCreate.
 :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
  JPG.
 :vartype file: IO
-:ivar url: URL to a resume to download and process.
+:ivar url: URL to download the document.
 :vartype url: str
 :ivar collection: Uniquely identify a collection.
 :vartype collection: str
@@ -2339,7 +1709,7 @@ def __init__(**kwargs)
 
 - `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
 PNG, JPG.
-- `url`: URL to a resume to download and process.
+- `url`: URL to download the document.
 - `collection`: Uniquely identify a collection.
 - `workspace`: Uniquely identify a workspace.
 - `wait`: If "true" (default), will return a response only after processing has completed.
@@ -2350,6 +1720,34 @@ processing is complete.
 - `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
 - `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+
+<a id="models._models.DocumentError"></a>
+
+## DocumentError Objects
+
+```python
+class DocumentError(msrest.serialization.Model)
+```
+
+DocumentError.
+
+:ivar error_code:
+:vartype error_code: str
+:ivar error_detail:
+:vartype error_detail: str
+
+<a id="models._models.DocumentError.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `error_code`: 
+- `error_detail`: 
 
 <a id="models._models.DocumentMeta"></a>
 
@@ -2424,7 +1822,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar tags: A set of tags.
 :vartype tags: list[~affinda.models.Tag]
 :ivar confirmed_by:
-:vartype confirmed_by: ~affinda.models.UserNullable
+:vartype confirmed_by: ~affinda.models.User
 
 <a id="models._models.DocumentMeta.__init__"></a>
 
@@ -2801,43 +2199,15 @@ def __init__(**kwargs)
 - `label`: Required.
 - `score`: 
 
-<a id="models._models.Error"></a>
+<a id="models._models.ExpectedRemunerationAnnotation"></a>
 
-## Error Objects
-
-```python
-class Error(msrest.serialization.Model)
-```
-
-Error.
-
-:ivar error_code:
-:vartype error_code: str
-:ivar error_detail:
-:vartype error_detail: str
-
-<a id="models._models.Error.__init__"></a>
-
-#### \_\_init\_\_
+## ExpectedRemunerationAnnotation Objects
 
 ```python
-def __init__(**kwargs)
+class ExpectedRemunerationAnnotation(Annotation)
 ```
 
-**Arguments**:
-
-- `error_code`: 
-- `error_detail`: 
-
-<a id="models._models.ExpectedRemunerationAnnotationV2"></a>
-
-## ExpectedRemunerationAnnotationV2 Objects
-
-```python
-class ExpectedRemunerationAnnotationV2(AnnotationV2)
-```
-
-ExpectedRemunerationAnnotationV2.
+ExpectedRemunerationAnnotation.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -2846,13 +2216,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -2862,20 +2233,21 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
 :ivar parsed:
-:vartype parsed: ~affinda.models.ExpectedRemunerationAnnotationV2Parsed
+:vartype parsed: ~affinda.models.ExpectedRemunerationAnnotationParsed
 
-<a id="models._models.ExpectedRemunerationAnnotationV2.__init__"></a>
+<a id="models._models.ExpectedRemunerationAnnotation.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -2888,31 +2260,34 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
-<a id="models._models.ExpectedRemunerationAnnotationV2Parsed"></a>
+<a id="models._models.ExpectedRemunerationAnnotationParsed"></a>
 
-## ExpectedRemunerationAnnotationV2Parsed Objects
+## ExpectedRemunerationAnnotationParsed Objects
 
 ```python
-class ExpectedRemunerationAnnotationV2Parsed(msrest.serialization.Model)
+class ExpectedRemunerationAnnotationParsed(msrest.serialization.Model)
 ```
 
-ExpectedRemunerationAnnotationV2Parsed.
+ExpectedRemunerationAnnotationParsed.
 
 :ivar minimum:
 :vartype minimum: float
@@ -2923,7 +2298,7 @@ ExpectedRemunerationAnnotationV2Parsed.
 :ivar unit:
 :vartype unit: str
 
-<a id="models._models.ExpectedRemunerationAnnotationV2Parsed.__init__"></a>
+<a id="models._models.ExpectedRemunerationAnnotationParsed.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -3258,72 +2633,6 @@ def __init__(**kwargs)
 - `name`: Required.
 - `document_type`: Known values are: "resumes", "job_descriptions".
 
-<a id="models._models.GetAllDocumentsResults"></a>
-
-## GetAllDocumentsResults Objects
-
-```python
-class GetAllDocumentsResults(msrest.serialization.Model)
-```
-
-GetAllDocumentsResults.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar count: Required. Number of documents in result.
-:vartype count: int
-:ivar next: URL to request next page of results.
-:vartype next: str
-:ivar previous: URL to request previous page of results.
-:vartype previous: str
-:ivar results: Required.
-:vartype results: list[~affinda.models.GetAllDocumentsResultsItem]
-
-<a id="models._models.GetAllDocumentsResults.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `count`: Required. Number of documents in result.
-- `next`: URL to request next page of results.
-- `previous`: URL to request previous page of results.
-- `results`: Required.
-
-<a id="models._models.GetAllDocumentsResultsItem"></a>
-
-## GetAllDocumentsResultsItem Objects
-
-```python
-class GetAllDocumentsResultsItem(msrest.serialization.Model)
-```
-
-GetAllDocumentsResultsItem.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar meta: Required.
-:vartype meta: ~affinda.models.DocumentMeta
-:ivar error:
-:vartype error: ~affinda.models.Error
-
-<a id="models._models.GetAllDocumentsResultsItem.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `meta`: Required.
-- `error`: 
-
 <a id="models._models.IndexRequestBody"></a>
 
 ## IndexRequestBody Objects
@@ -3558,15 +2867,186 @@ def __init__(**kwargs)
 
 - `role`: Known values are: "admin", "member".
 
-<a id="models._models.TextAnnotationV2"></a>
+<a id="models._models.Invoice"></a>
 
-## TextAnnotationV2 Objects
+## Invoice Objects
 
 ```python
-class TextAnnotationV2(AnnotationV2)
+class Invoice(Document)
 ```
 
-TextAnnotationV2.
+Invoice.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar extractor: Required. Constant filled by server.
+:vartype extractor: str
+:ivar meta: Required.
+:vartype meta: ~affinda.models.DocumentMeta
+:ivar error:
+:vartype error: ~affinda.models.DocumentError
+:ivar data:
+:vartype data: ~affinda.models.InvoiceData
+
+<a id="models._models.Invoice.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `meta`: Required.
+- `error`: 
+- `data`: 
+
+<a id="models._models.InvoiceData"></a>
+
+## InvoiceData Objects
+
+```python
+class InvoiceData(msrest.serialization.Model)
+```
+
+InvoiceData.
+
+:ivar tables:
+:vartype tables: list[~affinda.models.InvoiceDataTablesItem]
+:ivar invoice_date:
+:vartype invoice_date: ~affinda.models.DateAnnotation
+:ivar invoice_order_date:
+:vartype invoice_order_date: ~affinda.models.DateAnnotation
+:ivar payment_date_due:
+:vartype payment_date_due: ~affinda.models.DateAnnotation
+:ivar payment_amount_base:
+:vartype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
+:ivar payment_amount_tax:
+:vartype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
+:ivar payment_amount_total:
+:vartype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
+:ivar payment_amount_paid:
+:vartype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
+:ivar payment_amount_due:
+:vartype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
+:ivar invoice_number:
+:vartype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
+:ivar invoice_purchase_order_number:
+:vartype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
+:ivar supplier_business_number:
+:vartype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
+:ivar customer_number:
+:vartype customer_number: ~affinda.models.InvoiceDataCustomerNumber
+:ivar customer_business_number:
+:vartype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
+:ivar payment_reference:
+:vartype payment_reference: ~affinda.models.InvoiceDataPaymentReference
+:ivar bank_account_number:
+:vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
+:ivar supplier_vat:
+:vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
+:ivar customer_vat:
+:vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
+:ivar bpay_biller_code:
+:vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
+:ivar bpay_reference:
+:vartype bpay_reference: ~affinda.models.InvoiceDataBpayReference
+:ivar bank_sort_code:
+:vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
+:ivar bank_iban:
+:vartype bank_iban: ~affinda.models.InvoiceDataBankIban
+:ivar bank_swift:
+:vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
+:ivar bank_bsb:
+:vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
+:ivar customer_contact_name:
+:vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
+:ivar customer_company_name:
+:vartype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
+:ivar supplier_company_name:
+:vartype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
+:ivar customer_billing_address:
+:vartype customer_billing_address: ~affinda.models.LocationAnnotation
+:ivar customer_delivery_address:
+:vartype customer_delivery_address: ~affinda.models.LocationAnnotation
+:ivar supplier_address:
+:vartype supplier_address: ~affinda.models.LocationAnnotation
+:ivar customer_phone_number:
+:vartype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
+:ivar supplier_phone_number:
+:vartype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
+:ivar supplier_fax:
+:vartype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
+:ivar customer_email:
+:vartype customer_email: ~affinda.models.InvoiceDataCustomerEmail
+:ivar supplier_email:
+:vartype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
+:ivar supplier_website:
+:vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
+:ivar currency_code:
+:vartype currency_code: ~affinda.models.TextAnnotation
+:ivar custom_fields: Dictionary of :code:`<any>`.
+:vartype custom_fields: dict[str, any]
+
+<a id="models._models.InvoiceData.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `tables`: 
+- `invoice_date`: 
+- `invoice_order_date`: 
+- `payment_date_due`: 
+- `payment_amount_base`: 
+- `payment_amount_tax`: 
+- `payment_amount_total`: 
+- `payment_amount_paid`: 
+- `payment_amount_due`: 
+- `invoice_number`: 
+- `invoice_purchase_order_number`: 
+- `supplier_business_number`: 
+- `customer_number`: 
+- `customer_business_number`: 
+- `payment_reference`: 
+- `bank_account_number`: 
+- `supplier_vat`: 
+- `customer_vat`: 
+- `bpay_biller_code`: 
+- `bpay_reference`: 
+- `bank_sort_code`: 
+- `bank_iban`: 
+- `bank_swift`: 
+- `bank_bsb`: 
+- `customer_contact_name`: 
+- `customer_company_name`: 
+- `supplier_company_name`: 
+- `customer_billing_address`: 
+- `customer_delivery_address`: 
+- `supplier_address`: 
+- `customer_phone_number`: 
+- `supplier_phone_number`: 
+- `supplier_fax`: 
+- `customer_email`: 
+- `supplier_email`: 
+- `supplier_website`: 
+- `currency_code`: 
+- `custom_fields`: Dictionary of :code:`<any>`.
+
+<a id="models._models.TextAnnotation"></a>
+
+## TextAnnotation Objects
+
+```python
+class TextAnnotation(Annotation)
+```
+
+TextAnnotation.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -3575,13 +3055,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -3591,20 +3072,21 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.TextAnnotationV2.__init__"></a>
+<a id="models._models.TextAnnotation.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -3617,19 +3099,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -3638,7 +3123,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataBankAccountNumber Objects
 
 ```python
-class InvoiceDataBankAccountNumber(TextAnnotationV2,  Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1)
+class InvoiceDataBankAccountNumber(TextAnnotation,  Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1)
 ```
 
 InvoiceDataBankAccountNumber.
@@ -3650,13 +3135,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -3666,13 +3152,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -3692,19 +3179,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -3713,7 +3203,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataBankBsb Objects
 
 ```python
-class InvoiceDataBankBsb(TextAnnotationV2,  Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1)
+class InvoiceDataBankBsb(TextAnnotation,  Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1)
 ```
 
 InvoiceDataBankBsb.
@@ -3725,13 +3215,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -3741,13 +3232,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -3767,19 +3259,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -3788,7 +3283,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataBankIban Objects
 
 ```python
-class InvoiceDataBankIban(TextAnnotationV2,  Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1)
+class InvoiceDataBankIban(TextAnnotation,  Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1)
 ```
 
 InvoiceDataBankIban.
@@ -3800,13 +3295,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -3816,13 +3312,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -3842,19 +3339,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -3863,7 +3363,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataBankSortCode Objects
 
 ```python
-class InvoiceDataBankSortCode(TextAnnotationV2,  Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1)
+class InvoiceDataBankSortCode(TextAnnotation,  Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1)
 ```
 
 InvoiceDataBankSortCode.
@@ -3875,13 +3375,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -3891,13 +3392,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -3917,19 +3419,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -3938,7 +3443,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataBankSwift Objects
 
 ```python
-class InvoiceDataBankSwift(TextAnnotationV2,  Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1)
+class InvoiceDataBankSwift(TextAnnotation,  Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1)
 ```
 
 InvoiceDataBankSwift.
@@ -3950,13 +3455,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -3966,13 +3472,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -3992,19 +3499,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4013,7 +3523,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataBpayBillerCode Objects
 
 ```python
-class InvoiceDataBpayBillerCode(TextAnnotationV2,  ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1)
+class InvoiceDataBpayBillerCode(TextAnnotation,  ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1)
 ```
 
 InvoiceDataBpayBillerCode.
@@ -4025,13 +3535,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -4041,13 +3552,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4067,19 +3579,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4088,7 +3603,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataBpayReference Objects
 
 ```python
-class InvoiceDataBpayReference(TextAnnotationV2,  ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1)
+class InvoiceDataBpayReference(TextAnnotation,  ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1)
 ```
 
 InvoiceDataBpayReference.
@@ -4100,13 +3615,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -4116,13 +3632,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4142,19 +3659,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4163,7 +3683,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataCustomerBusinessNumber Objects
 
 ```python
-class InvoiceDataCustomerBusinessNumber(TextAnnotationV2,  Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1)
+class InvoiceDataCustomerBusinessNumber(TextAnnotation,  Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1)
 ```
 
 InvoiceDataCustomerBusinessNumber.
@@ -4175,13 +3695,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -4191,13 +3712,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4217,19 +3739,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4238,7 +3763,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataCustomerCompanyName Objects
 
 ```python
-class InvoiceDataCustomerCompanyName(TextAnnotationV2,  Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1)
+class InvoiceDataCustomerCompanyName(TextAnnotation,  Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1)
 ```
 
 InvoiceDataCustomerCompanyName.
@@ -4250,13 +3775,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -4266,13 +3792,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4292,19 +3819,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4313,7 +3843,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataCustomerContactName Objects
 
 ```python
-class InvoiceDataCustomerContactName(TextAnnotationV2,  ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1)
+class InvoiceDataCustomerContactName(TextAnnotation,  ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1)
 ```
 
 InvoiceDataCustomerContactName.
@@ -4325,13 +3855,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -4341,13 +3872,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4367,19 +3899,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4388,7 +3923,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataCustomerEmail Objects
 
 ```python
-class InvoiceDataCustomerEmail(TextAnnotationV2,  Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1)
+class InvoiceDataCustomerEmail(TextAnnotation,  Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1)
 ```
 
 InvoiceDataCustomerEmail.
@@ -4400,13 +3935,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -4416,13 +3952,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4442,19 +3979,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4463,7 +4003,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataCustomerNumber Objects
 
 ```python
-class InvoiceDataCustomerNumber(TextAnnotationV2,  Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1)
+class InvoiceDataCustomerNumber(TextAnnotation,  Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1)
 ```
 
 InvoiceDataCustomerNumber.
@@ -4475,13 +4015,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -4491,13 +4032,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4517,19 +4059,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4538,7 +4083,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataCustomerPhoneNumber Objects
 
 ```python
-class InvoiceDataCustomerPhoneNumber(TextAnnotationV2,  Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1)
+class InvoiceDataCustomerPhoneNumber(TextAnnotation,  Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1)
 ```
 
 InvoiceDataCustomerPhoneNumber.
@@ -4550,13 +4095,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -4566,13 +4112,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4592,19 +4139,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4613,7 +4163,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataCustomerVat Objects
 
 ```python
-class InvoiceDataCustomerVat(TextAnnotationV2,  ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1)
+class InvoiceDataCustomerVat(TextAnnotation,  ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1)
 ```
 
 InvoiceDataCustomerVat.
@@ -4625,13 +4175,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -4641,13 +4192,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4667,19 +4219,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4688,7 +4243,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataInvoiceNumber Objects
 
 ```python
-class InvoiceDataInvoiceNumber(TextAnnotationV2,  Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1)
+class InvoiceDataInvoiceNumber(TextAnnotation,  Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1)
 ```
 
 InvoiceDataInvoiceNumber.
@@ -4700,13 +4255,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -4716,13 +4272,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4742,19 +4299,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4763,7 +4323,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataInvoicePurchaseOrderNumber Objects
 
 ```python
-class InvoiceDataInvoicePurchaseOrderNumber(TextAnnotationV2,  ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1)
+class InvoiceDataInvoicePurchaseOrderNumber(TextAnnotation,  ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1)
 ```
 
 InvoiceDataInvoicePurchaseOrderNumber.
@@ -4775,13 +4335,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -4791,13 +4352,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4817,19 +4379,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4838,7 +4403,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataPaymentAmountBase Objects
 
 ```python
-class InvoiceDataPaymentAmountBase(TextAnnotationV2,  Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1)
+class InvoiceDataPaymentAmountBase(TextAnnotation,  Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1)
 ```
 
 InvoiceDataPaymentAmountBase.
@@ -4850,13 +4415,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -4866,13 +4432,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4892,19 +4459,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4913,7 +4483,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataPaymentAmountDue Objects
 
 ```python
-class InvoiceDataPaymentAmountDue(TextAnnotationV2,  ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1)
+class InvoiceDataPaymentAmountDue(TextAnnotation,  ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1)
 ```
 
 InvoiceDataPaymentAmountDue.
@@ -4925,13 +4495,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -4941,13 +4512,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -4967,19 +4539,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -4988,7 +4563,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataPaymentAmountPaid Objects
 
 ```python
-class InvoiceDataPaymentAmountPaid(TextAnnotationV2,  Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1)
+class InvoiceDataPaymentAmountPaid(TextAnnotation,  Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1)
 ```
 
 InvoiceDataPaymentAmountPaid.
@@ -5000,13 +4575,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -5016,13 +4592,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -5042,19 +4619,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -5063,7 +4643,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataPaymentAmountTax Objects
 
 ```python
-class InvoiceDataPaymentAmountTax(TextAnnotationV2,  Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1)
+class InvoiceDataPaymentAmountTax(TextAnnotation,  Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1)
 ```
 
 InvoiceDataPaymentAmountTax.
@@ -5075,13 +4655,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -5091,13 +4672,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -5117,19 +4699,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -5138,7 +4723,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataPaymentAmountTotal Objects
 
 ```python
-class InvoiceDataPaymentAmountTotal(TextAnnotationV2,  Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1)
+class InvoiceDataPaymentAmountTotal(TextAnnotation,  Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1)
 ```
 
 InvoiceDataPaymentAmountTotal.
@@ -5150,13 +4735,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -5166,13 +4752,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -5192,19 +4779,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -5213,7 +4803,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataPaymentReference Objects
 
 ```python
-class InvoiceDataPaymentReference(TextAnnotationV2,  Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1)
+class InvoiceDataPaymentReference(TextAnnotation,  Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1)
 ```
 
 InvoiceDataPaymentReference.
@@ -5225,13 +4815,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -5241,13 +4832,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -5267,19 +4859,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -5288,7 +4883,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataSupplierBusinessNumber Objects
 
 ```python
-class InvoiceDataSupplierBusinessNumber(TextAnnotationV2,  Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1)
+class InvoiceDataSupplierBusinessNumber(TextAnnotation,  Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1)
 ```
 
 InvoiceDataSupplierBusinessNumber.
@@ -5300,13 +4895,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -5316,13 +4912,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -5342,19 +4939,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -5363,7 +4963,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataSupplierCompanyName Objects
 
 ```python
-class InvoiceDataSupplierCompanyName(TextAnnotationV2,  Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1)
+class InvoiceDataSupplierCompanyName(TextAnnotation,  Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1)
 ```
 
 InvoiceDataSupplierCompanyName.
@@ -5375,13 +4975,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -5391,13 +4992,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -5417,19 +5019,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -5438,7 +5043,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataSupplierEmail Objects
 
 ```python
-class InvoiceDataSupplierEmail(TextAnnotationV2,  Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1)
+class InvoiceDataSupplierEmail(TextAnnotation,  Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1)
 ```
 
 InvoiceDataSupplierEmail.
@@ -5450,13 +5055,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -5466,13 +5072,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -5492,19 +5099,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -5513,7 +5123,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataSupplierFax Objects
 
 ```python
-class InvoiceDataSupplierFax(TextAnnotationV2,  Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1)
+class InvoiceDataSupplierFax(TextAnnotation,  Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1)
 ```
 
 InvoiceDataSupplierFax.
@@ -5525,13 +5135,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -5541,13 +5152,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -5567,19 +5179,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -5588,7 +5203,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataSupplierPhoneNumber Objects
 
 ```python
-class InvoiceDataSupplierPhoneNumber(TextAnnotationV2,  Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1)
+class InvoiceDataSupplierPhoneNumber(TextAnnotation,  Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1)
 ```
 
 InvoiceDataSupplierPhoneNumber.
@@ -5600,13 +5215,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -5616,13 +5232,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -5642,19 +5259,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -5663,7 +5283,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataSupplierVat Objects
 
 ```python
-class InvoiceDataSupplierVat(TextAnnotationV2,  ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1)
+class InvoiceDataSupplierVat(TextAnnotation,  ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1)
 ```
 
 InvoiceDataSupplierVat.
@@ -5675,13 +5295,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -5691,13 +5312,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -5717,19 +5339,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -5738,7 +5363,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataSupplierWebsite Objects
 
 ```python
-class InvoiceDataSupplierWebsite(TextAnnotationV2,  Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1)
+class InvoiceDataSupplierWebsite(TextAnnotation,  Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1)
 ```
 
 InvoiceDataSupplierWebsite.
@@ -5750,13 +5375,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -5766,13 +5392,14 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
@@ -5792,19 +5419,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: 
 
@@ -5833,15 +5463,15 @@ def __init__(**kwargs)
 
 - `rows`: 
 
-<a id="models._models.InvoiceDocument"></a>
+<a id="models._models.JobDescription"></a>
 
-## InvoiceDocument Objects
+## JobDescription Objects
 
 ```python
-class InvoiceDocument(Document)
+class JobDescription(Document)
 ```
 
-InvoiceDocument.
+JobDescription.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -5850,54 +5480,11 @@ All required parameters must be populated in order to send to Azure.
 :ivar meta: Required.
 :vartype meta: ~affinda.models.DocumentMeta
 :ivar error:
-:vartype error: ~affinda.models.Error
-:ivar additional_properties: Unmatched properties from the message are deserialized to this
- collection.
-:vartype additional_properties: dict[str, any]
-:ivar data: Required.
-:vartype data: ~affinda.models.InvoiceData
-
-<a id="models._models.InvoiceDocument.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `meta`: Required.
-- `error`: 
-- `additional_properties`: Unmatched properties from the message are deserialized to this
-collection.
-- `data`: Required.
-
-<a id="models._models.JobDescriptionDocument"></a>
-
-## JobDescriptionDocument Objects
-
-```python
-class JobDescriptionDocument(Document)
-```
-
-JobDescriptionDocument.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar extractor: Required. Constant filled by server.
-:vartype extractor: str
-:ivar meta: Required.
-:vartype meta: ~affinda.models.DocumentMeta
-:ivar error:
-:vartype error: ~affinda.models.Error
-:ivar additional_properties: Unmatched properties from the message are deserialized to this
- collection.
-:vartype additional_properties: dict[str, any]
-:ivar data: Required. A JSON-encoded string of the ``JobDescriptionData`` object.
+:vartype error: ~affinda.models.DocumentError
+:ivar data:
 :vartype data: ~affinda.models.JobDescriptionData
 
-<a id="models._models.JobDescriptionDocument.__init__"></a>
+<a id="models._models.JobDescription.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -5909,9 +5496,80 @@ def __init__(**kwargs)
 
 - `meta`: Required.
 - `error`: 
-- `additional_properties`: Unmatched properties from the message are deserialized to this
-collection.
-- `data`: Required. A JSON-encoded string of the ``JobDescriptionData`` object.
+- `data`: 
+
+<a id="models._models.JobDescriptionData"></a>
+
+## JobDescriptionData Objects
+
+```python
+class JobDescriptionData(msrest.serialization.Model)
+```
+
+JobDescriptionData.
+
+:ivar job_title:
+:vartype job_title: ~affinda.models.JobTitleAnnotation
+:ivar contact_email:
+:vartype contact_email: ~affinda.models.TextAnnotation
+:ivar contact_name:
+:vartype contact_name: ~affinda.models.TextAnnotation
+:ivar contact_phone:
+:vartype contact_phone: ~affinda.models.TextAnnotation
+:ivar start_date:
+:vartype start_date: ~affinda.models.DateAnnotation
+:ivar end_date:
+:vartype end_date: ~affinda.models.DateAnnotation
+:ivar job_type:
+:vartype job_type: ~affinda.models.TextAnnotation
+:ivar languages:
+:vartype languages: list[~affinda.models.LanguageAnnotation]
+:ivar skills:
+:vartype skills: list[~affinda.models.SkillAnnotation]
+:ivar organization_name:
+:vartype organization_name: ~affinda.models.TextAnnotation
+:ivar organization_website:
+:vartype organization_website: ~affinda.models.TextAnnotation
+:ivar education_level:
+:vartype education_level: ~affinda.models.TextAnnotation
+:ivar education_accreditation:
+:vartype education_accreditation: ~affinda.models.TextAnnotation
+:ivar expected_remuneration:
+:vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotation
+:ivar location:
+:vartype location: ~affinda.models.LocationAnnotation
+:ivar certifications:
+:vartype certifications: list[~affinda.models.TextAnnotation]
+:ivar years_experience:
+:vartype years_experience: ~affinda.models.YearsExperienceAnnotation
+
+<a id="models._models.JobDescriptionData.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `job_title`: 
+- `contact_email`: 
+- `contact_name`: 
+- `contact_phone`: 
+- `start_date`: 
+- `end_date`: 
+- `job_type`: 
+- `languages`: 
+- `skills`: 
+- `organization_name`: 
+- `organization_website`: 
+- `education_level`: 
+- `education_accreditation`: 
+- `expected_remuneration`: 
+- `location`: 
+- `certifications`: 
+- `years_experience`: 
 
 <a id="models._models.JobDescriptionSearch"></a>
 
@@ -6904,49 +6562,31 @@ def __init__(**kwargs)
 - `search_expression`: Required.
 - `organization_name`: Required.
 
-<a id="models._models.JobTitleParsed"></a>
-
-## JobTitleParsed Objects
-
-```python
-class JobTitleParsed(msrest.serialization.Model)
-```
-
-JobTitleParsed.
-
-Variables are only populated by the server, and will be ignored when sending a request.
-
-:ivar parsed: Matching job title to extracted text.
-:vartype parsed: ~affinda.models.JobTitleParsedParsed
-
 <a id="models._models.JobTitleAnnotation"></a>
 
 ## JobTitleAnnotation Objects
 
 ```python
-class JobTitleAnnotation(AnnotationV2,  JobTitleParsed)
+class JobTitleAnnotation(Annotation)
 ```
 
 JobTitleAnnotation.
 
-Variables are only populated by the server, and will be ignored when sending a request.
-
 All required parameters must be populated in order to send to Azure.
 
-:ivar parsed: Matching job title to extracted text.
-:vartype parsed: ~affinda.models.JobTitleParsedParsed
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -6956,16 +6596,19 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
+:ivar parsed: Years of experience range.
+:vartype parsed: ~affinda.models.JobTitleAnnotationParsed
 
 <a id="models._models.JobTitleAnnotation.__init__"></a>
 
@@ -6980,30 +6623,65 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
+- `parsed`: Years of experience range.
 
-<a id="models._models.JobTitleParsedClassification"></a>
+<a id="models._models.JobTitleAnnotationParsed"></a>
 
-## JobTitleParsedClassification Objects
+## JobTitleAnnotationParsed Objects
 
 ```python
-class JobTitleParsedClassification(msrest.serialization.Model)
+class JobTitleAnnotationParsed(msrest.serialization.Model)
 ```
 
-JobTitleParsedClassification.
+Years of experience range.
+
+:ivar name:
+:vartype name: str
+:ivar management_level:
+:vartype management_level: str
+:ivar classification:
+:vartype classification: ~affinda.models.JobTitleAnnotationParsedClassification
+
+<a id="models._models.JobTitleAnnotationParsed.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `name`: 
+- `management_level`: 
+- `classification`: 
+
+<a id="models._models.JobTitleAnnotationParsedClassification"></a>
+
+## JobTitleAnnotationParsedClassification Objects
+
+```python
+class JobTitleAnnotationParsedClassification(msrest.serialization.Model)
+```
+
+JobTitleAnnotationParsedClassification.
 
 :ivar soc_code:
 :vartype soc_code: float
@@ -7016,7 +6694,7 @@ JobTitleParsedClassification.
 :ivar major_group:
 :vartype major_group: str
 
-<a id="models._models.JobTitleParsedClassification.__init__"></a>
+<a id="models._models.JobTitleAnnotationParsedClassification.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -7031,37 +6709,6 @@ def __init__(**kwargs)
 - `minor_group`: 
 - `sub_major_group`: 
 - `major_group`: 
-
-<a id="models._models.JobTitleParsedParsed"></a>
-
-## JobTitleParsedParsed Objects
-
-```python
-class JobTitleParsedParsed(msrest.serialization.Model)
-```
-
-Matching job title to extracted text.
-
-:ivar name:
-:vartype name: str
-:ivar management_level:
-:vartype management_level: str
-:ivar classification:
-:vartype classification: ~affinda.models.JobTitleParsedClassification
-
-<a id="models._models.JobTitleParsedParsed.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `name`: 
-- `management_level`: 
-- `classification`: 
 
 <a id="models._models.JobTitleSearchScoreComponent"></a>
 
@@ -7096,15 +6743,15 @@ def __init__(**kwargs)
 - `label`: Required.
 - `score`: 
 
-<a id="models._models.LanguageAnnotationV2"></a>
+<a id="models._models.LanguageAnnotation"></a>
 
-## LanguageAnnotationV2 Objects
+## LanguageAnnotation Objects
 
 ```python
-class LanguageAnnotationV2(AnnotationV2)
+class LanguageAnnotation(Annotation)
 ```
 
-LanguageAnnotationV2.
+LanguageAnnotation.
 
 Variables are only populated by the server, and will be ignored when sending a request.
 
@@ -7115,13 +6762,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -7131,20 +6779,21 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.LanguageAnnotationV2.__init__"></a>
+<a id="models._models.LanguageAnnotation.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -7157,19 +6806,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 
 <a id="models._models.LanguagesSearchScoreComponent"></a>
@@ -7205,50 +6857,15 @@ def __init__(**kwargs)
 - `label`: Required.
 - `score`: 
 
-<a id="models._models.ListResult"></a>
+<a id="models._models.LocationAnnotation"></a>
 
-## ListResult Objects
-
-```python
-class ListResult(msrest.serialization.Model)
-```
-
-ListResult.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar count: Required. Number of items in results.
-:vartype count: int
-:ivar next: URL to request next page of results.
-:vartype next: str
-:ivar previous: URL to request previous page of results.
-:vartype previous: str
-
-<a id="models._models.ListResult.__init__"></a>
-
-#### \_\_init\_\_
+## LocationAnnotation Objects
 
 ```python
-def __init__(**kwargs)
+class LocationAnnotation(Annotation)
 ```
 
-**Arguments**:
-
-- `count`: Required. Number of items in results.
-- `next`: URL to request next page of results.
-- `previous`: URL to request previous page of results.
-
-<a id="models._models.LocationAnnotationV2"></a>
-
-## LocationAnnotationV2 Objects
-
-```python
-class LocationAnnotationV2(AnnotationV2)
-```
-
-LocationAnnotationV2.
-
-Variables are only populated by the server, and will be ignored when sending a request.
+LocationAnnotation.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -7257,13 +6874,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -7273,20 +6891,21 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
 :ivar parsed:
-:vartype parsed: ~affinda.models.LocationAnnotationV2Parsed
+:vartype parsed: ~affinda.models.Location
 
-<a id="models._models.LocationAnnotationV2.__init__"></a>
+<a id="models._models.LocationAnnotation.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -7299,71 +6918,24 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
-
-<a id="models._models.LocationAnnotationV2Parsed"></a>
-
-## LocationAnnotationV2Parsed Objects
-
-```python
-class LocationAnnotationV2Parsed(Location)
-```
-
-LocationAnnotationV2Parsed.
-
-Variables are only populated by the server, and will be ignored when sending a request.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar formatted:
-:vartype formatted: str
-:ivar postal_code:
-:vartype postal_code: str
-:ivar state:
-:vartype state: str
-:ivar country:
-:vartype country: str
-:ivar country_code: Two letter country code (ISO 3166-1 alpha-2).
-:vartype country_code: str
-:ivar raw_input: Required.
-:vartype raw_input: str
-:ivar street_number:
-:vartype street_number: str
-:ivar street:
-:vartype street: str
-:ivar apartment_number:
-:vartype apartment_number: str
-:ivar city:
-:vartype city: str
-:ivar latitude:
-:vartype latitude: float
-:ivar longitude:
-:vartype longitude: float
-
-<a id="models._models.LocationAnnotationV2Parsed.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `raw_input`: Required.
+- `parsed`: 
 
 <a id="models._models.LocationSearchScoreComponent"></a>
 
@@ -8036,6 +7608,31 @@ def __init__(**kwargs)
 
 - `document`: Unique identifier for the document.
 
+<a id="models._models.PathsL3R02CV3DocumentsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
+
+## PathsL3R02CV3DocumentsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
+
+```python
+class PathsL3R02CV3DocumentsGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
+```
+
+PathsL3R02CV3DocumentsGetResponses200ContentApplicationJsonSchemaAllof1.
+
+:ivar results:
+:vartype results: list[~affinda.models.Document]
+
+<a id="models._models.PathsL3R02CV3DocumentsGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: 
+
 <a id="models._models.PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema"></a>
 
 ## PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema Objects
@@ -8132,6 +7729,42 @@ def __init__(**kwargs)
 - `previous`: URL to request previous page of results.
 - `results`: 
 
+<a id="models._models.PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema"></a>
+
+## PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema Objects
+
+```python
+class PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  PathsL3R02CV3DocumentsGetResponses200ContentApplicationJsonSchemaAllof1)
+```
+
+PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar results:
+:vartype results: list[~affinda.models.Document]
+:ivar count: Required. Number of items in results.
+:vartype count: int
+:ivar next: URL to request next page of results.
+:vartype next: str
+:ivar previous: URL to request previous page of results.
+:vartype previous: str
+
+<a id="models._models.PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: 
+- `count`: Required. Number of items in results.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
+
 <a id="models._models.PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema"></a>
 
 ## PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema Objects
@@ -8209,7 +7842,7 @@ def __init__(**kwargs)
 ## PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema Objects
 
 ```python
-class PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema(ListResult,  Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1)
+class PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1)
 ```
 
 PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema.
@@ -8491,6 +8124,134 @@ def __init__(**kwargs)
 - `organization`: Uniquely identify an organization.
 - `version`: Version of the resthook subscription. Determines the resthook body being
 fired. Known values are: "v1", "v2", "v3".
+
+<a id="models._models.Resume"></a>
+
+## Resume Objects
+
+```python
+class Resume(Document)
+```
+
+Resume.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar extractor: Required. Constant filled by server.
+:vartype extractor: str
+:ivar meta: Required.
+:vartype meta: ~affinda.models.DocumentMeta
+:ivar error:
+:vartype error: ~affinda.models.DocumentError
+:ivar data: A JSON-encoded string of the ``ResumeData`` object.
+:vartype data: ~affinda.models.ResumeData
+
+<a id="models._models.Resume.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `meta`: Required.
+- `error`: 
+- `data`: A JSON-encoded string of the ``ResumeData`` object.
+
+<a id="models._models.ResumeData"></a>
+
+## ResumeData Objects
+
+```python
+class ResumeData(msrest.serialization.Model)
+```
+
+A JSON-encoded string of the ``ResumeData`` object.
+
+Variables are only populated by the server, and will be ignored when sending a request.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar name:
+:vartype name: ~affinda.models.ResumeDataName
+:ivar phone_numbers:
+:vartype phone_numbers: list[str]
+:ivar websites:
+:vartype websites: list[str]
+:ivar emails:
+:vartype emails: list[str]
+:ivar date_of_birth:
+:vartype date_of_birth: str
+:ivar location:
+:vartype location: ~affinda.models.Location
+:ivar objective:
+:vartype objective: str
+:ivar languages:
+:vartype languages: list[str]
+:ivar language_codes:
+:vartype language_codes: list[str]
+:ivar summary:
+:vartype summary: str
+:ivar total_years_experience:
+:vartype total_years_experience: int
+:ivar head_shot: base64 encoded string.
+:vartype head_shot: bytearray
+:ivar education:
+:vartype education: list[~affinda.models.Education]
+:ivar profession: Prediction of the candidate's profession based on recent work experience.
+:vartype profession: str
+:ivar linkedin: Linkedin account associated with the candidate.
+:vartype linkedin: str
+:ivar work_experience:
+:vartype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
+:ivar skills:
+:vartype skills: list[~affinda.models.ResumeDataSkillsItem]
+:ivar certifications:
+:vartype certifications: list[str]
+:ivar publications:
+:vartype publications: list[str]
+:ivar referees:
+:vartype referees: list[~affinda.models.ResumeDataRefereesItem]
+:ivar sections:
+:vartype sections: list[~affinda.models.ResumeDataSectionsItem]
+:ivar is_resume_probability: Probability that the given document is a resume. Values below 30
+ suggest that the document is not a resume.
+:vartype is_resume_probability: int
+:ivar raw_text: All of the raw text of the parsed resume, example is shortened for readability.
+:vartype raw_text: str
+
+<a id="models._models.ResumeData.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
+collection.
+- `name`: 
+- `phone_numbers`: 
+- `websites`: 
+- `emails`: 
+- `date_of_birth`: 
+- `location`: 
+- `objective`: 
+- `summary`: 
+- `total_years_experience`: 
+- `education`: 
+- `work_experience`: 
+- `skills`: 
+- `certifications`: 
+- `publications`: 
+- `referees`: 
+- `raw_text`: All of the raw text of the parsed resume, example is shortened for
+readability.
 
 <a id="models._models.ResumeDataName"></a>
 
@@ -8809,46 +8570,6 @@ match exists.
 - `management_level`: Known values are: "None", "Low", "Mid", "Upper".
 - `classification`: 
 
-<a id="models._models.ResumeDocument"></a>
-
-## ResumeDocument Objects
-
-```python
-class ResumeDocument(Document)
-```
-
-ResumeDocument.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar extractor: Required. Constant filled by server.
-:vartype extractor: str
-:ivar meta: Required.
-:vartype meta: ~affinda.models.DocumentMeta
-:ivar error:
-:vartype error: ~affinda.models.Error
-:ivar additional_properties: Unmatched properties from the message are deserialized to this
- collection.
-:vartype additional_properties: dict[str, any]
-:ivar data: Required. A JSON-encoded string of the ``ResumeData`` object.
-:vartype data: ~affinda.models.ResumeData
-
-<a id="models._models.ResumeDocument.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `meta`: Required.
-- `error`: 
-- `additional_properties`: Unmatched properties from the message are deserialized to this
-collection.
-- `data`: Required. A JSON-encoded string of the ``ResumeData`` object.
-
 <a id="models._models.ResumeSearch"></a>
 
 ## ResumeSearch Objects
@@ -8868,7 +8589,7 @@ ResumeSearch.
 :ivar parameters:
 :vartype parameters: ~affinda.models.ResumeSearchParameters
 :ivar results:
-:vartype results: list[~affinda.models.ResumeSearchResult]
+:vartype results: list[~affinda.models.ResumeSearchResultsItem]
 
 <a id="models._models.ResumeSearch.__init__"></a>
 
@@ -10017,50 +9738,24 @@ def __init__(**kwargs)
 - `name`: 
 - `required`: 
 
-<a id="models._models.ResumeSearchResult"></a>
+<a id="models._models.ResumeSearchResultsItem"></a>
 
-## ResumeSearchResult Objects
+## ResumeSearchResultsItem Objects
 
 ```python
-class ResumeSearchResult(msrest.serialization.Model)
+class ResumeSearchResultsItem(msrest.serialization.Model)
 ```
 
-ResumeSearchResult.
+ResumeSearchResultsItem.
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar identifier: Required. A random string that uniquely identify the resource.
-:vartype identifier: str
-:ivar score: Required.
-:vartype score: float
-:ivar pdf: Required.
-:vartype pdf: str
-:ivar name:
-:vartype name: str
-:ivar job_title: Required.
-:vartype job_title: ~affinda.models.JobTitleSearchScoreComponent
-:ivar management_level: Required.
-:vartype management_level: ~affinda.models.ManagementLevelSearchScoreComponent
-:ivar experience: Required.
-:vartype experience: ~affinda.models.ExperienceSearchScoreComponent
-:ivar skills: Required.
-:vartype skills: ~affinda.models.SkillsSearchScoreComponent
-:ivar languages: Required.
-:vartype languages: ~affinda.models.LanguagesSearchScoreComponent
-:ivar location: Required.
-:vartype location: ~affinda.models.LocationSearchScoreComponent
-:ivar education: Required.
-:vartype education: ~affinda.models.EducationSearchScoreComponent
-:ivar occupation_group: Required.
-:vartype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
-:ivar search_expression: Required.
-:vartype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
-:ivar custom_data: Required. Dictionary of
- <components·nqbw24·schemas·customdatasearchscorecomponent·additionalproperties>.
-:vartype custom_data: dict[str,
- ~affinda.models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties]
+:ivar meta: Required.
+:vartype meta: ~affinda.models.DocumentMeta
+:ivar error:
+:vartype error: ~affinda.models.DocumentError
 
-<a id="models._models.ResumeSearchResult.__init__"></a>
+<a id="models._models.ResumeSearchResultsItem.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -10070,21 +9765,8 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `identifier`: Required. A random string that uniquely identify the resource.
-- `score`: Required.
-- `pdf`: Required.
-- `name`: 
-- `job_title`: Required.
-- `management_level`: Required.
-- `experience`: Required.
-- `skills`: Required.
-- `languages`: Required.
-- `location`: Required.
-- `education`: Required.
-- `occupation_group`: Required.
-- `search_expression`: Required.
-- `custom_data`: Required. Dictionary of
-<components·nqbw24·schemas·customdatasearchscorecomponent·additionalproperties>.
+- `meta`: Required.
+- `error`: 
 
 <a id="models._models.ResumeSkillSourcesItem"></a>
 
@@ -10216,15 +9898,15 @@ def __init__(**kwargs)
 - `value`: 
 - `score`: 
 
-<a id="models._models.SkillAnnotationV2"></a>
+<a id="models._models.SkillAnnotation"></a>
 
-## SkillAnnotationV2 Objects
+## SkillAnnotation Objects
 
 ```python
-class SkillAnnotationV2(AnnotationV2)
+class SkillAnnotation(Annotation)
 ```
 
-SkillAnnotationV2.
+SkillAnnotation.
 
 Variables are only populated by the server, and will be ignored when sending a request.
 
@@ -10235,13 +9917,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -10251,20 +9934,21 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.SkillAnnotationV2.__init__"></a>
+<a id="models._models.SkillAnnotation.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -10277,19 +9961,22 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 
 <a id="models._models.SkillsSearchScoreComponent"></a>
@@ -10418,43 +10105,6 @@ def __init__(**kwargs)
 
 - `name`: 
 - `workspace`: Uniquely identify a workspace.
-
-<a id="models._models.UserNullable"></a>
-
-## UserNullable Objects
-
-```python
-class UserNullable(msrest.serialization.Model)
-```
-
-UserNullable.
-
-:ivar id: Uniquely identify a user.
-:vartype id: int
-:ivar name:
-:vartype name: str
-:ivar username:
-:vartype username: str
-:ivar email:
-:vartype email: str
-:ivar avatar: URL of the user's avatar.
-:vartype avatar: str
-
-<a id="models._models.UserNullable.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `id`: Uniquely identify a user.
-- `name`: 
-- `username`: 
-- `email`: 
-- `avatar`: URL of the user's avatar.
 
 <a id="models._models.Workspace"></a>
 
@@ -10744,15 +10394,15 @@ workspace. Known values are: "organization", "private".
 the wrong document type, or if its document type cannot be determined. No credits will be
 consumed.
 
-<a id="models._models.YearsExperienceAnnotationV2"></a>
+<a id="models._models.YearsExperienceAnnotation"></a>
 
-## YearsExperienceAnnotationV2 Objects
+## YearsExperienceAnnotation Objects
 
 ```python
-class YearsExperienceAnnotationV2(AnnotationV2)
+class YearsExperienceAnnotation(Annotation)
 ```
 
-YearsExperienceAnnotationV2.
+YearsExperienceAnnotation.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -10761,13 +10411,14 @@ All required parameters must be populated in order to send to Azure.
 :vartype additional_properties: dict[str, any]
 :ivar id: Required.
 :vartype id: int
-:ivar rectangle: Required.
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
 :vartype rectangle: ~affinda.models.Rectangle
 :ivar rectangles: Required.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar page_index: Required.
+:ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar raw: Required.
+:ivar raw: Required. Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar confidence: Required. The overall confidence that the model's prediction is correct.
 :vartype confidence: float
@@ -10777,20 +10428,21 @@ All required parameters must be populated in order to send to Azure.
 :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
  the confidence that the text in the image has been correctly read by the model.
 :vartype text_extraction_confidence: float
-:ivar is_verified: Required.
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
 :vartype is_verified: bool
-:ivar is_client_verified: Required.
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
-:ivar is_auto_verified: Required.
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point:
+:ivar data_point: Required.
 :vartype data_point: str
 :ivar content_type: Required.
 :vartype content_type: str
 :ivar parsed: Years of experience range.
-:vartype parsed: ~affinda.models.YearsExperienceAnnotationV2Parsed
+:vartype parsed: ~affinda.models.YearsExperienceAnnotationParsed
 
-<a id="models._models.YearsExperienceAnnotationV2.__init__"></a>
+<a id="models._models.YearsExperienceAnnotation.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -10803,28 +10455,31 @@ def __init__(**kwargs)
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
 - `id`: Required.
-- `rectangle`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
 - `rectangles`: Required.
-- `page_index`: Required.
-- `raw`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
 - `classification_confidence`: Required. The model's confidence that the text has been
 classified correctly.
 - `text_extraction_confidence`: Required. If the document was submitted as an image, this
 is the confidence that the text in the image has been correctly read by the model.
-- `is_verified`: Required.
-- `is_client_verified`: Required.
-- `is_auto_verified`: Required.
-- `data_point`: 
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
 - `content_type`: Required.
 - `parsed`: Years of experience range.
 
-<a id="models._models.YearsExperienceAnnotationV2Parsed"></a>
+<a id="models._models.YearsExperienceAnnotationParsed"></a>
 
-## YearsExperienceAnnotationV2Parsed Objects
+## YearsExperienceAnnotationParsed Objects
 
 ```python
-class YearsExperienceAnnotationV2Parsed(msrest.serialization.Model)
+class YearsExperienceAnnotationParsed(msrest.serialization.Model)
 ```
 
 Years of experience range.
@@ -10834,7 +10489,7 @@ Years of experience range.
 :ivar maximum: Maximum years of experience.
 :vartype maximum: float
 
-<a id="models._models.YearsExperienceAnnotationV2Parsed.__init__"></a>
+<a id="models._models.YearsExperienceAnnotationParsed.__init__"></a>
 
 #### \_\_init\_\_
 
