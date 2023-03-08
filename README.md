@@ -16,12 +16,27 @@ This is a python client for the Affinda document parsing API which wraps all ava
 and handles authentication and signing.  You may also want to refer to the full
 [API documentation](https://api.affinda.com/docs) for additional information.
 
+*NOTE: You are viewing a deprecated version of the documentation, this release is only compatible with `v2` of the
+Affinda API. Please go to [the master branch](https://github.com/affinda/affinda-python/tree/master) to view the
+latest revision.*
+
 Installation
 ------------
 
 ```shell
 pip install affinda
 ```
+
+API Version Compatibility
+-------------------------
+
+The Affinda API is currently on `v3`, with breaking changes meant the release of new versions of the client library.
+Please see below for which versions are compatible with which API version.
+
+| Affinda API version | `affinda-python` versions |
+|---------------------|---------------------------|
+| v2                  | 0.1.0 - 2.x.x             |
+| v3                  | \>= 3.x.x                 |
 
 
 Quickstart

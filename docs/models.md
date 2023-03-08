@@ -35,15 +35,15 @@ def __init__(**kwargs)
 
 - `education`: 
 
-<a id="models._models.AnnotationV2"></a>
+<a id="models._models.Annotation"></a>
 
-## AnnotationV2 Objects
+## Annotation Objects
 
 ```python
-class AnnotationV2(msrest.serialization.Model)
+class Annotation(msrest.serialization.Model)
 ```
 
-AnnotationV2.
+Annotation.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -79,7 +79,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar content_type: Required.
 :vartype content_type: str
 
-<a id="models._models.AnnotationV2.__init__"></a>
+<a id="models._models.Annotation.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -106,236 +106,6 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_auto_verified`: Required.
 - `data_point`: 
 - `content_type`: Required.
-
-<a id="models._models.BaseExtractor"></a>
-
-## BaseExtractor Objects
-
-```python
-class BaseExtractor(msrest.serialization.Model)
-```
-
-BaseExtractor.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar identifier: Required. Uniquely identify an extractor.
-:vartype identifier: str
-:ivar name: Required.
-:vartype name: str
-:ivar name_plural: Required.
-:vartype name_plural: str
-:ivar validatable: Required.
-:vartype validatable: bool
-:ivar is_custom:
-:vartype is_custom: bool
-:ivar created_dt:
-:vartype created_dt: ~datetime.datetime
-
-<a id="models._models.BaseExtractor.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `identifier`: Required. Uniquely identify an extractor.
-- `name`: Required.
-- `name_plural`: Required.
-- `validatable`: Required.
-- `is_custom`: 
-- `created_dt`: 
-
-<a id="models._models.Collection"></a>
-
-## Collection Objects
-
-```python
-class Collection(msrest.serialization.Model)
-```
-
-Collection.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar identifier: Required. Uniquely identify a collection.
-:vartype identifier: str
-:ivar name:
-:vartype name: str
-:ivar workspace:
-:vartype workspace: ~affinda.models.CollectionWorkspace
-:ivar extractor:
-:vartype extractor: ~affinda.models.Extractor
-:ivar auto_validation_threshold:
-:vartype auto_validation_threshold: float
-:ivar fields:
-:vartype fields: list[~affinda.models.FieldGroup]
-:ivar fields_configured:
-:vartype fields_configured: bool
-:ivar date_format_preference: Known values are: "DMY", "MDY", "YMD".
-:vartype date_format_preference: str or ~affinda.models.CollectionDateFormatPreference
-:ivar date_format_from_document: Predict the date format from any dates in the document that is
- not ambiguous.
-:vartype date_format_from_document: bool
-:ivar extractor_config: Extra configurations specific to an extractor.
-:vartype extractor_config: dict[str, any]
-:ivar unvalidated_docs_count: Number of unvalidated documents in the collection.
-:vartype unvalidated_docs_count: int
-:ivar confirmed_docs_count: Number of validated documents in the collection.
-:vartype confirmed_docs_count: int
-:ivar ingest_email:
-:vartype ingest_email: str
-
-<a id="models._models.Collection.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `identifier`: Required. Uniquely identify a collection.
-- `name`: 
-- `workspace`: 
-- `extractor`: 
-- `auto_validation_threshold`: 
-- `fields`: 
-- `fields_configured`: 
-- `date_format_preference`: Known values are: "DMY", "MDY", "YMD".
-- `date_format_from_document`: Predict the date format from any dates in the document that
-is not ambiguous.
-- `extractor_config`: Extra configurations specific to an extractor.
-- `unvalidated_docs_count`: Number of unvalidated documents in the collection.
-- `confirmed_docs_count`: Number of validated documents in the collection.
-- `ingest_email`: 
-
-<a id="models._models.CollectionCreate"></a>
-
-## CollectionCreate Objects
-
-```python
-class CollectionCreate(msrest.serialization.Model)
-```
-
-CollectionCreate.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar name: Required.
-:vartype name: str
-:ivar workspace: Required. Uniquely identify a workspace.
-:vartype workspace: str
-:ivar extractor: Required. Uniquely identify an extractor.
-:vartype extractor: str
-:ivar auto_validation_threshold:
-:vartype auto_validation_threshold: float
-:ivar fields:
-:vartype fields: list[~affinda.models.FieldGroup]
-:ivar date_format_preference: Known values are: "DMY", "MDY", "YMD".
-:vartype date_format_preference: str or ~affinda.models.DateFormatPreference
-:ivar date_format_from_document: Predict the date format from any dates in the document that is
- not ambiguous.
-:vartype date_format_from_document: bool
-:ivar extractor_config: Extra configurations specific to an extractor.
-:vartype extractor_config: dict[str, any]
-
-<a id="models._models.CollectionCreate.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `name`: Required.
-- `workspace`: Required. Uniquely identify a workspace.
-- `extractor`: Required. Uniquely identify an extractor.
-- `auto_validation_threshold`: 
-- `fields`: 
-- `date_format_preference`: Known values are: "DMY", "MDY", "YMD".
-- `date_format_from_document`: Predict the date format from any dates in the document that
-is not ambiguous.
-- `extractor_config`: Extra configurations specific to an extractor.
-
-<a id="models._models.CollectionUpdate"></a>
-
-## CollectionUpdate Objects
-
-```python
-class CollectionUpdate(msrest.serialization.Model)
-```
-
-CollectionUpdate.
-
-:ivar name:
-:vartype name: str
-:ivar auto_validation_threshold:
-:vartype auto_validation_threshold: float
-:ivar fields:
-:vartype fields: list[~affinda.models.FieldGroup]
-:ivar date_format_preference: Known values are: "DMY", "MDY", "YMD".
-:vartype date_format_preference: str or ~affinda.models.DateFormatPreference
-:ivar date_format_from_document: Predict the date format from any dates in the document that is
- not ambiguous.
-:vartype date_format_from_document: bool
-:ivar extractor_config: Extra configurations specific to an extractor.
-:vartype extractor_config: dict[str, any]
-
-<a id="models._models.CollectionUpdate.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `name`: 
-- `auto_validation_threshold`: 
-- `fields`: 
-- `date_format_preference`: Known values are: "DMY", "MDY", "YMD".
-- `date_format_from_document`: Predict the date format from any dates in the document that
-is not ambiguous.
-- `extractor_config`: Extra configurations specific to an extractor.
-
-<a id="models._models.CollectionWorkspace"></a>
-
-## CollectionWorkspace Objects
-
-```python
-class CollectionWorkspace(msrest.serialization.Model)
-```
-
-CollectionWorkspace.
-
-:ivar identifier: Uniquely identify a workspace.
-:vartype identifier: str
-:ivar organization:
-:vartype organization: ~affinda.models.Organization
-:ivar name:
-:vartype name: str
-
-<a id="models._models.CollectionWorkspace.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `identifier`: Uniquely identify a workspace.
-- `organization`: 
-- `name`: 
 
 <a id="models._models.Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1"></a>
 
@@ -526,192 +296,6 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `match`: 
-
-<a id="models._models.ResumeData"></a>
-
-## ResumeData Objects
-
-```python
-class ResumeData(msrest.serialization.Model)
-```
-
-A JSON-encoded string of the ``ResumeData`` object.
-
-Variables are only populated by the server, and will be ignored when sending a request.
-
-:ivar additional_properties: Unmatched properties from the message are deserialized to this
- collection.
-:vartype additional_properties: dict[str, any]
-:ivar name:
-:vartype name: ~affinda.models.ResumeDataName
-:ivar phone_numbers:
-:vartype phone_numbers: list[str]
-:ivar websites:
-:vartype websites: list[str]
-:ivar emails:
-:vartype emails: list[str]
-:ivar date_of_birth:
-:vartype date_of_birth: str
-:ivar location:
-:vartype location: ~affinda.models.Location
-:ivar objective:
-:vartype objective: str
-:ivar languages:
-:vartype languages: list[str]
-:ivar language_codes:
-:vartype language_codes: list[str]
-:ivar summary:
-:vartype summary: str
-:ivar total_years_experience:
-:vartype total_years_experience: int
-:ivar head_shot: base64 encoded string.
-:vartype head_shot: bytearray
-:ivar education:
-:vartype education: list[~affinda.models.Education]
-:ivar profession: Prediction of the candidate's profession based on recent work experience.
-:vartype profession: str
-:ivar linkedin: Linkedin account associated with the candidate.
-:vartype linkedin: str
-:ivar work_experience:
-:vartype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
-:ivar skills:
-:vartype skills: list[~affinda.models.ResumeDataSkillsItem]
-:ivar certifications:
-:vartype certifications: list[str]
-:ivar publications:
-:vartype publications: list[str]
-:ivar referees:
-:vartype referees: list[~affinda.models.ResumeDataRefereesItem]
-:ivar sections:
-:vartype sections: list[~affinda.models.ResumeDataSectionsItem]
-:ivar is_resume_probability: Probability that the given document is a resume. Values below 30
- suggest that the document is not a resume.
-:vartype is_resume_probability: int
-:ivar raw_text: All of the raw text of the parsed resume, example is shortened for readability.
-:vartype raw_text: str
-
-<a id="models._models.ResumeData.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `additional_properties`: Unmatched properties from the message are deserialized to this
-collection.
-- `name`: 
-- `phone_numbers`: 
-- `websites`: 
-- `emails`: 
-- `date_of_birth`: 
-- `location`: 
-- `objective`: 
-- `summary`: 
-- `total_years_experience`: 
-- `education`: 
-- `work_experience`: 
-- `skills`: 
-- `certifications`: 
-- `publications`: 
-- `referees`: 
-- `raw_text`: All of the raw text of the parsed resume, example is shortened for
-readability.
-
-<a id="models._models.Components1FbbtzoSchemasDocumentPropertiesDataAnyof0"></a>
-
-## Components1FbbtzoSchemasDocumentPropertiesDataAnyof0 Objects
-
-```python
-class Components1FbbtzoSchemasDocumentPropertiesDataAnyof0(ResumeData)
-```
-
-Components1FbbtzoSchemasDocumentPropertiesDataAnyof0.
-
-Variables are only populated by the server, and will be ignored when sending a request.
-
-:ivar additional_properties: Unmatched properties from the message are deserialized to this
- collection.
-:vartype additional_properties: dict[str, any]
-:ivar name:
-:vartype name: ~affinda.models.ResumeDataName
-:ivar phone_numbers:
-:vartype phone_numbers: list[str]
-:ivar websites:
-:vartype websites: list[str]
-:ivar emails:
-:vartype emails: list[str]
-:ivar date_of_birth:
-:vartype date_of_birth: str
-:ivar location:
-:vartype location: ~affinda.models.Location
-:ivar objective:
-:vartype objective: str
-:ivar languages:
-:vartype languages: list[str]
-:ivar language_codes:
-:vartype language_codes: list[str]
-:ivar summary:
-:vartype summary: str
-:ivar total_years_experience:
-:vartype total_years_experience: int
-:ivar head_shot: base64 encoded string.
-:vartype head_shot: bytearray
-:ivar education:
-:vartype education: list[~affinda.models.Education]
-:ivar profession: Prediction of the candidate's profession based on recent work experience.
-:vartype profession: str
-:ivar linkedin: Linkedin account associated with the candidate.
-:vartype linkedin: str
-:ivar work_experience:
-:vartype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
-:ivar skills:
-:vartype skills: list[~affinda.models.ResumeDataSkillsItem]
-:ivar certifications:
-:vartype certifications: list[str]
-:ivar publications:
-:vartype publications: list[str]
-:ivar referees:
-:vartype referees: list[~affinda.models.ResumeDataRefereesItem]
-:ivar sections:
-:vartype sections: list[~affinda.models.ResumeDataSectionsItem]
-:ivar is_resume_probability: Probability that the given document is a resume. Values below 30
- suggest that the document is not a resume.
-:vartype is_resume_probability: int
-:ivar raw_text: All of the raw text of the parsed resume, example is shortened for readability.
-:vartype raw_text: str
-
-<a id="models._models.Components1FbbtzoSchemasDocumentPropertiesDataAnyof0.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `additional_properties`: Unmatched properties from the message are deserialized to this
-collection.
-- `name`: 
-- `phone_numbers`: 
-- `websites`: 
-- `emails`: 
-- `date_of_birth`: 
-- `location`: 
-- `objective`: 
-- `summary`: 
-- `total_years_experience`: 
-- `education`: 
-- `work_experience`: 
-- `skills`: 
-- `certifications`: 
-- `publications`: 
-- `referees`: 
-- `raw_text`: All of the raw text of the parsed resume, example is shortened for
-readability.
 
 <a id="models._models.Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1"></a>
 
@@ -908,152 +492,6 @@ def __init__(**kwargs)
 
 - `raw`: 
 - `parsed`: 
-
-<a id="models._models.JobDescriptionData"></a>
-
-## JobDescriptionData Objects
-
-```python
-class JobDescriptionData(msrest.serialization.Model)
-```
-
-A JSON-encoded string of the ``JobDescriptionData`` object.
-
-:ivar job_title:
-:vartype job_title: ~affinda.models.JobTitleAnnotation
-:ivar contact_email:
-:vartype contact_email: ~affinda.models.TextAnnotationV2
-:ivar contact_name:
-:vartype contact_name: ~affinda.models.TextAnnotationV2
-:ivar contact_phone:
-:vartype contact_phone: ~affinda.models.TextAnnotationV2
-:ivar start_date:
-:vartype start_date: ~affinda.models.DateAnnotationV2
-:ivar end_date:
-:vartype end_date: ~affinda.models.DateAnnotationV2
-:ivar job_type:
-:vartype job_type: ~affinda.models.TextAnnotationV2
-:ivar languages:
-:vartype languages: list[~affinda.models.LanguageAnnotationV2]
-:ivar skills:
-:vartype skills: list[~affinda.models.SkillAnnotationV2]
-:ivar organization_name:
-:vartype organization_name: ~affinda.models.TextAnnotationV2
-:ivar organization_website:
-:vartype organization_website: ~affinda.models.TextAnnotationV2
-:ivar education_level:
-:vartype education_level: ~affinda.models.TextAnnotationV2
-:ivar education_accreditation:
-:vartype education_accreditation: ~affinda.models.TextAnnotationV2
-:ivar expected_remuneration:
-:vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2
-:ivar location:
-:vartype location: ~affinda.models.LocationAnnotationV2
-:ivar certifications:
-:vartype certifications: list[~affinda.models.TextAnnotationV2]
-:ivar years_experience:
-:vartype years_experience: ~affinda.models.YearsExperienceAnnotationV2
-
-<a id="models._models.JobDescriptionData.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `job_title`: 
-- `contact_email`: 
-- `contact_name`: 
-- `contact_phone`: 
-- `start_date`: 
-- `end_date`: 
-- `job_type`: 
-- `languages`: 
-- `skills`: 
-- `organization_name`: 
-- `organization_website`: 
-- `education_level`: 
-- `education_accreditation`: 
-- `expected_remuneration`: 
-- `location`: 
-- `certifications`: 
-- `years_experience`: 
-
-<a id="models._models.Components1S1E4FcSchemasDocumentPropertiesDataAnyof2"></a>
-
-## Components1S1E4FcSchemasDocumentPropertiesDataAnyof2 Objects
-
-```python
-class Components1S1E4FcSchemasDocumentPropertiesDataAnyof2(JobDescriptionData)
-```
-
-Components1S1E4FcSchemasDocumentPropertiesDataAnyof2.
-
-:ivar job_title:
-:vartype job_title: ~affinda.models.JobTitleAnnotation
-:ivar contact_email:
-:vartype contact_email: ~affinda.models.TextAnnotationV2
-:ivar contact_name:
-:vartype contact_name: ~affinda.models.TextAnnotationV2
-:ivar contact_phone:
-:vartype contact_phone: ~affinda.models.TextAnnotationV2
-:ivar start_date:
-:vartype start_date: ~affinda.models.DateAnnotationV2
-:ivar end_date:
-:vartype end_date: ~affinda.models.DateAnnotationV2
-:ivar job_type:
-:vartype job_type: ~affinda.models.TextAnnotationV2
-:ivar languages:
-:vartype languages: list[~affinda.models.LanguageAnnotationV2]
-:ivar skills:
-:vartype skills: list[~affinda.models.SkillAnnotationV2]
-:ivar organization_name:
-:vartype organization_name: ~affinda.models.TextAnnotationV2
-:ivar organization_website:
-:vartype organization_website: ~affinda.models.TextAnnotationV2
-:ivar education_level:
-:vartype education_level: ~affinda.models.TextAnnotationV2
-:ivar education_accreditation:
-:vartype education_accreditation: ~affinda.models.TextAnnotationV2
-:ivar expected_remuneration:
-:vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2
-:ivar location:
-:vartype location: ~affinda.models.LocationAnnotationV2
-:ivar certifications:
-:vartype certifications: list[~affinda.models.TextAnnotationV2]
-:ivar years_experience:
-:vartype years_experience: ~affinda.models.YearsExperienceAnnotationV2
-
-<a id="models._models.Components1S1E4FcSchemasDocumentPropertiesDataAnyof2.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `job_title`: 
-- `contact_email`: 
-- `contact_name`: 
-- `contact_phone`: 
-- `start_date`: 
-- `end_date`: 
-- `job_type`: 
-- `languages`: 
-- `skills`: 
-- `organization_name`: 
-- `organization_website`: 
-- `education_level`: 
-- `education_accreditation`: 
-- `expected_remuneration`: 
-- `location`: 
-- `certifications`: 
-- `years_experience`: 
 
 <a id="models._models.Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1"></a>
 
@@ -1726,470 +1164,15 @@ def __init__(**kwargs)
 - `raw`: 
 - `parsed`: 
 
-<a id="models._models.InvoiceData"></a>
+<a id="models._models.DateAnnotation"></a>
 
-## InvoiceData Objects
-
-```python
-class InvoiceData(msrest.serialization.Model)
-```
-
-InvoiceData.
-
-:ivar tables:
-:vartype tables: list[~affinda.models.InvoiceDataTablesItem]
-:ivar invoice_date:
-:vartype invoice_date: ~affinda.models.DateAnnotationV2
-:ivar invoice_order_date:
-:vartype invoice_order_date: ~affinda.models.DateAnnotationV2
-:ivar payment_date_due:
-:vartype payment_date_due: ~affinda.models.DateAnnotationV2
-:ivar payment_amount_base:
-:vartype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
-:ivar payment_amount_tax:
-:vartype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
-:ivar payment_amount_total:
-:vartype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
-:ivar payment_amount_paid:
-:vartype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
-:ivar payment_amount_due:
-:vartype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
-:ivar invoice_number:
-:vartype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
-:ivar invoice_purchase_order_number:
-:vartype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
-:ivar supplier_business_number:
-:vartype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
-:ivar customer_number:
-:vartype customer_number: ~affinda.models.InvoiceDataCustomerNumber
-:ivar customer_business_number:
-:vartype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
-:ivar payment_reference:
-:vartype payment_reference: ~affinda.models.InvoiceDataPaymentReference
-:ivar bank_account_number:
-:vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
-:ivar supplier_vat:
-:vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
-:ivar customer_vat:
-:vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
-:ivar bpay_biller_code:
-:vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
-:ivar bpay_reference:
-:vartype bpay_reference: ~affinda.models.InvoiceDataBpayReference
-:ivar bank_sort_code:
-:vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
-:ivar bank_iban:
-:vartype bank_iban: ~affinda.models.InvoiceDataBankIban
-:ivar bank_swift:
-:vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
-:ivar bank_bsb:
-:vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
-:ivar customer_contact_name:
-:vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
-:ivar customer_company_name:
-:vartype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
-:ivar supplier_company_name:
-:vartype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
-:ivar customer_billing_address:
-:vartype customer_billing_address: ~affinda.models.LocationAnnotationV2
-:ivar customer_delivery_address:
-:vartype customer_delivery_address: ~affinda.models.LocationAnnotationV2
-:ivar supplier_address:
-:vartype supplier_address: ~affinda.models.LocationAnnotationV2
-:ivar customer_phone_number:
-:vartype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
-:ivar supplier_phone_number:
-:vartype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
-:ivar supplier_fax:
-:vartype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
-:ivar customer_email:
-:vartype customer_email: ~affinda.models.InvoiceDataCustomerEmail
-:ivar supplier_email:
-:vartype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
-:ivar supplier_website:
-:vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
-:ivar currency_code:
-:vartype currency_code: ~affinda.models.TextAnnotationV2
-:ivar custom_fields: Dictionary of :code:`<any>`.
-:vartype custom_fields: dict[str, any]
-
-<a id="models._models.InvoiceData.__init__"></a>
-
-#### \_\_init\_\_
+## DateAnnotation Objects
 
 ```python
-def __init__(**kwargs)
+class DateAnnotation(Annotation)
 ```
 
-**Arguments**:
-
-- `tables`: 
-- `invoice_date`: 
-- `invoice_order_date`: 
-- `payment_date_due`: 
-- `payment_amount_base`: 
-- `payment_amount_tax`: 
-- `payment_amount_total`: 
-- `payment_amount_paid`: 
-- `payment_amount_due`: 
-- `invoice_number`: 
-- `invoice_purchase_order_number`: 
-- `supplier_business_number`: 
-- `customer_number`: 
-- `customer_business_number`: 
-- `payment_reference`: 
-- `bank_account_number`: 
-- `supplier_vat`: 
-- `customer_vat`: 
-- `bpay_biller_code`: 
-- `bpay_reference`: 
-- `bank_sort_code`: 
-- `bank_iban`: 
-- `bank_swift`: 
-- `bank_bsb`: 
-- `customer_contact_name`: 
-- `customer_company_name`: 
-- `supplier_company_name`: 
-- `customer_billing_address`: 
-- `customer_delivery_address`: 
-- `supplier_address`: 
-- `customer_phone_number`: 
-- `supplier_phone_number`: 
-- `supplier_fax`: 
-- `customer_email`: 
-- `supplier_email`: 
-- `supplier_website`: 
-- `currency_code`: 
-- `custom_fields`: Dictionary of :code:`<any>`.
-
-<a id="models._models.ComponentsX4QdioSchemasDocumentPropertiesDataAnyof1"></a>
-
-## ComponentsX4QdioSchemasDocumentPropertiesDataAnyof1 Objects
-
-```python
-class ComponentsX4QdioSchemasDocumentPropertiesDataAnyof1(InvoiceData)
-```
-
-ComponentsX4QdioSchemasDocumentPropertiesDataAnyof1.
-
-:ivar tables:
-:vartype tables: list[~affinda.models.InvoiceDataTablesItem]
-:ivar invoice_date:
-:vartype invoice_date: ~affinda.models.DateAnnotationV2
-:ivar invoice_order_date:
-:vartype invoice_order_date: ~affinda.models.DateAnnotationV2
-:ivar payment_date_due:
-:vartype payment_date_due: ~affinda.models.DateAnnotationV2
-:ivar payment_amount_base:
-:vartype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
-:ivar payment_amount_tax:
-:vartype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
-:ivar payment_amount_total:
-:vartype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
-:ivar payment_amount_paid:
-:vartype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
-:ivar payment_amount_due:
-:vartype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
-:ivar invoice_number:
-:vartype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
-:ivar invoice_purchase_order_number:
-:vartype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
-:ivar supplier_business_number:
-:vartype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
-:ivar customer_number:
-:vartype customer_number: ~affinda.models.InvoiceDataCustomerNumber
-:ivar customer_business_number:
-:vartype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
-:ivar payment_reference:
-:vartype payment_reference: ~affinda.models.InvoiceDataPaymentReference
-:ivar bank_account_number:
-:vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
-:ivar supplier_vat:
-:vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
-:ivar customer_vat:
-:vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
-:ivar bpay_biller_code:
-:vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
-:ivar bpay_reference:
-:vartype bpay_reference: ~affinda.models.InvoiceDataBpayReference
-:ivar bank_sort_code:
-:vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
-:ivar bank_iban:
-:vartype bank_iban: ~affinda.models.InvoiceDataBankIban
-:ivar bank_swift:
-:vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
-:ivar bank_bsb:
-:vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
-:ivar customer_contact_name:
-:vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
-:ivar customer_company_name:
-:vartype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
-:ivar supplier_company_name:
-:vartype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
-:ivar customer_billing_address:
-:vartype customer_billing_address: ~affinda.models.LocationAnnotationV2
-:ivar customer_delivery_address:
-:vartype customer_delivery_address: ~affinda.models.LocationAnnotationV2
-:ivar supplier_address:
-:vartype supplier_address: ~affinda.models.LocationAnnotationV2
-:ivar customer_phone_number:
-:vartype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
-:ivar supplier_phone_number:
-:vartype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
-:ivar supplier_fax:
-:vartype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
-:ivar customer_email:
-:vartype customer_email: ~affinda.models.InvoiceDataCustomerEmail
-:ivar supplier_email:
-:vartype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
-:ivar supplier_website:
-:vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
-:ivar currency_code:
-:vartype currency_code: ~affinda.models.TextAnnotationV2
-:ivar custom_fields: Dictionary of :code:`<any>`.
-:vartype custom_fields: dict[str, any]
-
-<a id="models._models.ComponentsX4QdioSchemasDocumentPropertiesDataAnyof1.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `tables`: 
-- `invoice_date`: 
-- `invoice_order_date`: 
-- `payment_date_due`: 
-- `payment_amount_base`: 
-- `payment_amount_tax`: 
-- `payment_amount_total`: 
-- `payment_amount_paid`: 
-- `payment_amount_due`: 
-- `invoice_number`: 
-- `invoice_purchase_order_number`: 
-- `supplier_business_number`: 
-- `customer_number`: 
-- `customer_business_number`: 
-- `payment_reference`: 
-- `bank_account_number`: 
-- `supplier_vat`: 
-- `customer_vat`: 
-- `bpay_biller_code`: 
-- `bpay_reference`: 
-- `bank_sort_code`: 
-- `bank_iban`: 
-- `bank_swift`: 
-- `bank_bsb`: 
-- `customer_contact_name`: 
-- `customer_company_name`: 
-- `supplier_company_name`: 
-- `customer_billing_address`: 
-- `customer_delivery_address`: 
-- `supplier_address`: 
-- `customer_phone_number`: 
-- `supplier_phone_number`: 
-- `supplier_fax`: 
-- `customer_email`: 
-- `supplier_email`: 
-- `supplier_website`: 
-- `currency_code`: 
-- `custom_fields`: Dictionary of :code:`<any>`.
-
-<a id="models._models.DataPoint"></a>
-
-## DataPoint Objects
-
-```python
-class DataPoint(msrest.serialization.Model)
-```
-
-DataPoint.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar identifier: Required. Uniquely identify a data point.
-:vartype identifier: str
-:ivar name: Required.
-:vartype name: str
-:ivar slug:
-:vartype slug: str
-:ivar description:
-:vartype description: str
-:ivar annotation_content_type: Required. Known values are: "text", "integer", "float",
- "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
- "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience".
-:vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
-:ivar organization:
-:vartype organization: ~affinda.models.Organization
-:ivar extractor: Required. Uniquely identify an extractor.
-:vartype extractor: str
-:ivar multiple:
-:vartype multiple: bool
-:ivar no_rect:
-:vartype no_rect: bool
-:ivar similar_to:
-:vartype similar_to: list[str]
-:ivar display_enum_value:
-:vartype display_enum_value: bool
-:ivar children:
-:vartype children: list[~affinda.models.DataPoint]
-
-<a id="models._models.DataPoint.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `identifier`: Required. Uniquely identify a data point.
-- `name`: Required.
-- `slug`: 
-- `description`: 
-- `annotation_content_type`: Required. Known values are: "text", "integer", "float",
-"decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
-"expectedremuneration", "jobtitle", "language", "skill", "yearsexperience".
-- `organization`: 
-- `extractor`: Required. Uniquely identify an extractor.
-- `multiple`: 
-- `no_rect`: 
-- `similar_to`: 
-- `display_enum_value`: 
-- `children`: 
-
-<a id="models._models.DataPointChoice"></a>
-
-## DataPointChoice Objects
-
-```python
-class DataPointChoice(msrest.serialization.Model)
-```
-
-DataPointChoice.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar id: Required.
-:vartype id: float
-:ivar label: Required.
-:vartype label: str
-:ivar value: Required.
-:vartype value: str
-:ivar description:
-:vartype description: str
-
-<a id="models._models.DataPointChoice.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `id`: Required.
-- `label`: Required.
-- `value`: Required.
-- `description`: 
-
-<a id="models._models.DataPointCreate"></a>
-
-## DataPointCreate Objects
-
-```python
-class DataPointCreate(msrest.serialization.Model)
-```
-
-DataPointCreate.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar name:
-:vartype name: str
-:ivar slug: Required.
-:vartype slug: str
-:ivar description:
-:vartype description: str
-:ivar annotation_content_type: Required. Known values are: "text", "integer", "float",
- "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
- "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience".
-:vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
-:ivar organization: Required. Uniquely identify an organization.
-:vartype organization: str
-:ivar extractor: Required. Uniquely identify an extractor.
-:vartype extractor: str
-:ivar multiple:
-:vartype multiple: bool
-:ivar no_rect:
-:vartype no_rect: bool
-
-<a id="models._models.DataPointCreate.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `name`: 
-- `slug`: Required.
-- `description`: 
-- `annotation_content_type`: Required. Known values are: "text", "integer", "float",
-"decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
-"expectedremuneration", "jobtitle", "language", "skill", "yearsexperience".
-- `organization`: Required. Uniquely identify an organization.
-- `extractor`: Required. Uniquely identify an extractor.
-- `multiple`: 
-- `no_rect`: 
-
-<a id="models._models.DataPointUpdate"></a>
-
-## DataPointUpdate Objects
-
-```python
-class DataPointUpdate(msrest.serialization.Model)
-```
-
-DataPointUpdate.
-
-:ivar name:
-:vartype name: str
-:ivar slug:
-:vartype slug: str
-:ivar description:
-:vartype description: str
-
-<a id="models._models.DataPointUpdate.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `name`: 
-- `slug`: 
-- `description`: 
-
-<a id="models._models.DateAnnotationV2"></a>
-
-## DateAnnotationV2 Objects
-
-```python
-class DateAnnotationV2(AnnotationV2)
-```
-
-DateAnnotationV2.
+DateAnnotation.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -2227,7 +1210,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar parsed:
 :vartype parsed: ~datetime.date
 
-<a id="models._models.DateAnnotationV2.__init__"></a>
+<a id="models._models.DateAnnotation.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -2255,411 +1238,6 @@ is the confidence that the text in the image has been correctly read by the mode
 - `data_point`: 
 - `content_type`: Required.
 - `parsed`: 
-
-<a id="models._models.Document"></a>
-
-## Document Objects
-
-```python
-class Document(msrest.serialization.Model)
-```
-
-Document.
-
-You probably want to use the sub-classes and not this class directly. Known
-sub-classes are: InvoiceDocument, JobDescriptionDocument, ResumeDocument.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar extractor: Required. Constant filled by server.
-:vartype extractor: str
-:ivar meta: Required.
-:vartype meta: ~affinda.models.DocumentMeta
-:ivar data:
-:vartype data: any
-:ivar error:
-:vartype error: ~affinda.models.Error
-
-<a id="models._models.Document.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `meta`: Required.
-- `data`: 
-- `error`: 
-
-<a id="models._models.DocumentCreate"></a>
-
-## DocumentCreate Objects
-
-```python
-class DocumentCreate(msrest.serialization.Model)
-```
-
-DocumentCreate.
-
-:ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
- JPG.
-:vartype file: IO
-:ivar url: URL to a resume to download and process.
-:vartype url: str
-:ivar collection: Uniquely identify a collection.
-:vartype collection: str
-:ivar workspace: Uniquely identify a workspace.
-:vartype workspace: str
-:ivar wait: If "true" (default), will return a response only after processing has completed. If
- "false", will return an empty data object which can be polled at the GET endpoint until
- processing is complete.
-:vartype wait: bool
-:ivar identifier: Specify a custom identifier for the document.
-:vartype identifier: str
-:ivar file_name: Optional filename of the file.
-:vartype file_name: str
-:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
- deleted.  Defaults to no expiry.
-:vartype expiry_time: ~datetime.datetime
-:ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-:vartype language: str
-
-<a id="models._models.DocumentCreate.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
-PNG, JPG.
-- `url`: URL to a resume to download and process.
-- `collection`: Uniquely identify a collection.
-- `workspace`: Uniquely identify a workspace.
-- `wait`: If "true" (default), will return a response only after processing has completed.
-If "false", will return an empty data object which can be polled at the GET endpoint until
-processing is complete.
-- `identifier`: Specify a custom identifier for the document.
-- `file_name`: Optional filename of the file.
-- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
-deleted.  Defaults to no expiry.
-- `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-
-<a id="models._models.DocumentMeta"></a>
-
-## DocumentMeta Objects
-
-```python
-class DocumentMeta(msrest.serialization.Model)
-```
-
-DocumentMeta.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar identifier: Required. Uniquely identify a document.
-:vartype identifier: str
-:ivar file_name: Optional filename of the file.
-:vartype file_name: str
-:ivar ready: If true, the document has finished processing. Particularly useful if an endpoint
- request specified wait=False, when polling use this variable to determine when to stop polling.
-:vartype ready: bool
-:ivar ready_dt: The datetime when the document was ready.
-:vartype ready_dt: ~datetime.datetime
-:ivar failed: If true, some exception was raised during processing. Check the 'error' field of
- the main return object.
-:vartype failed: bool
-:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
- deleted.  Defaults to no expiry.
-:vartype expiry_time: ~datetime.datetime
-:ivar language: The document's language.
-:vartype language: str
-:ivar pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
- converted to pdf as part of the parsing process).
-:vartype pdf: str
-:ivar parent_document: If this document is part of a splitted document, this attribute points
- to the original document that this document is splitted from.
-:vartype parent_document: ~affinda.models.DocumentMetaParentDocument
-:ivar child_documents: If this document has been splitted into a number of child documents,
- this attribute points to those child documents.
-:vartype child_documents: list[~affinda.models.DocumentMetaChildDocumentsItem]
-:ivar pages: Required. The document's pages.
-:vartype pages: list[~affinda.models.PageMeta]
-:ivar is_ocrd:
-:vartype is_ocrd: bool
-:ivar ocr_confidence:
-:vartype ocr_confidence: float
-:ivar review_url:
-:vartype review_url: str
-:ivar collection:
-:vartype collection: ~affinda.models.DocumentMetaCollection
-:ivar workspace: Required.
-:vartype workspace: ~affinda.models.DocumentMetaWorkspace
-:ivar archived_dt:
-:vartype archived_dt: ~datetime.datetime
-:ivar is_archived:
-:vartype is_archived: bool
-:ivar confirmed_dt:
-:vartype confirmed_dt: ~datetime.datetime
-:ivar is_confirmed:
-:vartype is_confirmed: bool
-:ivar rejected_dt:
-:vartype rejected_dt: ~datetime.datetime
-:ivar is_rejected:
-:vartype is_rejected: bool
-:ivar created_dt:
-:vartype created_dt: ~datetime.datetime
-:ivar error_code:
-:vartype error_code: str
-:ivar error_detail:
-:vartype error_detail: str
-:ivar file: URL to view the file.
-:vartype file: str
-:ivar tags: A set of tags.
-:vartype tags: list[~affinda.models.Tag]
-:ivar confirmed_by:
-:vartype confirmed_by: ~affinda.models.UserNullable
-
-<a id="models._models.DocumentMeta.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `identifier`: Required. Uniquely identify a document.
-- `file_name`: Optional filename of the file.
-- `ready`: If true, the document has finished processing. Particularly useful if an
-endpoint request specified wait=False, when polling use this variable to determine when to stop
-polling.
-- `ready_dt`: The datetime when the document was ready.
-- `failed`: If true, some exception was raised during processing. Check the 'error' field
-of the main return object.
-- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
-deleted.  Defaults to no expiry.
-- `language`: The document's language.
-- `pdf`: The URL to the document's pdf (if the uploaded document is not already pdf, it's
-converted to pdf as part of the parsing process).
-- `parent_document`: If this document is part of a splitted document, this attribute
-points to the original document that this document is splitted from.
-- `child_documents`: If this document has been splitted into a number of child documents,
-this attribute points to those child documents.
-- `pages`: Required. The document's pages.
-- `is_ocrd`: 
-- `ocr_confidence`: 
-- `review_url`: 
-- `collection`: 
-- `workspace`: Required.
-- `archived_dt`: 
-- `is_archived`: 
-- `confirmed_dt`: 
-- `is_confirmed`: 
-- `rejected_dt`: 
-- `is_rejected`: 
-- `created_dt`: 
-- `error_code`: 
-- `error_detail`: 
-- `file`: URL to view the file.
-- `tags`: A set of tags.
-- `confirmed_by`: 
-
-<a id="models._models.DocumentMetaChildDocumentsItem"></a>
-
-## DocumentMetaChildDocumentsItem Objects
-
-```python
-class DocumentMetaChildDocumentsItem(msrest.serialization.Model)
-```
-
-DocumentMetaChildDocumentsItem.
-
-:ivar identifier: Uniquely identify a document.
-:vartype identifier: str
-
-<a id="models._models.DocumentMetaChildDocumentsItem.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `identifier`: Uniquely identify a document.
-
-<a id="models._models.DocumentMetaCollection"></a>
-
-## DocumentMetaCollection Objects
-
-```python
-class DocumentMetaCollection(msrest.serialization.Model)
-```
-
-DocumentMetaCollection.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar identifier: Required. Uniquely identify a collection.
-:vartype identifier: str
-:ivar name:
-:vartype name: str
-:ivar extractor:
-:vartype extractor: ~affinda.models.DocumentMetaCollectionExtractor
-
-<a id="models._models.DocumentMetaCollection.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `identifier`: Required. Uniquely identify a collection.
-- `name`: 
-- `extractor`: 
-
-<a id="models._models.DocumentMetaCollectionExtractor"></a>
-
-## DocumentMetaCollectionExtractor Objects
-
-```python
-class DocumentMetaCollectionExtractor(msrest.serialization.Model)
-```
-
-DocumentMetaCollectionExtractor.
-
-:ivar identifier: Uniquely identify an extractor.
-:vartype identifier: str
-:ivar name:
-:vartype name: str
-:ivar base_extractor: Base extractor's identifier.
-:vartype base_extractor: str
-:ivar validatable:
-:vartype validatable: bool
-
-<a id="models._models.DocumentMetaCollectionExtractor.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `identifier`: Uniquely identify an extractor.
-- `name`: 
-- `base_extractor`: Base extractor's identifier.
-- `validatable`: 
-
-<a id="models._models.DocumentMetaParentDocument"></a>
-
-## DocumentMetaParentDocument Objects
-
-```python
-class DocumentMetaParentDocument(msrest.serialization.Model)
-```
-
-If this document is part of a splitted document, this attribute points to the original document that this document is splitted from.
-
-:ivar identifier: Uniquely identify a document.
-:vartype identifier: str
-
-<a id="models._models.DocumentMetaParentDocument.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `identifier`: Uniquely identify a document.
-
-<a id="models._models.DocumentMetaWorkspace"></a>
-
-## DocumentMetaWorkspace Objects
-
-```python
-class DocumentMetaWorkspace(msrest.serialization.Model)
-```
-
-DocumentMetaWorkspace.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar identifier: Required. Uniquely identify a workspace.
-:vartype identifier: str
-:ivar name:
-:vartype name: str
-
-<a id="models._models.DocumentMetaWorkspace.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `identifier`: Required. Uniquely identify a workspace.
-- `name`: 
-
-<a id="models._models.DocumentUpdate"></a>
-
-## DocumentUpdate Objects
-
-```python
-class DocumentUpdate(msrest.serialization.Model)
-```
-
-DocumentUpdate.
-
-:ivar collection: Uniquely identify a collection.
-:vartype collection: str
-:ivar file_name: Optional filename of the file.
-:vartype file_name: str
-:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
- deleted.  Defaults to no expiry.
-:vartype expiry_time: ~datetime.datetime
-:ivar is_confirmed:
-:vartype is_confirmed: bool
-:ivar is_rejected:
-:vartype is_rejected: bool
-:ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-:vartype language: str
-
-<a id="models._models.DocumentUpdate.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `collection`: Uniquely identify a collection.
-- `file_name`: Optional filename of the file.
-- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
-deleted.  Defaults to no expiry.
-- `is_confirmed`: 
-- `is_rejected`: 
-- `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 
 <a id="models._models.Education"></a>
 
@@ -2829,15 +1407,15 @@ def __init__(**kwargs)
 - `error_code`: 
 - `error_detail`: 
 
-<a id="models._models.ExpectedRemunerationAnnotationV2"></a>
+<a id="models._models.ExpectedRemunerationAnnotation"></a>
 
-## ExpectedRemunerationAnnotationV2 Objects
+## ExpectedRemunerationAnnotation Objects
 
 ```python
-class ExpectedRemunerationAnnotationV2(AnnotationV2)
+class ExpectedRemunerationAnnotation(Annotation)
 ```
 
-ExpectedRemunerationAnnotationV2.
+ExpectedRemunerationAnnotation.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -2873,9 +1451,9 @@ All required parameters must be populated in order to send to Azure.
 :ivar content_type: Required.
 :vartype content_type: str
 :ivar parsed:
-:vartype parsed: ~affinda.models.ExpectedRemunerationAnnotationV2Parsed
+:vartype parsed: ~affinda.models.ExpectedRemunerationAnnotationParsed
 
-<a id="models._models.ExpectedRemunerationAnnotationV2.__init__"></a>
+<a id="models._models.ExpectedRemunerationAnnotation.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -2904,15 +1482,15 @@ is the confidence that the text in the image has been correctly read by the mode
 - `content_type`: Required.
 - `parsed`: 
 
-<a id="models._models.ExpectedRemunerationAnnotationV2Parsed"></a>
+<a id="models._models.ExpectedRemunerationAnnotationParsed"></a>
 
-## ExpectedRemunerationAnnotationV2Parsed Objects
+## ExpectedRemunerationAnnotationParsed Objects
 
 ```python
-class ExpectedRemunerationAnnotationV2Parsed(msrest.serialization.Model)
+class ExpectedRemunerationAnnotationParsed(msrest.serialization.Model)
 ```
 
-ExpectedRemunerationAnnotationV2Parsed.
+ExpectedRemunerationAnnotationParsed.
 
 :ivar minimum:
 :vartype minimum: float
@@ -2923,7 +1501,7 @@ ExpectedRemunerationAnnotationV2Parsed.
 :ivar unit:
 :vartype unit: str
 
-<a id="models._models.ExpectedRemunerationAnnotationV2Parsed.__init__"></a>
+<a id="models._models.ExpectedRemunerationAnnotationParsed.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -2971,262 +1549,6 @@ def __init__(**kwargs)
 - `label`: Required.
 - `score`: 
 
-<a id="models._models.Extractor"></a>
-
-## Extractor Objects
-
-```python
-class Extractor(msrest.serialization.Model)
-```
-
-Extractor.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar identifier: Required. Uniquely identify an extractor.
-:vartype identifier: str
-:ivar name: Required.
-:vartype name: str
-:ivar name_plural: Required.
-:vartype name_plural: str
-:ivar base_extractor:
-:vartype base_extractor: ~affinda.models.ExtractorBaseExtractor
-:ivar organization:
-:vartype organization: ~affinda.models.Organization
-:ivar category:
-:vartype category: str
-:ivar validatable: Required.
-:vartype validatable: bool
-:ivar is_custom:
-:vartype is_custom: bool
-:ivar field_groups:
-:vartype field_groups: list[~affinda.models.FieldGroup]
-:ivar created_dt:
-:vartype created_dt: ~datetime.datetime
-
-<a id="models._models.Extractor.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `identifier`: Required. Uniquely identify an extractor.
-- `name`: Required.
-- `name_plural`: Required.
-- `base_extractor`: 
-- `organization`: 
-- `category`: 
-- `validatable`: Required.
-- `is_custom`: 
-- `field_groups`: 
-- `created_dt`: 
-
-<a id="models._models.ExtractorBaseExtractor"></a>
-
-## ExtractorBaseExtractor Objects
-
-```python
-class ExtractorBaseExtractor(msrest.serialization.Model)
-```
-
-ExtractorBaseExtractor.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar identifier: Required. Uniquely identify an extractor.
-:vartype identifier: str
-:ivar name: Required.
-:vartype name: str
-:ivar name_plural: Required.
-:vartype name_plural: str
-:ivar validatable: Required.
-:vartype validatable: bool
-:ivar is_custom:
-:vartype is_custom: bool
-:ivar created_dt:
-:vartype created_dt: ~datetime.datetime
-
-<a id="models._models.ExtractorBaseExtractor.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `identifier`: Required. Uniquely identify an extractor.
-- `name`: Required.
-- `name_plural`: Required.
-- `validatable`: Required.
-- `is_custom`: 
-- `created_dt`: 
-
-<a id="models._models.ExtractorCreate"></a>
-
-## ExtractorCreate Objects
-
-```python
-class ExtractorCreate(msrest.serialization.Model)
-```
-
-ExtractorCreate.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar name: Required.
-:vartype name: str
-:ivar name_plural:
-:vartype name_plural: str
-:ivar base_extractor: Uniquely identify an extractor.
-:vartype base_extractor: str
-:ivar organization: Required. Uniquely identify an organization.
-:vartype organization: str
-:ivar category:
-:vartype category: str
-:ivar validatable:
-:vartype validatable: bool
-:ivar field_groups:
-:vartype field_groups: list[~affinda.models.FieldGroup]
-
-<a id="models._models.ExtractorCreate.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `name`: Required.
-- `name_plural`: 
-- `base_extractor`: Uniquely identify an extractor.
-- `organization`: Required. Uniquely identify an organization.
-- `category`: 
-- `validatable`: 
-- `field_groups`: 
-
-<a id="models._models.ExtractorUpdate"></a>
-
-## ExtractorUpdate Objects
-
-```python
-class ExtractorUpdate(msrest.serialization.Model)
-```
-
-ExtractorUpdate.
-
-:ivar name:
-:vartype name: str
-:ivar name_plural:
-:vartype name_plural: str
-:ivar base_extractor: Uniquely identify an extractor.
-:vartype base_extractor: str
-:ivar category:
-:vartype category: str
-:ivar validatable:
-:vartype validatable: bool
-:ivar field_groups:
-:vartype field_groups: list[~affinda.models.FieldGroup]
-
-<a id="models._models.ExtractorUpdate.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `name`: 
-- `name_plural`: 
-- `base_extractor`: Uniquely identify an extractor.
-- `category`: 
-- `validatable`: 
-- `field_groups`: 
-
-<a id="models._models.Field"></a>
-
-## Field Objects
-
-```python
-class Field(msrest.serialization.Model)
-```
-
-Field.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar label: Required.
-:vartype label: str
-:ivar slug: Required.
-:vartype slug: str
-:ivar data_point: Required.
-:vartype data_point: str
-:ivar mandatory:
-:vartype mandatory: bool
-:ivar disabled:
-:vartype disabled: bool
-:ivar auto_validation_threshold:
-:vartype auto_validation_threshold: float
-:ivar fields:
-:vartype fields: list[~affinda.models.Field]
-
-<a id="models._models.Field.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `label`: Required.
-- `slug`: Required.
-- `data_point`: Required.
-- `mandatory`: 
-- `disabled`: 
-- `auto_validation_threshold`: 
-- `fields`: 
-
-<a id="models._models.FieldGroup"></a>
-
-## FieldGroup Objects
-
-```python
-class FieldGroup(msrest.serialization.Model)
-```
-
-FieldGroup.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar label: Required.
-:vartype label: str
-:ivar fields: Required.
-:vartype fields: list[~affinda.models.Field]
-
-<a id="models._models.FieldGroup.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `label`: Required.
-- `fields`: Required.
-
 <a id="models._models.Get200ApplicationJsonPropertiesItemsItem"></a>
 
 ## Get200ApplicationJsonPropertiesItemsItem Objects
@@ -3258,72 +1580,6 @@ def __init__(**kwargs)
 - `name`: Required.
 - `document_type`: Known values are: "resumes", "job_descriptions".
 
-<a id="models._models.GetAllDocumentsResults"></a>
-
-## GetAllDocumentsResults Objects
-
-```python
-class GetAllDocumentsResults(msrest.serialization.Model)
-```
-
-GetAllDocumentsResults.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar count: Required. Number of documents in result.
-:vartype count: int
-:ivar next: URL to request next page of results.
-:vartype next: str
-:ivar previous: URL to request previous page of results.
-:vartype previous: str
-:ivar results: Required.
-:vartype results: list[~affinda.models.GetAllDocumentsResultsItem]
-
-<a id="models._models.GetAllDocumentsResults.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `count`: Required. Number of documents in result.
-- `next`: URL to request next page of results.
-- `previous`: URL to request previous page of results.
-- `results`: Required.
-
-<a id="models._models.GetAllDocumentsResultsItem"></a>
-
-## GetAllDocumentsResultsItem Objects
-
-```python
-class GetAllDocumentsResultsItem(msrest.serialization.Model)
-```
-
-GetAllDocumentsResultsItem.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar meta: Required.
-:vartype meta: ~affinda.models.DocumentMeta
-:ivar error:
-:vartype error: ~affinda.models.Error
-
-<a id="models._models.GetAllDocumentsResultsItem.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `meta`: Required.
-- `error`: 
-
 <a id="models._models.IndexRequestBody"></a>
 
 ## IndexRequestBody Objects
@@ -3352,110 +1608,28 @@ def __init__(**kwargs)
 - `name`: 
 - `document_type`: Known values are: "resumes", "job_descriptions".
 
-<a id="models._models.Invitation"></a>
+<a id="models._models.Invoice"></a>
 
-## Invitation Objects
-
-```python
-class Invitation(msrest.serialization.Model)
-```
-
-Invitation.
-
-:ivar identifier: Uniquely identify an invitation.
-:vartype identifier: str
-:ivar organization:
-:vartype organization: ~affinda.models.Organization
-:ivar email: The email which the invitation is sent to.
-:vartype email: str
-:ivar role: Known values are: "admin", "member".
-:vartype role: str or ~affinda.models.OrganizationRole
-:ivar status: Known values are: "pending", "accepted", "declined".
-:vartype status: str or ~affinda.models.InvitationStatus
-:ivar expiry_date: The date after which the invitation expires. Default is 10 days from now.
-:vartype expiry_date: ~datetime.date
-:ivar invited_by:
-:vartype invited_by: ~affinda.models.User
-:ivar responded_by:
-:vartype responded_by: ~affinda.models.InvitationRespondedBy
-:ivar created_dt:
-:vartype created_dt: ~datetime.datetime
-
-<a id="models._models.Invitation.__init__"></a>
-
-#### \_\_init\_\_
+## Invoice Objects
 
 ```python
-def __init__(**kwargs)
+class Invoice(msrest.serialization.Model)
 ```
 
-**Arguments**:
-
-- `identifier`: Uniquely identify an invitation.
-- `organization`: 
-- `email`: The email which the invitation is sent to.
-- `role`: Known values are: "admin", "member".
-- `status`: Known values are: "pending", "accepted", "declined".
-- `expiry_date`: The date after which the invitation expires. Default is 10 days from now.
-- `invited_by`: 
-- `responded_by`: 
-- `created_dt`: 
-
-<a id="models._models.InvitationCreate"></a>
-
-## InvitationCreate Objects
-
-```python
-class InvitationCreate(msrest.serialization.Model)
-```
-
-InvitationCreate.
+Invoice.
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar organization: Required. Uniquely identify an organization.
-:vartype organization: str
-:ivar email: Required. The email which the invitation is sent to.
-:vartype email: str
-:ivar role: Required. Known values are: "admin", "member".
-:vartype role: str or ~affinda.models.OrganizationRole
+:ivar client_verified_dt: Required.
+:vartype client_verified_dt: str
+:ivar data: Required.
+:vartype data: ~affinda.models.InvoiceData
+:ivar meta: Required.
+:vartype meta: ~affinda.models.Meta
+:ivar error: Required.
+:vartype error: ~affinda.models.Error
 
-<a id="models._models.InvitationCreate.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `organization`: Required. Uniquely identify an organization.
-- `email`: Required. The email which the invitation is sent to.
-- `role`: Required. Known values are: "admin", "member".
-
-<a id="models._models.User"></a>
-
-## User Objects
-
-```python
-class User(msrest.serialization.Model)
-```
-
-User.
-
-:ivar id: Uniquely identify a user.
-:vartype id: int
-:ivar name:
-:vartype name: str
-:ivar username:
-:vartype username: str
-:ivar email:
-:vartype email: str
-:ivar avatar: URL of the user's avatar.
-:vartype avatar: str
-
-<a id="models._models.User.__init__"></a>
+<a id="models._models.Invoice.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -3465,34 +1639,99 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `id`: Uniquely identify a user.
-- `name`: 
-- `username`: 
-- `email`: 
-- `avatar`: URL of the user's avatar.
+- `client_verified_dt`: Required.
+- `data`: Required.
+- `meta`: Required.
+- `error`: Required.
 
-<a id="models._models.InvitationRespondedBy"></a>
+<a id="models._models.InvoiceData"></a>
 
-## InvitationRespondedBy Objects
+## InvoiceData Objects
 
 ```python
-class InvitationRespondedBy(User)
+class InvoiceData(msrest.serialization.Model)
 ```
 
-InvitationRespondedBy.
+InvoiceData.
 
-:ivar id: Uniquely identify a user.
-:vartype id: int
-:ivar name:
-:vartype name: str
-:ivar username:
-:vartype username: str
-:ivar email:
-:vartype email: str
-:ivar avatar: URL of the user's avatar.
-:vartype avatar: str
+:ivar tables:
+:vartype tables: list[~affinda.models.InvoiceDataTablesItem]
+:ivar invoice_date:
+:vartype invoice_date: ~affinda.models.DateAnnotation
+:ivar invoice_order_date:
+:vartype invoice_order_date: ~affinda.models.DateAnnotation
+:ivar payment_date_due:
+:vartype payment_date_due: ~affinda.models.DateAnnotation
+:ivar payment_amount_base:
+:vartype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
+:ivar payment_amount_tax:
+:vartype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
+:ivar payment_amount_total:
+:vartype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
+:ivar payment_amount_paid:
+:vartype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
+:ivar payment_amount_due:
+:vartype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
+:ivar invoice_number:
+:vartype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
+:ivar invoice_purchase_order_number:
+:vartype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
+:ivar supplier_business_number:
+:vartype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
+:ivar customer_number:
+:vartype customer_number: ~affinda.models.InvoiceDataCustomerNumber
+:ivar customer_business_number:
+:vartype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
+:ivar payment_reference:
+:vartype payment_reference: ~affinda.models.InvoiceDataPaymentReference
+:ivar bank_account_number:
+:vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
+:ivar supplier_vat:
+:vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
+:ivar customer_vat:
+:vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
+:ivar bpay_biller_code:
+:vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
+:ivar bpay_reference:
+:vartype bpay_reference: ~affinda.models.InvoiceDataBpayReference
+:ivar bank_sort_code:
+:vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
+:ivar bank_iban:
+:vartype bank_iban: ~affinda.models.InvoiceDataBankIban
+:ivar bank_swift:
+:vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
+:ivar bank_bsb:
+:vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
+:ivar customer_contact_name:
+:vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
+:ivar customer_company_name:
+:vartype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
+:ivar supplier_company_name:
+:vartype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
+:ivar customer_billing_address:
+:vartype customer_billing_address: ~affinda.models.LocationAnnotation
+:ivar customer_delivery_address:
+:vartype customer_delivery_address: ~affinda.models.LocationAnnotation
+:ivar supplier_address:
+:vartype supplier_address: ~affinda.models.LocationAnnotation
+:ivar customer_phone_number:
+:vartype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
+:ivar supplier_phone_number:
+:vartype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
+:ivar supplier_fax:
+:vartype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
+:ivar customer_email:
+:vartype customer_email: ~affinda.models.InvoiceDataCustomerEmail
+:ivar supplier_email:
+:vartype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
+:ivar supplier_website:
+:vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
+:ivar currency_code:
+:vartype currency_code: ~affinda.models.TextAnnotation
+:ivar custom_fields: Dictionary of :code:`<any>`.
+:vartype custom_fields: dict[str, any]
 
-<a id="models._models.InvitationRespondedBy.__init__"></a>
+<a id="models._models.InvoiceData.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -3502,71 +1741,54 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `id`: Uniquely identify a user.
-- `name`: 
-- `username`: 
-- `email`: 
-- `avatar`: URL of the user's avatar.
+- `tables`: 
+- `invoice_date`: 
+- `invoice_order_date`: 
+- `payment_date_due`: 
+- `payment_amount_base`: 
+- `payment_amount_tax`: 
+- `payment_amount_total`: 
+- `payment_amount_paid`: 
+- `payment_amount_due`: 
+- `invoice_number`: 
+- `invoice_purchase_order_number`: 
+- `supplier_business_number`: 
+- `customer_number`: 
+- `customer_business_number`: 
+- `payment_reference`: 
+- `bank_account_number`: 
+- `supplier_vat`: 
+- `customer_vat`: 
+- `bpay_biller_code`: 
+- `bpay_reference`: 
+- `bank_sort_code`: 
+- `bank_iban`: 
+- `bank_swift`: 
+- `bank_bsb`: 
+- `customer_contact_name`: 
+- `customer_company_name`: 
+- `supplier_company_name`: 
+- `customer_billing_address`: 
+- `customer_delivery_address`: 
+- `supplier_address`: 
+- `customer_phone_number`: 
+- `supplier_phone_number`: 
+- `supplier_fax`: 
+- `customer_email`: 
+- `supplier_email`: 
+- `supplier_website`: 
+- `currency_code`: 
+- `custom_fields`: Dictionary of :code:`<any>`.
 
-<a id="models._models.InvitationResponse"></a>
+<a id="models._models.TextAnnotation"></a>
 
-## InvitationResponse Objects
-
-```python
-class InvitationResponse(msrest.serialization.Model)
-```
-
-InvitationResponse.
-
-:ivar status: Known values are: "accepted", "declined".
-:vartype status: str or ~affinda.models.InvitationResponseStatus
-
-<a id="models._models.InvitationResponse.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `status`: Known values are: "accepted", "declined".
-
-<a id="models._models.InvitationUpdate"></a>
-
-## InvitationUpdate Objects
-
-```python
-class InvitationUpdate(msrest.serialization.Model)
-```
-
-InvitationUpdate.
-
-:ivar role: Known values are: "admin", "member".
-:vartype role: str or ~affinda.models.OrganizationRole
-
-<a id="models._models.InvitationUpdate.__init__"></a>
-
-#### \_\_init\_\_
+## TextAnnotation Objects
 
 ```python
-def __init__(**kwargs)
+class TextAnnotation(Annotation)
 ```
 
-**Arguments**:
-
-- `role`: Known values are: "admin", "member".
-
-<a id="models._models.TextAnnotationV2"></a>
-
-## TextAnnotationV2 Objects
-
-```python
-class TextAnnotationV2(AnnotationV2)
-```
-
-TextAnnotationV2.
+TextAnnotation.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -3604,7 +1826,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.TextAnnotationV2.__init__"></a>
+<a id="models._models.TextAnnotation.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -3638,7 +1860,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataBankAccountNumber Objects
 
 ```python
-class InvoiceDataBankAccountNumber(TextAnnotationV2,  Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1)
+class InvoiceDataBankAccountNumber(TextAnnotation,  Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1)
 ```
 
 InvoiceDataBankAccountNumber.
@@ -3713,7 +1935,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataBankBsb Objects
 
 ```python
-class InvoiceDataBankBsb(TextAnnotationV2,  Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1)
+class InvoiceDataBankBsb(TextAnnotation,  Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1)
 ```
 
 InvoiceDataBankBsb.
@@ -3788,7 +2010,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataBankIban Objects
 
 ```python
-class InvoiceDataBankIban(TextAnnotationV2,  Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1)
+class InvoiceDataBankIban(TextAnnotation,  Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1)
 ```
 
 InvoiceDataBankIban.
@@ -3863,7 +2085,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataBankSortCode Objects
 
 ```python
-class InvoiceDataBankSortCode(TextAnnotationV2,  Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1)
+class InvoiceDataBankSortCode(TextAnnotation,  Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1)
 ```
 
 InvoiceDataBankSortCode.
@@ -3938,7 +2160,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataBankSwift Objects
 
 ```python
-class InvoiceDataBankSwift(TextAnnotationV2,  Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1)
+class InvoiceDataBankSwift(TextAnnotation,  Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1)
 ```
 
 InvoiceDataBankSwift.
@@ -4013,7 +2235,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataBpayBillerCode Objects
 
 ```python
-class InvoiceDataBpayBillerCode(TextAnnotationV2,  ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1)
+class InvoiceDataBpayBillerCode(TextAnnotation,  ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1)
 ```
 
 InvoiceDataBpayBillerCode.
@@ -4088,7 +2310,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataBpayReference Objects
 
 ```python
-class InvoiceDataBpayReference(TextAnnotationV2,  ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1)
+class InvoiceDataBpayReference(TextAnnotation,  ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1)
 ```
 
 InvoiceDataBpayReference.
@@ -4163,7 +2385,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataCustomerBusinessNumber Objects
 
 ```python
-class InvoiceDataCustomerBusinessNumber(TextAnnotationV2,  Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1)
+class InvoiceDataCustomerBusinessNumber(TextAnnotation,  Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1)
 ```
 
 InvoiceDataCustomerBusinessNumber.
@@ -4238,7 +2460,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataCustomerCompanyName Objects
 
 ```python
-class InvoiceDataCustomerCompanyName(TextAnnotationV2,  Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1)
+class InvoiceDataCustomerCompanyName(TextAnnotation,  Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1)
 ```
 
 InvoiceDataCustomerCompanyName.
@@ -4313,7 +2535,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataCustomerContactName Objects
 
 ```python
-class InvoiceDataCustomerContactName(TextAnnotationV2,  ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1)
+class InvoiceDataCustomerContactName(TextAnnotation,  ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1)
 ```
 
 InvoiceDataCustomerContactName.
@@ -4388,7 +2610,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataCustomerEmail Objects
 
 ```python
-class InvoiceDataCustomerEmail(TextAnnotationV2,  Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1)
+class InvoiceDataCustomerEmail(TextAnnotation,  Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1)
 ```
 
 InvoiceDataCustomerEmail.
@@ -4463,7 +2685,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataCustomerNumber Objects
 
 ```python
-class InvoiceDataCustomerNumber(TextAnnotationV2,  Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1)
+class InvoiceDataCustomerNumber(TextAnnotation,  Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1)
 ```
 
 InvoiceDataCustomerNumber.
@@ -4538,7 +2760,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataCustomerPhoneNumber Objects
 
 ```python
-class InvoiceDataCustomerPhoneNumber(TextAnnotationV2,  Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1)
+class InvoiceDataCustomerPhoneNumber(TextAnnotation,  Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1)
 ```
 
 InvoiceDataCustomerPhoneNumber.
@@ -4613,7 +2835,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataCustomerVat Objects
 
 ```python
-class InvoiceDataCustomerVat(TextAnnotationV2,  ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1)
+class InvoiceDataCustomerVat(TextAnnotation,  ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1)
 ```
 
 InvoiceDataCustomerVat.
@@ -4688,7 +2910,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataInvoiceNumber Objects
 
 ```python
-class InvoiceDataInvoiceNumber(TextAnnotationV2,  Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1)
+class InvoiceDataInvoiceNumber(TextAnnotation,  Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1)
 ```
 
 InvoiceDataInvoiceNumber.
@@ -4763,7 +2985,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataInvoicePurchaseOrderNumber Objects
 
 ```python
-class InvoiceDataInvoicePurchaseOrderNumber(TextAnnotationV2,  ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1)
+class InvoiceDataInvoicePurchaseOrderNumber(TextAnnotation,  ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1)
 ```
 
 InvoiceDataInvoicePurchaseOrderNumber.
@@ -4838,7 +3060,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataPaymentAmountBase Objects
 
 ```python
-class InvoiceDataPaymentAmountBase(TextAnnotationV2,  Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1)
+class InvoiceDataPaymentAmountBase(TextAnnotation,  Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1)
 ```
 
 InvoiceDataPaymentAmountBase.
@@ -4913,7 +3135,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataPaymentAmountDue Objects
 
 ```python
-class InvoiceDataPaymentAmountDue(TextAnnotationV2,  ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1)
+class InvoiceDataPaymentAmountDue(TextAnnotation,  ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1)
 ```
 
 InvoiceDataPaymentAmountDue.
@@ -4988,7 +3210,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataPaymentAmountPaid Objects
 
 ```python
-class InvoiceDataPaymentAmountPaid(TextAnnotationV2,  Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1)
+class InvoiceDataPaymentAmountPaid(TextAnnotation,  Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1)
 ```
 
 InvoiceDataPaymentAmountPaid.
@@ -5063,7 +3285,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataPaymentAmountTax Objects
 
 ```python
-class InvoiceDataPaymentAmountTax(TextAnnotationV2,  Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1)
+class InvoiceDataPaymentAmountTax(TextAnnotation,  Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1)
 ```
 
 InvoiceDataPaymentAmountTax.
@@ -5138,7 +3360,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataPaymentAmountTotal Objects
 
 ```python
-class InvoiceDataPaymentAmountTotal(TextAnnotationV2,  Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1)
+class InvoiceDataPaymentAmountTotal(TextAnnotation,  Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1)
 ```
 
 InvoiceDataPaymentAmountTotal.
@@ -5213,7 +3435,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataPaymentReference Objects
 
 ```python
-class InvoiceDataPaymentReference(TextAnnotationV2,  Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1)
+class InvoiceDataPaymentReference(TextAnnotation,  Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1)
 ```
 
 InvoiceDataPaymentReference.
@@ -5288,7 +3510,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataSupplierBusinessNumber Objects
 
 ```python
-class InvoiceDataSupplierBusinessNumber(TextAnnotationV2,  Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1)
+class InvoiceDataSupplierBusinessNumber(TextAnnotation,  Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1)
 ```
 
 InvoiceDataSupplierBusinessNumber.
@@ -5363,7 +3585,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataSupplierCompanyName Objects
 
 ```python
-class InvoiceDataSupplierCompanyName(TextAnnotationV2,  Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1)
+class InvoiceDataSupplierCompanyName(TextAnnotation,  Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1)
 ```
 
 InvoiceDataSupplierCompanyName.
@@ -5438,7 +3660,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataSupplierEmail Objects
 
 ```python
-class InvoiceDataSupplierEmail(TextAnnotationV2,  Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1)
+class InvoiceDataSupplierEmail(TextAnnotation,  Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1)
 ```
 
 InvoiceDataSupplierEmail.
@@ -5513,7 +3735,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataSupplierFax Objects
 
 ```python
-class InvoiceDataSupplierFax(TextAnnotationV2,  Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1)
+class InvoiceDataSupplierFax(TextAnnotation,  Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1)
 ```
 
 InvoiceDataSupplierFax.
@@ -5588,7 +3810,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataSupplierPhoneNumber Objects
 
 ```python
-class InvoiceDataSupplierPhoneNumber(TextAnnotationV2,  Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1)
+class InvoiceDataSupplierPhoneNumber(TextAnnotation,  Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1)
 ```
 
 InvoiceDataSupplierPhoneNumber.
@@ -5663,7 +3885,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataSupplierVat Objects
 
 ```python
-class InvoiceDataSupplierVat(TextAnnotationV2,  ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1)
+class InvoiceDataSupplierVat(TextAnnotation,  ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1)
 ```
 
 InvoiceDataSupplierVat.
@@ -5738,7 +3960,7 @@ is the confidence that the text in the image has been correctly read by the mode
 ## InvoiceDataSupplierWebsite Objects
 
 ```python
-class InvoiceDataSupplierWebsite(TextAnnotationV2,  Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1)
+class InvoiceDataSupplierWebsite(TextAnnotation,  Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1)
 ```
 
 InvoiceDataSupplierWebsite.
@@ -5833,71 +4055,84 @@ def __init__(**kwargs)
 
 - `rows`: 
 
-<a id="models._models.InvoiceDocument"></a>
+<a id="models._models.InvoiceRequestBody"></a>
 
-## InvoiceDocument Objects
+## InvoiceRequestBody Objects
 
 ```python
-class InvoiceDocument(Document)
+class InvoiceRequestBody(msrest.serialization.Model)
 ```
 
-InvoiceDocument.
+InvoiceRequestBody.
+
+:ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
+ JPG.
+:vartype file: IO
+:ivar url: URL to download the invoice.
+:vartype url: str
+:ivar identifier: A random string that uniquely identify the resource.
+:vartype identifier: str
+:ivar file_name: Optional filename of the file.
+:vartype file_name: str
+:ivar wait: If "true" (default), will return a response only after processing has completed. If
+ "false", will return an empty data object which can be polled at the GET endpoint until
+ processing is complete.
+:vartype wait: bool
+:ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
+ of an existing document. If "false" (default), will parse the document normally whether its a
+ duplicate or not.
+:vartype reject_duplicates: bool
+:ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+:vartype language: str
+:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+ deleted.  Defaults to no expiry.
+:vartype expiry_time: ~datetime.datetime
+
+<a id="models._models.InvoiceRequestBody.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+PNG, JPG.
+- `url`: URL to download the invoice.
+- `identifier`: A random string that uniquely identify the resource.
+- `file_name`: Optional filename of the file.
+- `wait`: If "true" (default), will return a response only after processing has completed.
+If "false", will return an empty data object which can be polled at the GET endpoint until
+processing is complete.
+- `reject_duplicates`: If "true", parsing will fail when the uploaded document is
+duplicate of an existing document. If "false" (default), will parse the document normally
+whether its a duplicate or not.
+- `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
+deleted.  Defaults to no expiry.
+
+<a id="models._models.JobDescription"></a>
+
+## JobDescription Objects
+
+```python
+class JobDescription(msrest.serialization.Model)
+```
+
+JobDescription.
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar extractor: Required. Constant filled by server.
-:vartype extractor: str
-:ivar meta: Required.
-:vartype meta: ~affinda.models.DocumentMeta
-:ivar error:
-:vartype error: ~affinda.models.Error
-:ivar additional_properties: Unmatched properties from the message are deserialized to this
- collection.
-:vartype additional_properties: dict[str, any]
 :ivar data: Required.
-:vartype data: ~affinda.models.InvoiceData
-
-<a id="models._models.InvoiceDocument.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `meta`: Required.
-- `error`: 
-- `additional_properties`: Unmatched properties from the message are deserialized to this
-collection.
-- `data`: Required.
-
-<a id="models._models.JobDescriptionDocument"></a>
-
-## JobDescriptionDocument Objects
-
-```python
-class JobDescriptionDocument(Document)
-```
-
-JobDescriptionDocument.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar extractor: Required. Constant filled by server.
-:vartype extractor: str
-:ivar meta: Required.
-:vartype meta: ~affinda.models.DocumentMeta
-:ivar error:
-:vartype error: ~affinda.models.Error
-:ivar additional_properties: Unmatched properties from the message are deserialized to this
- collection.
-:vartype additional_properties: dict[str, any]
-:ivar data: Required. A JSON-encoded string of the ``JobDescriptionData`` object.
 :vartype data: ~affinda.models.JobDescriptionData
+:ivar meta: Required.
+:vartype meta: ~affinda.models.Meta
+:ivar error: Required.
+:vartype error: ~affinda.models.Error
 
-<a id="models._models.JobDescriptionDocument.__init__"></a>
+<a id="models._models.JobDescription.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -5907,11 +4142,140 @@ def __init__(**kwargs)
 
 **Arguments**:
 
+- `data`: Required.
 - `meta`: Required.
-- `error`: 
-- `additional_properties`: Unmatched properties from the message are deserialized to this
-collection.
-- `data`: Required. A JSON-encoded string of the ``JobDescriptionData`` object.
+- `error`: Required.
+
+<a id="models._models.JobDescriptionData"></a>
+
+## JobDescriptionData Objects
+
+```python
+class JobDescriptionData(msrest.serialization.Model)
+```
+
+JobDescriptionData.
+
+:ivar job_title:
+:vartype job_title: ~affinda.models.JobTitleAnnotation
+:ivar contact_email:
+:vartype contact_email: ~affinda.models.TextAnnotation
+:ivar contact_name:
+:vartype contact_name: ~affinda.models.TextAnnotation
+:ivar contact_phone:
+:vartype contact_phone: ~affinda.models.TextAnnotation
+:ivar start_date:
+:vartype start_date: ~affinda.models.DateAnnotation
+:ivar end_date:
+:vartype end_date: ~affinda.models.DateAnnotation
+:ivar job_type:
+:vartype job_type: ~affinda.models.TextAnnotation
+:ivar languages:
+:vartype languages: list[~affinda.models.LanguageAnnotation]
+:ivar skills:
+:vartype skills: list[~affinda.models.SkillAnnotation]
+:ivar organization_name:
+:vartype organization_name: ~affinda.models.TextAnnotation
+:ivar organization_website:
+:vartype organization_website: ~affinda.models.TextAnnotation
+:ivar education_level:
+:vartype education_level: ~affinda.models.TextAnnotation
+:ivar education_accreditation:
+:vartype education_accreditation: ~affinda.models.TextAnnotation
+:ivar expected_remuneration:
+:vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotation
+:ivar location:
+:vartype location: ~affinda.models.LocationAnnotation
+:ivar certifications:
+:vartype certifications: list[~affinda.models.TextAnnotation]
+:ivar years_experience:
+:vartype years_experience: ~affinda.models.YearsExperienceAnnotation
+
+<a id="models._models.JobDescriptionData.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `job_title`: 
+- `contact_email`: 
+- `contact_name`: 
+- `contact_phone`: 
+- `start_date`: 
+- `end_date`: 
+- `job_type`: 
+- `languages`: 
+- `skills`: 
+- `organization_name`: 
+- `organization_website`: 
+- `education_level`: 
+- `education_accreditation`: 
+- `expected_remuneration`: 
+- `location`: 
+- `certifications`: 
+- `years_experience`: 
+
+<a id="models._models.JobDescriptionRequestBody"></a>
+
+## JobDescriptionRequestBody Objects
+
+```python
+class JobDescriptionRequestBody(msrest.serialization.Model)
+```
+
+JobDescriptionRequestBody.
+
+:ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
+ JPG.
+:vartype file: IO
+:ivar url: URL to download the job description.
+:vartype url: str
+:ivar identifier: A random string that uniquely identify the resource.
+:vartype identifier: str
+:ivar file_name: Optional filename of the file.
+:vartype file_name: str
+:ivar wait: If "true" (default), will return a response only after processing has completed. If
+ "false", will return an empty data object which can be polled at the GET endpoint until
+ processing is complete.
+:vartype wait: bool
+:ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
+ of an existing document. If "false" (default), will parse the document normally whether its a
+ duplicate or not.
+:vartype reject_duplicates: bool
+:ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+:vartype language: str
+:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+ deleted.  Defaults to no expiry.
+:vartype expiry_time: ~datetime.datetime
+
+<a id="models._models.JobDescriptionRequestBody.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+PNG, JPG.
+- `url`: URL to download the job description.
+- `identifier`: A random string that uniquely identify the resource.
+- `file_name`: Optional filename of the file.
+- `wait`: If "true" (default), will return a response only after processing has completed.
+If "false", will return an empty data object which can be polled at the GET endpoint until
+processing is complete.
+- `reject_duplicates`: If "true", parsing will fail when the uploaded document is
+duplicate of an existing document. If "false" (default), will parse the document normally
+whether its a duplicate or not.
+- `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
+deleted.  Defaults to no expiry.
 
 <a id="models._models.JobDescriptionSearch"></a>
 
@@ -6924,7 +5288,7 @@ Variables are only populated by the server, and will be ignored when sending a r
 ## JobTitleAnnotation Objects
 
 ```python
-class JobTitleAnnotation(AnnotationV2,  JobTitleParsed)
+class JobTitleAnnotation(Annotation,  JobTitleParsed)
 ```
 
 JobTitleAnnotation.
@@ -7096,17 +5460,15 @@ def __init__(**kwargs)
 - `label`: Required.
 - `score`: 
 
-<a id="models._models.LanguageAnnotationV2"></a>
+<a id="models._models.LanguageAnnotation"></a>
 
-## LanguageAnnotationV2 Objects
+## LanguageAnnotation Objects
 
 ```python
-class LanguageAnnotationV2(AnnotationV2)
+class LanguageAnnotation(Annotation)
 ```
 
-LanguageAnnotationV2.
-
-Variables are only populated by the server, and will be ignored when sending a request.
+LanguageAnnotation.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -7144,7 +5506,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.LanguageAnnotationV2.__init__"></a>
+<a id="models._models.LanguageAnnotation.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -7171,6 +5533,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_auto_verified`: Required.
 - `data_point`: 
 - `content_type`: Required.
+- `parsed`: 
 
 <a id="models._models.LanguagesSearchScoreComponent"></a>
 
@@ -7205,50 +5568,15 @@ def __init__(**kwargs)
 - `label`: Required.
 - `score`: 
 
-<a id="models._models.ListResult"></a>
+<a id="models._models.LocationAnnotation"></a>
 
-## ListResult Objects
-
-```python
-class ListResult(msrest.serialization.Model)
-```
-
-ListResult.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar count: Required. Number of items in results.
-:vartype count: int
-:ivar next: URL to request next page of results.
-:vartype next: str
-:ivar previous: URL to request previous page of results.
-:vartype previous: str
-
-<a id="models._models.ListResult.__init__"></a>
-
-#### \_\_init\_\_
+## LocationAnnotation Objects
 
 ```python
-def __init__(**kwargs)
+class LocationAnnotation(Annotation)
 ```
 
-**Arguments**:
-
-- `count`: Required. Number of items in results.
-- `next`: URL to request next page of results.
-- `previous`: URL to request previous page of results.
-
-<a id="models._models.LocationAnnotationV2"></a>
-
-## LocationAnnotationV2 Objects
-
-```python
-class LocationAnnotationV2(AnnotationV2)
-```
-
-LocationAnnotationV2.
-
-Variables are only populated by the server, and will be ignored when sending a request.
+LocationAnnotation.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -7284,9 +5612,9 @@ All required parameters must be populated in order to send to Azure.
 :ivar content_type: Required.
 :vartype content_type: str
 :ivar parsed:
-:vartype parsed: ~affinda.models.LocationAnnotationV2Parsed
+:vartype parsed: ~affinda.models.Location
 
-<a id="models._models.LocationAnnotationV2.__init__"></a>
+<a id="models._models.LocationAnnotation.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -7313,57 +5641,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_auto_verified`: Required.
 - `data_point`: 
 - `content_type`: Required.
-
-<a id="models._models.LocationAnnotationV2Parsed"></a>
-
-## LocationAnnotationV2Parsed Objects
-
-```python
-class LocationAnnotationV2Parsed(Location)
-```
-
-LocationAnnotationV2Parsed.
-
-Variables are only populated by the server, and will be ignored when sending a request.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar formatted:
-:vartype formatted: str
-:ivar postal_code:
-:vartype postal_code: str
-:ivar state:
-:vartype state: str
-:ivar country:
-:vartype country: str
-:ivar country_code: Two letter country code (ISO 3166-1 alpha-2).
-:vartype country_code: str
-:ivar raw_input: Required.
-:vartype raw_input: str
-:ivar street_number:
-:vartype street_number: str
-:ivar street:
-:vartype street: str
-:ivar apartment_number:
-:vartype apartment_number: str
-:ivar city:
-:vartype city: str
-:ivar latitude:
-:vartype latitude: float
-:ivar longitude:
-:vartype longitude: float
-
-<a id="models._models.LocationAnnotationV2Parsed.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `raw_input`: Required.
+- `parsed`: 
 
 <a id="models._models.LocationSearchScoreComponent"></a>
 
@@ -7431,6 +5709,139 @@ def __init__(**kwargs)
 - `label`: Required.
 - `score`: 
 
+<a id="models._models.Meta"></a>
+
+## Meta Objects
+
+```python
+class Meta(msrest.serialization.Model)
+```
+
+Meta.
+
+:ivar identifier: Uniquely identify a document.
+:vartype identifier: str
+:ivar file_name: Optional filename of the file.
+:vartype file_name: str
+:ivar ready: If true, the document has finished processing. Particularly useful if an endpoint
+ request specified wait=False, when polling use this variable to determine when to stop polling.
+:vartype ready: bool
+:ivar ready_dt: The datetime when the document was ready.
+:vartype ready_dt: ~datetime.datetime
+:ivar failed: If true, some exception was raised during processing. Check the 'error' field of
+ the main return object.
+:vartype failed: bool
+:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+ deleted.  Defaults to no expiry.
+:vartype expiry_time: ~datetime.datetime
+:ivar language: The document's language.
+:vartype language: str
+:ivar pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
+ converted to pdf as part of the parsing process).
+:vartype pdf: str
+:ivar parent_document: If this document is part of a splitted document, this attribute points
+ to the original document that this document is splitted from.
+:vartype parent_document: ~affinda.models.MetaParentDocument
+:ivar child_documents: If this document has been splitted into a number of child documents,
+ this attribute points to those child documents.
+:vartype child_documents: list[~affinda.models.MetaChildDocumentsItem]
+:ivar pages: The document's pages.
+:vartype pages: list[~affinda.models.PageMeta]
+:ivar is_verified: This is true if the 'confirm' button has been clicked in the Affinda
+ validation tool.
+:vartype is_verified: bool
+:ivar review_url: Signed URL (valid for 60 minutes) to access the validation tool.  Not
+ applicable for documents types such a resumes.
+:vartype review_url: str
+:ivar ocr_confidence: The overall confidence in the conversion of image to text.  (only
+ applicable for images or PDF documents without a text layer).
+:vartype ocr_confidence: float
+
+<a id="models._models.Meta.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Uniquely identify a document.
+- `file_name`: Optional filename of the file.
+- `ready`: If true, the document has finished processing. Particularly useful if an
+endpoint request specified wait=False, when polling use this variable to determine when to stop
+polling.
+- `ready_dt`: The datetime when the document was ready.
+- `failed`: If true, some exception was raised during processing. Check the 'error' field
+of the main return object.
+- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
+deleted.  Defaults to no expiry.
+- `language`: The document's language.
+- `pdf`: The URL to the document's pdf (if the uploaded document is not already pdf, it's
+converted to pdf as part of the parsing process).
+- `parent_document`: If this document is part of a splitted document, this attribute
+points to the original document that this document is splitted from.
+- `child_documents`: If this document has been splitted into a number of child documents,
+this attribute points to those child documents.
+- `pages`: The document's pages.
+- `is_verified`: This is true if the 'confirm' button has been clicked in the Affinda
+validation tool.
+- `review_url`: Signed URL (valid for 60 minutes) to access the validation tool.  Not
+applicable for documents types such a resumes.
+- `ocr_confidence`: The overall confidence in the conversion of image to text.  (only
+applicable for images or PDF documents without a text layer).
+
+<a id="models._models.MetaChildDocumentsItem"></a>
+
+## MetaChildDocumentsItem Objects
+
+```python
+class MetaChildDocumentsItem(msrest.serialization.Model)
+```
+
+MetaChildDocumentsItem.
+
+:ivar identifier: Uniquely identify a document.
+:vartype identifier: str
+
+<a id="models._models.MetaChildDocumentsItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Uniquely identify a document.
+
+<a id="models._models.MetaParentDocument"></a>
+
+## MetaParentDocument Objects
+
+```python
+class MetaParentDocument(msrest.serialization.Model)
+```
+
+If this document is part of a splitted document, this attribute points to the original document that this document is splitted from.
+
+:ivar identifier: Uniquely identify a document.
+:vartype identifier: str
+
+<a id="models._models.MetaParentDocument.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Uniquely identify a document.
+
 <a id="models._models.OccupationGroupSearchScoreComponent"></a>
 
 ## OccupationGroupSearchScoreComponent Objects
@@ -7463,176 +5874,6 @@ def __init__(**kwargs)
 - `value`: 
 - `label`: Required.
 - `score`: 
-
-<a id="models._models.Organization"></a>
-
-## Organization Objects
-
-```python
-class Organization(msrest.serialization.Model)
-```
-
-Organization.
-
-:ivar identifier: Uniquely identify an organization.
-:vartype identifier: str
-:ivar name:
-:vartype name: str
-:ivar user_role: The role of the logged in user within the organization. Known values are:
- "admin", "member".
-:vartype user_role: str or ~affinda.models.OrganizationUserRole
-:ivar avatar: URL of the organization's avatar.
-:vartype avatar: str
-:ivar resthook_signature_key: Used to sign webhook payloads so you can verify their integrity.
-:vartype resthook_signature_key: str
-:ivar is_trial:
-:vartype is_trial: bool
-
-<a id="models._models.Organization.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `identifier`: Uniquely identify an organization.
-- `name`: 
-- `user_role`: The role of the logged in user within the organization. Known values are:
-"admin", "member".
-- `avatar`: URL of the organization's avatar.
-- `resthook_signature_key`: Used to sign webhook payloads so you can verify their
-integrity.
-- `is_trial`: 
-
-<a id="models._models.OrganizationCreate"></a>
-
-## OrganizationCreate Objects
-
-```python
-class OrganizationCreate(msrest.serialization.Model)
-```
-
-OrganizationCreate.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar name: Required.
-:vartype name: str
-:ivar avatar: Upload avatar for the organization.
-:vartype avatar: IO
-:ivar resthook_signature_key: Used to sign webhook payloads so you can verify their integrity.
-:vartype resthook_signature_key: str
-
-<a id="models._models.OrganizationCreate.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `name`: Required.
-- `avatar`: Upload avatar for the organization.
-- `resthook_signature_key`: Used to sign webhook payloads so you can verify their
-integrity.
-
-<a id="models._models.OrganizationMembership"></a>
-
-## OrganizationMembership Objects
-
-```python
-class OrganizationMembership(msrest.serialization.Model)
-```
-
-OrganizationMembership.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar identifier: Required. A random string that uniquely identify the resource.
-:vartype identifier: str
-:ivar organization: Required. Uniquely identify an organization.
-:vartype organization: str
-:ivar user: Required.
-:vartype user: ~affinda.models.User
-:ivar role: Required. Known values are: "admin", "member".
-:vartype role: str or ~affinda.models.OrganizationRole
-
-<a id="models._models.OrganizationMembership.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `identifier`: Required. A random string that uniquely identify the resource.
-- `organization`: Required. Uniquely identify an organization.
-- `user`: Required.
-- `role`: Required. Known values are: "admin", "member".
-
-<a id="models._models.OrganizationMembershipUpdate"></a>
-
-## OrganizationMembershipUpdate Objects
-
-```python
-class OrganizationMembershipUpdate(msrest.serialization.Model)
-```
-
-OrganizationMembershipUpdate.
-
-:ivar role: Known values are: "admin", "member".
-:vartype role: str or ~affinda.models.OrganizationRole
-
-<a id="models._models.OrganizationMembershipUpdate.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `role`: Known values are: "admin", "member".
-
-<a id="models._models.OrganizationUpdate"></a>
-
-## OrganizationUpdate Objects
-
-```python
-class OrganizationUpdate(msrest.serialization.Model)
-```
-
-OrganizationUpdate.
-
-:ivar name:
-:vartype name: str
-:ivar avatar: Upload avatar for the organization.
-:vartype avatar: IO
-:ivar resthook_signature_key: Used to sign webhook payloads so you can verify their integrity.
-:vartype resthook_signature_key: str
-
-<a id="models._models.OrganizationUpdate.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `name`: 
-- `avatar`: Upload avatar for the organization.
-- `resthook_signature_key`: Used to sign webhook payloads so you can verify their
-integrity.
 
 <a id="models._models.PageMeta"></a>
 
@@ -7711,20 +5952,45 @@ def __init__(**kwargs)
 - `next`: URL to request next page of results.
 - `previous`: URL to request previous page of results.
 
-<a id="models._models.PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
+<a id="models._models.Paths14R8PdgV2IndexNameDocumentsPostResponses201ContentApplicationJsonSchema"></a>
 
-## PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
+## Paths14R8PdgV2IndexNameDocumentsPostResponses201ContentApplicationJsonSchema Objects
 
 ```python
-class PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
+class Paths14R8PdgV2IndexNameDocumentsPostResponses201ContentApplicationJsonSchema(msrest.serialization.Model)
 ```
 
-PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1.
+Paths14R8PdgV2IndexNameDocumentsPostResponses201ContentApplicationJsonSchema.
+
+:ivar document: Unique identifier for the document.
+:vartype document: str
+
+<a id="models._models.Paths14R8PdgV2IndexNameDocumentsPostResponses201ContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `document`: Unique identifier for the document.
+
+<a id="models._models.PathsX4VofmV2ResumesGetResponses200ContentApplicationJsonSchemaAllof1"></a>
+
+## PathsX4VofmV2ResumesGetResponses200ContentApplicationJsonSchemaAllof1 Objects
+
+```python
+class PathsX4VofmV2ResumesGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
+```
+
+PathsX4VofmV2ResumesGetResponses200ContentApplicationJsonSchemaAllof1.
 
 :ivar results:
-:vartype results: list[~affinda.models.Invitation]
+:vartype results: list[~affinda.models.Resume]
 
-<a id="models._models.PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
+<a id="models._models.PathsX4VofmV2ResumesGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -7736,20 +6002,20 @@ def __init__(**kwargs)
 
 - `results`: 
 
-<a id="models._models.Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema"></a>
+<a id="models._models.Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema"></a>
 
-## Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema Objects
+## Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema Objects
 
 ```python
-class Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1)
+class Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  PathsX4VofmV2ResumesGetResponses200ContentApplicationJsonSchemaAllof1)
 ```
 
-Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema.
+Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema.
 
 All required parameters must be populated in order to send to Azure.
 
 :ivar results:
-:vartype results: list[~affinda.models.Invitation]
+:vartype results: list[~affinda.models.Resume]
 :ivar count: Required. Number of items in results.
 :vartype count: int
 :ivar next: URL to request next page of results.
@@ -7757,7 +6023,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar previous: URL to request previous page of results.
 :vartype previous: str
 
-<a id="models._models.Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema.__init__"></a>
+<a id="models._models.Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -7772,20 +6038,20 @@ def __init__(**kwargs)
 - `next`: URL to request next page of results.
 - `previous`: URL to request previous page of results.
 
-<a id="models._models.Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema"></a>
+<a id="models._models.Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema"></a>
 
-## Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema Objects
+## Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema Objects
 
 ```python
-class Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema(msrest.serialization.Model)
+class Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema(msrest.serialization.Model)
 ```
 
-Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema.
+Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema.
 
 :ivar config_override:
-:vartype config_override: ~affinda.models.ResumeSearchConfig
+:vartype config_override: ~affinda.models.JobDescriptionSearchConfig
 
-<a id="models._models.Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema.__init__"></a>
+<a id="models._models.Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -7797,20 +6063,20 @@ def __init__(**kwargs)
 
 - `config_override`: 
 
-<a id="models._models.Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems"></a>
+<a id="models._models.Paths16Tz5M5V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems"></a>
 
-## Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems Objects
+## Paths16Tz5M5V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems Objects
 
 ```python
-class Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems(msrest.serialization.Model)
+class Paths16Tz5M5V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems(msrest.serialization.Model)
 ```
 
-Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems.
+Paths16Tz5M5V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems.
 
 :ivar document:
 :vartype document: str
 
-<a id="models._models.Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems.__init__"></a>
+<a id="models._models.Paths16Tz5M5V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -7822,170 +6088,15 @@ def __init__(**kwargs)
 
 - `document`: 
 
-<a id="models._models.Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
+<a id="models._models.Paths18Iqsr4V2IndexGetResponses200ContentApplicationJsonSchema"></a>
 
-## Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
-
-```python
-class Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
-```
-
-Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1.
-
-:ivar results:
-:vartype results: list[~affinda.models.ResthookSubscription]
-
-<a id="models._models.Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
-
-#### \_\_init\_\_
+## Paths18Iqsr4V2IndexGetResponses200ContentApplicationJsonSchema Objects
 
 ```python
-def __init__(**kwargs)
+class Paths18Iqsr4V2IndexGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model)
 ```
 
-**Arguments**:
-
-- `results`: 
-
-<a id="models._models.Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema"></a>
-
-## Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema Objects
-
-```python
-class Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema(msrest.serialization.Model)
-```
-
-Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema.
-
-:ivar name:
-:vartype name: str
-:ivar document_type: Known values are: "resumes", "job_descriptions".
-:vartype document_type: str or ~affinda.models.Enum6
-
-<a id="models._models.Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `name`: 
-- `document_type`: Known values are: "resumes", "job_descriptions".
-
-<a id="models._models.Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
-
-## Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
-
-```python
-class Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
-```
-
-Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar results: Required.
-:vartype results: list[~affinda.models.WorkspaceMembership]
-
-<a id="models._models.Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `results`: Required.
-
-<a id="models._models.Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1"></a>
-
-## Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1 Objects
-
-```python
-class Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
-```
-
-Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1.
-
-:ivar results:
-:vartype results: list[~affinda.models.DataPointChoice]
-
-<a id="models._models.Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `results`: 
-
-<a id="models._models.Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
-
-## Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
-
-```python
-class Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
-```
-
-Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.
-
-:ivar results:
-:vartype results: list[~affinda.models.OrganizationMembership]
-
-<a id="models._models.Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `results`: 
-
-<a id="models._models.PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema"></a>
-
-## PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema Objects
-
-```python
-class PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema(msrest.serialization.Model)
-```
-
-PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema.
-
-:ivar document:
-:vartype document: str
-
-<a id="models._models.PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `document`: 
-
-<a id="models._models.PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema"></a>
-
-## PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema Objects
-
-```python
-class PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model)
-```
-
-PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema.
+Paths18Iqsr4V2IndexGetResponses200ContentApplicationJsonSchema.
 
 :ivar count: Number of indexes in result.
 :vartype count: int
@@ -7996,7 +6107,7 @@ PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema.
 :ivar results:
 :vartype results: list[~affinda.models.Get200ApplicationJsonPropertiesItemsItem]
 
-<a id="models._models.PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema.__init__"></a>
+<a id="models._models.Paths18Iqsr4V2IndexGetResponses200ContentApplicationJsonSchema.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -8011,20 +6122,20 @@ def __init__(**kwargs)
 - `previous`: URL to request previous page of results.
 - `results`: 
 
-<a id="models._models.PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema"></a>
+<a id="models._models.Paths18ZzckpV2InvoicesGetResponses200ContentApplicationJsonSchemaAllof1"></a>
 
-## PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema Objects
+## Paths18ZzckpV2InvoicesGetResponses200ContentApplicationJsonSchemaAllof1 Objects
 
 ```python
-class PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema(msrest.serialization.Model)
+class Paths18ZzckpV2InvoicesGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
 ```
 
-PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema.
+Paths18ZzckpV2InvoicesGetResponses200ContentApplicationJsonSchemaAllof1.
 
-:ivar document: Unique identifier for the document.
-:vartype document: str
+:ivar results:
+:vartype results: list[~affinda.models.Invoice]
 
-<a id="models._models.PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema.__init__"></a>
+<a id="models._models.Paths18ZzckpV2InvoicesGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -8034,22 +6145,22 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `document`: Unique identifier for the document.
+- `results`: 
 
-<a id="models._models.PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema"></a>
+<a id="models._models.Paths1Q5Zfv5V2RedactedResumesGetResponses200ContentApplicationJsonSchemaAllof1"></a>
 
-## PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema Objects
+## Paths1Q5Zfv5V2RedactedResumesGetResponses200ContentApplicationJsonSchemaAllof1 Objects
 
 ```python
-class PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema(msrest.serialization.Model)
+class Paths1Q5Zfv5V2RedactedResumesGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
 ```
 
-PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema.
+Paths1Q5Zfv5V2RedactedResumesGetResponses200ContentApplicationJsonSchemaAllof1.
 
-:ivar config_override:
-:vartype config_override: ~affinda.models.JobDescriptionSearchConfig
+:ivar results:
+:vartype results: list[~affinda.models.Resume]
 
-<a id="models._models.PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema.__init__"></a>
+<a id="models._models.Paths1Q5Zfv5V2RedactedResumesGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -8059,22 +6170,22 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `config_override`: 
+- `results`: 
 
-<a id="models._models.PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema"></a>
+<a id="models._models.Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema"></a>
 
-## PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema Objects
+## Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema Objects
 
 ```python
-class PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1)
+class Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  Paths1Q5Zfv5V2RedactedResumesGetResponses200ContentApplicationJsonSchemaAllof1)
 ```
 
-PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema.
+Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema.
 
 All required parameters must be populated in order to send to Azure.
 
 :ivar results:
-:vartype results: list[~affinda.models.DataPointChoice]
+:vartype results: list[~affinda.models.Resume]
 :ivar count: Required. Number of items in results.
 :vartype count: int
 :ivar next: URL to request next page of results.
@@ -8082,7 +6193,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar previous: URL to request previous page of results.
 :vartype previous: str
 
-<a id="models._models.PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema.__init__"></a>
+<a id="models._models.Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -8097,15 +6208,68 @@ def __init__(**kwargs)
 - `next`: URL to request next page of results.
 - `previous`: URL to request previous page of results.
 
-<a id="models._models.PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema"></a>
+<a id="models._models.Paths1Sikw07V2IndexPostResponses201ContentApplicationJsonSchema"></a>
 
-## PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema Objects
+## Paths1Sikw07V2IndexPostResponses201ContentApplicationJsonSchema Objects
 
 ```python
-class PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model)
+class Paths1Sikw07V2IndexPostResponses201ContentApplicationJsonSchema(msrest.serialization.Model)
 ```
 
-PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema.
+Paths1Sikw07V2IndexPostResponses201ContentApplicationJsonSchema.
+
+:ivar name:
+:vartype name: str
+:ivar document_type: Known values are: "resumes", "job_descriptions".
+:vartype document_type: str or ~affinda.models.Enum6
+
+<a id="models._models.Paths1Sikw07V2IndexPostResponses201ContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `name`: 
+- `document_type`: Known values are: "resumes", "job_descriptions".
+
+<a id="models._models.Paths23Ubd8V2ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema"></a>
+
+## Paths23Ubd8V2ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema Objects
+
+```python
+class Paths23Ubd8V2ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema(msrest.serialization.Model)
+```
+
+Paths23Ubd8V2ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema.
+
+:ivar config_override:
+:vartype config_override: ~affinda.models.ResumeSearchConfig
+
+<a id="models._models.Paths23Ubd8V2ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `config_override`: 
+
+<a id="models._models.PathsAf7Nd4V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchema"></a>
+
+## PathsAf7Nd4V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchema Objects
+
+```python
+class PathsAf7Nd4V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model)
+```
+
+PathsAf7Nd4V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchema.
 
 :ivar count: Number of indexed documents in result.
 :vartype count: int
@@ -8115,9 +6279,9 @@ PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema.
 :vartype previous: str
 :ivar results:
 :vartype results:
- list[~affinda.models.Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]
+ list[~affinda.models.Paths16Tz5M5V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]
 
-<a id="models._models.PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema.__init__"></a>
+<a id="models._models.PathsAf7Nd4V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchema.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -8132,20 +6296,45 @@ def __init__(**kwargs)
 - `previous`: URL to request previous page of results.
 - `results`: 
 
-<a id="models._models.PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema"></a>
+<a id="models._models.PathsV2IwngV2JobDescriptionsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
 
-## PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema Objects
+## PathsV2IwngV2JobDescriptionsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
 
 ```python
-class PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1)
+class PathsV2IwngV2JobDescriptionsGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
 ```
 
-PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema.
+PathsV2IwngV2JobDescriptionsGetResponses200ContentApplicationJsonSchemaAllof1.
+
+:ivar results:
+:vartype results: list[~affinda.models.JobDescription]
+
+<a id="models._models.PathsV2IwngV2JobDescriptionsGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: 
+
+<a id="models._models.PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema"></a>
+
+## PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema Objects
+
+```python
+class PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  PathsV2IwngV2JobDescriptionsGetResponses200ContentApplicationJsonSchemaAllof1)
+```
+
+PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema.
 
 All required parameters must be populated in order to send to Azure.
 
 :ivar results:
-:vartype results: list[~affinda.models.OrganizationMembership]
+:vartype results: list[~affinda.models.JobDescription]
 :ivar count: Required. Number of items in results.
 :vartype count: int
 :ivar next: URL to request next page of results.
@@ -8153,7 +6342,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar previous: URL to request previous page of results.
 :vartype previous: str
 
-<a id="models._models.PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema.__init__"></a>
+<a id="models._models.PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -8168,15 +6357,76 @@ def __init__(**kwargs)
 - `next`: URL to request next page of results.
 - `previous`: URL to request previous page of results.
 
-<a id="models._models.PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema"></a>
+<a id="models._models.PathsDd1FapV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
 
-## PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema Objects
+## PathsDd1FapV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
 
 ```python
-class PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1)
+class PathsDd1FapV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
 ```
 
-PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema.
+PathsDd1FapV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1.
+
+:ivar results:
+:vartype results: list[~affinda.models.ResthookSubscription]
+
+<a id="models._models.PathsDd1FapV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: 
+
+<a id="models._models.PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema"></a>
+
+## PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema Objects
+
+```python
+class PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  Paths18ZzckpV2InvoicesGetResponses200ContentApplicationJsonSchemaAllof1)
+```
+
+PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar results:
+:vartype results: list[~affinda.models.Invoice]
+:ivar count: Required. Number of items in results.
+:vartype count: int
+:ivar next: URL to request next page of results.
+:vartype next: str
+:ivar previous: URL to request previous page of results.
+:vartype previous: str
+
+<a id="models._models.PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: 
+- `count`: Required. Number of items in results.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
+
+<a id="models._models.PathsMda0LlV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema"></a>
+
+## PathsMda0LlV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema Objects
+
+```python
+class PathsMda0LlV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  PathsDd1FapV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1)
+```
+
+PathsMda0LlV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -8189,7 +6439,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar previous: URL to request previous page of results.
 :vartype previous: str
 
-<a id="models._models.PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema.__init__"></a>
+<a id="models._models.PathsMda0LlV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -8204,28 +6454,20 @@ def __init__(**kwargs)
 - `next`: URL to request next page of results.
 - `previous`: URL to request previous page of results.
 
-<a id="models._models.PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema"></a>
+<a id="models._models.PathsYg099PV2IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema"></a>
 
-## PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema Objects
+## PathsYg099PV2IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema Objects
 
 ```python
-class PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema(ListResult,  Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1)
+class PathsYg099PV2IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema(msrest.serialization.Model)
 ```
 
-PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema.
+PathsYg099PV2IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema.
 
-All required parameters must be populated in order to send to Azure.
+:ivar document:
+:vartype document: str
 
-:ivar results: Required.
-:vartype results: list[~affinda.models.WorkspaceMembership]
-:ivar count: Required. Number of items in results.
-:vartype count: int
-:ivar next: URL to request next page of results.
-:vartype next: str
-:ivar previous: URL to request previous page of results.
-:vartype previous: str
-
-<a id="models._models.PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema.__init__"></a>
+<a id="models._models.PathsYg099PV2IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -8235,10 +6477,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `results`: Required.
-- `count`: Required. Number of items in results.
-- `next`: URL to request next page of results.
-- `previous`: URL to request previous page of results.
+- `document`: 
 
 <a id="models._models.Rectangle"></a>
 
@@ -8275,6 +6514,139 @@ def __init__(**kwargs)
 - `y0`: Required.
 - `x1`: Required.
 - `y1`: Required.
+
+<a id="models._models.RedactedResume"></a>
+
+## RedactedResume Objects
+
+```python
+class RedactedResume(msrest.serialization.Model)
+```
+
+RedactedResume.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar data: Required.
+:vartype data: ~affinda.models.RedactedResumeData
+:ivar meta: Required.
+:vartype meta: ~affinda.models.Meta
+:ivar error: Required.
+:vartype error: ~affinda.models.Error
+
+<a id="models._models.RedactedResume.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `data`: Required.
+- `meta`: Required.
+- `error`: Required.
+
+<a id="models._models.RedactedResumeData"></a>
+
+## RedactedResumeData Objects
+
+```python
+class RedactedResumeData(msrest.serialization.Model)
+```
+
+RedactedResumeData.
+
+:ivar redacted_pdf: URL to redacted PDF.
+:vartype redacted_pdf: str
+
+<a id="models._models.RedactedResumeData.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `redacted_pdf`: URL to redacted PDF.
+
+<a id="models._models.RedactedResumeRequestBody"></a>
+
+## RedactedResumeRequestBody Objects
+
+```python
+class RedactedResumeRequestBody(msrest.serialization.Model)
+```
+
+RedactedResumeRequestBody.
+
+:ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
+ JPG.
+:vartype file: IO
+:ivar identifier: A random string that uniquely identify the resource.
+:vartype identifier: str
+:ivar file_name: Optional filename of the file.
+:vartype file_name: str
+:ivar url: URL to download the resume.
+:vartype url: str
+:ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+:vartype language: str
+:ivar wait: If "true" (default), will return a response only after processing has completed. If
+ "false", will return an empty data object which can be polled at the GET endpoint until
+ processing is complete.
+:vartype wait: bool
+:ivar redact_headshot: Whether to redact headshot.
+:vartype redact_headshot: str
+:ivar redact_personal_details: Whether to redact personal details (e.g. name, address).
+:vartype redact_personal_details: str
+:ivar redact_work_details: Whether to redact work details (e.g. company names).
+:vartype redact_work_details: str
+:ivar redact_education_details: Whether to redact education details (e.g. university names).
+:vartype redact_education_details: str
+:ivar redact_referees: Whether to redact referee details.
+:vartype redact_referees: str
+:ivar redact_locations: Whether to redact location names.
+:vartype redact_locations: str
+:ivar redact_dates: Whether to redact dates.
+:vartype redact_dates: str
+:ivar redact_gender: Whether to redact gender.
+:vartype redact_gender: str
+:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+ deleted.  Defaults to no expiry.
+:vartype expiry_time: ~datetime.datetime
+
+<a id="models._models.RedactedResumeRequestBody.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+PNG, JPG.
+- `identifier`: A random string that uniquely identify the resource.
+- `file_name`: Optional filename of the file.
+- `url`: URL to download the resume.
+- `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+- `wait`: If "true" (default), will return a response only after processing has completed.
+If "false", will return an empty data object which can be polled at the GET endpoint until
+processing is complete.
+- `redact_headshot`: Whether to redact headshot.
+- `redact_personal_details`: Whether to redact personal details (e.g. name, address).
+- `redact_work_details`: Whether to redact work details (e.g. company names).
+- `redact_education_details`: Whether to redact education details (e.g. university names).
+- `redact_referees`: Whether to redact referee details.
+- `redact_locations`: Whether to redact location names.
+- `redact_dates`: Whether to redact dates.
+- `redact_gender`: Whether to redact gender.
+- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
+deleted.  Defaults to no expiry.
 
 <a id="models._models.RequestError"></a>
 
@@ -8358,8 +6730,6 @@ ResthookSubscription.
  "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
  "document.classify.completed".
 :vartype event: str or ~affinda.models.ResthookEvent
-:ivar organization:
-:vartype organization: ~affinda.models.Organization
 :ivar target_url: URL of the resthook's receiver.
 :vartype target_url: str
 :ivar active: Resthooks only fire for active subscriptions.
@@ -8391,7 +6761,6 @@ def __init__(**kwargs)
 "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
 "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
 "document.classify.completed".
-- `organization`: 
 - `target_url`: URL of the resthook's receiver.
 - `active`: Resthooks only fire for active subscriptions.
 - `auto_deactivated`: Resthook subscriptions can be auto deactivated if the receiver
@@ -8422,8 +6791,6 @@ All required parameters must be populated in order to send to Azure.
  "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
  "document.classify.failed", "document.classify.completed".
 :vartype event: str or ~affinda.models.ResthookEvent
-:ivar organization:
-:vartype organization: str
 :ivar version: Version of the resthook subscription. Determines the resthook body being fired.
  Known values are: "v1", "v2", "v3".
 :vartype version: str or ~affinda.models.Version
@@ -8445,7 +6812,6 @@ def __init__(**kwargs)
 "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
 "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
 "document.classify.failed", "document.classify.completed".
-- `organization`: 
 - `version`: Version of the resthook subscription. Determines the resthook body being
 fired. Known values are: "v1", "v2", "v3".
 
@@ -8466,8 +6832,6 @@ ResthookSubscriptionUpdate.
  "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
  "document.classify.completed".
 :vartype event: str or ~affinda.models.ResthookEvent
-:ivar organization: Uniquely identify an organization.
-:vartype organization: str
 :ivar version: Version of the resthook subscription. Determines the resthook body being fired.
  Known values are: "v1", "v2", "v3".
 :vartype version: str or ~affinda.models.Version
@@ -8488,9 +6852,134 @@ def __init__(**kwargs)
 "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
 "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
 "document.classify.completed".
-- `organization`: Uniquely identify an organization.
 - `version`: Version of the resthook subscription. Determines the resthook body being
 fired. Known values are: "v1", "v2", "v3".
+
+<a id="models._models.Resume"></a>
+
+## Resume Objects
+
+```python
+class Resume(msrest.serialization.Model)
+```
+
+Resume.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar data: Required. A JSON-encoded string of the ``ResumeData`` object.
+:vartype data: ~affinda.models.ResumeData
+:ivar meta: Required.
+:vartype meta: ~affinda.models.Meta
+:ivar error: Required.
+:vartype error: ~affinda.models.Error
+
+<a id="models._models.Resume.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `data`: Required. A JSON-encoded string of the ``ResumeData`` object.
+- `meta`: Required.
+- `error`: Required.
+
+<a id="models._models.ResumeData"></a>
+
+## ResumeData Objects
+
+```python
+class ResumeData(msrest.serialization.Model)
+```
+
+A JSON-encoded string of the ``ResumeData`` object.
+
+Variables are only populated by the server, and will be ignored when sending a request.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar name:
+:vartype name: ~affinda.models.ResumeDataName
+:ivar phone_numbers:
+:vartype phone_numbers: list[str]
+:ivar websites:
+:vartype websites: list[str]
+:ivar emails:
+:vartype emails: list[str]
+:ivar date_of_birth:
+:vartype date_of_birth: str
+:ivar location:
+:vartype location: ~affinda.models.Location
+:ivar objective:
+:vartype objective: str
+:ivar languages:
+:vartype languages: list[str]
+:ivar language_codes:
+:vartype language_codes: list[str]
+:ivar summary:
+:vartype summary: str
+:ivar total_years_experience:
+:vartype total_years_experience: int
+:ivar head_shot: base64 encoded string.
+:vartype head_shot: bytearray
+:ivar education:
+:vartype education: list[~affinda.models.Education]
+:ivar profession: Prediction of the candidate's profession based on recent work experience.
+:vartype profession: str
+:ivar linkedin: Linkedin account associated with the candidate.
+:vartype linkedin: str
+:ivar work_experience:
+:vartype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
+:ivar skills:
+:vartype skills: list[~affinda.models.ResumeDataSkillsItem]
+:ivar certifications:
+:vartype certifications: list[str]
+:ivar publications:
+:vartype publications: list[str]
+:ivar referees:
+:vartype referees: list[~affinda.models.ResumeDataRefereesItem]
+:ivar sections:
+:vartype sections: list[~affinda.models.ResumeDataSectionsItem]
+:ivar is_resume_probability: Probability that the given document is a resume. Values below 30
+ suggest that the document is not a resume.
+:vartype is_resume_probability: int
+:ivar raw_text: All of the raw text of the parsed resume, example is shortened for readability.
+:vartype raw_text: str
+
+<a id="models._models.ResumeData.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
+collection.
+- `name`: 
+- `phone_numbers`: 
+- `websites`: 
+- `emails`: 
+- `date_of_birth`: 
+- `location`: 
+- `objective`: 
+- `summary`: 
+- `total_years_experience`: 
+- `education`: 
+- `work_experience`: 
+- `skills`: 
+- `certifications`: 
+- `publications`: 
+- `referees`: 
+- `raw_text`: All of the raw text of the parsed resume, example is shortened for
+readability.
 
 <a id="models._models.ResumeDataName"></a>
 
@@ -8809,31 +7298,42 @@ match exists.
 - `management_level`: Known values are: "None", "Low", "Mid", "Upper".
 - `classification`: 
 
-<a id="models._models.ResumeDocument"></a>
+<a id="models._models.ResumeRequestBody"></a>
 
-## ResumeDocument Objects
+## ResumeRequestBody Objects
 
 ```python
-class ResumeDocument(Document)
+class ResumeRequestBody(msrest.serialization.Model)
 ```
 
-ResumeDocument.
+ResumeRequestBody.
 
-All required parameters must be populated in order to send to Azure.
-
-:ivar extractor: Required. Constant filled by server.
-:vartype extractor: str
-:ivar meta: Required.
-:vartype meta: ~affinda.models.DocumentMeta
-:ivar error:
-:vartype error: ~affinda.models.Error
-:ivar additional_properties: Unmatched properties from the message are deserialized to this
- collection.
-:vartype additional_properties: dict[str, any]
-:ivar data: Required. A JSON-encoded string of the ``ResumeData`` object.
+:ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
+ JPG.
+:vartype file: IO
+:ivar url: URL to download the resume.
+:vartype url: str
+:ivar data: A JSON-encoded string of the ``ResumeData`` object.
 :vartype data: ~affinda.models.ResumeData
+:ivar identifier: A random string that uniquely identify the resource.
+:vartype identifier: str
+:ivar file_name: Optional filename of the file.
+:vartype file_name: str
+:ivar wait: If "true" (default), will return a response only after processing has completed. If
+ "false", will return an empty data object which can be polled at the GET endpoint until
+ processing is complete.
+:vartype wait: bool
+:ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
+ of an existing document. If "false" (default), will parse the document normally whether its a
+ duplicate or not.
+:vartype reject_duplicates: bool
+:ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+:vartype language: str
+:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+ deleted.  Defaults to no expiry.
+:vartype expiry_time: ~datetime.datetime
 
-<a id="models._models.ResumeDocument.__init__"></a>
+<a id="models._models.ResumeRequestBody.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -8843,11 +7343,21 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `meta`: Required.
-- `error`: 
-- `additional_properties`: Unmatched properties from the message are deserialized to this
-collection.
-- `data`: Required. A JSON-encoded string of the ``ResumeData`` object.
+- `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+PNG, JPG.
+- `url`: URL to download the resume.
+- `data`: A JSON-encoded string of the ``ResumeData`` object.
+- `identifier`: A random string that uniquely identify the resource.
+- `file_name`: Optional filename of the file.
+- `wait`: If "true" (default), will return a response only after processing has completed.
+If "false", will return an empty data object which can be polled at the GET endpoint until
+processing is complete.
+- `reject_duplicates`: If "true", parsing will fail when the uploaded document is
+duplicate of an existing document. If "false" (default), will parse the document normally
+whether its a duplicate or not.
+- `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
+deleted.  Defaults to no expiry.
 
 <a id="models._models.ResumeSearch"></a>
 
@@ -10216,17 +8726,15 @@ def __init__(**kwargs)
 - `value`: 
 - `score`: 
 
-<a id="models._models.SkillAnnotationV2"></a>
+<a id="models._models.SkillAnnotation"></a>
 
-## SkillAnnotationV2 Objects
+## SkillAnnotation Objects
 
 ```python
-class SkillAnnotationV2(AnnotationV2)
+class SkillAnnotation(Annotation)
 ```
 
-SkillAnnotationV2.
-
-Variables are only populated by the server, and will be ignored when sending a request.
+SkillAnnotation.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -10264,7 +8772,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.SkillAnnotationV2.__init__"></a>
+<a id="models._models.SkillAnnotation.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -10291,6 +8799,7 @@ is the confidence that the text in the image has been correctly read by the mode
 - `is_auto_verified`: Required.
 - `data_point`: 
 - `content_type`: Required.
+- `parsed`: 
 
 <a id="models._models.SkillsSearchScoreComponent"></a>
 
@@ -10325,434 +8834,15 @@ def __init__(**kwargs)
 - `label`: Required.
 - `score`: 
 
-<a id="models._models.Tag"></a>
+<a id="models._models.YearsExperienceAnnotation"></a>
 
-## Tag Objects
-
-```python
-class Tag(msrest.serialization.Model)
-```
-
-Tag.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar id: Required. Uniquely identify a tag.
-:vartype id: int
-:ivar name: Required.
-:vartype name: str
-:ivar workspace: Required. Uniquely identify a workspace.
-:vartype workspace: str
-:ivar document_count: Required. Number of documents tagged with this.
-:vartype document_count: int
-
-<a id="models._models.Tag.__init__"></a>
-
-#### \_\_init\_\_
+## YearsExperienceAnnotation Objects
 
 ```python
-def __init__(**kwargs)
+class YearsExperienceAnnotation(Annotation)
 ```
 
-**Arguments**:
-
-- `id`: Required. Uniquely identify a tag.
-- `name`: Required.
-- `workspace`: Required. Uniquely identify a workspace.
-- `document_count`: Required. Number of documents tagged with this.
-
-<a id="models._models.TagCreate"></a>
-
-## TagCreate Objects
-
-```python
-class TagCreate(msrest.serialization.Model)
-```
-
-TagCreate.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar name: Required.
-:vartype name: str
-:ivar workspace: Required. Uniquely identify a workspace.
-:vartype workspace: str
-
-<a id="models._models.TagCreate.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `name`: Required.
-- `workspace`: Required. Uniquely identify a workspace.
-
-<a id="models._models.TagUpdate"></a>
-
-## TagUpdate Objects
-
-```python
-class TagUpdate(msrest.serialization.Model)
-```
-
-TagUpdate.
-
-:ivar name:
-:vartype name: str
-:ivar workspace: Uniquely identify a workspace.
-:vartype workspace: str
-
-<a id="models._models.TagUpdate.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `name`: 
-- `workspace`: Uniquely identify a workspace.
-
-<a id="models._models.UserNullable"></a>
-
-## UserNullable Objects
-
-```python
-class UserNullable(msrest.serialization.Model)
-```
-
-UserNullable.
-
-:ivar id: Uniquely identify a user.
-:vartype id: int
-:ivar name:
-:vartype name: str
-:ivar username:
-:vartype username: str
-:ivar email:
-:vartype email: str
-:ivar avatar: URL of the user's avatar.
-:vartype avatar: str
-
-<a id="models._models.UserNullable.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `id`: Uniquely identify a user.
-- `name`: 
-- `username`: 
-- `email`: 
-- `avatar`: URL of the user's avatar.
-
-<a id="models._models.Workspace"></a>
-
-## Workspace Objects
-
-```python
-class Workspace(msrest.serialization.Model)
-```
-
-Workspace.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar identifier: Required. Uniquely identify a workspace.
-:vartype identifier: str
-:ivar organization:
-:vartype organization: ~affinda.models.Organization
-:ivar name:
-:vartype name: str
-:ivar visibility: Visibility "organization" means everyone in the organization can access the
- workspace. Visibility "private" means only people explicitly added can access the workspace.
- Known values are: "organization", "private".
-:vartype visibility: str or ~affinda.models.WorkspaceVisibility
-:ivar collections:
-:vartype collections: list[~affinda.models.WorkspaceCollectionsItem]
-:ivar reject_invalid_documents: If true, the uploaded document will be rejected if it's of the
- wrong document type, or if its document type cannot be determined. No credits will be consumed.
-:vartype reject_invalid_documents: bool
-:ivar members:
-:vartype members: list[~affinda.models.User]
-:ivar unvalidated_docs_count: Number of unvalidated documents in the workspace.
-:vartype unvalidated_docs_count: int
-:ivar confirmed_docs_count: Number of validated documents in the workspace.
-:vartype confirmed_docs_count: int
-:ivar ingest_email:
-:vartype ingest_email: str
-
-<a id="models._models.Workspace.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `identifier`: Required. Uniquely identify a workspace.
-- `organization`: 
-- `name`: 
-- `visibility`: Visibility "organization" means everyone in the organization can access
-the workspace. Visibility "private" means only people explicitly added can access the
-workspace. Known values are: "organization", "private".
-- `collections`: 
-- `reject_invalid_documents`: If true, the uploaded document will be rejected if it's of
-the wrong document type, or if its document type cannot be determined. No credits will be
-consumed.
-- `members`: 
-- `unvalidated_docs_count`: Number of unvalidated documents in the workspace.
-- `confirmed_docs_count`: Number of validated documents in the workspace.
-- `ingest_email`: 
-
-<a id="models._models.WorkspaceCollectionsItem"></a>
-
-## WorkspaceCollectionsItem Objects
-
-```python
-class WorkspaceCollectionsItem(msrest.serialization.Model)
-```
-
-WorkspaceCollectionsItem.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar identifier: Required. Uniquely identify a collection.
-:vartype identifier: str
-:ivar name: Required.
-:vartype name: str
-:ivar extractor: Required.
-:vartype extractor: ~affinda.models.WorkspaceCollectionsItemExtractor
-:ivar unvalidated_docs_count: Number of unvalidated documents in the collection.
-:vartype unvalidated_docs_count: int
-:ivar confirmed_docs_count: Number of validated documents in the collection.
-:vartype confirmed_docs_count: int
-
-<a id="models._models.WorkspaceCollectionsItem.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `identifier`: Required. Uniquely identify a collection.
-- `name`: Required.
-- `extractor`: Required.
-- `unvalidated_docs_count`: Number of unvalidated documents in the collection.
-- `confirmed_docs_count`: Number of validated documents in the collection.
-
-<a id="models._models.WorkspaceCollectionsItemExtractor"></a>
-
-## WorkspaceCollectionsItemExtractor Objects
-
-```python
-class WorkspaceCollectionsItemExtractor(msrest.serialization.Model)
-```
-
-WorkspaceCollectionsItemExtractor.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar identifier: Required. Uniquely identify an extractor.
-:vartype identifier: str
-:ivar name: Required.
-:vartype name: str
-:ivar name_plural: Required.
-:vartype name_plural: str
-:ivar base_extractor:
-:vartype base_extractor: ~affinda.models.BaseExtractor
-:ivar category:
-:vartype category: str
-:ivar validatable: Required.
-:vartype validatable: bool
-:ivar is_custom:
-:vartype is_custom: bool
-:ivar created_dt:
-:vartype created_dt: ~datetime.datetime
-
-<a id="models._models.WorkspaceCollectionsItemExtractor.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `identifier`: Required. Uniquely identify an extractor.
-- `name`: Required.
-- `name_plural`: Required.
-- `base_extractor`: 
-- `category`: 
-- `validatable`: Required.
-- `is_custom`: 
-- `created_dt`: 
-
-<a id="models._models.WorkspaceCreate"></a>
-
-## WorkspaceCreate Objects
-
-```python
-class WorkspaceCreate(msrest.serialization.Model)
-```
-
-WorkspaceCreate.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar organization: Required. Uniquely identify an organization.
-:vartype organization: str
-:ivar name: Required.
-:vartype name: str
-:ivar visibility: Visibility "organization" means everyone in the organization can access the
- workspace. Visibility "private" means only people explicitly added can access the workspace.
- Known values are: "organization", "private".
-:vartype visibility: str or ~affinda.models.WorkspaceVisibility
-:ivar reject_invalid_documents: If true, the uploaded document will be rejected if it's of the
- wrong document type, or if its document type cannot be determined. No credits will be consumed.
-:vartype reject_invalid_documents: bool
-
-<a id="models._models.WorkspaceCreate.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `organization`: Required. Uniquely identify an organization.
-- `name`: Required.
-- `visibility`: Visibility "organization" means everyone in the organization can access
-the workspace. Visibility "private" means only people explicitly added can access the
-workspace. Known values are: "organization", "private".
-- `reject_invalid_documents`: If true, the uploaded document will be rejected if it's of
-the wrong document type, or if its document type cannot be determined. No credits will be
-consumed.
-
-<a id="models._models.WorkspaceMembership"></a>
-
-## WorkspaceMembership Objects
-
-```python
-class WorkspaceMembership(msrest.serialization.Model)
-```
-
-WorkspaceMembership.
-
-:ivar identifier: Uniquely identify a membership.
-:vartype identifier: str
-:ivar workspace: Uniquely identify a workspace.
-:vartype workspace: str
-:ivar user:
-:vartype user: ~affinda.models.User
-
-<a id="models._models.WorkspaceMembership.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `identifier`: Uniquely identify a membership.
-- `workspace`: Uniquely identify a workspace.
-- `user`: 
-
-<a id="models._models.WorkspaceMembershipCreate"></a>
-
-## WorkspaceMembershipCreate Objects
-
-```python
-class WorkspaceMembershipCreate(msrest.serialization.Model)
-```
-
-WorkspaceMembershipCreate.
-
-:ivar workspace: Uniquely identify a workspace.
-:vartype workspace: str
-:ivar user: Uniquely identify a user.
-:vartype user: int
-
-<a id="models._models.WorkspaceMembershipCreate.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `workspace`: Uniquely identify a workspace.
-- `user`: Uniquely identify a user.
-
-<a id="models._models.WorkspaceUpdate"></a>
-
-## WorkspaceUpdate Objects
-
-```python
-class WorkspaceUpdate(msrest.serialization.Model)
-```
-
-WorkspaceUpdate.
-
-:ivar name:
-:vartype name: str
-:ivar visibility: Visibility "organization" means everyone in the organization can access the
- workspace. Visibility "private" means only people explicitly added can access the workspace.
- Known values are: "organization", "private".
-:vartype visibility: str or ~affinda.models.WorkspaceVisibility
-:ivar reject_invalid_documents: If true, the uploaded document will be rejected if it's of the
- wrong document type, or if its document type cannot be determined. No credits will be consumed.
-:vartype reject_invalid_documents: bool
-
-<a id="models._models.WorkspaceUpdate.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `name`: 
-- `visibility`: Visibility "organization" means everyone in the organization can access
-the workspace. Visibility "private" means only people explicitly added can access the
-workspace. Known values are: "organization", "private".
-- `reject_invalid_documents`: If true, the uploaded document will be rejected if it's of
-the wrong document type, or if its document type cannot be determined. No credits will be
-consumed.
-
-<a id="models._models.YearsExperienceAnnotationV2"></a>
-
-## YearsExperienceAnnotationV2 Objects
-
-```python
-class YearsExperienceAnnotationV2(AnnotationV2)
-```
-
-YearsExperienceAnnotationV2.
+YearsExperienceAnnotation.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -10788,9 +8878,9 @@ All required parameters must be populated in order to send to Azure.
 :ivar content_type: Required.
 :vartype content_type: str
 :ivar parsed: Years of experience range.
-:vartype parsed: ~affinda.models.YearsExperienceAnnotationV2Parsed
+:vartype parsed: ~affinda.models.YearsExperienceAnnotationParsed
 
-<a id="models._models.YearsExperienceAnnotationV2.__init__"></a>
+<a id="models._models.YearsExperienceAnnotation.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -10819,12 +8909,12 @@ is the confidence that the text in the image has been correctly read by the mode
 - `content_type`: Required.
 - `parsed`: Years of experience range.
 
-<a id="models._models.YearsExperienceAnnotationV2Parsed"></a>
+<a id="models._models.YearsExperienceAnnotationParsed"></a>
 
-## YearsExperienceAnnotationV2Parsed Objects
+## YearsExperienceAnnotationParsed Objects
 
 ```python
-class YearsExperienceAnnotationV2Parsed(msrest.serialization.Model)
+class YearsExperienceAnnotationParsed(msrest.serialization.Model)
 ```
 
 Years of experience range.
@@ -10834,7 +8924,7 @@ Years of experience range.
 :ivar maximum: Maximum years of experience.
 :vartype maximum: float
 
-<a id="models._models.YearsExperienceAnnotationV2Parsed.__init__"></a>
+<a id="models._models.YearsExperienceAnnotationParsed.__init__"></a>
 
 #### \_\_init\_\_
 

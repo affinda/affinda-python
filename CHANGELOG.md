@@ -14,11 +14,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Remove extractor's `id` field, use `identifier` field instead
 - Rework document polymorphism, the model used to deserialize document response is now automatically chosen based on the document's extractor
-- Make Document.Meta.confirmedBy nullable
 
 ### Removed
 - Remove extractor's `id` field
 - Remove API v2 endpoints
+- Removing v3 endpoints, see newer major release for v3 compatible release
 
 ## [2.1.0] - 2023-02-06
 ### Added

@@ -48,8 +48,8 @@ class Accreditation(msrest.serialization.Model):
         self.education_level = None
 
 
-class AnnotationV2(msrest.serialization.Model):
-    """AnnotationV2.
+class Annotation(msrest.serialization.Model):
+    """Annotation.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -152,7 +152,7 @@ class AnnotationV2(msrest.serialization.Model):
         :keyword content_type: Required.
         :paramtype content_type: str
         """
-        super(AnnotationV2, self).__init__(**kwargs)
+        super(Annotation, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
@@ -167,321 +167,6 @@ class AnnotationV2(msrest.serialization.Model):
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs.get("data_point", None)
         self.content_type = kwargs["content_type"]
-
-
-class BaseExtractor(msrest.serialization.Model):
-    """BaseExtractor.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar identifier: Required. Uniquely identify an extractor.
-    :vartype identifier: str
-    :ivar name: Required.
-    :vartype name: str
-    :ivar name_plural: Required.
-    :vartype name_plural: str
-    :ivar validatable: Required.
-    :vartype validatable: bool
-    :ivar is_custom:
-    :vartype is_custom: bool
-    :ivar created_dt:
-    :vartype created_dt: ~datetime.datetime
-    """
-
-    _validation = {
-        "identifier": {"required": True},
-        "name": {"required": True},
-        "name_plural": {"required": True},
-        "validatable": {"required": True},
-    }
-
-    _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-        "name": {"key": "name", "type": "str"},
-        "name_plural": {"key": "namePlural", "type": "str"},
-        "validatable": {"key": "validatable", "type": "bool"},
-        "is_custom": {"key": "isCustom", "type": "bool"},
-        "created_dt": {"key": "createdDt", "type": "iso-8601"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword identifier: Required. Uniquely identify an extractor.
-        :paramtype identifier: str
-        :keyword name: Required.
-        :paramtype name: str
-        :keyword name_plural: Required.
-        :paramtype name_plural: str
-        :keyword validatable: Required.
-        :paramtype validatable: bool
-        :keyword is_custom:
-        :paramtype is_custom: bool
-        :keyword created_dt:
-        :paramtype created_dt: ~datetime.datetime
-        """
-        super(BaseExtractor, self).__init__(**kwargs)
-        self.identifier = kwargs["identifier"]
-        self.name = kwargs["name"]
-        self.name_plural = kwargs["name_plural"]
-        self.validatable = kwargs["validatable"]
-        self.is_custom = kwargs.get("is_custom", None)
-        self.created_dt = kwargs.get("created_dt", None)
-
-
-class Collection(msrest.serialization.Model):
-    """Collection.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar identifier: Required. Uniquely identify a collection.
-    :vartype identifier: str
-    :ivar name:
-    :vartype name: str
-    :ivar workspace:
-    :vartype workspace: ~affinda.models.CollectionWorkspace
-    :ivar extractor:
-    :vartype extractor: ~affinda.models.Extractor
-    :ivar auto_validation_threshold:
-    :vartype auto_validation_threshold: float
-    :ivar fields:
-    :vartype fields: list[~affinda.models.FieldGroup]
-    :ivar fields_configured:
-    :vartype fields_configured: bool
-    :ivar date_format_preference: Known values are: "DMY", "MDY", "YMD".
-    :vartype date_format_preference: str or ~affinda.models.CollectionDateFormatPreference
-    :ivar date_format_from_document: Predict the date format from any dates in the document that is
-     not ambiguous.
-    :vartype date_format_from_document: bool
-    :ivar extractor_config: Extra configurations specific to an extractor.
-    :vartype extractor_config: dict[str, any]
-    :ivar unvalidated_docs_count: Number of unvalidated documents in the collection.
-    :vartype unvalidated_docs_count: int
-    :ivar confirmed_docs_count: Number of validated documents in the collection.
-    :vartype confirmed_docs_count: int
-    :ivar ingest_email:
-    :vartype ingest_email: str
-    """
-
-    _validation = {
-        "identifier": {"required": True},
-    }
-
-    _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-        "name": {"key": "name", "type": "str"},
-        "workspace": {"key": "workspace", "type": "CollectionWorkspace"},
-        "extractor": {"key": "extractor", "type": "Extractor"},
-        "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
-        "fields": {"key": "fields", "type": "[FieldGroup]"},
-        "fields_configured": {"key": "fieldsConfigured", "type": "bool"},
-        "date_format_preference": {"key": "dateFormatPreference", "type": "str"},
-        "date_format_from_document": {"key": "dateFormatFromDocument", "type": "bool"},
-        "extractor_config": {"key": "extractorConfig", "type": "{object}"},
-        "unvalidated_docs_count": {"key": "unvalidatedDocsCount", "type": "int"},
-        "confirmed_docs_count": {"key": "confirmedDocsCount", "type": "int"},
-        "ingest_email": {"key": "ingestEmail", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword identifier: Required. Uniquely identify a collection.
-        :paramtype identifier: str
-        :keyword name:
-        :paramtype name: str
-        :keyword workspace:
-        :paramtype workspace: ~affinda.models.CollectionWorkspace
-        :keyword extractor:
-        :paramtype extractor: ~affinda.models.Extractor
-        :keyword auto_validation_threshold:
-        :paramtype auto_validation_threshold: float
-        :keyword fields:
-        :paramtype fields: list[~affinda.models.FieldGroup]
-        :keyword fields_configured:
-        :paramtype fields_configured: bool
-        :keyword date_format_preference: Known values are: "DMY", "MDY", "YMD".
-        :paramtype date_format_preference: str or ~affinda.models.CollectionDateFormatPreference
-        :keyword date_format_from_document: Predict the date format from any dates in the document that
-         is not ambiguous.
-        :paramtype date_format_from_document: bool
-        :keyword extractor_config: Extra configurations specific to an extractor.
-        :paramtype extractor_config: dict[str, any]
-        :keyword unvalidated_docs_count: Number of unvalidated documents in the collection.
-        :paramtype unvalidated_docs_count: int
-        :keyword confirmed_docs_count: Number of validated documents in the collection.
-        :paramtype confirmed_docs_count: int
-        :keyword ingest_email:
-        :paramtype ingest_email: str
-        """
-        super(Collection, self).__init__(**kwargs)
-        self.identifier = kwargs["identifier"]
-        self.name = kwargs.get("name", None)
-        self.workspace = kwargs.get("workspace", None)
-        self.extractor = kwargs.get("extractor", None)
-        self.auto_validation_threshold = kwargs.get("auto_validation_threshold", None)
-        self.fields = kwargs.get("fields", None)
-        self.fields_configured = kwargs.get("fields_configured", None)
-        self.date_format_preference = kwargs.get("date_format_preference", None)
-        self.date_format_from_document = kwargs.get("date_format_from_document", None)
-        self.extractor_config = kwargs.get("extractor_config", None)
-        self.unvalidated_docs_count = kwargs.get("unvalidated_docs_count", None)
-        self.confirmed_docs_count = kwargs.get("confirmed_docs_count", None)
-        self.ingest_email = kwargs.get("ingest_email", None)
-
-
-class CollectionCreate(msrest.serialization.Model):
-    """CollectionCreate.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar name: Required.
-    :vartype name: str
-    :ivar workspace: Required. Uniquely identify a workspace.
-    :vartype workspace: str
-    :ivar extractor: Required. Uniquely identify an extractor.
-    :vartype extractor: str
-    :ivar auto_validation_threshold:
-    :vartype auto_validation_threshold: float
-    :ivar fields:
-    :vartype fields: list[~affinda.models.FieldGroup]
-    :ivar date_format_preference: Known values are: "DMY", "MDY", "YMD".
-    :vartype date_format_preference: str or ~affinda.models.DateFormatPreference
-    :ivar date_format_from_document: Predict the date format from any dates in the document that is
-     not ambiguous.
-    :vartype date_format_from_document: bool
-    :ivar extractor_config: Extra configurations specific to an extractor.
-    :vartype extractor_config: dict[str, any]
-    """
-
-    _validation = {
-        "name": {"required": True},
-        "workspace": {"required": True},
-        "extractor": {"required": True},
-    }
-
-    _attribute_map = {
-        "name": {"key": "name", "type": "str"},
-        "workspace": {"key": "workspace", "type": "str"},
-        "extractor": {"key": "extractor", "type": "str"},
-        "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
-        "fields": {"key": "fields", "type": "[FieldGroup]"},
-        "date_format_preference": {"key": "dateFormatPreference", "type": "str"},
-        "date_format_from_document": {"key": "dateFormatFromDocument", "type": "bool"},
-        "extractor_config": {"key": "extractorConfig", "type": "{object}"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword name: Required.
-        :paramtype name: str
-        :keyword workspace: Required. Uniquely identify a workspace.
-        :paramtype workspace: str
-        :keyword extractor: Required. Uniquely identify an extractor.
-        :paramtype extractor: str
-        :keyword auto_validation_threshold:
-        :paramtype auto_validation_threshold: float
-        :keyword fields:
-        :paramtype fields: list[~affinda.models.FieldGroup]
-        :keyword date_format_preference: Known values are: "DMY", "MDY", "YMD".
-        :paramtype date_format_preference: str or ~affinda.models.DateFormatPreference
-        :keyword date_format_from_document: Predict the date format from any dates in the document that
-         is not ambiguous.
-        :paramtype date_format_from_document: bool
-        :keyword extractor_config: Extra configurations specific to an extractor.
-        :paramtype extractor_config: dict[str, any]
-        """
-        super(CollectionCreate, self).__init__(**kwargs)
-        self.name = kwargs["name"]
-        self.workspace = kwargs["workspace"]
-        self.extractor = kwargs["extractor"]
-        self.auto_validation_threshold = kwargs.get("auto_validation_threshold", None)
-        self.fields = kwargs.get("fields", None)
-        self.date_format_preference = kwargs.get("date_format_preference", None)
-        self.date_format_from_document = kwargs.get("date_format_from_document", None)
-        self.extractor_config = kwargs.get("extractor_config", None)
-
-
-class CollectionUpdate(msrest.serialization.Model):
-    """CollectionUpdate.
-
-    :ivar name:
-    :vartype name: str
-    :ivar auto_validation_threshold:
-    :vartype auto_validation_threshold: float
-    :ivar fields:
-    :vartype fields: list[~affinda.models.FieldGroup]
-    :ivar date_format_preference: Known values are: "DMY", "MDY", "YMD".
-    :vartype date_format_preference: str or ~affinda.models.DateFormatPreference
-    :ivar date_format_from_document: Predict the date format from any dates in the document that is
-     not ambiguous.
-    :vartype date_format_from_document: bool
-    :ivar extractor_config: Extra configurations specific to an extractor.
-    :vartype extractor_config: dict[str, any]
-    """
-
-    _attribute_map = {
-        "name": {"key": "name", "type": "str"},
-        "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
-        "fields": {"key": "fields", "type": "[FieldGroup]"},
-        "date_format_preference": {"key": "dateFormatPreference", "type": "str"},
-        "date_format_from_document": {"key": "dateFormatFromDocument", "type": "bool"},
-        "extractor_config": {"key": "extractorConfig", "type": "{object}"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword name:
-        :paramtype name: str
-        :keyword auto_validation_threshold:
-        :paramtype auto_validation_threshold: float
-        :keyword fields:
-        :paramtype fields: list[~affinda.models.FieldGroup]
-        :keyword date_format_preference: Known values are: "DMY", "MDY", "YMD".
-        :paramtype date_format_preference: str or ~affinda.models.DateFormatPreference
-        :keyword date_format_from_document: Predict the date format from any dates in the document that
-         is not ambiguous.
-        :paramtype date_format_from_document: bool
-        :keyword extractor_config: Extra configurations specific to an extractor.
-        :paramtype extractor_config: dict[str, any]
-        """
-        super(CollectionUpdate, self).__init__(**kwargs)
-        self.name = kwargs.get("name", None)
-        self.auto_validation_threshold = kwargs.get("auto_validation_threshold", None)
-        self.fields = kwargs.get("fields", None)
-        self.date_format_preference = kwargs.get("date_format_preference", None)
-        self.date_format_from_document = kwargs.get("date_format_from_document", None)
-        self.extractor_config = kwargs.get("extractor_config", None)
-
-
-class CollectionWorkspace(msrest.serialization.Model):
-    """CollectionWorkspace.
-
-    :ivar identifier: Uniquely identify a workspace.
-    :vartype identifier: str
-    :ivar organization:
-    :vartype organization: ~affinda.models.Organization
-    :ivar name:
-    :vartype name: str
-    """
-
-    _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-        "organization": {"key": "organization", "type": "Organization"},
-        "name": {"key": "name", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword identifier: Uniquely identify a workspace.
-        :paramtype identifier: str
-        :keyword organization:
-        :paramtype organization: ~affinda.models.Organization
-        :keyword name:
-        :paramtype name: str
-        """
-        super(CollectionWorkspace, self).__init__(**kwargs)
-        self.identifier = kwargs.get("identifier", None)
-        self.organization = kwargs.get("organization", None)
-        self.name = kwargs.get("name", None)
 
 
 class Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1(
@@ -676,302 +361,6 @@ class Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgrou
             self,
         ).__init__(**kwargs)
         self.match = kwargs.get("match", None)
-
-
-class ResumeData(msrest.serialization.Model):
-    """A JSON-encoded string of the ``ResumeData`` object.
-
-    Variables are only populated by the server, and will be ignored when sending a request.
-
-    :ivar additional_properties: Unmatched properties from the message are deserialized to this
-     collection.
-    :vartype additional_properties: dict[str, any]
-    :ivar name:
-    :vartype name: ~affinda.models.ResumeDataName
-    :ivar phone_numbers:
-    :vartype phone_numbers: list[str]
-    :ivar websites:
-    :vartype websites: list[str]
-    :ivar emails:
-    :vartype emails: list[str]
-    :ivar date_of_birth:
-    :vartype date_of_birth: str
-    :ivar location:
-    :vartype location: ~affinda.models.Location
-    :ivar objective:
-    :vartype objective: str
-    :ivar languages:
-    :vartype languages: list[str]
-    :ivar language_codes:
-    :vartype language_codes: list[str]
-    :ivar summary:
-    :vartype summary: str
-    :ivar total_years_experience:
-    :vartype total_years_experience: int
-    :ivar head_shot: base64 encoded string.
-    :vartype head_shot: bytearray
-    :ivar education:
-    :vartype education: list[~affinda.models.Education]
-    :ivar profession: Prediction of the candidate's profession based on recent work experience.
-    :vartype profession: str
-    :ivar linkedin: Linkedin account associated with the candidate.
-    :vartype linkedin: str
-    :ivar work_experience:
-    :vartype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
-    :ivar skills:
-    :vartype skills: list[~affinda.models.ResumeDataSkillsItem]
-    :ivar certifications:
-    :vartype certifications: list[str]
-    :ivar publications:
-    :vartype publications: list[str]
-    :ivar referees:
-    :vartype referees: list[~affinda.models.ResumeDataRefereesItem]
-    :ivar sections:
-    :vartype sections: list[~affinda.models.ResumeDataSectionsItem]
-    :ivar is_resume_probability: Probability that the given document is a resume. Values below 30
-     suggest that the document is not a resume.
-    :vartype is_resume_probability: int
-    :ivar raw_text: All of the raw text of the parsed resume, example is shortened for readability.
-    :vartype raw_text: str
-    """
-
-    _validation = {
-        "languages": {"readonly": True},
-        "language_codes": {"readonly": True},
-        "head_shot": {"readonly": True},
-        "profession": {"readonly": True},
-        "linkedin": {"readonly": True},
-        "sections": {"readonly": True},
-        "is_resume_probability": {"readonly": True},
-    }
-
-    _attribute_map = {
-        "additional_properties": {"key": "", "type": "{object}"},
-        "name": {"key": "name", "type": "ResumeDataName"},
-        "phone_numbers": {"key": "phoneNumbers", "type": "[str]"},
-        "websites": {"key": "websites", "type": "[str]"},
-        "emails": {"key": "emails", "type": "[str]"},
-        "date_of_birth": {"key": "dateOfBirth", "type": "str"},
-        "location": {"key": "location", "type": "Location"},
-        "objective": {"key": "objective", "type": "str"},
-        "languages": {"key": "languages", "type": "[str]"},
-        "language_codes": {"key": "languageCodes", "type": "[str]"},
-        "summary": {"key": "summary", "type": "str"},
-        "total_years_experience": {"key": "totalYearsExperience", "type": "int"},
-        "head_shot": {"key": "headShot", "type": "bytearray"},
-        "education": {"key": "education", "type": "[Education]"},
-        "profession": {"key": "profession", "type": "str"},
-        "linkedin": {"key": "linkedin", "type": "str"},
-        "work_experience": {"key": "workExperience", "type": "[ResumeDataWorkExperienceItem]"},
-        "skills": {"key": "skills", "type": "[ResumeDataSkillsItem]"},
-        "certifications": {"key": "certifications", "type": "[str]"},
-        "publications": {"key": "publications", "type": "[str]"},
-        "referees": {"key": "referees", "type": "[ResumeDataRefereesItem]"},
-        "sections": {"key": "sections", "type": "[ResumeDataSectionsItem]"},
-        "is_resume_probability": {"key": "isResumeProbability", "type": "int"},
-        "raw_text": {"key": "rawText", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword additional_properties: Unmatched properties from the message are deserialized to this
-         collection.
-        :paramtype additional_properties: dict[str, any]
-        :keyword name:
-        :paramtype name: ~affinda.models.ResumeDataName
-        :keyword phone_numbers:
-        :paramtype phone_numbers: list[str]
-        :keyword websites:
-        :paramtype websites: list[str]
-        :keyword emails:
-        :paramtype emails: list[str]
-        :keyword date_of_birth:
-        :paramtype date_of_birth: str
-        :keyword location:
-        :paramtype location: ~affinda.models.Location
-        :keyword objective:
-        :paramtype objective: str
-        :keyword summary:
-        :paramtype summary: str
-        :keyword total_years_experience:
-        :paramtype total_years_experience: int
-        :keyword education:
-        :paramtype education: list[~affinda.models.Education]
-        :keyword work_experience:
-        :paramtype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
-        :keyword skills:
-        :paramtype skills: list[~affinda.models.ResumeDataSkillsItem]
-        :keyword certifications:
-        :paramtype certifications: list[str]
-        :keyword publications:
-        :paramtype publications: list[str]
-        :keyword referees:
-        :paramtype referees: list[~affinda.models.ResumeDataRefereesItem]
-        :keyword raw_text: All of the raw text of the parsed resume, example is shortened for
-         readability.
-        :paramtype raw_text: str
-        """
-        super(ResumeData, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.name = kwargs.get("name", None)
-        self.phone_numbers = kwargs.get("phone_numbers", None)
-        self.websites = kwargs.get("websites", None)
-        self.emails = kwargs.get("emails", None)
-        self.date_of_birth = kwargs.get("date_of_birth", None)
-        self.location = kwargs.get("location", None)
-        self.objective = kwargs.get("objective", "")
-        self.languages = None
-        self.language_codes = None
-        self.summary = kwargs.get("summary", "")
-        self.total_years_experience = kwargs.get("total_years_experience", None)
-        self.head_shot = None
-        self.education = kwargs.get("education", None)
-        self.profession = None
-        self.linkedin = None
-        self.work_experience = kwargs.get("work_experience", None)
-        self.skills = kwargs.get("skills", None)
-        self.certifications = kwargs.get("certifications", None)
-        self.publications = kwargs.get("publications", None)
-        self.referees = kwargs.get("referees", None)
-        self.sections = None
-        self.is_resume_probability = None
-        self.raw_text = kwargs.get("raw_text", None)
-
-
-class Components1FbbtzoSchemasDocumentPropertiesDataAnyof0(ResumeData):
-    """Components1FbbtzoSchemasDocumentPropertiesDataAnyof0.
-
-    Variables are only populated by the server, and will be ignored when sending a request.
-
-    :ivar additional_properties: Unmatched properties from the message are deserialized to this
-     collection.
-    :vartype additional_properties: dict[str, any]
-    :ivar name:
-    :vartype name: ~affinda.models.ResumeDataName
-    :ivar phone_numbers:
-    :vartype phone_numbers: list[str]
-    :ivar websites:
-    :vartype websites: list[str]
-    :ivar emails:
-    :vartype emails: list[str]
-    :ivar date_of_birth:
-    :vartype date_of_birth: str
-    :ivar location:
-    :vartype location: ~affinda.models.Location
-    :ivar objective:
-    :vartype objective: str
-    :ivar languages:
-    :vartype languages: list[str]
-    :ivar language_codes:
-    :vartype language_codes: list[str]
-    :ivar summary:
-    :vartype summary: str
-    :ivar total_years_experience:
-    :vartype total_years_experience: int
-    :ivar head_shot: base64 encoded string.
-    :vartype head_shot: bytearray
-    :ivar education:
-    :vartype education: list[~affinda.models.Education]
-    :ivar profession: Prediction of the candidate's profession based on recent work experience.
-    :vartype profession: str
-    :ivar linkedin: Linkedin account associated with the candidate.
-    :vartype linkedin: str
-    :ivar work_experience:
-    :vartype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
-    :ivar skills:
-    :vartype skills: list[~affinda.models.ResumeDataSkillsItem]
-    :ivar certifications:
-    :vartype certifications: list[str]
-    :ivar publications:
-    :vartype publications: list[str]
-    :ivar referees:
-    :vartype referees: list[~affinda.models.ResumeDataRefereesItem]
-    :ivar sections:
-    :vartype sections: list[~affinda.models.ResumeDataSectionsItem]
-    :ivar is_resume_probability: Probability that the given document is a resume. Values below 30
-     suggest that the document is not a resume.
-    :vartype is_resume_probability: int
-    :ivar raw_text: All of the raw text of the parsed resume, example is shortened for readability.
-    :vartype raw_text: str
-    """
-
-    _validation = {
-        "languages": {"readonly": True},
-        "language_codes": {"readonly": True},
-        "head_shot": {"readonly": True},
-        "profession": {"readonly": True},
-        "linkedin": {"readonly": True},
-        "sections": {"readonly": True},
-        "is_resume_probability": {"readonly": True},
-    }
-
-    _attribute_map = {
-        "additional_properties": {"key": "", "type": "{object}"},
-        "name": {"key": "name", "type": "ResumeDataName"},
-        "phone_numbers": {"key": "phoneNumbers", "type": "[str]"},
-        "websites": {"key": "websites", "type": "[str]"},
-        "emails": {"key": "emails", "type": "[str]"},
-        "date_of_birth": {"key": "dateOfBirth", "type": "str"},
-        "location": {"key": "location", "type": "Location"},
-        "objective": {"key": "objective", "type": "str"},
-        "languages": {"key": "languages", "type": "[str]"},
-        "language_codes": {"key": "languageCodes", "type": "[str]"},
-        "summary": {"key": "summary", "type": "str"},
-        "total_years_experience": {"key": "totalYearsExperience", "type": "int"},
-        "head_shot": {"key": "headShot", "type": "bytearray"},
-        "education": {"key": "education", "type": "[Education]"},
-        "profession": {"key": "profession", "type": "str"},
-        "linkedin": {"key": "linkedin", "type": "str"},
-        "work_experience": {"key": "workExperience", "type": "[ResumeDataWorkExperienceItem]"},
-        "skills": {"key": "skills", "type": "[ResumeDataSkillsItem]"},
-        "certifications": {"key": "certifications", "type": "[str]"},
-        "publications": {"key": "publications", "type": "[str]"},
-        "referees": {"key": "referees", "type": "[ResumeDataRefereesItem]"},
-        "sections": {"key": "sections", "type": "[ResumeDataSectionsItem]"},
-        "is_resume_probability": {"key": "isResumeProbability", "type": "int"},
-        "raw_text": {"key": "rawText", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword additional_properties: Unmatched properties from the message are deserialized to this
-         collection.
-        :paramtype additional_properties: dict[str, any]
-        :keyword name:
-        :paramtype name: ~affinda.models.ResumeDataName
-        :keyword phone_numbers:
-        :paramtype phone_numbers: list[str]
-        :keyword websites:
-        :paramtype websites: list[str]
-        :keyword emails:
-        :paramtype emails: list[str]
-        :keyword date_of_birth:
-        :paramtype date_of_birth: str
-        :keyword location:
-        :paramtype location: ~affinda.models.Location
-        :keyword objective:
-        :paramtype objective: str
-        :keyword summary:
-        :paramtype summary: str
-        :keyword total_years_experience:
-        :paramtype total_years_experience: int
-        :keyword education:
-        :paramtype education: list[~affinda.models.Education]
-        :keyword work_experience:
-        :paramtype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
-        :keyword skills:
-        :paramtype skills: list[~affinda.models.ResumeDataSkillsItem]
-        :keyword certifications:
-        :paramtype certifications: list[str]
-        :keyword publications:
-        :paramtype publications: list[str]
-        :keyword referees:
-        :paramtype referees: list[~affinda.models.ResumeDataRefereesItem]
-        :keyword raw_text: All of the raw text of the parsed resume, example is shortened for
-         readability.
-        :paramtype raw_text: str
-        """
-        super(Components1FbbtzoSchemasDocumentPropertiesDataAnyof0, self).__init__(**kwargs)
 
 
 class Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1(msrest.serialization.Model):
@@ -1172,227 +561,6 @@ class Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1(msrest.serializ
         super(Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1, self).__init__(**kwargs)
         self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
-
-
-class JobDescriptionData(msrest.serialization.Model):
-    """A JSON-encoded string of the ``JobDescriptionData`` object.
-
-    :ivar job_title:
-    :vartype job_title: ~affinda.models.JobTitleAnnotation
-    :ivar contact_email:
-    :vartype contact_email: ~affinda.models.TextAnnotationV2
-    :ivar contact_name:
-    :vartype contact_name: ~affinda.models.TextAnnotationV2
-    :ivar contact_phone:
-    :vartype contact_phone: ~affinda.models.TextAnnotationV2
-    :ivar start_date:
-    :vartype start_date: ~affinda.models.DateAnnotationV2
-    :ivar end_date:
-    :vartype end_date: ~affinda.models.DateAnnotationV2
-    :ivar job_type:
-    :vartype job_type: ~affinda.models.TextAnnotationV2
-    :ivar languages:
-    :vartype languages: list[~affinda.models.LanguageAnnotationV2]
-    :ivar skills:
-    :vartype skills: list[~affinda.models.SkillAnnotationV2]
-    :ivar organization_name:
-    :vartype organization_name: ~affinda.models.TextAnnotationV2
-    :ivar organization_website:
-    :vartype organization_website: ~affinda.models.TextAnnotationV2
-    :ivar education_level:
-    :vartype education_level: ~affinda.models.TextAnnotationV2
-    :ivar education_accreditation:
-    :vartype education_accreditation: ~affinda.models.TextAnnotationV2
-    :ivar expected_remuneration:
-    :vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2
-    :ivar location:
-    :vartype location: ~affinda.models.LocationAnnotationV2
-    :ivar certifications:
-    :vartype certifications: list[~affinda.models.TextAnnotationV2]
-    :ivar years_experience:
-    :vartype years_experience: ~affinda.models.YearsExperienceAnnotationV2
-    """
-
-    _attribute_map = {
-        "job_title": {"key": "jobTitle", "type": "JobTitleAnnotation"},
-        "contact_email": {"key": "contactEmail", "type": "TextAnnotationV2"},
-        "contact_name": {"key": "contactName", "type": "TextAnnotationV2"},
-        "contact_phone": {"key": "contactPhone", "type": "TextAnnotationV2"},
-        "start_date": {"key": "startDate", "type": "DateAnnotationV2"},
-        "end_date": {"key": "endDate", "type": "DateAnnotationV2"},
-        "job_type": {"key": "jobType", "type": "TextAnnotationV2"},
-        "languages": {"key": "languages", "type": "[LanguageAnnotationV2]"},
-        "skills": {"key": "skills", "type": "[SkillAnnotationV2]"},
-        "organization_name": {"key": "organizationName", "type": "TextAnnotationV2"},
-        "organization_website": {"key": "organizationWebsite", "type": "TextAnnotationV2"},
-        "education_level": {"key": "educationLevel", "type": "TextAnnotationV2"},
-        "education_accreditation": {"key": "educationAccreditation", "type": "TextAnnotationV2"},
-        "expected_remuneration": {
-            "key": "expectedRemuneration",
-            "type": "ExpectedRemunerationAnnotationV2",
-        },
-        "location": {"key": "location", "type": "LocationAnnotationV2"},
-        "certifications": {"key": "certifications", "type": "[TextAnnotationV2]"},
-        "years_experience": {"key": "yearsExperience", "type": "YearsExperienceAnnotationV2"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword job_title:
-        :paramtype job_title: ~affinda.models.JobTitleAnnotation
-        :keyword contact_email:
-        :paramtype contact_email: ~affinda.models.TextAnnotationV2
-        :keyword contact_name:
-        :paramtype contact_name: ~affinda.models.TextAnnotationV2
-        :keyword contact_phone:
-        :paramtype contact_phone: ~affinda.models.TextAnnotationV2
-        :keyword start_date:
-        :paramtype start_date: ~affinda.models.DateAnnotationV2
-        :keyword end_date:
-        :paramtype end_date: ~affinda.models.DateAnnotationV2
-        :keyword job_type:
-        :paramtype job_type: ~affinda.models.TextAnnotationV2
-        :keyword languages:
-        :paramtype languages: list[~affinda.models.LanguageAnnotationV2]
-        :keyword skills:
-        :paramtype skills: list[~affinda.models.SkillAnnotationV2]
-        :keyword organization_name:
-        :paramtype organization_name: ~affinda.models.TextAnnotationV2
-        :keyword organization_website:
-        :paramtype organization_website: ~affinda.models.TextAnnotationV2
-        :keyword education_level:
-        :paramtype education_level: ~affinda.models.TextAnnotationV2
-        :keyword education_accreditation:
-        :paramtype education_accreditation: ~affinda.models.TextAnnotationV2
-        :keyword expected_remuneration:
-        :paramtype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2
-        :keyword location:
-        :paramtype location: ~affinda.models.LocationAnnotationV2
-        :keyword certifications:
-        :paramtype certifications: list[~affinda.models.TextAnnotationV2]
-        :keyword years_experience:
-        :paramtype years_experience: ~affinda.models.YearsExperienceAnnotationV2
-        """
-        super(JobDescriptionData, self).__init__(**kwargs)
-        self.job_title = kwargs.get("job_title", None)
-        self.contact_email = kwargs.get("contact_email", None)
-        self.contact_name = kwargs.get("contact_name", None)
-        self.contact_phone = kwargs.get("contact_phone", None)
-        self.start_date = kwargs.get("start_date", None)
-        self.end_date = kwargs.get("end_date", None)
-        self.job_type = kwargs.get("job_type", None)
-        self.languages = kwargs.get("languages", None)
-        self.skills = kwargs.get("skills", None)
-        self.organization_name = kwargs.get("organization_name", None)
-        self.organization_website = kwargs.get("organization_website", None)
-        self.education_level = kwargs.get("education_level", None)
-        self.education_accreditation = kwargs.get("education_accreditation", None)
-        self.expected_remuneration = kwargs.get("expected_remuneration", None)
-        self.location = kwargs.get("location", None)
-        self.certifications = kwargs.get("certifications", None)
-        self.years_experience = kwargs.get("years_experience", None)
-
-
-class Components1S1E4FcSchemasDocumentPropertiesDataAnyof2(JobDescriptionData):
-    """Components1S1E4FcSchemasDocumentPropertiesDataAnyof2.
-
-    :ivar job_title:
-    :vartype job_title: ~affinda.models.JobTitleAnnotation
-    :ivar contact_email:
-    :vartype contact_email: ~affinda.models.TextAnnotationV2
-    :ivar contact_name:
-    :vartype contact_name: ~affinda.models.TextAnnotationV2
-    :ivar contact_phone:
-    :vartype contact_phone: ~affinda.models.TextAnnotationV2
-    :ivar start_date:
-    :vartype start_date: ~affinda.models.DateAnnotationV2
-    :ivar end_date:
-    :vartype end_date: ~affinda.models.DateAnnotationV2
-    :ivar job_type:
-    :vartype job_type: ~affinda.models.TextAnnotationV2
-    :ivar languages:
-    :vartype languages: list[~affinda.models.LanguageAnnotationV2]
-    :ivar skills:
-    :vartype skills: list[~affinda.models.SkillAnnotationV2]
-    :ivar organization_name:
-    :vartype organization_name: ~affinda.models.TextAnnotationV2
-    :ivar organization_website:
-    :vartype organization_website: ~affinda.models.TextAnnotationV2
-    :ivar education_level:
-    :vartype education_level: ~affinda.models.TextAnnotationV2
-    :ivar education_accreditation:
-    :vartype education_accreditation: ~affinda.models.TextAnnotationV2
-    :ivar expected_remuneration:
-    :vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2
-    :ivar location:
-    :vartype location: ~affinda.models.LocationAnnotationV2
-    :ivar certifications:
-    :vartype certifications: list[~affinda.models.TextAnnotationV2]
-    :ivar years_experience:
-    :vartype years_experience: ~affinda.models.YearsExperienceAnnotationV2
-    """
-
-    _attribute_map = {
-        "job_title": {"key": "jobTitle", "type": "JobTitleAnnotation"},
-        "contact_email": {"key": "contactEmail", "type": "TextAnnotationV2"},
-        "contact_name": {"key": "contactName", "type": "TextAnnotationV2"},
-        "contact_phone": {"key": "contactPhone", "type": "TextAnnotationV2"},
-        "start_date": {"key": "startDate", "type": "DateAnnotationV2"},
-        "end_date": {"key": "endDate", "type": "DateAnnotationV2"},
-        "job_type": {"key": "jobType", "type": "TextAnnotationV2"},
-        "languages": {"key": "languages", "type": "[LanguageAnnotationV2]"},
-        "skills": {"key": "skills", "type": "[SkillAnnotationV2]"},
-        "organization_name": {"key": "organizationName", "type": "TextAnnotationV2"},
-        "organization_website": {"key": "organizationWebsite", "type": "TextAnnotationV2"},
-        "education_level": {"key": "educationLevel", "type": "TextAnnotationV2"},
-        "education_accreditation": {"key": "educationAccreditation", "type": "TextAnnotationV2"},
-        "expected_remuneration": {
-            "key": "expectedRemuneration",
-            "type": "ExpectedRemunerationAnnotationV2",
-        },
-        "location": {"key": "location", "type": "LocationAnnotationV2"},
-        "certifications": {"key": "certifications", "type": "[TextAnnotationV2]"},
-        "years_experience": {"key": "yearsExperience", "type": "YearsExperienceAnnotationV2"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword job_title:
-        :paramtype job_title: ~affinda.models.JobTitleAnnotation
-        :keyword contact_email:
-        :paramtype contact_email: ~affinda.models.TextAnnotationV2
-        :keyword contact_name:
-        :paramtype contact_name: ~affinda.models.TextAnnotationV2
-        :keyword contact_phone:
-        :paramtype contact_phone: ~affinda.models.TextAnnotationV2
-        :keyword start_date:
-        :paramtype start_date: ~affinda.models.DateAnnotationV2
-        :keyword end_date:
-        :paramtype end_date: ~affinda.models.DateAnnotationV2
-        :keyword job_type:
-        :paramtype job_type: ~affinda.models.TextAnnotationV2
-        :keyword languages:
-        :paramtype languages: list[~affinda.models.LanguageAnnotationV2]
-        :keyword skills:
-        :paramtype skills: list[~affinda.models.SkillAnnotationV2]
-        :keyword organization_name:
-        :paramtype organization_name: ~affinda.models.TextAnnotationV2
-        :keyword organization_website:
-        :paramtype organization_website: ~affinda.models.TextAnnotationV2
-        :keyword education_level:
-        :paramtype education_level: ~affinda.models.TextAnnotationV2
-        :keyword education_accreditation:
-        :paramtype education_accreditation: ~affinda.models.TextAnnotationV2
-        :keyword expected_remuneration:
-        :paramtype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2
-        :keyword location:
-        :paramtype location: ~affinda.models.LocationAnnotationV2
-        :keyword certifications:
-        :paramtype certifications: list[~affinda.models.TextAnnotationV2]
-        :keyword years_experience:
-        :paramtype years_experience: ~affinda.models.YearsExperienceAnnotationV2
-        """
-        super(Components1S1E4FcSchemasDocumentPropertiesDataAnyof2, self).__init__(**kwargs)
 
 
 class Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1(
@@ -2108,790 +1276,8 @@ class ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1(
         self.parsed = kwargs.get("parsed", None)
 
 
-class InvoiceData(msrest.serialization.Model):
-    """InvoiceData.
-
-    :ivar tables:
-    :vartype tables: list[~affinda.models.InvoiceDataTablesItem]
-    :ivar invoice_date:
-    :vartype invoice_date: ~affinda.models.DateAnnotationV2
-    :ivar invoice_order_date:
-    :vartype invoice_order_date: ~affinda.models.DateAnnotationV2
-    :ivar payment_date_due:
-    :vartype payment_date_due: ~affinda.models.DateAnnotationV2
-    :ivar payment_amount_base:
-    :vartype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
-    :ivar payment_amount_tax:
-    :vartype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
-    :ivar payment_amount_total:
-    :vartype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
-    :ivar payment_amount_paid:
-    :vartype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
-    :ivar payment_amount_due:
-    :vartype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
-    :ivar invoice_number:
-    :vartype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
-    :ivar invoice_purchase_order_number:
-    :vartype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
-    :ivar supplier_business_number:
-    :vartype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
-    :ivar customer_number:
-    :vartype customer_number: ~affinda.models.InvoiceDataCustomerNumber
-    :ivar customer_business_number:
-    :vartype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
-    :ivar payment_reference:
-    :vartype payment_reference: ~affinda.models.InvoiceDataPaymentReference
-    :ivar bank_account_number:
-    :vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
-    :ivar supplier_vat:
-    :vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
-    :ivar customer_vat:
-    :vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
-    :ivar bpay_biller_code:
-    :vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
-    :ivar bpay_reference:
-    :vartype bpay_reference: ~affinda.models.InvoiceDataBpayReference
-    :ivar bank_sort_code:
-    :vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
-    :ivar bank_iban:
-    :vartype bank_iban: ~affinda.models.InvoiceDataBankIban
-    :ivar bank_swift:
-    :vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
-    :ivar bank_bsb:
-    :vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
-    :ivar customer_contact_name:
-    :vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
-    :ivar customer_company_name:
-    :vartype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
-    :ivar supplier_company_name:
-    :vartype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
-    :ivar customer_billing_address:
-    :vartype customer_billing_address: ~affinda.models.LocationAnnotationV2
-    :ivar customer_delivery_address:
-    :vartype customer_delivery_address: ~affinda.models.LocationAnnotationV2
-    :ivar supplier_address:
-    :vartype supplier_address: ~affinda.models.LocationAnnotationV2
-    :ivar customer_phone_number:
-    :vartype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
-    :ivar supplier_phone_number:
-    :vartype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
-    :ivar supplier_fax:
-    :vartype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
-    :ivar customer_email:
-    :vartype customer_email: ~affinda.models.InvoiceDataCustomerEmail
-    :ivar supplier_email:
-    :vartype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
-    :ivar supplier_website:
-    :vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
-    :ivar currency_code:
-    :vartype currency_code: ~affinda.models.TextAnnotationV2
-    :ivar custom_fields: Dictionary of :code:`<any>`.
-    :vartype custom_fields: dict[str, any]
-    """
-
-    _attribute_map = {
-        "tables": {"key": "tables", "type": "[InvoiceDataTablesItem]"},
-        "invoice_date": {"key": "invoiceDate", "type": "DateAnnotationV2"},
-        "invoice_order_date": {"key": "invoiceOrderDate", "type": "DateAnnotationV2"},
-        "payment_date_due": {"key": "paymentDateDue", "type": "DateAnnotationV2"},
-        "payment_amount_base": {
-            "key": "paymentAmountBase",
-            "type": "InvoiceDataPaymentAmountBase",
-        },
-        "payment_amount_tax": {"key": "paymentAmountTax", "type": "InvoiceDataPaymentAmountTax"},
-        "payment_amount_total": {
-            "key": "paymentAmountTotal",
-            "type": "InvoiceDataPaymentAmountTotal",
-        },
-        "payment_amount_paid": {
-            "key": "paymentAmountPaid",
-            "type": "InvoiceDataPaymentAmountPaid",
-        },
-        "payment_amount_due": {"key": "paymentAmountDue", "type": "InvoiceDataPaymentAmountDue"},
-        "invoice_number": {"key": "invoiceNumber", "type": "InvoiceDataInvoiceNumber"},
-        "invoice_purchase_order_number": {
-            "key": "invoicePurchaseOrderNumber",
-            "type": "InvoiceDataInvoicePurchaseOrderNumber",
-        },
-        "supplier_business_number": {
-            "key": "supplierBusinessNumber",
-            "type": "InvoiceDataSupplierBusinessNumber",
-        },
-        "customer_number": {"key": "customerNumber", "type": "InvoiceDataCustomerNumber"},
-        "customer_business_number": {
-            "key": "customerBusinessNumber",
-            "type": "InvoiceDataCustomerBusinessNumber",
-        },
-        "payment_reference": {"key": "paymentReference", "type": "InvoiceDataPaymentReference"},
-        "bank_account_number": {
-            "key": "bankAccountNumber",
-            "type": "InvoiceDataBankAccountNumber",
-        },
-        "supplier_vat": {"key": "supplierVat", "type": "InvoiceDataSupplierVat"},
-        "customer_vat": {"key": "customerVat", "type": "InvoiceDataCustomerVat"},
-        "bpay_biller_code": {"key": "bpayBillerCode", "type": "InvoiceDataBpayBillerCode"},
-        "bpay_reference": {"key": "bpayReference", "type": "InvoiceDataBpayReference"},
-        "bank_sort_code": {"key": "bankSortCode", "type": "InvoiceDataBankSortCode"},
-        "bank_iban": {"key": "bankIban", "type": "InvoiceDataBankIban"},
-        "bank_swift": {"key": "bankSwift", "type": "InvoiceDataBankSwift"},
-        "bank_bsb": {"key": "bankBsb", "type": "InvoiceDataBankBsb"},
-        "customer_contact_name": {
-            "key": "customerContactName",
-            "type": "InvoiceDataCustomerContactName",
-        },
-        "customer_company_name": {
-            "key": "customerCompanyName",
-            "type": "InvoiceDataCustomerCompanyName",
-        },
-        "supplier_company_name": {
-            "key": "supplierCompanyName",
-            "type": "InvoiceDataSupplierCompanyName",
-        },
-        "customer_billing_address": {
-            "key": "customerBillingAddress",
-            "type": "LocationAnnotationV2",
-        },
-        "customer_delivery_address": {
-            "key": "customerDeliveryAddress",
-            "type": "LocationAnnotationV2",
-        },
-        "supplier_address": {"key": "supplierAddress", "type": "LocationAnnotationV2"},
-        "customer_phone_number": {
-            "key": "customerPhoneNumber",
-            "type": "InvoiceDataCustomerPhoneNumber",
-        },
-        "supplier_phone_number": {
-            "key": "supplierPhoneNumber",
-            "type": "InvoiceDataSupplierPhoneNumber",
-        },
-        "supplier_fax": {"key": "supplierFax", "type": "InvoiceDataSupplierFax"},
-        "customer_email": {"key": "customerEmail", "type": "InvoiceDataCustomerEmail"},
-        "supplier_email": {"key": "supplierEmail", "type": "InvoiceDataSupplierEmail"},
-        "supplier_website": {"key": "supplierWebsite", "type": "InvoiceDataSupplierWebsite"},
-        "currency_code": {"key": "currencyCode", "type": "TextAnnotationV2"},
-        "custom_fields": {"key": "customFields", "type": "{object}"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword tables:
-        :paramtype tables: list[~affinda.models.InvoiceDataTablesItem]
-        :keyword invoice_date:
-        :paramtype invoice_date: ~affinda.models.DateAnnotationV2
-        :keyword invoice_order_date:
-        :paramtype invoice_order_date: ~affinda.models.DateAnnotationV2
-        :keyword payment_date_due:
-        :paramtype payment_date_due: ~affinda.models.DateAnnotationV2
-        :keyword payment_amount_base:
-        :paramtype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
-        :keyword payment_amount_tax:
-        :paramtype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
-        :keyword payment_amount_total:
-        :paramtype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
-        :keyword payment_amount_paid:
-        :paramtype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
-        :keyword payment_amount_due:
-        :paramtype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
-        :keyword invoice_number:
-        :paramtype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
-        :keyword invoice_purchase_order_number:
-        :paramtype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
-        :keyword supplier_business_number:
-        :paramtype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
-        :keyword customer_number:
-        :paramtype customer_number: ~affinda.models.InvoiceDataCustomerNumber
-        :keyword customer_business_number:
-        :paramtype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
-        :keyword payment_reference:
-        :paramtype payment_reference: ~affinda.models.InvoiceDataPaymentReference
-        :keyword bank_account_number:
-        :paramtype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
-        :keyword supplier_vat:
-        :paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
-        :keyword customer_vat:
-        :paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVat
-        :keyword bpay_biller_code:
-        :paramtype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
-        :keyword bpay_reference:
-        :paramtype bpay_reference: ~affinda.models.InvoiceDataBpayReference
-        :keyword bank_sort_code:
-        :paramtype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
-        :keyword bank_iban:
-        :paramtype bank_iban: ~affinda.models.InvoiceDataBankIban
-        :keyword bank_swift:
-        :paramtype bank_swift: ~affinda.models.InvoiceDataBankSwift
-        :keyword bank_bsb:
-        :paramtype bank_bsb: ~affinda.models.InvoiceDataBankBsb
-        :keyword customer_contact_name:
-        :paramtype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
-        :keyword customer_company_name:
-        :paramtype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
-        :keyword supplier_company_name:
-        :paramtype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
-        :keyword customer_billing_address:
-        :paramtype customer_billing_address: ~affinda.models.LocationAnnotationV2
-        :keyword customer_delivery_address:
-        :paramtype customer_delivery_address: ~affinda.models.LocationAnnotationV2
-        :keyword supplier_address:
-        :paramtype supplier_address: ~affinda.models.LocationAnnotationV2
-        :keyword customer_phone_number:
-        :paramtype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
-        :keyword supplier_phone_number:
-        :paramtype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
-        :keyword supplier_fax:
-        :paramtype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
-        :keyword customer_email:
-        :paramtype customer_email: ~affinda.models.InvoiceDataCustomerEmail
-        :keyword supplier_email:
-        :paramtype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
-        :keyword supplier_website:
-        :paramtype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
-        :keyword currency_code:
-        :paramtype currency_code: ~affinda.models.TextAnnotationV2
-        :keyword custom_fields: Dictionary of :code:`<any>`.
-        :paramtype custom_fields: dict[str, any]
-        """
-        super(InvoiceData, self).__init__(**kwargs)
-        self.tables = kwargs.get("tables", None)
-        self.invoice_date = kwargs.get("invoice_date", None)
-        self.invoice_order_date = kwargs.get("invoice_order_date", None)
-        self.payment_date_due = kwargs.get("payment_date_due", None)
-        self.payment_amount_base = kwargs.get("payment_amount_base", None)
-        self.payment_amount_tax = kwargs.get("payment_amount_tax", None)
-        self.payment_amount_total = kwargs.get("payment_amount_total", None)
-        self.payment_amount_paid = kwargs.get("payment_amount_paid", None)
-        self.payment_amount_due = kwargs.get("payment_amount_due", None)
-        self.invoice_number = kwargs.get("invoice_number", None)
-        self.invoice_purchase_order_number = kwargs.get("invoice_purchase_order_number", None)
-        self.supplier_business_number = kwargs.get("supplier_business_number", None)
-        self.customer_number = kwargs.get("customer_number", None)
-        self.customer_business_number = kwargs.get("customer_business_number", None)
-        self.payment_reference = kwargs.get("payment_reference", None)
-        self.bank_account_number = kwargs.get("bank_account_number", None)
-        self.supplier_vat = kwargs.get("supplier_vat", None)
-        self.customer_vat = kwargs.get("customer_vat", None)
-        self.bpay_biller_code = kwargs.get("bpay_biller_code", None)
-        self.bpay_reference = kwargs.get("bpay_reference", None)
-        self.bank_sort_code = kwargs.get("bank_sort_code", None)
-        self.bank_iban = kwargs.get("bank_iban", None)
-        self.bank_swift = kwargs.get("bank_swift", None)
-        self.bank_bsb = kwargs.get("bank_bsb", None)
-        self.customer_contact_name = kwargs.get("customer_contact_name", None)
-        self.customer_company_name = kwargs.get("customer_company_name", None)
-        self.supplier_company_name = kwargs.get("supplier_company_name", None)
-        self.customer_billing_address = kwargs.get("customer_billing_address", None)
-        self.customer_delivery_address = kwargs.get("customer_delivery_address", None)
-        self.supplier_address = kwargs.get("supplier_address", None)
-        self.customer_phone_number = kwargs.get("customer_phone_number", None)
-        self.supplier_phone_number = kwargs.get("supplier_phone_number", None)
-        self.supplier_fax = kwargs.get("supplier_fax", None)
-        self.customer_email = kwargs.get("customer_email", None)
-        self.supplier_email = kwargs.get("supplier_email", None)
-        self.supplier_website = kwargs.get("supplier_website", None)
-        self.currency_code = kwargs.get("currency_code", None)
-        self.custom_fields = kwargs.get("custom_fields", None)
-
-
-class ComponentsX4QdioSchemasDocumentPropertiesDataAnyof1(InvoiceData):
-    """ComponentsX4QdioSchemasDocumentPropertiesDataAnyof1.
-
-    :ivar tables:
-    :vartype tables: list[~affinda.models.InvoiceDataTablesItem]
-    :ivar invoice_date:
-    :vartype invoice_date: ~affinda.models.DateAnnotationV2
-    :ivar invoice_order_date:
-    :vartype invoice_order_date: ~affinda.models.DateAnnotationV2
-    :ivar payment_date_due:
-    :vartype payment_date_due: ~affinda.models.DateAnnotationV2
-    :ivar payment_amount_base:
-    :vartype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
-    :ivar payment_amount_tax:
-    :vartype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
-    :ivar payment_amount_total:
-    :vartype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
-    :ivar payment_amount_paid:
-    :vartype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
-    :ivar payment_amount_due:
-    :vartype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
-    :ivar invoice_number:
-    :vartype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
-    :ivar invoice_purchase_order_number:
-    :vartype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
-    :ivar supplier_business_number:
-    :vartype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
-    :ivar customer_number:
-    :vartype customer_number: ~affinda.models.InvoiceDataCustomerNumber
-    :ivar customer_business_number:
-    :vartype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
-    :ivar payment_reference:
-    :vartype payment_reference: ~affinda.models.InvoiceDataPaymentReference
-    :ivar bank_account_number:
-    :vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
-    :ivar supplier_vat:
-    :vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
-    :ivar customer_vat:
-    :vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
-    :ivar bpay_biller_code:
-    :vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
-    :ivar bpay_reference:
-    :vartype bpay_reference: ~affinda.models.InvoiceDataBpayReference
-    :ivar bank_sort_code:
-    :vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
-    :ivar bank_iban:
-    :vartype bank_iban: ~affinda.models.InvoiceDataBankIban
-    :ivar bank_swift:
-    :vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
-    :ivar bank_bsb:
-    :vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
-    :ivar customer_contact_name:
-    :vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
-    :ivar customer_company_name:
-    :vartype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
-    :ivar supplier_company_name:
-    :vartype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
-    :ivar customer_billing_address:
-    :vartype customer_billing_address: ~affinda.models.LocationAnnotationV2
-    :ivar customer_delivery_address:
-    :vartype customer_delivery_address: ~affinda.models.LocationAnnotationV2
-    :ivar supplier_address:
-    :vartype supplier_address: ~affinda.models.LocationAnnotationV2
-    :ivar customer_phone_number:
-    :vartype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
-    :ivar supplier_phone_number:
-    :vartype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
-    :ivar supplier_fax:
-    :vartype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
-    :ivar customer_email:
-    :vartype customer_email: ~affinda.models.InvoiceDataCustomerEmail
-    :ivar supplier_email:
-    :vartype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
-    :ivar supplier_website:
-    :vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
-    :ivar currency_code:
-    :vartype currency_code: ~affinda.models.TextAnnotationV2
-    :ivar custom_fields: Dictionary of :code:`<any>`.
-    :vartype custom_fields: dict[str, any]
-    """
-
-    _attribute_map = {
-        "tables": {"key": "tables", "type": "[InvoiceDataTablesItem]"},
-        "invoice_date": {"key": "invoiceDate", "type": "DateAnnotationV2"},
-        "invoice_order_date": {"key": "invoiceOrderDate", "type": "DateAnnotationV2"},
-        "payment_date_due": {"key": "paymentDateDue", "type": "DateAnnotationV2"},
-        "payment_amount_base": {
-            "key": "paymentAmountBase",
-            "type": "InvoiceDataPaymentAmountBase",
-        },
-        "payment_amount_tax": {"key": "paymentAmountTax", "type": "InvoiceDataPaymentAmountTax"},
-        "payment_amount_total": {
-            "key": "paymentAmountTotal",
-            "type": "InvoiceDataPaymentAmountTotal",
-        },
-        "payment_amount_paid": {
-            "key": "paymentAmountPaid",
-            "type": "InvoiceDataPaymentAmountPaid",
-        },
-        "payment_amount_due": {"key": "paymentAmountDue", "type": "InvoiceDataPaymentAmountDue"},
-        "invoice_number": {"key": "invoiceNumber", "type": "InvoiceDataInvoiceNumber"},
-        "invoice_purchase_order_number": {
-            "key": "invoicePurchaseOrderNumber",
-            "type": "InvoiceDataInvoicePurchaseOrderNumber",
-        },
-        "supplier_business_number": {
-            "key": "supplierBusinessNumber",
-            "type": "InvoiceDataSupplierBusinessNumber",
-        },
-        "customer_number": {"key": "customerNumber", "type": "InvoiceDataCustomerNumber"},
-        "customer_business_number": {
-            "key": "customerBusinessNumber",
-            "type": "InvoiceDataCustomerBusinessNumber",
-        },
-        "payment_reference": {"key": "paymentReference", "type": "InvoiceDataPaymentReference"},
-        "bank_account_number": {
-            "key": "bankAccountNumber",
-            "type": "InvoiceDataBankAccountNumber",
-        },
-        "supplier_vat": {"key": "supplierVat", "type": "InvoiceDataSupplierVat"},
-        "customer_vat": {"key": "customerVat", "type": "InvoiceDataCustomerVat"},
-        "bpay_biller_code": {"key": "bpayBillerCode", "type": "InvoiceDataBpayBillerCode"},
-        "bpay_reference": {"key": "bpayReference", "type": "InvoiceDataBpayReference"},
-        "bank_sort_code": {"key": "bankSortCode", "type": "InvoiceDataBankSortCode"},
-        "bank_iban": {"key": "bankIban", "type": "InvoiceDataBankIban"},
-        "bank_swift": {"key": "bankSwift", "type": "InvoiceDataBankSwift"},
-        "bank_bsb": {"key": "bankBsb", "type": "InvoiceDataBankBsb"},
-        "customer_contact_name": {
-            "key": "customerContactName",
-            "type": "InvoiceDataCustomerContactName",
-        },
-        "customer_company_name": {
-            "key": "customerCompanyName",
-            "type": "InvoiceDataCustomerCompanyName",
-        },
-        "supplier_company_name": {
-            "key": "supplierCompanyName",
-            "type": "InvoiceDataSupplierCompanyName",
-        },
-        "customer_billing_address": {
-            "key": "customerBillingAddress",
-            "type": "LocationAnnotationV2",
-        },
-        "customer_delivery_address": {
-            "key": "customerDeliveryAddress",
-            "type": "LocationAnnotationV2",
-        },
-        "supplier_address": {"key": "supplierAddress", "type": "LocationAnnotationV2"},
-        "customer_phone_number": {
-            "key": "customerPhoneNumber",
-            "type": "InvoiceDataCustomerPhoneNumber",
-        },
-        "supplier_phone_number": {
-            "key": "supplierPhoneNumber",
-            "type": "InvoiceDataSupplierPhoneNumber",
-        },
-        "supplier_fax": {"key": "supplierFax", "type": "InvoiceDataSupplierFax"},
-        "customer_email": {"key": "customerEmail", "type": "InvoiceDataCustomerEmail"},
-        "supplier_email": {"key": "supplierEmail", "type": "InvoiceDataSupplierEmail"},
-        "supplier_website": {"key": "supplierWebsite", "type": "InvoiceDataSupplierWebsite"},
-        "currency_code": {"key": "currencyCode", "type": "TextAnnotationV2"},
-        "custom_fields": {"key": "customFields", "type": "{object}"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword tables:
-        :paramtype tables: list[~affinda.models.InvoiceDataTablesItem]
-        :keyword invoice_date:
-        :paramtype invoice_date: ~affinda.models.DateAnnotationV2
-        :keyword invoice_order_date:
-        :paramtype invoice_order_date: ~affinda.models.DateAnnotationV2
-        :keyword payment_date_due:
-        :paramtype payment_date_due: ~affinda.models.DateAnnotationV2
-        :keyword payment_amount_base:
-        :paramtype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
-        :keyword payment_amount_tax:
-        :paramtype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
-        :keyword payment_amount_total:
-        :paramtype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
-        :keyword payment_amount_paid:
-        :paramtype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
-        :keyword payment_amount_due:
-        :paramtype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
-        :keyword invoice_number:
-        :paramtype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
-        :keyword invoice_purchase_order_number:
-        :paramtype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
-        :keyword supplier_business_number:
-        :paramtype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
-        :keyword customer_number:
-        :paramtype customer_number: ~affinda.models.InvoiceDataCustomerNumber
-        :keyword customer_business_number:
-        :paramtype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
-        :keyword payment_reference:
-        :paramtype payment_reference: ~affinda.models.InvoiceDataPaymentReference
-        :keyword bank_account_number:
-        :paramtype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
-        :keyword supplier_vat:
-        :paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
-        :keyword customer_vat:
-        :paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVat
-        :keyword bpay_biller_code:
-        :paramtype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
-        :keyword bpay_reference:
-        :paramtype bpay_reference: ~affinda.models.InvoiceDataBpayReference
-        :keyword bank_sort_code:
-        :paramtype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
-        :keyword bank_iban:
-        :paramtype bank_iban: ~affinda.models.InvoiceDataBankIban
-        :keyword bank_swift:
-        :paramtype bank_swift: ~affinda.models.InvoiceDataBankSwift
-        :keyword bank_bsb:
-        :paramtype bank_bsb: ~affinda.models.InvoiceDataBankBsb
-        :keyword customer_contact_name:
-        :paramtype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
-        :keyword customer_company_name:
-        :paramtype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
-        :keyword supplier_company_name:
-        :paramtype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
-        :keyword customer_billing_address:
-        :paramtype customer_billing_address: ~affinda.models.LocationAnnotationV2
-        :keyword customer_delivery_address:
-        :paramtype customer_delivery_address: ~affinda.models.LocationAnnotationV2
-        :keyword supplier_address:
-        :paramtype supplier_address: ~affinda.models.LocationAnnotationV2
-        :keyword customer_phone_number:
-        :paramtype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
-        :keyword supplier_phone_number:
-        :paramtype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
-        :keyword supplier_fax:
-        :paramtype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
-        :keyword customer_email:
-        :paramtype customer_email: ~affinda.models.InvoiceDataCustomerEmail
-        :keyword supplier_email:
-        :paramtype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
-        :keyword supplier_website:
-        :paramtype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
-        :keyword currency_code:
-        :paramtype currency_code: ~affinda.models.TextAnnotationV2
-        :keyword custom_fields: Dictionary of :code:`<any>`.
-        :paramtype custom_fields: dict[str, any]
-        """
-        super(ComponentsX4QdioSchemasDocumentPropertiesDataAnyof1, self).__init__(**kwargs)
-
-
-class DataPoint(msrest.serialization.Model):
-    """DataPoint.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar identifier: Required. Uniquely identify a data point.
-    :vartype identifier: str
-    :ivar name: Required.
-    :vartype name: str
-    :ivar slug:
-    :vartype slug: str
-    :ivar description:
-    :vartype description: str
-    :ivar annotation_content_type: Required. Known values are: "text", "integer", "float",
-     "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
-     "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience".
-    :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
-    :ivar organization:
-    :vartype organization: ~affinda.models.Organization
-    :ivar extractor: Required. Uniquely identify an extractor.
-    :vartype extractor: str
-    :ivar multiple:
-    :vartype multiple: bool
-    :ivar no_rect:
-    :vartype no_rect: bool
-    :ivar similar_to:
-    :vartype similar_to: list[str]
-    :ivar display_enum_value:
-    :vartype display_enum_value: bool
-    :ivar children:
-    :vartype children: list[~affinda.models.DataPoint]
-    """
-
-    _validation = {
-        "identifier": {"required": True},
-        "name": {"required": True},
-        "annotation_content_type": {"required": True},
-        "extractor": {"required": True},
-    }
-
-    _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-        "name": {"key": "name", "type": "str"},
-        "slug": {"key": "slug", "type": "str"},
-        "description": {"key": "description", "type": "str"},
-        "annotation_content_type": {"key": "annotationContentType", "type": "str"},
-        "organization": {"key": "organization", "type": "Organization"},
-        "extractor": {"key": "extractor", "type": "str"},
-        "multiple": {"key": "multiple", "type": "bool"},
-        "no_rect": {"key": "noRect", "type": "bool"},
-        "similar_to": {"key": "similarTo", "type": "[str]"},
-        "display_enum_value": {"key": "displayEnumValue", "type": "bool"},
-        "children": {"key": "children", "type": "[DataPoint]"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword identifier: Required. Uniquely identify a data point.
-        :paramtype identifier: str
-        :keyword name: Required.
-        :paramtype name: str
-        :keyword slug:
-        :paramtype slug: str
-        :keyword description:
-        :paramtype description: str
-        :keyword annotation_content_type: Required. Known values are: "text", "integer", "float",
-         "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
-         "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience".
-        :paramtype annotation_content_type: str or ~affinda.models.AnnotationContentType
-        :keyword organization:
-        :paramtype organization: ~affinda.models.Organization
-        :keyword extractor: Required. Uniquely identify an extractor.
-        :paramtype extractor: str
-        :keyword multiple:
-        :paramtype multiple: bool
-        :keyword no_rect:
-        :paramtype no_rect: bool
-        :keyword similar_to:
-        :paramtype similar_to: list[str]
-        :keyword display_enum_value:
-        :paramtype display_enum_value: bool
-        :keyword children:
-        :paramtype children: list[~affinda.models.DataPoint]
-        """
-        super(DataPoint, self).__init__(**kwargs)
-        self.identifier = kwargs["identifier"]
-        self.name = kwargs["name"]
-        self.slug = kwargs.get("slug", None)
-        self.description = kwargs.get("description", None)
-        self.annotation_content_type = kwargs["annotation_content_type"]
-        self.organization = kwargs.get("organization", None)
-        self.extractor = kwargs["extractor"]
-        self.multiple = kwargs.get("multiple", None)
-        self.no_rect = kwargs.get("no_rect", None)
-        self.similar_to = kwargs.get("similar_to", None)
-        self.display_enum_value = kwargs.get("display_enum_value", None)
-        self.children = kwargs.get("children", None)
-
-
-class DataPointChoice(msrest.serialization.Model):
-    """DataPointChoice.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar id: Required.
-    :vartype id: float
-    :ivar label: Required.
-    :vartype label: str
-    :ivar value: Required.
-    :vartype value: str
-    :ivar description:
-    :vartype description: str
-    """
-
-    _validation = {
-        "id": {"required": True},
-        "label": {"required": True},
-        "value": {"required": True},
-    }
-
-    _attribute_map = {
-        "id": {"key": "id", "type": "float"},
-        "label": {"key": "label", "type": "str"},
-        "value": {"key": "value", "type": "str"},
-        "description": {"key": "description", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword id: Required.
-        :paramtype id: float
-        :keyword label: Required.
-        :paramtype label: str
-        :keyword value: Required.
-        :paramtype value: str
-        :keyword description:
-        :paramtype description: str
-        """
-        super(DataPointChoice, self).__init__(**kwargs)
-        self.id = kwargs["id"]
-        self.label = kwargs["label"]
-        self.value = kwargs["value"]
-        self.description = kwargs.get("description", None)
-
-
-class DataPointCreate(msrest.serialization.Model):
-    """DataPointCreate.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar name:
-    :vartype name: str
-    :ivar slug: Required.
-    :vartype slug: str
-    :ivar description:
-    :vartype description: str
-    :ivar annotation_content_type: Required. Known values are: "text", "integer", "float",
-     "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
-     "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience".
-    :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
-    :ivar organization: Required. Uniquely identify an organization.
-    :vartype organization: str
-    :ivar extractor: Required. Uniquely identify an extractor.
-    :vartype extractor: str
-    :ivar multiple:
-    :vartype multiple: bool
-    :ivar no_rect:
-    :vartype no_rect: bool
-    """
-
-    _validation = {
-        "slug": {"required": True},
-        "annotation_content_type": {"required": True},
-        "organization": {"required": True},
-        "extractor": {"required": True},
-    }
-
-    _attribute_map = {
-        "name": {"key": "name", "type": "str"},
-        "slug": {"key": "slug", "type": "str"},
-        "description": {"key": "description", "type": "str"},
-        "annotation_content_type": {"key": "annotationContentType", "type": "str"},
-        "organization": {"key": "organization", "type": "str"},
-        "extractor": {"key": "extractor", "type": "str"},
-        "multiple": {"key": "multiple", "type": "bool"},
-        "no_rect": {"key": "noRect", "type": "bool"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword name:
-        :paramtype name: str
-        :keyword slug: Required.
-        :paramtype slug: str
-        :keyword description:
-        :paramtype description: str
-        :keyword annotation_content_type: Required. Known values are: "text", "integer", "float",
-         "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
-         "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience".
-        :paramtype annotation_content_type: str or ~affinda.models.AnnotationContentType
-        :keyword organization: Required. Uniquely identify an organization.
-        :paramtype organization: str
-        :keyword extractor: Required. Uniquely identify an extractor.
-        :paramtype extractor: str
-        :keyword multiple:
-        :paramtype multiple: bool
-        :keyword no_rect:
-        :paramtype no_rect: bool
-        """
-        super(DataPointCreate, self).__init__(**kwargs)
-        self.name = kwargs.get("name", None)
-        self.slug = kwargs["slug"]
-        self.description = kwargs.get("description", None)
-        self.annotation_content_type = kwargs["annotation_content_type"]
-        self.organization = kwargs["organization"]
-        self.extractor = kwargs["extractor"]
-        self.multiple = kwargs.get("multiple", None)
-        self.no_rect = kwargs.get("no_rect", None)
-
-
-class DataPointUpdate(msrest.serialization.Model):
-    """DataPointUpdate.
-
-    :ivar name:
-    :vartype name: str
-    :ivar slug:
-    :vartype slug: str
-    :ivar description:
-    :vartype description: str
-    """
-
-    _attribute_map = {
-        "name": {"key": "name", "type": "str"},
-        "slug": {"key": "slug", "type": "str"},
-        "description": {"key": "description", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword name:
-        :paramtype name: str
-        :keyword slug:
-        :paramtype slug: str
-        :keyword description:
-        :paramtype description: str
-        """
-        super(DataPointUpdate, self).__init__(**kwargs)
-        self.name = kwargs.get("name", None)
-        self.slug = kwargs.get("slug", None)
-        self.description = kwargs.get("description", None)
-
-
-class DateAnnotationV2(AnnotationV2):
-    """DateAnnotationV2.
+class DateAnnotation(Annotation):
+    """DateAnnotation.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -2999,541 +1385,8 @@ class DateAnnotationV2(AnnotationV2):
         :keyword parsed:
         :paramtype parsed: ~datetime.date
         """
-        super(DateAnnotationV2, self).__init__(**kwargs)
+        super(DateAnnotation, self).__init__(**kwargs)
         self.parsed = kwargs.get("parsed", None)
-
-
-class Document(msrest.serialization.Model):
-    """Document.
-
-    You probably want to use the sub-classes and not this class directly. Known
-    sub-classes are: InvoiceDocument, JobDescriptionDocument, ResumeDocument.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar extractor: Required. Constant filled by server.
-    :vartype extractor: str
-    :ivar meta: Required.
-    :vartype meta: ~affinda.models.DocumentMeta
-    :ivar data:
-    :vartype data: any
-    :ivar error:
-    :vartype error: ~affinda.models.Error
-    """
-
-    _validation = {
-        "extractor": {"required": True},
-        "meta": {"required": True},
-    }
-
-    _attribute_map = {
-        "extractor": {"key": "extractor", "type": "str"},
-        "meta": {"key": "meta", "type": "DocumentMeta"},
-        "data": {"key": "data", "type": "object"},
-        "error": {"key": "error", "type": "Error"},
-    }
-
-    _subtype_map = {
-        "extractor": {
-            "invoice": "InvoiceDocument",
-            "job-description": "JobDescriptionDocument",
-            "resume": "ResumeDocument",
-        }
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword meta: Required.
-        :paramtype meta: ~affinda.models.DocumentMeta
-        :keyword data:
-        :paramtype data: any
-        :keyword error:
-        :paramtype error: ~affinda.models.Error
-        """
-        super(Document, self).__init__(**kwargs)
-        self.extractor = None  # type: Optional[str]
-        self.meta = kwargs["meta"]
-        self.data = kwargs.get("data", None)
-        self.error = kwargs.get("error", None)
-
-
-class DocumentCreate(msrest.serialization.Model):
-    """DocumentCreate.
-
-    :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
-     JPG.
-    :vartype file: IO
-    :ivar url: URL to a resume to download and process.
-    :vartype url: str
-    :ivar collection: Uniquely identify a collection.
-    :vartype collection: str
-    :ivar workspace: Uniquely identify a workspace.
-    :vartype workspace: str
-    :ivar wait: If "true" (default), will return a response only after processing has completed. If
-     "false", will return an empty data object which can be polled at the GET endpoint until
-     processing is complete.
-    :vartype wait: bool
-    :ivar identifier: Specify a custom identifier for the document.
-    :vartype identifier: str
-    :ivar file_name: Optional filename of the file.
-    :vartype file_name: str
-    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
-     deleted.  Defaults to no expiry.
-    :vartype expiry_time: ~datetime.datetime
-    :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-    :vartype language: str
-    """
-
-    _attribute_map = {
-        "file": {"key": "file", "type": "IO"},
-        "url": {"key": "url", "type": "str"},
-        "collection": {"key": "collection", "type": "str"},
-        "workspace": {"key": "workspace", "type": "str"},
-        "wait": {"key": "wait", "type": "bool"},
-        "identifier": {"key": "identifier", "type": "str"},
-        "file_name": {"key": "fileName", "type": "str"},
-        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
-        "language": {"key": "language", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
-         PNG, JPG.
-        :paramtype file: IO
-        :keyword url: URL to a resume to download and process.
-        :paramtype url: str
-        :keyword collection: Uniquely identify a collection.
-        :paramtype collection: str
-        :keyword workspace: Uniquely identify a workspace.
-        :paramtype workspace: str
-        :keyword wait: If "true" (default), will return a response only after processing has completed.
-         If "false", will return an empty data object which can be polled at the GET endpoint until
-         processing is complete.
-        :paramtype wait: bool
-        :keyword identifier: Specify a custom identifier for the document.
-        :paramtype identifier: str
-        :keyword file_name: Optional filename of the file.
-        :paramtype file_name: str
-        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
-         deleted.  Defaults to no expiry.
-        :paramtype expiry_time: ~datetime.datetime
-        :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-        :paramtype language: str
-        """
-        super(DocumentCreate, self).__init__(**kwargs)
-        self.file = kwargs.get("file", None)
-        self.url = kwargs.get("url", None)
-        self.collection = kwargs.get("collection", None)
-        self.workspace = kwargs.get("workspace", None)
-        self.wait = kwargs.get("wait", True)
-        self.identifier = kwargs.get("identifier", None)
-        self.file_name = kwargs.get("file_name", None)
-        self.expiry_time = kwargs.get("expiry_time", None)
-        self.language = kwargs.get("language", None)
-
-
-class DocumentMeta(msrest.serialization.Model):
-    """DocumentMeta.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar identifier: Required. Uniquely identify a document.
-    :vartype identifier: str
-    :ivar file_name: Optional filename of the file.
-    :vartype file_name: str
-    :ivar ready: If true, the document has finished processing. Particularly useful if an endpoint
-     request specified wait=False, when polling use this variable to determine when to stop polling.
-    :vartype ready: bool
-    :ivar ready_dt: The datetime when the document was ready.
-    :vartype ready_dt: ~datetime.datetime
-    :ivar failed: If true, some exception was raised during processing. Check the 'error' field of
-     the main return object.
-    :vartype failed: bool
-    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
-     deleted.  Defaults to no expiry.
-    :vartype expiry_time: ~datetime.datetime
-    :ivar language: The document's language.
-    :vartype language: str
-    :ivar pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
-     converted to pdf as part of the parsing process).
-    :vartype pdf: str
-    :ivar parent_document: If this document is part of a splitted document, this attribute points
-     to the original document that this document is splitted from.
-    :vartype parent_document: ~affinda.models.DocumentMetaParentDocument
-    :ivar child_documents: If this document has been splitted into a number of child documents,
-     this attribute points to those child documents.
-    :vartype child_documents: list[~affinda.models.DocumentMetaChildDocumentsItem]
-    :ivar pages: Required. The document's pages.
-    :vartype pages: list[~affinda.models.PageMeta]
-    :ivar is_ocrd:
-    :vartype is_ocrd: bool
-    :ivar ocr_confidence:
-    :vartype ocr_confidence: float
-    :ivar review_url:
-    :vartype review_url: str
-    :ivar collection:
-    :vartype collection: ~affinda.models.DocumentMetaCollection
-    :ivar workspace: Required.
-    :vartype workspace: ~affinda.models.DocumentMetaWorkspace
-    :ivar archived_dt:
-    :vartype archived_dt: ~datetime.datetime
-    :ivar is_archived:
-    :vartype is_archived: bool
-    :ivar confirmed_dt:
-    :vartype confirmed_dt: ~datetime.datetime
-    :ivar is_confirmed:
-    :vartype is_confirmed: bool
-    :ivar rejected_dt:
-    :vartype rejected_dt: ~datetime.datetime
-    :ivar is_rejected:
-    :vartype is_rejected: bool
-    :ivar created_dt:
-    :vartype created_dt: ~datetime.datetime
-    :ivar error_code:
-    :vartype error_code: str
-    :ivar error_detail:
-    :vartype error_detail: str
-    :ivar file: URL to view the file.
-    :vartype file: str
-    :ivar tags: A set of tags.
-    :vartype tags: list[~affinda.models.Tag]
-    :ivar confirmed_by:
-    :vartype confirmed_by: ~affinda.models.UserNullable
-    """
-
-    _validation = {
-        "identifier": {"required": True},
-        "pages": {"required": True},
-        "workspace": {"required": True},
-    }
-
-    _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-        "file_name": {"key": "fileName", "type": "str"},
-        "ready": {"key": "ready", "type": "bool"},
-        "ready_dt": {"key": "readyDt", "type": "iso-8601"},
-        "failed": {"key": "failed", "type": "bool"},
-        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
-        "language": {"key": "language", "type": "str"},
-        "pdf": {"key": "pdf", "type": "str"},
-        "parent_document": {"key": "parentDocument", "type": "DocumentMetaParentDocument"},
-        "child_documents": {"key": "childDocuments", "type": "[DocumentMetaChildDocumentsItem]"},
-        "pages": {"key": "pages", "type": "[PageMeta]"},
-        "is_ocrd": {"key": "isOcrd", "type": "bool"},
-        "ocr_confidence": {"key": "ocrConfidence", "type": "float"},
-        "review_url": {"key": "reviewUrl", "type": "str"},
-        "collection": {"key": "collection", "type": "DocumentMetaCollection"},
-        "workspace": {"key": "workspace", "type": "DocumentMetaWorkspace"},
-        "archived_dt": {"key": "archivedDt", "type": "iso-8601"},
-        "is_archived": {"key": "isArchived", "type": "bool"},
-        "confirmed_dt": {"key": "confirmedDt", "type": "iso-8601"},
-        "is_confirmed": {"key": "isConfirmed", "type": "bool"},
-        "rejected_dt": {"key": "rejectedDt", "type": "iso-8601"},
-        "is_rejected": {"key": "isRejected", "type": "bool"},
-        "created_dt": {"key": "createdDt", "type": "iso-8601"},
-        "error_code": {"key": "errorCode", "type": "str"},
-        "error_detail": {"key": "errorDetail", "type": "str"},
-        "file": {"key": "file", "type": "str"},
-        "tags": {"key": "tags", "type": "[Tag]"},
-        "confirmed_by": {"key": "confirmedBy", "type": "UserNullable"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword identifier: Required. Uniquely identify a document.
-        :paramtype identifier: str
-        :keyword file_name: Optional filename of the file.
-        :paramtype file_name: str
-        :keyword ready: If true, the document has finished processing. Particularly useful if an
-         endpoint request specified wait=False, when polling use this variable to determine when to stop
-         polling.
-        :paramtype ready: bool
-        :keyword ready_dt: The datetime when the document was ready.
-        :paramtype ready_dt: ~datetime.datetime
-        :keyword failed: If true, some exception was raised during processing. Check the 'error' field
-         of the main return object.
-        :paramtype failed: bool
-        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
-         deleted.  Defaults to no expiry.
-        :paramtype expiry_time: ~datetime.datetime
-        :keyword language: The document's language.
-        :paramtype language: str
-        :keyword pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
-         converted to pdf as part of the parsing process).
-        :paramtype pdf: str
-        :keyword parent_document: If this document is part of a splitted document, this attribute
-         points to the original document that this document is splitted from.
-        :paramtype parent_document: ~affinda.models.DocumentMetaParentDocument
-        :keyword child_documents: If this document has been splitted into a number of child documents,
-         this attribute points to those child documents.
-        :paramtype child_documents: list[~affinda.models.DocumentMetaChildDocumentsItem]
-        :keyword pages: Required. The document's pages.
-        :paramtype pages: list[~affinda.models.PageMeta]
-        :keyword is_ocrd:
-        :paramtype is_ocrd: bool
-        :keyword ocr_confidence:
-        :paramtype ocr_confidence: float
-        :keyword review_url:
-        :paramtype review_url: str
-        :keyword collection:
-        :paramtype collection: ~affinda.models.DocumentMetaCollection
-        :keyword workspace: Required.
-        :paramtype workspace: ~affinda.models.DocumentMetaWorkspace
-        :keyword archived_dt:
-        :paramtype archived_dt: ~datetime.datetime
-        :keyword is_archived:
-        :paramtype is_archived: bool
-        :keyword confirmed_dt:
-        :paramtype confirmed_dt: ~datetime.datetime
-        :keyword is_confirmed:
-        :paramtype is_confirmed: bool
-        :keyword rejected_dt:
-        :paramtype rejected_dt: ~datetime.datetime
-        :keyword is_rejected:
-        :paramtype is_rejected: bool
-        :keyword created_dt:
-        :paramtype created_dt: ~datetime.datetime
-        :keyword error_code:
-        :paramtype error_code: str
-        :keyword error_detail:
-        :paramtype error_detail: str
-        :keyword file: URL to view the file.
-        :paramtype file: str
-        :keyword tags: A set of tags.
-        :paramtype tags: list[~affinda.models.Tag]
-        :keyword confirmed_by:
-        :paramtype confirmed_by: ~affinda.models.UserNullable
-        """
-        super(DocumentMeta, self).__init__(**kwargs)
-        self.identifier = kwargs["identifier"]
-        self.file_name = kwargs.get("file_name", None)
-        self.ready = kwargs.get("ready", None)
-        self.ready_dt = kwargs.get("ready_dt", None)
-        self.failed = kwargs.get("failed", None)
-        self.expiry_time = kwargs.get("expiry_time", None)
-        self.language = kwargs.get("language", None)
-        self.pdf = kwargs.get("pdf", None)
-        self.parent_document = kwargs.get("parent_document", None)
-        self.child_documents = kwargs.get("child_documents", None)
-        self.pages = kwargs["pages"]
-        self.is_ocrd = kwargs.get("is_ocrd", None)
-        self.ocr_confidence = kwargs.get("ocr_confidence", None)
-        self.review_url = kwargs.get("review_url", None)
-        self.collection = kwargs.get("collection", None)
-        self.workspace = kwargs["workspace"]
-        self.archived_dt = kwargs.get("archived_dt", None)
-        self.is_archived = kwargs.get("is_archived", None)
-        self.confirmed_dt = kwargs.get("confirmed_dt", None)
-        self.is_confirmed = kwargs.get("is_confirmed", None)
-        self.rejected_dt = kwargs.get("rejected_dt", None)
-        self.is_rejected = kwargs.get("is_rejected", None)
-        self.created_dt = kwargs.get("created_dt", None)
-        self.error_code = kwargs.get("error_code", None)
-        self.error_detail = kwargs.get("error_detail", None)
-        self.file = kwargs.get("file", None)
-        self.tags = kwargs.get("tags", None)
-        self.confirmed_by = kwargs.get("confirmed_by", None)
-
-
-class DocumentMetaChildDocumentsItem(msrest.serialization.Model):
-    """DocumentMetaChildDocumentsItem.
-
-    :ivar identifier: Uniquely identify a document.
-    :vartype identifier: str
-    """
-
-    _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword identifier: Uniquely identify a document.
-        :paramtype identifier: str
-        """
-        super(DocumentMetaChildDocumentsItem, self).__init__(**kwargs)
-        self.identifier = kwargs.get("identifier", None)
-
-
-class DocumentMetaCollection(msrest.serialization.Model):
-    """DocumentMetaCollection.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar identifier: Required. Uniquely identify a collection.
-    :vartype identifier: str
-    :ivar name:
-    :vartype name: str
-    :ivar extractor:
-    :vartype extractor: ~affinda.models.DocumentMetaCollectionExtractor
-    """
-
-    _validation = {
-        "identifier": {"required": True},
-    }
-
-    _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-        "name": {"key": "name", "type": "str"},
-        "extractor": {"key": "extractor", "type": "DocumentMetaCollectionExtractor"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword identifier: Required. Uniquely identify a collection.
-        :paramtype identifier: str
-        :keyword name:
-        :paramtype name: str
-        :keyword extractor:
-        :paramtype extractor: ~affinda.models.DocumentMetaCollectionExtractor
-        """
-        super(DocumentMetaCollection, self).__init__(**kwargs)
-        self.identifier = kwargs["identifier"]
-        self.name = kwargs.get("name", None)
-        self.extractor = kwargs.get("extractor", None)
-
-
-class DocumentMetaCollectionExtractor(msrest.serialization.Model):
-    """DocumentMetaCollectionExtractor.
-
-    :ivar identifier: Uniquely identify an extractor.
-    :vartype identifier: str
-    :ivar name:
-    :vartype name: str
-    :ivar base_extractor: Base extractor's identifier.
-    :vartype base_extractor: str
-    :ivar validatable:
-    :vartype validatable: bool
-    """
-
-    _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-        "name": {"key": "name", "type": "str"},
-        "base_extractor": {"key": "baseExtractor", "type": "str"},
-        "validatable": {"key": "validatable", "type": "bool"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword identifier: Uniquely identify an extractor.
-        :paramtype identifier: str
-        :keyword name:
-        :paramtype name: str
-        :keyword base_extractor: Base extractor's identifier.
-        :paramtype base_extractor: str
-        :keyword validatable:
-        :paramtype validatable: bool
-        """
-        super(DocumentMetaCollectionExtractor, self).__init__(**kwargs)
-        self.identifier = kwargs.get("identifier", None)
-        self.name = kwargs.get("name", None)
-        self.base_extractor = kwargs.get("base_extractor", None)
-        self.validatable = kwargs.get("validatable", None)
-
-
-class DocumentMetaParentDocument(msrest.serialization.Model):
-    """If this document is part of a splitted document, this attribute points to the original document that this document is splitted from.
-
-    :ivar identifier: Uniquely identify a document.
-    :vartype identifier: str
-    """
-
-    _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword identifier: Uniquely identify a document.
-        :paramtype identifier: str
-        """
-        super(DocumentMetaParentDocument, self).__init__(**kwargs)
-        self.identifier = kwargs.get("identifier", None)
-
-
-class DocumentMetaWorkspace(msrest.serialization.Model):
-    """DocumentMetaWorkspace.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar identifier: Required. Uniquely identify a workspace.
-    :vartype identifier: str
-    :ivar name:
-    :vartype name: str
-    """
-
-    _validation = {
-        "identifier": {"required": True},
-    }
-
-    _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-        "name": {"key": "name", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword identifier: Required. Uniquely identify a workspace.
-        :paramtype identifier: str
-        :keyword name:
-        :paramtype name: str
-        """
-        super(DocumentMetaWorkspace, self).__init__(**kwargs)
-        self.identifier = kwargs["identifier"]
-        self.name = kwargs.get("name", None)
-
-
-class DocumentUpdate(msrest.serialization.Model):
-    """DocumentUpdate.
-
-    :ivar collection: Uniquely identify a collection.
-    :vartype collection: str
-    :ivar file_name: Optional filename of the file.
-    :vartype file_name: str
-    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
-     deleted.  Defaults to no expiry.
-    :vartype expiry_time: ~datetime.datetime
-    :ivar is_confirmed:
-    :vartype is_confirmed: bool
-    :ivar is_rejected:
-    :vartype is_rejected: bool
-    :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-    :vartype language: str
-    """
-
-    _attribute_map = {
-        "collection": {"key": "collection", "type": "str"},
-        "file_name": {"key": "fileName", "type": "str"},
-        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
-        "is_confirmed": {"key": "isConfirmed", "type": "bool"},
-        "is_rejected": {"key": "isRejected", "type": "bool"},
-        "language": {"key": "language", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword collection: Uniquely identify a collection.
-        :paramtype collection: str
-        :keyword file_name: Optional filename of the file.
-        :paramtype file_name: str
-        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
-         deleted.  Defaults to no expiry.
-        :paramtype expiry_time: ~datetime.datetime
-        :keyword is_confirmed:
-        :paramtype is_confirmed: bool
-        :keyword is_rejected:
-        :paramtype is_rejected: bool
-        :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-        :paramtype language: str
-        """
-        super(DocumentUpdate, self).__init__(**kwargs)
-        self.collection = kwargs.get("collection", None)
-        self.file_name = kwargs.get("file_name", None)
-        self.expiry_time = kwargs.get("expiry_time", None)
-        self.is_confirmed = kwargs.get("is_confirmed", None)
-        self.is_rejected = kwargs.get("is_rejected", None)
-        self.language = kwargs.get("language", None)
 
 
 class Education(msrest.serialization.Model):
@@ -3722,8 +1575,8 @@ class Error(msrest.serialization.Model):
         self.error_detail = kwargs.get("error_detail", None)
 
 
-class ExpectedRemunerationAnnotationV2(AnnotationV2):
-    """ExpectedRemunerationAnnotationV2.
+class ExpectedRemunerationAnnotation(Annotation):
+    """ExpectedRemunerationAnnotation.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -3759,7 +1612,7 @@ class ExpectedRemunerationAnnotationV2(AnnotationV2):
     :ivar content_type: Required.
     :vartype content_type: str
     :ivar parsed:
-    :vartype parsed: ~affinda.models.ExpectedRemunerationAnnotationV2Parsed
+    :vartype parsed: ~affinda.models.ExpectedRemunerationAnnotationParsed
     """
 
     _validation = {
@@ -3792,7 +1645,7 @@ class ExpectedRemunerationAnnotationV2(AnnotationV2):
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
-        "parsed": {"key": "parsed", "type": "ExpectedRemunerationAnnotationV2Parsed"},
+        "parsed": {"key": "parsed", "type": "ExpectedRemunerationAnnotationParsed"},
     }
 
     def __init__(self, **kwargs):
@@ -3829,14 +1682,14 @@ class ExpectedRemunerationAnnotationV2(AnnotationV2):
         :keyword content_type: Required.
         :paramtype content_type: str
         :keyword parsed:
-        :paramtype parsed: ~affinda.models.ExpectedRemunerationAnnotationV2Parsed
+        :paramtype parsed: ~affinda.models.ExpectedRemunerationAnnotationParsed
         """
-        super(ExpectedRemunerationAnnotationV2, self).__init__(**kwargs)
+        super(ExpectedRemunerationAnnotation, self).__init__(**kwargs)
         self.parsed = kwargs.get("parsed", None)
 
 
-class ExpectedRemunerationAnnotationV2Parsed(msrest.serialization.Model):
-    """ExpectedRemunerationAnnotationV2Parsed.
+class ExpectedRemunerationAnnotationParsed(msrest.serialization.Model):
+    """ExpectedRemunerationAnnotationParsed.
 
     :ivar minimum:
     :vartype minimum: float
@@ -3866,7 +1719,7 @@ class ExpectedRemunerationAnnotationV2Parsed(msrest.serialization.Model):
         :keyword unit:
         :paramtype unit: str
         """
-        super(ExpectedRemunerationAnnotationV2Parsed, self).__init__(**kwargs)
+        super(ExpectedRemunerationAnnotationParsed, self).__init__(**kwargs)
         self.minimum = kwargs.get("minimum", None)
         self.maximum = kwargs.get("maximum", None)
         self.currency = kwargs.get("currency", None)
@@ -3911,358 +1764,6 @@ class ExperienceSearchScoreComponent(msrest.serialization.Model):
         self.score = kwargs.get("score", None)
 
 
-class Extractor(msrest.serialization.Model):
-    """Extractor.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar identifier: Required. Uniquely identify an extractor.
-    :vartype identifier: str
-    :ivar name: Required.
-    :vartype name: str
-    :ivar name_plural: Required.
-    :vartype name_plural: str
-    :ivar base_extractor:
-    :vartype base_extractor: ~affinda.models.ExtractorBaseExtractor
-    :ivar organization:
-    :vartype organization: ~affinda.models.Organization
-    :ivar category:
-    :vartype category: str
-    :ivar validatable: Required.
-    :vartype validatable: bool
-    :ivar is_custom:
-    :vartype is_custom: bool
-    :ivar field_groups:
-    :vartype field_groups: list[~affinda.models.FieldGroup]
-    :ivar created_dt:
-    :vartype created_dt: ~datetime.datetime
-    """
-
-    _validation = {
-        "identifier": {"required": True},
-        "name": {"required": True},
-        "name_plural": {"required": True},
-        "validatable": {"required": True},
-    }
-
-    _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-        "name": {"key": "name", "type": "str"},
-        "name_plural": {"key": "namePlural", "type": "str"},
-        "base_extractor": {"key": "baseExtractor", "type": "ExtractorBaseExtractor"},
-        "organization": {"key": "organization", "type": "Organization"},
-        "category": {"key": "category", "type": "str"},
-        "validatable": {"key": "validatable", "type": "bool"},
-        "is_custom": {"key": "isCustom", "type": "bool"},
-        "field_groups": {"key": "fieldGroups", "type": "[FieldGroup]"},
-        "created_dt": {"key": "createdDt", "type": "iso-8601"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword identifier: Required. Uniquely identify an extractor.
-        :paramtype identifier: str
-        :keyword name: Required.
-        :paramtype name: str
-        :keyword name_plural: Required.
-        :paramtype name_plural: str
-        :keyword base_extractor:
-        :paramtype base_extractor: ~affinda.models.ExtractorBaseExtractor
-        :keyword organization:
-        :paramtype organization: ~affinda.models.Organization
-        :keyword category:
-        :paramtype category: str
-        :keyword validatable: Required.
-        :paramtype validatable: bool
-        :keyword is_custom:
-        :paramtype is_custom: bool
-        :keyword field_groups:
-        :paramtype field_groups: list[~affinda.models.FieldGroup]
-        :keyword created_dt:
-        :paramtype created_dt: ~datetime.datetime
-        """
-        super(Extractor, self).__init__(**kwargs)
-        self.identifier = kwargs["identifier"]
-        self.name = kwargs["name"]
-        self.name_plural = kwargs["name_plural"]
-        self.base_extractor = kwargs.get("base_extractor", None)
-        self.organization = kwargs.get("organization", None)
-        self.category = kwargs.get("category", None)
-        self.validatable = kwargs["validatable"]
-        self.is_custom = kwargs.get("is_custom", None)
-        self.field_groups = kwargs.get("field_groups", None)
-        self.created_dt = kwargs.get("created_dt", None)
-
-
-class ExtractorBaseExtractor(msrest.serialization.Model):
-    """ExtractorBaseExtractor.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar identifier: Required. Uniquely identify an extractor.
-    :vartype identifier: str
-    :ivar name: Required.
-    :vartype name: str
-    :ivar name_plural: Required.
-    :vartype name_plural: str
-    :ivar validatable: Required.
-    :vartype validatable: bool
-    :ivar is_custom:
-    :vartype is_custom: bool
-    :ivar created_dt:
-    :vartype created_dt: ~datetime.datetime
-    """
-
-    _validation = {
-        "identifier": {"required": True},
-        "name": {"required": True},
-        "name_plural": {"required": True},
-        "validatable": {"required": True},
-    }
-
-    _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-        "name": {"key": "name", "type": "str"},
-        "name_plural": {"key": "namePlural", "type": "str"},
-        "validatable": {"key": "validatable", "type": "bool"},
-        "is_custom": {"key": "isCustom", "type": "bool"},
-        "created_dt": {"key": "createdDt", "type": "iso-8601"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword identifier: Required. Uniquely identify an extractor.
-        :paramtype identifier: str
-        :keyword name: Required.
-        :paramtype name: str
-        :keyword name_plural: Required.
-        :paramtype name_plural: str
-        :keyword validatable: Required.
-        :paramtype validatable: bool
-        :keyword is_custom:
-        :paramtype is_custom: bool
-        :keyword created_dt:
-        :paramtype created_dt: ~datetime.datetime
-        """
-        super(ExtractorBaseExtractor, self).__init__(**kwargs)
-        self.identifier = kwargs["identifier"]
-        self.name = kwargs["name"]
-        self.name_plural = kwargs["name_plural"]
-        self.validatable = kwargs["validatable"]
-        self.is_custom = kwargs.get("is_custom", None)
-        self.created_dt = kwargs.get("created_dt", None)
-
-
-class ExtractorCreate(msrest.serialization.Model):
-    """ExtractorCreate.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar name: Required.
-    :vartype name: str
-    :ivar name_plural:
-    :vartype name_plural: str
-    :ivar base_extractor: Uniquely identify an extractor.
-    :vartype base_extractor: str
-    :ivar organization: Required. Uniquely identify an organization.
-    :vartype organization: str
-    :ivar category:
-    :vartype category: str
-    :ivar validatable:
-    :vartype validatable: bool
-    :ivar field_groups:
-    :vartype field_groups: list[~affinda.models.FieldGroup]
-    """
-
-    _validation = {
-        "name": {"required": True},
-        "organization": {"required": True},
-    }
-
-    _attribute_map = {
-        "name": {"key": "name", "type": "str"},
-        "name_plural": {"key": "namePlural", "type": "str"},
-        "base_extractor": {"key": "baseExtractor", "type": "str"},
-        "organization": {"key": "organization", "type": "str"},
-        "category": {"key": "category", "type": "str"},
-        "validatable": {"key": "validatable", "type": "bool"},
-        "field_groups": {"key": "fieldGroups", "type": "[FieldGroup]"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword name: Required.
-        :paramtype name: str
-        :keyword name_plural:
-        :paramtype name_plural: str
-        :keyword base_extractor: Uniquely identify an extractor.
-        :paramtype base_extractor: str
-        :keyword organization: Required. Uniquely identify an organization.
-        :paramtype organization: str
-        :keyword category:
-        :paramtype category: str
-        :keyword validatable:
-        :paramtype validatable: bool
-        :keyword field_groups:
-        :paramtype field_groups: list[~affinda.models.FieldGroup]
-        """
-        super(ExtractorCreate, self).__init__(**kwargs)
-        self.name = kwargs["name"]
-        self.name_plural = kwargs.get("name_plural", None)
-        self.base_extractor = kwargs.get("base_extractor", None)
-        self.organization = kwargs["organization"]
-        self.category = kwargs.get("category", None)
-        self.validatable = kwargs.get("validatable", None)
-        self.field_groups = kwargs.get("field_groups", None)
-
-
-class ExtractorUpdate(msrest.serialization.Model):
-    """ExtractorUpdate.
-
-    :ivar name:
-    :vartype name: str
-    :ivar name_plural:
-    :vartype name_plural: str
-    :ivar base_extractor: Uniquely identify an extractor.
-    :vartype base_extractor: str
-    :ivar category:
-    :vartype category: str
-    :ivar validatable:
-    :vartype validatable: bool
-    :ivar field_groups:
-    :vartype field_groups: list[~affinda.models.FieldGroup]
-    """
-
-    _attribute_map = {
-        "name": {"key": "name", "type": "str"},
-        "name_plural": {"key": "namePlural", "type": "str"},
-        "base_extractor": {"key": "baseExtractor", "type": "str"},
-        "category": {"key": "category", "type": "str"},
-        "validatable": {"key": "validatable", "type": "bool"},
-        "field_groups": {"key": "fieldGroups", "type": "[FieldGroup]"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword name:
-        :paramtype name: str
-        :keyword name_plural:
-        :paramtype name_plural: str
-        :keyword base_extractor: Uniquely identify an extractor.
-        :paramtype base_extractor: str
-        :keyword category:
-        :paramtype category: str
-        :keyword validatable:
-        :paramtype validatable: bool
-        :keyword field_groups:
-        :paramtype field_groups: list[~affinda.models.FieldGroup]
-        """
-        super(ExtractorUpdate, self).__init__(**kwargs)
-        self.name = kwargs.get("name", None)
-        self.name_plural = kwargs.get("name_plural", None)
-        self.base_extractor = kwargs.get("base_extractor", None)
-        self.category = kwargs.get("category", None)
-        self.validatable = kwargs.get("validatable", None)
-        self.field_groups = kwargs.get("field_groups", None)
-
-
-class Field(msrest.serialization.Model):
-    """Field.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar label: Required.
-    :vartype label: str
-    :ivar slug: Required.
-    :vartype slug: str
-    :ivar data_point: Required.
-    :vartype data_point: str
-    :ivar mandatory:
-    :vartype mandatory: bool
-    :ivar disabled:
-    :vartype disabled: bool
-    :ivar auto_validation_threshold:
-    :vartype auto_validation_threshold: float
-    :ivar fields:
-    :vartype fields: list[~affinda.models.Field]
-    """
-
-    _validation = {
-        "label": {"required": True},
-        "slug": {"required": True},
-        "data_point": {"required": True},
-    }
-
-    _attribute_map = {
-        "label": {"key": "label", "type": "str"},
-        "slug": {"key": "slug", "type": "str"},
-        "data_point": {"key": "dataPoint", "type": "str"},
-        "mandatory": {"key": "mandatory", "type": "bool"},
-        "disabled": {"key": "disabled", "type": "bool"},
-        "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
-        "fields": {"key": "fields", "type": "[Field]"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword label: Required.
-        :paramtype label: str
-        :keyword slug: Required.
-        :paramtype slug: str
-        :keyword data_point: Required.
-        :paramtype data_point: str
-        :keyword mandatory:
-        :paramtype mandatory: bool
-        :keyword disabled:
-        :paramtype disabled: bool
-        :keyword auto_validation_threshold:
-        :paramtype auto_validation_threshold: float
-        :keyword fields:
-        :paramtype fields: list[~affinda.models.Field]
-        """
-        super(Field, self).__init__(**kwargs)
-        self.label = kwargs["label"]
-        self.slug = kwargs["slug"]
-        self.data_point = kwargs["data_point"]
-        self.mandatory = kwargs.get("mandatory", None)
-        self.disabled = kwargs.get("disabled", None)
-        self.auto_validation_threshold = kwargs.get("auto_validation_threshold", None)
-        self.fields = kwargs.get("fields", None)
-
-
-class FieldGroup(msrest.serialization.Model):
-    """FieldGroup.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar label: Required.
-    :vartype label: str
-    :ivar fields: Required.
-    :vartype fields: list[~affinda.models.Field]
-    """
-
-    _validation = {
-        "label": {"required": True},
-        "fields": {"required": True},
-    }
-
-    _attribute_map = {
-        "label": {"key": "label", "type": "str"},
-        "fields": {"key": "fields", "type": "[Field]"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword label: Required.
-        :paramtype label: str
-        :keyword fields: Required.
-        :paramtype fields: list[~affinda.models.Field]
-        """
-        super(FieldGroup, self).__init__(**kwargs)
-        self.label = kwargs["label"]
-        self.fields = kwargs["fields"]
-
-
 class Get200ApplicationJsonPropertiesItemsItem(msrest.serialization.Model):
     """Get200ApplicationJsonPropertiesItemsItem.
 
@@ -4297,83 +1798,6 @@ class Get200ApplicationJsonPropertiesItemsItem(msrest.serialization.Model):
         self.document_type = kwargs.get("document_type", None)
 
 
-class GetAllDocumentsResults(msrest.serialization.Model):
-    """GetAllDocumentsResults.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar count: Required. Number of documents in result.
-    :vartype count: int
-    :ivar next: URL to request next page of results.
-    :vartype next: str
-    :ivar previous: URL to request previous page of results.
-    :vartype previous: str
-    :ivar results: Required.
-    :vartype results: list[~affinda.models.GetAllDocumentsResultsItem]
-    """
-
-    _validation = {
-        "count": {"required": True},
-        "results": {"required": True},
-    }
-
-    _attribute_map = {
-        "count": {"key": "count", "type": "int"},
-        "next": {"key": "next", "type": "str"},
-        "previous": {"key": "previous", "type": "str"},
-        "results": {"key": "results", "type": "[GetAllDocumentsResultsItem]"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword count: Required. Number of documents in result.
-        :paramtype count: int
-        :keyword next: URL to request next page of results.
-        :paramtype next: str
-        :keyword previous: URL to request previous page of results.
-        :paramtype previous: str
-        :keyword results: Required.
-        :paramtype results: list[~affinda.models.GetAllDocumentsResultsItem]
-        """
-        super(GetAllDocumentsResults, self).__init__(**kwargs)
-        self.count = kwargs["count"]
-        self.next = kwargs.get("next", None)
-        self.previous = kwargs.get("previous", None)
-        self.results = kwargs["results"]
-
-
-class GetAllDocumentsResultsItem(msrest.serialization.Model):
-    """GetAllDocumentsResultsItem.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar meta: Required.
-    :vartype meta: ~affinda.models.DocumentMeta
-    :ivar error:
-    :vartype error: ~affinda.models.Error
-    """
-
-    _validation = {
-        "meta": {"required": True},
-    }
-
-    _attribute_map = {
-        "meta": {"key": "meta", "type": "DocumentMeta"},
-        "error": {"key": "error", "type": "Error"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword meta: Required.
-        :paramtype meta: ~affinda.models.DocumentMeta
-        :keyword error:
-        :paramtype error: ~affinda.models.Error
-        """
-        super(GetAllDocumentsResultsItem, self).__init__(**kwargs)
-        self.meta = kwargs["meta"]
-        self.error = kwargs.get("error", None)
-
-
 class IndexRequestBody(msrest.serialization.Model):
     """IndexRequestBody.
 
@@ -4400,239 +1824,339 @@ class IndexRequestBody(msrest.serialization.Model):
         self.document_type = kwargs.get("document_type", None)
 
 
-class Invitation(msrest.serialization.Model):
-    """Invitation.
-
-    :ivar identifier: Uniquely identify an invitation.
-    :vartype identifier: str
-    :ivar organization:
-    :vartype organization: ~affinda.models.Organization
-    :ivar email: The email which the invitation is sent to.
-    :vartype email: str
-    :ivar role: Known values are: "admin", "member".
-    :vartype role: str or ~affinda.models.OrganizationRole
-    :ivar status: Known values are: "pending", "accepted", "declined".
-    :vartype status: str or ~affinda.models.InvitationStatus
-    :ivar expiry_date: The date after which the invitation expires. Default is 10 days from now.
-    :vartype expiry_date: ~datetime.date
-    :ivar invited_by:
-    :vartype invited_by: ~affinda.models.User
-    :ivar responded_by:
-    :vartype responded_by: ~affinda.models.InvitationRespondedBy
-    :ivar created_dt:
-    :vartype created_dt: ~datetime.datetime
-    """
-
-    _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-        "organization": {"key": "organization", "type": "Organization"},
-        "email": {"key": "email", "type": "str"},
-        "role": {"key": "role", "type": "str"},
-        "status": {"key": "status", "type": "str"},
-        "expiry_date": {"key": "expiryDate", "type": "date"},
-        "invited_by": {"key": "invitedBy", "type": "User"},
-        "responded_by": {"key": "respondedBy", "type": "InvitationRespondedBy"},
-        "created_dt": {"key": "createdDt", "type": "iso-8601"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword identifier: Uniquely identify an invitation.
-        :paramtype identifier: str
-        :keyword organization:
-        :paramtype organization: ~affinda.models.Organization
-        :keyword email: The email which the invitation is sent to.
-        :paramtype email: str
-        :keyword role: Known values are: "admin", "member".
-        :paramtype role: str or ~affinda.models.OrganizationRole
-        :keyword status: Known values are: "pending", "accepted", "declined".
-        :paramtype status: str or ~affinda.models.InvitationStatus
-        :keyword expiry_date: The date after which the invitation expires. Default is 10 days from now.
-        :paramtype expiry_date: ~datetime.date
-        :keyword invited_by:
-        :paramtype invited_by: ~affinda.models.User
-        :keyword responded_by:
-        :paramtype responded_by: ~affinda.models.InvitationRespondedBy
-        :keyword created_dt:
-        :paramtype created_dt: ~datetime.datetime
-        """
-        super(Invitation, self).__init__(**kwargs)
-        self.identifier = kwargs.get("identifier", None)
-        self.organization = kwargs.get("organization", None)
-        self.email = kwargs.get("email", None)
-        self.role = kwargs.get("role", None)
-        self.status = kwargs.get("status", None)
-        self.expiry_date = kwargs.get("expiry_date", None)
-        self.invited_by = kwargs.get("invited_by", None)
-        self.responded_by = kwargs.get("responded_by", None)
-        self.created_dt = kwargs.get("created_dt", None)
-
-
-class InvitationCreate(msrest.serialization.Model):
-    """InvitationCreate.
+class Invoice(msrest.serialization.Model):
+    """Invoice.
 
     All required parameters must be populated in order to send to Azure.
 
-    :ivar organization: Required. Uniquely identify an organization.
-    :vartype organization: str
-    :ivar email: Required. The email which the invitation is sent to.
-    :vartype email: str
-    :ivar role: Required. Known values are: "admin", "member".
-    :vartype role: str or ~affinda.models.OrganizationRole
+    :ivar client_verified_dt: Required.
+    :vartype client_verified_dt: str
+    :ivar data: Required.
+    :vartype data: ~affinda.models.InvoiceData
+    :ivar meta: Required.
+    :vartype meta: ~affinda.models.Meta
+    :ivar error: Required.
+    :vartype error: ~affinda.models.Error
     """
 
     _validation = {
-        "organization": {"required": True},
-        "email": {"required": True},
-        "role": {"required": True},
+        "client_verified_dt": {"required": True},
+        "data": {"required": True},
+        "meta": {"required": True},
+        "error": {"required": True},
     }
 
     _attribute_map = {
-        "organization": {"key": "organization", "type": "str"},
-        "email": {"key": "email", "type": "str"},
-        "role": {"key": "role", "type": "str"},
+        "client_verified_dt": {"key": "clientVerifiedDt", "type": "str"},
+        "data": {"key": "data", "type": "InvoiceData"},
+        "meta": {"key": "meta", "type": "Meta"},
+        "error": {"key": "error", "type": "Error"},
     }
 
     def __init__(self, **kwargs):
         """
-        :keyword organization: Required. Uniquely identify an organization.
-        :paramtype organization: str
-        :keyword email: Required. The email which the invitation is sent to.
-        :paramtype email: str
-        :keyword role: Required. Known values are: "admin", "member".
-        :paramtype role: str or ~affinda.models.OrganizationRole
+        :keyword client_verified_dt: Required.
+        :paramtype client_verified_dt: str
+        :keyword data: Required.
+        :paramtype data: ~affinda.models.InvoiceData
+        :keyword meta: Required.
+        :paramtype meta: ~affinda.models.Meta
+        :keyword error: Required.
+        :paramtype error: ~affinda.models.Error
         """
-        super(InvitationCreate, self).__init__(**kwargs)
-        self.organization = kwargs["organization"]
-        self.email = kwargs["email"]
-        self.role = kwargs["role"]
+        super(Invoice, self).__init__(**kwargs)
+        self.client_verified_dt = kwargs["client_verified_dt"]
+        self.data = kwargs["data"]
+        self.meta = kwargs["meta"]
+        self.error = kwargs["error"]
 
 
-class User(msrest.serialization.Model):
-    """User.
+class InvoiceData(msrest.serialization.Model):
+    """InvoiceData.
 
-    :ivar id: Uniquely identify a user.
-    :vartype id: int
-    :ivar name:
-    :vartype name: str
-    :ivar username:
-    :vartype username: str
-    :ivar email:
-    :vartype email: str
-    :ivar avatar: URL of the user's avatar.
-    :vartype avatar: str
+    :ivar tables:
+    :vartype tables: list[~affinda.models.InvoiceDataTablesItem]
+    :ivar invoice_date:
+    :vartype invoice_date: ~affinda.models.DateAnnotation
+    :ivar invoice_order_date:
+    :vartype invoice_order_date: ~affinda.models.DateAnnotation
+    :ivar payment_date_due:
+    :vartype payment_date_due: ~affinda.models.DateAnnotation
+    :ivar payment_amount_base:
+    :vartype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
+    :ivar payment_amount_tax:
+    :vartype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
+    :ivar payment_amount_total:
+    :vartype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
+    :ivar payment_amount_paid:
+    :vartype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
+    :ivar payment_amount_due:
+    :vartype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
+    :ivar invoice_number:
+    :vartype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
+    :ivar invoice_purchase_order_number:
+    :vartype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
+    :ivar supplier_business_number:
+    :vartype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
+    :ivar customer_number:
+    :vartype customer_number: ~affinda.models.InvoiceDataCustomerNumber
+    :ivar customer_business_number:
+    :vartype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
+    :ivar payment_reference:
+    :vartype payment_reference: ~affinda.models.InvoiceDataPaymentReference
+    :ivar bank_account_number:
+    :vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
+    :ivar supplier_vat:
+    :vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
+    :ivar customer_vat:
+    :vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
+    :ivar bpay_biller_code:
+    :vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
+    :ivar bpay_reference:
+    :vartype bpay_reference: ~affinda.models.InvoiceDataBpayReference
+    :ivar bank_sort_code:
+    :vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
+    :ivar bank_iban:
+    :vartype bank_iban: ~affinda.models.InvoiceDataBankIban
+    :ivar bank_swift:
+    :vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
+    :ivar bank_bsb:
+    :vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
+    :ivar customer_contact_name:
+    :vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
+    :ivar customer_company_name:
+    :vartype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
+    :ivar supplier_company_name:
+    :vartype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
+    :ivar customer_billing_address:
+    :vartype customer_billing_address: ~affinda.models.LocationAnnotation
+    :ivar customer_delivery_address:
+    :vartype customer_delivery_address: ~affinda.models.LocationAnnotation
+    :ivar supplier_address:
+    :vartype supplier_address: ~affinda.models.LocationAnnotation
+    :ivar customer_phone_number:
+    :vartype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
+    :ivar supplier_phone_number:
+    :vartype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
+    :ivar supplier_fax:
+    :vartype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
+    :ivar customer_email:
+    :vartype customer_email: ~affinda.models.InvoiceDataCustomerEmail
+    :ivar supplier_email:
+    :vartype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
+    :ivar supplier_website:
+    :vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
+    :ivar currency_code:
+    :vartype currency_code: ~affinda.models.TextAnnotation
+    :ivar custom_fields: Dictionary of :code:`<any>`.
+    :vartype custom_fields: dict[str, any]
     """
 
     _attribute_map = {
-        "id": {"key": "id", "type": "int"},
-        "name": {"key": "name", "type": "str"},
-        "username": {"key": "username", "type": "str"},
-        "email": {"key": "email", "type": "str"},
-        "avatar": {"key": "avatar", "type": "str"},
+        "tables": {"key": "tables", "type": "[InvoiceDataTablesItem]"},
+        "invoice_date": {"key": "invoiceDate", "type": "DateAnnotation"},
+        "invoice_order_date": {"key": "invoiceOrderDate", "type": "DateAnnotation"},
+        "payment_date_due": {"key": "paymentDateDue", "type": "DateAnnotation"},
+        "payment_amount_base": {
+            "key": "paymentAmountBase",
+            "type": "InvoiceDataPaymentAmountBase",
+        },
+        "payment_amount_tax": {"key": "paymentAmountTax", "type": "InvoiceDataPaymentAmountTax"},
+        "payment_amount_total": {
+            "key": "paymentAmountTotal",
+            "type": "InvoiceDataPaymentAmountTotal",
+        },
+        "payment_amount_paid": {
+            "key": "paymentAmountPaid",
+            "type": "InvoiceDataPaymentAmountPaid",
+        },
+        "payment_amount_due": {"key": "paymentAmountDue", "type": "InvoiceDataPaymentAmountDue"},
+        "invoice_number": {"key": "invoiceNumber", "type": "InvoiceDataInvoiceNumber"},
+        "invoice_purchase_order_number": {
+            "key": "invoicePurchaseOrderNumber",
+            "type": "InvoiceDataInvoicePurchaseOrderNumber",
+        },
+        "supplier_business_number": {
+            "key": "supplierBusinessNumber",
+            "type": "InvoiceDataSupplierBusinessNumber",
+        },
+        "customer_number": {"key": "customerNumber", "type": "InvoiceDataCustomerNumber"},
+        "customer_business_number": {
+            "key": "customerBusinessNumber",
+            "type": "InvoiceDataCustomerBusinessNumber",
+        },
+        "payment_reference": {"key": "paymentReference", "type": "InvoiceDataPaymentReference"},
+        "bank_account_number": {
+            "key": "bankAccountNumber",
+            "type": "InvoiceDataBankAccountNumber",
+        },
+        "supplier_vat": {"key": "supplierVat", "type": "InvoiceDataSupplierVat"},
+        "customer_vat": {"key": "customerVat", "type": "InvoiceDataCustomerVat"},
+        "bpay_biller_code": {"key": "bpayBillerCode", "type": "InvoiceDataBpayBillerCode"},
+        "bpay_reference": {"key": "bpayReference", "type": "InvoiceDataBpayReference"},
+        "bank_sort_code": {"key": "bankSortCode", "type": "InvoiceDataBankSortCode"},
+        "bank_iban": {"key": "bankIban", "type": "InvoiceDataBankIban"},
+        "bank_swift": {"key": "bankSwift", "type": "InvoiceDataBankSwift"},
+        "bank_bsb": {"key": "bankBsb", "type": "InvoiceDataBankBsb"},
+        "customer_contact_name": {
+            "key": "customerContactName",
+            "type": "InvoiceDataCustomerContactName",
+        },
+        "customer_company_name": {
+            "key": "customerCompanyName",
+            "type": "InvoiceDataCustomerCompanyName",
+        },
+        "supplier_company_name": {
+            "key": "supplierCompanyName",
+            "type": "InvoiceDataSupplierCompanyName",
+        },
+        "customer_billing_address": {
+            "key": "customerBillingAddress",
+            "type": "LocationAnnotation",
+        },
+        "customer_delivery_address": {
+            "key": "customerDeliveryAddress",
+            "type": "LocationAnnotation",
+        },
+        "supplier_address": {"key": "supplierAddress", "type": "LocationAnnotation"},
+        "customer_phone_number": {
+            "key": "customerPhoneNumber",
+            "type": "InvoiceDataCustomerPhoneNumber",
+        },
+        "supplier_phone_number": {
+            "key": "supplierPhoneNumber",
+            "type": "InvoiceDataSupplierPhoneNumber",
+        },
+        "supplier_fax": {"key": "supplierFax", "type": "InvoiceDataSupplierFax"},
+        "customer_email": {"key": "customerEmail", "type": "InvoiceDataCustomerEmail"},
+        "supplier_email": {"key": "supplierEmail", "type": "InvoiceDataSupplierEmail"},
+        "supplier_website": {"key": "supplierWebsite", "type": "InvoiceDataSupplierWebsite"},
+        "currency_code": {"key": "currencyCode", "type": "TextAnnotation"},
+        "custom_fields": {"key": "customFields", "type": "{object}"},
     }
 
     def __init__(self, **kwargs):
         """
-        :keyword id: Uniquely identify a user.
-        :paramtype id: int
-        :keyword name:
-        :paramtype name: str
-        :keyword username:
-        :paramtype username: str
-        :keyword email:
-        :paramtype email: str
-        :keyword avatar: URL of the user's avatar.
-        :paramtype avatar: str
+        :keyword tables:
+        :paramtype tables: list[~affinda.models.InvoiceDataTablesItem]
+        :keyword invoice_date:
+        :paramtype invoice_date: ~affinda.models.DateAnnotation
+        :keyword invoice_order_date:
+        :paramtype invoice_order_date: ~affinda.models.DateAnnotation
+        :keyword payment_date_due:
+        :paramtype payment_date_due: ~affinda.models.DateAnnotation
+        :keyword payment_amount_base:
+        :paramtype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
+        :keyword payment_amount_tax:
+        :paramtype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
+        :keyword payment_amount_total:
+        :paramtype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
+        :keyword payment_amount_paid:
+        :paramtype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
+        :keyword payment_amount_due:
+        :paramtype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
+        :keyword invoice_number:
+        :paramtype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
+        :keyword invoice_purchase_order_number:
+        :paramtype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
+        :keyword supplier_business_number:
+        :paramtype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
+        :keyword customer_number:
+        :paramtype customer_number: ~affinda.models.InvoiceDataCustomerNumber
+        :keyword customer_business_number:
+        :paramtype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
+        :keyword payment_reference:
+        :paramtype payment_reference: ~affinda.models.InvoiceDataPaymentReference
+        :keyword bank_account_number:
+        :paramtype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
+        :keyword supplier_vat:
+        :paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
+        :keyword customer_vat:
+        :paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVat
+        :keyword bpay_biller_code:
+        :paramtype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
+        :keyword bpay_reference:
+        :paramtype bpay_reference: ~affinda.models.InvoiceDataBpayReference
+        :keyword bank_sort_code:
+        :paramtype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
+        :keyword bank_iban:
+        :paramtype bank_iban: ~affinda.models.InvoiceDataBankIban
+        :keyword bank_swift:
+        :paramtype bank_swift: ~affinda.models.InvoiceDataBankSwift
+        :keyword bank_bsb:
+        :paramtype bank_bsb: ~affinda.models.InvoiceDataBankBsb
+        :keyword customer_contact_name:
+        :paramtype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
+        :keyword customer_company_name:
+        :paramtype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
+        :keyword supplier_company_name:
+        :paramtype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
+        :keyword customer_billing_address:
+        :paramtype customer_billing_address: ~affinda.models.LocationAnnotation
+        :keyword customer_delivery_address:
+        :paramtype customer_delivery_address: ~affinda.models.LocationAnnotation
+        :keyword supplier_address:
+        :paramtype supplier_address: ~affinda.models.LocationAnnotation
+        :keyword customer_phone_number:
+        :paramtype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
+        :keyword supplier_phone_number:
+        :paramtype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
+        :keyword supplier_fax:
+        :paramtype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
+        :keyword customer_email:
+        :paramtype customer_email: ~affinda.models.InvoiceDataCustomerEmail
+        :keyword supplier_email:
+        :paramtype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
+        :keyword supplier_website:
+        :paramtype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
+        :keyword currency_code:
+        :paramtype currency_code: ~affinda.models.TextAnnotation
+        :keyword custom_fields: Dictionary of :code:`<any>`.
+        :paramtype custom_fields: dict[str, any]
         """
-        super(User, self).__init__(**kwargs)
-        self.id = kwargs.get("id", None)
-        self.name = kwargs.get("name", None)
-        self.username = kwargs.get("username", None)
-        self.email = kwargs.get("email", None)
-        self.avatar = kwargs.get("avatar", None)
+        super(InvoiceData, self).__init__(**kwargs)
+        self.tables = kwargs.get("tables", None)
+        self.invoice_date = kwargs.get("invoice_date", None)
+        self.invoice_order_date = kwargs.get("invoice_order_date", None)
+        self.payment_date_due = kwargs.get("payment_date_due", None)
+        self.payment_amount_base = kwargs.get("payment_amount_base", None)
+        self.payment_amount_tax = kwargs.get("payment_amount_tax", None)
+        self.payment_amount_total = kwargs.get("payment_amount_total", None)
+        self.payment_amount_paid = kwargs.get("payment_amount_paid", None)
+        self.payment_amount_due = kwargs.get("payment_amount_due", None)
+        self.invoice_number = kwargs.get("invoice_number", None)
+        self.invoice_purchase_order_number = kwargs.get("invoice_purchase_order_number", None)
+        self.supplier_business_number = kwargs.get("supplier_business_number", None)
+        self.customer_number = kwargs.get("customer_number", None)
+        self.customer_business_number = kwargs.get("customer_business_number", None)
+        self.payment_reference = kwargs.get("payment_reference", None)
+        self.bank_account_number = kwargs.get("bank_account_number", None)
+        self.supplier_vat = kwargs.get("supplier_vat", None)
+        self.customer_vat = kwargs.get("customer_vat", None)
+        self.bpay_biller_code = kwargs.get("bpay_biller_code", None)
+        self.bpay_reference = kwargs.get("bpay_reference", None)
+        self.bank_sort_code = kwargs.get("bank_sort_code", None)
+        self.bank_iban = kwargs.get("bank_iban", None)
+        self.bank_swift = kwargs.get("bank_swift", None)
+        self.bank_bsb = kwargs.get("bank_bsb", None)
+        self.customer_contact_name = kwargs.get("customer_contact_name", None)
+        self.customer_company_name = kwargs.get("customer_company_name", None)
+        self.supplier_company_name = kwargs.get("supplier_company_name", None)
+        self.customer_billing_address = kwargs.get("customer_billing_address", None)
+        self.customer_delivery_address = kwargs.get("customer_delivery_address", None)
+        self.supplier_address = kwargs.get("supplier_address", None)
+        self.customer_phone_number = kwargs.get("customer_phone_number", None)
+        self.supplier_phone_number = kwargs.get("supplier_phone_number", None)
+        self.supplier_fax = kwargs.get("supplier_fax", None)
+        self.customer_email = kwargs.get("customer_email", None)
+        self.supplier_email = kwargs.get("supplier_email", None)
+        self.supplier_website = kwargs.get("supplier_website", None)
+        self.currency_code = kwargs.get("currency_code", None)
+        self.custom_fields = kwargs.get("custom_fields", None)
 
 
-class InvitationRespondedBy(User):
-    """InvitationRespondedBy.
-
-    :ivar id: Uniquely identify a user.
-    :vartype id: int
-    :ivar name:
-    :vartype name: str
-    :ivar username:
-    :vartype username: str
-    :ivar email:
-    :vartype email: str
-    :ivar avatar: URL of the user's avatar.
-    :vartype avatar: str
-    """
-
-    _attribute_map = {
-        "id": {"key": "id", "type": "int"},
-        "name": {"key": "name", "type": "str"},
-        "username": {"key": "username", "type": "str"},
-        "email": {"key": "email", "type": "str"},
-        "avatar": {"key": "avatar", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword id: Uniquely identify a user.
-        :paramtype id: int
-        :keyword name:
-        :paramtype name: str
-        :keyword username:
-        :paramtype username: str
-        :keyword email:
-        :paramtype email: str
-        :keyword avatar: URL of the user's avatar.
-        :paramtype avatar: str
-        """
-        super(InvitationRespondedBy, self).__init__(**kwargs)
-
-
-class InvitationResponse(msrest.serialization.Model):
-    """InvitationResponse.
-
-    :ivar status: Known values are: "accepted", "declined".
-    :vartype status: str or ~affinda.models.InvitationResponseStatus
-    """
-
-    _attribute_map = {
-        "status": {"key": "status", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword status: Known values are: "accepted", "declined".
-        :paramtype status: str or ~affinda.models.InvitationResponseStatus
-        """
-        super(InvitationResponse, self).__init__(**kwargs)
-        self.status = kwargs.get("status", None)
-
-
-class InvitationUpdate(msrest.serialization.Model):
-    """InvitationUpdate.
-
-    :ivar role: Known values are: "admin", "member".
-    :vartype role: str or ~affinda.models.OrganizationRole
-    """
-
-    _attribute_map = {
-        "role": {"key": "role", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword role: Known values are: "admin", "member".
-        :paramtype role: str or ~affinda.models.OrganizationRole
-        """
-        super(InvitationUpdate, self).__init__(**kwargs)
-        self.role = kwargs.get("role", None)
-
-
-class TextAnnotationV2(AnnotationV2):
-    """TextAnnotationV2.
+class TextAnnotation(Annotation):
+    """TextAnnotation.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -4740,12 +2264,12 @@ class TextAnnotationV2(AnnotationV2):
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(TextAnnotationV2, self).__init__(**kwargs)
+        super(TextAnnotation, self).__init__(**kwargs)
         self.parsed = kwargs.get("parsed", None)
 
 
 class InvoiceDataBankAccountNumber(
-    TextAnnotationV2, Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1
+    TextAnnotation, Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1
 ):
     """InvoiceDataBankAccountNumber.
 
@@ -4874,7 +2398,7 @@ class InvoiceDataBankAccountNumber(
 
 
 class InvoiceDataBankBsb(
-    TextAnnotationV2, Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1
+    TextAnnotation, Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1
 ):
     """InvoiceDataBankBsb.
 
@@ -5003,7 +2527,7 @@ class InvoiceDataBankBsb(
 
 
 class InvoiceDataBankIban(
-    TextAnnotationV2, Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1
+    TextAnnotation, Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1
 ):
     """InvoiceDataBankIban.
 
@@ -5132,7 +2656,7 @@ class InvoiceDataBankIban(
 
 
 class InvoiceDataBankSortCode(
-    TextAnnotationV2, Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1
+    TextAnnotation, Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1
 ):
     """InvoiceDataBankSortCode.
 
@@ -5261,7 +2785,7 @@ class InvoiceDataBankSortCode(
 
 
 class InvoiceDataBankSwift(
-    TextAnnotationV2, Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1
+    TextAnnotation, Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1
 ):
     """InvoiceDataBankSwift.
 
@@ -5390,7 +2914,7 @@ class InvoiceDataBankSwift(
 
 
 class InvoiceDataBpayBillerCode(
-    TextAnnotationV2, ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1
+    TextAnnotation, ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1
 ):
     """InvoiceDataBpayBillerCode.
 
@@ -5519,7 +3043,7 @@ class InvoiceDataBpayBillerCode(
 
 
 class InvoiceDataBpayReference(
-    TextAnnotationV2, ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1
+    TextAnnotation, ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1
 ):
     """InvoiceDataBpayReference.
 
@@ -5648,7 +3172,7 @@ class InvoiceDataBpayReference(
 
 
 class InvoiceDataCustomerBusinessNumber(
-    TextAnnotationV2, Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1
+    TextAnnotation, Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1
 ):
     """InvoiceDataCustomerBusinessNumber.
 
@@ -5777,7 +3301,7 @@ class InvoiceDataCustomerBusinessNumber(
 
 
 class InvoiceDataCustomerCompanyName(
-    TextAnnotationV2, Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1
+    TextAnnotation, Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1
 ):
     """InvoiceDataCustomerCompanyName.
 
@@ -5906,7 +3430,7 @@ class InvoiceDataCustomerCompanyName(
 
 
 class InvoiceDataCustomerContactName(
-    TextAnnotationV2, ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1
+    TextAnnotation, ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1
 ):
     """InvoiceDataCustomerContactName.
 
@@ -6035,7 +3559,7 @@ class InvoiceDataCustomerContactName(
 
 
 class InvoiceDataCustomerEmail(
-    TextAnnotationV2, Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1
+    TextAnnotation, Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1
 ):
     """InvoiceDataCustomerEmail.
 
@@ -6164,7 +3688,7 @@ class InvoiceDataCustomerEmail(
 
 
 class InvoiceDataCustomerNumber(
-    TextAnnotationV2, Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1
+    TextAnnotation, Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1
 ):
     """InvoiceDataCustomerNumber.
 
@@ -6293,7 +3817,7 @@ class InvoiceDataCustomerNumber(
 
 
 class InvoiceDataCustomerPhoneNumber(
-    TextAnnotationV2, Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1
+    TextAnnotation, Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1
 ):
     """InvoiceDataCustomerPhoneNumber.
 
@@ -6422,7 +3946,7 @@ class InvoiceDataCustomerPhoneNumber(
 
 
 class InvoiceDataCustomerVat(
-    TextAnnotationV2, ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1
+    TextAnnotation, ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1
 ):
     """InvoiceDataCustomerVat.
 
@@ -6551,7 +4075,7 @@ class InvoiceDataCustomerVat(
 
 
 class InvoiceDataInvoiceNumber(
-    TextAnnotationV2, Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1
+    TextAnnotation, Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1
 ):
     """InvoiceDataInvoiceNumber.
 
@@ -6680,7 +4204,7 @@ class InvoiceDataInvoiceNumber(
 
 
 class InvoiceDataInvoicePurchaseOrderNumber(
-    TextAnnotationV2, ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1
+    TextAnnotation, ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1
 ):
     """InvoiceDataInvoicePurchaseOrderNumber.
 
@@ -6809,7 +4333,7 @@ class InvoiceDataInvoicePurchaseOrderNumber(
 
 
 class InvoiceDataPaymentAmountBase(
-    TextAnnotationV2, Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1
+    TextAnnotation, Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1
 ):
     """InvoiceDataPaymentAmountBase.
 
@@ -6938,7 +4462,7 @@ class InvoiceDataPaymentAmountBase(
 
 
 class InvoiceDataPaymentAmountDue(
-    TextAnnotationV2, ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1
+    TextAnnotation, ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1
 ):
     """InvoiceDataPaymentAmountDue.
 
@@ -7067,7 +4591,7 @@ class InvoiceDataPaymentAmountDue(
 
 
 class InvoiceDataPaymentAmountPaid(
-    TextAnnotationV2, Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1
+    TextAnnotation, Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1
 ):
     """InvoiceDataPaymentAmountPaid.
 
@@ -7196,7 +4720,7 @@ class InvoiceDataPaymentAmountPaid(
 
 
 class InvoiceDataPaymentAmountTax(
-    TextAnnotationV2, Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1
+    TextAnnotation, Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1
 ):
     """InvoiceDataPaymentAmountTax.
 
@@ -7325,7 +4849,7 @@ class InvoiceDataPaymentAmountTax(
 
 
 class InvoiceDataPaymentAmountTotal(
-    TextAnnotationV2, Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1
+    TextAnnotation, Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1
 ):
     """InvoiceDataPaymentAmountTotal.
 
@@ -7454,7 +4978,7 @@ class InvoiceDataPaymentAmountTotal(
 
 
 class InvoiceDataPaymentReference(
-    TextAnnotationV2, Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1
+    TextAnnotation, Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1
 ):
     """InvoiceDataPaymentReference.
 
@@ -7583,7 +5107,7 @@ class InvoiceDataPaymentReference(
 
 
 class InvoiceDataSupplierBusinessNumber(
-    TextAnnotationV2, Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1
+    TextAnnotation, Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1
 ):
     """InvoiceDataSupplierBusinessNumber.
 
@@ -7712,7 +5236,7 @@ class InvoiceDataSupplierBusinessNumber(
 
 
 class InvoiceDataSupplierCompanyName(
-    TextAnnotationV2, Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1
+    TextAnnotation, Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1
 ):
     """InvoiceDataSupplierCompanyName.
 
@@ -7841,7 +5365,7 @@ class InvoiceDataSupplierCompanyName(
 
 
 class InvoiceDataSupplierEmail(
-    TextAnnotationV2, Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1
+    TextAnnotation, Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1
 ):
     """InvoiceDataSupplierEmail.
 
@@ -7970,7 +5494,7 @@ class InvoiceDataSupplierEmail(
 
 
 class InvoiceDataSupplierFax(
-    TextAnnotationV2, Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1
+    TextAnnotation, Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1
 ):
     """InvoiceDataSupplierFax.
 
@@ -8099,7 +5623,7 @@ class InvoiceDataSupplierFax(
 
 
 class InvoiceDataSupplierPhoneNumber(
-    TextAnnotationV2, Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1
+    TextAnnotation, Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1
 ):
     """InvoiceDataSupplierPhoneNumber.
 
@@ -8228,7 +5752,7 @@ class InvoiceDataSupplierPhoneNumber(
 
 
 class InvoiceDataSupplierVat(
-    TextAnnotationV2, ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1
+    TextAnnotation, ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1
 ):
     """InvoiceDataSupplierVat.
 
@@ -8357,7 +5881,7 @@ class InvoiceDataSupplierVat(
 
 
 class InvoiceDataSupplierWebsite(
-    TextAnnotationV2, Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1
+    TextAnnotation, Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1
 ):
     """InvoiceDataSupplierWebsite.
 
@@ -8505,104 +6029,311 @@ class InvoiceDataTablesItem(msrest.serialization.Model):
         self.rows = kwargs.get("rows", None)
 
 
-class InvoiceDocument(Document):
-    """InvoiceDocument.
+class InvoiceRequestBody(msrest.serialization.Model):
+    """InvoiceRequestBody.
+
+    :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
+     JPG.
+    :vartype file: IO
+    :ivar url: URL to download the invoice.
+    :vartype url: str
+    :ivar identifier: A random string that uniquely identify the resource.
+    :vartype identifier: str
+    :ivar file_name: Optional filename of the file.
+    :vartype file_name: str
+    :ivar wait: If "true" (default), will return a response only after processing has completed. If
+     "false", will return an empty data object which can be polled at the GET endpoint until
+     processing is complete.
+    :vartype wait: bool
+    :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
+     of an existing document. If "false" (default), will parse the document normally whether its a
+     duplicate or not.
+    :vartype reject_duplicates: bool
+    :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+    :vartype language: str
+    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+     deleted.  Defaults to no expiry.
+    :vartype expiry_time: ~datetime.datetime
+    """
+
+    _attribute_map = {
+        "file": {"key": "file", "type": "IO"},
+        "url": {"key": "url", "type": "str"},
+        "identifier": {"key": "identifier", "type": "str"},
+        "file_name": {"key": "fileName", "type": "str"},
+        "wait": {"key": "wait", "type": "bool"},
+        "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
+        "language": {"key": "language", "type": "str"},
+        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+         PNG, JPG.
+        :paramtype file: IO
+        :keyword url: URL to download the invoice.
+        :paramtype url: str
+        :keyword identifier: A random string that uniquely identify the resource.
+        :paramtype identifier: str
+        :keyword file_name: Optional filename of the file.
+        :paramtype file_name: str
+        :keyword wait: If "true" (default), will return a response only after processing has completed.
+         If "false", will return an empty data object which can be polled at the GET endpoint until
+         processing is complete.
+        :paramtype wait: bool
+        :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
+         duplicate of an existing document. If "false" (default), will parse the document normally
+         whether its a duplicate or not.
+        :paramtype reject_duplicates: bool
+        :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+        :paramtype language: str
+        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+         deleted.  Defaults to no expiry.
+        :paramtype expiry_time: ~datetime.datetime
+        """
+        super(InvoiceRequestBody, self).__init__(**kwargs)
+        self.file = kwargs.get("file", None)
+        self.url = kwargs.get("url", None)
+        self.identifier = kwargs.get("identifier", None)
+        self.file_name = kwargs.get("file_name", None)
+        self.wait = kwargs.get("wait", True)
+        self.reject_duplicates = kwargs.get("reject_duplicates", False)
+        self.language = kwargs.get("language", None)
+        self.expiry_time = kwargs.get("expiry_time", None)
+
+
+class JobDescription(msrest.serialization.Model):
+    """JobDescription.
 
     All required parameters must be populated in order to send to Azure.
 
-    :ivar extractor: Required. Constant filled by server.
-    :vartype extractor: str
-    :ivar meta: Required.
-    :vartype meta: ~affinda.models.DocumentMeta
-    :ivar error:
-    :vartype error: ~affinda.models.Error
-    :ivar additional_properties: Unmatched properties from the message are deserialized to this
-     collection.
-    :vartype additional_properties: dict[str, any]
     :ivar data: Required.
-    :vartype data: ~affinda.models.InvoiceData
-    """
-
-    _validation = {
-        "extractor": {"required": True},
-        "meta": {"required": True},
-        "data": {"required": True},
-    }
-
-    _attribute_map = {
-        "extractor": {"key": "extractor", "type": "str"},
-        "meta": {"key": "meta", "type": "DocumentMeta"},
-        "error": {"key": "error", "type": "Error"},
-        "additional_properties": {"key": "", "type": "{object}"},
-        "data": {"key": "data", "type": "InvoiceData"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword meta: Required.
-        :paramtype meta: ~affinda.models.DocumentMeta
-        :keyword error:
-        :paramtype error: ~affinda.models.Error
-        :keyword additional_properties: Unmatched properties from the message are deserialized to this
-         collection.
-        :paramtype additional_properties: dict[str, any]
-        :keyword data: Required.
-        :paramtype data: ~affinda.models.InvoiceData
-        """
-        super(InvoiceDocument, self).__init__(**kwargs)
-        self.extractor = "invoice"  # type: str
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.data = kwargs["data"]
-
-
-class JobDescriptionDocument(Document):
-    """JobDescriptionDocument.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar extractor: Required. Constant filled by server.
-    :vartype extractor: str
-    :ivar meta: Required.
-    :vartype meta: ~affinda.models.DocumentMeta
-    :ivar error:
-    :vartype error: ~affinda.models.Error
-    :ivar additional_properties: Unmatched properties from the message are deserialized to this
-     collection.
-    :vartype additional_properties: dict[str, any]
-    :ivar data: Required. A JSON-encoded string of the ``JobDescriptionData`` object.
     :vartype data: ~affinda.models.JobDescriptionData
+    :ivar meta: Required.
+    :vartype meta: ~affinda.models.Meta
+    :ivar error: Required.
+    :vartype error: ~affinda.models.Error
     """
 
     _validation = {
-        "extractor": {"required": True},
-        "meta": {"required": True},
         "data": {"required": True},
+        "meta": {"required": True},
+        "error": {"required": True},
     }
 
     _attribute_map = {
-        "extractor": {"key": "extractor", "type": "str"},
-        "meta": {"key": "meta", "type": "DocumentMeta"},
-        "error": {"key": "error", "type": "Error"},
-        "additional_properties": {"key": "", "type": "{object}"},
         "data": {"key": "data", "type": "JobDescriptionData"},
+        "meta": {"key": "meta", "type": "Meta"},
+        "error": {"key": "error", "type": "Error"},
     }
 
     def __init__(self, **kwargs):
         """
-        :keyword meta: Required.
-        :paramtype meta: ~affinda.models.DocumentMeta
-        :keyword error:
-        :paramtype error: ~affinda.models.Error
-        :keyword additional_properties: Unmatched properties from the message are deserialized to this
-         collection.
-        :paramtype additional_properties: dict[str, any]
-        :keyword data: Required. A JSON-encoded string of the ``JobDescriptionData`` object.
+        :keyword data: Required.
         :paramtype data: ~affinda.models.JobDescriptionData
+        :keyword meta: Required.
+        :paramtype meta: ~affinda.models.Meta
+        :keyword error: Required.
+        :paramtype error: ~affinda.models.Error
         """
-        super(JobDescriptionDocument, self).__init__(**kwargs)
-        self.extractor = "job-description"  # type: str
-        self.additional_properties = kwargs.get("additional_properties", None)
+        super(JobDescription, self).__init__(**kwargs)
         self.data = kwargs["data"]
+        self.meta = kwargs["meta"]
+        self.error = kwargs["error"]
+
+
+class JobDescriptionData(msrest.serialization.Model):
+    """JobDescriptionData.
+
+    :ivar job_title:
+    :vartype job_title: ~affinda.models.JobTitleAnnotation
+    :ivar contact_email:
+    :vartype contact_email: ~affinda.models.TextAnnotation
+    :ivar contact_name:
+    :vartype contact_name: ~affinda.models.TextAnnotation
+    :ivar contact_phone:
+    :vartype contact_phone: ~affinda.models.TextAnnotation
+    :ivar start_date:
+    :vartype start_date: ~affinda.models.DateAnnotation
+    :ivar end_date:
+    :vartype end_date: ~affinda.models.DateAnnotation
+    :ivar job_type:
+    :vartype job_type: ~affinda.models.TextAnnotation
+    :ivar languages:
+    :vartype languages: list[~affinda.models.LanguageAnnotation]
+    :ivar skills:
+    :vartype skills: list[~affinda.models.SkillAnnotation]
+    :ivar organization_name:
+    :vartype organization_name: ~affinda.models.TextAnnotation
+    :ivar organization_website:
+    :vartype organization_website: ~affinda.models.TextAnnotation
+    :ivar education_level:
+    :vartype education_level: ~affinda.models.TextAnnotation
+    :ivar education_accreditation:
+    :vartype education_accreditation: ~affinda.models.TextAnnotation
+    :ivar expected_remuneration:
+    :vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotation
+    :ivar location:
+    :vartype location: ~affinda.models.LocationAnnotation
+    :ivar certifications:
+    :vartype certifications: list[~affinda.models.TextAnnotation]
+    :ivar years_experience:
+    :vartype years_experience: ~affinda.models.YearsExperienceAnnotation
+    """
+
+    _attribute_map = {
+        "job_title": {"key": "jobTitle", "type": "JobTitleAnnotation"},
+        "contact_email": {"key": "contactEmail", "type": "TextAnnotation"},
+        "contact_name": {"key": "contactName", "type": "TextAnnotation"},
+        "contact_phone": {"key": "contactPhone", "type": "TextAnnotation"},
+        "start_date": {"key": "startDate", "type": "DateAnnotation"},
+        "end_date": {"key": "endDate", "type": "DateAnnotation"},
+        "job_type": {"key": "jobType", "type": "TextAnnotation"},
+        "languages": {"key": "languages", "type": "[LanguageAnnotation]"},
+        "skills": {"key": "skills", "type": "[SkillAnnotation]"},
+        "organization_name": {"key": "organizationName", "type": "TextAnnotation"},
+        "organization_website": {"key": "organizationWebsite", "type": "TextAnnotation"},
+        "education_level": {"key": "educationLevel", "type": "TextAnnotation"},
+        "education_accreditation": {"key": "educationAccreditation", "type": "TextAnnotation"},
+        "expected_remuneration": {
+            "key": "expectedRemuneration",
+            "type": "ExpectedRemunerationAnnotation",
+        },
+        "location": {"key": "location", "type": "LocationAnnotation"},
+        "certifications": {"key": "certifications", "type": "[TextAnnotation]"},
+        "years_experience": {"key": "yearsExperience", "type": "YearsExperienceAnnotation"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword job_title:
+        :paramtype job_title: ~affinda.models.JobTitleAnnotation
+        :keyword contact_email:
+        :paramtype contact_email: ~affinda.models.TextAnnotation
+        :keyword contact_name:
+        :paramtype contact_name: ~affinda.models.TextAnnotation
+        :keyword contact_phone:
+        :paramtype contact_phone: ~affinda.models.TextAnnotation
+        :keyword start_date:
+        :paramtype start_date: ~affinda.models.DateAnnotation
+        :keyword end_date:
+        :paramtype end_date: ~affinda.models.DateAnnotation
+        :keyword job_type:
+        :paramtype job_type: ~affinda.models.TextAnnotation
+        :keyword languages:
+        :paramtype languages: list[~affinda.models.LanguageAnnotation]
+        :keyword skills:
+        :paramtype skills: list[~affinda.models.SkillAnnotation]
+        :keyword organization_name:
+        :paramtype organization_name: ~affinda.models.TextAnnotation
+        :keyword organization_website:
+        :paramtype organization_website: ~affinda.models.TextAnnotation
+        :keyword education_level:
+        :paramtype education_level: ~affinda.models.TextAnnotation
+        :keyword education_accreditation:
+        :paramtype education_accreditation: ~affinda.models.TextAnnotation
+        :keyword expected_remuneration:
+        :paramtype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotation
+        :keyword location:
+        :paramtype location: ~affinda.models.LocationAnnotation
+        :keyword certifications:
+        :paramtype certifications: list[~affinda.models.TextAnnotation]
+        :keyword years_experience:
+        :paramtype years_experience: ~affinda.models.YearsExperienceAnnotation
+        """
+        super(JobDescriptionData, self).__init__(**kwargs)
+        self.job_title = kwargs.get("job_title", None)
+        self.contact_email = kwargs.get("contact_email", None)
+        self.contact_name = kwargs.get("contact_name", None)
+        self.contact_phone = kwargs.get("contact_phone", None)
+        self.start_date = kwargs.get("start_date", None)
+        self.end_date = kwargs.get("end_date", None)
+        self.job_type = kwargs.get("job_type", None)
+        self.languages = kwargs.get("languages", None)
+        self.skills = kwargs.get("skills", None)
+        self.organization_name = kwargs.get("organization_name", None)
+        self.organization_website = kwargs.get("organization_website", None)
+        self.education_level = kwargs.get("education_level", None)
+        self.education_accreditation = kwargs.get("education_accreditation", None)
+        self.expected_remuneration = kwargs.get("expected_remuneration", None)
+        self.location = kwargs.get("location", None)
+        self.certifications = kwargs.get("certifications", None)
+        self.years_experience = kwargs.get("years_experience", None)
+
+
+class JobDescriptionRequestBody(msrest.serialization.Model):
+    """JobDescriptionRequestBody.
+
+    :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
+     JPG.
+    :vartype file: IO
+    :ivar url: URL to download the job description.
+    :vartype url: str
+    :ivar identifier: A random string that uniquely identify the resource.
+    :vartype identifier: str
+    :ivar file_name: Optional filename of the file.
+    :vartype file_name: str
+    :ivar wait: If "true" (default), will return a response only after processing has completed. If
+     "false", will return an empty data object which can be polled at the GET endpoint until
+     processing is complete.
+    :vartype wait: bool
+    :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
+     of an existing document. If "false" (default), will parse the document normally whether its a
+     duplicate or not.
+    :vartype reject_duplicates: bool
+    :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+    :vartype language: str
+    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+     deleted.  Defaults to no expiry.
+    :vartype expiry_time: ~datetime.datetime
+    """
+
+    _attribute_map = {
+        "file": {"key": "file", "type": "IO"},
+        "url": {"key": "url", "type": "str"},
+        "identifier": {"key": "identifier", "type": "str"},
+        "file_name": {"key": "fileName", "type": "str"},
+        "wait": {"key": "wait", "type": "bool"},
+        "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
+        "language": {"key": "language", "type": "str"},
+        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+         PNG, JPG.
+        :paramtype file: IO
+        :keyword url: URL to download the job description.
+        :paramtype url: str
+        :keyword identifier: A random string that uniquely identify the resource.
+        :paramtype identifier: str
+        :keyword file_name: Optional filename of the file.
+        :paramtype file_name: str
+        :keyword wait: If "true" (default), will return a response only after processing has completed.
+         If "false", will return an empty data object which can be polled at the GET endpoint until
+         processing is complete.
+        :paramtype wait: bool
+        :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
+         duplicate of an existing document. If "false" (default), will parse the document normally
+         whether its a duplicate or not.
+        :paramtype reject_duplicates: bool
+        :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+        :paramtype language: str
+        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+         deleted.  Defaults to no expiry.
+        :paramtype expiry_time: ~datetime.datetime
+        """
+        super(JobDescriptionRequestBody, self).__init__(**kwargs)
+        self.file = kwargs.get("file", None)
+        self.url = kwargs.get("url", None)
+        self.identifier = kwargs.get("identifier", None)
+        self.file_name = kwargs.get("file_name", None)
+        self.wait = kwargs.get("wait", True)
+        self.reject_duplicates = kwargs.get("reject_duplicates", False)
+        self.language = kwargs.get("language", None)
+        self.expiry_time = kwargs.get("expiry_time", None)
 
 
 class JobDescriptionSearch(msrest.serialization.Model):
@@ -9939,7 +7670,7 @@ class JobTitleParsed(msrest.serialization.Model):
         self.parsed = None
 
 
-class JobTitleAnnotation(AnnotationV2, JobTitleParsed):
+class JobTitleAnnotation(Annotation, JobTitleParsed):
     """JobTitleAnnotation.
 
     Variables are only populated by the server, and will be ignored when sending a request.
@@ -10181,10 +7912,8 @@ class JobTitleSearchScoreComponent(msrest.serialization.Model):
         self.score = kwargs.get("score", None)
 
 
-class LanguageAnnotationV2(AnnotationV2):
-    """LanguageAnnotationV2.
-
-    Variables are only populated by the server, and will be ignored when sending a request.
+class LanguageAnnotation(Annotation):
+    """LanguageAnnotation.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -10236,7 +7965,6 @@ class LanguageAnnotationV2(AnnotationV2):
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
         "content_type": {"required": True},
-        "parsed": {"readonly": True},
     }
 
     _attribute_map = {
@@ -10290,9 +8018,11 @@ class LanguageAnnotationV2(AnnotationV2):
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
-        super(LanguageAnnotationV2, self).__init__(**kwargs)
-        self.parsed = None
+        super(LanguageAnnotation, self).__init__(**kwargs)
+        self.parsed = kwargs.get("parsed", None)
 
 
 class LanguagesSearchScoreComponent(msrest.serialization.Model):
@@ -10333,48 +8063,8 @@ class LanguagesSearchScoreComponent(msrest.serialization.Model):
         self.score = kwargs.get("score", None)
 
 
-class ListResult(msrest.serialization.Model):
-    """ListResult.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar count: Required. Number of items in results.
-    :vartype count: int
-    :ivar next: URL to request next page of results.
-    :vartype next: str
-    :ivar previous: URL to request previous page of results.
-    :vartype previous: str
-    """
-
-    _validation = {
-        "count": {"required": True},
-    }
-
-    _attribute_map = {
-        "count": {"key": "count", "type": "int"},
-        "next": {"key": "next", "type": "str"},
-        "previous": {"key": "previous", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword count: Required. Number of items in results.
-        :paramtype count: int
-        :keyword next: URL to request next page of results.
-        :paramtype next: str
-        :keyword previous: URL to request previous page of results.
-        :paramtype previous: str
-        """
-        super(ListResult, self).__init__(**kwargs)
-        self.count = kwargs["count"]
-        self.next = kwargs.get("next", None)
-        self.previous = kwargs.get("previous", None)
-
-
-class LocationAnnotationV2(AnnotationV2):
-    """LocationAnnotationV2.
-
-    Variables are only populated by the server, and will be ignored when sending a request.
+class LocationAnnotation(Annotation):
+    """LocationAnnotation.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -10410,7 +8100,7 @@ class LocationAnnotationV2(AnnotationV2):
     :ivar content_type: Required.
     :vartype content_type: str
     :ivar parsed:
-    :vartype parsed: ~affinda.models.LocationAnnotationV2Parsed
+    :vartype parsed: ~affinda.models.Location
     """
 
     _validation = {
@@ -10426,7 +8116,6 @@ class LocationAnnotationV2(AnnotationV2):
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
         "content_type": {"required": True},
-        "parsed": {"readonly": True},
     }
 
     _attribute_map = {
@@ -10444,7 +8133,7 @@ class LocationAnnotationV2(AnnotationV2):
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
-        "parsed": {"key": "parsed", "type": "LocationAnnotationV2Parsed"},
+        "parsed": {"key": "parsed", "type": "Location"},
     }
 
     def __init__(self, **kwargs):
@@ -10480,80 +8169,11 @@ class LocationAnnotationV2(AnnotationV2):
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
+        :keyword parsed:
+        :paramtype parsed: ~affinda.models.Location
         """
-        super(LocationAnnotationV2, self).__init__(**kwargs)
-        self.parsed = None
-
-
-class LocationAnnotationV2Parsed(Location):
-    """LocationAnnotationV2Parsed.
-
-    Variables are only populated by the server, and will be ignored when sending a request.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar formatted:
-    :vartype formatted: str
-    :ivar postal_code:
-    :vartype postal_code: str
-    :ivar state:
-    :vartype state: str
-    :ivar country:
-    :vartype country: str
-    :ivar country_code: Two letter country code (ISO 3166-1 alpha-2).
-    :vartype country_code: str
-    :ivar raw_input: Required.
-    :vartype raw_input: str
-    :ivar street_number:
-    :vartype street_number: str
-    :ivar street:
-    :vartype street: str
-    :ivar apartment_number:
-    :vartype apartment_number: str
-    :ivar city:
-    :vartype city: str
-    :ivar latitude:
-    :vartype latitude: float
-    :ivar longitude:
-    :vartype longitude: float
-    """
-
-    _validation = {
-        "formatted": {"readonly": True},
-        "postal_code": {"readonly": True},
-        "state": {"readonly": True},
-        "country": {"readonly": True},
-        "country_code": {"readonly": True},
-        "raw_input": {"required": True},
-        "street_number": {"readonly": True},
-        "street": {"readonly": True},
-        "apartment_number": {"readonly": True},
-        "city": {"readonly": True},
-        "latitude": {"readonly": True},
-        "longitude": {"readonly": True},
-    }
-
-    _attribute_map = {
-        "formatted": {"key": "formatted", "type": "str"},
-        "postal_code": {"key": "postalCode", "type": "str"},
-        "state": {"key": "state", "type": "str"},
-        "country": {"key": "country", "type": "str"},
-        "country_code": {"key": "countryCode", "type": "str"},
-        "raw_input": {"key": "rawInput", "type": "str"},
-        "street_number": {"key": "streetNumber", "type": "str"},
-        "street": {"key": "street", "type": "str"},
-        "apartment_number": {"key": "apartmentNumber", "type": "str"},
-        "city": {"key": "city", "type": "str"},
-        "latitude": {"key": "latitude", "type": "float"},
-        "longitude": {"key": "longitude", "type": "float"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword raw_input: Required.
-        :paramtype raw_input: str
-        """
-        super(LocationAnnotationV2Parsed, self).__init__(**kwargs)
+        super(LocationAnnotation, self).__init__(**kwargs)
+        self.parsed = kwargs.get("parsed", None)
 
 
 class LocationSearchScoreComponent(msrest.serialization.Model):
@@ -10632,6 +8252,163 @@ class ManagementLevelSearchScoreComponent(msrest.serialization.Model):
         self.score = kwargs.get("score", None)
 
 
+class Meta(msrest.serialization.Model):
+    """Meta.
+
+    :ivar identifier: Uniquely identify a document.
+    :vartype identifier: str
+    :ivar file_name: Optional filename of the file.
+    :vartype file_name: str
+    :ivar ready: If true, the document has finished processing. Particularly useful if an endpoint
+     request specified wait=False, when polling use this variable to determine when to stop polling.
+    :vartype ready: bool
+    :ivar ready_dt: The datetime when the document was ready.
+    :vartype ready_dt: ~datetime.datetime
+    :ivar failed: If true, some exception was raised during processing. Check the 'error' field of
+     the main return object.
+    :vartype failed: bool
+    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+     deleted.  Defaults to no expiry.
+    :vartype expiry_time: ~datetime.datetime
+    :ivar language: The document's language.
+    :vartype language: str
+    :ivar pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
+     converted to pdf as part of the parsing process).
+    :vartype pdf: str
+    :ivar parent_document: If this document is part of a splitted document, this attribute points
+     to the original document that this document is splitted from.
+    :vartype parent_document: ~affinda.models.MetaParentDocument
+    :ivar child_documents: If this document has been splitted into a number of child documents,
+     this attribute points to those child documents.
+    :vartype child_documents: list[~affinda.models.MetaChildDocumentsItem]
+    :ivar pages: The document's pages.
+    :vartype pages: list[~affinda.models.PageMeta]
+    :ivar is_verified: This is true if the 'confirm' button has been clicked in the Affinda
+     validation tool.
+    :vartype is_verified: bool
+    :ivar review_url: Signed URL (valid for 60 minutes) to access the validation tool.  Not
+     applicable for documents types such a resumes.
+    :vartype review_url: str
+    :ivar ocr_confidence: The overall confidence in the conversion of image to text.  (only
+     applicable for images or PDF documents without a text layer).
+    :vartype ocr_confidence: float
+    """
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "file_name": {"key": "fileName", "type": "str"},
+        "ready": {"key": "ready", "type": "bool"},
+        "ready_dt": {"key": "readyDt", "type": "iso-8601"},
+        "failed": {"key": "failed", "type": "bool"},
+        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
+        "language": {"key": "language", "type": "str"},
+        "pdf": {"key": "pdf", "type": "str"},
+        "parent_document": {"key": "parentDocument", "type": "MetaParentDocument"},
+        "child_documents": {"key": "childDocuments", "type": "[MetaChildDocumentsItem]"},
+        "pages": {"key": "pages", "type": "[PageMeta]"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
+        "review_url": {"key": "reviewUrl", "type": "str"},
+        "ocr_confidence": {"key": "ocrConfidence", "type": "float"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Uniquely identify a document.
+        :paramtype identifier: str
+        :keyword file_name: Optional filename of the file.
+        :paramtype file_name: str
+        :keyword ready: If true, the document has finished processing. Particularly useful if an
+         endpoint request specified wait=False, when polling use this variable to determine when to stop
+         polling.
+        :paramtype ready: bool
+        :keyword ready_dt: The datetime when the document was ready.
+        :paramtype ready_dt: ~datetime.datetime
+        :keyword failed: If true, some exception was raised during processing. Check the 'error' field
+         of the main return object.
+        :paramtype failed: bool
+        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+         deleted.  Defaults to no expiry.
+        :paramtype expiry_time: ~datetime.datetime
+        :keyword language: The document's language.
+        :paramtype language: str
+        :keyword pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
+         converted to pdf as part of the parsing process).
+        :paramtype pdf: str
+        :keyword parent_document: If this document is part of a splitted document, this attribute
+         points to the original document that this document is splitted from.
+        :paramtype parent_document: ~affinda.models.MetaParentDocument
+        :keyword child_documents: If this document has been splitted into a number of child documents,
+         this attribute points to those child documents.
+        :paramtype child_documents: list[~affinda.models.MetaChildDocumentsItem]
+        :keyword pages: The document's pages.
+        :paramtype pages: list[~affinda.models.PageMeta]
+        :keyword is_verified: This is true if the 'confirm' button has been clicked in the Affinda
+         validation tool.
+        :paramtype is_verified: bool
+        :keyword review_url: Signed URL (valid for 60 minutes) to access the validation tool.  Not
+         applicable for documents types such a resumes.
+        :paramtype review_url: str
+        :keyword ocr_confidence: The overall confidence in the conversion of image to text.  (only
+         applicable for images or PDF documents without a text layer).
+        :paramtype ocr_confidence: float
+        """
+        super(Meta, self).__init__(**kwargs)
+        self.identifier = kwargs.get("identifier", None)
+        self.file_name = kwargs.get("file_name", None)
+        self.ready = kwargs.get("ready", None)
+        self.ready_dt = kwargs.get("ready_dt", None)
+        self.failed = kwargs.get("failed", None)
+        self.expiry_time = kwargs.get("expiry_time", None)
+        self.language = kwargs.get("language", None)
+        self.pdf = kwargs.get("pdf", None)
+        self.parent_document = kwargs.get("parent_document", None)
+        self.child_documents = kwargs.get("child_documents", None)
+        self.pages = kwargs.get("pages", None)
+        self.is_verified = kwargs.get("is_verified", None)
+        self.review_url = kwargs.get("review_url", None)
+        self.ocr_confidence = kwargs.get("ocr_confidence", None)
+
+
+class MetaChildDocumentsItem(msrest.serialization.Model):
+    """MetaChildDocumentsItem.
+
+    :ivar identifier: Uniquely identify a document.
+    :vartype identifier: str
+    """
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Uniquely identify a document.
+        :paramtype identifier: str
+        """
+        super(MetaChildDocumentsItem, self).__init__(**kwargs)
+        self.identifier = kwargs.get("identifier", None)
+
+
+class MetaParentDocument(msrest.serialization.Model):
+    """If this document is part of a splitted document, this attribute points to the original document that this document is splitted from.
+
+    :ivar identifier: Uniquely identify a document.
+    :vartype identifier: str
+    """
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Uniquely identify a document.
+        :paramtype identifier: str
+        """
+        super(MetaParentDocument, self).__init__(**kwargs)
+        self.identifier = kwargs.get("identifier", None)
+
+
 class OccupationGroupSearchScoreComponent(msrest.serialization.Model):
     """OccupationGroupSearchScoreComponent.
 
@@ -10668,198 +8445,6 @@ class OccupationGroupSearchScoreComponent(msrest.serialization.Model):
         self.value = kwargs.get("value", None)
         self.label = kwargs["label"]
         self.score = kwargs.get("score", None)
-
-
-class Organization(msrest.serialization.Model):
-    """Organization.
-
-    :ivar identifier: Uniquely identify an organization.
-    :vartype identifier: str
-    :ivar name:
-    :vartype name: str
-    :ivar user_role: The role of the logged in user within the organization. Known values are:
-     "admin", "member".
-    :vartype user_role: str or ~affinda.models.OrganizationUserRole
-    :ivar avatar: URL of the organization's avatar.
-    :vartype avatar: str
-    :ivar resthook_signature_key: Used to sign webhook payloads so you can verify their integrity.
-    :vartype resthook_signature_key: str
-    :ivar is_trial:
-    :vartype is_trial: bool
-    """
-
-    _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-        "name": {"key": "name", "type": "str"},
-        "user_role": {"key": "userRole", "type": "str"},
-        "avatar": {"key": "avatar", "type": "str"},
-        "resthook_signature_key": {"key": "resthookSignatureKey", "type": "str"},
-        "is_trial": {"key": "isTrial", "type": "bool"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword identifier: Uniquely identify an organization.
-        :paramtype identifier: str
-        :keyword name:
-        :paramtype name: str
-        :keyword user_role: The role of the logged in user within the organization. Known values are:
-         "admin", "member".
-        :paramtype user_role: str or ~affinda.models.OrganizationUserRole
-        :keyword avatar: URL of the organization's avatar.
-        :paramtype avatar: str
-        :keyword resthook_signature_key: Used to sign webhook payloads so you can verify their
-         integrity.
-        :paramtype resthook_signature_key: str
-        :keyword is_trial:
-        :paramtype is_trial: bool
-        """
-        super(Organization, self).__init__(**kwargs)
-        self.identifier = kwargs.get("identifier", None)
-        self.name = kwargs.get("name", None)
-        self.user_role = kwargs.get("user_role", None)
-        self.avatar = kwargs.get("avatar", None)
-        self.resthook_signature_key = kwargs.get("resthook_signature_key", None)
-        self.is_trial = kwargs.get("is_trial", None)
-
-
-class OrganizationCreate(msrest.serialization.Model):
-    """OrganizationCreate.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar name: Required.
-    :vartype name: str
-    :ivar avatar: Upload avatar for the organization.
-    :vartype avatar: IO
-    :ivar resthook_signature_key: Used to sign webhook payloads so you can verify their integrity.
-    :vartype resthook_signature_key: str
-    """
-
-    _validation = {
-        "name": {"required": True},
-    }
-
-    _attribute_map = {
-        "name": {"key": "name", "type": "str"},
-        "avatar": {"key": "avatar", "type": "IO"},
-        "resthook_signature_key": {"key": "resthookSignatureKey", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword name: Required.
-        :paramtype name: str
-        :keyword avatar: Upload avatar for the organization.
-        :paramtype avatar: IO
-        :keyword resthook_signature_key: Used to sign webhook payloads so you can verify their
-         integrity.
-        :paramtype resthook_signature_key: str
-        """
-        super(OrganizationCreate, self).__init__(**kwargs)
-        self.name = kwargs["name"]
-        self.avatar = kwargs.get("avatar", None)
-        self.resthook_signature_key = kwargs.get("resthook_signature_key", None)
-
-
-class OrganizationMembership(msrest.serialization.Model):
-    """OrganizationMembership.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar identifier: Required. A random string that uniquely identify the resource.
-    :vartype identifier: str
-    :ivar organization: Required. Uniquely identify an organization.
-    :vartype organization: str
-    :ivar user: Required.
-    :vartype user: ~affinda.models.User
-    :ivar role: Required. Known values are: "admin", "member".
-    :vartype role: str or ~affinda.models.OrganizationRole
-    """
-
-    _validation = {
-        "identifier": {"required": True},
-        "organization": {"required": True},
-        "user": {"required": True},
-        "role": {"required": True},
-    }
-
-    _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-        "organization": {"key": "organization", "type": "str"},
-        "user": {"key": "user", "type": "User"},
-        "role": {"key": "role", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword identifier: Required. A random string that uniquely identify the resource.
-        :paramtype identifier: str
-        :keyword organization: Required. Uniquely identify an organization.
-        :paramtype organization: str
-        :keyword user: Required.
-        :paramtype user: ~affinda.models.User
-        :keyword role: Required. Known values are: "admin", "member".
-        :paramtype role: str or ~affinda.models.OrganizationRole
-        """
-        super(OrganizationMembership, self).__init__(**kwargs)
-        self.identifier = kwargs["identifier"]
-        self.organization = kwargs["organization"]
-        self.user = kwargs["user"]
-        self.role = kwargs["role"]
-
-
-class OrganizationMembershipUpdate(msrest.serialization.Model):
-    """OrganizationMembershipUpdate.
-
-    :ivar role: Known values are: "admin", "member".
-    :vartype role: str or ~affinda.models.OrganizationRole
-    """
-
-    _attribute_map = {
-        "role": {"key": "role", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword role: Known values are: "admin", "member".
-        :paramtype role: str or ~affinda.models.OrganizationRole
-        """
-        super(OrganizationMembershipUpdate, self).__init__(**kwargs)
-        self.role = kwargs.get("role", None)
-
-
-class OrganizationUpdate(msrest.serialization.Model):
-    """OrganizationUpdate.
-
-    :ivar name:
-    :vartype name: str
-    :ivar avatar: Upload avatar for the organization.
-    :vartype avatar: IO
-    :ivar resthook_signature_key: Used to sign webhook payloads so you can verify their integrity.
-    :vartype resthook_signature_key: str
-    """
-
-    _attribute_map = {
-        "name": {"key": "name", "type": "str"},
-        "avatar": {"key": "avatar", "type": "IO"},
-        "resthook_signature_key": {"key": "resthookSignatureKey", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword name:
-        :paramtype name: str
-        :keyword avatar: Upload avatar for the organization.
-        :paramtype avatar: IO
-        :keyword resthook_signature_key: Used to sign webhook payloads so you can verify their
-         integrity.
-        :paramtype resthook_signature_key: str
-        """
-        super(OrganizationUpdate, self).__init__(**kwargs)
-        self.name = kwargs.get("name", None)
-        self.avatar = kwargs.get("avatar", None)
-        self.resthook_signature_key = kwargs.get("resthook_signature_key", None)
 
 
 class PageMeta(msrest.serialization.Model):
@@ -10963,39 +8548,63 @@ class PaginatedResponse(msrest.serialization.Model):
         self.previous = kwargs.get("previous", None)
 
 
-class PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1(
+class Paths14R8PdgV2IndexNameDocumentsPostResponses201ContentApplicationJsonSchema(
     msrest.serialization.Model
 ):
-    """PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1.
+    """Paths14R8PdgV2IndexNameDocumentsPostResponses201ContentApplicationJsonSchema.
 
-    :ivar results:
-    :vartype results: list[~affinda.models.Invitation]
+    :ivar document: Unique identifier for the document.
+    :vartype document: str
     """
 
     _attribute_map = {
-        "results": {"key": "results", "type": "[Invitation]"},
+        "document": {"key": "document", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword document: Unique identifier for the document.
+        :paramtype document: str
+        """
+        super(
+            Paths14R8PdgV2IndexNameDocumentsPostResponses201ContentApplicationJsonSchema, self
+        ).__init__(**kwargs)
+        self.document = kwargs.get("document", None)
+
+
+class PathsX4VofmV2ResumesGetResponses200ContentApplicationJsonSchemaAllof1(
+    msrest.serialization.Model
+):
+    """PathsX4VofmV2ResumesGetResponses200ContentApplicationJsonSchemaAllof1.
+
+    :ivar results:
+    :vartype results: list[~affinda.models.Resume]
+    """
+
+    _attribute_map = {
+        "results": {"key": "results", "type": "[Resume]"},
     }
 
     def __init__(self, **kwargs):
         """
         :keyword results:
-        :paramtype results: list[~affinda.models.Invitation]
+        :paramtype results: list[~affinda.models.Resume]
         """
         super(
-            PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1, self
+            PathsX4VofmV2ResumesGetResponses200ContentApplicationJsonSchemaAllof1, self
         ).__init__(**kwargs)
         self.results = kwargs.get("results", None)
 
 
-class Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema(
-    PaginatedResponse, PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1
+class Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema(
+    PaginatedResponse, PathsX4VofmV2ResumesGetResponses200ContentApplicationJsonSchemaAllof1
 ):
-    """Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema.
+    """Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema.
 
     All required parameters must be populated in order to send to Azure.
 
     :ivar results:
-    :vartype results: list[~affinda.models.Invitation]
+    :vartype results: list[~affinda.models.Resume]
     :ivar count: Required. Number of items in results.
     :vartype count: int
     :ivar next: URL to request next page of results.
@@ -11009,7 +8618,7 @@ class Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema(
     }
 
     _attribute_map = {
-        "results": {"key": "results", "type": "[Invitation]"},
+        "results": {"key": "results", "type": "[Resume]"},
         "count": {"key": "count", "type": "int"},
         "next": {"key": "next", "type": "str"},
         "previous": {"key": "previous", "type": "str"},
@@ -11018,7 +8627,7 @@ class Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema(
     def __init__(self, **kwargs):
         """
         :keyword results:
-        :paramtype results: list[~affinda.models.Invitation]
+        :paramtype results: list[~affinda.models.Resume]
         :keyword count: Required. Number of items in results.
         :paramtype count: int
         :keyword next: URL to request next page of results.
@@ -11026,7 +8635,7 @@ class Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema(
         :keyword previous: URL to request previous page of results.
         :paramtype previous: str
         """
-        super(Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema, self).__init__(
+        super(Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema, self).__init__(
             **kwargs
         )
         self.results = kwargs.get("results", None)
@@ -11035,34 +8644,35 @@ class Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema(
         self.previous = kwargs.get("previous", None)
 
 
-class Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema(
+class Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema(
     msrest.serialization.Model
 ):
-    """Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema.
+    """Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema.
 
     :ivar config_override:
-    :vartype config_override: ~affinda.models.ResumeSearchConfig
+    :vartype config_override: ~affinda.models.JobDescriptionSearchConfig
     """
 
     _attribute_map = {
-        "config_override": {"key": "configOverride", "type": "ResumeSearchConfig"},
+        "config_override": {"key": "configOverride", "type": "JobDescriptionSearchConfig"},
     }
 
     def __init__(self, **kwargs):
         """
         :keyword config_override:
-        :paramtype config_override: ~affinda.models.ResumeSearchConfig
+        :paramtype config_override: ~affinda.models.JobDescriptionSearchConfig
         """
         super(
-            Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema, self
+            Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema,
+            self,
         ).__init__(**kwargs)
         self.config_override = kwargs.get("config_override", None)
 
 
-class Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems(
+class Paths16Tz5M5V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems(
     msrest.serialization.Model
 ):
-    """Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems.
+    """Paths16Tz5M5V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems.
 
     :ivar document:
     :vartype document: str
@@ -11078,171 +8688,14 @@ class Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchem
         :paramtype document: str
         """
         super(
-            Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems,
+            Paths16Tz5M5V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems,
             self,
         ).__init__(**kwargs)
         self.document = kwargs.get("document", None)
 
 
-class Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1(
-    msrest.serialization.Model
-):
-    """Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1.
-
-    :ivar results:
-    :vartype results: list[~affinda.models.ResthookSubscription]
-    """
-
-    _attribute_map = {
-        "results": {"key": "results", "type": "[ResthookSubscription]"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword results:
-        :paramtype results: list[~affinda.models.ResthookSubscription]
-        """
-        super(
-            Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1,
-            self,
-        ).__init__(**kwargs)
-        self.results = kwargs.get("results", None)
-
-
-class Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema(msrest.serialization.Model):
-    """Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema.
-
-    :ivar name:
-    :vartype name: str
-    :ivar document_type: Known values are: "resumes", "job_descriptions".
-    :vartype document_type: str or ~affinda.models.Enum6
-    """
-
-    _attribute_map = {
-        "name": {"key": "name", "type": "str"},
-        "document_type": {"key": "documentType", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword name:
-        :paramtype name: str
-        :keyword document_type: Known values are: "resumes", "job_descriptions".
-        :paramtype document_type: str or ~affinda.models.Enum6
-        """
-        super(Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema, self).__init__(
-            **kwargs
-        )
-        self.name = kwargs.get("name", None)
-        self.document_type = kwargs.get("document_type", None)
-
-
-class Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1(
-    msrest.serialization.Model
-):
-    """Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar results: Required.
-    :vartype results: list[~affinda.models.WorkspaceMembership]
-    """
-
-    _validation = {
-        "results": {"required": True},
-    }
-
-    _attribute_map = {
-        "results": {"key": "results", "type": "[WorkspaceMembership]"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword results: Required.
-        :paramtype results: list[~affinda.models.WorkspaceMembership]
-        """
-        super(
-            Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1,
-            self,
-        ).__init__(**kwargs)
-        self.results = kwargs["results"]
-
-
-class Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1(
-    msrest.serialization.Model
-):
-    """Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1.
-
-    :ivar results:
-    :vartype results: list[~affinda.models.DataPointChoice]
-    """
-
-    _attribute_map = {
-        "results": {"key": "results", "type": "[DataPointChoice]"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword results:
-        :paramtype results: list[~affinda.models.DataPointChoice]
-        """
-        super(
-            Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1, self
-        ).__init__(**kwargs)
-        self.results = kwargs.get("results", None)
-
-
-class Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1(
-    msrest.serialization.Model
-):
-    """Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.
-
-    :ivar results:
-    :vartype results: list[~affinda.models.OrganizationMembership]
-    """
-
-    _attribute_map = {
-        "results": {"key": "results", "type": "[OrganizationMembership]"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword results:
-        :paramtype results: list[~affinda.models.OrganizationMembership]
-        """
-        super(
-            Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1,
-            self,
-        ).__init__(**kwargs)
-        self.results = kwargs.get("results", None)
-
-
-class PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema(
-    msrest.serialization.Model
-):
-    """PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema.
-
-    :ivar document:
-    :vartype document: str
-    """
-
-    _attribute_map = {
-        "document": {"key": "document", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword document:
-        :paramtype document: str
-        """
-        super(
-            PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema, self
-        ).__init__(**kwargs)
-        self.document = kwargs.get("document", None)
-
-
-class PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model):
-    """PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema.
+class Paths18Iqsr4V2IndexGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model):
+    """Paths18Iqsr4V2IndexGetResponses200ContentApplicationJsonSchema.
 
     :ivar count: Number of indexes in result.
     :vartype count: int
@@ -11272,7 +8725,7 @@ class PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema(msrest.seria
         :keyword results:
         :paramtype results: list[~affinda.models.Get200ApplicationJsonPropertiesItemsItem]
         """
-        super(PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema, self).__init__(
+        super(Paths18Iqsr4V2IndexGetResponses200ContentApplicationJsonSchema, self).__init__(
             **kwargs
         )
         self.count = kwargs.get("count", None)
@@ -11281,64 +8734,64 @@ class PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema(msrest.seria
         self.results = kwargs.get("results", None)
 
 
-class PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema(
+class Paths18ZzckpV2InvoicesGetResponses200ContentApplicationJsonSchemaAllof1(
     msrest.serialization.Model
 ):
-    """PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema.
+    """Paths18ZzckpV2InvoicesGetResponses200ContentApplicationJsonSchemaAllof1.
 
-    :ivar document: Unique identifier for the document.
-    :vartype document: str
+    :ivar results:
+    :vartype results: list[~affinda.models.Invoice]
     """
 
     _attribute_map = {
-        "document": {"key": "document", "type": "str"},
+        "results": {"key": "results", "type": "[Invoice]"},
     }
 
     def __init__(self, **kwargs):
         """
-        :keyword document: Unique identifier for the document.
-        :paramtype document: str
+        :keyword results:
+        :paramtype results: list[~affinda.models.Invoice]
         """
         super(
-            PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema, self
+            Paths18ZzckpV2InvoicesGetResponses200ContentApplicationJsonSchemaAllof1, self
         ).__init__(**kwargs)
-        self.document = kwargs.get("document", None)
+        self.results = kwargs.get("results", None)
 
 
-class PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema(
+class Paths1Q5Zfv5V2RedactedResumesGetResponses200ContentApplicationJsonSchemaAllof1(
     msrest.serialization.Model
 ):
-    """PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema.
+    """Paths1Q5Zfv5V2RedactedResumesGetResponses200ContentApplicationJsonSchemaAllof1.
 
-    :ivar config_override:
-    :vartype config_override: ~affinda.models.JobDescriptionSearchConfig
+    :ivar results:
+    :vartype results: list[~affinda.models.Resume]
     """
 
     _attribute_map = {
-        "config_override": {"key": "configOverride", "type": "JobDescriptionSearchConfig"},
+        "results": {"key": "results", "type": "[Resume]"},
     }
 
     def __init__(self, **kwargs):
         """
-        :keyword config_override:
-        :paramtype config_override: ~affinda.models.JobDescriptionSearchConfig
+        :keyword results:
+        :paramtype results: list[~affinda.models.Resume]
         """
         super(
-            PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema, self
+            Paths1Q5Zfv5V2RedactedResumesGetResponses200ContentApplicationJsonSchemaAllof1, self
         ).__init__(**kwargs)
-        self.config_override = kwargs.get("config_override", None)
+        self.results = kwargs.get("results", None)
 
 
-class PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema(
+class Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema(
     PaginatedResponse,
-    Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1,
+    Paths1Q5Zfv5V2RedactedResumesGetResponses200ContentApplicationJsonSchemaAllof1,
 ):
-    """PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema.
+    """Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema.
 
     All required parameters must be populated in order to send to Azure.
 
     :ivar results:
-    :vartype results: list[~affinda.models.DataPointChoice]
+    :vartype results: list[~affinda.models.Resume]
     :ivar count: Required. Number of items in results.
     :vartype count: int
     :ivar next: URL to request next page of results.
@@ -11352,7 +8805,7 @@ class PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema(
     }
 
     _attribute_map = {
-        "results": {"key": "results", "type": "[DataPointChoice]"},
+        "results": {"key": "results", "type": "[Resume]"},
         "count": {"key": "count", "type": "int"},
         "next": {"key": "next", "type": "str"},
         "previous": {"key": "previous", "type": "str"},
@@ -11361,7 +8814,7 @@ class PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema(
     def __init__(self, **kwargs):
         """
         :keyword results:
-        :paramtype results: list[~affinda.models.DataPointChoice]
+        :paramtype results: list[~affinda.models.Resume]
         :keyword count: Required. Number of items in results.
         :paramtype count: int
         :keyword next: URL to request next page of results.
@@ -11370,7 +8823,7 @@ class PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema(
         :paramtype previous: str
         """
         super(
-            PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema, self
+            Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema, self
         ).__init__(**kwargs)
         self.results = kwargs.get("results", None)
         self.count = kwargs["count"]
@@ -11378,10 +8831,62 @@ class PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema(
         self.previous = kwargs.get("previous", None)
 
 
-class PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema(
+class Paths1Sikw07V2IndexPostResponses201ContentApplicationJsonSchema(msrest.serialization.Model):
+    """Paths1Sikw07V2IndexPostResponses201ContentApplicationJsonSchema.
+
+    :ivar name:
+    :vartype name: str
+    :ivar document_type: Known values are: "resumes", "job_descriptions".
+    :vartype document_type: str or ~affinda.models.Enum6
+    """
+
+    _attribute_map = {
+        "name": {"key": "name", "type": "str"},
+        "document_type": {"key": "documentType", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name:
+        :paramtype name: str
+        :keyword document_type: Known values are: "resumes", "job_descriptions".
+        :paramtype document_type: str or ~affinda.models.Enum6
+        """
+        super(Paths1Sikw07V2IndexPostResponses201ContentApplicationJsonSchema, self).__init__(
+            **kwargs
+        )
+        self.name = kwargs.get("name", None)
+        self.document_type = kwargs.get("document_type", None)
+
+
+class Paths23Ubd8V2ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema(
     msrest.serialization.Model
 ):
-    """PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema.
+    """Paths23Ubd8V2ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema.
+
+    :ivar config_override:
+    :vartype config_override: ~affinda.models.ResumeSearchConfig
+    """
+
+    _attribute_map = {
+        "config_override": {"key": "configOverride", "type": "ResumeSearchConfig"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword config_override:
+        :paramtype config_override: ~affinda.models.ResumeSearchConfig
+        """
+        super(
+            Paths23Ubd8V2ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema, self
+        ).__init__(**kwargs)
+        self.config_override = kwargs.get("config_override", None)
+
+
+class PathsAf7Nd4V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchema(
+    msrest.serialization.Model
+):
+    """PathsAf7Nd4V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchema.
 
     :ivar count: Number of indexed documents in result.
     :vartype count: int
@@ -11391,7 +8896,7 @@ class PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema
     :vartype previous: str
     :ivar results:
     :vartype results:
-     list[~affinda.models.Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]
+     list[~affinda.models.Paths16Tz5M5V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]
     """
 
     _attribute_map = {
@@ -11400,7 +8905,7 @@ class PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema
         "previous": {"key": "previous", "type": "str"},
         "results": {
             "key": "results",
-            "type": "[Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]",
+            "type": "[Paths16Tz5M5V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]",
         },
     }
 
@@ -11414,10 +8919,10 @@ class PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema
         :paramtype previous: str
         :keyword results:
         :paramtype results:
-         list[~affinda.models.Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]
+         list[~affinda.models.Paths16Tz5M5V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]
         """
         super(
-            PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema, self
+            PathsAf7Nd4V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchema, self
         ).__init__(**kwargs)
         self.count = kwargs.get("count", None)
         self.next = kwargs.get("next", None)
@@ -11425,16 +8930,40 @@ class PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema
         self.results = kwargs.get("results", None)
 
 
-class PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema(
-    PaginatedResponse,
-    Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1,
+class PathsV2IwngV2JobDescriptionsGetResponses200ContentApplicationJsonSchemaAllof1(
+    msrest.serialization.Model
 ):
-    """PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema.
+    """PathsV2IwngV2JobDescriptionsGetResponses200ContentApplicationJsonSchemaAllof1.
+
+    :ivar results:
+    :vartype results: list[~affinda.models.JobDescription]
+    """
+
+    _attribute_map = {
+        "results": {"key": "results", "type": "[JobDescription]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword results:
+        :paramtype results: list[~affinda.models.JobDescription]
+        """
+        super(
+            PathsV2IwngV2JobDescriptionsGetResponses200ContentApplicationJsonSchemaAllof1, self
+        ).__init__(**kwargs)
+        self.results = kwargs.get("results", None)
+
+
+class PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema(
+    PaginatedResponse,
+    PathsV2IwngV2JobDescriptionsGetResponses200ContentApplicationJsonSchemaAllof1,
+):
+    """PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema.
 
     All required parameters must be populated in order to send to Azure.
 
     :ivar results:
-    :vartype results: list[~affinda.models.OrganizationMembership]
+    :vartype results: list[~affinda.models.JobDescription]
     :ivar count: Required. Number of items in results.
     :vartype count: int
     :ivar next: URL to request next page of results.
@@ -11448,7 +8977,7 @@ class PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonS
     }
 
     _attribute_map = {
-        "results": {"key": "results", "type": "[OrganizationMembership]"},
+        "results": {"key": "results", "type": "[JobDescription]"},
         "count": {"key": "count", "type": "int"},
         "next": {"key": "next", "type": "str"},
         "previous": {"key": "previous", "type": "str"},
@@ -11457,7 +8986,7 @@ class PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonS
     def __init__(self, **kwargs):
         """
         :keyword results:
-        :paramtype results: list[~affinda.models.OrganizationMembership]
+        :paramtype results: list[~affinda.models.JobDescription]
         :keyword count: Required. Number of items in results.
         :paramtype count: int
         :keyword next: URL to request next page of results.
@@ -11466,7 +8995,7 @@ class PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonS
         :paramtype previous: str
         """
         super(
-            PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema, self
+            PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema, self
         ).__init__(**kwargs)
         self.results = kwargs.get("results", None)
         self.count = kwargs["count"]
@@ -11474,11 +9003,84 @@ class PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonS
         self.previous = kwargs.get("previous", None)
 
 
-class PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema(
-    PaginatedResponse,
-    Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1,
+class PathsDd1FapV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1(
+    msrest.serialization.Model
 ):
-    """PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema.
+    """PathsDd1FapV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1.
+
+    :ivar results:
+    :vartype results: list[~affinda.models.ResthookSubscription]
+    """
+
+    _attribute_map = {
+        "results": {"key": "results", "type": "[ResthookSubscription]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword results:
+        :paramtype results: list[~affinda.models.ResthookSubscription]
+        """
+        super(
+            PathsDd1FapV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1,
+            self,
+        ).__init__(**kwargs)
+        self.results = kwargs.get("results", None)
+
+
+class PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema(
+    PaginatedResponse, Paths18ZzckpV2InvoicesGetResponses200ContentApplicationJsonSchemaAllof1
+):
+    """PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar results:
+    :vartype results: list[~affinda.models.Invoice]
+    :ivar count: Required. Number of items in results.
+    :vartype count: int
+    :ivar next: URL to request next page of results.
+    :vartype next: str
+    :ivar previous: URL to request previous page of results.
+    :vartype previous: str
+    """
+
+    _validation = {
+        "count": {"required": True},
+    }
+
+    _attribute_map = {
+        "results": {"key": "results", "type": "[Invoice]"},
+        "count": {"key": "count", "type": "int"},
+        "next": {"key": "next", "type": "str"},
+        "previous": {"key": "previous", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword results:
+        :paramtype results: list[~affinda.models.Invoice]
+        :keyword count: Required. Number of items in results.
+        :paramtype count: int
+        :keyword next: URL to request next page of results.
+        :paramtype next: str
+        :keyword previous: URL to request previous page of results.
+        :paramtype previous: str
+        """
+        super(PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema, self).__init__(
+            **kwargs
+        )
+        self.results = kwargs.get("results", None)
+        self.count = kwargs["count"]
+        self.next = kwargs.get("next", None)
+        self.previous = kwargs.get("previous", None)
+
+
+class PathsMda0LlV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema(
+    PaginatedResponse,
+    PathsDd1FapV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1,
+):
+    """PathsMda0LlV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -11515,7 +9117,7 @@ class PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSch
         :paramtype previous: str
         """
         super(
-            PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema, self
+            PathsMda0LlV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema, self
         ).__init__(**kwargs)
         self.results = kwargs.get("results", None)
         self.count = kwargs["count"]
@@ -11523,53 +9125,28 @@ class PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSch
         self.previous = kwargs.get("previous", None)
 
 
-class PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema(
-    ListResult, Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1
+class PathsYg099PV2IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema(
+    msrest.serialization.Model
 ):
-    """PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema.
+    """PathsYg099PV2IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar results: Required.
-    :vartype results: list[~affinda.models.WorkspaceMembership]
-    :ivar count: Required. Number of items in results.
-    :vartype count: int
-    :ivar next: URL to request next page of results.
-    :vartype next: str
-    :ivar previous: URL to request previous page of results.
-    :vartype previous: str
+    :ivar document:
+    :vartype document: str
     """
 
-    _validation = {
-        "results": {"required": True},
-        "count": {"required": True},
-    }
-
     _attribute_map = {
-        "results": {"key": "results", "type": "[WorkspaceMembership]"},
-        "count": {"key": "count", "type": "int"},
-        "next": {"key": "next", "type": "str"},
-        "previous": {"key": "previous", "type": "str"},
+        "document": {"key": "document", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         """
-        :keyword results: Required.
-        :paramtype results: list[~affinda.models.WorkspaceMembership]
-        :keyword count: Required. Number of items in results.
-        :paramtype count: int
-        :keyword next: URL to request next page of results.
-        :paramtype next: str
-        :keyword previous: URL to request previous page of results.
-        :paramtype previous: str
+        :keyword document:
+        :paramtype document: str
         """
         super(
-            PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema, self
+            PathsYg099PV2IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema, self
         ).__init__(**kwargs)
-        self.results = kwargs["results"]
-        self.count = kwargs["count"]
-        self.next = kwargs.get("next", None)
-        self.previous = kwargs.get("previous", None)
+        self.document = kwargs.get("document", None)
 
 
 class Rectangle(msrest.serialization.Model):
@@ -11617,6 +9194,178 @@ class Rectangle(msrest.serialization.Model):
         self.y0 = kwargs["y0"]
         self.x1 = kwargs["x1"]
         self.y1 = kwargs["y1"]
+
+
+class RedactedResume(msrest.serialization.Model):
+    """RedactedResume.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar data: Required.
+    :vartype data: ~affinda.models.RedactedResumeData
+    :ivar meta: Required.
+    :vartype meta: ~affinda.models.Meta
+    :ivar error: Required.
+    :vartype error: ~affinda.models.Error
+    """
+
+    _validation = {
+        "data": {"required": True},
+        "meta": {"required": True},
+        "error": {"required": True},
+    }
+
+    _attribute_map = {
+        "data": {"key": "data", "type": "RedactedResumeData"},
+        "meta": {"key": "meta", "type": "Meta"},
+        "error": {"key": "error", "type": "Error"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword data: Required.
+        :paramtype data: ~affinda.models.RedactedResumeData
+        :keyword meta: Required.
+        :paramtype meta: ~affinda.models.Meta
+        :keyword error: Required.
+        :paramtype error: ~affinda.models.Error
+        """
+        super(RedactedResume, self).__init__(**kwargs)
+        self.data = kwargs["data"]
+        self.meta = kwargs["meta"]
+        self.error = kwargs["error"]
+
+
+class RedactedResumeData(msrest.serialization.Model):
+    """RedactedResumeData.
+
+    :ivar redacted_pdf: URL to redacted PDF.
+    :vartype redacted_pdf: str
+    """
+
+    _attribute_map = {
+        "redacted_pdf": {"key": "redactedPdf", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword redacted_pdf: URL to redacted PDF.
+        :paramtype redacted_pdf: str
+        """
+        super(RedactedResumeData, self).__init__(**kwargs)
+        self.redacted_pdf = kwargs.get("redacted_pdf", None)
+
+
+class RedactedResumeRequestBody(msrest.serialization.Model):
+    """RedactedResumeRequestBody.
+
+    :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
+     JPG.
+    :vartype file: IO
+    :ivar identifier: A random string that uniquely identify the resource.
+    :vartype identifier: str
+    :ivar file_name: Optional filename of the file.
+    :vartype file_name: str
+    :ivar url: URL to download the resume.
+    :vartype url: str
+    :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+    :vartype language: str
+    :ivar wait: If "true" (default), will return a response only after processing has completed. If
+     "false", will return an empty data object which can be polled at the GET endpoint until
+     processing is complete.
+    :vartype wait: bool
+    :ivar redact_headshot: Whether to redact headshot.
+    :vartype redact_headshot: str
+    :ivar redact_personal_details: Whether to redact personal details (e.g. name, address).
+    :vartype redact_personal_details: str
+    :ivar redact_work_details: Whether to redact work details (e.g. company names).
+    :vartype redact_work_details: str
+    :ivar redact_education_details: Whether to redact education details (e.g. university names).
+    :vartype redact_education_details: str
+    :ivar redact_referees: Whether to redact referee details.
+    :vartype redact_referees: str
+    :ivar redact_locations: Whether to redact location names.
+    :vartype redact_locations: str
+    :ivar redact_dates: Whether to redact dates.
+    :vartype redact_dates: str
+    :ivar redact_gender: Whether to redact gender.
+    :vartype redact_gender: str
+    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+     deleted.  Defaults to no expiry.
+    :vartype expiry_time: ~datetime.datetime
+    """
+
+    _attribute_map = {
+        "file": {"key": "file", "type": "IO"},
+        "identifier": {"key": "identifier", "type": "str"},
+        "file_name": {"key": "fileName", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "language": {"key": "language", "type": "str"},
+        "wait": {"key": "wait", "type": "bool"},
+        "redact_headshot": {"key": "redactHeadshot", "type": "str"},
+        "redact_personal_details": {"key": "redactPersonalDetails", "type": "str"},
+        "redact_work_details": {"key": "redactWorkDetails", "type": "str"},
+        "redact_education_details": {"key": "redactEducationDetails", "type": "str"},
+        "redact_referees": {"key": "redactReferees", "type": "str"},
+        "redact_locations": {"key": "redactLocations", "type": "str"},
+        "redact_dates": {"key": "redactDates", "type": "str"},
+        "redact_gender": {"key": "redactGender", "type": "str"},
+        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+         PNG, JPG.
+        :paramtype file: IO
+        :keyword identifier: A random string that uniquely identify the resource.
+        :paramtype identifier: str
+        :keyword file_name: Optional filename of the file.
+        :paramtype file_name: str
+        :keyword url: URL to download the resume.
+        :paramtype url: str
+        :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+        :paramtype language: str
+        :keyword wait: If "true" (default), will return a response only after processing has completed.
+         If "false", will return an empty data object which can be polled at the GET endpoint until
+         processing is complete.
+        :paramtype wait: bool
+        :keyword redact_headshot: Whether to redact headshot.
+        :paramtype redact_headshot: str
+        :keyword redact_personal_details: Whether to redact personal details (e.g. name, address).
+        :paramtype redact_personal_details: str
+        :keyword redact_work_details: Whether to redact work details (e.g. company names).
+        :paramtype redact_work_details: str
+        :keyword redact_education_details: Whether to redact education details (e.g. university names).
+        :paramtype redact_education_details: str
+        :keyword redact_referees: Whether to redact referee details.
+        :paramtype redact_referees: str
+        :keyword redact_locations: Whether to redact location names.
+        :paramtype redact_locations: str
+        :keyword redact_dates: Whether to redact dates.
+        :paramtype redact_dates: str
+        :keyword redact_gender: Whether to redact gender.
+        :paramtype redact_gender: str
+        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+         deleted.  Defaults to no expiry.
+        :paramtype expiry_time: ~datetime.datetime
+        """
+        super(RedactedResumeRequestBody, self).__init__(**kwargs)
+        self.file = kwargs.get("file", None)
+        self.identifier = kwargs.get("identifier", None)
+        self.file_name = kwargs.get("file_name", None)
+        self.url = kwargs.get("url", None)
+        self.language = kwargs.get("language", None)
+        self.wait = kwargs.get("wait", True)
+        self.redact_headshot = kwargs.get("redact_headshot", "true")
+        self.redact_personal_details = kwargs.get("redact_personal_details", "true")
+        self.redact_work_details = kwargs.get("redact_work_details", "true")
+        self.redact_education_details = kwargs.get("redact_education_details", "true")
+        self.redact_referees = kwargs.get("redact_referees", "true")
+        self.redact_locations = kwargs.get("redact_locations", "true")
+        self.redact_dates = kwargs.get("redact_dates", "true")
+        self.redact_gender = kwargs.get("redact_gender", "true")
+        self.expiry_time = kwargs.get("expiry_time", None)
 
 
 class RequestError(msrest.serialization.Model):
@@ -11704,8 +9453,6 @@ class ResthookSubscription(msrest.serialization.Model):
      "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
      "document.classify.completed".
     :vartype event: str or ~affinda.models.ResthookEvent
-    :ivar organization:
-    :vartype organization: ~affinda.models.Organization
     :ivar target_url: URL of the resthook's receiver.
     :vartype target_url: str
     :ivar active: Resthooks only fire for active subscriptions.
@@ -11724,7 +9471,6 @@ class ResthookSubscription(msrest.serialization.Model):
     _attribute_map = {
         "id": {"key": "id", "type": "int"},
         "event": {"key": "event", "type": "str"},
-        "organization": {"key": "organization", "type": "Organization"},
         "target_url": {"key": "targetUrl", "type": "str"},
         "active": {"key": "active", "type": "bool"},
         "auto_deactivated": {"key": "autoDeactivated", "type": "bool"},
@@ -11743,8 +9489,6 @@ class ResthookSubscription(msrest.serialization.Model):
          "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
          "document.classify.completed".
         :paramtype event: str or ~affinda.models.ResthookEvent
-        :keyword organization:
-        :paramtype organization: ~affinda.models.Organization
         :keyword target_url: URL of the resthook's receiver.
         :paramtype target_url: str
         :keyword active: Resthooks only fire for active subscriptions.
@@ -11762,7 +9506,6 @@ class ResthookSubscription(msrest.serialization.Model):
         super(ResthookSubscription, self).__init__(**kwargs)
         self.id = kwargs.get("id", None)
         self.event = kwargs.get("event", None)
-        self.organization = kwargs.get("organization", None)
         self.target_url = kwargs.get("target_url", None)
         self.active = kwargs.get("active", None)
         self.auto_deactivated = kwargs.get("auto_deactivated", None)
@@ -11784,8 +9527,6 @@ class ResthookSubscriptionCreate(msrest.serialization.Model):
      "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
      "document.classify.failed", "document.classify.completed".
     :vartype event: str or ~affinda.models.ResthookEvent
-    :ivar organization:
-    :vartype organization: str
     :ivar version: Version of the resthook subscription. Determines the resthook body being fired.
      Known values are: "v1", "v2", "v3".
     :vartype version: str or ~affinda.models.Version
@@ -11799,7 +9540,6 @@ class ResthookSubscriptionCreate(msrest.serialization.Model):
     _attribute_map = {
         "target_url": {"key": "targetUrl", "type": "str"},
         "event": {"key": "event", "type": "str"},
-        "organization": {"key": "organization", "type": "str"},
         "version": {"key": "version", "type": "str"},
     }
 
@@ -11814,8 +9554,6 @@ class ResthookSubscriptionCreate(msrest.serialization.Model):
          "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
          "document.classify.failed", "document.classify.completed".
         :paramtype event: str or ~affinda.models.ResthookEvent
-        :keyword organization:
-        :paramtype organization: str
         :keyword version: Version of the resthook subscription. Determines the resthook body being
          fired. Known values are: "v1", "v2", "v3".
         :paramtype version: str or ~affinda.models.Version
@@ -11823,7 +9561,6 @@ class ResthookSubscriptionCreate(msrest.serialization.Model):
         super(ResthookSubscriptionCreate, self).__init__(**kwargs)
         self.target_url = kwargs["target_url"]
         self.event = kwargs["event"]
-        self.organization = kwargs.get("organization", None)
         self.version = kwargs.get("version", None)
 
 
@@ -11837,8 +9574,6 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
      "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
      "document.classify.completed".
     :vartype event: str or ~affinda.models.ResthookEvent
-    :ivar organization: Uniquely identify an organization.
-    :vartype organization: str
     :ivar version: Version of the resthook subscription. Determines the resthook body being fired.
      Known values are: "v1", "v2", "v3".
     :vartype version: str or ~affinda.models.Version
@@ -11846,7 +9581,6 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
 
     _attribute_map = {
         "event": {"key": "event", "type": "str"},
-        "organization": {"key": "organization", "type": "str"},
         "version": {"key": "version", "type": "str"},
     }
 
@@ -11859,16 +9593,213 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
          "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
          "document.classify.completed".
         :paramtype event: str or ~affinda.models.ResthookEvent
-        :keyword organization: Uniquely identify an organization.
-        :paramtype organization: str
         :keyword version: Version of the resthook subscription. Determines the resthook body being
          fired. Known values are: "v1", "v2", "v3".
         :paramtype version: str or ~affinda.models.Version
         """
         super(ResthookSubscriptionUpdate, self).__init__(**kwargs)
         self.event = kwargs.get("event", None)
-        self.organization = kwargs.get("organization", None)
         self.version = kwargs.get("version", None)
+
+
+class Resume(msrest.serialization.Model):
+    """Resume.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar data: Required. A JSON-encoded string of the ``ResumeData`` object.
+    :vartype data: ~affinda.models.ResumeData
+    :ivar meta: Required.
+    :vartype meta: ~affinda.models.Meta
+    :ivar error: Required.
+    :vartype error: ~affinda.models.Error
+    """
+
+    _validation = {
+        "data": {"required": True},
+        "meta": {"required": True},
+        "error": {"required": True},
+    }
+
+    _attribute_map = {
+        "data": {"key": "data", "type": "ResumeData"},
+        "meta": {"key": "meta", "type": "Meta"},
+        "error": {"key": "error", "type": "Error"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword data: Required. A JSON-encoded string of the ``ResumeData`` object.
+        :paramtype data: ~affinda.models.ResumeData
+        :keyword meta: Required.
+        :paramtype meta: ~affinda.models.Meta
+        :keyword error: Required.
+        :paramtype error: ~affinda.models.Error
+        """
+        super(Resume, self).__init__(**kwargs)
+        self.data = kwargs["data"]
+        self.meta = kwargs["meta"]
+        self.error = kwargs["error"]
+
+
+class ResumeData(msrest.serialization.Model):
+    """A JSON-encoded string of the ``ResumeData`` object.
+
+    Variables are only populated by the server, and will be ignored when sending a request.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar name:
+    :vartype name: ~affinda.models.ResumeDataName
+    :ivar phone_numbers:
+    :vartype phone_numbers: list[str]
+    :ivar websites:
+    :vartype websites: list[str]
+    :ivar emails:
+    :vartype emails: list[str]
+    :ivar date_of_birth:
+    :vartype date_of_birth: str
+    :ivar location:
+    :vartype location: ~affinda.models.Location
+    :ivar objective:
+    :vartype objective: str
+    :ivar languages:
+    :vartype languages: list[str]
+    :ivar language_codes:
+    :vartype language_codes: list[str]
+    :ivar summary:
+    :vartype summary: str
+    :ivar total_years_experience:
+    :vartype total_years_experience: int
+    :ivar head_shot: base64 encoded string.
+    :vartype head_shot: bytearray
+    :ivar education:
+    :vartype education: list[~affinda.models.Education]
+    :ivar profession: Prediction of the candidate's profession based on recent work experience.
+    :vartype profession: str
+    :ivar linkedin: Linkedin account associated with the candidate.
+    :vartype linkedin: str
+    :ivar work_experience:
+    :vartype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
+    :ivar skills:
+    :vartype skills: list[~affinda.models.ResumeDataSkillsItem]
+    :ivar certifications:
+    :vartype certifications: list[str]
+    :ivar publications:
+    :vartype publications: list[str]
+    :ivar referees:
+    :vartype referees: list[~affinda.models.ResumeDataRefereesItem]
+    :ivar sections:
+    :vartype sections: list[~affinda.models.ResumeDataSectionsItem]
+    :ivar is_resume_probability: Probability that the given document is a resume. Values below 30
+     suggest that the document is not a resume.
+    :vartype is_resume_probability: int
+    :ivar raw_text: All of the raw text of the parsed resume, example is shortened for readability.
+    :vartype raw_text: str
+    """
+
+    _validation = {
+        "languages": {"readonly": True},
+        "language_codes": {"readonly": True},
+        "head_shot": {"readonly": True},
+        "profession": {"readonly": True},
+        "linkedin": {"readonly": True},
+        "sections": {"readonly": True},
+        "is_resume_probability": {"readonly": True},
+    }
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "name": {"key": "name", "type": "ResumeDataName"},
+        "phone_numbers": {"key": "phoneNumbers", "type": "[str]"},
+        "websites": {"key": "websites", "type": "[str]"},
+        "emails": {"key": "emails", "type": "[str]"},
+        "date_of_birth": {"key": "dateOfBirth", "type": "str"},
+        "location": {"key": "location", "type": "Location"},
+        "objective": {"key": "objective", "type": "str"},
+        "languages": {"key": "languages", "type": "[str]"},
+        "language_codes": {"key": "languageCodes", "type": "[str]"},
+        "summary": {"key": "summary", "type": "str"},
+        "total_years_experience": {"key": "totalYearsExperience", "type": "int"},
+        "head_shot": {"key": "headShot", "type": "bytearray"},
+        "education": {"key": "education", "type": "[Education]"},
+        "profession": {"key": "profession", "type": "str"},
+        "linkedin": {"key": "linkedin", "type": "str"},
+        "work_experience": {"key": "workExperience", "type": "[ResumeDataWorkExperienceItem]"},
+        "skills": {"key": "skills", "type": "[ResumeDataSkillsItem]"},
+        "certifications": {"key": "certifications", "type": "[str]"},
+        "publications": {"key": "publications", "type": "[str]"},
+        "referees": {"key": "referees", "type": "[ResumeDataRefereesItem]"},
+        "sections": {"key": "sections", "type": "[ResumeDataSectionsItem]"},
+        "is_resume_probability": {"key": "isResumeProbability", "type": "int"},
+        "raw_text": {"key": "rawText", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword name:
+        :paramtype name: ~affinda.models.ResumeDataName
+        :keyword phone_numbers:
+        :paramtype phone_numbers: list[str]
+        :keyword websites:
+        :paramtype websites: list[str]
+        :keyword emails:
+        :paramtype emails: list[str]
+        :keyword date_of_birth:
+        :paramtype date_of_birth: str
+        :keyword location:
+        :paramtype location: ~affinda.models.Location
+        :keyword objective:
+        :paramtype objective: str
+        :keyword summary:
+        :paramtype summary: str
+        :keyword total_years_experience:
+        :paramtype total_years_experience: int
+        :keyword education:
+        :paramtype education: list[~affinda.models.Education]
+        :keyword work_experience:
+        :paramtype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
+        :keyword skills:
+        :paramtype skills: list[~affinda.models.ResumeDataSkillsItem]
+        :keyword certifications:
+        :paramtype certifications: list[str]
+        :keyword publications:
+        :paramtype publications: list[str]
+        :keyword referees:
+        :paramtype referees: list[~affinda.models.ResumeDataRefereesItem]
+        :keyword raw_text: All of the raw text of the parsed resume, example is shortened for
+         readability.
+        :paramtype raw_text: str
+        """
+        super(ResumeData, self).__init__(**kwargs)
+        self.additional_properties = kwargs.get("additional_properties", None)
+        self.name = kwargs.get("name", None)
+        self.phone_numbers = kwargs.get("phone_numbers", None)
+        self.websites = kwargs.get("websites", None)
+        self.emails = kwargs.get("emails", None)
+        self.date_of_birth = kwargs.get("date_of_birth", None)
+        self.location = kwargs.get("location", None)
+        self.objective = kwargs.get("objective", "")
+        self.languages = None
+        self.language_codes = None
+        self.summary = kwargs.get("summary", "")
+        self.total_years_experience = kwargs.get("total_years_experience", None)
+        self.head_shot = None
+        self.education = kwargs.get("education", None)
+        self.profession = None
+        self.linkedin = None
+        self.work_experience = kwargs.get("work_experience", None)
+        self.skills = kwargs.get("skills", None)
+        self.certifications = kwargs.get("certifications", None)
+        self.publications = kwargs.get("publications", None)
+        self.referees = kwargs.get("referees", None)
+        self.sections = None
+        self.is_resume_probability = None
+        self.raw_text = kwargs.get("raw_text", None)
 
 
 class ResumeDataName(msrest.serialization.Model):
@@ -12273,54 +10204,84 @@ class ResumeDataWorkExperienceItemOccupation(msrest.serialization.Model):
         self.classification = kwargs.get("classification", None)
 
 
-class ResumeDocument(Document):
-    """ResumeDocument.
+class ResumeRequestBody(msrest.serialization.Model):
+    """ResumeRequestBody.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar extractor: Required. Constant filled by server.
-    :vartype extractor: str
-    :ivar meta: Required.
-    :vartype meta: ~affinda.models.DocumentMeta
-    :ivar error:
-    :vartype error: ~affinda.models.Error
-    :ivar additional_properties: Unmatched properties from the message are deserialized to this
-     collection.
-    :vartype additional_properties: dict[str, any]
-    :ivar data: Required. A JSON-encoded string of the ``ResumeData`` object.
+    :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
+     JPG.
+    :vartype file: IO
+    :ivar url: URL to download the resume.
+    :vartype url: str
+    :ivar data: A JSON-encoded string of the ``ResumeData`` object.
     :vartype data: ~affinda.models.ResumeData
+    :ivar identifier: A random string that uniquely identify the resource.
+    :vartype identifier: str
+    :ivar file_name: Optional filename of the file.
+    :vartype file_name: str
+    :ivar wait: If "true" (default), will return a response only after processing has completed. If
+     "false", will return an empty data object which can be polled at the GET endpoint until
+     processing is complete.
+    :vartype wait: bool
+    :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
+     of an existing document. If "false" (default), will parse the document normally whether its a
+     duplicate or not.
+    :vartype reject_duplicates: bool
+    :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+    :vartype language: str
+    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+     deleted.  Defaults to no expiry.
+    :vartype expiry_time: ~datetime.datetime
     """
 
-    _validation = {
-        "extractor": {"required": True},
-        "meta": {"required": True},
-        "data": {"required": True},
-    }
-
     _attribute_map = {
-        "extractor": {"key": "extractor", "type": "str"},
-        "meta": {"key": "meta", "type": "DocumentMeta"},
-        "error": {"key": "error", "type": "Error"},
-        "additional_properties": {"key": "", "type": "{object}"},
+        "file": {"key": "file", "type": "IO"},
+        "url": {"key": "url", "type": "str"},
         "data": {"key": "data", "type": "ResumeData"},
+        "identifier": {"key": "identifier", "type": "str"},
+        "file_name": {"key": "fileName", "type": "str"},
+        "wait": {"key": "wait", "type": "bool"},
+        "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
+        "language": {"key": "language", "type": "str"},
+        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
     }
 
     def __init__(self, **kwargs):
         """
-        :keyword meta: Required.
-        :paramtype meta: ~affinda.models.DocumentMeta
-        :keyword error:
-        :paramtype error: ~affinda.models.Error
-        :keyword additional_properties: Unmatched properties from the message are deserialized to this
-         collection.
-        :paramtype additional_properties: dict[str, any]
-        :keyword data: Required. A JSON-encoded string of the ``ResumeData`` object.
+        :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+         PNG, JPG.
+        :paramtype file: IO
+        :keyword url: URL to download the resume.
+        :paramtype url: str
+        :keyword data: A JSON-encoded string of the ``ResumeData`` object.
         :paramtype data: ~affinda.models.ResumeData
+        :keyword identifier: A random string that uniquely identify the resource.
+        :paramtype identifier: str
+        :keyword file_name: Optional filename of the file.
+        :paramtype file_name: str
+        :keyword wait: If "true" (default), will return a response only after processing has completed.
+         If "false", will return an empty data object which can be polled at the GET endpoint until
+         processing is complete.
+        :paramtype wait: bool
+        :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
+         duplicate of an existing document. If "false" (default), will parse the document normally
+         whether its a duplicate or not.
+        :paramtype reject_duplicates: bool
+        :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+        :paramtype language: str
+        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+         deleted.  Defaults to no expiry.
+        :paramtype expiry_time: ~datetime.datetime
         """
-        super(ResumeDocument, self).__init__(**kwargs)
-        self.extractor = "resume"  # type: str
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.data = kwargs["data"]
+        super(ResumeRequestBody, self).__init__(**kwargs)
+        self.file = kwargs.get("file", None)
+        self.url = kwargs.get("url", None)
+        self.data = kwargs.get("data", None)
+        self.identifier = kwargs.get("identifier", None)
+        self.file_name = kwargs.get("file_name", None)
+        self.wait = kwargs.get("wait", True)
+        self.reject_duplicates = kwargs.get("reject_duplicates", False)
+        self.language = kwargs.get("language", None)
+        self.expiry_time = kwargs.get("expiry_time", None)
 
 
 class ResumeSearch(msrest.serialization.Model):
@@ -14150,10 +12111,8 @@ class SearchExpressionSearchScoreComponent(msrest.serialization.Model):
         self.score = kwargs.get("score", None)
 
 
-class SkillAnnotationV2(AnnotationV2):
-    """SkillAnnotationV2.
-
-    Variables are only populated by the server, and will be ignored when sending a request.
+class SkillAnnotation(Annotation):
+    """SkillAnnotation.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -14205,7 +12164,6 @@ class SkillAnnotationV2(AnnotationV2):
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
         "content_type": {"required": True},
-        "parsed": {"readonly": True},
     }
 
     _attribute_map = {
@@ -14259,9 +12217,11 @@ class SkillAnnotationV2(AnnotationV2):
         :paramtype data_point: str
         :keyword content_type: Required.
         :paramtype content_type: str
+        :keyword parsed:
+        :paramtype parsed: str
         """
-        super(SkillAnnotationV2, self).__init__(**kwargs)
-        self.parsed = None
+        super(SkillAnnotation, self).__init__(**kwargs)
+        self.parsed = kwargs.get("parsed", None)
 
 
 class SkillsSearchScoreComponent(msrest.serialization.Model):
@@ -14302,517 +12262,8 @@ class SkillsSearchScoreComponent(msrest.serialization.Model):
         self.score = kwargs.get("score", None)
 
 
-class Tag(msrest.serialization.Model):
-    """Tag.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar id: Required. Uniquely identify a tag.
-    :vartype id: int
-    :ivar name: Required.
-    :vartype name: str
-    :ivar workspace: Required. Uniquely identify a workspace.
-    :vartype workspace: str
-    :ivar document_count: Required. Number of documents tagged with this.
-    :vartype document_count: int
-    """
-
-    _validation = {
-        "id": {"required": True},
-        "name": {"required": True},
-        "workspace": {"required": True},
-        "document_count": {"required": True},
-    }
-
-    _attribute_map = {
-        "id": {"key": "id", "type": "int"},
-        "name": {"key": "name", "type": "str"},
-        "workspace": {"key": "workspace", "type": "str"},
-        "document_count": {"key": "documentCount", "type": "int"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword id: Required. Uniquely identify a tag.
-        :paramtype id: int
-        :keyword name: Required.
-        :paramtype name: str
-        :keyword workspace: Required. Uniquely identify a workspace.
-        :paramtype workspace: str
-        :keyword document_count: Required. Number of documents tagged with this.
-        :paramtype document_count: int
-        """
-        super(Tag, self).__init__(**kwargs)
-        self.id = kwargs["id"]
-        self.name = kwargs["name"]
-        self.workspace = kwargs["workspace"]
-        self.document_count = kwargs["document_count"]
-
-
-class TagCreate(msrest.serialization.Model):
-    """TagCreate.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar name: Required.
-    :vartype name: str
-    :ivar workspace: Required. Uniquely identify a workspace.
-    :vartype workspace: str
-    """
-
-    _validation = {
-        "name": {"required": True},
-        "workspace": {"required": True},
-    }
-
-    _attribute_map = {
-        "name": {"key": "name", "type": "str"},
-        "workspace": {"key": "workspace", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword name: Required.
-        :paramtype name: str
-        :keyword workspace: Required. Uniquely identify a workspace.
-        :paramtype workspace: str
-        """
-        super(TagCreate, self).__init__(**kwargs)
-        self.name = kwargs["name"]
-        self.workspace = kwargs["workspace"]
-
-
-class TagUpdate(msrest.serialization.Model):
-    """TagUpdate.
-
-    :ivar name:
-    :vartype name: str
-    :ivar workspace: Uniquely identify a workspace.
-    :vartype workspace: str
-    """
-
-    _attribute_map = {
-        "name": {"key": "name", "type": "str"},
-        "workspace": {"key": "workspace", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword name:
-        :paramtype name: str
-        :keyword workspace: Uniquely identify a workspace.
-        :paramtype workspace: str
-        """
-        super(TagUpdate, self).__init__(**kwargs)
-        self.name = kwargs.get("name", None)
-        self.workspace = kwargs.get("workspace", None)
-
-
-class UserNullable(msrest.serialization.Model):
-    """UserNullable.
-
-    :ivar id: Uniquely identify a user.
-    :vartype id: int
-    :ivar name:
-    :vartype name: str
-    :ivar username:
-    :vartype username: str
-    :ivar email:
-    :vartype email: str
-    :ivar avatar: URL of the user's avatar.
-    :vartype avatar: str
-    """
-
-    _attribute_map = {
-        "id": {"key": "id", "type": "int"},
-        "name": {"key": "name", "type": "str"},
-        "username": {"key": "username", "type": "str"},
-        "email": {"key": "email", "type": "str"},
-        "avatar": {"key": "avatar", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword id: Uniquely identify a user.
-        :paramtype id: int
-        :keyword name:
-        :paramtype name: str
-        :keyword username:
-        :paramtype username: str
-        :keyword email:
-        :paramtype email: str
-        :keyword avatar: URL of the user's avatar.
-        :paramtype avatar: str
-        """
-        super(UserNullable, self).__init__(**kwargs)
-        self.id = kwargs.get("id", None)
-        self.name = kwargs.get("name", None)
-        self.username = kwargs.get("username", None)
-        self.email = kwargs.get("email", None)
-        self.avatar = kwargs.get("avatar", None)
-
-
-class Workspace(msrest.serialization.Model):
-    """Workspace.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar identifier: Required. Uniquely identify a workspace.
-    :vartype identifier: str
-    :ivar organization:
-    :vartype organization: ~affinda.models.Organization
-    :ivar name:
-    :vartype name: str
-    :ivar visibility: Visibility "organization" means everyone in the organization can access the
-     workspace. Visibility "private" means only people explicitly added can access the workspace.
-     Known values are: "organization", "private".
-    :vartype visibility: str or ~affinda.models.WorkspaceVisibility
-    :ivar collections:
-    :vartype collections: list[~affinda.models.WorkspaceCollectionsItem]
-    :ivar reject_invalid_documents: If true, the uploaded document will be rejected if it's of the
-     wrong document type, or if its document type cannot be determined. No credits will be consumed.
-    :vartype reject_invalid_documents: bool
-    :ivar members:
-    :vartype members: list[~affinda.models.User]
-    :ivar unvalidated_docs_count: Number of unvalidated documents in the workspace.
-    :vartype unvalidated_docs_count: int
-    :ivar confirmed_docs_count: Number of validated documents in the workspace.
-    :vartype confirmed_docs_count: int
-    :ivar ingest_email:
-    :vartype ingest_email: str
-    """
-
-    _validation = {
-        "identifier": {"required": True},
-    }
-
-    _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-        "organization": {"key": "organization", "type": "Organization"},
-        "name": {"key": "name", "type": "str"},
-        "visibility": {"key": "visibility", "type": "str"},
-        "collections": {"key": "collections", "type": "[WorkspaceCollectionsItem]"},
-        "reject_invalid_documents": {"key": "rejectInvalidDocuments", "type": "bool"},
-        "members": {"key": "members", "type": "[User]"},
-        "unvalidated_docs_count": {"key": "unvalidatedDocsCount", "type": "int"},
-        "confirmed_docs_count": {"key": "confirmedDocsCount", "type": "int"},
-        "ingest_email": {"key": "ingestEmail", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword identifier: Required. Uniquely identify a workspace.
-        :paramtype identifier: str
-        :keyword organization:
-        :paramtype organization: ~affinda.models.Organization
-        :keyword name:
-        :paramtype name: str
-        :keyword visibility: Visibility "organization" means everyone in the organization can access
-         the workspace. Visibility "private" means only people explicitly added can access the
-         workspace. Known values are: "organization", "private".
-        :paramtype visibility: str or ~affinda.models.WorkspaceVisibility
-        :keyword collections:
-        :paramtype collections: list[~affinda.models.WorkspaceCollectionsItem]
-        :keyword reject_invalid_documents: If true, the uploaded document will be rejected if it's of
-         the wrong document type, or if its document type cannot be determined. No credits will be
-         consumed.
-        :paramtype reject_invalid_documents: bool
-        :keyword members:
-        :paramtype members: list[~affinda.models.User]
-        :keyword unvalidated_docs_count: Number of unvalidated documents in the workspace.
-        :paramtype unvalidated_docs_count: int
-        :keyword confirmed_docs_count: Number of validated documents in the workspace.
-        :paramtype confirmed_docs_count: int
-        :keyword ingest_email:
-        :paramtype ingest_email: str
-        """
-        super(Workspace, self).__init__(**kwargs)
-        self.identifier = kwargs["identifier"]
-        self.organization = kwargs.get("organization", None)
-        self.name = kwargs.get("name", None)
-        self.visibility = kwargs.get("visibility", None)
-        self.collections = kwargs.get("collections", None)
-        self.reject_invalid_documents = kwargs.get("reject_invalid_documents", None)
-        self.members = kwargs.get("members", None)
-        self.unvalidated_docs_count = kwargs.get("unvalidated_docs_count", None)
-        self.confirmed_docs_count = kwargs.get("confirmed_docs_count", None)
-        self.ingest_email = kwargs.get("ingest_email", None)
-
-
-class WorkspaceCollectionsItem(msrest.serialization.Model):
-    """WorkspaceCollectionsItem.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar identifier: Required. Uniquely identify a collection.
-    :vartype identifier: str
-    :ivar name: Required.
-    :vartype name: str
-    :ivar extractor: Required.
-    :vartype extractor: ~affinda.models.WorkspaceCollectionsItemExtractor
-    :ivar unvalidated_docs_count: Number of unvalidated documents in the collection.
-    :vartype unvalidated_docs_count: int
-    :ivar confirmed_docs_count: Number of validated documents in the collection.
-    :vartype confirmed_docs_count: int
-    """
-
-    _validation = {
-        "identifier": {"required": True},
-        "name": {"required": True},
-        "extractor": {"required": True},
-    }
-
-    _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-        "name": {"key": "name", "type": "str"},
-        "extractor": {"key": "extractor", "type": "WorkspaceCollectionsItemExtractor"},
-        "unvalidated_docs_count": {"key": "unvalidatedDocsCount", "type": "int"},
-        "confirmed_docs_count": {"key": "confirmedDocsCount", "type": "int"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword identifier: Required. Uniquely identify a collection.
-        :paramtype identifier: str
-        :keyword name: Required.
-        :paramtype name: str
-        :keyword extractor: Required.
-        :paramtype extractor: ~affinda.models.WorkspaceCollectionsItemExtractor
-        :keyword unvalidated_docs_count: Number of unvalidated documents in the collection.
-        :paramtype unvalidated_docs_count: int
-        :keyword confirmed_docs_count: Number of validated documents in the collection.
-        :paramtype confirmed_docs_count: int
-        """
-        super(WorkspaceCollectionsItem, self).__init__(**kwargs)
-        self.identifier = kwargs["identifier"]
-        self.name = kwargs["name"]
-        self.extractor = kwargs["extractor"]
-        self.unvalidated_docs_count = kwargs.get("unvalidated_docs_count", None)
-        self.confirmed_docs_count = kwargs.get("confirmed_docs_count", None)
-
-
-class WorkspaceCollectionsItemExtractor(msrest.serialization.Model):
-    """WorkspaceCollectionsItemExtractor.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar identifier: Required. Uniquely identify an extractor.
-    :vartype identifier: str
-    :ivar name: Required.
-    :vartype name: str
-    :ivar name_plural: Required.
-    :vartype name_plural: str
-    :ivar base_extractor:
-    :vartype base_extractor: ~affinda.models.BaseExtractor
-    :ivar category:
-    :vartype category: str
-    :ivar validatable: Required.
-    :vartype validatable: bool
-    :ivar is_custom:
-    :vartype is_custom: bool
-    :ivar created_dt:
-    :vartype created_dt: ~datetime.datetime
-    """
-
-    _validation = {
-        "identifier": {"required": True},
-        "name": {"required": True},
-        "name_plural": {"required": True},
-        "validatable": {"required": True},
-    }
-
-    _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-        "name": {"key": "name", "type": "str"},
-        "name_plural": {"key": "namePlural", "type": "str"},
-        "base_extractor": {"key": "baseExtractor", "type": "BaseExtractor"},
-        "category": {"key": "category", "type": "str"},
-        "validatable": {"key": "validatable", "type": "bool"},
-        "is_custom": {"key": "isCustom", "type": "bool"},
-        "created_dt": {"key": "createdDt", "type": "iso-8601"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword identifier: Required. Uniquely identify an extractor.
-        :paramtype identifier: str
-        :keyword name: Required.
-        :paramtype name: str
-        :keyword name_plural: Required.
-        :paramtype name_plural: str
-        :keyword base_extractor:
-        :paramtype base_extractor: ~affinda.models.BaseExtractor
-        :keyword category:
-        :paramtype category: str
-        :keyword validatable: Required.
-        :paramtype validatable: bool
-        :keyword is_custom:
-        :paramtype is_custom: bool
-        :keyword created_dt:
-        :paramtype created_dt: ~datetime.datetime
-        """
-        super(WorkspaceCollectionsItemExtractor, self).__init__(**kwargs)
-        self.identifier = kwargs["identifier"]
-        self.name = kwargs["name"]
-        self.name_plural = kwargs["name_plural"]
-        self.base_extractor = kwargs.get("base_extractor", None)
-        self.category = kwargs.get("category", None)
-        self.validatable = kwargs["validatable"]
-        self.is_custom = kwargs.get("is_custom", None)
-        self.created_dt = kwargs.get("created_dt", None)
-
-
-class WorkspaceCreate(msrest.serialization.Model):
-    """WorkspaceCreate.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar organization: Required. Uniquely identify an organization.
-    :vartype organization: str
-    :ivar name: Required.
-    :vartype name: str
-    :ivar visibility: Visibility "organization" means everyone in the organization can access the
-     workspace. Visibility "private" means only people explicitly added can access the workspace.
-     Known values are: "organization", "private".
-    :vartype visibility: str or ~affinda.models.WorkspaceVisibility
-    :ivar reject_invalid_documents: If true, the uploaded document will be rejected if it's of the
-     wrong document type, or if its document type cannot be determined. No credits will be consumed.
-    :vartype reject_invalid_documents: bool
-    """
-
-    _validation = {
-        "organization": {"required": True},
-        "name": {"required": True},
-    }
-
-    _attribute_map = {
-        "organization": {"key": "organization", "type": "str"},
-        "name": {"key": "name", "type": "str"},
-        "visibility": {"key": "visibility", "type": "str"},
-        "reject_invalid_documents": {"key": "rejectInvalidDocuments", "type": "bool"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword organization: Required. Uniquely identify an organization.
-        :paramtype organization: str
-        :keyword name: Required.
-        :paramtype name: str
-        :keyword visibility: Visibility "organization" means everyone in the organization can access
-         the workspace. Visibility "private" means only people explicitly added can access the
-         workspace. Known values are: "organization", "private".
-        :paramtype visibility: str or ~affinda.models.WorkspaceVisibility
-        :keyword reject_invalid_documents: If true, the uploaded document will be rejected if it's of
-         the wrong document type, or if its document type cannot be determined. No credits will be
-         consumed.
-        :paramtype reject_invalid_documents: bool
-        """
-        super(WorkspaceCreate, self).__init__(**kwargs)
-        self.organization = kwargs["organization"]
-        self.name = kwargs["name"]
-        self.visibility = kwargs.get("visibility", None)
-        self.reject_invalid_documents = kwargs.get("reject_invalid_documents", None)
-
-
-class WorkspaceMembership(msrest.serialization.Model):
-    """WorkspaceMembership.
-
-    :ivar identifier: Uniquely identify a membership.
-    :vartype identifier: str
-    :ivar workspace: Uniquely identify a workspace.
-    :vartype workspace: str
-    :ivar user:
-    :vartype user: ~affinda.models.User
-    """
-
-    _attribute_map = {
-        "identifier": {"key": "identifier", "type": "str"},
-        "workspace": {"key": "workspace", "type": "str"},
-        "user": {"key": "user", "type": "User"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword identifier: Uniquely identify a membership.
-        :paramtype identifier: str
-        :keyword workspace: Uniquely identify a workspace.
-        :paramtype workspace: str
-        :keyword user:
-        :paramtype user: ~affinda.models.User
-        """
-        super(WorkspaceMembership, self).__init__(**kwargs)
-        self.identifier = kwargs.get("identifier", None)
-        self.workspace = kwargs.get("workspace", None)
-        self.user = kwargs.get("user", None)
-
-
-class WorkspaceMembershipCreate(msrest.serialization.Model):
-    """WorkspaceMembershipCreate.
-
-    :ivar workspace: Uniquely identify a workspace.
-    :vartype workspace: str
-    :ivar user: Uniquely identify a user.
-    :vartype user: int
-    """
-
-    _attribute_map = {
-        "workspace": {"key": "workspace", "type": "str"},
-        "user": {"key": "user", "type": "int"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword workspace: Uniquely identify a workspace.
-        :paramtype workspace: str
-        :keyword user: Uniquely identify a user.
-        :paramtype user: int
-        """
-        super(WorkspaceMembershipCreate, self).__init__(**kwargs)
-        self.workspace = kwargs.get("workspace", None)
-        self.user = kwargs.get("user", None)
-
-
-class WorkspaceUpdate(msrest.serialization.Model):
-    """WorkspaceUpdate.
-
-    :ivar name:
-    :vartype name: str
-    :ivar visibility: Visibility "organization" means everyone in the organization can access the
-     workspace. Visibility "private" means only people explicitly added can access the workspace.
-     Known values are: "organization", "private".
-    :vartype visibility: str or ~affinda.models.WorkspaceVisibility
-    :ivar reject_invalid_documents: If true, the uploaded document will be rejected if it's of the
-     wrong document type, or if its document type cannot be determined. No credits will be consumed.
-    :vartype reject_invalid_documents: bool
-    """
-
-    _attribute_map = {
-        "name": {"key": "name", "type": "str"},
-        "visibility": {"key": "visibility", "type": "str"},
-        "reject_invalid_documents": {"key": "rejectInvalidDocuments", "type": "bool"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword name:
-        :paramtype name: str
-        :keyword visibility: Visibility "organization" means everyone in the organization can access
-         the workspace. Visibility "private" means only people explicitly added can access the
-         workspace. Known values are: "organization", "private".
-        :paramtype visibility: str or ~affinda.models.WorkspaceVisibility
-        :keyword reject_invalid_documents: If true, the uploaded document will be rejected if it's of
-         the wrong document type, or if its document type cannot be determined. No credits will be
-         consumed.
-        :paramtype reject_invalid_documents: bool
-        """
-        super(WorkspaceUpdate, self).__init__(**kwargs)
-        self.name = kwargs.get("name", None)
-        self.visibility = kwargs.get("visibility", None)
-        self.reject_invalid_documents = kwargs.get("reject_invalid_documents", None)
-
-
-class YearsExperienceAnnotationV2(AnnotationV2):
-    """YearsExperienceAnnotationV2.
+class YearsExperienceAnnotation(Annotation):
+    """YearsExperienceAnnotation.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -14848,7 +12299,7 @@ class YearsExperienceAnnotationV2(AnnotationV2):
     :ivar content_type: Required.
     :vartype content_type: str
     :ivar parsed: Years of experience range.
-    :vartype parsed: ~affinda.models.YearsExperienceAnnotationV2Parsed
+    :vartype parsed: ~affinda.models.YearsExperienceAnnotationParsed
     """
 
     _validation = {
@@ -14881,7 +12332,7 @@ class YearsExperienceAnnotationV2(AnnotationV2):
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
-        "parsed": {"key": "parsed", "type": "YearsExperienceAnnotationV2Parsed"},
+        "parsed": {"key": "parsed", "type": "YearsExperienceAnnotationParsed"},
     }
 
     def __init__(self, **kwargs):
@@ -14918,13 +12369,13 @@ class YearsExperienceAnnotationV2(AnnotationV2):
         :keyword content_type: Required.
         :paramtype content_type: str
         :keyword parsed: Years of experience range.
-        :paramtype parsed: ~affinda.models.YearsExperienceAnnotationV2Parsed
+        :paramtype parsed: ~affinda.models.YearsExperienceAnnotationParsed
         """
-        super(YearsExperienceAnnotationV2, self).__init__(**kwargs)
+        super(YearsExperienceAnnotation, self).__init__(**kwargs)
         self.parsed = kwargs.get("parsed", None)
 
 
-class YearsExperienceAnnotationV2Parsed(msrest.serialization.Model):
+class YearsExperienceAnnotationParsed(msrest.serialization.Model):
     """Years of experience range.
 
     :ivar minimum: Minimum years of experience.
@@ -14945,6 +12396,6 @@ class YearsExperienceAnnotationV2Parsed(msrest.serialization.Model):
         :keyword maximum: Maximum years of experience.
         :paramtype maximum: float
         """
-        super(YearsExperienceAnnotationV2Parsed, self).__init__(**kwargs)
+        super(YearsExperienceAnnotationParsed, self).__init__(**kwargs)
         self.minimum = kwargs.get("minimum", None)
         self.maximum = kwargs.get("maximum", None)
