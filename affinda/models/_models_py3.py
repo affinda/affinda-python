@@ -742,31 +742,6 @@ class Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1(
         self.parsed = parsed
 
 
-class Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1(
-    msrest.serialization.Model
-):
-    """Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1.
-
-    :ivar match:
-    :vartype match: bool
-    """
-
-    _attribute_map = {
-        "match": {"key": "match", "type": "bool"},
-    }
-
-    def __init__(self, *, match: Optional[bool] = None, **kwargs):
-        """
-        :keyword match:
-        :paramtype match: bool
-        """
-        super(
-            Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1,
-            self,
-        ).__init__(**kwargs)
-        self.match = match
-
-
 class Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1(msrest.serialization.Model):
     """Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1.
 
@@ -1564,6 +1539,31 @@ class ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValue
         self.match = match
 
 
+class ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1(
+    msrest.serialization.Model
+):
+    """ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1.
+
+    :ivar match:
+    :vartype match: bool
+    """
+
+    _attribute_map = {
+        "match": {"key": "match", "type": "bool"},
+    }
+
+    def __init__(self, *, match: Optional[bool] = None, **kwargs):
+        """
+        :keyword match:
+        :paramtype match: bool
+        """
+        super(
+            ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1,
+            self,
+        ).__init__(**kwargs)
+        self.match = match
+
+
 class ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1(
     msrest.serialization.Model
 ):
@@ -2169,6 +2169,10 @@ class DocumentCreate(msrest.serialization.Model):
     :vartype expiry_time: ~datetime.datetime
     :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
     :vartype language: str
+    :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
+     of an existing document. If "false" (default), will parse the document normally whether its a
+     duplicate or not.
+    :vartype reject_duplicates: bool
     """
 
     _attribute_map = {
@@ -2181,6 +2185,7 @@ class DocumentCreate(msrest.serialization.Model):
         "file_name": {"key": "fileName", "type": "str"},
         "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
         "language": {"key": "language", "type": "str"},
+        "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
     }
 
     def __init__(
@@ -2195,6 +2200,7 @@ class DocumentCreate(msrest.serialization.Model):
         file_name: Optional[str] = None,
         expiry_time: Optional[datetime.datetime] = None,
         language: Optional[str] = None,
+        reject_duplicates: Optional[bool] = False,
         **kwargs,
     ):
         """
@@ -2220,6 +2226,10 @@ class DocumentCreate(msrest.serialization.Model):
         :paramtype expiry_time: ~datetime.datetime
         :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
         :paramtype language: str
+        :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
+         duplicate of an existing document. If "false" (default), will parse the document normally
+         whether its a duplicate or not.
+        :paramtype reject_duplicates: bool
         """
         super(DocumentCreate, self).__init__(**kwargs)
         self.file = file
@@ -2231,6 +2241,7 @@ class DocumentCreate(msrest.serialization.Model):
         self.file_name = file_name
         self.expiry_time = expiry_time
         self.language = language
+        self.reject_duplicates = reject_duplicates
 
 
 class DocumentError(msrest.serialization.Model):
@@ -2327,7 +2338,10 @@ class DocumentMeta(msrest.serialization.Model):
     :ivar tags: A set of tags.
     :vartype tags: list[~affinda.models.Tag]
     :ivar confirmed_by:
-    :vartype confirmed_by: ~affinda.models.User
+    :vartype confirmed_by: ~affinda.models.UserNullable
+    :ivar source_email: If the document is created via email ingestion, this field stores the email
+     file's URL.
+    :vartype source_email: str
     """
 
     _validation = {
@@ -2364,7 +2378,8 @@ class DocumentMeta(msrest.serialization.Model):
         "error_detail": {"key": "errorDetail", "type": "str"},
         "file": {"key": "file", "type": "str"},
         "tags": {"key": "tags", "type": "[Tag]"},
-        "confirmed_by": {"key": "confirmedBy", "type": "User"},
+        "confirmed_by": {"key": "confirmedBy", "type": "UserNullable"},
+        "source_email": {"key": "sourceEmail", "type": "str"},
     }
 
     def __init__(
@@ -2397,7 +2412,8 @@ class DocumentMeta(msrest.serialization.Model):
         error_detail: Optional[str] = None,
         file: Optional[str] = None,
         tags: Optional[List["_models.Tag"]] = None,
-        confirmed_by: Optional["_models.User"] = None,
+        confirmed_by: Optional["_models.UserNullable"] = None,
+        source_email: Optional[str] = None,
         **kwargs,
     ):
         """
@@ -2463,7 +2479,10 @@ class DocumentMeta(msrest.serialization.Model):
         :keyword tags: A set of tags.
         :paramtype tags: list[~affinda.models.Tag]
         :keyword confirmed_by:
-        :paramtype confirmed_by: ~affinda.models.User
+        :paramtype confirmed_by: ~affinda.models.UserNullable
+        :keyword source_email: If the document is created via email ingestion, this field stores the
+         email file's URL.
+        :paramtype source_email: str
         """
         super(DocumentMeta, self).__init__(**kwargs)
         self.identifier = identifier
@@ -2494,6 +2513,7 @@ class DocumentMeta(msrest.serialization.Model):
         self.file = file
         self.tags = tags
         self.confirmed_by = confirmed_by
+        self.source_email = source_email
 
 
 class DocumentMetaChildDocumentsItem(msrest.serialization.Model):
@@ -2673,6 +2693,8 @@ class DocumentUpdate(msrest.serialization.Model):
     :vartype is_confirmed: bool
     :ivar is_rejected:
     :vartype is_rejected: bool
+    :ivar is_archived:
+    :vartype is_archived: bool
     :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
     :vartype language: str
     """
@@ -2683,6 +2705,7 @@ class DocumentUpdate(msrest.serialization.Model):
         "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
         "is_confirmed": {"key": "isConfirmed", "type": "bool"},
         "is_rejected": {"key": "isRejected", "type": "bool"},
+        "is_archived": {"key": "isArchived", "type": "bool"},
         "language": {"key": "language", "type": "str"},
     }
 
@@ -2694,6 +2717,7 @@ class DocumentUpdate(msrest.serialization.Model):
         expiry_time: Optional[datetime.datetime] = None,
         is_confirmed: Optional[bool] = None,
         is_rejected: Optional[bool] = None,
+        is_archived: Optional[bool] = None,
         language: Optional[str] = None,
         **kwargs,
     ):
@@ -2709,6 +2733,8 @@ class DocumentUpdate(msrest.serialization.Model):
         :paramtype is_confirmed: bool
         :keyword is_rejected:
         :paramtype is_rejected: bool
+        :keyword is_archived:
+        :paramtype is_archived: bool
         :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
         :paramtype language: str
         """
@@ -2718,6 +2744,7 @@ class DocumentUpdate(msrest.serialization.Model):
         self.expiry_time = expiry_time
         self.is_confirmed = is_confirmed
         self.is_rejected = is_rejected
+        self.is_archived = is_archived
         self.language = language
 
 
@@ -10493,26 +10520,26 @@ class JobDescriptionSearchDetailOccupationGroup(msrest.serialization.Model):
     :ivar missing:
     :vartype missing: list[int]
     :ivar value:
-    :vartype value: list[~affinda.models.JobDescriptionSearchDetailOccupationGroupValueItem]
+    :vartype value: ~affinda.models.JobDescriptionSearchDetailOccupationGroupValue
     """
 
     _attribute_map = {
         "missing": {"key": "missing", "type": "[int]"},
-        "value": {"key": "value", "type": "[JobDescriptionSearchDetailOccupationGroupValueItem]"},
+        "value": {"key": "value", "type": "JobDescriptionSearchDetailOccupationGroupValue"},
     }
 
     def __init__(
         self,
         *,
         missing: Optional[List[int]] = None,
-        value: Optional[List["_models.JobDescriptionSearchDetailOccupationGroupValueItem"]] = None,
+        value: Optional["_models.JobDescriptionSearchDetailOccupationGroupValue"] = None,
         **kwargs,
     ):
         """
         :keyword missing:
         :paramtype missing: list[int]
         :keyword value:
-        :paramtype value: list[~affinda.models.JobDescriptionSearchDetailOccupationGroupValueItem]
+        :paramtype value: ~affinda.models.JobDescriptionSearchDetailOccupationGroupValue
         """
         super(JobDescriptionSearchDetailOccupationGroup, self).__init__(**kwargs)
         self.missing = missing
@@ -10561,11 +10588,11 @@ class OccupationGroup(msrest.serialization.Model):
         self.children = children
 
 
-class JobDescriptionSearchDetailOccupationGroupValueItem(
+class JobDescriptionSearchDetailOccupationGroupValue(
     OccupationGroup,
-    Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1,
+    ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1,
 ):
-    """JobDescriptionSearchDetailOccupationGroupValueItem.
+    """JobDescriptionSearchDetailOccupationGroupValue.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -10611,7 +10638,7 @@ class JobDescriptionSearchDetailOccupationGroupValueItem(
         :keyword children: Required.
         :paramtype children: list[~affinda.models.OccupationGroup]
         """
-        super(JobDescriptionSearchDetailOccupationGroupValueItem, self).__init__(
+        super(JobDescriptionSearchDetailOccupationGroupValue, self).__init__(
             code=code, name=name, children=children, match=match, **kwargs
         )
         self.match = match
@@ -13995,7 +14022,7 @@ class ResumeSearch(msrest.serialization.Model):
     :ivar parameters:
     :vartype parameters: ~affinda.models.ResumeSearchParameters
     :ivar results:
-    :vartype results: list[~affinda.models.ResumeSearchResultsItem]
+    :vartype results: list[~affinda.models.Document]
     """
 
     _attribute_map = {
@@ -14003,7 +14030,7 @@ class ResumeSearch(msrest.serialization.Model):
         "next": {"key": "next", "type": "str"},
         "previous": {"key": "previous", "type": "str"},
         "parameters": {"key": "parameters", "type": "ResumeSearchParameters"},
-        "results": {"key": "results", "type": "[ResumeSearchResultsItem]"},
+        "results": {"key": "results", "type": "[Document]"},
     }
 
     def __init__(
@@ -14013,7 +14040,7 @@ class ResumeSearch(msrest.serialization.Model):
         next: Optional[str] = None,
         previous: Optional[str] = None,
         parameters: Optional["_models.ResumeSearchParameters"] = None,
-        results: Optional[List["_models.ResumeSearchResultsItem"]] = None,
+        results: Optional[List["_models.Document"]] = None,
         **kwargs,
     ):
         """
@@ -14026,7 +14053,7 @@ class ResumeSearch(msrest.serialization.Model):
         :keyword parameters:
         :paramtype parameters: ~affinda.models.ResumeSearchParameters
         :keyword results:
-        :paramtype results: list[~affinda.models.ResumeSearchResultsItem]
+        :paramtype results: list[~affinda.models.Document]
         """
         super(ResumeSearch, self).__init__(**kwargs)
         self.count = count
@@ -15784,44 +15811,6 @@ class ResumeSearchParametersSkill(msrest.serialization.Model):
         self.required = required
 
 
-class ResumeSearchResultsItem(msrest.serialization.Model):
-    """ResumeSearchResultsItem.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar meta: Required.
-    :vartype meta: ~affinda.models.DocumentMeta
-    :ivar error:
-    :vartype error: ~affinda.models.DocumentError
-    """
-
-    _validation = {
-        "meta": {"required": True},
-    }
-
-    _attribute_map = {
-        "meta": {"key": "meta", "type": "DocumentMeta"},
-        "error": {"key": "error", "type": "DocumentError"},
-    }
-
-    def __init__(
-        self,
-        *,
-        meta: "_models.DocumentMeta",
-        error: Optional["_models.DocumentError"] = None,
-        **kwargs,
-    ):
-        """
-        :keyword meta: Required.
-        :paramtype meta: ~affinda.models.DocumentMeta
-        :keyword error:
-        :paramtype error: ~affinda.models.DocumentError
-        """
-        super(ResumeSearchResultsItem, self).__init__(**kwargs)
-        self.meta = meta
-        self.error = error
-
-
 class ResumeSkillSourcesItem(msrest.serialization.Model):
     """ResumeSkillSourcesItem.
 
@@ -16309,6 +16298,59 @@ class TagUpdate(msrest.serialization.Model):
         super(TagUpdate, self).__init__(**kwargs)
         self.name = name
         self.workspace = workspace
+
+
+class UserNullable(msrest.serialization.Model):
+    """UserNullable.
+
+    :ivar id: Uniquely identify a user.
+    :vartype id: int
+    :ivar name:
+    :vartype name: str
+    :ivar username:
+    :vartype username: str
+    :ivar email:
+    :vartype email: str
+    :ivar avatar: URL of the user's avatar.
+    :vartype avatar: str
+    """
+
+    _attribute_map = {
+        "id": {"key": "id", "type": "int"},
+        "name": {"key": "name", "type": "str"},
+        "username": {"key": "username", "type": "str"},
+        "email": {"key": "email", "type": "str"},
+        "avatar": {"key": "avatar", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        id: Optional[int] = None,
+        name: Optional[str] = None,
+        username: Optional[str] = None,
+        email: Optional[str] = None,
+        avatar: Optional[str] = None,
+        **kwargs,
+    ):
+        """
+        :keyword id: Uniquely identify a user.
+        :paramtype id: int
+        :keyword name:
+        :paramtype name: str
+        :keyword username:
+        :paramtype username: str
+        :keyword email:
+        :paramtype email: str
+        :keyword avatar: URL of the user's avatar.
+        :paramtype avatar: str
+        """
+        super(UserNullable, self).__init__(**kwargs)
+        self.id = id
+        self.name = name
+        self.username = username
+        self.email = email
+        self.avatar = avatar
 
 
 class Workspace(msrest.serialization.Model):

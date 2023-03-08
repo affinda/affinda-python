@@ -507,31 +507,6 @@ def __init__(**kwargs)
 - `raw`: 
 - `parsed`: 
 
-<a id="models._models.Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1"></a>
-
-## Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1 Objects
-
-```python
-class Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1(msrest.serialization.Model)
-```
-
-Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1.
-
-:ivar match:
-:vartype match: bool
-
-<a id="models._models.Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `match`: 
-
 <a id="models._models.Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1"></a>
 
 ## Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1 Objects
@@ -1285,6 +1260,31 @@ def __init__(**kwargs)
 
 - `match`: 
 
+<a id="models._models.ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1"></a>
+
+## ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1 Objects
+
+```python
+class ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1(msrest.serialization.Model)
+```
+
+ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1.
+
+:ivar match:
+:vartype match: bool
+
+<a id="models._models.ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `match`: 
+
 <a id="models._models.ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1"></a>
 
 ## ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1 Objects
@@ -1696,6 +1696,10 @@ DocumentCreate.
 :vartype expiry_time: ~datetime.datetime
 :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 :vartype language: str
+:ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
+ of an existing document. If "false" (default), will parse the document normally whether its a
+ duplicate or not.
+:vartype reject_duplicates: bool
 
 <a id="models._models.DocumentCreate.__init__"></a>
 
@@ -1720,6 +1724,9 @@ processing is complete.
 - `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
 - `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+- `reject_duplicates`: If "true", parsing will fail when the uploaded document is
+duplicate of an existing document. If "false" (default), will parse the document normally
+whether its a duplicate or not.
 
 <a id="models._models.DocumentError"></a>
 
@@ -1822,7 +1829,10 @@ All required parameters must be populated in order to send to Azure.
 :ivar tags: A set of tags.
 :vartype tags: list[~affinda.models.Tag]
 :ivar confirmed_by:
-:vartype confirmed_by: ~affinda.models.User
+:vartype confirmed_by: ~affinda.models.UserNullable
+:ivar source_email: If the document is created via email ingestion, this field stores the email
+ file's URL.
+:vartype source_email: str
 
 <a id="models._models.DocumentMeta.__init__"></a>
 
@@ -1869,6 +1879,8 @@ this attribute points to those child documents.
 - `file`: URL to view the file.
 - `tags`: A set of tags.
 - `confirmed_by`: 
+- `source_email`: If the document is created via email ingestion, this field stores the
+email file's URL.
 
 <a id="models._models.DocumentMetaChildDocumentsItem"></a>
 
@@ -2038,6 +2050,8 @@ DocumentUpdate.
 :vartype is_confirmed: bool
 :ivar is_rejected:
 :vartype is_rejected: bool
+:ivar is_archived:
+:vartype is_archived: bool
 :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 :vartype language: str
 
@@ -2057,6 +2071,7 @@ def __init__(**kwargs)
 deleted.  Defaults to no expiry.
 - `is_confirmed`: 
 - `is_rejected`: 
+- `is_archived`: 
 - `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 
 <a id="models._models.Education"></a>
@@ -6195,7 +6210,7 @@ JobDescriptionSearchDetailOccupationGroup.
 :ivar missing:
 :vartype missing: list[int]
 :ivar value:
-:vartype value: list[~affinda.models.JobDescriptionSearchDetailOccupationGroupValueItem]
+:vartype value: ~affinda.models.JobDescriptionSearchDetailOccupationGroupValue
 
 <a id="models._models.JobDescriptionSearchDetailOccupationGroup.__init__"></a>
 
@@ -6243,15 +6258,15 @@ def __init__(**kwargs)
 - `name`: Required.
 - `children`: Required.
 
-<a id="models._models.JobDescriptionSearchDetailOccupationGroupValueItem"></a>
+<a id="models._models.JobDescriptionSearchDetailOccupationGroupValue"></a>
 
-## JobDescriptionSearchDetailOccupationGroupValueItem Objects
+## JobDescriptionSearchDetailOccupationGroupValue Objects
 
 ```python
-class JobDescriptionSearchDetailOccupationGroupValueItem(OccupationGroup,  Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1)
+class JobDescriptionSearchDetailOccupationGroupValue(OccupationGroup,  ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1)
 ```
 
-JobDescriptionSearchDetailOccupationGroupValueItem.
+JobDescriptionSearchDetailOccupationGroupValue.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -6264,7 +6279,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar children: Required.
 :vartype children: list[~affinda.models.OccupationGroup]
 
-<a id="models._models.JobDescriptionSearchDetailOccupationGroupValueItem.__init__"></a>
+<a id="models._models.JobDescriptionSearchDetailOccupationGroupValue.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -8589,7 +8604,7 @@ ResumeSearch.
 :ivar parameters:
 :vartype parameters: ~affinda.models.ResumeSearchParameters
 :ivar results:
-:vartype results: list[~affinda.models.ResumeSearchResultsItem]
+:vartype results: list[~affinda.models.Document]
 
 <a id="models._models.ResumeSearch.__init__"></a>
 
@@ -9738,36 +9753,6 @@ def __init__(**kwargs)
 - `name`: 
 - `required`: 
 
-<a id="models._models.ResumeSearchResultsItem"></a>
-
-## ResumeSearchResultsItem Objects
-
-```python
-class ResumeSearchResultsItem(msrest.serialization.Model)
-```
-
-ResumeSearchResultsItem.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar meta: Required.
-:vartype meta: ~affinda.models.DocumentMeta
-:ivar error:
-:vartype error: ~affinda.models.DocumentError
-
-<a id="models._models.ResumeSearchResultsItem.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `meta`: Required.
-- `error`: 
-
 <a id="models._models.ResumeSkillSourcesItem"></a>
 
 ## ResumeSkillSourcesItem Objects
@@ -10105,6 +10090,43 @@ def __init__(**kwargs)
 
 - `name`: 
 - `workspace`: Uniquely identify a workspace.
+
+<a id="models._models.UserNullable"></a>
+
+## UserNullable Objects
+
+```python
+class UserNullable(msrest.serialization.Model)
+```
+
+UserNullable.
+
+:ivar id: Uniquely identify a user.
+:vartype id: int
+:ivar name:
+:vartype name: str
+:ivar username:
+:vartype username: str
+:ivar email:
+:vartype email: str
+:ivar avatar: URL of the user's avatar.
+:vartype avatar: str
+
+<a id="models._models.UserNullable.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `id`: Uniquely identify a user.
+- `name`: 
+- `username`: 
+- `email`: 
+- `avatar`: URL of the user's avatar.
 
 <a id="models._models.Workspace"></a>
 

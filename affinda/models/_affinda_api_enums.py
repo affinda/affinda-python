@@ -52,6 +52,13 @@ class DateRange(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     YEAR = "year"
 
 
+class DocumentFormat(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+
+    JSON = "json"
+    XML = "xml"
+    HR_XML = "hr-xml"
+
+
 class DocumentState(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     UPLOADED = "uploaded"

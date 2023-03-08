@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add resthook subscription endpoints
 - Add py.typed marker file
+- Add link to affinda help docs for resthook creation
 
 ### Changed
 - Remove extractor's `id` field, use `identifier` field instead

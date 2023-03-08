@@ -1198,7 +1198,7 @@ response = client.get_all_resthook_subscriptions()
 print(response.as_dict())
 ```
 
-### createResthookSubscription - Create a resthook subscriptions
+### createResthookSubscription - Create a resthook subscription
 
 ```python
 from affinda import AffindaAPI, TokenCredential

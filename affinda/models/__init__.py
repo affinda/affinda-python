@@ -22,9 +22,6 @@ try:
         Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1,
     )
     from ._models_py3 import Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1
-    from ._models_py3 import (
-        Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1,
-    )
     from ._models_py3 import Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1
     from ._models_py3 import Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1
     from ._models_py3 import Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1
@@ -65,6 +62,9 @@ try:
     )
     from ._models_py3 import (
         ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1,
+    )
+    from ._models_py3 import (
+        ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1,
     )
     from ._models_py3 import (
         ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1,
@@ -156,7 +156,7 @@ try:
     from ._models_py3 import JobDescriptionSearchDetailLocationValue
     from ._models_py3 import JobDescriptionSearchDetailManagementLevel
     from ._models_py3 import JobDescriptionSearchDetailOccupationGroup
-    from ._models_py3 import JobDescriptionSearchDetailOccupationGroupValueItem
+    from ._models_py3 import JobDescriptionSearchDetailOccupationGroupValue
     from ._models_py3 import JobDescriptionSearchDetailSearchExpression
     from ._models_py3 import JobDescriptionSearchDetailSkills
     from ._models_py3 import JobDescriptionSearchDetailSkillsValueItem
@@ -278,7 +278,6 @@ try:
     from ._models_py3 import ResumeSearchParametersLocation
     from ._models_py3 import ResumeSearchParametersLocationCoordinates
     from ._models_py3 import ResumeSearchParametersSkill
-    from ._models_py3 import ResumeSearchResultsItem
     from ._models_py3 import ResumeSkill
     from ._models_py3 import ResumeSkillSourcesItem
     from ._models_py3 import RowAnnotation
@@ -290,6 +289,7 @@ try:
     from ._models_py3 import TagUpdate
     from ._models_py3 import TextAnnotation
     from ._models_py3 import User
+    from ._models_py3 import UserNullable
     from ._models_py3 import Workspace
     from ._models_py3 import WorkspaceCollectionsItem
     from ._models_py3 import WorkspaceCollectionsItemExtractor
@@ -313,7 +313,6 @@ except (SyntaxError, ImportError):
     from ._models import Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1  # type: ignore
     from ._models import Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1  # type: ignore
     from ._models import Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1  # type: ignore
-    from ._models import Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1  # type: ignore
     from ._models import Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1  # type: ignore
     from ._models import Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1  # type: ignore
     from ._models import Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1  # type: ignore
@@ -341,6 +340,7 @@ except (SyntaxError, ImportError):
     from ._models import ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1  # type: ignore
     from ._models import ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1  # type: ignore
     from ._models import ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1  # type: ignore
+    from ._models import ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1  # type: ignore
     from ._models import ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1  # type: ignore
     from ._models import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1  # type: ignore
     from ._models import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1  # type: ignore
@@ -429,7 +429,7 @@ except (SyntaxError, ImportError):
     from ._models import JobDescriptionSearchDetailLocationValue  # type: ignore
     from ._models import JobDescriptionSearchDetailManagementLevel  # type: ignore
     from ._models import JobDescriptionSearchDetailOccupationGroup  # type: ignore
-    from ._models import JobDescriptionSearchDetailOccupationGroupValueItem  # type: ignore
+    from ._models import JobDescriptionSearchDetailOccupationGroupValue  # type: ignore
     from ._models import JobDescriptionSearchDetailSearchExpression  # type: ignore
     from ._models import JobDescriptionSearchDetailSkills  # type: ignore
     from ._models import JobDescriptionSearchDetailSkillsValueItem  # type: ignore
@@ -519,7 +519,6 @@ except (SyntaxError, ImportError):
     from ._models import ResumeSearchParametersLocation  # type: ignore
     from ._models import ResumeSearchParametersLocationCoordinates  # type: ignore
     from ._models import ResumeSearchParametersSkill  # type: ignore
-    from ._models import ResumeSearchResultsItem  # type: ignore
     from ._models import ResumeSkill  # type: ignore
     from ._models import ResumeSkillSourcesItem  # type: ignore
     from ._models import RowAnnotation  # type: ignore
@@ -531,6 +530,7 @@ except (SyntaxError, ImportError):
     from ._models import TagUpdate  # type: ignore
     from ._models import TextAnnotation  # type: ignore
     from ._models import User  # type: ignore
+    from ._models import UserNullable  # type: ignore
     from ._models import Workspace  # type: ignore
     from ._models import WorkspaceCollectionsItem  # type: ignore
     from ._models import WorkspaceCollectionsItemExtractor  # type: ignore
@@ -546,6 +546,7 @@ from ._affinda_api_enums import (
     CollectionDateFormatPreference,
     DateFormatPreference,
     DateRange,
+    DocumentFormat,
     DocumentState,
     EducationLevel,
     Enum3,
@@ -585,7 +586,6 @@ __all__ = [
     "Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1",
     "Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1",
     "Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1",
-    "Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1",
     "Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1",
     "Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1",
     "Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1",
@@ -613,6 +613,7 @@ __all__ = [
     "ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1",
     "ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1",
     "ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1",
+    "ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1",
     "ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1",
     "ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1",
     "ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1",
@@ -701,7 +702,7 @@ __all__ = [
     "JobDescriptionSearchDetailLocationValue",
     "JobDescriptionSearchDetailManagementLevel",
     "JobDescriptionSearchDetailOccupationGroup",
-    "JobDescriptionSearchDetailOccupationGroupValueItem",
+    "JobDescriptionSearchDetailOccupationGroupValue",
     "JobDescriptionSearchDetailSearchExpression",
     "JobDescriptionSearchDetailSkills",
     "JobDescriptionSearchDetailSkillsValueItem",
@@ -791,7 +792,6 @@ __all__ = [
     "ResumeSearchParametersLocation",
     "ResumeSearchParametersLocationCoordinates",
     "ResumeSearchParametersSkill",
-    "ResumeSearchResultsItem",
     "ResumeSkill",
     "ResumeSkillSourcesItem",
     "RowAnnotation",
@@ -803,6 +803,7 @@ __all__ = [
     "TagUpdate",
     "TextAnnotation",
     "User",
+    "UserNullable",
     "Workspace",
     "WorkspaceCollectionsItem",
     "WorkspaceCollectionsItemExtractor",
@@ -816,6 +817,7 @@ __all__ = [
     "CollectionDateFormatPreference",
     "DateFormatPreference",
     "DateRange",
+    "DocumentFormat",
     "DocumentState",
     "EducationLevel",
     "Enum3",

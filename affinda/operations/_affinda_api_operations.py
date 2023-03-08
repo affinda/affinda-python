@@ -1942,7 +1942,9 @@ def build_get_document_request(
 ):
     # type: (...) -> HttpRequest
     _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+    _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
 
+    format = kwargs.pop('format', _params.pop('format', None))  # type: Optional[Union[str, "_models.DocumentFormat"]]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
@@ -1953,12 +1955,17 @@ def build_get_document_request(
 
     _url = _format_url_section(_url, **path_format_arguments)
 
+    # Construct parameters
+    if format is not None:
+        _params['format'] = _SERIALIZER.query("format", format, 'str')
+
     # Construct headers
     _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
         method="GET",
         url=_url,
+        params=_params,
         headers=_headers,
         **kwargs
     )
@@ -2308,6 +2315,30 @@ def build_delete_resthook_subscription_request(
 
     return HttpRequest(
         method="DELETE",
+        url=_url,
+        headers=_headers,
+        **kwargs
+    )
+
+
+def build_activate_resthook_subscription_request(
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+
+    x_hook_secret = kwargs.pop('x_hook_secret')  # type: str
+    accept = _headers.pop('Accept', "application/json")
+
+    # Construct URL
+    _url = kwargs.pop("template_url", "/v3/resthook_subscriptions/activate")
+
+    # Construct headers
+    _headers['X-Hook-Secret'] = _SERIALIZER.header("x_hook_secret", x_hook_secret, 'str')
+    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="POST",
         url=_url,
         headers=_headers,
         **kwargs
@@ -6848,14 +6879,15 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         file_name=None,  # type: Optional[str]
         expiry_time=None,  # type: Optional[datetime.datetime]
         language=None,  # type: Optional[str]
+        reject_duplicates=False,  # type: Optional[bool]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.Document
         """Upload a document for parsing.
 
         Uploads a document for parsing. When successful, returns an ``identifier`` in the response for
-        subsequent use with the `/documents/{identifier} <#get-/documents/-identifier->`_ endpoint to
-        check processing status and retrieve results.:code:`<br/>`.
+        subsequent use with the `/documents/{identifier} <#get-/v3/documents/-identifier->`_ endpoint
+        to check processing status and retrieve results.:code:`<br/>`.
 
         :param file:  Default value is None.
         :type file: IO
@@ -6875,6 +6907,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type expiry_time: ~datetime.datetime
         :param language:  Default value is None.
         :type language: str
+        :param reject_duplicates:  Default value is False.
+        :type reject_duplicates: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Document, or the result of cls(response)
         :rtype: ~affinda.models.Document
@@ -6911,6 +6945,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             "fileName": file_name,
             "expiryTime": expiry_time,
             "language": language,
+            "rejectDuplicates": reject_duplicates,
         }
 
         request = build_create_document_request(
@@ -6952,6 +6987,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
     def get_document(
         self,
         identifier,  # type: str
+        format=None,  # type: Optional[Union[str, "_models.DocumentFormat"]]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.Document
@@ -6961,6 +6997,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
         :param identifier: Document's identifier.
         :type identifier: str
+        :param format: Specify which format you want the response to be. Default is "json".
+        :type format: str or ~affinda.models.DocumentFormat
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Document, or the result of cls(response)
         :rtype: ~affinda.models.Document
@@ -6985,6 +7023,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
         request = build_get_document_request(
             identifier=identifier,
+            format=format,
             template_url=self.get_document.metadata["url"],
             headers=_headers,
             params=_params,
@@ -7579,9 +7618,16 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.ResthookSubscription
-        """Create a resthook subscriptions.
+        """Create a resthook subscription.
 
-        Create a resthook subscriptions.
+        After a subscription is sucessfully created, we'll send a POST request to your target URL with
+        a ``X-Hook-Secret`` header.
+        You need to response to this request with a 200 status code to confirm your subscribe
+        intention.
+        Then, you need to use the ``X-Hook-Secret`` to activate the subscription using the
+        `/resthook_subscriptions/activate <#post-/v3/resthook_subscriptions/activate>`_ endpoint.
+        For more information, see our help article here - `How do I create a webhook?
+        <https://help.affinda.com/hc/en-au/articles/11474095148569-How-do-I-create-a-webhook>`_.
 
         :param body:
         :type body: ~affinda.models.ResthookSubscriptionCreate
@@ -7844,3 +7890,71 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             return cls(pipeline_response, None, {})
 
     delete_resthook_subscription.metadata = {"url": "/v3/resthook_subscriptions/{id}"}  # type: ignore
+
+    def activate_resthook_subscription(
+        self,
+        x_hook_secret,  # type: str
+        **kwargs,  # type: Any
+    ):
+        # type: (...) -> _models.ResthookSubscription
+        """Activate a resthook subscription.
+
+        After creating a subscription, we'll send a POST request to your target URL with a
+        ``X-Hook-Secret`` header.
+        You should response to this with a 200 status code, and use the value of the ``X-Hook-Secret``
+        header that you received to activate the subscription using this endpoint.
+
+        :param x_hook_secret: The secret received when creating a subscription.
+        :type x_hook_secret: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: ResthookSubscription, or the result of cls(response)
+        :rtype: ~affinda.models.ResthookSubscription
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResthookSubscription]
+
+        request = build_activate_resthook_subscription_request(
+            x_hook_secret=x_hook_secret,
+            template_url=self.activate_resthook_subscription.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("ResthookSubscription", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    activate_resthook_subscription.metadata = {"url": "/v3/resthook_subscriptions/activate"}  # type: ignore
