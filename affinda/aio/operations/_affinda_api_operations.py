@@ -22,6 +22,7 @@ from azure.core.utils import case_insensitive_dict
 from ... import models as _models
 from ..._vendor import _convert_request
 from ...operations._affinda_api_operations import (
+    build_activate_resthook_subscription_request,
     build_create_index_document_request,
     build_create_index_request,
     build_create_invoice_request,
@@ -3016,9 +3017,16 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
     async def create_resthook_subscription(
         self, body: _models.ResthookSubscriptionCreate, **kwargs: Any
     ) -> _models.ResthookSubscription:
-        """Create a resthook subscriptions.
+        """Create a resthook subscription.
 
-        Create a resthook subscriptions.
+        After a subscription is sucessfully created, we'll send a POST request to your target URL with
+        a ``X-Hook-Secret`` header.
+        You need to response to this request with a 200 status code to confirm your subscribe
+        intention.
+        Then, you need to use the ``X-Hook-Secret`` to activate the subscription using the
+        `/resthook_subscriptions/activate <#post-/v3/resthook_subscriptions/activate>`_ endpoint.
+        For more information, see our help article here - `How do I create a webhook?
+        <https://help.affinda.com/hc/en-au/articles/11474095148569-How-do-I-create-a-webhook>`_.
 
         :param body:
         :type body: ~affinda.models.ResthookSubscriptionCreate
@@ -3271,3 +3279,68 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             return cls(pipeline_response, None, {})
 
     delete_resthook_subscription.metadata = {"url": "/v2/resthook_subscriptions/{id}"}  # type: ignore
+
+    async def activate_resthook_subscription(
+        self, x_hook_secret: str, **kwargs: Any
+    ) -> _models.ResthookSubscription:
+        """Activate a resthook subscription.
+
+        After creating a subscription, we'll send a POST request to your target URL with a
+        ``X-Hook-Secret`` header.
+        You should response to this with a 200 status code, and use the value of the ``X-Hook-Secret``
+        header that you received to activate the subscription using this endpoint.
+
+        :param x_hook_secret: The secret received when creating a subscription.
+        :type x_hook_secret: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: ResthookSubscription, or the result of cls(response)
+        :rtype: ~affinda.models.ResthookSubscription
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResthookSubscription]
+
+        request = build_activate_resthook_subscription_request(
+            x_hook_secret=x_hook_secret,
+            template_url=self.activate_resthook_subscription.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("ResthookSubscription", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    activate_resthook_subscription.metadata = {"url": "/v2/resthook_subscriptions/activate"}  # type: ignore

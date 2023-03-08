@@ -10,10 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add py.typed marker file
 - Added PATCH support for Job Descriptions
 - Add `confirmed_by` field to document meta
+- Add link to affinda help docs for resthook creation\hAdd activate resthook subscription endpoint
 
 ### Changed
 - Remove extractor's `id` field, use `identifier` field instead
 - Rework document polymorphism, the model used to deserialize document response is now automatically chosen based on the document's extractor
+- Make Document.Meta.confirmedBy nullable
 
 ### Removed
 - Remove extractor's `id` field

@@ -363,31 +363,6 @@ class Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1(
         self.parsed = parsed
 
 
-class Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1(
-    msrest.serialization.Model
-):
-    """Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1.
-
-    :ivar match:
-    :vartype match: bool
-    """
-
-    _attribute_map = {
-        "match": {"key": "match", "type": "bool"},
-    }
-
-    def __init__(self, *, match: Optional[bool] = None, **kwargs):
-        """
-        :keyword match:
-        :paramtype match: bool
-        """
-        super(
-            Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1,
-            self,
-        ).__init__(**kwargs)
-        self.match = match
-
-
 class Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1(msrest.serialization.Model):
     """Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1.
 
@@ -1136,31 +1111,6 @@ class ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueIt
         self.match = match
 
 
-class ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1(
-    msrest.serialization.Model
-):
-    """ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1.
-
-    :ivar match:
-    :vartype match: bool
-    """
-
-    _attribute_map = {
-        "match": {"key": "match", "type": "bool"},
-    }
-
-    def __init__(self, *, match: Optional[bool] = None, **kwargs):
-        """
-        :keyword match:
-        :paramtype match: bool
-        """
-        super(
-            ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1,
-            self,
-        ).__init__(**kwargs)
-        self.match = match
-
-
 class ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1(
     msrest.serialization.Model
 ):
@@ -1227,6 +1177,31 @@ class ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties(
         self.value = value
         self.label = label
         self.score = score
+
+
+class ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1(
+    msrest.serialization.Model
+):
+    """ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1.
+
+    :ivar match:
+    :vartype match: bool
+    """
+
+    _attribute_map = {
+        "match": {"key": "match", "type": "bool"},
+    }
+
+    def __init__(self, *, match: Optional[bool] = None, **kwargs):
+        """
+        :keyword match:
+        :paramtype match: bool
+        """
+        super(
+            ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1,
+            self,
+        ).__init__(**kwargs)
+        self.match = match
 
 
 class ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1(
@@ -8571,26 +8546,26 @@ class JobDescriptionSearchDetailOccupationGroup(msrest.serialization.Model):
     :ivar missing:
     :vartype missing: list[int]
     :ivar value:
-    :vartype value: list[~affinda.models.JobDescriptionSearchDetailOccupationGroupValueItem]
+    :vartype value: ~affinda.models.JobDescriptionSearchDetailOccupationGroupValue
     """
 
     _attribute_map = {
         "missing": {"key": "missing", "type": "[int]"},
-        "value": {"key": "value", "type": "[JobDescriptionSearchDetailOccupationGroupValueItem]"},
+        "value": {"key": "value", "type": "JobDescriptionSearchDetailOccupationGroupValue"},
     }
 
     def __init__(
         self,
         *,
         missing: Optional[List[int]] = None,
-        value: Optional[List["_models.JobDescriptionSearchDetailOccupationGroupValueItem"]] = None,
+        value: Optional["_models.JobDescriptionSearchDetailOccupationGroupValue"] = None,
         **kwargs,
     ):
         """
         :keyword missing:
         :paramtype missing: list[int]
         :keyword value:
-        :paramtype value: list[~affinda.models.JobDescriptionSearchDetailOccupationGroupValueItem]
+        :paramtype value: ~affinda.models.JobDescriptionSearchDetailOccupationGroupValue
         """
         super(JobDescriptionSearchDetailOccupationGroup, self).__init__(**kwargs)
         self.missing = missing
@@ -8608,6 +8583,8 @@ class OccupationGroup(msrest.serialization.Model):
     :vartype name: str
     :ivar children: Required.
     :vartype children: list[~affinda.models.OccupationGroup]
+    :ivar parents:
+    :vartype parents: list[~affinda.models.OccupationGroup]
     """
 
     _validation = {
@@ -8620,10 +8597,17 @@ class OccupationGroup(msrest.serialization.Model):
         "code": {"key": "code", "type": "int"},
         "name": {"key": "name", "type": "str"},
         "children": {"key": "children", "type": "[OccupationGroup]"},
+        "parents": {"key": "parents", "type": "[OccupationGroup]"},
     }
 
     def __init__(
-        self, *, code: int, name: str, children: List["_models.OccupationGroup"], **kwargs
+        self,
+        *,
+        code: int,
+        name: str,
+        children: List["_models.OccupationGroup"],
+        parents: Optional[List["_models.OccupationGroup"]] = None,
+        **kwargs,
     ):
         """
         :keyword code: Required.
@@ -8632,18 +8616,21 @@ class OccupationGroup(msrest.serialization.Model):
         :paramtype name: str
         :keyword children: Required.
         :paramtype children: list[~affinda.models.OccupationGroup]
+        :keyword parents:
+        :paramtype parents: list[~affinda.models.OccupationGroup]
         """
         super(OccupationGroup, self).__init__(**kwargs)
         self.code = code
         self.name = name
         self.children = children
+        self.parents = parents
 
 
-class JobDescriptionSearchDetailOccupationGroupValueItem(
+class JobDescriptionSearchDetailOccupationGroupValue(
     OccupationGroup,
-    Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1,
+    ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1,
 ):
-    """JobDescriptionSearchDetailOccupationGroupValueItem.
+    """JobDescriptionSearchDetailOccupationGroupValue.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -8655,6 +8642,8 @@ class JobDescriptionSearchDetailOccupationGroupValueItem(
     :vartype name: str
     :ivar children: Required.
     :vartype children: list[~affinda.models.OccupationGroup]
+    :ivar parents:
+    :vartype parents: list[~affinda.models.OccupationGroup]
     """
 
     _validation = {
@@ -8668,6 +8657,7 @@ class JobDescriptionSearchDetailOccupationGroupValueItem(
         "code": {"key": "code", "type": "int"},
         "name": {"key": "name", "type": "str"},
         "children": {"key": "children", "type": "[OccupationGroup]"},
+        "parents": {"key": "parents", "type": "[OccupationGroup]"},
     }
 
     def __init__(
@@ -8677,6 +8667,7 @@ class JobDescriptionSearchDetailOccupationGroupValueItem(
         name: str,
         children: List["_models.OccupationGroup"],
         match: Optional[bool] = None,
+        parents: Optional[List["_models.OccupationGroup"]] = None,
         **kwargs,
     ):
         """
@@ -8688,14 +8679,17 @@ class JobDescriptionSearchDetailOccupationGroupValueItem(
         :paramtype name: str
         :keyword children: Required.
         :paramtype children: list[~affinda.models.OccupationGroup]
+        :keyword parents:
+        :paramtype parents: list[~affinda.models.OccupationGroup]
         """
-        super(JobDescriptionSearchDetailOccupationGroupValueItem, self).__init__(
-            code=code, name=name, children=children, match=match, **kwargs
+        super(JobDescriptionSearchDetailOccupationGroupValue, self).__init__(
+            code=code, name=name, children=children, parents=parents, match=match, **kwargs
         )
         self.match = match
         self.code = code
         self.name = name
         self.children = children
+        self.parents = parents
 
 
 class JobDescriptionSearchDetailSearchExpression(msrest.serialization.Model):
@@ -10082,6 +10076,67 @@ class MetaParentDocument(msrest.serialization.Model):
         """
         super(MetaParentDocument, self).__init__(**kwargs)
         self.identifier = identifier
+
+
+class OccupationGroupSearchResult(msrest.serialization.Model):
+    """OccupationGroupSearchResult.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar match:
+    :vartype match: bool
+    :ivar code: Required.
+    :vartype code: int
+    :ivar name: Required.
+    :vartype name: str
+    :ivar children: Required.
+    :vartype children: list[~affinda.models.OccupationGroup]
+    :ivar parents:
+    :vartype parents: list[~affinda.models.OccupationGroup]
+    """
+
+    _validation = {
+        "code": {"required": True},
+        "name": {"required": True},
+        "children": {"required": True},
+    }
+
+    _attribute_map = {
+        "match": {"key": "match", "type": "bool"},
+        "code": {"key": "code", "type": "int"},
+        "name": {"key": "name", "type": "str"},
+        "children": {"key": "children", "type": "[OccupationGroup]"},
+        "parents": {"key": "parents", "type": "[OccupationGroup]"},
+    }
+
+    def __init__(
+        self,
+        *,
+        code: int,
+        name: str,
+        children: List["_models.OccupationGroup"],
+        match: Optional[bool] = None,
+        parents: Optional[List["_models.OccupationGroup"]] = None,
+        **kwargs,
+    ):
+        """
+        :keyword match:
+        :paramtype match: bool
+        :keyword code: Required.
+        :paramtype code: int
+        :keyword name: Required.
+        :paramtype name: str
+        :keyword children: Required.
+        :paramtype children: list[~affinda.models.OccupationGroup]
+        :keyword parents:
+        :paramtype parents: list[~affinda.models.OccupationGroup]
+        """
+        super(OccupationGroupSearchResult, self).__init__(**kwargs)
+        self.match = match
+        self.code = code
+        self.name = name
+        self.children = children
+        self.parents = parents
 
 
 class OccupationGroupSearchScoreComponent(msrest.serialization.Model):
@@ -11510,6 +11565,8 @@ class ResumeData(msrest.serialization.Model):
     :vartype is_resume_probability: int
     :ivar raw_text: All of the raw text of the parsed resume, example is shortened for readability.
     :vartype raw_text: str
+    :ivar redacted_text: Redacted version of the text in the resume, removing PII.
+    :vartype redacted_text: str
     """
 
     _validation = {
@@ -11547,6 +11604,7 @@ class ResumeData(msrest.serialization.Model):
         "sections": {"key": "sections", "type": "[ResumeDataSectionsItem]"},
         "is_resume_probability": {"key": "isResumeProbability", "type": "int"},
         "raw_text": {"key": "rawText", "type": "str"},
+        "redacted_text": {"key": "redactedText", "type": "str"},
     }
 
     def __init__(
@@ -11569,6 +11627,7 @@ class ResumeData(msrest.serialization.Model):
         publications: Optional[List[str]] = None,
         referees: Optional[List["_models.ResumeDataRefereesItem"]] = None,
         raw_text: Optional[str] = None,
+        redacted_text: Optional[str] = None,
         **kwargs,
     ):
         """
@@ -11608,6 +11667,8 @@ class ResumeData(msrest.serialization.Model):
         :keyword raw_text: All of the raw text of the parsed resume, example is shortened for
          readability.
         :paramtype raw_text: str
+        :keyword redacted_text: Redacted version of the text in the resume, removing PII.
+        :paramtype redacted_text: str
         """
         super(ResumeData, self).__init__(**kwargs)
         self.additional_properties = additional_properties
@@ -11634,6 +11695,7 @@ class ResumeData(msrest.serialization.Model):
         self.sections = None
         self.is_resume_probability = None
         self.raw_text = raw_text
+        self.redacted_text = redacted_text
 
 
 class ResumeDataName(msrest.serialization.Model):
@@ -13168,89 +13230,30 @@ class ResumeSearchDetailOccupationGroup(msrest.serialization.Model):
     :ivar missing:
     :vartype missing: list[int]
     :ivar value:
-    :vartype value: list[~affinda.models.ResumeSearchDetailOccupationGroupValueItem]
+    :vartype value: list[~affinda.models.OccupationGroupSearchResult]
     """
 
     _attribute_map = {
         "missing": {"key": "missing", "type": "[int]"},
-        "value": {"key": "value", "type": "[ResumeSearchDetailOccupationGroupValueItem]"},
+        "value": {"key": "value", "type": "[OccupationGroupSearchResult]"},
     }
 
     def __init__(
         self,
         *,
         missing: Optional[List[int]] = None,
-        value: Optional[List["_models.ResumeSearchDetailOccupationGroupValueItem"]] = None,
+        value: Optional[List["_models.OccupationGroupSearchResult"]] = None,
         **kwargs,
     ):
         """
         :keyword missing:
         :paramtype missing: list[int]
         :keyword value:
-        :paramtype value: list[~affinda.models.ResumeSearchDetailOccupationGroupValueItem]
+        :paramtype value: list[~affinda.models.OccupationGroupSearchResult]
         """
         super(ResumeSearchDetailOccupationGroup, self).__init__(**kwargs)
         self.missing = missing
         self.value = value
-
-
-class ResumeSearchDetailOccupationGroupValueItem(
-    OccupationGroup,
-    ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1,
-):
-    """ResumeSearchDetailOccupationGroupValueItem.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar match:
-    :vartype match: bool
-    :ivar code: Required.
-    :vartype code: int
-    :ivar name: Required.
-    :vartype name: str
-    :ivar children: Required.
-    :vartype children: list[~affinda.models.OccupationGroup]
-    """
-
-    _validation = {
-        "code": {"required": True},
-        "name": {"required": True},
-        "children": {"required": True},
-    }
-
-    _attribute_map = {
-        "match": {"key": "match", "type": "bool"},
-        "code": {"key": "code", "type": "int"},
-        "name": {"key": "name", "type": "str"},
-        "children": {"key": "children", "type": "[OccupationGroup]"},
-    }
-
-    def __init__(
-        self,
-        *,
-        code: int,
-        name: str,
-        children: List["_models.OccupationGroup"],
-        match: Optional[bool] = None,
-        **kwargs,
-    ):
-        """
-        :keyword match:
-        :paramtype match: bool
-        :keyword code: Required.
-        :paramtype code: int
-        :keyword name: Required.
-        :paramtype name: str
-        :keyword children: Required.
-        :paramtype children: list[~affinda.models.OccupationGroup]
-        """
-        super(ResumeSearchDetailOccupationGroupValueItem, self).__init__(
-            code=code, name=name, children=children, match=match, **kwargs
-        )
-        self.match = match
-        self.code = code
-        self.name = name
-        self.children = children
 
 
 class ResumeSearchDetailSearchExpression(msrest.serialization.Model):

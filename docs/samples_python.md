@@ -624,8 +624,8 @@ client = AffindaAPI(credential=credential)
 client.delete_index_document(name=index_name, identifier=identifier)
 ```
 
-Webhook
--------
+Webhook API
+-----------
 
 ### getAllResthookSubscriptions - Get list of all resthook subscriptions
 
@@ -641,7 +641,7 @@ response = client.get_all_resthook_subscriptions()
 print(response.as_dict())
 ```
 
-### createResthookSubscription - Create a resthook subscriptions
+### createResthookSubscription - Create a resthook subscription
 
 ```python
 from affinda import AffindaAPI, TokenCredential

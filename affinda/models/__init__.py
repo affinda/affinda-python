@@ -17,9 +17,6 @@ try:
         Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1,
     )
     from ._models_py3 import Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1
-    from ._models_py3 import (
-        Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1,
-    )
     from ._models_py3 import Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1
     from ._models_py3 import Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1
     from ._models_py3 import Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1
@@ -56,13 +53,13 @@ try:
         ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1,
     )
     from ._models_py3 import (
-        ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1,
-    )
-    from ._models_py3 import (
         ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1,
     )
     from ._models_py3 import (
         ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties,
+    )
+    from ._models_py3 import (
+        ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1,
     )
     from ._models_py3 import (
         ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1,
@@ -132,7 +129,7 @@ try:
     from ._models_py3 import JobDescriptionSearchDetailLocationValue
     from ._models_py3 import JobDescriptionSearchDetailManagementLevel
     from ._models_py3 import JobDescriptionSearchDetailOccupationGroup
-    from ._models_py3 import JobDescriptionSearchDetailOccupationGroupValueItem
+    from ._models_py3 import JobDescriptionSearchDetailOccupationGroupValue
     from ._models_py3 import JobDescriptionSearchDetailSearchExpression
     from ._models_py3 import JobDescriptionSearchDetailSkills
     from ._models_py3 import JobDescriptionSearchDetailSkillsValueItem
@@ -154,6 +151,7 @@ try:
     from ._models_py3 import MetaChildDocumentsItem
     from ._models_py3 import MetaParentDocument
     from ._models_py3 import OccupationGroup
+    from ._models_py3 import OccupationGroupSearchResult
     from ._models_py3 import OccupationGroupSearchScoreComponent
     from ._models_py3 import PageMeta
     from ._models_py3 import PaginatedResponse
@@ -237,7 +235,6 @@ try:
     from ._models_py3 import ResumeSearchDetailLocationValue
     from ._models_py3 import ResumeSearchDetailManagementLevel
     from ._models_py3 import ResumeSearchDetailOccupationGroup
-    from ._models_py3 import ResumeSearchDetailOccupationGroupValueItem
     from ._models_py3 import ResumeSearchDetailSearchExpression
     from ._models_py3 import ResumeSearchDetailSkills
     from ._models_py3 import ResumeSearchDetailSkillsValueItem
@@ -268,7 +265,6 @@ except (SyntaxError, ImportError):
     from ._models import Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1  # type: ignore
     from ._models import Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1  # type: ignore
     from ._models import Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1  # type: ignore
-    from ._models import Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1  # type: ignore
     from ._models import Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1  # type: ignore
     from ._models import Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1  # type: ignore
     from ._models import Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1  # type: ignore
@@ -294,9 +290,9 @@ except (SyntaxError, ImportError):
     from ._models import ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1  # type: ignore
     from ._models import ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1  # type: ignore
     from ._models import ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1  # type: ignore
-    from ._models import ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1  # type: ignore
     from ._models import ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1  # type: ignore
     from ._models import ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties  # type: ignore
+    from ._models import ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1  # type: ignore
     from ._models import ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1  # type: ignore
     from ._models import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1  # type: ignore
     from ._models import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1  # type: ignore
@@ -363,7 +359,7 @@ except (SyntaxError, ImportError):
     from ._models import JobDescriptionSearchDetailLocationValue  # type: ignore
     from ._models import JobDescriptionSearchDetailManagementLevel  # type: ignore
     from ._models import JobDescriptionSearchDetailOccupationGroup  # type: ignore
-    from ._models import JobDescriptionSearchDetailOccupationGroupValueItem  # type: ignore
+    from ._models import JobDescriptionSearchDetailOccupationGroupValue  # type: ignore
     from ._models import JobDescriptionSearchDetailSearchExpression  # type: ignore
     from ._models import JobDescriptionSearchDetailSkills  # type: ignore
     from ._models import JobDescriptionSearchDetailSkillsValueItem  # type: ignore
@@ -385,6 +381,7 @@ except (SyntaxError, ImportError):
     from ._models import MetaChildDocumentsItem  # type: ignore
     from ._models import MetaParentDocument  # type: ignore
     from ._models import OccupationGroup  # type: ignore
+    from ._models import OccupationGroupSearchResult  # type: ignore
     from ._models import OccupationGroupSearchScoreComponent  # type: ignore
     from ._models import PageMeta  # type: ignore
     from ._models import PaginatedResponse  # type: ignore
@@ -442,7 +439,6 @@ except (SyntaxError, ImportError):
     from ._models import ResumeSearchDetailLocationValue  # type: ignore
     from ._models import ResumeSearchDetailManagementLevel  # type: ignore
     from ._models import ResumeSearchDetailOccupationGroup  # type: ignore
-    from ._models import ResumeSearchDetailOccupationGroupValueItem  # type: ignore
     from ._models import ResumeSearchDetailSearchExpression  # type: ignore
     from ._models import ResumeSearchDetailSkills  # type: ignore
     from ._models import ResumeSearchDetailSkillsValueItem  # type: ignore
@@ -493,7 +489,6 @@ __all__ = [
     "Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1",
     "Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1",
     "Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1",
-    "Components1Bq3Q31SchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1",
     "Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1",
     "Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1",
     "Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1",
@@ -519,9 +514,9 @@ __all__ = [
     "ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1",
     "ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1",
     "ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1",
-    "ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1",
     "ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1",
     "ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties",
+    "ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1",
     "ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1",
     "ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1",
     "ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1",
@@ -588,7 +583,7 @@ __all__ = [
     "JobDescriptionSearchDetailLocationValue",
     "JobDescriptionSearchDetailManagementLevel",
     "JobDescriptionSearchDetailOccupationGroup",
-    "JobDescriptionSearchDetailOccupationGroupValueItem",
+    "JobDescriptionSearchDetailOccupationGroupValue",
     "JobDescriptionSearchDetailSearchExpression",
     "JobDescriptionSearchDetailSkills",
     "JobDescriptionSearchDetailSkillsValueItem",
@@ -610,6 +605,7 @@ __all__ = [
     "MetaChildDocumentsItem",
     "MetaParentDocument",
     "OccupationGroup",
+    "OccupationGroupSearchResult",
     "OccupationGroupSearchScoreComponent",
     "PageMeta",
     "PaginatedResponse",
@@ -667,7 +663,6 @@ __all__ = [
     "ResumeSearchDetailLocationValue",
     "ResumeSearchDetailManagementLevel",
     "ResumeSearchDetailOccupationGroup",
-    "ResumeSearchDetailOccupationGroupValueItem",
     "ResumeSearchDetailSearchExpression",
     "ResumeSearchDetailSkills",
     "ResumeSearchDetailSkillsValueItem",

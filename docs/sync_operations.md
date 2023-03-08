@@ -1162,9 +1162,16 @@ result of cls(response)
 def create_resthook_subscription(body, **kwargs)
 ```
 
-Create a resthook subscriptions.
+Create a resthook subscription.
 
-Create a resthook subscriptions.
+After a subscription is sucessfully created, we'll send a POST request to your target URL with
+a ``X-Hook-Secret`` header.
+You need to response to this request with a 200 status code to confirm your subscribe
+intention.
+Then, you need to use the ``X-Hook-Secret`` to activate the subscription using the
+`/resthook_subscriptions/activate <#post-/v3/resthook_subscriptions/activate>`_ endpoint.
+For more information, see our help article here - `How do I create a webhook?
+<https://help.affinda.com/hc/en-au/articles/11474095148569-How-do-I-create-a-webhook>`_.
 
 **Arguments**:
 
@@ -1254,4 +1261,32 @@ Deletes the specified resthook subscription from the database.
 **Returns**:
 
 `None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.activate_resthook_subscription"></a>
+
+#### activate\_resthook\_subscription
+
+```python
+def activate_resthook_subscription(x_hook_secret, **kwargs)
+```
+
+Activate a resthook subscription.
+
+After creating a subscription, we'll send a POST request to your target URL with a
+``X-Hook-Secret`` header.
+You should response to this with a 200 status code, and use the value of the ``X-Hook-Secret``
+header that you received to activate the subscription using this endpoint.
+
+**Arguments**:
+
+- `x_hook_secret` (`str`): The secret received when creating a subscription.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ResthookSubscription`: ResthookSubscription, or the result of cls(response)
 
