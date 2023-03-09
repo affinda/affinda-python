@@ -31,8 +31,8 @@ Please see below for which versions are compatible with which API version.
 
 | Affinda API version | `affinda-python` versions |
 |---------------------|---------------------------|
-| v2                  | 0.1.0 - 2.x.x             |
-| v3                  | \>= 3.x.x                 |
+| v2                  | 0.1.0 - 3.x.x             |
+| v3                  | \>= 4.x.x                 |
 
 
 Quickstart
