@@ -15,9 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 - Remove extractor's `id` field
-
-### Deprecated
-- Deprecated v2 endpoints
+- Removed v2 endpoints
 
 ## [2.1.0] - 2023-02-06
 ### Added

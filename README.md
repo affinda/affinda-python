@@ -40,13 +40,40 @@ Quickstart
 If you don't have an API token, obtain one from [affinda.com](https://affinda.com/resume-parser/free-api-key/).
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from pathlib import Path
+from pprint import pprint
 
-credential = TokenCredential(token="YOUR_API_TOKEN")
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import WorkspaceCreate, CollectionCreate
+
+token = "REPLACE_API_TOKEN"
+file_pth = Path("PATH_TO_DOCUMENT.pdf")
+
+credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
 
-with open("PATH_TO_FILE", "rb") as f:
-    resume = client.create_resume(file=f)
+# First get the organisation, by default your first one will have free credits
+my_organisation = client.get_all_organizations()[0]
+
+# And within that organisation, create a workspace, for example for Recruitment:
+workspace_body = WorkspaceCreate(
+    organization=my_organisation.identifier,
+    name="My Workspace",
+)
+recruitment_workspace = client.create_workspace(body=workspace_body)
+
+# Finally, create a collection that will contain our uploaded documents, for example resumes, by selecting the
+# appropriate extractor
+collection_body = CollectionCreate(
+    name="Resumes", workspace=recruitment_workspace.identifier, extractor="resume"
+)
+resume_collection = client.create_collection(collection_body)
+
+# Now we can upload a resume for parsing
+with open(file_pth, "rb") as f:
+    resume = client.create_document(file=f, file_name=file_pth.name, collection=resume_collection.identifier)
+
+pprint(resume.as_dict())
 ```
 
 Samples
