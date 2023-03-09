@@ -1,56 +1,20 @@
-from ._models import Document as DocumentGenerated
-from ._models import InvoiceData, JobDescriptionData, ResumeData
+# ------------------------------------
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+# ------------------------------------
+"""Customize generated code here.
 
+Follow our quickstart for examples: https://aka.ms/azsdk/python/dpcodegen/python/customize
+"""
+from typing import TYPE_CHECKING
 
-class Document(DocumentGenerated):
-    def _validate_document_type(self, expected: str) -> bool:
-        """
-        Return `True` if the extractor is defined and has the identifier equal to `expected`
-        """
-        if self.meta.collection is None:
-            return False
-        if self.meta.collection.extractor is None:
-            return False
-        return self.meta.collection.extractor.identifier == expected
+if TYPE_CHECKING:
+    # pylint: disable=unused-import,ungrouped-imports
+    from typing import List
 
-    def as_resume(self):
-        """
-        Convert the `data` of this document to an ~affinda.models.ResumeData
-
-        :raises: ValueError if this document does not appear to be a resume
-        :raises: ~msrest.exceptions.DeserializationError if something went wrong
-        :raises: ~msrest.exceptions.SerializationError if something went wrong
-        """
-        if not self._validate_document_type("resume"):
-            raise ValueError("Document does not appear to be a resume")
-        if self.data:
-            self.data = ResumeData.deserialize(self.data)
-
-    def as_invoice(self):
-        """
-        Convert the `data` of this document to an ~affinda.models.InvoiceData
-
-        :raises: ValueError if this document does not appear to be an invoice
-        :raises: ~msrest.exceptions.DeserializationError if something went wrong
-        :raises: ~msrest.exceptions.SerializationError if something went wrong
-        """
-        if not self._validate_document_type("invoice"):
-            raise ValueError("Document does not appear to be an invoice")
-        if self.data:
-            self.data = InvoiceData.deserialize(self.data)
-
-    def as_job_description(self):
-        """
-        Convert the `data` of this document to an ~affinda.models.JobDescriptionData
-
-        :raises: ValueError if this document does not appear to be a job description
-        :raises: ~msrest.exceptions.DeserializationError if something went wrong
-        :raises: ~msrest.exceptions.SerializationError if something went wrong
-        """
-        if not self._validate_document_type("job-description"):
-            raise ValueError("Document does not appear to be a job description")
-        if self.data:
-            self.data = JobDescriptionData.deserialize(self.data)
+__all__ = (
+    []
+)  # type: List[str]  # Add all objects you want publicly available to users at this package level
 
 
 def patch_sdk():
@@ -60,6 +24,3 @@ def patch_sdk():
     you can't accomplish using the techniques described in
     https://aka.ms/azsdk/python/dpcodegen/python/customize
     """
-
-
-__all__ = ["Document"]
