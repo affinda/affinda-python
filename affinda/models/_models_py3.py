@@ -9943,6 +9943,10 @@ class Meta(msrest.serialization.Model):
     :ivar ocr_confidence: The overall confidence in the conversion of image to text.  (only
      applicable for images or PDF documents without a text layer).
     :vartype ocr_confidence: float
+    :ivar created_dt:
+    :vartype created_dt: ~datetime.datetime
+    :ivar document_type:
+    :vartype document_type: str
     """
 
     _attribute_map = {
@@ -9960,6 +9964,8 @@ class Meta(msrest.serialization.Model):
         "is_verified": {"key": "isVerified", "type": "bool"},
         "review_url": {"key": "reviewUrl", "type": "str"},
         "ocr_confidence": {"key": "ocrConfidence", "type": "float"},
+        "created_dt": {"key": "createdDt", "type": "iso-8601"},
+        "document_type": {"key": "documentType", "type": "str"},
     }
 
     def __init__(
@@ -9979,6 +9985,8 @@ class Meta(msrest.serialization.Model):
         is_verified: Optional[bool] = None,
         review_url: Optional[str] = None,
         ocr_confidence: Optional[float] = None,
+        created_dt: Optional[datetime.datetime] = None,
+        document_type: Optional[str] = None,
         **kwargs,
     ):
         """
@@ -10020,6 +10028,10 @@ class Meta(msrest.serialization.Model):
         :keyword ocr_confidence: The overall confidence in the conversion of image to text.  (only
          applicable for images or PDF documents without a text layer).
         :paramtype ocr_confidence: float
+        :keyword created_dt:
+        :paramtype created_dt: ~datetime.datetime
+        :keyword document_type:
+        :paramtype document_type: str
         """
         super(Meta, self).__init__(**kwargs)
         self.identifier = identifier
@@ -10036,6 +10048,8 @@ class Meta(msrest.serialization.Model):
         self.is_verified = is_verified
         self.review_url = review_url
         self.ocr_confidence = ocr_confidence
+        self.created_dt = created_dt
+        self.document_type = document_type
 
 
 class MetaChildDocumentsItem(msrest.serialization.Model):
@@ -10322,17 +10336,17 @@ class PathsX4VofmV2ResumesGetResponses200ContentApplicationJsonSchemaAllof1(
     """PathsX4VofmV2ResumesGetResponses200ContentApplicationJsonSchemaAllof1.
 
     :ivar results:
-    :vartype results: list[~affinda.models.Resume]
+    :vartype results: list[~affinda.models.Meta]
     """
 
     _attribute_map = {
-        "results": {"key": "results", "type": "[Resume]"},
+        "results": {"key": "results", "type": "[Meta]"},
     }
 
-    def __init__(self, *, results: Optional[List["_models.Resume"]] = None, **kwargs):
+    def __init__(self, *, results: Optional[List["_models.Meta"]] = None, **kwargs):
         """
         :keyword results:
-        :paramtype results: list[~affinda.models.Resume]
+        :paramtype results: list[~affinda.models.Meta]
         """
         super(
             PathsX4VofmV2ResumesGetResponses200ContentApplicationJsonSchemaAllof1, self
@@ -10348,7 +10362,7 @@ class Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema(
     All required parameters must be populated in order to send to Azure.
 
     :ivar results:
-    :vartype results: list[~affinda.models.Resume]
+    :vartype results: list[~affinda.models.Meta]
     :ivar count: Required. Number of items in results.
     :vartype count: int
     :ivar next: URL to request next page of results.
@@ -10362,7 +10376,7 @@ class Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema(
     }
 
     _attribute_map = {
-        "results": {"key": "results", "type": "[Resume]"},
+        "results": {"key": "results", "type": "[Meta]"},
         "count": {"key": "count", "type": "int"},
         "next": {"key": "next", "type": "str"},
         "previous": {"key": "previous", "type": "str"},
@@ -10372,14 +10386,14 @@ class Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema(
         self,
         *,
         count: int,
-        results: Optional[List["_models.Resume"]] = None,
+        results: Optional[List["_models.Meta"]] = None,
         next: Optional[str] = None,
         previous: Optional[str] = None,
         **kwargs,
     ):
         """
         :keyword results:
-        :paramtype results: list[~affinda.models.Resume]
+        :paramtype results: list[~affinda.models.Meta]
         :keyword count: Required. Number of items in results.
         :paramtype count: int
         :keyword next: URL to request next page of results.
@@ -10502,17 +10516,17 @@ class Paths18ZzckpV2InvoicesGetResponses200ContentApplicationJsonSchemaAllof1(
     """Paths18ZzckpV2InvoicesGetResponses200ContentApplicationJsonSchemaAllof1.
 
     :ivar results:
-    :vartype results: list[~affinda.models.Invoice]
+    :vartype results: list[~affinda.models.Meta]
     """
 
     _attribute_map = {
-        "results": {"key": "results", "type": "[Invoice]"},
+        "results": {"key": "results", "type": "[Meta]"},
     }
 
-    def __init__(self, *, results: Optional[List["_models.Invoice"]] = None, **kwargs):
+    def __init__(self, *, results: Optional[List["_models.Meta"]] = None, **kwargs):
         """
         :keyword results:
-        :paramtype results: list[~affinda.models.Invoice]
+        :paramtype results: list[~affinda.models.Meta]
         """
         super(
             Paths18ZzckpV2InvoicesGetResponses200ContentApplicationJsonSchemaAllof1, self
@@ -10526,17 +10540,17 @@ class Paths1Q5Zfv5V2RedactedResumesGetResponses200ContentApplicationJsonSchemaAl
     """Paths1Q5Zfv5V2RedactedResumesGetResponses200ContentApplicationJsonSchemaAllof1.
 
     :ivar results:
-    :vartype results: list[~affinda.models.Resume]
+    :vartype results: list[~affinda.models.Meta]
     """
 
     _attribute_map = {
-        "results": {"key": "results", "type": "[Resume]"},
+        "results": {"key": "results", "type": "[Meta]"},
     }
 
-    def __init__(self, *, results: Optional[List["_models.Resume"]] = None, **kwargs):
+    def __init__(self, *, results: Optional[List["_models.Meta"]] = None, **kwargs):
         """
         :keyword results:
-        :paramtype results: list[~affinda.models.Resume]
+        :paramtype results: list[~affinda.models.Meta]
         """
         super(
             Paths1Q5Zfv5V2RedactedResumesGetResponses200ContentApplicationJsonSchemaAllof1, self
@@ -10553,7 +10567,7 @@ class Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema(
     All required parameters must be populated in order to send to Azure.
 
     :ivar results:
-    :vartype results: list[~affinda.models.Resume]
+    :vartype results: list[~affinda.models.Meta]
     :ivar count: Required. Number of items in results.
     :vartype count: int
     :ivar next: URL to request next page of results.
@@ -10567,7 +10581,7 @@ class Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema(
     }
 
     _attribute_map = {
-        "results": {"key": "results", "type": "[Resume]"},
+        "results": {"key": "results", "type": "[Meta]"},
         "count": {"key": "count", "type": "int"},
         "next": {"key": "next", "type": "str"},
         "previous": {"key": "previous", "type": "str"},
@@ -10577,14 +10591,14 @@ class Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema(
         self,
         *,
         count: int,
-        results: Optional[List["_models.Resume"]] = None,
+        results: Optional[List["_models.Meta"]] = None,
         next: Optional[str] = None,
         previous: Optional[str] = None,
         **kwargs,
     ):
         """
         :keyword results:
-        :paramtype results: list[~affinda.models.Resume]
+        :paramtype results: list[~affinda.models.Meta]
         :keyword count: Required. Number of items in results.
         :paramtype count: int
         :keyword next: URL to request next page of results.
@@ -10726,17 +10740,17 @@ class PathsV2IwngV2JobDescriptionsGetResponses200ContentApplicationJsonSchemaAll
     """PathsV2IwngV2JobDescriptionsGetResponses200ContentApplicationJsonSchemaAllof1.
 
     :ivar results:
-    :vartype results: list[~affinda.models.JobDescription]
+    :vartype results: list[~affinda.models.Meta]
     """
 
     _attribute_map = {
-        "results": {"key": "results", "type": "[JobDescription]"},
+        "results": {"key": "results", "type": "[Meta]"},
     }
 
-    def __init__(self, *, results: Optional[List["_models.JobDescription"]] = None, **kwargs):
+    def __init__(self, *, results: Optional[List["_models.Meta"]] = None, **kwargs):
         """
         :keyword results:
-        :paramtype results: list[~affinda.models.JobDescription]
+        :paramtype results: list[~affinda.models.Meta]
         """
         super(
             PathsV2IwngV2JobDescriptionsGetResponses200ContentApplicationJsonSchemaAllof1, self
@@ -10753,7 +10767,7 @@ class PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema(
     All required parameters must be populated in order to send to Azure.
 
     :ivar results:
-    :vartype results: list[~affinda.models.JobDescription]
+    :vartype results: list[~affinda.models.Meta]
     :ivar count: Required. Number of items in results.
     :vartype count: int
     :ivar next: URL to request next page of results.
@@ -10767,7 +10781,7 @@ class PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema(
     }
 
     _attribute_map = {
-        "results": {"key": "results", "type": "[JobDescription]"},
+        "results": {"key": "results", "type": "[Meta]"},
         "count": {"key": "count", "type": "int"},
         "next": {"key": "next", "type": "str"},
         "previous": {"key": "previous", "type": "str"},
@@ -10777,14 +10791,14 @@ class PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema(
         self,
         *,
         count: int,
-        results: Optional[List["_models.JobDescription"]] = None,
+        results: Optional[List["_models.Meta"]] = None,
         next: Optional[str] = None,
         previous: Optional[str] = None,
         **kwargs,
     ):
         """
         :keyword results:
-        :paramtype results: list[~affinda.models.JobDescription]
+        :paramtype results: list[~affinda.models.Meta]
         :keyword count: Required. Number of items in results.
         :paramtype count: int
         :keyword next: URL to request next page of results.
@@ -10836,7 +10850,7 @@ class PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema(
     All required parameters must be populated in order to send to Azure.
 
     :ivar results:
-    :vartype results: list[~affinda.models.Invoice]
+    :vartype results: list[~affinda.models.Meta]
     :ivar count: Required. Number of items in results.
     :vartype count: int
     :ivar next: URL to request next page of results.
@@ -10850,7 +10864,7 @@ class PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema(
     }
 
     _attribute_map = {
-        "results": {"key": "results", "type": "[Invoice]"},
+        "results": {"key": "results", "type": "[Meta]"},
         "count": {"key": "count", "type": "int"},
         "next": {"key": "next", "type": "str"},
         "previous": {"key": "previous", "type": "str"},
@@ -10860,14 +10874,14 @@ class PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema(
         self,
         *,
         count: int,
-        results: Optional[List["_models.Invoice"]] = None,
+        results: Optional[List["_models.Meta"]] = None,
         next: Optional[str] = None,
         previous: Optional[str] = None,
         **kwargs,
     ):
         """
         :keyword results:
-        :paramtype results: list[~affinda.models.Invoice]
+        :paramtype results: list[~affinda.models.Meta]
         :keyword count: Required. Number of items in results.
         :paramtype count: int
         :keyword next: URL to request next page of results.

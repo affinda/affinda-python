@@ -5737,6 +5737,10 @@ Meta.
 :ivar ocr_confidence: The overall confidence in the conversion of image to text.  (only
  applicable for images or PDF documents without a text layer).
 :vartype ocr_confidence: float
+:ivar created_dt:
+:vartype created_dt: ~datetime.datetime
+:ivar document_type:
+:vartype document_type: str
 
 <a id="models._models.Meta.__init__"></a>
 
@@ -5772,6 +5776,8 @@ validation tool.
 applicable for documents types such a resumes.
 - `ocr_confidence`: The overall confidence in the conversion of image to text.  (only
 applicable for images or PDF documents without a text layer).
+- `created_dt`: 
+- `document_type`: 
 
 <a id="models._models.MetaChildDocumentsItem"></a>
 
@@ -6008,7 +6014,7 @@ class PathsX4VofmV2ResumesGetResponses200ContentApplicationJsonSchemaAllof1(msre
 PathsX4VofmV2ResumesGetResponses200ContentApplicationJsonSchemaAllof1.
 
 :ivar results:
-:vartype results: list[~affinda.models.Resume]
+:vartype results: list[~affinda.models.Meta]
 
 <a id="models._models.PathsX4VofmV2ResumesGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
 
@@ -6035,7 +6041,7 @@ Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema.
 All required parameters must be populated in order to send to Azure.
 
 :ivar results:
-:vartype results: list[~affinda.models.Resume]
+:vartype results: list[~affinda.models.Meta]
 :ivar count: Required. Number of items in results.
 :vartype count: int
 :ivar next: URL to request next page of results.
@@ -6153,7 +6159,7 @@ class Paths18ZzckpV2InvoicesGetResponses200ContentApplicationJsonSchemaAllof1(ms
 Paths18ZzckpV2InvoicesGetResponses200ContentApplicationJsonSchemaAllof1.
 
 :ivar results:
-:vartype results: list[~affinda.models.Invoice]
+:vartype results: list[~affinda.models.Meta]
 
 <a id="models._models.Paths18ZzckpV2InvoicesGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
 
@@ -6178,7 +6184,7 @@ class Paths1Q5Zfv5V2RedactedResumesGetResponses200ContentApplicationJsonSchemaAl
 Paths1Q5Zfv5V2RedactedResumesGetResponses200ContentApplicationJsonSchemaAllof1.
 
 :ivar results:
-:vartype results: list[~affinda.models.Resume]
+:vartype results: list[~affinda.models.Meta]
 
 <a id="models._models.Paths1Q5Zfv5V2RedactedResumesGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
 
@@ -6205,7 +6211,7 @@ Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema.
 All required parameters must be populated in order to send to Azure.
 
 :ivar results:
-:vartype results: list[~affinda.models.Resume]
+:vartype results: list[~affinda.models.Meta]
 :ivar count: Required. Number of items in results.
 :vartype count: int
 :ivar next: URL to request next page of results.
@@ -6327,7 +6333,7 @@ class PathsV2IwngV2JobDescriptionsGetResponses200ContentApplicationJsonSchemaAll
 PathsV2IwngV2JobDescriptionsGetResponses200ContentApplicationJsonSchemaAllof1.
 
 :ivar results:
-:vartype results: list[~affinda.models.JobDescription]
+:vartype results: list[~affinda.models.Meta]
 
 <a id="models._models.PathsV2IwngV2JobDescriptionsGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
 
@@ -6354,7 +6360,7 @@ PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema.
 All required parameters must be populated in order to send to Azure.
 
 :ivar results:
-:vartype results: list[~affinda.models.JobDescription]
+:vartype results: list[~affinda.models.Meta]
 :ivar count: Required. Number of items in results.
 :vartype count: int
 :ivar next: URL to request next page of results.
@@ -6415,7 +6421,7 @@ PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema.
 All required parameters must be populated in order to send to Azure.
 
 :ivar results:
-:vartype results: list[~affinda.models.Invoice]
+:vartype results: list[~affinda.models.Meta]
 :ivar count: Required. Number of items in results.
 :vartype count: int
 :ivar next: URL to request next page of results.
