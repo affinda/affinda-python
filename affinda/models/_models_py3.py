@@ -1539,6 +1539,50 @@ class ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValue
         self.match = match
 
 
+class ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties(
+    msrest.serialization.Model
+):
+    """ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar value:
+    :vartype value: str
+    :ivar label: Required.
+    :vartype label: str
+    :ivar score:
+    :vartype score: float
+    """
+
+    _validation = {
+        "label": {"required": True},
+    }
+
+    _attribute_map = {
+        "value": {"key": "value", "type": "str"},
+        "label": {"key": "label", "type": "str"},
+        "score": {"key": "score", "type": "float"},
+    }
+
+    def __init__(
+        self, *, label: str, value: Optional[str] = None, score: Optional[float] = None, **kwargs
+    ):
+        """
+        :keyword value:
+        :paramtype value: str
+        :keyword label: Required.
+        :paramtype label: str
+        :keyword score:
+        :paramtype score: float
+        """
+        super(
+            ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties, self
+        ).__init__(**kwargs)
+        self.value = value
+        self.label = label
+        self.score = score
+
+
 class ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1(
     msrest.serialization.Model
 ):
@@ -14022,7 +14066,7 @@ class ResumeSearch(msrest.serialization.Model):
     :ivar parameters:
     :vartype parameters: ~affinda.models.ResumeSearchParameters
     :ivar results:
-    :vartype results: list[~affinda.models.Document]
+    :vartype results: list[~affinda.models.ResumeSearchResult]
     """
 
     _attribute_map = {
@@ -14030,7 +14074,7 @@ class ResumeSearch(msrest.serialization.Model):
         "next": {"key": "next", "type": "str"},
         "previous": {"key": "previous", "type": "str"},
         "parameters": {"key": "parameters", "type": "ResumeSearchParameters"},
-        "results": {"key": "results", "type": "[Document]"},
+        "results": {"key": "results", "type": "[ResumeSearchResult]"},
     }
 
     def __init__(
@@ -14040,7 +14084,7 @@ class ResumeSearch(msrest.serialization.Model):
         next: Optional[str] = None,
         previous: Optional[str] = None,
         parameters: Optional["_models.ResumeSearchParameters"] = None,
-        results: Optional[List["_models.Document"]] = None,
+        results: Optional[List["_models.ResumeSearchResult"]] = None,
         **kwargs,
     ):
         """
@@ -14053,7 +14097,7 @@ class ResumeSearch(msrest.serialization.Model):
         :keyword parameters:
         :paramtype parameters: ~affinda.models.ResumeSearchParameters
         :keyword results:
-        :paramtype results: list[~affinda.models.Document]
+        :paramtype results: list[~affinda.models.ResumeSearchResult]
         """
         super(ResumeSearch, self).__init__(**kwargs)
         self.count = count
@@ -15809,6 +15853,159 @@ class ResumeSearchParametersSkill(msrest.serialization.Model):
         super(ResumeSearchParametersSkill, self).__init__(**kwargs)
         self.name = name
         self.required = required
+
+
+class ResumeSearchResult(msrest.serialization.Model):
+    """ResumeSearchResult.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar identifier: Required. A random string that uniquely identify the resource.
+    :vartype identifier: str
+    :ivar score: Required.
+    :vartype score: float
+    :ivar pdf: Required.
+    :vartype pdf: str
+    :ivar name:
+    :vartype name: str
+    :ivar job_title: Required.
+    :vartype job_title: ~affinda.models.JobTitleSearchScoreComponent
+    :ivar management_level: Required.
+    :vartype management_level: ~affinda.models.ManagementLevelSearchScoreComponent
+    :ivar experience: Required.
+    :vartype experience: ~affinda.models.ExperienceSearchScoreComponent
+    :ivar skills: Required.
+    :vartype skills: ~affinda.models.SkillsSearchScoreComponent
+    :ivar languages: Required.
+    :vartype languages: ~affinda.models.LanguagesSearchScoreComponent
+    :ivar location: Required.
+    :vartype location: ~affinda.models.LocationSearchScoreComponent
+    :ivar education: Required.
+    :vartype education: ~affinda.models.EducationSearchScoreComponent
+    :ivar occupation_group: Required.
+    :vartype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
+    :ivar search_expression: Required.
+    :vartype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
+    :ivar custom_data: Required. Dictionary of
+     <components·nqbw24·schemas·customdatasearchscorecomponent·additionalproperties>.
+    :vartype custom_data: dict[str,
+     ~affinda.models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties]
+    """
+
+    _validation = {
+        "identifier": {"required": True},
+        "score": {"required": True},
+        "pdf": {"required": True},
+        "job_title": {"required": True},
+        "management_level": {"required": True},
+        "experience": {"required": True},
+        "skills": {"required": True},
+        "languages": {"required": True},
+        "location": {"required": True},
+        "education": {"required": True},
+        "occupation_group": {"required": True},
+        "search_expression": {"required": True},
+        "custom_data": {"required": True},
+    }
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "score": {"key": "score", "type": "float"},
+        "pdf": {"key": "pdf", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "job_title": {"key": "jobTitle", "type": "JobTitleSearchScoreComponent"},
+        "management_level": {
+            "key": "managementLevel",
+            "type": "ManagementLevelSearchScoreComponent",
+        },
+        "experience": {"key": "experience", "type": "ExperienceSearchScoreComponent"},
+        "skills": {"key": "skills", "type": "SkillsSearchScoreComponent"},
+        "languages": {"key": "languages", "type": "LanguagesSearchScoreComponent"},
+        "location": {"key": "location", "type": "LocationSearchScoreComponent"},
+        "education": {"key": "education", "type": "EducationSearchScoreComponent"},
+        "occupation_group": {
+            "key": "occupationGroup",
+            "type": "OccupationGroupSearchScoreComponent",
+        },
+        "search_expression": {
+            "key": "searchExpression",
+            "type": "SearchExpressionSearchScoreComponent",
+        },
+        "custom_data": {
+            "key": "customData",
+            "type": "{ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties}",
+        },
+    }
+
+    def __init__(
+        self,
+        *,
+        identifier: str,
+        score: float,
+        pdf: str,
+        job_title: "_models.JobTitleSearchScoreComponent",
+        management_level: "_models.ManagementLevelSearchScoreComponent",
+        experience: "_models.ExperienceSearchScoreComponent",
+        skills: "_models.SkillsSearchScoreComponent",
+        languages: "_models.LanguagesSearchScoreComponent",
+        location: "_models.LocationSearchScoreComponent",
+        education: "_models.EducationSearchScoreComponent",
+        occupation_group: "_models.OccupationGroupSearchScoreComponent",
+        search_expression: "_models.SearchExpressionSearchScoreComponent",
+        custom_data: Dict[
+            str,
+            "_models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties",
+        ],
+        name: Optional[str] = None,
+        **kwargs,
+    ):
+        """
+        :keyword identifier: Required. A random string that uniquely identify the resource.
+        :paramtype identifier: str
+        :keyword score: Required.
+        :paramtype score: float
+        :keyword pdf: Required.
+        :paramtype pdf: str
+        :keyword name:
+        :paramtype name: str
+        :keyword job_title: Required.
+        :paramtype job_title: ~affinda.models.JobTitleSearchScoreComponent
+        :keyword management_level: Required.
+        :paramtype management_level: ~affinda.models.ManagementLevelSearchScoreComponent
+        :keyword experience: Required.
+        :paramtype experience: ~affinda.models.ExperienceSearchScoreComponent
+        :keyword skills: Required.
+        :paramtype skills: ~affinda.models.SkillsSearchScoreComponent
+        :keyword languages: Required.
+        :paramtype languages: ~affinda.models.LanguagesSearchScoreComponent
+        :keyword location: Required.
+        :paramtype location: ~affinda.models.LocationSearchScoreComponent
+        :keyword education: Required.
+        :paramtype education: ~affinda.models.EducationSearchScoreComponent
+        :keyword occupation_group: Required.
+        :paramtype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
+        :keyword search_expression: Required.
+        :paramtype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
+        :keyword custom_data: Required. Dictionary of
+         <components·nqbw24·schemas·customdatasearchscorecomponent·additionalproperties>.
+        :paramtype custom_data: dict[str,
+         ~affinda.models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties]
+        """
+        super(ResumeSearchResult, self).__init__(**kwargs)
+        self.identifier = identifier
+        self.score = score
+        self.pdf = pdf
+        self.name = name
+        self.job_title = job_title
+        self.management_level = management_level
+        self.experience = experience
+        self.skills = skills
+        self.languages = languages
+        self.location = location
+        self.education = education
+        self.occupation_group = occupation_group
+        self.search_expression = search_expression
+        self.custom_data = custom_data
 
 
 class ResumeSkillSourcesItem(msrest.serialization.Model):

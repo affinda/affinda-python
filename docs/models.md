@@ -1260,6 +1260,39 @@ def __init__(**kwargs)
 
 - `match`: 
 
+<a id="models._models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties"></a>
+
+## ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties Objects
+
+```python
+class ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties(msrest.serialization.Model)
+```
+
+ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar value:
+:vartype value: str
+:ivar label: Required.
+:vartype label: str
+:ivar score:
+:vartype score: float
+
+<a id="models._models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `value`: 
+- `label`: Required.
+- `score`: 
+
 <a id="models._models.ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1"></a>
 
 ## ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1 Objects
@@ -8604,7 +8637,7 @@ ResumeSearch.
 :ivar parameters:
 :vartype parameters: ~affinda.models.ResumeSearchParameters
 :ivar results:
-:vartype results: list[~affinda.models.Document]
+:vartype results: list[~affinda.models.ResumeSearchResult]
 
 <a id="models._models.ResumeSearch.__init__"></a>
 
@@ -9752,6 +9785,75 @@ def __init__(**kwargs)
 
 - `name`: 
 - `required`: 
+
+<a id="models._models.ResumeSearchResult"></a>
+
+## ResumeSearchResult Objects
+
+```python
+class ResumeSearchResult(msrest.serialization.Model)
+```
+
+ResumeSearchResult.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar identifier: Required. A random string that uniquely identify the resource.
+:vartype identifier: str
+:ivar score: Required.
+:vartype score: float
+:ivar pdf: Required.
+:vartype pdf: str
+:ivar name:
+:vartype name: str
+:ivar job_title: Required.
+:vartype job_title: ~affinda.models.JobTitleSearchScoreComponent
+:ivar management_level: Required.
+:vartype management_level: ~affinda.models.ManagementLevelSearchScoreComponent
+:ivar experience: Required.
+:vartype experience: ~affinda.models.ExperienceSearchScoreComponent
+:ivar skills: Required.
+:vartype skills: ~affinda.models.SkillsSearchScoreComponent
+:ivar languages: Required.
+:vartype languages: ~affinda.models.LanguagesSearchScoreComponent
+:ivar location: Required.
+:vartype location: ~affinda.models.LocationSearchScoreComponent
+:ivar education: Required.
+:vartype education: ~affinda.models.EducationSearchScoreComponent
+:ivar occupation_group: Required.
+:vartype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
+:ivar search_expression: Required.
+:vartype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
+:ivar custom_data: Required. Dictionary of
+ <components·nqbw24·schemas·customdatasearchscorecomponent·additionalproperties>.
+:vartype custom_data: dict[str,
+ ~affinda.models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties]
+
+<a id="models._models.ResumeSearchResult.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Required. A random string that uniquely identify the resource.
+- `score`: Required.
+- `pdf`: Required.
+- `name`: 
+- `job_title`: Required.
+- `management_level`: Required.
+- `experience`: Required.
+- `skills`: Required.
+- `languages`: Required.
+- `location`: Required.
+- `education`: Required.
+- `occupation_group`: Required.
+- `search_expression`: Required.
+- `custom_data`: Required. Dictionary of
+<components·nqbw24·schemas·customdatasearchscorecomponent·additionalproperties>.
 
 <a id="models._models.ResumeSkillSourcesItem"></a>
 

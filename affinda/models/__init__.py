@@ -64,6 +64,9 @@ try:
         ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1,
     )
     from ._models_py3 import (
+        ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties,
+    )
+    from ._models_py3 import (
         ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1,
     )
     from ._models_py3 import (
@@ -278,6 +281,7 @@ try:
     from ._models_py3 import ResumeSearchParametersLocation
     from ._models_py3 import ResumeSearchParametersLocationCoordinates
     from ._models_py3 import ResumeSearchParametersSkill
+    from ._models_py3 import ResumeSearchResult
     from ._models_py3 import ResumeSkill
     from ._models_py3 import ResumeSkillSourcesItem
     from ._models_py3 import RowAnnotation
@@ -340,6 +344,7 @@ except (SyntaxError, ImportError):
     from ._models import ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1  # type: ignore
     from ._models import ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1  # type: ignore
     from ._models import ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1  # type: ignore
+    from ._models import ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties  # type: ignore
     from ._models import ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1  # type: ignore
     from ._models import ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1  # type: ignore
     from ._models import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1  # type: ignore
@@ -519,6 +524,7 @@ except (SyntaxError, ImportError):
     from ._models import ResumeSearchParametersLocation  # type: ignore
     from ._models import ResumeSearchParametersLocationCoordinates  # type: ignore
     from ._models import ResumeSearchParametersSkill  # type: ignore
+    from ._models import ResumeSearchResult  # type: ignore
     from ._models import ResumeSkill  # type: ignore
     from ._models import ResumeSkillSourcesItem  # type: ignore
     from ._models import RowAnnotation  # type: ignore
@@ -613,6 +619,7 @@ __all__ = [
     "ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1",
     "ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1",
     "ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1",
+    "ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties",
     "ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1",
     "ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1",
     "ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1",
@@ -792,6 +799,7 @@ __all__ = [
     "ResumeSearchParametersLocation",
     "ResumeSearchParametersLocationCoordinates",
     "ResumeSearchParametersSkill",
+    "ResumeSearchResult",
     "ResumeSkill",
     "ResumeSkillSourcesItem",
     "RowAnnotation",
