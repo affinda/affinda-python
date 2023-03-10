@@ -1266,3 +1266,18 @@ client = AffindaAPI(credential=credential)
 
 client.delete_resthook_subscription(id=id)
 ```
+
+### activateResthookSubscription - Activate a resthook subscription
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+x_hook_secret = "REPLACE_X_HOOK_SECRET"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+res = client.activate_resthook_subscription(x_hook_secret)
+print(res.as_dict())
+```
