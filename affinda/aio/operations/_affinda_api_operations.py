@@ -1353,7 +1353,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
     get_job_description.metadata = {"url": "/v2/job_descriptions/{identifier}"}  # type: ignore
 
     async def update_job_description_data(
-        self, identifier: str, body: _models.JobDescriptionData, **kwargs: Any
+        self, identifier: str, body: _models.JobDescriptionDataUpdate, **kwargs: Any
     ) -> Optional[_models.JobDescriptionData]:
         """Update a job description's data.
 
@@ -1364,7 +1364,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param identifier: Job description identifier.
         :type identifier: str
         :param body: Job description data to update.
-        :type body: ~affinda.models.JobDescriptionData
+        :type body: ~affinda.models.JobDescriptionDataUpdate
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: JobDescriptionData or None, or the result of cls(response)
         :rtype: ~affinda.models.JobDescriptionData or None
@@ -1390,7 +1390,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         )  # type: Optional[str]
         cls = kwargs.pop("cls", None)  # type: ClsType[Optional[_models.JobDescriptionData]]
 
-        _json = self._serialize.body(body, "JobDescriptionData")
+        _json = self._serialize.body(body, "JobDescriptionDataUpdate")
 
         request = build_update_job_description_data_request(
             identifier=identifier,

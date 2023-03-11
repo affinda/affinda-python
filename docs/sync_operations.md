@@ -527,7 +527,7 @@ The ``identifier`` is the unique ID returned after POST-ing the job description 
 **Arguments**:
 
 - `identifier` (`str`): Job description identifier.
-- `body` (`~affinda.models.JobDescriptionData`): Job description data to update.
+- `body` (`~affinda.models.JobDescriptionDataUpdate`): Job description data to update.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:

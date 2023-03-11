@@ -7,6 +7,7 @@
 try:
     from ._models_py3 import Accreditation
     from ._models_py3 import Annotation
+    from ._models_py3 import AnnotationV2Base
     from ._models_py3 import Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1
     from ._models_py3 import Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1
     from ._models_py3 import Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1
@@ -67,6 +68,7 @@ try:
     from ._models_py3 import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1
     from ._models_py3 import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1
     from ._models_py3 import DateAnnotation
+    from ._models_py3 import DateAnnotationV2Update
     from ._models_py3 import Education
     from ._models_py3 import EducationDates
     from ._models_py3 import EducationGrade
@@ -74,6 +76,8 @@ try:
     from ._models_py3 import Error
     from ._models_py3 import ExpectedRemunerationAnnotation
     from ._models_py3 import ExpectedRemunerationAnnotationParsed
+    from ._models_py3 import ExpectedRemunerationAnnotationV2Update
+    from ._models_py3 import ExpectedRemunerationAnnotationV2UpdateParsed
     from ._models_py3 import ExperienceSearchScoreComponent
     from ._models_py3 import Get200ApplicationJsonPropertiesItemsItem
     from ._models_py3 import IndexRequestBody
@@ -112,6 +116,7 @@ try:
     from ._models_py3 import InvoiceRequestBody
     from ._models_py3 import JobDescription
     from ._models_py3 import JobDescriptionData
+    from ._models_py3 import JobDescriptionDataUpdate
     from ._models_py3 import JobDescriptionRequestBody
     from ._models_py3 import JobDescriptionSearch
     from ._models_py3 import JobDescriptionSearchConfig
@@ -137,14 +142,18 @@ try:
     from ._models_py3 import JobDescriptionSearchParameters
     from ._models_py3 import JobDescriptionSearchResult
     from ._models_py3 import JobTitleAnnotation
+    from ._models_py3 import JobTitleAnnotationUpdate
     from ._models_py3 import JobTitleParsed
     from ._models_py3 import JobTitleParsedClassification
     from ._models_py3 import JobTitleParsedParsed
     from ._models_py3 import JobTitleSearchScoreComponent
     from ._models_py3 import LanguageAnnotation
+    from ._models_py3 import LanguageAnnotationV2Update
     from ._models_py3 import LanguagesSearchScoreComponent
     from ._models_py3 import Location
     from ._models_py3 import LocationAnnotation
+    from ._models_py3 import LocationAnnotationV2Update
+    from ._models_py3 import LocationAnnotationV2UpdateParsed
     from ._models_py3 import LocationSearchScoreComponent
     from ._models_py3 import ManagementLevelSearchScoreComponent
     from ._models_py3 import Meta
@@ -252,13 +261,18 @@ try:
     from ._models_py3 import RowAnnotation
     from ._models_py3 import SearchExpressionSearchScoreComponent
     from ._models_py3 import SkillAnnotation
+    from ._models_py3 import SkillAnnotationV2Update
     from ._models_py3 import SkillsSearchScoreComponent
     from ._models_py3 import TextAnnotation
+    from ._models_py3 import TextAnnotationV2Update
     from ._models_py3 import YearsExperienceAnnotation
     from ._models_py3 import YearsExperienceAnnotationParsed
+    from ._models_py3 import YearsExperienceAnnotationV2Update
+    from ._models_py3 import YearsExperienceAnnotationV2UpdateParsed
 except (SyntaxError, ImportError):
     from ._models import Accreditation  # type: ignore
     from ._models import Annotation  # type: ignore
+    from ._models import AnnotationV2Base  # type: ignore
     from ._models import Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1  # type: ignore
     from ._models import Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1  # type: ignore
     from ._models import Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1  # type: ignore
@@ -297,6 +311,7 @@ except (SyntaxError, ImportError):
     from ._models import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1  # type: ignore
     from ._models import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1  # type: ignore
     from ._models import DateAnnotation  # type: ignore
+    from ._models import DateAnnotationV2Update  # type: ignore
     from ._models import Education  # type: ignore
     from ._models import EducationDates  # type: ignore
     from ._models import EducationGrade  # type: ignore
@@ -304,6 +319,8 @@ except (SyntaxError, ImportError):
     from ._models import Error  # type: ignore
     from ._models import ExpectedRemunerationAnnotation  # type: ignore
     from ._models import ExpectedRemunerationAnnotationParsed  # type: ignore
+    from ._models import ExpectedRemunerationAnnotationV2Update  # type: ignore
+    from ._models import ExpectedRemunerationAnnotationV2UpdateParsed  # type: ignore
     from ._models import ExperienceSearchScoreComponent  # type: ignore
     from ._models import Get200ApplicationJsonPropertiesItemsItem  # type: ignore
     from ._models import IndexRequestBody  # type: ignore
@@ -342,6 +359,7 @@ except (SyntaxError, ImportError):
     from ._models import InvoiceRequestBody  # type: ignore
     from ._models import JobDescription  # type: ignore
     from ._models import JobDescriptionData  # type: ignore
+    from ._models import JobDescriptionDataUpdate  # type: ignore
     from ._models import JobDescriptionRequestBody  # type: ignore
     from ._models import JobDescriptionSearch  # type: ignore
     from ._models import JobDescriptionSearchConfig  # type: ignore
@@ -367,14 +385,18 @@ except (SyntaxError, ImportError):
     from ._models import JobDescriptionSearchParameters  # type: ignore
     from ._models import JobDescriptionSearchResult  # type: ignore
     from ._models import JobTitleAnnotation  # type: ignore
+    from ._models import JobTitleAnnotationUpdate  # type: ignore
     from ._models import JobTitleParsed  # type: ignore
     from ._models import JobTitleParsedClassification  # type: ignore
     from ._models import JobTitleParsedParsed  # type: ignore
     from ._models import JobTitleSearchScoreComponent  # type: ignore
     from ._models import LanguageAnnotation  # type: ignore
+    from ._models import LanguageAnnotationV2Update  # type: ignore
     from ._models import LanguagesSearchScoreComponent  # type: ignore
     from ._models import Location  # type: ignore
     from ._models import LocationAnnotation  # type: ignore
+    from ._models import LocationAnnotationV2Update  # type: ignore
+    from ._models import LocationAnnotationV2UpdateParsed  # type: ignore
     from ._models import LocationSearchScoreComponent  # type: ignore
     from ._models import ManagementLevelSearchScoreComponent  # type: ignore
     from ._models import Meta  # type: ignore
@@ -456,10 +478,14 @@ except (SyntaxError, ImportError):
     from ._models import RowAnnotation  # type: ignore
     from ._models import SearchExpressionSearchScoreComponent  # type: ignore
     from ._models import SkillAnnotation  # type: ignore
+    from ._models import SkillAnnotationV2Update  # type: ignore
     from ._models import SkillsSearchScoreComponent  # type: ignore
     from ._models import TextAnnotation  # type: ignore
+    from ._models import TextAnnotationV2Update  # type: ignore
     from ._models import YearsExperienceAnnotation  # type: ignore
     from ._models import YearsExperienceAnnotationParsed  # type: ignore
+    from ._models import YearsExperienceAnnotationV2Update  # type: ignore
+    from ._models import YearsExperienceAnnotationV2UpdateParsed  # type: ignore
 
 from ._affinda_api_enums import (
     EducationLevel,
@@ -483,6 +509,7 @@ from ._patch import patch_sdk as _patch_sdk
 __all__ = [
     "Accreditation",
     "Annotation",
+    "AnnotationV2Base",
     "Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1",
     "Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1",
     "Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1",
@@ -521,6 +548,7 @@ __all__ = [
     "ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1",
     "ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1",
     "DateAnnotation",
+    "DateAnnotationV2Update",
     "Education",
     "EducationDates",
     "EducationGrade",
@@ -528,6 +556,8 @@ __all__ = [
     "Error",
     "ExpectedRemunerationAnnotation",
     "ExpectedRemunerationAnnotationParsed",
+    "ExpectedRemunerationAnnotationV2Update",
+    "ExpectedRemunerationAnnotationV2UpdateParsed",
     "ExperienceSearchScoreComponent",
     "Get200ApplicationJsonPropertiesItemsItem",
     "IndexRequestBody",
@@ -566,6 +596,7 @@ __all__ = [
     "InvoiceRequestBody",
     "JobDescription",
     "JobDescriptionData",
+    "JobDescriptionDataUpdate",
     "JobDescriptionRequestBody",
     "JobDescriptionSearch",
     "JobDescriptionSearchConfig",
@@ -591,14 +622,18 @@ __all__ = [
     "JobDescriptionSearchParameters",
     "JobDescriptionSearchResult",
     "JobTitleAnnotation",
+    "JobTitleAnnotationUpdate",
     "JobTitleParsed",
     "JobTitleParsedClassification",
     "JobTitleParsedParsed",
     "JobTitleSearchScoreComponent",
     "LanguageAnnotation",
+    "LanguageAnnotationV2Update",
     "LanguagesSearchScoreComponent",
     "Location",
     "LocationAnnotation",
+    "LocationAnnotationV2Update",
+    "LocationAnnotationV2UpdateParsed",
     "LocationSearchScoreComponent",
     "ManagementLevelSearchScoreComponent",
     "Meta",
@@ -680,10 +715,14 @@ __all__ = [
     "RowAnnotation",
     "SearchExpressionSearchScoreComponent",
     "SkillAnnotation",
+    "SkillAnnotationV2Update",
     "SkillsSearchScoreComponent",
     "TextAnnotation",
+    "TextAnnotationV2Update",
     "YearsExperienceAnnotation",
     "YearsExperienceAnnotationParsed",
+    "YearsExperienceAnnotationV2Update",
+    "YearsExperienceAnnotationV2UpdateParsed",
     "EducationLevel",
     "Enum3",
     "Enum6",
