@@ -1811,12 +1811,14 @@ class DataPointChoice(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
-    :ivar id: Required.
-    :vartype id: float
+    :ivar id: Required. Data point choice's ID.
+    :vartype id: int
     :ivar label: Required.
     :vartype label: str
     :ivar value: Required.
     :vartype value: str
+    :ivar synonyms:
+    :vartype synonyms: list[str]
     :ivar description:
     :vartype description: str
     """
@@ -1828,22 +1830,32 @@ class DataPointChoice(msrest.serialization.Model):
     }
 
     _attribute_map = {
-        "id": {"key": "id", "type": "float"},
+        "id": {"key": "id", "type": "int"},
         "label": {"key": "label", "type": "str"},
         "value": {"key": "value", "type": "str"},
+        "synonyms": {"key": "synonyms", "type": "[str]"},
         "description": {"key": "description", "type": "str"},
     }
 
     def __init__(
-        self, *, id: float, label: str, value: str, description: Optional[str] = None, **kwargs
+        self,
+        *,
+        id: int,
+        label: str,
+        value: str,
+        synonyms: Optional[List[str]] = None,
+        description: Optional[str] = None,
+        **kwargs,
     ):
         """
-        :keyword id: Required.
-        :paramtype id: float
+        :keyword id: Required. Data point choice's ID.
+        :paramtype id: int
         :keyword label: Required.
         :paramtype label: str
         :keyword value: Required.
         :paramtype value: str
+        :keyword synonyms:
+        :paramtype synonyms: list[str]
         :keyword description:
         :paramtype description: str
         """
@@ -1851,6 +1863,121 @@ class DataPointChoice(msrest.serialization.Model):
         self.id = id
         self.label = label
         self.value = value
+        self.synonyms = synonyms
+        self.description = description
+
+
+class DataPointChoiceCreate(msrest.serialization.Model):
+    """DataPointChoiceCreate.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar data_point: Required. Uniquely identify a data point.
+    :vartype data_point: str
+    :ivar label: Required.
+    :vartype label: str
+    :ivar value: Required.
+    :vartype value: str
+    :ivar synonyms:
+    :vartype synonyms: list[str]
+    :ivar description:
+    :vartype description: str
+    """
+
+    _validation = {
+        "data_point": {"required": True},
+        "label": {"required": True},
+        "value": {"required": True},
+    }
+
+    _attribute_map = {
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "label": {"key": "label", "type": "str"},
+        "value": {"key": "value", "type": "str"},
+        "synonyms": {"key": "synonyms", "type": "[str]"},
+        "description": {"key": "description", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        data_point: str,
+        label: str,
+        value: str,
+        synonyms: Optional[List[str]] = None,
+        description: Optional[str] = None,
+        **kwargs,
+    ):
+        """
+        :keyword data_point: Required. Uniquely identify a data point.
+        :paramtype data_point: str
+        :keyword label: Required.
+        :paramtype label: str
+        :keyword value: Required.
+        :paramtype value: str
+        :keyword synonyms:
+        :paramtype synonyms: list[str]
+        :keyword description:
+        :paramtype description: str
+        """
+        super(DataPointChoiceCreate, self).__init__(**kwargs)
+        self.data_point = data_point
+        self.label = label
+        self.value = value
+        self.synonyms = synonyms
+        self.description = description
+
+
+class DataPointChoiceUpdate(msrest.serialization.Model):
+    """DataPointChoiceUpdate.
+
+    :ivar data_point: Uniquely identify a data point.
+    :vartype data_point: str
+    :ivar label:
+    :vartype label: str
+    :ivar value:
+    :vartype value: str
+    :ivar synonyms:
+    :vartype synonyms: list[str]
+    :ivar description:
+    :vartype description: str
+    """
+
+    _attribute_map = {
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "label": {"key": "label", "type": "str"},
+        "value": {"key": "value", "type": "str"},
+        "synonyms": {"key": "synonyms", "type": "[str]"},
+        "description": {"key": "description", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        data_point: Optional[str] = None,
+        label: Optional[str] = None,
+        value: Optional[str] = None,
+        synonyms: Optional[List[str]] = None,
+        description: Optional[str] = None,
+        **kwargs,
+    ):
+        """
+        :keyword data_point: Uniquely identify a data point.
+        :paramtype data_point: str
+        :keyword label:
+        :paramtype label: str
+        :keyword value:
+        :paramtype value: str
+        :keyword synonyms:
+        :paramtype synonyms: list[str]
+        :keyword description:
+        :paramtype description: str
+        """
+        super(DataPointChoiceUpdate, self).__init__(**kwargs)
+        self.data_point = data_point
+        self.label = label
+        self.value = value
+        self.synonyms = synonyms
         self.description = description
 
 
@@ -12427,7 +12554,7 @@ class Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema(msrest.ser
     :ivar name:
     :vartype name: str
     :ivar document_type: Known values are: "resumes", "job_descriptions".
-    :vartype document_type: str or ~affinda.models.Enum6
+    :vartype document_type: str or ~affinda.models.Enum19
     """
 
     _attribute_map = {
@@ -12439,14 +12566,14 @@ class Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema(msrest.ser
         self,
         *,
         name: Optional[str] = None,
-        document_type: Optional[Union[str, "_models.Enum6"]] = None,
+        document_type: Optional[Union[str, "_models.Enum19"]] = None,
         **kwargs,
     ):
         """
         :keyword name:
         :paramtype name: str
         :keyword document_type: Known values are: "resumes", "job_descriptions".
-        :paramtype document_type: str or ~affinda.models.Enum6
+        :paramtype document_type: str or ~affinda.models.Enum19
         """
         super(Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema, self).__init__(
             **kwargs
@@ -15695,12 +15822,13 @@ class ResumeSearchParametersCustomData(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
-    :ivar filter_type: Required. Known values are: "equals", "range".
+    :ivar filter_type: Required. Data points of "text" type support only "equals" filterType,
+     others support both "equals" and "range". Known values are: "equals", "range".
     :vartype filter_type: str or ~affinda.models.ResumeSearchParametersCustomDataFilterType
-    :ivar data_point: Required.
+    :ivar data_point: Required. The data point's slug.
     :vartype data_point: str
-    :ivar query: Required. 'equals' searches require the 'value' key inside the query, and 'range'
-     searches require at least one of 'gte' (greater than or equal) and 'lte' (less than or equal).
+    :ivar query: Required. "equals" searches require the "value" key inside the query, and "range"
+     searches require at least one of "gte" (greater than or equal) and "lte" (less than or equal).
     :vartype query: any
     :ivar required:
     :vartype required: bool
@@ -15734,12 +15862,13 @@ class ResumeSearchParametersCustomData(msrest.serialization.Model):
         **kwargs,
     ):
         """
-        :keyword filter_type: Required. Known values are: "equals", "range".
+        :keyword filter_type: Required. Data points of "text" type support only "equals" filterType,
+         others support both "equals" and "range". Known values are: "equals", "range".
         :paramtype filter_type: str or ~affinda.models.ResumeSearchParametersCustomDataFilterType
-        :keyword data_point: Required.
+        :keyword data_point: Required. The data point's slug.
         :paramtype data_point: str
-        :keyword query: Required. 'equals' searches require the 'value' key inside the query, and
-         'range' searches require at least one of 'gte' (greater than or equal) and 'lte' (less than or
+        :keyword query: Required. "equals" searches require the "value" key inside the query, and
+         "range" searches require at least one of "gte" (greater than or equal) and "lte" (less than or
          equal).
         :paramtype query: any
         :keyword required:

@@ -77,13 +77,13 @@ class EducationLevel(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     DOCTORAL = "doctoral"
 
 
-class Enum3(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class Enum16(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     RESUMES = "resumes"
     JOB_DESCRIPTIONS = "job_descriptions"
 
 
-class Enum6(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class Enum19(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     RESUMES = "resumes"
     JOB_DESCRIPTIONS = "job_descriptions"
@@ -179,6 +179,9 @@ class ResthookSubscriptionVersion(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
 
 class ResumeSearchParametersCustomDataFilterType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+    """Data points of "text" type support only "equals" filterType, others support both "equals" and
+    "range"
+    """
 
     EQUALS = "equals"
     RANGE = "range"

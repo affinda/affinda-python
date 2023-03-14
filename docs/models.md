@@ -1475,12 +1475,14 @@ DataPointChoice.
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar id: Required.
-:vartype id: float
+:ivar id: Required. Data point choice's ID.
+:vartype id: int
 :ivar label: Required.
 :vartype label: str
 :ivar value: Required.
 :vartype value: str
+:ivar synonyms:
+:vartype synonyms: list[str]
 :ivar description:
 :vartype description: str
 
@@ -1494,9 +1496,86 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `id`: Required.
+- `id`: Required. Data point choice's ID.
 - `label`: Required.
 - `value`: Required.
+- `synonyms`: 
+- `description`: 
+
+<a id="models._models.DataPointChoiceCreate"></a>
+
+## DataPointChoiceCreate Objects
+
+```python
+class DataPointChoiceCreate(msrest.serialization.Model)
+```
+
+DataPointChoiceCreate.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar data_point: Required. Uniquely identify a data point.
+:vartype data_point: str
+:ivar label: Required.
+:vartype label: str
+:ivar value: Required.
+:vartype value: str
+:ivar synonyms:
+:vartype synonyms: list[str]
+:ivar description:
+:vartype description: str
+
+<a id="models._models.DataPointChoiceCreate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `data_point`: Required. Uniquely identify a data point.
+- `label`: Required.
+- `value`: Required.
+- `synonyms`: 
+- `description`: 
+
+<a id="models._models.DataPointChoiceUpdate"></a>
+
+## DataPointChoiceUpdate Objects
+
+```python
+class DataPointChoiceUpdate(msrest.serialization.Model)
+```
+
+DataPointChoiceUpdate.
+
+:ivar data_point: Uniquely identify a data point.
+:vartype data_point: str
+:ivar label:
+:vartype label: str
+:ivar value:
+:vartype value: str
+:ivar synonyms:
+:vartype synonyms: list[str]
+:ivar description:
+:vartype description: str
+
+<a id="models._models.DataPointChoiceUpdate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `data_point`: Uniquely identify a data point.
+- `label`: 
+- `value`: 
+- `synonyms`: 
 - `description`: 
 
 <a id="models._models.DataPointCreate"></a>
@@ -7480,7 +7559,7 @@ Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema.
 :ivar name:
 :vartype name: str
 :ivar document_type: Known values are: "resumes", "job_descriptions".
-:vartype document_type: str or ~affinda.models.Enum6
+:vartype document_type: str or ~affinda.models.Enum19
 
 <a id="models._models.Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema.__init__"></a>
 
@@ -9666,12 +9745,13 @@ ResumeSearchParametersCustomData.
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar filter_type: Required. Known values are: "equals", "range".
+:ivar filter_type: Required. Data points of "text" type support only "equals" filterType,
+ others support both "equals" and "range". Known values are: "equals", "range".
 :vartype filter_type: str or ~affinda.models.ResumeSearchParametersCustomDataFilterType
-:ivar data_point: Required.
+:ivar data_point: Required. The data point's slug.
 :vartype data_point: str
-:ivar query: Required. 'equals' searches require the 'value' key inside the query, and 'range'
- searches require at least one of 'gte' (greater than or equal) and 'lte' (less than or equal).
+:ivar query: Required. "equals" searches require the "value" key inside the query, and "range"
+ searches require at least one of "gte" (greater than or equal) and "lte" (less than or equal).
 :vartype query: any
 :ivar required:
 :vartype required: bool
@@ -9688,10 +9768,11 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `filter_type`: Required. Known values are: "equals", "range".
-- `data_point`: Required.
-- `query`: Required. 'equals' searches require the 'value' key inside the query, and
-'range' searches require at least one of 'gte' (greater than or equal) and 'lte' (less than or
+- `filter_type`: Required. Data points of "text" type support only "equals" filterType,
+others support both "equals" and "range". Known values are: "equals", "range".
+- `data_point`: Required. The data point's slug.
+- `query`: Required. "equals" searches require the "value" key inside the query, and
+"range" searches require at least one of "gte" (greater than or equal) and "lte" (less than or
 equal).
 - `required`: 
 - `weight`: 

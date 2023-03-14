@@ -1,759 +1,5 @@
 
 
-Search & Match API - Searching
-------------------------------
-
-### createResumeSearch - Search through parsed resumes
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import ResumeSearchParameters
-
-token = "REPLACE_TOKEN"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-# Search with custom criterias
-parameters = ResumeSearchParameters(
-    indices=["Resume-Search-Demo"],
-    job_titles=["Senior Java Software Developer"],
-    institutions=["Boston University"],
-    # Many more criterias are available, refer to ResumeSearchParameters
-)
-resp = client.create_resume_search(parameters)
-print(resp.as_dict())
-
-# Search with a job description
-job_description_identifier = "REPLACE_JOB_DESCRIPTION_IDENTIFIER"
-parameters = ResumeSearchParameters(
-    indices=["Resume-Search-Demo"],
-    job_description=job_description_identifier,
-)
-resp = client.create_resume_search(parameters)
-print(resp.as_dict())
-
-# Search with a resume
-resume_identifier = "REPLACE_RESUME_IDENTIFIER"
-parameters = ResumeSearchParameters(
-    indices=["Resume-Search-Demo"],
-    resume=resume_identifier,
-)
-resp = client.create_resume_search(parameters)
-print(resp.as_dict())
-```
-
-### getResumeSearchDetail - Get search result of specific resume
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import ResumeSearchParameters
-
-token = "REPLACE_TOKEN"
-resume_identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-# Search with custom criterias
-parameters = ResumeSearchParameters(
-    indices=["Resume-Search-Demo"],
-    job_titles=["Senior Java Software Developer"],
-    institutions=["Boston University"],
-    # Many more criterias are available, refer to ResumeSearchParameters
-)
-resp = client.get_resume_search_detail(body=parameters, identifier=resume_identifier)
-print(resp.as_dict())
-```
-
-### getResumeSearchMatch - Match a single resume and job description
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-resume = "REPLACE_RESUME_IDENTIFIER"
-job_description = "REPLACE_JOB_DESCRIPTION_IDENTIFIER"
-index = "REPLACE_INDEX_NAME"  # Optional
-
-result = client.get_resume_search_match(resume, job_description, index=index)
-print(result.score)
-```
-
-### getResumeSearchSuggestionJobTitle - Get job title suggestions based on provided job title(s)
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-suggested_job_titles = client.get_resume_search_suggestion_job_title(["Software Developer", "Team Lead"])
-print(suggested_job_titles)
-```
-
-### getResumeSearchSuggestionSkill - Get skill suggestions based on provided skill(s)
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-suggested_skills = client.get_resume_search_suggestion_skill(["Javascript", "Python"])
-print(suggested_skills)
-```
-
-### createJobDescriptionSearch - Search through parsed job descriptions
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import JobDescriptionSearchParameters
-
-token = "REPLACE_TOKEN"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-# Search with custom criterias
-parameters = JobDescriptionSearchParameters(
-    indices=["Job-Description-Search-Demo"],
-    job_titles=["Senior Java Software Developer"],
-    skills=[
-        {"name": "Java Programming", "required": True},
-        {"name": "Python Programming", "required": False},
-    ],
-    # Many more criterias are available, refer to JobDescriptionSearchParameters
-)
-resp = client.create_job_description_search(parameters)
-print(resp.as_dict())
-
-# Search with a resume
-resume_identifier = "REPLACE_RESUME_IDENTIFIER"
-parameters = JobDescriptionSearchParameters(
-    indices=["Job-Description-Search-Demo"],
-    resume=resume_identifier,
-)
-resp = client.create_job_description_search(parameters)
-print(resp.as_dict())
-```
-
-### getJobDescriptionSearchDetail - Get search result of specific job description
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import JobDescriptionSearchParameters
-
-token = "REPLACE_TOKEN"
-job_description_identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-# Search with custom criterias
-parameters = JobDescriptionSearchParameters(
-    indices=["Job-Description-Search-Demo"],
-    job_titles=["Senior Java Software Developer"],
-    degrees=["Bachelors"],
-    # Many more criterias are available, refer to JobDescriptionSearchParameters
-)
-resp = client.get_job_description_search_detail(body=parameters, identifier=job_description_identifier)
-print(resp.as_dict())
-```
-
-Search & Match API - Embedding
-------------------------------
-
-### getResumeSearchConfig - Get the config for the logged in user's embeddable resume search tool
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-result = client.get_resume_search_config()
-print(result.as_dict())
-```
-
-### updateResumeSearchConfig - Update the config for the logged in user's embeddable resume search tool
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import ResumeSearchConfig
-
-token = "REPLACE_TOKEN"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-config = ResumeSearchConfig(
-    indices=["my-index"],
-    max_results=10,
-    display_job_title=False,
-    weight_location=0.8,
-    # etc.
-)
-
-result = client.update_resume_search_config(config)
-print(result.as_dict())
-```
-
-### createResumeSearchEmbedUrl - Create a signed URL for the embeddable resume search tool
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import ResumeSearchConfig
-
-token = "REPLACE_TOKEN"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-# Config override is optional
-request_body = {
-    "config_override": ResumeSearchConfig(
-        indices=["my-index"],
-        max_results=10,
-        display_job_title=False,
-        weight_location=0.8,
-        # etc.
-    )
-}
-
-result = client.create_resume_search_embed_url(body=request_body)
-print(result.url)
-```
-
-Search & Match API - Indexing
------------------------------
-
-### getAllIndexes - Get list of all indexes
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-all_indexes = client.get_all_indexes()
-
-print(all_indexes.as_dict())
-```
-
-### createIndex - Create a new index
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-index_name = "REPLACE_INDEX_NAME"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-response = client.create_index(name=index_name)
-
-print(response.as_dict())
-```
-
-### deleteIndex - Delete an index
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-index_name = "REPLACE_INDEX_NAME"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-client.delete_index(name=index_name)
-```
-
-### createIndexDocument - Index a new document
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-index_name = "REPLACE_INDEX_NAME"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-request_body = {
-    "document": identifier,
-}
-
-resp = client.create_index_document(name=index_name, body=request_body)
-
-print(resp.as_dict())
-```
-
-### deleteIndexDocument - Delete an indexed document
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-index_name = "REPLACE_INDEX_NAME"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-client.delete_index_document(name=index_name, identifier=identifier)
-```
-
-Organization API - Organization
--------------------------------
-
-### getAllOrganizations - Get list of all organizations
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-organizations = client.get_all_organizations()
-for organization in organizations:
-    print(organization.as_dict())
-```
-
-### createOrganization - Create a new organization
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-response = client.create_organization(name="Grove Street King")
-
-print(response.as_dict())
-```
-
-### getOrganization - Get detail of an organization
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-organization = client.get_organization(identifier)
-print(organization.as_dict())
-```
-
-### updateOrganization - Update an organization
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-response = client.update_organization(identifier, name="My New Organization")
-
-print(response.as_dict())
-```
-
-### deleteOrganization - Delete an organization
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-client.delete_organization(identifier)
-```
-
-Organization API - Membership
------------------------------
-
-### getAllOrganizationMemberships - Get list of all organization memberships
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-memberships = client.get_all_organization_memberships()
-print(memberships.as_dict())
-```
-
-### getOrganizationMembership - Get detail of an organization membership
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-organization = client.get_organization_membership(identifier)
-print(organization.as_dict())
-```
-
-### updateOrganizationMembership - Update an organization membership
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import OrganizationMembershipUpdate, OrganizationRole
-
-token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-body = OrganizationMembershipUpdate(role=OrganizationRole.ADMIN)
-response = client.update_organization_membership(identifier, body)
-
-print(response.as_dict())
-```
-
-### deleteOrganizationMembership - Delete an organization membership
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-client.delete_organization_membership(identifier)
-```
-
-Organization API - Invitation
------------------------------
-
-### getAllInvitations - Get list of all invitations
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-invitations = client.get_all_invitations()
-print(invitations.as_dict())
-```
-
-### createInvitation - Create a new invitation
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import InvitationCreate, OrganizationRole
-
-token = "REPLACE_TOKEN"
-organization_identifier = "REPLACE_ORGANIZATION_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-body = InvitationCreate(
-    organization=organization_identifier,
-    email="carljohnson@grove.street",
-    role=OrganizationRole.MEMBER,
-)
-response = client.create_invitation(body)
-
-print(response.as_dict())
-```
-
-### getInvitation - Get detail of an invitation
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-invitation = client.get_invitation(identifier)
-print(invitation.as_dict())
-```
-
-### updateInvitation - Update an invitation
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import InvitationUpdate, OrganizationRole
-
-token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-body = InvitationUpdate(role=OrganizationRole.ADMIN)
-response = client.update_invitation(identifier, body)
-
-print(response.as_dict())
-```
-
-### deleteInvitation - Delete an invitation
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-client.delete_invitation(identifier)
-```
-
-### getInvitationByToken - Get detail of an invitation by token
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-invitation_token = "REPLACE_INVITATION_TOKEN"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-invitation = client.get_invitation_by_token(token=invitation_token)
-print(invitation.as_dict())
-```
-
-### respondToInvitation - Respond to an invitation
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import InvitationResponse, InvitationResponseStatus
-
-token = "REPLACE_TOKEN"
-invitation_token = "REPLACE_INVITATION_TOKEN"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-body = InvitationResponse(status=InvitationResponseStatus.ACCEPTED)
-response = client.respond_to_invitation(invitation_token, body)
-
-print(response.as_dict())
-```
-
-Document API - Extractor
-------------------------
-
-### getAllExtractors - Get list of all extractors
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-organization_identifier = "REPLACE_ORGANIZATION_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-extractors = client.get_all_extractors(organization_identifier, include_public_extractors=True)
-for extractor in extractors:
-    print(extractor.as_dict())
-```
-
-### createExtractor - Create an extractor
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import ExtractorCreate
-
-token = "REPLACE_TOKEN"
-organization_identifer = "REPLACE_ORGANIZATION_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-body = ExtractorCreate(name="My Tailored Extractor", organization=organization_identifer)
-response = client.create_extractor(body)
-
-print(response.as_dict())
-```
-
-### updateExtractor - Update an extractor
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import ExtractorUpdate
-
-token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-body = ExtractorUpdate(name="My New Extractor")
-response = client.update_extractor(identifier, body)
-
-print(response.as_dict())
-```
-
-### deleteExtractor - Delete an extractor
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-client.delete_extractor(identifier)
-```
-
-Document API - Data Point
--------------------------
-
-### getAllDataPoints - Get list of all data points
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-extractor_identifier = "REPLACE_EXTRACTOR_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-data_points = client.get_all_data_points(extractor=extractor_identifier)
-for data_point in data_points:
-    print(data_point.as_dict())
-```
-
-### createDataPoint - Create a data point
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import DataPointCreate
-
-token = "REPLACE_TOKEN"
-organization_identifer = "REPLACE_ORGANIZATION_IDENTIFIER"
-extractor_identifer = "REPLACE_EXTRACTOR_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-body = DataPointCreate(
-    slug="myDataPoint",
-    annotation_content_type="text",
-    organization=organization_identifer,
-    extractor=extractor_identifer,
-)
-response = client.create_data_point(body)
-
-print(response.as_dict())
-```
-
-### getDataPoint - Get specific data point
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-data_point = client.get_data_point(identifier)
-print(data_point.as_dict())
-```
-
-### updateDataPoint - Update a data point
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import DataPointUpdate
-
-token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-body = DataPointUpdate(
-    slug="myNewDataPoint",
-    name="My New Data Point",
-)
-response = client.update_data_point(identifier, body)
-
-print(response.as_dict())
-```
-
-### deleteDataPoint - Delete a data point
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-client.delete_data_point(identifier)
-```
-
-### getDataPointChoices - Get list of data point choices
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-data_point_identifier = "REPLACE_DATA_POINT_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-data_point_choices = client.get_data_point_choices(data_point_identifier)
-print(data_point_choices.as_dict())
-```
-
 Document API - Workspace
 ------------------------
 
@@ -1097,6 +343,254 @@ client = AffindaAPI(credential=credential)
 client.delete_document(identifier)
 ```
 
+Document API - Extractor
+------------------------
+
+### getAllExtractors - Get list of all extractors
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+organization_identifier = "REPLACE_ORGANIZATION_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+extractors = client.get_all_extractors(organization_identifier, include_public_extractors=True)
+for extractor in extractors:
+    print(extractor.as_dict())
+```
+
+### createExtractor - Create an extractor
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import ExtractorCreate
+
+token = "REPLACE_TOKEN"
+organization_identifer = "REPLACE_ORGANIZATION_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+body = ExtractorCreate(name="My Tailored Extractor", organization=organization_identifer)
+response = client.create_extractor(body)
+
+print(response.as_dict())
+```
+
+### updateExtractor - Update an extractor
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import ExtractorUpdate
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+body = ExtractorUpdate(name="My New Extractor")
+response = client.update_extractor(identifier, body)
+
+print(response.as_dict())
+```
+
+### deleteExtractor - Delete an extractor
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+client.delete_extractor(identifier)
+```
+
+Document API - Data Point
+-------------------------
+
+### getAllDataPoints - Get list of all data points
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+extractor_identifier = "REPLACE_EXTRACTOR_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+data_points = client.get_all_data_points(extractor=extractor_identifier)
+for data_point in data_points:
+    print(data_point.as_dict())
+```
+
+### createDataPoint - Create a data point
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import DataPointCreate
+
+token = "REPLACE_TOKEN"
+organization_identifer = "REPLACE_ORGANIZATION_IDENTIFIER"
+extractor_identifer = "REPLACE_EXTRACTOR_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+body = DataPointCreate(
+    slug="myDataPoint",
+    annotation_content_type="text",
+    organization=organization_identifer,
+    extractor=extractor_identifer,
+)
+response = client.create_data_point(body)
+
+print(response.as_dict())
+```
+
+### getDataPoint - Get specific data point
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+data_point = client.get_data_point(identifier)
+print(data_point.as_dict())
+```
+
+### updateDataPoint - Update a data point
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import DataPointUpdate
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+body = DataPointUpdate(
+    slug="myNewDataPoint",
+    name="My New Data Point",
+)
+response = client.update_data_point(identifier, body)
+
+print(response.as_dict())
+```
+
+### deleteDataPoint - Delete a data point
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+client.delete_data_point(identifier)
+```
+
+### getDataPointChoices - Get list of data point choices
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+data_point_identifier = "REPLACE_DATA_POINT_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+data_point_choices = client.get_data_point_choices(data_point_identifier)
+print(data_point_choices.as_dict())
+```
+
+### createDataPointChoice - Create a data point choice
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import DataPointChoiceCreate
+
+token = "REPLACE_TOKEN"
+data_point_identifer = "REPLACE_DATA_POINT_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+body = DataPointChoiceCreate(
+    data_point=data_point_identifer,
+    label="My Company Ltd",
+    value="COMPANY_CODE",
+    synonyms=["COMPANY_CODE"],
+    description="My Company",
+)
+response = client.create_data_point_choice(body)
+
+print(response.as_dict())
+```
+
+### getDataPointChoice - Get specific data point choice
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+id = "REPLACE_ID"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+data_point = client.get_data_point_choice(id)
+print(data_point.as_dict())
+```
+
+### updateDataPointChoice - Update a data point choice
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import DataPointChoiceUpdate
+
+token = "REPLACE_TOKEN"
+id = "REPLACE_ID"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+body = DataPointChoiceUpdate(value="NEW_COMPANY_CODE")
+response = client.update_data_point_choice(id, body)
+
+print(response.as_dict())
+```
+
+### deleteDataPointChoice - Delete a data point choice
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+id = "REPLACE_ID"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+client.delete_data_point_choice(id)
+```
+
 Document API - Tag
 ------------------
 
@@ -1179,6 +673,433 @@ credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
 
 client.delete_tag(id)
+```
+
+Organization API - Organization
+-------------------------------
+
+### getAllOrganizations - Get list of all organizations
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+organizations = client.get_all_organizations()
+for organization in organizations:
+    print(organization.as_dict())
+```
+
+### createOrganization - Create a new organization
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+response = client.create_organization(name="Grove Street King")
+
+print(response.as_dict())
+```
+
+### getOrganization - Get detail of an organization
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+organization = client.get_organization(identifier)
+print(organization.as_dict())
+```
+
+### updateOrganization - Update an organization
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+response = client.update_organization(identifier, name="My New Organization")
+
+print(response.as_dict())
+```
+
+### deleteOrganization - Delete an organization
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+client.delete_organization(identifier)
+```
+
+Organization API - Membership
+-----------------------------
+
+### getAllOrganizationMemberships - Get list of all organization memberships
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+memberships = client.get_all_organization_memberships()
+print(memberships.as_dict())
+```
+
+### getOrganizationMembership - Get detail of an organization membership
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+organization = client.get_organization_membership(identifier)
+print(organization.as_dict())
+```
+
+### updateOrganizationMembership - Update an organization membership
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import OrganizationMembershipUpdate, OrganizationRole
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+body = OrganizationMembershipUpdate(role=OrganizationRole.ADMIN)
+response = client.update_organization_membership(identifier, body)
+
+print(response.as_dict())
+```
+
+### deleteOrganizationMembership - Delete an organization membership
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+client.delete_organization_membership(identifier)
+```
+
+Search & Match API - Searching
+------------------------------
+
+### createJobDescriptionSearch - Search through parsed job descriptions
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import JobDescriptionSearchParameters
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+# Search with custom criterias
+parameters = JobDescriptionSearchParameters(
+    indices=["Job-Description-Search-Demo"],
+    job_titles=["Senior Java Software Developer"],
+    skills=[
+        {"name": "Java Programming", "required": True},
+        {"name": "Python Programming", "required": False},
+    ],
+    # Many more criterias are available, refer to JobDescriptionSearchParameters
+)
+resp = client.create_job_description_search(parameters)
+print(resp.as_dict())
+
+# Search with a resume
+resume_identifier = "REPLACE_RESUME_IDENTIFIER"
+parameters = JobDescriptionSearchParameters(
+    indices=["Job-Description-Search-Demo"],
+    resume=resume_identifier,
+)
+resp = client.create_job_description_search(parameters)
+print(resp.as_dict())
+```
+
+### getJobDescriptionSearchDetail - Get search result of specific job description
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import JobDescriptionSearchParameters
+
+token = "REPLACE_TOKEN"
+job_description_identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+# Search with custom criterias
+parameters = JobDescriptionSearchParameters(
+    indices=["Job-Description-Search-Demo"],
+    job_titles=["Senior Java Software Developer"],
+    degrees=["Bachelors"],
+    # Many more criterias are available, refer to JobDescriptionSearchParameters
+)
+resp = client.get_job_description_search_detail(body=parameters, identifier=job_description_identifier)
+print(resp.as_dict())
+```
+
+### createResumeSearch - Search through parsed resumes
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import ResumeSearchParameters
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+# Search with custom criterias
+parameters = ResumeSearchParameters(
+    indices=["Resume-Search-Demo"],
+    job_titles=["Senior Java Software Developer"],
+    institutions=["Boston University"],
+    # Many more criterias are available, refer to ResumeSearchParameters
+)
+resp = client.create_resume_search(parameters)
+print(resp.as_dict())
+
+# Search with a job description
+job_description_identifier = "REPLACE_JOB_DESCRIPTION_IDENTIFIER"
+parameters = ResumeSearchParameters(
+    indices=["Resume-Search-Demo"],
+    job_description=job_description_identifier,
+)
+resp = client.create_resume_search(parameters)
+print(resp.as_dict())
+
+# Search with a resume
+resume_identifier = "REPLACE_RESUME_IDENTIFIER"
+parameters = ResumeSearchParameters(
+    indices=["Resume-Search-Demo"],
+    resume=resume_identifier,
+)
+resp = client.create_resume_search(parameters)
+print(resp.as_dict())
+```
+
+### getResumeSearchDetail - Get search result of specific resume
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import ResumeSearchParameters
+
+token = "REPLACE_TOKEN"
+resume_identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+# Search with custom criterias
+parameters = ResumeSearchParameters(
+    indices=["Resume-Search-Demo"],
+    job_titles=["Senior Java Software Developer"],
+    institutions=["Boston University"],
+    # Many more criterias are available, refer to ResumeSearchParameters
+)
+resp = client.get_resume_search_detail(body=parameters, identifier=resume_identifier)
+print(resp.as_dict())
+```
+
+### getResumeSearchMatch - Match a single resume and job description
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+resume = "REPLACE_RESUME_IDENTIFIER"
+job_description = "REPLACE_JOB_DESCRIPTION_IDENTIFIER"
+index = "REPLACE_INDEX_NAME"  # Optional
+
+result = client.get_resume_search_match(resume, job_description, index=index)
+print(result.score)
+```
+
+### getResumeSearchSuggestionJobTitle - Get job title suggestions based on provided job title(s)
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+suggested_job_titles = client.get_resume_search_suggestion_job_title(["Software Developer", "Team Lead"])
+print(suggested_job_titles)
+```
+
+### getResumeSearchSuggestionSkill - Get skill suggestions based on provided skill(s)
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+suggested_skills = client.get_resume_search_suggestion_skill(["Javascript", "Python"])
+print(suggested_skills)
+```
+
+Organization API - Invitation
+-----------------------------
+
+### getAllInvitations - Get list of all invitations
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+invitations = client.get_all_invitations()
+print(invitations.as_dict())
+```
+
+### createInvitation - Create a new invitation
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import InvitationCreate, OrganizationRole
+
+token = "REPLACE_TOKEN"
+organization_identifier = "REPLACE_ORGANIZATION_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+body = InvitationCreate(
+    organization=organization_identifier,
+    email="carljohnson@grove.street",
+    role=OrganizationRole.MEMBER,
+)
+response = client.create_invitation(body)
+
+print(response.as_dict())
+```
+
+### getInvitation - Get detail of an invitation
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+invitation = client.get_invitation(identifier)
+print(invitation.as_dict())
+```
+
+### updateInvitation - Update an invitation
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import InvitationUpdate, OrganizationRole
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+body = InvitationUpdate(role=OrganizationRole.ADMIN)
+response = client.update_invitation(identifier, body)
+
+print(response.as_dict())
+```
+
+### deleteInvitation - Delete an invitation
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+client.delete_invitation(identifier)
+```
+
+### getInvitationByToken - Get detail of an invitation by token
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+invitation_token = "REPLACE_INVITATION_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+invitation = client.get_invitation_by_token(token=invitation_token)
+print(invitation.as_dict())
+```
+
+### respondToInvitation - Respond to an invitation
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import InvitationResponse, InvitationResponseStatus
+
+token = "REPLACE_TOKEN"
+invitation_token = "REPLACE_INVITATION_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+body = InvitationResponse(status=InvitationResponseStatus.ACCEPTED)
+response = client.respond_to_invitation(invitation_token, body)
+
+print(response.as_dict())
 ```
 
 Webhook API
@@ -1280,4 +1201,154 @@ client = AffindaAPI(credential=credential)
 
 res = client.activate_resthook_subscription(x_hook_secret)
 print(res.as_dict())
+```
+
+Search & Match API - Embedding
+------------------------------
+
+### getResumeSearchConfig - Get the config for the logged in user's embeddable resume search tool
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+result = client.get_resume_search_config()
+print(result.as_dict())
+```
+
+### updateResumeSearchConfig - Update the config for the logged in user's embeddable resume search tool
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import ResumeSearchConfig
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+config = ResumeSearchConfig(
+    indices=["my-index"],
+    max_results=10,
+    display_job_title=False,
+    weight_location=0.8,
+    # etc.
+)
+
+result = client.update_resume_search_config(config)
+print(result.as_dict())
+```
+
+### createResumeSearchEmbedUrl - Create a signed URL for the embeddable resume search tool
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import ResumeSearchConfig
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+# Config override is optional
+request_body = {
+    "config_override": ResumeSearchConfig(
+        indices=["my-index"],
+        max_results=10,
+        display_job_title=False,
+        weight_location=0.8,
+        # etc.
+    )
+}
+
+result = client.create_resume_search_embed_url(body=request_body)
+print(result.url)
+```
+
+Search & Match API - Indexing
+-----------------------------
+
+### getAllIndexes - Get list of all indexes
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+all_indexes = client.get_all_indexes()
+
+print(all_indexes.as_dict())
+```
+
+### createIndex - Create a new index
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+index_name = "REPLACE_INDEX_NAME"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+response = client.create_index(name=index_name)
+
+print(response.as_dict())
+```
+
+### deleteIndex - Delete an index
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+index_name = "REPLACE_INDEX_NAME"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+client.delete_index(name=index_name)
+```
+
+### createIndexDocument - Index a new document
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+index_name = "REPLACE_INDEX_NAME"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+request_body = {
+    "document": identifier,
+}
+
+resp = client.create_index_document(name=index_name, body=request_body)
+
+print(resp.as_dict())
+```
+
+### deleteIndexDocument - Delete an indexed document
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+index_name = "REPLACE_INDEX_NAME"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+client.delete_index_document(name=index_name, identifier=identifier)
 ```

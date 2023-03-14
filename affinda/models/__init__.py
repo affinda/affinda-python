@@ -76,6 +76,8 @@ try:
     from ._models_py3 import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1
     from ._models_py3 import DataPoint
     from ._models_py3 import DataPointChoice
+    from ._models_py3 import DataPointChoiceCreate
+    from ._models_py3 import DataPointChoiceUpdate
     from ._models_py3 import DataPointCreate
     from ._models_py3 import DataPointUpdate
     from ._models_py3 import DateAnnotation
@@ -351,6 +353,8 @@ except (SyntaxError, ImportError):
     from ._models import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1  # type: ignore
     from ._models import DataPoint  # type: ignore
     from ._models import DataPointChoice  # type: ignore
+    from ._models import DataPointChoiceCreate  # type: ignore
+    from ._models import DataPointChoiceUpdate  # type: ignore
     from ._models import DataPointCreate  # type: ignore
     from ._models import DataPointUpdate  # type: ignore
     from ._models import DateAnnotation  # type: ignore
@@ -555,8 +559,8 @@ from ._affinda_api_enums import (
     DocumentFormat,
     DocumentState,
     EducationLevel,
-    Enum3,
-    Enum6,
+    Enum16,
+    Enum19,
     Get8ItemsItem,
     GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType,
     InvitationResponseStatus,
@@ -626,6 +630,8 @@ __all__ = [
     "ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1",
     "DataPoint",
     "DataPointChoice",
+    "DataPointChoiceCreate",
+    "DataPointChoiceUpdate",
     "DataPointCreate",
     "DataPointUpdate",
     "DateAnnotation",
@@ -828,8 +834,8 @@ __all__ = [
     "DocumentFormat",
     "DocumentState",
     "EducationLevel",
-    "Enum3",
-    "Enum6",
+    "Enum16",
+    "Enum19",
     "Get8ItemsItem",
     "GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType",
     "InvitationResponseStatus",
