@@ -1756,6 +1756,8 @@ sub-classes are: Invoice, JobDescription, Resume.
 
 All required parameters must be populated in order to send to Azure.
 
+:ivar data: Any object.
+:vartype data: any
 :ivar extractor: Required. Constant filled by server.
 :vartype extractor: str
 :ivar meta: Required.
@@ -1773,6 +1775,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
+- `data`: Any object.
 - `meta`: Required.
 - `error`: 
 

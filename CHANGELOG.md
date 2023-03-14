@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Fixed
 - Fixed type and path of data_point and data_point_choices
+- Fixed missing data field on base Document type
 
 ## [4.0.1] - 2023-03-10
 ### Fixed

@@ -2078,6 +2078,8 @@ class Document(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
+    :ivar data: Any object.
+    :vartype data: any
     :ivar extractor: Required. Constant filled by server.
     :vartype extractor: str
     :ivar meta: Required.
@@ -2092,6 +2094,7 @@ class Document(msrest.serialization.Model):
     }
 
     _attribute_map = {
+        "data": {"key": "data", "type": "object"},
         "extractor": {"key": "extractor", "type": "str"},
         "meta": {"key": "meta", "type": "DocumentMeta"},
         "error": {"key": "error", "type": "DocumentError"},
@@ -2107,12 +2110,15 @@ class Document(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
+        :keyword data: Any object.
+        :paramtype data: any
         :keyword meta: Required.
         :paramtype meta: ~affinda.models.DocumentMeta
         :keyword error:
         :paramtype error: ~affinda.models.DocumentError
         """
         super(Document, self).__init__(**kwargs)
+        self.data = kwargs.get("data", None)
         self.extractor = None  # type: Optional[str]
         self.meta = kwargs["meta"]
         self.error = kwargs.get("error", None)
