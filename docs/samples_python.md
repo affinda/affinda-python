@@ -816,173 +816,6 @@ client = AffindaAPI(credential=credential)
 client.delete_organization_membership(identifier)
 ```
 
-Search & Match API - Searching
-------------------------------
-
-### createJobDescriptionSearch - Search through parsed job descriptions
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import JobDescriptionSearchParameters
-
-token = "REPLACE_TOKEN"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-# Search with custom criterias
-parameters = JobDescriptionSearchParameters(
-    indices=["Job-Description-Search-Demo"],
-    job_titles=["Senior Java Software Developer"],
-    skills=[
-        {"name": "Java Programming", "required": True},
-        {"name": "Python Programming", "required": False},
-    ],
-    # Many more criterias are available, refer to JobDescriptionSearchParameters
-)
-resp = client.create_job_description_search(parameters)
-print(resp.as_dict())
-
-# Search with a resume
-resume_identifier = "REPLACE_RESUME_IDENTIFIER"
-parameters = JobDescriptionSearchParameters(
-    indices=["Job-Description-Search-Demo"],
-    resume=resume_identifier,
-)
-resp = client.create_job_description_search(parameters)
-print(resp.as_dict())
-```
-
-### getJobDescriptionSearchDetail - Get search result of specific job description
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import JobDescriptionSearchParameters
-
-token = "REPLACE_TOKEN"
-job_description_identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-# Search with custom criterias
-parameters = JobDescriptionSearchParameters(
-    indices=["Job-Description-Search-Demo"],
-    job_titles=["Senior Java Software Developer"],
-    degrees=["Bachelors"],
-    # Many more criterias are available, refer to JobDescriptionSearchParameters
-)
-resp = client.get_job_description_search_detail(body=parameters, identifier=job_description_identifier)
-print(resp.as_dict())
-```
-
-### createResumeSearch - Search through parsed resumes
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import ResumeSearchParameters
-
-token = "REPLACE_TOKEN"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-# Search with custom criterias
-parameters = ResumeSearchParameters(
-    indices=["Resume-Search-Demo"],
-    job_titles=["Senior Java Software Developer"],
-    institutions=["Boston University"],
-    # Many more criterias are available, refer to ResumeSearchParameters
-)
-resp = client.create_resume_search(parameters)
-print(resp.as_dict())
-
-# Search with a job description
-job_description_identifier = "REPLACE_JOB_DESCRIPTION_IDENTIFIER"
-parameters = ResumeSearchParameters(
-    indices=["Resume-Search-Demo"],
-    job_description=job_description_identifier,
-)
-resp = client.create_resume_search(parameters)
-print(resp.as_dict())
-
-# Search with a resume
-resume_identifier = "REPLACE_RESUME_IDENTIFIER"
-parameters = ResumeSearchParameters(
-    indices=["Resume-Search-Demo"],
-    resume=resume_identifier,
-)
-resp = client.create_resume_search(parameters)
-print(resp.as_dict())
-```
-
-### getResumeSearchDetail - Get search result of specific resume
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import ResumeSearchParameters
-
-token = "REPLACE_TOKEN"
-resume_identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-# Search with custom criterias
-parameters = ResumeSearchParameters(
-    indices=["Resume-Search-Demo"],
-    job_titles=["Senior Java Software Developer"],
-    institutions=["Boston University"],
-    # Many more criterias are available, refer to ResumeSearchParameters
-)
-resp = client.get_resume_search_detail(body=parameters, identifier=resume_identifier)
-print(resp.as_dict())
-```
-
-### getResumeSearchMatch - Match a single resume and job description
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-resume = "REPLACE_RESUME_IDENTIFIER"
-job_description = "REPLACE_JOB_DESCRIPTION_IDENTIFIER"
-index = "REPLACE_INDEX_NAME"  # Optional
-
-result = client.get_resume_search_match(resume, job_description, index=index)
-print(result.score)
-```
-
-### getResumeSearchSuggestionJobTitle - Get job title suggestions based on provided job title(s)
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-suggested_job_titles = client.get_resume_search_suggestion_job_title(["Software Developer", "Team Lead"])
-print(suggested_job_titles)
-```
-
-### getResumeSearchSuggestionSkill - Get skill suggestions based on provided skill(s)
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-suggested_skills = client.get_resume_search_suggestion_skill(["Javascript", "Python"])
-print(suggested_skills)
-```
-
 Organization API - Invitation
 -----------------------------
 
@@ -1201,6 +1034,173 @@ client = AffindaAPI(credential=credential)
 
 res = client.activate_resthook_subscription(x_hook_secret)
 print(res.as_dict())
+```
+
+Search & Match API - Searching
+------------------------------
+
+### createJobDescriptionSearch - Search through parsed job descriptions
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import JobDescriptionSearchParameters
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+# Search with custom criterias
+parameters = JobDescriptionSearchParameters(
+    indices=["Job-Description-Search-Demo"],
+    job_titles=["Senior Java Software Developer"],
+    skills=[
+        {"name": "Java Programming", "required": True},
+        {"name": "Python Programming", "required": False},
+    ],
+    # Many more criterias are available, refer to JobDescriptionSearchParameters
+)
+resp = client.create_job_description_search(parameters)
+print(resp.as_dict())
+
+# Search with a resume
+resume_identifier = "REPLACE_RESUME_IDENTIFIER"
+parameters = JobDescriptionSearchParameters(
+    indices=["Job-Description-Search-Demo"],
+    resume=resume_identifier,
+)
+resp = client.create_job_description_search(parameters)
+print(resp.as_dict())
+```
+
+### getJobDescriptionSearchDetail - Get search result of specific job description
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import JobDescriptionSearchParameters
+
+token = "REPLACE_TOKEN"
+job_description_identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+# Search with custom criterias
+parameters = JobDescriptionSearchParameters(
+    indices=["Job-Description-Search-Demo"],
+    job_titles=["Senior Java Software Developer"],
+    degrees=["Bachelors"],
+    # Many more criterias are available, refer to JobDescriptionSearchParameters
+)
+resp = client.get_job_description_search_detail(body=parameters, identifier=job_description_identifier)
+print(resp.as_dict())
+```
+
+### createResumeSearch - Search through parsed resumes
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import ResumeSearchParameters
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+# Search with custom criterias
+parameters = ResumeSearchParameters(
+    indices=["Resume-Search-Demo"],
+    job_titles=["Senior Java Software Developer"],
+    institutions=["Boston University"],
+    # Many more criterias are available, refer to ResumeSearchParameters
+)
+resp = client.create_resume_search(parameters)
+print(resp.as_dict())
+
+# Search with a job description
+job_description_identifier = "REPLACE_JOB_DESCRIPTION_IDENTIFIER"
+parameters = ResumeSearchParameters(
+    indices=["Resume-Search-Demo"],
+    job_description=job_description_identifier,
+)
+resp = client.create_resume_search(parameters)
+print(resp.as_dict())
+
+# Search with a resume
+resume_identifier = "REPLACE_RESUME_IDENTIFIER"
+parameters = ResumeSearchParameters(
+    indices=["Resume-Search-Demo"],
+    resume=resume_identifier,
+)
+resp = client.create_resume_search(parameters)
+print(resp.as_dict())
+```
+
+### getResumeSearchDetail - Get search result of specific resume
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import ResumeSearchParameters
+
+token = "REPLACE_TOKEN"
+resume_identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+# Search with custom criterias
+parameters = ResumeSearchParameters(
+    indices=["Resume-Search-Demo"],
+    job_titles=["Senior Java Software Developer"],
+    institutions=["Boston University"],
+    # Many more criterias are available, refer to ResumeSearchParameters
+)
+resp = client.get_resume_search_detail(body=parameters, identifier=resume_identifier)
+print(resp.as_dict())
+```
+
+### getResumeSearchMatch - Match a single resume and job description
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+resume = "REPLACE_RESUME_IDENTIFIER"
+job_description = "REPLACE_JOB_DESCRIPTION_IDENTIFIER"
+index = "REPLACE_INDEX_NAME"  # Optional
+
+result = client.get_resume_search_match(resume, job_description, index=index)
+print(result.score)
+```
+
+### getResumeSearchSuggestionJobTitle - Get job title suggestions based on provided job title(s)
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+suggested_job_titles = client.get_resume_search_suggestion_job_title(["Software Developer", "Team Lead"])
+print(suggested_job_titles)
+```
+
+### getResumeSearchSuggestionSkill - Get skill suggestions based on provided skill(s)
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+suggested_skills = client.get_resume_search_suggestion_skill(["Javascript", "Python"])
+print(suggested_skills)
 ```
 
 Search & Match API - Embedding

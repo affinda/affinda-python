@@ -3427,63 +3427,6 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
     delete_organization_membership.metadata = {"url": "/v3/organization_memberships/{identifier}"}  # type: ignore
 
-    async def list_occupation_groups(self, **kwargs: Any) -> List[_models.OccupationGroup]:
-        """List occupation groups.
-
-        Returns the list of searchable occupation groups.
-
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of OccupationGroup, or the result of cls(response)
-        :rtype: list[~affinda.models.OccupationGroup]
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = kwargs.pop("headers", {}) or {}
-        _params = kwargs.pop("params", {}) or {}
-
-        cls = kwargs.pop("cls", None)  # type: ClsType[List[_models.OccupationGroup]]
-
-        request = build_list_occupation_groups_request(
-            template_url=self.list_occupation_groups.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("[OccupationGroup]", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    list_occupation_groups.metadata = {"url": "/v3/occupation_groups"}  # type: ignore
-
     async def get_all_invitations(
         self,
         offset: Optional[int] = None,
@@ -4362,6 +4305,63 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         return deserialized
 
     activate_resthook_subscription.metadata = {"url": "/v3/resthook_subscriptions/activate"}  # type: ignore
+
+    async def list_occupation_groups(self, **kwargs: Any) -> List[_models.OccupationGroup]:
+        """List occupation groups.
+
+        Returns the list of searchable occupation groups.
+
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: list of OccupationGroup, or the result of cls(response)
+        :rtype: list[~affinda.models.OccupationGroup]
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[List[_models.OccupationGroup]]
+
+        request = build_list_occupation_groups_request(
+            template_url=self.list_occupation_groups.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("[OccupationGroup]", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    list_occupation_groups.metadata = {"url": "/v3/occupation_groups"}  # type: ignore
 
     async def create_job_description_search(
         self,

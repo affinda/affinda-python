@@ -1303,30 +1303,6 @@ also use this to leave their organization.
 
 `None`: None, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.list_occupation_groups"></a>
-
-#### list\_occupation\_groups
-
-```python
-def list_occupation_groups(**kwargs)
-```
-
-List occupation groups.
-
-Returns the list of searchable occupation groups.
-
-**Arguments**:
-
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`list[~affinda.models.OccupationGroup]`: list of OccupationGroup, or the result of cls(response)
-
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_invitations"></a>
 
 #### get\_all\_invitations
@@ -1672,6 +1648,30 @@ header that you received to activate the subscription using this endpoint.
 **Returns**:
 
 `~affinda.models.ResthookSubscription`: ResthookSubscription, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.list_occupation_groups"></a>
+
+#### list\_occupation\_groups
+
+```python
+def list_occupation_groups(**kwargs)
+```
+
+List occupation groups.
+
+Returns the list of searchable occupation groups.
+
+**Arguments**:
+
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[~affinda.models.OccupationGroup]`: list of OccupationGroup, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_job_description_search"></a>
 
