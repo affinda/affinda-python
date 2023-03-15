@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [4.1.0] - 2023-03-15
 ### Fixed
 - Fixed type and path of data_point and data_point_choices
 - Fixed missing data field on base Document type
