@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Fixed
 - Fix JD create/update after v2/v3 split
+- Ensure list endpoints have 'results' and 'count' properties required
 
 ## [3.1.0] - 2023-03-10
 ### Fixed
