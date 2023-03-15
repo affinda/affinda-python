@@ -254,8 +254,8 @@ client = AffindaAPI(credential=credential)
 client.delete_collection(identifier)
 ```
 
-Document API - Upload Documents
--------------------------------
+Document API - Document
+-----------------------
 
 ### getAllDocuments - Get list of all documents
 

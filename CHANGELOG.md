@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Minor re-ordering of API spec paths
+- Change Document API tag from Document API - Upload Documents to Document API - Document
 
 ## [4.0.1] - 2023-03-10
 ### Fixed
