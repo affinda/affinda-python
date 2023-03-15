@@ -489,7 +489,7 @@ Return a specific document.
 
 **Returns**:
 
-`~affinda.models.Document`: Document, or the result of cls(response)
+`~affinda.models.Document or ~affinda.models.RequestError`: Document or RequestError, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_document"></a>
 

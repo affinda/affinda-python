@@ -1293,31 +1293,6 @@ def __init__(**kwargs)
 - `label`: Required.
 - `score`: 
 
-<a id="models._models.ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1"></a>
-
-## ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1 Objects
-
-```python
-class ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1(msrest.serialization.Model)
-```
-
-ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1.
-
-:ivar match:
-:vartype match: bool
-
-<a id="models._models.ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `match`: 
-
 <a id="models._models.ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1"></a>
 
 ## ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1 Objects
@@ -6340,26 +6315,30 @@ def __init__(**kwargs)
 - `missing`: 
 - `value`: 
 
-<a id="models._models.OccupationGroup"></a>
+<a id="models._models.OccupationGroupSearchResult"></a>
 
-## OccupationGroup Objects
+## OccupationGroupSearchResult Objects
 
 ```python
-class OccupationGroup(msrest.serialization.Model)
+class OccupationGroupSearchResult(msrest.serialization.Model)
 ```
 
-OccupationGroup.
+OccupationGroupSearchResult.
 
 All required parameters must be populated in order to send to Azure.
 
+:ivar match:
+:vartype match: bool
 :ivar code: Required.
 :vartype code: int
 :ivar name: Required.
 :vartype name: str
 :ivar children: Required.
 :vartype children: list[~affinda.models.OccupationGroup]
+:ivar parents:
+:vartype parents: list[~affinda.models.OccupationGroup]
 
-<a id="models._models.OccupationGroup.__init__"></a>
+<a id="models._models.OccupationGroupSearchResult.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -6369,16 +6348,18 @@ def __init__(**kwargs)
 
 **Arguments**:
 
+- `match`: 
 - `code`: Required.
 - `name`: Required.
 - `children`: Required.
+- `parents`: 
 
 <a id="models._models.JobDescriptionSearchDetailOccupationGroupValue"></a>
 
 ## JobDescriptionSearchDetailOccupationGroupValue Objects
 
 ```python
-class JobDescriptionSearchDetailOccupationGroupValue(OccupationGroup,  ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1)
+class JobDescriptionSearchDetailOccupationGroupValue(OccupationGroupSearchResult)
 ```
 
 JobDescriptionSearchDetailOccupationGroupValue.
@@ -6393,6 +6374,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype name: str
 :ivar children: Required.
 :vartype children: list[~affinda.models.OccupationGroup]
+:ivar parents:
+:vartype parents: list[~affinda.models.OccupationGroup]
 
 <a id="models._models.JobDescriptionSearchDetailOccupationGroupValue.__init__"></a>
 
@@ -6408,6 +6391,7 @@ def __init__(**kwargs)
 - `code`: Required.
 - `name`: Required.
 - `children`: Required.
+- `parents`: 
 
 <a id="models._models.JobDescriptionSearchDetailSearchExpression"></a>
 
@@ -7132,6 +7116,39 @@ def __init__(**kwargs)
 - `value`: 
 - `label`: Required.
 - `score`: 
+
+<a id="models._models.OccupationGroup"></a>
+
+## OccupationGroup Objects
+
+```python
+class OccupationGroup(msrest.serialization.Model)
+```
+
+OccupationGroup.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar code: Required.
+:vartype code: int
+:ivar name: Required.
+:vartype name: str
+:ivar children: Required.
+:vartype children: list[~affinda.models.OccupationGroup]
+
+<a id="models._models.OccupationGroup.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `code`: Required.
+- `name`: Required.
+- `children`: Required.
 
 <a id="models._models.OccupationGroupSearchScoreComponent"></a>
 

@@ -535,7 +535,7 @@ def build_get_document_request(
     _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
 
     format = kwargs.pop('format', _params.pop('format', None))  # type: Optional[Union[str, "_models.DocumentFormat"]]
-    accept = _headers.pop('Accept', "application/json")
+    accept = _headers.pop('Accept', "application/json, application/xml")
 
     # Construct URL
     _url = kwargs.pop("template_url", "/v3/documents/{identifier}")
@@ -3659,7 +3659,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         format=None,  # type: Optional[Union[str, "_models.DocumentFormat"]]
         **kwargs,  # type: Any
     ):
-        # type: (...) -> _models.Document
+        # type: (...) -> Union[_models.Document, _models.RequestError]
         """Get specific document.
 
         Return a specific document.
@@ -3669,26 +3669,23 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param format: Specify which format you want the response to be. Default is "json".
         :type format: str or ~affinda.models.DocumentFormat
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: Document, or the result of cls(response)
-        :rtype: ~affinda.models.Document
+        :return: Document or RequestError, or the result of cls(response)
+        :rtype: ~affinda.models.Document or ~affinda.models.RequestError
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
+            401: ClientAuthenticationError,
             404: ResourceNotFoundError,
             409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
         }
         error_map.update(kwargs.pop("error_map", {}) or {})
 
         _headers = kwargs.pop("headers", {}) or {}
         _params = kwargs.pop("params", {}) or {}
 
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.Document]
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[Union[_models.Document, _models.RequestError]]
 
         request = build_get_document_request(
             identifier=identifier,
@@ -3708,12 +3705,25 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         )
         response = pipeline_response.http_response
 
-        if response.status_code not in [200]:
+        if response.status_code not in [200, 400, 400, 401, 401]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
 
-        deserialized = self._deserialize("Document", pipeline_response)
+        if response.status_code == 200:
+            deserialized = self._deserialize("Document", pipeline_response)
+
+        if response.status_code == 400:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if response.status_code == 400:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if response.status_code == 401:
+            deserialized = self._deserialize("RequestError", pipeline_response)
+
+        if response.status_code == 401:
+            deserialized = self._deserialize("RequestError", pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})

@@ -67,9 +67,6 @@ try:
         ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties,
     )
     from ._models_py3 import (
-        ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1,
-    )
-    from ._models_py3 import (
         ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1,
     )
     from ._models_py3 import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1
@@ -179,6 +176,7 @@ try:
     from ._models_py3 import LocationSearchScoreComponent
     from ._models_py3 import ManagementLevelSearchScoreComponent
     from ._models_py3 import OccupationGroup
+    from ._models_py3 import OccupationGroupSearchResult
     from ._models_py3 import OccupationGroupSearchScoreComponent
     from ._models_py3 import Organization
     from ._models_py3 import OrganizationCreate
@@ -347,7 +345,6 @@ except (SyntaxError, ImportError):
     from ._models import ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1  # type: ignore
     from ._models import ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1  # type: ignore
     from ._models import ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties  # type: ignore
-    from ._models import ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1  # type: ignore
     from ._models import ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1  # type: ignore
     from ._models import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1  # type: ignore
     from ._models import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1  # type: ignore
@@ -456,6 +453,7 @@ except (SyntaxError, ImportError):
     from ._models import LocationSearchScoreComponent  # type: ignore
     from ._models import ManagementLevelSearchScoreComponent  # type: ignore
     from ._models import OccupationGroup  # type: ignore
+    from ._models import OccupationGroupSearchResult  # type: ignore
     from ._models import OccupationGroupSearchScoreComponent  # type: ignore
     from ._models import Organization  # type: ignore
     from ._models import OrganizationCreate  # type: ignore
@@ -624,7 +622,6 @@ __all__ = [
     "ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1",
     "ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1",
     "ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties",
-    "ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1",
     "ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1",
     "ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1",
     "ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1",
@@ -733,6 +730,7 @@ __all__ = [
     "LocationSearchScoreComponent",
     "ManagementLevelSearchScoreComponent",
     "OccupationGroup",
+    "OccupationGroupSearchResult",
     "OccupationGroupSearchScoreComponent",
     "Organization",
     "OrganizationCreate",
