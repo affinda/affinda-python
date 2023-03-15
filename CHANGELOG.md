@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed missing data field on base Document type
 - Fixed search and match return types
 - fixed document error return types
+- Ensure list endpoints have 'results' and 'count' properties required
 
 ### Changed
 - Minor re-ordering of API spec paths
