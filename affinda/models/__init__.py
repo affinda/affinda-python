@@ -58,9 +58,6 @@ try:
         ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1,
     )
     from ._models_py3 import (
-        ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1,
-    )
-    from ._models_py3 import (
         ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1,
     )
     from ._models_py3 import (
@@ -269,7 +266,6 @@ try:
     from ._models_py3 import ResumeSearchDetailLocationValue
     from ._models_py3 import ResumeSearchDetailManagementLevel
     from ._models_py3 import ResumeSearchDetailOccupationGroup
-    from ._models_py3 import ResumeSearchDetailOccupationGroupValueItem
     from ._models_py3 import ResumeSearchDetailSearchExpression
     from ._models_py3 import ResumeSearchDetailSkills
     from ._models_py3 import ResumeSearchDetailSkillsValueItem
@@ -342,7 +338,6 @@ except (SyntaxError, ImportError):
     from ._models import ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1  # type: ignore
     from ._models import ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1  # type: ignore
     from ._models import ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1  # type: ignore
-    from ._models import ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1  # type: ignore
     from ._models import ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1  # type: ignore
     from ._models import ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties  # type: ignore
     from ._models import ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1  # type: ignore
@@ -514,7 +509,6 @@ except (SyntaxError, ImportError):
     from ._models import ResumeSearchDetailLocationValue  # type: ignore
     from ._models import ResumeSearchDetailManagementLevel  # type: ignore
     from ._models import ResumeSearchDetailOccupationGroup  # type: ignore
-    from ._models import ResumeSearchDetailOccupationGroupValueItem  # type: ignore
     from ._models import ResumeSearchDetailSearchExpression  # type: ignore
     from ._models import ResumeSearchDetailSkills  # type: ignore
     from ._models import ResumeSearchDetailSkillsValueItem  # type: ignore
@@ -619,7 +613,6 @@ __all__ = [
     "ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1",
     "ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1",
     "ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1",
-    "ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1",
     "ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1",
     "ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties",
     "ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1",
@@ -791,7 +784,6 @@ __all__ = [
     "ResumeSearchDetailLocationValue",
     "ResumeSearchDetailManagementLevel",
     "ResumeSearchDetailOccupationGroup",
-    "ResumeSearchDetailOccupationGroupValueItem",
     "ResumeSearchDetailSearchExpression",
     "ResumeSearchDetailSkills",
     "ResumeSearchDetailSkillsValueItem",

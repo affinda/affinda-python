@@ -1210,31 +1210,6 @@ def __init__(**kwargs)
 
 - `match`: 
 
-<a id="models._models.ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1"></a>
-
-## ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1 Objects
-
-```python
-class ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1(msrest.serialization.Model)
-```
-
-ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1.
-
-:ivar match:
-:vartype match: bool
-
-<a id="models._models.ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `match`: 
-
 <a id="models._models.ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1"></a>
 
 ## ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1 Objects
@@ -9363,7 +9338,7 @@ ResumeSearchDetailOccupationGroup.
 :ivar missing:
 :vartype missing: list[int]
 :ivar value:
-:vartype value: list[~affinda.models.ResumeSearchDetailOccupationGroupValueItem]
+:vartype value: list[~affinda.models.OccupationGroupSearchResult]
 
 <a id="models._models.ResumeSearchDetailOccupationGroup.__init__"></a>
 
@@ -9377,42 +9352,6 @@ def __init__(**kwargs)
 
 - `missing`: 
 - `value`: 
-
-<a id="models._models.ResumeSearchDetailOccupationGroupValueItem"></a>
-
-## ResumeSearchDetailOccupationGroupValueItem Objects
-
-```python
-class ResumeSearchDetailOccupationGroupValueItem(OccupationGroup,  ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1)
-```
-
-ResumeSearchDetailOccupationGroupValueItem.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar match:
-:vartype match: bool
-:ivar code: Required.
-:vartype code: int
-:ivar name: Required.
-:vartype name: str
-:ivar children: Required.
-:vartype children: list[~affinda.models.OccupationGroup]
-
-<a id="models._models.ResumeSearchDetailOccupationGroupValueItem.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `match`: 
-- `code`: Required.
-- `name`: Required.
-- `children`: Required.
 
 <a id="models._models.ResumeSearchDetailSearchExpression"></a>
 

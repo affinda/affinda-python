@@ -1490,31 +1490,6 @@ class ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueIt
         self.match = match
 
 
-class ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1(
-    msrest.serialization.Model
-):
-    """ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1.
-
-    :ivar match:
-    :vartype match: bool
-    """
-
-    _attribute_map = {
-        "match": {"key": "match", "type": "bool"},
-    }
-
-    def __init__(self, *, match: Optional[bool] = None, **kwargs):
-        """
-        :keyword match:
-        :paramtype match: bool
-        """
-        super(
-            ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1,
-            self,
-        ).__init__(**kwargs)
-        self.match = match
-
-
 class ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1(
     msrest.serialization.Model
 ):
@@ -15190,89 +15165,30 @@ class ResumeSearchDetailOccupationGroup(msrest.serialization.Model):
     :ivar missing:
     :vartype missing: list[int]
     :ivar value:
-    :vartype value: list[~affinda.models.ResumeSearchDetailOccupationGroupValueItem]
+    :vartype value: list[~affinda.models.OccupationGroupSearchResult]
     """
 
     _attribute_map = {
         "missing": {"key": "missing", "type": "[int]"},
-        "value": {"key": "value", "type": "[ResumeSearchDetailOccupationGroupValueItem]"},
+        "value": {"key": "value", "type": "[OccupationGroupSearchResult]"},
     }
 
     def __init__(
         self,
         *,
         missing: Optional[List[int]] = None,
-        value: Optional[List["_models.ResumeSearchDetailOccupationGroupValueItem"]] = None,
+        value: Optional[List["_models.OccupationGroupSearchResult"]] = None,
         **kwargs,
     ):
         """
         :keyword missing:
         :paramtype missing: list[int]
         :keyword value:
-        :paramtype value: list[~affinda.models.ResumeSearchDetailOccupationGroupValueItem]
+        :paramtype value: list[~affinda.models.OccupationGroupSearchResult]
         """
         super(ResumeSearchDetailOccupationGroup, self).__init__(**kwargs)
         self.missing = missing
         self.value = value
-
-
-class ResumeSearchDetailOccupationGroupValueItem(
-    OccupationGroup,
-    ComponentsK7P1F5SchemasResumesearchdetailPropertiesOccupationgroupPropertiesValueItemsAllof1,
-):
-    """ResumeSearchDetailOccupationGroupValueItem.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar match:
-    :vartype match: bool
-    :ivar code: Required.
-    :vartype code: int
-    :ivar name: Required.
-    :vartype name: str
-    :ivar children: Required.
-    :vartype children: list[~affinda.models.OccupationGroup]
-    """
-
-    _validation = {
-        "code": {"required": True},
-        "name": {"required": True},
-        "children": {"required": True},
-    }
-
-    _attribute_map = {
-        "match": {"key": "match", "type": "bool"},
-        "code": {"key": "code", "type": "int"},
-        "name": {"key": "name", "type": "str"},
-        "children": {"key": "children", "type": "[OccupationGroup]"},
-    }
-
-    def __init__(
-        self,
-        *,
-        code: int,
-        name: str,
-        children: List["_models.OccupationGroup"],
-        match: Optional[bool] = None,
-        **kwargs,
-    ):
-        """
-        :keyword match:
-        :paramtype match: bool
-        :keyword code: Required.
-        :paramtype code: int
-        :keyword name: Required.
-        :paramtype name: str
-        :keyword children: Required.
-        :paramtype children: list[~affinda.models.OccupationGroup]
-        """
-        super(ResumeSearchDetailOccupationGroupValueItem, self).__init__(
-            code=code, name=name, children=children, match=match, **kwargs
-        )
-        self.match = match
-        self.code = code
-        self.name = name
-        self.children = children
 
 
 class ResumeSearchDetailSearchExpression(msrest.serialization.Model):
