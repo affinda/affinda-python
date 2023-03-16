@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - fixed - Use OccupationGroupResult for v3 SearchAndMatch detail
 
+### Changed
+- Don't require Field.slug
+
 ## [4.1.0] - 2023-03-15
 ### Fixed
 - Fixed type and path of data_point and data_point_choices

@@ -2621,7 +2621,7 @@ All required parameters must be populated in order to send to Azure.
 
 :ivar label: Required.
 :vartype label: str
-:ivar slug: Required.
+:ivar slug:
 :vartype slug: str
 :ivar data_point: Required.
 :vartype data_point: str
@@ -2645,7 +2645,7 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `label`: Required.
-- `slug`: Required.
+- `slug`: 
 - `data_point`: Required.
 - `mandatory`: 
 - `disabled`: 

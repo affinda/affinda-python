@@ -3220,7 +3220,7 @@ class Field(msrest.serialization.Model):
 
     :ivar label: Required.
     :vartype label: str
-    :ivar slug: Required.
+    :ivar slug:
     :vartype slug: str
     :ivar data_point: Required.
     :vartype data_point: str
@@ -3236,7 +3236,6 @@ class Field(msrest.serialization.Model):
 
     _validation = {
         "label": {"required": True},
-        "slug": {"required": True},
         "data_point": {"required": True},
     }
 
@@ -3254,7 +3253,7 @@ class Field(msrest.serialization.Model):
         """
         :keyword label: Required.
         :paramtype label: str
-        :keyword slug: Required.
+        :keyword slug:
         :paramtype slug: str
         :keyword data_point: Required.
         :paramtype data_point: str
@@ -3269,7 +3268,7 @@ class Field(msrest.serialization.Model):
         """
         super(Field, self).__init__(**kwargs)
         self.label = kwargs["label"]
-        self.slug = kwargs["slug"]
+        self.slug = kwargs.get("slug", None)
         self.data_point = kwargs["data_point"]
         self.mandatory = kwargs.get("mandatory", None)
         self.disabled = kwargs.get("disabled", None)
