@@ -1641,6 +1641,160 @@ class ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1(
         self.parsed = parsed
 
 
+class CurrencyCodeAnnotation(Annotation):
+    """CurrencyCodeAnnotation.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar id: Required.
+    :vartype id: int
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
+    :vartype rectangle: ~affinda.models.Rectangle
+    :ivar rectangles: Required.
+    :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar page_index: Required. The page number within the document, starting from 0.
+    :vartype page_index: int
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
+    :vartype raw: str
+    :ivar confidence: Required. The overall confidence that the model's prediction is correct.
+    :vartype confidence: float
+    :ivar classification_confidence: Required. The model's confidence that the text has been
+     classified correctly.
+    :vartype classification_confidence: float
+    :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+     the confidence that the text in the image has been correctly read by the model.
+    :vartype text_extraction_confidence: float
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
+    :vartype is_verified: bool
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
+    :vartype is_auto_verified: bool
+    :ivar data_point: Required.
+    :vartype data_point: str
+    :ivar content_type: Required.
+    :vartype content_type: str
+    :ivar parsed:
+    :vartype parsed: ~affinda.models.DataPointChoice
+    """
+
+    _validation = {
+        "id": {"required": True},
+        "rectangle": {"required": True},
+        "rectangles": {"required": True},
+        "page_index": {"required": True},
+        "raw": {"required": True},
+        "confidence": {"required": True},
+        "classification_confidence": {"required": True},
+        "text_extraction_confidence": {"required": True},
+        "is_verified": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
+    }
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "id": {"key": "id", "type": "int"},
+        "rectangle": {"key": "rectangle", "type": "Rectangle"},
+        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "raw": {"key": "raw", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
+        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
+        "parsed": {"key": "parsed", "type": "DataPointChoice"},
+    }
+
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        data_point: str,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        parsed: Optional["_models.DataPointChoice"] = None,
+        **kwargs,
+    ):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword id: Required.
+        :paramtype id: int
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
+        :paramtype rectangle: ~affinda.models.Rectangle
+        :keyword rectangles: Required.
+        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword page_index: Required. The page number within the document, starting from 0.
+        :paramtype page_index: int
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
+        :paramtype raw: str
+        :keyword confidence: Required. The overall confidence that the model's prediction is correct.
+        :paramtype confidence: float
+        :keyword classification_confidence: Required. The model's confidence that the text has been
+         classified correctly.
+        :paramtype classification_confidence: float
+        :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
+         is the confidence that the text in the image has been correctly read by the model.
+        :paramtype text_extraction_confidence: float
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
+        :paramtype is_verified: bool
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
+        :paramtype is_auto_verified: bool
+        :keyword data_point: Required.
+        :paramtype data_point: str
+        :keyword content_type: Required.
+        :paramtype content_type: str
+        :keyword parsed:
+        :paramtype parsed: ~affinda.models.DataPointChoice
+        """
+        super(CurrencyCodeAnnotation, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            **kwargs,
+        )
+        self.parsed = parsed
+
+
 class DataPoint(msrest.serialization.Model):
     """DataPoint.
 
@@ -4183,7 +4337,7 @@ class InvoiceData(msrest.serialization.Model):
     :ivar supplier_website:
     :vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
     :ivar currency_code:
-    :vartype currency_code: ~affinda.models.TextAnnotation
+    :vartype currency_code: ~affinda.models.CurrencyCodeAnnotation
     :ivar custom_fields: Dictionary of :code:`<any>`.
     :vartype custom_fields: dict[str, any]
     """
@@ -4267,7 +4421,7 @@ class InvoiceData(msrest.serialization.Model):
         "customer_email": {"key": "customerEmail", "type": "InvoiceDataCustomerEmail"},
         "supplier_email": {"key": "supplierEmail", "type": "InvoiceDataSupplierEmail"},
         "supplier_website": {"key": "supplierWebsite", "type": "InvoiceDataSupplierWebsite"},
-        "currency_code": {"key": "currencyCode", "type": "TextAnnotation"},
+        "currency_code": {"key": "currencyCode", "type": "CurrencyCodeAnnotation"},
         "custom_fields": {"key": "customFields", "type": "{object}"},
     }
 
@@ -4312,7 +4466,7 @@ class InvoiceData(msrest.serialization.Model):
         customer_email: Optional["_models.InvoiceDataCustomerEmail"] = None,
         supplier_email: Optional["_models.InvoiceDataSupplierEmail"] = None,
         supplier_website: Optional["_models.InvoiceDataSupplierWebsite"] = None,
-        currency_code: Optional["_models.TextAnnotation"] = None,
+        currency_code: Optional["_models.CurrencyCodeAnnotation"] = None,
         custom_fields: Optional[Dict[str, Any]] = None,
         **kwargs,
     ):
@@ -4390,7 +4544,7 @@ class InvoiceData(msrest.serialization.Model):
         :keyword supplier_website:
         :paramtype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
         :keyword currency_code:
-        :paramtype currency_code: ~affinda.models.TextAnnotation
+        :paramtype currency_code: ~affinda.models.CurrencyCodeAnnotation
         :keyword custom_fields: Dictionary of :code:`<any>`.
         :paramtype custom_fields: dict[str, any]
         """
@@ -13599,6 +13753,8 @@ class ResumeData(msrest.serialization.Model):
     :vartype is_resume_probability: int
     :ivar raw_text: All of the raw text of the parsed resume, example is shortened for readability.
     :vartype raw_text: str
+    :ivar redacted_text: Redacted version of the text in the resume, removing PII.
+    :vartype redacted_text: str
     """
 
     _validation = {
@@ -13636,6 +13792,7 @@ class ResumeData(msrest.serialization.Model):
         "sections": {"key": "sections", "type": "[ResumeDataSectionsItem]"},
         "is_resume_probability": {"key": "isResumeProbability", "type": "int"},
         "raw_text": {"key": "rawText", "type": "str"},
+        "redacted_text": {"key": "redactedText", "type": "str"},
     }
 
     def __init__(
@@ -13658,6 +13815,7 @@ class ResumeData(msrest.serialization.Model):
         publications: Optional[List[str]] = None,
         referees: Optional[List["_models.ResumeDataRefereesItem"]] = None,
         raw_text: Optional[str] = None,
+        redacted_text: Optional[str] = None,
         **kwargs,
     ):
         """
@@ -13697,6 +13855,8 @@ class ResumeData(msrest.serialization.Model):
         :keyword raw_text: All of the raw text of the parsed resume, example is shortened for
          readability.
         :paramtype raw_text: str
+        :keyword redacted_text: Redacted version of the text in the resume, removing PII.
+        :paramtype redacted_text: str
         """
         super(ResumeData, self).__init__(**kwargs)
         self.additional_properties = additional_properties
@@ -13723,6 +13883,7 @@ class ResumeData(msrest.serialization.Model):
         self.sections = None
         self.is_resume_probability = None
         self.raw_text = raw_text
+        self.redacted_text = redacted_text
 
 
 class ResumeDataName(msrest.serialization.Model):

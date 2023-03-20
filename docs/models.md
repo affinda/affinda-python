@@ -1349,6 +1349,86 @@ def __init__(**kwargs)
 - `raw`: 
 - `parsed`: 
 
+<a id="models._models.CurrencyCodeAnnotation"></a>
+
+## CurrencyCodeAnnotation Objects
+
+```python
+class CurrencyCodeAnnotation(Annotation)
+```
+
+CurrencyCodeAnnotation.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar id: Required.
+:vartype id: int
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles: Required.
+:vartype rectangles: list[~affinda.models.Rectangle]
+:ivar page_index: Required. The page number within the document, starting from 0.
+:vartype page_index: int
+:ivar raw: Required. Raw data extracted from the before any post-processing.
+:vartype raw: str
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
+:vartype confidence: float
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
+:vartype text_extraction_confidence: float
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
+:vartype is_verified: bool
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
+:vartype is_client_verified: bool
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
+:vartype is_auto_verified: bool
+:ivar data_point: Required.
+:vartype data_point: str
+:ivar content_type: Required.
+:vartype content_type: str
+:ivar parsed:
+:vartype parsed: ~affinda.models.DataPointChoice
+
+<a id="models._models.CurrencyCodeAnnotation.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
+collection.
+- `id`: Required.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
+- `rectangles`: Required.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required.
+- `content_type`: Required.
+- `parsed`: 
+
 <a id="models._models.DataPoint"></a>
 
 ## DataPoint Objects
@@ -3065,7 +3145,7 @@ InvoiceData.
 :ivar supplier_website:
 :vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
 :ivar currency_code:
-:vartype currency_code: ~affinda.models.TextAnnotation
+:vartype currency_code: ~affinda.models.CurrencyCodeAnnotation
 :ivar custom_fields: Dictionary of :code:`<any>`.
 :vartype custom_fields: dict[str, any]
 
@@ -8344,6 +8424,8 @@ Variables are only populated by the server, and will be ignored when sending a r
 :vartype is_resume_probability: int
 :ivar raw_text: All of the raw text of the parsed resume, example is shortened for readability.
 :vartype raw_text: str
+:ivar redacted_text: Redacted version of the text in the resume, removing PII.
+:vartype redacted_text: str
 
 <a id="models._models.ResumeData.__init__"></a>
 
@@ -8374,6 +8456,7 @@ collection.
 - `referees`: 
 - `raw_text`: All of the raw text of the parsed resume, example is shortened for
 readability.
+- `redacted_text`: Redacted version of the text in the resume, removing PII.
 
 <a id="models._models.ResumeDataName"></a>
 

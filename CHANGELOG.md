@@ -7,9 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Fixed
 - fixed - Use OccupationGroupResult for v3 SearchAndMatch detail
+- Fixed return type for InvoiceData.currencyCode
 
 ### Changed
 - Don't require Field.slug
+
+### Added
+- Add redactedText field to ResumeData
 
 ## [4.1.0] - 2023-03-15
 ### Fixed
