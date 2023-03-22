@@ -27,6 +27,7 @@ class AnnotationContentType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     LANGUAGE = "language"
     SKILL = "skill"
     YEARSEXPERIENCE = "yearsexperience"
+    GROUP = "group"
 
 
 class CollectionDateFormatPreference(str, Enum, metaclass=CaseInsensitiveEnumMeta):

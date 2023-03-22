@@ -1451,7 +1451,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype description: str
 :ivar annotation_content_type: Required. Known values are: "text", "integer", "float",
  "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
- "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience".
+ "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience", "group".
 :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
 :ivar organization:
 :vartype organization: ~affinda.models.Organization
@@ -1484,7 +1484,7 @@ def __init__(**kwargs)
 - `description`: 
 - `annotation_content_type`: Required. Known values are: "text", "integer", "float",
 "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
-"expectedremuneration", "jobtitle", "language", "skill", "yearsexperience".
+"expectedremuneration", "jobtitle", "language", "skill", "yearsexperience", "group".
 - `organization`: 
 - `extractor`: Required. Uniquely identify an extractor.
 - `multiple`: 
@@ -1628,7 +1628,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype description: str
 :ivar annotation_content_type: Required. Known values are: "text", "integer", "float",
  "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
- "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience".
+ "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience", "group".
 :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
 :ivar organization: Required. Uniquely identify an organization.
 :vartype organization: str
@@ -1654,7 +1654,7 @@ def __init__(**kwargs)
 - `description`: 
 - `annotation_content_type`: Required. Known values are: "text", "integer", "float",
 "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
-"expectedremuneration", "jobtitle", "language", "skill", "yearsexperience".
+"expectedremuneration", "jobtitle", "language", "skill", "yearsexperience", "group".
 - `organization`: Required. Uniquely identify an organization.
 - `extractor`: Required. Uniquely identify an extractor.
 - `multiple`: 
