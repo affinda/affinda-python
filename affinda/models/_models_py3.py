@@ -374,32 +374,6 @@ class Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1(msrest.se
         self.parsed = parsed
 
 
-class Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1(msrest.serialization.Model):
-    """Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1.
-
-    :ivar raw:
-    :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
-    """
-
-    _attribute_map = {
-        "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
-    }
-
-    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
-        """
-        :keyword raw:
-        :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
-        """
-        super(Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1, self).__init__(**kwargs)
-        self.raw = raw
-        self.parsed = parsed
-
-
 class Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1(
     msrest.serialization.Model
 ):
@@ -659,8 +633,8 @@ class Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1(msrest.serial
         self.parsed = parsed
 
 
-class Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1(msrest.serialization.Model):
-    """Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1.
+class Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1(msrest.serialization.Model):
+    """Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1.
 
     :ivar raw:
     :vartype raw: str
@@ -680,7 +654,7 @@ class Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1(msrest.serializ
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1, self).__init__(**kwargs)
+        super(Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1, self).__init__(**kwargs)
         self.raw = raw
         self.parsed = parsed
 
@@ -1122,8 +1096,8 @@ class ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllo
         self.parsed = parsed
 
 
-class ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.serialization.Model):
-    """ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1.
+class ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1(msrest.serialization.Model):
+    """ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1.
 
     :ivar raw:
     :vartype raw: str
@@ -1143,15 +1117,15 @@ class ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.seria
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1, self).__init__(
+        super(ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1, self).__init__(
             **kwargs
         )
         self.raw = raw
         self.parsed = parsed
 
 
-class ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1(msrest.serialization.Model):
-    """ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1.
+class ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.serialization.Model):
+    """ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1.
 
     :ivar raw:
     :vartype raw: str
@@ -1171,7 +1145,7 @@ class ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1(msrest.seria
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1, self).__init__(
+        super(ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1, self).__init__(
             **kwargs
         )
         self.raw = raw
@@ -1349,6 +1323,32 @@ class ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValu
             self,
         ).__init__(**kwargs)
         self.match = match
+
+
+class ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1(msrest.serialization.Model):
+    """ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1.
+
+    :ivar raw:
+    :vartype raw: str
+    :ivar parsed:
+    :vartype parsed: str
+    """
+
+    _attribute_map = {
+        "raw": {"key": "raw", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
+    }
+
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
+        """
+        :keyword raw:
+        :paramtype raw: str
+        :keyword parsed:
+        :paramtype parsed: str
+        """
+        super(ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1, self).__init__(**kwargs)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1(msrest.serialization.Model):
@@ -2481,9 +2481,9 @@ class InvoiceData(msrest.serialization.Model):
     :ivar bank_account_number:
     :vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
     :ivar supplier_vat:
-    :vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
+    :vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVAT
     :ivar customer_vat:
-    :vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
+    :vartype customer_vat: ~affinda.models.InvoiceDataCustomerVAT
     :ivar bpay_biller_code:
     :vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
     :ivar bpay_reference:
@@ -2491,11 +2491,11 @@ class InvoiceData(msrest.serialization.Model):
     :ivar bank_sort_code:
     :vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
     :ivar bank_iban:
-    :vartype bank_iban: ~affinda.models.InvoiceDataBankIban
+    :vartype bank_iban: ~affinda.models.InvoiceDataBankIBAN
     :ivar bank_swift:
     :vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
     :ivar bank_bsb:
-    :vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
+    :vartype bank_bsb: ~affinda.models.InvoiceDataBankBSB
     :ivar customer_contact_name:
     :vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
     :ivar customer_company_name:
@@ -2564,14 +2564,14 @@ class InvoiceData(msrest.serialization.Model):
             "key": "bankAccountNumber",
             "type": "InvoiceDataBankAccountNumber",
         },
-        "supplier_vat": {"key": "supplierVat", "type": "InvoiceDataSupplierVat"},
-        "customer_vat": {"key": "customerVat", "type": "InvoiceDataCustomerVat"},
+        "supplier_vat": {"key": "supplierVAT", "type": "InvoiceDataSupplierVAT"},
+        "customer_vat": {"key": "customerVAT", "type": "InvoiceDataCustomerVAT"},
         "bpay_biller_code": {"key": "bpayBillerCode", "type": "InvoiceDataBpayBillerCode"},
         "bpay_reference": {"key": "bpayReference", "type": "InvoiceDataBpayReference"},
         "bank_sort_code": {"key": "bankSortCode", "type": "InvoiceDataBankSortCode"},
-        "bank_iban": {"key": "bankIban", "type": "InvoiceDataBankIban"},
+        "bank_iban": {"key": "bankIBAN", "type": "InvoiceDataBankIBAN"},
         "bank_swift": {"key": "bankSwift", "type": "InvoiceDataBankSwift"},
-        "bank_bsb": {"key": "bankBsb", "type": "InvoiceDataBankBsb"},
+        "bank_bsb": {"key": "bankBSB", "type": "InvoiceDataBankBSB"},
         "customer_contact_name": {
             "key": "customerContactName",
             "type": "InvoiceDataCustomerContactName",
@@ -2630,14 +2630,14 @@ class InvoiceData(msrest.serialization.Model):
         customer_business_number: Optional["_models.InvoiceDataCustomerBusinessNumber"] = None,
         payment_reference: Optional["_models.InvoiceDataPaymentReference"] = None,
         bank_account_number: Optional["_models.InvoiceDataBankAccountNumber"] = None,
-        supplier_vat: Optional["_models.InvoiceDataSupplierVat"] = None,
-        customer_vat: Optional["_models.InvoiceDataCustomerVat"] = None,
+        supplier_vat: Optional["_models.InvoiceDataSupplierVAT"] = None,
+        customer_vat: Optional["_models.InvoiceDataCustomerVAT"] = None,
         bpay_biller_code: Optional["_models.InvoiceDataBpayBillerCode"] = None,
         bpay_reference: Optional["_models.InvoiceDataBpayReference"] = None,
         bank_sort_code: Optional["_models.InvoiceDataBankSortCode"] = None,
-        bank_iban: Optional["_models.InvoiceDataBankIban"] = None,
+        bank_iban: Optional["_models.InvoiceDataBankIBAN"] = None,
         bank_swift: Optional["_models.InvoiceDataBankSwift"] = None,
-        bank_bsb: Optional["_models.InvoiceDataBankBsb"] = None,
+        bank_bsb: Optional["_models.InvoiceDataBankBSB"] = None,
         customer_contact_name: Optional["_models.InvoiceDataCustomerContactName"] = None,
         customer_company_name: Optional["_models.InvoiceDataCustomerCompanyName"] = None,
         supplier_company_name: Optional["_models.InvoiceDataSupplierCompanyName"] = None,
@@ -2688,9 +2688,9 @@ class InvoiceData(msrest.serialization.Model):
         :keyword bank_account_number:
         :paramtype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
         :keyword supplier_vat:
-        :paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
+        :paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVAT
         :keyword customer_vat:
-        :paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVat
+        :paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVAT
         :keyword bpay_biller_code:
         :paramtype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
         :keyword bpay_reference:
@@ -2698,11 +2698,11 @@ class InvoiceData(msrest.serialization.Model):
         :keyword bank_sort_code:
         :paramtype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
         :keyword bank_iban:
-        :paramtype bank_iban: ~affinda.models.InvoiceDataBankIban
+        :paramtype bank_iban: ~affinda.models.InvoiceDataBankIBAN
         :keyword bank_swift:
         :paramtype bank_swift: ~affinda.models.InvoiceDataBankSwift
         :keyword bank_bsb:
-        :paramtype bank_bsb: ~affinda.models.InvoiceDataBankBsb
+        :paramtype bank_bsb: ~affinda.models.InvoiceDataBankBSB
         :keyword customer_contact_name:
         :paramtype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
         :keyword customer_company_name:
@@ -3086,10 +3086,10 @@ class InvoiceDataBankAccountNumber(
         self.parsed = parsed
 
 
-class InvoiceDataBankBsb(
-    TextAnnotation, Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1
+class InvoiceDataBankBSB(
+    TextAnnotation, Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1
 ):
-    """InvoiceDataBankBsb.
+    """InvoiceDataBankBSB.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -3216,7 +3216,7 @@ class InvoiceDataBankBsb(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataBankBsb, self).__init__(
+        super(InvoiceDataBankBSB, self).__init__(
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
@@ -3251,10 +3251,10 @@ class InvoiceDataBankBsb(
         self.parsed = parsed
 
 
-class InvoiceDataBankIban(
-    TextAnnotation, Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1
+class InvoiceDataBankIBAN(
+    TextAnnotation, ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1
 ):
-    """InvoiceDataBankIban.
+    """InvoiceDataBankIBAN.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -3381,7 +3381,7 @@ class InvoiceDataBankIban(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataBankIban, self).__init__(
+        super(InvoiceDataBankIBAN, self).__init__(
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
@@ -5066,10 +5066,10 @@ class InvoiceDataCustomerPhoneNumber(
         self.parsed = parsed
 
 
-class InvoiceDataCustomerVat(
-    TextAnnotation, ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1
+class InvoiceDataCustomerVAT(
+    TextAnnotation, ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1
 ):
-    """InvoiceDataCustomerVat.
+    """InvoiceDataCustomerVAT.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -5196,7 +5196,7 @@ class InvoiceDataCustomerVat(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataCustomerVat, self).__init__(
+        super(InvoiceDataCustomerVAT, self).__init__(
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
@@ -7376,10 +7376,10 @@ class InvoiceDataSupplierPhoneNumber(
         self.parsed = parsed
 
 
-class InvoiceDataSupplierVat(
-    TextAnnotation, ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1
+class InvoiceDataSupplierVAT(
+    TextAnnotation, ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1
 ):
-    """InvoiceDataSupplierVat.
+    """InvoiceDataSupplierVAT.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -7506,7 +7506,7 @@ class InvoiceDataSupplierVat(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataSupplierVat, self).__init__(
+        super(InvoiceDataSupplierVAT, self).__init__(
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,

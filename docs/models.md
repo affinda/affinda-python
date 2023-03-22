@@ -233,34 +233,6 @@ def __init__(**kwargs)
 - `raw`: 
 - `parsed`: 
 
-<a id="models._models.Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1"></a>
-
-## Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1 Objects
-
-```python
-class Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1(msrest.serialization.Model)
-```
-
-Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1.
-
-:ivar raw:
-:vartype raw: str
-:ivar parsed:
-:vartype parsed: str
-
-<a id="models._models.Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `raw`: 
-- `parsed`: 
-
 <a id="models._models.Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1"></a>
 
 ## Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1 Objects
@@ -510,22 +482,22 @@ def __init__(**kwargs)
 - `raw`: 
 - `parsed`: 
 
-<a id="models._models.Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1"></a>
+<a id="models._models.Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1"></a>
 
-## Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1 Objects
+## Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1 Objects
 
 ```python
-class Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1(msrest.serialization.Model)
+class Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1(msrest.serialization.Model)
 ```
 
-Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1.
+Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1.__init__"></a>
+<a id="models._models.Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -936,22 +908,22 @@ def __init__(**kwargs)
 - `raw`: 
 - `parsed`: 
 
-<a id="models._models.ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1"></a>
+<a id="models._models.ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1"></a>
 
-## ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1 Objects
+## ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1 Objects
 
 ```python
-class ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.serialization.Model)
+class ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1(msrest.serialization.Model)
 ```
 
-ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1.
+ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1.__init__"></a>
+<a id="models._models.ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -964,22 +936,22 @@ def __init__(**kwargs)
 - `raw`: 
 - `parsed`: 
 
-<a id="models._models.ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1"></a>
+<a id="models._models.ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1"></a>
 
-## ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1 Objects
+## ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1 Objects
 
 ```python
-class ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1(msrest.serialization.Model)
+class ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.serialization.Model)
 ```
 
-ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1.
+ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1.__init__"></a>
+<a id="models._models.ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -1152,6 +1124,34 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `match`: 
+
+<a id="models._models.ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1"></a>
+
+## ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1 Objects
+
+```python
+class ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1(msrest.serialization.Model)
+```
+
+ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
 
 <a id="models._models.ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1"></a>
 
@@ -1912,9 +1912,9 @@ InvoiceData.
 :ivar bank_account_number:
 :vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
 :ivar supplier_vat:
-:vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
+:vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVAT
 :ivar customer_vat:
-:vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
+:vartype customer_vat: ~affinda.models.InvoiceDataCustomerVAT
 :ivar bpay_biller_code:
 :vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
 :ivar bpay_reference:
@@ -1922,11 +1922,11 @@ InvoiceData.
 :ivar bank_sort_code:
 :vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
 :ivar bank_iban:
-:vartype bank_iban: ~affinda.models.InvoiceDataBankIban
+:vartype bank_iban: ~affinda.models.InvoiceDataBankIBAN
 :ivar bank_swift:
 :vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
 :ivar bank_bsb:
-:vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
+:vartype bank_bsb: ~affinda.models.InvoiceDataBankBSB
 :ivar customer_contact_name:
 :vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
 :ivar customer_company_name:
@@ -2155,15 +2155,15 @@ is the confidence that the text in the image has been correctly read by the mode
 - `content_type`: Required.
 - `parsed`: 
 
-<a id="models._models.InvoiceDataBankBsb"></a>
+<a id="models._models.InvoiceDataBankBSB"></a>
 
-## InvoiceDataBankBsb Objects
+## InvoiceDataBankBSB Objects
 
 ```python
-class InvoiceDataBankBsb(TextAnnotation,  Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1)
+class InvoiceDataBankBSB(TextAnnotation,  Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1)
 ```
 
-InvoiceDataBankBsb.
+InvoiceDataBankBSB.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -2201,7 +2201,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.InvoiceDataBankBsb.__init__"></a>
+<a id="models._models.InvoiceDataBankBSB.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -2230,15 +2230,15 @@ is the confidence that the text in the image has been correctly read by the mode
 - `content_type`: Required.
 - `parsed`: 
 
-<a id="models._models.InvoiceDataBankIban"></a>
+<a id="models._models.InvoiceDataBankIBAN"></a>
 
-## InvoiceDataBankIban Objects
+## InvoiceDataBankIBAN Objects
 
 ```python
-class InvoiceDataBankIban(TextAnnotation,  Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1)
+class InvoiceDataBankIBAN(TextAnnotation,  ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1)
 ```
 
-InvoiceDataBankIban.
+InvoiceDataBankIBAN.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -2276,7 +2276,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.InvoiceDataBankIban.__init__"></a>
+<a id="models._models.InvoiceDataBankIBAN.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -3055,15 +3055,15 @@ is the confidence that the text in the image has been correctly read by the mode
 - `content_type`: Required.
 - `parsed`: 
 
-<a id="models._models.InvoiceDataCustomerVat"></a>
+<a id="models._models.InvoiceDataCustomerVAT"></a>
 
-## InvoiceDataCustomerVat Objects
+## InvoiceDataCustomerVAT Objects
 
 ```python
-class InvoiceDataCustomerVat(TextAnnotation,  ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1)
+class InvoiceDataCustomerVAT(TextAnnotation,  ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1)
 ```
 
-InvoiceDataCustomerVat.
+InvoiceDataCustomerVAT.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -3101,7 +3101,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.InvoiceDataCustomerVat.__init__"></a>
+<a id="models._models.InvoiceDataCustomerVAT.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -4105,15 +4105,15 @@ is the confidence that the text in the image has been correctly read by the mode
 - `content_type`: Required.
 - `parsed`: 
 
-<a id="models._models.InvoiceDataSupplierVat"></a>
+<a id="models._models.InvoiceDataSupplierVAT"></a>
 
-## InvoiceDataSupplierVat Objects
+## InvoiceDataSupplierVAT Objects
 
 ```python
-class InvoiceDataSupplierVat(TextAnnotation,  ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1)
+class InvoiceDataSupplierVAT(TextAnnotation,  ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1)
 ```
 
-InvoiceDataSupplierVat.
+InvoiceDataSupplierVAT.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -4151,7 +4151,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.InvoiceDataSupplierVat.__init__"></a>
+<a id="models._models.InvoiceDataSupplierVAT.__init__"></a>
 
 #### \_\_init\_\_
 

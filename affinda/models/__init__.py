@@ -10,7 +10,6 @@ try:
     from ._models_py3 import AnnotationV2Base
     from ._models_py3 import Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1
     from ._models_py3 import Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1
-    from ._models_py3 import Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1
     from ._models_py3 import (
         Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1,
     )
@@ -24,7 +23,7 @@ try:
     from ._models_py3 import Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1
     from ._models_py3 import Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1
     from ._models_py3 import Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1
-    from ._models_py3 import Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1
+    from ._models_py3 import Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1
     from ._models_py3 import (
         Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1,
     )
@@ -47,8 +46,8 @@ try:
     from ._models_py3 import (
         ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1,
     )
-    from ._models_py3 import ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1
-    from ._models_py3 import ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1
+    from ._models_py3 import ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1
+    from ._models_py3 import ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1
     from ._models_py3 import ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1
     from ._models_py3 import (
         ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1,
@@ -65,6 +64,7 @@ try:
     from ._models_py3 import (
         ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1,
     )
+    from ._models_py3 import ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1
     from ._models_py3 import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1
     from ._models_py3 import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1
     from ._models_py3 import DateAnnotation
@@ -84,8 +84,8 @@ try:
     from ._models_py3 import Invoice
     from ._models_py3 import InvoiceData
     from ._models_py3 import InvoiceDataBankAccountNumber
-    from ._models_py3 import InvoiceDataBankBsb
-    from ._models_py3 import InvoiceDataBankIban
+    from ._models_py3 import InvoiceDataBankBSB
+    from ._models_py3 import InvoiceDataBankIBAN
     from ._models_py3 import InvoiceDataBankSortCode
     from ._models_py3 import InvoiceDataBankSwift
     from ._models_py3 import InvoiceDataBpayBillerCode
@@ -96,7 +96,7 @@ try:
     from ._models_py3 import InvoiceDataCustomerEmail
     from ._models_py3 import InvoiceDataCustomerNumber
     from ._models_py3 import InvoiceDataCustomerPhoneNumber
-    from ._models_py3 import InvoiceDataCustomerVat
+    from ._models_py3 import InvoiceDataCustomerVAT
     from ._models_py3 import InvoiceDataInvoiceNumber
     from ._models_py3 import InvoiceDataInvoicePurchaseOrderNumber
     from ._models_py3 import InvoiceDataPaymentAmountBase
@@ -110,7 +110,7 @@ try:
     from ._models_py3 import InvoiceDataSupplierEmail
     from ._models_py3 import InvoiceDataSupplierFax
     from ._models_py3 import InvoiceDataSupplierPhoneNumber
-    from ._models_py3 import InvoiceDataSupplierVat
+    from ._models_py3 import InvoiceDataSupplierVAT
     from ._models_py3 import InvoiceDataSupplierWebsite
     from ._models_py3 import InvoiceDataTablesItem
     from ._models_py3 import InvoiceRequestBody
@@ -275,7 +275,6 @@ except (SyntaxError, ImportError):
     from ._models import AnnotationV2Base  # type: ignore
     from ._models import Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1  # type: ignore
     from ._models import Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1  # type: ignore
-    from ._models import Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1  # type: ignore
     from ._models import Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1  # type: ignore
     from ._models import Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1  # type: ignore
     from ._models import Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1  # type: ignore
@@ -285,7 +284,7 @@ except (SyntaxError, ImportError):
     from ._models import Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1  # type: ignore
     from ._models import Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1  # type: ignore
     from ._models import Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1  # type: ignore
-    from ._models import Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1  # type: ignore
+    from ._models import Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1  # type: ignore
     from ._models import Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1  # type: ignore
     from ._models import Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification  # type: ignore
     from ._models import Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1  # type: ignore
@@ -300,14 +299,15 @@ except (SyntaxError, ImportError):
     from ._models import Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1  # type: ignore
     from ._models import ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1  # type: ignore
     from ._models import ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1  # type: ignore
-    from ._models import ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1  # type: ignore
-    from ._models import ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1  # type: ignore
+    from ._models import ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1  # type: ignore
+    from ._models import ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1  # type: ignore
     from ._models import ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1  # type: ignore
     from ._models import ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1  # type: ignore
     from ._models import ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1  # type: ignore
     from ._models import ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties  # type: ignore
     from ._models import ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1  # type: ignore
     from ._models import ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1  # type: ignore
+    from ._models import ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1  # type: ignore
     from ._models import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1  # type: ignore
     from ._models import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1  # type: ignore
     from ._models import DateAnnotation  # type: ignore
@@ -327,8 +327,8 @@ except (SyntaxError, ImportError):
     from ._models import Invoice  # type: ignore
     from ._models import InvoiceData  # type: ignore
     from ._models import InvoiceDataBankAccountNumber  # type: ignore
-    from ._models import InvoiceDataBankBsb  # type: ignore
-    from ._models import InvoiceDataBankIban  # type: ignore
+    from ._models import InvoiceDataBankBSB  # type: ignore
+    from ._models import InvoiceDataBankIBAN  # type: ignore
     from ._models import InvoiceDataBankSortCode  # type: ignore
     from ._models import InvoiceDataBankSwift  # type: ignore
     from ._models import InvoiceDataBpayBillerCode  # type: ignore
@@ -339,7 +339,7 @@ except (SyntaxError, ImportError):
     from ._models import InvoiceDataCustomerEmail  # type: ignore
     from ._models import InvoiceDataCustomerNumber  # type: ignore
     from ._models import InvoiceDataCustomerPhoneNumber  # type: ignore
-    from ._models import InvoiceDataCustomerVat  # type: ignore
+    from ._models import InvoiceDataCustomerVAT  # type: ignore
     from ._models import InvoiceDataInvoiceNumber  # type: ignore
     from ._models import InvoiceDataInvoicePurchaseOrderNumber  # type: ignore
     from ._models import InvoiceDataPaymentAmountBase  # type: ignore
@@ -353,7 +353,7 @@ except (SyntaxError, ImportError):
     from ._models import InvoiceDataSupplierEmail  # type: ignore
     from ._models import InvoiceDataSupplierFax  # type: ignore
     from ._models import InvoiceDataSupplierPhoneNumber  # type: ignore
-    from ._models import InvoiceDataSupplierVat  # type: ignore
+    from ._models import InvoiceDataSupplierVAT  # type: ignore
     from ._models import InvoiceDataSupplierWebsite  # type: ignore
     from ._models import InvoiceDataTablesItem  # type: ignore
     from ._models import InvoiceRequestBody  # type: ignore
@@ -512,7 +512,6 @@ __all__ = [
     "AnnotationV2Base",
     "Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1",
     "Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1",
-    "Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1",
     "Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1",
     "Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1",
     "Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1",
@@ -522,7 +521,7 @@ __all__ = [
     "Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1",
     "Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1",
     "Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1",
-    "Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1",
+    "Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1",
     "Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1",
     "Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification",
     "Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1",
@@ -537,14 +536,15 @@ __all__ = [
     "Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1",
     "ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1",
     "ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1",
-    "ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1",
-    "ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1",
+    "ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1",
+    "ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1",
     "ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1",
     "ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1",
     "ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1",
     "ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties",
     "ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1",
     "ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1",
+    "ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1",
     "ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1",
     "ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1",
     "DateAnnotation",
@@ -564,8 +564,8 @@ __all__ = [
     "Invoice",
     "InvoiceData",
     "InvoiceDataBankAccountNumber",
-    "InvoiceDataBankBsb",
-    "InvoiceDataBankIban",
+    "InvoiceDataBankBSB",
+    "InvoiceDataBankIBAN",
     "InvoiceDataBankSortCode",
     "InvoiceDataBankSwift",
     "InvoiceDataBpayBillerCode",
@@ -576,7 +576,7 @@ __all__ = [
     "InvoiceDataCustomerEmail",
     "InvoiceDataCustomerNumber",
     "InvoiceDataCustomerPhoneNumber",
-    "InvoiceDataCustomerVat",
+    "InvoiceDataCustomerVAT",
     "InvoiceDataInvoiceNumber",
     "InvoiceDataInvoicePurchaseOrderNumber",
     "InvoiceDataPaymentAmountBase",
@@ -590,7 +590,7 @@ __all__ = [
     "InvoiceDataSupplierEmail",
     "InvoiceDataSupplierFax",
     "InvoiceDataSupplierPhoneNumber",
-    "InvoiceDataSupplierVat",
+    "InvoiceDataSupplierVAT",
     "InvoiceDataSupplierWebsite",
     "InvoiceDataTablesItem",
     "InvoiceRequestBody",
