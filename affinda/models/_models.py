@@ -2219,8 +2219,8 @@ class DocumentCreate(msrest.serialization.Model):
     :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
     :vartype language: str
     :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
-     of an existing document. If "false" (default), will parse the document normally whether its a
-     duplicate or not.
+     of an existing document, no credits will be consumed. If "false" (default), will parse the
+     document normally whether its a duplicate or not.
     :vartype reject_duplicates: bool
     """
 
@@ -2262,8 +2262,8 @@ class DocumentCreate(msrest.serialization.Model):
         :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
         :paramtype language: str
         :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
-         duplicate of an existing document. If "false" (default), will parse the document normally
-         whether its a duplicate or not.
+         duplicate of an existing document, no credits will be consumed. If "false" (default), will
+         parse the document normally whether its a duplicate or not.
         :paramtype reject_duplicates: bool
         """
         super(DocumentCreate, self).__init__(**kwargs)
@@ -14237,6 +14237,10 @@ class Workspace(msrest.serialization.Model):
     :ivar reject_invalid_documents: If true, the uploaded document will be rejected if it's of the
      wrong document type, or if its document type cannot be determined. No credits will be consumed.
     :vartype reject_invalid_documents: bool
+    :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
+     of an existing document, no credits will be consumed. If "false" (default), will parse the
+     document normally whether its a duplicate or not.
+    :vartype reject_duplicates: bool
     :ivar members:
     :vartype members: list[~affinda.models.User]
     :ivar unvalidated_docs_count: Number of unvalidated documents in the workspace.
@@ -14258,6 +14262,7 @@ class Workspace(msrest.serialization.Model):
         "visibility": {"key": "visibility", "type": "str"},
         "collections": {"key": "collections", "type": "[WorkspaceCollectionsItem]"},
         "reject_invalid_documents": {"key": "rejectInvalidDocuments", "type": "bool"},
+        "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
         "members": {"key": "members", "type": "[User]"},
         "unvalidated_docs_count": {"key": "unvalidatedDocsCount", "type": "int"},
         "confirmed_docs_count": {"key": "confirmedDocsCount", "type": "int"},
@@ -14282,6 +14287,10 @@ class Workspace(msrest.serialization.Model):
          the wrong document type, or if its document type cannot be determined. No credits will be
          consumed.
         :paramtype reject_invalid_documents: bool
+        :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
+         duplicate of an existing document, no credits will be consumed. If "false" (default), will
+         parse the document normally whether its a duplicate or not.
+        :paramtype reject_duplicates: bool
         :keyword members:
         :paramtype members: list[~affinda.models.User]
         :keyword unvalidated_docs_count: Number of unvalidated documents in the workspace.
@@ -14298,6 +14307,7 @@ class Workspace(msrest.serialization.Model):
         self.visibility = kwargs.get("visibility", None)
         self.collections = kwargs.get("collections", None)
         self.reject_invalid_documents = kwargs.get("reject_invalid_documents", None)
+        self.reject_duplicates = kwargs.get("reject_duplicates", False)
         self.members = kwargs.get("members", None)
         self.unvalidated_docs_count = kwargs.get("unvalidated_docs_count", None)
         self.confirmed_docs_count = kwargs.get("confirmed_docs_count", None)
@@ -14443,6 +14453,10 @@ class WorkspaceCreate(msrest.serialization.Model):
     :ivar reject_invalid_documents: If true, the uploaded document will be rejected if it's of the
      wrong document type, or if its document type cannot be determined. No credits will be consumed.
     :vartype reject_invalid_documents: bool
+    :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
+     of an existing document, no credits will be consumed. If "false" (default), will parse the
+     document normally whether its a duplicate or not.
+    :vartype reject_duplicates: bool
     """
 
     _validation = {
@@ -14455,6 +14469,7 @@ class WorkspaceCreate(msrest.serialization.Model):
         "name": {"key": "name", "type": "str"},
         "visibility": {"key": "visibility", "type": "str"},
         "reject_invalid_documents": {"key": "rejectInvalidDocuments", "type": "bool"},
+        "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
@@ -14471,12 +14486,17 @@ class WorkspaceCreate(msrest.serialization.Model):
          the wrong document type, or if its document type cannot be determined. No credits will be
          consumed.
         :paramtype reject_invalid_documents: bool
+        :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
+         duplicate of an existing document, no credits will be consumed. If "false" (default), will
+         parse the document normally whether its a duplicate or not.
+        :paramtype reject_duplicates: bool
         """
         super(WorkspaceCreate, self).__init__(**kwargs)
         self.organization = kwargs["organization"]
         self.name = kwargs["name"]
         self.visibility = kwargs.get("visibility", None)
         self.reject_invalid_documents = kwargs.get("reject_invalid_documents", None)
+        self.reject_duplicates = kwargs.get("reject_duplicates", False)
 
 
 class WorkspaceMembership(msrest.serialization.Model):
@@ -14549,12 +14569,17 @@ class WorkspaceUpdate(msrest.serialization.Model):
     :ivar reject_invalid_documents: If true, the uploaded document will be rejected if it's of the
      wrong document type, or if its document type cannot be determined. No credits will be consumed.
     :vartype reject_invalid_documents: bool
+    :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
+     of an existing document, no credits will be consumed. If "false" (default), will parse the
+     document normally whether its a duplicate or not.
+    :vartype reject_duplicates: bool
     """
 
     _attribute_map = {
         "name": {"key": "name", "type": "str"},
         "visibility": {"key": "visibility", "type": "str"},
         "reject_invalid_documents": {"key": "rejectInvalidDocuments", "type": "bool"},
+        "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
@@ -14569,11 +14594,16 @@ class WorkspaceUpdate(msrest.serialization.Model):
          the wrong document type, or if its document type cannot be determined. No credits will be
          consumed.
         :paramtype reject_invalid_documents: bool
+        :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
+         duplicate of an existing document, no credits will be consumed. If "false" (default), will
+         parse the document normally whether its a duplicate or not.
+        :paramtype reject_duplicates: bool
         """
         super(WorkspaceUpdate, self).__init__(**kwargs)
         self.name = kwargs.get("name", None)
         self.visibility = kwargs.get("visibility", None)
         self.reject_invalid_documents = kwargs.get("reject_invalid_documents", None)
+        self.reject_duplicates = kwargs.get("reject_duplicates", False)
 
 
 class YearsExperienceAnnotation(Annotation):

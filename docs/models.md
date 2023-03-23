@@ -1842,8 +1842,8 @@ DocumentCreate.
 :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 :vartype language: str
 :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
- of an existing document. If "false" (default), will parse the document normally whether its a
- duplicate or not.
+ of an existing document, no credits will be consumed. If "false" (default), will parse the
+ document normally whether its a duplicate or not.
 :vartype reject_duplicates: bool
 
 <a id="models._models.DocumentCreate.__init__"></a>
@@ -1870,8 +1870,8 @@ processing is complete.
 deleted.  Defaults to no expiry.
 - `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 - `reject_duplicates`: If "true", parsing will fail when the uploaded document is
-duplicate of an existing document. If "false" (default), will parse the document normally
-whether its a duplicate or not.
+duplicate of an existing document, no credits will be consumed. If "false" (default), will
+parse the document normally whether its a duplicate or not.
 
 <a id="models._models.DocumentError"></a>
 
@@ -10380,6 +10380,10 @@ All required parameters must be populated in order to send to Azure.
 :ivar reject_invalid_documents: If true, the uploaded document will be rejected if it's of the
  wrong document type, or if its document type cannot be determined. No credits will be consumed.
 :vartype reject_invalid_documents: bool
+:ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
+ of an existing document, no credits will be consumed. If "false" (default), will parse the
+ document normally whether its a duplicate or not.
+:vartype reject_duplicates: bool
 :ivar members:
 :vartype members: list[~affinda.models.User]
 :ivar unvalidated_docs_count: Number of unvalidated documents in the workspace.
@@ -10409,6 +10413,9 @@ workspace. Known values are: "organization", "private".
 - `reject_invalid_documents`: If true, the uploaded document will be rejected if it's of
 the wrong document type, or if its document type cannot be determined. No credits will be
 consumed.
+- `reject_duplicates`: If "true", parsing will fail when the uploaded document is
+duplicate of an existing document, no credits will be consumed. If "false" (default), will
+parse the document normally whether its a duplicate or not.
 - `members`: 
 - `unvalidated_docs_count`: Number of unvalidated documents in the workspace.
 - `confirmed_docs_count`: Number of validated documents in the workspace.
@@ -10524,6 +10531,10 @@ All required parameters must be populated in order to send to Azure.
 :ivar reject_invalid_documents: If true, the uploaded document will be rejected if it's of the
  wrong document type, or if its document type cannot be determined. No credits will be consumed.
 :vartype reject_invalid_documents: bool
+:ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
+ of an existing document, no credits will be consumed. If "false" (default), will parse the
+ document normally whether its a duplicate or not.
+:vartype reject_duplicates: bool
 
 <a id="models._models.WorkspaceCreate.__init__"></a>
 
@@ -10543,6 +10554,9 @@ workspace. Known values are: "organization", "private".
 - `reject_invalid_documents`: If true, the uploaded document will be rejected if it's of
 the wrong document type, or if its document type cannot be determined. No credits will be
 consumed.
+- `reject_duplicates`: If "true", parsing will fail when the uploaded document is
+duplicate of an existing document, no credits will be consumed. If "false" (default), will
+parse the document normally whether its a duplicate or not.
 
 <a id="models._models.WorkspaceMembership"></a>
 
@@ -10622,6 +10636,10 @@ WorkspaceUpdate.
 :ivar reject_invalid_documents: If true, the uploaded document will be rejected if it's of the
  wrong document type, or if its document type cannot be determined. No credits will be consumed.
 :vartype reject_invalid_documents: bool
+:ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
+ of an existing document, no credits will be consumed. If "false" (default), will parse the
+ document normally whether its a duplicate or not.
+:vartype reject_duplicates: bool
 
 <a id="models._models.WorkspaceUpdate.__init__"></a>
 
@@ -10640,6 +10658,9 @@ workspace. Known values are: "organization", "private".
 - `reject_invalid_documents`: If true, the uploaded document will be rejected if it's of
 the wrong document type, or if its document type cannot be determined. No credits will be
 consumed.
+- `reject_duplicates`: If "true", parsing will fail when the uploaded document is
+duplicate of an existing document, no credits will be consumed. If "false" (default), will
+parse the document normally whether its a duplicate or not.
 
 <a id="models._models.YearsExperienceAnnotation"></a>
 
