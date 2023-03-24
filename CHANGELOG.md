@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Adding group annotation content type
 - Add rejectDuplicates setting to workspace
+- Add `hideToolbar` to resume & JD search config
 
 ## [4.2.0] - 2023-03-20
 ### Fixed

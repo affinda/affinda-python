@@ -5833,6 +5833,8 @@ Variables are only populated by the server, and will be ignored when sending a r
 :vartype username: str
 :ivar actions: A list of actions to show in the dropdown in the embedded search tool.
 :vartype actions: list[~affinda.models.JobDescriptionSearchConfigActionsItem]
+:ivar hide_toolbar: Hide the reset/import toolbar.
+:vartype hide_toolbar: bool
 
 <a id="models._models.JobDescriptionSearchConfig.__init__"></a>
 
@@ -5870,6 +5872,7 @@ no limitation.
 user.
 - `search_tool_theme`: Customize the theme of the embeded search tool.
 - `actions`: A list of actions to show in the dropdown in the embedded search tool.
+- `hide_toolbar`: Hide the reset/import toolbar.
 
 <a id="models._models.JobDescriptionSearchConfigActionsItem"></a>
 
@@ -8877,6 +8880,8 @@ Variables are only populated by the server, and will be ignored when sending a r
 :vartype username: str
 :ivar actions: A list of actions to show in the dropdown in the embedded search tool.
 :vartype actions: list[~affinda.models.ResumeSearchConfigActionsItem]
+:ivar hide_toolbar: Hide the reset/import toolbar.
+:vartype hide_toolbar: bool
 
 <a id="models._models.ResumeSearchConfig.__init__"></a>
 
@@ -8914,6 +8919,7 @@ no limitation.
 user.
 - `search_tool_theme`: Customize the theme of the embeded search tool.
 - `actions`: A list of actions to show in the dropdown in the embedded search tool.
+- `hide_toolbar`: Hide the reset/import toolbar.
 
 <a id="models._models.ResumeSearchConfigActionsItem"></a>
 

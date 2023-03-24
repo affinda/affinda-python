@@ -8360,6 +8360,8 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
     :vartype username: str
     :ivar actions: A list of actions to show in the dropdown in the embedded search tool.
     :vartype actions: list[~affinda.models.JobDescriptionSearchConfigActionsItem]
+    :ivar hide_toolbar: Hide the reset/import toolbar.
+    :vartype hide_toolbar: bool
     """
 
     _validation = {
@@ -8394,6 +8396,7 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         "user_id": {"key": "userId", "type": "int"},
         "username": {"key": "username", "type": "str"},
         "actions": {"key": "actions", "type": "[JobDescriptionSearchConfigActionsItem]"},
+        "hide_toolbar": {"key": "hideToolbar", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
@@ -8448,6 +8451,8 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         :paramtype search_tool_theme: dict[str, any]
         :keyword actions: A list of actions to show in the dropdown in the embedded search tool.
         :paramtype actions: list[~affinda.models.JobDescriptionSearchConfigActionsItem]
+        :keyword hide_toolbar: Hide the reset/import toolbar.
+        :paramtype hide_toolbar: bool
         """
         super(JobDescriptionSearchConfig, self).__init__(**kwargs)
         self.allow_pdf_download = kwargs.get("allow_pdf_download", None)
@@ -8476,6 +8481,7 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         self.user_id = None
         self.username = None
         self.actions = kwargs.get("actions", None)
+        self.hide_toolbar = kwargs.get("hide_toolbar", None)
 
 
 class JobDescriptionSearchConfigActionsItem(msrest.serialization.Model):
@@ -12231,6 +12237,8 @@ class ResumeSearchConfig(msrest.serialization.Model):
     :vartype username: str
     :ivar actions: A list of actions to show in the dropdown in the embedded search tool.
     :vartype actions: list[~affinda.models.ResumeSearchConfigActionsItem]
+    :ivar hide_toolbar: Hide the reset/import toolbar.
+    :vartype hide_toolbar: bool
     """
 
     _validation = {
@@ -12265,6 +12273,7 @@ class ResumeSearchConfig(msrest.serialization.Model):
         "user_id": {"key": "userId", "type": "int"},
         "username": {"key": "username", "type": "str"},
         "actions": {"key": "actions", "type": "[ResumeSearchConfigActionsItem]"},
+        "hide_toolbar": {"key": "hideToolbar", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
@@ -12319,6 +12328,8 @@ class ResumeSearchConfig(msrest.serialization.Model):
         :paramtype search_tool_theme: dict[str, any]
         :keyword actions: A list of actions to show in the dropdown in the embedded search tool.
         :paramtype actions: list[~affinda.models.ResumeSearchConfigActionsItem]
+        :keyword hide_toolbar: Hide the reset/import toolbar.
+        :paramtype hide_toolbar: bool
         """
         super(ResumeSearchConfig, self).__init__(**kwargs)
         self.allow_pdf_download = kwargs.get("allow_pdf_download", None)
@@ -12347,6 +12358,7 @@ class ResumeSearchConfig(msrest.serialization.Model):
         self.user_id = None
         self.username = None
         self.actions = kwargs.get("actions", None)
+        self.hide_toolbar = kwargs.get("hide_toolbar", None)
 
 
 class ResumeSearchConfigActionsItem(msrest.serialization.Model):
