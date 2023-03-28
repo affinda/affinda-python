@@ -191,7 +191,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype unvalidated_docs_count: int
 :ivar confirmed_docs_count: Number of validated documents in the collection.
 :vartype confirmed_docs_count: int
-:ivar ingest_email:
+:ivar ingest_email: When you send email to this address, any document attached in the body will
+ be uploaded to this collection.
 :vartype ingest_email: str
 
 <a id="models._models.Collection.__init__"></a>
@@ -217,7 +218,8 @@ is not ambiguous.
 - `extractor_config`: Extra configurations specific to an extractor.
 - `unvalidated_docs_count`: Number of unvalidated documents in the collection.
 - `confirmed_docs_count`: Number of validated documents in the collection.
-- `ingest_email`: 
+- `ingest_email`: When you send email to this address, any document attached in the body
+will be uploaded to this collection.
 
 <a id="models._models.CollectionCreate"></a>
 
@@ -10467,8 +10469,12 @@ All required parameters must be populated in order to send to Azure.
 :vartype unvalidated_docs_count: int
 :ivar confirmed_docs_count: Number of validated documents in the workspace.
 :vartype confirmed_docs_count: int
-:ivar ingest_email:
+:ivar ingest_email: When you send email to this address, any document attached in the body will
+ be uploaded to this workspace.
 :vartype ingest_email: str
+:ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
+ ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
+:vartype whitelist_ingest_addresses: list[str]
 
 <a id="models._models.Workspace.__init__"></a>
 
@@ -10496,7 +10502,10 @@ parse the document normally whether its a duplicate or not.
 - `members`: 
 - `unvalidated_docs_count`: Number of unvalidated documents in the workspace.
 - `confirmed_docs_count`: Number of validated documents in the workspace.
-- `ingest_email`: 
+- `ingest_email`: When you send email to this address, any document attached in the body
+will be uploaded to this workspace.
+- `whitelist_ingest_addresses`: If specified, only emails from these addresses will be
+ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
 
 <a id="models._models.WorkspaceCollectionsItem"></a>
 
@@ -10612,6 +10621,9 @@ All required parameters must be populated in order to send to Azure.
  of an existing document, no credits will be consumed. If "false" (default), will parse the
  document normally whether its a duplicate or not.
 :vartype reject_duplicates: bool
+:ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
+ ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
+:vartype whitelist_ingest_addresses: list[str]
 
 <a id="models._models.WorkspaceCreate.__init__"></a>
 
@@ -10634,6 +10646,8 @@ consumed.
 - `reject_duplicates`: If "true", parsing will fail when the uploaded document is
 duplicate of an existing document, no credits will be consumed. If "false" (default), will
 parse the document normally whether its a duplicate or not.
+- `whitelist_ingest_addresses`: If specified, only emails from these addresses will be
+ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
 
 <a id="models._models.WorkspaceMembership"></a>
 
@@ -10717,6 +10731,9 @@ WorkspaceUpdate.
  of an existing document, no credits will be consumed. If "false" (default), will parse the
  document normally whether its a duplicate or not.
 :vartype reject_duplicates: bool
+:ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
+ ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
+:vartype whitelist_ingest_addresses: list[str]
 
 <a id="models._models.WorkspaceUpdate.__init__"></a>
 
@@ -10738,6 +10755,8 @@ consumed.
 - `reject_duplicates`: If "true", parsing will fail when the uploaded document is
 duplicate of an existing document, no credits will be consumed. If "false" (default), will
 parse the document normally whether its a duplicate or not.
+- `whitelist_ingest_addresses`: If specified, only emails from these addresses will be
+ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
 
 <a id="models._models.YearsExperienceAnnotation"></a>
 

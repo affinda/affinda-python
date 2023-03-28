@@ -299,7 +299,8 @@ class Collection(msrest.serialization.Model):
     :vartype unvalidated_docs_count: int
     :ivar confirmed_docs_count: Number of validated documents in the collection.
     :vartype confirmed_docs_count: int
-    :ivar ingest_email:
+    :ivar ingest_email: When you send email to this address, any document attached in the body will
+     be uploaded to this collection.
     :vartype ingest_email: str
     """
 
@@ -369,7 +370,8 @@ class Collection(msrest.serialization.Model):
         :paramtype unvalidated_docs_count: int
         :keyword confirmed_docs_count: Number of validated documents in the collection.
         :paramtype confirmed_docs_count: int
-        :keyword ingest_email:
+        :keyword ingest_email: When you send email to this address, any document attached in the body
+         will be uploaded to this collection.
         :paramtype ingest_email: str
         """
         super(Collection, self).__init__(**kwargs)
@@ -16935,8 +16937,12 @@ class Workspace(msrest.serialization.Model):
     :vartype unvalidated_docs_count: int
     :ivar confirmed_docs_count: Number of validated documents in the workspace.
     :vartype confirmed_docs_count: int
-    :ivar ingest_email:
+    :ivar ingest_email: When you send email to this address, any document attached in the body will
+     be uploaded to this workspace.
     :vartype ingest_email: str
+    :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
+     ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
+    :vartype whitelist_ingest_addresses: list[str]
     """
 
     _validation = {
@@ -16955,6 +16961,7 @@ class Workspace(msrest.serialization.Model):
         "unvalidated_docs_count": {"key": "unvalidatedDocsCount", "type": "int"},
         "confirmed_docs_count": {"key": "confirmedDocsCount", "type": "int"},
         "ingest_email": {"key": "ingestEmail", "type": "str"},
+        "whitelist_ingest_addresses": {"key": "whitelistIngestAddresses", "type": "[str]"},
     }
 
     def __init__(
@@ -16971,6 +16978,7 @@ class Workspace(msrest.serialization.Model):
         unvalidated_docs_count: Optional[int] = None,
         confirmed_docs_count: Optional[int] = None,
         ingest_email: Optional[str] = None,
+        whitelist_ingest_addresses: Optional[List[str]] = None,
         **kwargs,
     ):
         """
@@ -17000,8 +17008,12 @@ class Workspace(msrest.serialization.Model):
         :paramtype unvalidated_docs_count: int
         :keyword confirmed_docs_count: Number of validated documents in the workspace.
         :paramtype confirmed_docs_count: int
-        :keyword ingest_email:
+        :keyword ingest_email: When you send email to this address, any document attached in the body
+         will be uploaded to this workspace.
         :paramtype ingest_email: str
+        :keyword whitelist_ingest_addresses: If specified, only emails from these addresses will be
+         ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
+        :paramtype whitelist_ingest_addresses: list[str]
         """
         super(Workspace, self).__init__(**kwargs)
         self.identifier = identifier
@@ -17015,6 +17027,7 @@ class Workspace(msrest.serialization.Model):
         self.unvalidated_docs_count = unvalidated_docs_count
         self.confirmed_docs_count = confirmed_docs_count
         self.ingest_email = ingest_email
+        self.whitelist_ingest_addresses = whitelist_ingest_addresses
 
 
 class WorkspaceCollectionsItem(msrest.serialization.Model):
@@ -17181,6 +17194,9 @@ class WorkspaceCreate(msrest.serialization.Model):
      of an existing document, no credits will be consumed. If "false" (default), will parse the
      document normally whether its a duplicate or not.
     :vartype reject_duplicates: bool
+    :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
+     ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
+    :vartype whitelist_ingest_addresses: list[str]
     """
 
     _validation = {
@@ -17194,6 +17210,7 @@ class WorkspaceCreate(msrest.serialization.Model):
         "visibility": {"key": "visibility", "type": "str"},
         "reject_invalid_documents": {"key": "rejectInvalidDocuments", "type": "bool"},
         "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
+        "whitelist_ingest_addresses": {"key": "whitelistIngestAddresses", "type": "[str]"},
     }
 
     def __init__(
@@ -17204,6 +17221,7 @@ class WorkspaceCreate(msrest.serialization.Model):
         visibility: Optional[Union[str, "_models.WorkspaceVisibility"]] = None,
         reject_invalid_documents: Optional[bool] = None,
         reject_duplicates: Optional[bool] = False,
+        whitelist_ingest_addresses: Optional[List[str]] = None,
         **kwargs,
     ):
         """
@@ -17223,6 +17241,9 @@ class WorkspaceCreate(msrest.serialization.Model):
          duplicate of an existing document, no credits will be consumed. If "false" (default), will
          parse the document normally whether its a duplicate or not.
         :paramtype reject_duplicates: bool
+        :keyword whitelist_ingest_addresses: If specified, only emails from these addresses will be
+         ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
+        :paramtype whitelist_ingest_addresses: list[str]
         """
         super(WorkspaceCreate, self).__init__(**kwargs)
         self.organization = organization
@@ -17230,6 +17251,7 @@ class WorkspaceCreate(msrest.serialization.Model):
         self.visibility = visibility
         self.reject_invalid_documents = reject_invalid_documents
         self.reject_duplicates = reject_duplicates
+        self.whitelist_ingest_addresses = whitelist_ingest_addresses
 
 
 class WorkspaceMembership(msrest.serialization.Model):
@@ -17313,6 +17335,9 @@ class WorkspaceUpdate(msrest.serialization.Model):
      of an existing document, no credits will be consumed. If "false" (default), will parse the
      document normally whether its a duplicate or not.
     :vartype reject_duplicates: bool
+    :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
+     ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
+    :vartype whitelist_ingest_addresses: list[str]
     """
 
     _attribute_map = {
@@ -17320,6 +17345,7 @@ class WorkspaceUpdate(msrest.serialization.Model):
         "visibility": {"key": "visibility", "type": "str"},
         "reject_invalid_documents": {"key": "rejectInvalidDocuments", "type": "bool"},
         "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
+        "whitelist_ingest_addresses": {"key": "whitelistIngestAddresses", "type": "[str]"},
     }
 
     def __init__(
@@ -17329,6 +17355,7 @@ class WorkspaceUpdate(msrest.serialization.Model):
         visibility: Optional[Union[str, "_models.WorkspaceVisibility"]] = None,
         reject_invalid_documents: Optional[bool] = None,
         reject_duplicates: Optional[bool] = False,
+        whitelist_ingest_addresses: Optional[List[str]] = None,
         **kwargs,
     ):
         """
@@ -17346,12 +17373,16 @@ class WorkspaceUpdate(msrest.serialization.Model):
          duplicate of an existing document, no credits will be consumed. If "false" (default), will
          parse the document normally whether its a duplicate or not.
         :paramtype reject_duplicates: bool
+        :keyword whitelist_ingest_addresses: If specified, only emails from these addresses will be
+         ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
+        :paramtype whitelist_ingest_addresses: list[str]
         """
         super(WorkspaceUpdate, self).__init__(**kwargs)
         self.name = name
         self.visibility = visibility
         self.reject_invalid_documents = reject_invalid_documents
         self.reject_duplicates = reject_duplicates
+        self.whitelist_ingest_addresses = whitelist_ingest_addresses
 
 
 class YearsExperienceAnnotation(Annotation):
