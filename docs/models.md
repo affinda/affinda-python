@@ -186,7 +186,7 @@ All required parameters must be populated in order to send to Azure.
  not ambiguous.
 :vartype date_format_from_document: bool
 :ivar extractor_config: Extra configurations specific to an extractor.
-:vartype extractor_config: dict[str, any]
+:vartype extractor_config: ~affinda.models.ExtractorConfig
 :ivar unvalidated_docs_count: Number of unvalidated documents in the collection.
 :vartype unvalidated_docs_count: int
 :ivar confirmed_docs_count: Number of validated documents in the collection.
@@ -247,7 +247,7 @@ All required parameters must be populated in order to send to Azure.
  not ambiguous.
 :vartype date_format_from_document: bool
 :ivar extractor_config: Extra configurations specific to an extractor.
-:vartype extractor_config: dict[str, any]
+:vartype extractor_config: ~affinda.models.ExtractorConfig
 
 <a id="models._models.CollectionCreate.__init__"></a>
 
@@ -291,7 +291,7 @@ CollectionUpdate.
  not ambiguous.
 :vartype date_format_from_document: bool
 :ivar extractor_config: Extra configurations specific to an extractor.
-:vartype extractor_config: dict[str, any]
+:vartype extractor_config: ~affinda.models.ExtractorConfig
 
 <a id="models._models.CollectionUpdate.__init__"></a>
 
@@ -2601,6 +2601,31 @@ def __init__(**kwargs)
 - `validatable`: Required.
 - `is_custom`: 
 - `created_dt`: 
+
+<a id="models._models.ExtractorConfig"></a>
+
+## ExtractorConfig Objects
+
+```python
+class ExtractorConfig(msrest.serialization.Model)
+```
+
+Extra configurations specific to an extractor.
+
+:ivar resume_redact:
+:vartype resume_redact: ~affinda.models.RedactConfig
+
+<a id="models._models.ExtractorConfig.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `resume_redact`: 
 
 <a id="models._models.ExtractorCreate"></a>
 
@@ -8113,6 +8138,52 @@ def __init__(**kwargs)
 - `y0`: Required.
 - `x1`: Required.
 - `y1`: Required.
+
+<a id="models._models.RedactConfig"></a>
+
+## RedactConfig Objects
+
+```python
+class RedactConfig(msrest.serialization.Model)
+```
+
+RedactConfig.
+
+:ivar redact_headshot:
+:vartype redact_headshot: bool
+:ivar redact_personal_details:
+:vartype redact_personal_details: bool
+:ivar redact_work_details:
+:vartype redact_work_details: bool
+:ivar redact_referees:
+:vartype redact_referees: bool
+:ivar redact_education_details:
+:vartype redact_education_details: bool
+:ivar redact_locations:
+:vartype redact_locations: bool
+:ivar redact_dates:
+:vartype redact_dates: bool
+:ivar redact_gender:
+:vartype redact_gender: bool
+
+<a id="models._models.RedactConfig.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `redact_headshot`: 
+- `redact_personal_details`: 
+- `redact_work_details`: 
+- `redact_referees`: 
+- `redact_education_details`: 
+- `redact_locations`: 
+- `redact_dates`: 
+- `redact_gender`: 
 
 <a id="models._models.RequestError"></a>
 

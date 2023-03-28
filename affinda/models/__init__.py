@@ -95,6 +95,7 @@ try:
     from ._models_py3 import ExperienceSearchScoreComponent
     from ._models_py3 import Extractor
     from ._models_py3 import ExtractorBaseExtractor
+    from ._models_py3 import ExtractorConfig
     from ._models_py3 import ExtractorCreate
     from ._models_py3 import ExtractorUpdate
     from ._models_py3 import Field
@@ -236,6 +237,7 @@ try:
         PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema,
     )
     from ._models_py3 import Rectangle
+    from ._models_py3 import RedactConfig
     from ._models_py3 import RequestError
     from ._models_py3 import RequestErrorErrorsItem
     from ._models_py3 import ResthookSubscription
@@ -371,6 +373,7 @@ except (SyntaxError, ImportError):
     from ._models import ExperienceSearchScoreComponent  # type: ignore
     from ._models import Extractor  # type: ignore
     from ._models import ExtractorBaseExtractor  # type: ignore
+    from ._models import ExtractorConfig  # type: ignore
     from ._models import ExtractorCreate  # type: ignore
     from ._models import ExtractorUpdate  # type: ignore
     from ._models import Field  # type: ignore
@@ -480,6 +483,7 @@ except (SyntaxError, ImportError):
     from ._models import PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import Rectangle  # type: ignore
+    from ._models import RedactConfig  # type: ignore
     from ._models import RequestError  # type: ignore
     from ._models import RequestErrorErrorsItem  # type: ignore
     from ._models import ResthookSubscription  # type: ignore
@@ -647,6 +651,7 @@ __all__ = [
     "ExperienceSearchScoreComponent",
     "Extractor",
     "ExtractorBaseExtractor",
+    "ExtractorConfig",
     "ExtractorCreate",
     "ExtractorUpdate",
     "Field",
@@ -756,6 +761,7 @@ __all__ = [
     "PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema",
     "PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema",
     "Rectangle",
+    "RedactConfig",
     "RequestError",
     "RequestErrorErrorsItem",
     "ResthookSubscription",

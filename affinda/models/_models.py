@@ -259,7 +259,7 @@ class Collection(msrest.serialization.Model):
      not ambiguous.
     :vartype date_format_from_document: bool
     :ivar extractor_config: Extra configurations specific to an extractor.
-    :vartype extractor_config: dict[str, any]
+    :vartype extractor_config: ~affinda.models.ExtractorConfig
     :ivar unvalidated_docs_count: Number of unvalidated documents in the collection.
     :vartype unvalidated_docs_count: int
     :ivar confirmed_docs_count: Number of validated documents in the collection.
@@ -282,7 +282,7 @@ class Collection(msrest.serialization.Model):
         "fields_configured": {"key": "fieldsConfigured", "type": "bool"},
         "date_format_preference": {"key": "dateFormatPreference", "type": "str"},
         "date_format_from_document": {"key": "dateFormatFromDocument", "type": "bool"},
-        "extractor_config": {"key": "extractorConfig", "type": "{object}"},
+        "extractor_config": {"key": "extractorConfig", "type": "ExtractorConfig"},
         "unvalidated_docs_count": {"key": "unvalidatedDocsCount", "type": "int"},
         "confirmed_docs_count": {"key": "confirmedDocsCount", "type": "int"},
         "ingest_email": {"key": "ingestEmail", "type": "str"},
@@ -310,7 +310,7 @@ class Collection(msrest.serialization.Model):
          is not ambiguous.
         :paramtype date_format_from_document: bool
         :keyword extractor_config: Extra configurations specific to an extractor.
-        :paramtype extractor_config: dict[str, any]
+        :paramtype extractor_config: ~affinda.models.ExtractorConfig
         :keyword unvalidated_docs_count: Number of unvalidated documents in the collection.
         :paramtype unvalidated_docs_count: int
         :keyword confirmed_docs_count: Number of validated documents in the collection.
@@ -355,7 +355,7 @@ class CollectionCreate(msrest.serialization.Model):
      not ambiguous.
     :vartype date_format_from_document: bool
     :ivar extractor_config: Extra configurations specific to an extractor.
-    :vartype extractor_config: dict[str, any]
+    :vartype extractor_config: ~affinda.models.ExtractorConfig
     """
 
     _validation = {
@@ -372,7 +372,7 @@ class CollectionCreate(msrest.serialization.Model):
         "fields": {"key": "fields", "type": "[FieldGroup]"},
         "date_format_preference": {"key": "dateFormatPreference", "type": "str"},
         "date_format_from_document": {"key": "dateFormatFromDocument", "type": "bool"},
-        "extractor_config": {"key": "extractorConfig", "type": "{object}"},
+        "extractor_config": {"key": "extractorConfig", "type": "ExtractorConfig"},
     }
 
     def __init__(self, **kwargs):
@@ -393,7 +393,7 @@ class CollectionCreate(msrest.serialization.Model):
          is not ambiguous.
         :paramtype date_format_from_document: bool
         :keyword extractor_config: Extra configurations specific to an extractor.
-        :paramtype extractor_config: dict[str, any]
+        :paramtype extractor_config: ~affinda.models.ExtractorConfig
         """
         super(CollectionCreate, self).__init__(**kwargs)
         self.name = kwargs["name"]
@@ -421,7 +421,7 @@ class CollectionUpdate(msrest.serialization.Model):
      not ambiguous.
     :vartype date_format_from_document: bool
     :ivar extractor_config: Extra configurations specific to an extractor.
-    :vartype extractor_config: dict[str, any]
+    :vartype extractor_config: ~affinda.models.ExtractorConfig
     """
 
     _attribute_map = {
@@ -430,7 +430,7 @@ class CollectionUpdate(msrest.serialization.Model):
         "fields": {"key": "fields", "type": "[FieldGroup]"},
         "date_format_preference": {"key": "dateFormatPreference", "type": "str"},
         "date_format_from_document": {"key": "dateFormatFromDocument", "type": "bool"},
-        "extractor_config": {"key": "extractorConfig", "type": "{object}"},
+        "extractor_config": {"key": "extractorConfig", "type": "ExtractorConfig"},
     }
 
     def __init__(self, **kwargs):
@@ -447,7 +447,7 @@ class CollectionUpdate(msrest.serialization.Model):
          is not ambiguous.
         :paramtype date_format_from_document: bool
         :keyword extractor_config: Extra configurations specific to an extractor.
-        :paramtype extractor_config: dict[str, any]
+        :paramtype extractor_config: ~affinda.models.ExtractorConfig
         """
         super(CollectionUpdate, self).__init__(**kwargs)
         self.name = kwargs.get("name", None)
@@ -3217,6 +3217,26 @@ class ExtractorBaseExtractor(msrest.serialization.Model):
         self.validatable = kwargs["validatable"]
         self.is_custom = kwargs.get("is_custom", None)
         self.created_dt = kwargs.get("created_dt", None)
+
+
+class ExtractorConfig(msrest.serialization.Model):
+    """Extra configurations specific to an extractor.
+
+    :ivar resume_redact:
+    :vartype resume_redact: ~affinda.models.RedactConfig
+    """
+
+    _attribute_map = {
+        "resume_redact": {"key": "resumeRedact", "type": "RedactConfig"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword resume_redact:
+        :paramtype resume_redact: ~affinda.models.RedactConfig
+        """
+        super(ExtractorConfig, self).__init__(**kwargs)
+        self.resume_redact = kwargs.get("resume_redact", None)
 
 
 class ExtractorCreate(msrest.serialization.Model):
@@ -11272,6 +11292,68 @@ class Rectangle(msrest.serialization.Model):
         self.y0 = kwargs["y0"]
         self.x1 = kwargs["x1"]
         self.y1 = kwargs["y1"]
+
+
+class RedactConfig(msrest.serialization.Model):
+    """RedactConfig.
+
+    :ivar redact_headshot:
+    :vartype redact_headshot: bool
+    :ivar redact_personal_details:
+    :vartype redact_personal_details: bool
+    :ivar redact_work_details:
+    :vartype redact_work_details: bool
+    :ivar redact_referees:
+    :vartype redact_referees: bool
+    :ivar redact_education_details:
+    :vartype redact_education_details: bool
+    :ivar redact_locations:
+    :vartype redact_locations: bool
+    :ivar redact_dates:
+    :vartype redact_dates: bool
+    :ivar redact_gender:
+    :vartype redact_gender: bool
+    """
+
+    _attribute_map = {
+        "redact_headshot": {"key": "redactHeadshot", "type": "bool"},
+        "redact_personal_details": {"key": "redactPersonalDetails", "type": "bool"},
+        "redact_work_details": {"key": "redactWorkDetails", "type": "bool"},
+        "redact_referees": {"key": "redactReferees", "type": "bool"},
+        "redact_education_details": {"key": "redactEducationDetails", "type": "bool"},
+        "redact_locations": {"key": "redactLocations", "type": "bool"},
+        "redact_dates": {"key": "redactDates", "type": "bool"},
+        "redact_gender": {"key": "redactGender", "type": "bool"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword redact_headshot:
+        :paramtype redact_headshot: bool
+        :keyword redact_personal_details:
+        :paramtype redact_personal_details: bool
+        :keyword redact_work_details:
+        :paramtype redact_work_details: bool
+        :keyword redact_referees:
+        :paramtype redact_referees: bool
+        :keyword redact_education_details:
+        :paramtype redact_education_details: bool
+        :keyword redact_locations:
+        :paramtype redact_locations: bool
+        :keyword redact_dates:
+        :paramtype redact_dates: bool
+        :keyword redact_gender:
+        :paramtype redact_gender: bool
+        """
+        super(RedactConfig, self).__init__(**kwargs)
+        self.redact_headshot = kwargs.get("redact_headshot", None)
+        self.redact_personal_details = kwargs.get("redact_personal_details", None)
+        self.redact_work_details = kwargs.get("redact_work_details", None)
+        self.redact_referees = kwargs.get("redact_referees", None)
+        self.redact_education_details = kwargs.get("redact_education_details", None)
+        self.redact_locations = kwargs.get("redact_locations", None)
+        self.redact_dates = kwargs.get("redact_dates", None)
+        self.redact_gender = kwargs.get("redact_gender", None)
 
 
 class RequestError(msrest.serialization.Model):
