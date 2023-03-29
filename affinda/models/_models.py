@@ -8381,7 +8381,7 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
     :ivar username: Username of the logged in user.
     :vartype username: str
     :ivar actions: A list of actions to show in the dropdown in the embedded search tool.
-    :vartype actions: list[~affinda.models.JobDescriptionSearchConfigActionsItem]
+    :vartype actions: list[~affinda.models.SearchConfigAction]
     :ivar hide_toolbar: Hide the reset/import toolbar.
     :vartype hide_toolbar: bool
     """
@@ -8417,7 +8417,7 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         "search_tool_theme": {"key": "searchToolTheme", "type": "{object}"},
         "user_id": {"key": "userId", "type": "int"},
         "username": {"key": "username", "type": "str"},
-        "actions": {"key": "actions", "type": "[JobDescriptionSearchConfigActionsItem]"},
+        "actions": {"key": "actions", "type": "[SearchConfigAction]"},
         "hide_toolbar": {"key": "hideToolbar", "type": "bool"},
     }
 
@@ -8472,7 +8472,7 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         :keyword search_tool_theme: Customize the theme of the embeded search tool.
         :paramtype search_tool_theme: dict[str, any]
         :keyword actions: A list of actions to show in the dropdown in the embedded search tool.
-        :paramtype actions: list[~affinda.models.JobDescriptionSearchConfigActionsItem]
+        :paramtype actions: list[~affinda.models.SearchConfigAction]
         :keyword hide_toolbar: Hide the reset/import toolbar.
         :paramtype hide_toolbar: bool
         """
@@ -8504,32 +8504,6 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         self.username = None
         self.actions = kwargs.get("actions", None)
         self.hide_toolbar = kwargs.get("hide_toolbar", None)
-
-
-class JobDescriptionSearchConfigActionsItem(msrest.serialization.Model):
-    """JobDescriptionSearchConfigActionsItem.
-
-    :ivar label: Human readable label to display in the UI.
-    :vartype label: str
-    :ivar event_name: Name of the event to be triggered.
-    :vartype event_name: str
-    """
-
-    _attribute_map = {
-        "label": {"key": "label", "type": "str"},
-        "event_name": {"key": "eventName", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword label: Human readable label to display in the UI.
-        :paramtype label: str
-        :keyword event_name: Name of the event to be triggered.
-        :paramtype event_name: str
-        """
-        super(JobDescriptionSearchConfigActionsItem, self).__init__(**kwargs)
-        self.label = kwargs.get("label", None)
-        self.event_name = kwargs.get("event_name", None)
 
 
 class JobDescriptionSearchDetail(msrest.serialization.Model):
@@ -12320,7 +12294,7 @@ class ResumeSearchConfig(msrest.serialization.Model):
     :ivar username: Username of the logged in user.
     :vartype username: str
     :ivar actions: A list of actions to show in the dropdown in the embedded search tool.
-    :vartype actions: list[~affinda.models.ResumeSearchConfigActionsItem]
+    :vartype actions: list[~affinda.models.SearchConfigAction]
     :ivar hide_toolbar: Hide the reset/import toolbar.
     :vartype hide_toolbar: bool
     """
@@ -12356,7 +12330,7 @@ class ResumeSearchConfig(msrest.serialization.Model):
         "search_tool_theme": {"key": "searchToolTheme", "type": "{object}"},
         "user_id": {"key": "userId", "type": "int"},
         "username": {"key": "username", "type": "str"},
-        "actions": {"key": "actions", "type": "[ResumeSearchConfigActionsItem]"},
+        "actions": {"key": "actions", "type": "[SearchConfigAction]"},
         "hide_toolbar": {"key": "hideToolbar", "type": "bool"},
     }
 
@@ -12411,7 +12385,7 @@ class ResumeSearchConfig(msrest.serialization.Model):
         :keyword search_tool_theme: Customize the theme of the embeded search tool.
         :paramtype search_tool_theme: dict[str, any]
         :keyword actions: A list of actions to show in the dropdown in the embedded search tool.
-        :paramtype actions: list[~affinda.models.ResumeSearchConfigActionsItem]
+        :paramtype actions: list[~affinda.models.SearchConfigAction]
         :keyword hide_toolbar: Hide the reset/import toolbar.
         :paramtype hide_toolbar: bool
         """
@@ -12443,32 +12417,6 @@ class ResumeSearchConfig(msrest.serialization.Model):
         self.username = None
         self.actions = kwargs.get("actions", None)
         self.hide_toolbar = kwargs.get("hide_toolbar", None)
-
-
-class ResumeSearchConfigActionsItem(msrest.serialization.Model):
-    """ResumeSearchConfigActionsItem.
-
-    :ivar label: Human readable label to display in the UI.
-    :vartype label: str
-    :ivar event_name: Name of the event to be triggered.
-    :vartype event_name: str
-    """
-
-    _attribute_map = {
-        "label": {"key": "label", "type": "str"},
-        "event_name": {"key": "eventName", "type": "str"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword label: Human readable label to display in the UI.
-        :paramtype label: str
-        :keyword event_name: Name of the event to be triggered.
-        :paramtype event_name: str
-        """
-        super(ResumeSearchConfigActionsItem, self).__init__(**kwargs)
-        self.label = kwargs.get("label", None)
-        self.event_name = kwargs.get("event_name", None)
 
 
 class ResumeSearchDetail(msrest.serialization.Model):
@@ -13965,6 +13913,39 @@ class RowAnnotation(msrest.serialization.Model):
         self.total = kwargs.get("total", None)
         self.other = kwargs.get("other", None)
         self.custom_fields = kwargs.get("custom_fields", None)
+
+
+class SearchConfigAction(msrest.serialization.Model):
+    """SearchConfigAction.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar label: Required. Human readable label to display in the UI.
+    :vartype label: str
+    :ivar event_name: Required. Name of the event to be triggered.
+    :vartype event_name: str
+    """
+
+    _validation = {
+        "label": {"required": True},
+        "event_name": {"required": True},
+    }
+
+    _attribute_map = {
+        "label": {"key": "label", "type": "str"},
+        "event_name": {"key": "eventName", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword label: Required. Human readable label to display in the UI.
+        :paramtype label: str
+        :keyword event_name: Required. Name of the event to be triggered.
+        :paramtype event_name: str
+        """
+        super(SearchConfigAction, self).__init__(**kwargs)
+        self.label = kwargs["label"]
+        self.event_name = kwargs["event_name"]
 
 
 class SearchExpressionSearchScoreComponent(msrest.serialization.Model):

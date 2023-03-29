@@ -143,7 +143,6 @@ try:
     from ._models_py3 import JobDescriptionData
     from ._models_py3 import JobDescriptionSearch
     from ._models_py3 import JobDescriptionSearchConfig
-    from ._models_py3 import JobDescriptionSearchConfigActionsItem
     from ._models_py3 import JobDescriptionSearchDetail
     from ._models_py3 import JobDescriptionSearchDetailEducation
     from ._models_py3 import JobDescriptionSearchDetailEducationMissing
@@ -255,7 +254,6 @@ try:
     from ._models_py3 import ResumeDataWorkExperienceItemOccupation
     from ._models_py3 import ResumeSearch
     from ._models_py3 import ResumeSearchConfig
-    from ._models_py3 import ResumeSearchConfigActionsItem
     from ._models_py3 import ResumeSearchDetail
     from ._models_py3 import ResumeSearchDetailEducation
     from ._models_py3 import ResumeSearchDetailEducationMissing
@@ -284,6 +282,7 @@ try:
     from ._models_py3 import ResumeSkill
     from ._models_py3 import ResumeSkillSourcesItem
     from ._models_py3 import RowAnnotation
+    from ._models_py3 import SearchConfigAction
     from ._models_py3 import SearchExpressionSearchScoreComponent
     from ._models_py3 import SkillAnnotation
     from ._models_py3 import SkillsSearchScoreComponent
@@ -421,7 +420,6 @@ except (SyntaxError, ImportError):
     from ._models import JobDescriptionData  # type: ignore
     from ._models import JobDescriptionSearch  # type: ignore
     from ._models import JobDescriptionSearchConfig  # type: ignore
-    from ._models import JobDescriptionSearchConfigActionsItem  # type: ignore
     from ._models import JobDescriptionSearchDetail  # type: ignore
     from ._models import JobDescriptionSearchDetailEducation  # type: ignore
     from ._models import JobDescriptionSearchDetailEducationMissing  # type: ignore
@@ -501,7 +499,6 @@ except (SyntaxError, ImportError):
     from ._models import ResumeDataWorkExperienceItemOccupation  # type: ignore
     from ._models import ResumeSearch  # type: ignore
     from ._models import ResumeSearchConfig  # type: ignore
-    from ._models import ResumeSearchConfigActionsItem  # type: ignore
     from ._models import ResumeSearchDetail  # type: ignore
     from ._models import ResumeSearchDetailEducation  # type: ignore
     from ._models import ResumeSearchDetailEducationMissing  # type: ignore
@@ -530,6 +527,7 @@ except (SyntaxError, ImportError):
     from ._models import ResumeSkill  # type: ignore
     from ._models import ResumeSkillSourcesItem  # type: ignore
     from ._models import RowAnnotation  # type: ignore
+    from ._models import SearchConfigAction  # type: ignore
     from ._models import SearchExpressionSearchScoreComponent  # type: ignore
     from ._models import SkillAnnotation  # type: ignore
     from ._models import SkillsSearchScoreComponent  # type: ignore
@@ -699,7 +697,6 @@ __all__ = [
     "JobDescriptionData",
     "JobDescriptionSearch",
     "JobDescriptionSearchConfig",
-    "JobDescriptionSearchConfigActionsItem",
     "JobDescriptionSearchDetail",
     "JobDescriptionSearchDetailEducation",
     "JobDescriptionSearchDetailEducationMissing",
@@ -779,7 +776,6 @@ __all__ = [
     "ResumeDataWorkExperienceItemOccupation",
     "ResumeSearch",
     "ResumeSearchConfig",
-    "ResumeSearchConfigActionsItem",
     "ResumeSearchDetail",
     "ResumeSearchDetailEducation",
     "ResumeSearchDetailEducationMissing",
@@ -808,6 +804,7 @@ __all__ = [
     "ResumeSkill",
     "ResumeSkillSourcesItem",
     "RowAnnotation",
+    "SearchConfigAction",
     "SearchExpressionSearchScoreComponent",
     "SkillAnnotation",
     "SkillsSearchScoreComponent",

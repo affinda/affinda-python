@@ -5859,7 +5859,7 @@ Variables are only populated by the server, and will be ignored when sending a r
 :ivar username: Username of the logged in user.
 :vartype username: str
 :ivar actions: A list of actions to show in the dropdown in the embedded search tool.
-:vartype actions: list[~affinda.models.JobDescriptionSearchConfigActionsItem]
+:vartype actions: list[~affinda.models.SearchConfigAction]
 :ivar hide_toolbar: Hide the reset/import toolbar.
 :vartype hide_toolbar: bool
 
@@ -5900,34 +5900,6 @@ user.
 - `search_tool_theme`: Customize the theme of the embeded search tool.
 - `actions`: A list of actions to show in the dropdown in the embedded search tool.
 - `hide_toolbar`: Hide the reset/import toolbar.
-
-<a id="models._models.JobDescriptionSearchConfigActionsItem"></a>
-
-## JobDescriptionSearchConfigActionsItem Objects
-
-```python
-class JobDescriptionSearchConfigActionsItem(msrest.serialization.Model)
-```
-
-JobDescriptionSearchConfigActionsItem.
-
-:ivar label: Human readable label to display in the UI.
-:vartype label: str
-:ivar event_name: Name of the event to be triggered.
-:vartype event_name: str
-
-<a id="models._models.JobDescriptionSearchConfigActionsItem.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `label`: Human readable label to display in the UI.
-- `event_name`: Name of the event to be triggered.
 
 <a id="models._models.JobDescriptionSearchDetail"></a>
 
@@ -8952,7 +8924,7 @@ Variables are only populated by the server, and will be ignored when sending a r
 :ivar username: Username of the logged in user.
 :vartype username: str
 :ivar actions: A list of actions to show in the dropdown in the embedded search tool.
-:vartype actions: list[~affinda.models.ResumeSearchConfigActionsItem]
+:vartype actions: list[~affinda.models.SearchConfigAction]
 :ivar hide_toolbar: Hide the reset/import toolbar.
 :vartype hide_toolbar: bool
 
@@ -8993,34 +8965,6 @@ user.
 - `search_tool_theme`: Customize the theme of the embeded search tool.
 - `actions`: A list of actions to show in the dropdown in the embedded search tool.
 - `hide_toolbar`: Hide the reset/import toolbar.
-
-<a id="models._models.ResumeSearchConfigActionsItem"></a>
-
-## ResumeSearchConfigActionsItem Objects
-
-```python
-class ResumeSearchConfigActionsItem(msrest.serialization.Model)
-```
-
-ResumeSearchConfigActionsItem.
-
-:ivar label: Human readable label to display in the UI.
-:vartype label: str
-:ivar event_name: Name of the event to be triggered.
-:vartype event_name: str
-
-<a id="models._models.ResumeSearchConfigActionsItem.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `label`: Human readable label to display in the UI.
-- `event_name`: Name of the event to be triggered.
 
 <a id="models._models.ResumeSearchDetail"></a>
 
@@ -10153,6 +10097,36 @@ def __init__(**kwargs)
 - `total`: 
 - `other`: 
 - `custom_fields`: Dictionary of :code:`<any>`.
+
+<a id="models._models.SearchConfigAction"></a>
+
+## SearchConfigAction Objects
+
+```python
+class SearchConfigAction(msrest.serialization.Model)
+```
+
+SearchConfigAction.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar label: Required. Human readable label to display in the UI.
+:vartype label: str
+:ivar event_name: Required. Name of the event to be triggered.
+:vartype event_name: str
+
+<a id="models._models.SearchConfigAction.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `label`: Required. Human readable label to display in the UI.
+- `event_name`: Required. Name of the event to be triggered.
 
 <a id="models._models.SearchExpressionSearchScoreComponent"></a>
 
