@@ -197,6 +197,8 @@ class Annotation(msrest.serialization.Model):
 class AnnotationV2Base(msrest.serialization.Model):
     """AnnotationV2Base.
 
+    Variables are only populated by the server, and will be ignored when sending a request.
+
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
@@ -230,6 +232,10 @@ class AnnotationV2Base(msrest.serialization.Model):
     :vartype content_type: str
     """
 
+    _validation = {
+        "rectangles": {"readonly": True},
+    }
+
     _attribute_map = {
         "additional_properties": {"key": "", "type": "{object}"},
         "id": {"key": "id", "type": "int"},
@@ -253,7 +259,6 @@ class AnnotationV2Base(msrest.serialization.Model):
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
         rectangle: Optional["_models.Rectangle"] = None,
-        rectangles: Optional[List["_models.Rectangle"]] = None,
         page_index: Optional[int] = None,
         raw: Optional[str] = None,
         confidence: Optional[float] = None,
@@ -274,8 +279,6 @@ class AnnotationV2Base(msrest.serialization.Model):
         :paramtype id: int
         :keyword rectangle:
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
-        :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index:
         :paramtype page_index: int
         :keyword raw:
@@ -303,7 +306,7 @@ class AnnotationV2Base(msrest.serialization.Model):
         self.additional_properties = additional_properties
         self.id = id
         self.rectangle = rectangle
-        self.rectangles = rectangles
+        self.rectangles = None
         self.page_index = page_index
         self.raw = raw
         self.confidence = confidence
@@ -370,6 +373,32 @@ class Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1(msrest.se
         super(Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1, self).__init__(
             **kwargs
         )
+        self.raw = raw
+        self.parsed = parsed
+
+
+class Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1(msrest.serialization.Model):
+    """Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1.
+
+    :ivar raw:
+    :vartype raw: str
+    :ivar parsed:
+    :vartype parsed: str
+    """
+
+    _attribute_map = {
+        "raw": {"key": "raw", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
+    }
+
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
+        """
+        :keyword raw:
+        :paramtype raw: str
+        :keyword parsed:
+        :paramtype parsed: str
+        """
+        super(Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1, self).__init__(**kwargs)
         self.raw = raw
         self.parsed = parsed
 
@@ -633,8 +662,8 @@ class Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1(msrest.serial
         self.parsed = parsed
 
 
-class Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1(msrest.serialization.Model):
-    """Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1.
+class Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1(msrest.serialization.Model):
+    """Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1.
 
     :ivar raw:
     :vartype raw: str
@@ -654,7 +683,7 @@ class Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1(msrest.serializ
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1, self).__init__(**kwargs)
+        super(Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1, self).__init__(**kwargs)
         self.raw = raw
         self.parsed = parsed
 
@@ -1096,8 +1125,8 @@ class ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllo
         self.parsed = parsed
 
 
-class ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1(msrest.serialization.Model):
-    """ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1.
+class ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.serialization.Model):
+    """ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1.
 
     :ivar raw:
     :vartype raw: str
@@ -1117,15 +1146,15 @@ class ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1(msrest.seria
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1, self).__init__(
+        super(ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1, self).__init__(
             **kwargs
         )
         self.raw = raw
         self.parsed = parsed
 
 
-class ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.serialization.Model):
-    """ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1.
+class ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1(msrest.serialization.Model):
+    """ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1.
 
     :ivar raw:
     :vartype raw: str
@@ -1145,7 +1174,7 @@ class ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.seria
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1, self).__init__(
+        super(ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1, self).__init__(
             **kwargs
         )
         self.raw = raw
@@ -1323,32 +1352,6 @@ class ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValu
             self,
         ).__init__(**kwargs)
         self.match = match
-
-
-class ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1(msrest.serialization.Model):
-    """ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1.
-
-    :ivar raw:
-    :vartype raw: str
-    :ivar parsed:
-    :vartype parsed: str
-    """
-
-    _attribute_map = {
-        "raw": {"key": "raw", "type": "str"},
-        "parsed": {"key": "parsed", "type": "str"},
-    }
-
-    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
-        """
-        :keyword raw:
-        :paramtype raw: str
-        :keyword parsed:
-        :paramtype parsed: str
-        """
-        super(ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1, self).__init__(**kwargs)
-        self.raw = raw
-        self.parsed = parsed
 
 
 class ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1(msrest.serialization.Model):
@@ -1560,6 +1563,8 @@ class DateAnnotation(Annotation):
 class DateAnnotationV2Update(AnnotationV2Base):
     """DateAnnotationV2Update.
 
+    Variables are only populated by the server, and will be ignored when sending a request.
+
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
@@ -1595,6 +1600,10 @@ class DateAnnotationV2Update(AnnotationV2Base):
     :vartype parsed: ~datetime.date
     """
 
+    _validation = {
+        "rectangles": {"readonly": True},
+    }
+
     _attribute_map = {
         "additional_properties": {"key": "", "type": "{object}"},
         "id": {"key": "id", "type": "int"},
@@ -1619,7 +1628,6 @@ class DateAnnotationV2Update(AnnotationV2Base):
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
         rectangle: Optional["_models.Rectangle"] = None,
-        rectangles: Optional[List["_models.Rectangle"]] = None,
         page_index: Optional[int] = None,
         raw: Optional[str] = None,
         confidence: Optional[float] = None,
@@ -1641,8 +1649,6 @@ class DateAnnotationV2Update(AnnotationV2Base):
         :paramtype id: int
         :keyword rectangle:
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
-        :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index:
         :paramtype page_index: int
         :keyword raw:
@@ -1672,7 +1678,6 @@ class DateAnnotationV2Update(AnnotationV2Base):
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
-            rectangles=rectangles,
             page_index=page_index,
             raw=raw,
             confidence=confidence,
@@ -2100,6 +2105,8 @@ class ExpectedRemunerationAnnotationParsed(msrest.serialization.Model):
 class ExpectedRemunerationAnnotationV2Update(AnnotationV2Base):
     """ExpectedRemunerationAnnotationV2Update.
 
+    Variables are only populated by the server, and will be ignored when sending a request.
+
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
@@ -2135,6 +2142,10 @@ class ExpectedRemunerationAnnotationV2Update(AnnotationV2Base):
     :vartype parsed: ~affinda.models.ExpectedRemunerationAnnotationV2UpdateParsed
     """
 
+    _validation = {
+        "rectangles": {"readonly": True},
+    }
+
     _attribute_map = {
         "additional_properties": {"key": "", "type": "{object}"},
         "id": {"key": "id", "type": "int"},
@@ -2159,7 +2170,6 @@ class ExpectedRemunerationAnnotationV2Update(AnnotationV2Base):
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
         rectangle: Optional["_models.Rectangle"] = None,
-        rectangles: Optional[List["_models.Rectangle"]] = None,
         page_index: Optional[int] = None,
         raw: Optional[str] = None,
         confidence: Optional[float] = None,
@@ -2181,8 +2191,6 @@ class ExpectedRemunerationAnnotationV2Update(AnnotationV2Base):
         :paramtype id: int
         :keyword rectangle:
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
-        :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index:
         :paramtype page_index: int
         :keyword raw:
@@ -2212,7 +2220,6 @@ class ExpectedRemunerationAnnotationV2Update(AnnotationV2Base):
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
-            rectangles=rectangles,
             page_index=page_index,
             raw=raw,
             confidence=confidence,
@@ -2481,9 +2488,9 @@ class InvoiceData(msrest.serialization.Model):
     :ivar bank_account_number:
     :vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
     :ivar supplier_vat:
-    :vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVAT
+    :vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
     :ivar customer_vat:
-    :vartype customer_vat: ~affinda.models.InvoiceDataCustomerVAT
+    :vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
     :ivar bpay_biller_code:
     :vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
     :ivar bpay_reference:
@@ -2491,11 +2498,11 @@ class InvoiceData(msrest.serialization.Model):
     :ivar bank_sort_code:
     :vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
     :ivar bank_iban:
-    :vartype bank_iban: ~affinda.models.InvoiceDataBankIBAN
+    :vartype bank_iban: ~affinda.models.InvoiceDataBankIban
     :ivar bank_swift:
     :vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
     :ivar bank_bsb:
-    :vartype bank_bsb: ~affinda.models.InvoiceDataBankBSB
+    :vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
     :ivar customer_contact_name:
     :vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
     :ivar customer_company_name:
@@ -2564,14 +2571,14 @@ class InvoiceData(msrest.serialization.Model):
             "key": "bankAccountNumber",
             "type": "InvoiceDataBankAccountNumber",
         },
-        "supplier_vat": {"key": "supplierVAT", "type": "InvoiceDataSupplierVAT"},
-        "customer_vat": {"key": "customerVAT", "type": "InvoiceDataCustomerVAT"},
+        "supplier_vat": {"key": "supplierVat", "type": "InvoiceDataSupplierVat"},
+        "customer_vat": {"key": "customerVat", "type": "InvoiceDataCustomerVat"},
         "bpay_biller_code": {"key": "bpayBillerCode", "type": "InvoiceDataBpayBillerCode"},
         "bpay_reference": {"key": "bpayReference", "type": "InvoiceDataBpayReference"},
         "bank_sort_code": {"key": "bankSortCode", "type": "InvoiceDataBankSortCode"},
-        "bank_iban": {"key": "bankIBAN", "type": "InvoiceDataBankIBAN"},
+        "bank_iban": {"key": "bankIban", "type": "InvoiceDataBankIban"},
         "bank_swift": {"key": "bankSwift", "type": "InvoiceDataBankSwift"},
-        "bank_bsb": {"key": "bankBSB", "type": "InvoiceDataBankBSB"},
+        "bank_bsb": {"key": "bankBsb", "type": "InvoiceDataBankBsb"},
         "customer_contact_name": {
             "key": "customerContactName",
             "type": "InvoiceDataCustomerContactName",
@@ -2630,14 +2637,14 @@ class InvoiceData(msrest.serialization.Model):
         customer_business_number: Optional["_models.InvoiceDataCustomerBusinessNumber"] = None,
         payment_reference: Optional["_models.InvoiceDataPaymentReference"] = None,
         bank_account_number: Optional["_models.InvoiceDataBankAccountNumber"] = None,
-        supplier_vat: Optional["_models.InvoiceDataSupplierVAT"] = None,
-        customer_vat: Optional["_models.InvoiceDataCustomerVAT"] = None,
+        supplier_vat: Optional["_models.InvoiceDataSupplierVat"] = None,
+        customer_vat: Optional["_models.InvoiceDataCustomerVat"] = None,
         bpay_biller_code: Optional["_models.InvoiceDataBpayBillerCode"] = None,
         bpay_reference: Optional["_models.InvoiceDataBpayReference"] = None,
         bank_sort_code: Optional["_models.InvoiceDataBankSortCode"] = None,
-        bank_iban: Optional["_models.InvoiceDataBankIBAN"] = None,
+        bank_iban: Optional["_models.InvoiceDataBankIban"] = None,
         bank_swift: Optional["_models.InvoiceDataBankSwift"] = None,
-        bank_bsb: Optional["_models.InvoiceDataBankBSB"] = None,
+        bank_bsb: Optional["_models.InvoiceDataBankBsb"] = None,
         customer_contact_name: Optional["_models.InvoiceDataCustomerContactName"] = None,
         customer_company_name: Optional["_models.InvoiceDataCustomerCompanyName"] = None,
         supplier_company_name: Optional["_models.InvoiceDataSupplierCompanyName"] = None,
@@ -2688,9 +2695,9 @@ class InvoiceData(msrest.serialization.Model):
         :keyword bank_account_number:
         :paramtype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
         :keyword supplier_vat:
-        :paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVAT
+        :paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
         :keyword customer_vat:
-        :paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVAT
+        :paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVat
         :keyword bpay_biller_code:
         :paramtype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
         :keyword bpay_reference:
@@ -2698,11 +2705,11 @@ class InvoiceData(msrest.serialization.Model):
         :keyword bank_sort_code:
         :paramtype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
         :keyword bank_iban:
-        :paramtype bank_iban: ~affinda.models.InvoiceDataBankIBAN
+        :paramtype bank_iban: ~affinda.models.InvoiceDataBankIban
         :keyword bank_swift:
         :paramtype bank_swift: ~affinda.models.InvoiceDataBankSwift
         :keyword bank_bsb:
-        :paramtype bank_bsb: ~affinda.models.InvoiceDataBankBSB
+        :paramtype bank_bsb: ~affinda.models.InvoiceDataBankBsb
         :keyword customer_contact_name:
         :paramtype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
         :keyword customer_company_name:
@@ -3086,10 +3093,10 @@ class InvoiceDataBankAccountNumber(
         self.parsed = parsed
 
 
-class InvoiceDataBankBSB(
-    TextAnnotation, Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1
+class InvoiceDataBankBsb(
+    TextAnnotation, Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1
 ):
-    """InvoiceDataBankBSB.
+    """InvoiceDataBankBsb.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -3216,7 +3223,7 @@ class InvoiceDataBankBSB(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataBankBSB, self).__init__(
+        super(InvoiceDataBankBsb, self).__init__(
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
@@ -3251,10 +3258,10 @@ class InvoiceDataBankBSB(
         self.parsed = parsed
 
 
-class InvoiceDataBankIBAN(
-    TextAnnotation, ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1
+class InvoiceDataBankIban(
+    TextAnnotation, Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1
 ):
-    """InvoiceDataBankIBAN.
+    """InvoiceDataBankIban.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -3381,7 +3388,7 @@ class InvoiceDataBankIBAN(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataBankIBAN, self).__init__(
+        super(InvoiceDataBankIban, self).__init__(
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
@@ -5066,10 +5073,10 @@ class InvoiceDataCustomerPhoneNumber(
         self.parsed = parsed
 
 
-class InvoiceDataCustomerVAT(
-    TextAnnotation, ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1
+class InvoiceDataCustomerVat(
+    TextAnnotation, ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1
 ):
-    """InvoiceDataCustomerVAT.
+    """InvoiceDataCustomerVat.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -5196,7 +5203,7 @@ class InvoiceDataCustomerVAT(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataCustomerVAT, self).__init__(
+        super(InvoiceDataCustomerVat, self).__init__(
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
@@ -7376,10 +7383,10 @@ class InvoiceDataSupplierPhoneNumber(
         self.parsed = parsed
 
 
-class InvoiceDataSupplierVAT(
-    TextAnnotation, ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1
+class InvoiceDataSupplierVat(
+    TextAnnotation, ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1
 ):
-    """InvoiceDataSupplierVAT.
+    """InvoiceDataSupplierVat.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -7506,7 +7513,7 @@ class InvoiceDataSupplierVAT(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataSupplierVAT, self).__init__(
+        super(InvoiceDataSupplierVat, self).__init__(
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
@@ -9972,6 +9979,7 @@ class JobTitleAnnotationUpdate(JobTitleParsed, AnnotationV2Base):
     """
 
     _validation = {
+        "rectangles": {"readonly": True},
         "parsed": {"readonly": True},
     }
 
@@ -9999,7 +10007,6 @@ class JobTitleAnnotationUpdate(JobTitleParsed, AnnotationV2Base):
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
         rectangle: Optional["_models.Rectangle"] = None,
-        rectangles: Optional[List["_models.Rectangle"]] = None,
         page_index: Optional[int] = None,
         raw: Optional[str] = None,
         confidence: Optional[float] = None,
@@ -10020,8 +10027,6 @@ class JobTitleAnnotationUpdate(JobTitleParsed, AnnotationV2Base):
         :paramtype id: int
         :keyword rectangle:
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
-        :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index:
         :paramtype page_index: int
         :keyword raw:
@@ -10049,7 +10054,6 @@ class JobTitleAnnotationUpdate(JobTitleParsed, AnnotationV2Base):
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
-            rectangles=rectangles,
             page_index=page_index,
             raw=raw,
             confidence=confidence,
@@ -10065,7 +10069,7 @@ class JobTitleAnnotationUpdate(JobTitleParsed, AnnotationV2Base):
         self.additional_properties = additional_properties
         self.id = id
         self.rectangle = rectangle
-        self.rectangles = rectangles
+        self.rectangles = None
         self.page_index = page_index
         self.raw = raw
         self.confidence = confidence
@@ -10400,6 +10404,7 @@ class LanguageAnnotationV2Update(AnnotationV2Base):
     """
 
     _validation = {
+        "rectangles": {"readonly": True},
         "parsed": {"readonly": True},
     }
 
@@ -10427,7 +10432,6 @@ class LanguageAnnotationV2Update(AnnotationV2Base):
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
         rectangle: Optional["_models.Rectangle"] = None,
-        rectangles: Optional[List["_models.Rectangle"]] = None,
         page_index: Optional[int] = None,
         raw: Optional[str] = None,
         confidence: Optional[float] = None,
@@ -10448,8 +10452,6 @@ class LanguageAnnotationV2Update(AnnotationV2Base):
         :paramtype id: int
         :keyword rectangle:
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
-        :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index:
         :paramtype page_index: int
         :keyword raw:
@@ -10477,7 +10479,6 @@ class LanguageAnnotationV2Update(AnnotationV2Base):
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
-            rectangles=rectangles,
             page_index=page_index,
             raw=raw,
             confidence=confidence,
@@ -10722,6 +10723,7 @@ class LocationAnnotationV2Update(AnnotationV2Base):
     """
 
     _validation = {
+        "rectangles": {"readonly": True},
         "parsed": {"readonly": True},
     }
 
@@ -10749,7 +10751,6 @@ class LocationAnnotationV2Update(AnnotationV2Base):
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
         rectangle: Optional["_models.Rectangle"] = None,
-        rectangles: Optional[List["_models.Rectangle"]] = None,
         page_index: Optional[int] = None,
         raw: Optional[str] = None,
         confidence: Optional[float] = None,
@@ -10770,8 +10771,6 @@ class LocationAnnotationV2Update(AnnotationV2Base):
         :paramtype id: int
         :keyword rectangle:
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
-        :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index:
         :paramtype page_index: int
         :keyword raw:
@@ -10799,7 +10798,6 @@ class LocationAnnotationV2Update(AnnotationV2Base):
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
-            rectangles=rectangles,
             page_index=page_index,
             raw=raw,
             confidence=confidence,
@@ -15613,6 +15611,7 @@ class SkillAnnotationV2Update(AnnotationV2Base):
     """
 
     _validation = {
+        "rectangles": {"readonly": True},
         "parsed": {"readonly": True},
     }
 
@@ -15640,7 +15639,6 @@ class SkillAnnotationV2Update(AnnotationV2Base):
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
         rectangle: Optional["_models.Rectangle"] = None,
-        rectangles: Optional[List["_models.Rectangle"]] = None,
         page_index: Optional[int] = None,
         raw: Optional[str] = None,
         confidence: Optional[float] = None,
@@ -15661,8 +15659,6 @@ class SkillAnnotationV2Update(AnnotationV2Base):
         :paramtype id: int
         :keyword rectangle:
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
-        :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index:
         :paramtype page_index: int
         :keyword raw:
@@ -15690,7 +15686,6 @@ class SkillAnnotationV2Update(AnnotationV2Base):
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
-            rectangles=rectangles,
             page_index=page_index,
             raw=raw,
             confidence=confidence,
@@ -15749,6 +15744,8 @@ class SkillsSearchScoreComponent(msrest.serialization.Model):
 class TextAnnotationV2Update(AnnotationV2Base):
     """TextAnnotationV2Update.
 
+    Variables are only populated by the server, and will be ignored when sending a request.
+
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
@@ -15784,6 +15781,10 @@ class TextAnnotationV2Update(AnnotationV2Base):
     :vartype parsed: str
     """
 
+    _validation = {
+        "rectangles": {"readonly": True},
+    }
+
     _attribute_map = {
         "additional_properties": {"key": "", "type": "{object}"},
         "id": {"key": "id", "type": "int"},
@@ -15808,7 +15809,6 @@ class TextAnnotationV2Update(AnnotationV2Base):
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
         rectangle: Optional["_models.Rectangle"] = None,
-        rectangles: Optional[List["_models.Rectangle"]] = None,
         page_index: Optional[int] = None,
         raw: Optional[str] = None,
         confidence: Optional[float] = None,
@@ -15830,8 +15830,6 @@ class TextAnnotationV2Update(AnnotationV2Base):
         :paramtype id: int
         :keyword rectangle:
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
-        :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index:
         :paramtype page_index: int
         :keyword raw:
@@ -15861,7 +15859,6 @@ class TextAnnotationV2Update(AnnotationV2Base):
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
-            rectangles=rectangles,
             page_index=page_index,
             raw=raw,
             confidence=confidence,
@@ -16056,6 +16053,8 @@ class YearsExperienceAnnotationParsed(msrest.serialization.Model):
 class YearsExperienceAnnotationV2Update(AnnotationV2Base):
     """YearsExperienceAnnotationV2Update.
 
+    Variables are only populated by the server, and will be ignored when sending a request.
+
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
@@ -16091,6 +16090,10 @@ class YearsExperienceAnnotationV2Update(AnnotationV2Base):
     :vartype parsed: ~affinda.models.YearsExperienceAnnotationV2UpdateParsed
     """
 
+    _validation = {
+        "rectangles": {"readonly": True},
+    }
+
     _attribute_map = {
         "additional_properties": {"key": "", "type": "{object}"},
         "id": {"key": "id", "type": "int"},
@@ -16115,7 +16118,6 @@ class YearsExperienceAnnotationV2Update(AnnotationV2Base):
         additional_properties: Optional[Dict[str, Any]] = None,
         id: Optional[int] = None,
         rectangle: Optional["_models.Rectangle"] = None,
-        rectangles: Optional[List["_models.Rectangle"]] = None,
         page_index: Optional[int] = None,
         raw: Optional[str] = None,
         confidence: Optional[float] = None,
@@ -16137,8 +16139,6 @@ class YearsExperienceAnnotationV2Update(AnnotationV2Base):
         :paramtype id: int
         :keyword rectangle:
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles:
-        :paramtype rectangles: list[~affinda.models.Rectangle]
         :keyword page_index:
         :paramtype page_index: int
         :keyword raw:
@@ -16168,7 +16168,6 @@ class YearsExperienceAnnotationV2Update(AnnotationV2Base):
             additional_properties=additional_properties,
             id=id,
             rectangle=rectangle,
-            rectangles=rectangles,
             page_index=page_index,
             raw=raw,
             confidence=confidence,

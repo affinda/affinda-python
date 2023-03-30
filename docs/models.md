@@ -117,6 +117,8 @@ class AnnotationV2Base(msrest.serialization.Model)
 
 AnnotationV2Base.
 
+Variables are only populated by the server, and will be ignored when sending a request.
+
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
@@ -163,7 +165,6 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: 
-- `rectangles`: 
 - `page_index`: 
 - `raw`: 
 - `confidence`: The overall confidence that the model's prediction is correct.
@@ -221,6 +222,34 @@ Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1.
 :vartype parsed: str
 
 <a id="models._models.Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `raw`: 
+- `parsed`: 
+
+<a id="models._models.Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1"></a>
+
+## Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1 Objects
+
+```python
+class Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1(msrest.serialization.Model)
+```
+
+Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1.
+
+:ivar raw:
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: str
+
+<a id="models._models.Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -482,22 +511,22 @@ def __init__(**kwargs)
 - `raw`: 
 - `parsed`: 
 
-<a id="models._models.Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1"></a>
+<a id="models._models.Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1"></a>
 
-## Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1 Objects
+## Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1 Objects
 
 ```python
-class Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1(msrest.serialization.Model)
+class Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1(msrest.serialization.Model)
 ```
 
-Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1.
+Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1.__init__"></a>
+<a id="models._models.Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -908,22 +937,22 @@ def __init__(**kwargs)
 - `raw`: 
 - `parsed`: 
 
-<a id="models._models.ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1"></a>
+<a id="models._models.ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1"></a>
 
-## ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1 Objects
+## ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1 Objects
 
 ```python
-class ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1(msrest.serialization.Model)
+class ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.serialization.Model)
 ```
 
-ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1.
+ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1.__init__"></a>
+<a id="models._models.ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -936,22 +965,22 @@ def __init__(**kwargs)
 - `raw`: 
 - `parsed`: 
 
-<a id="models._models.ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1"></a>
+<a id="models._models.ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1"></a>
 
-## ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1 Objects
+## ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1 Objects
 
 ```python
-class ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.serialization.Model)
+class ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1(msrest.serialization.Model)
 ```
 
-ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1.
+ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1.
 
 :ivar raw:
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1.__init__"></a>
+<a id="models._models.ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -1125,34 +1154,6 @@ def __init__(**kwargs)
 
 - `match`: 
 
-<a id="models._models.ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1"></a>
-
-## ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1 Objects
-
-```python
-class ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1(msrest.serialization.Model)
-```
-
-ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1.
-
-:ivar raw:
-:vartype raw: str
-:ivar parsed:
-:vartype parsed: str
-
-<a id="models._models.ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `raw`: 
-- `parsed`: 
-
 <a id="models._models.ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1"></a>
 
 ## ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1 Objects
@@ -1294,6 +1295,8 @@ class DateAnnotationV2Update(AnnotationV2Base)
 
 DateAnnotationV2Update.
 
+Variables are only populated by the server, and will be ignored when sending a request.
+
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
@@ -1342,7 +1345,6 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: 
-- `rectangles`: 
 - `page_index`: 
 - `raw`: 
 - `confidence`: The overall confidence that the model's prediction is correct.
@@ -1644,6 +1646,8 @@ class ExpectedRemunerationAnnotationV2Update(AnnotationV2Base)
 
 ExpectedRemunerationAnnotationV2Update.
 
+Variables are only populated by the server, and will be ignored when sending a request.
+
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
@@ -1692,7 +1696,6 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: 
-- `rectangles`: 
 - `page_index`: 
 - `raw`: 
 - `confidence`: The overall confidence that the model's prediction is correct.
@@ -1912,9 +1915,9 @@ InvoiceData.
 :ivar bank_account_number:
 :vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
 :ivar supplier_vat:
-:vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVAT
+:vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
 :ivar customer_vat:
-:vartype customer_vat: ~affinda.models.InvoiceDataCustomerVAT
+:vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
 :ivar bpay_biller_code:
 :vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
 :ivar bpay_reference:
@@ -1922,11 +1925,11 @@ InvoiceData.
 :ivar bank_sort_code:
 :vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
 :ivar bank_iban:
-:vartype bank_iban: ~affinda.models.InvoiceDataBankIBAN
+:vartype bank_iban: ~affinda.models.InvoiceDataBankIban
 :ivar bank_swift:
 :vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
 :ivar bank_bsb:
-:vartype bank_bsb: ~affinda.models.InvoiceDataBankBSB
+:vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
 :ivar customer_contact_name:
 :vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
 :ivar customer_company_name:
@@ -2155,15 +2158,15 @@ is the confidence that the text in the image has been correctly read by the mode
 - `content_type`: Required.
 - `parsed`: 
 
-<a id="models._models.InvoiceDataBankBSB"></a>
+<a id="models._models.InvoiceDataBankBsb"></a>
 
-## InvoiceDataBankBSB Objects
+## InvoiceDataBankBsb Objects
 
 ```python
-class InvoiceDataBankBSB(TextAnnotation,  Components1Stp713SchemasInvoicedataPropertiesBankbsbAllof1)
+class InvoiceDataBankBsb(TextAnnotation,  Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1)
 ```
 
-InvoiceDataBankBSB.
+InvoiceDataBankBsb.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -2201,7 +2204,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.InvoiceDataBankBSB.__init__"></a>
+<a id="models._models.InvoiceDataBankBsb.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -2230,15 +2233,15 @@ is the confidence that the text in the image has been correctly read by the mode
 - `content_type`: Required.
 - `parsed`: 
 
-<a id="models._models.InvoiceDataBankIBAN"></a>
+<a id="models._models.InvoiceDataBankIban"></a>
 
-## InvoiceDataBankIBAN Objects
+## InvoiceDataBankIban Objects
 
 ```python
-class InvoiceDataBankIBAN(TextAnnotation,  ComponentsUlui83SchemasInvoicedataPropertiesBankibanAllof1)
+class InvoiceDataBankIban(TextAnnotation,  Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1)
 ```
 
-InvoiceDataBankIBAN.
+InvoiceDataBankIban.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -2276,7 +2279,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.InvoiceDataBankIBAN.__init__"></a>
+<a id="models._models.InvoiceDataBankIban.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -3055,15 +3058,15 @@ is the confidence that the text in the image has been correctly read by the mode
 - `content_type`: Required.
 - `parsed`: 
 
-<a id="models._models.InvoiceDataCustomerVAT"></a>
+<a id="models._models.InvoiceDataCustomerVat"></a>
 
-## InvoiceDataCustomerVAT Objects
+## InvoiceDataCustomerVat Objects
 
 ```python
-class InvoiceDataCustomerVAT(TextAnnotation,  ComponentsBap9YwSchemasInvoicedataPropertiesCustomervatAllof1)
+class InvoiceDataCustomerVat(TextAnnotation,  ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1)
 ```
 
-InvoiceDataCustomerVAT.
+InvoiceDataCustomerVat.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -3101,7 +3104,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.InvoiceDataCustomerVAT.__init__"></a>
+<a id="models._models.InvoiceDataCustomerVat.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -4105,15 +4108,15 @@ is the confidence that the text in the image has been correctly read by the mode
 - `content_type`: Required.
 - `parsed`: 
 
-<a id="models._models.InvoiceDataSupplierVAT"></a>
+<a id="models._models.InvoiceDataSupplierVat"></a>
 
-## InvoiceDataSupplierVAT Objects
+## InvoiceDataSupplierVat Objects
 
 ```python
-class InvoiceDataSupplierVAT(TextAnnotation,  ComponentsCbu2XdSchemasInvoicedataPropertiesSuppliervatAllof1)
+class InvoiceDataSupplierVat(TextAnnotation,  ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1)
 ```
 
-InvoiceDataSupplierVAT.
+InvoiceDataSupplierVat.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -4151,7 +4154,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar parsed:
 :vartype parsed: str
 
-<a id="models._models.InvoiceDataSupplierVAT.__init__"></a>
+<a id="models._models.InvoiceDataSupplierVat.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -5723,7 +5726,6 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: 
-- `rectangles`: 
 - `page_index`: 
 - `raw`: 
 - `confidence`: The overall confidence that the model's prediction is correct.
@@ -5973,7 +5975,6 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: 
-- `rectangles`: 
 - `page_index`: 
 - `raw`: 
 - `confidence`: The overall confidence that the model's prediction is correct.
@@ -6155,7 +6156,6 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: 
-- `rectangles`: 
 - `page_index`: 
 - `raw`: 
 - `confidence`: The overall confidence that the model's prediction is correct.
@@ -9450,7 +9450,6 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: 
-- `rectangles`: 
 - `page_index`: 
 - `raw`: 
 - `confidence`: The overall confidence that the model's prediction is correct.
@@ -9507,6 +9506,8 @@ class TextAnnotationV2Update(AnnotationV2Base)
 
 TextAnnotationV2Update.
 
+Variables are only populated by the server, and will be ignored when sending a request.
+
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
@@ -9555,7 +9556,6 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: 
-- `rectangles`: 
 - `page_index`: 
 - `raw`: 
 - `confidence`: The overall confidence that the model's prediction is correct.
@@ -9683,6 +9683,8 @@ class YearsExperienceAnnotationV2Update(AnnotationV2Base)
 
 YearsExperienceAnnotationV2Update.
 
+Variables are only populated by the server, and will be ignored when sending a request.
+
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
@@ -9731,7 +9733,6 @@ def __init__(**kwargs)
 collection.
 - `id`: 
 - `rectangle`: 
-- `rectangles`: 
 - `page_index`: 
 - `raw`: 
 - `confidence`: The overall confidence that the model's prediction is correct.
