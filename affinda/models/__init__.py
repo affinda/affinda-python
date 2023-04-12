@@ -7,6 +7,9 @@
 try:
     from ._models_py3 import Accreditation
     from ._models_py3 import Annotation
+    from ._models_py3 import AnnotationBatchUpdate
+    from ._models_py3 import AnnotationCreate
+    from ._models_py3 import AnnotationUpdate
     from ._models_py3 import BaseExtractor
     from ._models_py3 import Collection
     from ._models_py3 import CollectionCreate
@@ -78,6 +81,7 @@ try:
     from ._models_py3 import DateAnnotation
     from ._models_py3 import Document
     from ._models_py3 import DocumentCreate
+    from ._models_py3 import DocumentEditRequest
     from ._models_py3 import DocumentError
     from ._models_py3 import DocumentMeta
     from ._models_py3 import DocumentMetaChildDocumentsItem
@@ -85,6 +89,8 @@ try:
     from ._models_py3 import DocumentMetaCollectionExtractor
     from ._models_py3 import DocumentMetaParentDocument
     from ._models_py3 import DocumentMetaWorkspace
+    from ._models_py3 import DocumentSplit
+    from ._models_py3 import DocumentSplitPage
     from ._models_py3 import DocumentUpdate
     from ._models_py3 import Education
     from ._models_py3 import EducationDates
@@ -173,6 +179,9 @@ try:
     from ._models_py3 import LocationAnnotation
     from ._models_py3 import LocationSearchScoreComponent
     from ._models_py3 import ManagementLevelSearchScoreComponent
+    from ._models_py3 import Meta
+    from ._models_py3 import MetaChildDocumentsItem
+    from ._models_py3 import MetaParentDocument
     from ._models_py3 import OccupationGroup
     from ._models_py3 import OccupationGroupSearchResult
     from ._models_py3 import OccupationGroupSearchScoreComponent
@@ -186,6 +195,10 @@ try:
     from ._models_py3 import Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema
     from ._models_py3 import (
         Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema,
+    )
+    from ._models_py3 import Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema
+    from ._models_py3 import (
+        Paths1Dgz0V9V3AnnotationsGetResponses200ContentApplicationJsonSchemaAllof1,
     )
     from ._models_py3 import (
         Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems,
@@ -304,6 +317,9 @@ try:
 except (SyntaxError, ImportError):
     from ._models import Accreditation  # type: ignore
     from ._models import Annotation  # type: ignore
+    from ._models import AnnotationBatchUpdate  # type: ignore
+    from ._models import AnnotationCreate  # type: ignore
+    from ._models import AnnotationUpdate  # type: ignore
     from ._models import BaseExtractor  # type: ignore
     from ._models import Collection  # type: ignore
     from ._models import CollectionCreate  # type: ignore
@@ -355,6 +371,7 @@ except (SyntaxError, ImportError):
     from ._models import DateAnnotation  # type: ignore
     from ._models import Document  # type: ignore
     from ._models import DocumentCreate  # type: ignore
+    from ._models import DocumentEditRequest  # type: ignore
     from ._models import DocumentError  # type: ignore
     from ._models import DocumentMeta  # type: ignore
     from ._models import DocumentMetaChildDocumentsItem  # type: ignore
@@ -362,6 +379,8 @@ except (SyntaxError, ImportError):
     from ._models import DocumentMetaCollectionExtractor  # type: ignore
     from ._models import DocumentMetaParentDocument  # type: ignore
     from ._models import DocumentMetaWorkspace  # type: ignore
+    from ._models import DocumentSplit  # type: ignore
+    from ._models import DocumentSplitPage  # type: ignore
     from ._models import DocumentUpdate  # type: ignore
     from ._models import Education  # type: ignore
     from ._models import EducationDates  # type: ignore
@@ -450,6 +469,9 @@ except (SyntaxError, ImportError):
     from ._models import LocationAnnotation  # type: ignore
     from ._models import LocationSearchScoreComponent  # type: ignore
     from ._models import ManagementLevelSearchScoreComponent  # type: ignore
+    from ._models import Meta  # type: ignore
+    from ._models import MetaChildDocumentsItem  # type: ignore
+    from ._models import MetaParentDocument  # type: ignore
     from ._models import OccupationGroup  # type: ignore
     from ._models import OccupationGroupSearchResult  # type: ignore
     from ._models import OccupationGroupSearchScoreComponent  # type: ignore
@@ -462,6 +484,8 @@ except (SyntaxError, ImportError):
     from ._models import PaginatedResponse  # type: ignore
     from ._models import Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema  # type: ignore
+    from ._models import Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema  # type: ignore
+    from ._models import Paths1Dgz0V9V3AnnotationsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
     from ._models import Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems  # type: ignore
     from ._models import Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
     from ._models import Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema  # type: ignore
@@ -581,6 +605,9 @@ from ._patch import patch_sdk as _patch_sdk
 __all__ = [
     "Accreditation",
     "Annotation",
+    "AnnotationBatchUpdate",
+    "AnnotationCreate",
+    "AnnotationUpdate",
     "BaseExtractor",
     "Collection",
     "CollectionCreate",
@@ -632,6 +659,7 @@ __all__ = [
     "DateAnnotation",
     "Document",
     "DocumentCreate",
+    "DocumentEditRequest",
     "DocumentError",
     "DocumentMeta",
     "DocumentMetaChildDocumentsItem",
@@ -639,6 +667,8 @@ __all__ = [
     "DocumentMetaCollectionExtractor",
     "DocumentMetaParentDocument",
     "DocumentMetaWorkspace",
+    "DocumentSplit",
+    "DocumentSplitPage",
     "DocumentUpdate",
     "Education",
     "EducationDates",
@@ -727,6 +757,9 @@ __all__ = [
     "LocationAnnotation",
     "LocationSearchScoreComponent",
     "ManagementLevelSearchScoreComponent",
+    "Meta",
+    "MetaChildDocumentsItem",
+    "MetaParentDocument",
     "OccupationGroup",
     "OccupationGroupSearchResult",
     "OccupationGroupSearchScoreComponent",
@@ -739,6 +772,8 @@ __all__ = [
     "PaginatedResponse",
     "Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema",
     "Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema",
+    "Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema",
+    "Paths1Dgz0V9V3AnnotationsGetResponses200ContentApplicationJsonSchemaAllof1",
     "Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems",
     "Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1",
     "Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema",

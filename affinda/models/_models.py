@@ -56,13 +56,16 @@ class Annotation(msrest.serialization.Model):
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -82,10 +85,13 @@ class Annotation(msrest.serialization.Model):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     """
 
     _validation = {
@@ -109,6 +115,7 @@ class Annotation(msrest.serialization.Model):
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -126,13 +133,16 @@ class Annotation(msrest.serialization.Model):
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -153,16 +163,20 @@ class Annotation(msrest.serialization.Model):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         """
         super(Annotation, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -173,6 +187,210 @@ class Annotation(msrest.serialization.Model):
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+
+
+class AnnotationUpdate(msrest.serialization.Model):
+    """AnnotationUpdate.
+
+    :ivar rectangles: x/y coordinates for the rectangles containing the data. An annotation can be
+     contained within multiple rectangles.
+    :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
+    :ivar page_index: The page number within the document, starting from 0.
+    :vartype page_index: int
+    :ivar raw: Raw data extracted from the before any post-processing.
+    :vartype raw: str
+    :ivar parsed:
+    :vartype parsed: any
+    :ivar is_client_verified: Indicates whether the data has been validated by a human.
+    :vartype is_client_verified: bool
+    :ivar data_point: Data point's identifier.
+    :vartype data_point: str
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
+    """
+
+    _attribute_map = {
+        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "raw": {"key": "raw", "type": "str"},
+        "parsed": {"key": "parsed", "type": "object"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword rectangles: x/y coordinates for the rectangles containing the data. An annotation can
+         be contained within multiple rectangles.
+        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
+        :keyword page_index: The page number within the document, starting from 0.
+        :paramtype page_index: int
+        :keyword raw: Raw data extracted from the before any post-processing.
+        :paramtype raw: str
+        :keyword parsed:
+        :paramtype parsed: any
+        :keyword is_client_verified: Indicates whether the data has been validated by a human.
+        :paramtype is_client_verified: bool
+        :keyword data_point: Data point's identifier.
+        :paramtype data_point: str
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
+        """
+        super(AnnotationUpdate, self).__init__(**kwargs)
+        self.rectangles = kwargs.get("rectangles", None)
+        self.document = kwargs.get("document", None)
+        self.page_index = kwargs.get("page_index", None)
+        self.raw = kwargs.get("raw", None)
+        self.parsed = kwargs.get("parsed", None)
+        self.is_client_verified = kwargs.get("is_client_verified", None)
+        self.data_point = kwargs.get("data_point", None)
+        self.parent = kwargs.get("parent", None)
+
+
+class AnnotationBatchUpdate(AnnotationUpdate):
+    """AnnotationBatchUpdate.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar rectangles: x/y coordinates for the rectangles containing the data. An annotation can be
+     contained within multiple rectangles.
+    :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
+    :ivar page_index: The page number within the document, starting from 0.
+    :vartype page_index: int
+    :ivar raw: Raw data extracted from the before any post-processing.
+    :vartype raw: str
+    :ivar parsed:
+    :vartype parsed: any
+    :ivar is_client_verified: Indicates whether the data has been validated by a human.
+    :vartype is_client_verified: bool
+    :ivar data_point: Data point's identifier.
+    :vartype data_point: str
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
+    :ivar id: Required. Annotation's ID.
+    :vartype id: int
+    """
+
+    _validation = {
+        "id": {"required": True},
+    }
+
+    _attribute_map = {
+        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "raw": {"key": "raw", "type": "str"},
+        "parsed": {"key": "parsed", "type": "object"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
+        "id": {"key": "id", "type": "int"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword rectangles: x/y coordinates for the rectangles containing the data. An annotation can
+         be contained within multiple rectangles.
+        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
+        :keyword page_index: The page number within the document, starting from 0.
+        :paramtype page_index: int
+        :keyword raw: Raw data extracted from the before any post-processing.
+        :paramtype raw: str
+        :keyword parsed:
+        :paramtype parsed: any
+        :keyword is_client_verified: Indicates whether the data has been validated by a human.
+        :paramtype is_client_verified: bool
+        :keyword data_point: Data point's identifier.
+        :paramtype data_point: str
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
+        :keyword id: Required. Annotation's ID.
+        :paramtype id: int
+        """
+        super(AnnotationBatchUpdate, self).__init__(**kwargs)
+        self.id = kwargs["id"]
+
+
+class AnnotationCreate(msrest.serialization.Model):
+    """AnnotationCreate.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar rectangles: x/y coordinates for the rectangles containing the data. An annotation can be
+     contained within multiple rectangles.
+    :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Required. Uniquely identify a document.
+    :vartype document: str
+    :ivar page_index: Required. The page number within the document, starting from 0.
+    :vartype page_index: int
+    :ivar data_point: Required. Data point's identifier.
+    :vartype data_point: str
+    :ivar raw: Raw data extracted from the before any post-processing.
+    :vartype raw: str
+    :ivar parsed:
+    :vartype parsed: any
+    :ivar is_client_verified: Indicates whether the data has been validated by a human.
+    :vartype is_client_verified: bool
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
+    """
+
+    _validation = {
+        "document": {"required": True},
+        "page_index": {"required": True},
+        "data_point": {"required": True},
+    }
+
+    _attribute_map = {
+        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "raw": {"key": "raw", "type": "str"},
+        "parsed": {"key": "parsed", "type": "object"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "parent": {"key": "parent", "type": "int"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword rectangles: x/y coordinates for the rectangles containing the data. An annotation can
+         be contained within multiple rectangles.
+        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Required. Uniquely identify a document.
+        :paramtype document: str
+        :keyword page_index: Required. The page number within the document, starting from 0.
+        :paramtype page_index: int
+        :keyword data_point: Required. Data point's identifier.
+        :paramtype data_point: str
+        :keyword raw: Raw data extracted from the before any post-processing.
+        :paramtype raw: str
+        :keyword parsed:
+        :paramtype parsed: any
+        :keyword is_client_verified: Indicates whether the data has been validated by a human.
+        :paramtype is_client_verified: bool
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
+        """
+        super(AnnotationCreate, self).__init__(**kwargs)
+        self.rectangles = kwargs.get("rectangles", None)
+        self.document = kwargs["document"]
+        self.page_index = kwargs["page_index"]
+        self.data_point = kwargs["data_point"]
+        self.raw = kwargs.get("raw", None)
+        self.parsed = kwargs.get("parsed", None)
+        self.is_client_verified = kwargs.get("is_client_verified", None)
+        self.parent = kwargs.get("parent", None)
 
 
 class BaseExtractor(msrest.serialization.Model):
@@ -1557,13 +1775,16 @@ class CurrencyCodeAnnotation(Annotation):
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -1583,10 +1804,13 @@ class CurrencyCodeAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: ~affinda.models.DataPointChoice
     """
@@ -1612,6 +1836,7 @@ class CurrencyCodeAnnotation(Annotation):
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -1630,13 +1855,16 @@ class CurrencyCodeAnnotation(Annotation):
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -1657,10 +1885,13 @@ class CurrencyCodeAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: ~affinda.models.DataPointChoice
         """
@@ -1681,9 +1912,10 @@ class DataPoint(msrest.serialization.Model):
     :vartype slug: str
     :ivar description:
     :vartype description: str
-    :ivar annotation_content_type: Required. Known values are: "text", "integer", "float",
-     "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
-     "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience", "group".
+    :ivar annotation_content_type: Required. The different data types of annotations. Known values
+     are: "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
     :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
     :ivar organization:
     :vartype organization: ~affinda.models.Organization
@@ -1733,9 +1965,10 @@ class DataPoint(msrest.serialization.Model):
         :paramtype slug: str
         :keyword description:
         :paramtype description: str
-        :keyword annotation_content_type: Required. Known values are: "text", "integer", "float",
-         "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
-         "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience", "group".
+        :keyword annotation_content_type: Required. The different data types of annotations. Known
+         values are: "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum",
+         "location", "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
         :paramtype annotation_content_type: str or ~affinda.models.AnnotationContentType
         :keyword organization:
         :paramtype organization: ~affinda.models.Organization
@@ -1926,9 +2159,10 @@ class DataPointCreate(msrest.serialization.Model):
     :vartype slug: str
     :ivar description:
     :vartype description: str
-    :ivar annotation_content_type: Required. Known values are: "text", "integer", "float",
-     "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
-     "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience", "group".
+    :ivar annotation_content_type: Required. The different data types of annotations. Known values
+     are: "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
     :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
     :ivar organization: Required. Uniquely identify an organization.
     :vartype organization: str
@@ -1966,9 +2200,10 @@ class DataPointCreate(msrest.serialization.Model):
         :paramtype slug: str
         :keyword description:
         :paramtype description: str
-        :keyword annotation_content_type: Required. Known values are: "text", "integer", "float",
-         "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
-         "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience", "group".
+        :keyword annotation_content_type: Required. The different data types of annotations. Known
+         values are: "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum",
+         "location", "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
         :paramtype annotation_content_type: str or ~affinda.models.AnnotationContentType
         :keyword organization: Required. Uniquely identify an organization.
         :paramtype organization: str
@@ -2030,13 +2265,16 @@ class DateAnnotation(Annotation):
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -2056,10 +2294,13 @@ class DateAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: ~datetime.date
     """
@@ -2085,6 +2326,7 @@ class DateAnnotation(Annotation):
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -2103,13 +2345,16 @@ class DateAnnotation(Annotation):
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -2130,10 +2375,13 @@ class DateAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: ~datetime.date
         """
@@ -2279,6 +2527,32 @@ class DocumentCreate(msrest.serialization.Model):
         self.expiry_time = kwargs.get("expiry_time", None)
         self.language = kwargs.get("language", None)
         self.reject_duplicates = kwargs.get("reject_duplicates", False)
+
+
+class DocumentEditRequest(msrest.serialization.Model):
+    """DocumentEditRequest.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar splits: Required.
+    :vartype splits: list[~affinda.models.DocumentSplit]
+    """
+
+    _validation = {
+        "splits": {"required": True},
+    }
+
+    _attribute_map = {
+        "splits": {"key": "splits", "type": "[DocumentSplit]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword splits: Required.
+        :paramtype splits: list[~affinda.models.DocumentSplit]
+        """
+        super(DocumentEditRequest, self).__init__(**kwargs)
+        self.splits = kwargs["splits"]
 
 
 class DocumentError(msrest.serialization.Model):
@@ -2666,6 +2940,72 @@ class DocumentMetaWorkspace(msrest.serialization.Model):
         self.name = kwargs.get("name", None)
 
 
+class DocumentSplit(msrest.serialization.Model):
+    """Describe a split of a document.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar identifier: Any object.
+    :vartype identifier: any
+    :ivar pages: Required.
+    :vartype pages: list[~affinda.models.DocumentSplitPage]
+    """
+
+    _validation = {
+        "pages": {"required": True},
+    }
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "object"},
+        "pages": {"key": "pages", "type": "[DocumentSplitPage]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Any object.
+        :paramtype identifier: any
+        :keyword pages: Required.
+        :paramtype pages: list[~affinda.models.DocumentSplitPage]
+        """
+        super(DocumentSplit, self).__init__(**kwargs)
+        self.identifier = kwargs.get("identifier", None)
+        self.pages = kwargs["pages"]
+
+
+class DocumentSplitPage(msrest.serialization.Model):
+    """List the pages within this split. Not including a page here will signal that the page should be deleted.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar id: Required. Page's ID.
+    :vartype id: int
+    :ivar rotation: Specify a degree of rotation if you want to rotate a page. Possitive number for
+     clockwise rotation, and negative number for counter-clockwise rotation.
+    :vartype rotation: int
+    """
+
+    _validation = {
+        "id": {"required": True},
+    }
+
+    _attribute_map = {
+        "id": {"key": "id", "type": "int"},
+        "rotation": {"key": "rotation", "type": "int"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword id: Required. Page's ID.
+        :paramtype id: int
+        :keyword rotation: Specify a degree of rotation if you want to rotate a page. Possitive number
+         for clockwise rotation, and negative number for counter-clockwise rotation.
+        :paramtype rotation: int
+        """
+        super(DocumentSplitPage, self).__init__(**kwargs)
+        self.id = kwargs["id"]
+        self.rotation = kwargs.get("rotation", None)
+
+
 class DocumentUpdate(msrest.serialization.Model):
     """DocumentUpdate.
 
@@ -2783,12 +3123,15 @@ class EducationDates(msrest.serialization.Model):
     :vartype is_current: bool
     :ivar start_date:
     :vartype start_date: ~datetime.date
+    :ivar raw_text:
+    :vartype raw_text: str
     """
 
     _attribute_map = {
         "completion_date": {"key": "completionDate", "type": "date"},
         "is_current": {"key": "isCurrent", "type": "bool"},
         "start_date": {"key": "startDate", "type": "date"},
+        "raw_text": {"key": "rawText", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -2799,11 +3142,14 @@ class EducationDates(msrest.serialization.Model):
         :paramtype is_current: bool
         :keyword start_date:
         :paramtype start_date: ~datetime.date
+        :keyword raw_text:
+        :paramtype raw_text: str
         """
         super(EducationDates, self).__init__(**kwargs)
         self.completion_date = kwargs.get("completion_date", None)
         self.is_current = kwargs.get("is_current", None)
         self.start_date = kwargs.get("start_date", None)
+        self.raw_text = kwargs.get("raw_text", None)
 
 
 class EducationGrade(msrest.serialization.Model):
@@ -2892,13 +3238,16 @@ class ExpectedRemunerationAnnotation(Annotation):
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -2918,10 +3267,13 @@ class ExpectedRemunerationAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: ~affinda.models.ExpectedRemunerationAnnotationParsed
     """
@@ -2947,6 +3299,7 @@ class ExpectedRemunerationAnnotation(Annotation):
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -2965,13 +3318,16 @@ class ExpectedRemunerationAnnotation(Annotation):
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -2992,10 +3348,13 @@ class ExpectedRemunerationAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: ~affinda.models.ExpectedRemunerationAnnotationParsed
         """
@@ -4074,13 +4433,16 @@ class TextAnnotation(Annotation):
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -4100,10 +4462,13 @@ class TextAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -4129,6 +4494,7 @@ class TextAnnotation(Annotation):
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -4147,13 +4513,16 @@ class TextAnnotation(Annotation):
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -4174,10 +4543,13 @@ class TextAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -4195,13 +4567,16 @@ class InvoiceDataBankAccountNumber(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -4221,10 +4596,13 @@ class InvoiceDataBankAccountNumber(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -4250,6 +4628,7 @@ class InvoiceDataBankAccountNumber(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -4268,13 +4647,16 @@ class InvoiceDataBankAccountNumber(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -4295,10 +4677,13 @@ class InvoiceDataBankAccountNumber(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -4307,6 +4692,7 @@ class InvoiceDataBankAccountNumber(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -4330,13 +4716,16 @@ class InvoiceDataBankBsb(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -4356,10 +4745,13 @@ class InvoiceDataBankBsb(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -4385,6 +4777,7 @@ class InvoiceDataBankBsb(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -4403,13 +4796,16 @@ class InvoiceDataBankBsb(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -4430,10 +4826,13 @@ class InvoiceDataBankBsb(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -4442,6 +4841,7 @@ class InvoiceDataBankBsb(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -4465,13 +4865,16 @@ class InvoiceDataBankIban(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -4491,10 +4894,13 @@ class InvoiceDataBankIban(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -4520,6 +4926,7 @@ class InvoiceDataBankIban(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -4538,13 +4945,16 @@ class InvoiceDataBankIban(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -4565,10 +4975,13 @@ class InvoiceDataBankIban(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -4577,6 +4990,7 @@ class InvoiceDataBankIban(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -4600,13 +5014,16 @@ class InvoiceDataBankSortCode(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -4626,10 +5043,13 @@ class InvoiceDataBankSortCode(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -4655,6 +5075,7 @@ class InvoiceDataBankSortCode(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -4673,13 +5094,16 @@ class InvoiceDataBankSortCode(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -4700,10 +5124,13 @@ class InvoiceDataBankSortCode(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -4712,6 +5139,7 @@ class InvoiceDataBankSortCode(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -4735,13 +5163,16 @@ class InvoiceDataBankSwift(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -4761,10 +5192,13 @@ class InvoiceDataBankSwift(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -4790,6 +5224,7 @@ class InvoiceDataBankSwift(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -4808,13 +5243,16 @@ class InvoiceDataBankSwift(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -4835,10 +5273,13 @@ class InvoiceDataBankSwift(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -4847,6 +5288,7 @@ class InvoiceDataBankSwift(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -4870,13 +5312,16 @@ class InvoiceDataBpayBillerCode(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -4896,10 +5341,13 @@ class InvoiceDataBpayBillerCode(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -4925,6 +5373,7 @@ class InvoiceDataBpayBillerCode(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -4943,13 +5392,16 @@ class InvoiceDataBpayBillerCode(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -4970,10 +5422,13 @@ class InvoiceDataBpayBillerCode(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -4982,6 +5437,7 @@ class InvoiceDataBpayBillerCode(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -5005,13 +5461,16 @@ class InvoiceDataBpayReference(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -5031,10 +5490,13 @@ class InvoiceDataBpayReference(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -5060,6 +5522,7 @@ class InvoiceDataBpayReference(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -5078,13 +5541,16 @@ class InvoiceDataBpayReference(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -5105,10 +5571,13 @@ class InvoiceDataBpayReference(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -5117,6 +5586,7 @@ class InvoiceDataBpayReference(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -5140,13 +5610,16 @@ class InvoiceDataCustomerBusinessNumber(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -5166,10 +5639,13 @@ class InvoiceDataCustomerBusinessNumber(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -5195,6 +5671,7 @@ class InvoiceDataCustomerBusinessNumber(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -5213,13 +5690,16 @@ class InvoiceDataCustomerBusinessNumber(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -5240,10 +5720,13 @@ class InvoiceDataCustomerBusinessNumber(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -5252,6 +5735,7 @@ class InvoiceDataCustomerBusinessNumber(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -5275,13 +5759,16 @@ class InvoiceDataCustomerCompanyName(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -5301,10 +5788,13 @@ class InvoiceDataCustomerCompanyName(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -5330,6 +5820,7 @@ class InvoiceDataCustomerCompanyName(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -5348,13 +5839,16 @@ class InvoiceDataCustomerCompanyName(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -5375,10 +5869,13 @@ class InvoiceDataCustomerCompanyName(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -5387,6 +5884,7 @@ class InvoiceDataCustomerCompanyName(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -5410,13 +5908,16 @@ class InvoiceDataCustomerContactName(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -5436,10 +5937,13 @@ class InvoiceDataCustomerContactName(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -5465,6 +5969,7 @@ class InvoiceDataCustomerContactName(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -5483,13 +5988,16 @@ class InvoiceDataCustomerContactName(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -5510,10 +6018,13 @@ class InvoiceDataCustomerContactName(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -5522,6 +6033,7 @@ class InvoiceDataCustomerContactName(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -5545,13 +6057,16 @@ class InvoiceDataCustomerEmail(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -5571,10 +6086,13 @@ class InvoiceDataCustomerEmail(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -5600,6 +6118,7 @@ class InvoiceDataCustomerEmail(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -5618,13 +6137,16 @@ class InvoiceDataCustomerEmail(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -5645,10 +6167,13 @@ class InvoiceDataCustomerEmail(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -5657,6 +6182,7 @@ class InvoiceDataCustomerEmail(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -5680,13 +6206,16 @@ class InvoiceDataCustomerNumber(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -5706,10 +6235,13 @@ class InvoiceDataCustomerNumber(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -5735,6 +6267,7 @@ class InvoiceDataCustomerNumber(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -5753,13 +6286,16 @@ class InvoiceDataCustomerNumber(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -5780,10 +6316,13 @@ class InvoiceDataCustomerNumber(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -5792,6 +6331,7 @@ class InvoiceDataCustomerNumber(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -5815,13 +6355,16 @@ class InvoiceDataCustomerPhoneNumber(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -5841,10 +6384,13 @@ class InvoiceDataCustomerPhoneNumber(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -5870,6 +6416,7 @@ class InvoiceDataCustomerPhoneNumber(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -5888,13 +6435,16 @@ class InvoiceDataCustomerPhoneNumber(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -5915,10 +6465,13 @@ class InvoiceDataCustomerPhoneNumber(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -5927,6 +6480,7 @@ class InvoiceDataCustomerPhoneNumber(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -5950,13 +6504,16 @@ class InvoiceDataCustomerVat(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -5976,10 +6533,13 @@ class InvoiceDataCustomerVat(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -6005,6 +6565,7 @@ class InvoiceDataCustomerVat(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -6023,13 +6584,16 @@ class InvoiceDataCustomerVat(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -6050,10 +6614,13 @@ class InvoiceDataCustomerVat(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -6062,6 +6629,7 @@ class InvoiceDataCustomerVat(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -6085,13 +6653,16 @@ class InvoiceDataInvoiceNumber(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -6111,10 +6682,13 @@ class InvoiceDataInvoiceNumber(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -6140,6 +6714,7 @@ class InvoiceDataInvoiceNumber(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -6158,13 +6733,16 @@ class InvoiceDataInvoiceNumber(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -6185,10 +6763,13 @@ class InvoiceDataInvoiceNumber(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -6197,6 +6778,7 @@ class InvoiceDataInvoiceNumber(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -6220,13 +6802,16 @@ class InvoiceDataInvoicePurchaseOrderNumber(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -6246,10 +6831,13 @@ class InvoiceDataInvoicePurchaseOrderNumber(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -6275,6 +6863,7 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -6293,13 +6882,16 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -6320,10 +6912,13 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -6332,6 +6927,7 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -6355,13 +6951,16 @@ class InvoiceDataPaymentAmountBase(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -6381,10 +6980,13 @@ class InvoiceDataPaymentAmountBase(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -6410,6 +7012,7 @@ class InvoiceDataPaymentAmountBase(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -6428,13 +7031,16 @@ class InvoiceDataPaymentAmountBase(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -6455,10 +7061,13 @@ class InvoiceDataPaymentAmountBase(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -6467,6 +7076,7 @@ class InvoiceDataPaymentAmountBase(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -6490,13 +7100,16 @@ class InvoiceDataPaymentAmountDue(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -6516,10 +7129,13 @@ class InvoiceDataPaymentAmountDue(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -6545,6 +7161,7 @@ class InvoiceDataPaymentAmountDue(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -6563,13 +7180,16 @@ class InvoiceDataPaymentAmountDue(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -6590,10 +7210,13 @@ class InvoiceDataPaymentAmountDue(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -6602,6 +7225,7 @@ class InvoiceDataPaymentAmountDue(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -6625,13 +7249,16 @@ class InvoiceDataPaymentAmountPaid(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -6651,10 +7278,13 @@ class InvoiceDataPaymentAmountPaid(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -6680,6 +7310,7 @@ class InvoiceDataPaymentAmountPaid(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -6698,13 +7329,16 @@ class InvoiceDataPaymentAmountPaid(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -6725,10 +7359,13 @@ class InvoiceDataPaymentAmountPaid(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -6737,6 +7374,7 @@ class InvoiceDataPaymentAmountPaid(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -6760,13 +7398,16 @@ class InvoiceDataPaymentAmountTax(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -6786,10 +7427,13 @@ class InvoiceDataPaymentAmountTax(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -6815,6 +7459,7 @@ class InvoiceDataPaymentAmountTax(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -6833,13 +7478,16 @@ class InvoiceDataPaymentAmountTax(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -6860,10 +7508,13 @@ class InvoiceDataPaymentAmountTax(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -6872,6 +7523,7 @@ class InvoiceDataPaymentAmountTax(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -6895,13 +7547,16 @@ class InvoiceDataPaymentAmountTotal(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -6921,10 +7576,13 @@ class InvoiceDataPaymentAmountTotal(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -6950,6 +7608,7 @@ class InvoiceDataPaymentAmountTotal(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -6968,13 +7627,16 @@ class InvoiceDataPaymentAmountTotal(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -6995,10 +7657,13 @@ class InvoiceDataPaymentAmountTotal(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -7007,6 +7672,7 @@ class InvoiceDataPaymentAmountTotal(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -7030,13 +7696,16 @@ class InvoiceDataPaymentReference(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -7056,10 +7725,13 @@ class InvoiceDataPaymentReference(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -7085,6 +7757,7 @@ class InvoiceDataPaymentReference(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -7103,13 +7776,16 @@ class InvoiceDataPaymentReference(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -7130,10 +7806,13 @@ class InvoiceDataPaymentReference(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -7142,6 +7821,7 @@ class InvoiceDataPaymentReference(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -7165,13 +7845,16 @@ class InvoiceDataSupplierBusinessNumber(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -7191,10 +7874,13 @@ class InvoiceDataSupplierBusinessNumber(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -7220,6 +7906,7 @@ class InvoiceDataSupplierBusinessNumber(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -7238,13 +7925,16 @@ class InvoiceDataSupplierBusinessNumber(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -7265,10 +7955,13 @@ class InvoiceDataSupplierBusinessNumber(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -7277,6 +7970,7 @@ class InvoiceDataSupplierBusinessNumber(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -7300,13 +7994,16 @@ class InvoiceDataSupplierCompanyName(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -7326,10 +8023,13 @@ class InvoiceDataSupplierCompanyName(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -7355,6 +8055,7 @@ class InvoiceDataSupplierCompanyName(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -7373,13 +8074,16 @@ class InvoiceDataSupplierCompanyName(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -7400,10 +8104,13 @@ class InvoiceDataSupplierCompanyName(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -7412,6 +8119,7 @@ class InvoiceDataSupplierCompanyName(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -7435,13 +8143,16 @@ class InvoiceDataSupplierEmail(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -7461,10 +8172,13 @@ class InvoiceDataSupplierEmail(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -7490,6 +8204,7 @@ class InvoiceDataSupplierEmail(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -7508,13 +8223,16 @@ class InvoiceDataSupplierEmail(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -7535,10 +8253,13 @@ class InvoiceDataSupplierEmail(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -7547,6 +8268,7 @@ class InvoiceDataSupplierEmail(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -7570,13 +8292,16 @@ class InvoiceDataSupplierFax(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -7596,10 +8321,13 @@ class InvoiceDataSupplierFax(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -7625,6 +8353,7 @@ class InvoiceDataSupplierFax(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -7643,13 +8372,16 @@ class InvoiceDataSupplierFax(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -7670,10 +8402,13 @@ class InvoiceDataSupplierFax(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -7682,6 +8417,7 @@ class InvoiceDataSupplierFax(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -7705,13 +8441,16 @@ class InvoiceDataSupplierPhoneNumber(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -7731,10 +8470,13 @@ class InvoiceDataSupplierPhoneNumber(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -7760,6 +8502,7 @@ class InvoiceDataSupplierPhoneNumber(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -7778,13 +8521,16 @@ class InvoiceDataSupplierPhoneNumber(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -7805,10 +8551,13 @@ class InvoiceDataSupplierPhoneNumber(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -7817,6 +8566,7 @@ class InvoiceDataSupplierPhoneNumber(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -7840,13 +8590,16 @@ class InvoiceDataSupplierVat(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -7866,10 +8619,13 @@ class InvoiceDataSupplierVat(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -7895,6 +8651,7 @@ class InvoiceDataSupplierVat(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -7913,13 +8670,16 @@ class InvoiceDataSupplierVat(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -7940,10 +8700,13 @@ class InvoiceDataSupplierVat(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -7952,6 +8715,7 @@ class InvoiceDataSupplierVat(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -7975,13 +8739,16 @@ class InvoiceDataSupplierWebsite(
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -8001,10 +8768,13 @@ class InvoiceDataSupplierWebsite(
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -8030,6 +8800,7 @@ class InvoiceDataSupplierWebsite(
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -8048,13 +8819,16 @@ class InvoiceDataSupplierWebsite(
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -8075,10 +8849,13 @@ class InvoiceDataSupplierWebsite(
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -8087,6 +8864,7 @@ class InvoiceDataSupplierWebsite(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
+        self.document = kwargs.get("document", None)
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -9073,7 +9851,7 @@ class OccupationGroupSearchResult(msrest.serialization.Model):
     :vartype code: int
     :ivar name: Required.
     :vartype name: str
-    :ivar children: Required.
+    :ivar children:
     :vartype children: list[~affinda.models.OccupationGroup]
     :ivar parents:
     :vartype parents: list[~affinda.models.OccupationGroup]
@@ -9082,7 +9860,6 @@ class OccupationGroupSearchResult(msrest.serialization.Model):
     _validation = {
         "code": {"required": True},
         "name": {"required": True},
-        "children": {"required": True},
     }
 
     _attribute_map = {
@@ -9101,7 +9878,7 @@ class OccupationGroupSearchResult(msrest.serialization.Model):
         :paramtype code: int
         :keyword name: Required.
         :paramtype name: str
-        :keyword children: Required.
+        :keyword children:
         :paramtype children: list[~affinda.models.OccupationGroup]
         :keyword parents:
         :paramtype parents: list[~affinda.models.OccupationGroup]
@@ -9110,7 +9887,7 @@ class OccupationGroupSearchResult(msrest.serialization.Model):
         self.match = kwargs.get("match", None)
         self.code = kwargs["code"]
         self.name = kwargs["name"]
-        self.children = kwargs["children"]
+        self.children = kwargs.get("children", None)
         self.parents = kwargs.get("parents", None)
 
 
@@ -9125,7 +9902,7 @@ class JobDescriptionSearchDetailOccupationGroupValue(OccupationGroupSearchResult
     :vartype code: int
     :ivar name: Required.
     :vartype name: str
-    :ivar children: Required.
+    :ivar children:
     :vartype children: list[~affinda.models.OccupationGroup]
     :ivar parents:
     :vartype parents: list[~affinda.models.OccupationGroup]
@@ -9134,7 +9911,6 @@ class JobDescriptionSearchDetailOccupationGroupValue(OccupationGroupSearchResult
     _validation = {
         "code": {"required": True},
         "name": {"required": True},
-        "children": {"required": True},
     }
 
     _attribute_map = {
@@ -9153,7 +9929,7 @@ class JobDescriptionSearchDetailOccupationGroupValue(OccupationGroupSearchResult
         :paramtype code: int
         :keyword name: Required.
         :paramtype name: str
-        :keyword children: Required.
+        :keyword children:
         :paramtype children: list[~affinda.models.OccupationGroup]
         :keyword parents:
         :paramtype parents: list[~affinda.models.OccupationGroup]
@@ -9589,13 +10365,16 @@ class JobTitleAnnotation(Annotation):
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -9615,10 +10394,13 @@ class JobTitleAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed: Years of experience range.
     :vartype parsed: ~affinda.models.JobTitleAnnotationParsed
     """
@@ -9644,6 +10426,7 @@ class JobTitleAnnotation(Annotation):
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -9662,13 +10445,16 @@ class JobTitleAnnotation(Annotation):
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -9689,10 +10475,13 @@ class JobTitleAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed: Years of experience range.
         :paramtype parsed: ~affinda.models.JobTitleAnnotationParsed
         """
@@ -9827,13 +10616,16 @@ class LanguageAnnotation(Annotation):
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -9853,10 +10645,13 @@ class LanguageAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -9883,6 +10678,7 @@ class LanguageAnnotation(Annotation):
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -9901,13 +10697,16 @@ class LanguageAnnotation(Annotation):
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -9928,10 +10727,13 @@ class LanguageAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         """
         super(LanguageAnnotation, self).__init__(**kwargs)
         self.parsed = None
@@ -9983,13 +10785,16 @@ class LocationAnnotation(Annotation):
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -10009,10 +10814,13 @@ class LocationAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: ~affinda.models.Location
     """
@@ -10038,6 +10846,7 @@ class LocationAnnotation(Annotation):
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -10056,13 +10865,16 @@ class LocationAnnotation(Annotation):
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -10083,10 +10895,13 @@ class LocationAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed:
         :paramtype parsed: ~affinda.models.Location
         """
@@ -10168,6 +10983,175 @@ class ManagementLevelSearchScoreComponent(msrest.serialization.Model):
         self.value = kwargs.get("value", None)
         self.label = kwargs["label"]
         self.score = kwargs.get("score", None)
+
+
+class Meta(msrest.serialization.Model):
+    """Meta.
+
+    :ivar identifier: Uniquely identify a document.
+    :vartype identifier: str
+    :ivar file_name: Optional filename of the file.
+    :vartype file_name: str
+    :ivar ready: If true, the document has finished processing. Particularly useful if an endpoint
+     request specified wait=False, when polling use this variable to determine when to stop polling.
+    :vartype ready: bool
+    :ivar ready_dt: The datetime when the document was ready.
+    :vartype ready_dt: ~datetime.datetime
+    :ivar failed: If true, some exception was raised during processing. Check the 'error' field of
+     the main return object.
+    :vartype failed: bool
+    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+     deleted.  Defaults to no expiry.
+    :vartype expiry_time: ~datetime.datetime
+    :ivar language: The document's language.
+    :vartype language: str
+    :ivar pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
+     converted to pdf as part of the parsing process).
+    :vartype pdf: str
+    :ivar parent_document: If this document is part of a splitted document, this attribute points
+     to the original document that this document is splitted from.
+    :vartype parent_document: ~affinda.models.MetaParentDocument
+    :ivar child_documents: If this document has been splitted into a number of child documents,
+     this attribute points to those child documents.
+    :vartype child_documents: list[~affinda.models.MetaChildDocumentsItem]
+    :ivar pages: The document's pages.
+    :vartype pages: list[~affinda.models.PageMeta]
+    :ivar is_verified: This is true if the 'confirm' button has been clicked in the Affinda
+     validation tool.
+    :vartype is_verified: bool
+    :ivar review_url: Signed URL (valid for 60 minutes) to access the validation tool.  Not
+     applicable for documents types such a resumes.
+    :vartype review_url: str
+    :ivar ocr_confidence: The overall confidence in the conversion of image to text.  (only
+     applicable for images or PDF documents without a text layer).
+    :vartype ocr_confidence: float
+    :ivar created_dt:
+    :vartype created_dt: ~datetime.datetime
+    :ivar document_type:
+    :vartype document_type: str
+    """
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "file_name": {"key": "fileName", "type": "str"},
+        "ready": {"key": "ready", "type": "bool"},
+        "ready_dt": {"key": "readyDt", "type": "iso-8601"},
+        "failed": {"key": "failed", "type": "bool"},
+        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
+        "language": {"key": "language", "type": "str"},
+        "pdf": {"key": "pdf", "type": "str"},
+        "parent_document": {"key": "parentDocument", "type": "MetaParentDocument"},
+        "child_documents": {"key": "childDocuments", "type": "[MetaChildDocumentsItem]"},
+        "pages": {"key": "pages", "type": "[PageMeta]"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
+        "review_url": {"key": "reviewUrl", "type": "str"},
+        "ocr_confidence": {"key": "ocrConfidence", "type": "float"},
+        "created_dt": {"key": "createdDt", "type": "iso-8601"},
+        "document_type": {"key": "documentType", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Uniquely identify a document.
+        :paramtype identifier: str
+        :keyword file_name: Optional filename of the file.
+        :paramtype file_name: str
+        :keyword ready: If true, the document has finished processing. Particularly useful if an
+         endpoint request specified wait=False, when polling use this variable to determine when to stop
+         polling.
+        :paramtype ready: bool
+        :keyword ready_dt: The datetime when the document was ready.
+        :paramtype ready_dt: ~datetime.datetime
+        :keyword failed: If true, some exception was raised during processing. Check the 'error' field
+         of the main return object.
+        :paramtype failed: bool
+        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+         deleted.  Defaults to no expiry.
+        :paramtype expiry_time: ~datetime.datetime
+        :keyword language: The document's language.
+        :paramtype language: str
+        :keyword pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
+         converted to pdf as part of the parsing process).
+        :paramtype pdf: str
+        :keyword parent_document: If this document is part of a splitted document, this attribute
+         points to the original document that this document is splitted from.
+        :paramtype parent_document: ~affinda.models.MetaParentDocument
+        :keyword child_documents: If this document has been splitted into a number of child documents,
+         this attribute points to those child documents.
+        :paramtype child_documents: list[~affinda.models.MetaChildDocumentsItem]
+        :keyword pages: The document's pages.
+        :paramtype pages: list[~affinda.models.PageMeta]
+        :keyword is_verified: This is true if the 'confirm' button has been clicked in the Affinda
+         validation tool.
+        :paramtype is_verified: bool
+        :keyword review_url: Signed URL (valid for 60 minutes) to access the validation tool.  Not
+         applicable for documents types such a resumes.
+        :paramtype review_url: str
+        :keyword ocr_confidence: The overall confidence in the conversion of image to text.  (only
+         applicable for images or PDF documents without a text layer).
+        :paramtype ocr_confidence: float
+        :keyword created_dt:
+        :paramtype created_dt: ~datetime.datetime
+        :keyword document_type:
+        :paramtype document_type: str
+        """
+        super(Meta, self).__init__(**kwargs)
+        self.identifier = kwargs.get("identifier", None)
+        self.file_name = kwargs.get("file_name", None)
+        self.ready = kwargs.get("ready", None)
+        self.ready_dt = kwargs.get("ready_dt", None)
+        self.failed = kwargs.get("failed", None)
+        self.expiry_time = kwargs.get("expiry_time", None)
+        self.language = kwargs.get("language", None)
+        self.pdf = kwargs.get("pdf", None)
+        self.parent_document = kwargs.get("parent_document", None)
+        self.child_documents = kwargs.get("child_documents", None)
+        self.pages = kwargs.get("pages", None)
+        self.is_verified = kwargs.get("is_verified", None)
+        self.review_url = kwargs.get("review_url", None)
+        self.ocr_confidence = kwargs.get("ocr_confidence", None)
+        self.created_dt = kwargs.get("created_dt", None)
+        self.document_type = kwargs.get("document_type", None)
+
+
+class MetaChildDocumentsItem(msrest.serialization.Model):
+    """MetaChildDocumentsItem.
+
+    :ivar identifier: Uniquely identify a document.
+    :vartype identifier: str
+    """
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Uniquely identify a document.
+        :paramtype identifier: str
+        """
+        super(MetaChildDocumentsItem, self).__init__(**kwargs)
+        self.identifier = kwargs.get("identifier", None)
+
+
+class MetaParentDocument(msrest.serialization.Model):
+    """If this document is part of a splitted document, this attribute points to the original document that this document is splitted from.
+
+    :ivar identifier: Uniquely identify a document.
+    :vartype identifier: str
+    """
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Uniquely identify a document.
+        :paramtype identifier: str
+        """
+        super(MetaParentDocument, self).__init__(**kwargs)
+        self.identifier = kwargs.get("identifier", None)
 
 
 class OccupationGroup(msrest.serialization.Model):
@@ -10635,6 +11619,78 @@ class Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema
             Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema, self
         ).__init__(**kwargs)
         self.config_override = kwargs.get("config_override", None)
+
+
+class Paths1Dgz0V9V3AnnotationsGetResponses200ContentApplicationJsonSchemaAllof1(
+    msrest.serialization.Model
+):
+    """Paths1Dgz0V9V3AnnotationsGetResponses200ContentApplicationJsonSchemaAllof1.
+
+    :ivar results:
+    :vartype results: list[~affinda.models.Annotation]
+    """
+
+    _attribute_map = {
+        "results": {"key": "results", "type": "[Annotation]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword results:
+        :paramtype results: list[~affinda.models.Annotation]
+        """
+        super(
+            Paths1Dgz0V9V3AnnotationsGetResponses200ContentApplicationJsonSchemaAllof1, self
+        ).__init__(**kwargs)
+        self.results = kwargs.get("results", None)
+
+
+class Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema(
+    PaginatedResponse, Paths1Dgz0V9V3AnnotationsGetResponses200ContentApplicationJsonSchemaAllof1
+):
+    """Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar results:
+    :vartype results: list[~affinda.models.Annotation]
+    :ivar count: Required. Number of items in results.
+    :vartype count: int
+    :ivar next: URL to request next page of results.
+    :vartype next: str
+    :ivar previous: URL to request previous page of results.
+    :vartype previous: str
+    """
+
+    _validation = {
+        "count": {"required": True},
+    }
+
+    _attribute_map = {
+        "results": {"key": "results", "type": "[Annotation]"},
+        "count": {"key": "count", "type": "int"},
+        "next": {"key": "next", "type": "str"},
+        "previous": {"key": "previous", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword results:
+        :paramtype results: list[~affinda.models.Annotation]
+        :keyword count: Required. Number of items in results.
+        :paramtype count: int
+        :keyword next: URL to request next page of results.
+        :paramtype next: str
+        :keyword previous: URL to request previous page of results.
+        :paramtype previous: str
+        """
+        super(Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema, self).__init__(
+            **kwargs
+        )
+        self.results = kwargs.get("results", None)
+        self.count = kwargs["count"]
+        self.next = kwargs.get("next", None)
+        self.previous = kwargs.get("previous", None)
 
 
 class Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems(
@@ -12121,6 +13177,8 @@ class ResumeDataWorkExperienceItemDates(msrest.serialization.Model):
     :vartype months_in_position: int
     :ivar is_current:
     :vartype is_current: bool
+    :ivar raw_text:
+    :vartype raw_text: str
     """
 
     _attribute_map = {
@@ -12128,6 +13186,7 @@ class ResumeDataWorkExperienceItemDates(msrest.serialization.Model):
         "end_date": {"key": "endDate", "type": "date"},
         "months_in_position": {"key": "monthsInPosition", "type": "int"},
         "is_current": {"key": "isCurrent", "type": "bool"},
+        "raw_text": {"key": "rawText", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -12140,12 +13199,15 @@ class ResumeDataWorkExperienceItemDates(msrest.serialization.Model):
         :paramtype months_in_position: int
         :keyword is_current:
         :paramtype is_current: bool
+        :keyword raw_text:
+        :paramtype raw_text: str
         """
         super(ResumeDataWorkExperienceItemDates, self).__init__(**kwargs)
         self.start_date = kwargs.get("start_date", None)
         self.end_date = kwargs.get("end_date", None)
         self.months_in_position = kwargs.get("months_in_position", None)
         self.is_current = kwargs.get("is_current", None)
+        self.raw_text = kwargs.get("raw_text", None)
 
 
 class ResumeDataWorkExperienceItemOccupation(msrest.serialization.Model):
@@ -13996,13 +15058,16 @@ class SkillAnnotation(Annotation):
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -14022,10 +15087,13 @@ class SkillAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed:
     :vartype parsed: str
     """
@@ -14052,6 +15120,7 @@ class SkillAnnotation(Annotation):
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -14070,13 +15139,16 @@ class SkillAnnotation(Annotation):
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -14097,10 +15169,13 @@ class SkillAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         """
         super(SkillAnnotation, self).__init__(**kwargs)
         self.parsed = None
@@ -14717,13 +15792,16 @@ class YearsExperienceAnnotation(Annotation):
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
-    :ivar id: Required.
+    :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
      data.
     :vartype rectangle: ~affinda.models.Rectangle
-    :ivar rectangles: Required.
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
     :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -14743,10 +15821,13 @@ class YearsExperienceAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required.
+    :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
-    :ivar content_type: Required.
-    :vartype content_type: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parsed: Years of experience range.
     :vartype parsed: ~affinda.models.YearsExperienceAnnotationParsed
     """
@@ -14772,6 +15853,7 @@ class YearsExperienceAnnotation(Annotation):
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "raw": {"key": "raw", "type": "str"},
         "confidence": {"key": "confidence", "type": "float"},
@@ -14790,13 +15872,16 @@ class YearsExperienceAnnotation(Annotation):
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
-        :keyword id: Required.
+        :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
          data.
         :paramtype rectangle: ~affinda.models.Rectangle
-        :keyword rectangles: Required.
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
         :keyword raw: Required. Raw data extracted from the before any post-processing.
@@ -14817,10 +15902,13 @@ class YearsExperienceAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required.
+        :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
-        :keyword content_type: Required.
-        :paramtype content_type: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parsed: Years of experience range.
         :paramtype parsed: ~affinda.models.YearsExperienceAnnotationParsed
         """

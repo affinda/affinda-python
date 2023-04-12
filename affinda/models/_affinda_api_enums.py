@@ -9,6 +9,7 @@ from azure.core import CaseInsensitiveEnumMeta
 
 
 class AnnotationContentType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+    """The different data types of annotations"""
 
     TEXT = "text"
     INTEGER = "integer"
@@ -28,6 +29,7 @@ class AnnotationContentType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     SKILL = "skill"
     YEARSEXPERIENCE = "yearsexperience"
     GROUP = "group"
+    TABLE_DEPRECATED = "table_deprecated"
 
 
 class CollectionDateFormatPreference(str, Enum, metaclass=CaseInsensitiveEnumMeta):

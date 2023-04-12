@@ -26,13 +26,13 @@ from affinda import AffindaAPI, TokenCredential
 from affinda.models import WorkspaceCreate, WorkspaceVisibility
 
 token = "REPLACE_TOKEN"
-organization_identifer = "REPLACE_ORGANIZATION_IDENTIFIER"
+organization_identifier = "REPLACE_ORGANIZATION_IDENTIFIER"
 
 credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
 
 body = WorkspaceCreate(
-    organization=organization_identifer,
+    organization=organization_identifier,
     name="My Workspace",
     visibility=WorkspaceVisibility.ORGANIZATION,
     reject_invalid_documents=False,
@@ -115,20 +115,20 @@ from affinda import AffindaAPI, TokenCredential
 from affinda.models import WorkspaceMembershipCreate
 
 token = "REPLACE_TOKEN"
-organization_identifer = "REPLACE_ORGANIZATION_IDENTIFIER"
-workspace_identifer = "REPLACE_WORKSPACE_IDENTIFIER"
+organization_identifier = "REPLACE_ORGANIZATION_IDENTIFIER"
+workspace_identifier = "REPLACE_WORKSPACE_IDENTIFIER"
 
 credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
 
 # Get all members in organization
-response = client.get_all_organization_memberships(organization=organization_identifer)
+response = client.get_all_organization_memberships(organization=organization_identifier)
 memberships = response.results
 
 # Let's say we want to add the first member
 membership = memberships[0]
 body = WorkspaceMembershipCreate(
-    workspace=workspace_identifer,
+    workspace=workspace_identifier,
     user=membership.user.id,
 )
 response = client.create_workspace_membership(body)
@@ -191,16 +191,16 @@ from affinda import AffindaAPI, TokenCredential
 from affinda.models import CollectionCreate
 
 token = "REPLACE_TOKEN"
-workspace_identifer = "REPLACE_WORKSPACE_IDENTIFIER"
-extractor_identifer = "REPLACE_EXTRACTOR_IDENTIFIER"
+workspace_identifier = "REPLACE_WORKSPACE_IDENTIFIER"
+extractor_identifier = "REPLACE_EXTRACTOR_IDENTIFIER"
 
 credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
 
 body = CollectionCreate(
     name="My Collection",
-    workspace=workspace_identifer,
-    extractor=extractor_identifer,
+    workspace=workspace_identifier,
+    extractor=extractor_identifier,
 )
 response = client.create_collection(body)
 
@@ -280,14 +280,14 @@ from pathlib import Path
 from affinda import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
-collection_identifer = "REPLACE_COLLECTION_IDENTIFIER"
+collection_identifier = "REPLACE_COLLECTION_IDENTIFIER"
 
 credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
 
 file_pth = Path("path_to_file.pdf")
 with open(file_pth, "rb") as f:
-    document = client.create_document(file=f, collection=collection_identifer)
+    document = client.create_document(file=f, collection=collection_identifier)
 
 print(document.as_dict())
 ```
@@ -343,6 +343,59 @@ client = AffindaAPI(credential=credential)
 client.delete_document(identifier)
 ```
 
+### editDocumentPages - Edit pages of a document
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import DocumentEditRequest, DocumentSplit, DocumentSplitPage
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+# Get the page IDs of the document pages
+document = client.get_document(identifier)
+ids = []
+for page in document.meta.pages:
+    ids.append(page.id)
+
+# Let's say the document has 5 pages, we want to split to 3 documents:
+# - Document 1:
+#   - Page 1
+# - Document 2:
+#   - Page 2 and 3
+#   - Rotate page 3 by 90 degrees
+# - Document 3:
+#   - Page 4
+#   - Delete page 5
+split_1 = DocumentSplit(
+    identifier=identifier,
+    pages=[
+        DocumentSplitPage(id=ids[0]),
+    ],
+)
+split_2 = DocumentSplit(
+    pages=[
+        DocumentSplitPage(id=ids[1]),
+        DocumentSplitPage(id=ids[2], rotation=90),
+    ],
+)
+split_3 = DocumentSplit(
+    pages=[
+        DocumentSplitPage(id=ids[3]),
+    ]
+)
+
+res = client.edit_document_pages(
+    identifier,
+    DocumentEditRequest(splits=[split_1, split_2, split_3]),
+)
+for document_meta in res:
+    print(document_meta.as_dict())
+```
+
 Document API - Extractor
 ------------------------
 
@@ -369,12 +422,12 @@ from affinda import AffindaAPI, TokenCredential
 from affinda.models import ExtractorCreate
 
 token = "REPLACE_TOKEN"
-organization_identifer = "REPLACE_ORGANIZATION_IDENTIFIER"
+organization_identifier = "REPLACE_ORGANIZATION_IDENTIFIER"
 
 credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
 
-body = ExtractorCreate(name="My Tailored Extractor", organization=organization_identifer)
+body = ExtractorCreate(name="My Tailored Extractor", organization=organization_identifier)
 response = client.create_extractor(body)
 
 print(response.as_dict())
@@ -438,8 +491,8 @@ from affinda import AffindaAPI, TokenCredential
 from affinda.models import DataPointCreate
 
 token = "REPLACE_TOKEN"
-organization_identifer = "REPLACE_ORGANIZATION_IDENTIFIER"
-extractor_identifer = "REPLACE_EXTRACTOR_IDENTIFIER"
+organization_identifier = "REPLACE_ORGANIZATION_IDENTIFIER"
+extractor_identifier = "REPLACE_EXTRACTOR_IDENTIFIER"
 
 credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
@@ -447,8 +500,8 @@ client = AffindaAPI(credential=credential)
 body = DataPointCreate(
     slug="myDataPoint",
     annotation_content_type="text",
-    organization=organization_identifer,
-    extractor=extractor_identifer,
+    organization=organization_identifier,
+    extractor=extractor_identifier,
 )
 response = client.create_data_point(body)
 
@@ -527,13 +580,13 @@ from affinda import AffindaAPI, TokenCredential
 from affinda.models import DataPointChoiceCreate
 
 token = "REPLACE_TOKEN"
-data_point_identifer = "REPLACE_DATA_POINT_IDENTIFIER"
+data_point_identifier = "REPLACE_DATA_POINT_IDENTIFIER"
 
 credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
 
 body = DataPointChoiceCreate(
-    data_point=data_point_identifer,
+    data_point=data_point_identifier,
     label="My Company Ltd",
     value="COMPANY_CODE",
     synonyms=["COMPANY_CODE"],
@@ -591,6 +644,164 @@ client = AffindaAPI(credential=credential)
 client.delete_data_point_choice(id)
 ```
 
+Document API - Annotation
+-------------------------
+
+### getAllAnnotations - Get list of all annotations
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+document_identifier = "REPLACE_DOCUMENT_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+response = client.get_all_annotations(document_identifier)
+print(response.as_dict())
+```
+
+### createAnnotation - Create a annotation
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import AnnotationCreate
+
+token = "REPLACE_TOKEN"
+document_identifier = "REPLACE_DOCUMENT_IDENTIFIER"
+data_point_identifier = "REPLACE_DATA_POINT_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+body = AnnotationCreate(
+    document=document_identifier,
+    page_index=0,
+    parsed="Affinda",
+    data_point=data_point_identifier,
+)
+response = client.create_annotation(body)
+
+print(response.as_dict())
+```
+
+### getAnnotation - Get specific annotation
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+annotation = client.get_annotation(identifier)
+print(annotation.as_dict())
+```
+
+### updateAnnotation - Update a annotation
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import AnnotationUpdate
+
+token = "REPLACE_TOKEN"
+id = "REPLACE_ID"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+body = AnnotationUpdate(parsed="New Value")
+response = client.update_annotation(id, body)
+
+print(response.as_dict())
+```
+
+### deleteAnnotation - Delete an annotation
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+id = "REPLACE_ID"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+client.delete_annotation(id)
+```
+
+### batchCreateAnnotations - Batch create annotations
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import AnnotationCreate
+
+token = "REPLACE_TOKEN"
+document_identifier = "REPLACE_DOCUMENT_IDENTIFIER"
+data_point_identifier = "REPLACE_DATA_POINT_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+body = [
+    AnnotationCreate(
+        document=document_identifier,
+        page_index=0,
+        data_point=data_point_identifier,
+        parsed="hello",
+    ),
+    AnnotationCreate(
+        document=document_identifier,
+        page_index=0,
+        data_point=data_point_identifier,
+        parsed="world",
+    ),
+]
+
+annotations = client.batch_create_annotations(body)
+for annotation in annotations:
+    print(annotation.as_dict())
+```
+
+### batchUpdateAnnotations - Batch update annotations
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import AnnotationBatchUpdate
+
+token = "REPLACE_TOKEN"
+annotation_id = "REPLACE_ANNOTATION_ID"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+body = [
+    AnnotationBatchUpdate(id=annotation_id, parsed="new value 1"),
+    AnnotationBatchUpdate(id=annotation_id, parsed="new value 2"),
+]
+
+annotations = client.batch_update_annotations(body)
+for annotation in annotations:
+    print(annotation.as_dict())
+```
+
+### batchDeleteAnnotations - Batch delete annotations
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+body = [1, 2, 3]  # List of annotation IDs
+client.batch_delete_annotations(body)
+```
+
 Document API - Tag
 ------------------
 
@@ -617,12 +828,12 @@ from affinda import AffindaAPI, TokenCredential
 from affinda.models import TagCreate
 
 token = "REPLACE_TOKEN"
-workspace_identifer = "REPLACE_WORKSPACE_IDENTIFIER"
+workspace_identifier = "REPLACE_WORKSPACE_IDENTIFIER"
 
 credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
 
-body = TagCreate(name="My Tag", workspace=workspace_identifer)
+body = TagCreate(name="My Tag", workspace=workspace_identifier)
 response = client.create_tag(body)
 
 print(response.as_dict())

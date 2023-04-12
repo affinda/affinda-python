@@ -50,13 +50,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -76,10 +79,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 
 <a id="models._models.Annotation.__init__"></a>
 
@@ -93,10 +99,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -109,8 +117,162 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
+
+<a id="models._models.AnnotationUpdate"></a>
+
+## AnnotationUpdate Objects
+
+```python
+class AnnotationUpdate(msrest.serialization.Model)
+```
+
+AnnotationUpdate.
+
+:ivar rectangles: x/y coordinates for the rectangles containing the data. An annotation can be
+ contained within multiple rectangles.
+:vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
+:ivar page_index: The page number within the document, starting from 0.
+:vartype page_index: int
+:ivar raw: Raw data extracted from the before any post-processing.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: any
+:ivar is_client_verified: Indicates whether the data has been validated by a human.
+:vartype is_client_verified: bool
+:ivar data_point: Data point's identifier.
+:vartype data_point: str
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
+
+<a id="models._models.AnnotationUpdate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `rectangles`: x/y coordinates for the rectangles containing the data. An annotation can
+be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
+- `page_index`: The page number within the document, starting from 0.
+- `raw`: Raw data extracted from the before any post-processing.
+- `parsed`: 
+- `is_client_verified`: Indicates whether the data has been validated by a human.
+- `data_point`: Data point's identifier.
+- `parent`: The parent annotation's ID.
+
+<a id="models._models.AnnotationBatchUpdate"></a>
+
+## AnnotationBatchUpdate Objects
+
+```python
+class AnnotationBatchUpdate(AnnotationUpdate)
+```
+
+AnnotationBatchUpdate.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar rectangles: x/y coordinates for the rectangles containing the data. An annotation can be
+ contained within multiple rectangles.
+:vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
+:ivar page_index: The page number within the document, starting from 0.
+:vartype page_index: int
+:ivar raw: Raw data extracted from the before any post-processing.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: any
+:ivar is_client_verified: Indicates whether the data has been validated by a human.
+:vartype is_client_verified: bool
+:ivar data_point: Data point's identifier.
+:vartype data_point: str
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
+:ivar id: Required. Annotation's ID.
+:vartype id: int
+
+<a id="models._models.AnnotationBatchUpdate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `rectangles`: x/y coordinates for the rectangles containing the data. An annotation can
+be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
+- `page_index`: The page number within the document, starting from 0.
+- `raw`: Raw data extracted from the before any post-processing.
+- `parsed`: 
+- `is_client_verified`: Indicates whether the data has been validated by a human.
+- `data_point`: Data point's identifier.
+- `parent`: The parent annotation's ID.
+- `id`: Required. Annotation's ID.
+
+<a id="models._models.AnnotationCreate"></a>
+
+## AnnotationCreate Objects
+
+```python
+class AnnotationCreate(msrest.serialization.Model)
+```
+
+AnnotationCreate.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar rectangles: x/y coordinates for the rectangles containing the data. An annotation can be
+ contained within multiple rectangles.
+:vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Required. Uniquely identify a document.
+:vartype document: str
+:ivar page_index: Required. The page number within the document, starting from 0.
+:vartype page_index: int
+:ivar data_point: Required. Data point's identifier.
+:vartype data_point: str
+:ivar raw: Raw data extracted from the before any post-processing.
+:vartype raw: str
+:ivar parsed:
+:vartype parsed: any
+:ivar is_client_verified: Indicates whether the data has been validated by a human.
+:vartype is_client_verified: bool
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
+
+<a id="models._models.AnnotationCreate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `rectangles`: x/y coordinates for the rectangles containing the data. An annotation can
+be contained within multiple rectangles.
+- `document`: Required. Uniquely identify a document.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `data_point`: Required. Data point's identifier.
+- `raw`: Raw data extracted from the before any post-processing.
+- `parsed`: 
+- `is_client_verified`: Indicates whether the data has been validated by a human.
+- `parent`: The parent annotation's ID.
 
 <a id="models._models.BaseExtractor"></a>
 
@@ -1366,13 +1528,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -1392,10 +1557,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: ~affinda.models.DataPointChoice
 
@@ -1411,10 +1579,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -1427,8 +1597,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.DataPoint"></a>
@@ -1451,9 +1624,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype slug: str
 :ivar description:
 :vartype description: str
-:ivar annotation_content_type: Required. Known values are: "text", "integer", "float",
- "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
- "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience", "group".
+:ivar annotation_content_type: Required. The different data types of annotations. Known values
+ are: "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
 :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
 :ivar organization:
 :vartype organization: ~affinda.models.Organization
@@ -1484,9 +1658,10 @@ def __init__(**kwargs)
 - `name`: Required.
 - `slug`: 
 - `description`: 
-- `annotation_content_type`: Required. Known values are: "text", "integer", "float",
-"decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
-"expectedremuneration", "jobtitle", "language", "skill", "yearsexperience", "group".
+- `annotation_content_type`: Required. The different data types of annotations. Known
+values are: "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum",
+"location", "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `organization`: 
 - `extractor`: Required. Uniquely identify an extractor.
 - `multiple`: 
@@ -1628,9 +1803,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype slug: str
 :ivar description:
 :vartype description: str
-:ivar annotation_content_type: Required. Known values are: "text", "integer", "float",
- "decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
- "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience", "group".
+:ivar annotation_content_type: Required. The different data types of annotations. Known values
+ are: "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
 :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
 :ivar organization: Required. Uniquely identify an organization.
 :vartype organization: str
@@ -1654,9 +1830,10 @@ def __init__(**kwargs)
 - `name`: 
 - `slug`: Required.
 - `description`: 
-- `annotation_content_type`: Required. Known values are: "text", "integer", "float",
-"decimal", "date", "datetime", "boolean", "enum", "location", "json", "table", "cell",
-"expectedremuneration", "jobtitle", "language", "skill", "yearsexperience", "group".
+- `annotation_content_type`: Required. The different data types of annotations. Known
+values are: "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum",
+"location", "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `organization`: Required. Uniquely identify an organization.
 - `extractor`: Required. Uniquely identify an extractor.
 - `multiple`: 
@@ -1708,13 +1885,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -1734,10 +1914,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: ~datetime.date
 
@@ -1753,10 +1936,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -1769,8 +1954,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.Document"></a>
@@ -1874,6 +2062,33 @@ deleted.  Defaults to no expiry.
 - `reject_duplicates`: If "true", parsing will fail when the uploaded document is
 duplicate of an existing document, no credits will be consumed. If "false" (default), will
 parse the document normally whether its a duplicate or not.
+
+<a id="models._models.DocumentEditRequest"></a>
+
+## DocumentEditRequest Objects
+
+```python
+class DocumentEditRequest(msrest.serialization.Model)
+```
+
+DocumentEditRequest.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar splits: Required.
+:vartype splits: list[~affinda.models.DocumentSplit]
+
+<a id="models._models.DocumentEditRequest.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `splits`: Required.
 
 <a id="models._models.DocumentError"></a>
 
@@ -2176,6 +2391,68 @@ def __init__(**kwargs)
 - `identifier`: Required. Uniquely identify a workspace.
 - `name`: 
 
+<a id="models._models.DocumentSplit"></a>
+
+## DocumentSplit Objects
+
+```python
+class DocumentSplit(msrest.serialization.Model)
+```
+
+Describe a split of a document.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar identifier: Any object.
+:vartype identifier: any
+:ivar pages: Required.
+:vartype pages: list[~affinda.models.DocumentSplitPage]
+
+<a id="models._models.DocumentSplit.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Any object.
+- `pages`: Required.
+
+<a id="models._models.DocumentSplitPage"></a>
+
+## DocumentSplitPage Objects
+
+```python
+class DocumentSplitPage(msrest.serialization.Model)
+```
+
+List the pages within this split. Not including a page here will signal that the page should be deleted.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar id: Required. Page's ID.
+:vartype id: int
+:ivar rotation: Specify a degree of rotation if you want to rotate a page. Possitive number for
+ clockwise rotation, and negative number for counter-clockwise rotation.
+:vartype rotation: int
+
+<a id="models._models.DocumentSplitPage.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `id`: Required. Page's ID.
+- `rotation`: Specify a degree of rotation if you want to rotate a page. Possitive number
+for clockwise rotation, and negative number for counter-clockwise rotation.
+
 <a id="models._models.DocumentUpdate"></a>
 
 ## DocumentUpdate Objects
@@ -2277,6 +2554,8 @@ EducationDates.
 :vartype is_current: bool
 :ivar start_date:
 :vartype start_date: ~datetime.date
+:ivar raw_text:
+:vartype raw_text: str
 
 <a id="models._models.EducationDates.__init__"></a>
 
@@ -2291,6 +2570,7 @@ def __init__(**kwargs)
 - `completion_date`: 
 - `is_current`: 
 - `start_date`: 
+- `raw_text`: 
 
 <a id="models._models.EducationGrade"></a>
 
@@ -2376,13 +2656,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -2402,10 +2685,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: ~affinda.models.ExpectedRemunerationAnnotationParsed
 
@@ -2421,10 +2707,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -2437,8 +2725,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.ExpectedRemunerationAnnotationParsed"></a>
@@ -3240,13 +3531,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -3266,10 +3560,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -3285,10 +3582,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -3301,8 +3600,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataBankAccountNumber"></a>
@@ -3320,13 +3622,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -3346,10 +3651,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -3365,10 +3673,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -3381,8 +3691,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataBankBsb"></a>
@@ -3400,13 +3713,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -3426,10 +3742,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -3445,10 +3764,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -3461,8 +3782,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataBankIban"></a>
@@ -3480,13 +3804,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -3506,10 +3833,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -3525,10 +3855,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -3541,8 +3873,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataBankSortCode"></a>
@@ -3560,13 +3895,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -3586,10 +3924,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -3605,10 +3946,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -3621,8 +3964,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataBankSwift"></a>
@@ -3640,13 +3986,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -3666,10 +4015,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -3685,10 +4037,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -3701,8 +4055,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataBpayBillerCode"></a>
@@ -3720,13 +4077,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -3746,10 +4106,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -3765,10 +4128,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -3781,8 +4146,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataBpayReference"></a>
@@ -3800,13 +4168,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -3826,10 +4197,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -3845,10 +4219,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -3861,8 +4237,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerBusinessNumber"></a>
@@ -3880,13 +4259,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -3906,10 +4288,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -3925,10 +4310,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -3941,8 +4328,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerCompanyName"></a>
@@ -3960,13 +4350,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -3986,10 +4379,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -4005,10 +4401,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -4021,8 +4419,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerContactName"></a>
@@ -4040,13 +4441,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -4066,10 +4470,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -4085,10 +4492,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -4101,8 +4510,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerEmail"></a>
@@ -4120,13 +4532,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -4146,10 +4561,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -4165,10 +4583,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -4181,8 +4601,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerNumber"></a>
@@ -4200,13 +4623,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -4226,10 +4652,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -4245,10 +4674,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -4261,8 +4692,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerPhoneNumber"></a>
@@ -4280,13 +4714,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -4306,10 +4743,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -4325,10 +4765,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -4341,8 +4783,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerVat"></a>
@@ -4360,13 +4805,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -4386,10 +4834,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -4405,10 +4856,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -4421,8 +4874,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataInvoiceNumber"></a>
@@ -4440,13 +4896,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -4466,10 +4925,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -4485,10 +4947,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -4501,8 +4965,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataInvoicePurchaseOrderNumber"></a>
@@ -4520,13 +4987,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -4546,10 +5016,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -4565,10 +5038,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -4581,8 +5056,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataPaymentAmountBase"></a>
@@ -4600,13 +5078,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -4626,10 +5107,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -4645,10 +5129,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -4661,8 +5147,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataPaymentAmountDue"></a>
@@ -4680,13 +5169,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -4706,10 +5198,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -4725,10 +5220,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -4741,8 +5238,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataPaymentAmountPaid"></a>
@@ -4760,13 +5260,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -4786,10 +5289,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -4805,10 +5311,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -4821,8 +5329,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataPaymentAmountTax"></a>
@@ -4840,13 +5351,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -4866,10 +5380,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -4885,10 +5402,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -4901,8 +5420,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataPaymentAmountTotal"></a>
@@ -4920,13 +5442,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -4946,10 +5471,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -4965,10 +5493,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -4981,8 +5511,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataPaymentReference"></a>
@@ -5000,13 +5533,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -5026,10 +5562,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -5045,10 +5584,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5061,8 +5602,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierBusinessNumber"></a>
@@ -5080,13 +5624,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -5106,10 +5653,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -5125,10 +5675,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5141,8 +5693,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierCompanyName"></a>
@@ -5160,13 +5715,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -5186,10 +5744,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -5205,10 +5766,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5221,8 +5784,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierEmail"></a>
@@ -5240,13 +5806,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -5266,10 +5835,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -5285,10 +5857,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5301,8 +5875,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierFax"></a>
@@ -5320,13 +5897,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -5346,10 +5926,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -5365,10 +5948,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5381,8 +5966,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierPhoneNumber"></a>
@@ -5400,13 +5988,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -5426,10 +6017,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -5445,10 +6039,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5461,8 +6057,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierVat"></a>
@@ -5480,13 +6079,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -5506,10 +6108,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -5525,10 +6130,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5541,8 +6148,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierWebsite"></a>
@@ -5560,13 +6170,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -5586,10 +6199,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -5605,10 +6221,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5621,8 +6239,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.InvoiceDataTablesItem"></a>
@@ -6390,7 +7011,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype code: int
 :ivar name: Required.
 :vartype name: str
-:ivar children: Required.
+:ivar children:
 :vartype children: list[~affinda.models.OccupationGroup]
 :ivar parents:
 :vartype parents: list[~affinda.models.OccupationGroup]
@@ -6408,7 +7029,7 @@ def __init__(**kwargs)
 - `match`: 
 - `code`: Required.
 - `name`: Required.
-- `children`: Required.
+- `children`: 
 - `parents`: 
 
 <a id="models._models.JobDescriptionSearchDetailOccupationGroupValue"></a>
@@ -6429,7 +7050,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype code: int
 :ivar name: Required.
 :vartype name: str
-:ivar children: Required.
+:ivar children:
 :vartype children: list[~affinda.models.OccupationGroup]
 :ivar parents:
 :vartype parents: list[~affinda.models.OccupationGroup]
@@ -6447,7 +7068,7 @@ def __init__(**kwargs)
 - `match`: 
 - `code`: Required.
 - `name`: Required.
-- `children`: Required.
+- `children`: 
 - `parents`: 
 
 <a id="models._models.JobDescriptionSearchDetailSearchExpression"></a>
@@ -6748,13 +7369,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -6774,10 +7398,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed: Years of experience range.
 :vartype parsed: ~affinda.models.JobTitleAnnotationParsed
 
@@ -6793,10 +7420,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -6809,8 +7438,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: Years of experience range.
 
 <a id="models._models.JobTitleAnnotationParsed"></a>
@@ -6931,13 +7563,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -6957,10 +7592,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -6976,10 +7614,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -6992,8 +7632,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 
 <a id="models._models.LanguagesSearchScoreComponent"></a>
 
@@ -7043,13 +7686,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -7069,10 +7715,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: ~affinda.models.Location
 
@@ -7088,10 +7737,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -7104,8 +7755,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
 <a id="models._models.LocationSearchScoreComponent"></a>
@@ -7173,6 +7827,145 @@ def __init__(**kwargs)
 - `value`: 
 - `label`: Required.
 - `score`: 
+
+<a id="models._models.Meta"></a>
+
+## Meta Objects
+
+```python
+class Meta(msrest.serialization.Model)
+```
+
+Meta.
+
+:ivar identifier: Uniquely identify a document.
+:vartype identifier: str
+:ivar file_name: Optional filename of the file.
+:vartype file_name: str
+:ivar ready: If true, the document has finished processing. Particularly useful if an endpoint
+ request specified wait=False, when polling use this variable to determine when to stop polling.
+:vartype ready: bool
+:ivar ready_dt: The datetime when the document was ready.
+:vartype ready_dt: ~datetime.datetime
+:ivar failed: If true, some exception was raised during processing. Check the 'error' field of
+ the main return object.
+:vartype failed: bool
+:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+ deleted.  Defaults to no expiry.
+:vartype expiry_time: ~datetime.datetime
+:ivar language: The document's language.
+:vartype language: str
+:ivar pdf: The URL to the document's pdf (if the uploaded document is not already pdf, it's
+ converted to pdf as part of the parsing process).
+:vartype pdf: str
+:ivar parent_document: If this document is part of a splitted document, this attribute points
+ to the original document that this document is splitted from.
+:vartype parent_document: ~affinda.models.MetaParentDocument
+:ivar child_documents: If this document has been splitted into a number of child documents,
+ this attribute points to those child documents.
+:vartype child_documents: list[~affinda.models.MetaChildDocumentsItem]
+:ivar pages: The document's pages.
+:vartype pages: list[~affinda.models.PageMeta]
+:ivar is_verified: This is true if the 'confirm' button has been clicked in the Affinda
+ validation tool.
+:vartype is_verified: bool
+:ivar review_url: Signed URL (valid for 60 minutes) to access the validation tool.  Not
+ applicable for documents types such a resumes.
+:vartype review_url: str
+:ivar ocr_confidence: The overall confidence in the conversion of image to text.  (only
+ applicable for images or PDF documents without a text layer).
+:vartype ocr_confidence: float
+:ivar created_dt:
+:vartype created_dt: ~datetime.datetime
+:ivar document_type:
+:vartype document_type: str
+
+<a id="models._models.Meta.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Uniquely identify a document.
+- `file_name`: Optional filename of the file.
+- `ready`: If true, the document has finished processing. Particularly useful if an
+endpoint request specified wait=False, when polling use this variable to determine when to stop
+polling.
+- `ready_dt`: The datetime when the document was ready.
+- `failed`: If true, some exception was raised during processing. Check the 'error' field
+of the main return object.
+- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
+deleted.  Defaults to no expiry.
+- `language`: The document's language.
+- `pdf`: The URL to the document's pdf (if the uploaded document is not already pdf, it's
+converted to pdf as part of the parsing process).
+- `parent_document`: If this document is part of a splitted document, this attribute
+points to the original document that this document is splitted from.
+- `child_documents`: If this document has been splitted into a number of child documents,
+this attribute points to those child documents.
+- `pages`: The document's pages.
+- `is_verified`: This is true if the 'confirm' button has been clicked in the Affinda
+validation tool.
+- `review_url`: Signed URL (valid for 60 minutes) to access the validation tool.  Not
+applicable for documents types such a resumes.
+- `ocr_confidence`: The overall confidence in the conversion of image to text.  (only
+applicable for images or PDF documents without a text layer).
+- `created_dt`: 
+- `document_type`: 
+
+<a id="models._models.MetaChildDocumentsItem"></a>
+
+## MetaChildDocumentsItem Objects
+
+```python
+class MetaChildDocumentsItem(msrest.serialization.Model)
+```
+
+MetaChildDocumentsItem.
+
+:ivar identifier: Uniquely identify a document.
+:vartype identifier: str
+
+<a id="models._models.MetaChildDocumentsItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Uniquely identify a document.
+
+<a id="models._models.MetaParentDocument"></a>
+
+## MetaParentDocument Objects
+
+```python
+class MetaParentDocument(msrest.serialization.Model)
+```
+
+If this document is part of a splitted document, this attribute points to the original document that this document is splitted from.
+
+:ivar identifier: Uniquely identify a document.
+:vartype identifier: str
+
+<a id="models._models.MetaParentDocument.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Uniquely identify a document.
 
 <a id="models._models.OccupationGroup"></a>
 
@@ -7572,6 +8365,67 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `config_override`: 
+
+<a id="models._models.Paths1Dgz0V9V3AnnotationsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
+
+## Paths1Dgz0V9V3AnnotationsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
+
+```python
+class Paths1Dgz0V9V3AnnotationsGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
+```
+
+Paths1Dgz0V9V3AnnotationsGetResponses200ContentApplicationJsonSchemaAllof1.
+
+:ivar results:
+:vartype results: list[~affinda.models.Annotation]
+
+<a id="models._models.Paths1Dgz0V9V3AnnotationsGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: 
+
+<a id="models._models.Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema"></a>
+
+## Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema Objects
+
+```python
+class Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  Paths1Dgz0V9V3AnnotationsGetResponses200ContentApplicationJsonSchemaAllof1)
+```
+
+Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar results:
+:vartype results: list[~affinda.models.Annotation]
+:ivar count: Required. Number of items in results.
+:vartype count: int
+:ivar next: URL to request next page of results.
+:vartype next: str
+:ivar previous: URL to request previous page of results.
+:vartype previous: str
+
+<a id="models._models.Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: 
+- `count`: Required. Number of items in results.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
 
 <a id="models._models.Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems"></a>
 
@@ -8770,6 +9624,8 @@ ResumeDataWorkExperienceItemDates.
 :vartype months_in_position: int
 :ivar is_current:
 :vartype is_current: bool
+:ivar raw_text:
+:vartype raw_text: str
 
 <a id="models._models.ResumeDataWorkExperienceItemDates.__init__"></a>
 
@@ -8785,6 +9641,7 @@ def __init__(**kwargs)
 - `end_date`: 
 - `months_in_position`: 
 - `is_current`: 
+- `raw_text`: 
 
 <a id="models._models.ResumeDataWorkExperienceItemOccupation"></a>
 
@@ -10178,13 +11035,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -10204,10 +11064,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed:
 :vartype parsed: str
 
@@ -10223,10 +11086,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -10239,8 +11104,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 
 <a id="models._models.SkillsSearchScoreComponent"></a>
 
@@ -10747,13 +11615,16 @@ All required parameters must be populated in order to send to Azure.
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
-:ivar id: Required.
+:ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
  data.
 :vartype rectangle: ~affinda.models.Rectangle
-:ivar rectangles: Required.
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Uniquely identify a document.
+:vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
 :ivar raw: Required. Raw data extracted from the before any post-processing.
@@ -10773,10 +11644,13 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required.
+:ivar data_point: Required. Data point's identifier.
 :vartype data_point: str
-:ivar content_type: Required.
-:vartype content_type: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+ "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parsed: Years of experience range.
 :vartype parsed: ~affinda.models.YearsExperienceAnnotationParsed
 
@@ -10792,10 +11666,12 @@ def __init__(**kwargs)
 
 - `additional_properties`: Unmatched properties from the message are deserialized to this
 collection.
-- `id`: Required.
+- `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
-- `rectangles`: Required.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Uniquely identify a document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -10808,8 +11684,11 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required.
-- `content_type`: Required.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+"json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated".
 - `parsed`: Years of experience range.
 
 <a id="models._models.YearsExperienceAnnotationParsed"></a>

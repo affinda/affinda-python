@@ -542,6 +542,35 @@ Deletes the specified document from the database.
 
 `None`: None, or the result of cls(response)
 
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.edit_document_pages"></a>
+
+#### edit\_document\_pages
+
+```python
+def edit_document_pages(identifier, body, **kwargs)
+```
+
+Edit pages of a document.
+
+Split / merge / rotate / delete pages of a document.
+Documents with multiple pages can be  into multiple documents, or merged into one document.
+Each page can also be rotated. Edit operations will trigger re-parsing of the documents
+involved.
+
+**Arguments**:
+
+- `identifier` (`str`): Document's identifier.
+- `body` (`~affinda.models.DocumentEditRequest`): Describe how the pages should be edited.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[~affinda.models.Meta]`: list of Meta, or the result of cls(response)
+
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_extractors"></a>
 
 #### get\_all\_extractors
@@ -927,6 +956,208 @@ Deletes the specified data point choice from the database.
 **Arguments**:
 
 - `id` (`int`): Data point choice's ID.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_annotations"></a>
+
+#### get\_all\_annotations
+
+```python
+def get_all_annotations(document, **kwargs)
+```
+
+Get list of all annotations.
+
+Returns your annotations.
+
+**Arguments**:
+
+- `document` (`str`): Filter by document.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema`: Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema, or the result of
+cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_annotation"></a>
+
+#### create\_annotation
+
+```python
+def create_annotation(body, **kwargs)
+```
+
+Create a annotation.
+
+Create a annotation.
+
+**Arguments**:
+
+- `body` (`~affinda.models.AnnotationCreate`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Annotation or None`: Annotation or None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_annotation"></a>
+
+#### get\_annotation
+
+```python
+def get_annotation(id, **kwargs)
+```
+
+Get specific annotation.
+
+Return a specific annotation.
+
+**Arguments**:
+
+- `id` (`int`): Annotation's ID.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Annotation or None`: Annotation or None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_annotation"></a>
+
+#### update\_annotation
+
+```python
+def update_annotation(id, body, **kwargs)
+```
+
+Update a annotation.
+
+Update data of an annotation.
+
+**Arguments**:
+
+- `id` (`int`): Annotation's ID.
+- `body` (`~affinda.models.AnnotationUpdate`): Annotation data to update.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Annotation or None`: Annotation or None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_annotation"></a>
+
+#### delete\_annotation
+
+```python
+def delete_annotation(id, **kwargs)
+```
+
+Delete an annotation.
+
+Deletes the specified annotation from the database.
+
+**Arguments**:
+
+- `id` (`int`): Annotation's ID.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.batch_create_annotations"></a>
+
+#### batch\_create\_annotations
+
+```python
+def batch_create_annotations(body, **kwargs)
+```
+
+Batch create annotations.
+
+Batch create annotations.
+
+**Arguments**:
+
+- `body` (`list[~affinda.models.AnnotationCreate]`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[~affinda.models.Annotation]`: list of Annotation, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.batch_update_annotations"></a>
+
+#### batch\_update\_annotations
+
+```python
+def batch_update_annotations(body, **kwargs)
+```
+
+Batch update annotations.
+
+Batch update annotations.
+
+**Arguments**:
+
+- `body` (`list[~affinda.models.AnnotationBatchUpdate]`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[~affinda.models.Annotation]`: list of Annotation, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.batch_delete_annotations"></a>
+
+#### batch\_delete\_annotations
+
+```python
+def batch_delete_annotations(body, **kwargs)
+```
+
+Batch delete annotations.
+
+Batch delete annotations.
+
+**Arguments**:
+
+- `body` (`list[int]`): 
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
