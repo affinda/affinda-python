@@ -1415,6 +1415,8 @@ EducationDates.
 :vartype is_current: bool
 :ivar start_date:
 :vartype start_date: ~datetime.date
+:ivar raw_text:
+:vartype raw_text: str
 
 <a id="models._models.EducationDates.__init__"></a>
 
@@ -1429,6 +1431,7 @@ def __init__(**kwargs)
 - `completion_date`: 
 - `is_current`: 
 - `start_date`: 
+- `raw_text`: 
 
 <a id="models._models.EducationGrade"></a>
 
@@ -7870,6 +7873,8 @@ ResumeDataWorkExperienceItemDates.
 :vartype months_in_position: int
 :ivar is_current:
 :vartype is_current: bool
+:ivar raw_text:
+:vartype raw_text: str
 
 <a id="models._models.ResumeDataWorkExperienceItemDates.__init__"></a>
 
@@ -7885,6 +7890,7 @@ def __init__(**kwargs)
 - `end_date`: 
 - `months_in_position`: 
 - `is_current`: 
+- `raw_text`: 
 
 <a id="models._models.ResumeDataWorkExperienceItemOccupation"></a>
 

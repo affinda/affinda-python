@@ -1762,12 +1762,15 @@ class EducationDates(msrest.serialization.Model):
     :vartype is_current: bool
     :ivar start_date:
     :vartype start_date: ~datetime.date
+    :ivar raw_text:
+    :vartype raw_text: str
     """
 
     _attribute_map = {
         "completion_date": {"key": "completionDate", "type": "date"},
         "is_current": {"key": "isCurrent", "type": "bool"},
         "start_date": {"key": "startDate", "type": "date"},
+        "raw_text": {"key": "rawText", "type": "str"},
     }
 
     def __init__(
@@ -1776,6 +1779,7 @@ class EducationDates(msrest.serialization.Model):
         completion_date: Optional[datetime.date] = None,
         is_current: Optional[bool] = None,
         start_date: Optional[datetime.date] = None,
+        raw_text: Optional[str] = None,
         **kwargs,
     ):
         """
@@ -1785,11 +1789,14 @@ class EducationDates(msrest.serialization.Model):
         :paramtype is_current: bool
         :keyword start_date:
         :paramtype start_date: ~datetime.date
+        :keyword raw_text:
+        :paramtype raw_text: str
         """
         super(EducationDates, self).__init__(**kwargs)
         self.completion_date = completion_date
         self.is_current = is_current
         self.start_date = start_date
+        self.raw_text = raw_text
 
 
 class EducationGrade(msrest.serialization.Model):
@@ -13155,6 +13162,8 @@ class ResumeDataWorkExperienceItemDates(msrest.serialization.Model):
     :vartype months_in_position: int
     :ivar is_current:
     :vartype is_current: bool
+    :ivar raw_text:
+    :vartype raw_text: str
     """
 
     _attribute_map = {
@@ -13162,6 +13171,7 @@ class ResumeDataWorkExperienceItemDates(msrest.serialization.Model):
         "end_date": {"key": "endDate", "type": "date"},
         "months_in_position": {"key": "monthsInPosition", "type": "int"},
         "is_current": {"key": "isCurrent", "type": "bool"},
+        "raw_text": {"key": "rawText", "type": "str"},
     }
 
     def __init__(
@@ -13171,6 +13181,7 @@ class ResumeDataWorkExperienceItemDates(msrest.serialization.Model):
         end_date: Optional[datetime.date] = None,
         months_in_position: Optional[int] = None,
         is_current: Optional[bool] = None,
+        raw_text: Optional[str] = None,
         **kwargs,
     ):
         """
@@ -13182,12 +13193,15 @@ class ResumeDataWorkExperienceItemDates(msrest.serialization.Model):
         :paramtype months_in_position: int
         :keyword is_current:
         :paramtype is_current: bool
+        :keyword raw_text:
+        :paramtype raw_text: str
         """
         super(ResumeDataWorkExperienceItemDates, self).__init__(**kwargs)
         self.start_date = start_date
         self.end_date = end_date
         self.months_in_position = months_in_position
         self.is_current = is_current
+        self.raw_text = raw_text
 
 
 class ResumeDataWorkExperienceItemOccupation(msrest.serialization.Model):
