@@ -62,7 +62,7 @@ cls(response)
 #### create\_resume
 
 ```python
-def create_resume(file=None, url=None, data=None, identifier=None, file_name=None, wait=True, reject_duplicates=False, language=None, expiry_time=None, **kwargs)
+def create_resume(file=None, url=None, data=None, identifier=None, file_name=None, wait=True, reject_duplicates=None, language=None, expiry_time=None, **kwargs)
 ```
 
 Upload a resume for parsing.
@@ -83,7 +83,7 @@ parsing credits.
 - `identifier` (`str`): Default value is None.
 - `file_name` (`str`): Default value is None.
 - `wait` (`bool`): Default value is True.
-- `reject_duplicates` (`bool`): Default value is False.
+- `reject_duplicates` (`bool`): Default value is None.
 - `language` (`str`): Default value is None.
 - `expiry_time` (`~datetime.datetime`): Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
@@ -123,7 +123,7 @@ supported value for this parameter is "hr-xml". Default value is None.
 
 **Returns**:
 
-`~affinda.models.Resume or ~affinda.models.RequestError`: Resume or RequestError, or the result of cls(response)
+`~affinda.models.Resume`: Resume, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_resume_data"></a>
 
@@ -333,7 +333,7 @@ cls(response)
 #### create\_invoice
 
 ```python
-def create_invoice(file=None, url=None, identifier=None, file_name=None, wait=True, reject_duplicates=False, language=None, expiry_time=None, **kwargs)
+def create_invoice(file=None, url=None, identifier=None, file_name=None, wait=True, reject_duplicates=None, language=None, expiry_time=None, **kwargs)
 ```
 
 Upload an invoice for parsing.
@@ -350,7 +350,7 @@ retrieve results.
 - `identifier` (`str`): Default value is None.
 - `file_name` (`str`): Default value is None.
 - `wait` (`bool`): Default value is True.
-- `reject_duplicates` (`bool`): Default value is False.
+- `reject_duplicates` (`bool`): Default value is None.
 - `language` (`str`): Default value is None.
 - `expiry_time` (`~datetime.datetime`): Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
@@ -449,7 +449,7 @@ of cls(response)
 #### create\_job\_description
 
 ```python
-def create_job_description(file=None, url=None, identifier=None, file_name=None, wait=True, reject_duplicates=False, language=None, expiry_time=None, **kwargs)
+def create_job_description(file=None, url=None, identifier=None, file_name=None, wait=True, reject_duplicates=None, language=None, expiry_time=None, **kwargs)
 ```
 
 Upload a job description for parsing.
@@ -470,7 +470,7 @@ parsing credits.
 - `identifier` (`str`): Default value is None.
 - `file_name` (`str`): Default value is None.
 - `wait` (`bool`): Default value is True.
-- `reject_duplicates` (`bool`): Default value is False.
+- `reject_duplicates` (`bool`): Default value is None.
 - `language` (`str`): Default value is None.
 - `expiry_time` (`~datetime.datetime`): Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response

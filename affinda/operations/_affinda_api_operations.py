@@ -1404,7 +1404,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         identifier=None,  # type: Optional[str]
         file_name=None,  # type: Optional[str]
         wait=True,  # type: Optional[bool]
-        reject_duplicates=False,  # type: Optional[bool]
+        reject_duplicates=None,  # type: Optional[bool]
         language=None,  # type: Optional[str]
         expiry_time=None,  # type: Optional[datetime.datetime]
         **kwargs,  # type: Any
@@ -1432,7 +1432,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type file_name: str
         :param wait:  Default value is True.
         :type wait: bool
-        :param reject_duplicates:  Default value is False.
+        :param reject_duplicates:  Default value is None.
         :type reject_duplicates: bool
         :param language:  Default value is None.
         :type language: str
@@ -1518,7 +1518,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         format=None,  # type: Optional[str]
         **kwargs,  # type: Any
     ):
-        # type: (...) -> Union[_models.Resume, _models.RequestError]
+        # type: (...) -> _models.Resume
         """Get parse results for a specific resume.
 
         Returns all the parse results for that resume if processing is completed.
@@ -1531,21 +1531,37 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
          supported value for this parameter is "hr-xml". Default value is None.
         :type format: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: Resume or RequestError, or the result of cls(response)
-        :rtype: ~affinda.models.Resume or ~affinda.models.RequestError
+        :return: Resume, or the result of cls(response)
+        :rtype: ~affinda.models.Resume
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
-            401: ClientAuthenticationError,
-            404: ResourceNotFoundError,
             409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            404: lambda response: ResourceNotFoundError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            404: lambda response: ResourceNotFoundError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
         }
         error_map.update(kwargs.pop("error_map", {}) or {})
 
         _headers = kwargs.pop("headers", {}) or {}
         _params = kwargs.pop("params", {}) or {}
 
-        cls = kwargs.pop("cls", None)  # type: ClsType[Union[_models.Resume, _models.RequestError]]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.Resume]
 
         request = build_get_resume_request(
             identifier=identifier,
@@ -1565,7 +1581,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         )
         response = pipeline_response.http_response
 
-        if response.status_code not in [200, 200, 400, 400, 401, 401, 404, 404]:
+        if response.status_code not in [200, 200]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -1575,24 +1591,6 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
         if response.status_code == 200:
             deserialized = self._deserialize("Resume", pipeline_response)
-
-        if response.status_code == 400:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 400:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
-            deserialized = self._deserialize("RequestError", pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -2163,7 +2161,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         identifier=None,  # type: Optional[str]
         file_name=None,  # type: Optional[str]
         wait=True,  # type: Optional[bool]
-        reject_duplicates=False,  # type: Optional[bool]
+        reject_duplicates=None,  # type: Optional[bool]
         language=None,  # type: Optional[str]
         expiry_time=None,  # type: Optional[datetime.datetime]
         **kwargs,  # type: Any
@@ -2186,7 +2184,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type file_name: str
         :param wait:  Default value is True.
         :type wait: bool
-        :param reject_duplicates:  Default value is False.
+        :param reject_duplicates:  Default value is None.
         :type reject_duplicates: bool
         :param language:  Default value is None.
         :type language: str
@@ -2477,7 +2475,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         identifier=None,  # type: Optional[str]
         file_name=None,  # type: Optional[str]
         wait=True,  # type: Optional[bool]
-        reject_duplicates=False,  # type: Optional[bool]
+        reject_duplicates=None,  # type: Optional[bool]
         language=None,  # type: Optional[str]
         expiry_time=None,  # type: Optional[datetime.datetime]
         **kwargs,  # type: Any
@@ -2504,7 +2502,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type file_name: str
         :param wait:  Default value is True.
         :type wait: bool
-        :param reject_duplicates:  Default value is False.
+        :param reject_duplicates:  Default value is None.
         :type reject_duplicates: bool
         :param language:  Default value is None.
         :type language: str

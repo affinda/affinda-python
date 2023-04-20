@@ -1412,6 +1412,39 @@ class ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1(
         self.parsed = parsed
 
 
+class CustomFieldConfig(msrest.serialization.Model):
+    """CustomFieldConfig.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar data_point: Required. Data point identifier.
+    :vartype data_point: str
+    :ivar weight: Required.
+    :vartype weight: float
+    """
+
+    _validation = {
+        "data_point": {"required": True},
+        "weight": {"required": True, "maximum": 1, "minimum": 0},
+    }
+
+    _attribute_map = {
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "weight": {"key": "weight", "type": "float"},
+    }
+
+    def __init__(self, *, data_point: str, weight: float, **kwargs):
+        """
+        :keyword data_point: Required. Data point identifier.
+        :paramtype data_point: str
+        :keyword weight: Required.
+        :paramtype weight: float
+        """
+        super(CustomFieldConfig, self).__init__(**kwargs)
+        self.data_point = data_point
+        self.weight = weight
+
+
 class DateAnnotation(Annotation):
     """DateAnnotation.
 
@@ -7757,8 +7790,8 @@ class InvoiceRequestBody(msrest.serialization.Model):
      processing is complete.
     :vartype wait: bool
     :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
-     of an existing document. If "false" (default), will parse the document normally whether its a
-     duplicate or not.
+     of an existing document. If "false", will parse the document normally whether its a duplicate
+     or not. If not provided, will fallback to the workspace settings.
     :vartype reject_duplicates: bool
     :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
     :vartype language: str
@@ -7786,7 +7819,7 @@ class InvoiceRequestBody(msrest.serialization.Model):
         identifier: Optional[str] = None,
         file_name: Optional[str] = None,
         wait: Optional[bool] = True,
-        reject_duplicates: Optional[bool] = False,
+        reject_duplicates: Optional[bool] = None,
         language: Optional[str] = None,
         expiry_time: Optional[datetime.datetime] = None,
         **kwargs,
@@ -7806,8 +7839,8 @@ class InvoiceRequestBody(msrest.serialization.Model):
          processing is complete.
         :paramtype wait: bool
         :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
-         duplicate of an existing document. If "false" (default), will parse the document normally
-         whether its a duplicate or not.
+         duplicate of an existing document. If "false", will parse the document normally whether its a
+         duplicate or not. If not provided, will fallback to the workspace settings.
         :paramtype reject_duplicates: bool
         :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
         :paramtype language: str
@@ -8176,8 +8209,8 @@ class JobDescriptionRequestBody(msrest.serialization.Model):
      processing is complete.
     :vartype wait: bool
     :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
-     of an existing document. If "false" (default), will parse the document normally whether its a
-     duplicate or not.
+     of an existing document. If "false", will parse the document normally whether its a duplicate
+     or not. If not provided, will fallback to the workspace settings.
     :vartype reject_duplicates: bool
     :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
     :vartype language: str
@@ -8205,7 +8238,7 @@ class JobDescriptionRequestBody(msrest.serialization.Model):
         identifier: Optional[str] = None,
         file_name: Optional[str] = None,
         wait: Optional[bool] = True,
-        reject_duplicates: Optional[bool] = False,
+        reject_duplicates: Optional[bool] = None,
         language: Optional[str] = None,
         expiry_time: Optional[datetime.datetime] = None,
         **kwargs,
@@ -8225,8 +8258,8 @@ class JobDescriptionRequestBody(msrest.serialization.Model):
          processing is complete.
         :paramtype wait: bool
         :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
-         duplicate of an existing document. If "false" (default), will parse the document normally
-         whether its a duplicate or not.
+         duplicate of an existing document. If "false", will parse the document normally whether its a
+         duplicate or not. If not provided, will fallback to the workspace settings.
         :paramtype reject_duplicates: bool
         :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
         :paramtype language: str
@@ -8356,6 +8389,8 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
     :vartype username: str
     :ivar actions: A list of actions to show in the dropdown in the embedded search tool.
     :vartype actions: list[~affinda.models.JobDescriptionSearchConfigActionsItem]
+    :ivar custom_fields_config:
+    :vartype custom_fields_config: list[~affinda.models.CustomFieldConfig]
     """
 
     _validation = {
@@ -8390,6 +8425,7 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         "user_id": {"key": "userId", "type": "int"},
         "username": {"key": "username", "type": "str"},
         "actions": {"key": "actions", "type": "[JobDescriptionSearchConfigActionsItem]"},
+        "custom_fields_config": {"key": "customFieldsConfig", "type": "[CustomFieldConfig]"},
     }
 
     def __init__(
@@ -8419,6 +8455,7 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         show_index_dropdown: Optional[bool] = None,
         search_tool_theme: Optional[Dict[str, Any]] = None,
         actions: Optional[List["_models.JobDescriptionSearchConfigActionsItem"]] = None,
+        custom_fields_config: Optional[List["_models.CustomFieldConfig"]] = None,
         **kwargs,
     ):
         """
@@ -8472,6 +8509,8 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         :paramtype search_tool_theme: dict[str, any]
         :keyword actions: A list of actions to show in the dropdown in the embedded search tool.
         :paramtype actions: list[~affinda.models.JobDescriptionSearchConfigActionsItem]
+        :keyword custom_fields_config:
+        :paramtype custom_fields_config: list[~affinda.models.CustomFieldConfig]
         """
         super(JobDescriptionSearchConfig, self).__init__(**kwargs)
         self.allow_pdf_download = allow_pdf_download
@@ -8500,6 +8539,7 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         self.user_id = None
         self.username = None
         self.actions = actions
+        self.custom_fields_config = custom_fields_config
 
 
 class JobDescriptionSearchConfigActionsItem(msrest.serialization.Model):
@@ -13278,8 +13318,8 @@ class ResumeRequestBody(msrest.serialization.Model):
      processing is complete.
     :vartype wait: bool
     :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
-     of an existing document. If "false" (default), will parse the document normally whether its a
-     duplicate or not.
+     of an existing document. If "false", will parse the document normally whether its a duplicate
+     or not. If not provided, will fallback to the workspace settings.
     :vartype reject_duplicates: bool
     :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
     :vartype language: str
@@ -13309,7 +13349,7 @@ class ResumeRequestBody(msrest.serialization.Model):
         identifier: Optional[str] = None,
         file_name: Optional[str] = None,
         wait: Optional[bool] = True,
-        reject_duplicates: Optional[bool] = False,
+        reject_duplicates: Optional[bool] = None,
         language: Optional[str] = None,
         expiry_time: Optional[datetime.datetime] = None,
         **kwargs,
@@ -13331,8 +13371,8 @@ class ResumeRequestBody(msrest.serialization.Model):
          processing is complete.
         :paramtype wait: bool
         :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
-         duplicate of an existing document. If "false" (default), will parse the document normally
-         whether its a duplicate or not.
+         duplicate of an existing document. If "false", will parse the document normally whether its a
+         duplicate or not. If not provided, will fallback to the workspace settings.
         :paramtype reject_duplicates: bool
         :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
         :paramtype language: str
@@ -13463,6 +13503,8 @@ class ResumeSearchConfig(msrest.serialization.Model):
     :vartype username: str
     :ivar actions: A list of actions to show in the dropdown in the embedded search tool.
     :vartype actions: list[~affinda.models.ResumeSearchConfigActionsItem]
+    :ivar custom_fields_config:
+    :vartype custom_fields_config: list[~affinda.models.CustomFieldConfig]
     """
 
     _validation = {
@@ -13497,6 +13539,7 @@ class ResumeSearchConfig(msrest.serialization.Model):
         "user_id": {"key": "userId", "type": "int"},
         "username": {"key": "username", "type": "str"},
         "actions": {"key": "actions", "type": "[ResumeSearchConfigActionsItem]"},
+        "custom_fields_config": {"key": "customFieldsConfig", "type": "[CustomFieldConfig]"},
     }
 
     def __init__(
@@ -13526,6 +13569,7 @@ class ResumeSearchConfig(msrest.serialization.Model):
         show_index_dropdown: Optional[bool] = None,
         search_tool_theme: Optional[Dict[str, Any]] = None,
         actions: Optional[List["_models.ResumeSearchConfigActionsItem"]] = None,
+        custom_fields_config: Optional[List["_models.CustomFieldConfig"]] = None,
         **kwargs,
     ):
         """
@@ -13579,6 +13623,8 @@ class ResumeSearchConfig(msrest.serialization.Model):
         :paramtype search_tool_theme: dict[str, any]
         :keyword actions: A list of actions to show in the dropdown in the embedded search tool.
         :paramtype actions: list[~affinda.models.ResumeSearchConfigActionsItem]
+        :keyword custom_fields_config:
+        :paramtype custom_fields_config: list[~affinda.models.CustomFieldConfig]
         """
         super(ResumeSearchConfig, self).__init__(**kwargs)
         self.allow_pdf_download = allow_pdf_download
@@ -13607,6 +13653,7 @@ class ResumeSearchConfig(msrest.serialization.Model):
         self.user_id = None
         self.username = None
         self.actions = actions
+        self.custom_fields_config = custom_fields_config
 
 
 class ResumeSearchConfigActionsItem(msrest.serialization.Model):

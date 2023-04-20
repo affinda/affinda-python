@@ -1210,6 +1210,36 @@ def __init__(**kwargs)
 - `raw`: 
 - `parsed`: 
 
+<a id="models._models.CustomFieldConfig"></a>
+
+## CustomFieldConfig Objects
+
+```python
+class CustomFieldConfig(msrest.serialization.Model)
+```
+
+CustomFieldConfig.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar data_point: Required. Data point identifier.
+:vartype data_point: str
+:ivar weight: Required.
+:vartype weight: float
+
+<a id="models._models.CustomFieldConfig.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `data_point`: Required. Data point identifier.
+- `weight`: Required.
+
 <a id="models._models.DateAnnotation"></a>
 
 ## DateAnnotation Objects
@@ -4310,8 +4340,8 @@ InvoiceRequestBody.
  processing is complete.
 :vartype wait: bool
 :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
- of an existing document. If "false" (default), will parse the document normally whether its a
- duplicate or not.
+ of an existing document. If "false", will parse the document normally whether its a duplicate
+ or not. If not provided, will fallback to the workspace settings.
 :vartype reject_duplicates: bool
 :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 :vartype language: str
@@ -4338,8 +4368,8 @@ PNG, JPG.
 If "false", will return an empty data object which can be polled at the GET endpoint until
 processing is complete.
 - `reject_duplicates`: If "true", parsing will fail when the uploaded document is
-duplicate of an existing document. If "false" (default), will parse the document normally
-whether its a duplicate or not.
+duplicate of an existing document. If "false", will parse the document normally whether its a
+duplicate or not. If not provided, will fallback to the workspace settings.
 - `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 - `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
@@ -4547,8 +4577,8 @@ JobDescriptionRequestBody.
  processing is complete.
 :vartype wait: bool
 :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
- of an existing document. If "false" (default), will parse the document normally whether its a
- duplicate or not.
+ of an existing document. If "false", will parse the document normally whether its a duplicate
+ or not. If not provided, will fallback to the workspace settings.
 :vartype reject_duplicates: bool
 :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 :vartype language: str
@@ -4575,8 +4605,8 @@ PNG, JPG.
 If "false", will return an empty data object which can be polled at the GET endpoint until
 processing is complete.
 - `reject_duplicates`: If "true", parsing will fail when the uploaded document is
-duplicate of an existing document. If "false" (default), will parse the document normally
-whether its a duplicate or not.
+duplicate of an existing document. If "false", will parse the document normally whether its a
+duplicate or not. If not provided, will fallback to the workspace settings.
 - `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 - `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
@@ -4683,6 +4713,8 @@ Variables are only populated by the server, and will be ignored when sending a r
 :vartype username: str
 :ivar actions: A list of actions to show in the dropdown in the embedded search tool.
 :vartype actions: list[~affinda.models.JobDescriptionSearchConfigActionsItem]
+:ivar custom_fields_config:
+:vartype custom_fields_config: list[~affinda.models.CustomFieldConfig]
 
 <a id="models._models.JobDescriptionSearchConfig.__init__"></a>
 
@@ -4720,6 +4752,7 @@ no limitation.
 user.
 - `search_tool_theme`: Customize the theme of the embeded search tool.
 - `actions`: A list of actions to show in the dropdown in the embedded search tool.
+- `custom_fields_config`: 
 
 <a id="models._models.JobDescriptionSearchConfigActionsItem"></a>
 
@@ -7955,8 +7988,8 @@ ResumeRequestBody.
  processing is complete.
 :vartype wait: bool
 :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
- of an existing document. If "false" (default), will parse the document normally whether its a
- duplicate or not.
+ of an existing document. If "false", will parse the document normally whether its a duplicate
+ or not. If not provided, will fallback to the workspace settings.
 :vartype reject_duplicates: bool
 :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 :vartype language: str
@@ -7984,8 +8017,8 @@ PNG, JPG.
 If "false", will return an empty data object which can be polled at the GET endpoint until
 processing is complete.
 - `reject_duplicates`: If "true", parsing will fail when the uploaded document is
-duplicate of an existing document. If "false" (default), will parse the document normally
-whether its a duplicate or not.
+duplicate of an existing document. If "false", will parse the document normally whether its a
+duplicate or not. If not provided, will fallback to the workspace settings.
 - `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 - `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
@@ -8092,6 +8125,8 @@ Variables are only populated by the server, and will be ignored when sending a r
 :vartype username: str
 :ivar actions: A list of actions to show in the dropdown in the embedded search tool.
 :vartype actions: list[~affinda.models.ResumeSearchConfigActionsItem]
+:ivar custom_fields_config:
+:vartype custom_fields_config: list[~affinda.models.CustomFieldConfig]
 
 <a id="models._models.ResumeSearchConfig.__init__"></a>
 
@@ -8129,6 +8164,7 @@ no limitation.
 user.
 - `search_tool_theme`: Customize the theme of the embeded search tool.
 - `actions`: A list of actions to show in the dropdown in the embedded search tool.
+- `custom_fields_config`: 
 
 <a id="models._models.ResumeSearchConfigActionsItem"></a>
 

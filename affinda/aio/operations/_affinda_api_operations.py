@@ -154,7 +154,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         identifier: Optional[str] = None,
         file_name: Optional[str] = None,
         wait: Optional[bool] = True,
-        reject_duplicates: Optional[bool] = False,
+        reject_duplicates: Optional[bool] = None,
         language: Optional[str] = None,
         expiry_time: Optional[datetime.datetime] = None,
         **kwargs: Any,
@@ -181,7 +181,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type file_name: str
         :param wait:  Default value is True.
         :type wait: bool
-        :param reject_duplicates:  Default value is False.
+        :param reject_duplicates:  Default value is None.
         :type reject_duplicates: bool
         :param language:  Default value is None.
         :type language: str
@@ -263,7 +263,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
     async def get_resume(
         self, identifier: str, format: Optional[str] = None, **kwargs: Any
-    ) -> Union[_models.Resume, _models.RequestError]:
+    ) -> _models.Resume:
         """Get parse results for a specific resume.
 
         Returns all the parse results for that resume if processing is completed.
@@ -276,21 +276,37 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
          supported value for this parameter is "hr-xml". Default value is None.
         :type format: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: Resume or RequestError, or the result of cls(response)
-        :rtype: ~affinda.models.Resume or ~affinda.models.RequestError
+        :return: Resume, or the result of cls(response)
+        :rtype: ~affinda.models.Resume
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
-            401: ClientAuthenticationError,
-            404: ResourceNotFoundError,
             409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            404: lambda response: ResourceNotFoundError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            404: lambda response: ResourceNotFoundError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
         }
         error_map.update(kwargs.pop("error_map", {}) or {})
 
         _headers = kwargs.pop("headers", {}) or {}
         _params = kwargs.pop("params", {}) or {}
 
-        cls = kwargs.pop("cls", None)  # type: ClsType[Union[_models.Resume, _models.RequestError]]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.Resume]
 
         request = build_get_resume_request(
             identifier=identifier,
@@ -310,7 +326,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         )
         response = pipeline_response.http_response
 
-        if response.status_code not in [200, 200, 400, 400, 401, 401, 404, 404]:
+        if response.status_code not in [200, 200]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
@@ -320,24 +336,6 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
         if response.status_code == 200:
             deserialized = self._deserialize("Resume", pipeline_response)
-
-        if response.status_code == 400:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 400:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 404:
-            deserialized = self._deserialize("RequestError", pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -884,7 +882,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         identifier: Optional[str] = None,
         file_name: Optional[str] = None,
         wait: Optional[bool] = True,
-        reject_duplicates: Optional[bool] = False,
+        reject_duplicates: Optional[bool] = None,
         language: Optional[str] = None,
         expiry_time: Optional[datetime.datetime] = None,
         **kwargs: Any,
@@ -906,7 +904,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type file_name: str
         :param wait:  Default value is True.
         :type wait: bool
-        :param reject_duplicates:  Default value is False.
+        :param reject_duplicates:  Default value is None.
         :type reject_duplicates: bool
         :param language:  Default value is None.
         :type language: str
@@ -1185,7 +1183,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         identifier: Optional[str] = None,
         file_name: Optional[str] = None,
         wait: Optional[bool] = True,
-        reject_duplicates: Optional[bool] = False,
+        reject_duplicates: Optional[bool] = None,
         language: Optional[str] = None,
         expiry_time: Optional[datetime.datetime] = None,
         **kwargs: Any,
@@ -1211,7 +1209,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type file_name: str
         :param wait:  Default value is True.
         :type wait: bool
-        :param reject_duplicates:  Default value is False.
+        :param reject_duplicates:  Default value is None.
         :type reject_duplicates: bool
         :param language:  Default value is None.
         :type language: str

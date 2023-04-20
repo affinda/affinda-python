@@ -67,6 +67,7 @@ try:
     )
     from ._models_py3 import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1
     from ._models_py3 import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1
+    from ._models_py3 import CustomFieldConfig
     from ._models_py3 import DateAnnotation
     from ._models_py3 import DateAnnotationV2Update
     from ._models_py3 import Education
@@ -310,6 +311,7 @@ except (SyntaxError, ImportError):
     from ._models import ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1  # type: ignore
     from ._models import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1  # type: ignore
     from ._models import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1  # type: ignore
+    from ._models import CustomFieldConfig  # type: ignore
     from ._models import DateAnnotation  # type: ignore
     from ._models import DateAnnotationV2Update  # type: ignore
     from ._models import Education  # type: ignore
@@ -547,6 +549,7 @@ __all__ = [
     "ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1",
     "ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1",
     "ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1",
+    "CustomFieldConfig",
     "DateAnnotation",
     "DateAnnotationV2Update",
     "Education",
