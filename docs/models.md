@@ -1604,6 +1604,36 @@ human.
 "yearsexperience", "group", "table_deprecated".
 - `parsed`: 
 
+<a id="models._models.CustomFieldConfig"></a>
+
+## CustomFieldConfig Objects
+
+```python
+class CustomFieldConfig(msrest.serialization.Model)
+```
+
+CustomFieldConfig.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar data_point: Required. Data point identifier.
+:vartype data_point: str
+:ivar weight: Required.
+:vartype weight: float
+
+<a id="models._models.CustomFieldConfig.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `data_point`: Required. Data point identifier.
+- `weight`: Required.
+
 <a id="models._models.DataPoint"></a>
 
 ## DataPoint Objects
@@ -2032,8 +2062,9 @@ DocumentCreate.
 :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 :vartype language: str
 :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
- of an existing document, no credits will be consumed. If "false" (default), will parse the
- document normally whether its a duplicate or not.
+ of an existing document, no credits will be consumed. If "false", will parse the document
+ normally whether its a duplicate or not. If not provided, will fallback to the workspace
+ settings.
 :vartype reject_duplicates: bool
 
 <a id="models._models.DocumentCreate.__init__"></a>
@@ -2060,8 +2091,9 @@ processing is complete.
 deleted.  Defaults to no expiry.
 - `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 - `reject_duplicates`: If "true", parsing will fail when the uploaded document is
-duplicate of an existing document, no credits will be consumed. If "false" (default), will
-parse the document normally whether its a duplicate or not.
+duplicate of an existing document, no credits will be consumed. If "false", will parse the
+document normally whether its a duplicate or not. If not provided, will fallback to the
+workspace settings.
 
 <a id="models._models.DocumentEditRequest"></a>
 
@@ -6483,6 +6515,8 @@ Variables are only populated by the server, and will be ignored when sending a r
 :vartype actions: list[~affinda.models.SearchConfigAction]
 :ivar hide_toolbar: Hide the reset/import toolbar.
 :vartype hide_toolbar: bool
+:ivar custom_fields_config:
+:vartype custom_fields_config: list[~affinda.models.CustomFieldConfig]
 
 <a id="models._models.JobDescriptionSearchConfig.__init__"></a>
 
@@ -6521,6 +6555,7 @@ user.
 - `search_tool_theme`: Customize the theme of the embeded search tool.
 - `actions`: A list of actions to show in the dropdown in the embedded search tool.
 - `hide_toolbar`: Hide the reset/import toolbar.
+- `custom_fields_config`: 
 
 <a id="models._models.JobDescriptionSearchDetail"></a>
 
@@ -9784,6 +9819,8 @@ Variables are only populated by the server, and will be ignored when sending a r
 :vartype actions: list[~affinda.models.SearchConfigAction]
 :ivar hide_toolbar: Hide the reset/import toolbar.
 :vartype hide_toolbar: bool
+:ivar custom_fields_config:
+:vartype custom_fields_config: list[~affinda.models.CustomFieldConfig]
 
 <a id="models._models.ResumeSearchConfig.__init__"></a>
 
@@ -9822,6 +9859,7 @@ user.
 - `search_tool_theme`: Customize the theme of the embeded search tool.
 - `actions`: A list of actions to show in the dropdown in the embedded search tool.
 - `hide_toolbar`: Hide the reset/import toolbar.
+- `custom_fields_config`: 
 
 <a id="models._models.ResumeSearchDetail"></a>
 
@@ -11302,8 +11340,9 @@ All required parameters must be populated in order to send to Azure.
  wrong document type, or if its document type cannot be determined. No credits will be consumed.
 :vartype reject_invalid_documents: bool
 :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
- of an existing document, no credits will be consumed. If "false" (default), will parse the
- document normally whether its a duplicate or not.
+ of an existing document, no credits will be consumed. If "false", will parse the document
+ normally whether its a duplicate or not. If not provided, will fallback to the workspace
+ settings.
 :vartype reject_duplicates: bool
 :ivar members:
 :vartype members: list[~affinda.models.User]
@@ -11339,8 +11378,9 @@ workspace. Known values are: "organization", "private".
 the wrong document type, or if its document type cannot be determined. No credits will be
 consumed.
 - `reject_duplicates`: If "true", parsing will fail when the uploaded document is
-duplicate of an existing document, no credits will be consumed. If "false" (default), will
-parse the document normally whether its a duplicate or not.
+duplicate of an existing document, no credits will be consumed. If "false", will parse the
+document normally whether its a duplicate or not. If not provided, will fallback to the
+workspace settings.
 - `members`: 
 - `unvalidated_docs_count`: Number of unvalidated documents in the workspace.
 - `confirmed_docs_count`: Number of validated documents in the workspace.
@@ -11460,8 +11500,9 @@ All required parameters must be populated in order to send to Azure.
  wrong document type, or if its document type cannot be determined. No credits will be consumed.
 :vartype reject_invalid_documents: bool
 :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
- of an existing document, no credits will be consumed. If "false" (default), will parse the
- document normally whether its a duplicate or not.
+ of an existing document, no credits will be consumed. If "false", will parse the document
+ normally whether its a duplicate or not. If not provided, will fallback to the workspace
+ settings.
 :vartype reject_duplicates: bool
 :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
  ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
@@ -11486,8 +11527,9 @@ workspace. Known values are: "organization", "private".
 the wrong document type, or if its document type cannot be determined. No credits will be
 consumed.
 - `reject_duplicates`: If "true", parsing will fail when the uploaded document is
-duplicate of an existing document, no credits will be consumed. If "false" (default), will
-parse the document normally whether its a duplicate or not.
+duplicate of an existing document, no credits will be consumed. If "false", will parse the
+document normally whether its a duplicate or not. If not provided, will fallback to the
+workspace settings.
 - `whitelist_ingest_addresses`: If specified, only emails from these addresses will be
 ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
 
@@ -11570,8 +11612,9 @@ WorkspaceUpdate.
  wrong document type, or if its document type cannot be determined. No credits will be consumed.
 :vartype reject_invalid_documents: bool
 :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
- of an existing document, no credits will be consumed. If "false" (default), will parse the
- document normally whether its a duplicate or not.
+ of an existing document, no credits will be consumed. If "false", will parse the document
+ normally whether its a duplicate or not. If not provided, will fallback to the workspace
+ settings.
 :vartype reject_duplicates: bool
 :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
  ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
@@ -11595,8 +11638,9 @@ workspace. Known values are: "organization", "private".
 the wrong document type, or if its document type cannot be determined. No credits will be
 consumed.
 - `reject_duplicates`: If "true", parsing will fail when the uploaded document is
-duplicate of an existing document, no credits will be consumed. If "false" (default), will
-parse the document normally whether its a duplicate or not.
+duplicate of an existing document, no credits will be consumed. If "false", will parse the
+document normally whether its a duplicate or not. If not provided, will fallback to the
+workspace settings.
 - `whitelist_ingest_addresses`: If specified, only emails from these addresses will be
 ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
 

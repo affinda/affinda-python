@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - rawText is now not nullable
 - OccupationGroupSearchResult.children is now optional
 
+### Fixed
+- Allow rejectDuplicates to be null
+
 ## [4.3.1] - 2023-03-29
 ### Added
 - Add `whitelistIngestAddresses` to Workspace

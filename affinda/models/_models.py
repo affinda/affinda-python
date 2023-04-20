@@ -1899,6 +1899,39 @@ class CurrencyCodeAnnotation(Annotation):
         self.parsed = kwargs.get("parsed", None)
 
 
+class CustomFieldConfig(msrest.serialization.Model):
+    """CustomFieldConfig.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar data_point: Required. Data point identifier.
+    :vartype data_point: str
+    :ivar weight: Required.
+    :vartype weight: float
+    """
+
+    _validation = {
+        "data_point": {"required": True},
+        "weight": {"required": True, "maximum": 1, "minimum": 0},
+    }
+
+    _attribute_map = {
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "weight": {"key": "weight", "type": "float"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword data_point: Required. Data point identifier.
+        :paramtype data_point: str
+        :keyword weight: Required.
+        :paramtype weight: float
+        """
+        super(CustomFieldConfig, self).__init__(**kwargs)
+        self.data_point = kwargs["data_point"]
+        self.weight = kwargs["weight"]
+
+
 class DataPoint(msrest.serialization.Model):
     """DataPoint.
 
@@ -2469,8 +2502,9 @@ class DocumentCreate(msrest.serialization.Model):
     :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
     :vartype language: str
     :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
-     of an existing document, no credits will be consumed. If "false" (default), will parse the
-     document normally whether its a duplicate or not.
+     of an existing document, no credits will be consumed. If "false", will parse the document
+     normally whether its a duplicate or not. If not provided, will fallback to the workspace
+     settings.
     :vartype reject_duplicates: bool
     """
 
@@ -2512,8 +2546,9 @@ class DocumentCreate(msrest.serialization.Model):
         :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
         :paramtype language: str
         :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
-         duplicate of an existing document, no credits will be consumed. If "false" (default), will
-         parse the document normally whether its a duplicate or not.
+         duplicate of an existing document, no credits will be consumed. If "false", will parse the
+         document normally whether its a duplicate or not. If not provided, will fallback to the
+         workspace settings.
         :paramtype reject_duplicates: bool
         """
         super(DocumentCreate, self).__init__(**kwargs)
@@ -2526,7 +2561,7 @@ class DocumentCreate(msrest.serialization.Model):
         self.file_name = kwargs.get("file_name", None)
         self.expiry_time = kwargs.get("expiry_time", None)
         self.language = kwargs.get("language", None)
-        self.reject_duplicates = kwargs.get("reject_duplicates", False)
+        self.reject_duplicates = kwargs.get("reject_duplicates", None)
 
 
 class DocumentEditRequest(msrest.serialization.Model):
@@ -9162,6 +9197,8 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
     :vartype actions: list[~affinda.models.SearchConfigAction]
     :ivar hide_toolbar: Hide the reset/import toolbar.
     :vartype hide_toolbar: bool
+    :ivar custom_fields_config:
+    :vartype custom_fields_config: list[~affinda.models.CustomFieldConfig]
     """
 
     _validation = {
@@ -9197,6 +9234,7 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         "username": {"key": "username", "type": "str"},
         "actions": {"key": "actions", "type": "[SearchConfigAction]"},
         "hide_toolbar": {"key": "hideToolbar", "type": "bool"},
+        "custom_fields_config": {"key": "customFieldsConfig", "type": "[CustomFieldConfig]"},
     }
 
     def __init__(self, **kwargs):
@@ -9253,6 +9291,8 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         :paramtype actions: list[~affinda.models.SearchConfigAction]
         :keyword hide_toolbar: Hide the reset/import toolbar.
         :paramtype hide_toolbar: bool
+        :keyword custom_fields_config:
+        :paramtype custom_fields_config: list[~affinda.models.CustomFieldConfig]
         """
         super(JobDescriptionSearchConfig, self).__init__(**kwargs)
         self.allow_pdf_download = kwargs.get("allow_pdf_download", None)
@@ -9282,6 +9322,7 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         self.username = None
         self.actions = kwargs.get("actions", None)
         self.hide_toolbar = kwargs.get("hide_toolbar", None)
+        self.custom_fields_config = kwargs.get("custom_fields_config", None)
 
 
 class JobDescriptionSearchDetail(msrest.serialization.Model):
@@ -13359,6 +13400,8 @@ class ResumeSearchConfig(msrest.serialization.Model):
     :vartype actions: list[~affinda.models.SearchConfigAction]
     :ivar hide_toolbar: Hide the reset/import toolbar.
     :vartype hide_toolbar: bool
+    :ivar custom_fields_config:
+    :vartype custom_fields_config: list[~affinda.models.CustomFieldConfig]
     """
 
     _validation = {
@@ -13394,6 +13437,7 @@ class ResumeSearchConfig(msrest.serialization.Model):
         "username": {"key": "username", "type": "str"},
         "actions": {"key": "actions", "type": "[SearchConfigAction]"},
         "hide_toolbar": {"key": "hideToolbar", "type": "bool"},
+        "custom_fields_config": {"key": "customFieldsConfig", "type": "[CustomFieldConfig]"},
     }
 
     def __init__(self, **kwargs):
@@ -13450,6 +13494,8 @@ class ResumeSearchConfig(msrest.serialization.Model):
         :paramtype actions: list[~affinda.models.SearchConfigAction]
         :keyword hide_toolbar: Hide the reset/import toolbar.
         :paramtype hide_toolbar: bool
+        :keyword custom_fields_config:
+        :paramtype custom_fields_config: list[~affinda.models.CustomFieldConfig]
         """
         super(ResumeSearchConfig, self).__init__(**kwargs)
         self.allow_pdf_download = kwargs.get("allow_pdf_download", None)
@@ -13479,6 +13525,7 @@ class ResumeSearchConfig(msrest.serialization.Model):
         self.username = None
         self.actions = kwargs.get("actions", None)
         self.hide_toolbar = kwargs.get("hide_toolbar", None)
+        self.custom_fields_config = kwargs.get("custom_fields_config", None)
 
 
 class ResumeSearchDetail(msrest.serialization.Model):
@@ -15390,8 +15437,9 @@ class Workspace(msrest.serialization.Model):
      wrong document type, or if its document type cannot be determined. No credits will be consumed.
     :vartype reject_invalid_documents: bool
     :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
-     of an existing document, no credits will be consumed. If "false" (default), will parse the
-     document normally whether its a duplicate or not.
+     of an existing document, no credits will be consumed. If "false", will parse the document
+     normally whether its a duplicate or not. If not provided, will fallback to the workspace
+     settings.
     :vartype reject_duplicates: bool
     :ivar members:
     :vartype members: list[~affinda.models.User]
@@ -15445,8 +15493,9 @@ class Workspace(msrest.serialization.Model):
          consumed.
         :paramtype reject_invalid_documents: bool
         :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
-         duplicate of an existing document, no credits will be consumed. If "false" (default), will
-         parse the document normally whether its a duplicate or not.
+         duplicate of an existing document, no credits will be consumed. If "false", will parse the
+         document normally whether its a duplicate or not. If not provided, will fallback to the
+         workspace settings.
         :paramtype reject_duplicates: bool
         :keyword members:
         :paramtype members: list[~affinda.models.User]
@@ -15468,7 +15517,7 @@ class Workspace(msrest.serialization.Model):
         self.visibility = kwargs.get("visibility", None)
         self.collections = kwargs.get("collections", None)
         self.reject_invalid_documents = kwargs.get("reject_invalid_documents", None)
-        self.reject_duplicates = kwargs.get("reject_duplicates", False)
+        self.reject_duplicates = kwargs.get("reject_duplicates", None)
         self.members = kwargs.get("members", None)
         self.unvalidated_docs_count = kwargs.get("unvalidated_docs_count", None)
         self.confirmed_docs_count = kwargs.get("confirmed_docs_count", None)
@@ -15616,8 +15665,9 @@ class WorkspaceCreate(msrest.serialization.Model):
      wrong document type, or if its document type cannot be determined. No credits will be consumed.
     :vartype reject_invalid_documents: bool
     :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
-     of an existing document, no credits will be consumed. If "false" (default), will parse the
-     document normally whether its a duplicate or not.
+     of an existing document, no credits will be consumed. If "false", will parse the document
+     normally whether its a duplicate or not. If not provided, will fallback to the workspace
+     settings.
     :vartype reject_duplicates: bool
     :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
      ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
@@ -15653,8 +15703,9 @@ class WorkspaceCreate(msrest.serialization.Model):
          consumed.
         :paramtype reject_invalid_documents: bool
         :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
-         duplicate of an existing document, no credits will be consumed. If "false" (default), will
-         parse the document normally whether its a duplicate or not.
+         duplicate of an existing document, no credits will be consumed. If "false", will parse the
+         document normally whether its a duplicate or not. If not provided, will fallback to the
+         workspace settings.
         :paramtype reject_duplicates: bool
         :keyword whitelist_ingest_addresses: If specified, only emails from these addresses will be
          ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
@@ -15665,7 +15716,7 @@ class WorkspaceCreate(msrest.serialization.Model):
         self.name = kwargs["name"]
         self.visibility = kwargs.get("visibility", None)
         self.reject_invalid_documents = kwargs.get("reject_invalid_documents", None)
-        self.reject_duplicates = kwargs.get("reject_duplicates", False)
+        self.reject_duplicates = kwargs.get("reject_duplicates", None)
         self.whitelist_ingest_addresses = kwargs.get("whitelist_ingest_addresses", None)
 
 
@@ -15740,8 +15791,9 @@ class WorkspaceUpdate(msrest.serialization.Model):
      wrong document type, or if its document type cannot be determined. No credits will be consumed.
     :vartype reject_invalid_documents: bool
     :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
-     of an existing document, no credits will be consumed. If "false" (default), will parse the
-     document normally whether its a duplicate or not.
+     of an existing document, no credits will be consumed. If "false", will parse the document
+     normally whether its a duplicate or not. If not provided, will fallback to the workspace
+     settings.
     :vartype reject_duplicates: bool
     :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
      ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
@@ -15769,8 +15821,9 @@ class WorkspaceUpdate(msrest.serialization.Model):
          consumed.
         :paramtype reject_invalid_documents: bool
         :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
-         duplicate of an existing document, no credits will be consumed. If "false" (default), will
-         parse the document normally whether its a duplicate or not.
+         duplicate of an existing document, no credits will be consumed. If "false", will parse the
+         document normally whether its a duplicate or not. If not provided, will fallback to the
+         workspace settings.
         :paramtype reject_duplicates: bool
         :keyword whitelist_ingest_addresses: If specified, only emails from these addresses will be
          ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
@@ -15780,7 +15833,7 @@ class WorkspaceUpdate(msrest.serialization.Model):
         self.name = kwargs.get("name", None)
         self.visibility = kwargs.get("visibility", None)
         self.reject_invalid_documents = kwargs.get("reject_invalid_documents", None)
-        self.reject_duplicates = kwargs.get("reject_duplicates", False)
+        self.reject_duplicates = kwargs.get("reject_duplicates", None)
         self.whitelist_ingest_addresses = kwargs.get("whitelist_ingest_addresses", None)
 
 

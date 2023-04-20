@@ -72,6 +72,7 @@ try:
     from ._models_py3 import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1
     from ._models_py3 import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1
     from ._models_py3 import CurrencyCodeAnnotation
+    from ._models_py3 import CustomFieldConfig
     from ._models_py3 import DataPoint
     from ._models_py3 import DataPointChoice
     from ._models_py3 import DataPointChoiceCreate
@@ -362,6 +363,7 @@ except (SyntaxError, ImportError):
     from ._models import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1  # type: ignore
     from ._models import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1  # type: ignore
     from ._models import CurrencyCodeAnnotation  # type: ignore
+    from ._models import CustomFieldConfig  # type: ignore
     from ._models import DataPoint  # type: ignore
     from ._models import DataPointChoice  # type: ignore
     from ._models import DataPointChoiceCreate  # type: ignore
@@ -650,6 +652,7 @@ __all__ = [
     "ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1",
     "ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1",
     "CurrencyCodeAnnotation",
+    "CustomFieldConfig",
     "DataPoint",
     "DataPointChoice",
     "DataPointChoiceCreate",

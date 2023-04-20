@@ -1161,7 +1161,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         file_name: Optional[str] = None,
         expiry_time: Optional[datetime.datetime] = None,
         language: Optional[str] = None,
-        reject_duplicates: Optional[bool] = False,
+        reject_duplicates: Optional[bool] = None,
         **kwargs: Any,
     ) -> _models.Document:
         """Upload a document for parsing.
@@ -1188,7 +1188,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type expiry_time: ~datetime.datetime
         :param language:  Default value is None.
         :type language: str
-        :param reject_duplicates:  Default value is False.
+        :param reject_duplicates:  Default value is None.
         :type reject_duplicates: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Document, or the result of cls(response)
@@ -1270,7 +1270,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         identifier: str,
         format: Optional[Union[str, "_models.DocumentFormat"]] = None,
         **kwargs: Any,
-    ) -> Union[_models.Document, _models.RequestError]:
+    ) -> _models.Document:
         """Get specific document.
 
         Return a specific document.
@@ -1280,23 +1280,32 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param format: Specify which format you want the response to be. Default is "json".
         :type format: str or ~affinda.models.DocumentFormat
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: Document or RequestError, or the result of cls(response)
-        :rtype: ~affinda.models.Document or ~affinda.models.RequestError
+        :return: Document, or the result of cls(response)
+        :rtype: ~affinda.models.Document
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
-            401: ClientAuthenticationError,
             404: ResourceNotFoundError,
             409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
         }
         error_map.update(kwargs.pop("error_map", {}) or {})
 
         _headers = kwargs.pop("headers", {}) or {}
         _params = kwargs.pop("params", {}) or {}
 
-        cls = kwargs.pop(
-            "cls", None
-        )  # type: ClsType[Union[_models.Document, _models.RequestError]]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.Document]
 
         request = build_get_document_request(
             identifier=identifier,
@@ -1316,25 +1325,12 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         )
         response = pipeline_response.http_response
 
-        if response.status_code not in [200, 400, 400, 401, 401]:
+        if response.status_code not in [200]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
 
-        if response.status_code == 200:
-            deserialized = self._deserialize("Document", pipeline_response)
-
-        if response.status_code == 400:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 400:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
-
-        if response.status_code == 401:
-            deserialized = self._deserialize("RequestError", pipeline_response)
+        deserialized = self._deserialize("Document", pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -1892,6 +1888,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         slug: Optional[str] = None,
         description: Optional[str] = None,
         annotation_content_type: Optional[str] = None,
+        include_child: Optional[bool] = None,
+        identifier: Optional[List[str]] = None,
         **kwargs: Any,
     ) -> List[_models.DataPoint]:
         """Get list of all data points.
@@ -1914,6 +1912,12 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param annotation_content_type: Filter by annotation content type, e.g. text, integer, float,
          date, etc. Default value is None.
         :type annotation_content_type: str
+        :param include_child: Whether to show child data points at the top level. :code:`<br />` By
+         default child data points are shown nested inside their parent so they are excluded from the
+         top level. Default value is None.
+        :type include_child: bool
+        :param identifier: Filter by specific identifiers. Default value is None.
+        :type identifier: list[str]
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: list of DataPoint, or the result of cls(response)
         :rtype: list[~affinda.models.DataPoint]
@@ -1944,6 +1948,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             slug=slug,
             description=description,
             annotation_content_type=annotation_content_type,
+            include_child=include_child,
+            identifier=identifier,
             template_url=self.get_all_data_points.metadata["url"],
             headers=_headers,
             params=_params,

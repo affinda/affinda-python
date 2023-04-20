@@ -2078,6 +2078,39 @@ class CurrencyCodeAnnotation(Annotation):
         self.parsed = parsed
 
 
+class CustomFieldConfig(msrest.serialization.Model):
+    """CustomFieldConfig.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar data_point: Required. Data point identifier.
+    :vartype data_point: str
+    :ivar weight: Required.
+    :vartype weight: float
+    """
+
+    _validation = {
+        "data_point": {"required": True},
+        "weight": {"required": True, "maximum": 1, "minimum": 0},
+    }
+
+    _attribute_map = {
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "weight": {"key": "weight", "type": "float"},
+    }
+
+    def __init__(self, *, data_point: str, weight: float, **kwargs):
+        """
+        :keyword data_point: Required. Data point identifier.
+        :paramtype data_point: str
+        :keyword weight: Required.
+        :paramtype weight: float
+        """
+        super(CustomFieldConfig, self).__init__(**kwargs)
+        self.data_point = data_point
+        self.weight = weight
+
+
 class DataPoint(msrest.serialization.Model):
     """DataPoint.
 
@@ -2754,8 +2787,9 @@ class DocumentCreate(msrest.serialization.Model):
     :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
     :vartype language: str
     :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
-     of an existing document, no credits will be consumed. If "false" (default), will parse the
-     document normally whether its a duplicate or not.
+     of an existing document, no credits will be consumed. If "false", will parse the document
+     normally whether its a duplicate or not. If not provided, will fallback to the workspace
+     settings.
     :vartype reject_duplicates: bool
     """
 
@@ -2784,7 +2818,7 @@ class DocumentCreate(msrest.serialization.Model):
         file_name: Optional[str] = None,
         expiry_time: Optional[datetime.datetime] = None,
         language: Optional[str] = None,
-        reject_duplicates: Optional[bool] = False,
+        reject_duplicates: Optional[bool] = None,
         **kwargs,
     ):
         """
@@ -2811,8 +2845,9 @@ class DocumentCreate(msrest.serialization.Model):
         :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
         :paramtype language: str
         :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
-         duplicate of an existing document, no credits will be consumed. If "false" (default), will
-         parse the document normally whether its a duplicate or not.
+         duplicate of an existing document, no credits will be consumed. If "false", will parse the
+         document normally whether its a duplicate or not. If not provided, will fallback to the
+         workspace settings.
         :paramtype reject_duplicates: bool
         """
         super(DocumentCreate, self).__init__(**kwargs)
@@ -10944,6 +10979,8 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
     :vartype actions: list[~affinda.models.SearchConfigAction]
     :ivar hide_toolbar: Hide the reset/import toolbar.
     :vartype hide_toolbar: bool
+    :ivar custom_fields_config:
+    :vartype custom_fields_config: list[~affinda.models.CustomFieldConfig]
     """
 
     _validation = {
@@ -10979,6 +11016,7 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         "username": {"key": "username", "type": "str"},
         "actions": {"key": "actions", "type": "[SearchConfigAction]"},
         "hide_toolbar": {"key": "hideToolbar", "type": "bool"},
+        "custom_fields_config": {"key": "customFieldsConfig", "type": "[CustomFieldConfig]"},
     }
 
     def __init__(
@@ -11009,6 +11047,7 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         search_tool_theme: Optional[Dict[str, Any]] = None,
         actions: Optional[List["_models.SearchConfigAction"]] = None,
         hide_toolbar: Optional[bool] = None,
+        custom_fields_config: Optional[List["_models.CustomFieldConfig"]] = None,
         **kwargs,
     ):
         """
@@ -11064,6 +11103,8 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         :paramtype actions: list[~affinda.models.SearchConfigAction]
         :keyword hide_toolbar: Hide the reset/import toolbar.
         :paramtype hide_toolbar: bool
+        :keyword custom_fields_config:
+        :paramtype custom_fields_config: list[~affinda.models.CustomFieldConfig]
         """
         super(JobDescriptionSearchConfig, self).__init__(**kwargs)
         self.allow_pdf_download = allow_pdf_download
@@ -11093,6 +11134,7 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         self.username = None
         self.actions = actions
         self.hide_toolbar = hide_toolbar
+        self.custom_fields_config = custom_fields_config
 
 
 class JobDescriptionSearchDetail(msrest.serialization.Model):
@@ -15766,6 +15808,8 @@ class ResumeSearchConfig(msrest.serialization.Model):
     :vartype actions: list[~affinda.models.SearchConfigAction]
     :ivar hide_toolbar: Hide the reset/import toolbar.
     :vartype hide_toolbar: bool
+    :ivar custom_fields_config:
+    :vartype custom_fields_config: list[~affinda.models.CustomFieldConfig]
     """
 
     _validation = {
@@ -15801,6 +15845,7 @@ class ResumeSearchConfig(msrest.serialization.Model):
         "username": {"key": "username", "type": "str"},
         "actions": {"key": "actions", "type": "[SearchConfigAction]"},
         "hide_toolbar": {"key": "hideToolbar", "type": "bool"},
+        "custom_fields_config": {"key": "customFieldsConfig", "type": "[CustomFieldConfig]"},
     }
 
     def __init__(
@@ -15831,6 +15876,7 @@ class ResumeSearchConfig(msrest.serialization.Model):
         search_tool_theme: Optional[Dict[str, Any]] = None,
         actions: Optional[List["_models.SearchConfigAction"]] = None,
         hide_toolbar: Optional[bool] = None,
+        custom_fields_config: Optional[List["_models.CustomFieldConfig"]] = None,
         **kwargs,
     ):
         """
@@ -15886,6 +15932,8 @@ class ResumeSearchConfig(msrest.serialization.Model):
         :paramtype actions: list[~affinda.models.SearchConfigAction]
         :keyword hide_toolbar: Hide the reset/import toolbar.
         :paramtype hide_toolbar: bool
+        :keyword custom_fields_config:
+        :paramtype custom_fields_config: list[~affinda.models.CustomFieldConfig]
         """
         super(ResumeSearchConfig, self).__init__(**kwargs)
         self.allow_pdf_download = allow_pdf_download
@@ -15915,6 +15963,7 @@ class ResumeSearchConfig(msrest.serialization.Model):
         self.username = None
         self.actions = actions
         self.hide_toolbar = hide_toolbar
+        self.custom_fields_config = custom_fields_config
 
 
 class ResumeSearchDetail(msrest.serialization.Model):
@@ -18142,8 +18191,9 @@ class Workspace(msrest.serialization.Model):
      wrong document type, or if its document type cannot be determined. No credits will be consumed.
     :vartype reject_invalid_documents: bool
     :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
-     of an existing document, no credits will be consumed. If "false" (default), will parse the
-     document normally whether its a duplicate or not.
+     of an existing document, no credits will be consumed. If "false", will parse the document
+     normally whether its a duplicate or not. If not provided, will fallback to the workspace
+     settings.
     :vartype reject_duplicates: bool
     :ivar members:
     :vartype members: list[~affinda.models.User]
@@ -18187,7 +18237,7 @@ class Workspace(msrest.serialization.Model):
         visibility: Optional[Union[str, "_models.WorkspaceVisibility"]] = None,
         collections: Optional[List["_models.WorkspaceCollectionsItem"]] = None,
         reject_invalid_documents: Optional[bool] = None,
-        reject_duplicates: Optional[bool] = False,
+        reject_duplicates: Optional[bool] = None,
         members: Optional[List["_models.User"]] = None,
         unvalidated_docs_count: Optional[int] = None,
         confirmed_docs_count: Optional[int] = None,
@@ -18213,8 +18263,9 @@ class Workspace(msrest.serialization.Model):
          consumed.
         :paramtype reject_invalid_documents: bool
         :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
-         duplicate of an existing document, no credits will be consumed. If "false" (default), will
-         parse the document normally whether its a duplicate or not.
+         duplicate of an existing document, no credits will be consumed. If "false", will parse the
+         document normally whether its a duplicate or not. If not provided, will fallback to the
+         workspace settings.
         :paramtype reject_duplicates: bool
         :keyword members:
         :paramtype members: list[~affinda.models.User]
@@ -18405,8 +18456,9 @@ class WorkspaceCreate(msrest.serialization.Model):
      wrong document type, or if its document type cannot be determined. No credits will be consumed.
     :vartype reject_invalid_documents: bool
     :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
-     of an existing document, no credits will be consumed. If "false" (default), will parse the
-     document normally whether its a duplicate or not.
+     of an existing document, no credits will be consumed. If "false", will parse the document
+     normally whether its a duplicate or not. If not provided, will fallback to the workspace
+     settings.
     :vartype reject_duplicates: bool
     :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
      ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
@@ -18434,7 +18486,7 @@ class WorkspaceCreate(msrest.serialization.Model):
         name: str,
         visibility: Optional[Union[str, "_models.WorkspaceVisibility"]] = None,
         reject_invalid_documents: Optional[bool] = None,
-        reject_duplicates: Optional[bool] = False,
+        reject_duplicates: Optional[bool] = None,
         whitelist_ingest_addresses: Optional[List[str]] = None,
         **kwargs,
     ):
@@ -18452,8 +18504,9 @@ class WorkspaceCreate(msrest.serialization.Model):
          consumed.
         :paramtype reject_invalid_documents: bool
         :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
-         duplicate of an existing document, no credits will be consumed. If "false" (default), will
-         parse the document normally whether its a duplicate or not.
+         duplicate of an existing document, no credits will be consumed. If "false", will parse the
+         document normally whether its a duplicate or not. If not provided, will fallback to the
+         workspace settings.
         :paramtype reject_duplicates: bool
         :keyword whitelist_ingest_addresses: If specified, only emails from these addresses will be
          ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
@@ -18546,8 +18599,9 @@ class WorkspaceUpdate(msrest.serialization.Model):
      wrong document type, or if its document type cannot be determined. No credits will be consumed.
     :vartype reject_invalid_documents: bool
     :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
-     of an existing document, no credits will be consumed. If "false" (default), will parse the
-     document normally whether its a duplicate or not.
+     of an existing document, no credits will be consumed. If "false", will parse the document
+     normally whether its a duplicate or not. If not provided, will fallback to the workspace
+     settings.
     :vartype reject_duplicates: bool
     :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
      ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
@@ -18568,7 +18622,7 @@ class WorkspaceUpdate(msrest.serialization.Model):
         name: Optional[str] = None,
         visibility: Optional[Union[str, "_models.WorkspaceVisibility"]] = None,
         reject_invalid_documents: Optional[bool] = None,
-        reject_duplicates: Optional[bool] = False,
+        reject_duplicates: Optional[bool] = None,
         whitelist_ingest_addresses: Optional[List[str]] = None,
         **kwargs,
     ):
@@ -18584,8 +18638,9 @@ class WorkspaceUpdate(msrest.serialization.Model):
          consumed.
         :paramtype reject_invalid_documents: bool
         :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
-         duplicate of an existing document, no credits will be consumed. If "false" (default), will
-         parse the document normally whether its a duplicate or not.
+         duplicate of an existing document, no credits will be consumed. If "false", will parse the
+         document normally whether its a duplicate or not. If not provided, will fallback to the
+         workspace settings.
         :paramtype reject_duplicates: bool
         :keyword whitelist_ingest_addresses: If specified, only emails from these addresses will be
          ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
