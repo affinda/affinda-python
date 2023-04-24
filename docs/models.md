@@ -9388,6 +9388,8 @@ Variables are only populated by the server, and will be ignored when sending a r
 :vartype name: ~affinda.models.ResumeDataName
 :ivar phone_numbers:
 :vartype phone_numbers: list[str]
+:ivar phone_number_details:
+:vartype phone_number_details: list[~affinda.models.ResumeDataPhoneNumberDetailsItem]
 :ivar websites:
 :vartype websites: list[str]
 :ivar emails:
@@ -9448,6 +9450,7 @@ def __init__(**kwargs)
 collection.
 - `name`: 
 - `phone_numbers`: 
+- `phone_number_details`: 
 - `websites`: 
 - `emails`: 
 - `date_of_birth`: 
@@ -9501,6 +9504,40 @@ def __init__(**kwargs)
 - `last`: 
 - `middle`: 
 - `title`: 
+
+<a id="models._models.ResumeDataPhoneNumberDetailsItem"></a>
+
+## ResumeDataPhoneNumberDetailsItem Objects
+
+```python
+class ResumeDataPhoneNumberDetailsItem(msrest.serialization.Model)
+```
+
+ResumeDataPhoneNumberDetailsItem.
+
+:ivar raw_text:
+:vartype raw_text: str
+:ivar formatted_number:
+:vartype formatted_number: str
+:ivar country_code:
+:vartype country_code: str
+:ivar national_number:
+:vartype national_number: str
+
+<a id="models._models.ResumeDataPhoneNumberDetailsItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `raw_text`: 
+- `formatted_number`: 
+- `country_code`: 
+- `national_number`: 
 
 <a id="models._models.ResumeDataRefereesItem"></a>
 

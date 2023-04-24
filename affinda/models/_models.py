@@ -12819,6 +12819,8 @@ class ResumeData(msrest.serialization.Model):
     :vartype name: ~affinda.models.ResumeDataName
     :ivar phone_numbers:
     :vartype phone_numbers: list[str]
+    :ivar phone_number_details:
+    :vartype phone_number_details: list[~affinda.models.ResumeDataPhoneNumberDetailsItem]
     :ivar websites:
     :vartype websites: list[str]
     :ivar emails:
@@ -12880,6 +12882,10 @@ class ResumeData(msrest.serialization.Model):
         "additional_properties": {"key": "", "type": "{object}"},
         "name": {"key": "name", "type": "ResumeDataName"},
         "phone_numbers": {"key": "phoneNumbers", "type": "[str]"},
+        "phone_number_details": {
+            "key": "phoneNumberDetails",
+            "type": "[ResumeDataPhoneNumberDetailsItem]",
+        },
         "websites": {"key": "websites", "type": "[str]"},
         "emails": {"key": "emails", "type": "[str]"},
         "date_of_birth": {"key": "dateOfBirth", "type": "str"},
@@ -12913,6 +12919,8 @@ class ResumeData(msrest.serialization.Model):
         :paramtype name: ~affinda.models.ResumeDataName
         :keyword phone_numbers:
         :paramtype phone_numbers: list[str]
+        :keyword phone_number_details:
+        :paramtype phone_number_details: list[~affinda.models.ResumeDataPhoneNumberDetailsItem]
         :keyword websites:
         :paramtype websites: list[str]
         :keyword emails:
@@ -12949,6 +12957,7 @@ class ResumeData(msrest.serialization.Model):
         self.additional_properties = kwargs.get("additional_properties", None)
         self.name = kwargs.get("name", None)
         self.phone_numbers = kwargs.get("phone_numbers", None)
+        self.phone_number_details = kwargs.get("phone_number_details", None)
         self.websites = kwargs.get("websites", None)
         self.emails = kwargs.get("emails", None)
         self.date_of_birth = kwargs.get("date_of_birth", None)
@@ -13015,6 +13024,44 @@ class ResumeDataName(msrest.serialization.Model):
         self.last = kwargs.get("last", None)
         self.middle = kwargs.get("middle", None)
         self.title = kwargs.get("title", None)
+
+
+class ResumeDataPhoneNumberDetailsItem(msrest.serialization.Model):
+    """ResumeDataPhoneNumberDetailsItem.
+
+    :ivar raw_text:
+    :vartype raw_text: str
+    :ivar formatted_number:
+    :vartype formatted_number: str
+    :ivar country_code:
+    :vartype country_code: str
+    :ivar national_number:
+    :vartype national_number: str
+    """
+
+    _attribute_map = {
+        "raw_text": {"key": "rawText", "type": "str"},
+        "formatted_number": {"key": "formattedNumber", "type": "str"},
+        "country_code": {"key": "countryCode", "type": "str"},
+        "national_number": {"key": "nationalNumber", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword raw_text:
+        :paramtype raw_text: str
+        :keyword formatted_number:
+        :paramtype formatted_number: str
+        :keyword country_code:
+        :paramtype country_code: str
+        :keyword national_number:
+        :paramtype national_number: str
+        """
+        super(ResumeDataPhoneNumberDetailsItem, self).__init__(**kwargs)
+        self.raw_text = kwargs.get("raw_text", None)
+        self.formatted_number = kwargs.get("formatted_number", None)
+        self.country_code = kwargs.get("country_code", None)
+        self.national_number = kwargs.get("national_number", None)
 
 
 class ResumeDataRefereesItem(msrest.serialization.Model):
