@@ -2284,7 +2284,7 @@ def build_get_all_indexes_request(
 
     offset = kwargs.pop('offset', _params.pop('offset', None))  # type: Optional[int]
     limit = kwargs.pop('limit', _params.pop('limit', 300))  # type: Optional[int]
-    document_type = kwargs.pop('document_type', _params.pop('document_type', None))  # type: Optional[Union[str, "_models.Enum16"]]
+    document_type = kwargs.pop('document_type', _params.pop('document_type', None))  # type: Optional[Union[str, "_models.Enum17"]]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
@@ -6393,6 +6393,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         name=None,  # type: Optional[str]
         avatar=None,  # type: Optional[IO]
         resthook_signature_key=None,  # type: Optional[str]
+        validation_tool_config=None,  # type: Optional[_models.ValidationToolConfig]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.Organization
@@ -6408,6 +6409,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type avatar: IO
         :param resthook_signature_key:  Default value is None.
         :type resthook_signature_key: str
+        :param validation_tool_config:  Default value is None.
+        :type validation_tool_config: ~affinda.models.ValidationToolConfig
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Organization, or the result of cls(response)
         :rtype: ~affinda.models.Organization
@@ -6438,6 +6441,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             "name": name,
             "avatar": avatar,
             "resthookSignatureKey": resthook_signature_key,
+            "validationToolConfig": validation_tool_config,
         }
 
         request = build_update_organization_request(
@@ -8177,7 +8181,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         self,
         offset=None,  # type: Optional[int]
         limit=300,  # type: Optional[int]
-        document_type=None,  # type: Optional[Union[str, "_models.Enum16"]]
+        document_type=None,  # type: Optional[Union[str, "_models.Enum17"]]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema
@@ -8191,7 +8195,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param limit: The numbers of results to return. Default value is 300.
         :type limit: int
         :param document_type: Filter indices by a document type. Default value is None.
-        :type document_type: str or ~affinda.models.Enum16
+        :type document_type: str or ~affinda.models.Enum17
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)

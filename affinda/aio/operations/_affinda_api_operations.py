@@ -3637,6 +3637,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         name: Optional[str] = None,
         avatar: Optional[IO] = None,
         resthook_signature_key: Optional[str] = None,
+        validation_tool_config: Optional[_models.ValidationToolConfig] = None,
         **kwargs: Any,
     ) -> _models.Organization:
         """Update an organization.
@@ -3651,6 +3652,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type avatar: IO
         :param resthook_signature_key:  Default value is None.
         :type resthook_signature_key: str
+        :param validation_tool_config:  Default value is None.
+        :type validation_tool_config: ~affinda.models.ValidationToolConfig
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Organization, or the result of cls(response)
         :rtype: ~affinda.models.Organization
@@ -3681,6 +3684,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             "name": name,
             "avatar": avatar,
             "resthookSignatureKey": resthook_signature_key,
+            "validationToolConfig": validation_tool_config,
         }
 
         request = build_update_organization_request(
@@ -5350,7 +5354,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         self,
         offset: Optional[int] = None,
         limit: Optional[int] = 300,
-        document_type: Optional[Union[str, "_models.Enum16"]] = None,
+        document_type: Optional[Union[str, "_models.Enum17"]] = None,
         **kwargs: Any,
     ) -> _models.PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema:
         """Get list of all indexes.
@@ -5363,7 +5367,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param limit: The numbers of results to return. Default value is 300.
         :type limit: int
         :param document_type: Filter indices by a document type. Default value is None.
-        :type document_type: str or ~affinda.models.Enum16
+        :type document_type: str or ~affinda.models.Enum17
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)

@@ -1382,7 +1382,7 @@ Get detail of an organization.
 #### update\_organization
 
 ```python
-def update_organization(identifier, name=None, avatar=None, resthook_signature_key=None, **kwargs)
+def update_organization(identifier, name=None, avatar=None, resthook_signature_key=None, validation_tool_config=None, **kwargs)
 ```
 
 Update an organization.
@@ -1395,6 +1395,7 @@ Update the detail of an organization.
 - `name` (`str`): Default value is None.
 - `avatar` (`IO`): Default value is None.
 - `resthook_signature_key` (`str`): Default value is None.
+- `validation_tool_config` (`~affinda.models.ValidationToolConfig`): Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -2062,7 +2063,7 @@ Returns all the indexes.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
-- `document_type` (`str or ~affinda.models.Enum16`): Filter indices by a document type. Default value is None.
+- `document_type` (`str or ~affinda.models.Enum17`): Filter indices by a document type. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:

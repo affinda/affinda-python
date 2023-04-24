@@ -8091,6 +8091,8 @@ Organization.
 :vartype resthook_signature_key: str
 :ivar is_trial:
 :vartype is_trial: bool
+:ivar validation_tool_config: Configuration of the embeddable validation tool.
+:vartype validation_tool_config: ~affinda.models.OrganizationValidationToolConfig
 
 <a id="models._models.Organization.__init__"></a>
 
@@ -8110,6 +8112,7 @@ def __init__(**kwargs)
 - `resthook_signature_key`: Used to sign webhook payloads so you can verify their
 integrity.
 - `is_trial`: 
+- `validation_tool_config`: Configuration of the embeddable validation tool.
 
 <a id="models._models.OrganizationCreate"></a>
 
@@ -8222,6 +8225,8 @@ OrganizationUpdate.
 :vartype avatar: IO
 :ivar resthook_signature_key: Used to sign webhook payloads so you can verify their integrity.
 :vartype resthook_signature_key: str
+:ivar validation_tool_config: Configuration of the embeddable validation tool.
+:vartype validation_tool_config: ~affinda.models.ValidationToolConfig
 
 <a id="models._models.OrganizationUpdate.__init__"></a>
 
@@ -8237,6 +8242,35 @@ def __init__(**kwargs)
 - `avatar`: Upload avatar for the organization.
 - `resthook_signature_key`: Used to sign webhook payloads so you can verify their
 integrity.
+- `validation_tool_config`: Configuration of the embeddable validation tool.
+
+<a id="models._models.OrganizationValidationToolConfig"></a>
+
+## OrganizationValidationToolConfig Objects
+
+```python
+class OrganizationValidationToolConfig(msrest.serialization.Model)
+```
+
+Configuration of the embeddable validation tool.
+
+:ivar theme:
+:vartype theme: ~affinda.models.ThemeConfig
+:ivar hide_actions: Hide the confirm document button and other actions.
+:vartype hide_actions: bool
+
+<a id="models._models.OrganizationValidationToolConfig.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `theme`: 
+- `hide_actions`: Hide the confirm document button and other actions.
 
 <a id="models._models.PageMeta"></a>
 
@@ -8314,6 +8348,42 @@ def __init__(**kwargs)
 - `count`: Required. Number of items in results.
 - `next`: URL to request next page of results.
 - `previous`: URL to request previous page of results.
+
+<a id="models._models.PaletteColorOptions"></a>
+
+## PaletteColorOptions Objects
+
+```python
+class PaletteColorOptions(msrest.serialization.Model)
+```
+
+PaletteColorOptions.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar main: Required.
+:vartype main: str
+:ivar light:
+:vartype light: str
+:ivar dark:
+:vartype dark: str
+:ivar contrast_text:
+:vartype contrast_text: str
+
+<a id="models._models.PaletteColorOptions.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `main`: Required.
+- `light`: 
+- `dark`: 
+- `contrast_text`: 
 
 <a id="models._models.PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
 
@@ -8525,7 +8595,7 @@ Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema.
 :ivar name:
 :vartype name: str
 :ivar document_type: Known values are: "resumes", "job_descriptions".
-:vartype document_type: str or ~affinda.models.Enum19
+:vartype document_type: str or ~affinda.models.Enum20
 
 <a id="models._models.Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema.__init__"></a>
 
@@ -11275,6 +11345,191 @@ def __init__(**kwargs)
 - `name`: 
 - `workspace`: Uniquely identify a workspace.
 
+<a id="models._models.ThemeConfig"></a>
+
+## ThemeConfig Objects
+
+```python
+class ThemeConfig(msrest.serialization.Model)
+```
+
+ThemeConfig.
+
+:ivar palette:
+:vartype palette: ~affinda.models.ThemeConfigPalette
+:ivar typography:
+:vartype typography: ~affinda.models.ThemeConfigTypography
+:ivar border_radius:
+:vartype border_radius: float
+:ivar font_url:
+:vartype font_url: str
+
+<a id="models._models.ThemeConfig.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `palette`: 
+- `typography`: 
+- `border_radius`: 
+- `font_url`: 
+
+<a id="models._models.ThemeConfigPalette"></a>
+
+## ThemeConfigPalette Objects
+
+```python
+class ThemeConfigPalette(msrest.serialization.Model)
+```
+
+ThemeConfigPalette.
+
+:ivar mode: Known values are: "light", "dark".
+:vartype mode: str or ~affinda.models.ThemeConfigPaletteMode
+:ivar background:
+:vartype background: ~affinda.models.ThemeConfigPaletteBackground
+:ivar text:
+:vartype text: ~affinda.models.ThemeConfigPaletteText
+:ivar divider:
+:vartype divider: str
+:ivar primary:
+:vartype primary: ~affinda.models.PaletteColorOptions
+:ivar secondary:
+:vartype secondary: ~affinda.models.PaletteColorOptions
+:ivar success:
+:vartype success: ~affinda.models.PaletteColorOptions
+:ivar annotation:
+:vartype annotation: ~affinda.models.PaletteColorOptions
+:ivar error:
+:vartype error: ~affinda.models.PaletteColorOptions
+:ivar info:
+:vartype info: ~affinda.models.PaletteColorOptions
+:ivar warning:
+:vartype warning: ~affinda.models.PaletteColorOptions
+
+<a id="models._models.ThemeConfigPalette.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `mode`: Known values are: "light", "dark".
+- `background`: 
+- `text`: 
+- `divider`: 
+- `primary`: 
+- `secondary`: 
+- `success`: 
+- `annotation`: 
+- `error`: 
+- `info`: 
+- `warning`: 
+
+<a id="models._models.ThemeConfigPaletteBackground"></a>
+
+## ThemeConfigPaletteBackground Objects
+
+```python
+class ThemeConfigPaletteBackground(msrest.serialization.Model)
+```
+
+ThemeConfigPaletteBackground.
+
+:ivar default:
+:vartype default: str
+:ivar paper:
+:vartype paper: str
+
+<a id="models._models.ThemeConfigPaletteBackground.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `default`: 
+- `paper`: 
+
+<a id="models._models.ThemeConfigPaletteText"></a>
+
+## ThemeConfigPaletteText Objects
+
+```python
+class ThemeConfigPaletteText(msrest.serialization.Model)
+```
+
+ThemeConfigPaletteText.
+
+:ivar primary:
+:vartype primary: str
+:ivar secondary:
+:vartype secondary: str
+:ivar disabled:
+:vartype disabled: str
+
+<a id="models._models.ThemeConfigPaletteText.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `primary`: 
+- `secondary`: 
+- `disabled`: 
+
+<a id="models._models.ThemeConfigTypography"></a>
+
+## ThemeConfigTypography Objects
+
+```python
+class ThemeConfigTypography(msrest.serialization.Model)
+```
+
+ThemeConfigTypography.
+
+:ivar font_family:
+:vartype font_family: str
+:ivar font_size:
+:vartype font_size: str
+:ivar font_weight_regular:
+:vartype font_weight_regular: str
+:ivar font_weight_medium:
+:vartype font_weight_medium: str
+:ivar font_weight_bold:
+:vartype font_weight_bold: str
+
+<a id="models._models.ThemeConfigTypography.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `font_family`: 
+- `font_size`: 
+- `font_weight_regular`: 
+- `font_weight_medium`: 
+- `font_weight_bold`: 
+
 <a id="models._models.UserNullable"></a>
 
 ## UserNullable Objects
@@ -11311,6 +11566,34 @@ def __init__(**kwargs)
 - `username`: 
 - `email`: 
 - `avatar`: URL of the user's avatar.
+
+<a id="models._models.ValidationToolConfig"></a>
+
+## ValidationToolConfig Objects
+
+```python
+class ValidationToolConfig(msrest.serialization.Model)
+```
+
+Configuration of the embeddable validation tool.
+
+:ivar theme:
+:vartype theme: ~affinda.models.ThemeConfig
+:ivar hide_actions: Hide the confirm document button and other actions.
+:vartype hide_actions: bool
+
+<a id="models._models.ValidationToolConfig.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `theme`: 
+- `hide_actions`: Hide the confirm document button and other actions.
 
 <a id="models._models.Workspace"></a>
 

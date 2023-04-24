@@ -13415,6 +13415,8 @@ class Organization(msrest.serialization.Model):
     :vartype resthook_signature_key: str
     :ivar is_trial:
     :vartype is_trial: bool
+    :ivar validation_tool_config: Configuration of the embeddable validation tool.
+    :vartype validation_tool_config: ~affinda.models.OrganizationValidationToolConfig
     """
 
     _attribute_map = {
@@ -13424,6 +13426,10 @@ class Organization(msrest.serialization.Model):
         "avatar": {"key": "avatar", "type": "str"},
         "resthook_signature_key": {"key": "resthookSignatureKey", "type": "str"},
         "is_trial": {"key": "isTrial", "type": "bool"},
+        "validation_tool_config": {
+            "key": "validationToolConfig",
+            "type": "OrganizationValidationToolConfig",
+        },
     }
 
     def __init__(
@@ -13435,6 +13441,7 @@ class Organization(msrest.serialization.Model):
         avatar: Optional[str] = None,
         resthook_signature_key: Optional[str] = None,
         is_trial: Optional[bool] = None,
+        validation_tool_config: Optional["_models.OrganizationValidationToolConfig"] = None,
         **kwargs,
     ):
         """
@@ -13452,6 +13459,8 @@ class Organization(msrest.serialization.Model):
         :paramtype resthook_signature_key: str
         :keyword is_trial:
         :paramtype is_trial: bool
+        :keyword validation_tool_config: Configuration of the embeddable validation tool.
+        :paramtype validation_tool_config: ~affinda.models.OrganizationValidationToolConfig
         """
         super(Organization, self).__init__(**kwargs)
         self.identifier = identifier
@@ -13460,6 +13469,7 @@ class Organization(msrest.serialization.Model):
         self.avatar = avatar
         self.resthook_signature_key = resthook_signature_key
         self.is_trial = is_trial
+        self.validation_tool_config = validation_tool_config
 
 
 class OrganizationCreate(msrest.serialization.Model):
@@ -13592,12 +13602,15 @@ class OrganizationUpdate(msrest.serialization.Model):
     :vartype avatar: IO
     :ivar resthook_signature_key: Used to sign webhook payloads so you can verify their integrity.
     :vartype resthook_signature_key: str
+    :ivar validation_tool_config: Configuration of the embeddable validation tool.
+    :vartype validation_tool_config: ~affinda.models.ValidationToolConfig
     """
 
     _attribute_map = {
         "name": {"key": "name", "type": "str"},
         "avatar": {"key": "avatar", "type": "IO"},
         "resthook_signature_key": {"key": "resthookSignatureKey", "type": "str"},
+        "validation_tool_config": {"key": "validationToolConfig", "type": "ValidationToolConfig"},
     }
 
     def __init__(
@@ -13606,6 +13619,7 @@ class OrganizationUpdate(msrest.serialization.Model):
         name: Optional[str] = None,
         avatar: Optional[IO] = None,
         resthook_signature_key: Optional[str] = None,
+        validation_tool_config: Optional["_models.ValidationToolConfig"] = None,
         **kwargs,
     ):
         """
@@ -13616,11 +13630,46 @@ class OrganizationUpdate(msrest.serialization.Model):
         :keyword resthook_signature_key: Used to sign webhook payloads so you can verify their
          integrity.
         :paramtype resthook_signature_key: str
+        :keyword validation_tool_config: Configuration of the embeddable validation tool.
+        :paramtype validation_tool_config: ~affinda.models.ValidationToolConfig
         """
         super(OrganizationUpdate, self).__init__(**kwargs)
         self.name = name
         self.avatar = avatar
         self.resthook_signature_key = resthook_signature_key
+        self.validation_tool_config = validation_tool_config
+
+
+class OrganizationValidationToolConfig(msrest.serialization.Model):
+    """Configuration of the embeddable validation tool.
+
+    :ivar theme:
+    :vartype theme: ~affinda.models.ThemeConfig
+    :ivar hide_actions: Hide the confirm document button and other actions.
+    :vartype hide_actions: bool
+    """
+
+    _attribute_map = {
+        "theme": {"key": "theme", "type": "ThemeConfig"},
+        "hide_actions": {"key": "hideActions", "type": "bool"},
+    }
+
+    def __init__(
+        self,
+        *,
+        theme: Optional["_models.ThemeConfig"] = None,
+        hide_actions: Optional[bool] = None,
+        **kwargs,
+    ):
+        """
+        :keyword theme:
+        :paramtype theme: ~affinda.models.ThemeConfig
+        :keyword hide_actions: Hide the confirm document button and other actions.
+        :paramtype hide_actions: bool
+        """
+        super(OrganizationValidationToolConfig, self).__init__(**kwargs)
+        self.theme = theme
+        self.hide_actions = hide_actions
 
 
 class PageMeta(msrest.serialization.Model):
@@ -13734,6 +13783,58 @@ class PaginatedResponse(msrest.serialization.Model):
         self.count = count
         self.next = next
         self.previous = previous
+
+
+class PaletteColorOptions(msrest.serialization.Model):
+    """PaletteColorOptions.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar main: Required.
+    :vartype main: str
+    :ivar light:
+    :vartype light: str
+    :ivar dark:
+    :vartype dark: str
+    :ivar contrast_text:
+    :vartype contrast_text: str
+    """
+
+    _validation = {
+        "main": {"required": True},
+    }
+
+    _attribute_map = {
+        "main": {"key": "main", "type": "str"},
+        "light": {"key": "light", "type": "str"},
+        "dark": {"key": "dark", "type": "str"},
+        "contrast_text": {"key": "contrastText", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        main: str,
+        light: Optional[str] = None,
+        dark: Optional[str] = None,
+        contrast_text: Optional[str] = None,
+        **kwargs,
+    ):
+        """
+        :keyword main: Required.
+        :paramtype main: str
+        :keyword light:
+        :paramtype light: str
+        :keyword dark:
+        :paramtype dark: str
+        :keyword contrast_text:
+        :paramtype contrast_text: str
+        """
+        super(PaletteColorOptions, self).__init__(**kwargs)
+        self.main = main
+        self.light = light
+        self.dark = dark
+        self.contrast_text = contrast_text
 
 
 class PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1(
@@ -13980,7 +14081,7 @@ class Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema(msrest.ser
     :ivar name:
     :vartype name: str
     :ivar document_type: Known values are: "resumes", "job_descriptions".
-    :vartype document_type: str or ~affinda.models.Enum19
+    :vartype document_type: str or ~affinda.models.Enum20
     """
 
     _attribute_map = {
@@ -13992,14 +14093,14 @@ class Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema(msrest.ser
         self,
         *,
         name: Optional[str] = None,
-        document_type: Optional[Union[str, "_models.Enum19"]] = None,
+        document_type: Optional[Union[str, "_models.Enum20"]] = None,
         **kwargs,
     ):
         """
         :keyword name:
         :paramtype name: str
         :keyword document_type: Known values are: "resumes", "job_descriptions".
-        :paramtype document_type: str or ~affinda.models.Enum19
+        :paramtype document_type: str or ~affinda.models.Enum20
         """
         super(Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema, self).__init__(
             **kwargs
@@ -18117,6 +18218,265 @@ class TagUpdate(msrest.serialization.Model):
         self.workspace = workspace
 
 
+class ThemeConfig(msrest.serialization.Model):
+    """ThemeConfig.
+
+    :ivar palette:
+    :vartype palette: ~affinda.models.ThemeConfigPalette
+    :ivar typography:
+    :vartype typography: ~affinda.models.ThemeConfigTypography
+    :ivar border_radius:
+    :vartype border_radius: float
+    :ivar font_url:
+    :vartype font_url: str
+    """
+
+    _attribute_map = {
+        "palette": {"key": "palette", "type": "ThemeConfigPalette"},
+        "typography": {"key": "typography", "type": "ThemeConfigTypography"},
+        "border_radius": {"key": "borderRadius", "type": "float"},
+        "font_url": {"key": "fontUrl", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        palette: Optional["_models.ThemeConfigPalette"] = None,
+        typography: Optional["_models.ThemeConfigTypography"] = None,
+        border_radius: Optional[float] = None,
+        font_url: Optional[str] = None,
+        **kwargs,
+    ):
+        """
+        :keyword palette:
+        :paramtype palette: ~affinda.models.ThemeConfigPalette
+        :keyword typography:
+        :paramtype typography: ~affinda.models.ThemeConfigTypography
+        :keyword border_radius:
+        :paramtype border_radius: float
+        :keyword font_url:
+        :paramtype font_url: str
+        """
+        super(ThemeConfig, self).__init__(**kwargs)
+        self.palette = palette
+        self.typography = typography
+        self.border_radius = border_radius
+        self.font_url = font_url
+
+
+class ThemeConfigPalette(msrest.serialization.Model):
+    """ThemeConfigPalette.
+
+    :ivar mode: Known values are: "light", "dark".
+    :vartype mode: str or ~affinda.models.ThemeConfigPaletteMode
+    :ivar background:
+    :vartype background: ~affinda.models.ThemeConfigPaletteBackground
+    :ivar text:
+    :vartype text: ~affinda.models.ThemeConfigPaletteText
+    :ivar divider:
+    :vartype divider: str
+    :ivar primary:
+    :vartype primary: ~affinda.models.PaletteColorOptions
+    :ivar secondary:
+    :vartype secondary: ~affinda.models.PaletteColorOptions
+    :ivar success:
+    :vartype success: ~affinda.models.PaletteColorOptions
+    :ivar annotation:
+    :vartype annotation: ~affinda.models.PaletteColorOptions
+    :ivar error:
+    :vartype error: ~affinda.models.PaletteColorOptions
+    :ivar info:
+    :vartype info: ~affinda.models.PaletteColorOptions
+    :ivar warning:
+    :vartype warning: ~affinda.models.PaletteColorOptions
+    """
+
+    _attribute_map = {
+        "mode": {"key": "mode", "type": "str"},
+        "background": {"key": "background", "type": "ThemeConfigPaletteBackground"},
+        "text": {"key": "text", "type": "ThemeConfigPaletteText"},
+        "divider": {"key": "divider", "type": "str"},
+        "primary": {"key": "primary", "type": "PaletteColorOptions"},
+        "secondary": {"key": "secondary", "type": "PaletteColorOptions"},
+        "success": {"key": "success", "type": "PaletteColorOptions"},
+        "annotation": {"key": "annotation", "type": "PaletteColorOptions"},
+        "error": {"key": "error", "type": "PaletteColorOptions"},
+        "info": {"key": "info", "type": "PaletteColorOptions"},
+        "warning": {"key": "warning", "type": "PaletteColorOptions"},
+    }
+
+    def __init__(
+        self,
+        *,
+        mode: Optional[Union[str, "_models.ThemeConfigPaletteMode"]] = None,
+        background: Optional["_models.ThemeConfigPaletteBackground"] = None,
+        text: Optional["_models.ThemeConfigPaletteText"] = None,
+        divider: Optional[str] = None,
+        primary: Optional["_models.PaletteColorOptions"] = None,
+        secondary: Optional["_models.PaletteColorOptions"] = None,
+        success: Optional["_models.PaletteColorOptions"] = None,
+        annotation: Optional["_models.PaletteColorOptions"] = None,
+        error: Optional["_models.PaletteColorOptions"] = None,
+        info: Optional["_models.PaletteColorOptions"] = None,
+        warning: Optional["_models.PaletteColorOptions"] = None,
+        **kwargs,
+    ):
+        """
+        :keyword mode: Known values are: "light", "dark".
+        :paramtype mode: str or ~affinda.models.ThemeConfigPaletteMode
+        :keyword background:
+        :paramtype background: ~affinda.models.ThemeConfigPaletteBackground
+        :keyword text:
+        :paramtype text: ~affinda.models.ThemeConfigPaletteText
+        :keyword divider:
+        :paramtype divider: str
+        :keyword primary:
+        :paramtype primary: ~affinda.models.PaletteColorOptions
+        :keyword secondary:
+        :paramtype secondary: ~affinda.models.PaletteColorOptions
+        :keyword success:
+        :paramtype success: ~affinda.models.PaletteColorOptions
+        :keyword annotation:
+        :paramtype annotation: ~affinda.models.PaletteColorOptions
+        :keyword error:
+        :paramtype error: ~affinda.models.PaletteColorOptions
+        :keyword info:
+        :paramtype info: ~affinda.models.PaletteColorOptions
+        :keyword warning:
+        :paramtype warning: ~affinda.models.PaletteColorOptions
+        """
+        super(ThemeConfigPalette, self).__init__(**kwargs)
+        self.mode = mode
+        self.background = background
+        self.text = text
+        self.divider = divider
+        self.primary = primary
+        self.secondary = secondary
+        self.success = success
+        self.annotation = annotation
+        self.error = error
+        self.info = info
+        self.warning = warning
+
+
+class ThemeConfigPaletteBackground(msrest.serialization.Model):
+    """ThemeConfigPaletteBackground.
+
+    :ivar default:
+    :vartype default: str
+    :ivar paper:
+    :vartype paper: str
+    """
+
+    _attribute_map = {
+        "default": {"key": "default", "type": "str"},
+        "paper": {"key": "paper", "type": "str"},
+    }
+
+    def __init__(self, *, default: Optional[str] = None, paper: Optional[str] = None, **kwargs):
+        """
+        :keyword default:
+        :paramtype default: str
+        :keyword paper:
+        :paramtype paper: str
+        """
+        super(ThemeConfigPaletteBackground, self).__init__(**kwargs)
+        self.default = default
+        self.paper = paper
+
+
+class ThemeConfigPaletteText(msrest.serialization.Model):
+    """ThemeConfigPaletteText.
+
+    :ivar primary:
+    :vartype primary: str
+    :ivar secondary:
+    :vartype secondary: str
+    :ivar disabled:
+    :vartype disabled: str
+    """
+
+    _attribute_map = {
+        "primary": {"key": "primary", "type": "str"},
+        "secondary": {"key": "secondary", "type": "str"},
+        "disabled": {"key": "disabled", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        primary: Optional[str] = None,
+        secondary: Optional[str] = None,
+        disabled: Optional[str] = None,
+        **kwargs,
+    ):
+        """
+        :keyword primary:
+        :paramtype primary: str
+        :keyword secondary:
+        :paramtype secondary: str
+        :keyword disabled:
+        :paramtype disabled: str
+        """
+        super(ThemeConfigPaletteText, self).__init__(**kwargs)
+        self.primary = primary
+        self.secondary = secondary
+        self.disabled = disabled
+
+
+class ThemeConfigTypography(msrest.serialization.Model):
+    """ThemeConfigTypography.
+
+    :ivar font_family:
+    :vartype font_family: str
+    :ivar font_size:
+    :vartype font_size: str
+    :ivar font_weight_regular:
+    :vartype font_weight_regular: str
+    :ivar font_weight_medium:
+    :vartype font_weight_medium: str
+    :ivar font_weight_bold:
+    :vartype font_weight_bold: str
+    """
+
+    _attribute_map = {
+        "font_family": {"key": "fontFamily", "type": "str"},
+        "font_size": {"key": "fontSize", "type": "str"},
+        "font_weight_regular": {"key": "fontWeightRegular", "type": "str"},
+        "font_weight_medium": {"key": "fontWeightMedium", "type": "str"},
+        "font_weight_bold": {"key": "fontWeightBold", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        font_family: Optional[str] = None,
+        font_size: Optional[str] = None,
+        font_weight_regular: Optional[str] = None,
+        font_weight_medium: Optional[str] = None,
+        font_weight_bold: Optional[str] = None,
+        **kwargs,
+    ):
+        """
+        :keyword font_family:
+        :paramtype font_family: str
+        :keyword font_size:
+        :paramtype font_size: str
+        :keyword font_weight_regular:
+        :paramtype font_weight_regular: str
+        :keyword font_weight_medium:
+        :paramtype font_weight_medium: str
+        :keyword font_weight_bold:
+        :paramtype font_weight_bold: str
+        """
+        super(ThemeConfigTypography, self).__init__(**kwargs)
+        self.font_family = font_family
+        self.font_size = font_size
+        self.font_weight_regular = font_weight_regular
+        self.font_weight_medium = font_weight_medium
+        self.font_weight_bold = font_weight_bold
+
+
 class UserNullable(msrest.serialization.Model):
     """UserNullable.
 
@@ -18168,6 +18528,38 @@ class UserNullable(msrest.serialization.Model):
         self.username = username
         self.email = email
         self.avatar = avatar
+
+
+class ValidationToolConfig(msrest.serialization.Model):
+    """Configuration of the embeddable validation tool.
+
+    :ivar theme:
+    :vartype theme: ~affinda.models.ThemeConfig
+    :ivar hide_actions: Hide the confirm document button and other actions.
+    :vartype hide_actions: bool
+    """
+
+    _attribute_map = {
+        "theme": {"key": "theme", "type": "ThemeConfig"},
+        "hide_actions": {"key": "hideActions", "type": "bool"},
+    }
+
+    def __init__(
+        self,
+        *,
+        theme: Optional["_models.ThemeConfig"] = None,
+        hide_actions: Optional[bool] = None,
+        **kwargs,
+    ):
+        """
+        :keyword theme:
+        :paramtype theme: ~affinda.models.ThemeConfig
+        :keyword hide_actions: Hide the confirm document button and other actions.
+        :paramtype hide_actions: bool
+        """
+        super(ValidationToolConfig, self).__init__(**kwargs)
+        self.theme = theme
+        self.hide_actions = hide_actions
 
 
 class Workspace(msrest.serialization.Model):

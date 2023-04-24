@@ -191,8 +191,10 @@ try:
     from ._models_py3 import OrganizationMembership
     from ._models_py3 import OrganizationMembershipUpdate
     from ._models_py3 import OrganizationUpdate
+    from ._models_py3 import OrganizationValidationToolConfig
     from ._models_py3 import PageMeta
     from ._models_py3 import PaginatedResponse
+    from ._models_py3 import PaletteColorOptions
     from ._models_py3 import Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema
     from ._models_py3 import (
         Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema,
@@ -304,8 +306,14 @@ try:
     from ._models_py3 import TagCreate
     from ._models_py3 import TagUpdate
     from ._models_py3 import TextAnnotation
+    from ._models_py3 import ThemeConfig
+    from ._models_py3 import ThemeConfigPalette
+    from ._models_py3 import ThemeConfigPaletteBackground
+    from ._models_py3 import ThemeConfigPaletteText
+    from ._models_py3 import ThemeConfigTypography
     from ._models_py3 import User
     from ._models_py3 import UserNullable
+    from ._models_py3 import ValidationToolConfig
     from ._models_py3 import Workspace
     from ._models_py3 import WorkspaceCollectionsItem
     from ._models_py3 import WorkspaceCollectionsItemExtractor
@@ -482,8 +490,10 @@ except (SyntaxError, ImportError):
     from ._models import OrganizationMembership  # type: ignore
     from ._models import OrganizationMembershipUpdate  # type: ignore
     from ._models import OrganizationUpdate  # type: ignore
+    from ._models import OrganizationValidationToolConfig  # type: ignore
     from ._models import PageMeta  # type: ignore
     from ._models import PaginatedResponse  # type: ignore
+    from ._models import PaletteColorOptions  # type: ignore
     from ._models import Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema  # type: ignore
     from ._models import Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema  # type: ignore
@@ -561,8 +571,14 @@ except (SyntaxError, ImportError):
     from ._models import TagCreate  # type: ignore
     from ._models import TagUpdate  # type: ignore
     from ._models import TextAnnotation  # type: ignore
+    from ._models import ThemeConfig  # type: ignore
+    from ._models import ThemeConfigPalette  # type: ignore
+    from ._models import ThemeConfigPaletteBackground  # type: ignore
+    from ._models import ThemeConfigPaletteText  # type: ignore
+    from ._models import ThemeConfigTypography  # type: ignore
     from ._models import User  # type: ignore
     from ._models import UserNullable  # type: ignore
+    from ._models import ValidationToolConfig  # type: ignore
     from ._models import Workspace  # type: ignore
     from ._models import WorkspaceCollectionsItem  # type: ignore
     from ._models import WorkspaceCollectionsItemExtractor  # type: ignore
@@ -581,8 +597,8 @@ from ._affinda_api_enums import (
     DocumentFormat,
     DocumentState,
     EducationLevel,
-    Enum16,
-    Enum19,
+    Enum17,
+    Enum20,
     Get8ItemsItem,
     GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType,
     InvitationResponseStatus,
@@ -597,6 +613,7 @@ from ._affinda_api_enums import (
     ResumeSearchParametersCustomDataFilterType,
     ResumeSkillSourcesItemSection,
     SearchLocationUnit,
+    ThemeConfigPaletteMode,
     Version,
     WorkspaceVisibility,
 )
@@ -771,8 +788,10 @@ __all__ = [
     "OrganizationMembership",
     "OrganizationMembershipUpdate",
     "OrganizationUpdate",
+    "OrganizationValidationToolConfig",
     "PageMeta",
     "PaginatedResponse",
+    "PaletteColorOptions",
     "Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema",
     "Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema",
     "Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema",
@@ -850,8 +869,14 @@ __all__ = [
     "TagCreate",
     "TagUpdate",
     "TextAnnotation",
+    "ThemeConfig",
+    "ThemeConfigPalette",
+    "ThemeConfigPaletteBackground",
+    "ThemeConfigPaletteText",
+    "ThemeConfigTypography",
     "User",
     "UserNullable",
+    "ValidationToolConfig",
     "Workspace",
     "WorkspaceCollectionsItem",
     "WorkspaceCollectionsItemExtractor",
@@ -868,8 +893,8 @@ __all__ = [
     "DocumentFormat",
     "DocumentState",
     "EducationLevel",
-    "Enum16",
-    "Enum19",
+    "Enum17",
+    "Enum20",
     "Get8ItemsItem",
     "GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType",
     "InvitationResponseStatus",
@@ -884,6 +909,7 @@ __all__ = [
     "ResumeSearchParametersCustomDataFilterType",
     "ResumeSkillSourcesItemSection",
     "SearchLocationUnit",
+    "ThemeConfigPaletteMode",
     "Version",
     "WorkspaceVisibility",
 ]

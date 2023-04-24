@@ -80,13 +80,13 @@ class EducationLevel(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     DOCTORAL = "doctoral"
 
 
-class Enum16(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class Enum17(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     RESUMES = "resumes"
     JOB_DESCRIPTIONS = "job_descriptions"
 
 
-class Enum19(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class Enum20(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     RESUMES = "resumes"
     JOB_DESCRIPTIONS = "job_descriptions"
@@ -218,6 +218,12 @@ class SearchLocationUnit(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     KM = "km"
     MI = "mi"
+
+
+class ThemeConfigPaletteMode(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+
+    LIGHT = "light"
+    DARK = "dark"
 
 
 class Version(str, Enum, metaclass=CaseInsensitiveEnumMeta):
