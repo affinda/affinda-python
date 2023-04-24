@@ -4568,6 +4568,8 @@ JobDescriptionRequestBody.
 :vartype file: IO
 :ivar url: URL to download the job description.
 :vartype url: str
+:ivar data: A JSON-encoded string of the ``JobDescriptionData`` object.
+:vartype data: ~affinda.models.JobDescriptionDataUpdate
 :ivar identifier: A random string that uniquely identify the resource.
 :vartype identifier: str
 :ivar file_name: Optional filename of the file.
@@ -4599,6 +4601,7 @@ def __init__(**kwargs)
 - `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
 PNG, JPG.
 - `url`: URL to download the job description.
+- `data`: A JSON-encoded string of the ``JobDescriptionData`` object.
 - `identifier`: A random string that uniquely identify the resource.
 - `file_name`: Optional filename of the file.
 - `wait`: If "true" (default), will return a response only after processing has completed.
@@ -5707,13 +5710,15 @@ is the confidence that the text in the image has been correctly read by the mode
 ## JobTitleAnnotationUpdate Objects
 
 ```python
-class JobTitleAnnotationUpdate(JobTitleParsed,  AnnotationV2Base)
+class JobTitleAnnotationUpdate(AnnotationV2Base,  JobTitleParsed)
 ```
 
 JobTitleAnnotationUpdate.
 
 Variables are only populated by the server, and will be ignored when sending a request.
 
+:ivar parsed: Matching job title to extracted text.
+:vartype parsed: ~affinda.models.JobTitleParsedParsed
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
 :vartype additional_properties: dict[str, any]
@@ -5745,8 +5750,6 @@ Variables are only populated by the server, and will be ignored when sending a r
 :vartype data_point: str
 :ivar content_type:
 :vartype content_type: str
-:ivar parsed: Matching job title to extracted text.
-:vartype parsed: ~affinda.models.JobTitleParsedParsed
 
 <a id="models._models.JobTitleAnnotationUpdate.__init__"></a>
 
@@ -7565,6 +7568,8 @@ Variables are only populated by the server, and will be ignored when sending a r
 :vartype name: ~affinda.models.ResumeDataName
 :ivar phone_numbers:
 :vartype phone_numbers: list[str]
+:ivar phone_number_details:
+:vartype phone_number_details: list[~affinda.models.ResumeDataPhoneNumberDetailsItem]
 :ivar websites:
 :vartype websites: list[str]
 :ivar emails:
@@ -7625,6 +7630,7 @@ def __init__(**kwargs)
 collection.
 - `name`: 
 - `phone_numbers`: 
+- `phone_number_details`: 
 - `websites`: 
 - `emails`: 
 - `date_of_birth`: 
@@ -7678,6 +7684,40 @@ def __init__(**kwargs)
 - `last`: 
 - `middle`: 
 - `title`: 
+
+<a id="models._models.ResumeDataPhoneNumberDetailsItem"></a>
+
+## ResumeDataPhoneNumberDetailsItem Objects
+
+```python
+class ResumeDataPhoneNumberDetailsItem(msrest.serialization.Model)
+```
+
+ResumeDataPhoneNumberDetailsItem.
+
+:ivar raw_text:
+:vartype raw_text: str
+:ivar formatted_number:
+:vartype formatted_number: str
+:ivar country_code:
+:vartype country_code: str
+:ivar national_number:
+:vartype national_number: str
+
+<a id="models._models.ResumeDataPhoneNumberDetailsItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `raw_text`: 
+- `formatted_number`: 
+- `country_code`: 
+- `national_number`: 
 
 <a id="models._models.ResumeDataRefereesItem"></a>
 

@@ -449,7 +449,7 @@ of cls(response)
 #### create\_job\_description
 
 ```python
-def create_job_description(file=None, url=None, identifier=None, file_name=None, wait=True, reject_duplicates=None, language=None, expiry_time=None, **kwargs)
+def create_job_description(file=None, url=None, data=None, identifier=None, file_name=None, wait=True, reject_duplicates=None, language=None, expiry_time=None, **kwargs)
 ```
 
 Upload a job description for parsing.
@@ -467,6 +467,7 @@ parsing credits.
 
 - `file` (`IO`): Default value is None.
 - `url` (`str`): URL to download the job description. Default value is None.
+- `data` (`~affinda.models.JobDescriptionDataUpdate`): Default value is None.
 - `identifier` (`str`): Default value is None.
 - `file_name` (`str`): Default value is None.
 - `wait` (`bool`): Default value is True.

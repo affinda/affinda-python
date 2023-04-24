@@ -261,6 +261,7 @@ print(all_job_descriptions.as_dict())
 ### createJobDescription - Upload a job description for parsing
 
 ```python
+import json
 from pathlib import Path
 
 from affinda import AffindaAPI, TokenCredential
@@ -273,6 +274,13 @@ client = AffindaAPI(credential=credential)
 
 with open(file_pth, "rb") as f:
     job_description = client.create_job_description(file=f)
+
+print(job_description.as_dict())
+
+
+# Or create a job description from data
+data = {"job_title": {"raw": "General Manager"}, "contact_email": {"parsed": "admin@example.com"}}
+job_description = client.create_job_description(data=json.dumps(data))
 
 print(job_description.as_dict())
 ```

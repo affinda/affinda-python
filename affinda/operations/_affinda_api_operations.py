@@ -2472,6 +2472,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         self,
         file=None,  # type: Optional[IO]
         url=None,  # type: Optional[str]
+        data=None,  # type: Optional[_models.JobDescriptionDataUpdate]
         identifier=None,  # type: Optional[str]
         file_name=None,  # type: Optional[str]
         wait=True,  # type: Optional[bool]
@@ -2496,6 +2497,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type file: IO
         :param url: URL to download the job description. Default value is None.
         :type url: str
+        :param data:  Default value is None.
+        :type data: ~affinda.models.JobDescriptionDataUpdate
         :param identifier:  Default value is None.
         :type identifier: str
         :param file_name:  Default value is None.
@@ -2537,6 +2540,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         _files = {
             "file": file,
             "url": url,
+            "data": data,
             "identifier": identifier,
             "fileName": file_name,
             "wait": wait,

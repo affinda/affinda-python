@@ -1180,6 +1180,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         self,
         file: Optional[IO] = None,
         url: Optional[str] = None,
+        data: Optional[_models.JobDescriptionDataUpdate] = None,
         identifier: Optional[str] = None,
         file_name: Optional[str] = None,
         wait: Optional[bool] = True,
@@ -1203,6 +1204,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type file: IO
         :param url: URL to download the job description. Default value is None.
         :type url: str
+        :param data:  Default value is None.
+        :type data: ~affinda.models.JobDescriptionDataUpdate
         :param identifier:  Default value is None.
         :type identifier: str
         :param file_name:  Default value is None.
@@ -1244,6 +1247,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _files = {
             "file": file,
             "url": url,
+            "data": data,
             "identifier": identifier,
             "fileName": file_name,
             "wait": wait,

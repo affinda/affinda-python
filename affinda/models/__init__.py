@@ -221,6 +221,7 @@ try:
     from ._models_py3 import Resume
     from ._models_py3 import ResumeData
     from ._models_py3 import ResumeDataName
+    from ._models_py3 import ResumeDataPhoneNumberDetailsItem
     from ._models_py3 import ResumeDataRefereesItem
     from ._models_py3 import ResumeDataSectionsItem
     from ._models_py3 import ResumeDataSkillsItem
@@ -439,6 +440,7 @@ except (SyntaxError, ImportError):
     from ._models import Resume  # type: ignore
     from ._models import ResumeData  # type: ignore
     from ._models import ResumeDataName  # type: ignore
+    from ._models import ResumeDataPhoneNumberDetailsItem  # type: ignore
     from ._models import ResumeDataRefereesItem  # type: ignore
     from ._models import ResumeDataSectionsItem  # type: ignore
     from ._models import ResumeDataSkillsItem  # type: ignore
@@ -677,6 +679,7 @@ __all__ = [
     "Resume",
     "ResumeData",
     "ResumeDataName",
+    "ResumeDataPhoneNumberDetailsItem",
     "ResumeDataRefereesItem",
     "ResumeDataSectionsItem",
     "ResumeDataSkillsItem",

@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Allow rejectDuplicates to be null
 
+### Added
+- Phone number details to Resume Candidate info
+- "data" to job description create
+
 ## [3.2.1] - 2023-03-30
 ### Changed
 - "Rectangles" attribute in Annotation updates to readonly
