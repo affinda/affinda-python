@@ -2014,6 +2014,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype meta: ~affinda.models.DocumentMeta
 :ivar error:
 :vartype error: ~affinda.models.DocumentError
+:ivar warnings:
+:vartype warnings: list[~affinda.models.DocumentWarning]
 
 <a id="models._models.Document.__init__"></a>
 
@@ -2028,6 +2030,7 @@ def __init__(**kwargs)
 - `data`: Any object.
 - `meta`: Required.
 - `error`: 
+- `warnings`: 
 
 <a id="models._models.DocumentCreate"></a>
 
@@ -2529,6 +2532,34 @@ deleted.  Defaults to no expiry.
 - `is_rejected`: 
 - `is_archived`: 
 - `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+
+<a id="models._models.DocumentWarning"></a>
+
+## DocumentWarning Objects
+
+```python
+class DocumentWarning(msrest.serialization.Model)
+```
+
+DocumentWarning.
+
+:ivar warning_code:
+:vartype warning_code: str
+:ivar warning_detail:
+:vartype warning_detail: str
+
+<a id="models._models.DocumentWarning.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `warning_code`: 
+- `warning_detail`: 
 
 <a id="models._models.Education"></a>
 
@@ -3395,6 +3426,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype meta: ~affinda.models.DocumentMeta
 :ivar error:
 :vartype error: ~affinda.models.DocumentError
+:ivar warnings:
+:vartype warnings: list[~affinda.models.DocumentWarning]
 :ivar data:
 :vartype data: ~affinda.models.InvoiceData
 
@@ -3410,6 +3443,7 @@ def __init__(**kwargs)
 
 - `meta`: Required.
 - `error`: 
+- `warnings`: 
 - `data`: 
 
 <a id="models._models.InvoiceData"></a>
@@ -6321,6 +6355,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype meta: ~affinda.models.DocumentMeta
 :ivar error:
 :vartype error: ~affinda.models.DocumentError
+:ivar warnings:
+:vartype warnings: list[~affinda.models.DocumentWarning]
 :ivar data:
 :vartype data: ~affinda.models.JobDescriptionData
 
@@ -6336,6 +6372,7 @@ def __init__(**kwargs)
 
 - `meta`: Required.
 - `error`: 
+- `warnings`: 
 - `data`: 
 
 <a id="models._models.JobDescriptionData"></a>
@@ -9352,6 +9389,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype meta: ~affinda.models.DocumentMeta
 :ivar error:
 :vartype error: ~affinda.models.DocumentError
+:ivar warnings:
+:vartype warnings: list[~affinda.models.DocumentWarning]
 :ivar data: A JSON-encoded string of the ``ResumeData`` object.
 :vartype data: ~affinda.models.ResumeData
 
@@ -9367,6 +9406,7 @@ def __init__(**kwargs)
 
 - `meta`: Required.
 - `error`: 
+- `warnings`: 
 - `data`: A JSON-encoded string of the ``ResumeData`` object.
 
 <a id="models._models.ResumeData"></a>

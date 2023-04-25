@@ -93,6 +93,7 @@ try:
     from ._models_py3 import DocumentSplit
     from ._models_py3 import DocumentSplitPage
     from ._models_py3 import DocumentUpdate
+    from ._models_py3 import DocumentWarning
     from ._models_py3 import Education
     from ._models_py3 import EducationDates
     from ._models_py3 import EducationGrade
@@ -393,6 +394,7 @@ except (SyntaxError, ImportError):
     from ._models import DocumentSplit  # type: ignore
     from ._models import DocumentSplitPage  # type: ignore
     from ._models import DocumentUpdate  # type: ignore
+    from ._models import DocumentWarning  # type: ignore
     from ._models import Education  # type: ignore
     from ._models import EducationDates  # type: ignore
     from ._models import EducationGrade  # type: ignore
@@ -692,6 +694,7 @@ __all__ = [
     "DocumentSplit",
     "DocumentSplitPage",
     "DocumentUpdate",
+    "DocumentWarning",
     "Education",
     "EducationDates",
     "EducationGrade",

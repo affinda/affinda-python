@@ -458,6 +458,9 @@ def build_get_all_documents_request(
     include_data = kwargs.pop('include_data', _params.pop('include_data', None))  # type: Optional[bool]
     exclude = kwargs.pop('exclude', _params.pop('exclude', None))  # type: Optional[List[str]]
     in_review = kwargs.pop('in_review', _params.pop('in_review', None))  # type: Optional[bool]
+    failed = kwargs.pop('failed', _params.pop('failed', None))  # type: Optional[bool]
+    ready = kwargs.pop('ready', _params.pop('ready', None))  # type: Optional[bool]
+    validatable = kwargs.pop('validatable', _params.pop('validatable', None))  # type: Optional[bool]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
@@ -488,6 +491,12 @@ def build_get_all_documents_request(
         _params['exclude'] = _SERIALIZER.query("exclude", exclude, '[str]')
     if in_review is not None:
         _params['in_review'] = _SERIALIZER.query("in_review", in_review, 'bool')
+    if failed is not None:
+        _params['failed'] = _SERIALIZER.query("failed", failed, 'bool')
+    if ready is not None:
+        _params['ready'] = _SERIALIZER.query("ready", ready, 'bool')
+    if validatable is not None:
+        _params['validatable'] = _SERIALIZER.query("validatable", validatable, 'bool')
 
     # Construct headers
     _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
@@ -3684,6 +3693,9 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         include_data=None,  # type: Optional[bool]
         exclude=None,  # type: Optional[List[str]]
         in_review=None,  # type: Optional[bool]
+        failed=None,  # type: Optional[bool]
+        ready=None,  # type: Optional[bool]
+        validatable=None,  # type: Optional[bool]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema
@@ -3720,6 +3732,12 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type exclude: list[str]
         :param in_review: Exclude documents that are currently being reviewed. Default value is None.
         :type in_review: bool
+        :param failed: Filter by failed status. Default value is None.
+        :type failed: bool
+        :param ready: Filter by ready status. Default value is None.
+        :type ready: bool
+        :param validatable: Filter for validatable documents. Default value is None.
+        :type validatable: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)
@@ -3758,6 +3776,9 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             include_data=include_data,
             exclude=exclude,
             in_review=in_review,
+            failed=failed,
+            ready=ready,
+            validatable=validatable,
             template_url=self.get_all_documents.metadata["url"],
             headers=_headers,
             params=_params,

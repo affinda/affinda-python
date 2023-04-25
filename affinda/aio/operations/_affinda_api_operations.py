@@ -1046,6 +1046,9 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         include_data: Optional[bool] = None,
         exclude: Optional[List[str]] = None,
         in_review: Optional[bool] = None,
+        failed: Optional[bool] = None,
+        ready: Optional[bool] = None,
+        validatable: Optional[bool] = None,
         **kwargs: Any,
     ) -> _models.PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema:
         """Get list of all documents.
@@ -1081,6 +1084,12 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type exclude: list[str]
         :param in_review: Exclude documents that are currently being reviewed. Default value is None.
         :type in_review: bool
+        :param failed: Filter by failed status. Default value is None.
+        :type failed: bool
+        :param ready: Filter by ready status. Default value is None.
+        :type ready: bool
+        :param validatable: Filter for validatable documents. Default value is None.
+        :type validatable: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)
@@ -1119,6 +1128,9 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             include_data=include_data,
             exclude=exclude,
             in_review=in_review,
+            failed=failed,
+            ready=ready,
+            validatable=validatable,
             template_url=self.get_all_documents.metadata["url"],
             headers=_headers,
             params=_params,

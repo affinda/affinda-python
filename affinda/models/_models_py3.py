@@ -2716,6 +2716,8 @@ class Document(msrest.serialization.Model):
     :vartype meta: ~affinda.models.DocumentMeta
     :ivar error:
     :vartype error: ~affinda.models.DocumentError
+    :ivar warnings:
+    :vartype warnings: list[~affinda.models.DocumentWarning]
     """
 
     _validation = {
@@ -2728,6 +2730,7 @@ class Document(msrest.serialization.Model):
         "extractor": {"key": "extractor", "type": "str"},
         "meta": {"key": "meta", "type": "DocumentMeta"},
         "error": {"key": "error", "type": "DocumentError"},
+        "warnings": {"key": "warnings", "type": "[DocumentWarning]"},
     }
 
     _subtype_map = {
@@ -2744,6 +2747,7 @@ class Document(msrest.serialization.Model):
         meta: "_models.DocumentMeta",
         data: Optional[Any] = None,
         error: Optional["_models.DocumentError"] = None,
+        warnings: Optional[List["_models.DocumentWarning"]] = None,
         **kwargs,
     ):
         """
@@ -2753,12 +2757,15 @@ class Document(msrest.serialization.Model):
         :paramtype meta: ~affinda.models.DocumentMeta
         :keyword error:
         :paramtype error: ~affinda.models.DocumentError
+        :keyword warnings:
+        :paramtype warnings: list[~affinda.models.DocumentWarning]
         """
         super(Document, self).__init__(**kwargs)
         self.data = data
         self.extractor = None  # type: Optional[str]
         self.meta = meta
         self.error = error
+        self.warnings = warnings
 
 
 class DocumentCreate(msrest.serialization.Model):
@@ -3463,6 +3470,34 @@ class DocumentUpdate(msrest.serialization.Model):
         self.is_rejected = is_rejected
         self.is_archived = is_archived
         self.language = language
+
+
+class DocumentWarning(msrest.serialization.Model):
+    """DocumentWarning.
+
+    :ivar warning_code:
+    :vartype warning_code: str
+    :ivar warning_detail:
+    :vartype warning_detail: str
+    """
+
+    _attribute_map = {
+        "warning_code": {"key": "warningCode", "type": "str"},
+        "warning_detail": {"key": "warningDetail", "type": "str"},
+    }
+
+    def __init__(
+        self, *, warning_code: Optional[str] = None, warning_detail: Optional[str] = None, **kwargs
+    ):
+        """
+        :keyword warning_code:
+        :paramtype warning_code: str
+        :keyword warning_detail:
+        :paramtype warning_detail: str
+        """
+        super(DocumentWarning, self).__init__(**kwargs)
+        self.warning_code = warning_code
+        self.warning_detail = warning_detail
 
 
 class Education(msrest.serialization.Model):
@@ -4701,6 +4736,8 @@ class Invoice(Document):
     :vartype meta: ~affinda.models.DocumentMeta
     :ivar error:
     :vartype error: ~affinda.models.DocumentError
+    :ivar warnings:
+    :vartype warnings: list[~affinda.models.DocumentWarning]
     :ivar data:
     :vartype data: ~affinda.models.InvoiceData
     """
@@ -4714,6 +4751,7 @@ class Invoice(Document):
         "extractor": {"key": "extractor", "type": "str"},
         "meta": {"key": "meta", "type": "DocumentMeta"},
         "error": {"key": "error", "type": "DocumentError"},
+        "warnings": {"key": "warnings", "type": "[DocumentWarning]"},
         "data": {"key": "data", "type": "InvoiceData"},
     }
 
@@ -4722,6 +4760,7 @@ class Invoice(Document):
         *,
         meta: "_models.DocumentMeta",
         error: Optional["_models.DocumentError"] = None,
+        warnings: Optional[List["_models.DocumentWarning"]] = None,
         data: Optional["_models.InvoiceData"] = None,
         **kwargs,
     ):
@@ -4730,10 +4769,12 @@ class Invoice(Document):
         :paramtype meta: ~affinda.models.DocumentMeta
         :keyword error:
         :paramtype error: ~affinda.models.DocumentError
+        :keyword warnings:
+        :paramtype warnings: list[~affinda.models.DocumentWarning]
         :keyword data:
         :paramtype data: ~affinda.models.InvoiceData
         """
-        super(Invoice, self).__init__(meta=meta, error=error, **kwargs)
+        super(Invoice, self).__init__(meta=meta, error=error, warnings=warnings, **kwargs)
         self.extractor = "invoice"  # type: str
         self.data = data
 
@@ -10689,6 +10730,8 @@ class JobDescription(Document):
     :vartype meta: ~affinda.models.DocumentMeta
     :ivar error:
     :vartype error: ~affinda.models.DocumentError
+    :ivar warnings:
+    :vartype warnings: list[~affinda.models.DocumentWarning]
     :ivar data:
     :vartype data: ~affinda.models.JobDescriptionData
     """
@@ -10702,6 +10745,7 @@ class JobDescription(Document):
         "extractor": {"key": "extractor", "type": "str"},
         "meta": {"key": "meta", "type": "DocumentMeta"},
         "error": {"key": "error", "type": "DocumentError"},
+        "warnings": {"key": "warnings", "type": "[DocumentWarning]"},
         "data": {"key": "data", "type": "JobDescriptionData"},
     }
 
@@ -10710,6 +10754,7 @@ class JobDescription(Document):
         *,
         meta: "_models.DocumentMeta",
         error: Optional["_models.DocumentError"] = None,
+        warnings: Optional[List["_models.DocumentWarning"]] = None,
         data: Optional["_models.JobDescriptionData"] = None,
         **kwargs,
     ):
@@ -10718,10 +10763,12 @@ class JobDescription(Document):
         :paramtype meta: ~affinda.models.DocumentMeta
         :keyword error:
         :paramtype error: ~affinda.models.DocumentError
+        :keyword warnings:
+        :paramtype warnings: list[~affinda.models.DocumentWarning]
         :keyword data:
         :paramtype data: ~affinda.models.JobDescriptionData
         """
-        super(JobDescription, self).__init__(meta=meta, error=error, **kwargs)
+        super(JobDescription, self).__init__(meta=meta, error=error, warnings=warnings, **kwargs)
         self.extractor = "job-description"  # type: str
         self.data = data
 
@@ -15092,6 +15139,8 @@ class Resume(Document):
     :vartype meta: ~affinda.models.DocumentMeta
     :ivar error:
     :vartype error: ~affinda.models.DocumentError
+    :ivar warnings:
+    :vartype warnings: list[~affinda.models.DocumentWarning]
     :ivar data: A JSON-encoded string of the ``ResumeData`` object.
     :vartype data: ~affinda.models.ResumeData
     """
@@ -15105,6 +15154,7 @@ class Resume(Document):
         "extractor": {"key": "extractor", "type": "str"},
         "meta": {"key": "meta", "type": "DocumentMeta"},
         "error": {"key": "error", "type": "DocumentError"},
+        "warnings": {"key": "warnings", "type": "[DocumentWarning]"},
         "data": {"key": "data", "type": "ResumeData"},
     }
 
@@ -15113,6 +15163,7 @@ class Resume(Document):
         *,
         meta: "_models.DocumentMeta",
         error: Optional["_models.DocumentError"] = None,
+        warnings: Optional[List["_models.DocumentWarning"]] = None,
         data: Optional["_models.ResumeData"] = None,
         **kwargs,
     ):
@@ -15121,10 +15172,12 @@ class Resume(Document):
         :paramtype meta: ~affinda.models.DocumentMeta
         :keyword error:
         :paramtype error: ~affinda.models.DocumentError
+        :keyword warnings:
+        :paramtype warnings: list[~affinda.models.DocumentWarning]
         :keyword data: A JSON-encoded string of the ``ResumeData`` object.
         :paramtype data: ~affinda.models.ResumeData
         """
-        super(Resume, self).__init__(meta=meta, error=error, **kwargs)
+        super(Resume, self).__init__(meta=meta, error=error, warnings=warnings, **kwargs)
         self.extractor = "resume"  # type: str
         self.data = data
 

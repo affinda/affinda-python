@@ -392,7 +392,7 @@ Deletes the specified collection from the database.
 #### get\_all\_documents
 
 ```python
-def get_all_documents(offset=None, limit=300, workspace=None, collection=None, state=None, tags=None, created_dt=None, search=None, ordering=None, include_data=None, exclude=None, in_review=None, **kwargs)
+def get_all_documents(offset=None, limit=300, workspace=None, collection=None, state=None, tags=None, created_dt=None, search=None, ordering=None, include_data=None, exclude=None, in_review=None, failed=None, ready=None, validatable=None, **kwargs)
 ```
 
 Get list of all documents.
@@ -418,6 +418,9 @@ this to ``true`` will return the detailed data that was parsed, at a performance
 value is None.
 - `exclude` (`list[str]`): Exclude some documents from the result. Default value is None.
 - `in_review` (`bool`): Exclude documents that are currently being reviewed. Default value is None.
+- `failed` (`bool`): Filter by failed status. Default value is None.
+- `ready` (`bool`): Filter by ready status. Default value is None.
+- `validatable` (`bool`): Filter for validatable documents. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:

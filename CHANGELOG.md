@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add `Organization.validationToolConfig` for configuration of the embeddable validation tool
 - Phone number details to Resume Candidate info
+- Add some filters to `GET /documents` endpoint: `failed`, `ready`, `validatable`
 
 ## [4.3.2] - 2023-04-20
 ### Changed
