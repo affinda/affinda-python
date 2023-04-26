@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Phone number details to Resume Candidate info
 - Add some filters to `GET /documents` endpoint: `failed`, `ready`, `validatable`
 
+### Changed
+- Provide additional filters for data point choices, and allow data point choices to be specified for any existing text field.
+- Provide additional filters for data point choices, and allow data point choices to be specified for any existing text field.
+
 ## [4.3.2] - 2023-04-20
 ### Changed
 - rawText is now not nullable

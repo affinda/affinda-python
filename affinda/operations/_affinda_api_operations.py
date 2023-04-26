@@ -982,6 +982,7 @@ def build_get_data_point_choices_request(
     _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
 
     data_point = kwargs.pop('data_point')  # type: str
+    collection = kwargs.pop('collection')  # type: str
     offset = kwargs.pop('offset', _params.pop('offset', None))  # type: Optional[int]
     limit = kwargs.pop('limit', _params.pop('limit', 300))  # type: Optional[int]
     search = kwargs.pop('search', _params.pop('search', None))  # type: Optional[str]
@@ -996,6 +997,7 @@ def build_get_data_point_choices_request(
     if limit is not None:
         _params['limit'] = _SERIALIZER.query("limit", limit, 'int', maximum=300, minimum=1)
     _params['data_point'] = _SERIALIZER.query("data_point", data_point, 'str')
+    _params['collection'] = _SERIALIZER.query("collection", collection, 'str')
     if search is not None:
         _params['search'] = _SERIALIZER.query("search", search, 'str')
 
@@ -4947,6 +4949,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
     def get_data_point_choices(
         self,
         data_point,  # type: str
+        collection,  # type: str
         offset=None,  # type: Optional[int]
         limit=300,  # type: Optional[int]
         search=None,  # type: Optional[str]
@@ -4959,6 +4962,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
         :param data_point: The data point to get choices for.
         :type data_point: str
+        :param collection: The collection to get choices for.
+        :type collection: str
         :param offset: The number of documents to skip before starting to collect the result set.
          Default value is None.
         :type offset: int
@@ -4993,6 +4998,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
         request = build_get_data_point_choices_request(
             data_point=data_point,
+            collection=collection,
             offset=offset,
             limit=limit,
             search=search,

@@ -1753,6 +1753,10 @@ All required parameters must be populated in order to send to Azure.
 
 :ivar data_point: Required. Uniquely identify a data point.
 :vartype data_point: str
+:ivar organization: Uniquely identify an organization.
+:vartype organization: str
+:ivar collection: Uniquely identify a collection.
+:vartype collection: str
 :ivar label: Required.
 :vartype label: str
 :ivar value: Required.
@@ -1773,6 +1777,8 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `data_point`: Required. Uniquely identify a data point.
+- `organization`: Uniquely identify an organization.
+- `collection`: Uniquely identify a collection.
 - `label`: Required.
 - `value`: Required.
 - `synonyms`: 
@@ -1790,6 +1796,10 @@ DataPointChoiceUpdate.
 
 :ivar data_point: Uniquely identify a data point.
 :vartype data_point: str
+:ivar organization: Uniquely identify an organization.
+:vartype organization: str
+:ivar collection: Uniquely identify a collection.
+:vartype collection: str
 :ivar label:
 :vartype label: str
 :ivar value:
@@ -1810,6 +1820,8 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `data_point`: Uniquely identify a data point.
+- `organization`: Uniquely identify an organization.
+- `collection`: Uniquely identify a collection.
 - `label`: 
 - `value`: 
 - `synonyms`: 
@@ -3092,6 +3104,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype disabled: bool
 :ivar auto_validation_threshold:
 :vartype auto_validation_threshold: float
+:ivar show_dropdown:
+:vartype show_dropdown: bool
 :ivar fields:
 :vartype fields: list[~affinda.models.Field]
 
@@ -3111,6 +3125,7 @@ def __init__(**kwargs)
 - `mandatory`: 
 - `disabled`: 
 - `auto_validation_threshold`: 
+- `show_dropdown`: 
 - `fields`: 
 
 <a id="models._models.FieldGroup"></a>

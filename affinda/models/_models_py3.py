@@ -2296,6 +2296,10 @@ class DataPointChoiceCreate(msrest.serialization.Model):
 
     :ivar data_point: Required. Uniquely identify a data point.
     :vartype data_point: str
+    :ivar organization: Uniquely identify an organization.
+    :vartype organization: str
+    :ivar collection: Uniquely identify a collection.
+    :vartype collection: str
     :ivar label: Required.
     :vartype label: str
     :ivar value: Required.
@@ -2314,6 +2318,8 @@ class DataPointChoiceCreate(msrest.serialization.Model):
 
     _attribute_map = {
         "data_point": {"key": "dataPoint", "type": "str"},
+        "organization": {"key": "organization", "type": "str"},
+        "collection": {"key": "collection", "type": "str"},
         "label": {"key": "label", "type": "str"},
         "value": {"key": "value", "type": "str"},
         "synonyms": {"key": "synonyms", "type": "[str]"},
@@ -2326,6 +2332,8 @@ class DataPointChoiceCreate(msrest.serialization.Model):
         data_point: str,
         label: str,
         value: str,
+        organization: Optional[str] = None,
+        collection: Optional[str] = None,
         synonyms: Optional[List[str]] = None,
         description: Optional[str] = None,
         **kwargs,
@@ -2333,6 +2341,10 @@ class DataPointChoiceCreate(msrest.serialization.Model):
         """
         :keyword data_point: Required. Uniquely identify a data point.
         :paramtype data_point: str
+        :keyword organization: Uniquely identify an organization.
+        :paramtype organization: str
+        :keyword collection: Uniquely identify a collection.
+        :paramtype collection: str
         :keyword label: Required.
         :paramtype label: str
         :keyword value: Required.
@@ -2344,6 +2356,8 @@ class DataPointChoiceCreate(msrest.serialization.Model):
         """
         super(DataPointChoiceCreate, self).__init__(**kwargs)
         self.data_point = data_point
+        self.organization = organization
+        self.collection = collection
         self.label = label
         self.value = value
         self.synonyms = synonyms
@@ -2355,6 +2369,10 @@ class DataPointChoiceUpdate(msrest.serialization.Model):
 
     :ivar data_point: Uniquely identify a data point.
     :vartype data_point: str
+    :ivar organization: Uniquely identify an organization.
+    :vartype organization: str
+    :ivar collection: Uniquely identify a collection.
+    :vartype collection: str
     :ivar label:
     :vartype label: str
     :ivar value:
@@ -2367,6 +2385,8 @@ class DataPointChoiceUpdate(msrest.serialization.Model):
 
     _attribute_map = {
         "data_point": {"key": "dataPoint", "type": "str"},
+        "organization": {"key": "organization", "type": "str"},
+        "collection": {"key": "collection", "type": "str"},
         "label": {"key": "label", "type": "str"},
         "value": {"key": "value", "type": "str"},
         "synonyms": {"key": "synonyms", "type": "[str]"},
@@ -2377,6 +2397,8 @@ class DataPointChoiceUpdate(msrest.serialization.Model):
         self,
         *,
         data_point: Optional[str] = None,
+        organization: Optional[str] = None,
+        collection: Optional[str] = None,
         label: Optional[str] = None,
         value: Optional[str] = None,
         synonyms: Optional[List[str]] = None,
@@ -2386,6 +2408,10 @@ class DataPointChoiceUpdate(msrest.serialization.Model):
         """
         :keyword data_point: Uniquely identify a data point.
         :paramtype data_point: str
+        :keyword organization: Uniquely identify an organization.
+        :paramtype organization: str
+        :keyword collection: Uniquely identify a collection.
+        :paramtype collection: str
         :keyword label:
         :paramtype label: str
         :keyword value:
@@ -2397,6 +2423,8 @@ class DataPointChoiceUpdate(msrest.serialization.Model):
         """
         super(DataPointChoiceUpdate, self).__init__(**kwargs)
         self.data_point = data_point
+        self.organization = organization
+        self.collection = collection
         self.label = label
         self.value = value
         self.synonyms = synonyms
@@ -4286,6 +4314,8 @@ class Field(msrest.serialization.Model):
     :vartype disabled: bool
     :ivar auto_validation_threshold:
     :vartype auto_validation_threshold: float
+    :ivar show_dropdown:
+    :vartype show_dropdown: bool
     :ivar fields:
     :vartype fields: list[~affinda.models.Field]
     """
@@ -4302,6 +4332,7 @@ class Field(msrest.serialization.Model):
         "mandatory": {"key": "mandatory", "type": "bool"},
         "disabled": {"key": "disabled", "type": "bool"},
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
+        "show_dropdown": {"key": "showDropdown", "type": "bool"},
         "fields": {"key": "fields", "type": "[Field]"},
     }
 
@@ -4314,6 +4345,7 @@ class Field(msrest.serialization.Model):
         mandatory: Optional[bool] = None,
         disabled: Optional[bool] = None,
         auto_validation_threshold: Optional[float] = None,
+        show_dropdown: Optional[bool] = None,
         fields: Optional[List["_models.Field"]] = None,
         **kwargs,
     ):
@@ -4330,6 +4362,8 @@ class Field(msrest.serialization.Model):
         :paramtype disabled: bool
         :keyword auto_validation_threshold:
         :paramtype auto_validation_threshold: float
+        :keyword show_dropdown:
+        :paramtype show_dropdown: bool
         :keyword fields:
         :paramtype fields: list[~affinda.models.Field]
         """
@@ -4340,6 +4374,7 @@ class Field(msrest.serialization.Model):
         self.mandatory = mandatory
         self.disabled = disabled
         self.auto_validation_threshold = auto_validation_threshold
+        self.show_dropdown = show_dropdown
         self.fields = fields
 
 

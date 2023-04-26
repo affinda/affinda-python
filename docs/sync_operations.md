@@ -847,7 +847,7 @@ Deletes the specified data point from the database.
 #### get\_data\_point\_choices
 
 ```python
-def get_data_point_choices(data_point, offset=None, limit=300, search=None, **kwargs)
+def get_data_point_choices(data_point, collection, offset=None, limit=300, search=None, **kwargs)
 ```
 
 Get list of data point choices.
@@ -857,6 +857,7 @@ Returns available choices for a specific enum data point.
 **Arguments**:
 
 - `data_point` (`str`): The data point to get choices for.
+- `collection` (`str`): The collection to get choices for.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.

@@ -2254,6 +2254,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
     async def get_data_point_choices(
         self,
         data_point: str,
+        collection: str,
         offset: Optional[int] = None,
         limit: Optional[int] = 300,
         search: Optional[str] = None,
@@ -2265,6 +2266,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
         :param data_point: The data point to get choices for.
         :type data_point: str
+        :param collection: The collection to get choices for.
+        :type collection: str
         :param offset: The number of documents to skip before starting to collect the result set.
          Default value is None.
         :type offset: int
@@ -2299,6 +2302,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
         request = build_get_data_point_choices_request(
             data_point=data_point,
+            collection=collection,
             offset=offset,
             limit=limit,
             search=search,
