@@ -6400,6 +6400,9 @@ class JobDescriptionData(msrest.serialization.Model)
 
 JobDescriptionData.
 
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
 :ivar job_title:
 :vartype job_title: ~affinda.models.JobTitleAnnotation
 :ivar contact_email:
@@ -6445,6 +6448,8 @@ def __init__(**kwargs)
 
 **Arguments**:
 
+- `additional_properties`: Unmatched properties from the message are deserialized to this
+collection.
 - `job_title`: 
 - `contact_email`: 
 - `contact_name`: 

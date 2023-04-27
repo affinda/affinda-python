@@ -9049,6 +9049,9 @@ class JobDescription(Document):
 class JobDescriptionData(msrest.serialization.Model):
     """JobDescriptionData.
 
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
     :ivar job_title:
     :vartype job_title: ~affinda.models.JobTitleAnnotation
     :ivar contact_email:
@@ -9086,6 +9089,7 @@ class JobDescriptionData(msrest.serialization.Model):
     """
 
     _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
         "job_title": {"key": "jobTitle", "type": "JobTitleAnnotation"},
         "contact_email": {"key": "contactEmail", "type": "TextAnnotation"},
         "contact_name": {"key": "contactName", "type": "TextAnnotation"},
@@ -9110,6 +9114,9 @@ class JobDescriptionData(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
         :keyword job_title:
         :paramtype job_title: ~affinda.models.JobTitleAnnotation
         :keyword contact_email:
@@ -9146,6 +9153,7 @@ class JobDescriptionData(msrest.serialization.Model):
         :paramtype years_experience: ~affinda.models.YearsExperienceAnnotation
         """
         super(JobDescriptionData, self).__init__(**kwargs)
+        self.additional_properties = kwargs.get("additional_properties", None)
         self.job_title = kwargs.get("job_title", None)
         self.contact_email = kwargs.get("contact_email", None)
         self.contact_name = kwargs.get("contact_name", None)

@@ -10811,6 +10811,9 @@ class JobDescription(Document):
 class JobDescriptionData(msrest.serialization.Model):
     """JobDescriptionData.
 
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
     :ivar job_title:
     :vartype job_title: ~affinda.models.JobTitleAnnotation
     :ivar contact_email:
@@ -10848,6 +10851,7 @@ class JobDescriptionData(msrest.serialization.Model):
     """
 
     _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
         "job_title": {"key": "jobTitle", "type": "JobTitleAnnotation"},
         "contact_email": {"key": "contactEmail", "type": "TextAnnotation"},
         "contact_name": {"key": "contactName", "type": "TextAnnotation"},
@@ -10873,6 +10877,7 @@ class JobDescriptionData(msrest.serialization.Model):
     def __init__(
         self,
         *,
+        additional_properties: Optional[Dict[str, Any]] = None,
         job_title: Optional["_models.JobTitleAnnotation"] = None,
         contact_email: Optional["_models.TextAnnotation"] = None,
         contact_name: Optional["_models.TextAnnotation"] = None,
@@ -10893,6 +10898,9 @@ class JobDescriptionData(msrest.serialization.Model):
         **kwargs,
     ):
         """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
         :keyword job_title:
         :paramtype job_title: ~affinda.models.JobTitleAnnotation
         :keyword contact_email:
@@ -10929,6 +10937,7 @@ class JobDescriptionData(msrest.serialization.Model):
         :paramtype years_experience: ~affinda.models.YearsExperienceAnnotation
         """
         super(JobDescriptionData, self).__init__(**kwargs)
+        self.additional_properties = additional_properties
         self.job_title = job_title
         self.contact_email = contact_email
         self.contact_name = contact_name
