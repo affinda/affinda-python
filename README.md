@@ -1,4 +1,4 @@
-Python Client Library for Affinda Resume Parser API
+Python Client Library for Affinda Document Parser API
 ===================================================
 
 ![affinda logo](https://raw.githubusercontent.com/affinda/affinda-python/master/affinda_logo.png)
