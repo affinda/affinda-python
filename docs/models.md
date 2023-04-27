@@ -4340,8 +4340,9 @@ InvoiceRequestBody.
  processing is complete.
 :vartype wait: bool
 :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
- of an existing document. If "false", will parse the document normally whether its a duplicate
- or not. If not provided, will fallback to the workspace settings.
+ of an existing document, no credits will be consumed. If "false", will parse the document
+ normally whether its a duplicate or not. If not provided, will fallback to the workspace
+ settings.
 :vartype reject_duplicates: bool
 :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 :vartype language: str
@@ -4368,8 +4369,9 @@ PNG, JPG.
 If "false", will return an empty data object which can be polled at the GET endpoint until
 processing is complete.
 - `reject_duplicates`: If "true", parsing will fail when the uploaded document is
-duplicate of an existing document. If "false", will parse the document normally whether its a
-duplicate or not. If not provided, will fallback to the workspace settings.
+duplicate of an existing document, no credits will be consumed. If "false", will parse the
+document normally whether its a duplicate or not. If not provided, will fallback to the
+workspace settings.
 - `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 - `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
@@ -4579,8 +4581,9 @@ JobDescriptionRequestBody.
  processing is complete.
 :vartype wait: bool
 :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
- of an existing document. If "false", will parse the document normally whether its a duplicate
- or not. If not provided, will fallback to the workspace settings.
+ of an existing document, no credits will be consumed. If "false", will parse the document
+ normally whether its a duplicate or not. If not provided, will fallback to the workspace
+ settings.
 :vartype reject_duplicates: bool
 :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 :vartype language: str
@@ -4608,8 +4611,9 @@ PNG, JPG.
 If "false", will return an empty data object which can be polled at the GET endpoint until
 processing is complete.
 - `reject_duplicates`: If "true", parsing will fail when the uploaded document is
-duplicate of an existing document. If "false", will parse the document normally whether its a
-duplicate or not. If not provided, will fallback to the workspace settings.
+duplicate of an existing document, no credits will be consumed. If "false", will parse the
+document normally whether its a duplicate or not. If not provided, will fallback to the
+workspace settings.
 - `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 - `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
@@ -8028,8 +8032,9 @@ ResumeRequestBody.
  processing is complete.
 :vartype wait: bool
 :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
- of an existing document. If "false", will parse the document normally whether its a duplicate
- or not. If not provided, will fallback to the workspace settings.
+ of an existing document, no credits will be consumed. If "false", will parse the document
+ normally whether its a duplicate or not. If not provided, will fallback to the workspace
+ settings.
 :vartype reject_duplicates: bool
 :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 :vartype language: str
@@ -8057,8 +8062,9 @@ PNG, JPG.
 If "false", will return an empty data object which can be polled at the GET endpoint until
 processing is complete.
 - `reject_duplicates`: If "true", parsing will fail when the uploaded document is
-duplicate of an existing document. If "false", will parse the document normally whether its a
-duplicate or not. If not provided, will fallback to the workspace settings.
+duplicate of an existing document, no credits will be consumed. If "false", will parse the
+document normally whether its a duplicate or not. If not provided, will fallback to the
+workspace settings.
 - `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 - `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
