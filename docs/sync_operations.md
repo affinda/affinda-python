@@ -709,7 +709,7 @@ Deletes the specified extractor from the database.
 #### get\_all\_data\_points
 
 ```python
-def get_all_data_points(offset=None, limit=300, organization=None, extractor=None, slug=None, description=None, annotation_content_type=None, include_child=None, identifier=None, **kwargs)
+def get_all_data_points(offset=None, limit=300, organization=None, extractor=None, slug=None, description=None, annotation_content_type=None, identifier=None, **kwargs)
 ```
 
 Get list of all data points.
@@ -727,9 +727,6 @@ Default value is None.
 - `description` (`str`): Filter by description. Default value is None.
 - `annotation_content_type` (`str`): Filter by annotation content type, e.g. text, integer, float,
 date, etc. Default value is None.
-- `include_child` (`bool`): Whether to show child data points at the top level. :code:`<br />` By
-default child data points are shown nested inside their parent so they are excluded from the
-top level. Default value is None.
 - `identifier` (`list[str]`): Filter by specific identifiers. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
