@@ -4419,6 +4419,9 @@ class JobDescriptionData(msrest.serialization.Model)
 
 JobDescriptionData.
 
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
 :ivar job_title:
 :vartype job_title: ~affinda.models.JobTitleAnnotation
 :ivar contact_email:
@@ -4464,6 +4467,8 @@ def __init__(**kwargs)
 
 **Arguments**:
 
+- `additional_properties`: Unmatched properties from the message are deserialized to this
+collection.
 - `job_title`: 
 - `contact_email`: 
 - `contact_name`: 
@@ -4492,6 +4497,9 @@ class JobDescriptionDataUpdate(msrest.serialization.Model)
 
 A JSON-encoded string of the ``JobDescriptionData`` object.
 
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
 :ivar job_title:
 :vartype job_title: ~affinda.models.JobTitleAnnotationUpdate
 :ivar contact_email:
@@ -4537,6 +4545,8 @@ def __init__(**kwargs)
 
 **Arguments**:
 
+- `additional_properties`: Unmatched properties from the message are deserialized to this
+collection.
 - `job_title`: 
 - `contact_email`: 
 - `contact_name`: 
@@ -9084,12 +9094,13 @@ ResumeSearchParametersCustomData.
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar filter_type: Required. Known values are: "equals", "range".
+:ivar filter_type: Required. Data points of "text" type support only "equals" filterType,
+ others support both "equals" and "range". Known values are: "equals", "range".
 :vartype filter_type: str or ~affinda.models.ResumeSearchParametersCustomDataFilterType
-:ivar data_point: Required.
+:ivar data_point: Required. The data point's slug.
 :vartype data_point: str
-:ivar query: Required. 'equals' searches require the 'value' key inside the query, and 'range'
- searches require at least one of 'gte' (greater than or equal) and 'lte' (less than or equal).
+:ivar query: Required. "equals" searches require the "value" key inside the query, and "range"
+ searches require at least one of "gte" (greater than or equal) and "lte" (less than or equal).
 :vartype query: any
 :ivar required:
 :vartype required: bool
@@ -9106,10 +9117,11 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `filter_type`: Required. Known values are: "equals", "range".
-- `data_point`: Required.
-- `query`: Required. 'equals' searches require the 'value' key inside the query, and
-'range' searches require at least one of 'gte' (greater than or equal) and 'lte' (less than or
+- `filter_type`: Required. Data points of "text" type support only "equals" filterType,
+others support both "equals" and "range". Known values are: "equals", "range".
+- `data_point`: Required. The data point's slug.
+- `query`: Required. "equals" searches require the "value" key inside the query, and
+"range" searches require at least one of "gte" (greater than or equal) and "lte" (less than or
 equal).
 - `required`: 
 - `weight`: 
