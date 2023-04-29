@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add custom data to job description search results
 - Add custom data to job description search results
 - Add international_country_code to phone number details
+- Add customData field to JD search param/result serializers
 
 ## [3.2.1] - 2023-03-30
 ### Changed

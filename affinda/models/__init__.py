@@ -262,6 +262,7 @@ try:
     from ._models_py3 import ResumeSkillSourcesItem
     from ._models_py3 import RowAnnotation
     from ._models_py3 import SearchExpressionSearchScoreComponent
+    from ._models_py3 import SearchParametersCustomData
     from ._models_py3 import SkillAnnotation
     from ._models_py3 import SkillAnnotationV2Update
     from ._models_py3 import SkillsSearchScoreComponent
@@ -481,6 +482,7 @@ except (SyntaxError, ImportError):
     from ._models import ResumeSkillSourcesItem  # type: ignore
     from ._models import RowAnnotation  # type: ignore
     from ._models import SearchExpressionSearchScoreComponent  # type: ignore
+    from ._models import SearchParametersCustomData  # type: ignore
     from ._models import SkillAnnotation  # type: ignore
     from ._models import SkillAnnotationV2Update  # type: ignore
     from ._models import SkillsSearchScoreComponent  # type: ignore
@@ -501,9 +503,9 @@ from ._affinda_api_enums import (
     Region,
     ResthookEvent,
     ResthookSubscriptionVersion,
-    ResumeSearchParametersCustomDataFilterType,
     ResumeSkillSourcesItemSection,
     SearchLocationUnit,
+    SearchParametersCustomDataFilterType,
     Version,
 )
 from ._patch import __all__ as _patch_all
@@ -720,6 +722,7 @@ __all__ = [
     "ResumeSkillSourcesItem",
     "RowAnnotation",
     "SearchExpressionSearchScoreComponent",
+    "SearchParametersCustomData",
     "SkillAnnotation",
     "SkillAnnotationV2Update",
     "SkillsSearchScoreComponent",
@@ -738,9 +741,9 @@ __all__ = [
     "Region",
     "ResthookEvent",
     "ResthookSubscriptionVersion",
-    "ResumeSearchParametersCustomDataFilterType",
     "ResumeSkillSourcesItemSection",
     "SearchLocationUnit",
+    "SearchParametersCustomDataFilterType",
     "Version",
 ]
 __all__.extend([p for p in _patch_all if p not in __all__])

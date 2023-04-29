@@ -5524,6 +5524,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype management_level_required: bool
 :ivar management_level_weight:
 :vartype management_level_weight: float
+:ivar custom_data:
+:vartype custom_data: list[~affinda.models.SearchParametersCustomData]
 
 <a id="models._models.JobDescriptionSearchParameters.__init__"></a>
 
@@ -5564,6 +5566,7 @@ def __init__(**kwargs)
 - `management_level`: Known values are: "None", "Low", "Mid", "Upper".
 - `management_level_required`: 
 - `management_level_weight`: 
+- `custom_data`: 
 
 <a id="models._models.JobDescriptionSearchResult"></a>
 
@@ -5603,7 +5606,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
 :ivar organization_name: Required.
 :vartype organization_name: str
-:ivar custom_data: Dictionary of
+:ivar custom_data: Required. Dictionary of
  <components·nqbw24·schemas·customdatasearchscorecomponent·additionalproperties>.
 :vartype custom_data: dict[str,
  ~affinda.models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties]
@@ -5631,7 +5634,7 @@ def __init__(**kwargs)
 - `occupation_group`: 
 - `search_expression`: Required.
 - `organization_name`: Required.
-- `custom_data`: Dictionary of
+- `custom_data`: Required. Dictionary of
 <components·nqbw24·schemas·customdatasearchscorecomponent·additionalproperties>.
 
 <a id="models._models.JobTitleParsed"></a>
@@ -9091,12 +9094,56 @@ def __init__(**kwargs)
 - `management_level_weight`: 
 - `custom_data`: 
 
+<a id="models._models.SearchParametersCustomData"></a>
+
+## SearchParametersCustomData Objects
+
+```python
+class SearchParametersCustomData(msrest.serialization.Model)
+```
+
+SearchParametersCustomData.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar filter_type: Required. Data points of "text" type support only "equals" filterType,
+ others support both "equals" and "range". Known values are: "equals", "range".
+:vartype filter_type: str or ~affinda.models.SearchParametersCustomDataFilterType
+:ivar data_point: Required. The data point's slug.
+:vartype data_point: str
+:ivar query: Required. "equals" searches require the "value" key inside the query, and "range"
+ searches require at least one of "gte" (greater than or equal) and "lte" (less than or equal).
+:vartype query: any
+:ivar required:
+:vartype required: bool
+:ivar weight:
+:vartype weight: float
+
+<a id="models._models.SearchParametersCustomData.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `filter_type`: Required. Data points of "text" type support only "equals" filterType,
+others support both "equals" and "range". Known values are: "equals", "range".
+- `data_point`: Required. The data point's slug.
+- `query`: Required. "equals" searches require the "value" key inside the query, and
+"range" searches require at least one of "gte" (greater than or equal) and "lte" (less than or
+equal).
+- `required`: 
+- `weight`: 
+
 <a id="models._models.ResumeSearchParametersCustomData"></a>
 
 ## ResumeSearchParametersCustomData Objects
 
 ```python
-class ResumeSearchParametersCustomData(msrest.serialization.Model)
+class ResumeSearchParametersCustomData(SearchParametersCustomData)
 ```
 
 ResumeSearchParametersCustomData.
@@ -9105,7 +9152,7 @@ All required parameters must be populated in order to send to Azure.
 
 :ivar filter_type: Required. Data points of "text" type support only "equals" filterType,
  others support both "equals" and "range". Known values are: "equals", "range".
-:vartype filter_type: str or ~affinda.models.ResumeSearchParametersCustomDataFilterType
+:vartype filter_type: str or ~affinda.models.SearchParametersCustomDataFilterType
 :ivar data_point: Required. The data point's slug.
 :vartype data_point: str
 :ivar query: Required. "equals" searches require the "value" key inside the query, and "range"

@@ -85,15 +85,6 @@ class ResthookSubscriptionVersion(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     V3 = "v3"
 
 
-class ResumeSearchParametersCustomDataFilterType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """Data points of "text" type support only "equals" filterType, others support both "equals" and
-    "range"
-    """
-
-    EQUALS = "equals"
-    RANGE = "range"
-
-
 class ResumeSkillSourcesItemSection(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     ACHIEVEMENTS = "Achievements"
@@ -122,6 +113,15 @@ class SearchLocationUnit(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     KM = "km"
     MI = "mi"
+
+
+class SearchParametersCustomDataFilterType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+    """Data points of "text" type support only "equals" filterType, others support both "equals" and
+    "range"
+    """
+
+    EQUALS = "equals"
+    RANGE = "range"
 
 
 class Version(str, Enum, metaclass=CaseInsensitiveEnumMeta):
