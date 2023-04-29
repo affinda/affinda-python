@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Phone number details to Resume Candidate info
 - Add some filters to `GET /documents` endpoint: `failed`, `ready`, `validatable`
 - Custom fields to Job Descriptions
+- Add custom data to job description search results
 
 ### Changed
 - Provide additional filters for data point choices, and allow data point choices to be specified for any existing text field.

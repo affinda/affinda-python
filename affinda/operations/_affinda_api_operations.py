@@ -461,6 +461,7 @@ def build_get_all_documents_request(
     failed = kwargs.pop('failed', _params.pop('failed', None))  # type: Optional[bool]
     ready = kwargs.pop('ready', _params.pop('ready', None))  # type: Optional[bool]
     validatable = kwargs.pop('validatable', _params.pop('validatable', None))  # type: Optional[bool]
+    has_challenges = kwargs.pop('has_challenges', _params.pop('has_challenges', None))  # type: Optional[bool]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
@@ -497,6 +498,8 @@ def build_get_all_documents_request(
         _params['ready'] = _SERIALIZER.query("ready", ready, 'bool')
     if validatable is not None:
         _params['validatable'] = _SERIALIZER.query("validatable", validatable, 'bool')
+    if has_challenges is not None:
+        _params['has_challenges'] = _SERIALIZER.query("has_challenges", has_challenges, 'bool')
 
     # Construct headers
     _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
@@ -2292,7 +2295,7 @@ def build_get_all_indexes_request(
 
     offset = kwargs.pop('offset', _params.pop('offset', None))  # type: Optional[int]
     limit = kwargs.pop('limit', _params.pop('limit', 300))  # type: Optional[int]
-    document_type = kwargs.pop('document_type', _params.pop('document_type', None))  # type: Optional[Union[str, "_models.Enum17"]]
+    document_type = kwargs.pop('document_type', _params.pop('document_type', None))  # type: Optional[Union[str, "_models.Enum18"]]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
@@ -3695,6 +3698,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         failed=None,  # type: Optional[bool]
         ready=None,  # type: Optional[bool]
         validatable=None,  # type: Optional[bool]
+        has_challenges=None,  # type: Optional[bool]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema
@@ -3737,6 +3741,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type ready: bool
         :param validatable: Filter for validatable documents. Default value is None.
         :type validatable: bool
+        :param has_challenges: Filter for documents with challenges. Default value is None.
+        :type has_challenges: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)
@@ -3778,6 +3784,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             failed=failed,
             ready=ready,
             validatable=validatable,
+            has_challenges=has_challenges,
             template_url=self.get_all_documents.metadata["url"],
             headers=_headers,
             params=_params,
@@ -8199,7 +8206,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         self,
         offset=None,  # type: Optional[int]
         limit=300,  # type: Optional[int]
-        document_type=None,  # type: Optional[Union[str, "_models.Enum17"]]
+        document_type=None,  # type: Optional[Union[str, "_models.Enum18"]]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema
@@ -8213,7 +8220,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param limit: The numbers of results to return. Default value is 300.
         :type limit: int
         :param document_type: Filter indices by a document type. Default value is None.
-        :type document_type: str or ~affinda.models.Enum17
+        :type document_type: str or ~affinda.models.Enum18
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)

@@ -392,7 +392,7 @@ Deletes the specified collection from the database.
 #### get\_all\_documents
 
 ```python
-def get_all_documents(offset=None, limit=300, workspace=None, collection=None, state=None, tags=None, created_dt=None, search=None, ordering=None, include_data=None, exclude=None, in_review=None, failed=None, ready=None, validatable=None, **kwargs)
+def get_all_documents(offset=None, limit=300, workspace=None, collection=None, state=None, tags=None, created_dt=None, search=None, ordering=None, include_data=None, exclude=None, in_review=None, failed=None, ready=None, validatable=None, has_challenges=None, **kwargs)
 ```
 
 Get list of all documents.
@@ -421,6 +421,7 @@ value is None.
 - `failed` (`bool`): Filter by failed status. Default value is None.
 - `ready` (`bool`): Filter by ready status. Default value is None.
 - `validatable` (`bool`): Filter for validatable documents. Default value is None.
+- `has_challenges` (`bool`): Filter for documents with challenges. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -2064,7 +2065,7 @@ Returns all the indexes.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
-- `document_type` (`str or ~affinda.models.Enum17`): Filter indices by a document type. Default value is None.
+- `document_type` (`str or ~affinda.models.Enum18`): Filter indices by a document type. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:

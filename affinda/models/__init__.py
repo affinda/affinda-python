@@ -302,6 +302,7 @@ try:
     from ._models_py3 import RowAnnotation
     from ._models_py3 import SearchConfigAction
     from ._models_py3 import SearchExpressionSearchScoreComponent
+    from ._models_py3 import SearchParametersCustomData
     from ._models_py3 import SkillAnnotation
     from ._models_py3 import SkillsSearchScoreComponent
     from ._models_py3 import Tag
@@ -569,6 +570,7 @@ except (SyntaxError, ImportError):
     from ._models import RowAnnotation  # type: ignore
     from ._models import SearchConfigAction  # type: ignore
     from ._models import SearchExpressionSearchScoreComponent  # type: ignore
+    from ._models import SearchParametersCustomData  # type: ignore
     from ._models import SkillAnnotation  # type: ignore
     from ._models import SkillsSearchScoreComponent  # type: ignore
     from ._models import Tag  # type: ignore
@@ -601,8 +603,8 @@ from ._affinda_api_enums import (
     DocumentFormat,
     DocumentState,
     EducationLevel,
-    Enum17,
-    Enum20,
+    Enum18,
+    Enum21,
     Get8ItemsItem,
     GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType,
     InvitationResponseStatus,
@@ -614,9 +616,9 @@ from ._affinda_api_enums import (
     Region,
     ResthookEvent,
     ResthookSubscriptionVersion,
-    ResumeSearchParametersCustomDataFilterType,
     ResumeSkillSourcesItemSection,
     SearchLocationUnit,
+    SearchParametersCustomDataFilterType,
     ThemeConfigPaletteMode,
     Version,
     WorkspaceVisibility,
@@ -869,6 +871,7 @@ __all__ = [
     "RowAnnotation",
     "SearchConfigAction",
     "SearchExpressionSearchScoreComponent",
+    "SearchParametersCustomData",
     "SkillAnnotation",
     "SkillsSearchScoreComponent",
     "Tag",
@@ -899,8 +902,8 @@ __all__ = [
     "DocumentFormat",
     "DocumentState",
     "EducationLevel",
-    "Enum17",
-    "Enum20",
+    "Enum18",
+    "Enum21",
     "Get8ItemsItem",
     "GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType",
     "InvitationResponseStatus",
@@ -912,9 +915,9 @@ __all__ = [
     "Region",
     "ResthookEvent",
     "ResthookSubscriptionVersion",
-    "ResumeSearchParametersCustomDataFilterType",
     "ResumeSkillSourcesItemSection",
     "SearchLocationUnit",
+    "SearchParametersCustomDataFilterType",
     "ThemeConfigPaletteMode",
     "Version",
     "WorkspaceVisibility",

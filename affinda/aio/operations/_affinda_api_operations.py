@@ -1049,6 +1049,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         failed: Optional[bool] = None,
         ready: Optional[bool] = None,
         validatable: Optional[bool] = None,
+        has_challenges: Optional[bool] = None,
         **kwargs: Any,
     ) -> _models.PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema:
         """Get list of all documents.
@@ -1090,6 +1091,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type ready: bool
         :param validatable: Filter for validatable documents. Default value is None.
         :type validatable: bool
+        :param has_challenges: Filter for documents with challenges. Default value is None.
+        :type has_challenges: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)
@@ -1131,6 +1134,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             failed=failed,
             ready=ready,
             validatable=validatable,
+            has_challenges=has_challenges,
             template_url=self.get_all_documents.metadata["url"],
             headers=_headers,
             params=_params,
@@ -5364,7 +5368,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         self,
         offset: Optional[int] = None,
         limit: Optional[int] = 300,
-        document_type: Optional[Union[str, "_models.Enum17"]] = None,
+        document_type: Optional[Union[str, "_models.Enum18"]] = None,
         **kwargs: Any,
     ) -> _models.PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema:
         """Get list of all indexes.
@@ -5377,7 +5381,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param limit: The numbers of results to return. Default value is 300.
         :type limit: int
         :param document_type: Filter indices by a document type. Default value is None.
-        :type document_type: str or ~affinda.models.Enum17
+        :type document_type: str or ~affinda.models.Enum18
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)

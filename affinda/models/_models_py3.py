@@ -12148,6 +12148,8 @@ class JobDescriptionSearchParameters(msrest.serialization.Model):
     :vartype management_level_required: bool
     :ivar management_level_weight:
     :vartype management_level_weight: float
+    :ivar custom_data:
+    :vartype custom_data: list[~affinda.models.SearchParametersCustomData]
     """
 
     _validation = {
@@ -12194,6 +12196,7 @@ class JobDescriptionSearchParameters(msrest.serialization.Model):
         "management_level": {"key": "managementLevel", "type": "str"},
         "management_level_required": {"key": "managementLevelRequired", "type": "bool"},
         "management_level_weight": {"key": "managementLevelWeight", "type": "float"},
+        "custom_data": {"key": "customData", "type": "[SearchParametersCustomData]"},
     }
 
     def __init__(
@@ -12228,6 +12231,7 @@ class JobDescriptionSearchParameters(msrest.serialization.Model):
         management_level: Optional[Union[str, "_models.ManagementLevel"]] = None,
         management_level_required: Optional[bool] = None,
         management_level_weight: Optional[float] = None,
+        custom_data: Optional[List["_models.SearchParametersCustomData"]] = None,
         **kwargs,
     ):
         """
@@ -12289,6 +12293,8 @@ class JobDescriptionSearchParameters(msrest.serialization.Model):
         :paramtype management_level_required: bool
         :keyword management_level_weight:
         :paramtype management_level_weight: float
+        :keyword custom_data:
+        :paramtype custom_data: list[~affinda.models.SearchParametersCustomData]
         """
         super(JobDescriptionSearchParameters, self).__init__(**kwargs)
         self.indices = indices
@@ -12320,6 +12326,7 @@ class JobDescriptionSearchParameters(msrest.serialization.Model):
         self.management_level = management_level
         self.management_level_required = management_level_required
         self.management_level_weight = management_level_weight
+        self.custom_data = custom_data
 
 
 class JobDescriptionSearchResult(msrest.serialization.Model):
@@ -12353,6 +12360,10 @@ class JobDescriptionSearchResult(msrest.serialization.Model):
     :vartype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
     :ivar organization_name: Required.
     :vartype organization_name: str
+    :ivar custom_data: Required. Dictionary of
+     <components·nqbw24·schemas·customdatasearchscorecomponent·additionalproperties>.
+    :vartype custom_data: dict[str,
+     ~affinda.models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties]
     """
 
     _validation = {
@@ -12368,6 +12379,7 @@ class JobDescriptionSearchResult(msrest.serialization.Model):
         "education": {"required": True},
         "search_expression": {"required": True},
         "organization_name": {"required": True},
+        "custom_data": {"required": True},
     }
 
     _attribute_map = {
@@ -12393,6 +12405,10 @@ class JobDescriptionSearchResult(msrest.serialization.Model):
             "type": "SearchExpressionSearchScoreComponent",
         },
         "organization_name": {"key": "organizationName", "type": "str"},
+        "custom_data": {
+            "key": "customData",
+            "type": "{ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties}",
+        },
     }
 
     def __init__(
@@ -12410,6 +12426,10 @@ class JobDescriptionSearchResult(msrest.serialization.Model):
         education: "_models.EducationSearchScoreComponent",
         search_expression: "_models.SearchExpressionSearchScoreComponent",
         organization_name: str,
+        custom_data: Dict[
+            str,
+            "_models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties",
+        ],
         occupation_group: Optional["_models.OccupationGroupSearchScoreComponent"] = None,
         **kwargs,
     ):
@@ -12440,6 +12460,10 @@ class JobDescriptionSearchResult(msrest.serialization.Model):
         :paramtype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
         :keyword organization_name: Required.
         :paramtype organization_name: str
+        :keyword custom_data: Required. Dictionary of
+         <components·nqbw24·schemas·customdatasearchscorecomponent·additionalproperties>.
+        :paramtype custom_data: dict[str,
+         ~affinda.models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties]
         """
         super(JobDescriptionSearchResult, self).__init__(**kwargs)
         self.identifier = identifier
@@ -12455,6 +12479,7 @@ class JobDescriptionSearchResult(msrest.serialization.Model):
         self.occupation_group = occupation_group
         self.search_expression = search_expression
         self.organization_name = organization_name
+        self.custom_data = custom_data
 
 
 class JobTitleAnnotation(Annotation):
@@ -14172,7 +14197,7 @@ class Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema(msrest.ser
     :ivar name:
     :vartype name: str
     :ivar document_type: Known values are: "resumes", "job_descriptions".
-    :vartype document_type: str or ~affinda.models.Enum20
+    :vartype document_type: str or ~affinda.models.Enum21
     """
 
     _attribute_map = {
@@ -14184,14 +14209,14 @@ class Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema(msrest.ser
         self,
         *,
         name: Optional[str] = None,
-        document_type: Optional[Union[str, "_models.Enum20"]] = None,
+        document_type: Optional[Union[str, "_models.Enum21"]] = None,
         **kwargs,
     ):
         """
         :keyword name:
         :paramtype name: str
         :keyword document_type: Known values are: "resumes", "job_descriptions".
-        :paramtype document_type: str or ~affinda.models.Enum20
+        :paramtype document_type: str or ~affinda.models.Enum21
         """
         super(Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema, self).__init__(
             **kwargs
@@ -17514,14 +17539,14 @@ class ResumeSearchParameters(msrest.serialization.Model):
         self.custom_data = custom_data
 
 
-class ResumeSearchParametersCustomData(msrest.serialization.Model):
-    """ResumeSearchParametersCustomData.
+class SearchParametersCustomData(msrest.serialization.Model):
+    """SearchParametersCustomData.
 
     All required parameters must be populated in order to send to Azure.
 
     :ivar filter_type: Required. Data points of "text" type support only "equals" filterType,
      others support both "equals" and "range". Known values are: "equals", "range".
-    :vartype filter_type: str or ~affinda.models.ResumeSearchParametersCustomDataFilterType
+    :vartype filter_type: str or ~affinda.models.SearchParametersCustomDataFilterType
     :ivar data_point: Required. The data point's slug.
     :vartype data_point: str
     :ivar query: Required. "equals" searches require the "value" key inside the query, and "range"
@@ -17551,7 +17576,7 @@ class ResumeSearchParametersCustomData(msrest.serialization.Model):
     def __init__(
         self,
         *,
-        filter_type: Union[str, "_models.ResumeSearchParametersCustomDataFilterType"],
+        filter_type: Union[str, "_models.SearchParametersCustomDataFilterType"],
         data_point: str,
         query: Any,
         required: Optional[bool] = None,
@@ -17561,7 +17586,7 @@ class ResumeSearchParametersCustomData(msrest.serialization.Model):
         """
         :keyword filter_type: Required. Data points of "text" type support only "equals" filterType,
          others support both "equals" and "range". Known values are: "equals", "range".
-        :paramtype filter_type: str or ~affinda.models.ResumeSearchParametersCustomDataFilterType
+        :paramtype filter_type: str or ~affinda.models.SearchParametersCustomDataFilterType
         :keyword data_point: Required. The data point's slug.
         :paramtype data_point: str
         :keyword query: Required. "equals" searches require the "value" key inside the query, and
@@ -17573,12 +17598,81 @@ class ResumeSearchParametersCustomData(msrest.serialization.Model):
         :keyword weight:
         :paramtype weight: float
         """
-        super(ResumeSearchParametersCustomData, self).__init__(**kwargs)
+        super(SearchParametersCustomData, self).__init__(**kwargs)
         self.filter_type = filter_type
         self.data_point = data_point
         self.query = query
         self.required = required
         self.weight = weight
+
+
+class ResumeSearchParametersCustomData(SearchParametersCustomData):
+    """ResumeSearchParametersCustomData.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar filter_type: Required. Data points of "text" type support only "equals" filterType,
+     others support both "equals" and "range". Known values are: "equals", "range".
+    :vartype filter_type: str or ~affinda.models.SearchParametersCustomDataFilterType
+    :ivar data_point: Required. The data point's slug.
+    :vartype data_point: str
+    :ivar query: Required. "equals" searches require the "value" key inside the query, and "range"
+     searches require at least one of "gte" (greater than or equal) and "lte" (less than or equal).
+    :vartype query: any
+    :ivar required:
+    :vartype required: bool
+    :ivar weight:
+    :vartype weight: float
+    """
+
+    _validation = {
+        "filter_type": {"required": True},
+        "data_point": {"required": True},
+        "query": {"required": True},
+        "weight": {"maximum": 1, "minimum": 0},
+    }
+
+    _attribute_map = {
+        "filter_type": {"key": "filterType", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "query": {"key": "query", "type": "object"},
+        "required": {"key": "required", "type": "bool"},
+        "weight": {"key": "weight", "type": "float"},
+    }
+
+    def __init__(
+        self,
+        *,
+        filter_type: Union[str, "_models.SearchParametersCustomDataFilterType"],
+        data_point: str,
+        query: Any,
+        required: Optional[bool] = None,
+        weight: Optional[float] = None,
+        **kwargs,
+    ):
+        """
+        :keyword filter_type: Required. Data points of "text" type support only "equals" filterType,
+         others support both "equals" and "range". Known values are: "equals", "range".
+        :paramtype filter_type: str or ~affinda.models.SearchParametersCustomDataFilterType
+        :keyword data_point: Required. The data point's slug.
+        :paramtype data_point: str
+        :keyword query: Required. "equals" searches require the "value" key inside the query, and
+         "range" searches require at least one of "gte" (greater than or equal) and "lte" (less than or
+         equal).
+        :paramtype query: any
+        :keyword required:
+        :paramtype required: bool
+        :keyword weight:
+        :paramtype weight: float
+        """
+        super(ResumeSearchParametersCustomData, self).__init__(
+            filter_type=filter_type,
+            data_point=data_point,
+            query=query,
+            required=required,
+            weight=weight,
+            **kwargs,
+        )
 
 
 class ResumeSearchParametersLocation(msrest.serialization.Model):

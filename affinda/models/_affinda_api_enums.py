@@ -80,13 +80,13 @@ class EducationLevel(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     DOCTORAL = "doctoral"
 
 
-class Enum17(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class Enum18(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     RESUMES = "resumes"
     JOB_DESCRIPTIONS = "job_descriptions"
 
 
-class Enum20(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class Enum21(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     RESUMES = "resumes"
     JOB_DESCRIPTIONS = "job_descriptions"
@@ -181,15 +181,6 @@ class ResthookSubscriptionVersion(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     V3 = "v3"
 
 
-class ResumeSearchParametersCustomDataFilterType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """Data points of "text" type support only "equals" filterType, others support both "equals" and
-    "range"
-    """
-
-    EQUALS = "equals"
-    RANGE = "range"
-
-
 class ResumeSkillSourcesItemSection(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     ACHIEVEMENTS = "Achievements"
@@ -218,6 +209,15 @@ class SearchLocationUnit(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     KM = "km"
     MI = "mi"
+
+
+class SearchParametersCustomDataFilterType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+    """Data points of "text" type support only "equals" filterType, others support both "equals" and
+    "range"
+    """
+
+    EQUALS = "equals"
+    RANGE = "range"
 
 
 class ThemeConfigPaletteMode(str, Enum, metaclass=CaseInsensitiveEnumMeta):
