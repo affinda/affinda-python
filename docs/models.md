@@ -7721,6 +7721,8 @@ ResumeDataPhoneNumberDetailsItem.
 :vartype formatted_number: str
 :ivar country_code:
 :vartype country_code: str
+:ivar international_country_code:
+:vartype international_country_code: int
 :ivar national_number:
 :vartype national_number: str
 
@@ -7737,6 +7739,7 @@ def __init__(**kwargs)
 - `raw_text`: 
 - `formatted_number`: 
 - `country_code`: 
+- `international_country_code`: 
 - `national_number`: 
 
 <a id="models._models.ResumeDataRefereesItem"></a>

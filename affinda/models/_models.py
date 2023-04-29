@@ -10858,6 +10858,8 @@ class ResumeDataPhoneNumberDetailsItem(msrest.serialization.Model):
     :vartype formatted_number: str
     :ivar country_code:
     :vartype country_code: str
+    :ivar international_country_code:
+    :vartype international_country_code: int
     :ivar national_number:
     :vartype national_number: str
     """
@@ -10866,6 +10868,7 @@ class ResumeDataPhoneNumberDetailsItem(msrest.serialization.Model):
         "raw_text": {"key": "rawText", "type": "str"},
         "formatted_number": {"key": "formattedNumber", "type": "str"},
         "country_code": {"key": "countryCode", "type": "str"},
+        "international_country_code": {"key": "internationalCountryCode", "type": "int"},
         "national_number": {"key": "nationalNumber", "type": "str"},
     }
 
@@ -10877,6 +10880,8 @@ class ResumeDataPhoneNumberDetailsItem(msrest.serialization.Model):
         :paramtype formatted_number: str
         :keyword country_code:
         :paramtype country_code: str
+        :keyword international_country_code:
+        :paramtype international_country_code: int
         :keyword national_number:
         :paramtype national_number: str
         """
@@ -10884,6 +10889,7 @@ class ResumeDataPhoneNumberDetailsItem(msrest.serialization.Model):
         self.raw_text = kwargs.get("raw_text", None)
         self.formatted_number = kwargs.get("formatted_number", None)
         self.country_code = kwargs.get("country_code", None)
+        self.international_country_code = kwargs.get("international_country_code", None)
         self.national_number = kwargs.get("national_number", None)
 
 

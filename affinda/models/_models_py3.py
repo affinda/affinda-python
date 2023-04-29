@@ -12940,6 +12940,8 @@ class ResumeDataPhoneNumberDetailsItem(msrest.serialization.Model):
     :vartype formatted_number: str
     :ivar country_code:
     :vartype country_code: str
+    :ivar international_country_code:
+    :vartype international_country_code: int
     :ivar national_number:
     :vartype national_number: str
     """
@@ -12948,6 +12950,7 @@ class ResumeDataPhoneNumberDetailsItem(msrest.serialization.Model):
         "raw_text": {"key": "rawText", "type": "str"},
         "formatted_number": {"key": "formattedNumber", "type": "str"},
         "country_code": {"key": "countryCode", "type": "str"},
+        "international_country_code": {"key": "internationalCountryCode", "type": "int"},
         "national_number": {"key": "nationalNumber", "type": "str"},
     }
 
@@ -12957,6 +12960,7 @@ class ResumeDataPhoneNumberDetailsItem(msrest.serialization.Model):
         raw_text: Optional[str] = None,
         formatted_number: Optional[str] = None,
         country_code: Optional[str] = None,
+        international_country_code: Optional[int] = None,
         national_number: Optional[str] = None,
         **kwargs,
     ):
@@ -12967,6 +12971,8 @@ class ResumeDataPhoneNumberDetailsItem(msrest.serialization.Model):
         :paramtype formatted_number: str
         :keyword country_code:
         :paramtype country_code: str
+        :keyword international_country_code:
+        :paramtype international_country_code: int
         :keyword national_number:
         :paramtype national_number: str
         """
@@ -12974,6 +12980,7 @@ class ResumeDataPhoneNumberDetailsItem(msrest.serialization.Model):
         self.raw_text = raw_text
         self.formatted_number = formatted_number
         self.country_code = country_code
+        self.international_country_code = international_country_code
         self.national_number = national_number
 
 
