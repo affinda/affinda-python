@@ -5603,6 +5603,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
 :ivar organization_name: Required.
 :vartype organization_name: str
+:ivar custom_data: Dictionary of
+ <components·nqbw24·schemas·customdatasearchscorecomponent·additionalproperties>.
+:vartype custom_data: dict[str,
+ ~affinda.models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties]
 
 <a id="models._models.JobDescriptionSearchResult.__init__"></a>
 
@@ -5627,6 +5631,8 @@ def __init__(**kwargs)
 - `occupation_group`: 
 - `search_expression`: Required.
 - `organization_name`: Required.
+- `custom_data`: Dictionary of
+<components·nqbw24·schemas·customdatasearchscorecomponent·additionalproperties>.
 
 <a id="models._models.JobTitleParsed"></a>
 

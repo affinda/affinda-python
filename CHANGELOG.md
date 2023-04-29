@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Phone number details to Resume Candidate info
 - "data" to job description create
 - Custom fields to Job Descriptions
+- Add custom data to job description search results
+- Add custom data to job description search results
 
 ## [3.2.1] - 2023-03-30
 ### Changed

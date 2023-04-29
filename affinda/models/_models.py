@@ -8089,6 +8089,10 @@ class JobDescriptionSearchResult(msrest.serialization.Model):
     :vartype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
     :ivar organization_name: Required.
     :vartype organization_name: str
+    :ivar custom_data: Dictionary of
+     <components·nqbw24·schemas·customdatasearchscorecomponent·additionalproperties>.
+    :vartype custom_data: dict[str,
+     ~affinda.models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties]
     """
 
     _validation = {
@@ -8129,6 +8133,10 @@ class JobDescriptionSearchResult(msrest.serialization.Model):
             "type": "SearchExpressionSearchScoreComponent",
         },
         "organization_name": {"key": "organizationName", "type": "str"},
+        "custom_data": {
+            "key": "customData",
+            "type": "{ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties}",
+        },
     }
 
     def __init__(self, **kwargs):
@@ -8159,6 +8167,10 @@ class JobDescriptionSearchResult(msrest.serialization.Model):
         :paramtype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
         :keyword organization_name: Required.
         :paramtype organization_name: str
+        :keyword custom_data: Dictionary of
+         <components·nqbw24·schemas·customdatasearchscorecomponent·additionalproperties>.
+        :paramtype custom_data: dict[str,
+         ~affinda.models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties]
         """
         super(JobDescriptionSearchResult, self).__init__(**kwargs)
         self.identifier = kwargs["identifier"]
@@ -8174,6 +8186,7 @@ class JobDescriptionSearchResult(msrest.serialization.Model):
         self.occupation_group = kwargs.get("occupation_group", None)
         self.search_expression = kwargs["search_expression"]
         self.organization_name = kwargs["organization_name"]
+        self.custom_data = kwargs.get("custom_data", None)
 
 
 class JobTitleParsed(msrest.serialization.Model):
