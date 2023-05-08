@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Allow rejectDuplicates to be null
+- Update python_requires to be PEP compliant
+- Update python_requires to be PEP compliant
 
 ### Added
 - Phone number details to Resume Candidate info
