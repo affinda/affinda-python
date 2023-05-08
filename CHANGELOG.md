@@ -22,6 +22,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - Remove `include_child` filter from `/data_points` endpoint
 
+### Fixed
+- Update python_requires to be PEP compliant
+
 ## [4.3.2] - 2023-04-20
 ### Changed
 - rawText is now not nullable
