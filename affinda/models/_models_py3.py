@@ -3019,6 +3019,8 @@ class DocumentMeta(msrest.serialization.Model):
     :vartype tags: list[~affinda.models.Tag]
     :ivar confirmed_by:
     :vartype confirmed_by: ~affinda.models.UserNullable
+    :ivar created_by:
+    :vartype created_by: ~affinda.models.User
     :ivar source_email: If the document is created via email ingestion, this field stores the email
      file's URL.
     :vartype source_email: str
@@ -3059,6 +3061,7 @@ class DocumentMeta(msrest.serialization.Model):
         "file": {"key": "file", "type": "str"},
         "tags": {"key": "tags", "type": "[Tag]"},
         "confirmed_by": {"key": "confirmedBy", "type": "UserNullable"},
+        "created_by": {"key": "createdBy", "type": "User"},
         "source_email": {"key": "sourceEmail", "type": "str"},
     }
 
@@ -3093,6 +3096,7 @@ class DocumentMeta(msrest.serialization.Model):
         file: Optional[str] = None,
         tags: Optional[List["_models.Tag"]] = None,
         confirmed_by: Optional["_models.UserNullable"] = None,
+        created_by: Optional["_models.User"] = None,
         source_email: Optional[str] = None,
         **kwargs,
     ):
@@ -3160,6 +3164,8 @@ class DocumentMeta(msrest.serialization.Model):
         :paramtype tags: list[~affinda.models.Tag]
         :keyword confirmed_by:
         :paramtype confirmed_by: ~affinda.models.UserNullable
+        :keyword created_by:
+        :paramtype created_by: ~affinda.models.User
         :keyword source_email: If the document is created via email ingestion, this field stores the
          email file's URL.
         :paramtype source_email: str
@@ -3193,6 +3199,7 @@ class DocumentMeta(msrest.serialization.Model):
         self.file = file
         self.tags = tags
         self.confirmed_by = confirmed_by
+        self.created_by = created_by
         self.source_email = source_email
 
 

@@ -2239,6 +2239,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype tags: list[~affinda.models.Tag]
 :ivar confirmed_by:
 :vartype confirmed_by: ~affinda.models.UserNullable
+:ivar created_by:
+:vartype created_by: ~affinda.models.User
 :ivar source_email: If the document is created via email ingestion, this field stores the email
  file's URL.
 :vartype source_email: str
@@ -2288,6 +2290,7 @@ this attribute points to those child documents.
 - `file`: URL to view the file.
 - `tags`: A set of tags.
 - `confirmed_by`: 
+- `created_by`: 
 - `source_email`: If the document is created via email ingestion, this field stores the
 email file's URL.
 
