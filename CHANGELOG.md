@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [4.3.3] - 2023-05-08
 ### Added
 - Add `Organization.validationToolConfig` for configuration of the embeddable validation tool
 - Phone number details to Resume Candidate info
@@ -21,9 +23,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 - Remove `include_child` filter from `/data_points` endpoint
-
-### Fixed
-- Update python_requires to be PEP compliant
 
 ## [4.3.2] - 2023-04-20
 ### Changed
