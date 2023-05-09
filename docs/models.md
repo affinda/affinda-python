@@ -2239,6 +2239,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype tags: list[~affinda.models.Tag]
 :ivar confirmed_by:
 :vartype confirmed_by: ~affinda.models.UserNullable
+:ivar created_by:
+:vartype created_by: ~affinda.models.User
 :ivar source_email: If the document is created via email ingestion, this field stores the email
  file's URL.
 :vartype source_email: str
@@ -2288,6 +2290,7 @@ this attribute points to those child documents.
 - `file`: URL to view the file.
 - `tags`: A set of tags.
 - `confirmed_by`: 
+- `created_by`: 
 - `source_email`: If the document is created via email ingestion, this field stores the
 email file's URL.
 
@@ -6337,10 +6340,35 @@ class InvoiceDataTablesItem(msrest.serialization.Model)
 
 InvoiceDataTablesItem.
 
+:ivar parsed:
+:vartype parsed: list[~affinda.models.InvoiceDataTablesPropertiesItemsItem]
+
+<a id="models._models.InvoiceDataTablesItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `parsed`: 
+
+<a id="models._models.InvoiceDataTablesPropertiesItemsItem"></a>
+
+## InvoiceDataTablesPropertiesItemsItem Objects
+
+```python
+class InvoiceDataTablesPropertiesItemsItem(msrest.serialization.Model)
+```
+
+InvoiceDataTablesPropertiesItemsItem.
+
 :ivar rows:
 :vartype rows: list[~affinda.models.RowAnnotation]
 
-<a id="models._models.InvoiceDataTablesItem.__init__"></a>
+<a id="models._models.InvoiceDataTablesPropertiesItemsItem.__init__"></a>
 
 #### \_\_init\_\_
 

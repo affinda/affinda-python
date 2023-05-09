@@ -147,6 +147,7 @@ try:
     from ._models_py3 import InvoiceDataSupplierVat
     from ._models_py3 import InvoiceDataSupplierWebsite
     from ._models_py3 import InvoiceDataTablesItem
+    from ._models_py3 import InvoiceDataTablesPropertiesItemsItem
     from ._models_py3 import JobDescription
     from ._models_py3 import JobDescriptionData
     from ._models_py3 import JobDescriptionSearch
@@ -449,6 +450,7 @@ except (SyntaxError, ImportError):
     from ._models import InvoiceDataSupplierVat  # type: ignore
     from ._models import InvoiceDataSupplierWebsite  # type: ignore
     from ._models import InvoiceDataTablesItem  # type: ignore
+    from ._models import InvoiceDataTablesPropertiesItemsItem  # type: ignore
     from ._models import JobDescription  # type: ignore
     from ._models import JobDescriptionData  # type: ignore
     from ._models import JobDescriptionSearch  # type: ignore
@@ -750,6 +752,7 @@ __all__ = [
     "InvoiceDataSupplierVat",
     "InvoiceDataSupplierWebsite",
     "InvoiceDataTablesItem",
+    "InvoiceDataTablesPropertiesItemsItem",
     "JobDescription",
     "JobDescriptionData",
     "JobDescriptionSearch",
