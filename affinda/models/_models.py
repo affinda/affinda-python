@@ -3912,6 +3912,138 @@ class FieldGroup(msrest.serialization.Model):
         self.fields = kwargs["fields"]
 
 
+class FloatAnnotation(Annotation):
+    """FloatAnnotation.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar id: Required. Annotation's ID.
+    :vartype id: int
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
+    :vartype rectangle: ~affinda.models.Rectangle
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
+    :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
+    :ivar page_index: Required. The page number within the document, starting from 0.
+    :vartype page_index: int
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
+    :vartype raw: str
+    :ivar confidence: Required. The overall confidence that the model's prediction is correct.
+    :vartype confidence: float
+    :ivar classification_confidence: Required. The model's confidence that the text has been
+     classified correctly.
+    :vartype classification_confidence: float
+    :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+     the confidence that the text in the image has been correctly read by the model.
+    :vartype text_extraction_confidence: float
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
+    :vartype is_verified: bool
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
+    :vartype is_auto_verified: bool
+    :ivar data_point: Required. Data point's identifier.
+    :vartype data_point: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parsed:
+    :vartype parsed: float
+    """
+
+    _validation = {
+        "id": {"required": True},
+        "rectangle": {"required": True},
+        "rectangles": {"required": True},
+        "page_index": {"required": True},
+        "raw": {"required": True},
+        "confidence": {"required": True},
+        "classification_confidence": {"required": True},
+        "text_extraction_confidence": {"required": True},
+        "is_verified": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
+    }
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "id": {"key": "id", "type": "int"},
+        "rectangle": {"key": "rectangle", "type": "Rectangle"},
+        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "raw": {"key": "raw", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
+        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
+        "parsed": {"key": "parsed", "type": "float"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword id: Required. Annotation's ID.
+        :paramtype id: int
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
+        :paramtype rectangle: ~affinda.models.Rectangle
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
+        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
+        :keyword page_index: Required. The page number within the document, starting from 0.
+        :paramtype page_index: int
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
+        :paramtype raw: str
+        :keyword confidence: Required. The overall confidence that the model's prediction is correct.
+        :paramtype confidence: float
+        :keyword classification_confidence: Required. The model's confidence that the text has been
+         classified correctly.
+        :paramtype classification_confidence: float
+        :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
+         is the confidence that the text in the image has been correctly read by the model.
+        :paramtype text_extraction_confidence: float
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
+        :paramtype is_verified: bool
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
+        :paramtype is_auto_verified: bool
+        :keyword data_point: Required. Data point's identifier.
+        :paramtype data_point: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parsed:
+        :paramtype parsed: float
+        """
+        super(FloatAnnotation, self).__init__(**kwargs)
+        self.parsed = kwargs.get("parsed", None)
+
+
 class Get200ApplicationJsonPropertiesItemsItem(msrest.serialization.Model):
     """Get200ApplicationJsonPropertiesItemsItem.
 
@@ -4253,7 +4385,7 @@ class InvoiceData(msrest.serialization.Model):
     """InvoiceData.
 
     :ivar tables:
-    :vartype tables: list[~affinda.models.InvoiceDataTablesItem]
+    :vartype tables: list[~affinda.models.TableAnnotation]
     :ivar invoice_date:
     :vartype invoice_date: ~affinda.models.DateAnnotation
     :ivar invoice_order_date:
@@ -4331,7 +4463,7 @@ class InvoiceData(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        "tables": {"key": "tables", "type": "[InvoiceDataTablesItem]"},
+        "tables": {"key": "tables", "type": "[TableAnnotation]"},
         "invoice_date": {"key": "invoiceDate", "type": "DateAnnotation"},
         "invoice_order_date": {"key": "invoiceOrderDate", "type": "DateAnnotation"},
         "payment_date_due": {"key": "paymentDateDue", "type": "DateAnnotation"},
@@ -4416,7 +4548,7 @@ class InvoiceData(msrest.serialization.Model):
     def __init__(self, **kwargs):
         """
         :keyword tables:
-        :paramtype tables: list[~affinda.models.InvoiceDataTablesItem]
+        :paramtype tables: list[~affinda.models.TableAnnotation]
         :keyword invoice_date:
         :paramtype invoice_date: ~affinda.models.DateAnnotation
         :keyword invoice_order_date:
@@ -8984,46 +9116,6 @@ class InvoiceDataSupplierWebsite(
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
         self.parsed = kwargs.get("parsed", None)
-
-
-class InvoiceDataTablesItem(msrest.serialization.Model):
-    """InvoiceDataTablesItem.
-
-    :ivar parsed:
-    :vartype parsed: list[~affinda.models.InvoiceDataTablesPropertiesItemsItem]
-    """
-
-    _attribute_map = {
-        "parsed": {"key": "parsed", "type": "[InvoiceDataTablesPropertiesItemsItem]"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword parsed:
-        :paramtype parsed: list[~affinda.models.InvoiceDataTablesPropertiesItemsItem]
-        """
-        super(InvoiceDataTablesItem, self).__init__(**kwargs)
-        self.parsed = kwargs.get("parsed", None)
-
-
-class InvoiceDataTablesPropertiesItemsItem(msrest.serialization.Model):
-    """InvoiceDataTablesPropertiesItemsItem.
-
-    :ivar rows:
-    :vartype rows: list[~affinda.models.RowAnnotation]
-    """
-
-    _attribute_map = {
-        "rows": {"key": "rows", "type": "[RowAnnotation]"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword rows:
-        :paramtype rows: list[~affinda.models.RowAnnotation]
-        """
-        super(InvoiceDataTablesPropertiesItemsItem, self).__init__(**kwargs)
-        self.rows = kwargs.get("rows", None)
 
 
 class JobDescription(Document):
@@ -15254,96 +15346,223 @@ class ResumeSkillSourcesItem(msrest.serialization.Model):
         self.position = kwargs.get("position", None)
 
 
-class RowAnnotation(msrest.serialization.Model):
+class RowAnnotation(Annotation):
     """RowAnnotation.
 
-    :ivar code:
-    :vartype code: str
-    :ivar date:
-    :vartype date: str
-    :ivar description:
-    :vartype description: str
-    :ivar unit:
-    :vartype unit: str
-    :ivar unit_price:
-    :vartype unit_price: float
-    :ivar quantity:
-    :vartype quantity: float
-    :ivar discount:
-    :vartype discount: str
-    :ivar base_total:
-    :vartype base_total: float
-    :ivar tax_rate:
-    :vartype tax_rate: str
-    :ivar tax_total:
-    :vartype tax_total: float
-    :ivar total:
-    :vartype total: float
-    :ivar other:
-    :vartype other: str
-    :ivar custom_fields: Dictionary of :code:`<any>`.
-    :vartype custom_fields: dict[str, any]
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar id: Required. Annotation's ID.
+    :vartype id: int
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
+    :vartype rectangle: ~affinda.models.Rectangle
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
+    :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
+    :ivar page_index: Required. The page number within the document, starting from 0.
+    :vartype page_index: int
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
+    :vartype raw: str
+    :ivar confidence: Required. The overall confidence that the model's prediction is correct.
+    :vartype confidence: float
+    :ivar classification_confidence: Required. The model's confidence that the text has been
+     classified correctly.
+    :vartype classification_confidence: float
+    :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+     the confidence that the text in the image has been correctly read by the model.
+    :vartype text_extraction_confidence: float
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
+    :vartype is_verified: bool
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
+    :vartype is_auto_verified: bool
+    :ivar data_point: Required. Data point's identifier.
+    :vartype data_point: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar parsed:
+    :vartype parsed: ~affinda.models.RowAnnotationParsed
     """
 
+    _validation = {
+        "id": {"required": True},
+        "rectangle": {"required": True},
+        "rectangles": {"required": True},
+        "page_index": {"required": True},
+        "raw": {"required": True},
+        "confidence": {"required": True},
+        "classification_confidence": {"required": True},
+        "text_extraction_confidence": {"required": True},
+        "is_verified": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
+    }
+
     _attribute_map = {
-        "code": {"key": "code", "type": "str"},
-        "date": {"key": "date", "type": "str"},
-        "description": {"key": "description", "type": "str"},
-        "unit": {"key": "unit", "type": "str"},
-        "unit_price": {"key": "unitPrice", "type": "float"},
-        "quantity": {"key": "quantity", "type": "float"},
-        "discount": {"key": "discount", "type": "str"},
-        "base_total": {"key": "baseTotal", "type": "float"},
-        "tax_rate": {"key": "taxRate", "type": "str"},
-        "tax_total": {"key": "taxTotal", "type": "float"},
-        "total": {"key": "total", "type": "float"},
-        "other": {"key": "other", "type": "str"},
-        "custom_fields": {"key": "customFields", "type": "{object}"},
+        "id": {"key": "id", "type": "int"},
+        "rectangle": {"key": "rectangle", "type": "Rectangle"},
+        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "raw": {"key": "raw", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
+        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
+        "additional_properties": {"key": "", "type": "{object}"},
+        "parsed": {"key": "parsed", "type": "RowAnnotationParsed"},
     }
 
     def __init__(self, **kwargs):
         """
-        :keyword code:
-        :paramtype code: str
-        :keyword date:
-        :paramtype date: str
-        :keyword description:
-        :paramtype description: str
-        :keyword unit:
-        :paramtype unit: str
-        :keyword unit_price:
-        :paramtype unit_price: float
-        :keyword quantity:
-        :paramtype quantity: float
-        :keyword discount:
-        :paramtype discount: str
-        :keyword base_total:
-        :paramtype base_total: float
-        :keyword tax_rate:
-        :paramtype tax_rate: str
-        :keyword tax_total:
-        :paramtype tax_total: float
-        :keyword total:
-        :paramtype total: float
-        :keyword other:
-        :paramtype other: str
-        :keyword custom_fields: Dictionary of :code:`<any>`.
-        :paramtype custom_fields: dict[str, any]
+        :keyword id: Required. Annotation's ID.
+        :paramtype id: int
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
+        :paramtype rectangle: ~affinda.models.Rectangle
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
+        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
+        :keyword page_index: Required. The page number within the document, starting from 0.
+        :paramtype page_index: int
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
+        :paramtype raw: str
+        :keyword confidence: Required. The overall confidence that the model's prediction is correct.
+        :paramtype confidence: float
+        :keyword classification_confidence: Required. The model's confidence that the text has been
+         classified correctly.
+        :paramtype classification_confidence: float
+        :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
+         is the confidence that the text in the image has been correctly read by the model.
+        :paramtype text_extraction_confidence: float
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
+        :paramtype is_verified: bool
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
+        :paramtype is_auto_verified: bool
+        :keyword data_point: Required. Data point's identifier.
+        :paramtype data_point: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword parsed:
+        :paramtype parsed: ~affinda.models.RowAnnotationParsed
         """
         super(RowAnnotation, self).__init__(**kwargs)
-        self.code = kwargs.get("code", None)
-        self.date = kwargs.get("date", None)
-        self.description = kwargs.get("description", None)
-        self.unit = kwargs.get("unit", None)
-        self.unit_price = kwargs.get("unit_price", None)
-        self.quantity = kwargs.get("quantity", None)
-        self.discount = kwargs.get("discount", None)
-        self.base_total = kwargs.get("base_total", None)
-        self.tax_rate = kwargs.get("tax_rate", None)
-        self.tax_total = kwargs.get("tax_total", None)
-        self.total = kwargs.get("total", None)
-        self.other = kwargs.get("other", None)
-        self.custom_fields = kwargs.get("custom_fields", None)
+        self.additional_properties = kwargs.get("additional_properties", None)
+        self.parsed = kwargs.get("parsed", None)
+
+
+class RowAnnotationParsed(msrest.serialization.Model):
+    """RowAnnotationParsed.
+
+    :ivar item_code:
+    :vartype item_code: ~affinda.models.TextAnnotation
+    :ivar item_date:
+    :vartype item_date: ~affinda.models.DateAnnotation
+    :ivar item_description:
+    :vartype item_description: ~affinda.models.TextAnnotation
+    :ivar item_unit:
+    :vartype item_unit: ~affinda.models.TextAnnotation
+    :ivar item_unit_price:
+    :vartype item_unit_price: ~affinda.models.FloatAnnotation
+    :ivar item_quantity:
+    :vartype item_quantity: ~affinda.models.FloatAnnotation
+    :ivar item_discount:
+    :vartype item_discount: ~affinda.models.TextAnnotation
+    :ivar item_base_total:
+    :vartype item_base_total: ~affinda.models.FloatAnnotation
+    :ivar item_tax_rate:
+    :vartype item_tax_rate: ~affinda.models.TextAnnotation
+    :ivar item_tax_total:
+    :vartype item_tax_total: ~affinda.models.TextAnnotation
+    :ivar item_total:
+    :vartype item_total: ~affinda.models.FloatAnnotation
+    :ivar item_other:
+    :vartype item_other: ~affinda.models.TextAnnotation
+    """
+
+    _attribute_map = {
+        "item_code": {"key": "itemCode", "type": "TextAnnotation"},
+        "item_date": {"key": "itemDate", "type": "DateAnnotation"},
+        "item_description": {"key": "itemDescription", "type": "TextAnnotation"},
+        "item_unit": {"key": "itemUnit", "type": "TextAnnotation"},
+        "item_unit_price": {"key": "itemUnitPrice", "type": "FloatAnnotation"},
+        "item_quantity": {"key": "itemQuantity", "type": "FloatAnnotation"},
+        "item_discount": {"key": "itemDiscount", "type": "TextAnnotation"},
+        "item_base_total": {"key": "itemBaseTotal", "type": "FloatAnnotation"},
+        "item_tax_rate": {"key": "itemTaxRate", "type": "TextAnnotation"},
+        "item_tax_total": {"key": "itemTaxTotal", "type": "TextAnnotation"},
+        "item_total": {"key": "itemTotal", "type": "FloatAnnotation"},
+        "item_other": {"key": "itemOther", "type": "TextAnnotation"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword item_code:
+        :paramtype item_code: ~affinda.models.TextAnnotation
+        :keyword item_date:
+        :paramtype item_date: ~affinda.models.DateAnnotation
+        :keyword item_description:
+        :paramtype item_description: ~affinda.models.TextAnnotation
+        :keyword item_unit:
+        :paramtype item_unit: ~affinda.models.TextAnnotation
+        :keyword item_unit_price:
+        :paramtype item_unit_price: ~affinda.models.FloatAnnotation
+        :keyword item_quantity:
+        :paramtype item_quantity: ~affinda.models.FloatAnnotation
+        :keyword item_discount:
+        :paramtype item_discount: ~affinda.models.TextAnnotation
+        :keyword item_base_total:
+        :paramtype item_base_total: ~affinda.models.FloatAnnotation
+        :keyword item_tax_rate:
+        :paramtype item_tax_rate: ~affinda.models.TextAnnotation
+        :keyword item_tax_total:
+        :paramtype item_tax_total: ~affinda.models.TextAnnotation
+        :keyword item_total:
+        :paramtype item_total: ~affinda.models.FloatAnnotation
+        :keyword item_other:
+        :paramtype item_other: ~affinda.models.TextAnnotation
+        """
+        super(RowAnnotationParsed, self).__init__(**kwargs)
+        self.item_code = kwargs.get("item_code", None)
+        self.item_date = kwargs.get("item_date", None)
+        self.item_description = kwargs.get("item_description", None)
+        self.item_unit = kwargs.get("item_unit", None)
+        self.item_unit_price = kwargs.get("item_unit_price", None)
+        self.item_quantity = kwargs.get("item_quantity", None)
+        self.item_discount = kwargs.get("item_discount", None)
+        self.item_base_total = kwargs.get("item_base_total", None)
+        self.item_tax_rate = kwargs.get("item_tax_rate", None)
+        self.item_tax_total = kwargs.get("item_tax_total", None)
+        self.item_total = kwargs.get("item_total", None)
+        self.item_other = kwargs.get("item_other", None)
 
 
 class SearchConfigAction(msrest.serialization.Model):
@@ -15586,6 +15805,158 @@ class SkillsSearchScoreComponent(msrest.serialization.Model):
         self.value = kwargs.get("value", None)
         self.label = kwargs["label"]
         self.score = kwargs.get("score", None)
+
+
+class TableAnnotation(Annotation):
+    """TableAnnotation.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar id: Required. Annotation's ID.
+    :vartype id: int
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
+    :vartype rectangle: ~affinda.models.Rectangle
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
+    :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Uniquely identify a document.
+    :vartype document: str
+    :ivar page_index: Required. The page number within the document, starting from 0.
+    :vartype page_index: int
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
+    :vartype raw: str
+    :ivar confidence: Required. The overall confidence that the model's prediction is correct.
+    :vartype confidence: float
+    :ivar classification_confidence: Required. The model's confidence that the text has been
+     classified correctly.
+    :vartype classification_confidence: float
+    :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+     the confidence that the text in the image has been correctly read by the model.
+    :vartype text_extraction_confidence: float
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
+    :vartype is_verified: bool
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
+    :vartype is_auto_verified: bool
+    :ivar data_point: Required. Data point's identifier.
+    :vartype data_point: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parsed:
+    :vartype parsed: ~affinda.models.TableAnnotationParsed
+    """
+
+    _validation = {
+        "id": {"required": True},
+        "rectangle": {"required": True},
+        "rectangles": {"required": True},
+        "page_index": {"required": True},
+        "raw": {"required": True},
+        "confidence": {"required": True},
+        "classification_confidence": {"required": True},
+        "text_extraction_confidence": {"required": True},
+        "is_verified": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
+    }
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "id": {"key": "id", "type": "int"},
+        "rectangle": {"key": "rectangle", "type": "Rectangle"},
+        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "raw": {"key": "raw", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
+        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
+        "parsed": {"key": "parsed", "type": "TableAnnotationParsed"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword id: Required. Annotation's ID.
+        :paramtype id: int
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
+        :paramtype rectangle: ~affinda.models.Rectangle
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
+        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Uniquely identify a document.
+        :paramtype document: str
+        :keyword page_index: Required. The page number within the document, starting from 0.
+        :paramtype page_index: int
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
+        :paramtype raw: str
+        :keyword confidence: Required. The overall confidence that the model's prediction is correct.
+        :paramtype confidence: float
+        :keyword classification_confidence: Required. The model's confidence that the text has been
+         classified correctly.
+        :paramtype classification_confidence: float
+        :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
+         is the confidence that the text in the image has been correctly read by the model.
+        :paramtype text_extraction_confidence: float
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
+        :paramtype is_verified: bool
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
+        :paramtype is_auto_verified: bool
+        :keyword data_point: Required. Data point's identifier.
+        :paramtype data_point: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
+         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parsed:
+        :paramtype parsed: ~affinda.models.TableAnnotationParsed
+        """
+        super(TableAnnotation, self).__init__(**kwargs)
+        self.parsed = kwargs.get("parsed", None)
+
+
+class TableAnnotationParsed(msrest.serialization.Model):
+    """TableAnnotationParsed.
+
+    :ivar rows:
+    :vartype rows: list[~affinda.models.RowAnnotation]
+    """
+
+    _attribute_map = {
+        "rows": {"key": "rows", "type": "[RowAnnotation]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword rows:
+        :paramtype rows: list[~affinda.models.RowAnnotation]
+        """
+        super(TableAnnotationParsed, self).__init__(**kwargs)
+        self.rows = kwargs.get("rows", None)
 
 
 class Tag(msrest.serialization.Model):

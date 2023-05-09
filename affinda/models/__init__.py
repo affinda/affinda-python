@@ -108,6 +108,7 @@ try:
     from ._models_py3 import ExtractorUpdate
     from ._models_py3 import Field
     from ._models_py3 import FieldGroup
+    from ._models_py3 import FloatAnnotation
     from ._models_py3 import Get200ApplicationJsonPropertiesItemsItem
     from ._models_py3 import IndexRequestBody
     from ._models_py3 import Invitation
@@ -146,8 +147,6 @@ try:
     from ._models_py3 import InvoiceDataSupplierPhoneNumber
     from ._models_py3 import InvoiceDataSupplierVat
     from ._models_py3 import InvoiceDataSupplierWebsite
-    from ._models_py3 import InvoiceDataTablesItem
-    from ._models_py3 import InvoiceDataTablesPropertiesItemsItem
     from ._models_py3 import JobDescription
     from ._models_py3 import JobDescriptionData
     from ._models_py3 import JobDescriptionSearch
@@ -301,11 +300,14 @@ try:
     from ._models_py3 import ResumeSkill
     from ._models_py3 import ResumeSkillSourcesItem
     from ._models_py3 import RowAnnotation
+    from ._models_py3 import RowAnnotationParsed
     from ._models_py3 import SearchConfigAction
     from ._models_py3 import SearchExpressionSearchScoreComponent
     from ._models_py3 import SearchParametersCustomData
     from ._models_py3 import SkillAnnotation
     from ._models_py3 import SkillsSearchScoreComponent
+    from ._models_py3 import TableAnnotation
+    from ._models_py3 import TableAnnotationParsed
     from ._models_py3 import Tag
     from ._models_py3 import TagCreate
     from ._models_py3 import TagUpdate
@@ -411,6 +413,7 @@ except (SyntaxError, ImportError):
     from ._models import ExtractorUpdate  # type: ignore
     from ._models import Field  # type: ignore
     from ._models import FieldGroup  # type: ignore
+    from ._models import FloatAnnotation  # type: ignore
     from ._models import Get200ApplicationJsonPropertiesItemsItem  # type: ignore
     from ._models import IndexRequestBody  # type: ignore
     from ._models import Invitation  # type: ignore
@@ -449,8 +452,6 @@ except (SyntaxError, ImportError):
     from ._models import InvoiceDataSupplierPhoneNumber  # type: ignore
     from ._models import InvoiceDataSupplierVat  # type: ignore
     from ._models import InvoiceDataSupplierWebsite  # type: ignore
-    from ._models import InvoiceDataTablesItem  # type: ignore
-    from ._models import InvoiceDataTablesPropertiesItemsItem  # type: ignore
     from ._models import JobDescription  # type: ignore
     from ._models import JobDescriptionData  # type: ignore
     from ._models import JobDescriptionSearch  # type: ignore
@@ -570,11 +571,14 @@ except (SyntaxError, ImportError):
     from ._models import ResumeSkill  # type: ignore
     from ._models import ResumeSkillSourcesItem  # type: ignore
     from ._models import RowAnnotation  # type: ignore
+    from ._models import RowAnnotationParsed  # type: ignore
     from ._models import SearchConfigAction  # type: ignore
     from ._models import SearchExpressionSearchScoreComponent  # type: ignore
     from ._models import SearchParametersCustomData  # type: ignore
     from ._models import SkillAnnotation  # type: ignore
     from ._models import SkillsSearchScoreComponent  # type: ignore
+    from ._models import TableAnnotation  # type: ignore
+    from ._models import TableAnnotationParsed  # type: ignore
     from ._models import Tag  # type: ignore
     from ._models import TagCreate  # type: ignore
     from ._models import TagUpdate  # type: ignore
@@ -713,6 +717,7 @@ __all__ = [
     "ExtractorUpdate",
     "Field",
     "FieldGroup",
+    "FloatAnnotation",
     "Get200ApplicationJsonPropertiesItemsItem",
     "IndexRequestBody",
     "Invitation",
@@ -751,8 +756,6 @@ __all__ = [
     "InvoiceDataSupplierPhoneNumber",
     "InvoiceDataSupplierVat",
     "InvoiceDataSupplierWebsite",
-    "InvoiceDataTablesItem",
-    "InvoiceDataTablesPropertiesItemsItem",
     "JobDescription",
     "JobDescriptionData",
     "JobDescriptionSearch",
@@ -872,11 +875,14 @@ __all__ = [
     "ResumeSkill",
     "ResumeSkillSourcesItem",
     "RowAnnotation",
+    "RowAnnotationParsed",
     "SearchConfigAction",
     "SearchExpressionSearchScoreComponent",
     "SearchParametersCustomData",
     "SkillAnnotation",
     "SkillsSearchScoreComponent",
+    "TableAnnotation",
+    "TableAnnotationParsed",
     "Tag",
     "TagCreate",
     "TagUpdate",
