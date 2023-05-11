@@ -546,6 +546,58 @@ Deletes the specified document from the database.
 
 `None`: None, or the result of cls(response)
 
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.batch_add_tag"></a>
+
+#### batch\_add\_tag
+
+```python
+def batch_add_tag(body, **kwargs)
+```
+
+Add a tag to documents.
+
+Add a tag to documents.
+Tags are used to group documents together.
+Tags can be used to filter documents.
+
+**Arguments**:
+
+- `body` (`~affinda.models.BatchAddTagRequest`): Specify the tag and the documents to tag.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.batch_remove_tag"></a>
+
+#### batch\_remove\_tag
+
+```python
+def batch_remove_tag(body, **kwargs)
+```
+
+Remove a tag from documents.
+
+Remove a tag from documents.
+
+**Arguments**:
+
+- `body` (`~affinda.models.BatchRemoveTagRequest`): Specify the tag and the documents to remove the tag from.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.edit_document_pages"></a>
 
 #### edit\_document\_pages
@@ -557,7 +609,8 @@ def edit_document_pages(identifier, body, **kwargs)
 Edit pages of a document.
 
 Split / merge / rotate / delete pages of a document.
-Documents with multiple pages can be  into multiple documents, or merged into one document.
+Documents with multiple pages can be splitted into multiple documents, or merged into one
+document.
 Each page can also be rotated. Edit operations will trigger re-parsing of the documents
 involved.
 

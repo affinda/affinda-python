@@ -11,6 +11,8 @@ try:
     from ._models_py3 import AnnotationCreate
     from ._models_py3 import AnnotationUpdate
     from ._models_py3 import BaseExtractor
+    from ._models_py3 import BatchAddTagRequest
+    from ._models_py3 import BatchRemoveTagRequest
     from ._models_py3 import Collection
     from ._models_py3 import CollectionCreate
     from ._models_py3 import CollectionUpdate
@@ -336,6 +338,8 @@ except (SyntaxError, ImportError):
     from ._models import AnnotationCreate  # type: ignore
     from ._models import AnnotationUpdate  # type: ignore
     from ._models import BaseExtractor  # type: ignore
+    from ._models import BatchAddTagRequest  # type: ignore
+    from ._models import BatchRemoveTagRequest  # type: ignore
     from ._models import Collection  # type: ignore
     from ._models import CollectionCreate  # type: ignore
     from ._models import CollectionUpdate  # type: ignore
@@ -640,6 +644,8 @@ __all__ = [
     "AnnotationCreate",
     "AnnotationUpdate",
     "BaseExtractor",
+    "BatchAddTagRequest",
+    "BatchRemoveTagRequest",
     "Collection",
     "CollectionCreate",
     "CollectionUpdate",

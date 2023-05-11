@@ -396,6 +396,134 @@ for document_meta in res:
     print(document_meta.as_dict())
 ```
 
+Document API - Tag
+------------------
+
+### batchAddTag - Add a tag to documents
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import BatchAddTagRequest
+
+token = "REPLACE_TOKEN"
+document_1 = "REPLACE_DOCUMENT_IDENTIFIER_1"
+document_2 = "REPLACE_DOCUMENT_IDENTIFIER_2"
+tag_id = "REPLACE_TAG_ID"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+body = BatchAddTagRequest(
+    identifiers=[document_1, document_2],
+    tag=tag_id,
+)
+
+client.batch_add_tag(body=body)
+```
+
+### batchRemoveTag - Remove a tag from documents
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import BatchRemoveTagRequest
+
+token = "REPLACE_TOKEN"
+document_1 = "REPLACE_DOCUMENT_IDENTIFIER_1"
+document_2 = "REPLACE_DOCUMENT_IDENTIFIER_2"
+tag_id = "REPLACE_TAG_ID"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+body = BatchRemoveTagRequest(
+    identifiers=[document_1, document_2],
+    tag=tag_id,
+)
+
+client.batch_remove_tag(body=body)
+```
+
+### getAllTags - Get list of all tags
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+workspace_identifier = "REPLACE_WORKSPACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+tags = client.get_all_tags(workspace_identifier)
+for tag in tags:
+    print(tag.as_dict())
+```
+
+### createTag - Create a tag
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import TagCreate
+
+token = "REPLACE_TOKEN"
+workspace_identifier = "REPLACE_WORKSPACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+body = TagCreate(name="My Tag", workspace=workspace_identifier)
+response = client.create_tag(body)
+
+print(response.as_dict())
+```
+
+### getTag - Get specific tag
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+id = "REPLACE_ID"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+tag = client.get_tag(id)
+print(tag.as_dict())
+```
+
+### updateTag - Update a tag
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import TagUpdate
+
+token = "REPLACE_TOKEN"
+id = "REPLACE_ID"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+body = TagUpdate(name="My New Tag")
+response = client.update_tag(id, body)
+
+print(response.as_dict())
+```
+
+### deleteTag - Delete an tag
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+id = "REPLACE_ID"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+client.delete_tag(id)
+```
+
 Document API - Extractor
 ------------------------
 
@@ -800,90 +928,6 @@ client = AffindaAPI(credential=credential)
 
 body = [1, 2, 3]  # List of annotation IDs
 client.batch_delete_annotations(body)
-```
-
-Document API - Tag
-------------------
-
-### getAllTags - Get list of all tags
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-workspace_identifier = "REPLACE_WORKSPACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-tags = client.get_all_tags(workspace_identifier)
-for tag in tags:
-    print(tag.as_dict())
-```
-
-### createTag - Create a tag
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import TagCreate
-
-token = "REPLACE_TOKEN"
-workspace_identifier = "REPLACE_WORKSPACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-body = TagCreate(name="My Tag", workspace=workspace_identifier)
-response = client.create_tag(body)
-
-print(response.as_dict())
-```
-
-### getTag - Get specific tag
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-id = "REPLACE_ID"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-tag = client.get_tag(id)
-print(tag.as_dict())
-```
-
-### updateTag - Update a tag
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import TagUpdate
-
-token = "REPLACE_TOKEN"
-id = "REPLACE_ID"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-body = TagUpdate(name="My New Tag")
-response = client.update_tag(id, body)
-
-print(response.as_dict())
-```
-
-### deleteTag - Delete an tag
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-id = "REPLACE_ID"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-client.delete_tag(id)
 ```
 
 Organization API - Organization

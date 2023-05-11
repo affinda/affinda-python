@@ -316,6 +316,62 @@ def __init__(**kwargs)
 - `is_custom`: 
 - `created_dt`: 
 
+<a id="models._models.BatchAddTagRequest"></a>
+
+## BatchAddTagRequest Objects
+
+```python
+class BatchAddTagRequest(msrest.serialization.Model)
+```
+
+BatchAddTagRequest.
+
+:ivar identifiers: List of documents to tag.
+:vartype identifiers: list[str]
+:ivar tag: The tag's ID.
+:vartype tag: int
+
+<a id="models._models.BatchAddTagRequest.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifiers`: List of documents to tag.
+- `tag`: The tag's ID.
+
+<a id="models._models.BatchRemoveTagRequest"></a>
+
+## BatchRemoveTagRequest Objects
+
+```python
+class BatchRemoveTagRequest(msrest.serialization.Model)
+```
+
+BatchRemoveTagRequest.
+
+:ivar identifiers: List of documents to remove tag from.
+:vartype identifiers: list[str]
+:ivar tag: The tag's ID.
+:vartype tag: int
+
+<a id="models._models.BatchRemoveTagRequest.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifiers`: List of documents to remove tag from.
+- `tag`: The tag's ID.
+
 <a id="models._models.Collection"></a>
 
 ## Collection Objects
@@ -11236,6 +11292,9 @@ RowAnnotation.
 
 All required parameters must be populated in order to send to Azure.
 
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
 :ivar id: Required. Annotation's ID.
 :vartype id: int
 :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
@@ -11272,9 +11331,6 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
-:ivar additional_properties: Unmatched properties from the message are deserialized to this
- collection.
-:vartype additional_properties: dict[str, any]
 :ivar parsed:
 :vartype parsed: ~affinda.models.RowAnnotationParsed
 
@@ -11288,6 +11344,8 @@ def __init__(**kwargs)
 
 **Arguments**:
 
+- `additional_properties`: Unmatched properties from the message are deserialized to this
+collection.
 - `id`: Required. Annotation's ID.
 - `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
 data.
@@ -11311,8 +11369,6 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
-- `additional_properties`: Unmatched properties from the message are deserialized to this
-collection.
 - `parsed`: 
 
 <a id="models._models.RowAnnotationParsed"></a>
@@ -11344,7 +11400,7 @@ RowAnnotationParsed.
 :ivar item_tax_rate:
 :vartype item_tax_rate: ~affinda.models.TextAnnotation
 :ivar item_tax_total:
-:vartype item_tax_total: ~affinda.models.TextAnnotation
+:vartype item_tax_total: ~affinda.models.FloatAnnotation
 :ivar item_total:
 :vartype item_total: ~affinda.models.FloatAnnotation
 :ivar item_other:

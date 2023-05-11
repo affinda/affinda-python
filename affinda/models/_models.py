@@ -452,6 +452,58 @@ class BaseExtractor(msrest.serialization.Model):
         self.created_dt = kwargs.get("created_dt", None)
 
 
+class BatchAddTagRequest(msrest.serialization.Model):
+    """BatchAddTagRequest.
+
+    :ivar identifiers: List of documents to tag.
+    :vartype identifiers: list[str]
+    :ivar tag: The tag's ID.
+    :vartype tag: int
+    """
+
+    _attribute_map = {
+        "identifiers": {"key": "identifiers", "type": "[str]"},
+        "tag": {"key": "tag", "type": "int"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifiers: List of documents to tag.
+        :paramtype identifiers: list[str]
+        :keyword tag: The tag's ID.
+        :paramtype tag: int
+        """
+        super(BatchAddTagRequest, self).__init__(**kwargs)
+        self.identifiers = kwargs.get("identifiers", None)
+        self.tag = kwargs.get("tag", None)
+
+
+class BatchRemoveTagRequest(msrest.serialization.Model):
+    """BatchRemoveTagRequest.
+
+    :ivar identifiers: List of documents to remove tag from.
+    :vartype identifiers: list[str]
+    :ivar tag: The tag's ID.
+    :vartype tag: int
+    """
+
+    _attribute_map = {
+        "identifiers": {"key": "identifiers", "type": "[str]"},
+        "tag": {"key": "tag", "type": "int"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifiers: List of documents to remove tag from.
+        :paramtype identifiers: list[str]
+        :keyword tag: The tag's ID.
+        :paramtype tag: int
+        """
+        super(BatchRemoveTagRequest, self).__init__(**kwargs)
+        self.identifiers = kwargs.get("identifiers", None)
+        self.tag = kwargs.get("tag", None)
+
+
 class Collection(msrest.serialization.Model):
     """Collection.
 
@@ -15351,6 +15403,9 @@ class RowAnnotation(Annotation):
 
     All required parameters must be populated in order to send to Azure.
 
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
     :ivar id: Required. Annotation's ID.
     :vartype id: int
     :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
@@ -15387,9 +15442,6 @@ class RowAnnotation(Annotation):
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
-    :ivar additional_properties: Unmatched properties from the message are deserialized to this
-     collection.
-    :vartype additional_properties: dict[str, any]
     :ivar parsed:
     :vartype parsed: ~affinda.models.RowAnnotationParsed
     """
@@ -15411,6 +15463,7 @@ class RowAnnotation(Annotation):
     }
 
     _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
         "id": {"key": "id", "type": "int"},
         "rectangle": {"key": "rectangle", "type": "Rectangle"},
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
@@ -15425,12 +15478,14 @@ class RowAnnotation(Annotation):
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
-        "additional_properties": {"key": "", "type": "{object}"},
         "parsed": {"key": "parsed", "type": "RowAnnotationParsed"},
     }
 
     def __init__(self, **kwargs):
         """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
         :keyword id: Required. Annotation's ID.
         :paramtype id: int
         :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
@@ -15468,14 +15523,10 @@ class RowAnnotation(Annotation):
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
-        :keyword additional_properties: Unmatched properties from the message are deserialized to this
-         collection.
-        :paramtype additional_properties: dict[str, any]
         :keyword parsed:
         :paramtype parsed: ~affinda.models.RowAnnotationParsed
         """
         super(RowAnnotation, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -15501,7 +15552,7 @@ class RowAnnotationParsed(msrest.serialization.Model):
     :ivar item_tax_rate:
     :vartype item_tax_rate: ~affinda.models.TextAnnotation
     :ivar item_tax_total:
-    :vartype item_tax_total: ~affinda.models.TextAnnotation
+    :vartype item_tax_total: ~affinda.models.FloatAnnotation
     :ivar item_total:
     :vartype item_total: ~affinda.models.FloatAnnotation
     :ivar item_other:
@@ -15518,7 +15569,7 @@ class RowAnnotationParsed(msrest.serialization.Model):
         "item_discount": {"key": "itemDiscount", "type": "TextAnnotation"},
         "item_base_total": {"key": "itemBaseTotal", "type": "FloatAnnotation"},
         "item_tax_rate": {"key": "itemTaxRate", "type": "TextAnnotation"},
-        "item_tax_total": {"key": "itemTaxTotal", "type": "TextAnnotation"},
+        "item_tax_total": {"key": "itemTaxTotal", "type": "FloatAnnotation"},
         "item_total": {"key": "itemTotal", "type": "FloatAnnotation"},
         "item_other": {"key": "itemOther", "type": "TextAnnotation"},
     }
@@ -15544,7 +15595,7 @@ class RowAnnotationParsed(msrest.serialization.Model):
         :keyword item_tax_rate:
         :paramtype item_tax_rate: ~affinda.models.TextAnnotation
         :keyword item_tax_total:
-        :paramtype item_tax_total: ~affinda.models.TextAnnotation
+        :paramtype item_tax_total: ~affinda.models.FloatAnnotation
         :keyword item_total:
         :paramtype item_total: ~affinda.models.FloatAnnotation
         :keyword item_other:

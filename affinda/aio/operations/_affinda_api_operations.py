@@ -23,8 +23,10 @@ from ... import models as _models
 from ..._vendor import _convert_request
 from ...operations._affinda_api_operations import (
     build_activate_resthook_subscription_request,
+    build_batch_add_tag_request,
     build_batch_create_annotations_request,
     build_batch_delete_annotations_request,
+    build_batch_remove_tag_request,
     build_batch_update_annotations_request,
     build_create_annotation_request,
     build_create_collection_request,
@@ -1484,13 +1486,144 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
     delete_document.metadata = {"url": "/v3/documents/{identifier}"}  # type: ignore
 
+    async def batch_add_tag(  # pylint: disable=inconsistent-return-statements
+        self, body: _models.BatchAddTagRequest, **kwargs: Any
+    ) -> None:
+        """Add a tag to documents.
+
+        Add a tag to documents.
+        Tags are used to group documents together.
+        Tags can be used to filter documents.
+
+        :param body: Specify the tag and the documents to tag.
+        :type body: ~affinda.models.BatchAddTagRequest
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: None, or the result of cls(response)
+        :rtype: None
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop(
+            "content_type", _headers.pop("Content-Type", "application/json")
+        )  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[None]
+
+        _json = self._serialize.body(body, "BatchAddTagRequest")
+
+        request = build_batch_add_tag_request(
+            content_type=content_type,
+            json=_json,
+            template_url=self.batch_add_tag.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [204]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if cls:
+            return cls(pipeline_response, None, {})
+
+    batch_add_tag.metadata = {"url": "/v3/documents/batch_add_tag"}  # type: ignore
+
+    async def batch_remove_tag(  # pylint: disable=inconsistent-return-statements
+        self, body: _models.BatchRemoveTagRequest, **kwargs: Any
+    ) -> None:
+        """Remove a tag from documents.
+
+        Remove a tag from documents.
+
+        :param body: Specify the tag and the documents to remove the tag from.
+        :type body: ~affinda.models.BatchRemoveTagRequest
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: None, or the result of cls(response)
+        :rtype: None
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop(
+            "content_type", _headers.pop("Content-Type", "application/json")
+        )  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[None]
+
+        _json = self._serialize.body(body, "BatchRemoveTagRequest")
+
+        request = build_batch_remove_tag_request(
+            content_type=content_type,
+            json=_json,
+            template_url=self.batch_remove_tag.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [204]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if cls:
+            return cls(pipeline_response, None, {})
+
+    batch_remove_tag.metadata = {"url": "/v3/documents/batch_remove_tag"}  # type: ignore
+
     async def edit_document_pages(
         self, identifier: str, body: _models.DocumentEditRequest, **kwargs: Any
     ) -> List[_models.Meta]:
         """Edit pages of a document.
 
         Split / merge / rotate / delete pages of a document.
-        Documents with multiple pages can be  into multiple documents, or merged into one document.
+        Documents with multiple pages can be splitted into multiple documents, or merged into one
+        document.
         Each page can also be rotated. Edit operations will trigger re-parsing of the documents
         involved.
 
