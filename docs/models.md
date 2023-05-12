@@ -2584,6 +2584,8 @@ DocumentUpdate.
 :vartype is_archived: bool
 :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 :vartype language: str
+:ivar identifier: Specify a custom identifier for the document.
+:vartype identifier: str
 
 <a id="models._models.DocumentUpdate.__init__"></a>
 
@@ -2603,6 +2605,7 @@ deleted.  Defaults to no expiry.
 - `is_rejected`: 
 - `is_archived`: 
 - `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+- `identifier`: Specify a custom identifier for the document.
 
 <a id="models._models.DocumentWarning"></a>
 

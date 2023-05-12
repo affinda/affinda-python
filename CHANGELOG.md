@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Endpoints for add/remove tag for documents
+- Identifier field in DocumentUpdate model
 
 ## [4.3.5] - 2023-05-09
 ### Changed

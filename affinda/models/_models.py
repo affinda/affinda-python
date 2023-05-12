@@ -3147,6 +3147,8 @@ class DocumentUpdate(msrest.serialization.Model):
     :vartype is_archived: bool
     :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
     :vartype language: str
+    :ivar identifier: Specify a custom identifier for the document.
+    :vartype identifier: str
     """
 
     _attribute_map = {
@@ -3157,6 +3159,7 @@ class DocumentUpdate(msrest.serialization.Model):
         "is_rejected": {"key": "isRejected", "type": "bool"},
         "is_archived": {"key": "isArchived", "type": "bool"},
         "language": {"key": "language", "type": "str"},
+        "identifier": {"key": "identifier", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -3176,6 +3179,8 @@ class DocumentUpdate(msrest.serialization.Model):
         :paramtype is_archived: bool
         :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
         :paramtype language: str
+        :keyword identifier: Specify a custom identifier for the document.
+        :paramtype identifier: str
         """
         super(DocumentUpdate, self).__init__(**kwargs)
         self.collection = kwargs.get("collection", None)
@@ -3185,6 +3190,7 @@ class DocumentUpdate(msrest.serialization.Model):
         self.is_rejected = kwargs.get("is_rejected", None)
         self.is_archived = kwargs.get("is_archived", None)
         self.language = kwargs.get("language", None)
+        self.identifier = kwargs.get("identifier", None)
 
 
 class DocumentWarning(msrest.serialization.Model):
