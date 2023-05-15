@@ -2882,6 +2882,8 @@ class DocumentCreate(msrest.serialization.Model):
      normally whether its a duplicate or not. If not provided, will fallback to the workspace
      settings.
     :vartype reject_duplicates: bool
+    :ivar region_bias: A JSON representation of the RegionBias object.
+    :vartype region_bias: str
     """
 
     _attribute_map = {
@@ -2895,6 +2897,7 @@ class DocumentCreate(msrest.serialization.Model):
         "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
         "language": {"key": "language", "type": "str"},
         "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
+        "region_bias": {"key": "regionBias", "type": "str"},
     }
 
     def __init__(
@@ -2910,6 +2913,7 @@ class DocumentCreate(msrest.serialization.Model):
         expiry_time: Optional[datetime.datetime] = None,
         language: Optional[str] = None,
         reject_duplicates: Optional[bool] = None,
+        region_bias: Optional[str] = None,
         **kwargs,
     ):
         """
@@ -2940,6 +2944,8 @@ class DocumentCreate(msrest.serialization.Model):
          document normally whether its a duplicate or not. If not provided, will fallback to the
          workspace settings.
         :paramtype reject_duplicates: bool
+        :keyword region_bias: A JSON representation of the RegionBias object.
+        :paramtype region_bias: str
         """
         super(DocumentCreate, self).__init__(**kwargs)
         self.file = file
@@ -2952,6 +2958,7 @@ class DocumentCreate(msrest.serialization.Model):
         self.expiry_time = expiry_time
         self.language = language
         self.reject_duplicates = reject_duplicates
+        self.region_bias = region_bias
 
 
 class DocumentEditRequest(msrest.serialization.Model):
@@ -3080,6 +3087,8 @@ class DocumentMeta(msrest.serialization.Model):
     :ivar source_email: If the document is created via email ingestion, this field stores the email
      file's URL.
     :vartype source_email: str
+    :ivar region_bias:
+    :vartype region_bias: ~affinda.models.RegionBias
     """
 
     _validation = {
@@ -3119,6 +3128,7 @@ class DocumentMeta(msrest.serialization.Model):
         "confirmed_by": {"key": "confirmedBy", "type": "UserNullable"},
         "created_by": {"key": "createdBy", "type": "User"},
         "source_email": {"key": "sourceEmail", "type": "str"},
+        "region_bias": {"key": "regionBias", "type": "RegionBias"},
     }
 
     def __init__(
@@ -3154,6 +3164,7 @@ class DocumentMeta(msrest.serialization.Model):
         confirmed_by: Optional["_models.UserNullable"] = None,
         created_by: Optional["_models.User"] = None,
         source_email: Optional[str] = None,
+        region_bias: Optional["_models.RegionBias"] = None,
         **kwargs,
     ):
         """
@@ -3225,6 +3236,8 @@ class DocumentMeta(msrest.serialization.Model):
         :keyword source_email: If the document is created via email ingestion, this field stores the
          email file's URL.
         :paramtype source_email: str
+        :keyword region_bias:
+        :paramtype region_bias: ~affinda.models.RegionBias
         """
         super(DocumentMeta, self).__init__(**kwargs)
         self.identifier = identifier
@@ -3257,6 +3270,7 @@ class DocumentMeta(msrest.serialization.Model):
         self.confirmed_by = confirmed_by
         self.created_by = created_by
         self.source_email = source_email
+        self.region_bias = region_bias
 
 
 class DocumentMetaChildDocumentsItem(msrest.serialization.Model):
@@ -13507,6 +13521,8 @@ class Meta(msrest.serialization.Model):
     :vartype created_dt: ~datetime.datetime
     :ivar document_type:
     :vartype document_type: str
+    :ivar region_bias:
+    :vartype region_bias: ~affinda.models.RegionBias
     """
 
     _attribute_map = {
@@ -13526,6 +13542,7 @@ class Meta(msrest.serialization.Model):
         "ocr_confidence": {"key": "ocrConfidence", "type": "float"},
         "created_dt": {"key": "createdDt", "type": "iso-8601"},
         "document_type": {"key": "documentType", "type": "str"},
+        "region_bias": {"key": "regionBias", "type": "RegionBias"},
     }
 
     def __init__(
@@ -13547,6 +13564,7 @@ class Meta(msrest.serialization.Model):
         ocr_confidence: Optional[float] = None,
         created_dt: Optional[datetime.datetime] = None,
         document_type: Optional[str] = None,
+        region_bias: Optional["_models.RegionBias"] = None,
         **kwargs,
     ):
         """
@@ -13592,6 +13610,8 @@ class Meta(msrest.serialization.Model):
         :paramtype created_dt: ~datetime.datetime
         :keyword document_type:
         :paramtype document_type: str
+        :keyword region_bias:
+        :paramtype region_bias: ~affinda.models.RegionBias
         """
         super(Meta, self).__init__(**kwargs)
         self.identifier = identifier
@@ -13610,6 +13630,7 @@ class Meta(msrest.serialization.Model):
         self.ocr_confidence = ocr_confidence
         self.created_dt = created_dt
         self.document_type = document_type
+        self.region_bias = region_bias
 
 
 class MetaChildDocumentsItem(msrest.serialization.Model):
@@ -15135,6 +15156,47 @@ class RedactConfig(msrest.serialization.Model):
         self.redact_locations = redact_locations
         self.redact_dates = redact_dates
         self.redact_gender = redact_gender
+
+
+class RegionBias(msrest.serialization.Model):
+    """RegionBias.
+
+    :ivar country: A single alpha-2 country code (e.g. AU) used by google geocoding service.
+    :vartype country: str
+    :ivar countries: A list of alpha-2 country codes used by Pelias.
+    :vartype countries: list[str]
+    :ivar square_coordinates: A list of coordinates used by Pelias in the shape of [min_lon,
+     min_lat, max_lon, max_lat].
+    :vartype square_coordinates: list[float]
+    """
+
+    _attribute_map = {
+        "country": {"key": "country", "type": "str"},
+        "countries": {"key": "countries", "type": "[str]"},
+        "square_coordinates": {"key": "squareCoordinates", "type": "[float]"},
+    }
+
+    def __init__(
+        self,
+        *,
+        country: Optional[str] = None,
+        countries: Optional[List[str]] = None,
+        square_coordinates: Optional[List[float]] = None,
+        **kwargs,
+    ):
+        """
+        :keyword country: A single alpha-2 country code (e.g. AU) used by google geocoding service.
+        :paramtype country: str
+        :keyword countries: A list of alpha-2 country codes used by Pelias.
+        :paramtype countries: list[str]
+        :keyword square_coordinates: A list of coordinates used by Pelias in the shape of [min_lon,
+         min_lat, max_lon, max_lat].
+        :paramtype square_coordinates: list[float]
+        """
+        super(RegionBias, self).__init__(**kwargs)
+        self.country = country
+        self.countries = countries
+        self.square_coordinates = square_coordinates
 
 
 class RequestError(msrest.serialization.Model):

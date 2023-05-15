@@ -2588,6 +2588,8 @@ class DocumentCreate(msrest.serialization.Model):
      normally whether its a duplicate or not. If not provided, will fallback to the workspace
      settings.
     :vartype reject_duplicates: bool
+    :ivar region_bias: A JSON representation of the RegionBias object.
+    :vartype region_bias: str
     """
 
     _attribute_map = {
@@ -2601,6 +2603,7 @@ class DocumentCreate(msrest.serialization.Model):
         "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
         "language": {"key": "language", "type": "str"},
         "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
+        "region_bias": {"key": "regionBias", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -2632,6 +2635,8 @@ class DocumentCreate(msrest.serialization.Model):
          document normally whether its a duplicate or not. If not provided, will fallback to the
          workspace settings.
         :paramtype reject_duplicates: bool
+        :keyword region_bias: A JSON representation of the RegionBias object.
+        :paramtype region_bias: str
         """
         super(DocumentCreate, self).__init__(**kwargs)
         self.file = kwargs.get("file", None)
@@ -2644,6 +2649,7 @@ class DocumentCreate(msrest.serialization.Model):
         self.expiry_time = kwargs.get("expiry_time", None)
         self.language = kwargs.get("language", None)
         self.reject_duplicates = kwargs.get("reject_duplicates", None)
+        self.region_bias = kwargs.get("region_bias", None)
 
 
 class DocumentEditRequest(msrest.serialization.Model):
@@ -2770,6 +2776,8 @@ class DocumentMeta(msrest.serialization.Model):
     :ivar source_email: If the document is created via email ingestion, this field stores the email
      file's URL.
     :vartype source_email: str
+    :ivar region_bias:
+    :vartype region_bias: ~affinda.models.RegionBias
     """
 
     _validation = {
@@ -2809,6 +2817,7 @@ class DocumentMeta(msrest.serialization.Model):
         "confirmed_by": {"key": "confirmedBy", "type": "UserNullable"},
         "created_by": {"key": "createdBy", "type": "User"},
         "source_email": {"key": "sourceEmail", "type": "str"},
+        "region_bias": {"key": "regionBias", "type": "RegionBias"},
     }
 
     def __init__(self, **kwargs):
@@ -2881,6 +2890,8 @@ class DocumentMeta(msrest.serialization.Model):
         :keyword source_email: If the document is created via email ingestion, this field stores the
          email file's URL.
         :paramtype source_email: str
+        :keyword region_bias:
+        :paramtype region_bias: ~affinda.models.RegionBias
         """
         super(DocumentMeta, self).__init__(**kwargs)
         self.identifier = kwargs["identifier"]
@@ -2913,6 +2924,7 @@ class DocumentMeta(msrest.serialization.Model):
         self.confirmed_by = kwargs.get("confirmed_by", None)
         self.created_by = kwargs.get("created_by", None)
         self.source_email = kwargs.get("source_email", None)
+        self.region_bias = kwargs.get("region_bias", None)
 
 
 class DocumentMetaChildDocumentsItem(msrest.serialization.Model):
@@ -11346,6 +11358,8 @@ class Meta(msrest.serialization.Model):
     :vartype created_dt: ~datetime.datetime
     :ivar document_type:
     :vartype document_type: str
+    :ivar region_bias:
+    :vartype region_bias: ~affinda.models.RegionBias
     """
 
     _attribute_map = {
@@ -11365,6 +11379,7 @@ class Meta(msrest.serialization.Model):
         "ocr_confidence": {"key": "ocrConfidence", "type": "float"},
         "created_dt": {"key": "createdDt", "type": "iso-8601"},
         "document_type": {"key": "documentType", "type": "str"},
+        "region_bias": {"key": "regionBias", "type": "RegionBias"},
     }
 
     def __init__(self, **kwargs):
@@ -11411,6 +11426,8 @@ class Meta(msrest.serialization.Model):
         :paramtype created_dt: ~datetime.datetime
         :keyword document_type:
         :paramtype document_type: str
+        :keyword region_bias:
+        :paramtype region_bias: ~affinda.models.RegionBias
         """
         super(Meta, self).__init__(**kwargs)
         self.identifier = kwargs.get("identifier", None)
@@ -11429,6 +11446,7 @@ class Meta(msrest.serialization.Model):
         self.ocr_confidence = kwargs.get("ocr_confidence", None)
         self.created_dt = kwargs.get("created_dt", None)
         self.document_type = kwargs.get("document_type", None)
+        self.region_bias = kwargs.get("region_bias", None)
 
 
 class MetaChildDocumentsItem(msrest.serialization.Model):
@@ -12788,6 +12806,40 @@ class RedactConfig(msrest.serialization.Model):
         self.redact_locations = kwargs.get("redact_locations", None)
         self.redact_dates = kwargs.get("redact_dates", None)
         self.redact_gender = kwargs.get("redact_gender", None)
+
+
+class RegionBias(msrest.serialization.Model):
+    """RegionBias.
+
+    :ivar country: A single alpha-2 country code (e.g. AU) used by google geocoding service.
+    :vartype country: str
+    :ivar countries: A list of alpha-2 country codes used by Pelias.
+    :vartype countries: list[str]
+    :ivar square_coordinates: A list of coordinates used by Pelias in the shape of [min_lon,
+     min_lat, max_lon, max_lat].
+    :vartype square_coordinates: list[float]
+    """
+
+    _attribute_map = {
+        "country": {"key": "country", "type": "str"},
+        "countries": {"key": "countries", "type": "[str]"},
+        "square_coordinates": {"key": "squareCoordinates", "type": "[float]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword country: A single alpha-2 country code (e.g. AU) used by google geocoding service.
+        :paramtype country: str
+        :keyword countries: A list of alpha-2 country codes used by Pelias.
+        :paramtype countries: list[str]
+        :keyword square_coordinates: A list of coordinates used by Pelias in the shape of [min_lon,
+         min_lat, max_lon, max_lat].
+        :paramtype square_coordinates: list[float]
+        """
+        super(RegionBias, self).__init__(**kwargs)
+        self.country = kwargs.get("country", None)
+        self.countries = kwargs.get("countries", None)
+        self.square_coordinates = kwargs.get("square_coordinates", None)
 
 
 class RequestError(msrest.serialization.Model):

@@ -1180,6 +1180,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         expiry_time: Optional[datetime.datetime] = None,
         language: Optional[str] = None,
         reject_duplicates: Optional[bool] = None,
+        region_bias: Optional[str] = None,
         **kwargs: Any,
     ) -> _models.Document:
         """Upload a document for parsing.
@@ -1208,6 +1209,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type language: str
         :param reject_duplicates:  Default value is None.
         :type reject_duplicates: bool
+        :param region_bias: A JSON representation of the RegionBias object. Default value is None.
+        :type region_bias: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Document, or the result of cls(response)
         :rtype: ~affinda.models.Document
@@ -1245,6 +1248,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             "expiryTime": expiry_time,
             "language": language,
             "rejectDuplicates": reject_duplicates,
+            "regionBias": region_bias,
         }
 
         request = build_create_document_request(

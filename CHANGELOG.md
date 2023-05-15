@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Endpoints for add/remove tag for documents
 - Identifier field in DocumentUpdate model
+- Allow setting `region_bias` when uploading document
 
 ## [4.3.5] - 2023-05-09
 ### Changed

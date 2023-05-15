@@ -3878,6 +3878,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         expiry_time=None,  # type: Optional[datetime.datetime]
         language=None,  # type: Optional[str]
         reject_duplicates=None,  # type: Optional[bool]
+        region_bias=None,  # type: Optional[str]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.Document
@@ -3907,6 +3908,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type language: str
         :param reject_duplicates:  Default value is None.
         :type reject_duplicates: bool
+        :param region_bias: A JSON representation of the RegionBias object. Default value is None.
+        :type region_bias: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Document, or the result of cls(response)
         :rtype: ~affinda.models.Document
@@ -3944,6 +3947,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             "expiryTime": expiry_time,
             "language": language,
             "rejectDuplicates": reject_duplicates,
+            "regionBias": region_bias,
         }
 
         request = build_create_document_request(

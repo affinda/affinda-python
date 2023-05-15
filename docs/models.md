@@ -2137,6 +2137,8 @@ DocumentCreate.
  normally whether its a duplicate or not. If not provided, will fallback to the workspace
  settings.
 :vartype reject_duplicates: bool
+:ivar region_bias: A JSON representation of the RegionBias object.
+:vartype region_bias: str
 
 <a id="models._models.DocumentCreate.__init__"></a>
 
@@ -2165,6 +2167,7 @@ deleted.  Defaults to no expiry.
 duplicate of an existing document, no credits will be consumed. If "false", will parse the
 document normally whether its a duplicate or not. If not provided, will fallback to the
 workspace settings.
+- `region_bias`: A JSON representation of the RegionBias object.
 
 <a id="models._models.DocumentEditRequest"></a>
 
@@ -2300,6 +2303,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar source_email: If the document is created via email ingestion, this field stores the email
  file's URL.
 :vartype source_email: str
+:ivar region_bias:
+:vartype region_bias: ~affinda.models.RegionBias
 
 <a id="models._models.DocumentMeta.__init__"></a>
 
@@ -2349,6 +2354,7 @@ this attribute points to those child documents.
 - `created_by`: 
 - `source_email`: If the document is created via email ingestion, this field stores the
 email file's URL.
+- `region_bias`: 
 
 <a id="models._models.DocumentMetaChildDocumentsItem"></a>
 
@@ -8108,6 +8114,8 @@ Meta.
 :vartype created_dt: ~datetime.datetime
 :ivar document_type:
 :vartype document_type: str
+:ivar region_bias:
+:vartype region_bias: ~affinda.models.RegionBias
 
 <a id="models._models.Meta.__init__"></a>
 
@@ -8145,6 +8153,7 @@ applicable for documents types such a resumes.
 applicable for images or PDF documents without a text layer).
 - `created_dt`: 
 - `document_type`: 
+- `region_bias`: 
 
 <a id="models._models.MetaChildDocumentsItem"></a>
 
@@ -9311,6 +9320,39 @@ def __init__(**kwargs)
 - `redact_locations`: 
 - `redact_dates`: 
 - `redact_gender`: 
+
+<a id="models._models.RegionBias"></a>
+
+## RegionBias Objects
+
+```python
+class RegionBias(msrest.serialization.Model)
+```
+
+RegionBias.
+
+:ivar country: A single alpha-2 country code (e.g. AU) used by google geocoding service.
+:vartype country: str
+:ivar countries: A list of alpha-2 country codes used by Pelias.
+:vartype countries: list[str]
+:ivar square_coordinates: A list of coordinates used by Pelias in the shape of [min_lon,
+ min_lat, max_lon, max_lat].
+:vartype square_coordinates: list[float]
+
+<a id="models._models.RegionBias.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `country`: A single alpha-2 country code (e.g. AU) used by google geocoding service.
+- `countries`: A list of alpha-2 country codes used by Pelias.
+- `square_coordinates`: A list of coordinates used by Pelias in the shape of [min_lon,
+min_lat, max_lon, max_lat].
 
 <a id="models._models.RequestError"></a>
 
