@@ -9274,6 +9274,9 @@ class JobDescriptionData(msrest.serialization.Model):
     :vartype certifications: list[~affinda.models.TextAnnotation]
     :ivar years_experience:
     :vartype years_experience: ~affinda.models.YearsExperienceAnnotation
+    :ivar raw_text: All of the raw text of the parsed job description, example is shortened for
+     readability.
+    :vartype raw_text: str
     """
 
     _attribute_map = {
@@ -9298,6 +9301,7 @@ class JobDescriptionData(msrest.serialization.Model):
         "location": {"key": "location", "type": "LocationAnnotation"},
         "certifications": {"key": "certifications", "type": "[TextAnnotation]"},
         "years_experience": {"key": "yearsExperience", "type": "YearsExperienceAnnotation"},
+        "raw_text": {"key": "rawText", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -9339,6 +9343,9 @@ class JobDescriptionData(msrest.serialization.Model):
         :paramtype certifications: list[~affinda.models.TextAnnotation]
         :keyword years_experience:
         :paramtype years_experience: ~affinda.models.YearsExperienceAnnotation
+        :keyword raw_text: All of the raw text of the parsed job description, example is shortened for
+         readability.
+        :paramtype raw_text: str
         """
         super(JobDescriptionData, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
@@ -9359,6 +9366,7 @@ class JobDescriptionData(msrest.serialization.Model):
         self.location = kwargs.get("location", None)
         self.certifications = kwargs.get("certifications", None)
         self.years_experience = kwargs.get("years_experience", None)
+        self.raw_text = kwargs.get("raw_text", None)
 
 
 class JobDescriptionSearch(msrest.serialization.Model):

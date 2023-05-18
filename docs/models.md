@@ -6571,6 +6571,9 @@ JobDescriptionData.
 :vartype certifications: list[~affinda.models.TextAnnotation]
 :ivar years_experience:
 :vartype years_experience: ~affinda.models.YearsExperienceAnnotation
+:ivar raw_text: All of the raw text of the parsed job description, example is shortened for
+ readability.
+:vartype raw_text: str
 
 <a id="models._models.JobDescriptionData.__init__"></a>
 
@@ -6601,6 +6604,8 @@ collection.
 - `location`: 
 - `certifications`: 
 - `years_experience`: 
+- `raw_text`: All of the raw text of the parsed job description, example is shortened for
+readability.
 
 <a id="models._models.JobDescriptionSearch"></a>
 

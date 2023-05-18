@@ -11081,6 +11081,9 @@ class JobDescriptionData(msrest.serialization.Model):
     :vartype certifications: list[~affinda.models.TextAnnotation]
     :ivar years_experience:
     :vartype years_experience: ~affinda.models.YearsExperienceAnnotation
+    :ivar raw_text: All of the raw text of the parsed job description, example is shortened for
+     readability.
+    :vartype raw_text: str
     """
 
     _attribute_map = {
@@ -11105,6 +11108,7 @@ class JobDescriptionData(msrest.serialization.Model):
         "location": {"key": "location", "type": "LocationAnnotation"},
         "certifications": {"key": "certifications", "type": "[TextAnnotation]"},
         "years_experience": {"key": "yearsExperience", "type": "YearsExperienceAnnotation"},
+        "raw_text": {"key": "rawText", "type": "str"},
     }
 
     def __init__(
@@ -11128,6 +11132,7 @@ class JobDescriptionData(msrest.serialization.Model):
         location: Optional["_models.LocationAnnotation"] = None,
         certifications: Optional[List["_models.TextAnnotation"]] = None,
         years_experience: Optional["_models.YearsExperienceAnnotation"] = None,
+        raw_text: Optional[str] = None,
         **kwargs,
     ):
         """
@@ -11168,6 +11173,9 @@ class JobDescriptionData(msrest.serialization.Model):
         :paramtype certifications: list[~affinda.models.TextAnnotation]
         :keyword years_experience:
         :paramtype years_experience: ~affinda.models.YearsExperienceAnnotation
+        :keyword raw_text: All of the raw text of the parsed job description, example is shortened for
+         readability.
+        :paramtype raw_text: str
         """
         super(JobDescriptionData, self).__init__(**kwargs)
         self.additional_properties = additional_properties
@@ -11188,6 +11196,7 @@ class JobDescriptionData(msrest.serialization.Model):
         self.location = location
         self.certifications = certifications
         self.years_experience = years_experience
+        self.raw_text = raw_text
 
 
 class JobDescriptionSearch(msrest.serialization.Model):

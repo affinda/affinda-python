@@ -1080,7 +1080,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
          -created_dt. Sort by multiple fields is supported. Default value is None.
         :type ordering: list[str or ~affinda.models.Get8ItemsItem]
         :param include_data: By default, this endpoint returns only the meta data of the documents. Set
-         this to ``true`` will return the detailed data that was parsed, at a performance cost. Default
+         this to ``true`` will return a summary of the data that was parsed. If you want to retrieve the
+         full set of data for a document, use the ``GET /documents/{identifier}`` endpoint. Default
          value is None.
         :type include_data: bool
         :param exclude: Exclude some documents from the result. Default value is None.
