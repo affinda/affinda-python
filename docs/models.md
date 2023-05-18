@@ -4349,6 +4349,8 @@ InvoiceRequestBody.
 :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
  deleted.  Defaults to no expiry.
 :vartype expiry_time: ~datetime.datetime
+:ivar region_bias: A JSON representation of the RegionBias object.
+:vartype region_bias: str
 
 <a id="models._models.InvoiceRequestBody.__init__"></a>
 
@@ -4375,6 +4377,7 @@ workspace settings.
 - `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 - `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
+- `region_bias`: A JSON representation of the RegionBias object.
 
 <a id="models._models.JobDescription"></a>
 
@@ -4456,6 +4459,9 @@ JobDescriptionData.
 :vartype certifications: list[~affinda.models.TextAnnotation]
 :ivar years_experience:
 :vartype years_experience: ~affinda.models.YearsExperienceAnnotation
+:ivar raw_text: All of the raw text of the parsed job description, example is shortened for
+ readability.
+:vartype raw_text: str
 
 <a id="models._models.JobDescriptionData.__init__"></a>
 
@@ -4486,6 +4492,8 @@ collection.
 - `location`: 
 - `certifications`: 
 - `years_experience`: 
+- `raw_text`: All of the raw text of the parsed job description, example is shortened for
+readability.
 
 <a id="models._models.JobDescriptionDataUpdate"></a>
 
@@ -4600,6 +4608,8 @@ JobDescriptionRequestBody.
 :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
  deleted.  Defaults to no expiry.
 :vartype expiry_time: ~datetime.datetime
+:ivar region_bias: A JSON representation of the RegionBias object.
+:vartype region_bias: str
 
 <a id="models._models.JobDescriptionRequestBody.__init__"></a>
 
@@ -4627,6 +4637,7 @@ workspace settings.
 - `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 - `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
+- `region_bias`: A JSON representation of the RegionBias object.
 
 <a id="models._models.JobDescriptionSearch"></a>
 
@@ -6399,6 +6410,8 @@ Meta.
 :vartype created_dt: ~datetime.datetime
 :ivar document_type:
 :vartype document_type: str
+:ivar region_bias:
+:vartype region_bias: ~affinda.models.RegionBias
 
 <a id="models._models.Meta.__init__"></a>
 
@@ -6436,6 +6449,7 @@ applicable for documents types such a resumes.
 applicable for images or PDF documents without a text layer).
 - `created_dt`: 
 - `document_type`: 
+- `region_bias`: 
 
 <a id="models._models.MetaChildDocumentsItem"></a>
 
@@ -7332,6 +7346,39 @@ processing is complete.
 - `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
 
+<a id="models._models.RegionBias"></a>
+
+## RegionBias Objects
+
+```python
+class RegionBias(msrest.serialization.Model)
+```
+
+RegionBias.
+
+:ivar country: A single alpha-2 country code (e.g. AU) used by google geocoding service.
+:vartype country: str
+:ivar countries: A list of alpha-2 country codes used by Pelias.
+:vartype countries: list[str]
+:ivar square_coordinates: A list of coordinates used by Pelias in the shape of [min_lon,
+ min_lat, max_lon, max_lat].
+:vartype square_coordinates: list[float]
+
+<a id="models._models.RegionBias.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `country`: A single alpha-2 country code (e.g. AU) used by google geocoding service.
+- `countries`: A list of alpha-2 country codes used by Pelias.
+- `square_coordinates`: A list of coordinates used by Pelias in the shape of [min_lon,
+min_lat, max_lon, max_lat].
+
 <a id="models._models.RequestError"></a>
 
 ## RequestError Objects
@@ -8063,6 +8110,8 @@ ResumeRequestBody.
 :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
  deleted.  Defaults to no expiry.
 :vartype expiry_time: ~datetime.datetime
+:ivar region_bias: A JSON representation of the RegionBias object.
+:vartype region_bias: str
 
 <a id="models._models.ResumeRequestBody.__init__"></a>
 
@@ -8090,6 +8139,7 @@ workspace settings.
 - `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 - `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
+- `region_bias`: A JSON representation of the RegionBias object.
 
 <a id="models._models.ResumeSearch"></a>
 

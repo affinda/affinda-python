@@ -62,7 +62,7 @@ cls(response)
 #### create\_resume
 
 ```python
-def create_resume(file=None, url=None, data=None, identifier=None, file_name=None, wait=True, reject_duplicates=None, language=None, expiry_time=None, **kwargs)
+def create_resume(file=None, url=None, data=None, identifier=None, file_name=None, wait=True, reject_duplicates=None, language=None, expiry_time=None, region_bias=None, **kwargs)
 ```
 
 Upload a resume for parsing.
@@ -86,6 +86,7 @@ parsing credits.
 - `reject_duplicates` (`bool`): Default value is None.
 - `language` (`str`): Default value is None.
 - `expiry_time` (`~datetime.datetime`): Default value is None.
+- `region_bias` (`str`): Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -333,7 +334,7 @@ cls(response)
 #### create\_invoice
 
 ```python
-def create_invoice(file=None, url=None, identifier=None, file_name=None, wait=True, reject_duplicates=None, language=None, expiry_time=None, **kwargs)
+def create_invoice(file=None, url=None, identifier=None, file_name=None, wait=True, reject_duplicates=None, language=None, expiry_time=None, region_bias=None, **kwargs)
 ```
 
 Upload an invoice for parsing.
@@ -353,6 +354,7 @@ retrieve results.
 - `reject_duplicates` (`bool`): Default value is None.
 - `language` (`str`): Default value is None.
 - `expiry_time` (`~datetime.datetime`): Default value is None.
+- `region_bias` (`str`): Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -449,7 +451,7 @@ of cls(response)
 #### create\_job\_description
 
 ```python
-def create_job_description(file=None, url=None, data=None, identifier=None, file_name=None, wait=True, reject_duplicates=None, language=None, expiry_time=None, **kwargs)
+def create_job_description(file=None, url=None, data=None, identifier=None, file_name=None, wait=True, reject_duplicates=None, language=None, expiry_time=None, region_bias=None, **kwargs)
 ```
 
 Upload a job description for parsing.
@@ -474,6 +476,7 @@ parsing credits.
 - `reject_duplicates` (`bool`): Default value is None.
 - `language` (`str`): Default value is None.
 - `expiry_time` (`~datetime.datetime`): Default value is None.
+- `region_bias` (`str`): Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
