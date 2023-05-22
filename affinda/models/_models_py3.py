@@ -608,6 +608,8 @@ class Collection(msrest.serialization.Model):
     :vartype auto_validation_threshold: float
     :ivar fields:
     :vartype fields: list[~affinda.models.FieldGroup]
+    :ivar fields_layout:
+    :vartype fields_layout: ~affinda.models.FieldsLayout
     :ivar fields_configured:
     :vartype fields_configured: bool
     :ivar date_format_preference: Known values are: "DMY", "MDY", "YMD".
@@ -637,6 +639,7 @@ class Collection(msrest.serialization.Model):
         "extractor": {"key": "extractor", "type": "Extractor"},
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
         "fields": {"key": "fields", "type": "[FieldGroup]"},
+        "fields_layout": {"key": "fieldsLayout", "type": "FieldsLayout"},
         "fields_configured": {"key": "fieldsConfigured", "type": "bool"},
         "date_format_preference": {"key": "dateFormatPreference", "type": "str"},
         "date_format_from_document": {"key": "dateFormatFromDocument", "type": "bool"},
@@ -655,6 +658,7 @@ class Collection(msrest.serialization.Model):
         extractor: Optional["_models.Extractor"] = None,
         auto_validation_threshold: Optional[float] = None,
         fields: Optional[List["_models.FieldGroup"]] = None,
+        fields_layout: Optional["_models.FieldsLayout"] = None,
         fields_configured: Optional[bool] = None,
         date_format_preference: Optional[
             Union[str, "_models.CollectionDateFormatPreference"]
@@ -679,6 +683,8 @@ class Collection(msrest.serialization.Model):
         :paramtype auto_validation_threshold: float
         :keyword fields:
         :paramtype fields: list[~affinda.models.FieldGroup]
+        :keyword fields_layout:
+        :paramtype fields_layout: ~affinda.models.FieldsLayout
         :keyword fields_configured:
         :paramtype fields_configured: bool
         :keyword date_format_preference: Known values are: "DMY", "MDY", "YMD".
@@ -703,6 +709,7 @@ class Collection(msrest.serialization.Model):
         self.extractor = extractor
         self.auto_validation_threshold = auto_validation_threshold
         self.fields = fields
+        self.fields_layout = fields_layout
         self.fields_configured = fields_configured
         self.date_format_preference = date_format_preference
         self.date_format_from_document = date_format_from_document
@@ -4388,6 +4395,113 @@ class Field(msrest.serialization.Model):
 
     :ivar label: Required.
     :vartype label: str
+    :ivar data_point: Required. Data point identifier.
+    :vartype data_point: str
+    :ivar mandatory:
+    :vartype mandatory: bool
+    :ivar auto_validation_threshold:
+    :vartype auto_validation_threshold: float
+    :ivar show_dropdown:
+    :vartype show_dropdown: bool
+    :ivar fields:
+    :vartype fields: list[~affinda.models.Field]
+    """
+
+    _validation = {
+        "label": {"required": True},
+        "data_point": {"required": True},
+        "auto_validation_threshold": {"maximum": 1, "minimum": 0.9},
+    }
+
+    _attribute_map = {
+        "label": {"key": "label", "type": "str"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "mandatory": {"key": "mandatory", "type": "bool"},
+        "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
+        "show_dropdown": {"key": "showDropdown", "type": "bool"},
+        "fields": {"key": "fields", "type": "[Field]"},
+    }
+
+    def __init__(
+        self,
+        *,
+        label: str,
+        data_point: str,
+        mandatory: Optional[bool] = None,
+        auto_validation_threshold: Optional[float] = None,
+        show_dropdown: Optional[bool] = None,
+        fields: Optional[List["_models.Field"]] = None,
+        **kwargs,
+    ):
+        """
+        :keyword label: Required.
+        :paramtype label: str
+        :keyword data_point: Required. Data point identifier.
+        :paramtype data_point: str
+        :keyword mandatory:
+        :paramtype mandatory: bool
+        :keyword auto_validation_threshold:
+        :paramtype auto_validation_threshold: float
+        :keyword show_dropdown:
+        :paramtype show_dropdown: bool
+        :keyword fields:
+        :paramtype fields: list[~affinda.models.Field]
+        """
+        super(Field, self).__init__(**kwargs)
+        self.label = label
+        self.data_point = data_point
+        self.mandatory = mandatory
+        self.auto_validation_threshold = auto_validation_threshold
+        self.show_dropdown = show_dropdown
+        self.fields = fields
+
+
+class FieldCategory(msrest.serialization.Model):
+    """FieldCategory.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar enabled_fields: Required.
+    :vartype enabled_fields: list[~affinda.models.Field]
+    :ivar disabled_fields: Required.
+    :vartype disabled_fields: list[~affinda.models.Field]
+    """
+
+    _validation = {
+        "enabled_fields": {"required": True},
+        "disabled_fields": {"required": True},
+    }
+
+    _attribute_map = {
+        "enabled_fields": {"key": "enabledFields", "type": "[Field]"},
+        "disabled_fields": {"key": "disabledFields", "type": "[Field]"},
+    }
+
+    def __init__(
+        self,
+        *,
+        enabled_fields: List["_models.Field"],
+        disabled_fields: List["_models.Field"],
+        **kwargs,
+    ):
+        """
+        :keyword enabled_fields: Required.
+        :paramtype enabled_fields: list[~affinda.models.Field]
+        :keyword disabled_fields: Required.
+        :paramtype disabled_fields: list[~affinda.models.Field]
+        """
+        super(FieldCategory, self).__init__(**kwargs)
+        self.enabled_fields = enabled_fields
+        self.disabled_fields = disabled_fields
+
+
+class FieldDeprecated(msrest.serialization.Model):
+    """FieldDeprecated.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar label: Required.
+    :vartype label: str
     :ivar slug:
     :vartype slug: str
     :ivar data_point: Required.
@@ -4401,7 +4515,7 @@ class Field(msrest.serialization.Model):
     :ivar show_dropdown:
     :vartype show_dropdown: bool
     :ivar fields:
-    :vartype fields: list[~affinda.models.Field]
+    :vartype fields: list[~affinda.models.FieldDeprecated]
     """
 
     _validation = {
@@ -4417,7 +4531,7 @@ class Field(msrest.serialization.Model):
         "disabled": {"key": "disabled", "type": "bool"},
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
         "show_dropdown": {"key": "showDropdown", "type": "bool"},
-        "fields": {"key": "fields", "type": "[Field]"},
+        "fields": {"key": "fields", "type": "[FieldDeprecated]"},
     }
 
     def __init__(
@@ -4430,7 +4544,7 @@ class Field(msrest.serialization.Model):
         disabled: Optional[bool] = None,
         auto_validation_threshold: Optional[float] = None,
         show_dropdown: Optional[bool] = None,
-        fields: Optional[List["_models.Field"]] = None,
+        fields: Optional[List["_models.FieldDeprecated"]] = None,
         **kwargs,
     ):
         """
@@ -4449,9 +4563,9 @@ class Field(msrest.serialization.Model):
         :keyword show_dropdown:
         :paramtype show_dropdown: bool
         :keyword fields:
-        :paramtype fields: list[~affinda.models.Field]
+        :paramtype fields: list[~affinda.models.FieldDeprecated]
         """
-        super(Field, self).__init__(**kwargs)
+        super(FieldDeprecated, self).__init__(**kwargs)
         self.label = label
         self.slug = slug
         self.data_point = data_point
@@ -4470,7 +4584,7 @@ class FieldGroup(msrest.serialization.Model):
     :ivar label: Required.
     :vartype label: str
     :ivar fields: Required.
-    :vartype fields: list[~affinda.models.Field]
+    :vartype fields: list[~affinda.models.FieldDeprecated]
     """
 
     _validation = {
@@ -4480,19 +4594,58 @@ class FieldGroup(msrest.serialization.Model):
 
     _attribute_map = {
         "label": {"key": "label", "type": "str"},
-        "fields": {"key": "fields", "type": "[Field]"},
+        "fields": {"key": "fields", "type": "[FieldDeprecated]"},
     }
 
-    def __init__(self, *, label: str, fields: List["_models.Field"], **kwargs):
+    def __init__(self, *, label: str, fields: List["_models.FieldDeprecated"], **kwargs):
         """
         :keyword label: Required.
         :paramtype label: str
         :keyword fields: Required.
-        :paramtype fields: list[~affinda.models.Field]
+        :paramtype fields: list[~affinda.models.FieldDeprecated]
         """
         super(FieldGroup, self).__init__(**kwargs)
         self.label = label
         self.fields = fields
+
+
+class FieldsLayout(msrest.serialization.Model):
+    """FieldsLayout.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar default_category: Required.
+    :vartype default_category: ~affinda.models.FieldCategory
+    :ivar categories: Required.
+    :vartype categories: list[~affinda.models.FieldCategory]
+    """
+
+    _validation = {
+        "default_category": {"required": True},
+        "categories": {"required": True},
+    }
+
+    _attribute_map = {
+        "default_category": {"key": "defaultCategory", "type": "FieldCategory"},
+        "categories": {"key": "categories", "type": "[FieldCategory]"},
+    }
+
+    def __init__(
+        self,
+        *,
+        default_category: "_models.FieldCategory",
+        categories: List["_models.FieldCategory"],
+        **kwargs,
+    ):
+        """
+        :keyword default_category: Required.
+        :paramtype default_category: ~affinda.models.FieldCategory
+        :keyword categories: Required.
+        :paramtype categories: list[~affinda.models.FieldCategory]
+        """
+        super(FieldsLayout, self).__init__(**kwargs)
+        self.default_category = default_category
+        self.categories = categories
 
 
 class FloatAnnotation(Annotation):
@@ -11081,9 +11234,6 @@ class JobDescriptionData(msrest.serialization.Model):
     :vartype certifications: list[~affinda.models.TextAnnotation]
     :ivar years_experience:
     :vartype years_experience: ~affinda.models.YearsExperienceAnnotation
-    :ivar raw_text: All of the raw text of the parsed job description, example is shortened for
-     readability.
-    :vartype raw_text: str
     """
 
     _attribute_map = {
@@ -11108,7 +11258,6 @@ class JobDescriptionData(msrest.serialization.Model):
         "location": {"key": "location", "type": "LocationAnnotation"},
         "certifications": {"key": "certifications", "type": "[TextAnnotation]"},
         "years_experience": {"key": "yearsExperience", "type": "YearsExperienceAnnotation"},
-        "raw_text": {"key": "rawText", "type": "str"},
     }
 
     def __init__(
@@ -11132,7 +11281,6 @@ class JobDescriptionData(msrest.serialization.Model):
         location: Optional["_models.LocationAnnotation"] = None,
         certifications: Optional[List["_models.TextAnnotation"]] = None,
         years_experience: Optional["_models.YearsExperienceAnnotation"] = None,
-        raw_text: Optional[str] = None,
         **kwargs,
     ):
         """
@@ -11173,9 +11321,6 @@ class JobDescriptionData(msrest.serialization.Model):
         :paramtype certifications: list[~affinda.models.TextAnnotation]
         :keyword years_experience:
         :paramtype years_experience: ~affinda.models.YearsExperienceAnnotation
-        :keyword raw_text: All of the raw text of the parsed job description, example is shortened for
-         readability.
-        :paramtype raw_text: str
         """
         super(JobDescriptionData, self).__init__(**kwargs)
         self.additional_properties = additional_properties
@@ -11196,7 +11341,6 @@ class JobDescriptionData(msrest.serialization.Model):
         self.location = location
         self.certifications = certifications
         self.years_experience = years_experience
-        self.raw_text = raw_text
 
 
 class JobDescriptionSearch(msrest.serialization.Model):
