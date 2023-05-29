@@ -7452,27 +7452,29 @@ class ResthookSubscription(msrest.serialization.Model)
 
 ResthookSubscription.
 
-:ivar id: Resthook subscription's ID.
+All required parameters must be populated in order to send to Azure.
+
+:ivar id: Required. Resthook subscription's ID.
 :vartype id: int
-:ivar event: The event name to subscribe to. Known values are: "resume.parse.succeeded",
- "resume.parse.failed", "resume.parse.completed", "invoice.parse.succeeded",
- "invoice.parse.failed", "invoice.parse.completed", "invoice.validate.completed",
- "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
- "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
- "document.classify.completed".
+:ivar event: Required. The event name to subscribe to. Known values are:
+ "resume.parse.succeeded", "resume.parse.failed", "resume.parse.completed",
+ "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
+ "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
+ "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
+ "document.classify.failed", "document.classify.completed".
 :vartype event: str or ~affinda.models.ResthookEvent
-:ivar target_url: URL of the resthook's receiver.
+:ivar target_url: Required. URL of the resthook's receiver.
 :vartype target_url: str
-:ivar active: Resthooks only fire for active subscriptions.
+:ivar active: Required. Resthooks only fire for active subscriptions.
 :vartype active: bool
-:ivar auto_deactivated: Resthook subscriptions can be auto deactivated if the receiver
- continuously returns error status code over a period of time.
+:ivar auto_deactivated: Required. Resthook subscriptions can be auto deactivated if the
+ receiver continuously returns error status code over a period of time.
 :vartype auto_deactivated: bool
-:ivar auto_deactivate_reason: The reason for the subscription being auto deactivated. May
- contains the error response that the receiver returned.
+:ivar auto_deactivate_reason: Required. The reason for the subscription being auto deactivated.
+ May contains the error response that the receiver returned.
 :vartype auto_deactivate_reason: str
-:ivar version: Version of the resthook subscription. Determines the resthook body being fired.
- Known values are: "v1", "v2", "v3".
+:ivar version: Required. Version of the resthook subscription. Determines the resthook body
+ being fired. Known values are: "v1", "v2", "v3".
 :vartype version: str or ~affinda.models.ResthookSubscriptionVersion
 
 <a id="models._models.ResthookSubscription.__init__"></a>
@@ -7485,21 +7487,21 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `id`: Resthook subscription's ID.
-- `event`: The event name to subscribe to. Known values are: "resume.parse.succeeded",
-"resume.parse.failed", "resume.parse.completed", "invoice.parse.succeeded",
-"invoice.parse.failed", "invoice.parse.completed", "invoice.validate.completed",
-"document.parse.succeeded", "document.parse.failed", "document.parse.completed",
-"document.validate.completed", "document.classify.succeeded", "document.classify.failed",
-"document.classify.completed".
-- `target_url`: URL of the resthook's receiver.
-- `active`: Resthooks only fire for active subscriptions.
-- `auto_deactivated`: Resthook subscriptions can be auto deactivated if the receiver
-continuously returns error status code over a period of time.
-- `auto_deactivate_reason`: The reason for the subscription being auto deactivated. May
-contains the error response that the receiver returned.
-- `version`: Version of the resthook subscription. Determines the resthook body being
-fired. Known values are: "v1", "v2", "v3".
+- `id`: Required. Resthook subscription's ID.
+- `event`: Required. The event name to subscribe to. Known values are:
+"resume.parse.succeeded", "resume.parse.failed", "resume.parse.completed",
+"invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
+"invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
+"document.parse.completed", "document.validate.completed", "document.classify.succeeded",
+"document.classify.failed", "document.classify.completed".
+- `target_url`: Required. URL of the resthook's receiver.
+- `active`: Required. Resthooks only fire for active subscriptions.
+- `auto_deactivated`: Required. Resthook subscriptions can be auto deactivated if the
+receiver continuously returns error status code over a period of time.
+- `auto_deactivate_reason`: Required. The reason for the subscription being auto
+deactivated. May contains the error response that the receiver returned.
+- `version`: Required. Version of the resthook subscription. Determines the resthook body
+being fired. Known values are: "v1", "v2", "v3".
 
 <a id="models._models.ResthookSubscriptionCreate"></a>
 
