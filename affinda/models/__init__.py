@@ -109,10 +109,7 @@ try:
     from ._models_py3 import ExtractorCreate
     from ._models_py3 import ExtractorUpdate
     from ._models_py3 import Field
-    from ._models_py3 import FieldCategory
-    from ._models_py3 import FieldDeprecated
     from ._models_py3 import FieldGroup
-    from ._models_py3 import FieldsLayout
     from ._models_py3 import FloatAnnotation
     from ._models_py3 import Get200ApplicationJsonPropertiesItemsItem
     from ._models_py3 import IndexRequestBody
@@ -420,10 +417,7 @@ except (SyntaxError, ImportError):
     from ._models import ExtractorCreate  # type: ignore
     from ._models import ExtractorUpdate  # type: ignore
     from ._models import Field  # type: ignore
-    from ._models import FieldCategory  # type: ignore
-    from ._models import FieldDeprecated  # type: ignore
     from ._models import FieldGroup  # type: ignore
-    from ._models import FieldsLayout  # type: ignore
     from ._models import FloatAnnotation  # type: ignore
     from ._models import Get200ApplicationJsonPropertiesItemsItem  # type: ignore
     from ._models import IndexRequestBody  # type: ignore
@@ -730,10 +724,7 @@ __all__ = [
     "ExtractorCreate",
     "ExtractorUpdate",
     "Field",
-    "FieldCategory",
-    "FieldDeprecated",
     "FieldGroup",
-    "FieldsLayout",
     "FloatAnnotation",
     "Get200ApplicationJsonPropertiesItemsItem",
     "IndexRequestBody",

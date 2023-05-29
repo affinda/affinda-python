@@ -396,8 +396,6 @@ All required parameters must be populated in order to send to Azure.
 :vartype auto_validation_threshold: float
 :ivar fields:
 :vartype fields: list[~affinda.models.FieldGroup]
-:ivar fields_layout:
-:vartype fields_layout: ~affinda.models.FieldsLayout
 :ivar fields_configured:
 :vartype fields_configured: bool
 :ivar date_format_preference: Known values are: "DMY", "MDY", "YMD".
@@ -431,7 +429,6 @@ def __init__(**kwargs)
 - `extractor`: 
 - `auto_validation_threshold`: 
 - `fields`: 
-- `fields_layout`: 
 - `fields_configured`: 
 - `date_format_preference`: Known values are: "DMY", "MDY", "YMD".
 - `date_format_from_document`: Predict the date format from any dates in the document that
@@ -3165,78 +3162,6 @@ All required parameters must be populated in order to send to Azure.
 
 :ivar label: Required.
 :vartype label: str
-:ivar data_point: Required. Data point identifier.
-:vartype data_point: str
-:ivar mandatory:
-:vartype mandatory: bool
-:ivar auto_validation_threshold:
-:vartype auto_validation_threshold: float
-:ivar show_dropdown:
-:vartype show_dropdown: bool
-:ivar fields:
-:vartype fields: list[~affinda.models.Field]
-
-<a id="models._models.Field.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `label`: Required.
-- `data_point`: Required. Data point identifier.
-- `mandatory`: 
-- `auto_validation_threshold`: 
-- `show_dropdown`: 
-- `fields`: 
-
-<a id="models._models.FieldCategory"></a>
-
-## FieldCategory Objects
-
-```python
-class FieldCategory(msrest.serialization.Model)
-```
-
-FieldCategory.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar enabled_fields: Required.
-:vartype enabled_fields: list[~affinda.models.Field]
-:ivar disabled_fields: Required.
-:vartype disabled_fields: list[~affinda.models.Field]
-
-<a id="models._models.FieldCategory.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `enabled_fields`: Required.
-- `disabled_fields`: Required.
-
-<a id="models._models.FieldDeprecated"></a>
-
-## FieldDeprecated Objects
-
-```python
-class FieldDeprecated(msrest.serialization.Model)
-```
-
-FieldDeprecated.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar label: Required.
-:vartype label: str
 :ivar slug:
 :vartype slug: str
 :ivar data_point: Required.
@@ -3250,9 +3175,9 @@ All required parameters must be populated in order to send to Azure.
 :ivar show_dropdown:
 :vartype show_dropdown: bool
 :ivar fields:
-:vartype fields: list[~affinda.models.FieldDeprecated]
+:vartype fields: list[~affinda.models.Field]
 
-<a id="models._models.FieldDeprecated.__init__"></a>
+<a id="models._models.Field.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -3286,7 +3211,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar label: Required.
 :vartype label: str
 :ivar fields: Required.
-:vartype fields: list[~affinda.models.FieldDeprecated]
+:vartype fields: list[~affinda.models.Field]
 
 <a id="models._models.FieldGroup.__init__"></a>
 
@@ -3300,36 +3225,6 @@ def __init__(**kwargs)
 
 - `label`: Required.
 - `fields`: Required.
-
-<a id="models._models.FieldsLayout"></a>
-
-## FieldsLayout Objects
-
-```python
-class FieldsLayout(msrest.serialization.Model)
-```
-
-FieldsLayout.
-
-All required parameters must be populated in order to send to Azure.
-
-:ivar default_category: Required.
-:vartype default_category: ~affinda.models.FieldCategory
-:ivar categories: Required.
-:vartype categories: list[~affinda.models.FieldCategory]
-
-<a id="models._models.FieldsLayout.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `default_category`: Required.
-- `categories`: Required.
 
 <a id="models._models.FloatAnnotation"></a>
 
@@ -6676,6 +6571,9 @@ JobDescriptionData.
 :vartype certifications: list[~affinda.models.TextAnnotation]
 :ivar years_experience:
 :vartype years_experience: ~affinda.models.YearsExperienceAnnotation
+:ivar raw_text: All of the raw text of the parsed job description, example is shortened for
+ readability.
+:vartype raw_text: str
 
 <a id="models._models.JobDescriptionData.__init__"></a>
 
@@ -6706,6 +6604,8 @@ collection.
 - `location`: 
 - `certifications`: 
 - `years_experience`: 
+- `raw_text`: All of the raw text of the parsed job description, example is shortened for
+readability.
 
 <a id="models._models.JobDescriptionSearch"></a>
 
@@ -9532,29 +9432,31 @@ class ResthookSubscription(msrest.serialization.Model)
 
 ResthookSubscription.
 
-:ivar id: Resthook subscription's ID.
+All required parameters must be populated in order to send to Azure.
+
+:ivar id: Required. Resthook subscription's ID.
 :vartype id: int
-:ivar event: The event name to subscribe to. Known values are: "resume.parse.succeeded",
- "resume.parse.failed", "resume.parse.completed", "invoice.parse.succeeded",
- "invoice.parse.failed", "invoice.parse.completed", "invoice.validate.completed",
- "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
- "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
- "document.classify.completed".
+:ivar event: Required. The event name to subscribe to. Known values are:
+ "resume.parse.succeeded", "resume.parse.failed", "resume.parse.completed",
+ "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
+ "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
+ "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
+ "document.classify.failed", "document.classify.completed".
 :vartype event: str or ~affinda.models.ResthookEvent
-:ivar organization:
+:ivar organization: Required.
 :vartype organization: ~affinda.models.Organization
-:ivar target_url: URL of the resthook's receiver.
+:ivar target_url: Required. URL of the resthook's receiver.
 :vartype target_url: str
-:ivar active: Resthooks only fire for active subscriptions.
+:ivar active: Required. Resthooks only fire for active subscriptions.
 :vartype active: bool
-:ivar auto_deactivated: Resthook subscriptions can be auto deactivated if the receiver
- continuously returns error status code over a period of time.
+:ivar auto_deactivated: Required. Resthook subscriptions can be auto deactivated if the
+ receiver continuously returns error status code over a period of time.
 :vartype auto_deactivated: bool
-:ivar auto_deactivate_reason: The reason for the subscription being auto deactivated. May
- contains the error response that the receiver returned.
+:ivar auto_deactivate_reason: Required. The reason for the subscription being auto deactivated.
+ May contains the error response that the receiver returned.
 :vartype auto_deactivate_reason: str
-:ivar version: Version of the resthook subscription. Determines the resthook body being fired.
- Known values are: "v1", "v2", "v3".
+:ivar version: Required. Version of the resthook subscription. Determines the resthook body
+ being fired. Known values are: "v1", "v2", "v3".
 :vartype version: str or ~affinda.models.ResthookSubscriptionVersion
 
 <a id="models._models.ResthookSubscription.__init__"></a>
@@ -9567,22 +9469,22 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `id`: Resthook subscription's ID.
-- `event`: The event name to subscribe to. Known values are: "resume.parse.succeeded",
-"resume.parse.failed", "resume.parse.completed", "invoice.parse.succeeded",
-"invoice.parse.failed", "invoice.parse.completed", "invoice.validate.completed",
-"document.parse.succeeded", "document.parse.failed", "document.parse.completed",
-"document.validate.completed", "document.classify.succeeded", "document.classify.failed",
-"document.classify.completed".
-- `organization`: 
-- `target_url`: URL of the resthook's receiver.
-- `active`: Resthooks only fire for active subscriptions.
-- `auto_deactivated`: Resthook subscriptions can be auto deactivated if the receiver
-continuously returns error status code over a period of time.
-- `auto_deactivate_reason`: The reason for the subscription being auto deactivated. May
-contains the error response that the receiver returned.
-- `version`: Version of the resthook subscription. Determines the resthook body being
-fired. Known values are: "v1", "v2", "v3".
+- `id`: Required. Resthook subscription's ID.
+- `event`: Required. The event name to subscribe to. Known values are:
+"resume.parse.succeeded", "resume.parse.failed", "resume.parse.completed",
+"invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
+"invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
+"document.parse.completed", "document.validate.completed", "document.classify.succeeded",
+"document.classify.failed", "document.classify.completed".
+- `organization`: Required.
+- `target_url`: Required. URL of the resthook's receiver.
+- `active`: Required. Resthooks only fire for active subscriptions.
+- `auto_deactivated`: Required. Resthook subscriptions can be auto deactivated if the
+receiver continuously returns error status code over a period of time.
+- `auto_deactivate_reason`: Required. The reason for the subscription being auto
+deactivated. May contains the error response that the receiver returned.
+- `version`: Required. Version of the resthook subscription. Determines the resthook body
+being fired. Known values are: "v1", "v2", "v3".
 
 <a id="models._models.ResthookSubscriptionCreate"></a>
 

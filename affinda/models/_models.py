@@ -521,8 +521,6 @@ class Collection(msrest.serialization.Model):
     :vartype auto_validation_threshold: float
     :ivar fields:
     :vartype fields: list[~affinda.models.FieldGroup]
-    :ivar fields_layout:
-    :vartype fields_layout: ~affinda.models.FieldsLayout
     :ivar fields_configured:
     :vartype fields_configured: bool
     :ivar date_format_preference: Known values are: "DMY", "MDY", "YMD".
@@ -552,7 +550,6 @@ class Collection(msrest.serialization.Model):
         "extractor": {"key": "extractor", "type": "Extractor"},
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
         "fields": {"key": "fields", "type": "[FieldGroup]"},
-        "fields_layout": {"key": "fieldsLayout", "type": "FieldsLayout"},
         "fields_configured": {"key": "fieldsConfigured", "type": "bool"},
         "date_format_preference": {"key": "dateFormatPreference", "type": "str"},
         "date_format_from_document": {"key": "dateFormatFromDocument", "type": "bool"},
@@ -576,8 +573,6 @@ class Collection(msrest.serialization.Model):
         :paramtype auto_validation_threshold: float
         :keyword fields:
         :paramtype fields: list[~affinda.models.FieldGroup]
-        :keyword fields_layout:
-        :paramtype fields_layout: ~affinda.models.FieldsLayout
         :keyword fields_configured:
         :paramtype fields_configured: bool
         :keyword date_format_preference: Known values are: "DMY", "MDY", "YMD".
@@ -602,7 +597,6 @@ class Collection(msrest.serialization.Model):
         self.extractor = kwargs.get("extractor", None)
         self.auto_validation_threshold = kwargs.get("auto_validation_threshold", None)
         self.fields = kwargs.get("fields", None)
-        self.fields_layout = kwargs.get("fields_layout", None)
         self.fields_configured = kwargs.get("fields_configured", None)
         self.date_format_preference = kwargs.get("date_format_preference", None)
         self.date_format_from_document = kwargs.get("date_format_from_document", None)
@@ -3893,97 +3887,6 @@ class Field(msrest.serialization.Model):
 
     :ivar label: Required.
     :vartype label: str
-    :ivar data_point: Required. Data point identifier.
-    :vartype data_point: str
-    :ivar mandatory:
-    :vartype mandatory: bool
-    :ivar auto_validation_threshold:
-    :vartype auto_validation_threshold: float
-    :ivar show_dropdown:
-    :vartype show_dropdown: bool
-    :ivar fields:
-    :vartype fields: list[~affinda.models.Field]
-    """
-
-    _validation = {
-        "label": {"required": True},
-        "data_point": {"required": True},
-        "auto_validation_threshold": {"maximum": 1, "minimum": 0.9},
-    }
-
-    _attribute_map = {
-        "label": {"key": "label", "type": "str"},
-        "data_point": {"key": "dataPoint", "type": "str"},
-        "mandatory": {"key": "mandatory", "type": "bool"},
-        "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
-        "show_dropdown": {"key": "showDropdown", "type": "bool"},
-        "fields": {"key": "fields", "type": "[Field]"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword label: Required.
-        :paramtype label: str
-        :keyword data_point: Required. Data point identifier.
-        :paramtype data_point: str
-        :keyword mandatory:
-        :paramtype mandatory: bool
-        :keyword auto_validation_threshold:
-        :paramtype auto_validation_threshold: float
-        :keyword show_dropdown:
-        :paramtype show_dropdown: bool
-        :keyword fields:
-        :paramtype fields: list[~affinda.models.Field]
-        """
-        super(Field, self).__init__(**kwargs)
-        self.label = kwargs["label"]
-        self.data_point = kwargs["data_point"]
-        self.mandatory = kwargs.get("mandatory", None)
-        self.auto_validation_threshold = kwargs.get("auto_validation_threshold", None)
-        self.show_dropdown = kwargs.get("show_dropdown", None)
-        self.fields = kwargs.get("fields", None)
-
-
-class FieldCategory(msrest.serialization.Model):
-    """FieldCategory.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar enabled_fields: Required.
-    :vartype enabled_fields: list[~affinda.models.Field]
-    :ivar disabled_fields: Required.
-    :vartype disabled_fields: list[~affinda.models.Field]
-    """
-
-    _validation = {
-        "enabled_fields": {"required": True},
-        "disabled_fields": {"required": True},
-    }
-
-    _attribute_map = {
-        "enabled_fields": {"key": "enabledFields", "type": "[Field]"},
-        "disabled_fields": {"key": "disabledFields", "type": "[Field]"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword enabled_fields: Required.
-        :paramtype enabled_fields: list[~affinda.models.Field]
-        :keyword disabled_fields: Required.
-        :paramtype disabled_fields: list[~affinda.models.Field]
-        """
-        super(FieldCategory, self).__init__(**kwargs)
-        self.enabled_fields = kwargs["enabled_fields"]
-        self.disabled_fields = kwargs["disabled_fields"]
-
-
-class FieldDeprecated(msrest.serialization.Model):
-    """FieldDeprecated.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar label: Required.
-    :vartype label: str
     :ivar slug:
     :vartype slug: str
     :ivar data_point: Required.
@@ -3997,7 +3900,7 @@ class FieldDeprecated(msrest.serialization.Model):
     :ivar show_dropdown:
     :vartype show_dropdown: bool
     :ivar fields:
-    :vartype fields: list[~affinda.models.FieldDeprecated]
+    :vartype fields: list[~affinda.models.Field]
     """
 
     _validation = {
@@ -4013,7 +3916,7 @@ class FieldDeprecated(msrest.serialization.Model):
         "disabled": {"key": "disabled", "type": "bool"},
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
         "show_dropdown": {"key": "showDropdown", "type": "bool"},
-        "fields": {"key": "fields", "type": "[FieldDeprecated]"},
+        "fields": {"key": "fields", "type": "[Field]"},
     }
 
     def __init__(self, **kwargs):
@@ -4033,9 +3936,9 @@ class FieldDeprecated(msrest.serialization.Model):
         :keyword show_dropdown:
         :paramtype show_dropdown: bool
         :keyword fields:
-        :paramtype fields: list[~affinda.models.FieldDeprecated]
+        :paramtype fields: list[~affinda.models.Field]
         """
-        super(FieldDeprecated, self).__init__(**kwargs)
+        super(Field, self).__init__(**kwargs)
         self.label = kwargs["label"]
         self.slug = kwargs.get("slug", None)
         self.data_point = kwargs["data_point"]
@@ -4054,7 +3957,7 @@ class FieldGroup(msrest.serialization.Model):
     :ivar label: Required.
     :vartype label: str
     :ivar fields: Required.
-    :vartype fields: list[~affinda.models.FieldDeprecated]
+    :vartype fields: list[~affinda.models.Field]
     """
 
     _validation = {
@@ -4064,7 +3967,7 @@ class FieldGroup(msrest.serialization.Model):
 
     _attribute_map = {
         "label": {"key": "label", "type": "str"},
-        "fields": {"key": "fields", "type": "[FieldDeprecated]"},
+        "fields": {"key": "fields", "type": "[Field]"},
     }
 
     def __init__(self, **kwargs):
@@ -4072,44 +3975,11 @@ class FieldGroup(msrest.serialization.Model):
         :keyword label: Required.
         :paramtype label: str
         :keyword fields: Required.
-        :paramtype fields: list[~affinda.models.FieldDeprecated]
+        :paramtype fields: list[~affinda.models.Field]
         """
         super(FieldGroup, self).__init__(**kwargs)
         self.label = kwargs["label"]
         self.fields = kwargs["fields"]
-
-
-class FieldsLayout(msrest.serialization.Model):
-    """FieldsLayout.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar default_category: Required.
-    :vartype default_category: ~affinda.models.FieldCategory
-    :ivar categories: Required.
-    :vartype categories: list[~affinda.models.FieldCategory]
-    """
-
-    _validation = {
-        "default_category": {"required": True},
-        "categories": {"required": True},
-    }
-
-    _attribute_map = {
-        "default_category": {"key": "defaultCategory", "type": "FieldCategory"},
-        "categories": {"key": "categories", "type": "[FieldCategory]"},
-    }
-
-    def __init__(self, **kwargs):
-        """
-        :keyword default_category: Required.
-        :paramtype default_category: ~affinda.models.FieldCategory
-        :keyword categories: Required.
-        :paramtype categories: list[~affinda.models.FieldCategory]
-        """
-        super(FieldsLayout, self).__init__(**kwargs)
-        self.default_category = kwargs["default_category"]
-        self.categories = kwargs["categories"]
 
 
 class FloatAnnotation(Annotation):
@@ -9404,6 +9274,9 @@ class JobDescriptionData(msrest.serialization.Model):
     :vartype certifications: list[~affinda.models.TextAnnotation]
     :ivar years_experience:
     :vartype years_experience: ~affinda.models.YearsExperienceAnnotation
+    :ivar raw_text: All of the raw text of the parsed job description, example is shortened for
+     readability.
+    :vartype raw_text: str
     """
 
     _attribute_map = {
@@ -9428,6 +9301,7 @@ class JobDescriptionData(msrest.serialization.Model):
         "location": {"key": "location", "type": "LocationAnnotation"},
         "certifications": {"key": "certifications", "type": "[TextAnnotation]"},
         "years_experience": {"key": "yearsExperience", "type": "YearsExperienceAnnotation"},
+        "raw_text": {"key": "rawText", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -9469,6 +9343,9 @@ class JobDescriptionData(msrest.serialization.Model):
         :paramtype certifications: list[~affinda.models.TextAnnotation]
         :keyword years_experience:
         :paramtype years_experience: ~affinda.models.YearsExperienceAnnotation
+        :keyword raw_text: All of the raw text of the parsed job description, example is shortened for
+         readability.
+        :paramtype raw_text: str
         """
         super(JobDescriptionData, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
@@ -9489,6 +9366,7 @@ class JobDescriptionData(msrest.serialization.Model):
         self.location = kwargs.get("location", None)
         self.certifications = kwargs.get("certifications", None)
         self.years_experience = kwargs.get("years_experience", None)
+        self.raw_text = kwargs.get("raw_text", None)
 
 
 class JobDescriptionSearch(msrest.serialization.Model):
@@ -13048,31 +12926,44 @@ class RequestErrorErrorsItem(msrest.serialization.Model):
 class ResthookSubscription(msrest.serialization.Model):
     """ResthookSubscription.
 
-    :ivar id: Resthook subscription's ID.
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar id: Required. Resthook subscription's ID.
     :vartype id: int
-    :ivar event: The event name to subscribe to. Known values are: "resume.parse.succeeded",
-     "resume.parse.failed", "resume.parse.completed", "invoice.parse.succeeded",
-     "invoice.parse.failed", "invoice.parse.completed", "invoice.validate.completed",
-     "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
-     "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
-     "document.classify.completed".
+    :ivar event: Required. The event name to subscribe to. Known values are:
+     "resume.parse.succeeded", "resume.parse.failed", "resume.parse.completed",
+     "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
+     "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
+     "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
+     "document.classify.failed", "document.classify.completed".
     :vartype event: str or ~affinda.models.ResthookEvent
-    :ivar organization:
+    :ivar organization: Required.
     :vartype organization: ~affinda.models.Organization
-    :ivar target_url: URL of the resthook's receiver.
+    :ivar target_url: Required. URL of the resthook's receiver.
     :vartype target_url: str
-    :ivar active: Resthooks only fire for active subscriptions.
+    :ivar active: Required. Resthooks only fire for active subscriptions.
     :vartype active: bool
-    :ivar auto_deactivated: Resthook subscriptions can be auto deactivated if the receiver
-     continuously returns error status code over a period of time.
+    :ivar auto_deactivated: Required. Resthook subscriptions can be auto deactivated if the
+     receiver continuously returns error status code over a period of time.
     :vartype auto_deactivated: bool
-    :ivar auto_deactivate_reason: The reason for the subscription being auto deactivated. May
-     contains the error response that the receiver returned.
+    :ivar auto_deactivate_reason: Required. The reason for the subscription being auto deactivated.
+     May contains the error response that the receiver returned.
     :vartype auto_deactivate_reason: str
-    :ivar version: Version of the resthook subscription. Determines the resthook body being fired.
-     Known values are: "v1", "v2", "v3".
+    :ivar version: Required. Version of the resthook subscription. Determines the resthook body
+     being fired. Known values are: "v1", "v2", "v3".
     :vartype version: str or ~affinda.models.ResthookSubscriptionVersion
     """
+
+    _validation = {
+        "id": {"required": True},
+        "event": {"required": True},
+        "organization": {"required": True},
+        "target_url": {"required": True},
+        "active": {"required": True},
+        "auto_deactivated": {"required": True},
+        "auto_deactivate_reason": {"required": True},
+        "version": {"required": True},
+    }
 
     _attribute_map = {
         "id": {"key": "id", "type": "int"},
@@ -13087,40 +12978,40 @@ class ResthookSubscription(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
-        :keyword id: Resthook subscription's ID.
+        :keyword id: Required. Resthook subscription's ID.
         :paramtype id: int
-        :keyword event: The event name to subscribe to. Known values are: "resume.parse.succeeded",
-         "resume.parse.failed", "resume.parse.completed", "invoice.parse.succeeded",
-         "invoice.parse.failed", "invoice.parse.completed", "invoice.validate.completed",
-         "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
-         "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
-         "document.classify.completed".
+        :keyword event: Required. The event name to subscribe to. Known values are:
+         "resume.parse.succeeded", "resume.parse.failed", "resume.parse.completed",
+         "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
+         "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
+         "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
+         "document.classify.failed", "document.classify.completed".
         :paramtype event: str or ~affinda.models.ResthookEvent
-        :keyword organization:
+        :keyword organization: Required.
         :paramtype organization: ~affinda.models.Organization
-        :keyword target_url: URL of the resthook's receiver.
+        :keyword target_url: Required. URL of the resthook's receiver.
         :paramtype target_url: str
-        :keyword active: Resthooks only fire for active subscriptions.
+        :keyword active: Required. Resthooks only fire for active subscriptions.
         :paramtype active: bool
-        :keyword auto_deactivated: Resthook subscriptions can be auto deactivated if the receiver
-         continuously returns error status code over a period of time.
+        :keyword auto_deactivated: Required. Resthook subscriptions can be auto deactivated if the
+         receiver continuously returns error status code over a period of time.
         :paramtype auto_deactivated: bool
-        :keyword auto_deactivate_reason: The reason for the subscription being auto deactivated. May
-         contains the error response that the receiver returned.
+        :keyword auto_deactivate_reason: Required. The reason for the subscription being auto
+         deactivated. May contains the error response that the receiver returned.
         :paramtype auto_deactivate_reason: str
-        :keyword version: Version of the resthook subscription. Determines the resthook body being
-         fired. Known values are: "v1", "v2", "v3".
+        :keyword version: Required. Version of the resthook subscription. Determines the resthook body
+         being fired. Known values are: "v1", "v2", "v3".
         :paramtype version: str or ~affinda.models.ResthookSubscriptionVersion
         """
         super(ResthookSubscription, self).__init__(**kwargs)
-        self.id = kwargs.get("id", None)
-        self.event = kwargs.get("event", None)
-        self.organization = kwargs.get("organization", None)
-        self.target_url = kwargs.get("target_url", None)
-        self.active = kwargs.get("active", None)
-        self.auto_deactivated = kwargs.get("auto_deactivated", None)
-        self.auto_deactivate_reason = kwargs.get("auto_deactivate_reason", None)
-        self.version = kwargs.get("version", None)
+        self.id = kwargs["id"]
+        self.event = kwargs["event"]
+        self.organization = kwargs["organization"]
+        self.target_url = kwargs["target_url"]
+        self.active = kwargs["active"]
+        self.auto_deactivated = kwargs["auto_deactivated"]
+        self.auto_deactivate_reason = kwargs["auto_deactivate_reason"]
+        self.version = kwargs["version"]
 
 
 class ResthookSubscriptionCreate(msrest.serialization.Model):
