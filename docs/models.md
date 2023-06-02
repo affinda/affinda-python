@@ -6919,7 +6919,7 @@ Paths1Sikw07V2IndexPostResponses201ContentApplicationJsonSchema.
 :ivar name:
 :vartype name: str
 :ivar document_type: Known values are: "resumes", "job_descriptions".
-:vartype document_type: str or ~affinda.models.Enum6
+:vartype document_type: str or ~affinda.models.Enum7
 
 <a id="models._models.Paths1Sikw07V2IndexPostResponses201ContentApplicationJsonSchema.__init__"></a>
 
