@@ -387,6 +387,32 @@ Deletes the specified collection from the database.
 
 `None`: None, or the result of cls(response)
 
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_data_field_for_collection"></a>
+
+#### create\_data\_field\_for\_collection
+
+```python
+def create_data_field_for_collection(identifier, body, **kwargs)
+```
+
+Create data field for a collection along with a new data point.
+
+Create data field for a collection along with a new data point.
+
+**Arguments**:
+
+- `identifier` (`str`): Collection's identifier.
+- `body` (`~affinda.models.DataFieldCreate`): The data field and data point to be created.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.DataField`: DataField, or the result of cls(response)
+
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_documents"></a>
 
 #### get\_all\_documents
@@ -2504,4 +2530,156 @@ Provided one or more skills, get related suggestions for your search.
 **Returns**:
 
 `list[str]`: list of str, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_api_users"></a>
+
+#### get\_all\_api\_users
+
+```python
+def get_all_api_users(organization=None, **kwargs)
+```
+
+Get list of all API users.
+
+Returns your API users.
+
+**Arguments**:
+
+- `organization` (`str`): Filter by organization. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Paths26Civ0V3ApiUsersGetResponses200ContentApplicationJsonSchema`: Paths26Civ0V3ApiUsersGetResponses200ContentApplicationJsonSchema, or the result of
+cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_api_user"></a>
+
+#### create\_api\_user
+
+```python
+def create_api_user(body, **kwargs)
+```
+
+Create an API user.
+
+Create an API user.
+
+**Arguments**:
+
+- `body` (`~affinda.models.ApiUserCreate`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ApiUserWithKey`: ApiUserWithKey, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_api_user"></a>
+
+#### get\_api\_user
+
+```python
+def get_api_user(id, **kwargs)
+```
+
+Get specific API user.
+
+Return a specific API user.
+
+**Arguments**:
+
+- `id` (`int`): API user's ID.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ApiUserWithoutKey`: ApiUserWithoutKey, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_api_user"></a>
+
+#### update\_api\_user
+
+```python
+def update_api_user(id, body, **kwargs)
+```
+
+Update an API user.
+
+Update data of an API user.
+
+**Arguments**:
+
+- `id` (`int`): API user's ID.
+- `body` (`~affinda.models.ApiUserUpdate`): API user to update.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ApiUserWithoutKey`: ApiUserWithoutKey, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_api_user"></a>
+
+#### delete\_api\_user
+
+```python
+def delete_api_user(id, **kwargs)
+```
+
+Delete an API user.
+
+Deletes the specified API user from the database.
+
+**Arguments**:
+
+- `id` (`int`): API user's ID.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.regenerate_api_key_for_api_user"></a>
+
+#### regenerate\_api\_key\_for\_api\_user
+
+```python
+def regenerate_api_key_for_api_user(id, **kwargs)
+```
+
+Regenerate API key for an API user.
+
+Regenerate API key for an API user.
+
+**Arguments**:
+
+- `id` (`int`): API user's ID.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ApiUserWithKey`: ApiUserWithKey, or the result of cls(response)
 

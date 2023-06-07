@@ -274,6 +274,226 @@ be contained within multiple rectangles.
 - `is_client_verified`: Indicates whether the data has been validated by a human.
 - `parent`: The parent annotation's ID.
 
+<a id="models._models.ApiUserCreate"></a>
+
+## ApiUserCreate Objects
+
+```python
+class ApiUserCreate(msrest.serialization.Model)
+```
+
+ApiUserCreate.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar name:
+:vartype name: str
+:ivar username:
+:vartype username: str
+:ivar email:
+:vartype email: str
+:ivar avatar: URL of the user's avatar.
+:vartype avatar: str
+:ivar organization: Required. Uniquely identify an organization.
+:vartype organization: str
+
+<a id="models._models.ApiUserCreate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `name`: 
+- `username`: 
+- `email`: 
+- `avatar`: URL of the user's avatar.
+- `organization`: Required. Uniquely identify an organization.
+
+<a id="models._models.ApiUserUpdate"></a>
+
+## ApiUserUpdate Objects
+
+```python
+class ApiUserUpdate(msrest.serialization.Model)
+```
+
+ApiUserUpdate.
+
+:ivar name:
+:vartype name: str
+:ivar username:
+:vartype username: str
+:ivar email:
+:vartype email: str
+:ivar avatar: URL of the user's avatar.
+:vartype avatar: str
+
+<a id="models._models.ApiUserUpdate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `name`: 
+- `username`: 
+- `email`: 
+- `avatar`: URL of the user's avatar.
+
+<a id="models._models.ApiUserWithKey"></a>
+
+## ApiUserWithKey Objects
+
+```python
+class ApiUserWithKey(msrest.serialization.Model)
+```
+
+ApiUserWithKey.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar id: Required. Uniquely identify a user.
+:vartype id: int
+:ivar name: Required.
+:vartype name: str
+:ivar username: Required.
+:vartype username: str
+:ivar email: Required.
+:vartype email: str
+:ivar avatar: Required. URL of the user's avatar.
+:vartype avatar: str
+:ivar organizations: Required.
+:vartype organizations: list[~affinda.models.ApiUserWithKeyOrganizationsItem]
+:ivar api_key: Required. Use this key to authenticate with the API.
+:vartype api_key: str
+
+<a id="models._models.ApiUserWithKey.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `id`: Required. Uniquely identify a user.
+- `name`: Required.
+- `username`: Required.
+- `email`: Required.
+- `avatar`: Required. URL of the user's avatar.
+- `organizations`: Required.
+- `api_key`: Required. Use this key to authenticate with the API.
+
+<a id="models._models.ApiUserWithKeyOrganizationsItem"></a>
+
+## ApiUserWithKeyOrganizationsItem Objects
+
+```python
+class ApiUserWithKeyOrganizationsItem(msrest.serialization.Model)
+```
+
+ApiUserWithKeyOrganizationsItem.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar identifier: Required. Uniquely identify an organization.
+:vartype identifier: str
+:ivar name: Required.
+:vartype name: str
+
+<a id="models._models.ApiUserWithKeyOrganizationsItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Required. Uniquely identify an organization.
+- `name`: Required.
+
+<a id="models._models.ApiUserWithoutKey"></a>
+
+## ApiUserWithoutKey Objects
+
+```python
+class ApiUserWithoutKey(msrest.serialization.Model)
+```
+
+ApiUserWithoutKey.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar id: Required. Uniquely identify a user.
+:vartype id: int
+:ivar name: Required.
+:vartype name: str
+:ivar username: Required.
+:vartype username: str
+:ivar email: Required.
+:vartype email: str
+:ivar avatar: Required. URL of the user's avatar.
+:vartype avatar: str
+:ivar organizations: Required.
+:vartype organizations: list[~affinda.models.ApiUserWithoutKeyOrganizationsItem]
+
+<a id="models._models.ApiUserWithoutKey.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `id`: Required. Uniquely identify a user.
+- `name`: Required.
+- `username`: Required.
+- `email`: Required.
+- `avatar`: Required. URL of the user's avatar.
+- `organizations`: Required.
+
+<a id="models._models.ApiUserWithoutKeyOrganizationsItem"></a>
+
+## ApiUserWithoutKeyOrganizationsItem Objects
+
+```python
+class ApiUserWithoutKeyOrganizationsItem(msrest.serialization.Model)
+```
+
+ApiUserWithoutKeyOrganizationsItem.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar identifier: Required. Uniquely identify an organization.
+:vartype identifier: str
+:ivar name: Required.
+:vartype name: str
+
+<a id="models._models.ApiUserWithoutKeyOrganizationsItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Required. Uniquely identify an organization.
+- `name`: Required.
+
 <a id="models._models.BaseExtractor"></a>
 
 ## BaseExtractor Objects
@@ -396,6 +616,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype auto_validation_threshold: float
 :ivar fields:
 :vartype fields: list[~affinda.models.FieldGroup]
+:ivar fields_layout:
+:vartype fields_layout: ~affinda.models.FieldsLayout
 :ivar fields_configured:
 :vartype fields_configured: bool
 :ivar date_format_preference: Known values are: "DMY", "MDY", "YMD".
@@ -429,6 +651,7 @@ def __init__(**kwargs)
 - `extractor`: 
 - `auto_validation_threshold`: 
 - `fields`: 
+- `fields_layout`: 
 - `fields_configured`: 
 - `date_format_preference`: Known values are: "DMY", "MDY", "YMD".
 - `date_format_from_document`: Predict the date format from any dates in the document that
@@ -461,6 +684,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype auto_validation_threshold: float
 :ivar fields:
 :vartype fields: list[~affinda.models.FieldGroup]
+:ivar fields_layout:
+:vartype fields_layout: ~affinda.models.FieldsLayout
 :ivar date_format_preference: Known values are: "DMY", "MDY", "YMD".
 :vartype date_format_preference: str or ~affinda.models.DateFormatPreference
 :ivar date_format_from_document: Predict the date format from any dates in the document that is
@@ -484,6 +709,7 @@ def __init__(**kwargs)
 - `extractor`: Required. Uniquely identify an extractor.
 - `auto_validation_threshold`: 
 - `fields`: 
+- `fields_layout`: 
 - `date_format_preference`: Known values are: "DMY", "MDY", "YMD".
 - `date_format_from_document`: Predict the date format from any dates in the document that
 is not ambiguous.
@@ -505,6 +731,8 @@ CollectionUpdate.
 :vartype auto_validation_threshold: float
 :ivar fields:
 :vartype fields: list[~affinda.models.FieldGroup]
+:ivar fields_layout:
+:vartype fields_layout: ~affinda.models.FieldsLayout
 :ivar date_format_preference: Known values are: "DMY", "MDY", "YMD".
 :vartype date_format_preference: str or ~affinda.models.DateFormatPreference
 :ivar date_format_from_document: Predict the date format from any dates in the document that is
@@ -526,6 +754,7 @@ def __init__(**kwargs)
 - `name`: 
 - `auto_validation_threshold`: 
 - `fields`: 
+- `fields_layout`: 
 - `date_format_preference`: Known values are: "DMY", "MDY", "YMD".
 - `date_format_from_document`: Predict the date format from any dates in the document that
 is not ambiguous.
@@ -1689,6 +1918,255 @@ def __init__(**kwargs)
 
 - `data_point`: Required. Data point identifier.
 - `weight`: Required.
+
+<a id="models._models.DataField"></a>
+
+## DataField Objects
+
+```python
+class DataField(msrest.serialization.Model)
+```
+
+DataField.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar category_label: The label of the category that this field will be put into. If not
+ provided, the field will be put into the default category. If no category exists with the
+ specified label, a new category will be created.
+:vartype category_label: str
+:ivar field: Required. The field to be created.
+:vartype field: ~affinda.models.DataFieldField
+:ivar data_point: Required. The data point to be created for this field. If a data point with
+ the same slug and collection already exists, it will be reused.
+:vartype data_point: ~affinda.models.DataFieldDataPoint
+
+<a id="models._models.DataField.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `category_label`: The label of the category that this field will be put into. If not
+provided, the field will be put into the default category. If no category exists with the
+specified label, a new category will be created.
+- `field`: Required. The field to be created.
+- `data_point`: Required. The data point to be created for this field. If a data point
+with the same slug and collection already exists, it will be reused.
+
+<a id="models._models.DataFieldCreate"></a>
+
+## DataFieldCreate Objects
+
+```python
+class DataFieldCreate(msrest.serialization.Model)
+```
+
+DataFieldCreate.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar category_label: The label of the category that this field will be put into. If not
+ provided, the field will be put into the default category. If no category exists with the
+ specified label, a new category will be created.
+:vartype category_label: str
+:ivar field: Required. The field to be created.
+:vartype field: ~affinda.models.DataFieldCreateField
+:ivar data_point: Required. The data point to be created for this field. If a data point with
+ the same slug and collection already exists, it will be reused.
+:vartype data_point: ~affinda.models.DataFieldCreateDataPoint
+
+<a id="models._models.DataFieldCreate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `category_label`: The label of the category that this field will be put into. If not
+provided, the field will be put into the default category. If no category exists with the
+specified label, a new category will be created.
+- `field`: Required. The field to be created.
+- `data_point`: Required. The data point to be created for this field. If a data point
+with the same slug and collection already exists, it will be reused.
+
+<a id="models._models.DataFieldCreateDataPoint"></a>
+
+## DataFieldCreateDataPoint Objects
+
+```python
+class DataFieldCreateDataPoint(msrest.serialization.Model)
+```
+
+The data point to be created for this field. If a data point with the same slug and collection already exists, it will be reused.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar name: Required.
+:vartype name: str
+:ivar slug: Required.
+:vartype slug: str
+:ivar description:
+:vartype description: str
+:ivar type: Required. The different data types of annotations. Known values are: "text",
+ "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location", "json",
+ "table", "cell", "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience",
+ "group", "table_deprecated".
+:vartype type: str or ~affinda.models.AnnotationContentType
+:ivar multiple:
+:vartype multiple: bool
+:ivar no_rect:
+:vartype no_rect: bool
+
+<a id="models._models.DataFieldCreateDataPoint.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `name`: Required.
+- `slug`: Required.
+- `description`: 
+- `type`: Required. The different data types of annotations. Known values are: "text",
+"integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location", "json",
+"table", "cell", "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience",
+"group", "table_deprecated".
+- `multiple`: 
+- `no_rect`: 
+
+<a id="models._models.DataFieldCreateField"></a>
+
+## DataFieldCreateField Objects
+
+```python
+class DataFieldCreateField(msrest.serialization.Model)
+```
+
+The field to be created.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar label: Required.
+:vartype label: str
+:ivar mandatory:
+:vartype mandatory: bool
+:ivar show_dropdown:
+:vartype show_dropdown: bool
+:ivar auto_validation_threshold:
+:vartype auto_validation_threshold: float
+
+<a id="models._models.DataFieldCreateField.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `label`: Required.
+- `mandatory`: 
+- `show_dropdown`: 
+- `auto_validation_threshold`: 
+
+<a id="models._models.DataFieldDataPoint"></a>
+
+## DataFieldDataPoint Objects
+
+```python
+class DataFieldDataPoint(msrest.serialization.Model)
+```
+
+The data point to be created for this field. If a data point with the same slug and collection already exists, it will be reused.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar identifier: Required. Uniquely identify a data point.
+:vartype identifier: str
+:ivar name: Required.
+:vartype name: str
+:ivar slug: Required.
+:vartype slug: str
+:ivar description: Required.
+:vartype description: str
+:ivar type: Required. The different data types of annotations. Known values are: "text",
+ "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location", "json",
+ "table", "cell", "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience",
+ "group", "table_deprecated".
+:vartype type: str or ~affinda.models.AnnotationContentType
+:ivar multiple: Required.
+:vartype multiple: bool
+:ivar no_rect: Required.
+:vartype no_rect: bool
+
+<a id="models._models.DataFieldDataPoint.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Required. Uniquely identify a data point.
+- `name`: Required.
+- `slug`: Required.
+- `description`: Required.
+- `type`: Required. The different data types of annotations. Known values are: "text",
+"integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location", "json",
+"table", "cell", "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience",
+"group", "table_deprecated".
+- `multiple`: Required.
+- `no_rect`: Required.
+
+<a id="models._models.DataFieldField"></a>
+
+## DataFieldField Objects
+
+```python
+class DataFieldField(msrest.serialization.Model)
+```
+
+The field to be created.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar label: Required.
+:vartype label: str
+:ivar mandatory: Required.
+:vartype mandatory: bool
+:ivar show_dropdown: Required.
+:vartype show_dropdown: bool
+:ivar auto_validation_threshold: Required.
+:vartype auto_validation_threshold: float
+
+<a id="models._models.DataFieldField.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `label`: Required.
+- `mandatory`: Required.
+- `show_dropdown`: Required.
+- `auto_validation_threshold`: Required.
 
 <a id="models._models.DataPoint"></a>
 
@@ -3162,6 +3640,81 @@ All required parameters must be populated in order to send to Azure.
 
 :ivar label: Required.
 :vartype label: str
+:ivar data_point: Required. Data point identifier.
+:vartype data_point: str
+:ivar mandatory:
+:vartype mandatory: bool
+:ivar auto_validation_threshold:
+:vartype auto_validation_threshold: float
+:ivar show_dropdown:
+:vartype show_dropdown: bool
+:ivar fields:
+:vartype fields: list[~affinda.models.Field]
+
+<a id="models._models.Field.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `label`: Required.
+- `data_point`: Required. Data point identifier.
+- `mandatory`: 
+- `auto_validation_threshold`: 
+- `show_dropdown`: 
+- `fields`: 
+
+<a id="models._models.FieldCategory"></a>
+
+## FieldCategory Objects
+
+```python
+class FieldCategory(msrest.serialization.Model)
+```
+
+FieldCategory.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar label: Required.
+:vartype label: str
+:ivar enabled_fields: Required.
+:vartype enabled_fields: list[~affinda.models.Field]
+:ivar disabled_fields: Required.
+:vartype disabled_fields: list[~affinda.models.Field]
+
+<a id="models._models.FieldCategory.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `label`: Required.
+- `enabled_fields`: Required.
+- `disabled_fields`: Required.
+
+<a id="models._models.FieldDeprecated"></a>
+
+## FieldDeprecated Objects
+
+```python
+class FieldDeprecated(msrest.serialization.Model)
+```
+
+FieldDeprecated.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar label: Required.
+:vartype label: str
 :ivar slug:
 :vartype slug: str
 :ivar data_point: Required.
@@ -3175,9 +3728,9 @@ All required parameters must be populated in order to send to Azure.
 :ivar show_dropdown:
 :vartype show_dropdown: bool
 :ivar fields:
-:vartype fields: list[~affinda.models.Field]
+:vartype fields: list[~affinda.models.FieldDeprecated]
 
-<a id="models._models.Field.__init__"></a>
+<a id="models._models.FieldDeprecated.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -3211,7 +3764,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar label: Required.
 :vartype label: str
 :ivar fields: Required.
-:vartype fields: list[~affinda.models.Field]
+:vartype fields: list[~affinda.models.FieldDeprecated]
 
 <a id="models._models.FieldGroup.__init__"></a>
 
@@ -3225,6 +3778,36 @@ def __init__(**kwargs)
 
 - `label`: Required.
 - `fields`: Required.
+
+<a id="models._models.FieldsLayout"></a>
+
+## FieldsLayout Objects
+
+```python
+class FieldsLayout(msrest.serialization.Model)
+```
+
+FieldsLayout.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar default_category: Required.
+:vartype default_category: ~affinda.models.FieldCategory
+:ivar categories: Required.
+:vartype categories: list[~affinda.models.FieldCategory]
+
+<a id="models._models.FieldsLayout.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `default_category`: Required.
+- `categories`: Required.
 
 <a id="models._models.FloatAnnotation"></a>
 
@@ -8593,6 +9176,31 @@ def __init__(**kwargs)
 - `dark`: 
 - `contrast_text`: 
 
+<a id="models._models.Paths11PzrpaV3ApiUsersGetResponses200ContentApplicationJsonSchemaAllof1"></a>
+
+## Paths11PzrpaV3ApiUsersGetResponses200ContentApplicationJsonSchemaAllof1 Objects
+
+```python
+class Paths11PzrpaV3ApiUsersGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
+```
+
+Paths11PzrpaV3ApiUsersGetResponses200ContentApplicationJsonSchemaAllof1.
+
+:ivar results:
+:vartype results: list[~affinda.models.ApiUserWithoutKey]
+
+<a id="models._models.Paths11PzrpaV3ApiUsersGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: 
+
 <a id="models._models.PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
 
 ## PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
@@ -8817,6 +9425,42 @@ def __init__(**kwargs)
 
 - `name`: 
 - `document_type`: Known values are: "resumes", "job_descriptions".
+
+<a id="models._models.Paths26Civ0V3ApiUsersGetResponses200ContentApplicationJsonSchema"></a>
+
+## Paths26Civ0V3ApiUsersGetResponses200ContentApplicationJsonSchema Objects
+
+```python
+class Paths26Civ0V3ApiUsersGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  Paths11PzrpaV3ApiUsersGetResponses200ContentApplicationJsonSchemaAllof1)
+```
+
+Paths26Civ0V3ApiUsersGetResponses200ContentApplicationJsonSchema.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar results:
+:vartype results: list[~affinda.models.ApiUserWithoutKey]
+:ivar count: Required. Number of items in results.
+:vartype count: int
+:ivar next: URL to request next page of results.
+:vartype next: str
+:ivar previous: URL to request previous page of results.
+:vartype previous: str
+
+<a id="models._models.Paths26Civ0V3ApiUsersGetResponses200ContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: 
+- `count`: Required. Number of items in results.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
 
 <a id="models._models.Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
 

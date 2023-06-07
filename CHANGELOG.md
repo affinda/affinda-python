@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Allow setting `region_bias` when uploading document
 - rawText field to JobDescription Model
 - Required fields for resthook subscriptions
+- Add `fieldsLayout` to `Collection` schema
+
+### Deprecated
+- Deprecate `Collection.fields` in favor of `Collection.fieldsLayout`
 
 ## [4.3.5] - 2023-05-09
 ### Changed
