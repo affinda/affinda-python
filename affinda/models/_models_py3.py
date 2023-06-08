@@ -16526,7 +16526,7 @@ class ResumeData(msrest.serialization.Model):
     :ivar objective:
     :vartype objective: str
     :ivar languages:
-    :vartype languages: list[str]
+    :vartype languages: list[str or ~affinda.models.ResumeDataLanguagesItem]
     :ivar language_codes:
     :vartype language_codes: list[str]
     :ivar summary:
@@ -16563,7 +16563,6 @@ class ResumeData(msrest.serialization.Model):
     """
 
     _validation = {
-        "languages": {"readonly": True},
         "language_codes": {"readonly": True},
         "head_shot": {"readonly": True},
         "profession": {"readonly": True},
@@ -16616,6 +16615,7 @@ class ResumeData(msrest.serialization.Model):
         date_of_birth: Optional[str] = None,
         location: Optional["_models.Location"] = None,
         objective: Optional[str] = "",
+        languages: Optional[List[Union[str, "_models.ResumeDataLanguagesItem"]]] = None,
         summary: Optional[str] = "",
         total_years_experience: Optional[int] = None,
         education: Optional[List["_models.Education"]] = None,
@@ -16648,6 +16648,8 @@ class ResumeData(msrest.serialization.Model):
         :paramtype location: ~affinda.models.Location
         :keyword objective:
         :paramtype objective: str
+        :keyword languages:
+        :paramtype languages: list[str or ~affinda.models.ResumeDataLanguagesItem]
         :keyword summary:
         :paramtype summary: str
         :keyword total_years_experience:
@@ -16680,7 +16682,7 @@ class ResumeData(msrest.serialization.Model):
         self.date_of_birth = date_of_birth
         self.location = location
         self.objective = objective
-        self.languages = None
+        self.languages = languages
         self.language_codes = None
         self.summary = summary
         self.total_years_experience = total_years_experience
