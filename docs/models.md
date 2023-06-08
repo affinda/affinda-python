@@ -6919,7 +6919,7 @@ Paths1Sikw07V2IndexPostResponses201ContentApplicationJsonSchema.
 :ivar name:
 :vartype name: str
 :ivar document_type: Known values are: "resumes", "job_descriptions".
-:vartype document_type: str or ~affinda.models.Enum7
+:vartype document_type: str or ~affinda.models.Enum8
 
 <a id="models._models.Paths1Sikw07V2IndexPostResponses201ContentApplicationJsonSchema.__init__"></a>
 
@@ -7653,7 +7653,7 @@ Variables are only populated by the server, and will be ignored when sending a r
 :ivar objective:
 :vartype objective: str
 :ivar languages:
-:vartype languages: list[str]
+:vartype languages: list[str or ~affinda.models.ResumeDataLanguagesItem]
 :ivar language_codes:
 :vartype language_codes: list[str]
 :ivar summary:
@@ -7708,6 +7708,7 @@ collection.
 - `date_of_birth`: 
 - `location`: 
 - `objective`: 
+- `languages`: 
 - `summary`: 
 - `total_years_experience`: 
 - `education`: 

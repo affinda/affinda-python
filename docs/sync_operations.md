@@ -114,7 +114,7 @@ The ``identifier`` is the unique ID returned after POST-ing the resume via the `
 **Arguments**:
 
 - `identifier` (`str`): Document identifier.
-- `format` (`str or ~affinda.models.Enum1`): Set this to "hr-xml" to get the response in HR-XML format. Currently the only
+- `format` (`str or ~affinda.models.Enum2`): Set this to "hr-xml" to get the response in HR-XML format. Currently the only
 supported value for this parameter is "hr-xml". Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
@@ -963,7 +963,7 @@ Returns all the indexes.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
-- `document_type` (`str or ~affinda.models.Enum4`): Filter indices by a document type. Default value is None.
+- `document_type` (`str or ~affinda.models.Enum5`): Filter indices by a document type. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
