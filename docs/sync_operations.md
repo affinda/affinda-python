@@ -791,7 +791,7 @@ Deletes the specified extractor from the database.
 #### get\_all\_data\_points
 
 ```python
-def get_all_data_points(offset=None, limit=300, organization=None, extractor=None, slug=None, description=None, annotation_content_type=None, identifier=None, **kwargs)
+def get_all_data_points(offset=None, limit=300, organization=None, include_public=None, extractor=None, slug=None, description=None, annotation_content_type=None, identifier=None, **kwargs)
 ```
 
 Get list of all data points.
@@ -804,6 +804,8 @@ Returns your custom data points as well as Affinda's off-the-shelf data points.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
 - `organization` (`str`): Filter by organization. Default value is None.
+- `include_public` (`bool`): Allows you to include public data points in the response when you're
+filtering by organization. Default value is None.
 - `extractor` (`str`): Filter by extractor. Default value is None.
 - `slug` (`str`): Filter by slug. Default value is None.
 - `description` (`str`): Filter by description. Default value is None.
