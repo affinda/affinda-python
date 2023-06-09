@@ -678,8 +678,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype name: str
 :ivar workspace: Required. Uniquely identify a workspace.
 :vartype workspace: str
-:ivar extractor: Required. Uniquely identify an extractor.
+:ivar extractor: Uniquely identify an extractor.
 :vartype extractor: str
+:ivar base_extractor: Not applicable, please leave empty.
+:vartype base_extractor: str
 :ivar auto_validation_threshold:
 :vartype auto_validation_threshold: float
 :ivar fields:
@@ -706,7 +708,8 @@ def __init__(**kwargs)
 
 - `name`: Required.
 - `workspace`: Required. Uniquely identify a workspace.
-- `extractor`: Required. Uniquely identify an extractor.
+- `extractor`: Uniquely identify an extractor.
+- `base_extractor`: Not applicable, please leave empty.
 - `auto_validation_threshold`: 
 - `fields`: 
 - `fields_layout`: 
@@ -10291,7 +10294,7 @@ Variables are only populated by the server, and will be ignored when sending a r
 :ivar objective:
 :vartype objective: str
 :ivar languages:
-:vartype languages: list[str or ~affinda.models.ResumeDataLanguagesItem]
+:vartype languages: list[str]
 :ivar language_codes:
 :vartype language_codes: list[str]
 :ivar summary:
@@ -10346,7 +10349,6 @@ collection.
 - `date_of_birth`: 
 - `location`: 
 - `objective`: 
-- `languages`: 
 - `summary`: 
 - `total_years_experience`: 
 - `education`: 

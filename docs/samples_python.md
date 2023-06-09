@@ -1221,6 +1221,115 @@ response = client.respond_to_invitation(invitation_token, body)
 print(response.as_dict())
 ```
 
+Organization API - Users
+------------------------
+
+### getAllApiUsers - Get list of all API users
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+organization = "REPLACE_ORGANIZATION_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+res = client.get_all_api_users(organization=organization)
+for user in res.results:
+    print(user.as_dict())
+```
+
+### createApiUser - Create an API user
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import ApiUserCreate
+
+token = "REPLACE_TOKEN"
+organization = "REPLACE_ORGANIZATION_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+body = ApiUserCreate(
+    organization=organization,
+    name="My API User",
+    email="my.user@my.company",
+)
+
+res = client.create_api_user(body)
+print(res.as_dict())
+
+# Keep this key safe, it is not possible to retrieve it again.
+print(res.api_key)
+```
+
+### getApiUser - Get specific API user
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+api_user_id = "REPLACE_API_USER_ID"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+res = client.get_api_user(api_user_id)
+print(res.as_dict())
+```
+
+### updateApiUser - Update an API user
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import ApiUserUpdate
+
+token = "REPLACE_TOKEN"
+api_user_id = "REPLACE_API_USER_ID"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+body = ApiUserUpdate(name="My New API User Name", email="new.email@my.company")
+
+res = client.update_api_user(api_user_id, body)
+print(res.as_dict())
+```
+
+### deleteApiUser - Delete an API user
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+api_user_id = "REPLACE_API_USER_ID"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+client.delete_api_user(api_user_id)
+```
+
+### regenerateApiKeyForApiUser - Regenerate API key for an API user
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+api_user_id = "REPLACE_API_USER_ID"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+res = client.regenerate_api_key_for_api_user(api_user_id)
+print(res.as_dict())
+
+# Keep this key safe, it is not possible to retrieve it again.
+print(res.api_key)
+```
+
 Webhook API
 -----------
 
@@ -1637,113 +1746,4 @@ credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
 
 client.delete_index_document(name=index_name, identifier=identifier)
-```
-
-Organization API - Users
-------------------------
-
-### getAllApiUsers - Get list of all API users
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-organization = "REPLACE_ORGANIZATION_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-res = client.get_all_api_users(organization=organization)
-for user in res.results:
-    print(user.as_dict())
-```
-
-### createApiUser - Create an API user
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import ApiUserCreate
-
-token = "REPLACE_TOKEN"
-organization = "REPLACE_ORGANIZATION_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-body = ApiUserCreate(
-    organization=organization,
-    name="My API User",
-    email="my.user@my.company",
-)
-
-res = client.create_api_user(body)
-print(res.as_dict())
-
-# Keep this key safe, it is not possible to retrieve it again.
-print(res.api_key)
-```
-
-### getApiUser - Get specific API user
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-api_user_id = "REPLACE_API_USER_ID"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-res = client.get_api_user(api_user_id)
-print(res.as_dict())
-```
-
-### updateApiUser - Update an API user
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import ApiUserUpdate
-
-token = "REPLACE_TOKEN"
-api_user_id = "REPLACE_API_USER_ID"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-body = ApiUserUpdate(name="My New API User Name", email="new.email@my.company")
-
-res = client.update_api_user(api_user_id, body)
-print(res.as_dict())
-```
-
-### deleteApiUser - Delete an API user
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-api_user_id = "REPLACE_API_USER_ID"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-client.delete_api_user(api_user_id)
-```
-
-### regenerateApiKeyForApiUser - Regenerate API key for an API user
-
-```python
-from affinda import AffindaAPI, TokenCredential
-
-token = "REPLACE_TOKEN"
-api_user_id = "REPLACE_API_USER_ID"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-res = client.regenerate_api_key_for_api_user(api_user_id)
-print(res.as_dict())
-
-# Keep this key safe, it is not possible to retrieve it again.
-print(res.api_key)
 ```
