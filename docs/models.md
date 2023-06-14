@@ -4292,6 +4292,8 @@ InvoiceData.
 :vartype currency_code: ~affinda.models.CurrencyCodeAnnotation
 :ivar custom_fields: Dictionary of :code:`<any>`.
 :vartype custom_fields: dict[str, any]
+:ivar raw_text: All of the raw text of the parsed invoice.
+:vartype raw_text: str
 
 <a id="models._models.InvoiceData.__init__"></a>
 
@@ -4341,6 +4343,7 @@ def __init__(**kwargs)
 - `supplier_website`: 
 - `currency_code`: 
 - `custom_fields`: Dictionary of :code:`<any>`.
+- `raw_text`: All of the raw text of the parsed invoice.
 
 <a id="models._models.TextAnnotation"></a>
 
@@ -10294,7 +10297,7 @@ Variables are only populated by the server, and will be ignored when sending a r
 :ivar objective:
 :vartype objective: str
 :ivar languages:
-:vartype languages: list[str]
+:vartype languages: list[str or ~affinda.models.ResumeDataLanguagesItem]
 :ivar language_codes:
 :vartype language_codes: list[str]
 :ivar summary:
@@ -10349,6 +10352,7 @@ collection.
 - `date_of_birth`: 
 - `location`: 
 - `objective`: 
+- `languages`: 
 - `summary`: 
 - `total_years_experience`: 
 - `education`: 
