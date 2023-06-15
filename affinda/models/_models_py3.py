@@ -947,6 +947,9 @@ class Collection(msrest.serialization.Model):
     :ivar ingest_email: When you send email to this address, any document attached in the body will
      be uploaded to this collection.
     :vartype ingest_email: str
+    :ivar tailored_extractor_requested: Whether a tailored extractor has been requested for this
+     collection.
+    :vartype tailored_extractor_requested: bool
     """
 
     _validation = {
@@ -968,6 +971,7 @@ class Collection(msrest.serialization.Model):
         "unvalidated_docs_count": {"key": "unvalidatedDocsCount", "type": "int"},
         "confirmed_docs_count": {"key": "confirmedDocsCount", "type": "int"},
         "ingest_email": {"key": "ingestEmail", "type": "str"},
+        "tailored_extractor_requested": {"key": "tailoredExtractorRequested", "type": "bool"},
     }
 
     def __init__(
@@ -989,6 +993,7 @@ class Collection(msrest.serialization.Model):
         unvalidated_docs_count: Optional[int] = None,
         confirmed_docs_count: Optional[int] = None,
         ingest_email: Optional[str] = None,
+        tailored_extractor_requested: Optional[bool] = None,
         **kwargs,
     ):
         """
@@ -1022,6 +1027,9 @@ class Collection(msrest.serialization.Model):
         :keyword ingest_email: When you send email to this address, any document attached in the body
          will be uploaded to this collection.
         :paramtype ingest_email: str
+        :keyword tailored_extractor_requested: Whether a tailored extractor has been requested for this
+         collection.
+        :paramtype tailored_extractor_requested: bool
         """
         super(Collection, self).__init__(**kwargs)
         self.identifier = identifier
@@ -1038,6 +1046,7 @@ class Collection(msrest.serialization.Model):
         self.unvalidated_docs_count = unvalidated_docs_count
         self.confirmed_docs_count = confirmed_docs_count
         self.ingest_email = ingest_email
+        self.tailored_extractor_requested = tailored_extractor_requested
 
 
 class CollectionCreate(msrest.serialization.Model):

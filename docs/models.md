@@ -634,6 +634,9 @@ All required parameters must be populated in order to send to Azure.
 :ivar ingest_email: When you send email to this address, any document attached in the body will
  be uploaded to this collection.
 :vartype ingest_email: str
+:ivar tailored_extractor_requested: Whether a tailored extractor has been requested for this
+ collection.
+:vartype tailored_extractor_requested: bool
 
 <a id="models._models.Collection.__init__"></a>
 
@@ -661,6 +664,8 @@ is not ambiguous.
 - `confirmed_docs_count`: Number of validated documents in the collection.
 - `ingest_email`: When you send email to this address, any document attached in the body
 will be uploaded to this collection.
+- `tailored_extractor_requested`: Whether a tailored extractor has been requested for this
+collection.
 
 <a id="models._models.CollectionCreate"></a>
 
