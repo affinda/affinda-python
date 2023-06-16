@@ -189,6 +189,114 @@ class Annotation(msrest.serialization.Model):
         self.content_type = kwargs["content_type"]
 
 
+class AnnotationBase(msrest.serialization.Model):
+    """AnnotationBase.
+
+    Variables are only populated by the server, and will be ignored when sending a request.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar id:
+    :vartype id: int
+    :ivar rectangle:
+    :vartype rectangle: ~affinda.models.Rectangle
+    :ivar rectangles:
+    :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar page_index:
+    :vartype page_index: int
+    :ivar raw:
+    :vartype raw: str
+    :ivar confidence: The overall confidence that the model's prediction is correct.
+    :vartype confidence: float
+    :ivar classification_confidence: The model's confidence that the text has been classified
+     correctly.
+    :vartype classification_confidence: float
+    :ivar text_extraction_confidence: If the document was submitted as an image, this is the
+     confidence that the text in the image has been correctly read by the model.
+    :vartype text_extraction_confidence: float
+    :ivar is_verified:
+    :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
+    :ivar data_point:
+    :vartype data_point: str
+    :ivar content_type:
+    :vartype content_type: str
+    """
+
+    _validation = {
+        "rectangles": {"readonly": True},
+    }
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "id": {"key": "id", "type": "int"},
+        "rectangle": {"key": "rectangle", "type": "Rectangle"},
+        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "raw": {"key": "raw", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
+        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword id:
+        :paramtype id: int
+        :keyword rectangle:
+        :paramtype rectangle: ~affinda.models.Rectangle
+        :keyword page_index:
+        :paramtype page_index: int
+        :keyword raw:
+        :paramtype raw: str
+        :keyword confidence: The overall confidence that the model's prediction is correct.
+        :paramtype confidence: float
+        :keyword classification_confidence: The model's confidence that the text has been classified
+         correctly.
+        :paramtype classification_confidence: float
+        :keyword text_extraction_confidence: If the document was submitted as an image, this is the
+         confidence that the text in the image has been correctly read by the model.
+        :paramtype text_extraction_confidence: float
+        :keyword is_verified:
+        :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
+        :keyword data_point:
+        :paramtype data_point: str
+        :keyword content_type:
+        :paramtype content_type: str
+        """
+        super(AnnotationBase, self).__init__(**kwargs)
+        self.additional_properties = kwargs.get("additional_properties", None)
+        self.id = kwargs.get("id", None)
+        self.rectangle = kwargs.get("rectangle", None)
+        self.rectangles = None
+        self.page_index = kwargs.get("page_index", None)
+        self.raw = kwargs.get("raw", None)
+        self.confidence = kwargs.get("confidence", None)
+        self.classification_confidence = kwargs.get("classification_confidence", None)
+        self.text_extraction_confidence = kwargs.get("text_extraction_confidence", None)
+        self.is_verified = kwargs.get("is_verified", None)
+        self.is_client_verified = kwargs.get("is_client_verified", None)
+        self.is_auto_verified = kwargs.get("is_auto_verified", None)
+        self.data_point = kwargs.get("data_point", None)
+        self.content_type = kwargs.get("content_type", None)
+
+
 class AnnotationUpdate(msrest.serialization.Model):
     """AnnotationUpdate.
 
@@ -3132,6 +3240,106 @@ class DateAnnotation(Annotation):
         self.parsed = kwargs.get("parsed", None)
 
 
+class DateAnnotationUpdate(AnnotationBase):
+    """DateAnnotationUpdate.
+
+    Variables are only populated by the server, and will be ignored when sending a request.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar id:
+    :vartype id: int
+    :ivar rectangle:
+    :vartype rectangle: ~affinda.models.Rectangle
+    :ivar rectangles:
+    :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar page_index:
+    :vartype page_index: int
+    :ivar raw:
+    :vartype raw: str
+    :ivar confidence: The overall confidence that the model's prediction is correct.
+    :vartype confidence: float
+    :ivar classification_confidence: The model's confidence that the text has been classified
+     correctly.
+    :vartype classification_confidence: float
+    :ivar text_extraction_confidence: If the document was submitted as an image, this is the
+     confidence that the text in the image has been correctly read by the model.
+    :vartype text_extraction_confidence: float
+    :ivar is_verified:
+    :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
+    :ivar data_point:
+    :vartype data_point: str
+    :ivar content_type:
+    :vartype content_type: str
+    :ivar parsed:
+    :vartype parsed: ~datetime.date
+    """
+
+    _validation = {
+        "rectangles": {"readonly": True},
+    }
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "id": {"key": "id", "type": "int"},
+        "rectangle": {"key": "rectangle", "type": "Rectangle"},
+        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "raw": {"key": "raw", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
+        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
+        "parsed": {"key": "parsed", "type": "date"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword id:
+        :paramtype id: int
+        :keyword rectangle:
+        :paramtype rectangle: ~affinda.models.Rectangle
+        :keyword page_index:
+        :paramtype page_index: int
+        :keyword raw:
+        :paramtype raw: str
+        :keyword confidence: The overall confidence that the model's prediction is correct.
+        :paramtype confidence: float
+        :keyword classification_confidence: The model's confidence that the text has been classified
+         correctly.
+        :paramtype classification_confidence: float
+        :keyword text_extraction_confidence: If the document was submitted as an image, this is the
+         confidence that the text in the image has been correctly read by the model.
+        :paramtype text_extraction_confidence: float
+        :keyword is_verified:
+        :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
+        :keyword data_point:
+        :paramtype data_point: str
+        :keyword content_type:
+        :paramtype content_type: str
+        :keyword parsed:
+        :paramtype parsed: ~datetime.date
+        """
+        super(DateAnnotationUpdate, self).__init__(**kwargs)
+        self.parsed = kwargs.get("parsed", None)
+
+
 class Document(msrest.serialization.Model):
     """Document.
 
@@ -4195,6 +4403,144 @@ class ExpectedRemunerationAnnotationParsed(msrest.serialization.Model):
         :paramtype unit: str
         """
         super(ExpectedRemunerationAnnotationParsed, self).__init__(**kwargs)
+        self.minimum = kwargs.get("minimum", None)
+        self.maximum = kwargs.get("maximum", None)
+        self.currency = kwargs.get("currency", None)
+        self.unit = kwargs.get("unit", None)
+
+
+class ExpectedRemunerationAnnotationUpdate(AnnotationBase):
+    """ExpectedRemunerationAnnotationUpdate.
+
+    Variables are only populated by the server, and will be ignored when sending a request.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar id:
+    :vartype id: int
+    :ivar rectangle:
+    :vartype rectangle: ~affinda.models.Rectangle
+    :ivar rectangles:
+    :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar page_index:
+    :vartype page_index: int
+    :ivar raw:
+    :vartype raw: str
+    :ivar confidence: The overall confidence that the model's prediction is correct.
+    :vartype confidence: float
+    :ivar classification_confidence: The model's confidence that the text has been classified
+     correctly.
+    :vartype classification_confidence: float
+    :ivar text_extraction_confidence: If the document was submitted as an image, this is the
+     confidence that the text in the image has been correctly read by the model.
+    :vartype text_extraction_confidence: float
+    :ivar is_verified:
+    :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
+    :ivar data_point:
+    :vartype data_point: str
+    :ivar content_type:
+    :vartype content_type: str
+    :ivar parsed:
+    :vartype parsed: ~affinda.models.ExpectedRemunerationAnnotationUpdateParsed
+    """
+
+    _validation = {
+        "rectangles": {"readonly": True},
+    }
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "id": {"key": "id", "type": "int"},
+        "rectangle": {"key": "rectangle", "type": "Rectangle"},
+        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "raw": {"key": "raw", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
+        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
+        "parsed": {"key": "parsed", "type": "ExpectedRemunerationAnnotationUpdateParsed"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword id:
+        :paramtype id: int
+        :keyword rectangle:
+        :paramtype rectangle: ~affinda.models.Rectangle
+        :keyword page_index:
+        :paramtype page_index: int
+        :keyword raw:
+        :paramtype raw: str
+        :keyword confidence: The overall confidence that the model's prediction is correct.
+        :paramtype confidence: float
+        :keyword classification_confidence: The model's confidence that the text has been classified
+         correctly.
+        :paramtype classification_confidence: float
+        :keyword text_extraction_confidence: If the document was submitted as an image, this is the
+         confidence that the text in the image has been correctly read by the model.
+        :paramtype text_extraction_confidence: float
+        :keyword is_verified:
+        :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
+        :keyword data_point:
+        :paramtype data_point: str
+        :keyword content_type:
+        :paramtype content_type: str
+        :keyword parsed:
+        :paramtype parsed: ~affinda.models.ExpectedRemunerationAnnotationUpdateParsed
+        """
+        super(ExpectedRemunerationAnnotationUpdate, self).__init__(**kwargs)
+        self.parsed = kwargs.get("parsed", None)
+
+
+class ExpectedRemunerationAnnotationUpdateParsed(msrest.serialization.Model):
+    """ExpectedRemunerationAnnotationUpdateParsed.
+
+    :ivar minimum:
+    :vartype minimum: float
+    :ivar maximum:
+    :vartype maximum: float
+    :ivar currency:
+    :vartype currency: str
+    :ivar unit:
+    :vartype unit: str
+    """
+
+    _attribute_map = {
+        "minimum": {"key": "minimum", "type": "float"},
+        "maximum": {"key": "maximum", "type": "float"},
+        "currency": {"key": "currency", "type": "str"},
+        "unit": {"key": "unit", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword minimum:
+        :paramtype minimum: float
+        :keyword maximum:
+        :paramtype maximum: float
+        :keyword currency:
+        :paramtype currency: str
+        :keyword unit:
+        :paramtype unit: str
+        """
+        super(ExpectedRemunerationAnnotationUpdateParsed, self).__init__(**kwargs)
         self.minimum = kwargs.get("minimum", None)
         self.maximum = kwargs.get("maximum", None)
         self.currency = kwargs.get("currency", None)
@@ -10140,6 +10486,136 @@ class JobDescriptionData(msrest.serialization.Model):
         self.raw_text = kwargs.get("raw_text", None)
 
 
+class JobDescriptionDataUpdate(msrest.serialization.Model):
+    """A JSON-encoded string of the ``JobDescriptionData`` object.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar job_title:
+    :vartype job_title: ~affinda.models.JobTitleAnnotationUpdate
+    :ivar contact_email:
+    :vartype contact_email: ~affinda.models.TextAnnotationUpdate
+    :ivar contact_name:
+    :vartype contact_name: ~affinda.models.TextAnnotationUpdate
+    :ivar contact_phone:
+    :vartype contact_phone: ~affinda.models.TextAnnotationUpdate
+    :ivar start_date:
+    :vartype start_date: ~affinda.models.DateAnnotationUpdate
+    :ivar end_date:
+    :vartype end_date: ~affinda.models.DateAnnotationUpdate
+    :ivar job_type:
+    :vartype job_type: ~affinda.models.TextAnnotationUpdate
+    :ivar languages:
+    :vartype languages: list[~affinda.models.LanguageAnnotationUpdate]
+    :ivar skills:
+    :vartype skills: list[~affinda.models.SkillAnnotationUpdate]
+    :ivar organization_name:
+    :vartype organization_name: ~affinda.models.TextAnnotationUpdate
+    :ivar organization_website:
+    :vartype organization_website: ~affinda.models.TextAnnotationUpdate
+    :ivar education_level:
+    :vartype education_level: ~affinda.models.TextAnnotationUpdate
+    :ivar education_accreditation:
+    :vartype education_accreditation: ~affinda.models.TextAnnotationUpdate
+    :ivar expected_remuneration:
+    :vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationUpdate
+    :ivar location:
+    :vartype location: ~affinda.models.LocationAnnotationUpdate
+    :ivar certifications:
+    :vartype certifications: list[~affinda.models.TextAnnotationUpdate]
+    :ivar years_experience:
+    :vartype years_experience: ~affinda.models.YearsExperienceAnnotationUpdate
+    """
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "job_title": {"key": "jobTitle", "type": "JobTitleAnnotationUpdate"},
+        "contact_email": {"key": "contactEmail", "type": "TextAnnotationUpdate"},
+        "contact_name": {"key": "contactName", "type": "TextAnnotationUpdate"},
+        "contact_phone": {"key": "contactPhone", "type": "TextAnnotationUpdate"},
+        "start_date": {"key": "startDate", "type": "DateAnnotationUpdate"},
+        "end_date": {"key": "endDate", "type": "DateAnnotationUpdate"},
+        "job_type": {"key": "jobType", "type": "TextAnnotationUpdate"},
+        "languages": {"key": "languages", "type": "[LanguageAnnotationUpdate]"},
+        "skills": {"key": "skills", "type": "[SkillAnnotationUpdate]"},
+        "organization_name": {"key": "organizationName", "type": "TextAnnotationUpdate"},
+        "organization_website": {"key": "organizationWebsite", "type": "TextAnnotationUpdate"},
+        "education_level": {"key": "educationLevel", "type": "TextAnnotationUpdate"},
+        "education_accreditation": {
+            "key": "educationAccreditation",
+            "type": "TextAnnotationUpdate",
+        },
+        "expected_remuneration": {
+            "key": "expectedRemuneration",
+            "type": "ExpectedRemunerationAnnotationUpdate",
+        },
+        "location": {"key": "location", "type": "LocationAnnotationUpdate"},
+        "certifications": {"key": "certifications", "type": "[TextAnnotationUpdate]"},
+        "years_experience": {"key": "yearsExperience", "type": "YearsExperienceAnnotationUpdate"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword job_title:
+        :paramtype job_title: ~affinda.models.JobTitleAnnotationUpdate
+        :keyword contact_email:
+        :paramtype contact_email: ~affinda.models.TextAnnotationUpdate
+        :keyword contact_name:
+        :paramtype contact_name: ~affinda.models.TextAnnotationUpdate
+        :keyword contact_phone:
+        :paramtype contact_phone: ~affinda.models.TextAnnotationUpdate
+        :keyword start_date:
+        :paramtype start_date: ~affinda.models.DateAnnotationUpdate
+        :keyword end_date:
+        :paramtype end_date: ~affinda.models.DateAnnotationUpdate
+        :keyword job_type:
+        :paramtype job_type: ~affinda.models.TextAnnotationUpdate
+        :keyword languages:
+        :paramtype languages: list[~affinda.models.LanguageAnnotationUpdate]
+        :keyword skills:
+        :paramtype skills: list[~affinda.models.SkillAnnotationUpdate]
+        :keyword organization_name:
+        :paramtype organization_name: ~affinda.models.TextAnnotationUpdate
+        :keyword organization_website:
+        :paramtype organization_website: ~affinda.models.TextAnnotationUpdate
+        :keyword education_level:
+        :paramtype education_level: ~affinda.models.TextAnnotationUpdate
+        :keyword education_accreditation:
+        :paramtype education_accreditation: ~affinda.models.TextAnnotationUpdate
+        :keyword expected_remuneration:
+        :paramtype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationUpdate
+        :keyword location:
+        :paramtype location: ~affinda.models.LocationAnnotationUpdate
+        :keyword certifications:
+        :paramtype certifications: list[~affinda.models.TextAnnotationUpdate]
+        :keyword years_experience:
+        :paramtype years_experience: ~affinda.models.YearsExperienceAnnotationUpdate
+        """
+        super(JobDescriptionDataUpdate, self).__init__(**kwargs)
+        self.additional_properties = kwargs.get("additional_properties", None)
+        self.job_title = kwargs.get("job_title", None)
+        self.contact_email = kwargs.get("contact_email", None)
+        self.contact_name = kwargs.get("contact_name", None)
+        self.contact_phone = kwargs.get("contact_phone", None)
+        self.start_date = kwargs.get("start_date", None)
+        self.end_date = kwargs.get("end_date", None)
+        self.job_type = kwargs.get("job_type", None)
+        self.languages = kwargs.get("languages", None)
+        self.skills = kwargs.get("skills", None)
+        self.organization_name = kwargs.get("organization_name", None)
+        self.organization_website = kwargs.get("organization_website", None)
+        self.education_level = kwargs.get("education_level", None)
+        self.education_accreditation = kwargs.get("education_accreditation", None)
+        self.expected_remuneration = kwargs.get("expected_remuneration", None)
+        self.location = kwargs.get("location", None)
+        self.certifications = kwargs.get("certifications", None)
+        self.years_experience = kwargs.get("years_experience", None)
+
+
 class JobDescriptionSearch(msrest.serialization.Model):
     """JobDescriptionSearch.
 
@@ -11676,6 +12152,218 @@ class JobTitleAnnotationParsedClassification(msrest.serialization.Model):
         self.major_group = kwargs.get("major_group", None)
 
 
+class JobTitleParsed(msrest.serialization.Model):
+    """JobTitleParsed.
+
+    Variables are only populated by the server, and will be ignored when sending a request.
+
+    :ivar parsed: Matching job title to extracted text.
+    :vartype parsed: ~affinda.models.JobTitleParsedParsed
+    """
+
+    _validation = {
+        "parsed": {"readonly": True},
+    }
+
+    _attribute_map = {
+        "parsed": {"key": "parsed", "type": "JobTitleParsedParsed"},
+    }
+
+    def __init__(self, **kwargs):
+        """ """
+        super(JobTitleParsed, self).__init__(**kwargs)
+        self.parsed = None
+
+
+class JobTitleAnnotationUpdate(AnnotationBase, JobTitleParsed):
+    """JobTitleAnnotationUpdate.
+
+    Variables are only populated by the server, and will be ignored when sending a request.
+
+    :ivar parsed: Matching job title to extracted text.
+    :vartype parsed: ~affinda.models.JobTitleParsedParsed
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar id:
+    :vartype id: int
+    :ivar rectangle:
+    :vartype rectangle: ~affinda.models.Rectangle
+    :ivar rectangles:
+    :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar page_index:
+    :vartype page_index: int
+    :ivar raw:
+    :vartype raw: str
+    :ivar confidence: The overall confidence that the model's prediction is correct.
+    :vartype confidence: float
+    :ivar classification_confidence: The model's confidence that the text has been classified
+     correctly.
+    :vartype classification_confidence: float
+    :ivar text_extraction_confidence: If the document was submitted as an image, this is the
+     confidence that the text in the image has been correctly read by the model.
+    :vartype text_extraction_confidence: float
+    :ivar is_verified:
+    :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
+    :ivar data_point:
+    :vartype data_point: str
+    :ivar content_type:
+    :vartype content_type: str
+    """
+
+    _validation = {
+        "parsed": {"readonly": True},
+        "rectangles": {"readonly": True},
+    }
+
+    _attribute_map = {
+        "parsed": {"key": "parsed", "type": "JobTitleParsedParsed"},
+        "additional_properties": {"key": "", "type": "{object}"},
+        "id": {"key": "id", "type": "int"},
+        "rectangle": {"key": "rectangle", "type": "Rectangle"},
+        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "raw": {"key": "raw", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
+        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword id:
+        :paramtype id: int
+        :keyword rectangle:
+        :paramtype rectangle: ~affinda.models.Rectangle
+        :keyword page_index:
+        :paramtype page_index: int
+        :keyword raw:
+        :paramtype raw: str
+        :keyword confidence: The overall confidence that the model's prediction is correct.
+        :paramtype confidence: float
+        :keyword classification_confidence: The model's confidence that the text has been classified
+         correctly.
+        :paramtype classification_confidence: float
+        :keyword text_extraction_confidence: If the document was submitted as an image, this is the
+         confidence that the text in the image has been correctly read by the model.
+        :paramtype text_extraction_confidence: float
+        :keyword is_verified:
+        :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
+        :keyword data_point:
+        :paramtype data_point: str
+        :keyword content_type:
+        :paramtype content_type: str
+        """
+        super(JobTitleAnnotationUpdate, self).__init__(**kwargs)
+        self.parsed = None
+        self.additional_properties = kwargs.get("additional_properties", None)
+        self.id = kwargs.get("id", None)
+        self.rectangle = kwargs.get("rectangle", None)
+        self.rectangles = None
+        self.page_index = kwargs.get("page_index", None)
+        self.raw = kwargs.get("raw", None)
+        self.confidence = kwargs.get("confidence", None)
+        self.classification_confidence = kwargs.get("classification_confidence", None)
+        self.text_extraction_confidence = kwargs.get("text_extraction_confidence", None)
+        self.is_verified = kwargs.get("is_verified", None)
+        self.is_client_verified = kwargs.get("is_client_verified", None)
+        self.is_auto_verified = kwargs.get("is_auto_verified", None)
+        self.data_point = kwargs.get("data_point", None)
+        self.content_type = kwargs.get("content_type", None)
+
+
+class JobTitleParsedClassification(msrest.serialization.Model):
+    """JobTitleParsedClassification.
+
+    :ivar soc_code:
+    :vartype soc_code: float
+    :ivar title:
+    :vartype title: str
+    :ivar minor_group:
+    :vartype minor_group: str
+    :ivar sub_major_group:
+    :vartype sub_major_group: str
+    :ivar major_group:
+    :vartype major_group: str
+    """
+
+    _attribute_map = {
+        "soc_code": {"key": "socCode", "type": "float"},
+        "title": {"key": "title", "type": "str"},
+        "minor_group": {"key": "minorGroup", "type": "str"},
+        "sub_major_group": {"key": "subMajorGroup", "type": "str"},
+        "major_group": {"key": "majorGroup", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword soc_code:
+        :paramtype soc_code: float
+        :keyword title:
+        :paramtype title: str
+        :keyword minor_group:
+        :paramtype minor_group: str
+        :keyword sub_major_group:
+        :paramtype sub_major_group: str
+        :keyword major_group:
+        :paramtype major_group: str
+        """
+        super(JobTitleParsedClassification, self).__init__(**kwargs)
+        self.soc_code = kwargs.get("soc_code", None)
+        self.title = kwargs.get("title", None)
+        self.minor_group = kwargs.get("minor_group", None)
+        self.sub_major_group = kwargs.get("sub_major_group", None)
+        self.major_group = kwargs.get("major_group", None)
+
+
+class JobTitleParsedParsed(msrest.serialization.Model):
+    """Matching job title to extracted text.
+
+    :ivar name:
+    :vartype name: str
+    :ivar management_level:
+    :vartype management_level: str
+    :ivar classification:
+    :vartype classification: ~affinda.models.JobTitleParsedClassification
+    """
+
+    _attribute_map = {
+        "name": {"key": "name", "type": "str"},
+        "management_level": {"key": "managementLevel", "type": "str"},
+        "classification": {"key": "classification", "type": "JobTitleParsedClassification"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name:
+        :paramtype name: str
+        :keyword management_level:
+        :paramtype management_level: str
+        :keyword classification:
+        :paramtype classification: ~affinda.models.JobTitleParsedClassification
+        """
+        super(JobTitleParsedParsed, self).__init__(**kwargs)
+        self.name = kwargs.get("name", None)
+        self.management_level = kwargs.get("management_level", None)
+        self.classification = kwargs.get("classification", None)
+
+
 class JobTitleSearchScoreComponent(msrest.serialization.Model):
     """JobTitleSearchScoreComponent.
 
@@ -11847,6 +12535,105 @@ class LanguageAnnotation(Annotation):
         self.parsed = None
 
 
+class LanguageAnnotationUpdate(AnnotationBase):
+    """LanguageAnnotationUpdate.
+
+    Variables are only populated by the server, and will be ignored when sending a request.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar id:
+    :vartype id: int
+    :ivar rectangle:
+    :vartype rectangle: ~affinda.models.Rectangle
+    :ivar rectangles:
+    :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar page_index:
+    :vartype page_index: int
+    :ivar raw:
+    :vartype raw: str
+    :ivar confidence: The overall confidence that the model's prediction is correct.
+    :vartype confidence: float
+    :ivar classification_confidence: The model's confidence that the text has been classified
+     correctly.
+    :vartype classification_confidence: float
+    :ivar text_extraction_confidence: If the document was submitted as an image, this is the
+     confidence that the text in the image has been correctly read by the model.
+    :vartype text_extraction_confidence: float
+    :ivar is_verified:
+    :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
+    :ivar data_point:
+    :vartype data_point: str
+    :ivar content_type:
+    :vartype content_type: str
+    :ivar parsed:
+    :vartype parsed: str
+    """
+
+    _validation = {
+        "rectangles": {"readonly": True},
+        "parsed": {"readonly": True},
+    }
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "id": {"key": "id", "type": "int"},
+        "rectangle": {"key": "rectangle", "type": "Rectangle"},
+        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "raw": {"key": "raw", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
+        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword id:
+        :paramtype id: int
+        :keyword rectangle:
+        :paramtype rectangle: ~affinda.models.Rectangle
+        :keyword page_index:
+        :paramtype page_index: int
+        :keyword raw:
+        :paramtype raw: str
+        :keyword confidence: The overall confidence that the model's prediction is correct.
+        :paramtype confidence: float
+        :keyword classification_confidence: The model's confidence that the text has been classified
+         correctly.
+        :paramtype classification_confidence: float
+        :keyword text_extraction_confidence: If the document was submitted as an image, this is the
+         confidence that the text in the image has been correctly read by the model.
+        :paramtype text_extraction_confidence: float
+        :keyword is_verified:
+        :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
+        :keyword data_point:
+        :paramtype data_point: str
+        :keyword content_type:
+        :paramtype content_type: str
+        """
+        super(LanguageAnnotationUpdate, self).__init__(**kwargs)
+        self.parsed = None
+
+
 class LanguagesSearchScoreComponent(msrest.serialization.Model):
     """LanguagesSearchScoreComponent.
 
@@ -12015,6 +12802,176 @@ class LocationAnnotation(Annotation):
         """
         super(LocationAnnotation, self).__init__(**kwargs)
         self.parsed = kwargs.get("parsed", None)
+
+
+class LocationAnnotationUpdate(AnnotationBase):
+    """LocationAnnotationUpdate.
+
+    Variables are only populated by the server, and will be ignored when sending a request.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar id:
+    :vartype id: int
+    :ivar rectangle:
+    :vartype rectangle: ~affinda.models.Rectangle
+    :ivar rectangles:
+    :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar page_index:
+    :vartype page_index: int
+    :ivar raw:
+    :vartype raw: str
+    :ivar confidence: The overall confidence that the model's prediction is correct.
+    :vartype confidence: float
+    :ivar classification_confidence: The model's confidence that the text has been classified
+     correctly.
+    :vartype classification_confidence: float
+    :ivar text_extraction_confidence: If the document was submitted as an image, this is the
+     confidence that the text in the image has been correctly read by the model.
+    :vartype text_extraction_confidence: float
+    :ivar is_verified:
+    :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
+    :ivar data_point:
+    :vartype data_point: str
+    :ivar content_type:
+    :vartype content_type: str
+    :ivar parsed:
+    :vartype parsed: ~affinda.models.LocationAnnotationUpdateParsed
+    """
+
+    _validation = {
+        "rectangles": {"readonly": True},
+        "parsed": {"readonly": True},
+    }
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "id": {"key": "id", "type": "int"},
+        "rectangle": {"key": "rectangle", "type": "Rectangle"},
+        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "raw": {"key": "raw", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
+        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
+        "parsed": {"key": "parsed", "type": "LocationAnnotationUpdateParsed"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword id:
+        :paramtype id: int
+        :keyword rectangle:
+        :paramtype rectangle: ~affinda.models.Rectangle
+        :keyword page_index:
+        :paramtype page_index: int
+        :keyword raw:
+        :paramtype raw: str
+        :keyword confidence: The overall confidence that the model's prediction is correct.
+        :paramtype confidence: float
+        :keyword classification_confidence: The model's confidence that the text has been classified
+         correctly.
+        :paramtype classification_confidence: float
+        :keyword text_extraction_confidence: If the document was submitted as an image, this is the
+         confidence that the text in the image has been correctly read by the model.
+        :paramtype text_extraction_confidence: float
+        :keyword is_verified:
+        :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
+        :keyword data_point:
+        :paramtype data_point: str
+        :keyword content_type:
+        :paramtype content_type: str
+        """
+        super(LocationAnnotationUpdate, self).__init__(**kwargs)
+        self.parsed = None
+
+
+class LocationAnnotationUpdateParsed(Location):
+    """LocationAnnotationUpdateParsed.
+
+    Variables are only populated by the server, and will be ignored when sending a request.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar formatted:
+    :vartype formatted: str
+    :ivar postal_code:
+    :vartype postal_code: str
+    :ivar state:
+    :vartype state: str
+    :ivar country:
+    :vartype country: str
+    :ivar country_code: Two letter country code (ISO 3166-1 alpha-2).
+    :vartype country_code: str
+    :ivar raw_input: Required.
+    :vartype raw_input: str
+    :ivar street_number:
+    :vartype street_number: str
+    :ivar street:
+    :vartype street: str
+    :ivar apartment_number:
+    :vartype apartment_number: str
+    :ivar city:
+    :vartype city: str
+    :ivar latitude:
+    :vartype latitude: float
+    :ivar longitude:
+    :vartype longitude: float
+    """
+
+    _validation = {
+        "formatted": {"readonly": True},
+        "postal_code": {"readonly": True},
+        "state": {"readonly": True},
+        "country": {"readonly": True},
+        "country_code": {"readonly": True},
+        "raw_input": {"required": True},
+        "street_number": {"readonly": True},
+        "street": {"readonly": True},
+        "apartment_number": {"readonly": True},
+        "city": {"readonly": True},
+        "latitude": {"readonly": True},
+        "longitude": {"readonly": True},
+    }
+
+    _attribute_map = {
+        "formatted": {"key": "formatted", "type": "str"},
+        "postal_code": {"key": "postalCode", "type": "str"},
+        "state": {"key": "state", "type": "str"},
+        "country": {"key": "country", "type": "str"},
+        "country_code": {"key": "countryCode", "type": "str"},
+        "raw_input": {"key": "rawInput", "type": "str"},
+        "street_number": {"key": "streetNumber", "type": "str"},
+        "street": {"key": "street", "type": "str"},
+        "apartment_number": {"key": "apartmentNumber", "type": "str"},
+        "city": {"key": "city", "type": "str"},
+        "latitude": {"key": "latitude", "type": "float"},
+        "longitude": {"key": "longitude", "type": "float"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword raw_input: Required.
+        :paramtype raw_input: str
+        """
+        super(LocationAnnotationUpdateParsed, self).__init__(**kwargs)
 
 
 class LocationSearchScoreComponent(msrest.serialization.Model):
@@ -12972,7 +13929,7 @@ class Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema(msrest.ser
     :ivar name:
     :vartype name: str
     :ivar document_type: Known values are: "resumes", "job_descriptions".
-    :vartype document_type: str or ~affinda.models.Enum21
+    :vartype document_type: str or ~affinda.models.Enum22
     """
 
     _attribute_map = {
@@ -12985,7 +13942,7 @@ class Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema(msrest.ser
         :keyword name:
         :paramtype name: str
         :keyword document_type: Known values are: "resumes", "job_descriptions".
-        :paramtype document_type: str or ~affinda.models.Enum21
+        :paramtype document_type: str or ~affinda.models.Enum22
         """
         super(Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema, self).__init__(
             **kwargs
@@ -14595,6 +15552,8 @@ class ResumeDataWorkExperienceItemOccupation(msrest.serialization.Model):
     :ivar job_title_normalized: Mapped onto the EMSI job title taxonomy if a sufficiently close
      match exists.
     :vartype job_title_normalized: str
+    :ivar emsi_id: EMSI id of the normalised job title.
+    :vartype emsi_id: str
     :ivar management_level: Known values are: "None", "Low", "Mid", "Upper".
     :vartype management_level: str or ~affinda.models.ManagementLevel
     :ivar classification:
@@ -14605,6 +15564,7 @@ class ResumeDataWorkExperienceItemOccupation(msrest.serialization.Model):
     _attribute_map = {
         "job_title": {"key": "jobTitle", "type": "str"},
         "job_title_normalized": {"key": "jobTitleNormalized", "type": "str"},
+        "emsi_id": {"key": "emsiId", "type": "str"},
         "management_level": {"key": "managementLevel", "type": "str"},
         "classification": {
             "key": "classification",
@@ -14619,6 +15579,8 @@ class ResumeDataWorkExperienceItemOccupation(msrest.serialization.Model):
         :keyword job_title_normalized: Mapped onto the EMSI job title taxonomy if a sufficiently close
          match exists.
         :paramtype job_title_normalized: str
+        :keyword emsi_id: EMSI id of the normalised job title.
+        :paramtype emsi_id: str
         :keyword management_level: Known values are: "None", "Low", "Mid", "Upper".
         :paramtype management_level: str or ~affinda.models.ManagementLevel
         :keyword classification:
@@ -14628,6 +15590,7 @@ class ResumeDataWorkExperienceItemOccupation(msrest.serialization.Model):
         super(ResumeDataWorkExperienceItemOccupation, self).__init__(**kwargs)
         self.job_title = kwargs.get("job_title", None)
         self.job_title_normalized = kwargs.get("job_title_normalized", None)
+        self.emsi_id = kwargs.get("emsi_id", None)
         self.management_level = kwargs.get("management_level", None)
         self.classification = kwargs.get("classification", None)
 
@@ -16743,6 +17706,105 @@ class SkillAnnotation(Annotation):
         self.parsed = None
 
 
+class SkillAnnotationUpdate(AnnotationBase):
+    """SkillAnnotationUpdate.
+
+    Variables are only populated by the server, and will be ignored when sending a request.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar id:
+    :vartype id: int
+    :ivar rectangle:
+    :vartype rectangle: ~affinda.models.Rectangle
+    :ivar rectangles:
+    :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar page_index:
+    :vartype page_index: int
+    :ivar raw:
+    :vartype raw: str
+    :ivar confidence: The overall confidence that the model's prediction is correct.
+    :vartype confidence: float
+    :ivar classification_confidence: The model's confidence that the text has been classified
+     correctly.
+    :vartype classification_confidence: float
+    :ivar text_extraction_confidence: If the document was submitted as an image, this is the
+     confidence that the text in the image has been correctly read by the model.
+    :vartype text_extraction_confidence: float
+    :ivar is_verified:
+    :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
+    :ivar data_point:
+    :vartype data_point: str
+    :ivar content_type:
+    :vartype content_type: str
+    :ivar parsed:
+    :vartype parsed: str
+    """
+
+    _validation = {
+        "rectangles": {"readonly": True},
+        "parsed": {"readonly": True},
+    }
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "id": {"key": "id", "type": "int"},
+        "rectangle": {"key": "rectangle", "type": "Rectangle"},
+        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "raw": {"key": "raw", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
+        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword id:
+        :paramtype id: int
+        :keyword rectangle:
+        :paramtype rectangle: ~affinda.models.Rectangle
+        :keyword page_index:
+        :paramtype page_index: int
+        :keyword raw:
+        :paramtype raw: str
+        :keyword confidence: The overall confidence that the model's prediction is correct.
+        :paramtype confidence: float
+        :keyword classification_confidence: The model's confidence that the text has been classified
+         correctly.
+        :paramtype classification_confidence: float
+        :keyword text_extraction_confidence: If the document was submitted as an image, this is the
+         confidence that the text in the image has been correctly read by the model.
+        :paramtype text_extraction_confidence: float
+        :keyword is_verified:
+        :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
+        :keyword data_point:
+        :paramtype data_point: str
+        :keyword content_type:
+        :paramtype content_type: str
+        """
+        super(SkillAnnotationUpdate, self).__init__(**kwargs)
+        self.parsed = None
+
+
 class SkillsSearchScoreComponent(msrest.serialization.Model):
     """SkillsSearchScoreComponent.
 
@@ -17037,6 +18099,106 @@ class TagUpdate(msrest.serialization.Model):
         super(TagUpdate, self).__init__(**kwargs)
         self.name = kwargs.get("name", None)
         self.workspace = kwargs.get("workspace", None)
+
+
+class TextAnnotationUpdate(AnnotationBase):
+    """TextAnnotationUpdate.
+
+    Variables are only populated by the server, and will be ignored when sending a request.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar id:
+    :vartype id: int
+    :ivar rectangle:
+    :vartype rectangle: ~affinda.models.Rectangle
+    :ivar rectangles:
+    :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar page_index:
+    :vartype page_index: int
+    :ivar raw:
+    :vartype raw: str
+    :ivar confidence: The overall confidence that the model's prediction is correct.
+    :vartype confidence: float
+    :ivar classification_confidence: The model's confidence that the text has been classified
+     correctly.
+    :vartype classification_confidence: float
+    :ivar text_extraction_confidence: If the document was submitted as an image, this is the
+     confidence that the text in the image has been correctly read by the model.
+    :vartype text_extraction_confidence: float
+    :ivar is_verified:
+    :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
+    :ivar data_point:
+    :vartype data_point: str
+    :ivar content_type:
+    :vartype content_type: str
+    :ivar parsed:
+    :vartype parsed: str
+    """
+
+    _validation = {
+        "rectangles": {"readonly": True},
+    }
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "id": {"key": "id", "type": "int"},
+        "rectangle": {"key": "rectangle", "type": "Rectangle"},
+        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "raw": {"key": "raw", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
+        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
+        "parsed": {"key": "parsed", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword id:
+        :paramtype id: int
+        :keyword rectangle:
+        :paramtype rectangle: ~affinda.models.Rectangle
+        :keyword page_index:
+        :paramtype page_index: int
+        :keyword raw:
+        :paramtype raw: str
+        :keyword confidence: The overall confidence that the model's prediction is correct.
+        :paramtype confidence: float
+        :keyword classification_confidence: The model's confidence that the text has been classified
+         correctly.
+        :paramtype classification_confidence: float
+        :keyword text_extraction_confidence: If the document was submitted as an image, this is the
+         confidence that the text in the image has been correctly read by the model.
+        :paramtype text_extraction_confidence: float
+        :keyword is_verified:
+        :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
+        :keyword data_point:
+        :paramtype data_point: str
+        :keyword content_type:
+        :paramtype content_type: str
+        :keyword parsed:
+        :paramtype parsed: str
+        """
+        super(TextAnnotationUpdate, self).__init__(**kwargs)
+        self.parsed = kwargs.get("parsed", None)
 
 
 class ThemeConfig(msrest.serialization.Model):
@@ -17904,5 +19066,131 @@ class YearsExperienceAnnotationParsed(msrest.serialization.Model):
         :paramtype maximum: float
         """
         super(YearsExperienceAnnotationParsed, self).__init__(**kwargs)
+        self.minimum = kwargs.get("minimum", None)
+        self.maximum = kwargs.get("maximum", None)
+
+
+class YearsExperienceAnnotationUpdate(AnnotationBase):
+    """YearsExperienceAnnotationUpdate.
+
+    Variables are only populated by the server, and will be ignored when sending a request.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar id:
+    :vartype id: int
+    :ivar rectangle:
+    :vartype rectangle: ~affinda.models.Rectangle
+    :ivar rectangles:
+    :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar page_index:
+    :vartype page_index: int
+    :ivar raw:
+    :vartype raw: str
+    :ivar confidence: The overall confidence that the model's prediction is correct.
+    :vartype confidence: float
+    :ivar classification_confidence: The model's confidence that the text has been classified
+     correctly.
+    :vartype classification_confidence: float
+    :ivar text_extraction_confidence: If the document was submitted as an image, this is the
+     confidence that the text in the image has been correctly read by the model.
+    :vartype text_extraction_confidence: float
+    :ivar is_verified:
+    :vartype is_verified: bool
+    :ivar is_client_verified:
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified:
+    :vartype is_auto_verified: bool
+    :ivar data_point:
+    :vartype data_point: str
+    :ivar content_type:
+    :vartype content_type: str
+    :ivar parsed: Years of experience range.
+    :vartype parsed: ~affinda.models.YearsExperienceAnnotationUpdateParsed
+    """
+
+    _validation = {
+        "rectangles": {"readonly": True},
+    }
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "id": {"key": "id", "type": "int"},
+        "rectangle": {"key": "rectangle", "type": "Rectangle"},
+        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "raw": {"key": "raw", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
+        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
+        "parsed": {"key": "parsed", "type": "YearsExperienceAnnotationUpdateParsed"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword id:
+        :paramtype id: int
+        :keyword rectangle:
+        :paramtype rectangle: ~affinda.models.Rectangle
+        :keyword page_index:
+        :paramtype page_index: int
+        :keyword raw:
+        :paramtype raw: str
+        :keyword confidence: The overall confidence that the model's prediction is correct.
+        :paramtype confidence: float
+        :keyword classification_confidence: The model's confidence that the text has been classified
+         correctly.
+        :paramtype classification_confidence: float
+        :keyword text_extraction_confidence: If the document was submitted as an image, this is the
+         confidence that the text in the image has been correctly read by the model.
+        :paramtype text_extraction_confidence: float
+        :keyword is_verified:
+        :paramtype is_verified: bool
+        :keyword is_client_verified:
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified:
+        :paramtype is_auto_verified: bool
+        :keyword data_point:
+        :paramtype data_point: str
+        :keyword content_type:
+        :paramtype content_type: str
+        :keyword parsed: Years of experience range.
+        :paramtype parsed: ~affinda.models.YearsExperienceAnnotationUpdateParsed
+        """
+        super(YearsExperienceAnnotationUpdate, self).__init__(**kwargs)
+        self.parsed = kwargs.get("parsed", None)
+
+
+class YearsExperienceAnnotationUpdateParsed(msrest.serialization.Model):
+    """Years of experience range.
+
+    :ivar minimum: Minimum years of experience.
+    :vartype minimum: float
+    :ivar maximum: Maximum years of experience.
+    :vartype maximum: float
+    """
+
+    _attribute_map = {
+        "minimum": {"key": "minimum", "type": "float"},
+        "maximum": {"key": "maximum", "type": "float"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword minimum: Minimum years of experience.
+        :paramtype minimum: float
+        :keyword maximum: Maximum years of experience.
+        :paramtype maximum: float
+        """
+        super(YearsExperienceAnnotationUpdateParsed, self).__init__(**kwargs)
         self.minimum = kwargs.get("minimum", None)
         self.maximum = kwargs.get("maximum", None)

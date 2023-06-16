@@ -7,6 +7,7 @@
 try:
     from ._models_py3 import Accreditation
     from ._models_py3 import Annotation
+    from ._models_py3 import AnnotationBase
     from ._models_py3 import AnnotationBatchUpdate
     from ._models_py3 import AnnotationCreate
     from ._models_py3 import AnnotationUpdate
@@ -94,6 +95,7 @@ try:
     from ._models_py3 import DataPointCreate
     from ._models_py3 import DataPointUpdate
     from ._models_py3 import DateAnnotation
+    from ._models_py3 import DateAnnotationUpdate
     from ._models_py3 import Document
     from ._models_py3 import DocumentCreate
     from ._models_py3 import DocumentEditRequest
@@ -114,6 +116,8 @@ try:
     from ._models_py3 import EducationSearchScoreComponent
     from ._models_py3 import ExpectedRemunerationAnnotation
     from ._models_py3 import ExpectedRemunerationAnnotationParsed
+    from ._models_py3 import ExpectedRemunerationAnnotationUpdate
+    from ._models_py3 import ExpectedRemunerationAnnotationUpdateParsed
     from ._models_py3 import ExperienceSearchScoreComponent
     from ._models_py3 import Extractor
     from ._models_py3 import ExtractorBaseExtractor
@@ -166,6 +170,7 @@ try:
     from ._models_py3 import InvoiceDataSupplierWebsite
     from ._models_py3 import JobDescription
     from ._models_py3 import JobDescriptionData
+    from ._models_py3 import JobDescriptionDataUpdate
     from ._models_py3 import JobDescriptionSearch
     from ._models_py3 import JobDescriptionSearchConfig
     from ._models_py3 import JobDescriptionSearchDetail
@@ -191,11 +196,18 @@ try:
     from ._models_py3 import JobTitleAnnotation
     from ._models_py3 import JobTitleAnnotationParsed
     from ._models_py3 import JobTitleAnnotationParsedClassification
+    from ._models_py3 import JobTitleAnnotationUpdate
+    from ._models_py3 import JobTitleParsed
+    from ._models_py3 import JobTitleParsedClassification
+    from ._models_py3 import JobTitleParsedParsed
     from ._models_py3 import JobTitleSearchScoreComponent
     from ._models_py3 import LanguageAnnotation
+    from ._models_py3 import LanguageAnnotationUpdate
     from ._models_py3 import LanguagesSearchScoreComponent
     from ._models_py3 import Location
     from ._models_py3 import LocationAnnotation
+    from ._models_py3 import LocationAnnotationUpdate
+    from ._models_py3 import LocationAnnotationUpdateParsed
     from ._models_py3 import LocationSearchScoreComponent
     from ._models_py3 import ManagementLevelSearchScoreComponent
     from ._models_py3 import Meta
@@ -327,6 +339,7 @@ try:
     from ._models_py3 import SearchExpressionSearchScoreComponent
     from ._models_py3 import SearchParametersCustomData
     from ._models_py3 import SkillAnnotation
+    from ._models_py3 import SkillAnnotationUpdate
     from ._models_py3 import SkillsSearchScoreComponent
     from ._models_py3 import TableAnnotation
     from ._models_py3 import TableAnnotationParsed
@@ -334,6 +347,7 @@ try:
     from ._models_py3 import TagCreate
     from ._models_py3 import TagUpdate
     from ._models_py3 import TextAnnotation
+    from ._models_py3 import TextAnnotationUpdate
     from ._models_py3 import ThemeConfig
     from ._models_py3 import ThemeConfigPalette
     from ._models_py3 import ThemeConfigPaletteBackground
@@ -351,9 +365,12 @@ try:
     from ._models_py3 import WorkspaceUpdate
     from ._models_py3 import YearsExperienceAnnotation
     from ._models_py3 import YearsExperienceAnnotationParsed
+    from ._models_py3 import YearsExperienceAnnotationUpdate
+    from ._models_py3 import YearsExperienceAnnotationUpdateParsed
 except (SyntaxError, ImportError):
     from ._models import Accreditation  # type: ignore
     from ._models import Annotation  # type: ignore
+    from ._models import AnnotationBase  # type: ignore
     from ._models import AnnotationBatchUpdate  # type: ignore
     from ._models import AnnotationCreate  # type: ignore
     from ._models import AnnotationUpdate  # type: ignore
@@ -421,6 +438,7 @@ except (SyntaxError, ImportError):
     from ._models import DataPointCreate  # type: ignore
     from ._models import DataPointUpdate  # type: ignore
     from ._models import DateAnnotation  # type: ignore
+    from ._models import DateAnnotationUpdate  # type: ignore
     from ._models import Document  # type: ignore
     from ._models import DocumentCreate  # type: ignore
     from ._models import DocumentEditRequest  # type: ignore
@@ -441,6 +459,8 @@ except (SyntaxError, ImportError):
     from ._models import EducationSearchScoreComponent  # type: ignore
     from ._models import ExpectedRemunerationAnnotation  # type: ignore
     from ._models import ExpectedRemunerationAnnotationParsed  # type: ignore
+    from ._models import ExpectedRemunerationAnnotationUpdate  # type: ignore
+    from ._models import ExpectedRemunerationAnnotationUpdateParsed  # type: ignore
     from ._models import ExperienceSearchScoreComponent  # type: ignore
     from ._models import Extractor  # type: ignore
     from ._models import ExtractorBaseExtractor  # type: ignore
@@ -493,6 +513,7 @@ except (SyntaxError, ImportError):
     from ._models import InvoiceDataSupplierWebsite  # type: ignore
     from ._models import JobDescription  # type: ignore
     from ._models import JobDescriptionData  # type: ignore
+    from ._models import JobDescriptionDataUpdate  # type: ignore
     from ._models import JobDescriptionSearch  # type: ignore
     from ._models import JobDescriptionSearchConfig  # type: ignore
     from ._models import JobDescriptionSearchDetail  # type: ignore
@@ -518,11 +539,18 @@ except (SyntaxError, ImportError):
     from ._models import JobTitleAnnotation  # type: ignore
     from ._models import JobTitleAnnotationParsed  # type: ignore
     from ._models import JobTitleAnnotationParsedClassification  # type: ignore
+    from ._models import JobTitleAnnotationUpdate  # type: ignore
+    from ._models import JobTitleParsed  # type: ignore
+    from ._models import JobTitleParsedClassification  # type: ignore
+    from ._models import JobTitleParsedParsed  # type: ignore
     from ._models import JobTitleSearchScoreComponent  # type: ignore
     from ._models import LanguageAnnotation  # type: ignore
+    from ._models import LanguageAnnotationUpdate  # type: ignore
     from ._models import LanguagesSearchScoreComponent  # type: ignore
     from ._models import Location  # type: ignore
     from ._models import LocationAnnotation  # type: ignore
+    from ._models import LocationAnnotationUpdate  # type: ignore
+    from ._models import LocationAnnotationUpdateParsed  # type: ignore
     from ._models import LocationSearchScoreComponent  # type: ignore
     from ._models import ManagementLevelSearchScoreComponent  # type: ignore
     from ._models import Meta  # type: ignore
@@ -618,6 +646,7 @@ except (SyntaxError, ImportError):
     from ._models import SearchExpressionSearchScoreComponent  # type: ignore
     from ._models import SearchParametersCustomData  # type: ignore
     from ._models import SkillAnnotation  # type: ignore
+    from ._models import SkillAnnotationUpdate  # type: ignore
     from ._models import SkillsSearchScoreComponent  # type: ignore
     from ._models import TableAnnotation  # type: ignore
     from ._models import TableAnnotationParsed  # type: ignore
@@ -625,6 +654,7 @@ except (SyntaxError, ImportError):
     from ._models import TagCreate  # type: ignore
     from ._models import TagUpdate  # type: ignore
     from ._models import TextAnnotation  # type: ignore
+    from ._models import TextAnnotationUpdate  # type: ignore
     from ._models import ThemeConfig  # type: ignore
     from ._models import ThemeConfigPalette  # type: ignore
     from ._models import ThemeConfigPaletteBackground  # type: ignore
@@ -642,6 +672,8 @@ except (SyntaxError, ImportError):
     from ._models import WorkspaceUpdate  # type: ignore
     from ._models import YearsExperienceAnnotation  # type: ignore
     from ._models import YearsExperienceAnnotationParsed  # type: ignore
+    from ._models import YearsExperienceAnnotationUpdate  # type: ignore
+    from ._models import YearsExperienceAnnotationUpdateParsed  # type: ignore
 
 from ._affinda_api_enums import (
     AnnotationContentType,
@@ -651,8 +683,8 @@ from ._affinda_api_enums import (
     DocumentFormat,
     DocumentState,
     EducationLevel,
-    Enum18,
-    Enum21,
+    Enum19,
+    Enum22,
     Get8ItemsItem,
     GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType,
     InvitationResponseStatus,
@@ -679,6 +711,7 @@ from ._patch import patch_sdk as _patch_sdk
 __all__ = [
     "Accreditation",
     "Annotation",
+    "AnnotationBase",
     "AnnotationBatchUpdate",
     "AnnotationCreate",
     "AnnotationUpdate",
@@ -746,6 +779,7 @@ __all__ = [
     "DataPointCreate",
     "DataPointUpdate",
     "DateAnnotation",
+    "DateAnnotationUpdate",
     "Document",
     "DocumentCreate",
     "DocumentEditRequest",
@@ -766,6 +800,8 @@ __all__ = [
     "EducationSearchScoreComponent",
     "ExpectedRemunerationAnnotation",
     "ExpectedRemunerationAnnotationParsed",
+    "ExpectedRemunerationAnnotationUpdate",
+    "ExpectedRemunerationAnnotationUpdateParsed",
     "ExperienceSearchScoreComponent",
     "Extractor",
     "ExtractorBaseExtractor",
@@ -818,6 +854,7 @@ __all__ = [
     "InvoiceDataSupplierWebsite",
     "JobDescription",
     "JobDescriptionData",
+    "JobDescriptionDataUpdate",
     "JobDescriptionSearch",
     "JobDescriptionSearchConfig",
     "JobDescriptionSearchDetail",
@@ -843,11 +880,18 @@ __all__ = [
     "JobTitleAnnotation",
     "JobTitleAnnotationParsed",
     "JobTitleAnnotationParsedClassification",
+    "JobTitleAnnotationUpdate",
+    "JobTitleParsed",
+    "JobTitleParsedClassification",
+    "JobTitleParsedParsed",
     "JobTitleSearchScoreComponent",
     "LanguageAnnotation",
+    "LanguageAnnotationUpdate",
     "LanguagesSearchScoreComponent",
     "Location",
     "LocationAnnotation",
+    "LocationAnnotationUpdate",
+    "LocationAnnotationUpdateParsed",
     "LocationSearchScoreComponent",
     "ManagementLevelSearchScoreComponent",
     "Meta",
@@ -943,6 +987,7 @@ __all__ = [
     "SearchExpressionSearchScoreComponent",
     "SearchParametersCustomData",
     "SkillAnnotation",
+    "SkillAnnotationUpdate",
     "SkillsSearchScoreComponent",
     "TableAnnotation",
     "TableAnnotationParsed",
@@ -950,6 +995,7 @@ __all__ = [
     "TagCreate",
     "TagUpdate",
     "TextAnnotation",
+    "TextAnnotationUpdate",
     "ThemeConfig",
     "ThemeConfigPalette",
     "ThemeConfigPaletteBackground",
@@ -967,6 +1013,8 @@ __all__ = [
     "WorkspaceUpdate",
     "YearsExperienceAnnotation",
     "YearsExperienceAnnotationParsed",
+    "YearsExperienceAnnotationUpdate",
+    "YearsExperienceAnnotationUpdateParsed",
     "AnnotationContentType",
     "CollectionDateFormatPreference",
     "DateFormatPreference",
@@ -974,8 +1022,8 @@ __all__ = [
     "DocumentFormat",
     "DocumentState",
     "EducationLevel",
-    "Enum18",
-    "Enum21",
+    "Enum19",
+    "Enum22",
     "Get8ItemsItem",
     "GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType",
     "InvitationResponseStatus",

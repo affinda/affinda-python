@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Add `tailoredExtractorRequested` to Collection
+- Add endpoint for update resumes and JD data
 
 ## [4.5.1] - 2023-06-14
 ### Added

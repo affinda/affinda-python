@@ -111,6 +111,7 @@ from ...operations._affinda_api_operations import (
     build_update_collection_request,
     build_update_data_point_choice_request,
     build_update_data_point_request,
+    build_update_document_data_request,
     build_update_document_request,
     build_update_extractor_request,
     build_update_invitation_request,
@@ -1569,6 +1570,79 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
     delete_document.metadata = {"url": "/v3/documents/{identifier}"}  # type: ignore
 
+    async def update_document_data(
+        self, identifier: str, body: Any, **kwargs: Any
+    ) -> _models.Document:
+        """Update a document's data.
+
+        Update data of a document.
+        Only applicable for resumes and job descriptions. For other document types, please use the
+        ``PATCH /annotations/{id}`` endpoint or the ``POST /annotations/batch_update`` endpoint.
+
+        :param identifier: Resume or Job Description identifier.
+        :type identifier: str
+        :param body: Resume data to update.
+        :type body: any
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: Document, or the result of cls(response)
+        :rtype: ~affinda.models.Document
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop(
+            "content_type", _headers.pop("Content-Type", "application/json")
+        )  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.Document]
+
+        _json = self._serialize.body(body, "object")
+
+        request = build_update_document_data_request(
+            identifier=identifier,
+            content_type=content_type,
+            json=_json,
+            template_url=self.update_document_data.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("Document", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    update_document_data.metadata = {"url": "/v3/documents/{identifier}/update_data"}  # type: ignore
+
     async def batch_add_tag(  # pylint: disable=inconsistent-return-statements
         self, body: _models.BatchAddTagRequest, **kwargs: Any
     ) -> None:
@@ -3016,7 +3090,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
     async def update_annotation(
         self, id: int, body: _models.AnnotationUpdate, **kwargs: Any
     ) -> Optional[_models.Annotation]:
-        """Update a annotation.
+        """Update an annotation.
 
         Update data of an annotation.
 
@@ -5975,7 +6049,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         self,
         offset: Optional[int] = None,
         limit: Optional[int] = 300,
-        document_type: Optional[Union[str, "_models.Enum18"]] = None,
+        document_type: Optional[Union[str, "_models.Enum19"]] = None,
         **kwargs: Any,
     ) -> _models.PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema:
         """Get list of all indexes.
@@ -5988,7 +6062,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param limit: The numbers of results to return. Default value is 300.
         :type limit: int
         :param document_type: Filter indices by a document type. Default value is None.
-        :type document_type: str or ~affinda.models.Enum18
+        :type document_type: str or ~affinda.models.Enum19
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)

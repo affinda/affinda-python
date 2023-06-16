@@ -374,6 +374,33 @@ client = AffindaAPI(credential=credential)
 client.delete_document(identifier)
 ```
 
+### updateDocumentData - Update a document's data
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import ResumeDataSkillsItem
+
+token = "REPLACE_TOKEN"
+identifier = "RESUME_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+resume = client.get_document(identifier)
+
+# Update the data of the resume
+updated_data = resume.data
+updated_data.date_of_birth = "1980-08-15"  # Update some attributes
+
+# For lists, you can update, create new, or delete objects
+updated_data.skills[0].last_used = "2022-06-01"  # Update the first skill
+updated_data.skills.pop(-1)  # Delete the last skill
+updated_data.skills.append(ResumeDataSkillsItem(name="git", number_of_months=24))  # Create a new skill
+
+updated_resume = client.update_document_data(identifier, updated_data)
+print(updated_resume.as_dict())
+```
+
 ### editDocumentPages - Edit pages of a document
 
 ```python
@@ -860,7 +887,7 @@ annotation = client.get_annotation(identifier)
 print(annotation.as_dict())
 ```
 
-### updateAnnotation - Update a annotation
+### updateAnnotation - Update an annotation
 
 ```python
 from affinda import AffindaAPI, TokenCredential

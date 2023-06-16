@@ -663,6 +663,37 @@ def build_delete_document_request(
     )
 
 
+def build_update_document_data_request(
+    identifier,  # type: str
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+
+    content_type = kwargs.pop('content_type', _headers.pop('Content-Type', None))  # type: Optional[str]
+    accept = _headers.pop('Accept', "application/json")
+
+    # Construct URL
+    _url = kwargs.pop("template_url", "/v3/documents/{identifier}/update_data")
+    path_format_arguments = {
+        "identifier": _SERIALIZER.url("identifier", identifier, 'str'),
+    }
+
+    _url = _format_url_section(_url, **path_format_arguments)
+
+    # Construct headers
+    if content_type is not None:
+        _headers['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="POST",
+        url=_url,
+        headers=_headers,
+        **kwargs
+    )
+
+
 def build_batch_add_tag_request(
     **kwargs  # type: Any
 ):
@@ -2548,7 +2579,7 @@ def build_get_all_indexes_request(
 
     offset = kwargs.pop('offset', _params.pop('offset', None))  # type: Optional[int]
     limit = kwargs.pop('limit', _params.pop('limit', 300))  # type: Optional[int]
-    document_type = kwargs.pop('document_type', _params.pop('document_type', None))  # type: Optional[Union[str, "_models.Enum18"]]
+    document_type = kwargs.pop('document_type', _params.pop('document_type', None))  # type: Optional[Union[str, "_models.Enum19"]]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
@@ -4476,6 +4507,83 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
     delete_document.metadata = {"url": "/v3/documents/{identifier}"}  # type: ignore
 
+    def update_document_data(
+        self,
+        identifier,  # type: str
+        body,  # type: Any
+        **kwargs,  # type: Any
+    ):
+        # type: (...) -> _models.Document
+        """Update a document's data.
+
+        Update data of a document.
+        Only applicable for resumes and job descriptions. For other document types, please use the
+        ``PATCH /annotations/{id}`` endpoint or the ``POST /annotations/batch_update`` endpoint.
+
+        :param identifier: Resume or Job Description identifier.
+        :type identifier: str
+        :param body: Resume data to update.
+        :type body: any
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: Document, or the result of cls(response)
+        :rtype: ~affinda.models.Document
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop(
+            "content_type", _headers.pop("Content-Type", "application/json")
+        )  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.Document]
+
+        _json = self._serialize.body(body, "object")
+
+        request = build_update_document_data_request(
+            identifier=identifier,
+            content_type=content_type,
+            json=_json,
+            template_url=self.update_document_data.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("Document", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    update_document_data.metadata = {"url": "/v3/documents/{identifier}/update_data"}  # type: ignore
+
     def batch_add_tag(  # pylint: disable=inconsistent-return-statements
         self,
         body,  # type: _models.BatchAddTagRequest
@@ -5996,7 +6104,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         **kwargs,  # type: Any
     ):
         # type: (...) -> Optional[_models.Annotation]
-        """Update a annotation.
+        """Update an annotation.
 
         Update data of an annotation.
 
@@ -9088,7 +9196,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         self,
         offset=None,  # type: Optional[int]
         limit=300,  # type: Optional[int]
-        document_type=None,  # type: Optional[Union[str, "_models.Enum18"]]
+        document_type=None,  # type: Optional[Union[str, "_models.Enum19"]]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema
@@ -9102,7 +9210,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param limit: The numbers of results to return. Default value is 300.
         :type limit: int
         :param document_type: Filter indices by a document type. Default value is None.
-        :type document_type: str or ~affinda.models.Enum18
+        :type document_type: str or ~affinda.models.Enum19
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)

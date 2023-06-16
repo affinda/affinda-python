@@ -574,6 +574,34 @@ Deletes the specified document from the database.
 
 `None`: None, or the result of cls(response)
 
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_document_data"></a>
+
+#### update\_document\_data
+
+```python
+def update_document_data(identifier, body, **kwargs)
+```
+
+Update a document's data.
+
+Update data of a document.
+Only applicable for resumes and job descriptions. For other document types, please use the
+``PATCH /annotations/{id}`` endpoint or the ``POST /annotations/batch_update`` endpoint.
+
+**Arguments**:
+
+- `identifier` (`str`): Resume or Job Description identifier.
+- `body` (`any`): Resume data to update.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Document`: Document, or the result of cls(response)
+
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.batch_add_tag"></a>
 
 #### batch\_add\_tag
@@ -1139,7 +1167,7 @@ Return a specific annotation.
 def update_annotation(id, body, **kwargs)
 ```
 
-Update a annotation.
+Update an annotation.
 
 Update data of an annotation.
 
@@ -2300,7 +2328,7 @@ Returns all the indexes.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
-- `document_type` (`str or ~affinda.models.Enum18`): Filter indices by a document type. Default value is None.
+- `document_type` (`str or ~affinda.models.Enum19`): Filter indices by a document type. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
