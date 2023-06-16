@@ -2088,9 +2088,9 @@ The data point to be created for this field. If a data point with the same slug 
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar name: Required.
+:ivar name: Required. Name of the data point.
 :vartype name: str
-:ivar slug: Required.
+:ivar slug: Required. A camelCase string that will be used as the key in the API response.
 :vartype slug: str
 :ivar description:
 :vartype description: str
@@ -2114,8 +2114,8 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `name`: Required.
-- `slug`: Required.
+- `name`: Required. Name of the data point.
+- `slug`: Required. A camelCase string that will be used as the key in the API response.
 - `description`: 
 - `type`: Required. The different data types of annotations. Known values are: "text",
 "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location", "json",
@@ -2174,9 +2174,9 @@ All required parameters must be populated in order to send to Azure.
 
 :ivar identifier: Required. Uniquely identify a data point.
 :vartype identifier: str
-:ivar name: Required.
+:ivar name: Required. Name of the data point.
 :vartype name: str
-:ivar slug: Required.
+:ivar slug: Required. A camelCase string that will be used as the key in the API response.
 :vartype slug: str
 :ivar description: Required.
 :vartype description: str
@@ -2201,8 +2201,8 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `identifier`: Required. Uniquely identify a data point.
-- `name`: Required.
-- `slug`: Required.
+- `name`: Required. Name of the data point.
+- `slug`: Required. A camelCase string that will be used as the key in the API response.
 - `description`: Required.
 - `type`: Required. The different data types of annotations. Known values are: "text",
 "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location", "json",
@@ -2261,9 +2261,9 @@ All required parameters must be populated in order to send to Azure.
 
 :ivar identifier: Required. Uniquely identify a data point.
 :vartype identifier: str
-:ivar name: Required.
+:ivar name: Required. Name of the data point.
 :vartype name: str
-:ivar slug:
+:ivar slug: Required. A camelCase string that will be used as the key in the API response.
 :vartype slug: str
 :ivar description:
 :vartype description: str
@@ -2272,7 +2272,7 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
-:ivar organization:
+:ivar organization: Required.
 :vartype organization: ~affinda.models.Organization
 :ivar extractor: Required. Uniquely identify an extractor.
 :vartype extractor: str
@@ -2280,10 +2280,11 @@ All required parameters must be populated in order to send to Azure.
 :vartype multiple: bool
 :ivar no_rect:
 :vartype no_rect: bool
-:ivar similar_to:
-:vartype similar_to: list[str]
-:ivar display_enum_value:
+:ivar display_enum_value: If true, both the value and the label for the enums will appear in
+ the dropdown in the validation tool.
 :vartype display_enum_value: bool
+:ivar parent: The identifier of the parent data point if applicable.
+:vartype parent: str
 :ivar children:
 :vartype children: list[~affinda.models.DataPoint]
 
@@ -2298,19 +2299,20 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `identifier`: Required. Uniquely identify a data point.
-- `name`: Required.
-- `slug`: 
+- `name`: Required. Name of the data point.
+- `slug`: Required. A camelCase string that will be used as the key in the API response.
 - `description`: 
 - `annotation_content_type`: Required. The different data types of annotations. Known
 values are: "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum",
 "location", "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
-- `organization`: 
+- `organization`: Required.
 - `extractor`: Required. Uniquely identify an extractor.
 - `multiple`: 
 - `no_rect`: 
-- `similar_to`: 
-- `display_enum_value`: 
+- `display_enum_value`: If true, both the value and the label for the enums will appear in
+the dropdown in the validation tool.
+- `parent`: The identifier of the parent data point if applicable.
 - `children`: 
 
 <a id="models._models.DataPointChoice"></a>
@@ -2452,9 +2454,9 @@ DataPointCreate.
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar name:
+:ivar name: Required. Name of the data point.
 :vartype name: str
-:ivar slug: Required.
+:ivar slug: Required. A camelCase string that will be used as the key in the API response.
 :vartype slug: str
 :ivar description:
 :vartype description: str
@@ -2471,6 +2473,11 @@ All required parameters must be populated in order to send to Azure.
 :vartype multiple: bool
 :ivar no_rect:
 :vartype no_rect: bool
+:ivar display_enum_value: If true, both the value and the label for the enums will appear in
+ the dropdown in the validation tool.
+:vartype display_enum_value: bool
+:ivar parent: The identifier of the parent data point if applicable.
+:vartype parent: str
 
 <a id="models._models.DataPointCreate.__init__"></a>
 
@@ -2482,8 +2489,8 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `name`: 
-- `slug`: Required.
+- `name`: Required. Name of the data point.
+- `slug`: Required. A camelCase string that will be used as the key in the API response.
 - `description`: 
 - `annotation_content_type`: Required. The different data types of annotations. Known
 values are: "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum",
@@ -2493,6 +2500,9 @@ values are: "text", "integer", "float", "decimal", "date", "datetime", "boolean"
 - `extractor`: Required. Uniquely identify an extractor.
 - `multiple`: 
 - `no_rect`: 
+- `display_enum_value`: If true, both the value and the label for the enums will appear in
+the dropdown in the validation tool.
+- `parent`: The identifier of the parent data point if applicable.
 
 <a id="models._models.DataPointUpdate"></a>
 
@@ -2504,12 +2514,17 @@ class DataPointUpdate(msrest.serialization.Model)
 
 DataPointUpdate.
 
-:ivar name:
+:ivar name: Name of the data point.
 :vartype name: str
-:ivar slug:
+:ivar slug: A camelCase string that will be used as the key in the API response.
 :vartype slug: str
 :ivar description:
 :vartype description: str
+:ivar display_enum_value: If true, both the value and the label for the enums will appear in
+ the dropdown in the validation tool.
+:vartype display_enum_value: bool
+:ivar parent: The identifier of the parent data point if applicable.
+:vartype parent: str
 
 <a id="models._models.DataPointUpdate.__init__"></a>
 
@@ -2521,9 +2536,12 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `name`: 
-- `slug`: 
+- `name`: Name of the data point.
+- `slug`: A camelCase string that will be used as the key in the API response.
 - `description`: 
+- `display_enum_value`: If true, both the value and the label for the enums will appear in
+the dropdown in the validation tool.
+- `parent`: The identifier of the parent data point if applicable.
 
 <a id="models._models.DateAnnotation"></a>
 

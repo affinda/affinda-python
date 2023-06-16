@@ -2758,9 +2758,9 @@ class DataFieldCreateDataPoint(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
-    :ivar name: Required.
+    :ivar name: Required. Name of the data point.
     :vartype name: str
-    :ivar slug: Required.
+    :ivar slug: Required. A camelCase string that will be used as the key in the API response.
     :vartype slug: str
     :ivar description:
     :vartype description: str
@@ -2802,9 +2802,9 @@ class DataFieldCreateDataPoint(msrest.serialization.Model):
         **kwargs,
     ):
         """
-        :keyword name: Required.
+        :keyword name: Required. Name of the data point.
         :paramtype name: str
-        :keyword slug: Required.
+        :keyword slug: Required. A camelCase string that will be used as the key in the API response.
         :paramtype slug: str
         :keyword description:
         :paramtype description: str
@@ -2887,9 +2887,9 @@ class DataFieldDataPoint(msrest.serialization.Model):
 
     :ivar identifier: Required. Uniquely identify a data point.
     :vartype identifier: str
-    :ivar name: Required.
+    :ivar name: Required. Name of the data point.
     :vartype name: str
-    :ivar slug: Required.
+    :ivar slug: Required. A camelCase string that will be used as the key in the API response.
     :vartype slug: str
     :ivar description: Required.
     :vartype description: str
@@ -2939,9 +2939,9 @@ class DataFieldDataPoint(msrest.serialization.Model):
         """
         :keyword identifier: Required. Uniquely identify a data point.
         :paramtype identifier: str
-        :keyword name: Required.
+        :keyword name: Required. Name of the data point.
         :paramtype name: str
-        :keyword slug: Required.
+        :keyword slug: Required. A camelCase string that will be used as the key in the API response.
         :paramtype slug: str
         :keyword description: Required.
         :paramtype description: str
@@ -3027,9 +3027,9 @@ class DataPoint(msrest.serialization.Model):
 
     :ivar identifier: Required. Uniquely identify a data point.
     :vartype identifier: str
-    :ivar name: Required.
+    :ivar name: Required. Name of the data point.
     :vartype name: str
-    :ivar slug:
+    :ivar slug: Required. A camelCase string that will be used as the key in the API response.
     :vartype slug: str
     :ivar description:
     :vartype description: str
@@ -3038,7 +3038,7 @@ class DataPoint(msrest.serialization.Model):
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
-    :ivar organization:
+    :ivar organization: Required.
     :vartype organization: ~affinda.models.Organization
     :ivar extractor: Required. Uniquely identify an extractor.
     :vartype extractor: str
@@ -3046,10 +3046,11 @@ class DataPoint(msrest.serialization.Model):
     :vartype multiple: bool
     :ivar no_rect:
     :vartype no_rect: bool
-    :ivar similar_to:
-    :vartype similar_to: list[str]
-    :ivar display_enum_value:
+    :ivar display_enum_value: If true, both the value and the label for the enums will appear in
+     the dropdown in the validation tool.
     :vartype display_enum_value: bool
+    :ivar parent: The identifier of the parent data point if applicable.
+    :vartype parent: str
     :ivar children:
     :vartype children: list[~affinda.models.DataPoint]
     """
@@ -3057,7 +3058,9 @@ class DataPoint(msrest.serialization.Model):
     _validation = {
         "identifier": {"required": True},
         "name": {"required": True},
+        "slug": {"required": True},
         "annotation_content_type": {"required": True},
+        "organization": {"required": True},
         "extractor": {"required": True},
     }
 
@@ -3071,8 +3074,8 @@ class DataPoint(msrest.serialization.Model):
         "extractor": {"key": "extractor", "type": "str"},
         "multiple": {"key": "multiple", "type": "bool"},
         "no_rect": {"key": "noRect", "type": "bool"},
-        "similar_to": {"key": "similarTo", "type": "[str]"},
         "display_enum_value": {"key": "displayEnumValue", "type": "bool"},
+        "parent": {"key": "parent", "type": "str"},
         "children": {"key": "children", "type": "[DataPoint]"},
     }
 
@@ -3081,24 +3084,24 @@ class DataPoint(msrest.serialization.Model):
         *,
         identifier: str,
         name: str,
+        slug: str,
         annotation_content_type: Union[str, "_models.AnnotationContentType"],
+        organization: "_models.Organization",
         extractor: str,
-        slug: Optional[str] = None,
         description: Optional[str] = None,
-        organization: Optional["_models.Organization"] = None,
         multiple: Optional[bool] = None,
         no_rect: Optional[bool] = None,
-        similar_to: Optional[List[str]] = None,
         display_enum_value: Optional[bool] = None,
+        parent: Optional[str] = None,
         children: Optional[List["_models.DataPoint"]] = None,
         **kwargs,
     ):
         """
         :keyword identifier: Required. Uniquely identify a data point.
         :paramtype identifier: str
-        :keyword name: Required.
+        :keyword name: Required. Name of the data point.
         :paramtype name: str
-        :keyword slug:
+        :keyword slug: Required. A camelCase string that will be used as the key in the API response.
         :paramtype slug: str
         :keyword description:
         :paramtype description: str
@@ -3107,7 +3110,7 @@ class DataPoint(msrest.serialization.Model):
          "location", "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype annotation_content_type: str or ~affinda.models.AnnotationContentType
-        :keyword organization:
+        :keyword organization: Required.
         :paramtype organization: ~affinda.models.Organization
         :keyword extractor: Required. Uniquely identify an extractor.
         :paramtype extractor: str
@@ -3115,10 +3118,11 @@ class DataPoint(msrest.serialization.Model):
         :paramtype multiple: bool
         :keyword no_rect:
         :paramtype no_rect: bool
-        :keyword similar_to:
-        :paramtype similar_to: list[str]
-        :keyword display_enum_value:
+        :keyword display_enum_value: If true, both the value and the label for the enums will appear in
+         the dropdown in the validation tool.
         :paramtype display_enum_value: bool
+        :keyword parent: The identifier of the parent data point if applicable.
+        :paramtype parent: str
         :keyword children:
         :paramtype children: list[~affinda.models.DataPoint]
         """
@@ -3132,8 +3136,8 @@ class DataPoint(msrest.serialization.Model):
         self.extractor = extractor
         self.multiple = multiple
         self.no_rect = no_rect
-        self.similar_to = similar_to
         self.display_enum_value = display_enum_value
+        self.parent = parent
         self.children = children
 
 
@@ -3345,9 +3349,9 @@ class DataPointCreate(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
-    :ivar name:
+    :ivar name: Required. Name of the data point.
     :vartype name: str
-    :ivar slug: Required.
+    :ivar slug: Required. A camelCase string that will be used as the key in the API response.
     :vartype slug: str
     :ivar description:
     :vartype description: str
@@ -3364,9 +3368,15 @@ class DataPointCreate(msrest.serialization.Model):
     :vartype multiple: bool
     :ivar no_rect:
     :vartype no_rect: bool
+    :ivar display_enum_value: If true, both the value and the label for the enums will appear in
+     the dropdown in the validation tool.
+    :vartype display_enum_value: bool
+    :ivar parent: The identifier of the parent data point if applicable.
+    :vartype parent: str
     """
 
     _validation = {
+        "name": {"required": True},
         "slug": {"required": True},
         "annotation_content_type": {"required": True},
         "organization": {"required": True},
@@ -3382,25 +3392,29 @@ class DataPointCreate(msrest.serialization.Model):
         "extractor": {"key": "extractor", "type": "str"},
         "multiple": {"key": "multiple", "type": "bool"},
         "no_rect": {"key": "noRect", "type": "bool"},
+        "display_enum_value": {"key": "displayEnumValue", "type": "bool"},
+        "parent": {"key": "parent", "type": "str"},
     }
 
     def __init__(
         self,
         *,
+        name: str,
         slug: str,
         annotation_content_type: Union[str, "_models.AnnotationContentType"],
         organization: str,
         extractor: str,
-        name: Optional[str] = None,
         description: Optional[str] = None,
         multiple: Optional[bool] = None,
         no_rect: Optional[bool] = None,
+        display_enum_value: Optional[bool] = None,
+        parent: Optional[str] = None,
         **kwargs,
     ):
         """
-        :keyword name:
+        :keyword name: Required. Name of the data point.
         :paramtype name: str
-        :keyword slug: Required.
+        :keyword slug: Required. A camelCase string that will be used as the key in the API response.
         :paramtype slug: str
         :keyword description:
         :paramtype description: str
@@ -3417,6 +3431,11 @@ class DataPointCreate(msrest.serialization.Model):
         :paramtype multiple: bool
         :keyword no_rect:
         :paramtype no_rect: bool
+        :keyword display_enum_value: If true, both the value and the label for the enums will appear in
+         the dropdown in the validation tool.
+        :paramtype display_enum_value: bool
+        :keyword parent: The identifier of the parent data point if applicable.
+        :paramtype parent: str
         """
         super(DataPointCreate, self).__init__(**kwargs)
         self.name = name
@@ -3427,23 +3446,32 @@ class DataPointCreate(msrest.serialization.Model):
         self.extractor = extractor
         self.multiple = multiple
         self.no_rect = no_rect
+        self.display_enum_value = display_enum_value
+        self.parent = parent
 
 
 class DataPointUpdate(msrest.serialization.Model):
     """DataPointUpdate.
 
-    :ivar name:
+    :ivar name: Name of the data point.
     :vartype name: str
-    :ivar slug:
+    :ivar slug: A camelCase string that will be used as the key in the API response.
     :vartype slug: str
     :ivar description:
     :vartype description: str
+    :ivar display_enum_value: If true, both the value and the label for the enums will appear in
+     the dropdown in the validation tool.
+    :vartype display_enum_value: bool
+    :ivar parent: The identifier of the parent data point if applicable.
+    :vartype parent: str
     """
 
     _attribute_map = {
         "name": {"key": "name", "type": "str"},
         "slug": {"key": "slug", "type": "str"},
         "description": {"key": "description", "type": "str"},
+        "display_enum_value": {"key": "displayEnumValue", "type": "bool"},
+        "parent": {"key": "parent", "type": "str"},
     }
 
     def __init__(
@@ -3452,20 +3480,29 @@ class DataPointUpdate(msrest.serialization.Model):
         name: Optional[str] = None,
         slug: Optional[str] = None,
         description: Optional[str] = None,
+        display_enum_value: Optional[bool] = None,
+        parent: Optional[str] = None,
         **kwargs,
     ):
         """
-        :keyword name:
+        :keyword name: Name of the data point.
         :paramtype name: str
-        :keyword slug:
+        :keyword slug: A camelCase string that will be used as the key in the API response.
         :paramtype slug: str
         :keyword description:
         :paramtype description: str
+        :keyword display_enum_value: If true, both the value and the label for the enums will appear in
+         the dropdown in the validation tool.
+        :paramtype display_enum_value: bool
+        :keyword parent: The identifier of the parent data point if applicable.
+        :paramtype parent: str
         """
         super(DataPointUpdate, self).__init__(**kwargs)
         self.name = name
         self.slug = slug
         self.description = description
+        self.display_enum_value = display_enum_value
+        self.parent = parent
 
 
 class DateAnnotation(Annotation):
