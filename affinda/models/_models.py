@@ -8529,6 +8529,8 @@ class JobTitleParsedParsed(msrest.serialization.Model):
 
     :ivar name:
     :vartype name: str
+    :ivar emsi_id: EMSI id of the normalised job title.
+    :vartype emsi_id: str
     :ivar management_level:
     :vartype management_level: str
     :ivar classification:
@@ -8537,6 +8539,7 @@ class JobTitleParsedParsed(msrest.serialization.Model):
 
     _attribute_map = {
         "name": {"key": "name", "type": "str"},
+        "emsi_id": {"key": "emsiId", "type": "str"},
         "management_level": {"key": "managementLevel", "type": "str"},
         "classification": {"key": "classification", "type": "JobTitleParsedClassification"},
     }
@@ -8545,6 +8548,8 @@ class JobTitleParsedParsed(msrest.serialization.Model):
         """
         :keyword name:
         :paramtype name: str
+        :keyword emsi_id: EMSI id of the normalised job title.
+        :paramtype emsi_id: str
         :keyword management_level:
         :paramtype management_level: str
         :keyword classification:
@@ -8552,6 +8557,7 @@ class JobTitleParsedParsed(msrest.serialization.Model):
         """
         super(JobTitleParsedParsed, self).__init__(**kwargs)
         self.name = kwargs.get("name", None)
+        self.emsi_id = kwargs.get("emsi_id", None)
         self.management_level = kwargs.get("management_level", None)
         self.classification = kwargs.get("classification", None)
 
@@ -11300,6 +11306,8 @@ class ResumeDataWorkExperienceItemOccupation(msrest.serialization.Model):
     :ivar job_title_normalized: Mapped onto the EMSI job title taxonomy if a sufficiently close
      match exists.
     :vartype job_title_normalized: str
+    :ivar emsi_id: EMSI id of the normalised job title.
+    :vartype emsi_id: str
     :ivar management_level: Known values are: "None", "Low", "Mid", "Upper".
     :vartype management_level: str or ~affinda.models.ManagementLevel
     :ivar classification:
@@ -11310,6 +11318,7 @@ class ResumeDataWorkExperienceItemOccupation(msrest.serialization.Model):
     _attribute_map = {
         "job_title": {"key": "jobTitle", "type": "str"},
         "job_title_normalized": {"key": "jobTitleNormalized", "type": "str"},
+        "emsi_id": {"key": "emsiId", "type": "str"},
         "management_level": {"key": "managementLevel", "type": "str"},
         "classification": {
             "key": "classification",
@@ -11324,6 +11333,8 @@ class ResumeDataWorkExperienceItemOccupation(msrest.serialization.Model):
         :keyword job_title_normalized: Mapped onto the EMSI job title taxonomy if a sufficiently close
          match exists.
         :paramtype job_title_normalized: str
+        :keyword emsi_id: EMSI id of the normalised job title.
+        :paramtype emsi_id: str
         :keyword management_level: Known values are: "None", "Low", "Mid", "Upper".
         :paramtype management_level: str or ~affinda.models.ManagementLevel
         :keyword classification:
@@ -11333,6 +11344,7 @@ class ResumeDataWorkExperienceItemOccupation(msrest.serialization.Model):
         super(ResumeDataWorkExperienceItemOccupation, self).__init__(**kwargs)
         self.job_title = kwargs.get("job_title", None)
         self.job_title_normalized = kwargs.get("job_title_normalized", None)
+        self.emsi_id = kwargs.get("emsi_id", None)
         self.management_level = kwargs.get("management_level", None)
         self.classification = kwargs.get("classification", None)
 

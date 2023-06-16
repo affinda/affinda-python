@@ -5861,6 +5861,8 @@ Matching job title to extracted text.
 
 :ivar name:
 :vartype name: str
+:ivar emsi_id: EMSI id of the normalised job title.
+:vartype emsi_id: str
 :ivar management_level:
 :vartype management_level: str
 :ivar classification:
@@ -5877,6 +5879,7 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `name`: 
+- `emsi_id`: EMSI id of the normalised job title.
 - `management_level`: 
 - `classification`: 
 
@@ -8056,6 +8059,8 @@ ResumeDataWorkExperienceItemOccupation.
 :ivar job_title_normalized: Mapped onto the EMSI job title taxonomy if a sufficiently close
  match exists.
 :vartype job_title_normalized: str
+:ivar emsi_id: EMSI id of the normalised job title.
+:vartype emsi_id: str
 :ivar management_level: Known values are: "None", "Low", "Mid", "Upper".
 :vartype management_level: str or ~affinda.models.ManagementLevel
 :ivar classification:
@@ -8075,6 +8080,7 @@ def __init__(**kwargs)
 - `job_title`: The raw (not normalized) job title pulled from the work experience entry.
 - `job_title_normalized`: Mapped onto the EMSI job title taxonomy if a sufficiently close
 match exists.
+- `emsi_id`: EMSI id of the normalised job title.
 - `management_level`: Known values are: "None", "Low", "Mid", "Upper".
 - `classification`: 
 

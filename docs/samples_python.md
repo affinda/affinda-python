@@ -71,6 +71,7 @@ print(resume.as_dict())
 
 ```python
 from affinda import AffindaAPI, TokenCredential
+from affinda.models import ResumeData, ResumeDataSkillsItem
 
 token = "REPLACE_TOKEN"
 identifier = "REPLACE_IDENTIFIER"
@@ -79,16 +80,14 @@ credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
 
 # Update resume
-from affinda.models import ResumeDataResumeDataSkillsItem
-
 resume = client.get_resume(identifier=identifier)
-updated_data = resume.data
+updated_data: ResumeData = resume.data
 updated_data.date_of_birth = "1980-08-15"  # Update some attributes
 
 # For lists, you can update, create new, or delete objects
 updated_data.skills[0].last_used = "2022-06-01"  # Update the first skill
 updated_data.skills.pop(-1)  # Delete the last skill
-updated_data.skills.append(ResumeDataResumeDataSkillsItem(name="git", number_of_months=24))  # Create a new skill
+updated_data.skills.append(ResumeDataSkillsItem(name="git", number_of_months=24))  # Create a new skill
 
 resp = client.update_resume_data(identifier=identifier, body=updated_data)
 print(resp.as_dict())
