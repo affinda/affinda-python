@@ -2788,6 +2788,8 @@ DocumentCreate.
 :vartype reject_duplicates: bool
 :ivar region_bias: A JSON representation of the RegionBias object.
 :vartype region_bias: str
+:ivar low_priority: Explicitly mark this document as low priority.
+:vartype low_priority: bool
 
 <a id="models._models.DocumentCreate.__init__"></a>
 
@@ -2817,6 +2819,7 @@ duplicate of an existing document, no credits will be consumed. If "false", will
 document normally whether its a duplicate or not. If not provided, will fallback to the
 workspace settings.
 - `region_bias`: A JSON representation of the RegionBias object.
+- `low_priority`: Explicitly mark this document as low priority.
 
 <a id="models._models.DocumentEditRequest"></a>
 

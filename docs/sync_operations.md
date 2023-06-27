@@ -465,7 +465,7 @@ cls(response)
 #### create\_document
 
 ```python
-def create_document(file=None, url=None, collection=None, workspace=None, wait=True, identifier=None, file_name=None, expiry_time=None, language=None, reject_duplicates=None, region_bias=None, **kwargs)
+def create_document(file=None, url=None, collection=None, workspace=None, wait=True, identifier=None, file_name=None, expiry_time=None, language=None, reject_duplicates=None, region_bias=None, low_priority=None, **kwargs)
 ```
 
 Upload a document for parsing.
@@ -487,6 +487,7 @@ to check processing status and retrieve results.:code:`<br/>`.
 - `language` (`str`): Default value is None.
 - `reject_duplicates` (`bool`): Default value is None.
 - `region_bias` (`str`): A JSON representation of the RegionBias object. Default value is None.
+- `low_priority` (`bool`): Explicitly mark this document as low priority. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
