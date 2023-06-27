@@ -4351,6 +4351,8 @@ InvoiceRequestBody.
 :vartype expiry_time: ~datetime.datetime
 :ivar region_bias: A JSON representation of the RegionBias object.
 :vartype region_bias: str
+:ivar low_priority: Explicitly mark this document as low priority.
+:vartype low_priority: bool
 
 <a id="models._models.InvoiceRequestBody.__init__"></a>
 
@@ -4378,6 +4380,7 @@ workspace settings.
 - `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
 - `region_bias`: A JSON representation of the RegionBias object.
+- `low_priority`: Explicitly mark this document as low priority.
 
 <a id="models._models.JobDescription"></a>
 
@@ -4610,6 +4613,8 @@ JobDescriptionRequestBody.
 :vartype expiry_time: ~datetime.datetime
 :ivar region_bias: A JSON representation of the RegionBias object.
 :vartype region_bias: str
+:ivar low_priority: Explicitly mark this document as low priority.
+:vartype low_priority: bool
 
 <a id="models._models.JobDescriptionRequestBody.__init__"></a>
 
@@ -4638,6 +4643,7 @@ workspace settings.
 - `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
 - `region_bias`: A JSON representation of the RegionBias object.
+- `low_priority`: Explicitly mark this document as low priority.
 
 <a id="models._models.JobDescriptionSearch"></a>
 
@@ -8121,6 +8127,8 @@ ResumeRequestBody.
 :vartype expiry_time: ~datetime.datetime
 :ivar region_bias: A JSON representation of the RegionBias object.
 :vartype region_bias: str
+:ivar low_priority: Explicitly mark this document as low priority.
+:vartype low_priority: bool
 
 <a id="models._models.ResumeRequestBody.__init__"></a>
 
@@ -8149,6 +8157,7 @@ workspace settings.
 - `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
 - `region_bias`: A JSON representation of the RegionBias object.
+- `low_priority`: Explicitly mark this document as low priority.
 
 <a id="models._models.ResumeSearch"></a>
 

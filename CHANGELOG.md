@@ -30,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Required fields for resthook subscriptions
 - Ability to post/patch languages for resumes in v2
 - Allow create/update data point's `parent` and `displayEnumValue` property
+- Allow explicitly set a document as low_priority
 
 ### Removed
 - Remove data point's `similarTo` property
