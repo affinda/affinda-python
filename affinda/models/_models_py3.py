@@ -1075,6 +1075,9 @@ class Collection(msrest.serialization.Model):
     :ivar tailored_extractor_requested: Whether a tailored extractor has been requested for this
      collection.
     :vartype tailored_extractor_requested: bool
+    :ivar allow_openai: Whether to allow OpenAI API to be used to assist in creating a model for
+     this collection.
+    :vartype allow_openai: bool
     """
 
     _validation = {
@@ -1097,6 +1100,7 @@ class Collection(msrest.serialization.Model):
         "confirmed_docs_count": {"key": "confirmedDocsCount", "type": "int"},
         "ingest_email": {"key": "ingestEmail", "type": "str"},
         "tailored_extractor_requested": {"key": "tailoredExtractorRequested", "type": "bool"},
+        "allow_openai": {"key": "allowOpenai", "type": "bool"},
     }
 
     def __init__(
@@ -1119,6 +1123,7 @@ class Collection(msrest.serialization.Model):
         confirmed_docs_count: Optional[int] = None,
         ingest_email: Optional[str] = None,
         tailored_extractor_requested: Optional[bool] = None,
+        allow_openai: Optional[bool] = False,
         **kwargs,
     ):
         """
@@ -1155,6 +1160,9 @@ class Collection(msrest.serialization.Model):
         :keyword tailored_extractor_requested: Whether a tailored extractor has been requested for this
          collection.
         :paramtype tailored_extractor_requested: bool
+        :keyword allow_openai: Whether to allow OpenAI API to be used to assist in creating a model for
+         this collection.
+        :paramtype allow_openai: bool
         """
         super(Collection, self).__init__(**kwargs)
         self.identifier = identifier
@@ -1172,6 +1180,7 @@ class Collection(msrest.serialization.Model):
         self.confirmed_docs_count = confirmed_docs_count
         self.ingest_email = ingest_email
         self.tailored_extractor_requested = tailored_extractor_requested
+        self.allow_openai = allow_openai
 
 
 class CollectionCreate(msrest.serialization.Model):
@@ -1200,6 +1209,9 @@ class CollectionCreate(msrest.serialization.Model):
     :vartype date_format_from_document: bool
     :ivar extractor_config: Extra configurations specific to an extractor.
     :vartype extractor_config: ~affinda.models.ExtractorConfig
+    :ivar allow_openai: Whether to allow OpenAI API to be used to assist in creating a model for
+     this collection.
+    :vartype allow_openai: bool
     """
 
     _validation = {
@@ -1218,6 +1230,7 @@ class CollectionCreate(msrest.serialization.Model):
         "date_format_preference": {"key": "dateFormatPreference", "type": "str"},
         "date_format_from_document": {"key": "dateFormatFromDocument", "type": "bool"},
         "extractor_config": {"key": "extractorConfig", "type": "ExtractorConfig"},
+        "allow_openai": {"key": "allowOpenai", "type": "bool"},
     }
 
     def __init__(
@@ -1233,6 +1246,7 @@ class CollectionCreate(msrest.serialization.Model):
         date_format_preference: Optional[Union[str, "_models.DateFormatPreference"]] = None,
         date_format_from_document: Optional[bool] = None,
         extractor_config: Optional["_models.ExtractorConfig"] = None,
+        allow_openai: Optional[bool] = False,
         **kwargs,
     ):
         """
@@ -1257,6 +1271,9 @@ class CollectionCreate(msrest.serialization.Model):
         :paramtype date_format_from_document: bool
         :keyword extractor_config: Extra configurations specific to an extractor.
         :paramtype extractor_config: ~affinda.models.ExtractorConfig
+        :keyword allow_openai: Whether to allow OpenAI API to be used to assist in creating a model for
+         this collection.
+        :paramtype allow_openai: bool
         """
         super(CollectionCreate, self).__init__(**kwargs)
         self.name = name
@@ -1269,6 +1286,7 @@ class CollectionCreate(msrest.serialization.Model):
         self.date_format_preference = date_format_preference
         self.date_format_from_document = date_format_from_document
         self.extractor_config = extractor_config
+        self.allow_openai = allow_openai
 
 
 class CollectionUpdate(msrest.serialization.Model):
@@ -1289,6 +1307,9 @@ class CollectionUpdate(msrest.serialization.Model):
     :vartype date_format_from_document: bool
     :ivar extractor_config: Extra configurations specific to an extractor.
     :vartype extractor_config: ~affinda.models.ExtractorConfig
+    :ivar allow_openai: Whether to allow OpenAI API to be used to assist in creating a model for
+     this collection.
+    :vartype allow_openai: bool
     """
 
     _attribute_map = {
@@ -1299,6 +1320,7 @@ class CollectionUpdate(msrest.serialization.Model):
         "date_format_preference": {"key": "dateFormatPreference", "type": "str"},
         "date_format_from_document": {"key": "dateFormatFromDocument", "type": "bool"},
         "extractor_config": {"key": "extractorConfig", "type": "ExtractorConfig"},
+        "allow_openai": {"key": "allowOpenai", "type": "bool"},
     }
 
     def __init__(
@@ -1311,6 +1333,7 @@ class CollectionUpdate(msrest.serialization.Model):
         date_format_preference: Optional[Union[str, "_models.DateFormatPreference"]] = None,
         date_format_from_document: Optional[bool] = None,
         extractor_config: Optional["_models.ExtractorConfig"] = None,
+        allow_openai: Optional[bool] = False,
         **kwargs,
     ):
         """
@@ -1329,6 +1352,9 @@ class CollectionUpdate(msrest.serialization.Model):
         :paramtype date_format_from_document: bool
         :keyword extractor_config: Extra configurations specific to an extractor.
         :paramtype extractor_config: ~affinda.models.ExtractorConfig
+        :keyword allow_openai: Whether to allow OpenAI API to be used to assist in creating a model for
+         this collection.
+        :paramtype allow_openai: bool
         """
         super(CollectionUpdate, self).__init__(**kwargs)
         self.name = name
@@ -1338,6 +1364,7 @@ class CollectionUpdate(msrest.serialization.Model):
         self.date_format_preference = date_format_preference
         self.date_format_from_document = date_format_from_document
         self.extractor_config = extractor_config
+        self.allow_openai = allow_openai
 
 
 class CollectionWorkspace(msrest.serialization.Model):
@@ -3883,6 +3910,8 @@ class DocumentCreate(msrest.serialization.Model):
     :vartype file: IO
     :ivar url: URL to download the document.
     :vartype url: str
+    :ivar data: Create resume or job description directly from data.
+    :vartype data: any
     :ivar collection: Uniquely identify a collection.
     :vartype collection: str
     :ivar workspace: Uniquely identify a workspace.
@@ -3914,6 +3943,7 @@ class DocumentCreate(msrest.serialization.Model):
     _attribute_map = {
         "file": {"key": "file", "type": "IO"},
         "url": {"key": "url", "type": "str"},
+        "data": {"key": "data", "type": "object"},
         "collection": {"key": "collection", "type": "str"},
         "workspace": {"key": "workspace", "type": "str"},
         "wait": {"key": "wait", "type": "bool"},
@@ -3931,6 +3961,7 @@ class DocumentCreate(msrest.serialization.Model):
         *,
         file: Optional[IO] = None,
         url: Optional[str] = None,
+        data: Optional[Any] = None,
         collection: Optional[str] = None,
         workspace: Optional[str] = None,
         wait: Optional[bool] = True,
@@ -3949,6 +3980,8 @@ class DocumentCreate(msrest.serialization.Model):
         :paramtype file: IO
         :keyword url: URL to download the document.
         :paramtype url: str
+        :keyword data: Create resume or job description directly from data.
+        :paramtype data: any
         :keyword collection: Uniquely identify a collection.
         :paramtype collection: str
         :keyword workspace: Uniquely identify a workspace.
@@ -3979,6 +4012,7 @@ class DocumentCreate(msrest.serialization.Model):
         super(DocumentCreate, self).__init__(**kwargs)
         self.file = file
         self.url = url
+        self.data = data
         self.collection = collection
         self.workspace = workspace
         self.wait = wait

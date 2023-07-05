@@ -1252,6 +1252,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         self,
         file: Optional[IO] = None,
         url: Optional[str] = None,
+        data: Any = None,
         collection: Optional[str] = None,
         workspace: Optional[str] = None,
         wait: Optional[bool] = True,
@@ -1274,6 +1275,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type file: IO
         :param url: URL to download the document. Default value is None.
         :type url: str
+        :param data: Create resume or job description directly from data. Default value is None.
+        :type data: any
         :param collection:  Default value is None.
         :type collection: str
         :param workspace:  Default value is None.
@@ -1323,6 +1326,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _files = {
             "file": file,
             "url": url,
+            "data": data,
             "collection": collection,
             "workspace": workspace,
             "wait": wait,

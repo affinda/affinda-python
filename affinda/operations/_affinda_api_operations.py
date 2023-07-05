@@ -4180,6 +4180,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         self,
         file=None,  # type: Optional[IO]
         url=None,  # type: Optional[str]
+        data=None,  # type: Any
         collection=None,  # type: Optional[str]
         workspace=None,  # type: Optional[str]
         wait=True,  # type: Optional[bool]
@@ -4203,6 +4204,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type file: IO
         :param url: URL to download the document. Default value is None.
         :type url: str
+        :param data: Create resume or job description directly from data. Default value is None.
+        :type data: any
         :param collection:  Default value is None.
         :type collection: str
         :param workspace:  Default value is None.
@@ -4252,6 +4255,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         _files = {
             "file": file,
             "url": url,
+            "data": data,
             "collection": collection,
             "workspace": workspace,
             "wait": wait,

@@ -708,6 +708,9 @@ All required parameters must be populated in order to send to Azure.
 :ivar tailored_extractor_requested: Whether a tailored extractor has been requested for this
  collection.
 :vartype tailored_extractor_requested: bool
+:ivar allow_openai: Whether to allow OpenAI API to be used to assist in creating a model for
+ this collection.
+:vartype allow_openai: bool
 
 <a id="models._models.Collection.__init__"></a>
 
@@ -737,6 +740,8 @@ is not ambiguous.
 will be uploaded to this collection.
 - `tailored_extractor_requested`: Whether a tailored extractor has been requested for this
 collection.
+- `allow_openai`: Whether to allow OpenAI API to be used to assist in creating a model for
+this collection.
 
 <a id="models._models.CollectionCreate"></a>
 
@@ -771,6 +776,9 @@ All required parameters must be populated in order to send to Azure.
 :vartype date_format_from_document: bool
 :ivar extractor_config: Extra configurations specific to an extractor.
 :vartype extractor_config: ~affinda.models.ExtractorConfig
+:ivar allow_openai: Whether to allow OpenAI API to be used to assist in creating a model for
+ this collection.
+:vartype allow_openai: bool
 
 <a id="models._models.CollectionCreate.__init__"></a>
 
@@ -793,6 +801,8 @@ def __init__(**kwargs)
 - `date_format_from_document`: Predict the date format from any dates in the document that
 is not ambiguous.
 - `extractor_config`: Extra configurations specific to an extractor.
+- `allow_openai`: Whether to allow OpenAI API to be used to assist in creating a model for
+this collection.
 
 <a id="models._models.CollectionUpdate"></a>
 
@@ -819,6 +829,9 @@ CollectionUpdate.
 :vartype date_format_from_document: bool
 :ivar extractor_config: Extra configurations specific to an extractor.
 :vartype extractor_config: ~affinda.models.ExtractorConfig
+:ivar allow_openai: Whether to allow OpenAI API to be used to assist in creating a model for
+ this collection.
+:vartype allow_openai: bool
 
 <a id="models._models.CollectionUpdate.__init__"></a>
 
@@ -838,6 +851,8 @@ def __init__(**kwargs)
 - `date_format_from_document`: Predict the date format from any dates in the document that
 is not ambiguous.
 - `extractor_config`: Extra configurations specific to an extractor.
+- `allow_openai`: Whether to allow OpenAI API to be used to assist in creating a model for
+this collection.
 
 <a id="models._models.CollectionWorkspace"></a>
 
@@ -2764,6 +2779,8 @@ DocumentCreate.
 :vartype file: IO
 :ivar url: URL to download the document.
 :vartype url: str
+:ivar data: Create resume or job description directly from data.
+:vartype data: any
 :ivar collection: Uniquely identify a collection.
 :vartype collection: str
 :ivar workspace: Uniquely identify a workspace.
@@ -2804,6 +2821,7 @@ def __init__(**kwargs)
 - `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
 PNG, JPG.
 - `url`: URL to download the document.
+- `data`: Create resume or job description directly from data.
 - `collection`: Uniquely identify a collection.
 - `workspace`: Uniquely identify a workspace.
 - `wait`: If "true" (default), will return a response only after processing has completed.

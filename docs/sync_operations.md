@@ -465,7 +465,7 @@ cls(response)
 #### create\_document
 
 ```python
-def create_document(file=None, url=None, collection=None, workspace=None, wait=True, identifier=None, file_name=None, expiry_time=None, language=None, reject_duplicates=None, region_bias=None, low_priority=None, **kwargs)
+def create_document(file=None, url=None, data=None, collection=None, workspace=None, wait=True, identifier=None, file_name=None, expiry_time=None, language=None, reject_duplicates=None, region_bias=None, low_priority=None, **kwargs)
 ```
 
 Upload a document for parsing.
@@ -478,6 +478,7 @@ to check processing status and retrieve results.:code:`<br/>`.
 
 - `file` (`IO`): Default value is None.
 - `url` (`str`): URL to download the document. Default value is None.
+- `data` (`any`): Create resume or job description directly from data. Default value is None.
 - `collection` (`str`): Default value is None.
 - `workspace` (`str`): Default value is None.
 - `wait` (`bool`): Default value is True.
