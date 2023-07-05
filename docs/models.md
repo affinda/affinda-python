@@ -3938,6 +3938,9 @@ Field.
 
 All required parameters must be populated in order to send to Azure.
 
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
 :ivar label: Required.
 :vartype label: str
 :ivar data_point: Required. Data point identifier.
@@ -3961,6 +3964,8 @@ def __init__(**kwargs)
 
 **Arguments**:
 
+- `additional_properties`: Unmatched properties from the message are deserialized to this
+collection.
 - `label`: Required.
 - `data_point`: Required. Data point identifier.
 - `mandatory`: 

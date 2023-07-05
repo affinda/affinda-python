@@ -4934,6 +4934,9 @@ class Field(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
     :ivar label: Required.
     :vartype label: str
     :ivar data_point: Required. Data point identifier.
@@ -4955,6 +4958,7 @@ class Field(msrest.serialization.Model):
     }
 
     _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
         "label": {"key": "label", "type": "str"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "mandatory": {"key": "mandatory", "type": "bool"},
@@ -4965,6 +4969,9 @@ class Field(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
         :keyword label: Required.
         :paramtype label: str
         :keyword data_point: Required. Data point identifier.
@@ -4979,6 +4986,7 @@ class Field(msrest.serialization.Model):
         :paramtype fields: list[~affinda.models.Field]
         """
         super(Field, self).__init__(**kwargs)
+        self.additional_properties = kwargs.get("additional_properties", None)
         self.label = kwargs["label"]
         self.data_point = kwargs["data_point"]
         self.mandatory = kwargs.get("mandatory", None)
