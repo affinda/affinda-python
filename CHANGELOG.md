@@ -6,10 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Changed
-- Make Field.slug nullable and not required
-
-### Deprecated
-- Deprecate Field.slug
+- Set CustomFieldConfig default to 0.5
 
 ## [4.7.1] - 2023-06-28
 ### Added
