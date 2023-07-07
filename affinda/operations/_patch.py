@@ -16,7 +16,7 @@ from .._vendor import _convert_request
 
 if TYPE_CHECKING:
     # pylint: disable=unused-import,ungrouped-imports
-    from typing import Any, Callable, Dict, Optional, TypeVar, Union
+    from typing import Any, Callable, Dict, Optional, TypeVar, Union  # noqa: F401
 
     T = TypeVar("T")
     ClsType = Optional[
@@ -31,7 +31,6 @@ from ._affinda_api_operations import build_get_document_request
 
 # We want to patch the generated AffindaAPIOperationsMixin class, and override its get_document method.
 class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
-
     # Modify this method as the autogenerate one creates duplicate methods, see
     # https://github.com/Azure/autorest.python/issues/1555
     def get_document(
