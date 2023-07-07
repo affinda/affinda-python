@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Set CustomFieldConfig default to 0.5
 
+### Fixed
+- Fixed serialisation of Document to Invoice, Resume etc in get_document()
+
 ## [4.7.1] - 2023-06-28
 ### Added
 - Add xml response to api spec to GET /v3/documenets to match existing functionality
