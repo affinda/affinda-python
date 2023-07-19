@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Set CustomFieldConfig default to 0.5
 
+### Added
+- Support for custom base URL and http scheme in async client
+
 ## [3.3.0] - 2023-06-27
 ### Changed
 - rawText is now not nullable

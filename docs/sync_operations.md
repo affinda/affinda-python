@@ -62,7 +62,18 @@ cls(response)
 #### create\_resume
 
 ```python
-def create_resume(file=None, url=None, data=None, identifier=None, file_name=None, wait=True, reject_duplicates=None, language=None, expiry_time=None, region_bias=None, low_priority=None, **kwargs)
+def create_resume(file=None,
+                  url=None,
+                  data=None,
+                  identifier=None,
+                  file_name=None,
+                  wait=True,
+                  reject_duplicates=None,
+                  language=None,
+                  expiry_time=None,
+                  region_bias=None,
+                  low_priority=None,
+                  **kwargs)
 ```
 
 Upload a resume for parsing.
@@ -213,7 +224,22 @@ result of cls(response)
 #### create\_redacted\_resume
 
 ```python
-def create_redacted_resume(file=None, identifier=None, file_name=None, url=None, language=None, wait=True, redact_headshot="true", redact_personal_details="true", redact_work_details="true", redact_education_details="true", redact_referees="true", redact_locations="true", redact_dates="true", redact_gender="true", expiry_time=None, **kwargs)
+def create_redacted_resume(file=None,
+                           identifier=None,
+                           file_name=None,
+                           url=None,
+                           language=None,
+                           wait=True,
+                           redact_headshot="true",
+                           redact_personal_details="true",
+                           redact_work_details="true",
+                           redact_education_details="true",
+                           redact_referees="true",
+                           redact_locations="true",
+                           redact_dates="true",
+                           redact_gender="true",
+                           expiry_time=None,
+                           **kwargs)
 ```
 
 Upload a resume for redacting.
@@ -335,7 +361,17 @@ cls(response)
 #### create\_invoice
 
 ```python
-def create_invoice(file=None, url=None, identifier=None, file_name=None, wait=True, reject_duplicates=None, language=None, expiry_time=None, region_bias=None, low_priority=None, **kwargs)
+def create_invoice(file=None,
+                   url=None,
+                   identifier=None,
+                   file_name=None,
+                   wait=True,
+                   reject_duplicates=None,
+                   language=None,
+                   expiry_time=None,
+                   region_bias=None,
+                   low_priority=None,
+                   **kwargs)
 ```
 
 Upload an invoice for parsing.
@@ -453,7 +489,18 @@ of cls(response)
 #### create\_job\_description
 
 ```python
-def create_job_description(file=None, url=None, data=None, identifier=None, file_name=None, wait=True, reject_duplicates=None, language=None, expiry_time=None, region_bias=None, low_priority=None, **kwargs)
+def create_job_description(file=None,
+                           url=None,
+                           data=None,
+                           identifier=None,
+                           file_name=None,
+                           wait=True,
+                           reject_duplicates=None,
+                           language=None,
+                           expiry_time=None,
+                           region_bias=None,
+                           low_priority=None,
+                           **kwargs)
 ```
 
 Upload a job description for parsing.
@@ -774,7 +821,20 @@ endpoint.
 #### get\_resume\_search\_match
 
 ```python
-def get_resume_search_match(resume, job_description, index=None, search_expression=None, job_titles_weight=None, years_experience_weight=None, locations_weight=None, languages_weight=None, skills_weight=None, education_weight=None, search_expression_weight=None, soc_codes_weight=None, management_level_weight=None, **kwargs)
+def get_resume_search_match(resume,
+                            job_description,
+                            index=None,
+                            search_expression=None,
+                            job_titles_weight=None,
+                            years_experience_weight=None,
+                            locations_weight=None,
+                            languages_weight=None,
+                            skills_weight=None,
+                            education_weight=None,
+                            search_expression_weight=None,
+                            soc_codes_weight=None,
+                            management_level_weight=None,
+                            **kwargs)
 ```
 
 Match a single resume and job description.
