@@ -444,6 +444,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype organizations: list[~affinda.models.ApiUserWithKeyOrganizationsItem]
 :ivar api_key: Required. Use this key to authenticate with the API.
 :vartype api_key: str
+:ivar api_key_last_chars: The last 4 characters of the API key.
+:vartype api_key_last_chars: str
 
 <a id="models._models.ApiUserWithKey.__init__"></a>
 
@@ -462,6 +464,7 @@ def __init__(**kwargs)
 - `avatar`: Required. URL of the user's avatar.
 - `organizations`: Required.
 - `api_key`: Required. Use this key to authenticate with the API.
+- `api_key_last_chars`: The last 4 characters of the API key.
 
 <a id="models._models.ApiUserWithKeyOrganizationsItem"></a>
 
@@ -517,6 +520,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype avatar: str
 :ivar organizations: Required.
 :vartype organizations: list[~affinda.models.ApiUserWithoutKeyOrganizationsItem]
+:ivar api_key_last_chars: The last 4 characters of the API key.
+:vartype api_key_last_chars: str
 
 <a id="models._models.ApiUserWithoutKey.__init__"></a>
 
@@ -534,6 +539,7 @@ def __init__(**kwargs)
 - `email`: Required.
 - `avatar`: Required. URL of the user's avatar.
 - `organizations`: Required.
+- `api_key_last_chars`: The last 4 characters of the API key.
 
 <a id="models._models.ApiUserWithoutKeyOrganizationsItem"></a>
 
@@ -890,7 +896,8 @@ def __init__(**kwargs)
 ## Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1 Objects
 
 ```python
-class Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1(msrest.serialization.Model)
+class Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1(
+        msrest.serialization.Model)
 ```
 
 Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1.
@@ -918,7 +925,8 @@ def __init__(**kwargs)
 ## Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1 Objects
 
 ```python
-class Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1(msrest.serialization.Model)
+class Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1(
+        msrest.serialization.Model)
 ```
 
 Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1.
@@ -946,7 +954,8 @@ def __init__(**kwargs)
 ## Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1 Objects
 
 ```python
-class Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1(msrest.serialization.Model)
+class Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1(
+        msrest.serialization.Model)
 ```
 
 Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1.
@@ -974,7 +983,8 @@ def __init__(**kwargs)
 ## Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1 Objects
 
 ```python
-class Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1(msrest.serialization.Model)
+class Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1(
+        msrest.serialization.Model)
 ```
 
 Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1.
@@ -1002,7 +1012,8 @@ def __init__(**kwargs)
 ## Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1 Objects
 
 ```python
-class Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1(msrest.serialization.Model)
+class Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1(
+        msrest.serialization.Model)
 ```
 
 Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1.
@@ -1027,7 +1038,8 @@ def __init__(**kwargs)
 ## Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1 Objects
 
 ```python
-class Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1(msrest.serialization.Model)
+class Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1(
+        msrest.serialization.Model)
 ```
 
 Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1.
@@ -1055,7 +1067,8 @@ def __init__(**kwargs)
 ## Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1 Objects
 
 ```python
-class Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1(msrest.serialization.Model)
+class Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1(
+        msrest.serialization.Model)
 ```
 
 Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1.
@@ -1083,7 +1096,8 @@ def __init__(**kwargs)
 ## Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1 Objects
 
 ```python
-class Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1(msrest.serialization.Model)
+class Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1(
+        msrest.serialization.Model)
 ```
 
 Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1.
@@ -1111,7 +1125,8 @@ def __init__(**kwargs)
 ## Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1 Objects
 
 ```python
-class Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1(msrest.serialization.Model)
+class Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1(
+        msrest.serialization.Model)
 ```
 
 Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1.
@@ -1139,7 +1154,8 @@ def __init__(**kwargs)
 ## Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1 Objects
 
 ```python
-class Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1(msrest.serialization.Model)
+class Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1(
+        msrest.serialization.Model)
 ```
 
 Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1.
@@ -1167,7 +1183,8 @@ def __init__(**kwargs)
 ## Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1 Objects
 
 ```python
-class Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1(msrest.serialization.Model)
+class Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1(
+        msrest.serialization.Model)
 ```
 
 Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1.
@@ -1195,7 +1212,8 @@ def __init__(**kwargs)
 ## Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1 Objects
 
 ```python
-class Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1(msrest.serialization.Model)
+class Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1(
+        msrest.serialization.Model)
 ```
 
 Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1.
@@ -1223,7 +1241,8 @@ def __init__(**kwargs)
 ## Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1 Objects
 
 ```python
-class Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1(msrest.serialization.Model)
+class Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1(
+        msrest.serialization.Model)
 ```
 
 Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1.
@@ -1251,7 +1270,8 @@ def __init__(**kwargs)
 ## Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1 Objects
 
 ```python
-class Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1(msrest.serialization.Model)
+class Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1(
+        msrest.serialization.Model)
 ```
 
 Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1.
@@ -1276,7 +1296,8 @@ def __init__(**kwargs)
 ## Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification Objects
 
 ```python
-class Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification(msrest.serialization.Model)
+class Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification(
+        msrest.serialization.Model)
 ```
 
 Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification.
@@ -1313,7 +1334,8 @@ def __init__(**kwargs)
 ## Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1 Objects
 
 ```python
-class Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1(msrest.serialization.Model)
+class Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1(
+        msrest.serialization.Model)
 ```
 
 Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1.
@@ -1341,7 +1363,8 @@ def __init__(**kwargs)
 ## Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1 Objects
 
 ```python
-class Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1(msrest.serialization.Model)
+class Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1(
+        msrest.serialization.Model)
 ```
 
 Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1.
@@ -1369,7 +1392,8 @@ def __init__(**kwargs)
 ## Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1 Objects
 
 ```python
-class Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1(msrest.serialization.Model)
+class Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1(
+        msrest.serialization.Model)
 ```
 
 Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1.
@@ -1397,7 +1421,8 @@ def __init__(**kwargs)
 ## Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1 Objects
 
 ```python
-class Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1(msrest.serialization.Model)
+class Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1(
+        msrest.serialization.Model)
 ```
 
 Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1.
@@ -1425,7 +1450,8 @@ def __init__(**kwargs)
 ## Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1 Objects
 
 ```python
-class Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1(msrest.serialization.Model)
+class Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1(
+        msrest.serialization.Model)
 ```
 
 Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1.
@@ -1453,7 +1479,8 @@ def __init__(**kwargs)
 ## Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1 Objects
 
 ```python
-class Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1(msrest.serialization.Model)
+class Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1(
+        msrest.serialization.Model)
 ```
 
 Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1.
@@ -1481,7 +1508,8 @@ def __init__(**kwargs)
 ## Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1 Objects
 
 ```python
-class Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1(msrest.serialization.Model)
+class Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1(
+        msrest.serialization.Model)
 ```
 
 Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1.
@@ -1509,7 +1537,8 @@ def __init__(**kwargs)
 ## Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1 Objects
 
 ```python
-class Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1(msrest.serialization.Model)
+class Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1(
+        msrest.serialization.Model)
 ```
 
 Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1.
@@ -1537,7 +1566,8 @@ def __init__(**kwargs)
 ## Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1 Objects
 
 ```python
-class Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1(msrest.serialization.Model)
+class Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1(
+        msrest.serialization.Model)
 ```
 
 Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1.
@@ -1565,7 +1595,8 @@ def __init__(**kwargs)
 ## Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1 Objects
 
 ```python
-class Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1(msrest.serialization.Model)
+class Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1(
+        msrest.serialization.Model)
 ```
 
 Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1.
@@ -1593,7 +1624,8 @@ def __init__(**kwargs)
 ## ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1 Objects
 
 ```python
-class ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1(msrest.serialization.Model)
+class ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1(
+        msrest.serialization.Model)
 ```
 
 ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1.
@@ -1621,7 +1653,8 @@ def __init__(**kwargs)
 ## ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1 Objects
 
 ```python
-class ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1(msrest.serialization.Model)
+class ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1(
+        msrest.serialization.Model)
 ```
 
 ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1.
@@ -1649,7 +1682,8 @@ def __init__(**kwargs)
 ## ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1 Objects
 
 ```python
-class ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.serialization.Model)
+class ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1(
+        msrest.serialization.Model)
 ```
 
 ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1.
@@ -1677,7 +1711,8 @@ def __init__(**kwargs)
 ## ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1 Objects
 
 ```python
-class ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1(msrest.serialization.Model)
+class ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1(
+        msrest.serialization.Model)
 ```
 
 ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1.
@@ -1705,7 +1740,8 @@ def __init__(**kwargs)
 ## ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1 Objects
 
 ```python
-class ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1(msrest.serialization.Model)
+class ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1(
+        msrest.serialization.Model)
 ```
 
 ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1.
@@ -1733,7 +1769,8 @@ def __init__(**kwargs)
 ## ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1 Objects
 
 ```python
-class ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1(msrest.serialization.Model)
+class ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1(
+        msrest.serialization.Model)
 ```
 
 ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1.
@@ -1758,7 +1795,8 @@ def __init__(**kwargs)
 ## ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1 Objects
 
 ```python
-class ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1(msrest.serialization.Model)
+class ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1(
+        msrest.serialization.Model)
 ```
 
 ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1.
@@ -1783,7 +1821,8 @@ def __init__(**kwargs)
 ## ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties Objects
 
 ```python
-class ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties(msrest.serialization.Model)
+class ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties(
+        msrest.serialization.Model)
 ```
 
 ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties.
@@ -1816,7 +1855,8 @@ def __init__(**kwargs)
 ## ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1 Objects
 
 ```python
-class ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1(msrest.serialization.Model)
+class ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1(
+        msrest.serialization.Model)
 ```
 
 ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1.
@@ -1841,7 +1881,8 @@ def __init__(**kwargs)
 ## ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1 Objects
 
 ```python
-class ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1(msrest.serialization.Model)
+class ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1(
+        msrest.serialization.Model)
 ```
 
 ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1.
@@ -1869,7 +1910,8 @@ def __init__(**kwargs)
 ## ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1 Objects
 
 ```python
-class ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1(msrest.serialization.Model)
+class ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1(
+        msrest.serialization.Model)
 ```
 
 ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1.
@@ -3938,6 +3980,9 @@ Field.
 
 All required parameters must be populated in order to send to Azure.
 
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
 :ivar label: Required.
 :vartype label: str
 :ivar data_point: Required. Data point identifier.
@@ -3961,6 +4006,8 @@ def __init__(**kwargs)
 
 **Arguments**:
 
+- `additional_properties`: Unmatched properties from the message are deserialized to this
+collection.
 - `label`: Required.
 - `data_point`: Required. Data point identifier.
 - `mandatory`: 
@@ -4738,7 +4785,9 @@ human.
 ## InvoiceDataBankAccountNumber Objects
 
 ```python
-class InvoiceDataBankAccountNumber(TextAnnotation,  Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1)
+class InvoiceDataBankAccountNumber(
+        TextAnnotation,
+        Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1)
 ```
 
 InvoiceDataBankAccountNumber.
@@ -4829,7 +4878,9 @@ human.
 ## InvoiceDataBankBsb Objects
 
 ```python
-class InvoiceDataBankBsb(TextAnnotation,  Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1)
+class InvoiceDataBankBsb(
+        TextAnnotation,
+        Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1)
 ```
 
 InvoiceDataBankBsb.
@@ -4920,7 +4971,9 @@ human.
 ## InvoiceDataBankIban Objects
 
 ```python
-class InvoiceDataBankIban(TextAnnotation,  Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1)
+class InvoiceDataBankIban(
+        TextAnnotation,
+        Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1)
 ```
 
 InvoiceDataBankIban.
@@ -5011,7 +5064,9 @@ human.
 ## InvoiceDataBankSortCode Objects
 
 ```python
-class InvoiceDataBankSortCode(TextAnnotation,  Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1)
+class InvoiceDataBankSortCode(
+        TextAnnotation,
+        Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1)
 ```
 
 InvoiceDataBankSortCode.
@@ -5102,7 +5157,9 @@ human.
 ## InvoiceDataBankSwift Objects
 
 ```python
-class InvoiceDataBankSwift(TextAnnotation,  Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1)
+class InvoiceDataBankSwift(
+        TextAnnotation,
+        Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1)
 ```
 
 InvoiceDataBankSwift.
@@ -5193,7 +5250,9 @@ human.
 ## InvoiceDataBpayBillerCode Objects
 
 ```python
-class InvoiceDataBpayBillerCode(TextAnnotation,  ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1)
+class InvoiceDataBpayBillerCode(
+        TextAnnotation,
+        ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1)
 ```
 
 InvoiceDataBpayBillerCode.
@@ -5284,7 +5343,9 @@ human.
 ## InvoiceDataBpayReference Objects
 
 ```python
-class InvoiceDataBpayReference(TextAnnotation,  ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1)
+class InvoiceDataBpayReference(
+        TextAnnotation,
+        ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1)
 ```
 
 InvoiceDataBpayReference.
@@ -5375,7 +5436,10 @@ human.
 ## InvoiceDataCustomerBusinessNumber Objects
 
 ```python
-class InvoiceDataCustomerBusinessNumber(TextAnnotation,  Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1)
+class InvoiceDataCustomerBusinessNumber(
+        TextAnnotation,
+        Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1
+)
 ```
 
 InvoiceDataCustomerBusinessNumber.
@@ -5466,7 +5530,10 @@ human.
 ## InvoiceDataCustomerCompanyName Objects
 
 ```python
-class InvoiceDataCustomerCompanyName(TextAnnotation,  Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1)
+class InvoiceDataCustomerCompanyName(
+        TextAnnotation,
+        Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1
+)
 ```
 
 InvoiceDataCustomerCompanyName.
@@ -5557,7 +5624,9 @@ human.
 ## InvoiceDataCustomerContactName Objects
 
 ```python
-class InvoiceDataCustomerContactName(TextAnnotation,  ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1)
+class InvoiceDataCustomerContactName(
+        TextAnnotation,
+        ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1)
 ```
 
 InvoiceDataCustomerContactName.
@@ -5648,7 +5717,9 @@ human.
 ## InvoiceDataCustomerEmail Objects
 
 ```python
-class InvoiceDataCustomerEmail(TextAnnotation,  Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1)
+class InvoiceDataCustomerEmail(
+        TextAnnotation,
+        Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1)
 ```
 
 InvoiceDataCustomerEmail.
@@ -5739,7 +5810,9 @@ human.
 ## InvoiceDataCustomerNumber Objects
 
 ```python
-class InvoiceDataCustomerNumber(TextAnnotation,  Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1)
+class InvoiceDataCustomerNumber(
+        TextAnnotation,
+        Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1)
 ```
 
 InvoiceDataCustomerNumber.
@@ -5830,7 +5903,10 @@ human.
 ## InvoiceDataCustomerPhoneNumber Objects
 
 ```python
-class InvoiceDataCustomerPhoneNumber(TextAnnotation,  Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1)
+class InvoiceDataCustomerPhoneNumber(
+        TextAnnotation,
+        Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1
+)
 ```
 
 InvoiceDataCustomerPhoneNumber.
@@ -5921,7 +5997,9 @@ human.
 ## InvoiceDataCustomerVat Objects
 
 ```python
-class InvoiceDataCustomerVat(TextAnnotation,  ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1)
+class InvoiceDataCustomerVat(
+        TextAnnotation,
+        ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1)
 ```
 
 InvoiceDataCustomerVat.
@@ -6012,7 +6090,9 @@ human.
 ## InvoiceDataInvoiceNumber Objects
 
 ```python
-class InvoiceDataInvoiceNumber(TextAnnotation,  Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1)
+class InvoiceDataInvoiceNumber(
+        TextAnnotation,
+        Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1)
 ```
 
 InvoiceDataInvoiceNumber.
@@ -6103,7 +6183,10 @@ human.
 ## InvoiceDataInvoicePurchaseOrderNumber Objects
 
 ```python
-class InvoiceDataInvoicePurchaseOrderNumber(TextAnnotation,  ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1)
+class InvoiceDataInvoicePurchaseOrderNumber(
+        TextAnnotation,
+        ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1
+)
 ```
 
 InvoiceDataInvoicePurchaseOrderNumber.
@@ -6194,7 +6277,9 @@ human.
 ## InvoiceDataPaymentAmountBase Objects
 
 ```python
-class InvoiceDataPaymentAmountBase(TextAnnotation,  Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1)
+class InvoiceDataPaymentAmountBase(
+        TextAnnotation,
+        Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1)
 ```
 
 InvoiceDataPaymentAmountBase.
@@ -6285,7 +6370,9 @@ human.
 ## InvoiceDataPaymentAmountDue Objects
 
 ```python
-class InvoiceDataPaymentAmountDue(TextAnnotation,  ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1)
+class InvoiceDataPaymentAmountDue(
+        TextAnnotation,
+        ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1)
 ```
 
 InvoiceDataPaymentAmountDue.
@@ -6376,7 +6463,9 @@ human.
 ## InvoiceDataPaymentAmountPaid Objects
 
 ```python
-class InvoiceDataPaymentAmountPaid(TextAnnotation,  Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1)
+class InvoiceDataPaymentAmountPaid(
+        TextAnnotation,
+        Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1)
 ```
 
 InvoiceDataPaymentAmountPaid.
@@ -6467,7 +6556,9 @@ human.
 ## InvoiceDataPaymentAmountTax Objects
 
 ```python
-class InvoiceDataPaymentAmountTax(TextAnnotation,  Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1)
+class InvoiceDataPaymentAmountTax(
+        TextAnnotation,
+        Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1)
 ```
 
 InvoiceDataPaymentAmountTax.
@@ -6558,7 +6649,9 @@ human.
 ## InvoiceDataPaymentAmountTotal Objects
 
 ```python
-class InvoiceDataPaymentAmountTotal(TextAnnotation,  Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1)
+class InvoiceDataPaymentAmountTotal(
+        TextAnnotation,
+        Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1)
 ```
 
 InvoiceDataPaymentAmountTotal.
@@ -6649,7 +6742,9 @@ human.
 ## InvoiceDataPaymentReference Objects
 
 ```python
-class InvoiceDataPaymentReference(TextAnnotation,  Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1)
+class InvoiceDataPaymentReference(
+        TextAnnotation,
+        Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1)
 ```
 
 InvoiceDataPaymentReference.
@@ -6740,7 +6835,10 @@ human.
 ## InvoiceDataSupplierBusinessNumber Objects
 
 ```python
-class InvoiceDataSupplierBusinessNumber(TextAnnotation,  Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1)
+class InvoiceDataSupplierBusinessNumber(
+        TextAnnotation,
+        Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1
+)
 ```
 
 InvoiceDataSupplierBusinessNumber.
@@ -6831,7 +6929,10 @@ human.
 ## InvoiceDataSupplierCompanyName Objects
 
 ```python
-class InvoiceDataSupplierCompanyName(TextAnnotation,  Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1)
+class InvoiceDataSupplierCompanyName(
+        TextAnnotation,
+        Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1
+)
 ```
 
 InvoiceDataSupplierCompanyName.
@@ -6922,7 +7023,9 @@ human.
 ## InvoiceDataSupplierEmail Objects
 
 ```python
-class InvoiceDataSupplierEmail(TextAnnotation,  Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1)
+class InvoiceDataSupplierEmail(
+        TextAnnotation,
+        Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1)
 ```
 
 InvoiceDataSupplierEmail.
@@ -7013,7 +7116,9 @@ human.
 ## InvoiceDataSupplierFax Objects
 
 ```python
-class InvoiceDataSupplierFax(TextAnnotation,  Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1)
+class InvoiceDataSupplierFax(
+        TextAnnotation,
+        Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1)
 ```
 
 InvoiceDataSupplierFax.
@@ -7104,7 +7209,10 @@ human.
 ## InvoiceDataSupplierPhoneNumber Objects
 
 ```python
-class InvoiceDataSupplierPhoneNumber(TextAnnotation,  Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1)
+class InvoiceDataSupplierPhoneNumber(
+        TextAnnotation,
+        Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1
+)
 ```
 
 InvoiceDataSupplierPhoneNumber.
@@ -7195,7 +7303,9 @@ human.
 ## InvoiceDataSupplierVat Objects
 
 ```python
-class InvoiceDataSupplierVat(TextAnnotation,  ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1)
+class InvoiceDataSupplierVat(
+        TextAnnotation,
+        ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1)
 ```
 
 InvoiceDataSupplierVat.
@@ -7286,7 +7396,9 @@ human.
 ## InvoiceDataSupplierWebsite Objects
 
 ```python
-class InvoiceDataSupplierWebsite(TextAnnotation,  Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1)
+class InvoiceDataSupplierWebsite(
+        TextAnnotation,
+        Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1)
 ```
 
 InvoiceDataSupplierWebsite.
@@ -8083,7 +8195,10 @@ def __init__(**kwargs)
 ## JobDescriptionSearchDetailLocationValue Objects
 
 ```python
-class JobDescriptionSearchDetailLocationValue(Location,  Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1)
+class JobDescriptionSearchDetailLocationValue(
+        Location,
+        Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1
+)
 ```
 
 JobDescriptionSearchDetailLocationValue.
@@ -8232,7 +8347,8 @@ def __init__(**kwargs)
 ## JobDescriptionSearchDetailOccupationGroupValue Objects
 
 ```python
-class JobDescriptionSearchDetailOccupationGroupValue(OccupationGroupSearchResult)
+class JobDescriptionSearchDetailOccupationGroupValue(
+        OccupationGroupSearchResult)
 ```
 
 JobDescriptionSearchDetailOccupationGroupValue.
@@ -8732,12 +8848,22 @@ Variables are only populated by the server, and will be ignored when sending a r
 :ivar parsed: Matching job title to extracted text.
 :vartype parsed: ~affinda.models.JobTitleParsedParsed
 
+<a id="models._models.JobTitleParsed.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+
+
 <a id="models._models.JobTitleAnnotationUpdate"></a>
 
 ## JobTitleAnnotationUpdate Objects
 
 ```python
-class JobTitleAnnotationUpdate(AnnotationBase,  JobTitleParsed)
+class JobTitleAnnotationUpdate(AnnotationBase, JobTitleParsed)
 ```
 
 JobTitleAnnotationUpdate.
@@ -9915,7 +10041,8 @@ def __init__(**kwargs)
 ## Paths11PzrpaV3ApiUsersGetResponses200ContentApplicationJsonSchemaAllof1 Objects
 
 ```python
-class Paths11PzrpaV3ApiUsersGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
+class Paths11PzrpaV3ApiUsersGetResponses200ContentApplicationJsonSchemaAllof1(
+        msrest.serialization.Model)
 ```
 
 Paths11PzrpaV3ApiUsersGetResponses200ContentApplicationJsonSchemaAllof1.
@@ -9940,7 +10067,8 @@ def __init__(**kwargs)
 ## PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
 
 ```python
-class PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
+class PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1(
+        msrest.serialization.Model)
 ```
 
 PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1.
@@ -9965,7 +10093,10 @@ def __init__(**kwargs)
 ## Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema Objects
 
 ```python
-class Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1)
+class Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema(
+        PaginatedResponse,
+        PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1
+)
 ```
 
 Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema.
@@ -10001,7 +10132,8 @@ def __init__(**kwargs)
 ## Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema Objects
 
 ```python
-class Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema(msrest.serialization.Model)
+class Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema(
+        msrest.serialization.Model)
 ```
 
 Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema.
@@ -10026,7 +10158,8 @@ def __init__(**kwargs)
 ## Paths1Dgz0V9V3AnnotationsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
 
 ```python
-class Paths1Dgz0V9V3AnnotationsGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
+class Paths1Dgz0V9V3AnnotationsGetResponses200ContentApplicationJsonSchemaAllof1(
+        msrest.serialization.Model)
 ```
 
 Paths1Dgz0V9V3AnnotationsGetResponses200ContentApplicationJsonSchemaAllof1.
@@ -10051,7 +10184,10 @@ def __init__(**kwargs)
 ## Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema Objects
 
 ```python
-class Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  Paths1Dgz0V9V3AnnotationsGetResponses200ContentApplicationJsonSchemaAllof1)
+class Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema(
+        PaginatedResponse,
+        Paths1Dgz0V9V3AnnotationsGetResponses200ContentApplicationJsonSchemaAllof1
+)
 ```
 
 Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema.
@@ -10087,7 +10223,8 @@ def __init__(**kwargs)
 ## Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems Objects
 
 ```python
-class Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems(msrest.serialization.Model)
+class Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems(
+        msrest.serialization.Model)
 ```
 
 Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems.
@@ -10112,7 +10249,8 @@ def __init__(**kwargs)
 ## Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
 
 ```python
-class Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
+class Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1(
+        msrest.serialization.Model)
 ```
 
 Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1.
@@ -10137,7 +10275,8 @@ def __init__(**kwargs)
 ## Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema Objects
 
 ```python
-class Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema(msrest.serialization.Model)
+class Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema(
+        msrest.serialization.Model)
 ```
 
 Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema.
@@ -10165,7 +10304,10 @@ def __init__(**kwargs)
 ## Paths26Civ0V3ApiUsersGetResponses200ContentApplicationJsonSchema Objects
 
 ```python
-class Paths26Civ0V3ApiUsersGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  Paths11PzrpaV3ApiUsersGetResponses200ContentApplicationJsonSchemaAllof1)
+class Paths26Civ0V3ApiUsersGetResponses200ContentApplicationJsonSchema(
+        PaginatedResponse,
+        Paths11PzrpaV3ApiUsersGetResponses200ContentApplicationJsonSchemaAllof1
+)
 ```
 
 Paths26Civ0V3ApiUsersGetResponses200ContentApplicationJsonSchema.
@@ -10201,7 +10343,8 @@ def __init__(**kwargs)
 ## Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
 
 ```python
-class Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
+class Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1(
+        msrest.serialization.Model)
 ```
 
 Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.
@@ -10228,7 +10371,8 @@ def __init__(**kwargs)
 ## Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1 Objects
 
 ```python
-class Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
+class Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1(
+        msrest.serialization.Model)
 ```
 
 Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1.
@@ -10253,7 +10397,8 @@ def __init__(**kwargs)
 ## Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
 
 ```python
-class Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
+class Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1(
+        msrest.serialization.Model)
 ```
 
 Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1.
@@ -10278,7 +10423,8 @@ def __init__(**kwargs)
 ## PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema Objects
 
 ```python
-class PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema(msrest.serialization.Model)
+class PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema(
+        msrest.serialization.Model)
 ```
 
 PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema.
@@ -10303,7 +10449,8 @@ def __init__(**kwargs)
 ## PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema Objects
 
 ```python
-class PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model)
+class PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema(
+        msrest.serialization.Model)
 ```
 
 PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema.
@@ -10337,7 +10484,8 @@ def __init__(**kwargs)
 ## PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema Objects
 
 ```python
-class PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema(msrest.serialization.Model)
+class PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema(
+        msrest.serialization.Model)
 ```
 
 PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema.
@@ -10362,7 +10510,8 @@ def __init__(**kwargs)
 ## PathsL3R02CV3DocumentsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
 
 ```python
-class PathsL3R02CV3DocumentsGetResponses200ContentApplicationJsonSchemaAllof1(msrest.serialization.Model)
+class PathsL3R02CV3DocumentsGetResponses200ContentApplicationJsonSchemaAllof1(
+        msrest.serialization.Model)
 ```
 
 PathsL3R02CV3DocumentsGetResponses200ContentApplicationJsonSchemaAllof1.
@@ -10387,7 +10536,8 @@ def __init__(**kwargs)
 ## PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema Objects
 
 ```python
-class PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema(msrest.serialization.Model)
+class PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema(
+        msrest.serialization.Model)
 ```
 
 PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema.
@@ -10412,7 +10562,10 @@ def __init__(**kwargs)
 ## PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema Objects
 
 ```python
-class PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1)
+class PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema(
+        PaginatedResponse,
+        Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1
+)
 ```
 
 PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema.
@@ -10448,7 +10601,8 @@ def __init__(**kwargs)
 ## PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema Objects
 
 ```python
-class PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema(msrest.serialization.Model)
+class PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema(
+        msrest.serialization.Model)
 ```
 
 PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema.
@@ -10483,7 +10637,10 @@ def __init__(**kwargs)
 ## PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema Objects
 
 ```python
-class PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  PathsL3R02CV3DocumentsGetResponses200ContentApplicationJsonSchemaAllof1)
+class PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema(
+        PaginatedResponse,
+        PathsL3R02CV3DocumentsGetResponses200ContentApplicationJsonSchemaAllof1
+)
 ```
 
 PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema.
@@ -10519,7 +10676,10 @@ def __init__(**kwargs)
 ## PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema Objects
 
 ```python
-class PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1)
+class PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema(
+        PaginatedResponse,
+        Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1
+)
 ```
 
 PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema.
@@ -10555,7 +10715,10 @@ def __init__(**kwargs)
 ## PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema Objects
 
 ```python
-class PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1)
+class PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema(
+        PaginatedResponse,
+        Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1
+)
 ```
 
 PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema.
@@ -10591,7 +10754,10 @@ def __init__(**kwargs)
 ## PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema Objects
 
 ```python
-class PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema(PaginatedResponse,  Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1)
+class PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema(
+        PaginatedResponse,
+        Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1
+)
 ```
 
 PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema.
@@ -11718,7 +11884,10 @@ def __init__(**kwargs)
 ## ResumeSearchDetailEducationValueItem Objects
 
 ```python
-class ResumeSearchDetailEducationValueItem(Education,  ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1)
+class ResumeSearchDetailEducationValueItem(
+        Education,
+        ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1
+)
 ```
 
 ResumeSearchDetailEducationValueItem.
@@ -11919,7 +12088,10 @@ def __init__(**kwargs)
 ## ResumeSearchDetailLanguagesValueItem Objects
 
 ```python
-class ResumeSearchDetailLanguagesValueItem(ResumeSkill,  Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1)
+class ResumeSearchDetailLanguagesValueItem(
+        ResumeSkill,
+        Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1
+)
 ```
 
 ResumeSearchDetailLanguagesValueItem.
@@ -11987,7 +12159,10 @@ def __init__(**kwargs)
 ## ResumeSearchDetailLocationValue Objects
 
 ```python
-class ResumeSearchDetailLocationValue(Location,  ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1)
+class ResumeSearchDetailLocationValue(
+        Location,
+        ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1
+)
 ```
 
 ResumeSearchDetailLocationValue.
@@ -12153,7 +12328,10 @@ def __init__(**kwargs)
 ## ResumeSearchDetailSkillsValueItem Objects
 
 ```python
-class ResumeSearchDetailSkillsValueItem(ResumeSkill,  ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1)
+class ResumeSearchDetailSkillsValueItem(
+        ResumeSkill,
+        ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1
+)
 ```
 
 ResumeSearchDetailSkillsValueItem.
@@ -13702,6 +13880,9 @@ All required parameters must be populated in order to send to Azure.
 :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
  ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
 :vartype whitelist_ingest_addresses: list[str]
+:ivar split_documents: If true, attempt to split documents if multiple documents are detected
+ in a single file.
+:vartype split_documents: bool
 
 <a id="models._models.Workspace.__init__"></a>
 
@@ -13734,6 +13915,8 @@ workspace settings.
 will be uploaded to this workspace.
 - `whitelist_ingest_addresses`: If specified, only emails from these addresses will be
 ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
+- `split_documents`: If true, attempt to split documents if multiple documents are
+detected in a single file.
 
 <a id="models._models.WorkspaceCollectionsItem"></a>
 
@@ -13853,6 +14036,9 @@ All required parameters must be populated in order to send to Azure.
 :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
  ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
 :vartype whitelist_ingest_addresses: list[str]
+:ivar split_documents: If true, attempt to split documents if multiple documents are detected
+ in a single file.
+:vartype split_documents: bool
 
 <a id="models._models.WorkspaceCreate.__init__"></a>
 
@@ -13878,6 +14064,8 @@ document normally whether its a duplicate or not. If not provided, will fallback
 workspace settings.
 - `whitelist_ingest_addresses`: If specified, only emails from these addresses will be
 ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
+- `split_documents`: If true, attempt to split documents if multiple documents are
+detected in a single file.
 
 <a id="models._models.WorkspaceMembership"></a>
 
@@ -13965,6 +14153,9 @@ WorkspaceUpdate.
 :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
  ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
 :vartype whitelist_ingest_addresses: list[str]
+:ivar split_documents: If true, attempt to split documents if multiple documents are detected
+ in a single file.
+:vartype split_documents: bool
 
 <a id="models._models.WorkspaceUpdate.__init__"></a>
 
@@ -13989,6 +14180,8 @@ document normally whether its a duplicate or not. If not provided, will fallback
 workspace settings.
 - `whitelist_ingest_addresses`: If specified, only emails from these addresses will be
 ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
+- `split_documents`: If true, attempt to split documents if multiple documents are
+detected in a single file.
 
 <a id="models._models.YearsExperienceAnnotation"></a>
 

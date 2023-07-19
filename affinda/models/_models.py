@@ -608,6 +608,8 @@ class ApiUserWithKey(msrest.serialization.Model):
     :vartype organizations: list[~affinda.models.ApiUserWithKeyOrganizationsItem]
     :ivar api_key: Required. Use this key to authenticate with the API.
     :vartype api_key: str
+    :ivar api_key_last_chars: The last 4 characters of the API key.
+    :vartype api_key_last_chars: str
     """
 
     _validation = {
@@ -628,6 +630,7 @@ class ApiUserWithKey(msrest.serialization.Model):
         "avatar": {"key": "avatar", "type": "str"},
         "organizations": {"key": "organizations", "type": "[ApiUserWithKeyOrganizationsItem]"},
         "api_key": {"key": "apiKey", "type": "str"},
+        "api_key_last_chars": {"key": "apiKeyLastChars", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -646,6 +649,8 @@ class ApiUserWithKey(msrest.serialization.Model):
         :paramtype organizations: list[~affinda.models.ApiUserWithKeyOrganizationsItem]
         :keyword api_key: Required. Use this key to authenticate with the API.
         :paramtype api_key: str
+        :keyword api_key_last_chars: The last 4 characters of the API key.
+        :paramtype api_key_last_chars: str
         """
         super(ApiUserWithKey, self).__init__(**kwargs)
         self.id = kwargs["id"]
@@ -655,6 +660,7 @@ class ApiUserWithKey(msrest.serialization.Model):
         self.avatar = kwargs["avatar"]
         self.organizations = kwargs["organizations"]
         self.api_key = kwargs["api_key"]
+        self.api_key_last_chars = kwargs.get("api_key_last_chars", None)
 
 
 class ApiUserWithKeyOrganizationsItem(msrest.serialization.Model):
@@ -707,6 +713,8 @@ class ApiUserWithoutKey(msrest.serialization.Model):
     :vartype avatar: str
     :ivar organizations: Required.
     :vartype organizations: list[~affinda.models.ApiUserWithoutKeyOrganizationsItem]
+    :ivar api_key_last_chars: The last 4 characters of the API key.
+    :vartype api_key_last_chars: str
     """
 
     _validation = {
@@ -725,6 +733,7 @@ class ApiUserWithoutKey(msrest.serialization.Model):
         "email": {"key": "email", "type": "str"},
         "avatar": {"key": "avatar", "type": "str"},
         "organizations": {"key": "organizations", "type": "[ApiUserWithoutKeyOrganizationsItem]"},
+        "api_key_last_chars": {"key": "apiKeyLastChars", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -741,6 +750,8 @@ class ApiUserWithoutKey(msrest.serialization.Model):
         :paramtype avatar: str
         :keyword organizations: Required.
         :paramtype organizations: list[~affinda.models.ApiUserWithoutKeyOrganizationsItem]
+        :keyword api_key_last_chars: The last 4 characters of the API key.
+        :paramtype api_key_last_chars: str
         """
         super(ApiUserWithoutKey, self).__init__(**kwargs)
         self.id = kwargs["id"]
@@ -749,6 +760,7 @@ class ApiUserWithoutKey(msrest.serialization.Model):
         self.email = kwargs["email"]
         self.avatar = kwargs["avatar"]
         self.organizations = kwargs["organizations"]
+        self.api_key_last_chars = kwargs.get("api_key_last_chars", None)
 
 
 class ApiUserWithoutKeyOrganizationsItem(msrest.serialization.Model):
@@ -4934,6 +4946,9 @@ class Field(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
     :ivar label: Required.
     :vartype label: str
     :ivar data_point: Required. Data point identifier.
@@ -4955,6 +4970,7 @@ class Field(msrest.serialization.Model):
     }
 
     _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
         "label": {"key": "label", "type": "str"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "mandatory": {"key": "mandatory", "type": "bool"},
@@ -4965,6 +4981,9 @@ class Field(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
         :keyword label: Required.
         :paramtype label: str
         :keyword data_point: Required. Data point identifier.
@@ -4979,6 +4998,7 @@ class Field(msrest.serialization.Model):
         :paramtype fields: list[~affinda.models.Field]
         """
         super(Field, self).__init__(**kwargs)
+        self.additional_properties = kwargs.get("additional_properties", None)
         self.label = kwargs["label"]
         self.data_point = kwargs["data_point"]
         self.mandatory = kwargs.get("mandatory", None)
@@ -18597,6 +18617,9 @@ class Workspace(msrest.serialization.Model):
     :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
      ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
     :vartype whitelist_ingest_addresses: list[str]
+    :ivar split_documents: If true, attempt to split documents if multiple documents are detected
+     in a single file.
+    :vartype split_documents: bool
     """
 
     _validation = {
@@ -18616,6 +18639,7 @@ class Workspace(msrest.serialization.Model):
         "confirmed_docs_count": {"key": "confirmedDocsCount", "type": "int"},
         "ingest_email": {"key": "ingestEmail", "type": "str"},
         "whitelist_ingest_addresses": {"key": "whitelistIngestAddresses", "type": "[str]"},
+        "split_documents": {"key": "splitDocuments", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
@@ -18653,6 +18677,9 @@ class Workspace(msrest.serialization.Model):
         :keyword whitelist_ingest_addresses: If specified, only emails from these addresses will be
          ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
         :paramtype whitelist_ingest_addresses: list[str]
+        :keyword split_documents: If true, attempt to split documents if multiple documents are
+         detected in a single file.
+        :paramtype split_documents: bool
         """
         super(Workspace, self).__init__(**kwargs)
         self.identifier = kwargs["identifier"]
@@ -18667,6 +18694,7 @@ class Workspace(msrest.serialization.Model):
         self.confirmed_docs_count = kwargs.get("confirmed_docs_count", None)
         self.ingest_email = kwargs.get("ingest_email", None)
         self.whitelist_ingest_addresses = kwargs.get("whitelist_ingest_addresses", None)
+        self.split_documents = kwargs.get("split_documents", None)
 
 
 class WorkspaceCollectionsItem(msrest.serialization.Model):
@@ -18816,6 +18844,9 @@ class WorkspaceCreate(msrest.serialization.Model):
     :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
      ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
     :vartype whitelist_ingest_addresses: list[str]
+    :ivar split_documents: If true, attempt to split documents if multiple documents are detected
+     in a single file.
+    :vartype split_documents: bool
     """
 
     _validation = {
@@ -18830,6 +18861,7 @@ class WorkspaceCreate(msrest.serialization.Model):
         "reject_invalid_documents": {"key": "rejectInvalidDocuments", "type": "bool"},
         "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
         "whitelist_ingest_addresses": {"key": "whitelistIngestAddresses", "type": "[str]"},
+        "split_documents": {"key": "splitDocuments", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
@@ -18854,6 +18886,9 @@ class WorkspaceCreate(msrest.serialization.Model):
         :keyword whitelist_ingest_addresses: If specified, only emails from these addresses will be
          ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
         :paramtype whitelist_ingest_addresses: list[str]
+        :keyword split_documents: If true, attempt to split documents if multiple documents are
+         detected in a single file.
+        :paramtype split_documents: bool
         """
         super(WorkspaceCreate, self).__init__(**kwargs)
         self.organization = kwargs["organization"]
@@ -18862,6 +18897,7 @@ class WorkspaceCreate(msrest.serialization.Model):
         self.reject_invalid_documents = kwargs.get("reject_invalid_documents", None)
         self.reject_duplicates = kwargs.get("reject_duplicates", None)
         self.whitelist_ingest_addresses = kwargs.get("whitelist_ingest_addresses", None)
+        self.split_documents = kwargs.get("split_documents", None)
 
 
 class WorkspaceMembership(msrest.serialization.Model):
@@ -18942,6 +18978,9 @@ class WorkspaceUpdate(msrest.serialization.Model):
     :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
      ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
     :vartype whitelist_ingest_addresses: list[str]
+    :ivar split_documents: If true, attempt to split documents if multiple documents are detected
+     in a single file.
+    :vartype split_documents: bool
     """
 
     _attribute_map = {
@@ -18950,6 +18989,7 @@ class WorkspaceUpdate(msrest.serialization.Model):
         "reject_invalid_documents": {"key": "rejectInvalidDocuments", "type": "bool"},
         "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
         "whitelist_ingest_addresses": {"key": "whitelistIngestAddresses", "type": "[str]"},
+        "split_documents": {"key": "splitDocuments", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
@@ -18972,6 +19012,9 @@ class WorkspaceUpdate(msrest.serialization.Model):
         :keyword whitelist_ingest_addresses: If specified, only emails from these addresses will be
          ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
         :paramtype whitelist_ingest_addresses: list[str]
+        :keyword split_documents: If true, attempt to split documents if multiple documents are
+         detected in a single file.
+        :paramtype split_documents: bool
         """
         super(WorkspaceUpdate, self).__init__(**kwargs)
         self.name = kwargs.get("name", None)
@@ -18979,6 +19022,7 @@ class WorkspaceUpdate(msrest.serialization.Model):
         self.reject_invalid_documents = kwargs.get("reject_invalid_documents", None)
         self.reject_duplicates = kwargs.get("reject_duplicates", None)
         self.whitelist_ingest_addresses = kwargs.get("whitelist_ingest_addresses", None)
+        self.split_documents = kwargs.get("split_documents", None)
 
 
 class YearsExperienceAnnotation(Annotation):

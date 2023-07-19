@@ -161,7 +161,11 @@ Deletes the specified workspace from the database.
 #### get\_all\_workspace\_memberships
 
 ```python
-def get_all_workspace_memberships(offset=None, limit=300, workspace=None, user=None, **kwargs)
+def get_all_workspace_memberships(offset=None,
+                                  limit=300,
+                                  workspace=None,
+                                  user=None,
+                                  **kwargs)
 ```
 
 Get list of all workspace memberships.
@@ -418,7 +422,23 @@ Create data field for a collection along with a new data point.
 #### get\_all\_documents
 
 ```python
-def get_all_documents(offset=None, limit=300, workspace=None, collection=None, state=None, tags=None, created_dt=None, search=None, ordering=None, include_data=None, exclude=None, in_review=None, failed=None, ready=None, validatable=None, has_challenges=None, **kwargs)
+def get_all_documents(offset=None,
+                      limit=300,
+                      workspace=None,
+                      collection=None,
+                      state=None,
+                      tags=None,
+                      created_dt=None,
+                      search=None,
+                      ordering=None,
+                      include_data=None,
+                      exclude=None,
+                      in_review=None,
+                      failed=None,
+                      ready=None,
+                      validatable=None,
+                      has_challenges=None,
+                      **kwargs)
 ```
 
 Get list of all documents.
@@ -465,7 +485,20 @@ cls(response)
 #### create\_document
 
 ```python
-def create_document(file=None, url=None, data=None, collection=None, workspace=None, wait=True, identifier=None, file_name=None, expiry_time=None, language=None, reject_duplicates=None, region_bias=None, low_priority=None, **kwargs)
+def create_document(file=None,
+                    url=None,
+                    data=None,
+                    collection=None,
+                    workspace=None,
+                    wait=True,
+                    identifier=None,
+                    file_name=None,
+                    expiry_time=None,
+                    language=None,
+                    reject_duplicates=None,
+                    region_bias=None,
+                    low_priority=None,
+                    **kwargs)
 ```
 
 Upload a document for parsing.
@@ -691,7 +724,11 @@ involved.
 #### get\_all\_extractors
 
 ```python
-def get_all_extractors(organization, include_public_extractors=None, name=None, validatable=None, **kwargs)
+def get_all_extractors(organization,
+                       include_public_extractors=None,
+                       name=None,
+                       validatable=None,
+                       **kwargs)
 ```
 
 Get list of all extractors.
@@ -821,7 +858,16 @@ Deletes the specified extractor from the database.
 #### get\_all\_data\_points
 
 ```python
-def get_all_data_points(offset=None, limit=300, organization=None, include_public=None, extractor=None, slug=None, description=None, annotation_content_type=None, identifier=None, **kwargs)
+def get_all_data_points(offset=None,
+                        limit=300,
+                        organization=None,
+                        include_public=None,
+                        extractor=None,
+                        slug=None,
+                        description=None,
+                        annotation_content_type=None,
+                        identifier=None,
+                        **kwargs)
 ```
 
 Get list of all data points.
@@ -958,7 +1004,12 @@ Deletes the specified data point from the database.
 #### get\_data\_point\_choices
 
 ```python
-def get_data_point_choices(data_point, collection, offset=None, limit=300, search=None, **kwargs)
+def get_data_point_choices(data_point,
+                           collection,
+                           offset=None,
+                           limit=300,
+                           search=None,
+                           **kwargs)
 ```
 
 Get list of data point choices.
@@ -1445,7 +1496,10 @@ Returns all the organizations.
 #### create\_organization
 
 ```python
-def create_organization(name, avatar=None, resthook_signature_key=None, **kwargs)
+def create_organization(name,
+                        avatar=None,
+                        resthook_signature_key=None,
+                        **kwargs)
 ```
 
 Create a new organization.
@@ -1497,7 +1551,12 @@ Get detail of an organization.
 #### update\_organization
 
 ```python
-def update_organization(identifier, name=None, avatar=None, resthook_signature_key=None, validation_tool_config=None, **kwargs)
+def update_organization(identifier,
+                        name=None,
+                        avatar=None,
+                        resthook_signature_key=None,
+                        validation_tool_config=None,
+                        **kwargs)
 ```
 
 Update an organization.
@@ -1551,7 +1610,11 @@ Delete the specified organization from the database.
 #### get\_all\_organization\_memberships
 
 ```python
-def get_all_organization_memberships(offset=None, limit=300, organization=None, role=None, **kwargs)
+def get_all_organization_memberships(offset=None,
+                                     limit=300,
+                                     organization=None,
+                                     role=None,
+                                     **kwargs)
 ```
 
 Get list of all organization memberships.
@@ -1659,7 +1722,12 @@ also use this to leave their organization.
 #### get\_all\_invitations
 
 ```python
-def get_all_invitations(offset=None, limit=300, organization=None, status=None, role=None, **kwargs)
+def get_all_invitations(offset=None,
+                        limit=300,
+                        organization=None,
+                        status=None,
+                        role=None,
+                        **kwargs)
 ```
 
 Get list of all invitations.
@@ -2540,7 +2608,20 @@ endpoint.
 #### get\_resume\_search\_match
 
 ```python
-def get_resume_search_match(resume, job_description, index=None, search_expression=None, job_titles_weight=None, years_experience_weight=None, locations_weight=None, languages_weight=None, skills_weight=None, education_weight=None, search_expression_weight=None, soc_codes_weight=None, management_level_weight=None, **kwargs)
+def get_resume_search_match(resume,
+                            job_description,
+                            index=None,
+                            search_expression=None,
+                            job_titles_weight=None,
+                            years_experience_weight=None,
+                            locations_weight=None,
+                            languages_weight=None,
+                            skills_weight=None,
+                            education_weight=None,
+                            search_expression_weight=None,
+                            soc_codes_weight=None,
+                            management_level_weight=None,
+                            **kwargs)
 ```
 
 Match a single resume and job description.
