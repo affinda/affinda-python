@@ -156,6 +156,34 @@ Deletes the specified workspace from the database.
 
 `None`: None, or the result of cls(response)
 
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_usage_by_workspace"></a>
+
+#### get\_usage\_by\_workspace
+
+```python
+def get_usage_by_workspace(identifier, start=None, end=None, **kwargs)
+```
+
+Get specific workspace.
+
+Return monthly credits consumption of a workspace.
+The data is updated daily.
+
+**Arguments**:
+
+- `identifier` (`str`): Workspace's identifier.
+- `start` (`str`): Start date of the period to retrieve. Format: YYYY-MM. Default value is None.
+- `end` (`str`): End date of the period to retrieve. Format: YYYY-MM. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[~affinda.models.UsageByWorkspace]`: list of UsageByWorkspace, or the result of cls(response)
+
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_workspace_memberships"></a>
 
 #### get\_all\_workspace\_memberships
@@ -416,6 +444,34 @@ Create data field for a collection along with a new data point.
 **Returns**:
 
 `~affinda.models.DataField`: DataField, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_usage_by_collection"></a>
+
+#### get\_usage\_by\_collection
+
+```python
+def get_usage_by_collection(identifier, start=None, end=None, **kwargs)
+```
+
+Get specific collection.
+
+Return monthly credits consumption of a collection.
+The data is updated daily.
+
+**Arguments**:
+
+- `identifier` (`str`): Collection's identifier.
+- `start` (`str`): Start date of the period to retrieve. Format: YYYY-MM. Default value is None.
+- `end` (`str`): End date of the period to retrieve. Format: YYYY-MM. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[~affinda.models.UsageByCollection]`: list of UsageByCollection, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_documents"></a>
 

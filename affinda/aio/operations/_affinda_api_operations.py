@@ -101,6 +101,8 @@ from ...operations._affinda_api_operations import (
     build_get_resume_search_suggestion_job_title_request,
     build_get_resume_search_suggestion_skill_request,
     build_get_tag_request,
+    build_get_usage_by_collection_request,
+    build_get_usage_by_workspace_request,
     build_get_workspace_membership_request,
     build_get_workspace_request,
     build_list_occupation_groups_request,
@@ -452,6 +454,79 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             return cls(pipeline_response, None, {})
 
     delete_workspace.metadata = {"url": "/v3/workspaces/{identifier}"}  # type: ignore
+
+    async def get_usage_by_workspace(
+        self,
+        identifier: str,
+        start: Optional[str] = None,
+        end: Optional[str] = None,
+        **kwargs: Any,
+    ) -> List[_models.UsageByWorkspace]:
+        """Get specific workspace.
+
+        Return monthly credits consumption of a workspace.
+        The data is updated daily.
+
+        :param identifier: Workspace's identifier.
+        :type identifier: str
+        :param start: Start date of the period to retrieve. Format: YYYY-MM. Default value is None.
+        :type start: str
+        :param end: End date of the period to retrieve. Format: YYYY-MM. Default value is None.
+        :type end: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: list of UsageByWorkspace, or the result of cls(response)
+        :rtype: list[~affinda.models.UsageByWorkspace]
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[List[_models.UsageByWorkspace]]
+
+        request = build_get_usage_by_workspace_request(
+            identifier=identifier,
+            start=start,
+            end=end,
+            template_url=self.get_usage_by_workspace.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("[UsageByWorkspace]", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_usage_by_workspace.metadata = {"url": "/v3/workspaces/{identifier}/usage"}  # type: ignore
 
     async def get_all_workspace_memberships(
         self,
@@ -1112,6 +1187,79 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         return deserialized
 
     create_data_field_for_collection.metadata = {"url": "/v3/collections/{identifier}/create_data_field"}  # type: ignore
+
+    async def get_usage_by_collection(
+        self,
+        identifier: str,
+        start: Optional[str] = None,
+        end: Optional[str] = None,
+        **kwargs: Any,
+    ) -> List[_models.UsageByCollection]:
+        """Get specific collection.
+
+        Return monthly credits consumption of a collection.
+        The data is updated daily.
+
+        :param identifier: Collection's identifier.
+        :type identifier: str
+        :param start: Start date of the period to retrieve. Format: YYYY-MM. Default value is None.
+        :type start: str
+        :param end: End date of the period to retrieve. Format: YYYY-MM. Default value is None.
+        :type end: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: list of UsageByCollection, or the result of cls(response)
+        :rtype: list[~affinda.models.UsageByCollection]
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[List[_models.UsageByCollection]]
+
+        request = build_get_usage_by_collection_request(
+            identifier=identifier,
+            start=start,
+            end=end,
+            template_url=self.get_usage_by_collection.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("[UsageByCollection]", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_usage_by_collection.metadata = {"url": "/v3/collections/{identifier}/usage"}  # type: ignore
 
     async def get_all_documents(
         self,

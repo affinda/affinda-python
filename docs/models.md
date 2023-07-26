@@ -2160,6 +2160,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype multiple: bool
 :ivar no_rect:
 :vartype no_rect: bool
+:ivar parent: The identifier of the parent data point if applicable.
+:vartype parent: str
 
 <a id="models._models.DataFieldCreateDataPoint.__init__"></a>
 
@@ -2180,6 +2182,7 @@ def __init__(**kwargs)
 "group", "table_deprecated".
 - `multiple`: 
 - `no_rect`: 
+- `parent`: The identifier of the parent data point if applicable.
 
 <a id="models._models.DataFieldCreateField"></a>
 
@@ -2246,6 +2249,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype multiple: bool
 :ivar no_rect: Required.
 :vartype no_rect: bool
+:ivar parent: Required. The identifier of the parent data point if applicable.
+:vartype parent: str
+:ivar children: Required.
+:vartype children: list[~affinda.models.DataPoint]
 
 <a id="models._models.DataFieldDataPoint.__init__"></a>
 
@@ -2267,6 +2274,8 @@ def __init__(**kwargs)
 "group", "table_deprecated".
 - `multiple`: Required.
 - `no_rect`: Required.
+- `parent`: Required. The identifier of the parent data point if applicable.
+- `children`: Required.
 
 <a id="models._models.DataFieldField"></a>
 
@@ -2288,6 +2297,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype show_dropdown: bool
 :ivar auto_validation_threshold: Required.
 :vartype auto_validation_threshold: float
+:ivar enabled_child_fields: Required.
+:vartype enabled_child_fields: list[~affinda.models.Field]
+:ivar disabled_child_fields: Required.
+:vartype disabled_child_fields: list[~affinda.models.Field]
 
 <a id="models._models.DataFieldField.__init__"></a>
 
@@ -2303,6 +2316,8 @@ def __init__(**kwargs)
 - `mandatory`: Required.
 - `show_dropdown`: Required.
 - `auto_validation_threshold`: Required.
+- `enabled_child_fields`: Required.
+- `disabled_child_fields`: Required.
 
 <a id="models._models.DataPoint"></a>
 
@@ -3980,9 +3995,6 @@ Field.
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar additional_properties: Unmatched properties from the message are deserialized to this
- collection.
-:vartype additional_properties: dict[str, any]
 :ivar label: Required.
 :vartype label: str
 :ivar data_point: Required. Data point identifier.
@@ -3993,8 +4005,12 @@ All required parameters must be populated in order to send to Azure.
 :vartype auto_validation_threshold: float
 :ivar show_dropdown:
 :vartype show_dropdown: bool
-:ivar fields:
-:vartype fields: list[~affinda.models.Field]
+:ivar enabled_child_fields:
+:vartype enabled_child_fields: list[~affinda.models.Field]
+:ivar disabled_child_fields:
+:vartype disabled_child_fields: list[~affinda.models.Field]
+:ivar slug:
+:vartype slug: str
 
 <a id="models._models.Field.__init__"></a>
 
@@ -4006,14 +4022,14 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `additional_properties`: Unmatched properties from the message are deserialized to this
-collection.
 - `label`: Required.
 - `data_point`: Required. Data point identifier.
 - `mandatory`: 
 - `auto_validation_threshold`: 
 - `show_dropdown`: 
-- `fields`: 
+- `enabled_child_fields`: 
+- `disabled_child_fields`: 
+- `slug`: 
 
 <a id="models._models.FieldCategory"></a>
 
@@ -9909,6 +9925,16 @@ Configuration of the embeddable validation tool.
 :vartype theme: ~affinda.models.ThemeConfig
 :ivar hide_actions: Hide the confirm document button and other actions.
 :vartype hide_actions: bool
+:ivar hide_collection: Hide the collection selector.
+:vartype hide_collection: bool
+:ivar hide_export: Hide the export menu.
+:vartype hide_export: bool
+:ivar hide_filename: Hide the filename input.
+:vartype hide_filename: bool
+:ivar hide_tags: Hide the tags editor.
+:vartype hide_tags: bool
+:ivar hide_warnings: Hide the warnings panel.
+:vartype hide_warnings: bool
 
 <a id="models._models.OrganizationValidationToolConfig.__init__"></a>
 
@@ -9922,6 +9948,11 @@ def __init__(**kwargs)
 
 - `theme`: 
 - `hide_actions`: Hide the confirm document button and other actions.
+- `hide_collection`: Hide the collection selector.
+- `hide_export`: Hide the export menu.
+- `hide_filename`: Hide the filename input.
+- `hide_tags`: Hide the tags editor.
+- `hide_warnings`: Hide the warnings panel.
 
 <a id="models._models.PageMeta"></a>
 
@@ -13771,6 +13802,66 @@ def __init__(**kwargs)
 - `font_weight_medium`: 
 - `font_weight_bold`: 
 
+<a id="models._models.UsageByCollection"></a>
+
+## UsageByCollection Objects
+
+```python
+class UsageByCollection(msrest.serialization.Model)
+```
+
+Monthly credits consumption.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar month: Required. Month of the usage.
+:vartype month: str
+:ivar count: Required. Usage count.
+:vartype count: int
+
+<a id="models._models.UsageByCollection.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `month`: Required. Month of the usage.
+- `count`: Required. Usage count.
+
+<a id="models._models.UsageByWorkspace"></a>
+
+## UsageByWorkspace Objects
+
+```python
+class UsageByWorkspace(msrest.serialization.Model)
+```
+
+Monthly credits consumption.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar month: Required. Month of the usage.
+:vartype month: str
+:ivar count: Required. Usage count.
+:vartype count: int
+
+<a id="models._models.UsageByWorkspace.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `month`: Required. Month of the usage.
+- `count`: Required. Usage count.
+
 <a id="models._models.UserNullable"></a>
 
 ## UserNullable Objects
@@ -13822,6 +13913,16 @@ Configuration of the embeddable validation tool.
 :vartype theme: ~affinda.models.ThemeConfig
 :ivar hide_actions: Hide the confirm document button and other actions.
 :vartype hide_actions: bool
+:ivar hide_collection: Hide the collection selector.
+:vartype hide_collection: bool
+:ivar hide_export: Hide the export menu.
+:vartype hide_export: bool
+:ivar hide_filename: Hide the filename input.
+:vartype hide_filename: bool
+:ivar hide_tags: Hide the tags editor.
+:vartype hide_tags: bool
+:ivar hide_warnings: Hide the warnings panel.
+:vartype hide_warnings: bool
 
 <a id="models._models.ValidationToolConfig.__init__"></a>
 
@@ -13835,6 +13936,11 @@ def __init__(**kwargs)
 
 - `theme`: 
 - `hide_actions`: Hide the confirm document button and other actions.
+- `hide_collection`: Hide the collection selector.
+- `hide_export`: Hide the export menu.
+- `hide_filename`: Hide the filename input.
+- `hide_tags`: Hide the tags editor.
+- `hide_warnings`: Hide the warnings panel.
 
 <a id="models._models.Workspace"></a>
 

@@ -93,6 +93,22 @@ client = AffindaAPI(credential=credential)
 client.delete_workspace(identifier)
 ```
 
+### getUsageByWorkspace - Get specific workspace
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+workspace_identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+res = client.get_usage_by_workspace(workspace_identifier, start="2023-06", end="2023-07")
+for usage in res:
+    print(usage.as_dict())  # noqa: T201
+```
+
 ### getAllWorkspaceMemberships - Get list of all workspace memberships
 
 ```python
@@ -283,6 +299,22 @@ body = DataFieldCreate(
 response = client.create_data_field_for_collection(collection_identifier, body)
 
 print(response.as_dict())
+```
+
+### getUsageByCollection - Get specific collection
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+collection_identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+res = client.get_usage_by_collection(collection_identifier, start="2023-06", end="2023-07")
+for usage in res:
+    print(usage.as_dict())  # noqa: T201
 ```
 
 Document API - Document

@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Allow create and enable/disable child fields in Collection.fieldsLayout
+
+### Deprecated
+- Deprecate `fields` in favor of `enabledChildFields` and `disabledChildFields` in Collection.fieldsLayout
 
 ## [4.8.1] - 2023-07-19
 ### Fixed

@@ -2552,6 +2552,8 @@ class DataFieldCreateDataPoint(msrest.serialization.Model):
     :vartype multiple: bool
     :ivar no_rect:
     :vartype no_rect: bool
+    :ivar parent: The identifier of the parent data point if applicable.
+    :vartype parent: str
     """
 
     _validation = {
@@ -2567,6 +2569,7 @@ class DataFieldCreateDataPoint(msrest.serialization.Model):
         "type": {"key": "type", "type": "str"},
         "multiple": {"key": "multiple", "type": "bool"},
         "no_rect": {"key": "noRect", "type": "bool"},
+        "parent": {"key": "parent", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -2586,6 +2589,8 @@ class DataFieldCreateDataPoint(msrest.serialization.Model):
         :paramtype multiple: bool
         :keyword no_rect:
         :paramtype no_rect: bool
+        :keyword parent: The identifier of the parent data point if applicable.
+        :paramtype parent: str
         """
         super(DataFieldCreateDataPoint, self).__init__(**kwargs)
         self.name = kwargs["name"]
@@ -2594,6 +2599,7 @@ class DataFieldCreateDataPoint(msrest.serialization.Model):
         self.type = kwargs["type"]
         self.multiple = kwargs.get("multiple", None)
         self.no_rect = kwargs.get("no_rect", None)
+        self.parent = kwargs.get("parent", None)
 
 
 class DataFieldCreateField(msrest.serialization.Model):
@@ -2663,6 +2669,10 @@ class DataFieldDataPoint(msrest.serialization.Model):
     :vartype multiple: bool
     :ivar no_rect: Required.
     :vartype no_rect: bool
+    :ivar parent: Required. The identifier of the parent data point if applicable.
+    :vartype parent: str
+    :ivar children: Required.
+    :vartype children: list[~affinda.models.DataPoint]
     """
 
     _validation = {
@@ -2673,6 +2683,8 @@ class DataFieldDataPoint(msrest.serialization.Model):
         "type": {"required": True},
         "multiple": {"required": True},
         "no_rect": {"required": True},
+        "parent": {"required": True},
+        "children": {"required": True},
     }
 
     _attribute_map = {
@@ -2683,6 +2695,8 @@ class DataFieldDataPoint(msrest.serialization.Model):
         "type": {"key": "type", "type": "str"},
         "multiple": {"key": "multiple", "type": "bool"},
         "no_rect": {"key": "noRect", "type": "bool"},
+        "parent": {"key": "parent", "type": "str"},
+        "children": {"key": "children", "type": "[DataPoint]"},
     }
 
     def __init__(self, **kwargs):
@@ -2704,6 +2718,10 @@ class DataFieldDataPoint(msrest.serialization.Model):
         :paramtype multiple: bool
         :keyword no_rect: Required.
         :paramtype no_rect: bool
+        :keyword parent: Required. The identifier of the parent data point if applicable.
+        :paramtype parent: str
+        :keyword children: Required.
+        :paramtype children: list[~affinda.models.DataPoint]
         """
         super(DataFieldDataPoint, self).__init__(**kwargs)
         self.identifier = kwargs["identifier"]
@@ -2713,6 +2731,8 @@ class DataFieldDataPoint(msrest.serialization.Model):
         self.type = kwargs["type"]
         self.multiple = kwargs["multiple"]
         self.no_rect = kwargs["no_rect"]
+        self.parent = kwargs["parent"]
+        self.children = kwargs["children"]
 
 
 class DataFieldField(msrest.serialization.Model):
@@ -2728,6 +2748,10 @@ class DataFieldField(msrest.serialization.Model):
     :vartype show_dropdown: bool
     :ivar auto_validation_threshold: Required.
     :vartype auto_validation_threshold: float
+    :ivar enabled_child_fields: Required.
+    :vartype enabled_child_fields: list[~affinda.models.Field]
+    :ivar disabled_child_fields: Required.
+    :vartype disabled_child_fields: list[~affinda.models.Field]
     """
 
     _validation = {
@@ -2735,6 +2759,8 @@ class DataFieldField(msrest.serialization.Model):
         "mandatory": {"required": True},
         "show_dropdown": {"required": True},
         "auto_validation_threshold": {"required": True, "maximum": 1, "minimum": 0},
+        "enabled_child_fields": {"required": True},
+        "disabled_child_fields": {"required": True},
     }
 
     _attribute_map = {
@@ -2742,6 +2768,8 @@ class DataFieldField(msrest.serialization.Model):
         "mandatory": {"key": "mandatory", "type": "bool"},
         "show_dropdown": {"key": "showDropdown", "type": "bool"},
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
+        "enabled_child_fields": {"key": "enabledChildFields", "type": "[Field]"},
+        "disabled_child_fields": {"key": "disabledChildFields", "type": "[Field]"},
     }
 
     def __init__(self, **kwargs):
@@ -2754,12 +2782,18 @@ class DataFieldField(msrest.serialization.Model):
         :paramtype show_dropdown: bool
         :keyword auto_validation_threshold: Required.
         :paramtype auto_validation_threshold: float
+        :keyword enabled_child_fields: Required.
+        :paramtype enabled_child_fields: list[~affinda.models.Field]
+        :keyword disabled_child_fields: Required.
+        :paramtype disabled_child_fields: list[~affinda.models.Field]
         """
         super(DataFieldField, self).__init__(**kwargs)
         self.label = kwargs["label"]
         self.mandatory = kwargs["mandatory"]
         self.show_dropdown = kwargs["show_dropdown"]
         self.auto_validation_threshold = kwargs["auto_validation_threshold"]
+        self.enabled_child_fields = kwargs["enabled_child_fields"]
+        self.disabled_child_fields = kwargs["disabled_child_fields"]
 
 
 class DataPoint(msrest.serialization.Model):
@@ -4946,9 +4980,6 @@ class Field(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
-    :ivar additional_properties: Unmatched properties from the message are deserialized to this
-     collection.
-    :vartype additional_properties: dict[str, any]
     :ivar label: Required.
     :vartype label: str
     :ivar data_point: Required. Data point identifier.
@@ -4959,8 +4990,12 @@ class Field(msrest.serialization.Model):
     :vartype auto_validation_threshold: float
     :ivar show_dropdown:
     :vartype show_dropdown: bool
-    :ivar fields:
-    :vartype fields: list[~affinda.models.Field]
+    :ivar enabled_child_fields:
+    :vartype enabled_child_fields: list[~affinda.models.Field]
+    :ivar disabled_child_fields:
+    :vartype disabled_child_fields: list[~affinda.models.Field]
+    :ivar slug:
+    :vartype slug: str
     """
 
     _validation = {
@@ -4970,20 +5005,18 @@ class Field(msrest.serialization.Model):
     }
 
     _attribute_map = {
-        "additional_properties": {"key": "", "type": "{object}"},
         "label": {"key": "label", "type": "str"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "mandatory": {"key": "mandatory", "type": "bool"},
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
         "show_dropdown": {"key": "showDropdown", "type": "bool"},
-        "fields": {"key": "fields", "type": "[Field]"},
+        "enabled_child_fields": {"key": "enabledChildFields", "type": "[Field]"},
+        "disabled_child_fields": {"key": "disabledChildFields", "type": "[Field]"},
+        "slug": {"key": "slug", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         """
-        :keyword additional_properties: Unmatched properties from the message are deserialized to this
-         collection.
-        :paramtype additional_properties: dict[str, any]
         :keyword label: Required.
         :paramtype label: str
         :keyword data_point: Required. Data point identifier.
@@ -4994,17 +5027,22 @@ class Field(msrest.serialization.Model):
         :paramtype auto_validation_threshold: float
         :keyword show_dropdown:
         :paramtype show_dropdown: bool
-        :keyword fields:
-        :paramtype fields: list[~affinda.models.Field]
+        :keyword enabled_child_fields:
+        :paramtype enabled_child_fields: list[~affinda.models.Field]
+        :keyword disabled_child_fields:
+        :paramtype disabled_child_fields: list[~affinda.models.Field]
+        :keyword slug:
+        :paramtype slug: str
         """
         super(Field, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
         self.label = kwargs["label"]
         self.data_point = kwargs["data_point"]
         self.mandatory = kwargs.get("mandatory", None)
         self.auto_validation_threshold = kwargs.get("auto_validation_threshold", None)
         self.show_dropdown = kwargs.get("show_dropdown", None)
-        self.fields = kwargs.get("fields", None)
+        self.enabled_child_fields = kwargs.get("enabled_child_fields", None)
+        self.disabled_child_fields = kwargs.get("disabled_child_fields", None)
+        self.slug = kwargs.get("slug", None)
 
 
 class FieldCategory(msrest.serialization.Model):
@@ -13606,11 +13644,26 @@ class OrganizationValidationToolConfig(msrest.serialization.Model):
     :vartype theme: ~affinda.models.ThemeConfig
     :ivar hide_actions: Hide the confirm document button and other actions.
     :vartype hide_actions: bool
+    :ivar hide_collection: Hide the collection selector.
+    :vartype hide_collection: bool
+    :ivar hide_export: Hide the export menu.
+    :vartype hide_export: bool
+    :ivar hide_filename: Hide the filename input.
+    :vartype hide_filename: bool
+    :ivar hide_tags: Hide the tags editor.
+    :vartype hide_tags: bool
+    :ivar hide_warnings: Hide the warnings panel.
+    :vartype hide_warnings: bool
     """
 
     _attribute_map = {
         "theme": {"key": "theme", "type": "ThemeConfig"},
         "hide_actions": {"key": "hideActions", "type": "bool"},
+        "hide_collection": {"key": "hideCollection", "type": "bool"},
+        "hide_export": {"key": "hideExport", "type": "bool"},
+        "hide_filename": {"key": "hideFilename", "type": "bool"},
+        "hide_tags": {"key": "hideTags", "type": "bool"},
+        "hide_warnings": {"key": "hideWarnings", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
@@ -13619,10 +13672,25 @@ class OrganizationValidationToolConfig(msrest.serialization.Model):
         :paramtype theme: ~affinda.models.ThemeConfig
         :keyword hide_actions: Hide the confirm document button and other actions.
         :paramtype hide_actions: bool
+        :keyword hide_collection: Hide the collection selector.
+        :paramtype hide_collection: bool
+        :keyword hide_export: Hide the export menu.
+        :paramtype hide_export: bool
+        :keyword hide_filename: Hide the filename input.
+        :paramtype hide_filename: bool
+        :keyword hide_tags: Hide the tags editor.
+        :paramtype hide_tags: bool
+        :keyword hide_warnings: Hide the warnings panel.
+        :paramtype hide_warnings: bool
         """
         super(OrganizationValidationToolConfig, self).__init__(**kwargs)
         self.theme = kwargs.get("theme", None)
         self.hide_actions = kwargs.get("hide_actions", None)
+        self.hide_collection = kwargs.get("hide_collection", None)
+        self.hide_export = kwargs.get("hide_export", None)
+        self.hide_filename = kwargs.get("hide_filename", None)
+        self.hide_tags = kwargs.get("hide_tags", None)
+        self.hide_warnings = kwargs.get("hide_warnings", None)
 
 
 class PageMeta(msrest.serialization.Model):
@@ -18510,6 +18578,72 @@ class ThemeConfigTypography(msrest.serialization.Model):
         self.font_weight_bold = kwargs.get("font_weight_bold", None)
 
 
+class UsageByCollection(msrest.serialization.Model):
+    """Monthly credits consumption.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar month: Required. Month of the usage.
+    :vartype month: str
+    :ivar count: Required. Usage count.
+    :vartype count: int
+    """
+
+    _validation = {
+        "month": {"required": True},
+        "count": {"required": True},
+    }
+
+    _attribute_map = {
+        "month": {"key": "month", "type": "str"},
+        "count": {"key": "count", "type": "int"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword month: Required. Month of the usage.
+        :paramtype month: str
+        :keyword count: Required. Usage count.
+        :paramtype count: int
+        """
+        super(UsageByCollection, self).__init__(**kwargs)
+        self.month = kwargs["month"]
+        self.count = kwargs["count"]
+
+
+class UsageByWorkspace(msrest.serialization.Model):
+    """Monthly credits consumption.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar month: Required. Month of the usage.
+    :vartype month: str
+    :ivar count: Required. Usage count.
+    :vartype count: int
+    """
+
+    _validation = {
+        "month": {"required": True},
+        "count": {"required": True},
+    }
+
+    _attribute_map = {
+        "month": {"key": "month", "type": "str"},
+        "count": {"key": "count", "type": "int"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword month: Required. Month of the usage.
+        :paramtype month: str
+        :keyword count: Required. Usage count.
+        :paramtype count: int
+        """
+        super(UsageByWorkspace, self).__init__(**kwargs)
+        self.month = kwargs["month"]
+        self.count = kwargs["count"]
+
+
 class UserNullable(msrest.serialization.Model):
     """UserNullable.
 
@@ -18561,11 +18695,26 @@ class ValidationToolConfig(msrest.serialization.Model):
     :vartype theme: ~affinda.models.ThemeConfig
     :ivar hide_actions: Hide the confirm document button and other actions.
     :vartype hide_actions: bool
+    :ivar hide_collection: Hide the collection selector.
+    :vartype hide_collection: bool
+    :ivar hide_export: Hide the export menu.
+    :vartype hide_export: bool
+    :ivar hide_filename: Hide the filename input.
+    :vartype hide_filename: bool
+    :ivar hide_tags: Hide the tags editor.
+    :vartype hide_tags: bool
+    :ivar hide_warnings: Hide the warnings panel.
+    :vartype hide_warnings: bool
     """
 
     _attribute_map = {
         "theme": {"key": "theme", "type": "ThemeConfig"},
         "hide_actions": {"key": "hideActions", "type": "bool"},
+        "hide_collection": {"key": "hideCollection", "type": "bool"},
+        "hide_export": {"key": "hideExport", "type": "bool"},
+        "hide_filename": {"key": "hideFilename", "type": "bool"},
+        "hide_tags": {"key": "hideTags", "type": "bool"},
+        "hide_warnings": {"key": "hideWarnings", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
@@ -18574,10 +18723,25 @@ class ValidationToolConfig(msrest.serialization.Model):
         :paramtype theme: ~affinda.models.ThemeConfig
         :keyword hide_actions: Hide the confirm document button and other actions.
         :paramtype hide_actions: bool
+        :keyword hide_collection: Hide the collection selector.
+        :paramtype hide_collection: bool
+        :keyword hide_export: Hide the export menu.
+        :paramtype hide_export: bool
+        :keyword hide_filename: Hide the filename input.
+        :paramtype hide_filename: bool
+        :keyword hide_tags: Hide the tags editor.
+        :paramtype hide_tags: bool
+        :keyword hide_warnings: Hide the warnings panel.
+        :paramtype hide_warnings: bool
         """
         super(ValidationToolConfig, self).__init__(**kwargs)
         self.theme = kwargs.get("theme", None)
         self.hide_actions = kwargs.get("hide_actions", None)
+        self.hide_collection = kwargs.get("hide_collection", None)
+        self.hide_export = kwargs.get("hide_export", None)
+        self.hide_filename = kwargs.get("hide_filename", None)
+        self.hide_tags = kwargs.get("hide_tags", None)
+        self.hide_warnings = kwargs.get("hide_warnings", None)
 
 
 class Workspace(msrest.serialization.Model):

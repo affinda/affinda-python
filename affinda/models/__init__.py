@@ -353,6 +353,8 @@ try:
     from ._models_py3 import ThemeConfigPaletteBackground
     from ._models_py3 import ThemeConfigPaletteText
     from ._models_py3 import ThemeConfigTypography
+    from ._models_py3 import UsageByCollection
+    from ._models_py3 import UsageByWorkspace
     from ._models_py3 import User
     from ._models_py3 import UserNullable
     from ._models_py3 import ValidationToolConfig
@@ -660,6 +662,8 @@ except (SyntaxError, ImportError):
     from ._models import ThemeConfigPaletteBackground  # type: ignore
     from ._models import ThemeConfigPaletteText  # type: ignore
     from ._models import ThemeConfigTypography  # type: ignore
+    from ._models import UsageByCollection  # type: ignore
+    from ._models import UsageByWorkspace  # type: ignore
     from ._models import User  # type: ignore
     from ._models import UserNullable  # type: ignore
     from ._models import ValidationToolConfig  # type: ignore
@@ -1001,6 +1005,8 @@ __all__ = [
     "ThemeConfigPaletteBackground",
     "ThemeConfigPaletteText",
     "ThemeConfigTypography",
+    "UsageByCollection",
+    "UsageByWorkspace",
     "User",
     "UserNullable",
     "ValidationToolConfig",
