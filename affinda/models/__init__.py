@@ -293,6 +293,7 @@ try:
     from ._models_py3 import ResthookSubscription
     from ._models_py3 import ResthookSubscriptionCreate
     from ._models_py3 import ResthookSubscriptionUpdate
+    from ._models_py3 import ResthookSubscriptionWorkspace
     from ._models_py3 import Resume
     from ._models_py3 import ResumeData
     from ._models_py3 import ResumeDataName
@@ -602,6 +603,7 @@ except (SyntaxError, ImportError):
     from ._models import ResthookSubscription  # type: ignore
     from ._models import ResthookSubscriptionCreate  # type: ignore
     from ._models import ResthookSubscriptionUpdate  # type: ignore
+    from ._models import ResthookSubscriptionWorkspace  # type: ignore
     from ._models import Resume  # type: ignore
     from ._models import ResumeData  # type: ignore
     from ._models import ResumeDataName  # type: ignore
@@ -687,8 +689,8 @@ from ._affinda_api_enums import (
     DocumentFormat,
     DocumentState,
     EducationLevel,
-    Enum19,
-    Enum22,
+    Enum20,
+    Enum23,
     Get8ItemsItem,
     GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType,
     InvitationResponseStatus,
@@ -706,6 +708,7 @@ from ._affinda_api_enums import (
     SearchParametersCustomDataFilterType,
     ThemeConfigPaletteMode,
     Version,
+    WorkspaceSplitDocumentsOptions,
     WorkspaceVisibility,
 )
 from ._patch import __all__ as _patch_all
@@ -945,6 +948,7 @@ __all__ = [
     "ResthookSubscription",
     "ResthookSubscriptionCreate",
     "ResthookSubscriptionUpdate",
+    "ResthookSubscriptionWorkspace",
     "Resume",
     "ResumeData",
     "ResumeDataName",
@@ -1028,8 +1032,8 @@ __all__ = [
     "DocumentFormat",
     "DocumentState",
     "EducationLevel",
-    "Enum19",
-    "Enum22",
+    "Enum20",
+    "Enum23",
     "Get8ItemsItem",
     "GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType",
     "InvitationResponseStatus",
@@ -1047,6 +1051,7 @@ __all__ = [
     "SearchParametersCustomDataFilterType",
     "ThemeConfigPaletteMode",
     "Version",
+    "WorkspaceSplitDocumentsOptions",
     "WorkspaceVisibility",
 ]
 __all__.extend([p for p in _patch_all if p not in __all__])

@@ -1092,6 +1092,9 @@ class Collection(msrest.serialization.Model):
     :ivar allow_openai: Whether to allow OpenAI API to be used to assist in creating a model for
      this collection.
     :vartype allow_openai: bool
+    :ivar trains_extractor: Whether this collection feeds documents into the extractor's training
+     queue. This setting can only be toggled for custom extractors.
+    :vartype trains_extractor: bool
     """
 
     _validation = {
@@ -1115,6 +1118,7 @@ class Collection(msrest.serialization.Model):
         "ingest_email": {"key": "ingestEmail", "type": "str"},
         "tailored_extractor_requested": {"key": "tailoredExtractorRequested", "type": "bool"},
         "allow_openai": {"key": "allowOpenai", "type": "bool"},
+        "trains_extractor": {"key": "trainsExtractor", "type": "bool"},
     }
 
     def __init__(
@@ -1138,6 +1142,7 @@ class Collection(msrest.serialization.Model):
         ingest_email: Optional[str] = None,
         tailored_extractor_requested: Optional[bool] = None,
         allow_openai: Optional[bool] = False,
+        trains_extractor: Optional[bool] = None,
         **kwargs,
     ):
         """
@@ -1177,6 +1182,9 @@ class Collection(msrest.serialization.Model):
         :keyword allow_openai: Whether to allow OpenAI API to be used to assist in creating a model for
          this collection.
         :paramtype allow_openai: bool
+        :keyword trains_extractor: Whether this collection feeds documents into the extractor's
+         training queue. This setting can only be toggled for custom extractors.
+        :paramtype trains_extractor: bool
         """
         super(Collection, self).__init__(**kwargs)
         self.identifier = identifier
@@ -1195,6 +1203,7 @@ class Collection(msrest.serialization.Model):
         self.ingest_email = ingest_email
         self.tailored_extractor_requested = tailored_extractor_requested
         self.allow_openai = allow_openai
+        self.trains_extractor = trains_extractor
 
 
 class CollectionCreate(msrest.serialization.Model):
@@ -1226,6 +1235,9 @@ class CollectionCreate(msrest.serialization.Model):
     :ivar allow_openai: Whether to allow OpenAI API to be used to assist in creating a model for
      this collection.
     :vartype allow_openai: bool
+    :ivar trains_extractor: Whether this collection feeds documents into the extractor's training
+     queue. This setting can only be toggled for custom extractors.
+    :vartype trains_extractor: bool
     """
 
     _validation = {
@@ -1245,6 +1257,7 @@ class CollectionCreate(msrest.serialization.Model):
         "date_format_from_document": {"key": "dateFormatFromDocument", "type": "bool"},
         "extractor_config": {"key": "extractorConfig", "type": "ExtractorConfig"},
         "allow_openai": {"key": "allowOpenai", "type": "bool"},
+        "trains_extractor": {"key": "trainsExtractor", "type": "bool"},
     }
 
     def __init__(
@@ -1261,6 +1274,7 @@ class CollectionCreate(msrest.serialization.Model):
         date_format_from_document: Optional[bool] = None,
         extractor_config: Optional["_models.ExtractorConfig"] = None,
         allow_openai: Optional[bool] = False,
+        trains_extractor: Optional[bool] = None,
         **kwargs,
     ):
         """
@@ -1288,6 +1302,9 @@ class CollectionCreate(msrest.serialization.Model):
         :keyword allow_openai: Whether to allow OpenAI API to be used to assist in creating a model for
          this collection.
         :paramtype allow_openai: bool
+        :keyword trains_extractor: Whether this collection feeds documents into the extractor's
+         training queue. This setting can only be toggled for custom extractors.
+        :paramtype trains_extractor: bool
         """
         super(CollectionCreate, self).__init__(**kwargs)
         self.name = name
@@ -1301,6 +1318,7 @@ class CollectionCreate(msrest.serialization.Model):
         self.date_format_from_document = date_format_from_document
         self.extractor_config = extractor_config
         self.allow_openai = allow_openai
+        self.trains_extractor = trains_extractor
 
 
 class CollectionUpdate(msrest.serialization.Model):
@@ -1324,6 +1342,9 @@ class CollectionUpdate(msrest.serialization.Model):
     :ivar allow_openai: Whether to allow OpenAI API to be used to assist in creating a model for
      this collection.
     :vartype allow_openai: bool
+    :ivar trains_extractor: Whether this collection feeds documents into the extractor's training
+     queue. This setting can only be toggled for custom extractors.
+    :vartype trains_extractor: bool
     """
 
     _attribute_map = {
@@ -1335,6 +1356,7 @@ class CollectionUpdate(msrest.serialization.Model):
         "date_format_from_document": {"key": "dateFormatFromDocument", "type": "bool"},
         "extractor_config": {"key": "extractorConfig", "type": "ExtractorConfig"},
         "allow_openai": {"key": "allowOpenai", "type": "bool"},
+        "trains_extractor": {"key": "trainsExtractor", "type": "bool"},
     }
 
     def __init__(
@@ -1348,6 +1370,7 @@ class CollectionUpdate(msrest.serialization.Model):
         date_format_from_document: Optional[bool] = None,
         extractor_config: Optional["_models.ExtractorConfig"] = None,
         allow_openai: Optional[bool] = False,
+        trains_extractor: Optional[bool] = None,
         **kwargs,
     ):
         """
@@ -1369,6 +1392,9 @@ class CollectionUpdate(msrest.serialization.Model):
         :keyword allow_openai: Whether to allow OpenAI API to be used to assist in creating a model for
          this collection.
         :paramtype allow_openai: bool
+        :keyword trains_extractor: Whether this collection feeds documents into the extractor's
+         training queue. This setting can only be toggled for custom extractors.
+        :paramtype trains_extractor: bool
         """
         super(CollectionUpdate, self).__init__(**kwargs)
         self.name = name
@@ -1379,6 +1405,7 @@ class CollectionUpdate(msrest.serialization.Model):
         self.date_format_from_document = date_format_from_document
         self.extractor_config = extractor_config
         self.allow_openai = allow_openai
+        self.trains_extractor = trains_extractor
 
 
 class CollectionWorkspace(msrest.serialization.Model):
@@ -2816,6 +2843,9 @@ class DataFieldCreateDataPoint(msrest.serialization.Model):
     :vartype no_rect: bool
     :ivar parent: The identifier of the parent data point if applicable.
     :vartype parent: str
+    :ivar manual_entry: If true, the model will not be used to predict this data point. Instead,
+     the user will be able to manually enter the value in the validation tool.
+    :vartype manual_entry: bool
     """
 
     _validation = {
@@ -2832,6 +2862,7 @@ class DataFieldCreateDataPoint(msrest.serialization.Model):
         "multiple": {"key": "multiple", "type": "bool"},
         "no_rect": {"key": "noRect", "type": "bool"},
         "parent": {"key": "parent", "type": "str"},
+        "manual_entry": {"key": "manualEntry", "type": "bool"},
     }
 
     def __init__(
@@ -2844,6 +2875,7 @@ class DataFieldCreateDataPoint(msrest.serialization.Model):
         multiple: Optional[bool] = None,
         no_rect: Optional[bool] = None,
         parent: Optional[str] = None,
+        manual_entry: Optional[bool] = None,
         **kwargs,
     ):
         """
@@ -2864,6 +2896,9 @@ class DataFieldCreateDataPoint(msrest.serialization.Model):
         :paramtype no_rect: bool
         :keyword parent: The identifier of the parent data point if applicable.
         :paramtype parent: str
+        :keyword manual_entry: If true, the model will not be used to predict this data point. Instead,
+         the user will be able to manually enter the value in the validation tool.
+        :paramtype manual_entry: bool
         """
         super(DataFieldCreateDataPoint, self).__init__(**kwargs)
         self.name = name
@@ -2873,6 +2908,7 @@ class DataFieldCreateDataPoint(msrest.serialization.Model):
         self.multiple = multiple
         self.no_rect = no_rect
         self.parent = parent
+        self.manual_entry = manual_entry
 
 
 class DataFieldCreateField(msrest.serialization.Model):
@@ -2954,6 +2990,9 @@ class DataFieldDataPoint(msrest.serialization.Model):
     :vartype parent: str
     :ivar children: Required.
     :vartype children: list[~affinda.models.DataPoint]
+    :ivar manual_entry: If true, the model will not be used to predict this data point. Instead,
+     the user will be able to manually enter the value in the validation tool.
+    :vartype manual_entry: bool
     """
 
     _validation = {
@@ -2978,6 +3017,7 @@ class DataFieldDataPoint(msrest.serialization.Model):
         "no_rect": {"key": "noRect", "type": "bool"},
         "parent": {"key": "parent", "type": "str"},
         "children": {"key": "children", "type": "[DataPoint]"},
+        "manual_entry": {"key": "manualEntry", "type": "bool"},
     }
 
     def __init__(
@@ -2992,6 +3032,7 @@ class DataFieldDataPoint(msrest.serialization.Model):
         no_rect: bool,
         parent: str,
         children: List["_models.DataPoint"],
+        manual_entry: Optional[bool] = None,
         **kwargs,
     ):
         """
@@ -3016,6 +3057,9 @@ class DataFieldDataPoint(msrest.serialization.Model):
         :paramtype parent: str
         :keyword children: Required.
         :paramtype children: list[~affinda.models.DataPoint]
+        :keyword manual_entry: If true, the model will not be used to predict this data point. Instead,
+         the user will be able to manually enter the value in the validation tool.
+        :paramtype manual_entry: bool
         """
         super(DataFieldDataPoint, self).__init__(**kwargs)
         self.identifier = identifier
@@ -3027,6 +3071,7 @@ class DataFieldDataPoint(msrest.serialization.Model):
         self.no_rect = no_rect
         self.parent = parent
         self.children = children
+        self.manual_entry = manual_entry
 
 
 class DataFieldField(msrest.serialization.Model):
@@ -3133,6 +3178,9 @@ class DataPoint(msrest.serialization.Model):
     :vartype parent: str
     :ivar children:
     :vartype children: list[~affinda.models.DataPoint]
+    :ivar manual_entry: If true, the model will not be used to predict this data point. Instead,
+     the user will be able to manually enter the value in the validation tool.
+    :vartype manual_entry: bool
     """
 
     _validation = {
@@ -3157,6 +3205,7 @@ class DataPoint(msrest.serialization.Model):
         "display_enum_value": {"key": "displayEnumValue", "type": "bool"},
         "parent": {"key": "parent", "type": "str"},
         "children": {"key": "children", "type": "[DataPoint]"},
+        "manual_entry": {"key": "manualEntry", "type": "bool"},
     }
 
     def __init__(
@@ -3174,6 +3223,7 @@ class DataPoint(msrest.serialization.Model):
         display_enum_value: Optional[bool] = None,
         parent: Optional[str] = None,
         children: Optional[List["_models.DataPoint"]] = None,
+        manual_entry: Optional[bool] = None,
         **kwargs,
     ):
         """
@@ -3205,6 +3255,9 @@ class DataPoint(msrest.serialization.Model):
         :paramtype parent: str
         :keyword children:
         :paramtype children: list[~affinda.models.DataPoint]
+        :keyword manual_entry: If true, the model will not be used to predict this data point. Instead,
+         the user will be able to manually enter the value in the validation tool.
+        :paramtype manual_entry: bool
         """
         super(DataPoint, self).__init__(**kwargs)
         self.identifier = identifier
@@ -3219,6 +3272,7 @@ class DataPoint(msrest.serialization.Model):
         self.display_enum_value = display_enum_value
         self.parent = parent
         self.children = children
+        self.manual_entry = manual_entry
 
 
 class DataPointChoice(msrest.serialization.Model):
@@ -3453,6 +3507,9 @@ class DataPointCreate(msrest.serialization.Model):
     :vartype display_enum_value: bool
     :ivar parent: The identifier of the parent data point if applicable.
     :vartype parent: str
+    :ivar manual_entry: If true, the model will not be used to predict this data point. Instead,
+     the user will be able to manually enter the value in the validation tool.
+    :vartype manual_entry: bool
     """
 
     _validation = {
@@ -3474,6 +3531,7 @@ class DataPointCreate(msrest.serialization.Model):
         "no_rect": {"key": "noRect", "type": "bool"},
         "display_enum_value": {"key": "displayEnumValue", "type": "bool"},
         "parent": {"key": "parent", "type": "str"},
+        "manual_entry": {"key": "manualEntry", "type": "bool"},
     }
 
     def __init__(
@@ -3489,6 +3547,7 @@ class DataPointCreate(msrest.serialization.Model):
         no_rect: Optional[bool] = None,
         display_enum_value: Optional[bool] = None,
         parent: Optional[str] = None,
+        manual_entry: Optional[bool] = None,
         **kwargs,
     ):
         """
@@ -3516,6 +3575,9 @@ class DataPointCreate(msrest.serialization.Model):
         :paramtype display_enum_value: bool
         :keyword parent: The identifier of the parent data point if applicable.
         :paramtype parent: str
+        :keyword manual_entry: If true, the model will not be used to predict this data point. Instead,
+         the user will be able to manually enter the value in the validation tool.
+        :paramtype manual_entry: bool
         """
         super(DataPointCreate, self).__init__(**kwargs)
         self.name = name
@@ -3528,6 +3590,7 @@ class DataPointCreate(msrest.serialization.Model):
         self.no_rect = no_rect
         self.display_enum_value = display_enum_value
         self.parent = parent
+        self.manual_entry = manual_entry
 
 
 class DataPointUpdate(msrest.serialization.Model):
@@ -5382,6 +5445,8 @@ class Extractor(msrest.serialization.Model):
     :vartype field_groups: list[~affinda.models.FieldGroup]
     :ivar created_dt:
     :vartype created_dt: ~datetime.datetime
+    :ivar last_trained_dt:
+    :vartype last_trained_dt: ~datetime.datetime
     """
 
     _validation = {
@@ -5402,6 +5467,7 @@ class Extractor(msrest.serialization.Model):
         "is_custom": {"key": "isCustom", "type": "bool"},
         "field_groups": {"key": "fieldGroups", "type": "[FieldGroup]"},
         "created_dt": {"key": "createdDt", "type": "iso-8601"},
+        "last_trained_dt": {"key": "lastTrainedDt", "type": "iso-8601"},
     }
 
     def __init__(
@@ -5417,6 +5483,7 @@ class Extractor(msrest.serialization.Model):
         is_custom: Optional[bool] = None,
         field_groups: Optional[List["_models.FieldGroup"]] = None,
         created_dt: Optional[datetime.datetime] = None,
+        last_trained_dt: Optional[datetime.datetime] = None,
         **kwargs,
     ):
         """
@@ -5440,6 +5507,8 @@ class Extractor(msrest.serialization.Model):
         :paramtype field_groups: list[~affinda.models.FieldGroup]
         :keyword created_dt:
         :paramtype created_dt: ~datetime.datetime
+        :keyword last_trained_dt:
+        :paramtype last_trained_dt: ~datetime.datetime
         """
         super(Extractor, self).__init__(**kwargs)
         self.identifier = identifier
@@ -5452,6 +5521,7 @@ class Extractor(msrest.serialization.Model):
         self.is_custom = is_custom
         self.field_groups = field_groups
         self.created_dt = created_dt
+        self.last_trained_dt = last_trained_dt
 
 
 class ExtractorBaseExtractor(msrest.serialization.Model):
@@ -5698,6 +5768,8 @@ class Field(msrest.serialization.Model):
     :vartype disabled_child_fields: list[~affinda.models.Field]
     :ivar slug:
     :vartype slug: str
+    :ivar fields:
+    :vartype fields: list[any]
     """
 
     _validation = {
@@ -5715,6 +5787,7 @@ class Field(msrest.serialization.Model):
         "enabled_child_fields": {"key": "enabledChildFields", "type": "[Field]"},
         "disabled_child_fields": {"key": "disabledChildFields", "type": "[Field]"},
         "slug": {"key": "slug", "type": "str"},
+        "fields": {"key": "fields", "type": "[object]"},
     }
 
     def __init__(
@@ -5728,6 +5801,7 @@ class Field(msrest.serialization.Model):
         enabled_child_fields: Optional[List["_models.Field"]] = None,
         disabled_child_fields: Optional[List["_models.Field"]] = None,
         slug: Optional[str] = None,
+        fields: Optional[List[Any]] = None,
         **kwargs,
     ):
         """
@@ -5747,6 +5821,8 @@ class Field(msrest.serialization.Model):
         :paramtype disabled_child_fields: list[~affinda.models.Field]
         :keyword slug:
         :paramtype slug: str
+        :keyword fields:
+        :paramtype fields: list[any]
         """
         super(Field, self).__init__(**kwargs)
         self.label = label
@@ -5757,6 +5833,7 @@ class Field(msrest.serialization.Model):
         self.enabled_child_fields = enabled_child_fields
         self.disabled_child_fields = disabled_child_fields
         self.slug = slug
+        self.fields = fields
 
 
 class FieldCategory(msrest.serialization.Model):
@@ -16238,6 +16315,11 @@ class OrganizationValidationToolConfig(msrest.serialization.Model):
     :vartype hide_tags: bool
     :ivar hide_warnings: Hide the warnings panel.
     :vartype hide_warnings: bool
+    :ivar restrict_document_splitting: Disables the page editor after a document has been split
+     once.
+    :vartype restrict_document_splitting: bool
+    :ivar disable_currency_formatting: Disables currency formatting of decimals values.
+    :vartype disable_currency_formatting: bool
     """
 
     _attribute_map = {
@@ -16248,6 +16330,8 @@ class OrganizationValidationToolConfig(msrest.serialization.Model):
         "hide_filename": {"key": "hideFilename", "type": "bool"},
         "hide_tags": {"key": "hideTags", "type": "bool"},
         "hide_warnings": {"key": "hideWarnings", "type": "bool"},
+        "restrict_document_splitting": {"key": "restrictDocumentSplitting", "type": "bool"},
+        "disable_currency_formatting": {"key": "disableCurrencyFormatting", "type": "bool"},
     }
 
     def __init__(
@@ -16260,6 +16344,8 @@ class OrganizationValidationToolConfig(msrest.serialization.Model):
         hide_filename: Optional[bool] = None,
         hide_tags: Optional[bool] = None,
         hide_warnings: Optional[bool] = None,
+        restrict_document_splitting: Optional[bool] = None,
+        disable_currency_formatting: Optional[bool] = None,
         **kwargs,
     ):
         """
@@ -16277,6 +16363,11 @@ class OrganizationValidationToolConfig(msrest.serialization.Model):
         :paramtype hide_tags: bool
         :keyword hide_warnings: Hide the warnings panel.
         :paramtype hide_warnings: bool
+        :keyword restrict_document_splitting: Disables the page editor after a document has been split
+         once.
+        :paramtype restrict_document_splitting: bool
+        :keyword disable_currency_formatting: Disables currency formatting of decimals values.
+        :paramtype disable_currency_formatting: bool
         """
         super(OrganizationValidationToolConfig, self).__init__(**kwargs)
         self.theme = theme
@@ -16286,6 +16377,8 @@ class OrganizationValidationToolConfig(msrest.serialization.Model):
         self.hide_filename = hide_filename
         self.hide_tags = hide_tags
         self.hide_warnings = hide_warnings
+        self.restrict_document_splitting = restrict_document_splitting
+        self.disable_currency_formatting = disable_currency_formatting
 
 
 class PageMeta(msrest.serialization.Model):
@@ -16721,7 +16814,7 @@ class Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema(msrest.ser
     :ivar name:
     :vartype name: str
     :ivar document_type: Known values are: "resumes", "job_descriptions".
-    :vartype document_type: str or ~affinda.models.Enum22
+    :vartype document_type: str or ~affinda.models.Enum23
     """
 
     _attribute_map = {
@@ -16733,14 +16826,14 @@ class Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema(msrest.ser
         self,
         *,
         name: Optional[str] = None,
-        document_type: Optional[Union[str, "_models.Enum22"]] = None,
+        document_type: Optional[Union[str, "_models.Enum23"]] = None,
         **kwargs,
     ):
         """
         :keyword name:
         :paramtype name: str
         :keyword document_type: Known values are: "resumes", "job_descriptions".
-        :paramtype document_type: str or ~affinda.models.Enum22
+        :paramtype document_type: str or ~affinda.models.Enum23
         """
         super(Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema, self).__init__(
             **kwargs
@@ -17628,6 +17721,8 @@ class ResthookSubscription(msrest.serialization.Model):
     :vartype event: str or ~affinda.models.ResthookEvent
     :ivar organization: Required.
     :vartype organization: ~affinda.models.Organization
+    :ivar workspace: Required.
+    :vartype workspace: ~affinda.models.ResthookSubscriptionWorkspace
     :ivar target_url: Required. URL of the resthook's receiver.
     :vartype target_url: str
     :ivar active: Required. Resthooks only fire for active subscriptions.
@@ -17647,6 +17742,7 @@ class ResthookSubscription(msrest.serialization.Model):
         "id": {"required": True},
         "event": {"required": True},
         "organization": {"required": True},
+        "workspace": {"required": True},
         "target_url": {"required": True},
         "active": {"required": True},
         "auto_deactivated": {"required": True},
@@ -17658,6 +17754,7 @@ class ResthookSubscription(msrest.serialization.Model):
         "id": {"key": "id", "type": "int"},
         "event": {"key": "event", "type": "str"},
         "organization": {"key": "organization", "type": "Organization"},
+        "workspace": {"key": "workspace", "type": "ResthookSubscriptionWorkspace"},
         "target_url": {"key": "targetUrl", "type": "str"},
         "active": {"key": "active", "type": "bool"},
         "auto_deactivated": {"key": "autoDeactivated", "type": "bool"},
@@ -17671,6 +17768,7 @@ class ResthookSubscription(msrest.serialization.Model):
         id: int,
         event: Union[str, "_models.ResthookEvent"],
         organization: "_models.Organization",
+        workspace: "_models.ResthookSubscriptionWorkspace",
         target_url: str,
         active: bool,
         auto_deactivated: bool,
@@ -17690,6 +17788,8 @@ class ResthookSubscription(msrest.serialization.Model):
         :paramtype event: str or ~affinda.models.ResthookEvent
         :keyword organization: Required.
         :paramtype organization: ~affinda.models.Organization
+        :keyword workspace: Required.
+        :paramtype workspace: ~affinda.models.ResthookSubscriptionWorkspace
         :keyword target_url: Required. URL of the resthook's receiver.
         :paramtype target_url: str
         :keyword active: Required. Resthooks only fire for active subscriptions.
@@ -17708,6 +17808,7 @@ class ResthookSubscription(msrest.serialization.Model):
         self.id = id
         self.event = event
         self.organization = organization
+        self.workspace = workspace
         self.target_url = target_url
         self.active = active
         self.auto_deactivated = auto_deactivated
@@ -17731,6 +17832,8 @@ class ResthookSubscriptionCreate(msrest.serialization.Model):
     :vartype event: str or ~affinda.models.ResthookEvent
     :ivar organization:
     :vartype organization: str
+    :ivar workspace:
+    :vartype workspace: str
     :ivar version: Version of the resthook subscription. Determines the resthook body being fired.
      Known values are: "v1", "v2", "v3".
     :vartype version: str or ~affinda.models.Version
@@ -17745,6 +17848,7 @@ class ResthookSubscriptionCreate(msrest.serialization.Model):
         "target_url": {"key": "targetUrl", "type": "str"},
         "event": {"key": "event", "type": "str"},
         "organization": {"key": "organization", "type": "str"},
+        "workspace": {"key": "workspace", "type": "str"},
         "version": {"key": "version", "type": "str"},
     }
 
@@ -17754,6 +17858,7 @@ class ResthookSubscriptionCreate(msrest.serialization.Model):
         target_url: str,
         event: Union[str, "_models.ResthookEvent"],
         organization: Optional[str] = None,
+        workspace: Optional[str] = None,
         version: Optional[Union[str, "_models.Version"]] = None,
         **kwargs,
     ):
@@ -17769,6 +17874,8 @@ class ResthookSubscriptionCreate(msrest.serialization.Model):
         :paramtype event: str or ~affinda.models.ResthookEvent
         :keyword organization:
         :paramtype organization: str
+        :keyword workspace:
+        :paramtype workspace: str
         :keyword version: Version of the resthook subscription. Determines the resthook body being
          fired. Known values are: "v1", "v2", "v3".
         :paramtype version: str or ~affinda.models.Version
@@ -17777,6 +17884,7 @@ class ResthookSubscriptionCreate(msrest.serialization.Model):
         self.target_url = target_url
         self.event = event
         self.organization = organization
+        self.workspace = workspace
         self.version = version
 
 
@@ -17792,6 +17900,8 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
     :vartype event: str or ~affinda.models.ResthookEvent
     :ivar organization: Uniquely identify an organization.
     :vartype organization: str
+    :ivar workspace: Uniquely identify a workspace.
+    :vartype workspace: str
     :ivar version: Version of the resthook subscription. Determines the resthook body being fired.
      Known values are: "v1", "v2", "v3".
     :vartype version: str or ~affinda.models.Version
@@ -17800,6 +17910,7 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
     _attribute_map = {
         "event": {"key": "event", "type": "str"},
         "organization": {"key": "organization", "type": "str"},
+        "workspace": {"key": "workspace", "type": "str"},
         "version": {"key": "version", "type": "str"},
     }
 
@@ -17808,6 +17919,7 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
         *,
         event: Optional[Union[str, "_models.ResthookEvent"]] = None,
         organization: Optional[str] = None,
+        workspace: Optional[str] = None,
         version: Optional[Union[str, "_models.Version"]] = None,
         **kwargs,
     ):
@@ -17821,6 +17933,8 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
         :paramtype event: str or ~affinda.models.ResthookEvent
         :keyword organization: Uniquely identify an organization.
         :paramtype organization: str
+        :keyword workspace: Uniquely identify a workspace.
+        :paramtype workspace: str
         :keyword version: Version of the resthook subscription. Determines the resthook body being
          fired. Known values are: "v1", "v2", "v3".
         :paramtype version: str or ~affinda.models.Version
@@ -17828,7 +17942,50 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
         super(ResthookSubscriptionUpdate, self).__init__(**kwargs)
         self.event = event
         self.organization = organization
+        self.workspace = workspace
         self.version = version
+
+
+class ResthookSubscriptionWorkspace(msrest.serialization.Model):
+    """ResthookSubscriptionWorkspace.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar identifier: Required. Uniquely identify a workspace.
+    :vartype identifier: str
+    :ivar name: Required.
+    :vartype name: str
+    :ivar organization: Required.
+    :vartype organization: ~affinda.models.Organization
+    """
+
+    _validation = {
+        "identifier": {"required": True},
+        "name": {"required": True},
+        "organization": {"required": True},
+    }
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "organization": {"key": "organization", "type": "Organization"},
+    }
+
+    def __init__(
+        self, *, identifier: str, name: str, organization: "_models.Organization", **kwargs
+    ):
+        """
+        :keyword identifier: Required. Uniquely identify a workspace.
+        :paramtype identifier: str
+        :keyword name: Required.
+        :paramtype name: str
+        :keyword organization: Required.
+        :paramtype organization: ~affinda.models.Organization
+        """
+        super(ResthookSubscriptionWorkspace, self).__init__(**kwargs)
+        self.identifier = identifier
+        self.name = name
+        self.organization = organization
 
 
 class Resume(Document):
@@ -22125,6 +22282,11 @@ class ValidationToolConfig(msrest.serialization.Model):
     :vartype hide_tags: bool
     :ivar hide_warnings: Hide the warnings panel.
     :vartype hide_warnings: bool
+    :ivar restrict_document_splitting: Disables the page editor after a document has been split
+     once.
+    :vartype restrict_document_splitting: bool
+    :ivar disable_currency_formatting: Disables currency formatting of decimals values.
+    :vartype disable_currency_formatting: bool
     """
 
     _attribute_map = {
@@ -22135,6 +22297,8 @@ class ValidationToolConfig(msrest.serialization.Model):
         "hide_filename": {"key": "hideFilename", "type": "bool"},
         "hide_tags": {"key": "hideTags", "type": "bool"},
         "hide_warnings": {"key": "hideWarnings", "type": "bool"},
+        "restrict_document_splitting": {"key": "restrictDocumentSplitting", "type": "bool"},
+        "disable_currency_formatting": {"key": "disableCurrencyFormatting", "type": "bool"},
     }
 
     def __init__(
@@ -22147,6 +22311,8 @@ class ValidationToolConfig(msrest.serialization.Model):
         hide_filename: Optional[bool] = None,
         hide_tags: Optional[bool] = None,
         hide_warnings: Optional[bool] = None,
+        restrict_document_splitting: Optional[bool] = None,
+        disable_currency_formatting: Optional[bool] = None,
         **kwargs,
     ):
         """
@@ -22164,6 +22330,11 @@ class ValidationToolConfig(msrest.serialization.Model):
         :paramtype hide_tags: bool
         :keyword hide_warnings: Hide the warnings panel.
         :paramtype hide_warnings: bool
+        :keyword restrict_document_splitting: Disables the page editor after a document has been split
+         once.
+        :paramtype restrict_document_splitting: bool
+        :keyword disable_currency_formatting: Disables currency formatting of decimals values.
+        :paramtype disable_currency_formatting: bool
         """
         super(ValidationToolConfig, self).__init__(**kwargs)
         self.theme = theme
@@ -22173,6 +22344,8 @@ class ValidationToolConfig(msrest.serialization.Model):
         self.hide_filename = hide_filename
         self.hide_tags = hide_tags
         self.hide_warnings = hide_warnings
+        self.restrict_document_splitting = restrict_document_splitting
+        self.disable_currency_formatting = disable_currency_formatting
 
 
 class Workspace(msrest.serialization.Model):
@@ -22212,9 +22385,13 @@ class Workspace(msrest.serialization.Model):
     :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
      ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
     :vartype whitelist_ingest_addresses: list[str]
-    :ivar split_documents: If true, attempt to split documents if multiple documents are detected
-     in a single file.
-    :vartype split_documents: bool
+    :ivar document_splitter: Option "leave" means no document splitting at all. Option
+     "conservative" means we don't actually split documents the documents, but will add a warning to
+     documents that may require a split. Option "recommended" means we split documents that are
+     highly likely to require a split, and add warnings to documents that might require one. Option
+     "aggressive" means we split all documents that are likely to require a split. Known values are:
+     "leave", "conservative", "recommended", "aggressive".
+    :vartype document_splitter: str or ~affinda.models.WorkspaceSplitDocumentsOptions
     """
 
     _validation = {
@@ -22234,7 +22411,7 @@ class Workspace(msrest.serialization.Model):
         "confirmed_docs_count": {"key": "confirmedDocsCount", "type": "int"},
         "ingest_email": {"key": "ingestEmail", "type": "str"},
         "whitelist_ingest_addresses": {"key": "whitelistIngestAddresses", "type": "[str]"},
-        "split_documents": {"key": "splitDocuments", "type": "bool"},
+        "document_splitter": {"key": "documentSplitter", "type": "str"},
     }
 
     def __init__(
@@ -22252,7 +22429,7 @@ class Workspace(msrest.serialization.Model):
         confirmed_docs_count: Optional[int] = None,
         ingest_email: Optional[str] = None,
         whitelist_ingest_addresses: Optional[List[str]] = None,
-        split_documents: Optional[bool] = None,
+        document_splitter: Optional[Union[str, "_models.WorkspaceSplitDocumentsOptions"]] = None,
         **kwargs,
     ):
         """
@@ -22289,9 +22466,13 @@ class Workspace(msrest.serialization.Model):
         :keyword whitelist_ingest_addresses: If specified, only emails from these addresses will be
          ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
         :paramtype whitelist_ingest_addresses: list[str]
-        :keyword split_documents: If true, attempt to split documents if multiple documents are
-         detected in a single file.
-        :paramtype split_documents: bool
+        :keyword document_splitter: Option "leave" means no document splitting at all. Option
+         "conservative" means we don't actually split documents the documents, but will add a warning to
+         documents that may require a split. Option "recommended" means we split documents that are
+         highly likely to require a split, and add warnings to documents that might require one. Option
+         "aggressive" means we split all documents that are likely to require a split. Known values are:
+         "leave", "conservative", "recommended", "aggressive".
+        :paramtype document_splitter: str or ~affinda.models.WorkspaceSplitDocumentsOptions
         """
         super(Workspace, self).__init__(**kwargs)
         self.identifier = identifier
@@ -22306,7 +22487,7 @@ class Workspace(msrest.serialization.Model):
         self.confirmed_docs_count = confirmed_docs_count
         self.ingest_email = ingest_email
         self.whitelist_ingest_addresses = whitelist_ingest_addresses
-        self.split_documents = split_documents
+        self.document_splitter = document_splitter
 
 
 class WorkspaceCollectionsItem(msrest.serialization.Model):
@@ -22477,9 +22658,13 @@ class WorkspaceCreate(msrest.serialization.Model):
     :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
      ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
     :vartype whitelist_ingest_addresses: list[str]
-    :ivar split_documents: If true, attempt to split documents if multiple documents are detected
-     in a single file.
-    :vartype split_documents: bool
+    :ivar document_splitter: Option "leave" means no document splitting at all. Option
+     "conservative" means we don't actually split documents the documents, but will add a warning to
+     documents that may require a split. Option "recommended" means we split documents that are
+     highly likely to require a split, and add warnings to documents that might require one. Option
+     "aggressive" means we split all documents that are likely to require a split. Known values are:
+     "leave", "conservative", "recommended", "aggressive".
+    :vartype document_splitter: str or ~affinda.models.WorkspaceSplitDocumentsOptions
     """
 
     _validation = {
@@ -22494,7 +22679,7 @@ class WorkspaceCreate(msrest.serialization.Model):
         "reject_invalid_documents": {"key": "rejectInvalidDocuments", "type": "bool"},
         "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
         "whitelist_ingest_addresses": {"key": "whitelistIngestAddresses", "type": "[str]"},
-        "split_documents": {"key": "splitDocuments", "type": "bool"},
+        "document_splitter": {"key": "documentSplitter", "type": "str"},
     }
 
     def __init__(
@@ -22506,7 +22691,7 @@ class WorkspaceCreate(msrest.serialization.Model):
         reject_invalid_documents: Optional[bool] = None,
         reject_duplicates: Optional[bool] = None,
         whitelist_ingest_addresses: Optional[List[str]] = None,
-        split_documents: Optional[bool] = None,
+        document_splitter: Optional[Union[str, "_models.WorkspaceSplitDocumentsOptions"]] = None,
         **kwargs,
     ):
         """
@@ -22530,9 +22715,13 @@ class WorkspaceCreate(msrest.serialization.Model):
         :keyword whitelist_ingest_addresses: If specified, only emails from these addresses will be
          ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
         :paramtype whitelist_ingest_addresses: list[str]
-        :keyword split_documents: If true, attempt to split documents if multiple documents are
-         detected in a single file.
-        :paramtype split_documents: bool
+        :keyword document_splitter: Option "leave" means no document splitting at all. Option
+         "conservative" means we don't actually split documents the documents, but will add a warning to
+         documents that may require a split. Option "recommended" means we split documents that are
+         highly likely to require a split, and add warnings to documents that might require one. Option
+         "aggressive" means we split all documents that are likely to require a split. Known values are:
+         "leave", "conservative", "recommended", "aggressive".
+        :paramtype document_splitter: str or ~affinda.models.WorkspaceSplitDocumentsOptions
         """
         super(WorkspaceCreate, self).__init__(**kwargs)
         self.organization = organization
@@ -22541,7 +22730,7 @@ class WorkspaceCreate(msrest.serialization.Model):
         self.reject_invalid_documents = reject_invalid_documents
         self.reject_duplicates = reject_duplicates
         self.whitelist_ingest_addresses = whitelist_ingest_addresses
-        self.split_documents = split_documents
+        self.document_splitter = document_splitter
 
 
 class WorkspaceMembership(msrest.serialization.Model):
@@ -22629,9 +22818,13 @@ class WorkspaceUpdate(msrest.serialization.Model):
     :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
      ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
     :vartype whitelist_ingest_addresses: list[str]
-    :ivar split_documents: If true, attempt to split documents if multiple documents are detected
-     in a single file.
-    :vartype split_documents: bool
+    :ivar document_splitter: Option "leave" means no document splitting at all. Option
+     "conservative" means we don't actually split documents the documents, but will add a warning to
+     documents that may require a split. Option "recommended" means we split documents that are
+     highly likely to require a split, and add warnings to documents that might require one. Option
+     "aggressive" means we split all documents that are likely to require a split. Known values are:
+     "leave", "conservative", "recommended", "aggressive".
+    :vartype document_splitter: str or ~affinda.models.WorkspaceSplitDocumentsOptions
     """
 
     _attribute_map = {
@@ -22640,7 +22833,7 @@ class WorkspaceUpdate(msrest.serialization.Model):
         "reject_invalid_documents": {"key": "rejectInvalidDocuments", "type": "bool"},
         "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
         "whitelist_ingest_addresses": {"key": "whitelistIngestAddresses", "type": "[str]"},
-        "split_documents": {"key": "splitDocuments", "type": "bool"},
+        "document_splitter": {"key": "documentSplitter", "type": "str"},
     }
 
     def __init__(
@@ -22651,7 +22844,7 @@ class WorkspaceUpdate(msrest.serialization.Model):
         reject_invalid_documents: Optional[bool] = None,
         reject_duplicates: Optional[bool] = None,
         whitelist_ingest_addresses: Optional[List[str]] = None,
-        split_documents: Optional[bool] = None,
+        document_splitter: Optional[Union[str, "_models.WorkspaceSplitDocumentsOptions"]] = None,
         **kwargs,
     ):
         """
@@ -22673,9 +22866,13 @@ class WorkspaceUpdate(msrest.serialization.Model):
         :keyword whitelist_ingest_addresses: If specified, only emails from these addresses will be
          ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
         :paramtype whitelist_ingest_addresses: list[str]
-        :keyword split_documents: If true, attempt to split documents if multiple documents are
-         detected in a single file.
-        :paramtype split_documents: bool
+        :keyword document_splitter: Option "leave" means no document splitting at all. Option
+         "conservative" means we don't actually split documents the documents, but will add a warning to
+         documents that may require a split. Option "recommended" means we split documents that are
+         highly likely to require a split, and add warnings to documents that might require one. Option
+         "aggressive" means we split all documents that are likely to require a split. Known values are:
+         "leave", "conservative", "recommended", "aggressive".
+        :paramtype document_splitter: str or ~affinda.models.WorkspaceSplitDocumentsOptions
         """
         super(WorkspaceUpdate, self).__init__(**kwargs)
         self.name = name
@@ -22683,7 +22880,7 @@ class WorkspaceUpdate(msrest.serialization.Model):
         self.reject_invalid_documents = reject_invalid_documents
         self.reject_duplicates = reject_duplicates
         self.whitelist_ingest_addresses = whitelist_ingest_addresses
-        self.split_documents = split_documents
+        self.document_splitter = document_splitter
 
 
 class YearsExperienceAnnotation(Annotation):

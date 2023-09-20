@@ -80,13 +80,13 @@ class EducationLevel(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     DOCTORAL = "doctoral"
 
 
-class Enum19(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class Enum20(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     RESUMES = "resumes"
     JOB_DESCRIPTIONS = "job_descriptions"
 
 
-class Enum22(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class Enum23(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     RESUMES = "resumes"
     JOB_DESCRIPTIONS = "job_descriptions"
@@ -439,6 +439,20 @@ class Version(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     V1 = "v1"
     V2 = "v2"
     V3 = "v3"
+
+
+class WorkspaceSplitDocumentsOptions(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+    """Option "leave" means no document splitting at all. Option "conservative" means we don't
+    actually split documents the documents, but will add a warning to documents that may require a
+    split. Option "recommended" means we split documents that are highly likely to require a split,
+    and add warnings to documents that might require one. Option "aggressive" means we split all
+    documents that are likely to require a split.
+    """
+
+    LEAVE = "leave"
+    CONSERVATIVE = "conservative"
+    RECOMMENDED = "recommended"
+    AGGRESSIVE = "aggressive"
 
 
 class WorkspaceVisibility(str, Enum, metaclass=CaseInsensitiveEnumMeta):

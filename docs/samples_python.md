@@ -93,7 +93,7 @@ client = AffindaAPI(credential=credential)
 client.delete_workspace(identifier)
 ```
 
-### getUsageByWorkspace - Get specific workspace
+### getUsageByWorkspace - Get usage by workspace
 
 ```python
 from affinda import AffindaAPI, TokenCredential
@@ -301,7 +301,7 @@ response = client.create_data_field_for_collection(collection_identifier, body)
 print(response.as_dict())
 ```
 
-### getUsageByCollection - Get specific collection
+### getUsageByCollection - Get usage by collection
 
 ```python
 from affinda import AffindaAPI, TokenCredential

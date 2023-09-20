@@ -717,6 +717,9 @@ All required parameters must be populated in order to send to Azure.
 :ivar allow_openai: Whether to allow OpenAI API to be used to assist in creating a model for
  this collection.
 :vartype allow_openai: bool
+:ivar trains_extractor: Whether this collection feeds documents into the extractor's training
+ queue. This setting can only be toggled for custom extractors.
+:vartype trains_extractor: bool
 
 <a id="models._models.Collection.__init__"></a>
 
@@ -748,6 +751,8 @@ will be uploaded to this collection.
 collection.
 - `allow_openai`: Whether to allow OpenAI API to be used to assist in creating a model for
 this collection.
+- `trains_extractor`: Whether this collection feeds documents into the extractor's
+training queue. This setting can only be toggled for custom extractors.
 
 <a id="models._models.CollectionCreate"></a>
 
@@ -785,6 +790,9 @@ All required parameters must be populated in order to send to Azure.
 :ivar allow_openai: Whether to allow OpenAI API to be used to assist in creating a model for
  this collection.
 :vartype allow_openai: bool
+:ivar trains_extractor: Whether this collection feeds documents into the extractor's training
+ queue. This setting can only be toggled for custom extractors.
+:vartype trains_extractor: bool
 
 <a id="models._models.CollectionCreate.__init__"></a>
 
@@ -809,6 +817,8 @@ is not ambiguous.
 - `extractor_config`: Extra configurations specific to an extractor.
 - `allow_openai`: Whether to allow OpenAI API to be used to assist in creating a model for
 this collection.
+- `trains_extractor`: Whether this collection feeds documents into the extractor's
+training queue. This setting can only be toggled for custom extractors.
 
 <a id="models._models.CollectionUpdate"></a>
 
@@ -838,6 +848,9 @@ CollectionUpdate.
 :ivar allow_openai: Whether to allow OpenAI API to be used to assist in creating a model for
  this collection.
 :vartype allow_openai: bool
+:ivar trains_extractor: Whether this collection feeds documents into the extractor's training
+ queue. This setting can only be toggled for custom extractors.
+:vartype trains_extractor: bool
 
 <a id="models._models.CollectionUpdate.__init__"></a>
 
@@ -859,6 +872,8 @@ is not ambiguous.
 - `extractor_config`: Extra configurations specific to an extractor.
 - `allow_openai`: Whether to allow OpenAI API to be used to assist in creating a model for
 this collection.
+- `trains_extractor`: Whether this collection feeds documents into the extractor's
+training queue. This setting can only be toggled for custom extractors.
 
 <a id="models._models.CollectionWorkspace"></a>
 
@@ -2162,6 +2177,9 @@ All required parameters must be populated in order to send to Azure.
 :vartype no_rect: bool
 :ivar parent: The identifier of the parent data point if applicable.
 :vartype parent: str
+:ivar manual_entry: If true, the model will not be used to predict this data point. Instead,
+ the user will be able to manually enter the value in the validation tool.
+:vartype manual_entry: bool
 
 <a id="models._models.DataFieldCreateDataPoint.__init__"></a>
 
@@ -2183,6 +2201,8 @@ def __init__(**kwargs)
 - `multiple`: 
 - `no_rect`: 
 - `parent`: The identifier of the parent data point if applicable.
+- `manual_entry`: If true, the model will not be used to predict this data point. Instead,
+the user will be able to manually enter the value in the validation tool.
 
 <a id="models._models.DataFieldCreateField"></a>
 
@@ -2253,6 +2273,9 @@ All required parameters must be populated in order to send to Azure.
 :vartype parent: str
 :ivar children: Required.
 :vartype children: list[~affinda.models.DataPoint]
+:ivar manual_entry: If true, the model will not be used to predict this data point. Instead,
+ the user will be able to manually enter the value in the validation tool.
+:vartype manual_entry: bool
 
 <a id="models._models.DataFieldDataPoint.__init__"></a>
 
@@ -2276,6 +2299,8 @@ def __init__(**kwargs)
 - `no_rect`: Required.
 - `parent`: Required. The identifier of the parent data point if applicable.
 - `children`: Required.
+- `manual_entry`: If true, the model will not be used to predict this data point. Instead,
+the user will be able to manually enter the value in the validation tool.
 
 <a id="models._models.DataFieldField"></a>
 
@@ -2359,6 +2384,9 @@ All required parameters must be populated in order to send to Azure.
 :vartype parent: str
 :ivar children:
 :vartype children: list[~affinda.models.DataPoint]
+:ivar manual_entry: If true, the model will not be used to predict this data point. Instead,
+ the user will be able to manually enter the value in the validation tool.
+:vartype manual_entry: bool
 
 <a id="models._models.DataPoint.__init__"></a>
 
@@ -2386,6 +2414,8 @@ values are: "text", "integer", "float", "decimal", "date", "datetime", "boolean"
 the dropdown in the validation tool.
 - `parent`: The identifier of the parent data point if applicable.
 - `children`: 
+- `manual_entry`: If true, the model will not be used to predict this data point. Instead,
+the user will be able to manually enter the value in the validation tool.
 
 <a id="models._models.DataPointChoice"></a>
 
@@ -2550,6 +2580,9 @@ All required parameters must be populated in order to send to Azure.
 :vartype display_enum_value: bool
 :ivar parent: The identifier of the parent data point if applicable.
 :vartype parent: str
+:ivar manual_entry: If true, the model will not be used to predict this data point. Instead,
+ the user will be able to manually enter the value in the validation tool.
+:vartype manual_entry: bool
 
 <a id="models._models.DataPointCreate.__init__"></a>
 
@@ -2575,6 +2608,8 @@ values are: "text", "integer", "float", "decimal", "date", "datetime", "boolean"
 - `display_enum_value`: If true, both the value and the label for the enums will appear in
 the dropdown in the validation tool.
 - `parent`: The identifier of the parent data point if applicable.
+- `manual_entry`: If true, the model will not be used to predict this data point. Instead,
+the user will be able to manually enter the value in the validation tool.
 
 <a id="models._models.DataPointUpdate"></a>
 
@@ -3809,6 +3844,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype field_groups: list[~affinda.models.FieldGroup]
 :ivar created_dt:
 :vartype created_dt: ~datetime.datetime
+:ivar last_trained_dt:
+:vartype last_trained_dt: ~datetime.datetime
 
 <a id="models._models.Extractor.__init__"></a>
 
@@ -3830,6 +3867,7 @@ def __init__(**kwargs)
 - `is_custom`: 
 - `field_groups`: 
 - `created_dt`: 
+- `last_trained_dt`: 
 
 <a id="models._models.ExtractorBaseExtractor"></a>
 
@@ -4011,6 +4049,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype disabled_child_fields: list[~affinda.models.Field]
 :ivar slug:
 :vartype slug: str
+:ivar fields:
+:vartype fields: list[any]
 
 <a id="models._models.Field.__init__"></a>
 
@@ -4030,6 +4070,7 @@ def __init__(**kwargs)
 - `enabled_child_fields`: 
 - `disabled_child_fields`: 
 - `slug`: 
+- `fields`: 
 
 <a id="models._models.FieldCategory"></a>
 
@@ -9935,6 +9976,11 @@ Configuration of the embeddable validation tool.
 :vartype hide_tags: bool
 :ivar hide_warnings: Hide the warnings panel.
 :vartype hide_warnings: bool
+:ivar restrict_document_splitting: Disables the page editor after a document has been split
+ once.
+:vartype restrict_document_splitting: bool
+:ivar disable_currency_formatting: Disables currency formatting of decimals values.
+:vartype disable_currency_formatting: bool
 
 <a id="models._models.OrganizationValidationToolConfig.__init__"></a>
 
@@ -9953,6 +9999,9 @@ def __init__(**kwargs)
 - `hide_filename`: Hide the filename input.
 - `hide_tags`: Hide the tags editor.
 - `hide_warnings`: Hide the warnings panel.
+- `restrict_document_splitting`: Disables the page editor after a document has been split
+once.
+- `disable_currency_formatting`: Disables currency formatting of decimals values.
 
 <a id="models._models.PageMeta"></a>
 
@@ -10315,7 +10364,7 @@ Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema.
 :ivar name:
 :vartype name: str
 :ivar document_type: Known values are: "resumes", "job_descriptions".
-:vartype document_type: str or ~affinda.models.Enum22
+:vartype document_type: str or ~affinda.models.Enum23
 
 <a id="models._models.Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema.__init__"></a>
 
@@ -11020,6 +11069,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype event: str or ~affinda.models.ResthookEvent
 :ivar organization: Required.
 :vartype organization: ~affinda.models.Organization
+:ivar workspace: Required.
+:vartype workspace: ~affinda.models.ResthookSubscriptionWorkspace
 :ivar target_url: Required. URL of the resthook's receiver.
 :vartype target_url: str
 :ivar active: Required. Resthooks only fire for active subscriptions.
@@ -11052,6 +11103,7 @@ def __init__(**kwargs)
 "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
 "document.classify.failed", "document.classify.completed".
 - `organization`: Required.
+- `workspace`: Required.
 - `target_url`: Required. URL of the resthook's receiver.
 - `active`: Required. Resthooks only fire for active subscriptions.
 - `auto_deactivated`: Required. Resthook subscriptions can be auto deactivated if the
@@ -11084,6 +11136,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype event: str or ~affinda.models.ResthookEvent
 :ivar organization:
 :vartype organization: str
+:ivar workspace:
+:vartype workspace: str
 :ivar version: Version of the resthook subscription. Determines the resthook body being fired.
  Known values are: "v1", "v2", "v3".
 :vartype version: str or ~affinda.models.Version
@@ -11106,6 +11160,7 @@ def __init__(**kwargs)
 "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
 "document.classify.failed", "document.classify.completed".
 - `organization`: 
+- `workspace`: 
 - `version`: Version of the resthook subscription. Determines the resthook body being
 fired. Known values are: "v1", "v2", "v3".
 
@@ -11128,6 +11183,8 @@ ResthookSubscriptionUpdate.
 :vartype event: str or ~affinda.models.ResthookEvent
 :ivar organization: Uniquely identify an organization.
 :vartype organization: str
+:ivar workspace: Uniquely identify a workspace.
+:vartype workspace: str
 :ivar version: Version of the resthook subscription. Determines the resthook body being fired.
  Known values are: "v1", "v2", "v3".
 :vartype version: str or ~affinda.models.Version
@@ -11149,8 +11206,42 @@ def __init__(**kwargs)
 "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
 "document.classify.completed".
 - `organization`: Uniquely identify an organization.
+- `workspace`: Uniquely identify a workspace.
 - `version`: Version of the resthook subscription. Determines the resthook body being
 fired. Known values are: "v1", "v2", "v3".
+
+<a id="models._models.ResthookSubscriptionWorkspace"></a>
+
+## ResthookSubscriptionWorkspace Objects
+
+```python
+class ResthookSubscriptionWorkspace(msrest.serialization.Model)
+```
+
+ResthookSubscriptionWorkspace.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar identifier: Required. Uniquely identify a workspace.
+:vartype identifier: str
+:ivar name: Required.
+:vartype name: str
+:ivar organization: Required.
+:vartype organization: ~affinda.models.Organization
+
+<a id="models._models.ResthookSubscriptionWorkspace.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Required. Uniquely identify a workspace.
+- `name`: Required.
+- `organization`: Required.
 
 <a id="models._models.Resume"></a>
 
@@ -13923,6 +14014,11 @@ Configuration of the embeddable validation tool.
 :vartype hide_tags: bool
 :ivar hide_warnings: Hide the warnings panel.
 :vartype hide_warnings: bool
+:ivar restrict_document_splitting: Disables the page editor after a document has been split
+ once.
+:vartype restrict_document_splitting: bool
+:ivar disable_currency_formatting: Disables currency formatting of decimals values.
+:vartype disable_currency_formatting: bool
 
 <a id="models._models.ValidationToolConfig.__init__"></a>
 
@@ -13941,6 +14037,9 @@ def __init__(**kwargs)
 - `hide_filename`: Hide the filename input.
 - `hide_tags`: Hide the tags editor.
 - `hide_warnings`: Hide the warnings panel.
+- `restrict_document_splitting`: Disables the page editor after a document has been split
+once.
+- `disable_currency_formatting`: Disables currency formatting of decimals values.
 
 <a id="models._models.Workspace"></a>
 
@@ -13986,9 +14085,13 @@ All required parameters must be populated in order to send to Azure.
 :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
  ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
 :vartype whitelist_ingest_addresses: list[str]
-:ivar split_documents: If true, attempt to split documents if multiple documents are detected
- in a single file.
-:vartype split_documents: bool
+:ivar document_splitter: Option "leave" means no document splitting at all. Option
+ "conservative" means we don't actually split documents the documents, but will add a warning to
+ documents that may require a split. Option "recommended" means we split documents that are
+ highly likely to require a split, and add warnings to documents that might require one. Option
+ "aggressive" means we split all documents that are likely to require a split. Known values are:
+ "leave", "conservative", "recommended", "aggressive".
+:vartype document_splitter: str or ~affinda.models.WorkspaceSplitDocumentsOptions
 
 <a id="models._models.Workspace.__init__"></a>
 
@@ -14021,8 +14124,12 @@ workspace settings.
 will be uploaded to this workspace.
 - `whitelist_ingest_addresses`: If specified, only emails from these addresses will be
 ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
-- `split_documents`: If true, attempt to split documents if multiple documents are
-detected in a single file.
+- `document_splitter`: Option "leave" means no document splitting at all. Option
+"conservative" means we don't actually split documents the documents, but will add a warning to
+documents that may require a split. Option "recommended" means we split documents that are
+highly likely to require a split, and add warnings to documents that might require one. Option
+"aggressive" means we split all documents that are likely to require a split. Known values are:
+"leave", "conservative", "recommended", "aggressive".
 
 <a id="models._models.WorkspaceCollectionsItem"></a>
 
@@ -14142,9 +14249,13 @@ All required parameters must be populated in order to send to Azure.
 :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
  ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
 :vartype whitelist_ingest_addresses: list[str]
-:ivar split_documents: If true, attempt to split documents if multiple documents are detected
- in a single file.
-:vartype split_documents: bool
+:ivar document_splitter: Option "leave" means no document splitting at all. Option
+ "conservative" means we don't actually split documents the documents, but will add a warning to
+ documents that may require a split. Option "recommended" means we split documents that are
+ highly likely to require a split, and add warnings to documents that might require one. Option
+ "aggressive" means we split all documents that are likely to require a split. Known values are:
+ "leave", "conservative", "recommended", "aggressive".
+:vartype document_splitter: str or ~affinda.models.WorkspaceSplitDocumentsOptions
 
 <a id="models._models.WorkspaceCreate.__init__"></a>
 
@@ -14170,8 +14281,12 @@ document normally whether its a duplicate or not. If not provided, will fallback
 workspace settings.
 - `whitelist_ingest_addresses`: If specified, only emails from these addresses will be
 ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
-- `split_documents`: If true, attempt to split documents if multiple documents are
-detected in a single file.
+- `document_splitter`: Option "leave" means no document splitting at all. Option
+"conservative" means we don't actually split documents the documents, but will add a warning to
+documents that may require a split. Option "recommended" means we split documents that are
+highly likely to require a split, and add warnings to documents that might require one. Option
+"aggressive" means we split all documents that are likely to require a split. Known values are:
+"leave", "conservative", "recommended", "aggressive".
 
 <a id="models._models.WorkspaceMembership"></a>
 
@@ -14259,9 +14374,13 @@ WorkspaceUpdate.
 :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
  ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
 :vartype whitelist_ingest_addresses: list[str]
-:ivar split_documents: If true, attempt to split documents if multiple documents are detected
- in a single file.
-:vartype split_documents: bool
+:ivar document_splitter: Option "leave" means no document splitting at all. Option
+ "conservative" means we don't actually split documents the documents, but will add a warning to
+ documents that may require a split. Option "recommended" means we split documents that are
+ highly likely to require a split, and add warnings to documents that might require one. Option
+ "aggressive" means we split all documents that are likely to require a split. Known values are:
+ "leave", "conservative", "recommended", "aggressive".
+:vartype document_splitter: str or ~affinda.models.WorkspaceSplitDocumentsOptions
 
 <a id="models._models.WorkspaceUpdate.__init__"></a>
 
@@ -14286,8 +14405,12 @@ document normally whether its a duplicate or not. If not provided, will fallback
 workspace settings.
 - `whitelist_ingest_addresses`: If specified, only emails from these addresses will be
 ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
-- `split_documents`: If true, attempt to split documents if multiple documents are
-detected in a single file.
+- `document_splitter`: Option "leave" means no document splitting at all. Option
+"conservative" means we don't actually split documents the documents, but will add a warning to
+documents that may require a split. Option "recommended" means we split documents that are
+highly likely to require a split, and add warnings to documents that might require one. Option
+"aggressive" means we split all documents that are likely to require a split. Known values are:
+"leave", "conservative", "recommended", "aggressive".
 
 <a id="models._models.YearsExperienceAnnotation"></a>
 

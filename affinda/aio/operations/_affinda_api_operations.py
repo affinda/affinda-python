@@ -462,10 +462,9 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         end: Optional[str] = None,
         **kwargs: Any,
     ) -> List[_models.UsageByWorkspace]:
-        """Get specific workspace.
+        """Get usage by workspace.
 
         Return monthly credits consumption of a workspace.
-        The data is updated daily.
 
         :param identifier: Workspace's identifier.
         :type identifier: str
@@ -1195,10 +1194,9 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         end: Optional[str] = None,
         **kwargs: Any,
     ) -> List[_models.UsageByCollection]:
-        """Get specific collection.
+        """Get usage by collection.
 
         Return monthly credits consumption of a collection.
-        The data is updated daily.
 
         :param identifier: Collection's identifier.
         :type identifier: str
@@ -6209,7 +6207,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         self,
         offset: Optional[int] = None,
         limit: Optional[int] = 300,
-        document_type: Optional[Union[str, "_models.Enum19"]] = None,
+        document_type: Optional[Union[str, "_models.Enum20"]] = None,
         **kwargs: Any,
     ) -> _models.PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema:
         """Get list of all indexes.
@@ -6222,7 +6220,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param limit: The numbers of results to return. Default value is 300.
         :type limit: int
         :param document_type: Filter indices by a document type. Default value is None.
-        :type document_type: str or ~affinda.models.Enum19
+        :type document_type: str or ~affinda.models.Enum20
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)

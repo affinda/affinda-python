@@ -164,10 +164,9 @@ Deletes the specified workspace from the database.
 def get_usage_by_workspace(identifier, start=None, end=None, **kwargs)
 ```
 
-Get specific workspace.
+Get usage by workspace.
 
 Return monthly credits consumption of a workspace.
-The data is updated daily.
 
 **Arguments**:
 
@@ -453,10 +452,9 @@ Create data field for a collection along with a new data point.
 def get_usage_by_collection(identifier, start=None, end=None, **kwargs)
 ```
 
-Get specific collection.
+Get usage by collection.
 
 Return monthly credits consumption of a collection.
-The data is updated daily.
 
 **Arguments**:
 
@@ -2454,7 +2452,7 @@ Returns all the indexes.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
-- `document_type` (`str or ~affinda.models.Enum19`): Filter indices by a document type. Default value is None.
+- `document_type` (`str or ~affinda.models.Enum20`): Filter indices by a document type. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
