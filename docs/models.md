@@ -7615,7 +7615,7 @@ All required parameters must be populated in order to send to Azure.
  "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
  "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
  "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
- "document.classify.failed", "document.classify.completed".
+ "document.classify.failed", "document.classify.completed", "document.rejected".
 :vartype event: str or ~affinda.models.ResthookEvent
 :ivar target_url: Required. URL of the resthook's receiver.
 :vartype target_url: str
@@ -7647,7 +7647,7 @@ def __init__(**kwargs)
 "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
 "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
 "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
-"document.classify.failed", "document.classify.completed".
+"document.classify.failed", "document.classify.completed", "document.rejected".
 - `target_url`: Required. URL of the resthook's receiver.
 - `active`: Required. Resthooks only fire for active subscriptions.
 - `auto_deactivated`: Required. Resthook subscriptions can be auto deactivated if the
@@ -7676,7 +7676,7 @@ All required parameters must be populated in order to send to Azure.
  "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
  "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
  "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
- "document.classify.failed", "document.classify.completed".
+ "document.classify.failed", "document.classify.completed", "document.rejected".
 :vartype event: str or ~affinda.models.ResthookEvent
 :ivar version: Version of the resthook subscription. Determines the resthook body being fired.
  Known values are: "v1", "v2", "v3".
@@ -7698,7 +7698,7 @@ def __init__(**kwargs)
 "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
 "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
 "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
-"document.classify.failed", "document.classify.completed".
+"document.classify.failed", "document.classify.completed", "document.rejected".
 - `version`: Version of the resthook subscription. Determines the resthook body being
 fired. Known values are: "v1", "v2", "v3".
 
@@ -7717,7 +7717,7 @@ ResthookSubscriptionUpdate.
  "invoice.parse.failed", "invoice.parse.completed", "invoice.validate.completed",
  "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
  "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
- "document.classify.completed".
+ "document.classify.completed", "document.rejected".
 :vartype event: str or ~affinda.models.ResthookEvent
 :ivar version: Version of the resthook subscription. Determines the resthook body being fired.
  Known values are: "v1", "v2", "v3".
@@ -7738,7 +7738,7 @@ def __init__(**kwargs)
 "invoice.parse.failed", "invoice.parse.completed", "invoice.validate.completed",
 "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
 "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
-"document.classify.completed".
+"document.classify.completed", "document.rejected".
 - `version`: Version of the resthook subscription. Determines the resthook body being
 fired. Known values are: "v1", "v2", "v3".
 

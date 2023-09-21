@@ -12563,7 +12563,7 @@ class ResthookSubscription(msrest.serialization.Model):
      "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
      "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
      "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
-     "document.classify.failed", "document.classify.completed".
+     "document.classify.failed", "document.classify.completed", "document.rejected".
     :vartype event: str or ~affinda.models.ResthookEvent
     :ivar target_url: Required. URL of the resthook's receiver.
     :vartype target_url: str
@@ -12620,7 +12620,7 @@ class ResthookSubscription(msrest.serialization.Model):
          "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
          "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
          "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
-         "document.classify.failed", "document.classify.completed".
+         "document.classify.failed", "document.classify.completed", "document.rejected".
         :paramtype event: str or ~affinda.models.ResthookEvent
         :keyword target_url: Required. URL of the resthook's receiver.
         :paramtype target_url: str
@@ -12658,7 +12658,7 @@ class ResthookSubscriptionCreate(msrest.serialization.Model):
      "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
      "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
      "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
-     "document.classify.failed", "document.classify.completed".
+     "document.classify.failed", "document.classify.completed", "document.rejected".
     :vartype event: str or ~affinda.models.ResthookEvent
     :ivar version: Version of the resthook subscription. Determines the resthook body being fired.
      Known values are: "v1", "v2", "v3".
@@ -12692,7 +12692,7 @@ class ResthookSubscriptionCreate(msrest.serialization.Model):
          "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
          "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
          "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
-         "document.classify.failed", "document.classify.completed".
+         "document.classify.failed", "document.classify.completed", "document.rejected".
         :paramtype event: str or ~affinda.models.ResthookEvent
         :keyword version: Version of the resthook subscription. Determines the resthook body being
          fired. Known values are: "v1", "v2", "v3".
@@ -12712,7 +12712,7 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
      "invoice.parse.failed", "invoice.parse.completed", "invoice.validate.completed",
      "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
      "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
-     "document.classify.completed".
+     "document.classify.completed", "document.rejected".
     :vartype event: str or ~affinda.models.ResthookEvent
     :ivar version: Version of the resthook subscription. Determines the resthook body being fired.
      Known values are: "v1", "v2", "v3".
@@ -12737,7 +12737,7 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
          "invoice.parse.failed", "invoice.parse.completed", "invoice.validate.completed",
          "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
          "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
-         "document.classify.completed".
+         "document.classify.completed", "document.rejected".
         :paramtype event: str or ~affinda.models.ResthookEvent
         :keyword version: Version of the resthook subscription. Determines the resthook body being
          fired. Known values are: "v1", "v2", "v3".

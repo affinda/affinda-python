@@ -80,6 +80,7 @@ class ResthookEvent(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     DOCUMENT_CLASSIFY_SUCCEEDED = "document.classify.succeeded"
     DOCUMENT_CLASSIFY_FAILED = "document.classify.failed"
     DOCUMENT_CLASSIFY_COMPLETED = "document.classify.completed"
+    DOCUMENT_REJECTED = "document.rejected"
 
 
 class ResthookSubscriptionVersion(str, Enum, metaclass=CaseInsensitiveEnumMeta):

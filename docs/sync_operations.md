@@ -1231,14 +1231,12 @@ def create_resthook_subscription(body, **kwargs)
 
 Create a resthook subscription.
 
-After a subscription is sucessfully created, we'll send a POST request to your target URL with
-a ``X-Hook-Secret`` header.
+After a subscription is successfully created, we'll send a POST request to your target URL with
+a ``X-Hook-Secret`` header. :code:`<br />`
 You need to response to this request with a 200 status code to confirm your subscribe
-intention.
+intention. :code:`<br />`
 Then, you need to use the ``X-Hook-Secret`` to activate the subscription using the
 `/resthook_subscriptions/activate <#post-/v3/resthook_subscriptions/activate>`_ endpoint.
-For more information, see our help article here - `How do I create a webhook?
-<https://help.affinda.com/hc/en-au/articles/11474095148569-How-do-I-create-a-webhook>`_.
 
 **Arguments**:
 
