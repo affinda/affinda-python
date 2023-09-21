@@ -2150,7 +2150,7 @@ def create_resthook_subscription(body, **kwargs)
 
 Create a resthook subscription.
 
-After a subscription is sucessfully created, we'll send a POST request to your target URL with
+After a subscription is successfully created, we'll send a POST request to your target URL with
 a ``X-Hook-Secret`` header. :code:`<br />`
 You need to response to this request with a 200 status code to confirm your subscribe
 intention. :code:`<br />`

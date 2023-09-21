@@ -8659,15 +8659,15 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         # type: (...) -> _models.ResthookSubscription
         """Create a resthook subscription.
 
-        After a subscription is sucessfully created, we'll send a POST request to your target URL with
+        After a subscription is successfully created, we'll send a POST request to your target URL with
         a ``X-Hook-Secret`` header. :code:`<br />`
         You need to response to this request with a 200 status code to confirm your subscribe
         intention. :code:`<br />`
         Then, you need to use the ``X-Hook-Secret`` to activate the subscription using the
         `/resthook_subscriptions/activate <#post-/v3/resthook_subscriptions/activate>`_ endpoint.
         :code:`<br />`
-        For more information, see our help article here - `How do I create a webhook?
-        <https://help.affinda.com/hc/en-au/articles/11474095148569-How-do-I-create-a-webhook>`_.
+        For more information and detailed instructions, `see our webhooks documentation here.
+        <https://docs.affinda.com/docs/webhooks>`_.
 
         :param body:
         :type body: ~affinda.models.ResthookSubscriptionCreate

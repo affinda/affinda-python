@@ -17717,7 +17717,7 @@ class ResthookSubscription(msrest.serialization.Model):
      "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
      "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
      "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
-     "document.classify.failed", "document.classify.completed".
+     "document.classify.failed", "document.classify.completed", "document.rejected".
     :vartype event: str or ~affinda.models.ResthookEvent
     :ivar organization: Required.
     :vartype organization: ~affinda.models.Organization
@@ -17784,7 +17784,7 @@ class ResthookSubscription(msrest.serialization.Model):
          "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
          "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
          "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
-         "document.classify.failed", "document.classify.completed".
+         "document.classify.failed", "document.classify.completed", "document.rejected".
         :paramtype event: str or ~affinda.models.ResthookEvent
         :keyword organization: Required.
         :paramtype organization: ~affinda.models.Organization
@@ -17828,7 +17828,7 @@ class ResthookSubscriptionCreate(msrest.serialization.Model):
      "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
      "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
      "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
-     "document.classify.failed", "document.classify.completed".
+     "document.classify.failed", "document.classify.completed", "document.rejected".
     :vartype event: str or ~affinda.models.ResthookEvent
     :ivar organization:
     :vartype organization: str
@@ -17870,7 +17870,7 @@ class ResthookSubscriptionCreate(msrest.serialization.Model):
          "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
          "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
          "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
-         "document.classify.failed", "document.classify.completed".
+         "document.classify.failed", "document.classify.completed", "document.rejected".
         :paramtype event: str or ~affinda.models.ResthookEvent
         :keyword organization:
         :paramtype organization: str
@@ -17896,7 +17896,7 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
      "invoice.parse.failed", "invoice.parse.completed", "invoice.validate.completed",
      "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
      "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
-     "document.classify.completed".
+     "document.classify.completed", "document.rejected".
     :vartype event: str or ~affinda.models.ResthookEvent
     :ivar organization: Uniquely identify an organization.
     :vartype organization: str
@@ -17929,7 +17929,7 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
          "invoice.parse.failed", "invoice.parse.completed", "invoice.validate.completed",
          "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
          "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
-         "document.classify.completed".
+         "document.classify.completed", "document.rejected".
         :paramtype event: str or ~affinda.models.ResthookEvent
         :keyword organization: Uniquely identify an organization.
         :paramtype organization: str
