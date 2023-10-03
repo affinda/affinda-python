@@ -862,6 +862,35 @@ client = AffindaAPI(credential=credential)
 client.delete_data_point_choice(id)
 ```
 
+### replaceDataPointChoices - Replace choices of a data point
+
+```python
+# ruff: noqa: T201
+
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import DataPointChoiceForReplace, DataPointChoiceReplaceRequest
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+choices = [
+    DataPointChoiceForReplace(value="cj", label="CJ"),
+    DataPointChoiceForReplace(value="sweet", label="Sweet"),
+    DataPointChoiceForReplace(value="big_smoke", label="Big Smoke"),
+]
+
+body = DataPointChoiceReplaceRequest(
+    data_point="REPLACE_DATA_POINT_IDENTIFIER",
+    collection="REPLACE_COLLECTION_IDENTIFIER",  # Either `collection` or `organization` is required
+    choices=choices,
+)
+
+response = client.replace_data_point_choices(body=body)
+print(response.as_dict())
+```
+
 Document API - Annotation
 -------------------------
 

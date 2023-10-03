@@ -1653,6 +1653,15 @@ class Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesO
     :vartype major_group: str
     :ivar soc_code: The 4 digit code representing the SOC2020 classification for this job title.
     :vartype soc_code: int
+    :ivar minor_group_code: The 4 digit code representing the SOC2020 classification for this job
+     title.
+    :vartype minor_group_code: int
+    :ivar sub_major_group_code: The 4 digit code representing the SOC2020 classification for this
+     job title.
+    :vartype sub_major_group_code: int
+    :ivar major_group_code: The 4 digit code representing the SOC2020 classification for this job
+     title.
+    :vartype major_group_code: int
     """
 
     _attribute_map = {
@@ -1661,6 +1670,9 @@ class Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesO
         "sub_major_group": {"key": "subMajorGroup", "type": "str"},
         "major_group": {"key": "majorGroup", "type": "str"},
         "soc_code": {"key": "socCode", "type": "int"},
+        "minor_group_code": {"key": "minorGroupCode", "type": "int"},
+        "sub_major_group_code": {"key": "subMajorGroupCode", "type": "int"},
+        "major_group_code": {"key": "majorGroupCode", "type": "int"},
     }
 
     def __init__(self, **kwargs):
@@ -1675,6 +1687,15 @@ class Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesO
         :paramtype major_group: str
         :keyword soc_code: The 4 digit code representing the SOC2020 classification for this job title.
         :paramtype soc_code: int
+        :keyword minor_group_code: The 4 digit code representing the SOC2020 classification for this
+         job title.
+        :paramtype minor_group_code: int
+        :keyword sub_major_group_code: The 4 digit code representing the SOC2020 classification for
+         this job title.
+        :paramtype sub_major_group_code: int
+        :keyword major_group_code: The 4 digit code representing the SOC2020 classification for this
+         job title.
+        :paramtype major_group_code: int
         """
         super(
             Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification,
@@ -1685,6 +1706,9 @@ class Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesO
         self.sub_major_group = kwargs.get("sub_major_group", None)
         self.major_group = kwargs.get("major_group", None)
         self.soc_code = kwargs.get("soc_code", None)
+        self.minor_group_code = kwargs.get("minor_group_code", None)
+        self.sub_major_group_code = kwargs.get("sub_major_group_code", None)
+        self.major_group_code = kwargs.get("major_group_code", None)
 
 
 class Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1(
@@ -3063,6 +3087,202 @@ class DataPointChoiceCreate(msrest.serialization.Model):
         self.value = kwargs["value"]
         self.synonyms = kwargs.get("synonyms", None)
         self.description = kwargs.get("description", None)
+
+
+class DataPointChoiceForReplace(msrest.serialization.Model):
+    """DataPointChoiceForReplace.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar value: Required.
+    :vartype value: str
+    :ivar label:
+    :vartype label: str
+    :ivar synonyms:
+    :vartype synonyms: list[str]
+    :ivar description:
+    :vartype description: str
+    """
+
+    _validation = {
+        "value": {"required": True},
+    }
+
+    _attribute_map = {
+        "value": {"key": "value", "type": "str"},
+        "label": {"key": "label", "type": "str"},
+        "synonyms": {"key": "synonyms", "type": "[str]"},
+        "description": {"key": "description", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword value: Required.
+        :paramtype value: str
+        :keyword label:
+        :paramtype label: str
+        :keyword synonyms:
+        :paramtype synonyms: list[str]
+        :keyword description:
+        :paramtype description: str
+        """
+        super(DataPointChoiceForReplace, self).__init__(**kwargs)
+        self.value = kwargs["value"]
+        self.label = kwargs.get("label", None)
+        self.synonyms = kwargs.get("synonyms", None)
+        self.description = kwargs.get("description", None)
+
+
+class DataPointChoiceReplaceRequest(msrest.serialization.Model):
+    """Request body for replacing choices of a data point. Either ``collection`` or ``organization`` is required.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar data_point: Required. Uniquely identify a data point.
+    :vartype data_point: str
+    :ivar collection: Uniquely identify a collection.
+    :vartype collection: str
+    :ivar organization: Uniquely identify an organization.
+    :vartype organization: str
+    :ivar choices: Required. Incoming choices to replace existing choices of a data point. Existing
+     choices and incoming choices are matched base on their ``value``. New ``value`` will be
+     created, existing ``value`` will be updated, and ``value`` not in incoming choices will be
+     deleted.
+    :vartype choices: list[~affinda.models.DataPointChoiceForReplace]
+    """
+
+    _validation = {
+        "data_point": {"required": True},
+        "choices": {"required": True},
+    }
+
+    _attribute_map = {
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "collection": {"key": "collection", "type": "str"},
+        "organization": {"key": "organization", "type": "str"},
+        "choices": {"key": "choices", "type": "[DataPointChoiceForReplace]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword data_point: Required. Uniquely identify a data point.
+        :paramtype data_point: str
+        :keyword collection: Uniquely identify a collection.
+        :paramtype collection: str
+        :keyword organization: Uniquely identify an organization.
+        :paramtype organization: str
+        :keyword choices: Required. Incoming choices to replace existing choices of a data point.
+         Existing choices and incoming choices are matched base on their ``value``. New ``value`` will
+         be created, existing ``value`` will be updated, and ``value`` not in incoming choices will be
+         deleted.
+        :paramtype choices: list[~affinda.models.DataPointChoiceForReplace]
+        """
+        super(DataPointChoiceReplaceRequest, self).__init__(**kwargs)
+        self.data_point = kwargs["data_point"]
+        self.collection = kwargs.get("collection", None)
+        self.organization = kwargs.get("organization", None)
+        self.choices = kwargs["choices"]
+
+
+class DataPointChoiceReplaceResponse(msrest.serialization.Model):
+    """DataPointChoiceReplaceResponse.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar data_point: Required. Uniquely identify a data point.
+    :vartype data_point: str
+    :ivar collection: Required. Uniquely identify a collection.
+    :vartype collection: str
+    :ivar organization: Required. Uniquely identify an organization.
+    :vartype organization: str
+    :ivar choices: Required.
+    :vartype choices: list[~affinda.models.DataPointChoiceReplaceResponseChoicesItem]
+    """
+
+    _validation = {
+        "data_point": {"required": True},
+        "collection": {"required": True},
+        "organization": {"required": True},
+        "choices": {"required": True},
+    }
+
+    _attribute_map = {
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "collection": {"key": "collection", "type": "str"},
+        "organization": {"key": "organization", "type": "str"},
+        "choices": {"key": "choices", "type": "[DataPointChoiceReplaceResponseChoicesItem]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword data_point: Required. Uniquely identify a data point.
+        :paramtype data_point: str
+        :keyword collection: Required. Uniquely identify a collection.
+        :paramtype collection: str
+        :keyword organization: Required. Uniquely identify an organization.
+        :paramtype organization: str
+        :keyword choices: Required.
+        :paramtype choices: list[~affinda.models.DataPointChoiceReplaceResponseChoicesItem]
+        """
+        super(DataPointChoiceReplaceResponse, self).__init__(**kwargs)
+        self.data_point = kwargs["data_point"]
+        self.collection = kwargs["collection"]
+        self.organization = kwargs["organization"]
+        self.choices = kwargs["choices"]
+
+
+class DataPointChoiceReplaceResponseChoicesItem(msrest.serialization.Model):
+    """DataPointChoiceReplaceResponseChoicesItem.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar id: Required. Data point choice's ID.
+    :vartype id: int
+    :ivar value: Required.
+    :vartype value: str
+    :ivar label: Required.
+    :vartype label: str
+    :ivar synonyms: Required.
+    :vartype synonyms: list[str]
+    :ivar description: Required.
+    :vartype description: str
+    """
+
+    _validation = {
+        "id": {"required": True},
+        "value": {"required": True},
+        "label": {"required": True},
+        "synonyms": {"required": True},
+        "description": {"required": True},
+    }
+
+    _attribute_map = {
+        "id": {"key": "id", "type": "int"},
+        "value": {"key": "value", "type": "str"},
+        "label": {"key": "label", "type": "str"},
+        "synonyms": {"key": "synonyms", "type": "[str]"},
+        "description": {"key": "description", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword id: Required. Data point choice's ID.
+        :paramtype id: int
+        :keyword value: Required.
+        :paramtype value: str
+        :keyword label: Required.
+        :paramtype label: str
+        :keyword synonyms: Required.
+        :paramtype synonyms: list[str]
+        :keyword description: Required.
+        :paramtype description: str
+        """
+        super(DataPointChoiceReplaceResponseChoicesItem, self).__init__(**kwargs)
+        self.id = kwargs["id"]
+        self.value = kwargs["value"]
+        self.label = kwargs["label"]
+        self.synonyms = kwargs["synonyms"]
+        self.description = kwargs["description"]
 
 
 class DataPointChoiceUpdate(msrest.serialization.Model):
@@ -12316,6 +12536,15 @@ class JobTitleAnnotationParsedClassification(msrest.serialization.Model):
     :vartype sub_major_group: str
     :ivar major_group:
     :vartype major_group: str
+    :ivar minor_group_code: The 4 digit code representing the SOC2020 classification for this job
+     title.
+    :vartype minor_group_code: int
+    :ivar sub_major_group_code: The 4 digit code representing the SOC2020 classification for this
+     job title.
+    :vartype sub_major_group_code: int
+    :ivar major_group_code: The 4 digit code representing the SOC2020 classification for this job
+     title.
+    :vartype major_group_code: int
     """
 
     _attribute_map = {
@@ -12324,6 +12553,9 @@ class JobTitleAnnotationParsedClassification(msrest.serialization.Model):
         "minor_group": {"key": "minorGroup", "type": "str"},
         "sub_major_group": {"key": "subMajorGroup", "type": "str"},
         "major_group": {"key": "majorGroup", "type": "str"},
+        "minor_group_code": {"key": "minorGroupCode", "type": "int"},
+        "sub_major_group_code": {"key": "subMajorGroupCode", "type": "int"},
+        "major_group_code": {"key": "majorGroupCode", "type": "int"},
     }
 
     def __init__(self, **kwargs):
@@ -12338,6 +12570,15 @@ class JobTitleAnnotationParsedClassification(msrest.serialization.Model):
         :paramtype sub_major_group: str
         :keyword major_group:
         :paramtype major_group: str
+        :keyword minor_group_code: The 4 digit code representing the SOC2020 classification for this
+         job title.
+        :paramtype minor_group_code: int
+        :keyword sub_major_group_code: The 4 digit code representing the SOC2020 classification for
+         this job title.
+        :paramtype sub_major_group_code: int
+        :keyword major_group_code: The 4 digit code representing the SOC2020 classification for this
+         job title.
+        :paramtype major_group_code: int
         """
         super(JobTitleAnnotationParsedClassification, self).__init__(**kwargs)
         self.soc_code = kwargs.get("soc_code", None)
@@ -12345,6 +12586,9 @@ class JobTitleAnnotationParsedClassification(msrest.serialization.Model):
         self.minor_group = kwargs.get("minor_group", None)
         self.sub_major_group = kwargs.get("sub_major_group", None)
         self.major_group = kwargs.get("major_group", None)
+        self.minor_group_code = kwargs.get("minor_group_code", None)
+        self.sub_major_group_code = kwargs.get("sub_major_group_code", None)
+        self.major_group_code = kwargs.get("major_group_code", None)
 
 
 class JobTitleParsed(msrest.serialization.Model):
@@ -12496,6 +12740,15 @@ class JobTitleParsedClassification(msrest.serialization.Model):
     :vartype sub_major_group: str
     :ivar major_group:
     :vartype major_group: str
+    :ivar minor_group_code: The 4 digit code representing the SOC2020 classification for this job
+     title.
+    :vartype minor_group_code: int
+    :ivar sub_major_group_code: The 4 digit code representing the SOC2020 classification for this
+     job title.
+    :vartype sub_major_group_code: int
+    :ivar major_group_code: The 4 digit code representing the SOC2020 classification for this job
+     title.
+    :vartype major_group_code: int
     """
 
     _attribute_map = {
@@ -12504,6 +12757,9 @@ class JobTitleParsedClassification(msrest.serialization.Model):
         "minor_group": {"key": "minorGroup", "type": "str"},
         "sub_major_group": {"key": "subMajorGroup", "type": "str"},
         "major_group": {"key": "majorGroup", "type": "str"},
+        "minor_group_code": {"key": "minorGroupCode", "type": "int"},
+        "sub_major_group_code": {"key": "subMajorGroupCode", "type": "int"},
+        "major_group_code": {"key": "majorGroupCode", "type": "int"},
     }
 
     def __init__(self, **kwargs):
@@ -12518,6 +12774,15 @@ class JobTitleParsedClassification(msrest.serialization.Model):
         :paramtype sub_major_group: str
         :keyword major_group:
         :paramtype major_group: str
+        :keyword minor_group_code: The 4 digit code representing the SOC2020 classification for this
+         job title.
+        :paramtype minor_group_code: int
+        :keyword sub_major_group_code: The 4 digit code representing the SOC2020 classification for
+         this job title.
+        :paramtype sub_major_group_code: int
+        :keyword major_group_code: The 4 digit code representing the SOC2020 classification for this
+         job title.
+        :paramtype major_group_code: int
         """
         super(JobTitleParsedClassification, self).__init__(**kwargs)
         self.soc_code = kwargs.get("soc_code", None)
@@ -12525,6 +12790,9 @@ class JobTitleParsedClassification(msrest.serialization.Model):
         self.minor_group = kwargs.get("minor_group", None)
         self.sub_major_group = kwargs.get("sub_major_group", None)
         self.major_group = kwargs.get("major_group", None)
+        self.minor_group_code = kwargs.get("minor_group_code", None)
+        self.sub_major_group_code = kwargs.get("sub_major_group_code", None)
+        self.major_group_code = kwargs.get("major_group_code", None)
 
 
 class JobTitleParsedParsed(msrest.serialization.Model):
@@ -14751,6 +15019,8 @@ class Rectangle(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
+    :ivar page_index:
+    :vartype page_index: int
     :ivar x0: Required.
     :vartype x0: float
     :ivar y0: Required.
@@ -14769,6 +15039,7 @@ class Rectangle(msrest.serialization.Model):
     }
 
     _attribute_map = {
+        "page_index": {"key": "pageIndex", "type": "int"},
         "x0": {"key": "x0", "type": "float"},
         "y0": {"key": "y0", "type": "float"},
         "x1": {"key": "x1", "type": "float"},
@@ -14777,6 +15048,8 @@ class Rectangle(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
+        :keyword page_index:
+        :paramtype page_index: int
         :keyword x0: Required.
         :paramtype x0: float
         :keyword y0: Required.
@@ -14787,6 +15060,7 @@ class Rectangle(msrest.serialization.Model):
         :paramtype y1: float
         """
         super(Rectangle, self).__init__(**kwargs)
+        self.page_index = kwargs.get("page_index", None)
         self.x0 = kwargs["x0"]
         self.y0 = kwargs["y0"]
         self.x1 = kwargs["x1"]

@@ -91,6 +91,10 @@ try:
     from ._models_py3 import DataPoint
     from ._models_py3 import DataPointChoice
     from ._models_py3 import DataPointChoiceCreate
+    from ._models_py3 import DataPointChoiceForReplace
+    from ._models_py3 import DataPointChoiceReplaceRequest
+    from ._models_py3 import DataPointChoiceReplaceResponse
+    from ._models_py3 import DataPointChoiceReplaceResponseChoicesItem
     from ._models_py3 import DataPointChoiceUpdate
     from ._models_py3 import DataPointCreate
     from ._models_py3 import DataPointUpdate
@@ -437,6 +441,10 @@ except (SyntaxError, ImportError):
     from ._models import DataPoint  # type: ignore
     from ._models import DataPointChoice  # type: ignore
     from ._models import DataPointChoiceCreate  # type: ignore
+    from ._models import DataPointChoiceForReplace  # type: ignore
+    from ._models import DataPointChoiceReplaceRequest  # type: ignore
+    from ._models import DataPointChoiceReplaceResponse  # type: ignore
+    from ._models import DataPointChoiceReplaceResponseChoicesItem  # type: ignore
     from ._models import DataPointChoiceUpdate  # type: ignore
     from ._models import DataPointCreate  # type: ignore
     from ._models import DataPointUpdate  # type: ignore
@@ -782,6 +790,10 @@ __all__ = [
     "DataPoint",
     "DataPointChoice",
     "DataPointChoiceCreate",
+    "DataPointChoiceForReplace",
+    "DataPointChoiceReplaceRequest",
+    "DataPointChoiceReplaceResponse",
+    "DataPointChoiceReplaceResponseChoicesItem",
     "DataPointChoiceUpdate",
     "DataPointCreate",
     "DataPointUpdate",

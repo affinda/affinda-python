@@ -1190,6 +1190,33 @@ Deletes the specified data point choice from the database.
 
 `None`: None, or the result of cls(response)
 
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.replace_data_point_choices"></a>
+
+#### replace\_data\_point\_choices
+
+```python
+def replace_data_point_choices(body=None, **kwargs)
+```
+
+Replace choices of a data point.
+
+Replace choices of a data point. Existing choices and incoming choices are matched base on
+their ``value``. New ``value`` will be created, existing ``value`` will be updated, and
+``value`` not in incoming choices will be deleted.
+
+**Arguments**:
+
+- `body` (`~affinda.models.DataPointChoiceReplaceRequest`): Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.DataPointChoiceReplaceResponse`: DataPointChoiceReplaceResponse, or the result of cls(response)
+
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_annotations"></a>
 
 #### get\_all\_annotations

@@ -107,6 +107,7 @@ from ...operations._affinda_api_operations import (
     build_get_workspace_request,
     build_list_occupation_groups_request,
     build_regenerate_api_key_for_api_user_request,
+    build_replace_data_point_choices_request,
     build_respond_to_invitation_request,
     build_update_annotation_request,
     build_update_api_user_request,
@@ -3048,6 +3049,79 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             return cls(pipeline_response, None, {})
 
     delete_data_point_choice.metadata = {"url": "/v3/data_point_choices/{id}"}  # type: ignore
+
+    async def replace_data_point_choices(
+        self, body: Optional[_models.DataPointChoiceReplaceRequest] = None, **kwargs: Any
+    ) -> _models.DataPointChoiceReplaceResponse:
+        """Replace choices of a data point.
+
+        Replace choices of a data point. Existing choices and incoming choices are matched base on
+        their ``value``. New ``value`` will be created, existing ``value`` will be updated, and
+        ``value`` not in incoming choices will be deleted.
+
+        :param body:  Default value is None.
+        :type body: ~affinda.models.DataPointChoiceReplaceRequest
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: DataPointChoiceReplaceResponse, or the result of cls(response)
+        :rtype: ~affinda.models.DataPointChoiceReplaceResponse
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop(
+            "content_type", _headers.pop("Content-Type", "application/json")
+        )  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.DataPointChoiceReplaceResponse]
+
+        if body is not None:
+            _json = self._serialize.body(body, "DataPointChoiceReplaceRequest")
+        else:
+            _json = None
+
+        request = build_replace_data_point_choices_request(
+            content_type=content_type,
+            json=_json,
+            template_url=self.replace_data_point_choices.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("DataPointChoiceReplaceResponse", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    replace_data_point_choices.metadata = {"url": "/v3/data_point_choices/replace"}  # type: ignore
 
     async def get_all_annotations(
         self, document: str, **kwargs: Any

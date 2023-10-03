@@ -1327,6 +1327,15 @@ Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupat
 :vartype major_group: str
 :ivar soc_code: The 4 digit code representing the SOC2020 classification for this job title.
 :vartype soc_code: int
+:ivar minor_group_code: The 4 digit code representing the SOC2020 classification for this job
+ title.
+:vartype minor_group_code: int
+:ivar sub_major_group_code: The 4 digit code representing the SOC2020 classification for this
+ job title.
+:vartype sub_major_group_code: int
+:ivar major_group_code: The 4 digit code representing the SOC2020 classification for this job
+ title.
+:vartype major_group_code: int
 
 <a id="models._models.Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification.__init__"></a>
 
@@ -1343,6 +1352,12 @@ def __init__(**kwargs)
 - `sub_major_group`: SOC2020 sub major group.
 - `major_group`: SOC2020 major group.
 - `soc_code`: The 4 digit code representing the SOC2020 classification for this job title.
+- `minor_group_code`: The 4 digit code representing the SOC2020 classification for this
+job title.
+- `sub_major_group_code`: The 4 digit code representing the SOC2020 classification for
+this job title.
+- `major_group_code`: The 4 digit code representing the SOC2020 classification for this
+job title.
 
 <a id="models._models.Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1"></a>
 
@@ -2500,6 +2515,159 @@ def __init__(**kwargs)
 - `value`: Required.
 - `synonyms`: 
 - `description`: 
+
+<a id="models._models.DataPointChoiceForReplace"></a>
+
+## DataPointChoiceForReplace Objects
+
+```python
+class DataPointChoiceForReplace(msrest.serialization.Model)
+```
+
+DataPointChoiceForReplace.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar value: Required.
+:vartype value: str
+:ivar label:
+:vartype label: str
+:ivar synonyms:
+:vartype synonyms: list[str]
+:ivar description:
+:vartype description: str
+
+<a id="models._models.DataPointChoiceForReplace.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `value`: Required.
+- `label`: 
+- `synonyms`: 
+- `description`: 
+
+<a id="models._models.DataPointChoiceReplaceRequest"></a>
+
+## DataPointChoiceReplaceRequest Objects
+
+```python
+class DataPointChoiceReplaceRequest(msrest.serialization.Model)
+```
+
+Request body for replacing choices of a data point. Either ``collection`` or ``organization`` is required.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar data_point: Required. Uniquely identify a data point.
+:vartype data_point: str
+:ivar collection: Uniquely identify a collection.
+:vartype collection: str
+:ivar organization: Uniquely identify an organization.
+:vartype organization: str
+:ivar choices: Required. Incoming choices to replace existing choices of a data point. Existing
+ choices and incoming choices are matched base on their ``value``. New ``value`` will be
+ created, existing ``value`` will be updated, and ``value`` not in incoming choices will be
+ deleted.
+:vartype choices: list[~affinda.models.DataPointChoiceForReplace]
+
+<a id="models._models.DataPointChoiceReplaceRequest.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `data_point`: Required. Uniquely identify a data point.
+- `collection`: Uniquely identify a collection.
+- `organization`: Uniquely identify an organization.
+- `choices`: Required. Incoming choices to replace existing choices of a data point.
+Existing choices and incoming choices are matched base on their ``value``. New ``value`` will
+be created, existing ``value`` will be updated, and ``value`` not in incoming choices will be
+deleted.
+
+<a id="models._models.DataPointChoiceReplaceResponse"></a>
+
+## DataPointChoiceReplaceResponse Objects
+
+```python
+class DataPointChoiceReplaceResponse(msrest.serialization.Model)
+```
+
+DataPointChoiceReplaceResponse.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar data_point: Required. Uniquely identify a data point.
+:vartype data_point: str
+:ivar collection: Required. Uniquely identify a collection.
+:vartype collection: str
+:ivar organization: Required. Uniquely identify an organization.
+:vartype organization: str
+:ivar choices: Required.
+:vartype choices: list[~affinda.models.DataPointChoiceReplaceResponseChoicesItem]
+
+<a id="models._models.DataPointChoiceReplaceResponse.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `data_point`: Required. Uniquely identify a data point.
+- `collection`: Required. Uniquely identify a collection.
+- `organization`: Required. Uniquely identify an organization.
+- `choices`: Required.
+
+<a id="models._models.DataPointChoiceReplaceResponseChoicesItem"></a>
+
+## DataPointChoiceReplaceResponseChoicesItem Objects
+
+```python
+class DataPointChoiceReplaceResponseChoicesItem(msrest.serialization.Model)
+```
+
+DataPointChoiceReplaceResponseChoicesItem.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar id: Required. Data point choice's ID.
+:vartype id: int
+:ivar value: Required.
+:vartype value: str
+:ivar label: Required.
+:vartype label: str
+:ivar synonyms: Required.
+:vartype synonyms: list[str]
+:ivar description: Required.
+:vartype description: str
+
+<a id="models._models.DataPointChoiceReplaceResponseChoicesItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `id`: Required. Data point choice's ID.
+- `value`: Required.
+- `label`: Required.
+- `synonyms`: Required.
+- `description`: Required.
 
 <a id="models._models.DataPointChoiceUpdate"></a>
 
@@ -8873,6 +9041,15 @@ JobTitleAnnotationParsedClassification.
 :vartype sub_major_group: str
 :ivar major_group:
 :vartype major_group: str
+:ivar minor_group_code: The 4 digit code representing the SOC2020 classification for this job
+ title.
+:vartype minor_group_code: int
+:ivar sub_major_group_code: The 4 digit code representing the SOC2020 classification for this
+ job title.
+:vartype sub_major_group_code: int
+:ivar major_group_code: The 4 digit code representing the SOC2020 classification for this job
+ title.
+:vartype major_group_code: int
 
 <a id="models._models.JobTitleAnnotationParsedClassification.__init__"></a>
 
@@ -8889,6 +9066,12 @@ def __init__(**kwargs)
 - `minor_group`: 
 - `sub_major_group`: 
 - `major_group`: 
+- `minor_group_code`: The 4 digit code representing the SOC2020 classification for this
+job title.
+- `sub_major_group_code`: The 4 digit code representing the SOC2020 classification for
+this job title.
+- `major_group_code`: The 4 digit code representing the SOC2020 classification for this
+job title.
 
 <a id="models._models.JobTitleParsed"></a>
 
@@ -9008,6 +9191,15 @@ JobTitleParsedClassification.
 :vartype sub_major_group: str
 :ivar major_group:
 :vartype major_group: str
+:ivar minor_group_code: The 4 digit code representing the SOC2020 classification for this job
+ title.
+:vartype minor_group_code: int
+:ivar sub_major_group_code: The 4 digit code representing the SOC2020 classification for this
+ job title.
+:vartype sub_major_group_code: int
+:ivar major_group_code: The 4 digit code representing the SOC2020 classification for this job
+ title.
+:vartype major_group_code: int
 
 <a id="models._models.JobTitleParsedClassification.__init__"></a>
 
@@ -9024,6 +9216,12 @@ def __init__(**kwargs)
 - `minor_group`: 
 - `sub_major_group`: 
 - `major_group`: 
+- `minor_group_code`: The 4 digit code representing the SOC2020 classification for this
+job title.
+- `sub_major_group_code`: The 4 digit code representing the SOC2020 classification for
+this job title.
+- `major_group_code`: The 4 digit code representing the SOC2020 classification for this
+job title.
 
 <a id="models._models.JobTitleParsedParsed"></a>
 
@@ -10880,6 +11078,8 @@ Rectangle.
 
 All required parameters must be populated in order to send to Azure.
 
+:ivar page_index:
+:vartype page_index: int
 :ivar x0: Required.
 :vartype x0: float
 :ivar y0: Required.
@@ -10899,6 +11099,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
+- `page_index`: 
 - `x0`: Required.
 - `y0`: Required.
 - `x1`: Required.

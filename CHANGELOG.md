@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.11.0] - 2023-10-03
+### Added
+- Add SOC group codes to classification
+
 ## [4.10.0] - 2023-09-21
 ### Added
 - Allow creating workspace-scope webhook
