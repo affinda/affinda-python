@@ -728,6 +728,15 @@ class Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesO
     :vartype major_group: str
     :ivar soc_code: The 4 digit code representing the SOC2020 classification for this job title.
     :vartype soc_code: int
+    :ivar minor_group_code: The 4 digit code representing the SOC2020 classification for this job
+     title.
+    :vartype minor_group_code: int
+    :ivar sub_major_group_code: The 4 digit code representing the SOC2020 classification for this
+     job title.
+    :vartype sub_major_group_code: int
+    :ivar major_group_code: The 4 digit code representing the SOC2020 classification for this job
+     title.
+    :vartype major_group_code: int
     """
 
     _attribute_map = {
@@ -736,6 +745,9 @@ class Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesO
         "sub_major_group": {"key": "subMajorGroup", "type": "str"},
         "major_group": {"key": "majorGroup", "type": "str"},
         "soc_code": {"key": "socCode", "type": "int"},
+        "minor_group_code": {"key": "minorGroupCode", "type": "int"},
+        "sub_major_group_code": {"key": "subMajorGroupCode", "type": "int"},
+        "major_group_code": {"key": "majorGroupCode", "type": "int"},
     }
 
     def __init__(
@@ -746,6 +758,9 @@ class Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesO
         sub_major_group: Optional[str] = None,
         major_group: Optional[str] = None,
         soc_code: Optional[int] = None,
+        minor_group_code: Optional[int] = None,
+        sub_major_group_code: Optional[int] = None,
+        major_group_code: Optional[int] = None,
         **kwargs,
     ):
         """
@@ -759,6 +774,15 @@ class Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesO
         :paramtype major_group: str
         :keyword soc_code: The 4 digit code representing the SOC2020 classification for this job title.
         :paramtype soc_code: int
+        :keyword minor_group_code: The 4 digit code representing the SOC2020 classification for this
+         job title.
+        :paramtype minor_group_code: int
+        :keyword sub_major_group_code: The 4 digit code representing the SOC2020 classification for
+         this job title.
+        :paramtype sub_major_group_code: int
+        :keyword major_group_code: The 4 digit code representing the SOC2020 classification for this
+         job title.
+        :paramtype major_group_code: int
         """
         super(
             Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification,
@@ -769,6 +793,9 @@ class Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesO
         self.sub_major_group = sub_major_group
         self.major_group = major_group
         self.soc_code = soc_code
+        self.minor_group_code = minor_group_code
+        self.sub_major_group_code = sub_major_group_code
+        self.major_group_code = major_group_code
 
 
 class Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1(
@@ -10234,6 +10261,15 @@ class JobTitleParsedClassification(msrest.serialization.Model):
     :vartype sub_major_group: str
     :ivar major_group:
     :vartype major_group: str
+    :ivar minor_group_code: The 4 digit code representing the SOC2020 classification for this job
+     title.
+    :vartype minor_group_code: int
+    :ivar sub_major_group_code: The 4 digit code representing the SOC2020 classification for this
+     job title.
+    :vartype sub_major_group_code: int
+    :ivar major_group_code: The 4 digit code representing the SOC2020 classification for this job
+     title.
+    :vartype major_group_code: int
     """
 
     _attribute_map = {
@@ -10242,6 +10278,9 @@ class JobTitleParsedClassification(msrest.serialization.Model):
         "minor_group": {"key": "minorGroup", "type": "str"},
         "sub_major_group": {"key": "subMajorGroup", "type": "str"},
         "major_group": {"key": "majorGroup", "type": "str"},
+        "minor_group_code": {"key": "minorGroupCode", "type": "int"},
+        "sub_major_group_code": {"key": "subMajorGroupCode", "type": "int"},
+        "major_group_code": {"key": "majorGroupCode", "type": "int"},
     }
 
     def __init__(
@@ -10252,6 +10291,9 @@ class JobTitleParsedClassification(msrest.serialization.Model):
         minor_group: Optional[str] = None,
         sub_major_group: Optional[str] = None,
         major_group: Optional[str] = None,
+        minor_group_code: Optional[int] = None,
+        sub_major_group_code: Optional[int] = None,
+        major_group_code: Optional[int] = None,
         **kwargs,
     ):
         """
@@ -10265,6 +10307,15 @@ class JobTitleParsedClassification(msrest.serialization.Model):
         :paramtype sub_major_group: str
         :keyword major_group:
         :paramtype major_group: str
+        :keyword minor_group_code: The 4 digit code representing the SOC2020 classification for this
+         job title.
+        :paramtype minor_group_code: int
+        :keyword sub_major_group_code: The 4 digit code representing the SOC2020 classification for
+         this job title.
+        :paramtype sub_major_group_code: int
+        :keyword major_group_code: The 4 digit code representing the SOC2020 classification for this
+         job title.
+        :paramtype major_group_code: int
         """
         super(JobTitleParsedClassification, self).__init__(**kwargs)
         self.soc_code = soc_code
@@ -10272,6 +10323,9 @@ class JobTitleParsedClassification(msrest.serialization.Model):
         self.minor_group = minor_group
         self.sub_major_group = sub_major_group
         self.major_group = major_group
+        self.minor_group_code = minor_group_code
+        self.sub_major_group_code = sub_major_group_code
+        self.major_group_code = major_group_code
 
 
 class JobTitleParsedParsed(msrest.serialization.Model):
@@ -12197,6 +12251,8 @@ class Rectangle(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
+    :ivar page_index:
+    :vartype page_index: int
     :ivar x0: Required.
     :vartype x0: float
     :ivar y0: Required.
@@ -12215,14 +12271,26 @@ class Rectangle(msrest.serialization.Model):
     }
 
     _attribute_map = {
+        "page_index": {"key": "pageIndex", "type": "int"},
         "x0": {"key": "x0", "type": "float"},
         "y0": {"key": "y0", "type": "float"},
         "x1": {"key": "x1", "type": "float"},
         "y1": {"key": "y1", "type": "float"},
     }
 
-    def __init__(self, *, x0: float, y0: float, x1: float, y1: float, **kwargs):
+    def __init__(
+        self,
+        *,
+        x0: float,
+        y0: float,
+        x1: float,
+        y1: float,
+        page_index: Optional[int] = None,
+        **kwargs,
+    ):
         """
+        :keyword page_index:
+        :paramtype page_index: int
         :keyword x0: Required.
         :paramtype x0: float
         :keyword y0: Required.
@@ -12233,6 +12301,7 @@ class Rectangle(msrest.serialization.Model):
         :paramtype y1: float
         """
         super(Rectangle, self).__init__(**kwargs)
+        self.page_index = page_index
         self.x0 = x0
         self.y0 = y0
         self.x1 = x1
