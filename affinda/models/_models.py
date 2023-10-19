@@ -64,7 +64,7 @@ class Annotation(msrest.serialization.Model):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -141,7 +141,7 @@ class Annotation(msrest.serialization.Model):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -303,7 +303,7 @@ class AnnotationUpdate(msrest.serialization.Model):
     :ivar rectangles: x/y coordinates for the rectangles containing the data. An annotation can be
      contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: The page number within the document, starting from 0.
     :vartype page_index: int
@@ -335,7 +335,7 @@ class AnnotationUpdate(msrest.serialization.Model):
         :keyword rectangles: x/y coordinates for the rectangles containing the data. An annotation can
          be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -369,7 +369,7 @@ class AnnotationBatchUpdate(AnnotationUpdate):
     :ivar rectangles: x/y coordinates for the rectangles containing the data. An annotation can be
      contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: The page number within the document, starting from 0.
     :vartype page_index: int
@@ -408,7 +408,7 @@ class AnnotationBatchUpdate(AnnotationUpdate):
         :keyword rectangles: x/y coordinates for the rectangles containing the data. An annotation can
          be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -437,7 +437,7 @@ class AnnotationCreate(msrest.serialization.Model):
     :ivar rectangles: x/y coordinates for the rectangles containing the data. An annotation can be
      contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Required. Uniquely identify a document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -475,7 +475,7 @@ class AnnotationCreate(msrest.serialization.Model):
         :keyword rectangles: x/y coordinates for the rectangles containing the data. An annotation can
          be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Required. Uniquely identify a document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -2341,7 +2341,7 @@ class CurrencyCodeAnnotation(Annotation):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -2421,7 +2421,7 @@ class CurrencyCodeAnnotation(Annotation):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -3503,7 +3503,7 @@ class DateAnnotation(Annotation):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -3583,7 +3583,7 @@ class DateAnnotation(Annotation):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -3723,7 +3723,7 @@ class Document(msrest.serialization.Model):
     """Document.
 
     You probably want to use the sub-classes and not this class directly. Known
-    sub-classes are: Invoice, JobDescription, Resume.
+    sub-classes are: Invoice, JobDescription, Resume, ResumeRedact.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -3757,6 +3757,7 @@ class Document(msrest.serialization.Model):
             "invoice": "Invoice",
             "job-description": "JobDescription",
             "resume": "Resume",
+            "resume-redact": "ResumeRedact",
         }
     }
 
@@ -3797,8 +3798,11 @@ class DocumentCreate(msrest.serialization.Model):
      "false", will return an empty data object which can be polled at the GET endpoint until
      processing is complete.
     :vartype wait: bool
-    :ivar identifier: Specify a custom identifier for the document.
+    :ivar identifier: Deprecated in favor of ``customIdentifier``.
     :vartype identifier: str
+    :ivar custom_identifier: Specify a custom identifier for the document if you need one, not
+     required to be unique.
+    :vartype custom_identifier: str
     :ivar file_name: Optional filename of the file.
     :vartype file_name: str
     :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
@@ -3825,6 +3829,7 @@ class DocumentCreate(msrest.serialization.Model):
         "workspace": {"key": "workspace", "type": "str"},
         "wait": {"key": "wait", "type": "bool"},
         "identifier": {"key": "identifier", "type": "str"},
+        "custom_identifier": {"key": "customIdentifier", "type": "str"},
         "file_name": {"key": "fileName", "type": "str"},
         "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
         "language": {"key": "language", "type": "str"},
@@ -3850,8 +3855,11 @@ class DocumentCreate(msrest.serialization.Model):
          If "false", will return an empty data object which can be polled at the GET endpoint until
          processing is complete.
         :paramtype wait: bool
-        :keyword identifier: Specify a custom identifier for the document.
+        :keyword identifier: Deprecated in favor of ``customIdentifier``.
         :paramtype identifier: str
+        :keyword custom_identifier: Specify a custom identifier for the document if you need one, not
+         required to be unique.
+        :paramtype custom_identifier: str
         :keyword file_name: Optional filename of the file.
         :paramtype file_name: str
         :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
@@ -3877,6 +3885,7 @@ class DocumentCreate(msrest.serialization.Model):
         self.workspace = kwargs.get("workspace", None)
         self.wait = kwargs.get("wait", True)
         self.identifier = kwargs.get("identifier", None)
+        self.custom_identifier = kwargs.get("custom_identifier", None)
         self.file_name = kwargs.get("file_name", None)
         self.expiry_time = kwargs.get("expiry_time", None)
         self.language = kwargs.get("language", None)
@@ -3942,8 +3951,11 @@ class DocumentMeta(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
-    :ivar identifier: Required. Uniquely identify a document.
+    :ivar identifier: Required. Unique identifier for the document.
     :vartype identifier: str
+    :ivar custom_identifier: Optional identifier for the document that you can set to track the
+     document in the Affinda system.  Is not required to be unique.
+    :vartype custom_identifier: str
     :ivar file_name: Optional filename of the file.
     :vartype file_name: str
     :ivar ready: If true, the document has finished processing. Particularly useful if an endpoint
@@ -4021,6 +4033,7 @@ class DocumentMeta(msrest.serialization.Model):
 
     _attribute_map = {
         "identifier": {"key": "identifier", "type": "str"},
+        "custom_identifier": {"key": "customIdentifier", "type": "str"},
         "file_name": {"key": "fileName", "type": "str"},
         "ready": {"key": "ready", "type": "bool"},
         "ready_dt": {"key": "readyDt", "type": "iso-8601"},
@@ -4055,8 +4068,11 @@ class DocumentMeta(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
-        :keyword identifier: Required. Uniquely identify a document.
+        :keyword identifier: Required. Unique identifier for the document.
         :paramtype identifier: str
+        :keyword custom_identifier: Optional identifier for the document that you can set to track the
+         document in the Affinda system.  Is not required to be unique.
+        :paramtype custom_identifier: str
         :keyword file_name: Optional filename of the file.
         :paramtype file_name: str
         :keyword ready: If true, the document has finished processing. Particularly useful if an
@@ -4128,6 +4144,7 @@ class DocumentMeta(msrest.serialization.Model):
         """
         super(DocumentMeta, self).__init__(**kwargs)
         self.identifier = kwargs["identifier"]
+        self.custom_identifier = kwargs.get("custom_identifier", None)
         self.file_name = kwargs.get("file_name", None)
         self.ready = kwargs.get("ready", None)
         self.ready_dt = kwargs.get("ready_dt", None)
@@ -4163,7 +4180,7 @@ class DocumentMeta(msrest.serialization.Model):
 class DocumentMetaChildDocumentsItem(msrest.serialization.Model):
     """DocumentMetaChildDocumentsItem.
 
-    :ivar identifier: Uniquely identify a document.
+    :ivar identifier: Unique identifier for the document.
     :vartype identifier: str
     """
 
@@ -4173,7 +4190,7 @@ class DocumentMetaChildDocumentsItem(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
-        :keyword identifier: Uniquely identify a document.
+        :keyword identifier: Unique identifier for the document.
         :paramtype identifier: str
         """
         super(DocumentMetaChildDocumentsItem, self).__init__(**kwargs)
@@ -4259,7 +4276,7 @@ class DocumentMetaCollectionExtractor(msrest.serialization.Model):
 class DocumentMetaParentDocument(msrest.serialization.Model):
     """If this document is part of a splitted document, this attribute points to the original document that this document is splitted from.
 
-    :ivar identifier: Uniquely identify a document.
+    :ivar identifier: Unique identifier for the document.
     :vartype identifier: str
     """
 
@@ -4269,7 +4286,7 @@ class DocumentMetaParentDocument(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
-        :keyword identifier: Uniquely identify a document.
+        :keyword identifier: Unique identifier for the document.
         :paramtype identifier: str
         """
         super(DocumentMetaParentDocument, self).__init__(**kwargs)
@@ -4392,8 +4409,11 @@ class DocumentUpdate(msrest.serialization.Model):
     :vartype is_archived: bool
     :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
     :vartype language: str
-    :ivar identifier: Specify a custom identifier for the document.
+    :ivar identifier: Deprecated in favor of ``customIdentifier``.
     :vartype identifier: str
+    :ivar custom_identifier: Specify a custom identifier for the document if you need one, not
+     required to be unique.
+    :vartype custom_identifier: str
     """
 
     _attribute_map = {
@@ -4405,6 +4425,7 @@ class DocumentUpdate(msrest.serialization.Model):
         "is_archived": {"key": "isArchived", "type": "bool"},
         "language": {"key": "language", "type": "str"},
         "identifier": {"key": "identifier", "type": "str"},
+        "custom_identifier": {"key": "customIdentifier", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -4424,8 +4445,11 @@ class DocumentUpdate(msrest.serialization.Model):
         :paramtype is_archived: bool
         :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
         :paramtype language: str
-        :keyword identifier: Specify a custom identifier for the document.
+        :keyword identifier: Deprecated in favor of ``customIdentifier``.
         :paramtype identifier: str
+        :keyword custom_identifier: Specify a custom identifier for the document if you need one, not
+         required to be unique.
+        :paramtype custom_identifier: str
         """
         super(DocumentUpdate, self).__init__(**kwargs)
         self.collection = kwargs.get("collection", None)
@@ -4436,6 +4460,7 @@ class DocumentUpdate(msrest.serialization.Model):
         self.is_archived = kwargs.get("is_archived", None)
         self.language = kwargs.get("language", None)
         self.identifier = kwargs.get("identifier", None)
+        self.custom_identifier = kwargs.get("custom_identifier", None)
 
 
 class DocumentWarning(msrest.serialization.Model):
@@ -4646,7 +4671,7 @@ class ExpectedRemunerationAnnotation(Annotation):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -4726,7 +4751,7 @@ class ExpectedRemunerationAnnotation(Annotation):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -5524,7 +5549,7 @@ class FloatAnnotation(Annotation):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -5604,7 +5629,7 @@ class FloatAnnotation(Annotation):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -6283,7 +6308,7 @@ class TextAnnotation(Annotation):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -6363,7 +6388,7 @@ class TextAnnotation(Annotation):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -6417,7 +6442,7 @@ class InvoiceDataBankAccountNumber(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -6497,7 +6522,7 @@ class InvoiceDataBankAccountNumber(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -6566,7 +6591,7 @@ class InvoiceDataBankBsb(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -6646,7 +6671,7 @@ class InvoiceDataBankBsb(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -6715,7 +6740,7 @@ class InvoiceDataBankIban(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -6795,7 +6820,7 @@ class InvoiceDataBankIban(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -6864,7 +6889,7 @@ class InvoiceDataBankSortCode(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -6944,7 +6969,7 @@ class InvoiceDataBankSortCode(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -7013,7 +7038,7 @@ class InvoiceDataBankSwift(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -7093,7 +7118,7 @@ class InvoiceDataBankSwift(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -7162,7 +7187,7 @@ class InvoiceDataBpayBillerCode(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -7242,7 +7267,7 @@ class InvoiceDataBpayBillerCode(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -7311,7 +7336,7 @@ class InvoiceDataBpayReference(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -7391,7 +7416,7 @@ class InvoiceDataBpayReference(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -7460,7 +7485,7 @@ class InvoiceDataCustomerBusinessNumber(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -7540,7 +7565,7 @@ class InvoiceDataCustomerBusinessNumber(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -7609,7 +7634,7 @@ class InvoiceDataCustomerCompanyName(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -7689,7 +7714,7 @@ class InvoiceDataCustomerCompanyName(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -7758,7 +7783,7 @@ class InvoiceDataCustomerContactName(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -7838,7 +7863,7 @@ class InvoiceDataCustomerContactName(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -7907,7 +7932,7 @@ class InvoiceDataCustomerEmail(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -7987,7 +8012,7 @@ class InvoiceDataCustomerEmail(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -8056,7 +8081,7 @@ class InvoiceDataCustomerNumber(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -8136,7 +8161,7 @@ class InvoiceDataCustomerNumber(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -8205,7 +8230,7 @@ class InvoiceDataCustomerPhoneNumber(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -8285,7 +8310,7 @@ class InvoiceDataCustomerPhoneNumber(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -8354,7 +8379,7 @@ class InvoiceDataCustomerVat(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -8434,7 +8459,7 @@ class InvoiceDataCustomerVat(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -8503,7 +8528,7 @@ class InvoiceDataInvoiceNumber(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -8583,7 +8608,7 @@ class InvoiceDataInvoiceNumber(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -8652,7 +8677,7 @@ class InvoiceDataInvoicePurchaseOrderNumber(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -8732,7 +8757,7 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -8801,7 +8826,7 @@ class InvoiceDataPaymentAmountBase(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -8881,7 +8906,7 @@ class InvoiceDataPaymentAmountBase(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -8950,7 +8975,7 @@ class InvoiceDataPaymentAmountDue(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -9030,7 +9055,7 @@ class InvoiceDataPaymentAmountDue(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -9099,7 +9124,7 @@ class InvoiceDataPaymentAmountPaid(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -9179,7 +9204,7 @@ class InvoiceDataPaymentAmountPaid(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -9248,7 +9273,7 @@ class InvoiceDataPaymentAmountTax(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -9328,7 +9353,7 @@ class InvoiceDataPaymentAmountTax(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -9397,7 +9422,7 @@ class InvoiceDataPaymentAmountTotal(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -9477,7 +9502,7 @@ class InvoiceDataPaymentAmountTotal(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -9546,7 +9571,7 @@ class InvoiceDataPaymentReference(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -9626,7 +9651,7 @@ class InvoiceDataPaymentReference(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -9695,7 +9720,7 @@ class InvoiceDataSupplierBusinessNumber(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -9775,7 +9800,7 @@ class InvoiceDataSupplierBusinessNumber(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -9844,7 +9869,7 @@ class InvoiceDataSupplierCompanyName(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -9924,7 +9949,7 @@ class InvoiceDataSupplierCompanyName(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -9993,7 +10018,7 @@ class InvoiceDataSupplierEmail(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -10073,7 +10098,7 @@ class InvoiceDataSupplierEmail(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -10142,7 +10167,7 @@ class InvoiceDataSupplierFax(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -10222,7 +10247,7 @@ class InvoiceDataSupplierFax(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -10291,7 +10316,7 @@ class InvoiceDataSupplierPhoneNumber(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -10371,7 +10396,7 @@ class InvoiceDataSupplierPhoneNumber(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -10440,7 +10465,7 @@ class InvoiceDataSupplierVat(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -10520,7 +10545,7 @@ class InvoiceDataSupplierVat(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -10589,7 +10614,7 @@ class InvoiceDataSupplierWebsite(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -10669,7 +10694,7 @@ class InvoiceDataSupplierWebsite(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -11135,6 +11160,8 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
     :vartype actions: list[~affinda.models.SearchConfigAction]
     :ivar hide_toolbar: Hide the reset/import toolbar.
     :vartype hide_toolbar: bool
+    :ivar hide_side_panel: Hide the entire side panel.
+    :vartype hide_side_panel: bool
     :ivar custom_fields_config:
     :vartype custom_fields_config: list[~affinda.models.CustomFieldConfig]
     """
@@ -11172,6 +11199,7 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         "username": {"key": "username", "type": "str"},
         "actions": {"key": "actions", "type": "[SearchConfigAction]"},
         "hide_toolbar": {"key": "hideToolbar", "type": "bool"},
+        "hide_side_panel": {"key": "hideSidePanel", "type": "bool"},
         "custom_fields_config": {"key": "customFieldsConfig", "type": "[CustomFieldConfig]"},
     }
 
@@ -11229,6 +11257,8 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         :paramtype actions: list[~affinda.models.SearchConfigAction]
         :keyword hide_toolbar: Hide the reset/import toolbar.
         :paramtype hide_toolbar: bool
+        :keyword hide_side_panel: Hide the entire side panel.
+        :paramtype hide_side_panel: bool
         :keyword custom_fields_config:
         :paramtype custom_fields_config: list[~affinda.models.CustomFieldConfig]
         """
@@ -11260,6 +11290,7 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         self.username = None
         self.actions = kwargs.get("actions", None)
         self.hide_toolbar = kwargs.get("hide_toolbar", None)
+        self.hide_side_panel = kwargs.get("hide_side_panel", None)
         self.custom_fields_config = kwargs.get("custom_fields_config", None)
 
 
@@ -12372,7 +12403,7 @@ class JobTitleAnnotation(Annotation):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -12452,7 +12483,7 @@ class JobTitleAnnotation(Annotation):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -12883,7 +12914,7 @@ class LanguageAnnotation(Annotation):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -12964,7 +12995,7 @@ class LanguageAnnotation(Annotation):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -13151,7 +13182,7 @@ class LocationAnnotation(Annotation):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -13231,7 +13262,7 @@ class LocationAnnotation(Annotation):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -13516,8 +13547,11 @@ class ManagementLevelSearchScoreComponent(msrest.serialization.Model):
 class Meta(msrest.serialization.Model):
     """Meta.
 
-    :ivar identifier: Uniquely identify a document.
+    :ivar identifier: Unique identifier for the document.
     :vartype identifier: str
+    :ivar custom_identifier: Optional identifier for the document that you can set to track the
+     document in the Affinda system.  Is not required to be unique.
+    :vartype custom_identifier: str
     :ivar file_name: Optional filename of the file.
     :vartype file_name: str
     :ivar ready: If true, the document has finished processing. Particularly useful if an endpoint
@@ -13563,6 +13597,7 @@ class Meta(msrest.serialization.Model):
 
     _attribute_map = {
         "identifier": {"key": "identifier", "type": "str"},
+        "custom_identifier": {"key": "customIdentifier", "type": "str"},
         "file_name": {"key": "fileName", "type": "str"},
         "ready": {"key": "ready", "type": "bool"},
         "ready_dt": {"key": "readyDt", "type": "iso-8601"},
@@ -13583,8 +13618,11 @@ class Meta(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
-        :keyword identifier: Uniquely identify a document.
+        :keyword identifier: Unique identifier for the document.
         :paramtype identifier: str
+        :keyword custom_identifier: Optional identifier for the document that you can set to track the
+         document in the Affinda system.  Is not required to be unique.
+        :paramtype custom_identifier: str
         :keyword file_name: Optional filename of the file.
         :paramtype file_name: str
         :keyword ready: If true, the document has finished processing. Particularly useful if an
@@ -13630,6 +13668,7 @@ class Meta(msrest.serialization.Model):
         """
         super(Meta, self).__init__(**kwargs)
         self.identifier = kwargs.get("identifier", None)
+        self.custom_identifier = kwargs.get("custom_identifier", None)
         self.file_name = kwargs.get("file_name", None)
         self.ready = kwargs.get("ready", None)
         self.ready_dt = kwargs.get("ready_dt", None)
@@ -13651,7 +13690,7 @@ class Meta(msrest.serialization.Model):
 class MetaChildDocumentsItem(msrest.serialization.Model):
     """MetaChildDocumentsItem.
 
-    :ivar identifier: Uniquely identify a document.
+    :ivar identifier: Unique identifier for the document.
     :vartype identifier: str
     """
 
@@ -13661,7 +13700,7 @@ class MetaChildDocumentsItem(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
-        :keyword identifier: Uniquely identify a document.
+        :keyword identifier: Unique identifier for the document.
         :paramtype identifier: str
         """
         super(MetaChildDocumentsItem, self).__init__(**kwargs)
@@ -13671,7 +13710,7 @@ class MetaChildDocumentsItem(msrest.serialization.Model):
 class MetaParentDocument(msrest.serialization.Model):
     """If this document is part of a splitted document, this attribute points to the original document that this document is splitted from.
 
-    :ivar identifier: Uniquely identify a document.
+    :ivar identifier: Unique identifier for the document.
     :vartype identifier: str
     """
 
@@ -13681,7 +13720,7 @@ class MetaParentDocument(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
-        :keyword identifier: Uniquely identify a document.
+        :keyword identifier: Unique identifier for the document.
         :paramtype identifier: str
         """
         super(MetaParentDocument, self).__init__(**kwargs)
@@ -13990,11 +14029,14 @@ class OrganizationValidationToolConfig(msrest.serialization.Model):
     :vartype hide_tags: bool
     :ivar hide_warnings: Hide the warnings panel.
     :vartype hide_warnings: bool
-    :ivar restrict_document_splitting: Disables the page editor after a document has been split
+    :ivar restrict_document_splitting: Disable the page editor after a document has been split
      once.
     :vartype restrict_document_splitting: bool
-    :ivar disable_currency_formatting: Disables currency formatting of decimals values.
+    :ivar disable_currency_formatting: Disable currency formatting of decimals values.
     :vartype disable_currency_formatting: bool
+    :ivar disable_edit_document_metadata: Disable editing document metadata. Makes the collection
+     selector, filename input and tags editor read only.
+    :vartype disable_edit_document_metadata: bool
     """
 
     _attribute_map = {
@@ -14007,6 +14049,7 @@ class OrganizationValidationToolConfig(msrest.serialization.Model):
         "hide_warnings": {"key": "hideWarnings", "type": "bool"},
         "restrict_document_splitting": {"key": "restrictDocumentSplitting", "type": "bool"},
         "disable_currency_formatting": {"key": "disableCurrencyFormatting", "type": "bool"},
+        "disable_edit_document_metadata": {"key": "disableEditDocumentMetadata", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
@@ -14025,11 +14068,14 @@ class OrganizationValidationToolConfig(msrest.serialization.Model):
         :paramtype hide_tags: bool
         :keyword hide_warnings: Hide the warnings panel.
         :paramtype hide_warnings: bool
-        :keyword restrict_document_splitting: Disables the page editor after a document has been split
+        :keyword restrict_document_splitting: Disable the page editor after a document has been split
          once.
         :paramtype restrict_document_splitting: bool
-        :keyword disable_currency_formatting: Disables currency formatting of decimals values.
+        :keyword disable_currency_formatting: Disable currency formatting of decimals values.
         :paramtype disable_currency_formatting: bool
+        :keyword disable_edit_document_metadata: Disable editing document metadata. Makes the
+         collection selector, filename input and tags editor read only.
+        :paramtype disable_edit_document_metadata: bool
         """
         super(OrganizationValidationToolConfig, self).__init__(**kwargs)
         self.theme = kwargs.get("theme", None)
@@ -14041,6 +14087,7 @@ class OrganizationValidationToolConfig(msrest.serialization.Model):
         self.hide_warnings = kwargs.get("hide_warnings", None)
         self.restrict_document_splitting = kwargs.get("restrict_document_splitting", None)
         self.disable_currency_formatting = kwargs.get("disable_currency_formatting", None)
+        self.disable_edit_document_metadata = kwargs.get("disable_edit_document_metadata", None)
 
 
 class PageMeta(msrest.serialization.Model):
@@ -14054,6 +14101,8 @@ class PageMeta(msrest.serialization.Model):
     :vartype page_index: int
     :ivar image: Required. The URL to the image of the page.
     :vartype image: str
+    :ivar image_translated: The URL to the translated image of the page.
+    :vartype image_translated: str
     :ivar height: Required. Height of the page's image in px.
     :vartype height: float
     :ivar width: Required. Width of the page's image in px.
@@ -14076,6 +14125,7 @@ class PageMeta(msrest.serialization.Model):
         "id": {"key": "id", "type": "int"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "image": {"key": "image", "type": "str"},
+        "image_translated": {"key": "imageTranslated", "type": "str"},
         "height": {"key": "height", "type": "float"},
         "width": {"key": "width", "type": "float"},
         "rotation": {"key": "rotation", "type": "int"},
@@ -14089,6 +14139,8 @@ class PageMeta(msrest.serialization.Model):
         :paramtype page_index: int
         :keyword image: Required. The URL to the image of the page.
         :paramtype image: str
+        :keyword image_translated: The URL to the translated image of the page.
+        :paramtype image_translated: str
         :keyword height: Required. Height of the page's image in px.
         :paramtype height: float
         :keyword width: Required. Width of the page's image in px.
@@ -14101,6 +14153,7 @@ class PageMeta(msrest.serialization.Model):
         self.id = kwargs["id"]
         self.page_index = kwargs["page_index"]
         self.image = kwargs["image"]
+        self.image_translated = kwargs.get("image_translated", None)
         self.height = kwargs["height"]
         self.width = kwargs["width"]
         self.rotation = kwargs["rotation"]
@@ -16167,6 +16220,72 @@ class ResumeDataWorkExperienceItemOccupation(msrest.serialization.Model):
         self.classification = kwargs.get("classification", None)
 
 
+class ResumeRedact(Document):
+    """ResumeRedact.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar extractor: Required. Constant filled by server.
+    :vartype extractor: str
+    :ivar meta: Required.
+    :vartype meta: ~affinda.models.DocumentMeta
+    :ivar error:
+    :vartype error: ~affinda.models.DocumentError
+    :ivar warnings:
+    :vartype warnings: list[~affinda.models.DocumentWarning]
+    :ivar data:
+    :vartype data: ~affinda.models.ResumeRedactData
+    """
+
+    _validation = {
+        "extractor": {"required": True},
+        "meta": {"required": True},
+    }
+
+    _attribute_map = {
+        "extractor": {"key": "extractor", "type": "str"},
+        "meta": {"key": "meta", "type": "DocumentMeta"},
+        "error": {"key": "error", "type": "DocumentError"},
+        "warnings": {"key": "warnings", "type": "[DocumentWarning]"},
+        "data": {"key": "data", "type": "ResumeRedactData"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword meta: Required.
+        :paramtype meta: ~affinda.models.DocumentMeta
+        :keyword error:
+        :paramtype error: ~affinda.models.DocumentError
+        :keyword warnings:
+        :paramtype warnings: list[~affinda.models.DocumentWarning]
+        :keyword data:
+        :paramtype data: ~affinda.models.ResumeRedactData
+        """
+        super(ResumeRedact, self).__init__(**kwargs)
+        self.extractor = "resume-redact"  # type: str
+        self.data = kwargs.get("data", None)
+
+
+class ResumeRedactData(msrest.serialization.Model):
+    """ResumeRedactData.
+
+    :ivar redacted_pdf: URL to download the redacted resume.
+    :vartype redacted_pdf: str
+    """
+
+    _attribute_map = {
+        "redacted_pdf": {"key": "redactedPdf", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword redacted_pdf: URL to download the redacted resume.
+        :paramtype redacted_pdf: str
+        """
+        super(ResumeRedactData, self).__init__(**kwargs)
+        self.redacted_pdf = kwargs.get("redacted_pdf", None)
+
+
 class ResumeSearch(msrest.serialization.Model):
     """ResumeSearch.
 
@@ -16271,6 +16390,8 @@ class ResumeSearchConfig(msrest.serialization.Model):
     :vartype actions: list[~affinda.models.SearchConfigAction]
     :ivar hide_toolbar: Hide the reset/import toolbar.
     :vartype hide_toolbar: bool
+    :ivar hide_side_panel: Hide the entire side panel.
+    :vartype hide_side_panel: bool
     :ivar custom_fields_config:
     :vartype custom_fields_config: list[~affinda.models.CustomFieldConfig]
     """
@@ -16308,6 +16429,7 @@ class ResumeSearchConfig(msrest.serialization.Model):
         "username": {"key": "username", "type": "str"},
         "actions": {"key": "actions", "type": "[SearchConfigAction]"},
         "hide_toolbar": {"key": "hideToolbar", "type": "bool"},
+        "hide_side_panel": {"key": "hideSidePanel", "type": "bool"},
         "custom_fields_config": {"key": "customFieldsConfig", "type": "[CustomFieldConfig]"},
     }
 
@@ -16365,6 +16487,8 @@ class ResumeSearchConfig(msrest.serialization.Model):
         :paramtype actions: list[~affinda.models.SearchConfigAction]
         :keyword hide_toolbar: Hide the reset/import toolbar.
         :paramtype hide_toolbar: bool
+        :keyword hide_side_panel: Hide the entire side panel.
+        :paramtype hide_side_panel: bool
         :keyword custom_fields_config:
         :paramtype custom_fields_config: list[~affinda.models.CustomFieldConfig]
         """
@@ -16396,6 +16520,7 @@ class ResumeSearchConfig(msrest.serialization.Model):
         self.username = None
         self.actions = kwargs.get("actions", None)
         self.hide_toolbar = kwargs.get("hide_toolbar", None)
+        self.hide_side_panel = kwargs.get("hide_side_panel", None)
         self.custom_fields_config = kwargs.get("custom_fields_config", None)
 
 
@@ -17872,7 +17997,7 @@ class RowAnnotation(Annotation):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -17952,7 +18077,7 @@ class RowAnnotation(Annotation):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -18163,7 +18288,7 @@ class SkillAnnotation(Annotation):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -18244,7 +18369,7 @@ class SkillAnnotation(Annotation):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -18431,7 +18556,7 @@ class TableAnnotation(Annotation):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -18511,7 +18636,7 @@ class TableAnnotation(Annotation):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -19120,11 +19245,14 @@ class ValidationToolConfig(msrest.serialization.Model):
     :vartype hide_tags: bool
     :ivar hide_warnings: Hide the warnings panel.
     :vartype hide_warnings: bool
-    :ivar restrict_document_splitting: Disables the page editor after a document has been split
+    :ivar restrict_document_splitting: Disable the page editor after a document has been split
      once.
     :vartype restrict_document_splitting: bool
-    :ivar disable_currency_formatting: Disables currency formatting of decimals values.
+    :ivar disable_currency_formatting: Disable currency formatting of decimals values.
     :vartype disable_currency_formatting: bool
+    :ivar disable_edit_document_metadata: Disable editing document metadata. Makes the collection
+     selector, filename input and tags editor read only.
+    :vartype disable_edit_document_metadata: bool
     """
 
     _attribute_map = {
@@ -19137,6 +19265,7 @@ class ValidationToolConfig(msrest.serialization.Model):
         "hide_warnings": {"key": "hideWarnings", "type": "bool"},
         "restrict_document_splitting": {"key": "restrictDocumentSplitting", "type": "bool"},
         "disable_currency_formatting": {"key": "disableCurrencyFormatting", "type": "bool"},
+        "disable_edit_document_metadata": {"key": "disableEditDocumentMetadata", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
@@ -19155,11 +19284,14 @@ class ValidationToolConfig(msrest.serialization.Model):
         :paramtype hide_tags: bool
         :keyword hide_warnings: Hide the warnings panel.
         :paramtype hide_warnings: bool
-        :keyword restrict_document_splitting: Disables the page editor after a document has been split
+        :keyword restrict_document_splitting: Disable the page editor after a document has been split
          once.
         :paramtype restrict_document_splitting: bool
-        :keyword disable_currency_formatting: Disables currency formatting of decimals values.
+        :keyword disable_currency_formatting: Disable currency formatting of decimals values.
         :paramtype disable_currency_formatting: bool
+        :keyword disable_edit_document_metadata: Disable editing document metadata. Makes the
+         collection selector, filename input and tags editor read only.
+        :paramtype disable_edit_document_metadata: bool
         """
         super(ValidationToolConfig, self).__init__(**kwargs)
         self.theme = kwargs.get("theme", None)
@@ -19171,6 +19303,7 @@ class ValidationToolConfig(msrest.serialization.Model):
         self.hide_warnings = kwargs.get("hide_warnings", None)
         self.restrict_document_splitting = kwargs.get("restrict_document_splitting", None)
         self.disable_currency_formatting = kwargs.get("disable_currency_formatting", None)
+        self.disable_edit_document_metadata = kwargs.get("disable_edit_document_metadata", None)
 
 
 class Workspace(msrest.serialization.Model):
@@ -19658,7 +19791,7 @@ class YearsExperienceAnnotation(Annotation):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Uniquely identify a document.
+    :ivar document: Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -19738,7 +19871,7 @@ class YearsExperienceAnnotation(Annotation):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Uniquely identify a document.
+        :keyword document: Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int

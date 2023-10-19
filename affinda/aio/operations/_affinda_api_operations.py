@@ -1278,6 +1278,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         ready: Optional[bool] = None,
         validatable: Optional[bool] = None,
         has_challenges: Optional[bool] = None,
+        custom_identifier: Optional[str] = None,
         **kwargs: Any,
     ) -> _models.PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema:
         """Get list of all documents.
@@ -1322,6 +1323,9 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type validatable: bool
         :param has_challenges: Filter for documents with challenges. Default value is None.
         :type has_challenges: bool
+        :param custom_identifier: Filter for documents with this custom identifier. Default value is
+         None.
+        :type custom_identifier: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)
@@ -1364,6 +1368,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             ready=ready,
             validatable=validatable,
             has_challenges=has_challenges,
+            custom_identifier=custom_identifier,
             template_url=self.get_all_documents.metadata["url"],
             headers=_headers,
             params=_params,
@@ -1404,6 +1409,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         workspace: Optional[str] = None,
         wait: Optional[bool] = True,
         identifier: Optional[str] = None,
+        custom_identifier: Optional[str] = None,
         file_name: Optional[str] = None,
         expiry_time: Optional[datetime.datetime] = None,
         language: Optional[str] = None,
@@ -1430,8 +1436,11 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type workspace: str
         :param wait:  Default value is True.
         :type wait: bool
-        :param identifier: Specify a custom identifier for the document. Default value is None.
+        :param identifier: Deprecated in favor of ``customIdentifier``. Default value is None.
         :type identifier: str
+        :param custom_identifier: Specify a custom identifier for the document if you need one, not
+         required to be unique. Default value is None.
+        :type custom_identifier: str
         :param file_name:  Default value is None.
         :type file_name: str
         :param expiry_time:  Default value is None.
@@ -1478,6 +1487,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             "workspace": workspace,
             "wait": wait,
             "identifier": identifier,
+            "customIdentifier": custom_identifier,
             "fileName": file_name,
             "expiryTime": expiry_time,
             "language": language,

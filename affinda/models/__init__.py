@@ -309,6 +309,8 @@ try:
     from ._models_py3 import ResumeDataWorkExperienceItem
     from ._models_py3 import ResumeDataWorkExperienceItemDates
     from ._models_py3 import ResumeDataWorkExperienceItemOccupation
+    from ._models_py3 import ResumeRedact
+    from ._models_py3 import ResumeRedactData
     from ._models_py3 import ResumeSearch
     from ._models_py3 import ResumeSearchConfig
     from ._models_py3 import ResumeSearchDetail
@@ -623,6 +625,8 @@ except (SyntaxError, ImportError):
     from ._models import ResumeDataWorkExperienceItem  # type: ignore
     from ._models import ResumeDataWorkExperienceItemDates  # type: ignore
     from ._models import ResumeDataWorkExperienceItemOccupation  # type: ignore
+    from ._models import ResumeRedact  # type: ignore
+    from ._models import ResumeRedactData  # type: ignore
     from ._models import ResumeSearch  # type: ignore
     from ._models import ResumeSearchConfig  # type: ignore
     from ._models import ResumeSearchDetail  # type: ignore
@@ -972,6 +976,8 @@ __all__ = [
     "ResumeDataWorkExperienceItem",
     "ResumeDataWorkExperienceItemDates",
     "ResumeDataWorkExperienceItemOccupation",
+    "ResumeRedact",
+    "ResumeRedactData",
     "ResumeSearch",
     "ResumeSearchConfig",
     "ResumeSearchDetail",

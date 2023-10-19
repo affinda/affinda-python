@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.12.0] - 2023-10-19
+### Added
+- Add disableEditDocumentMetadata option to validation tool config
+- Add field custom_identifier to DocumentMeta model
+- Allow specifying custom_identifier when create/update document
+
+### Deprecated
+- Deprecate writing to identifier when creating/updating document
+
 ## [4.11.0] - 2023-10-03
 ### Added
 - Add SOC group codes to classification

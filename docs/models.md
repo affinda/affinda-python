@@ -58,7 +58,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -104,7 +104,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -207,7 +207,7 @@ AnnotationUpdate.
 :ivar rectangles: x/y coordinates for the rectangles containing the data. An annotation can be
  contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: The page number within the document, starting from 0.
 :vartype page_index: int
@@ -234,7 +234,7 @@ def __init__(**kwargs)
 
 - `rectangles`: x/y coordinates for the rectangles containing the data. An annotation can
 be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: The page number within the document, starting from 0.
 - `raw`: Raw data extracted from the before any post-processing.
 - `parsed`: 
@@ -257,7 +257,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: x/y coordinates for the rectangles containing the data. An annotation can be
  contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: The page number within the document, starting from 0.
 :vartype page_index: int
@@ -286,7 +286,7 @@ def __init__(**kwargs)
 
 - `rectangles`: x/y coordinates for the rectangles containing the data. An annotation can
 be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: The page number within the document, starting from 0.
 - `raw`: Raw data extracted from the before any post-processing.
 - `parsed`: 
@@ -310,7 +310,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: x/y coordinates for the rectangles containing the data. An annotation can be
  contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Required. Uniquely identify a document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -337,7 +337,7 @@ def __init__(**kwargs)
 
 - `rectangles`: x/y coordinates for the rectangles containing the data. An annotation can
 be contained within multiple rectangles.
-- `document`: Required. Uniquely identify a document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `data_point`: Required. Data point's identifier.
 - `raw`: Raw data extracted from the before any post-processing.
@@ -1987,7 +1987,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -2035,7 +2035,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -2841,7 +2841,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -2889,7 +2889,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -2994,7 +2994,7 @@ class Document(msrest.serialization.Model)
 Document.
 
 You probably want to use the sub-classes and not this class directly. Known
-sub-classes are: Invoice, JobDescription, Resume.
+sub-classes are: Invoice, JobDescription, Resume, ResumeRedact.
 
 All required parameters must be populated in order to send to Azure.
 
@@ -3049,8 +3049,11 @@ DocumentCreate.
  "false", will return an empty data object which can be polled at the GET endpoint until
  processing is complete.
 :vartype wait: bool
-:ivar identifier: Specify a custom identifier for the document.
+:ivar identifier: Deprecated in favor of ``customIdentifier``.
 :vartype identifier: str
+:ivar custom_identifier: Specify a custom identifier for the document if you need one, not
+ required to be unique.
+:vartype custom_identifier: str
 :ivar file_name: Optional filename of the file.
 :vartype file_name: str
 :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
@@ -3087,7 +3090,9 @@ PNG, JPG.
 - `wait`: If "true" (default), will return a response only after processing has completed.
 If "false", will return an empty data object which can be polled at the GET endpoint until
 processing is complete.
-- `identifier`: Specify a custom identifier for the document.
+- `identifier`: Deprecated in favor of ``customIdentifier``.
+- `custom_identifier`: Specify a custom identifier for the document if you need one, not
+required to be unique.
 - `file_name`: Optional filename of the file.
 - `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
@@ -3166,8 +3171,11 @@ DocumentMeta.
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar identifier: Required. Uniquely identify a document.
+:ivar identifier: Required. Unique identifier for the document.
 :vartype identifier: str
+:ivar custom_identifier: Optional identifier for the document that you can set to track the
+ document in the Affinda system.  Is not required to be unique.
+:vartype custom_identifier: str
 :ivar file_name: Optional filename of the file.
 :vartype file_name: str
 :ivar ready: If true, the document has finished processing. Particularly useful if an endpoint
@@ -3246,7 +3254,9 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `identifier`: Required. Uniquely identify a document.
+- `identifier`: Required. Unique identifier for the document.
+- `custom_identifier`: Optional identifier for the document that you can set to track the
+document in the Affinda system.  Is not required to be unique.
 - `file_name`: Optional filename of the file.
 - `ready`: If true, the document has finished processing. Particularly useful if an
 endpoint request specified wait=False, when polling use this variable to determine when to stop
@@ -3296,7 +3306,7 @@ class DocumentMetaChildDocumentsItem(msrest.serialization.Model)
 
 DocumentMetaChildDocumentsItem.
 
-:ivar identifier: Uniquely identify a document.
+:ivar identifier: Unique identifier for the document.
 :vartype identifier: str
 
 <a id="models._models.DocumentMetaChildDocumentsItem.__init__"></a>
@@ -3309,7 +3319,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `identifier`: Uniquely identify a document.
+- `identifier`: Unique identifier for the document.
 
 <a id="models._models.DocumentMetaCollection"></a>
 
@@ -3388,7 +3398,7 @@ class DocumentMetaParentDocument(msrest.serialization.Model)
 
 If this document is part of a splitted document, this attribute points to the original document that this document is splitted from.
 
-:ivar identifier: Uniquely identify a document.
+:ivar identifier: Unique identifier for the document.
 :vartype identifier: str
 
 <a id="models._models.DocumentMetaParentDocument.__init__"></a>
@@ -3401,7 +3411,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `identifier`: Uniquely identify a document.
+- `identifier`: Unique identifier for the document.
 
 <a id="models._models.DocumentMetaWorkspace"></a>
 
@@ -3520,8 +3530,11 @@ DocumentUpdate.
 :vartype is_archived: bool
 :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 :vartype language: str
-:ivar identifier: Specify a custom identifier for the document.
+:ivar identifier: Deprecated in favor of ``customIdentifier``.
 :vartype identifier: str
+:ivar custom_identifier: Specify a custom identifier for the document if you need one, not
+ required to be unique.
+:vartype custom_identifier: str
 
 <a id="models._models.DocumentUpdate.__init__"></a>
 
@@ -3541,7 +3554,9 @@ deleted.  Defaults to no expiry.
 - `is_rejected`: 
 - `is_archived`: 
 - `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-- `identifier`: Specify a custom identifier for the document.
+- `identifier`: Deprecated in favor of ``customIdentifier``.
+- `custom_identifier`: Specify a custom identifier for the document if you need one, not
+required to be unique.
 
 <a id="models._models.DocumentWarning"></a>
 
@@ -3737,7 +3752,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -3785,7 +3800,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -4404,7 +4419,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -4452,7 +4467,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -4937,7 +4952,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -4985,7 +5000,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5030,7 +5045,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -5078,7 +5093,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5123,7 +5138,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -5171,7 +5186,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5216,7 +5231,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -5264,7 +5279,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5309,7 +5324,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -5357,7 +5372,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5402,7 +5417,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -5450,7 +5465,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5495,7 +5510,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -5543,7 +5558,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5588,7 +5603,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -5636,7 +5651,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5682,7 +5697,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -5730,7 +5745,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5776,7 +5791,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -5824,7 +5839,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5869,7 +5884,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -5917,7 +5932,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5962,7 +5977,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -6010,7 +6025,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -6055,7 +6070,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -6103,7 +6118,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -6149,7 +6164,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -6197,7 +6212,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -6242,7 +6257,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -6290,7 +6305,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -6335,7 +6350,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -6383,7 +6398,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -6429,7 +6444,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -6477,7 +6492,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -6522,7 +6537,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -6570,7 +6585,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -6615,7 +6630,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -6663,7 +6678,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -6708,7 +6723,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -6756,7 +6771,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -6801,7 +6816,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -6849,7 +6864,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -6894,7 +6909,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -6942,7 +6957,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -6987,7 +7002,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -7035,7 +7050,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -7081,7 +7096,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -7129,7 +7144,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -7175,7 +7190,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -7223,7 +7238,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -7268,7 +7283,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -7316,7 +7331,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -7361,7 +7376,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -7409,7 +7424,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -7455,7 +7470,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -7503,7 +7518,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -7548,7 +7563,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -7596,7 +7611,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -7641,7 +7656,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -7689,7 +7704,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -8012,6 +8027,8 @@ Variables are only populated by the server, and will be ignored when sending a r
 :vartype actions: list[~affinda.models.SearchConfigAction]
 :ivar hide_toolbar: Hide the reset/import toolbar.
 :vartype hide_toolbar: bool
+:ivar hide_side_panel: Hide the entire side panel.
+:vartype hide_side_panel: bool
 :ivar custom_fields_config:
 :vartype custom_fields_config: list[~affinda.models.CustomFieldConfig]
 
@@ -8052,6 +8069,7 @@ user.
 - `search_tool_theme`: Customize the theme of the embeded search tool.
 - `actions`: A list of actions to show in the dropdown in the embedded search tool.
 - `hide_toolbar`: Hide the reset/import toolbar.
+- `hide_side_panel`: Hide the entire side panel.
 - `custom_fields_config`: 
 
 <a id="models._models.JobDescriptionSearchDetail"></a>
@@ -8922,7 +8940,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -8970,7 +8988,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -9312,7 +9330,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -9360,7 +9378,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -9508,7 +9526,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -9556,7 +9574,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -9776,8 +9794,11 @@ class Meta(msrest.serialization.Model)
 
 Meta.
 
-:ivar identifier: Uniquely identify a document.
+:ivar identifier: Unique identifier for the document.
 :vartype identifier: str
+:ivar custom_identifier: Optional identifier for the document that you can set to track the
+ document in the Affinda system.  Is not required to be unique.
+:vartype custom_identifier: str
 :ivar file_name: Optional filename of the file.
 :vartype file_name: str
 :ivar ready: If true, the document has finished processing. Particularly useful if an endpoint
@@ -9830,7 +9851,9 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `identifier`: Uniquely identify a document.
+- `identifier`: Unique identifier for the document.
+- `custom_identifier`: Optional identifier for the document that you can set to track the
+document in the Affinda system.  Is not required to be unique.
 - `file_name`: Optional filename of the file.
 - `ready`: If true, the document has finished processing. Particularly useful if an
 endpoint request specified wait=False, when polling use this variable to determine when to stop
@@ -9868,7 +9891,7 @@ class MetaChildDocumentsItem(msrest.serialization.Model)
 
 MetaChildDocumentsItem.
 
-:ivar identifier: Uniquely identify a document.
+:ivar identifier: Unique identifier for the document.
 :vartype identifier: str
 
 <a id="models._models.MetaChildDocumentsItem.__init__"></a>
@@ -9881,7 +9904,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `identifier`: Uniquely identify a document.
+- `identifier`: Unique identifier for the document.
 
 <a id="models._models.MetaParentDocument"></a>
 
@@ -9893,7 +9916,7 @@ class MetaParentDocument(msrest.serialization.Model)
 
 If this document is part of a splitted document, this attribute points to the original document that this document is splitted from.
 
-:ivar identifier: Uniquely identify a document.
+:ivar identifier: Unique identifier for the document.
 :vartype identifier: str
 
 <a id="models._models.MetaParentDocument.__init__"></a>
@@ -9906,7 +9929,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `identifier`: Uniquely identify a document.
+- `identifier`: Unique identifier for the document.
 
 <a id="models._models.OccupationGroup"></a>
 
@@ -10174,11 +10197,14 @@ Configuration of the embeddable validation tool.
 :vartype hide_tags: bool
 :ivar hide_warnings: Hide the warnings panel.
 :vartype hide_warnings: bool
-:ivar restrict_document_splitting: Disables the page editor after a document has been split
+:ivar restrict_document_splitting: Disable the page editor after a document has been split
  once.
 :vartype restrict_document_splitting: bool
-:ivar disable_currency_formatting: Disables currency formatting of decimals values.
+:ivar disable_currency_formatting: Disable currency formatting of decimals values.
 :vartype disable_currency_formatting: bool
+:ivar disable_edit_document_metadata: Disable editing document metadata. Makes the collection
+ selector, filename input and tags editor read only.
+:vartype disable_edit_document_metadata: bool
 
 <a id="models._models.OrganizationValidationToolConfig.__init__"></a>
 
@@ -10197,9 +10223,11 @@ def __init__(**kwargs)
 - `hide_filename`: Hide the filename input.
 - `hide_tags`: Hide the tags editor.
 - `hide_warnings`: Hide the warnings panel.
-- `restrict_document_splitting`: Disables the page editor after a document has been split
+- `restrict_document_splitting`: Disable the page editor after a document has been split
 once.
-- `disable_currency_formatting`: Disables currency formatting of decimals values.
+- `disable_currency_formatting`: Disable currency formatting of decimals values.
+- `disable_edit_document_metadata`: Disable editing document metadata. Makes the
+collection selector, filename input and tags editor read only.
 
 <a id="models._models.PageMeta"></a>
 
@@ -10219,6 +10247,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar image: Required. The URL to the image of the page.
 :vartype image: str
+:ivar image_translated: The URL to the translated image of the page.
+:vartype image_translated: str
 :ivar height: Required. Height of the page's image in px.
 :vartype height: float
 :ivar width: Required. Width of the page's image in px.
@@ -10240,6 +10270,7 @@ def __init__(**kwargs)
 - `id`: Required.
 - `page_index`: Required. Page number within the document, starts from 0.
 - `image`: Required. The URL to the image of the page.
+- `image_translated`: The URL to the translated image of the page.
 - `height`: Required. Height of the page's image in px.
 - `width`: Required. Width of the page's image in px.
 - `rotation`: Required. The degree of rotation applied to the page. Greater than 0
@@ -11942,6 +11973,69 @@ match exists.
 - `management_level`: Known values are: "None", "Low", "Mid", "Upper".
 - `classification`: 
 
+<a id="models._models.ResumeRedact"></a>
+
+## ResumeRedact Objects
+
+```python
+class ResumeRedact(Document)
+```
+
+ResumeRedact.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar extractor: Required. Constant filled by server.
+:vartype extractor: str
+:ivar meta: Required.
+:vartype meta: ~affinda.models.DocumentMeta
+:ivar error:
+:vartype error: ~affinda.models.DocumentError
+:ivar warnings:
+:vartype warnings: list[~affinda.models.DocumentWarning]
+:ivar data:
+:vartype data: ~affinda.models.ResumeRedactData
+
+<a id="models._models.ResumeRedact.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `meta`: Required.
+- `error`: 
+- `warnings`: 
+- `data`: 
+
+<a id="models._models.ResumeRedactData"></a>
+
+## ResumeRedactData Objects
+
+```python
+class ResumeRedactData(msrest.serialization.Model)
+```
+
+ResumeRedactData.
+
+:ivar redacted_pdf: URL to download the redacted resume.
+:vartype redacted_pdf: str
+
+<a id="models._models.ResumeRedactData.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `redacted_pdf`: URL to download the redacted resume.
+
 <a id="models._models.ResumeSearch"></a>
 
 ## ResumeSearch Objects
@@ -12046,6 +12140,8 @@ Variables are only populated by the server, and will be ignored when sending a r
 :vartype actions: list[~affinda.models.SearchConfigAction]
 :ivar hide_toolbar: Hide the reset/import toolbar.
 :vartype hide_toolbar: bool
+:ivar hide_side_panel: Hide the entire side panel.
+:vartype hide_side_panel: bool
 :ivar custom_fields_config:
 :vartype custom_fields_config: list[~affinda.models.CustomFieldConfig]
 
@@ -12086,6 +12182,7 @@ user.
 - `search_tool_theme`: Customize the theme of the embeded search tool.
 - `actions`: A list of actions to show in the dropdown in the embedded search tool.
 - `hide_toolbar`: Hide the reset/import toolbar.
+- `hide_side_panel`: Hide the entire side panel.
 - `custom_fields_config`: 
 
 <a id="models._models.ResumeSearchDetail"></a>
@@ -13238,7 +13335,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -13286,7 +13383,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -13452,7 +13549,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -13500,7 +13597,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -13648,7 +13745,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -13696,7 +13793,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -14215,11 +14312,14 @@ Configuration of the embeddable validation tool.
 :vartype hide_tags: bool
 :ivar hide_warnings: Hide the warnings panel.
 :vartype hide_warnings: bool
-:ivar restrict_document_splitting: Disables the page editor after a document has been split
+:ivar restrict_document_splitting: Disable the page editor after a document has been split
  once.
 :vartype restrict_document_splitting: bool
-:ivar disable_currency_formatting: Disables currency formatting of decimals values.
+:ivar disable_currency_formatting: Disable currency formatting of decimals values.
 :vartype disable_currency_formatting: bool
+:ivar disable_edit_document_metadata: Disable editing document metadata. Makes the collection
+ selector, filename input and tags editor read only.
+:vartype disable_edit_document_metadata: bool
 
 <a id="models._models.ValidationToolConfig.__init__"></a>
 
@@ -14238,9 +14338,11 @@ def __init__(**kwargs)
 - `hide_filename`: Hide the filename input.
 - `hide_tags`: Hide the tags editor.
 - `hide_warnings`: Hide the warnings panel.
-- `restrict_document_splitting`: Disables the page editor after a document has been split
+- `restrict_document_splitting`: Disable the page editor after a document has been split
 once.
-- `disable_currency_formatting`: Disables currency formatting of decimals values.
+- `disable_currency_formatting`: Disable currency formatting of decimals values.
+- `disable_edit_document_metadata`: Disable editing document metadata. Makes the
+collection selector, filename input and tags editor read only.
 
 <a id="models._models.Workspace"></a>
 
@@ -14636,7 +14738,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Uniquely identify a document.
+:ivar document: Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -14684,7 +14786,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Uniquely identify a document.
+- `document`: Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.

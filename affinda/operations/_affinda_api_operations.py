@@ -569,6 +569,7 @@ def build_get_all_documents_request(
     ready = kwargs.pop('ready', _params.pop('ready', None))  # type: Optional[bool]
     validatable = kwargs.pop('validatable', _params.pop('validatable', None))  # type: Optional[bool]
     has_challenges = kwargs.pop('has_challenges', _params.pop('has_challenges', None))  # type: Optional[bool]
+    custom_identifier = kwargs.pop('custom_identifier', _params.pop('custom_identifier', None))  # type: Optional[str]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
@@ -607,6 +608,8 @@ def build_get_all_documents_request(
         _params['validatable'] = _SERIALIZER.query("validatable", validatable, 'bool')
     if has_challenges is not None:
         _params['has_challenges'] = _SERIALIZER.query("has_challenges", has_challenges, 'bool')
+    if custom_identifier is not None:
+        _params['custom_identifier'] = _SERIALIZER.query("custom_identifier", custom_identifier, 'str')
 
     # Construct headers
     _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
@@ -4305,6 +4308,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         ready=None,  # type: Optional[bool]
         validatable=None,  # type: Optional[bool]
         has_challenges=None,  # type: Optional[bool]
+        custom_identifier=None,  # type: Optional[str]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema
@@ -4350,6 +4354,9 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type validatable: bool
         :param has_challenges: Filter for documents with challenges. Default value is None.
         :type has_challenges: bool
+        :param custom_identifier: Filter for documents with this custom identifier. Default value is
+         None.
+        :type custom_identifier: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)
@@ -4392,6 +4399,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             ready=ready,
             validatable=validatable,
             has_challenges=has_challenges,
+            custom_identifier=custom_identifier,
             template_url=self.get_all_documents.metadata["url"],
             headers=_headers,
             params=_params,
@@ -4432,6 +4440,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         workspace=None,  # type: Optional[str]
         wait=True,  # type: Optional[bool]
         identifier=None,  # type: Optional[str]
+        custom_identifier=None,  # type: Optional[str]
         file_name=None,  # type: Optional[str]
         expiry_time=None,  # type: Optional[datetime.datetime]
         language=None,  # type: Optional[str]
@@ -4459,8 +4468,11 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type workspace: str
         :param wait:  Default value is True.
         :type wait: bool
-        :param identifier: Specify a custom identifier for the document. Default value is None.
+        :param identifier: Deprecated in favor of ``customIdentifier``. Default value is None.
         :type identifier: str
+        :param custom_identifier: Specify a custom identifier for the document if you need one, not
+         required to be unique. Default value is None.
+        :type custom_identifier: str
         :param file_name:  Default value is None.
         :type file_name: str
         :param expiry_time:  Default value is None.
@@ -4507,6 +4519,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             "workspace": workspace,
             "wait": wait,
             "identifier": identifier,
+            "customIdentifier": custom_identifier,
             "fileName": file_name,
             "expiryTime": expiry_time,
             "language": language,

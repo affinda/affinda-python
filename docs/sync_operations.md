@@ -492,6 +492,7 @@ def get_all_documents(offset=None,
                       ready=None,
                       validatable=None,
                       has_challenges=None,
+                      custom_identifier=None,
                       **kwargs)
 ```
 
@@ -523,6 +524,8 @@ value is None.
 - `ready` (`bool`): Filter by ready status. Default value is None.
 - `validatable` (`bool`): Filter for validatable documents. Default value is None.
 - `has_challenges` (`bool`): Filter for documents with challenges. Default value is None.
+- `custom_identifier` (`str`): Filter for documents with this custom identifier. Default value is
+None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -546,6 +549,7 @@ def create_document(file=None,
                     workspace=None,
                     wait=True,
                     identifier=None,
+                    custom_identifier=None,
                     file_name=None,
                     expiry_time=None,
                     language=None,
@@ -569,7 +573,9 @@ to check processing status and retrieve results.:code:`<br/>`.
 - `collection` (`str`): Default value is None.
 - `workspace` (`str`): Default value is None.
 - `wait` (`bool`): Default value is True.
-- `identifier` (`str`): Specify a custom identifier for the document. Default value is None.
+- `identifier` (`str`): Deprecated in favor of ``customIdentifier``. Default value is None.
+- `custom_identifier` (`str`): Specify a custom identifier for the document if you need one, not
+required to be unique. Default value is None.
 - `file_name` (`str`): Default value is None.
 - `expiry_time` (`~datetime.datetime`): Default value is None.
 - `language` (`str`): Default value is None.
