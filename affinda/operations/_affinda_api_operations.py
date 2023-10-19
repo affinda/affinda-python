@@ -46,6 +46,7 @@ def build_get_all_resumes_request(
 
     offset = kwargs.pop('offset', _params.pop('offset', None))  # type: Optional[int]
     limit = kwargs.pop('limit', _params.pop('limit', 300))  # type: Optional[int]
+    custom_identifier = kwargs.pop('custom_identifier', _params.pop('custom_identifier', None))  # type: Optional[str]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
@@ -56,6 +57,8 @@ def build_get_all_resumes_request(
         _params['offset'] = _SERIALIZER.query("offset", offset, 'int', minimum=0)
     if limit is not None:
         _params['limit'] = _SERIALIZER.query("limit", limit, 'int', maximum=300, minimum=1)
+    if custom_identifier is not None:
+        _params['custom_identifier'] = _SERIALIZER.query("custom_identifier", custom_identifier, 'str')
 
     # Construct headers
     _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
@@ -197,6 +200,7 @@ def build_get_all_redacted_resumes_request(
 
     offset = kwargs.pop('offset', _params.pop('offset', None))  # type: Optional[int]
     limit = kwargs.pop('limit', _params.pop('limit', 300))  # type: Optional[int]
+    custom_identifier = kwargs.pop('custom_identifier', _params.pop('custom_identifier', None))  # type: Optional[str]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
@@ -207,6 +211,8 @@ def build_get_all_redacted_resumes_request(
         _params['offset'] = _SERIALIZER.query("offset", offset, 'int', minimum=0)
     if limit is not None:
         _params['limit'] = _SERIALIZER.query("limit", limit, 'int', maximum=300, minimum=1)
+    if custom_identifier is not None:
+        _params['custom_identifier'] = _SERIALIZER.query("custom_identifier", custom_identifier, 'str')
 
     # Construct headers
     _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
@@ -310,6 +316,7 @@ def build_get_all_invoices_request(
 
     offset = kwargs.pop('offset', _params.pop('offset', None))  # type: Optional[int]
     limit = kwargs.pop('limit', _params.pop('limit', 300))  # type: Optional[int]
+    custom_identifier = kwargs.pop('custom_identifier', _params.pop('custom_identifier', None))  # type: Optional[str]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
@@ -320,6 +327,8 @@ def build_get_all_invoices_request(
         _params['offset'] = _SERIALIZER.query("offset", offset, 'int', minimum=0)
     if limit is not None:
         _params['limit'] = _SERIALIZER.query("limit", limit, 'int', maximum=300, minimum=1)
+    if custom_identifier is not None:
+        _params['custom_identifier'] = _SERIALIZER.query("custom_identifier", custom_identifier, 'str')
 
     # Construct headers
     _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
@@ -423,6 +432,7 @@ def build_get_all_job_descriptions_request(
 
     offset = kwargs.pop('offset', _params.pop('offset', None))  # type: Optional[int]
     limit = kwargs.pop('limit', _params.pop('limit', 300))  # type: Optional[int]
+    custom_identifier = kwargs.pop('custom_identifier', _params.pop('custom_identifier', None))  # type: Optional[str]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
@@ -433,6 +443,8 @@ def build_get_all_job_descriptions_request(
         _params['offset'] = _SERIALIZER.query("offset", offset, 'int', minimum=0)
     if limit is not None:
         _params['limit'] = _SERIALIZER.query("limit", limit, 'int', maximum=300, minimum=1)
+    if custom_identifier is not None:
+        _params['custom_identifier'] = _SERIALIZER.query("custom_identifier", custom_identifier, 'str')
 
     # Construct headers
     _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
@@ -1325,6 +1337,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         self,
         offset=None,  # type: Optional[int]
         limit=300,  # type: Optional[int]
+        custom_identifier=None,  # type: Optional[str]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema
@@ -1337,6 +1350,9 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type offset: int
         :param limit: The numbers of results to return. Default value is 300.
         :type limit: int
+        :param custom_identifier: Filter for documents with this custom identifier. Default value is
+         None.
+        :type custom_identifier: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)
@@ -1365,6 +1381,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         request = build_get_all_resumes_request(
             offset=offset,
             limit=limit,
+            custom_identifier=custom_identifier,
             template_url=self.get_all_resumes.metadata["url"],
             headers=_headers,
             params=_params,
@@ -1402,6 +1419,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         url=None,  # type: Optional[str]
         data=None,  # type: Optional[_models.ResumeData]
         identifier=None,  # type: Optional[str]
+        custom_identifier=None,  # type: Optional[str]
         file_name=None,  # type: Optional[str]
         wait=True,  # type: Optional[bool]
         reject_duplicates=None,  # type: Optional[bool]
@@ -1428,8 +1446,11 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type url: str
         :param data:  Default value is None.
         :type data: ~affinda.models.ResumeData
-        :param identifier:  Default value is None.
+        :param identifier: Deprecated in favor of ``customIdentifier``. Default value is None.
         :type identifier: str
+        :param custom_identifier: Specify a custom identifier for the document if you need one, not
+         required to be unique. Default value is None.
+        :type custom_identifier: str
         :param file_name:  Default value is None.
         :type file_name: str
         :param wait:  Default value is True.
@@ -1475,6 +1496,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             "url": url,
             "data": data,
             "identifier": identifier,
+            "customIdentifier": custom_identifier,
             "fileName": file_name,
             "wait": wait,
             "rejectDuplicates": reject_duplicates,
@@ -1755,6 +1777,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         self,
         offset=None,  # type: Optional[int]
         limit=300,  # type: Optional[int]
+        custom_identifier=None,  # type: Optional[str]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema
@@ -1767,6 +1790,9 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type offset: int
         :param limit: The numbers of results to return. Default value is 300.
         :type limit: int
+        :param custom_identifier: Filter for documents with this custom identifier. Default value is
+         None.
+        :type custom_identifier: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema, or the
          result of cls(response)
@@ -1796,6 +1822,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         request = build_get_all_redacted_resumes_request(
             offset=offset,
             limit=limit,
+            custom_identifier=custom_identifier,
             template_url=self.get_all_redacted_resumes.metadata["url"],
             headers=_headers,
             params=_params,
@@ -1832,6 +1859,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         self,
         file=None,  # type: Optional[IO]
         identifier=None,  # type: Optional[str]
+        custom_identifier=None,  # type: Optional[str]
         file_name=None,  # type: Optional[str]
         url=None,  # type: Optional[str]
         language=None,  # type: Optional[str]
@@ -1854,8 +1882,11 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
         :param file:  Default value is None.
         :type file: IO
-        :param identifier:  Default value is None.
+        :param identifier: Deprecated in favor of ``customIdentifier``. Default value is None.
         :type identifier: str
+        :param custom_identifier: Specify a custom identifier for the document if you need one, not
+         required to be unique. Default value is None.
+        :type custom_identifier: str
         :param file_name:  Default value is None.
         :type file_name: str
         :param url: URL to download the resume. Default value is None.
@@ -1914,6 +1945,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         _files = {
             "file": file,
             "identifier": identifier,
+            "customIdentifier": custom_identifier,
             "fileName": file_name,
             "url": url,
             "language": language,
@@ -2097,6 +2129,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         self,
         offset=None,  # type: Optional[int]
         limit=300,  # type: Optional[int]
+        custom_identifier=None,  # type: Optional[str]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema
@@ -2109,6 +2142,9 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type offset: int
         :param limit: The numbers of results to return. Default value is 300.
         :type limit: int
+        :param custom_identifier: Filter for documents with this custom identifier. Default value is
+         None.
+        :type custom_identifier: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)
@@ -2137,6 +2173,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         request = build_get_all_invoices_request(
             offset=offset,
             limit=limit,
+            custom_identifier=custom_identifier,
             template_url=self.get_all_invoices.metadata["url"],
             headers=_headers,
             params=_params,
@@ -2173,6 +2210,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         file=None,  # type: Optional[IO]
         url=None,  # type: Optional[str]
         identifier=None,  # type: Optional[str]
+        custom_identifier=None,  # type: Optional[str]
         file_name=None,  # type: Optional[str]
         wait=True,  # type: Optional[bool]
         reject_duplicates=None,  # type: Optional[bool]
@@ -2194,8 +2232,11 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type file: IO
         :param url: URL to download the invoice. Default value is None.
         :type url: str
-        :param identifier:  Default value is None.
+        :param identifier: Deprecated in favor of ``customIdentifier``. Default value is None.
         :type identifier: str
+        :param custom_identifier: Specify a custom identifier for the document if you need one, not
+         required to be unique. Default value is None.
+        :type custom_identifier: str
         :param file_name:  Default value is None.
         :type file_name: str
         :param wait:  Default value is True.
@@ -2240,6 +2281,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             "file": file,
             "url": url,
             "identifier": identifier,
+            "customIdentifier": custom_identifier,
             "fileName": file_name,
             "wait": wait,
             "rejectDuplicates": reject_duplicates,
@@ -2418,6 +2460,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         self,
         offset=None,  # type: Optional[int]
         limit=300,  # type: Optional[int]
+        custom_identifier=None,  # type: Optional[str]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema
@@ -2430,6 +2473,9 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type offset: int
         :param limit: The numbers of results to return. Default value is 300.
         :type limit: int
+        :param custom_identifier: Filter for documents with this custom identifier. Default value is
+         None.
+        :type custom_identifier: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema, or the result
          of cls(response)
@@ -2458,6 +2504,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         request = build_get_all_job_descriptions_request(
             offset=offset,
             limit=limit,
+            custom_identifier=custom_identifier,
             template_url=self.get_all_job_descriptions.metadata["url"],
             headers=_headers,
             params=_params,
@@ -2496,6 +2543,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         url=None,  # type: Optional[str]
         data=None,  # type: Optional[_models.JobDescriptionDataUpdate]
         identifier=None,  # type: Optional[str]
+        custom_identifier=None,  # type: Optional[str]
         file_name=None,  # type: Optional[str]
         wait=True,  # type: Optional[bool]
         reject_duplicates=None,  # type: Optional[bool]
@@ -2523,8 +2571,11 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type url: str
         :param data:  Default value is None.
         :type data: ~affinda.models.JobDescriptionDataUpdate
-        :param identifier:  Default value is None.
+        :param identifier: Deprecated in favor of ``customIdentifier``. Default value is None.
         :type identifier: str
+        :param custom_identifier: Specify a custom identifier for the document if you need one, not
+         required to be unique. Default value is None.
+        :type custom_identifier: str
         :param file_name:  Default value is None.
         :type file_name: str
         :param wait:  Default value is True.
@@ -2570,6 +2621,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             "url": url,
             "data": data,
             "identifier": identifier,
+            "customIdentifier": custom_identifier,
             "fileName": file_name,
             "wait": wait,
             "rejectDuplicates": reject_duplicates,

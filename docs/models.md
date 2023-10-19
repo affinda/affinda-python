@@ -4448,8 +4448,11 @@ InvoiceRequestBody.
 :vartype file: IO
 :ivar url: URL to download the invoice.
 :vartype url: str
-:ivar identifier: A random string that uniquely identify the resource.
+:ivar identifier: Deprecated in favor of ``customIdentifier``.
 :vartype identifier: str
+:ivar custom_identifier: Specify a custom identifier for the document if you need one, not
+ required to be unique.
+:vartype custom_identifier: str
 :ivar file_name: Optional filename of the file.
 :vartype file_name: str
 :ivar wait: If "true" (default), will return a response only after processing has completed. If
@@ -4484,7 +4487,9 @@ def __init__(**kwargs)
 - `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
 PNG, JPG.
 - `url`: URL to download the invoice.
-- `identifier`: A random string that uniquely identify the resource.
+- `identifier`: Deprecated in favor of ``customIdentifier``.
+- `custom_identifier`: Specify a custom identifier for the document if you need one, not
+required to be unique.
 - `file_name`: Optional filename of the file.
 - `wait`: If "true" (default), will return a response only after processing has completed.
 If "false", will return an empty data object which can be polled at the GET endpoint until
@@ -4710,8 +4715,11 @@ JobDescriptionRequestBody.
 :vartype url: str
 :ivar data: A JSON-encoded string of the ``JobDescriptionData`` object.
 :vartype data: ~affinda.models.JobDescriptionDataUpdate
-:ivar identifier: A random string that uniquely identify the resource.
+:ivar identifier: Deprecated in favor of ``customIdentifier``.
 :vartype identifier: str
+:ivar custom_identifier: Specify a custom identifier for the document if you need one, not
+ required to be unique.
+:vartype custom_identifier: str
 :ivar file_name: Optional filename of the file.
 :vartype file_name: str
 :ivar wait: If "true" (default), will return a response only after processing has completed. If
@@ -4747,7 +4755,9 @@ def __init__(**kwargs)
 PNG, JPG.
 - `url`: URL to download the job description.
 - `data`: A JSON-encoded string of the ``JobDescriptionData`` object.
-- `identifier`: A random string that uniquely identify the resource.
+- `identifier`: Deprecated in favor of ``customIdentifier``.
+- `custom_identifier`: Specify a custom identifier for the document if you need one, not
+required to be unique.
 - `file_name`: Optional filename of the file.
 - `wait`: If "true" (default), will return a response only after processing has completed.
 If "false", will return an empty data object which can be polled at the GET endpoint until
@@ -6526,8 +6536,11 @@ class Meta(msrest.serialization.Model)
 
 Meta.
 
-:ivar identifier: Uniquely identify a document.
+:ivar identifier: Unique identifier for the document.
 :vartype identifier: str
+:ivar custom_identifier: Optional identifier for the document that you can set to track the
+ document in the Affinda system.  Is not required to be unique.
+:vartype custom_identifier: str
 :ivar file_name: Optional filename of the file.
 :vartype file_name: str
 :ivar ready: If true, the document has finished processing. Particularly useful if an endpoint
@@ -6580,7 +6593,9 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `identifier`: Uniquely identify a document.
+- `identifier`: Unique identifier for the document.
+- `custom_identifier`: Optional identifier for the document that you can set to track the
+document in the Affinda system.  Is not required to be unique.
 - `file_name`: Optional filename of the file.
 - `ready`: If true, the document has finished processing. Particularly useful if an
 endpoint request specified wait=False, when polling use this variable to determine when to stop
@@ -6618,7 +6633,7 @@ class MetaChildDocumentsItem(msrest.serialization.Model)
 
 MetaChildDocumentsItem.
 
-:ivar identifier: Uniquely identify a document.
+:ivar identifier: Unique identifier for the document.
 :vartype identifier: str
 
 <a id="models._models.MetaChildDocumentsItem.__init__"></a>
@@ -6631,7 +6646,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `identifier`: Uniquely identify a document.
+- `identifier`: Unique identifier for the document.
 
 <a id="models._models.MetaParentDocument"></a>
 
@@ -6643,7 +6658,7 @@ class MetaParentDocument(msrest.serialization.Model)
 
 If this document is part of a splitted document, this attribute points to the original document that this document is splitted from.
 
-:ivar identifier: Uniquely identify a document.
+:ivar identifier: Unique identifier for the document.
 :vartype identifier: str
 
 <a id="models._models.MetaParentDocument.__init__"></a>
@@ -6656,7 +6671,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `identifier`: Uniquely identify a document.
+- `identifier`: Unique identifier for the document.
 
 <a id="models._models.OccupationGroupSearchResult"></a>
 
@@ -6748,6 +6763,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar image: Required. The URL to the image of the page.
 :vartype image: str
+:ivar image_translated: The URL to the translated image of the page.
+:vartype image_translated: str
 :ivar height: Required. Height of the page's image in px.
 :vartype height: float
 :ivar width: Required. Width of the page's image in px.
@@ -6769,6 +6786,7 @@ def __init__(**kwargs)
 - `id`: Required.
 - `page_index`: Required. Page number within the document, starts from 0.
 - `image`: Required. The URL to the image of the page.
+- `image_translated`: The URL to the translated image of the page.
 - `height`: Required. Height of the page's image in px.
 - `width`: Required. Width of the page's image in px.
 - `rotation`: Required. The degree of rotation applied to the page. Greater than 0
@@ -7471,8 +7489,11 @@ RedactedResumeRequestBody.
 :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
  JPG.
 :vartype file: IO
-:ivar identifier: A random string that uniquely identify the resource.
+:ivar identifier: Deprecated in favor of ``customIdentifier``.
 :vartype identifier: str
+:ivar custom_identifier: Specify a custom identifier for the document if you need one, not
+ required to be unique.
+:vartype custom_identifier: str
 :ivar file_name: Optional filename of the file.
 :vartype file_name: str
 :ivar url: URL to download the resume.
@@ -7515,7 +7536,9 @@ def __init__(**kwargs)
 
 - `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
 PNG, JPG.
-- `identifier`: A random string that uniquely identify the resource.
+- `identifier`: Deprecated in favor of ``customIdentifier``.
+- `custom_identifier`: Specify a custom identifier for the document if you need one, not
+required to be unique.
 - `file_name`: Optional filename of the file.
 - `url`: URL to download the resume.
 - `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
@@ -8285,8 +8308,11 @@ ResumeRequestBody.
 :vartype url: str
 :ivar data: A JSON-encoded string of the ``ResumeData`` object.
 :vartype data: ~affinda.models.ResumeData
-:ivar identifier: A random string that uniquely identify the resource.
+:ivar identifier: Deprecated in favor of ``customIdentifier``.
 :vartype identifier: str
+:ivar custom_identifier: Specify a custom identifier for the document if you need one, not
+ required to be unique.
+:vartype custom_identifier: str
 :ivar file_name: Optional filename of the file.
 :vartype file_name: str
 :ivar wait: If "true" (default), will return a response only after processing has completed. If
@@ -8322,7 +8348,9 @@ def __init__(**kwargs)
 PNG, JPG.
 - `url`: URL to download the resume.
 - `data`: A JSON-encoded string of the ``ResumeData`` object.
-- `identifier`: A random string that uniquely identify the resource.
+- `identifier`: Deprecated in favor of ``customIdentifier``.
+- `custom_identifier`: Specify a custom identifier for the document if you need one, not
+required to be unique.
 - `file_name`: Optional filename of the file.
 - `wait`: If "true" (default), will return a response only after processing has completed.
 If "false", will return an empty data object which can be polled at the GET endpoint until

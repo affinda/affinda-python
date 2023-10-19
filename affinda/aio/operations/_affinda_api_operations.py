@@ -76,7 +76,11 @@ ClsType = Optional[
 
 class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
     async def get_all_resumes(
-        self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any
+        self,
+        offset: Optional[int] = None,
+        limit: Optional[int] = 300,
+        custom_identifier: Optional[str] = None,
+        **kwargs: Any,
     ) -> _models.Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema:
         """Get list of all resumes.
 
@@ -87,6 +91,9 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type offset: int
         :param limit: The numbers of results to return. Default value is 300.
         :type limit: int
+        :param custom_identifier: Filter for documents with this custom identifier. Default value is
+         None.
+        :type custom_identifier: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)
@@ -115,6 +122,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         request = build_get_all_resumes_request(
             offset=offset,
             limit=limit,
+            custom_identifier=custom_identifier,
             template_url=self.get_all_resumes.metadata["url"],
             headers=_headers,
             params=_params,
@@ -152,6 +160,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         url: Optional[str] = None,
         data: Optional[_models.ResumeData] = None,
         identifier: Optional[str] = None,
+        custom_identifier: Optional[str] = None,
         file_name: Optional[str] = None,
         wait: Optional[bool] = True,
         reject_duplicates: Optional[bool] = None,
@@ -177,8 +186,11 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type url: str
         :param data:  Default value is None.
         :type data: ~affinda.models.ResumeData
-        :param identifier:  Default value is None.
+        :param identifier: Deprecated in favor of ``customIdentifier``. Default value is None.
         :type identifier: str
+        :param custom_identifier: Specify a custom identifier for the document if you need one, not
+         required to be unique. Default value is None.
+        :type custom_identifier: str
         :param file_name:  Default value is None.
         :type file_name: str
         :param wait:  Default value is True.
@@ -224,6 +236,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             "url": url,
             "data": data,
             "identifier": identifier,
+            "customIdentifier": custom_identifier,
             "fileName": file_name,
             "wait": wait,
             "rejectDuplicates": reject_duplicates,
@@ -490,7 +503,11 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
     delete_resume.metadata = {"url": "/v2/resumes/{identifier}"}  # type: ignore
 
     async def get_all_redacted_resumes(
-        self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any
+        self,
+        offset: Optional[int] = None,
+        limit: Optional[int] = 300,
+        custom_identifier: Optional[str] = None,
+        **kwargs: Any,
     ) -> _models.Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema:
         """Get list of all redacted resumes.
 
@@ -501,6 +518,9 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type offset: int
         :param limit: The numbers of results to return. Default value is 300.
         :type limit: int
+        :param custom_identifier: Filter for documents with this custom identifier. Default value is
+         None.
+        :type custom_identifier: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema, or the
          result of cls(response)
@@ -530,6 +550,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         request = build_get_all_redacted_resumes_request(
             offset=offset,
             limit=limit,
+            custom_identifier=custom_identifier,
             template_url=self.get_all_redacted_resumes.metadata["url"],
             headers=_headers,
             params=_params,
@@ -566,6 +587,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         self,
         file: Optional[IO] = None,
         identifier: Optional[str] = None,
+        custom_identifier: Optional[str] = None,
         file_name: Optional[str] = None,
         url: Optional[str] = None,
         language: Optional[str] = None,
@@ -587,8 +609,11 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
         :param file:  Default value is None.
         :type file: IO
-        :param identifier:  Default value is None.
+        :param identifier: Deprecated in favor of ``customIdentifier``. Default value is None.
         :type identifier: str
+        :param custom_identifier: Specify a custom identifier for the document if you need one, not
+         required to be unique. Default value is None.
+        :type custom_identifier: str
         :param file_name:  Default value is None.
         :type file_name: str
         :param url: URL to download the resume. Default value is None.
@@ -647,6 +672,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _files = {
             "file": file,
             "identifier": identifier,
+            "customIdentifier": custom_identifier,
             "fileName": file_name,
             "url": url,
             "language": language,
@@ -819,7 +845,11 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
     delete_redacted_resume.metadata = {"url": "/v2/redacted_resumes/{identifier}"}  # type: ignore
 
     async def get_all_invoices(
-        self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any
+        self,
+        offset: Optional[int] = None,
+        limit: Optional[int] = 300,
+        custom_identifier: Optional[str] = None,
+        **kwargs: Any,
     ) -> _models.PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema:
         """Get list of all invoices.
 
@@ -830,6 +860,9 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type offset: int
         :param limit: The numbers of results to return. Default value is 300.
         :type limit: int
+        :param custom_identifier: Filter for documents with this custom identifier. Default value is
+         None.
+        :type custom_identifier: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)
@@ -858,6 +891,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         request = build_get_all_invoices_request(
             offset=offset,
             limit=limit,
+            custom_identifier=custom_identifier,
             template_url=self.get_all_invoices.metadata["url"],
             headers=_headers,
             params=_params,
@@ -894,6 +928,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         file: Optional[IO] = None,
         url: Optional[str] = None,
         identifier: Optional[str] = None,
+        custom_identifier: Optional[str] = None,
         file_name: Optional[str] = None,
         wait: Optional[bool] = True,
         reject_duplicates: Optional[bool] = None,
@@ -914,8 +949,11 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type file: IO
         :param url: URL to download the invoice. Default value is None.
         :type url: str
-        :param identifier:  Default value is None.
+        :param identifier: Deprecated in favor of ``customIdentifier``. Default value is None.
         :type identifier: str
+        :param custom_identifier: Specify a custom identifier for the document if you need one, not
+         required to be unique. Default value is None.
+        :type custom_identifier: str
         :param file_name:  Default value is None.
         :type file_name: str
         :param wait:  Default value is True.
@@ -960,6 +998,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             "file": file,
             "url": url,
             "identifier": identifier,
+            "customIdentifier": custom_identifier,
             "fileName": file_name,
             "wait": wait,
             "rejectDuplicates": reject_duplicates,
@@ -1127,7 +1166,11 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
     delete_invoice.metadata = {"url": "/v2/invoices/{identifier}"}  # type: ignore
 
     async def get_all_job_descriptions(
-        self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any
+        self,
+        offset: Optional[int] = None,
+        limit: Optional[int] = 300,
+        custom_identifier: Optional[str] = None,
+        **kwargs: Any,
     ) -> _models.PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema:
         """Get list of all job descriptions.
 
@@ -1138,6 +1181,9 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type offset: int
         :param limit: The numbers of results to return. Default value is 300.
         :type limit: int
+        :param custom_identifier: Filter for documents with this custom identifier. Default value is
+         None.
+        :type custom_identifier: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema, or the result
          of cls(response)
@@ -1166,6 +1212,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         request = build_get_all_job_descriptions_request(
             offset=offset,
             limit=limit,
+            custom_identifier=custom_identifier,
             template_url=self.get_all_job_descriptions.metadata["url"],
             headers=_headers,
             params=_params,
@@ -1204,6 +1251,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         url: Optional[str] = None,
         data: Optional[_models.JobDescriptionDataUpdate] = None,
         identifier: Optional[str] = None,
+        custom_identifier: Optional[str] = None,
         file_name: Optional[str] = None,
         wait: Optional[bool] = True,
         reject_duplicates: Optional[bool] = None,
@@ -1230,8 +1278,11 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type url: str
         :param data:  Default value is None.
         :type data: ~affinda.models.JobDescriptionDataUpdate
-        :param identifier:  Default value is None.
+        :param identifier: Deprecated in favor of ``customIdentifier``. Default value is None.
         :type identifier: str
+        :param custom_identifier: Specify a custom identifier for the document if you need one, not
+         required to be unique. Default value is None.
+        :type custom_identifier: str
         :param file_name:  Default value is None.
         :type file_name: str
         :param wait:  Default value is True.
@@ -1277,6 +1328,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             "url": url,
             "data": data,
             "identifier": identifier,
+            "customIdentifier": custom_identifier,
             "fileName": file_name,
             "wait": wait,
             "rejectDuplicates": reject_duplicates,

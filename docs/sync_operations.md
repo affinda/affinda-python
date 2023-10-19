@@ -34,7 +34,7 @@ class AffindaAPIOperationsMixin(object)
 #### get\_all\_resumes
 
 ```python
-def get_all_resumes(offset=None, limit=300, **kwargs)
+def get_all_resumes(offset=None, limit=300, custom_identifier=None, **kwargs)
 ```
 
 Get list of all resumes.
@@ -46,6 +46,8 @@ Returns all the resume summaries for that user, limited to 300 per page.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
+- `custom_identifier` (`str`): Filter for documents with this custom identifier. Default value is
+None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -66,6 +68,7 @@ def create_resume(file=None,
                   url=None,
                   data=None,
                   identifier=None,
+                  custom_identifier=None,
                   file_name=None,
                   wait=True,
                   reject_duplicates=None,
@@ -91,7 +94,9 @@ parsing credits.
 - `file` (`IO`): Default value is None.
 - `url` (`str`): URL to download the resume. Default value is None.
 - `data` (`~affinda.models.ResumeData`): Default value is None.
-- `identifier` (`str`): Default value is None.
+- `identifier` (`str`): Deprecated in favor of ``customIdentifier``. Default value is None.
+- `custom_identifier` (`str`): Specify a custom identifier for the document if you need one, not
+required to be unique. Default value is None.
 - `file_name` (`str`): Default value is None.
 - `wait` (`bool`): Default value is True.
 - `reject_duplicates` (`bool`): Default value is None.
@@ -196,7 +201,10 @@ Deletes the specified resume from the database.
 #### get\_all\_redacted\_resumes
 
 ```python
-def get_all_redacted_resumes(offset=None, limit=300, **kwargs)
+def get_all_redacted_resumes(offset=None,
+                             limit=300,
+                             custom_identifier=None,
+                             **kwargs)
 ```
 
 Get list of all redacted resumes.
@@ -208,6 +216,8 @@ Returns all the redacted resume information for that resume.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
+- `custom_identifier` (`str`): Filter for documents with this custom identifier. Default value is
+None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -226,6 +236,7 @@ result of cls(response)
 ```python
 def create_redacted_resume(file=None,
                            identifier=None,
+                           custom_identifier=None,
                            file_name=None,
                            url=None,
                            language=None,
@@ -249,7 +260,9 @@ Uploads a resume for redacting.
 **Arguments**:
 
 - `file` (`IO`): Default value is None.
-- `identifier` (`str`): Default value is None.
+- `identifier` (`str`): Deprecated in favor of ``customIdentifier``. Default value is None.
+- `custom_identifier` (`str`): Specify a custom identifier for the document if you need one, not
+required to be unique. Default value is None.
 - `file_name` (`str`): Default value is None.
 - `url` (`str`): URL to download the resume. Default value is None.
 - `language` (`str`): Default value is None.
@@ -333,7 +346,7 @@ Deletes the specified resume from the database.
 #### get\_all\_invoices
 
 ```python
-def get_all_invoices(offset=None, limit=300, **kwargs)
+def get_all_invoices(offset=None, limit=300, custom_identifier=None, **kwargs)
 ```
 
 Get list of all invoices.
@@ -345,6 +358,8 @@ Returns all the invoice summaries for that user, limited to 300 per page.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
+- `custom_identifier` (`str`): Filter for documents with this custom identifier. Default value is
+None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -364,6 +379,7 @@ cls(response)
 def create_invoice(file=None,
                    url=None,
                    identifier=None,
+                   custom_identifier=None,
                    file_name=None,
                    wait=True,
                    reject_duplicates=None,
@@ -385,7 +401,9 @@ retrieve results.
 
 - `file` (`IO`): Default value is None.
 - `url` (`str`): URL to download the invoice. Default value is None.
-- `identifier` (`str`): Default value is None.
+- `identifier` (`str`): Deprecated in favor of ``customIdentifier``. Default value is None.
+- `custom_identifier` (`str`): Specify a custom identifier for the document if you need one, not
+required to be unique. Default value is None.
 - `file_name` (`str`): Default value is None.
 - `wait` (`bool`): Default value is True.
 - `reject_duplicates` (`bool`): Default value is None.
@@ -461,7 +479,10 @@ will no longer be used in any tailored customer models.
 #### get\_all\_job\_descriptions
 
 ```python
-def get_all_job_descriptions(offset=None, limit=300, **kwargs)
+def get_all_job_descriptions(offset=None,
+                             limit=300,
+                             custom_identifier=None,
+                             **kwargs)
 ```
 
 Get list of all job descriptions.
@@ -473,6 +494,8 @@ Returns all the job descriptions for that user, limited to 300 per page.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
+- `custom_identifier` (`str`): Filter for documents with this custom identifier. Default value is
+None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -493,6 +516,7 @@ def create_job_description(file=None,
                            url=None,
                            data=None,
                            identifier=None,
+                           custom_identifier=None,
                            file_name=None,
                            wait=True,
                            reject_duplicates=None,
@@ -519,7 +543,9 @@ parsing credits.
 - `file` (`IO`): Default value is None.
 - `url` (`str`): URL to download the job description. Default value is None.
 - `data` (`~affinda.models.JobDescriptionDataUpdate`): Default value is None.
-- `identifier` (`str`): Default value is None.
+- `identifier` (`str`): Deprecated in favor of ``customIdentifier``. Default value is None.
+- `custom_identifier` (`str`): Specify a custom identifier for the document if you need one, not
+required to be unique. Default value is None.
 - `file_name` (`str`): Default value is None.
 - `wait` (`bool`): Default value is True.
 - `reject_duplicates` (`bool`): Default value is None.

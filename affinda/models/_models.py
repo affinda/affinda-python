@@ -6421,8 +6421,11 @@ class InvoiceRequestBody(msrest.serialization.Model):
     :vartype file: IO
     :ivar url: URL to download the invoice.
     :vartype url: str
-    :ivar identifier: A random string that uniquely identify the resource.
+    :ivar identifier: Deprecated in favor of ``customIdentifier``.
     :vartype identifier: str
+    :ivar custom_identifier: Specify a custom identifier for the document if you need one, not
+     required to be unique.
+    :vartype custom_identifier: str
     :ivar file_name: Optional filename of the file.
     :vartype file_name: str
     :ivar wait: If "true" (default), will return a response only after processing has completed. If
@@ -6449,6 +6452,7 @@ class InvoiceRequestBody(msrest.serialization.Model):
         "file": {"key": "file", "type": "IO"},
         "url": {"key": "url", "type": "str"},
         "identifier": {"key": "identifier", "type": "str"},
+        "custom_identifier": {"key": "customIdentifier", "type": "str"},
         "file_name": {"key": "fileName", "type": "str"},
         "wait": {"key": "wait", "type": "bool"},
         "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
@@ -6465,8 +6469,11 @@ class InvoiceRequestBody(msrest.serialization.Model):
         :paramtype file: IO
         :keyword url: URL to download the invoice.
         :paramtype url: str
-        :keyword identifier: A random string that uniquely identify the resource.
+        :keyword identifier: Deprecated in favor of ``customIdentifier``.
         :paramtype identifier: str
+        :keyword custom_identifier: Specify a custom identifier for the document if you need one, not
+         required to be unique.
+        :paramtype custom_identifier: str
         :keyword file_name: Optional filename of the file.
         :paramtype file_name: str
         :keyword wait: If "true" (default), will return a response only after processing has completed.
@@ -6492,6 +6499,7 @@ class InvoiceRequestBody(msrest.serialization.Model):
         self.file = kwargs.get("file", None)
         self.url = kwargs.get("url", None)
         self.identifier = kwargs.get("identifier", None)
+        self.custom_identifier = kwargs.get("custom_identifier", None)
         self.file_name = kwargs.get("file_name", None)
         self.wait = kwargs.get("wait", True)
         self.reject_duplicates = kwargs.get("reject_duplicates", None)
@@ -6819,8 +6827,11 @@ class JobDescriptionRequestBody(msrest.serialization.Model):
     :vartype url: str
     :ivar data: A JSON-encoded string of the ``JobDescriptionData`` object.
     :vartype data: ~affinda.models.JobDescriptionDataUpdate
-    :ivar identifier: A random string that uniquely identify the resource.
+    :ivar identifier: Deprecated in favor of ``customIdentifier``.
     :vartype identifier: str
+    :ivar custom_identifier: Specify a custom identifier for the document if you need one, not
+     required to be unique.
+    :vartype custom_identifier: str
     :ivar file_name: Optional filename of the file.
     :vartype file_name: str
     :ivar wait: If "true" (default), will return a response only after processing has completed. If
@@ -6848,6 +6859,7 @@ class JobDescriptionRequestBody(msrest.serialization.Model):
         "url": {"key": "url", "type": "str"},
         "data": {"key": "data", "type": "JobDescriptionDataUpdate"},
         "identifier": {"key": "identifier", "type": "str"},
+        "custom_identifier": {"key": "customIdentifier", "type": "str"},
         "file_name": {"key": "fileName", "type": "str"},
         "wait": {"key": "wait", "type": "bool"},
         "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
@@ -6866,8 +6878,11 @@ class JobDescriptionRequestBody(msrest.serialization.Model):
         :paramtype url: str
         :keyword data: A JSON-encoded string of the ``JobDescriptionData`` object.
         :paramtype data: ~affinda.models.JobDescriptionDataUpdate
-        :keyword identifier: A random string that uniquely identify the resource.
+        :keyword identifier: Deprecated in favor of ``customIdentifier``.
         :paramtype identifier: str
+        :keyword custom_identifier: Specify a custom identifier for the document if you need one, not
+         required to be unique.
+        :paramtype custom_identifier: str
         :keyword file_name: Optional filename of the file.
         :paramtype file_name: str
         :keyword wait: If "true" (default), will return a response only after processing has completed.
@@ -6894,6 +6909,7 @@ class JobDescriptionRequestBody(msrest.serialization.Model):
         self.url = kwargs.get("url", None)
         self.data = kwargs.get("data", None)
         self.identifier = kwargs.get("identifier", None)
+        self.custom_identifier = kwargs.get("custom_identifier", None)
         self.file_name = kwargs.get("file_name", None)
         self.wait = kwargs.get("wait", True)
         self.reject_duplicates = kwargs.get("reject_duplicates", None)
@@ -9272,8 +9288,11 @@ class ManagementLevelSearchScoreComponent(msrest.serialization.Model):
 class Meta(msrest.serialization.Model):
     """Meta.
 
-    :ivar identifier: Uniquely identify a document.
+    :ivar identifier: Unique identifier for the document.
     :vartype identifier: str
+    :ivar custom_identifier: Optional identifier for the document that you can set to track the
+     document in the Affinda system.  Is not required to be unique.
+    :vartype custom_identifier: str
     :ivar file_name: Optional filename of the file.
     :vartype file_name: str
     :ivar ready: If true, the document has finished processing. Particularly useful if an endpoint
@@ -9319,6 +9338,7 @@ class Meta(msrest.serialization.Model):
 
     _attribute_map = {
         "identifier": {"key": "identifier", "type": "str"},
+        "custom_identifier": {"key": "customIdentifier", "type": "str"},
         "file_name": {"key": "fileName", "type": "str"},
         "ready": {"key": "ready", "type": "bool"},
         "ready_dt": {"key": "readyDt", "type": "iso-8601"},
@@ -9339,8 +9359,11 @@ class Meta(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
-        :keyword identifier: Uniquely identify a document.
+        :keyword identifier: Unique identifier for the document.
         :paramtype identifier: str
+        :keyword custom_identifier: Optional identifier for the document that you can set to track the
+         document in the Affinda system.  Is not required to be unique.
+        :paramtype custom_identifier: str
         :keyword file_name: Optional filename of the file.
         :paramtype file_name: str
         :keyword ready: If true, the document has finished processing. Particularly useful if an
@@ -9386,6 +9409,7 @@ class Meta(msrest.serialization.Model):
         """
         super(Meta, self).__init__(**kwargs)
         self.identifier = kwargs.get("identifier", None)
+        self.custom_identifier = kwargs.get("custom_identifier", None)
         self.file_name = kwargs.get("file_name", None)
         self.ready = kwargs.get("ready", None)
         self.ready_dt = kwargs.get("ready_dt", None)
@@ -9407,7 +9431,7 @@ class Meta(msrest.serialization.Model):
 class MetaChildDocumentsItem(msrest.serialization.Model):
     """MetaChildDocumentsItem.
 
-    :ivar identifier: Uniquely identify a document.
+    :ivar identifier: Unique identifier for the document.
     :vartype identifier: str
     """
 
@@ -9417,7 +9441,7 @@ class MetaChildDocumentsItem(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
-        :keyword identifier: Uniquely identify a document.
+        :keyword identifier: Unique identifier for the document.
         :paramtype identifier: str
         """
         super(MetaChildDocumentsItem, self).__init__(**kwargs)
@@ -9427,7 +9451,7 @@ class MetaChildDocumentsItem(msrest.serialization.Model):
 class MetaParentDocument(msrest.serialization.Model):
     """If this document is part of a splitted document, this attribute points to the original document that this document is splitted from.
 
-    :ivar identifier: Uniquely identify a document.
+    :ivar identifier: Unique identifier for the document.
     :vartype identifier: str
     """
 
@@ -9437,7 +9461,7 @@ class MetaParentDocument(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
-        :keyword identifier: Uniquely identify a document.
+        :keyword identifier: Unique identifier for the document.
         :paramtype identifier: str
         """
         super(MetaParentDocument, self).__init__(**kwargs)
@@ -9545,6 +9569,8 @@ class PageMeta(msrest.serialization.Model):
     :vartype page_index: int
     :ivar image: Required. The URL to the image of the page.
     :vartype image: str
+    :ivar image_translated: The URL to the translated image of the page.
+    :vartype image_translated: str
     :ivar height: Required. Height of the page's image in px.
     :vartype height: float
     :ivar width: Required. Width of the page's image in px.
@@ -9567,6 +9593,7 @@ class PageMeta(msrest.serialization.Model):
         "id": {"key": "id", "type": "int"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "image": {"key": "image", "type": "str"},
+        "image_translated": {"key": "imageTranslated", "type": "str"},
         "height": {"key": "height", "type": "float"},
         "width": {"key": "width", "type": "float"},
         "rotation": {"key": "rotation", "type": "int"},
@@ -9580,6 +9607,8 @@ class PageMeta(msrest.serialization.Model):
         :paramtype page_index: int
         :keyword image: Required. The URL to the image of the page.
         :paramtype image: str
+        :keyword image_translated: The URL to the translated image of the page.
+        :paramtype image_translated: str
         :keyword height: Required. Height of the page's image in px.
         :paramtype height: float
         :keyword width: Required. Width of the page's image in px.
@@ -9592,6 +9621,7 @@ class PageMeta(msrest.serialization.Model):
         self.id = kwargs["id"]
         self.page_index = kwargs["page_index"]
         self.image = kwargs["image"]
+        self.image_translated = kwargs.get("image_translated", None)
         self.height = kwargs["height"]
         self.width = kwargs["width"]
         self.rotation = kwargs["rotation"]
@@ -10355,8 +10385,11 @@ class RedactedResumeRequestBody(msrest.serialization.Model):
     :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
      JPG.
     :vartype file: IO
-    :ivar identifier: A random string that uniquely identify the resource.
+    :ivar identifier: Deprecated in favor of ``customIdentifier``.
     :vartype identifier: str
+    :ivar custom_identifier: Specify a custom identifier for the document if you need one, not
+     required to be unique.
+    :vartype custom_identifier: str
     :ivar file_name: Optional filename of the file.
     :vartype file_name: str
     :ivar url: URL to download the resume.
@@ -10391,6 +10424,7 @@ class RedactedResumeRequestBody(msrest.serialization.Model):
     _attribute_map = {
         "file": {"key": "file", "type": "IO"},
         "identifier": {"key": "identifier", "type": "str"},
+        "custom_identifier": {"key": "customIdentifier", "type": "str"},
         "file_name": {"key": "fileName", "type": "str"},
         "url": {"key": "url", "type": "str"},
         "language": {"key": "language", "type": "str"},
@@ -10411,8 +10445,11 @@ class RedactedResumeRequestBody(msrest.serialization.Model):
         :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
          PNG, JPG.
         :paramtype file: IO
-        :keyword identifier: A random string that uniquely identify the resource.
+        :keyword identifier: Deprecated in favor of ``customIdentifier``.
         :paramtype identifier: str
+        :keyword custom_identifier: Specify a custom identifier for the document if you need one, not
+         required to be unique.
+        :paramtype custom_identifier: str
         :keyword file_name: Optional filename of the file.
         :paramtype file_name: str
         :keyword url: URL to download the resume.
@@ -10446,6 +10483,7 @@ class RedactedResumeRequestBody(msrest.serialization.Model):
         super(RedactedResumeRequestBody, self).__init__(**kwargs)
         self.file = kwargs.get("file", None)
         self.identifier = kwargs.get("identifier", None)
+        self.custom_identifier = kwargs.get("custom_identifier", None)
         self.file_name = kwargs.get("file_name", None)
         self.url = kwargs.get("url", None)
         self.language = kwargs.get("language", None)
@@ -11425,8 +11463,11 @@ class ResumeRequestBody(msrest.serialization.Model):
     :vartype url: str
     :ivar data: A JSON-encoded string of the ``ResumeData`` object.
     :vartype data: ~affinda.models.ResumeData
-    :ivar identifier: A random string that uniquely identify the resource.
+    :ivar identifier: Deprecated in favor of ``customIdentifier``.
     :vartype identifier: str
+    :ivar custom_identifier: Specify a custom identifier for the document if you need one, not
+     required to be unique.
+    :vartype custom_identifier: str
     :ivar file_name: Optional filename of the file.
     :vartype file_name: str
     :ivar wait: If "true" (default), will return a response only after processing has completed. If
@@ -11454,6 +11495,7 @@ class ResumeRequestBody(msrest.serialization.Model):
         "url": {"key": "url", "type": "str"},
         "data": {"key": "data", "type": "ResumeData"},
         "identifier": {"key": "identifier", "type": "str"},
+        "custom_identifier": {"key": "customIdentifier", "type": "str"},
         "file_name": {"key": "fileName", "type": "str"},
         "wait": {"key": "wait", "type": "bool"},
         "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
@@ -11472,8 +11514,11 @@ class ResumeRequestBody(msrest.serialization.Model):
         :paramtype url: str
         :keyword data: A JSON-encoded string of the ``ResumeData`` object.
         :paramtype data: ~affinda.models.ResumeData
-        :keyword identifier: A random string that uniquely identify the resource.
+        :keyword identifier: Deprecated in favor of ``customIdentifier``.
         :paramtype identifier: str
+        :keyword custom_identifier: Specify a custom identifier for the document if you need one, not
+         required to be unique.
+        :paramtype custom_identifier: str
         :keyword file_name: Optional filename of the file.
         :paramtype file_name: str
         :keyword wait: If "true" (default), will return a response only after processing has completed.
@@ -11500,6 +11545,7 @@ class ResumeRequestBody(msrest.serialization.Model):
         self.url = kwargs.get("url", None)
         self.data = kwargs.get("data", None)
         self.identifier = kwargs.get("identifier", None)
+        self.custom_identifier = kwargs.get("custom_identifier", None)
         self.file_name = kwargs.get("file_name", None)
         self.wait = kwargs.get("wait", True)
         self.reject_duplicates = kwargs.get("reject_duplicates", None)
