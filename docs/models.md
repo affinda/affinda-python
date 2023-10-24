@@ -820,6 +820,45 @@ this collection.
 - `trains_extractor`: Whether this collection feeds documents into the extractor's
 training queue. This setting can only be toggled for custom extractors.
 
+<a id="models._models.CollectionField"></a>
+
+## CollectionField Objects
+
+```python
+class CollectionField(msrest.serialization.Model)
+```
+
+CollectionField.
+
+:ivar label:
+:vartype label: str
+:ivar mandatory:
+:vartype mandatory: bool
+:ivar show_dropdown:
+:vartype show_dropdown: bool
+:ivar display_enum_value: If true, both the value and the label for the enums will appear in
+ the dropdown in the validation tool.
+:vartype display_enum_value: bool
+:ivar auto_validation_threshold:
+:vartype auto_validation_threshold: float
+
+<a id="models._models.CollectionField.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `label`: 
+- `mandatory`: 
+- `show_dropdown`: 
+- `display_enum_value`: If true, both the value and the label for the enums will appear in
+the dropdown in the validation tool.
+- `auto_validation_threshold`: 
+
 <a id="models._models.CollectionUpdate"></a>
 
 ## CollectionUpdate Objects
@@ -2237,6 +2276,9 @@ All required parameters must be populated in order to send to Azure.
 :vartype mandatory: bool
 :ivar show_dropdown:
 :vartype show_dropdown: bool
+:ivar display_enum_value: If true, both the value and the label for the enums will appear in
+ the dropdown in the validation tool.
+:vartype display_enum_value: bool
 :ivar auto_validation_threshold:
 :vartype auto_validation_threshold: float
 
@@ -2253,6 +2295,8 @@ def __init__(**kwargs)
 - `label`: Required.
 - `mandatory`: 
 - `show_dropdown`: 
+- `display_enum_value`: If true, both the value and the label for the enums will appear in
+the dropdown in the validation tool.
 - `auto_validation_threshold`: 
 
 <a id="models._models.DataFieldDataPoint"></a>
@@ -2335,6 +2379,9 @@ All required parameters must be populated in order to send to Azure.
 :vartype mandatory: bool
 :ivar show_dropdown: Required.
 :vartype show_dropdown: bool
+:ivar display_enum_value: Required. If true, both the value and the label for the enums will
+ appear in the dropdown in the validation tool.
+:vartype display_enum_value: bool
 :ivar auto_validation_threshold: Required.
 :vartype auto_validation_threshold: float
 :ivar enabled_child_fields: Required.
@@ -2355,6 +2402,8 @@ def __init__(**kwargs)
 - `label`: Required.
 - `mandatory`: Required.
 - `show_dropdown`: Required.
+- `display_enum_value`: Required. If true, both the value and the label for the enums will
+appear in the dropdown in the validation tool.
 - `auto_validation_threshold`: Required.
 - `enabled_child_fields`: Required.
 - `disabled_child_fields`: Required.
@@ -2392,9 +2441,6 @@ All required parameters must be populated in order to send to Azure.
 :vartype multiple: bool
 :ivar no_rect:
 :vartype no_rect: bool
-:ivar display_enum_value: If true, both the value and the label for the enums will appear in
- the dropdown in the validation tool.
-:vartype display_enum_value: bool
 :ivar parent: The identifier of the parent data point if applicable.
 :vartype parent: str
 :ivar children:
@@ -2425,8 +2471,6 @@ values are: "text", "integer", "float", "decimal", "date", "datetime", "boolean"
 - `extractor`: Required. Uniquely identify an extractor.
 - `multiple`: 
 - `no_rect`: 
-- `display_enum_value`: If true, both the value and the label for the enums will appear in
-the dropdown in the validation tool.
 - `parent`: The identifier of the parent data point if applicable.
 - `children`: 
 - `manual_entry`: If true, the model will not be used to predict this data point. Instead,
@@ -2743,9 +2787,6 @@ All required parameters must be populated in order to send to Azure.
 :vartype multiple: bool
 :ivar no_rect:
 :vartype no_rect: bool
-:ivar display_enum_value: If true, both the value and the label for the enums will appear in
- the dropdown in the validation tool.
-:vartype display_enum_value: bool
 :ivar parent: The identifier of the parent data point if applicable.
 :vartype parent: str
 :ivar manual_entry: If true, the model will not be used to predict this data point. Instead,
@@ -2773,8 +2814,6 @@ values are: "text", "integer", "float", "decimal", "date", "datetime", "boolean"
 - `extractor`: Required. Uniquely identify an extractor.
 - `multiple`: 
 - `no_rect`: 
-- `display_enum_value`: If true, both the value and the label for the enums will appear in
-the dropdown in the validation tool.
 - `parent`: The identifier of the parent data point if applicable.
 - `manual_entry`: If true, the model will not be used to predict this data point. Instead,
 the user will be able to manually enter the value in the validation tool.
@@ -2795,9 +2834,6 @@ DataPointUpdate.
 :vartype slug: str
 :ivar description:
 :vartype description: str
-:ivar display_enum_value: If true, both the value and the label for the enums will appear in
- the dropdown in the validation tool.
-:vartype display_enum_value: bool
 :ivar parent: The identifier of the parent data point if applicable.
 :vartype parent: str
 
@@ -2814,8 +2850,6 @@ def __init__(**kwargs)
 - `name`: Name of the data point.
 - `slug`: A camelCase string that will be used as the key in the API response.
 - `description`: 
-- `display_enum_value`: If true, both the value and the label for the enums will appear in
-the dropdown in the validation tool.
 - `parent`: The identifier of the parent data point if applicable.
 
 <a id="models._models.DateAnnotation"></a>
@@ -4226,6 +4260,9 @@ All required parameters must be populated in order to send to Azure.
 :vartype auto_validation_threshold: float
 :ivar show_dropdown:
 :vartype show_dropdown: bool
+:ivar display_enum_value: If true, both the value and the label for the enums will appear in
+ the dropdown in the validation tool.
+:vartype display_enum_value: bool
 :ivar enabled_child_fields:
 :vartype enabled_child_fields: list[~affinda.models.Field]
 :ivar disabled_child_fields:
@@ -4250,6 +4287,8 @@ def __init__(**kwargs)
 - `mandatory`: 
 - `auto_validation_threshold`: 
 - `show_dropdown`: 
+- `display_enum_value`: If true, both the value and the label for the enums will appear in
+the dropdown in the validation tool.
 - `enabled_child_fields`: 
 - `disabled_child_fields`: 
 - `slug`: 
@@ -4314,6 +4353,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype auto_validation_threshold: float
 :ivar show_dropdown:
 :vartype show_dropdown: bool
+:ivar display_enum_value:
+:vartype display_enum_value: bool
 :ivar fields:
 :vartype fields: list[~affinda.models.FieldDeprecated]
 
@@ -4334,6 +4375,7 @@ def __init__(**kwargs)
 - `disabled`: 
 - `auto_validation_threshold`: 
 - `show_dropdown`: 
+- `display_enum_value`: 
 - `fields`: 
 
 <a id="models._models.FieldGroup"></a>

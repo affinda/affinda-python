@@ -444,6 +444,60 @@ Create data field for a collection along with a new data point.
 
 `~affinda.models.DataField`: DataField, or the result of cls(response)
 
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_data_field_for_collection"></a>
+
+#### get\_data\_field\_for\_collection
+
+```python
+def get_data_field_for_collection(identifier, datapoint_identifier, **kwargs)
+```
+
+Get data field for a collection assosciated with a data point.
+
+Get a data field for a collection assosciated with a data point.
+
+**Arguments**:
+
+- `identifier` (`str`): Collection's identifier.
+- `datapoint_identifier` (`str`): Datapoint's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.CollectionField`: CollectionField, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_data_field_for_collection"></a>
+
+#### update\_data\_field\_for\_collection
+
+```python
+def update_data_field_for_collection(identifier, datapoint_identifier, body,
+                                     **kwargs)
+```
+
+Update data field for a collection assosciated with a data point.
+
+Update data field for a collection assosciated with a data point.
+
+**Arguments**:
+
+- `identifier` (`str`): Collection's identifier.
+- `datapoint_identifier` (`str`): Datapoint's identifier.
+- `body` (`~affinda.models.CollectionField`): Data field properties to update.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.CollectionField`: CollectionField, or the result of cls(response)
+
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_usage_by_collection"></a>
 
 #### get\_usage\_by\_collection

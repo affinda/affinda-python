@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.13.0] - 2023-10-24
+### Added
+- Add display_enum_value config to Collection field config
+
+### Changed
+- Migrate display_enum_value from DataPoint to Collection field config
+
+### Removed
+- Remove display_enum_value from DataPoint
+
 ## [4.12.0] - 2023-10-19
 ### Added
 - Add disableEditDocumentMetadata option to validation tool config
