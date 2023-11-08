@@ -64,7 +64,7 @@ class Annotation(msrest.serialization.Model):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -92,13 +92,16 @@ class Annotation(msrest.serialization.Model):
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -126,6 +129,7 @@ class Annotation(msrest.serialization.Model):
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
     }
 
     def __init__(self, **kwargs):
@@ -141,7 +145,7 @@ class Annotation(msrest.serialization.Model):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -170,13 +174,15 @@ class Annotation(msrest.serialization.Model):
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         """
         super(Annotation, self).__init__(**kwargs)
         self.additional_properties = kwargs.get("additional_properties", None)
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -187,6 +193,7 @@ class Annotation(msrest.serialization.Model):
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
 
 
 class AnnotationBase(msrest.serialization.Model):
@@ -319,6 +326,10 @@ class AnnotationUpdate(msrest.serialization.Model):
     :vartype parent: int
     """
 
+    _validation = {
+        "page_index": {"minimum": 0},
+    }
+
     _attribute_map = {
         "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
         "document": {"key": "document", "type": "str"},
@@ -388,7 +399,8 @@ class AnnotationBatchUpdate(AnnotationUpdate):
     """
 
     _validation = {
-        "id": {"required": True},
+        "page_index": {"minimum": 0},
+        "id": {"required": True, "minimum": 1},
     }
 
     _attribute_map = {
@@ -455,7 +467,7 @@ class AnnotationCreate(msrest.serialization.Model):
 
     _validation = {
         "document": {"required": True},
-        "page_index": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "data_point": {"required": True},
     }
 
@@ -613,7 +625,7 @@ class ApiUserWithKey(msrest.serialization.Model):
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "name": {"required": True},
         "username": {"required": True},
         "email": {"required": True},
@@ -718,7 +730,7 @@ class ApiUserWithoutKey(msrest.serialization.Model):
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "name": {"required": True},
         "username": {"required": True},
         "email": {"required": True},
@@ -955,6 +967,8 @@ class Collection(msrest.serialization.Model):
 
     _validation = {
         "identifier": {"required": True},
+        "unvalidated_docs_count": {"minimum": 0},
+        "confirmed_docs_count": {"minimum": 0},
     }
 
     _attribute_map = {
@@ -1714,6 +1728,13 @@ class Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesO
     :vartype major_group_code: int
     """
 
+    _validation = {
+        "soc_code": {"maximum": 9999, "minimum": 1},
+        "minor_group_code": {"maximum": 9999, "minimum": 1},
+        "sub_major_group_code": {"maximum": 9999, "minimum": 1},
+        "major_group_code": {"maximum": 9999, "minimum": 1},
+    }
+
     _attribute_map = {
         "title": {"key": "title", "type": "str"},
         "minor_group": {"key": "minorGroup", "type": "str"},
@@ -2391,7 +2412,7 @@ class CurrencyCodeAnnotation(Annotation):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -2419,15 +2440,18 @@ class CurrencyCodeAnnotation(Annotation):
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: ~affinda.models.DataPointChoice
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -2455,6 +2479,7 @@ class CurrencyCodeAnnotation(Annotation):
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "DataPointChoice"},
     }
 
@@ -2471,7 +2496,7 @@ class CurrencyCodeAnnotation(Annotation):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -2500,6 +2525,8 @@ class CurrencyCodeAnnotation(Annotation):
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: ~affinda.models.DataPointChoice
         """
@@ -3050,7 +3077,7 @@ class DataPointChoice(msrest.serialization.Model):
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "label": {"required": True},
         "value": {"required": True},
     }
@@ -3308,7 +3335,7 @@ class DataPointChoiceReplaceResponseChoicesItem(msrest.serialization.Model):
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "value": {"required": True},
         "label": {"required": True},
         "synonyms": {"required": True},
@@ -3546,7 +3573,7 @@ class DateAnnotation(Annotation):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -3574,15 +3601,18 @@ class DateAnnotation(Annotation):
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: ~datetime.date
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -3610,6 +3640,7 @@ class DateAnnotation(Annotation):
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "date"},
     }
 
@@ -3626,7 +3657,7 @@ class DateAnnotation(Annotation):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -3655,6 +3686,8 @@ class DateAnnotation(Annotation):
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: ~datetime.date
         """
@@ -4413,7 +4446,8 @@ class DocumentSplitPage(msrest.serialization.Model):
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
+        "rotation": {"maximum": 360, "minimum": -360},
     }
 
     _attribute_map = {
@@ -4548,6 +4582,10 @@ class Education(msrest.serialization.Model):
     :ivar dates:
     :vartype dates: ~affinda.models.EducationDates
     """
+
+    _validation = {
+        "id": {"minimum": 1},
+    }
 
     _attribute_map = {
         "id": {"key": "id", "type": "int"},
@@ -4714,7 +4752,7 @@ class ExpectedRemunerationAnnotation(Annotation):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -4742,15 +4780,18 @@ class ExpectedRemunerationAnnotation(Annotation):
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: ~affinda.models.ExpectedRemunerationAnnotationParsed
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -4778,6 +4819,7 @@ class ExpectedRemunerationAnnotation(Annotation):
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "ExpectedRemunerationAnnotationParsed"},
     }
 
@@ -4794,7 +4836,7 @@ class ExpectedRemunerationAnnotation(Annotation):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -4823,6 +4865,8 @@ class ExpectedRemunerationAnnotation(Annotation):
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: ~affinda.models.ExpectedRemunerationAnnotationParsed
         """
@@ -5606,7 +5650,7 @@ class FloatAnnotation(Annotation):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -5634,15 +5678,18 @@ class FloatAnnotation(Annotation):
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: float
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -5670,6 +5717,7 @@ class FloatAnnotation(Annotation):
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "float"},
     }
 
@@ -5686,7 +5734,7 @@ class FloatAnnotation(Annotation):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -5715,6 +5763,8 @@ class FloatAnnotation(Annotation):
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: float
         """
@@ -5905,6 +5955,10 @@ class User(msrest.serialization.Model):
     :vartype avatar: str
     """
 
+    _validation = {
+        "id": {"minimum": 1},
+    }
+
     _attribute_map = {
         "id": {"key": "id", "type": "int"},
         "name": {"key": "name", "type": "str"},
@@ -5948,6 +6002,10 @@ class InvitationRespondedBy(User):
     :ivar avatar: URL of the user's avatar.
     :vartype avatar: str
     """
+
+    _validation = {
+        "id": {"minimum": 1},
+    }
 
     _attribute_map = {
         "id": {"key": "id", "type": "int"},
@@ -6365,7 +6423,7 @@ class TextAnnotation(Annotation):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -6393,15 +6451,18 @@ class TextAnnotation(Annotation):
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -6429,6 +6490,7 @@ class TextAnnotation(Annotation):
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -6445,7 +6507,7 @@ class TextAnnotation(Annotation):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -6474,6 +6536,8 @@ class TextAnnotation(Annotation):
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -6499,7 +6563,7 @@ class InvoiceDataBankAccountNumber(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -6527,15 +6591,18 @@ class InvoiceDataBankAccountNumber(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -6563,6 +6630,7 @@ class InvoiceDataBankAccountNumber(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -6579,7 +6647,7 @@ class InvoiceDataBankAccountNumber(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -6608,6 +6676,8 @@ class InvoiceDataBankAccountNumber(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -6616,7 +6686,7 @@ class InvoiceDataBankAccountNumber(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -6627,6 +6697,7 @@ class InvoiceDataBankAccountNumber(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -6648,7 +6719,7 @@ class InvoiceDataBankBsb(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -6676,15 +6747,18 @@ class InvoiceDataBankBsb(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -6712,6 +6786,7 @@ class InvoiceDataBankBsb(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -6728,7 +6803,7 @@ class InvoiceDataBankBsb(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -6757,6 +6832,8 @@ class InvoiceDataBankBsb(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -6765,7 +6842,7 @@ class InvoiceDataBankBsb(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -6776,6 +6853,7 @@ class InvoiceDataBankBsb(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -6797,7 +6875,7 @@ class InvoiceDataBankIban(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -6825,15 +6903,18 @@ class InvoiceDataBankIban(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -6861,6 +6942,7 @@ class InvoiceDataBankIban(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -6877,7 +6959,7 @@ class InvoiceDataBankIban(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -6906,6 +6988,8 @@ class InvoiceDataBankIban(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -6914,7 +6998,7 @@ class InvoiceDataBankIban(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -6925,6 +7009,7 @@ class InvoiceDataBankIban(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -6946,7 +7031,7 @@ class InvoiceDataBankSortCode(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -6974,15 +7059,18 @@ class InvoiceDataBankSortCode(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -7010,6 +7098,7 @@ class InvoiceDataBankSortCode(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -7026,7 +7115,7 @@ class InvoiceDataBankSortCode(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -7055,6 +7144,8 @@ class InvoiceDataBankSortCode(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -7063,7 +7154,7 @@ class InvoiceDataBankSortCode(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -7074,6 +7165,7 @@ class InvoiceDataBankSortCode(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -7095,7 +7187,7 @@ class InvoiceDataBankSwift(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -7123,15 +7215,18 @@ class InvoiceDataBankSwift(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -7159,6 +7254,7 @@ class InvoiceDataBankSwift(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -7175,7 +7271,7 @@ class InvoiceDataBankSwift(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -7204,6 +7300,8 @@ class InvoiceDataBankSwift(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -7212,7 +7310,7 @@ class InvoiceDataBankSwift(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -7223,6 +7321,7 @@ class InvoiceDataBankSwift(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -7244,7 +7343,7 @@ class InvoiceDataBpayBillerCode(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -7272,15 +7371,18 @@ class InvoiceDataBpayBillerCode(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -7308,6 +7410,7 @@ class InvoiceDataBpayBillerCode(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -7324,7 +7427,7 @@ class InvoiceDataBpayBillerCode(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -7353,6 +7456,8 @@ class InvoiceDataBpayBillerCode(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -7361,7 +7466,7 @@ class InvoiceDataBpayBillerCode(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -7372,6 +7477,7 @@ class InvoiceDataBpayBillerCode(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -7393,7 +7499,7 @@ class InvoiceDataBpayReference(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -7421,15 +7527,18 @@ class InvoiceDataBpayReference(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -7457,6 +7566,7 @@ class InvoiceDataBpayReference(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -7473,7 +7583,7 @@ class InvoiceDataBpayReference(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -7502,6 +7612,8 @@ class InvoiceDataBpayReference(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -7510,7 +7622,7 @@ class InvoiceDataBpayReference(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -7521,6 +7633,7 @@ class InvoiceDataBpayReference(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -7542,7 +7655,7 @@ class InvoiceDataCustomerBusinessNumber(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -7570,15 +7683,18 @@ class InvoiceDataCustomerBusinessNumber(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -7606,6 +7722,7 @@ class InvoiceDataCustomerBusinessNumber(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -7622,7 +7739,7 @@ class InvoiceDataCustomerBusinessNumber(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -7651,6 +7768,8 @@ class InvoiceDataCustomerBusinessNumber(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -7659,7 +7778,7 @@ class InvoiceDataCustomerBusinessNumber(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -7670,6 +7789,7 @@ class InvoiceDataCustomerBusinessNumber(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -7691,7 +7811,7 @@ class InvoiceDataCustomerCompanyName(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -7719,15 +7839,18 @@ class InvoiceDataCustomerCompanyName(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -7755,6 +7878,7 @@ class InvoiceDataCustomerCompanyName(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -7771,7 +7895,7 @@ class InvoiceDataCustomerCompanyName(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -7800,6 +7924,8 @@ class InvoiceDataCustomerCompanyName(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -7808,7 +7934,7 @@ class InvoiceDataCustomerCompanyName(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -7819,6 +7945,7 @@ class InvoiceDataCustomerCompanyName(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -7840,7 +7967,7 @@ class InvoiceDataCustomerContactName(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -7868,15 +7995,18 @@ class InvoiceDataCustomerContactName(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -7904,6 +8034,7 @@ class InvoiceDataCustomerContactName(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -7920,7 +8051,7 @@ class InvoiceDataCustomerContactName(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -7949,6 +8080,8 @@ class InvoiceDataCustomerContactName(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -7957,7 +8090,7 @@ class InvoiceDataCustomerContactName(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -7968,6 +8101,7 @@ class InvoiceDataCustomerContactName(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -7989,7 +8123,7 @@ class InvoiceDataCustomerEmail(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -8017,15 +8151,18 @@ class InvoiceDataCustomerEmail(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -8053,6 +8190,7 @@ class InvoiceDataCustomerEmail(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -8069,7 +8207,7 @@ class InvoiceDataCustomerEmail(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -8098,6 +8236,8 @@ class InvoiceDataCustomerEmail(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -8106,7 +8246,7 @@ class InvoiceDataCustomerEmail(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -8117,6 +8257,7 @@ class InvoiceDataCustomerEmail(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -8138,7 +8279,7 @@ class InvoiceDataCustomerNumber(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -8166,15 +8307,18 @@ class InvoiceDataCustomerNumber(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -8202,6 +8346,7 @@ class InvoiceDataCustomerNumber(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -8218,7 +8363,7 @@ class InvoiceDataCustomerNumber(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -8247,6 +8392,8 @@ class InvoiceDataCustomerNumber(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -8255,7 +8402,7 @@ class InvoiceDataCustomerNumber(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -8266,6 +8413,7 @@ class InvoiceDataCustomerNumber(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -8287,7 +8435,7 @@ class InvoiceDataCustomerPhoneNumber(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -8315,15 +8463,18 @@ class InvoiceDataCustomerPhoneNumber(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -8351,6 +8502,7 @@ class InvoiceDataCustomerPhoneNumber(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -8367,7 +8519,7 @@ class InvoiceDataCustomerPhoneNumber(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -8396,6 +8548,8 @@ class InvoiceDataCustomerPhoneNumber(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -8404,7 +8558,7 @@ class InvoiceDataCustomerPhoneNumber(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -8415,6 +8569,7 @@ class InvoiceDataCustomerPhoneNumber(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -8436,7 +8591,7 @@ class InvoiceDataCustomerVat(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -8464,15 +8619,18 @@ class InvoiceDataCustomerVat(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -8500,6 +8658,7 @@ class InvoiceDataCustomerVat(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -8516,7 +8675,7 @@ class InvoiceDataCustomerVat(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -8545,6 +8704,8 @@ class InvoiceDataCustomerVat(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -8553,7 +8714,7 @@ class InvoiceDataCustomerVat(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -8564,6 +8725,7 @@ class InvoiceDataCustomerVat(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -8585,7 +8747,7 @@ class InvoiceDataInvoiceNumber(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -8613,15 +8775,18 @@ class InvoiceDataInvoiceNumber(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -8649,6 +8814,7 @@ class InvoiceDataInvoiceNumber(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -8665,7 +8831,7 @@ class InvoiceDataInvoiceNumber(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -8694,6 +8860,8 @@ class InvoiceDataInvoiceNumber(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -8702,7 +8870,7 @@ class InvoiceDataInvoiceNumber(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -8713,6 +8881,7 @@ class InvoiceDataInvoiceNumber(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -8734,7 +8903,7 @@ class InvoiceDataInvoicePurchaseOrderNumber(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -8762,15 +8931,18 @@ class InvoiceDataInvoicePurchaseOrderNumber(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -8798,6 +8970,7 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -8814,7 +8987,7 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -8843,6 +9016,8 @@ class InvoiceDataInvoicePurchaseOrderNumber(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -8851,7 +9026,7 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -8862,6 +9037,7 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -8883,7 +9059,7 @@ class InvoiceDataPaymentAmountBase(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -8911,15 +9087,18 @@ class InvoiceDataPaymentAmountBase(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -8947,6 +9126,7 @@ class InvoiceDataPaymentAmountBase(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -8963,7 +9143,7 @@ class InvoiceDataPaymentAmountBase(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -8992,6 +9172,8 @@ class InvoiceDataPaymentAmountBase(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -9000,7 +9182,7 @@ class InvoiceDataPaymentAmountBase(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -9011,6 +9193,7 @@ class InvoiceDataPaymentAmountBase(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -9032,7 +9215,7 @@ class InvoiceDataPaymentAmountDue(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -9060,15 +9243,18 @@ class InvoiceDataPaymentAmountDue(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -9096,6 +9282,7 @@ class InvoiceDataPaymentAmountDue(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -9112,7 +9299,7 @@ class InvoiceDataPaymentAmountDue(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -9141,6 +9328,8 @@ class InvoiceDataPaymentAmountDue(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -9149,7 +9338,7 @@ class InvoiceDataPaymentAmountDue(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -9160,6 +9349,7 @@ class InvoiceDataPaymentAmountDue(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -9181,7 +9371,7 @@ class InvoiceDataPaymentAmountPaid(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -9209,15 +9399,18 @@ class InvoiceDataPaymentAmountPaid(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -9245,6 +9438,7 @@ class InvoiceDataPaymentAmountPaid(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -9261,7 +9455,7 @@ class InvoiceDataPaymentAmountPaid(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -9290,6 +9484,8 @@ class InvoiceDataPaymentAmountPaid(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -9298,7 +9494,7 @@ class InvoiceDataPaymentAmountPaid(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -9309,6 +9505,7 @@ class InvoiceDataPaymentAmountPaid(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -9330,7 +9527,7 @@ class InvoiceDataPaymentAmountTax(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -9358,15 +9555,18 @@ class InvoiceDataPaymentAmountTax(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -9394,6 +9594,7 @@ class InvoiceDataPaymentAmountTax(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -9410,7 +9611,7 @@ class InvoiceDataPaymentAmountTax(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -9439,6 +9640,8 @@ class InvoiceDataPaymentAmountTax(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -9447,7 +9650,7 @@ class InvoiceDataPaymentAmountTax(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -9458,6 +9661,7 @@ class InvoiceDataPaymentAmountTax(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -9479,7 +9683,7 @@ class InvoiceDataPaymentAmountTotal(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -9507,15 +9711,18 @@ class InvoiceDataPaymentAmountTotal(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -9543,6 +9750,7 @@ class InvoiceDataPaymentAmountTotal(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -9559,7 +9767,7 @@ class InvoiceDataPaymentAmountTotal(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -9588,6 +9796,8 @@ class InvoiceDataPaymentAmountTotal(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -9596,7 +9806,7 @@ class InvoiceDataPaymentAmountTotal(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -9607,6 +9817,7 @@ class InvoiceDataPaymentAmountTotal(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -9628,7 +9839,7 @@ class InvoiceDataPaymentReference(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -9656,15 +9867,18 @@ class InvoiceDataPaymentReference(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -9692,6 +9906,7 @@ class InvoiceDataPaymentReference(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -9708,7 +9923,7 @@ class InvoiceDataPaymentReference(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -9737,6 +9952,8 @@ class InvoiceDataPaymentReference(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -9745,7 +9962,7 @@ class InvoiceDataPaymentReference(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -9756,6 +9973,7 @@ class InvoiceDataPaymentReference(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -9777,7 +9995,7 @@ class InvoiceDataSupplierBusinessNumber(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -9805,15 +10023,18 @@ class InvoiceDataSupplierBusinessNumber(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -9841,6 +10062,7 @@ class InvoiceDataSupplierBusinessNumber(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -9857,7 +10079,7 @@ class InvoiceDataSupplierBusinessNumber(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -9886,6 +10108,8 @@ class InvoiceDataSupplierBusinessNumber(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -9894,7 +10118,7 @@ class InvoiceDataSupplierBusinessNumber(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -9905,6 +10129,7 @@ class InvoiceDataSupplierBusinessNumber(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -9926,7 +10151,7 @@ class InvoiceDataSupplierCompanyName(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -9954,15 +10179,18 @@ class InvoiceDataSupplierCompanyName(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -9990,6 +10218,7 @@ class InvoiceDataSupplierCompanyName(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -10006,7 +10235,7 @@ class InvoiceDataSupplierCompanyName(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -10035,6 +10264,8 @@ class InvoiceDataSupplierCompanyName(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -10043,7 +10274,7 @@ class InvoiceDataSupplierCompanyName(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -10054,6 +10285,7 @@ class InvoiceDataSupplierCompanyName(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -10075,7 +10307,7 @@ class InvoiceDataSupplierEmail(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -10103,15 +10335,18 @@ class InvoiceDataSupplierEmail(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -10139,6 +10374,7 @@ class InvoiceDataSupplierEmail(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -10155,7 +10391,7 @@ class InvoiceDataSupplierEmail(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -10184,6 +10420,8 @@ class InvoiceDataSupplierEmail(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -10192,7 +10430,7 @@ class InvoiceDataSupplierEmail(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -10203,6 +10441,7 @@ class InvoiceDataSupplierEmail(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -10224,7 +10463,7 @@ class InvoiceDataSupplierFax(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -10252,15 +10491,18 @@ class InvoiceDataSupplierFax(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -10288,6 +10530,7 @@ class InvoiceDataSupplierFax(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -10304,7 +10547,7 @@ class InvoiceDataSupplierFax(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -10333,6 +10576,8 @@ class InvoiceDataSupplierFax(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -10341,7 +10586,7 @@ class InvoiceDataSupplierFax(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -10352,6 +10597,7 @@ class InvoiceDataSupplierFax(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -10373,7 +10619,7 @@ class InvoiceDataSupplierPhoneNumber(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -10401,15 +10647,18 @@ class InvoiceDataSupplierPhoneNumber(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -10437,6 +10686,7 @@ class InvoiceDataSupplierPhoneNumber(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -10453,7 +10703,7 @@ class InvoiceDataSupplierPhoneNumber(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -10482,6 +10732,8 @@ class InvoiceDataSupplierPhoneNumber(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -10490,7 +10742,7 @@ class InvoiceDataSupplierPhoneNumber(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -10501,6 +10753,7 @@ class InvoiceDataSupplierPhoneNumber(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -10522,7 +10775,7 @@ class InvoiceDataSupplierVat(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -10550,15 +10803,18 @@ class InvoiceDataSupplierVat(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -10586,6 +10842,7 @@ class InvoiceDataSupplierVat(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -10602,7 +10859,7 @@ class InvoiceDataSupplierVat(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -10631,6 +10888,8 @@ class InvoiceDataSupplierVat(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -10639,7 +10898,7 @@ class InvoiceDataSupplierVat(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -10650,6 +10909,7 @@ class InvoiceDataSupplierVat(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -10671,7 +10931,7 @@ class InvoiceDataSupplierWebsite(
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -10699,15 +10959,18 @@ class InvoiceDataSupplierWebsite(
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -10735,6 +10998,7 @@ class InvoiceDataSupplierWebsite(
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -10751,7 +11015,7 @@ class InvoiceDataSupplierWebsite(
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -10780,6 +11044,8 @@ class InvoiceDataSupplierWebsite(
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: str
         """
@@ -10788,7 +11054,7 @@ class InvoiceDataSupplierWebsite(
         self.id = kwargs["id"]
         self.rectangle = kwargs["rectangle"]
         self.rectangles = kwargs["rectangles"]
-        self.document = kwargs.get("document", None)
+        self.document = kwargs["document"]
         self.page_index = kwargs["page_index"]
         self.raw = kwargs["raw"]
         self.confidence = kwargs["confidence"]
@@ -10799,6 +11065,7 @@ class InvoiceDataSupplierWebsite(
         self.is_auto_verified = kwargs["is_auto_verified"]
         self.data_point = kwargs["data_point"]
         self.content_type = kwargs["content_type"]
+        self.parent = kwargs.get("parent", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -11128,6 +11395,10 @@ class JobDescriptionSearch(msrest.serialization.Model):
     :vartype results: list[~affinda.models.JobDescriptionSearchResult]
     """
 
+    _validation = {
+        "count": {"minimum": 0},
+    }
+
     _attribute_map = {
         "count": {"key": "count", "type": "int"},
         "next": {"key": "next", "type": "str"},
@@ -11224,7 +11495,8 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
     """
 
     _validation = {
-        "user_id": {"readonly": True},
+        "max_results": {"minimum": 1},
+        "user_id": {"readonly": True, "minimum": 1},
         "username": {"readonly": True},
     }
 
@@ -11522,6 +11794,11 @@ class JobDescriptionSearchDetailExperience(msrest.serialization.Model):
     :ivar match:
     :vartype match: bool
     """
+
+    _validation = {
+        "minimum_experience": {"minimum": 0},
+        "maximum_experience": {"minimum": 0},
+    }
 
     _attribute_map = {
         "minimum_experience": {"key": "minimumExperience", "type": "int"},
@@ -12460,7 +12737,7 @@ class JobTitleAnnotation(Annotation):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -12488,15 +12765,18 @@ class JobTitleAnnotation(Annotation):
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed: Years of experience range.
     :vartype parsed: ~affinda.models.JobTitleAnnotationParsed
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -12524,6 +12804,7 @@ class JobTitleAnnotation(Annotation):
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "JobTitleAnnotationParsed"},
     }
 
@@ -12540,7 +12821,7 @@ class JobTitleAnnotation(Annotation):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -12569,6 +12850,8 @@ class JobTitleAnnotation(Annotation):
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed: Years of experience range.
         :paramtype parsed: ~affinda.models.JobTitleAnnotationParsed
         """
@@ -12634,6 +12917,12 @@ class JobTitleAnnotationParsedClassification(msrest.serialization.Model):
      title.
     :vartype major_group_code: int
     """
+
+    _validation = {
+        "minor_group_code": {"maximum": 9999, "minimum": 1},
+        "sub_major_group_code": {"maximum": 9999, "minimum": 1},
+        "major_group_code": {"maximum": 9999, "minimum": 1},
+    }
 
     _attribute_map = {
         "soc_code": {"key": "socCode", "type": "float"},
@@ -12971,7 +13260,7 @@ class LanguageAnnotation(Annotation):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -12999,15 +13288,18 @@ class LanguageAnnotation(Annotation):
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -13036,6 +13328,7 @@ class LanguageAnnotation(Annotation):
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -13052,7 +13345,7 @@ class LanguageAnnotation(Annotation):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -13081,6 +13374,8 @@ class LanguageAnnotation(Annotation):
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         """
         super(LanguageAnnotation, self).__init__(**kwargs)
         self.parsed = None
@@ -13239,7 +13534,7 @@ class LocationAnnotation(Annotation):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -13267,15 +13562,18 @@ class LocationAnnotation(Annotation):
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: ~affinda.models.Location
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -13303,6 +13601,7 @@ class LocationAnnotation(Annotation):
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "Location"},
     }
 
@@ -13319,7 +13618,7 @@ class LocationAnnotation(Annotation):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -13348,6 +13647,8 @@ class LocationAnnotation(Annotation):
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: ~affinda.models.Location
         """
@@ -14170,12 +14471,12 @@ class PageMeta(msrest.serialization.Model):
     """
 
     _validation = {
-        "id": {"required": True},
-        "page_index": {"required": True},
+        "id": {"required": True, "minimum": 1},
+        "page_index": {"required": True, "minimum": 0},
         "image": {"required": True},
         "height": {"required": True},
         "width": {"required": True},
-        "rotation": {"required": True},
+        "rotation": {"required": True, "maximum": 360, "minimum": -360},
     }
 
     _attribute_map = {
@@ -14230,7 +14531,7 @@ class PaginatedResponse(msrest.serialization.Model):
     """
 
     _validation = {
-        "count": {"required": True},
+        "count": {"required": True, "minimum": 0},
     }
 
     _attribute_map = {
@@ -14364,7 +14665,7 @@ class Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema(
     """
 
     _validation = {
-        "count": {"required": True},
+        "count": {"required": True, "minimum": 0},
     }
 
     _attribute_map = {
@@ -14460,7 +14761,7 @@ class Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema(
     """
 
     _validation = {
-        "count": {"required": True},
+        "count": {"required": True, "minimum": 0},
     }
 
     _attribute_map = {
@@ -14546,7 +14847,7 @@ class Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema(msrest.ser
     :ivar name:
     :vartype name: str
     :ivar document_type: Known values are: "resumes", "job_descriptions".
-    :vartype document_type: str or ~affinda.models.Enum23
+    :vartype document_type: str or ~affinda.models.Enum22
     """
 
     _attribute_map = {
@@ -14559,7 +14860,7 @@ class Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema(msrest.ser
         :keyword name:
         :paramtype name: str
         :keyword document_type: Known values are: "resumes", "job_descriptions".
-        :paramtype document_type: str or ~affinda.models.Enum23
+        :paramtype document_type: str or ~affinda.models.Enum22
         """
         super(Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema, self).__init__(
             **kwargs
@@ -14586,7 +14887,7 @@ class Paths26Civ0V3ApiUsersGetResponses200ContentApplicationJsonSchema(
     """
 
     _validation = {
-        "count": {"required": True},
+        "count": {"required": True, "minimum": 0},
     }
 
     _attribute_map = {
@@ -14733,6 +15034,10 @@ class PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema(msrest.seria
     :vartype results: list[~affinda.models.Get200ApplicationJsonPropertiesItemsItem]
     """
 
+    _validation = {
+        "count": {"minimum": 1},
+    }
+
     _attribute_map = {
         "count": {"key": "count", "type": "int"},
         "next": {"key": "next", "type": "str"},
@@ -14851,7 +15156,7 @@ class PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema(
     """
 
     _validation = {
-        "count": {"required": True},
+        "count": {"required": True, "minimum": 0},
     }
 
     _attribute_map = {
@@ -14896,6 +15201,10 @@ class PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema
     :vartype results:
      list[~affinda.models.Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]
     """
+
+    _validation = {
+        "count": {"minimum": 1},
+    }
 
     _attribute_map = {
         "count": {"key": "count", "type": "int"},
@@ -14946,7 +15255,7 @@ class PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema(
     """
 
     _validation = {
-        "count": {"required": True},
+        "count": {"required": True, "minimum": 0},
     }
 
     _attribute_map = {
@@ -14995,7 +15304,7 @@ class PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonS
     """
 
     _validation = {
-        "count": {"required": True},
+        "count": {"required": True, "minimum": 0},
     }
 
     _attribute_map = {
@@ -15044,7 +15353,7 @@ class PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSch
     """
 
     _validation = {
-        "count": {"required": True},
+        "count": {"required": True, "minimum": 0},
     }
 
     _attribute_map = {
@@ -15094,7 +15403,7 @@ class PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSche
 
     _validation = {
         "results": {"required": True},
-        "count": {"required": True},
+        "count": {"required": True, "minimum": 0},
     }
 
     _attribute_map = {
@@ -15142,6 +15451,7 @@ class Rectangle(msrest.serialization.Model):
     """
 
     _validation = {
+        "page_index": {"minimum": 0},
         "x0": {"required": True},
         "y0": {"required": True},
         "x1": {"required": True},
@@ -15706,6 +16016,7 @@ class ResumeData(msrest.serialization.Model):
 
     _validation = {
         "language_codes": {"readonly": True},
+        "total_years_experience": {"minimum": 0},
         "head_shot": {"readonly": True},
         "profession": {"readonly": True},
         "linkedin": {"readonly": True},
@@ -15878,6 +16189,10 @@ class ResumeDataPhoneNumberDetailsItem(msrest.serialization.Model):
     :vartype national_number: str
     """
 
+    _validation = {
+        "international_country_code": {"minimum": 1},
+    }
+
     _attribute_map = {
         "raw_text": {"key": "rawText", "type": "str"},
         "formatted_number": {"key": "formattedNumber", "type": "str"},
@@ -16027,9 +16342,11 @@ class ResumeDataSkillsItem(msrest.serialization.Model):
     """
 
     _validation = {
+        "id": {"minimum": 1},
         "emsi_id": {"readonly": True},
+        "number_of_months": {"minimum": 0},
         "type": {"readonly": True},
-        "count": {"readonly": True},
+        "count": {"readonly": True, "minimum": 0},
         "weighting": {"readonly": True},
         "sources": {"readonly": True},
     }
@@ -16135,6 +16452,7 @@ class ResumeDataWorkExperienceItem(msrest.serialization.Model):
     """
 
     _validation = {
+        "id": {"minimum": 1},
         "soc_code": {"readonly": True},
         "soc_name": {"readonly": True},
         "industry": {"readonly": True},
@@ -16196,6 +16514,10 @@ class ResumeDataWorkExperienceItemDates(msrest.serialization.Model):
     :ivar raw_text:
     :vartype raw_text: str
     """
+
+    _validation = {
+        "months_in_position": {"minimum": 0},
+    }
 
     _attribute_map = {
         "start_date": {"key": "startDate", "type": "date"},
@@ -16358,6 +16680,10 @@ class ResumeSearch(msrest.serialization.Model):
     :vartype results: list[~affinda.models.ResumeSearchResult]
     """
 
+    _validation = {
+        "count": {"minimum": 0},
+    }
+
     _attribute_map = {
         "count": {"key": "count", "type": "int"},
         "next": {"key": "next", "type": "str"},
@@ -16454,7 +16780,8 @@ class ResumeSearchConfig(msrest.serialization.Model):
     """
 
     _validation = {
-        "user_id": {"readonly": True},
+        "max_results": {"minimum": 1},
+        "user_id": {"readonly": True, "minimum": 1},
         "username": {"readonly": True},
     }
 
@@ -16750,6 +17077,10 @@ class ResumeSearchDetailEducationValueItem(
     :vartype dates: ~affinda.models.EducationDates
     """
 
+    _validation = {
+        "id": {"minimum": 1},
+    }
+
     _attribute_map = {
         "match": {"key": "match", "type": "bool"},
         "id": {"key": "id", "type": "int"},
@@ -16795,6 +17126,10 @@ class ResumeSearchDetailExperience(msrest.serialization.Model):
     :ivar match:
     :vartype match: bool
     """
+
+    _validation = {
+        "years": {"minimum": 0},
+    }
 
     _attribute_map = {
         "years": {"key": "years", "type": "int"},
@@ -16924,6 +17259,10 @@ class ResumeSkill(msrest.serialization.Model):
     :vartype sources: list[~affinda.models.ResumeSkillSourcesItem]
     """
 
+    _validation = {
+        "number_of_months": {"minimum": 0},
+    }
+
     _attribute_map = {
         "name": {"key": "name", "type": "str"},
         "last_used": {"key": "lastUsed", "type": "str"},
@@ -16972,6 +17311,10 @@ class ResumeSearchDetailLanguagesValueItem(
     :ivar sources:
     :vartype sources: list[~affinda.models.ResumeSkillSourcesItem]
     """
+
+    _validation = {
+        "number_of_months": {"minimum": 0},
+    }
 
     _attribute_map = {
         "match": {"key": "match", "type": "bool"},
@@ -17247,6 +17590,10 @@ class ResumeSearchDetailSkillsValueItem(
     :vartype sources: list[~affinda.models.ResumeSkillSourcesItem]
     """
 
+    _validation = {
+        "number_of_months": {"minimum": 0},
+    }
+
     _attribute_map = {
         "match": {"key": "match", "type": "bool"},
         "name": {"key": "name", "type": "str"},
@@ -17495,6 +17842,8 @@ class ResumeSearchParameters(msrest.serialization.Model):
     _validation = {
         "indices": {"required": True},
         "job_titles_weight": {"maximum": 1, "minimum": 0},
+        "years_experience_min": {"minimum": 0},
+        "years_experience_max": {"minimum": 0},
         "years_experience_weight": {"maximum": 1, "minimum": 0},
         "locations_weight": {"maximum": 1, "minimum": 0},
         "skills_weight": {"maximum": 1, "minimum": 0},
@@ -17795,6 +18144,10 @@ class ResumeSearchParametersLocation(msrest.serialization.Model):
     :vartype unit: str or ~affinda.models.SearchLocationUnit
     """
 
+    _validation = {
+        "distance": {"minimum": 1},
+    }
+
     _attribute_map = {
         "name": {"key": "name", "type": "str"},
         "coordinates": {"key": "coordinates", "type": "ResumeSearchParametersLocationCoordinates"},
@@ -18017,6 +18370,10 @@ class ResumeSkillSourcesItem(msrest.serialization.Model):
     :vartype position: int
     """
 
+    _validation = {
+        "position": {"minimum": 0},
+    }
+
     _attribute_map = {
         "section": {"key": "section", "type": "str"},
         "position": {"key": "position", "type": "int"},
@@ -18054,7 +18411,7 @@ class RowAnnotation(Annotation):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -18082,15 +18439,18 @@ class RowAnnotation(Annotation):
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: ~affinda.models.RowAnnotationParsed
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -18118,6 +18478,7 @@ class RowAnnotation(Annotation):
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "RowAnnotationParsed"},
     }
 
@@ -18134,7 +18495,7 @@ class RowAnnotation(Annotation):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -18163,6 +18524,8 @@ class RowAnnotation(Annotation):
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: ~affinda.models.RowAnnotationParsed
         """
@@ -18345,7 +18708,7 @@ class SkillAnnotation(Annotation):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -18373,15 +18736,18 @@ class SkillAnnotation(Annotation):
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: str
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -18410,6 +18776,7 @@ class SkillAnnotation(Annotation):
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
     }
 
@@ -18426,7 +18793,7 @@ class SkillAnnotation(Annotation):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -18455,6 +18822,8 @@ class SkillAnnotation(Annotation):
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         """
         super(SkillAnnotation, self).__init__(**kwargs)
         self.parsed = None
@@ -18613,7 +18982,7 @@ class TableAnnotation(Annotation):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -18641,15 +19010,18 @@ class TableAnnotation(Annotation):
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed:
     :vartype parsed: ~affinda.models.TableAnnotationParsed
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -18677,6 +19049,7 @@ class TableAnnotation(Annotation):
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "TableAnnotationParsed"},
     }
 
@@ -18693,7 +19066,7 @@ class TableAnnotation(Annotation):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -18722,6 +19095,8 @@ class TableAnnotation(Annotation):
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed:
         :paramtype parsed: ~affinda.models.TableAnnotationParsed
         """
@@ -18765,10 +19140,10 @@ class Tag(msrest.serialization.Model):
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "name": {"required": True},
         "workspace": {"required": True},
-        "document_count": {"required": True},
+        "document_count": {"required": True, "minimum": 0},
     }
 
     _attribute_map = {
@@ -19256,6 +19631,10 @@ class UserNullable(msrest.serialization.Model):
     :vartype avatar: str
     """
 
+    _validation = {
+        "id": {"minimum": 1},
+    }
+
     _attribute_map = {
         "id": {"key": "id", "type": "int"},
         "name": {"key": "name", "type": "str"},
@@ -19411,6 +19790,8 @@ class Workspace(msrest.serialization.Model):
 
     _validation = {
         "identifier": {"required": True},
+        "unvalidated_docs_count": {"minimum": 0},
+        "confirmed_docs_count": {"minimum": 0},
     }
 
     _attribute_map = {
@@ -19509,6 +19890,8 @@ class WorkspaceCollectionsItem(msrest.serialization.Model):
         "identifier": {"required": True},
         "name": {"required": True},
         "extractor": {"required": True},
+        "unvalidated_docs_count": {"minimum": 0},
+        "confirmed_docs_count": {"minimum": 0},
     }
 
     _attribute_map = {
@@ -19740,6 +20123,10 @@ class WorkspaceMembershipCreate(msrest.serialization.Model):
     :vartype user: int
     """
 
+    _validation = {
+        "user": {"minimum": 1},
+    }
+
     _attribute_map = {
         "workspace": {"key": "workspace", "type": "str"},
         "user": {"key": "user", "type": "int"},
@@ -19848,7 +20235,7 @@ class YearsExperienceAnnotation(Annotation):
     :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
      annotation can be contained within multiple rectangles.
     :vartype rectangles: list[~affinda.models.Rectangle]
-    :ivar document: Unique identifier for the document.
+    :ivar document: Required. Unique identifier for the document.
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
@@ -19876,15 +20263,18 @@ class YearsExperienceAnnotation(Annotation):
      "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
      "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
     :ivar parsed: Years of experience range.
     :vartype parsed: ~affinda.models.YearsExperienceAnnotationParsed
     """
 
     _validation = {
-        "id": {"required": True},
+        "id": {"required": True, "minimum": 1},
         "rectangle": {"required": True},
         "rectangles": {"required": True},
-        "page_index": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
         "raw": {"required": True},
         "confidence": {"required": True},
         "classification_confidence": {"required": True},
@@ -19912,6 +20302,7 @@ class YearsExperienceAnnotation(Annotation):
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "YearsExperienceAnnotationParsed"},
     }
 
@@ -19928,7 +20319,7 @@ class YearsExperienceAnnotation(Annotation):
         :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
          annotation can be contained within multiple rectangles.
         :paramtype rectangles: list[~affinda.models.Rectangle]
-        :keyword document: Unique identifier for the document.
+        :keyword document: Required. Unique identifier for the document.
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
@@ -19957,6 +20348,8 @@ class YearsExperienceAnnotation(Annotation):
          "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
          "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
         :keyword parsed: Years of experience range.
         :paramtype parsed: ~affinda.models.YearsExperienceAnnotationParsed
         """

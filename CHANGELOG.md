@@ -6,6 +6,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.14.0] - 2023-11-08
+### Added
+- Add `parent` field to `Annotation`
+
+### Fixed
+- Make `Annotation.rectangles` field non-nullable
+- Make `Annotation.document` field required
+
+### Changed
+- Remove enum constraint from `ordering` on the `getAllDocuments` operation
+
 ## [4.13.0] - 2023-10-24
 ### Added
 - Add display_enum_value config to Collection field config

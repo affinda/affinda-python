@@ -566,8 +566,10 @@ Default value is None.
 - `created_dt` (`str or ~affinda.models.DateRange`): Filter by created datetime. Default value is None.
 - `search` (`str`): Partial, case-insensitive match with file name or tag name. Default value is
 None.
-- `ordering` (`list[str or ~affinda.models.Get8ItemsItem]`): Sort the result set. A "-" at the beginning denotes DESC sort, e.g.
--created_dt. Sort by multiple fields is supported. Default value is None.
+- `ordering` (`list[str]`): Sort the result set. A "-" at the beginning denotes DESC sort, e.g.
+-created_dt. Sort by multiple fields is supported. Supported values include: 'file_name',
+'extractor', 'created_dt', 'validated_dt', 'archived_dt' and 'parsed__:code:`<dataPointSlug>`'.
+Default value is None.
 - `include_data` (`bool`): By default, this endpoint returns only the meta data of the documents. Set
 this to ``true`` will return a summary of the data that was parsed. If you want to retrieve the
 full set of data for a document, use the ``GET /documents/{identifier}`` endpoint. Default
@@ -2539,7 +2541,7 @@ Returns all the indexes.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
-- `document_type` (`str or ~affinda.models.Enum20`): Filter indices by a document type. Default value is None.
+- `document_type` (`str or ~affinda.models.Enum19`): Filter indices by a document type. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:

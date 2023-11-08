@@ -624,7 +624,7 @@ def build_get_all_documents_request(
     tags = kwargs.pop('tags', _params.pop('tags', None))  # type: Optional[List[int]]
     created_dt = kwargs.pop('created_dt', _params.pop('created_dt', None))  # type: Optional[Union[str, "_models.DateRange"]]
     search = kwargs.pop('search', _params.pop('search', None))  # type: Optional[str]
-    ordering = kwargs.pop('ordering', _params.pop('ordering', None))  # type: Optional[List[Union[str, "_models.Get8ItemsItem"]]]
+    ordering = kwargs.pop('ordering', _params.pop('ordering', None))  # type: Optional[List[str]]
     include_data = kwargs.pop('include_data', _params.pop('include_data', None))  # type: Optional[bool]
     exclude = kwargs.pop('exclude', _params.pop('exclude', None))  # type: Optional[List[str]]
     in_review = kwargs.pop('in_review', _params.pop('in_review', None))  # type: Optional[bool]
@@ -1307,7 +1307,7 @@ def build_get_data_point_choice_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/v3/data_point_choices/{id}")
     path_format_arguments = {
-        "id": _SERIALIZER.url("id", id, 'int'),
+        "id": _SERIALIZER.url("id", id, 'int', minimum=1),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -1336,7 +1336,7 @@ def build_update_data_point_choice_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/v3/data_point_choices/{id}")
     path_format_arguments = {
-        "id": _SERIALIZER.url("id", id, 'int'),
+        "id": _SERIALIZER.url("id", id, 'int', minimum=1),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -1366,7 +1366,7 @@ def build_delete_data_point_choice_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/v3/data_point_choices/{id}")
     path_format_arguments = {
-        "id": _SERIALIZER.url("id", id, 'int'),
+        "id": _SERIALIZER.url("id", id, 'int', minimum=1),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -1472,7 +1472,7 @@ def build_get_annotation_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/v3/annotations/{id}")
     path_format_arguments = {
-        "id": _SERIALIZER.url("id", id, 'int'),
+        "id": _SERIALIZER.url("id", id, 'int', minimum=1),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -1501,7 +1501,7 @@ def build_update_annotation_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/v3/annotations/{id}")
     path_format_arguments = {
-        "id": _SERIALIZER.url("id", id, 'int'),
+        "id": _SERIALIZER.url("id", id, 'int', minimum=1),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -1531,7 +1531,7 @@ def build_delete_annotation_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/v3/annotations/{id}")
     path_format_arguments = {
-        "id": _SERIALIZER.url("id", id, 'int'),
+        "id": _SERIALIZER.url("id", id, 'int', minimum=1),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -1694,7 +1694,7 @@ def build_get_tag_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/v3/tags/{id}")
     path_format_arguments = {
-        "id": _SERIALIZER.url("id", id, 'int'),
+        "id": _SERIALIZER.url("id", id, 'int', minimum=1),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -1723,7 +1723,7 @@ def build_update_tag_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/v3/tags/{id}")
     path_format_arguments = {
-        "id": _SERIALIZER.url("id", id, 'int'),
+        "id": _SERIALIZER.url("id", id, 'int', minimum=1),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -1753,7 +1753,7 @@ def build_delete_tag_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/v3/tags/{id}")
     path_format_arguments = {
-        "id": _SERIALIZER.url("id", id, 'int'),
+        "id": _SERIALIZER.url("id", id, 'int', minimum=1),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -2306,7 +2306,7 @@ def build_get_api_user_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/v3/api_users/{id}")
     path_format_arguments = {
-        "id": _SERIALIZER.url("id", id, 'int'),
+        "id": _SERIALIZER.url("id", id, 'int', minimum=1),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -2335,7 +2335,7 @@ def build_update_api_user_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/v3/api_users/{id}")
     path_format_arguments = {
-        "id": _SERIALIZER.url("id", id, 'int'),
+        "id": _SERIALIZER.url("id", id, 'int', minimum=1),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -2365,7 +2365,7 @@ def build_delete_api_user_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/v3/api_users/{id}")
     path_format_arguments = {
-        "id": _SERIALIZER.url("id", id, 'int'),
+        "id": _SERIALIZER.url("id", id, 'int', minimum=1),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -2393,7 +2393,7 @@ def build_regenerate_api_key_for_api_user_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/v3/api_users/{id}/regenerate_api_key")
     path_format_arguments = {
-        "id": _SERIALIZER.url("id", id, 'int'),
+        "id": _SERIALIZER.url("id", id, 'int', minimum=1),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -2746,7 +2746,7 @@ def build_get_all_indexes_request(
 
     offset = kwargs.pop('offset', _params.pop('offset', None))  # type: Optional[int]
     limit = kwargs.pop('limit', _params.pop('limit', 300))  # type: Optional[int]
-    document_type = kwargs.pop('document_type', _params.pop('document_type', None))  # type: Optional[Union[str, "_models.Enum20"]]
+    document_type = kwargs.pop('document_type', _params.pop('document_type', None))  # type: Optional[Union[str, "_models.Enum19"]]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
@@ -4511,7 +4511,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         tags=None,  # type: Optional[List[int]]
         created_dt=None,  # type: Optional[Union[str, "_models.DateRange"]]
         search=None,  # type: Optional[str]
-        ordering=None,  # type: Optional[List[Union[str, "_models.Get8ItemsItem"]]]
+        ordering=None,  # type: Optional[List[str]]
         include_data=None,  # type: Optional[bool]
         exclude=None,  # type: Optional[List[str]]
         in_review=None,  # type: Optional[bool]
@@ -4546,8 +4546,10 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
          None.
         :type search: str
         :param ordering: Sort the result set. A "-" at the beginning denotes DESC sort, e.g.
-         -created_dt. Sort by multiple fields is supported. Default value is None.
-        :type ordering: list[str or ~affinda.models.Get8ItemsItem]
+         -created_dt. Sort by multiple fields is supported. Supported values include: 'file_name',
+         'extractor', 'created_dt', 'validated_dt', 'archived_dt' and 'parsed__:code:`<dataPointSlug>`'.
+         Default value is None.
+        :type ordering: list[str]
         :param include_data: By default, this endpoint returns only the meta data of the documents. Set
          this to ``true`` will return a summary of the data that was parsed. If you want to retrieve the
          full set of data for a document, use the ``GET /documents/{identifier}`` endpoint. Default
@@ -9755,7 +9757,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         self,
         offset=None,  # type: Optional[int]
         limit=300,  # type: Optional[int]
-        document_type=None,  # type: Optional[Union[str, "_models.Enum20"]]
+        document_type=None,  # type: Optional[Union[str, "_models.Enum19"]]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema
@@ -9769,7 +9771,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param limit: The numbers of results to return. Default value is 300.
         :type limit: int
         :param document_type: Filter indices by a document type. Default value is None.
-        :type document_type: str or ~affinda.models.Enum20
+        :type document_type: str or ~affinda.models.Enum19
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)

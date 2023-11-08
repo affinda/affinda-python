@@ -1415,7 +1415,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         tags: Optional[List[int]] = None,
         created_dt: Optional[Union[str, "_models.DateRange"]] = None,
         search: Optional[str] = None,
-        ordering: Optional[List[Union[str, "_models.Get8ItemsItem"]]] = None,
+        ordering: Optional[List[str]] = None,
         include_data: Optional[bool] = None,
         exclude: Optional[List[str]] = None,
         in_review: Optional[bool] = None,
@@ -1449,8 +1449,10 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
          None.
         :type search: str
         :param ordering: Sort the result set. A "-" at the beginning denotes DESC sort, e.g.
-         -created_dt. Sort by multiple fields is supported. Default value is None.
-        :type ordering: list[str or ~affinda.models.Get8ItemsItem]
+         -created_dt. Sort by multiple fields is supported. Supported values include: 'file_name',
+         'extractor', 'created_dt', 'validated_dt', 'archived_dt' and 'parsed__:code:`<dataPointSlug>`'.
+         Default value is None.
+        :type ordering: list[str]
         :param include_data: By default, this endpoint returns only the meta data of the documents. Set
          this to ``true`` will return a summary of the data that was parsed. If you want to retrieve the
          full set of data for a document, use the ``GET /documents/{identifier}`` endpoint. Default
@@ -6436,7 +6438,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         self,
         offset: Optional[int] = None,
         limit: Optional[int] = 300,
-        document_type: Optional[Union[str, "_models.Enum20"]] = None,
+        document_type: Optional[Union[str, "_models.Enum19"]] = None,
         **kwargs: Any,
     ) -> _models.PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema:
         """Get list of all indexes.
@@ -6449,7 +6451,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param limit: The numbers of results to return. Default value is 300.
         :type limit: int
         :param document_type: Filter indices by a document type. Default value is None.
-        :type document_type: str or ~affinda.models.Enum20
+        :type document_type: str or ~affinda.models.Enum19
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)

@@ -58,7 +58,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -86,6 +86,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 
 <a id="models._models.Annotation.__init__"></a>
 
@@ -104,7 +106,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -122,6 +124,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 
 <a id="models._models.AnnotationBase"></a>
 
@@ -2026,7 +2029,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -2054,6 +2057,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: ~affinda.models.DataPointChoice
 
@@ -2074,7 +2079,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -2092,6 +2097,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.CustomFieldConfig"></a>
@@ -2875,7 +2881,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -2903,6 +2909,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: ~datetime.date
 
@@ -2923,7 +2931,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -2941,6 +2949,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.DateAnnotationUpdate"></a>
@@ -3786,7 +3795,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -3814,6 +3823,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: ~affinda.models.ExpectedRemunerationAnnotationParsed
 
@@ -3834,7 +3845,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -3852,6 +3863,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.ExpectedRemunerationAnnotationParsed"></a>
@@ -4461,7 +4473,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -4489,6 +4501,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: float
 
@@ -4509,7 +4523,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -4527,6 +4541,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.Get200ApplicationJsonPropertiesItemsItem"></a>
@@ -4994,7 +5009,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -5022,6 +5037,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -5042,7 +5059,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5060,6 +5077,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataBankAccountNumber"></a>
@@ -5087,7 +5105,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -5115,6 +5133,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -5135,7 +5155,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5153,6 +5173,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataBankBsb"></a>
@@ -5180,7 +5201,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -5208,6 +5229,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -5228,7 +5251,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5246,6 +5269,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataBankIban"></a>
@@ -5273,7 +5297,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -5301,6 +5325,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -5321,7 +5347,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5339,6 +5365,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataBankSortCode"></a>
@@ -5366,7 +5393,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -5394,6 +5421,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -5414,7 +5443,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5432,6 +5461,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataBankSwift"></a>
@@ -5459,7 +5489,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -5487,6 +5517,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -5507,7 +5539,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5525,6 +5557,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataBpayBillerCode"></a>
@@ -5552,7 +5585,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -5580,6 +5613,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -5600,7 +5635,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5618,6 +5653,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataBpayReference"></a>
@@ -5645,7 +5681,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -5673,6 +5709,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -5693,7 +5731,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5711,6 +5749,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerBusinessNumber"></a>
@@ -5739,7 +5778,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -5767,6 +5806,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -5787,7 +5828,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5805,6 +5846,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerCompanyName"></a>
@@ -5833,7 +5875,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -5861,6 +5903,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -5881,7 +5925,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5899,6 +5943,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerContactName"></a>
@@ -5926,7 +5971,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -5954,6 +5999,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -5974,7 +6021,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -5992,6 +6039,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerEmail"></a>
@@ -6019,7 +6067,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -6047,6 +6095,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -6067,7 +6117,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -6085,6 +6135,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerNumber"></a>
@@ -6112,7 +6163,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -6140,6 +6191,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -6160,7 +6213,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -6178,6 +6231,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerPhoneNumber"></a>
@@ -6206,7 +6260,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -6234,6 +6288,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -6254,7 +6310,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -6272,6 +6328,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataCustomerVat"></a>
@@ -6299,7 +6356,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -6327,6 +6384,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -6347,7 +6406,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -6365,6 +6424,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataInvoiceNumber"></a>
@@ -6392,7 +6452,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -6420,6 +6480,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -6440,7 +6502,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -6458,6 +6520,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataInvoicePurchaseOrderNumber"></a>
@@ -6486,7 +6549,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -6514,6 +6577,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -6534,7 +6599,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -6552,6 +6617,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataPaymentAmountBase"></a>
@@ -6579,7 +6645,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -6607,6 +6673,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -6627,7 +6695,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -6645,6 +6713,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataPaymentAmountDue"></a>
@@ -6672,7 +6741,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -6700,6 +6769,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -6720,7 +6791,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -6738,6 +6809,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataPaymentAmountPaid"></a>
@@ -6765,7 +6837,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -6793,6 +6865,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -6813,7 +6887,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -6831,6 +6905,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataPaymentAmountTax"></a>
@@ -6858,7 +6933,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -6886,6 +6961,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -6906,7 +6983,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -6924,6 +7001,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataPaymentAmountTotal"></a>
@@ -6951,7 +7029,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -6979,6 +7057,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -6999,7 +7079,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -7017,6 +7097,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataPaymentReference"></a>
@@ -7044,7 +7125,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -7072,6 +7153,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -7092,7 +7175,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -7110,6 +7193,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierBusinessNumber"></a>
@@ -7138,7 +7222,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -7166,6 +7250,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -7186,7 +7272,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -7204,6 +7290,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierCompanyName"></a>
@@ -7232,7 +7319,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -7260,6 +7347,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -7280,7 +7369,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -7298,6 +7387,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierEmail"></a>
@@ -7325,7 +7415,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -7353,6 +7443,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -7373,7 +7465,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -7391,6 +7483,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierFax"></a>
@@ -7418,7 +7511,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -7446,6 +7539,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -7466,7 +7561,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -7484,6 +7579,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierPhoneNumber"></a>
@@ -7512,7 +7608,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -7540,6 +7636,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -7560,7 +7658,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -7578,6 +7676,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierVat"></a>
@@ -7605,7 +7704,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -7633,6 +7732,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -7653,7 +7754,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -7671,6 +7772,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.InvoiceDataSupplierWebsite"></a>
@@ -7698,7 +7800,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -7726,6 +7828,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -7746,7 +7850,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -7764,6 +7868,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.JobDescription"></a>
@@ -8982,7 +9087,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -9010,6 +9115,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed: Years of experience range.
 :vartype parsed: ~affinda.models.JobTitleAnnotationParsed
 
@@ -9030,7 +9137,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -9048,6 +9155,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: Years of experience range.
 
 <a id="models._models.JobTitleAnnotationParsed"></a>
@@ -9372,7 +9480,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -9400,6 +9508,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -9420,7 +9530,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -9438,6 +9548,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 
 <a id="models._models.LanguageAnnotationUpdate"></a>
 
@@ -9568,7 +9679,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -9596,6 +9707,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: ~affinda.models.Location
 
@@ -9616,7 +9729,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -9634,6 +9747,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.LocationAnnotationUpdate"></a>
@@ -10635,7 +10749,7 @@ Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema.
 :ivar name:
 :vartype name: str
 :ivar document_type: Known values are: "resumes", "job_descriptions".
-:vartype document_type: str or ~affinda.models.Enum23
+:vartype document_type: str or ~affinda.models.Enum22
 
 <a id="models._models.Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema.__init__"></a>
 
@@ -13377,7 +13491,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -13405,6 +13519,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: ~affinda.models.RowAnnotationParsed
 
@@ -13425,7 +13541,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -13443,6 +13559,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.RowAnnotationParsed"></a>
@@ -13591,7 +13708,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -13619,6 +13736,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: str
 
@@ -13639,7 +13758,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -13657,6 +13776,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 
 <a id="models._models.SkillAnnotationUpdate"></a>
 
@@ -13787,7 +13907,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -13815,6 +13935,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed:
 :vartype parsed: ~affinda.models.TableAnnotationParsed
 
@@ -13835,7 +13957,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -13853,6 +13975,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: 
 
 <a id="models._models.TableAnnotationParsed"></a>
@@ -14780,7 +14903,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
  annotation can be contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
+:ivar document: Required. Unique identifier for the document.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
@@ -14808,6 +14931,8 @@ All required parameters must be populated in order to send to Azure.
  "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
  "yearsexperience", "group", "table_deprecated".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
 :ivar parsed: Years of experience range.
 :vartype parsed: ~affinda.models.YearsExperienceAnnotationParsed
 
@@ -14828,7 +14953,7 @@ collection.
 data.
 - `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
 annotation can be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
+- `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `raw`: Required. Raw data extracted from the before any post-processing.
 - `confidence`: Required. The overall confidence that the model's prediction is correct.
@@ -14846,6 +14971,7 @@ human.
 "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
 "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated".
+- `parent`: The parent annotation's ID.
 - `parsed`: Years of experience range.
 
 <a id="models._models.YearsExperienceAnnotationParsed"></a>

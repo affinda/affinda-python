@@ -80,23 +80,16 @@ class EducationLevel(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     DOCTORAL = "doctoral"
 
 
-class Enum20(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class Enum19(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     RESUMES = "resumes"
     JOB_DESCRIPTIONS = "job_descriptions"
 
 
-class Enum23(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class Enum22(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     RESUMES = "resumes"
     JOB_DESCRIPTIONS = "job_descriptions"
-
-
-class Get8ItemsItem(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-
-    FILE_NAME = "file_name"
-    EXTRACTOR = "extractor"
-    CREATED_DT = "created_dt"
 
 
 class GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType(
