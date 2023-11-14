@@ -4554,13 +4554,8 @@ class Get200ApplicationJsonPropertiesItemsItem(msrest.serialization.Model)
 
 Get200ApplicationJsonPropertiesItemsItem.
 
-All required parameters must be populated in order to send to Azure.
-
-:ivar name: Required.
-:vartype name: str
-:ivar document_type: Known values are: "resumes", "job_descriptions".
-:vartype document_type: str or
- ~affinda.models.GetResponses200ContentApplicationJsonSchemaResultsItemDocumentType
+:ivar document:
+:vartype document: str
 
 <a id="models._models.Get200ApplicationJsonPropertiesItemsItem.__init__"></a>
 
@@ -4572,25 +4567,30 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `name`: Required.
-- `document_type`: Known values are: "resumes", "job_descriptions".
+- `document`: 
 
-<a id="models._models.IndexRequestBody"></a>
+<a id="models._models.Index"></a>
 
-## IndexRequestBody Objects
+## Index Objects
 
 ```python
-class IndexRequestBody(msrest.serialization.Model)
+class Index(msrest.serialization.Model)
 ```
 
-IndexRequestBody.
+Index.
 
-:ivar name:
+Variables are only populated by the server, and will be ignored when sending a request.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar name: Required. Unique index name.
 :vartype name: str
-:ivar document_type: Known values are: "resumes", "job_descriptions".
-:vartype document_type: str or ~affinda.models.PostContentSchemaDocumentType
+:ivar document_type: Required. Known values are: "resumes", "job_descriptions".
+:vartype document_type: str or ~affinda.models.IndexDocumentType
+:ivar user: Required. The user who created this index.
+:vartype user: ~affinda.models.IndexUser
 
-<a id="models._models.IndexRequestBody.__init__"></a>
+<a id="models._models.Index.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -4600,8 +4600,99 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `name`: 
+- `name`: Required. Unique index name.
+- `document_type`: Required. Known values are: "resumes", "job_descriptions".
+
+<a id="models._models.IndexCreate"></a>
+
+## IndexCreate Objects
+
+```python
+class IndexCreate(msrest.serialization.Model)
+```
+
+IndexRequestBody.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar name: Required. Unique index name.
+:vartype name: str
+:ivar document_type: Known values are: "resumes", "job_descriptions".
+:vartype document_type: str or ~affinda.models.DocumentType
+
+<a id="models._models.IndexCreate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `name`: Required. Unique index name.
 - `document_type`: Known values are: "resumes", "job_descriptions".
+
+<a id="models._models.IndexUpdate"></a>
+
+## IndexUpdate Objects
+
+```python
+class IndexUpdate(msrest.serialization.Model)
+```
+
+IndexUpdate.
+
+:ivar name: Unique index name.
+:vartype name: str
+
+<a id="models._models.IndexUpdate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `name`: Unique index name.
+
+<a id="models._models.IndexUser"></a>
+
+## IndexUser Objects
+
+```python
+class IndexUser(msrest.serialization.Model)
+```
+
+The user who created this index.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar id: Required. Uniquely identify a user.
+:vartype id: int
+:ivar name: Required.
+:vartype name: str
+:ivar email: Required.
+:vartype email: str
+:ivar avatar: Required. URL of the user's avatar.
+:vartype avatar: str
+
+<a id="models._models.IndexUser.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `id`: Required. Uniquely identify a user.
+- `name`: Required.
+- `email`: Required.
+- `avatar`: Required. URL of the user's avatar.
 
 <a id="models._models.Invitation"></a>
 
@@ -10683,32 +10774,6 @@ def __init__(**kwargs)
 - `next`: URL to request next page of results.
 - `previous`: URL to request previous page of results.
 
-<a id="models._models.Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems"></a>
-
-## Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems Objects
-
-```python
-class Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems(
-        msrest.serialization.Model)
-```
-
-Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems.
-
-:ivar document:
-:vartype document: str
-
-<a id="models._models.Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `document`: 
-
 <a id="models._models.Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
 
 ## Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
@@ -10734,35 +10799,6 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `results`: 
-
-<a id="models._models.Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema"></a>
-
-## Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema Objects
-
-```python
-class Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema(
-        msrest.serialization.Model)
-```
-
-Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema.
-
-:ivar name:
-:vartype name: str
-:ivar document_type: Known values are: "resumes", "job_descriptions".
-:vartype document_type: str or ~affinda.models.Enum22
-
-<a id="models._models.Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `name`: 
-- `document_type`: Known values are: "resumes", "job_descriptions".
 
 <a id="models._models.Paths26Civ0V3ApiUsersGetResponses200ContentApplicationJsonSchema"></a>
 
@@ -10857,6 +10893,32 @@ def __init__(**kwargs)
 
 - `results`: 
 
+<a id="models._models.Paths4T5Cm5V3IndexGetResponses200ContentApplicationJsonSchemaAllof1"></a>
+
+## Paths4T5Cm5V3IndexGetResponses200ContentApplicationJsonSchemaAllof1 Objects
+
+```python
+class Paths4T5Cm5V3IndexGetResponses200ContentApplicationJsonSchemaAllof1(
+        msrest.serialization.Model)
+```
+
+Paths4T5Cm5V3IndexGetResponses200ContentApplicationJsonSchemaAllof1.
+
+:ivar results:
+:vartype results: list[~affinda.models.Index]
+
+<a id="models._models.Paths4T5Cm5V3IndexGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: 
+
 <a id="models._models.Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
 
 ## Paths93Fa0ZV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
@@ -10915,19 +10977,22 @@ def __init__(**kwargs)
 
 ```python
 class PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema(
-        msrest.serialization.Model)
+        PaginatedResponse,
+        Paths4T5Cm5V3IndexGetResponses200ContentApplicationJsonSchemaAllof1)
 ```
 
 PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema.
 
-:ivar count: Number of indexes in result.
+All required parameters must be populated in order to send to Azure.
+
+:ivar results:
+:vartype results: list[~affinda.models.Index]
+:ivar count: Required. Number of items in results.
 :vartype count: int
 :ivar next: URL to request next page of results.
 :vartype next: str
 :ivar previous: URL to request previous page of results.
 :vartype previous: str
-:ivar results:
-:vartype results: list[~affinda.models.Get200ApplicationJsonPropertiesItemsItem]
 
 <a id="models._models.PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema.__init__"></a>
 
@@ -10939,10 +11004,10 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `count`: Number of indexes in result.
+- `results`: 
+- `count`: Required. Number of items in results.
 - `next`: URL to request next page of results.
 - `previous`: URL to request previous page of results.
-- `results`: 
 
 <a id="models._models.PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema"></a>
 
@@ -11079,8 +11144,7 @@ PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema.
 :ivar previous: URL to request previous page of results.
 :vartype previous: str
 :ivar results:
-:vartype results:
- list[~affinda.models.Paths1Kdm1ZxV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchemaPropertiesResultsItems]
+:vartype results: list[~affinda.models.Get200ApplicationJsonPropertiesItemsItem]
 
 <a id="models._models.PathsO7SnenV3IndexNameDocumentsGetResponses200ContentApplicationJsonSchema.__init__"></a>
 

@@ -547,6 +547,7 @@ def get_all_documents(offset=None,
                       validatable=None,
                       has_challenges=None,
                       custom_identifier=None,
+                      compact=None,
                       **kwargs)
 ```
 
@@ -582,6 +583,8 @@ value is None.
 - `has_challenges` (`bool`): Filter for documents with challenges. Default value is None.
 - `custom_identifier` (`str`): Filter for documents with this custom identifier. Default value is
 None.
+- `compact` (`bool`): If "true", the response is compacted to annotations' parsed data. Annotations'
+meta data are excluded. Default is "false".
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -653,7 +656,7 @@ required to be unique. Default value is None.
 #### get\_document
 
 ```python
-def get_document(identifier, format=None, **kwargs)
+def get_document(identifier, format=None, compact=None, **kwargs)
 ```
 
 Get specific document.
@@ -664,6 +667,8 @@ Return a specific document.
 
 - `identifier` (`str`): Document's identifier.
 - `format` (`str or ~affinda.models.DocumentFormat`): Specify which format you want the response to be. Default is "json".
+- `compact` (`bool`): If "true", the response is compacted to annotations' parsed data. Annotations'
+meta data are excluded. Default is "false".
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -2558,7 +2563,7 @@ cls(response)
 #### create\_index
 
 ```python
-def create_index(name=None, document_type=None, **kwargs)
+def create_index(body, **kwargs)
 ```
 
 Create a new index.
@@ -2567,8 +2572,7 @@ Create an index for the search tool.
 
 **Arguments**:
 
-- `name` (`str`): Default value is None.
-- `document_type` (`str or ~affinda.models.PostContentSchemaDocumentType`): Default value is None.
+- `body` (`~affinda.models.IndexCreate`): Index to create.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -2577,8 +2581,33 @@ Create an index for the search tool.
 
 **Returns**:
 
-`~affinda.models.Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema`: Paths1TvfqeiV3IndexPostResponses201ContentApplicationJsonSchema, or the result of
-cls(response)
+`~affinda.models.Index`: Index, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_index"></a>
+
+#### update\_index
+
+```python
+def update_index(name, body, **kwargs)
+```
+
+Update an index.
+
+Updates the specified index.
+
+**Arguments**:
+
+- `name` (`str`): Index name.
+- `body` (`~affinda.models.IndexUpdate`): Index data to update.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Index`: Index, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_index"></a>
 

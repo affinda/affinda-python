@@ -11,8 +11,8 @@ from azure.core.pipeline import PipelineResponse
 from azure.core.pipeline.transport import AsyncHttpResponse
 from azure.core.rest import HttpRequest
 
-from ... import models as _models
-from ..._vendor import _convert_request
+from ... import models as _models  # noqa: TID252
+from ..._vendor import _convert_request  # noqa: TID252
 
 if TYPE_CHECKING:
     # pylint: disable=unused-import,ungrouped-imports
@@ -37,6 +37,7 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         self,
         identifier,  # type: str
         format=None,  # type: Optional[Union[str, "_models.DocumentFormat"]]
+        compact=None,  # type: Optional[bool]
         **kwargs,  # type: Any
     ):
         # type: (...) -> Union[_models.Document, _models.Resume, _models.Invoice, _models.JobDescription]
@@ -73,6 +74,7 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         request = build_get_document_request(
             identifier=identifier,
             format=format,
+            compact=compact,
             template_url=self.get_document.metadata["url"],
             headers=_headers,
             params=_params,
