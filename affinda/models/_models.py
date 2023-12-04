@@ -88,9 +88,9 @@ class Annotation(msrest.serialization.Model):
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -170,9 +170,9 @@ class Annotation(msrest.serialization.Model):
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -1062,9 +1062,10 @@ class CollectionCreate(msrest.serialization.Model):
     :vartype name: str
     :ivar workspace: Required. Uniquely identify a workspace.
     :vartype workspace: str
-    :ivar extractor: Uniquely identify an extractor.
+    :ivar extractor: Uniquely identify an extractor. Required if you are not a super user.
     :vartype extractor: str
-    :ivar base_extractor: Not applicable, please leave empty.
+    :ivar base_extractor: Not applicable, please leave empty. This feature is reserved for super
+     user.
     :vartype base_extractor: str
     :ivar auto_validation_threshold:
     :vartype auto_validation_threshold: float
@@ -1113,9 +1114,10 @@ class CollectionCreate(msrest.serialization.Model):
         :paramtype name: str
         :keyword workspace: Required. Uniquely identify a workspace.
         :paramtype workspace: str
-        :keyword extractor: Uniquely identify an extractor.
+        :keyword extractor: Uniquely identify an extractor. Required if you are not a super user.
         :paramtype extractor: str
-        :keyword base_extractor: Not applicable, please leave empty.
+        :keyword base_extractor: Not applicable, please leave empty. This feature is reserved for super
+         user.
         :paramtype base_extractor: str
         :keyword auto_validation_threshold:
         :paramtype auto_validation_threshold: float
@@ -2436,9 +2438,9 @@ class CurrencyCodeAnnotation(Annotation):
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -2521,9 +2523,9 @@ class CurrencyCodeAnnotation(Annotation):
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -2669,9 +2671,9 @@ class DataFieldCreateDataPoint(msrest.serialization.Model):
     :ivar description:
     :vartype description: str
     :ivar type: Required. The different data types of annotations. Known values are: "text",
-     "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location", "json",
-     "table", "cell", "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience",
-     "group", "table_deprecated".
+     "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum", "location",
+     "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle", "language",
+     "skill", "yearsexperience", "group", "table_deprecated".
     :vartype type: str or ~affinda.models.AnnotationContentType
     :ivar multiple:
     :vartype multiple: bool
@@ -2710,9 +2712,9 @@ class DataFieldCreateDataPoint(msrest.serialization.Model):
         :keyword description:
         :paramtype description: str
         :keyword type: Required. The different data types of annotations. Known values are: "text",
-         "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location", "json",
-         "table", "cell", "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience",
-         "group", "table_deprecated".
+         "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum", "location",
+         "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle", "language",
+         "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype type: str or ~affinda.models.AnnotationContentType
         :keyword multiple:
         :paramtype multiple: bool
@@ -2742,6 +2744,11 @@ class DataFieldCreateField(msrest.serialization.Model):
 
     :ivar label: Required.
     :vartype label: str
+    :ivar field_type: The different data types of annotations. Known values are: "text", "integer",
+     "float", "decimal", "date", "datetime", "daterange", "boolean", "enum", "location",
+     "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle", "language",
+     "skill", "yearsexperience", "group", "table_deprecated".
+    :vartype field_type: str or ~affinda.models.AnnotationContentType
     :ivar mandatory:
     :vartype mandatory: bool
     :ivar show_dropdown:
@@ -2751,6 +2758,8 @@ class DataFieldCreateField(msrest.serialization.Model):
     :vartype display_enum_value: bool
     :ivar auto_validation_threshold:
     :vartype auto_validation_threshold: float
+    :ivar data_source: Data source mapping identifier.
+    :vartype data_source: str
     """
 
     _validation = {
@@ -2760,16 +2769,23 @@ class DataFieldCreateField(msrest.serialization.Model):
 
     _attribute_map = {
         "label": {"key": "label", "type": "str"},
+        "field_type": {"key": "fieldType", "type": "str"},
         "mandatory": {"key": "mandatory", "type": "bool"},
         "show_dropdown": {"key": "showDropdown", "type": "bool"},
         "display_enum_value": {"key": "displayEnumValue", "type": "bool"},
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
+        "data_source": {"key": "dataSource", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         """
         :keyword label: Required.
         :paramtype label: str
+        :keyword field_type: The different data types of annotations. Known values are: "text",
+         "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum", "location",
+         "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle", "language",
+         "skill", "yearsexperience", "group", "table_deprecated".
+        :paramtype field_type: str or ~affinda.models.AnnotationContentType
         :keyword mandatory:
         :paramtype mandatory: bool
         :keyword show_dropdown:
@@ -2779,13 +2795,17 @@ class DataFieldCreateField(msrest.serialization.Model):
         :paramtype display_enum_value: bool
         :keyword auto_validation_threshold:
         :paramtype auto_validation_threshold: float
+        :keyword data_source: Data source mapping identifier.
+        :paramtype data_source: str
         """
         super(DataFieldCreateField, self).__init__(**kwargs)
         self.label = kwargs["label"]
+        self.field_type = kwargs.get("field_type", None)
         self.mandatory = kwargs.get("mandatory", None)
         self.show_dropdown = kwargs.get("show_dropdown", None)
         self.display_enum_value = kwargs.get("display_enum_value", None)
         self.auto_validation_threshold = kwargs.get("auto_validation_threshold", None)
+        self.data_source = kwargs.get("data_source", None)
 
 
 class DataFieldDataPoint(msrest.serialization.Model):
@@ -2802,9 +2822,9 @@ class DataFieldDataPoint(msrest.serialization.Model):
     :ivar description: Required.
     :vartype description: str
     :ivar type: Required. The different data types of annotations. Known values are: "text",
-     "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location", "json",
-     "table", "cell", "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience",
-     "group", "table_deprecated".
+     "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum", "location",
+     "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle", "language",
+     "skill", "yearsexperience", "group", "table_deprecated".
     :vartype type: str or ~affinda.models.AnnotationContentType
     :ivar multiple: Required.
     :vartype multiple: bool
@@ -2817,6 +2837,8 @@ class DataFieldDataPoint(msrest.serialization.Model):
     :ivar manual_entry: If true, the model will not be used to predict this data point. Instead,
      the user will be able to manually enter the value in the validation tool.
     :vartype manual_entry: bool
+    :ivar available_data_sources:
+    :vartype available_data_sources: list[~affinda.models.MappingDataSource]
     """
 
     _validation = {
@@ -2842,6 +2864,7 @@ class DataFieldDataPoint(msrest.serialization.Model):
         "parent": {"key": "parent", "type": "str"},
         "children": {"key": "children", "type": "[DataPoint]"},
         "manual_entry": {"key": "manualEntry", "type": "bool"},
+        "available_data_sources": {"key": "availableDataSources", "type": "[MappingDataSource]"},
     }
 
     def __init__(self, **kwargs):
@@ -2855,9 +2878,9 @@ class DataFieldDataPoint(msrest.serialization.Model):
         :keyword description: Required.
         :paramtype description: str
         :keyword type: Required. The different data types of annotations. Known values are: "text",
-         "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location", "json",
-         "table", "cell", "expectedremuneration", "jobtitle", "language", "skill", "yearsexperience",
-         "group", "table_deprecated".
+         "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum", "location",
+         "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle", "language",
+         "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype type: str or ~affinda.models.AnnotationContentType
         :keyword multiple: Required.
         :paramtype multiple: bool
@@ -2870,6 +2893,8 @@ class DataFieldDataPoint(msrest.serialization.Model):
         :keyword manual_entry: If true, the model will not be used to predict this data point. Instead,
          the user will be able to manually enter the value in the validation tool.
         :paramtype manual_entry: bool
+        :keyword available_data_sources:
+        :paramtype available_data_sources: list[~affinda.models.MappingDataSource]
         """
         super(DataFieldDataPoint, self).__init__(**kwargs)
         self.identifier = kwargs["identifier"]
@@ -2882,6 +2907,7 @@ class DataFieldDataPoint(msrest.serialization.Model):
         self.parent = kwargs["parent"]
         self.children = kwargs["children"]
         self.manual_entry = kwargs.get("manual_entry", None)
+        self.available_data_sources = kwargs.get("available_data_sources", None)
 
 
 class DataFieldField(msrest.serialization.Model):
@@ -2891,6 +2917,11 @@ class DataFieldField(msrest.serialization.Model):
 
     :ivar label: Required.
     :vartype label: str
+    :ivar field_type: The different data types of annotations. Known values are: "text", "integer",
+     "float", "decimal", "date", "datetime", "daterange", "boolean", "enum", "location",
+     "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle", "language",
+     "skill", "yearsexperience", "group", "table_deprecated".
+    :vartype field_type: str or ~affinda.models.AnnotationContentType
     :ivar mandatory: Required.
     :vartype mandatory: bool
     :ivar show_dropdown: Required.
@@ -2904,6 +2935,8 @@ class DataFieldField(msrest.serialization.Model):
     :vartype enabled_child_fields: list[~affinda.models.Field]
     :ivar disabled_child_fields: Required.
     :vartype disabled_child_fields: list[~affinda.models.Field]
+    :ivar data_source: Data source mapping identifier.
+    :vartype data_source: str
     """
 
     _validation = {
@@ -2918,18 +2951,25 @@ class DataFieldField(msrest.serialization.Model):
 
     _attribute_map = {
         "label": {"key": "label", "type": "str"},
+        "field_type": {"key": "fieldType", "type": "str"},
         "mandatory": {"key": "mandatory", "type": "bool"},
         "show_dropdown": {"key": "showDropdown", "type": "bool"},
         "display_enum_value": {"key": "displayEnumValue", "type": "bool"},
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
         "enabled_child_fields": {"key": "enabledChildFields", "type": "[Field]"},
         "disabled_child_fields": {"key": "disabledChildFields", "type": "[Field]"},
+        "data_source": {"key": "dataSource", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         """
         :keyword label: Required.
         :paramtype label: str
+        :keyword field_type: The different data types of annotations. Known values are: "text",
+         "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum", "location",
+         "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle", "language",
+         "skill", "yearsexperience", "group", "table_deprecated".
+        :paramtype field_type: str or ~affinda.models.AnnotationContentType
         :keyword mandatory: Required.
         :paramtype mandatory: bool
         :keyword show_dropdown: Required.
@@ -2943,15 +2983,19 @@ class DataFieldField(msrest.serialization.Model):
         :paramtype enabled_child_fields: list[~affinda.models.Field]
         :keyword disabled_child_fields: Required.
         :paramtype disabled_child_fields: list[~affinda.models.Field]
+        :keyword data_source: Data source mapping identifier.
+        :paramtype data_source: str
         """
         super(DataFieldField, self).__init__(**kwargs)
         self.label = kwargs["label"]
+        self.field_type = kwargs.get("field_type", None)
         self.mandatory = kwargs["mandatory"]
         self.show_dropdown = kwargs["show_dropdown"]
         self.display_enum_value = kwargs["display_enum_value"]
         self.auto_validation_threshold = kwargs["auto_validation_threshold"]
         self.enabled_child_fields = kwargs["enabled_child_fields"]
         self.disabled_child_fields = kwargs["disabled_child_fields"]
+        self.data_source = kwargs.get("data_source", None)
 
 
 class DataPoint(msrest.serialization.Model):
@@ -2968,9 +3012,9 @@ class DataPoint(msrest.serialization.Model):
     :ivar description:
     :vartype description: str
     :ivar annotation_content_type: Required. The different data types of annotations. Known values
-     are: "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     are: "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
     :ivar organization: Required.
     :vartype organization: ~affinda.models.Organization
@@ -2984,6 +3028,8 @@ class DataPoint(msrest.serialization.Model):
     :vartype parent: str
     :ivar children:
     :vartype children: list[~affinda.models.DataPoint]
+    :ivar available_data_sources:
+    :vartype available_data_sources: list[~affinda.models.MappingDataSource]
     :ivar manual_entry: If true, the model will not be used to predict this data point. Instead,
      the user will be able to manually enter the value in the validation tool.
     :vartype manual_entry: bool
@@ -3010,6 +3056,7 @@ class DataPoint(msrest.serialization.Model):
         "no_rect": {"key": "noRect", "type": "bool"},
         "parent": {"key": "parent", "type": "str"},
         "children": {"key": "children", "type": "[DataPoint]"},
+        "available_data_sources": {"key": "availableDataSources", "type": "[MappingDataSource]"},
         "manual_entry": {"key": "manualEntry", "type": "bool"},
     }
 
@@ -3024,9 +3071,9 @@ class DataPoint(msrest.serialization.Model):
         :keyword description:
         :paramtype description: str
         :keyword annotation_content_type: Required. The different data types of annotations. Known
-         values are: "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum",
-         "location", "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         values are: "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean",
+         "enum", "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype annotation_content_type: str or ~affinda.models.AnnotationContentType
         :keyword organization: Required.
         :paramtype organization: ~affinda.models.Organization
@@ -3040,6 +3087,8 @@ class DataPoint(msrest.serialization.Model):
         :paramtype parent: str
         :keyword children:
         :paramtype children: list[~affinda.models.DataPoint]
+        :keyword available_data_sources:
+        :paramtype available_data_sources: list[~affinda.models.MappingDataSource]
         :keyword manual_entry: If true, the model will not be used to predict this data point. Instead,
          the user will be able to manually enter the value in the validation tool.
         :paramtype manual_entry: bool
@@ -3056,6 +3105,7 @@ class DataPoint(msrest.serialization.Model):
         self.no_rect = kwargs.get("no_rect", None)
         self.parent = kwargs.get("parent", None)
         self.children = kwargs.get("children", None)
+        self.available_data_sources = kwargs.get("available_data_sources", None)
         self.manual_entry = kwargs.get("manual_entry", None)
 
 
@@ -3439,9 +3489,9 @@ class DataPointCreate(msrest.serialization.Model):
     :ivar description:
     :vartype description: str
     :ivar annotation_content_type: Required. The different data types of annotations. Known values
-     are: "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     are: "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
     :ivar organization: Required. Uniquely identify an organization.
     :vartype organization: str
@@ -3488,9 +3538,9 @@ class DataPointCreate(msrest.serialization.Model):
         :keyword description:
         :paramtype description: str
         :keyword annotation_content_type: Required. The different data types of annotations. Known
-         values are: "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum",
-         "location", "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         values are: "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean",
+         "enum", "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype annotation_content_type: str or ~affinda.models.AnnotationContentType
         :keyword organization: Required. Uniquely identify an organization.
         :paramtype organization: str
@@ -3597,9 +3647,9 @@ class DateAnnotation(Annotation):
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -3682,9 +3732,9 @@ class DateAnnotation(Annotation):
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -3793,6 +3843,214 @@ class DateAnnotationUpdate(AnnotationBase):
         """
         super(DateAnnotationUpdate, self).__init__(**kwargs)
         self.parsed = kwargs.get("parsed", None)
+
+
+class DateRangeAnnotation(Annotation):
+    """DateRangeAnnotation.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar id: Required. Annotation's ID.
+    :vartype id: int
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
+    :vartype rectangle: ~affinda.models.Rectangle
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
+    :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Required. Unique identifier for the document.
+    :vartype document: str
+    :ivar page_index: Required. The page number within the document, starting from 0.
+    :vartype page_index: int
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
+    :vartype raw: str
+    :ivar confidence: Required. The overall confidence that the model's prediction is correct.
+    :vartype confidence: float
+    :ivar classification_confidence: Required. The model's confidence that the text has been
+     classified correctly.
+    :vartype classification_confidence: float
+    :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+     the confidence that the text in the image has been correctly read by the model.
+    :vartype text_extraction_confidence: float
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
+    :vartype is_verified: bool
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
+    :vartype is_auto_verified: bool
+    :ivar data_point: Required. Data point's identifier.
+    :vartype data_point: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
+    :ivar parsed:
+    :vartype parsed: ~affinda.models.DateRangeAnnotationParsed
+    """
+
+    _validation = {
+        "id": {"required": True, "minimum": 1},
+        "rectangle": {"required": True},
+        "rectangles": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
+        "raw": {"required": True},
+        "confidence": {"required": True},
+        "classification_confidence": {"required": True},
+        "text_extraction_confidence": {"required": True},
+        "is_verified": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
+    }
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "id": {"key": "id", "type": "int"},
+        "rectangle": {"key": "rectangle", "type": "Rectangle"},
+        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "raw": {"key": "raw", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
+        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
+        "parsed": {"key": "parsed", "type": "DateRangeAnnotationParsed"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword id: Required. Annotation's ID.
+        :paramtype id: int
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
+        :paramtype rectangle: ~affinda.models.Rectangle
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
+        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Required. Unique identifier for the document.
+        :paramtype document: str
+        :keyword page_index: Required. The page number within the document, starting from 0.
+        :paramtype page_index: int
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
+        :paramtype raw: str
+        :keyword confidence: Required. The overall confidence that the model's prediction is correct.
+        :paramtype confidence: float
+        :keyword classification_confidence: Required. The model's confidence that the text has been
+         classified correctly.
+        :paramtype classification_confidence: float
+        :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
+         is the confidence that the text in the image has been correctly read by the model.
+        :paramtype text_extraction_confidence: float
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
+        :paramtype is_verified: bool
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
+        :paramtype is_auto_verified: bool
+        :keyword data_point: Required. Data point's identifier.
+        :paramtype data_point: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
+        :keyword parsed:
+        :paramtype parsed: ~affinda.models.DateRangeAnnotationParsed
+        """
+        super(DateRangeAnnotation, self).__init__(**kwargs)
+        self.parsed = kwargs.get("parsed", None)
+
+
+class DateRangeAnnotationParsed(msrest.serialization.Model):
+    """DateRangeAnnotationParsed.
+
+    :ivar start:
+    :vartype start: ~affinda.models.DateRangeValue
+    :ivar end:
+    :vartype end: ~affinda.models.DateRangeValue
+    """
+
+    _attribute_map = {
+        "start": {"key": "start", "type": "DateRangeValue"},
+        "end": {"key": "end", "type": "DateRangeValue"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword start:
+        :paramtype start: ~affinda.models.DateRangeValue
+        :keyword end:
+        :paramtype end: ~affinda.models.DateRangeValue
+        """
+        super(DateRangeAnnotationParsed, self).__init__(**kwargs)
+        self.start = kwargs.get("start", None)
+        self.end = kwargs.get("end", None)
+
+
+class DateRangeValue(msrest.serialization.Model):
+    """DateRangeValue.
+
+    :ivar date:
+    :vartype date: ~datetime.date
+    :ivar is_current:
+    :vartype is_current: bool
+    :ivar day:
+    :vartype day: int
+    :ivar month:
+    :vartype month: int
+    :ivar year:
+    :vartype year: int
+    """
+
+    _attribute_map = {
+        "date": {"key": "date", "type": "date"},
+        "is_current": {"key": "isCurrent", "type": "bool"},
+        "day": {"key": "day", "type": "int"},
+        "month": {"key": "month", "type": "int"},
+        "year": {"key": "year", "type": "int"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword date:
+        :paramtype date: ~datetime.date
+        :keyword is_current:
+        :paramtype is_current: bool
+        :keyword day:
+        :paramtype day: int
+        :keyword month:
+        :paramtype month: int
+        :keyword year:
+        :paramtype year: int
+        """
+        super(DateRangeValue, self).__init__(**kwargs)
+        self.date = kwargs.get("date", None)
+        self.is_current = kwargs.get("is_current", None)
+        self.day = kwargs.get("day", None)
+        self.month = kwargs.get("month", None)
+        self.year = kwargs.get("year", None)
 
 
 class Document(msrest.serialization.Model):
@@ -4776,9 +5034,9 @@ class ExpectedRemunerationAnnotation(Annotation):
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -4861,9 +5119,9 @@ class ExpectedRemunerationAnnotation(Annotation):
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -5378,6 +5636,15 @@ class Field(msrest.serialization.Model):
     :vartype label: str
     :ivar data_point: Required. Data point identifier.
     :vartype data_point: str
+    :ivar field_type: Required. The different data types of annotations. Known values are: "text",
+     "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum", "location",
+     "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle", "language",
+     "skill", "yearsexperience", "group", "table_deprecated".
+    :vartype field_type: str or ~affinda.models.AnnotationContentType
+    :ivar data_source: Data source mapping identifier.
+    :vartype data_source: str
+    :ivar mapping: Defines how the data point is mapped to the data source.
+    :vartype mapping: str
     :ivar mandatory:
     :vartype mandatory: bool
     :ivar auto_validation_threshold:
@@ -5387,6 +5654,9 @@ class Field(msrest.serialization.Model):
     :ivar display_enum_value: If true, both the value and the label for the enums will appear in
      the dropdown in the validation tool.
     :vartype display_enum_value: bool
+    :ivar drop_null_enums: If True, any dropdown annotations that fail to be mapped will be
+     discarded.
+    :vartype drop_null_enums: bool
     :ivar enabled_child_fields:
     :vartype enabled_child_fields: list[~affinda.models.Field]
     :ivar disabled_child_fields:
@@ -5400,16 +5670,21 @@ class Field(msrest.serialization.Model):
     _validation = {
         "label": {"required": True},
         "data_point": {"required": True},
+        "field_type": {"required": True},
         "auto_validation_threshold": {"maximum": 1, "minimum": 0},
     }
 
     _attribute_map = {
         "label": {"key": "label", "type": "str"},
         "data_point": {"key": "dataPoint", "type": "str"},
+        "field_type": {"key": "fieldType", "type": "str"},
+        "data_source": {"key": "dataSource", "type": "str"},
+        "mapping": {"key": "mapping", "type": "str"},
         "mandatory": {"key": "mandatory", "type": "bool"},
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
         "show_dropdown": {"key": "showDropdown", "type": "bool"},
         "display_enum_value": {"key": "displayEnumValue", "type": "bool"},
+        "drop_null_enums": {"key": "dropNullEnums", "type": "bool"},
         "enabled_child_fields": {"key": "enabledChildFields", "type": "[Field]"},
         "disabled_child_fields": {"key": "disabledChildFields", "type": "[Field]"},
         "slug": {"key": "slug", "type": "str"},
@@ -5422,6 +5697,15 @@ class Field(msrest.serialization.Model):
         :paramtype label: str
         :keyword data_point: Required. Data point identifier.
         :paramtype data_point: str
+        :keyword field_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
+        :paramtype field_type: str or ~affinda.models.AnnotationContentType
+        :keyword data_source: Data source mapping identifier.
+        :paramtype data_source: str
+        :keyword mapping: Defines how the data point is mapped to the data source.
+        :paramtype mapping: str
         :keyword mandatory:
         :paramtype mandatory: bool
         :keyword auto_validation_threshold:
@@ -5431,6 +5715,9 @@ class Field(msrest.serialization.Model):
         :keyword display_enum_value: If true, both the value and the label for the enums will appear in
          the dropdown in the validation tool.
         :paramtype display_enum_value: bool
+        :keyword drop_null_enums: If True, any dropdown annotations that fail to be mapped will be
+         discarded.
+        :paramtype drop_null_enums: bool
         :keyword enabled_child_fields:
         :paramtype enabled_child_fields: list[~affinda.models.Field]
         :keyword disabled_child_fields:
@@ -5443,10 +5730,14 @@ class Field(msrest.serialization.Model):
         super(Field, self).__init__(**kwargs)
         self.label = kwargs["label"]
         self.data_point = kwargs["data_point"]
+        self.field_type = kwargs["field_type"]
+        self.data_source = kwargs.get("data_source", None)
+        self.mapping = kwargs.get("mapping", None)
         self.mandatory = kwargs.get("mandatory", None)
         self.auto_validation_threshold = kwargs.get("auto_validation_threshold", None)
         self.show_dropdown = kwargs.get("show_dropdown", None)
         self.display_enum_value = kwargs.get("display_enum_value", None)
+        self.drop_null_enums = kwargs.get("drop_null_enums", None)
         self.enabled_child_fields = kwargs.get("enabled_child_fields", None)
         self.disabled_child_fields = kwargs.get("disabled_child_fields", None)
         self.slug = kwargs.get("slug", None)
@@ -5502,6 +5793,15 @@ class FieldDeprecated(msrest.serialization.Model):
     :vartype label: str
     :ivar slug:
     :vartype slug: str
+    :ivar field_type: Required. The different data types of annotations. Known values are: "text",
+     "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum", "location",
+     "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle", "language",
+     "skill", "yearsexperience", "group", "table_deprecated".
+    :vartype field_type: str or ~affinda.models.AnnotationContentType
+    :ivar data_source: Data source mapping identifier.
+    :vartype data_source: str
+    :ivar mapping: Defines how the data point is mapped to the data source.
+    :vartype mapping: str
     :ivar data_point: Required.
     :vartype data_point: str
     :ivar mandatory:
@@ -5512,6 +5812,9 @@ class FieldDeprecated(msrest.serialization.Model):
     :vartype auto_validation_threshold: float
     :ivar show_dropdown:
     :vartype show_dropdown: bool
+    :ivar drop_null_enums: If True, any dropdown annotations that fail to be mapped will be
+     discarded.
+    :vartype drop_null_enums: bool
     :ivar display_enum_value:
     :vartype display_enum_value: bool
     :ivar fields:
@@ -5520,17 +5823,22 @@ class FieldDeprecated(msrest.serialization.Model):
 
     _validation = {
         "label": {"required": True},
+        "field_type": {"required": True},
         "data_point": {"required": True},
     }
 
     _attribute_map = {
         "label": {"key": "label", "type": "str"},
         "slug": {"key": "slug", "type": "str"},
+        "field_type": {"key": "fieldType", "type": "str"},
+        "data_source": {"key": "dataSource", "type": "str"},
+        "mapping": {"key": "mapping", "type": "str"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "mandatory": {"key": "mandatory", "type": "bool"},
         "disabled": {"key": "disabled", "type": "bool"},
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
         "show_dropdown": {"key": "showDropdown", "type": "bool"},
+        "drop_null_enums": {"key": "dropNullEnums", "type": "bool"},
         "display_enum_value": {"key": "displayEnumValue", "type": "bool"},
         "fields": {"key": "fields", "type": "[FieldDeprecated]"},
     }
@@ -5541,6 +5849,15 @@ class FieldDeprecated(msrest.serialization.Model):
         :paramtype label: str
         :keyword slug:
         :paramtype slug: str
+        :keyword field_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
+        :paramtype field_type: str or ~affinda.models.AnnotationContentType
+        :keyword data_source: Data source mapping identifier.
+        :paramtype data_source: str
+        :keyword mapping: Defines how the data point is mapped to the data source.
+        :paramtype mapping: str
         :keyword data_point: Required.
         :paramtype data_point: str
         :keyword mandatory:
@@ -5551,6 +5868,9 @@ class FieldDeprecated(msrest.serialization.Model):
         :paramtype auto_validation_threshold: float
         :keyword show_dropdown:
         :paramtype show_dropdown: bool
+        :keyword drop_null_enums: If True, any dropdown annotations that fail to be mapped will be
+         discarded.
+        :paramtype drop_null_enums: bool
         :keyword display_enum_value:
         :paramtype display_enum_value: bool
         :keyword fields:
@@ -5559,11 +5879,15 @@ class FieldDeprecated(msrest.serialization.Model):
         super(FieldDeprecated, self).__init__(**kwargs)
         self.label = kwargs["label"]
         self.slug = kwargs.get("slug", None)
+        self.field_type = kwargs["field_type"]
+        self.data_source = kwargs.get("data_source", None)
+        self.mapping = kwargs.get("mapping", None)
         self.data_point = kwargs["data_point"]
         self.mandatory = kwargs.get("mandatory", None)
         self.disabled = kwargs.get("disabled", None)
         self.auto_validation_threshold = kwargs.get("auto_validation_threshold", None)
         self.show_dropdown = kwargs.get("show_dropdown", None)
+        self.drop_null_enums = kwargs.get("drop_null_enums", None)
         self.display_enum_value = kwargs.get("display_enum_value", None)
         self.fields = kwargs.get("fields", None)
 
@@ -5674,9 +5998,9 @@ class FloatAnnotation(Annotation):
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -5759,9 +6083,9 @@ class FloatAnnotation(Annotation):
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -6546,9 +6870,9 @@ class TextAnnotation(Annotation):
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -6631,9 +6955,9 @@ class TextAnnotation(Annotation):
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -6686,9 +7010,9 @@ class InvoiceDataBankAccountNumber(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -6771,9 +7095,9 @@ class InvoiceDataBankAccountNumber(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -6842,9 +7166,9 @@ class InvoiceDataBankBsb(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -6927,9 +7251,9 @@ class InvoiceDataBankBsb(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -6998,9 +7322,9 @@ class InvoiceDataBankIban(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -7083,9 +7407,9 @@ class InvoiceDataBankIban(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -7154,9 +7478,9 @@ class InvoiceDataBankSortCode(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -7239,9 +7563,9 @@ class InvoiceDataBankSortCode(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -7310,9 +7634,9 @@ class InvoiceDataBankSwift(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -7395,9 +7719,9 @@ class InvoiceDataBankSwift(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -7466,9 +7790,9 @@ class InvoiceDataBpayBillerCode(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -7551,9 +7875,9 @@ class InvoiceDataBpayBillerCode(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -7622,9 +7946,9 @@ class InvoiceDataBpayReference(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -7707,9 +8031,9 @@ class InvoiceDataBpayReference(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -7778,9 +8102,9 @@ class InvoiceDataCustomerBusinessNumber(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -7863,9 +8187,9 @@ class InvoiceDataCustomerBusinessNumber(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -7934,9 +8258,9 @@ class InvoiceDataCustomerCompanyName(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -8019,9 +8343,9 @@ class InvoiceDataCustomerCompanyName(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -8090,9 +8414,9 @@ class InvoiceDataCustomerContactName(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -8175,9 +8499,9 @@ class InvoiceDataCustomerContactName(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -8246,9 +8570,9 @@ class InvoiceDataCustomerEmail(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -8331,9 +8655,9 @@ class InvoiceDataCustomerEmail(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -8402,9 +8726,9 @@ class InvoiceDataCustomerNumber(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -8487,9 +8811,9 @@ class InvoiceDataCustomerNumber(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -8558,9 +8882,9 @@ class InvoiceDataCustomerPhoneNumber(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -8643,9 +8967,9 @@ class InvoiceDataCustomerPhoneNumber(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -8714,9 +9038,9 @@ class InvoiceDataCustomerVat(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -8799,9 +9123,9 @@ class InvoiceDataCustomerVat(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -8870,9 +9194,9 @@ class InvoiceDataInvoiceNumber(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -8955,9 +9279,9 @@ class InvoiceDataInvoiceNumber(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -9026,9 +9350,9 @@ class InvoiceDataInvoicePurchaseOrderNumber(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -9111,9 +9435,9 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -9182,9 +9506,9 @@ class InvoiceDataPaymentAmountBase(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -9267,9 +9591,9 @@ class InvoiceDataPaymentAmountBase(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -9338,9 +9662,9 @@ class InvoiceDataPaymentAmountDue(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -9423,9 +9747,9 @@ class InvoiceDataPaymentAmountDue(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -9494,9 +9818,9 @@ class InvoiceDataPaymentAmountPaid(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -9579,9 +9903,9 @@ class InvoiceDataPaymentAmountPaid(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -9650,9 +9974,9 @@ class InvoiceDataPaymentAmountTax(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -9735,9 +10059,9 @@ class InvoiceDataPaymentAmountTax(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -9806,9 +10130,9 @@ class InvoiceDataPaymentAmountTotal(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -9891,9 +10215,9 @@ class InvoiceDataPaymentAmountTotal(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -9962,9 +10286,9 @@ class InvoiceDataPaymentReference(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -10047,9 +10371,9 @@ class InvoiceDataPaymentReference(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -10118,9 +10442,9 @@ class InvoiceDataSupplierBusinessNumber(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -10203,9 +10527,9 @@ class InvoiceDataSupplierBusinessNumber(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -10274,9 +10598,9 @@ class InvoiceDataSupplierCompanyName(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -10359,9 +10683,9 @@ class InvoiceDataSupplierCompanyName(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -10430,9 +10754,9 @@ class InvoiceDataSupplierEmail(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -10515,9 +10839,9 @@ class InvoiceDataSupplierEmail(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -10586,9 +10910,9 @@ class InvoiceDataSupplierFax(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -10671,9 +10995,9 @@ class InvoiceDataSupplierFax(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -10742,9 +11066,9 @@ class InvoiceDataSupplierPhoneNumber(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -10827,9 +11151,9 @@ class InvoiceDataSupplierPhoneNumber(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -10898,9 +11222,9 @@ class InvoiceDataSupplierVat(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -10983,9 +11307,9 @@ class InvoiceDataSupplierVat(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -11054,9 +11378,9 @@ class InvoiceDataSupplierWebsite(
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -11139,9 +11463,9 @@ class InvoiceDataSupplierWebsite(
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -12860,9 +13184,9 @@ class JobTitleAnnotation(Annotation):
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -12945,9 +13269,9 @@ class JobTitleAnnotation(Annotation):
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -13383,9 +13707,9 @@ class LanguageAnnotation(Annotation):
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -13469,9 +13793,9 @@ class LanguageAnnotation(Annotation):
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -13657,9 +13981,9 @@ class LocationAnnotation(Annotation):
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -13742,9 +14066,9 @@ class LocationAnnotation(Annotation):
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -13999,6 +14323,122 @@ class ManagementLevelSearchScoreComponent(msrest.serialization.Model):
         self.value = kwargs.get("value", None)
         self.label = kwargs["label"]
         self.score = kwargs.get("score", None)
+
+
+class MappingDataSource(msrest.serialization.Model):
+    """A mapping data source is used to map from raw data found by our AI models to records in your database.
+
+    Variables are only populated by the server, and will be ignored when sending a request.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar identifier: Required. Uniquely identify a mapping data source.
+    :vartype identifier: str
+    :ivar name:
+    :vartype name: str
+    :ivar key_property: Required. Attribute in the schema which uniquely identifiers the value.
+    :vartype key_property: str
+    :ivar display_property: Required. Attribute in the schema which is used to display the value.
+    :vartype display_property: str
+    :ivar organization: Required. The organization that this mapping data source belongs to.
+    :vartype organization: str
+    :ivar schema: The schema of the mapping data source.
+    :vartype schema: any
+    """
+
+    _validation = {
+        "identifier": {"required": True, "readonly": True},
+        "key_property": {"required": True},
+        "display_property": {"required": True},
+        "organization": {"required": True},
+    }
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "key_property": {"key": "keyProperty", "type": "str"},
+        "display_property": {"key": "displayProperty", "type": "str"},
+        "organization": {"key": "organization", "type": "str"},
+        "schema": {"key": "schema", "type": "object"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name:
+        :paramtype name: str
+        :keyword key_property: Required. Attribute in the schema which uniquely identifiers the value.
+        :paramtype key_property: str
+        :keyword display_property: Required. Attribute in the schema which is used to display the
+         value.
+        :paramtype display_property: str
+        :keyword organization: Required. The organization that this mapping data source belongs to.
+        :paramtype organization: str
+        :keyword schema: The schema of the mapping data source.
+        :paramtype schema: any
+        """
+        super(MappingDataSource, self).__init__(**kwargs)
+        self.identifier = None
+        self.name = kwargs.get("name", None)
+        self.key_property = kwargs["key_property"]
+        self.display_property = kwargs["display_property"]
+        self.organization = kwargs["organization"]
+        self.schema = kwargs.get("schema", None)
+
+
+class MappingDataSourceCreate(msrest.serialization.Model):
+    """A mapping data source is used to map from raw data found by our AI models to records in your database.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar name:
+    :vartype name: str
+    :ivar organization: Required. The organization that this mapping data source belongs to.
+    :vartype organization: str
+    :ivar key_property: Attribute in the schema which uniquely identifiers the value.
+    :vartype key_property: str
+    :ivar display_property: Attribute in the schema which is used to display the value.
+    :vartype display_property: str
+    :ivar values:
+    :vartype values: list[any]
+    :ivar schema: The schema of the mapping data source.
+    :vartype schema: any
+    """
+
+    _validation = {
+        "organization": {"required": True},
+    }
+
+    _attribute_map = {
+        "name": {"key": "name", "type": "str"},
+        "organization": {"key": "organization", "type": "str"},
+        "key_property": {"key": "keyProperty", "type": "str"},
+        "display_property": {"key": "displayProperty", "type": "str"},
+        "values": {"key": "values", "type": "[object]"},
+        "schema": {"key": "schema", "type": "object"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name:
+        :paramtype name: str
+        :keyword organization: Required. The organization that this mapping data source belongs to.
+        :paramtype organization: str
+        :keyword key_property: Attribute in the schema which uniquely identifiers the value.
+        :paramtype key_property: str
+        :keyword display_property: Attribute in the schema which is used to display the value.
+        :paramtype display_property: str
+        :keyword values:
+        :paramtype values: list[any]
+        :keyword schema: The schema of the mapping data source.
+        :paramtype schema: any
+        """
+        super(MappingDataSourceCreate, self).__init__(**kwargs)
+        self.name = kwargs.get("name", None)
+        self.organization = kwargs["organization"]
+        self.key_property = kwargs.get("key_property", None)
+        self.display_property = kwargs.get("display_property", None)
+        self.values = kwargs.get("values", None)
+        self.schema = kwargs.get("schema", None)
 
 
 class Meta(msrest.serialization.Model):
@@ -14280,6 +14720,8 @@ class Organization(msrest.serialization.Model):
     :vartype is_trial: bool
     :ivar validation_tool_config: Configuration of the embeddable validation tool.
     :vartype validation_tool_config: ~affinda.models.OrganizationValidationToolConfig
+    :ivar show_custom_field_creation: Whether to show the custom field creation in the UI.
+    :vartype show_custom_field_creation: bool
     """
 
     _attribute_map = {
@@ -14293,6 +14735,7 @@ class Organization(msrest.serialization.Model):
             "key": "validationToolConfig",
             "type": "OrganizationValidationToolConfig",
         },
+        "show_custom_field_creation": {"key": "showCustomFieldCreation", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
@@ -14313,6 +14756,8 @@ class Organization(msrest.serialization.Model):
         :paramtype is_trial: bool
         :keyword validation_tool_config: Configuration of the embeddable validation tool.
         :paramtype validation_tool_config: ~affinda.models.OrganizationValidationToolConfig
+        :keyword show_custom_field_creation: Whether to show the custom field creation in the UI.
+        :paramtype show_custom_field_creation: bool
         """
         super(Organization, self).__init__(**kwargs)
         self.identifier = kwargs.get("identifier", None)
@@ -14322,6 +14767,7 @@ class Organization(msrest.serialization.Model):
         self.resthook_signature_key = kwargs.get("resthook_signature_key", None)
         self.is_trial = kwargs.get("is_trial", None)
         self.validation_tool_config = kwargs.get("validation_tool_config", None)
+        self.show_custom_field_creation = kwargs.get("show_custom_field_creation", None)
 
 
 class OrganizationCreate(msrest.serialization.Model):
@@ -14890,6 +15336,31 @@ class Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema(
         self.previous = kwargs.get("previous", None)
 
 
+class Paths1O6IvdaV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchemaAllof1(
+    msrest.serialization.Model
+):
+    """Paths1O6IvdaV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchemaAllof1.
+
+    :ivar results:
+    :vartype results: list[any]
+    """
+
+    _attribute_map = {
+        "results": {"key": "results", "type": "[object]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword results:
+        :paramtype results: list[any]
+        """
+        super(
+            Paths1O6IvdaV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchemaAllof1,
+            self,
+        ).__init__(**kwargs)
+        self.results = kwargs.get("results", None)
+
+
 class Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1(
     msrest.serialization.Model
 ):
@@ -14913,6 +15384,56 @@ class Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSch
             self,
         ).__init__(**kwargs)
         self.results = kwargs.get("results", None)
+
+
+class Paths1Qr7BnyV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchema(
+    PaginatedResponse,
+    Paths1O6IvdaV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchemaAllof1,
+):
+    """Paths1Qr7BnyV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchema.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar results:
+    :vartype results: list[any]
+    :ivar count: Required. Number of items in results.
+    :vartype count: int
+    :ivar next: URL to request next page of results.
+    :vartype next: str
+    :ivar previous: URL to request previous page of results.
+    :vartype previous: str
+    """
+
+    _validation = {
+        "count": {"required": True, "minimum": 0},
+    }
+
+    _attribute_map = {
+        "results": {"key": "results", "type": "[object]"},
+        "count": {"key": "count", "type": "int"},
+        "next": {"key": "next", "type": "str"},
+        "previous": {"key": "previous", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword results:
+        :paramtype results: list[any]
+        :keyword count: Required. Number of items in results.
+        :paramtype count: int
+        :keyword next: URL to request next page of results.
+        :paramtype next: str
+        :keyword previous: URL to request previous page of results.
+        :paramtype previous: str
+        """
+        super(
+            Paths1Qr7BnyV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchema,
+            self,
+        ).__init__(**kwargs)
+        self.results = kwargs.get("results", None)
+        self.count = kwargs["count"]
+        self.next = kwargs.get("next", None)
+        self.previous = kwargs.get("previous", None)
 
 
 class Paths26Civ0V3ApiUsersGetResponses200ContentApplicationJsonSchema(
@@ -15500,6 +16021,192 @@ class PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSche
         self.count = kwargs["count"]
         self.next = kwargs.get("next", None)
         self.previous = kwargs.get("previous", None)
+
+
+class PhoneNumberAnnotation(Annotation):
+    """PhoneNumberAnnotation.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar id: Required. Annotation's ID.
+    :vartype id: int
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
+    :vartype rectangle: ~affinda.models.Rectangle
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
+    :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Required. Unique identifier for the document.
+    :vartype document: str
+    :ivar page_index: Required. The page number within the document, starting from 0.
+    :vartype page_index: int
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
+    :vartype raw: str
+    :ivar confidence: Required. The overall confidence that the model's prediction is correct.
+    :vartype confidence: float
+    :ivar classification_confidence: Required. The model's confidence that the text has been
+     classified correctly.
+    :vartype classification_confidence: float
+    :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+     the confidence that the text in the image has been correctly read by the model.
+    :vartype text_extraction_confidence: float
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
+    :vartype is_verified: bool
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
+    :vartype is_auto_verified: bool
+    :ivar data_point: Required. Data point's identifier.
+    :vartype data_point: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
+    :ivar parsed:
+    :vartype parsed: ~affinda.models.PhoneNumberAnnotationParsed
+    """
+
+    _validation = {
+        "id": {"required": True, "minimum": 1},
+        "rectangle": {"required": True},
+        "rectangles": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
+        "raw": {"required": True},
+        "confidence": {"required": True},
+        "classification_confidence": {"required": True},
+        "text_extraction_confidence": {"required": True},
+        "is_verified": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
+    }
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "id": {"key": "id", "type": "int"},
+        "rectangle": {"key": "rectangle", "type": "Rectangle"},
+        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "raw": {"key": "raw", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
+        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
+        "parsed": {"key": "parsed", "type": "PhoneNumberAnnotationParsed"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword id: Required. Annotation's ID.
+        :paramtype id: int
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
+        :paramtype rectangle: ~affinda.models.Rectangle
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
+        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Required. Unique identifier for the document.
+        :paramtype document: str
+        :keyword page_index: Required. The page number within the document, starting from 0.
+        :paramtype page_index: int
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
+        :paramtype raw: str
+        :keyword confidence: Required. The overall confidence that the model's prediction is correct.
+        :paramtype confidence: float
+        :keyword classification_confidence: Required. The model's confidence that the text has been
+         classified correctly.
+        :paramtype classification_confidence: float
+        :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
+         is the confidence that the text in the image has been correctly read by the model.
+        :paramtype text_extraction_confidence: float
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
+        :paramtype is_verified: bool
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
+        :paramtype is_auto_verified: bool
+        :keyword data_point: Required. Data point's identifier.
+        :paramtype data_point: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
+        :keyword parsed:
+        :paramtype parsed: ~affinda.models.PhoneNumberAnnotationParsed
+        """
+        super(PhoneNumberAnnotation, self).__init__(**kwargs)
+        self.parsed = kwargs.get("parsed", None)
+
+
+class PhoneNumberAnnotationParsed(msrest.serialization.Model):
+    """PhoneNumberAnnotationParsed.
+
+    :ivar raw_text:
+    :vartype raw_text: str
+    :ivar formatted_number:
+    :vartype formatted_number: str
+    :ivar country_code:
+    :vartype country_code: str
+    :ivar international_country_code:
+    :vartype international_country_code: int
+    :ivar national_number:
+    :vartype national_number: str
+    """
+
+    _validation = {
+        "international_country_code": {"minimum": 1},
+    }
+
+    _attribute_map = {
+        "raw_text": {"key": "rawText", "type": "str"},
+        "formatted_number": {"key": "formattedNumber", "type": "str"},
+        "country_code": {"key": "countryCode", "type": "str"},
+        "international_country_code": {"key": "internationalCountryCode", "type": "int"},
+        "national_number": {"key": "nationalNumber", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword raw_text:
+        :paramtype raw_text: str
+        :keyword formatted_number:
+        :paramtype formatted_number: str
+        :keyword country_code:
+        :paramtype country_code: str
+        :keyword international_country_code:
+        :paramtype international_country_code: int
+        :keyword national_number:
+        :paramtype national_number: str
+        """
+        super(PhoneNumberAnnotationParsed, self).__init__(**kwargs)
+        self.raw_text = kwargs.get("raw_text", None)
+        self.formatted_number = kwargs.get("formatted_number", None)
+        self.country_code = kwargs.get("country_code", None)
+        self.international_country_code = kwargs.get("international_country_code", None)
+        self.national_number = kwargs.get("national_number", None)
 
 
 class Rectangle(msrest.serialization.Model):
@@ -18504,9 +19211,9 @@ class RowAnnotation(Annotation):
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -18589,9 +19296,9 @@ class RowAnnotation(Annotation):
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -18801,9 +19508,9 @@ class SkillAnnotation(Annotation):
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -18887,9 +19594,9 @@ class SkillAnnotation(Annotation):
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -19075,9 +19782,9 @@ class TableAnnotation(Annotation):
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -19160,9 +19867,9 @@ class TableAnnotation(Annotation):
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
@@ -20328,9 +21035,9 @@ class YearsExperienceAnnotation(Annotation):
     :ivar data_point: Required. Data point's identifier.
     :vartype data_point: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
-     "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-     "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-     "yearsexperience", "group", "table_deprecated".
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+     "language", "skill", "yearsexperience", "group", "table_deprecated".
     :vartype content_type: str or ~affinda.models.AnnotationContentType
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
@@ -20413,9 +21120,9 @@ class YearsExperienceAnnotation(Annotation):
         :keyword data_point: Required. Data point's identifier.
         :paramtype data_point: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
-         "text", "integer", "float", "decimal", "date", "datetime", "boolean", "enum", "location",
-         "json", "table", "cell", "expectedremuneration", "jobtitle", "language", "skill",
-         "yearsexperience", "group", "table_deprecated".
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
+         "language", "skill", "yearsexperience", "group", "table_deprecated".
         :paramtype content_type: str or ~affinda.models.AnnotationContentType
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int

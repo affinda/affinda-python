@@ -101,6 +101,9 @@ try:
     from ._models_py3 import DataPointUpdate
     from ._models_py3 import DateAnnotation
     from ._models_py3 import DateAnnotationUpdate
+    from ._models_py3 import DateRangeAnnotation
+    from ._models_py3 import DateRangeAnnotationParsed
+    from ._models_py3 import DateRangeValue
     from ._models_py3 import Document
     from ._models_py3 import DocumentCreate
     from ._models_py3 import DocumentEditRequest
@@ -218,6 +221,8 @@ try:
     from ._models_py3 import LocationAnnotationUpdateParsed
     from ._models_py3 import LocationSearchScoreComponent
     from ._models_py3 import ManagementLevelSearchScoreComponent
+    from ._models_py3 import MappingDataSource
+    from ._models_py3 import MappingDataSourceCreate
     from ._models_py3 import Meta
     from ._models_py3 import MetaChildDocumentsItem
     from ._models_py3 import MetaParentDocument
@@ -245,7 +250,13 @@ try:
         Paths1Dgz0V9V3AnnotationsGetResponses200ContentApplicationJsonSchemaAllof1,
     )
     from ._models_py3 import (
+        Paths1O6IvdaV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchemaAllof1,
+    )
+    from ._models_py3 import (
         Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1,
+    )
+    from ._models_py3 import (
+        Paths1Qr7BnyV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchema,
     )
     from ._models_py3 import Paths26Civ0V3ApiUsersGetResponses200ContentApplicationJsonSchema
     from ._models_py3 import (
@@ -290,6 +301,8 @@ try:
     from ._models_py3 import (
         PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema,
     )
+    from ._models_py3 import PhoneNumberAnnotation
+    from ._models_py3 import PhoneNumberAnnotationParsed
     from ._models_py3 import Rectangle
     from ._models_py3 import RedactConfig
     from ._models_py3 import RegionBias
@@ -454,6 +467,9 @@ except (SyntaxError, ImportError):
     from ._models import DataPointUpdate  # type: ignore
     from ._models import DateAnnotation  # type: ignore
     from ._models import DateAnnotationUpdate  # type: ignore
+    from ._models import DateRangeAnnotation  # type: ignore
+    from ._models import DateRangeAnnotationParsed  # type: ignore
+    from ._models import DateRangeValue  # type: ignore
     from ._models import Document  # type: ignore
     from ._models import DocumentCreate  # type: ignore
     from ._models import DocumentEditRequest  # type: ignore
@@ -571,6 +587,8 @@ except (SyntaxError, ImportError):
     from ._models import LocationAnnotationUpdateParsed  # type: ignore
     from ._models import LocationSearchScoreComponent  # type: ignore
     from ._models import ManagementLevelSearchScoreComponent  # type: ignore
+    from ._models import MappingDataSource  # type: ignore
+    from ._models import MappingDataSourceCreate  # type: ignore
     from ._models import Meta  # type: ignore
     from ._models import MetaChildDocumentsItem  # type: ignore
     from ._models import MetaParentDocument  # type: ignore
@@ -591,7 +609,9 @@ except (SyntaxError, ImportError):
     from ._models import Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema  # type: ignore
     from ._models import Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import Paths1Dgz0V9V3AnnotationsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
+    from ._models import Paths1O6IvdaV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
     from ._models import Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
+    from ._models import Paths1Qr7BnyV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import Paths26Civ0V3ApiUsersGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
     from ._models import Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
@@ -609,6 +629,8 @@ except (SyntaxError, ImportError):
     from ._models import PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema  # type: ignore
+    from ._models import PhoneNumberAnnotation  # type: ignore
+    from ._models import PhoneNumberAnnotationParsed  # type: ignore
     from ._models import Rectangle  # type: ignore
     from ._models import RedactConfig  # type: ignore
     from ._models import RegionBias  # type: ignore
@@ -806,6 +828,9 @@ __all__ = [
     "DataPointUpdate",
     "DateAnnotation",
     "DateAnnotationUpdate",
+    "DateRangeAnnotation",
+    "DateRangeAnnotationParsed",
+    "DateRangeValue",
     "Document",
     "DocumentCreate",
     "DocumentEditRequest",
@@ -923,6 +948,8 @@ __all__ = [
     "LocationAnnotationUpdateParsed",
     "LocationSearchScoreComponent",
     "ManagementLevelSearchScoreComponent",
+    "MappingDataSource",
+    "MappingDataSourceCreate",
     "Meta",
     "MetaChildDocumentsItem",
     "MetaParentDocument",
@@ -943,7 +970,9 @@ __all__ = [
     "Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema",
     "Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema",
     "Paths1Dgz0V9V3AnnotationsGetResponses200ContentApplicationJsonSchemaAllof1",
+    "Paths1O6IvdaV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchemaAllof1",
     "Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1",
+    "Paths1Qr7BnyV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchema",
     "Paths26Civ0V3ApiUsersGetResponses200ContentApplicationJsonSchema",
     "Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1",
     "Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1",
@@ -961,6 +990,8 @@ __all__ = [
     "PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema",
     "PathsVz5Kj2V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema",
     "PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema",
+    "PhoneNumberAnnotation",
+    "PhoneNumberAnnotationParsed",
     "Rectangle",
     "RedactConfig",
     "RegionBias",

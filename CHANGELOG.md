@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.16.0] - 2023-12-04
+### Added
+- Add data mapping
+- Add dropNullEnums to Field
+- Added AnnotationContentType
+- Added show_custom_field_creation to Organization
+- Introduce endpoints to deal with data sources that can be created by customers, and used to map data onto a picklist, or lookup values for downstream validation
+
 ## [4.15.0] - 2023-11-14
 ### Added
 - Add PATCH /index/<name> endpoint

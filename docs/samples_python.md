@@ -1049,6 +1049,9 @@ body = [1, 2, 3]  # List of annotation IDs
 client.batch_delete_annotations(body)
 ```
 
+Document API - Mapping Data Sources
+-----------------------------------
+
 Organization API - Organization
 -------------------------------
 

@@ -23,6 +23,7 @@ from ... import models as _models
 from ..._vendor import _convert_request
 from ...operations._affinda_api_operations import (
     build_activate_resthook_subscription_request,
+    build_add_mapping_data_source_value_request,
     build_batch_add_tag_request,
     build_batch_create_annotations_request,
     build_batch_delete_annotations_request,
@@ -41,6 +42,7 @@ from ...operations._affinda_api_operations import (
     build_create_invitation_request,
     build_create_job_description_search_embed_url_request,
     build_create_job_description_search_request,
+    build_create_mapping_data_source_request,
     build_create_organization_request,
     build_create_resthook_subscription_request,
     build_create_resume_search_embed_url_request,
@@ -58,6 +60,8 @@ from ...operations._affinda_api_operations import (
     build_delete_index_document_request,
     build_delete_index_request,
     build_delete_invitation_request,
+    build_delete_mapping_data_source_request,
+    build_delete_mapping_data_source_value_request,
     build_delete_organization_membership_request,
     build_delete_organization_request,
     build_delete_resthook_subscription_request,
@@ -93,6 +97,8 @@ from ...operations._affinda_api_operations import (
     build_get_invitation_request,
     build_get_job_description_search_config_request,
     build_get_job_description_search_detail_request,
+    build_get_mapping_data_source_request,
+    build_get_mapping_data_source_value_request,
     build_get_organization_membership_request,
     build_get_organization_request,
     build_get_resthook_subscription_request,
@@ -106,9 +112,11 @@ from ...operations._affinda_api_operations import (
     build_get_usage_by_workspace_request,
     build_get_workspace_membership_request,
     build_get_workspace_request,
+    build_list_mapping_data_source_values_request,
     build_list_occupation_groups_request,
     build_regenerate_api_key_for_api_user_request,
     build_replace_data_point_choices_request,
+    build_replace_mapping_data_source_values_request,
     build_respond_to_invitation_request,
     build_update_annotation_request,
     build_update_api_user_request,
@@ -3815,6 +3823,547 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             return cls(pipeline_response, None, {})
 
     batch_delete_annotations.metadata = {"url": "/v3/annotations/batch_delete"}  # type: ignore
+
+    async def create_mapping_data_source(
+        self, body: _models.MappingDataSourceCreate, **kwargs: Any
+    ) -> _models.MappingDataSource:
+        """Create a mapping data source.
+
+        Create a custom mapping data source.
+
+        :param body:
+        :type body: ~affinda.models.MappingDataSourceCreate
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: MappingDataSource, or the result of cls(response)
+        :rtype: ~affinda.models.MappingDataSource
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop(
+            "content_type", _headers.pop("Content-Type", "application/json")
+        )  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.MappingDataSource]
+
+        _json = self._serialize.body(body, "MappingDataSourceCreate")
+
+        request = build_create_mapping_data_source_request(
+            content_type=content_type,
+            json=_json,
+            template_url=self.create_mapping_data_source.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [201]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("MappingDataSource", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    create_mapping_data_source.metadata = {"url": "/v3/mapping_data_sources"}  # type: ignore
+
+    async def get_mapping_data_source(
+        self, identifier: str, **kwargs: Any
+    ) -> _models.MappingDataSource:
+        """Get specific mapping data source.
+
+        Return a specific mapping data source.
+
+        :param identifier: Mapping data source's identifier.
+        :type identifier: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: MappingDataSource, or the result of cls(response)
+        :rtype: ~affinda.models.MappingDataSource
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.MappingDataSource]
+
+        request = build_get_mapping_data_source_request(
+            identifier=identifier,
+            template_url=self.get_mapping_data_source.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("MappingDataSource", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_mapping_data_source.metadata = {"url": "/v3/mapping_data_sources/{identifier}"}  # type: ignore
+
+    async def delete_mapping_data_source(  # pylint: disable=inconsistent-return-statements
+        self, identifier: str, **kwargs: Any
+    ) -> None:
+        """Delete specific mapping data source.
+
+        Delete the specified mapping data source from the database.
+
+        :param identifier: Mapping data source's identifier.
+        :type identifier: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: None, or the result of cls(response)
+        :rtype: None
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[None]
+
+        request = build_delete_mapping_data_source_request(
+            identifier=identifier,
+            template_url=self.delete_mapping_data_source.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [204]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if cls:
+            return cls(pipeline_response, None, {})
+
+    delete_mapping_data_source.metadata = {"url": "/v3/mapping_data_sources/{identifier}"}  # type: ignore
+
+    async def list_mapping_data_source_values(
+        self,
+        identifier: str,
+        limit: Optional[int] = 300,
+        offset: Optional[int] = None,
+        search: Optional[str] = None,
+        **kwargs: Any,
+    ) -> _models.Paths1Qr7BnyV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchema:
+        """List values for a mapping data source.
+
+        Returns the list of all values in a mapping data source.
+
+        :param identifier: Mapping data source's identifier.
+        :type identifier: str
+        :param limit: The numbers of results to return. Default value is 300.
+        :type limit: int
+        :param offset: The number of documents to skip before starting to collect the result set.
+         Default value is None.
+        :type offset: int
+        :param search: Search for specific values. Default value is None.
+        :type search: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return:
+         Paths1Qr7BnyV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchema, or
+         the result of cls(response)
+        :rtype:
+         ~affinda.models.Paths1Qr7BnyV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchema
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop(
+            "cls", None
+        )  # type: ClsType[_models.Paths1Qr7BnyV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchema]
+
+        request = build_list_mapping_data_source_values_request(
+            identifier=identifier,
+            limit=limit,
+            offset=offset,
+            search=search,
+            template_url=self.list_mapping_data_source_values.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize(
+            "Paths1Qr7BnyV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchema",
+            pipeline_response,
+        )
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    list_mapping_data_source_values.metadata = {"url": "/v3/mapping_data_sources/{identifier}/values"}  # type: ignore
+
+    async def replace_mapping_data_source_values(
+        self, identifier: str, body: List[Any], **kwargs: Any
+    ) -> List[Any]:
+        """Replace values for a mapping data source.
+
+        Replaces the list of all values in a mapping data source.
+
+        :param identifier: Mapping data source's identifier.
+        :type identifier: str
+        :param body:
+        :type body: list[any]
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: list of any, or the result of cls(response)
+        :rtype: list[any]
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop(
+            "content_type", _headers.pop("Content-Type", "application/json")
+        )  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[List[Any]]
+
+        _json = self._serialize.body(body, "[object]")
+
+        request = build_replace_mapping_data_source_values_request(
+            identifier=identifier,
+            content_type=content_type,
+            json=_json,
+            template_url=self.replace_mapping_data_source_values.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [201]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("[object]", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    replace_mapping_data_source_values.metadata = {"url": "/v3/mapping_data_sources/{identifier}/values"}  # type: ignore
+
+    async def add_mapping_data_source_value(
+        self, identifier: str, body: Any, **kwargs: Any
+    ) -> Any:
+        """Add value for a mapping data source.
+
+        Adds a value to a mapping data source.
+
+        :param identifier: Mapping data source's identifier.
+        :type identifier: str
+        :param body:
+        :type body: any
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: any, or the result of cls(response)
+        :rtype: any
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop(
+            "content_type", _headers.pop("Content-Type", "application/json")
+        )  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[Any]
+
+        _json = self._serialize.body(body, "object")
+
+        request = build_add_mapping_data_source_value_request(
+            identifier=identifier,
+            content_type=content_type,
+            json=_json,
+            template_url=self.add_mapping_data_source_value.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [201]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("object", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    add_mapping_data_source_value.metadata = {"url": "/v3/mapping_data_sources/{identifier}/values"}  # type: ignore
+
+    async def get_mapping_data_source_value(
+        self, identifier: str, value: str, **kwargs: Any
+    ) -> Any:
+        """Get specific mapping data source value.
+
+        Return a specific mapping dta source value.
+
+        :param identifier: Mapping data source's identifier.
+        :type identifier: str
+        :param value: Mapping Data Source Value's value.
+        :type value: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: any, or the result of cls(response)
+        :rtype: any
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[Any]
+
+        request = build_get_mapping_data_source_value_request(
+            identifier=identifier,
+            value=value,
+            template_url=self.get_mapping_data_source_value.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("object", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_mapping_data_source_value.metadata = {"url": "/v3/mapping_data_sources/{identifier}/values/{value}"}  # type: ignore
+
+    async def delete_mapping_data_source_value(  # pylint: disable=inconsistent-return-statements
+        self, identifier: str, value: str, **kwargs: Any
+    ) -> None:
+        """Delete specific mapping data source value.
+
+        Delete the specified mapping data source value from the database.
+
+        :param identifier: Mapping data source's identifier.
+        :type identifier: str
+        :param value: Mapping Data Source Value's value.
+        :type value: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: None, or the result of cls(response)
+        :rtype: None
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[None]
+
+        request = build_delete_mapping_data_source_value_request(
+            identifier=identifier,
+            value=value,
+            template_url=self.delete_mapping_data_source_value.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [204]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if cls:
+            return cls(pipeline_response, None, {})
+
+    delete_mapping_data_source_value.metadata = {"url": "/v3/mapping_data_sources/{identifier}/values/{value}"}  # type: ignore
 
     async def get_all_tags(
         self,

@@ -1486,6 +1486,219 @@ Batch delete annotations.
 
 `None`: None, or the result of cls(response)
 
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_mapping_data_source"></a>
+
+#### create\_mapping\_data\_source
+
+```python
+def create_mapping_data_source(body, **kwargs)
+```
+
+Create a mapping data source.
+
+Create a custom mapping data source.
+
+**Arguments**:
+
+- `body` (`~affinda.models.MappingDataSourceCreate`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.MappingDataSource`: MappingDataSource, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_mapping_data_source"></a>
+
+#### get\_mapping\_data\_source
+
+```python
+def get_mapping_data_source(identifier, **kwargs)
+```
+
+Get specific mapping data source.
+
+Return a specific mapping data source.
+
+**Arguments**:
+
+- `identifier` (`str`): Mapping data source's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.MappingDataSource`: MappingDataSource, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_mapping_data_source"></a>
+
+#### delete\_mapping\_data\_source
+
+```python
+def delete_mapping_data_source(identifier, **kwargs)
+```
+
+Delete specific mapping data source.
+
+Delete the specified mapping data source from the database.
+
+**Arguments**:
+
+- `identifier` (`str`): Mapping data source's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.list_mapping_data_source_values"></a>
+
+#### list\_mapping\_data\_source\_values
+
+```python
+def list_mapping_data_source_values(identifier,
+                                    limit=300,
+                                    offset=None,
+                                    search=None,
+                                    **kwargs)
+```
+
+List values for a mapping data source.
+
+Returns the list of all values in a mapping data source.
+
+**Arguments**:
+
+- `identifier` (`str`): Mapping data source's identifier.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `search` (`str`): Search for specific values. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Paths1Qr7BnyV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchema`: Paths1Qr7BnyV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchema, or
+the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.replace_mapping_data_source_values"></a>
+
+#### replace\_mapping\_data\_source\_values
+
+```python
+def replace_mapping_data_source_values(identifier, body, **kwargs)
+```
+
+Replace values for a mapping data source.
+
+Replaces the list of all values in a mapping data source.
+
+**Arguments**:
+
+- `identifier` (`str`): Mapping data source's identifier.
+- `body` (`list[any]`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[any]`: list of any, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.add_mapping_data_source_value"></a>
+
+#### add\_mapping\_data\_source\_value
+
+```python
+def add_mapping_data_source_value(identifier, body, **kwargs)
+```
+
+Add value for a mapping data source.
+
+Adds a value to a mapping data source.
+
+**Arguments**:
+
+- `identifier` (`str`): Mapping data source's identifier.
+- `body` (`any`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`any`: any, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_mapping_data_source_value"></a>
+
+#### get\_mapping\_data\_source\_value
+
+```python
+def get_mapping_data_source_value(identifier, value, **kwargs)
+```
+
+Get specific mapping data source value.
+
+Return a specific mapping dta source value.
+
+**Arguments**:
+
+- `identifier` (`str`): Mapping data source's identifier.
+- `value` (`str`): Mapping Data Source Value's value.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`any`: any, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_mapping_data_source_value"></a>
+
+#### delete\_mapping\_data\_source\_value
+
+```python
+def delete_mapping_data_source_value(identifier, value, **kwargs)
+```
+
+Delete specific mapping data source value.
+
+Delete the specified mapping data source value from the database.
+
+**Arguments**:
+
+- `identifier` (`str`): Mapping data source's identifier.
+- `value` (`str`): Mapping Data Source Value's value.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_tags"></a>
 
 #### get\_all\_tags
