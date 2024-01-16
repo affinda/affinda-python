@@ -1511,6 +1511,34 @@ Create a custom mapping data source.
 
 `~affinda.models.MappingDataSource`: MappingDataSource, or the result of cls(response)
 
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.list_mapping_data_sources"></a>
+
+#### list\_mapping\_data\_sources
+
+```python
+def list_mapping_data_sources(offset=None, limit=300, **kwargs)
+```
+
+List mapping data sources.
+
+Returns the list of all custom mapping data sources.
+
+**Arguments**:
+
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Paths11QdcofV3MappingDataSourcesGetResponses200ContentApplicationJsonSchema`: Paths11QdcofV3MappingDataSourcesGetResponses200ContentApplicationJsonSchema, or the
+result of cls(response)
+
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_mapping_data_source"></a>
 
 #### get\_mapping\_data\_source
@@ -1698,6 +1726,136 @@ Delete the specified mapping data source value from the database.
 **Returns**:
 
 `None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_mapping"></a>
+
+#### create\_mapping
+
+```python
+def create_mapping(body, **kwargs)
+```
+
+Create a mapping.
+
+Create a custom mapping.
+
+**Arguments**:
+
+- `body` (`~affinda.models.MappingCreate`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Mapping`: Mapping, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.list_mappings"></a>
+
+#### list\_mappings
+
+```python
+def list_mappings(mapping_data_source, offset=None, limit=300, **kwargs)
+```
+
+List mappings.
+
+Returns the list of all custom data mappings.
+
+**Arguments**:
+
+- `mapping_data_source` (`str`): Mapping data source's identifier.
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Paths1Dpvb2PV3MappingsGetResponses200ContentApplicationJsonSchema`: Paths1Dpvb2PV3MappingsGetResponses200ContentApplicationJsonSchema, or the result of
+cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_mapping"></a>
+
+#### get\_mapping
+
+```python
+def get_mapping(identifier, **kwargs)
+```
+
+Get specific mapping.
+
+Return a specific mapping.
+
+**Arguments**:
+
+- `identifier` (`str`): Mapping's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Mapping`: Mapping, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_mapping"></a>
+
+#### delete\_mapping
+
+```python
+def delete_mapping(identifier, **kwargs)
+```
+
+Delete specific mapping.
+
+Delete the specified mapping from the database.
+
+**Arguments**:
+
+- `identifier` (`str`): Mapping's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_mapping"></a>
+
+#### update\_mapping
+
+```python
+def update_mapping(identifier, body, **kwargs)
+```
+
+Update specific mapping.
+
+Updates a specific mapping.
+
+**Arguments**:
+
+- `identifier` (`str`): Mapping's identifier.
+- `body` (`~affinda.models.MappingUpdate`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Mapping`: Mapping, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_tags"></a>
 

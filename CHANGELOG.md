@@ -6,6 +6,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.17.0] - 2024-01-16
+### Added
+- Added "website" data point type
+- Add mapping and dataSource to the field endpoints
+- Add list mapping data sources endpoint
+
+### Removed
+- Removed "cell" data point type
+
+### Changed
+- Add URL annotation type
+
 ## [4.16.0] - 2023-12-04
 ### Added
 - Add data mapping

@@ -83,8 +83,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -122,8 +122,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 
 <a id="models._models.AnnotationBase"></a>
@@ -216,7 +216,7 @@ AnnotationUpdate.
 :vartype page_index: int
 :ivar raw: Raw data extracted from the before any post-processing.
 :vartype raw: str
-:ivar parsed:
+:ivar parsed: Anything.
 :vartype parsed: any
 :ivar is_client_verified: Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
@@ -240,7 +240,7 @@ be contained within multiple rectangles.
 - `document`: Unique identifier for the document.
 - `page_index`: The page number within the document, starting from 0.
 - `raw`: Raw data extracted from the before any post-processing.
-- `parsed`: 
+- `parsed`: Anything.
 - `is_client_verified`: Indicates whether the data has been validated by a human.
 - `data_point`: Data point's identifier.
 - `parent`: The parent annotation's ID.
@@ -266,7 +266,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype page_index: int
 :ivar raw: Raw data extracted from the before any post-processing.
 :vartype raw: str
-:ivar parsed:
+:ivar parsed: Anything.
 :vartype parsed: any
 :ivar is_client_verified: Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
@@ -292,7 +292,7 @@ be contained within multiple rectangles.
 - `document`: Unique identifier for the document.
 - `page_index`: The page number within the document, starting from 0.
 - `raw`: Raw data extracted from the before any post-processing.
-- `parsed`: 
+- `parsed`: Anything.
 - `is_client_verified`: Indicates whether the data has been validated by a human.
 - `data_point`: Data point's identifier.
 - `parent`: The parent annotation's ID.
@@ -321,7 +321,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar raw: Raw data extracted from the before any post-processing.
 :vartype raw: str
-:ivar parsed:
+:ivar parsed: Anything.
 :vartype parsed: any
 :ivar is_client_verified: Indicates whether the data has been validated by a human.
 :vartype is_client_verified: bool
@@ -344,7 +344,7 @@ be contained within multiple rectangles.
 - `page_index`: Required. The page number within the document, starting from 0.
 - `data_point`: Required. Data point's identifier.
 - `raw`: Raw data extracted from the before any post-processing.
-- `parsed`: 
+- `parsed`: Anything.
 - `is_client_verified`: Indicates whether the data has been validated by a human.
 - `parent`: The parent annotation's ID.
 
@@ -846,6 +846,10 @@ CollectionField.
 :vartype display_enum_value: bool
 :ivar auto_validation_threshold:
 :vartype auto_validation_threshold: float
+:ivar data_source: Data source mapping identifier.
+:vartype data_source: str
+:ivar mapping: Defines how the data point is mapped to the data source.
+:vartype mapping: str
 
 <a id="models._models.CollectionField.__init__"></a>
 
@@ -863,6 +867,8 @@ def __init__(**kwargs)
 - `display_enum_value`: If true, both the value and the label for the enums will appear in
 the dropdown in the validation tool.
 - `auto_validation_threshold`: 
+- `data_source`: Data source mapping identifier.
+- `mapping`: Defines how the data point is mapped to the data source.
 
 <a id="models._models.CollectionUpdate"></a>
 
@@ -2056,8 +2062,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -2097,8 +2103,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -2230,8 +2236,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype description: str
 :ivar type: Required. The different data types of annotations. Known values are: "text",
  "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum", "location",
- "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle", "language",
- "skill", "yearsexperience", "group", "table_deprecated".
+ "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype type: str or ~affinda.models.AnnotationContentType
 :ivar multiple:
 :vartype multiple: bool
@@ -2258,8 +2264,8 @@ def __init__(**kwargs)
 - `description`: 
 - `type`: Required. The different data types of annotations. Known values are: "text",
 "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum", "location",
-"phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle", "language",
-"skill", "yearsexperience", "group", "table_deprecated".
+"phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated", "url", "image".
 - `multiple`: 
 - `no_rect`: 
 - `parent`: The identifier of the parent data point if applicable.
@@ -2282,8 +2288,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype label: str
 :ivar field_type: The different data types of annotations. Known values are: "text", "integer",
  "float", "decimal", "date", "datetime", "daterange", "boolean", "enum", "location",
- "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle", "language",
- "skill", "yearsexperience", "group", "table_deprecated".
+ "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype field_type: str or ~affinda.models.AnnotationContentType
 :ivar mandatory:
 :vartype mandatory: bool
@@ -2296,6 +2302,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype auto_validation_threshold: float
 :ivar data_source: Data source mapping identifier.
 :vartype data_source: str
+:ivar mapping: Defines how the data point is mapped to the data source.
+:vartype mapping: str
 
 <a id="models._models.DataFieldCreateField.__init__"></a>
 
@@ -2310,14 +2318,15 @@ def __init__(**kwargs)
 - `label`: Required.
 - `field_type`: The different data types of annotations. Known values are: "text",
 "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum", "location",
-"phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle", "language",
-"skill", "yearsexperience", "group", "table_deprecated".
+"phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated", "url", "image".
 - `mandatory`: 
 - `show_dropdown`: 
 - `display_enum_value`: If true, both the value and the label for the enums will appear in
 the dropdown in the validation tool.
 - `auto_validation_threshold`: 
 - `data_source`: Data source mapping identifier.
+- `mapping`: Defines how the data point is mapped to the data source.
 
 <a id="models._models.DataFieldDataPoint"></a>
 
@@ -2341,8 +2350,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype description: str
 :ivar type: Required. The different data types of annotations. Known values are: "text",
  "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum", "location",
- "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle", "language",
- "skill", "yearsexperience", "group", "table_deprecated".
+ "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype type: str or ~affinda.models.AnnotationContentType
 :ivar multiple: Required.
 :vartype multiple: bool
@@ -2374,8 +2383,8 @@ def __init__(**kwargs)
 - `description`: Required.
 - `type`: Required. The different data types of annotations. Known values are: "text",
 "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum", "location",
-"phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle", "language",
-"skill", "yearsexperience", "group", "table_deprecated".
+"phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated", "url", "image".
 - `multiple`: Required.
 - `no_rect`: Required.
 - `parent`: Required. The identifier of the parent data point if applicable.
@@ -2400,8 +2409,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype label: str
 :ivar field_type: The different data types of annotations. Known values are: "text", "integer",
  "float", "decimal", "date", "datetime", "daterange", "boolean", "enum", "location",
- "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle", "language",
- "skill", "yearsexperience", "group", "table_deprecated".
+ "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype field_type: str or ~affinda.models.AnnotationContentType
 :ivar mandatory: Required.
 :vartype mandatory: bool
@@ -2418,6 +2427,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype disabled_child_fields: list[~affinda.models.Field]
 :ivar data_source: Data source mapping identifier.
 :vartype data_source: str
+:ivar mapping: Defines how the data point is mapped to the data source.
+:vartype mapping: str
 
 <a id="models._models.DataFieldField.__init__"></a>
 
@@ -2432,8 +2443,8 @@ def __init__(**kwargs)
 - `label`: Required.
 - `field_type`: The different data types of annotations. Known values are: "text",
 "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum", "location",
-"phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle", "language",
-"skill", "yearsexperience", "group", "table_deprecated".
+"phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated", "url", "image".
 - `mandatory`: Required.
 - `show_dropdown`: Required.
 - `display_enum_value`: Required. If true, both the value and the label for the enums will
@@ -2442,6 +2453,7 @@ appear in the dropdown in the validation tool.
 - `enabled_child_fields`: Required.
 - `disabled_child_fields`: Required.
 - `data_source`: Data source mapping identifier.
+- `mapping`: Defines how the data point is mapped to the data source.
 
 <a id="models._models.DataPoint"></a>
 
@@ -2465,8 +2477,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype description: str
 :ivar annotation_content_type: Required. The different data types of annotations. Known values
  are: "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
 :ivar organization: Required.
 :vartype organization: ~affinda.models.Organization
@@ -2502,8 +2514,8 @@ def __init__(**kwargs)
 - `description`: 
 - `annotation_content_type`: Required. The different data types of annotations. Known
 values are: "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean",
-"enum", "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"enum", "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle",
+"language", "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `organization`: Required.
 - `extractor`: Required. Uniquely identify an extractor.
 - `multiple`: 
@@ -2814,8 +2826,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype description: str
 :ivar annotation_content_type: Required. The different data types of annotations. Known values
  are: "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype annotation_content_type: str or ~affinda.models.AnnotationContentType
 :ivar organization: Required. Uniquely identify an organization.
 :vartype organization: str
@@ -2846,8 +2858,8 @@ def __init__(**kwargs)
 - `description`: 
 - `annotation_content_type`: Required. The different data types of annotations. Known
 values are: "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean",
-"enum", "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"enum", "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle",
+"language", "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `organization`: Required. Uniquely identify an organization.
 - `extractor`: Required. Uniquely identify an extractor.
 - `multiple`: 
@@ -2938,8 +2950,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -2979,8 +2991,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -3106,8 +3118,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -3147,8 +3159,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -3689,7 +3701,7 @@ Describe a split of a document.
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar identifier: Any object.
+:ivar identifier: Anything.
 :vartype identifier: any
 :ivar pages: Required.
 :vartype pages: list[~affinda.models.DocumentSplitPage]
@@ -3704,7 +3716,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `identifier`: Any object.
+- `identifier`: Anything.
 - `pages`: Required.
 
 <a id="models._models.DocumentSplitPage"></a>
@@ -4011,8 +4023,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -4052,8 +4064,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -4459,8 +4471,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar field_type: Required. The different data types of annotations. Known values are: "text",
  "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum", "location",
- "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle", "language",
- "skill", "yearsexperience", "group", "table_deprecated".
+ "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype field_type: str or ~affinda.models.AnnotationContentType
 :ivar data_source: Data source mapping identifier.
 :vartype data_source: str
@@ -4501,8 +4513,8 @@ def __init__(**kwargs)
 - `data_point`: Required. Data point identifier.
 - `field_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `data_source`: Data source mapping identifier.
 - `mapping`: Defines how the data point is mapped to the data source.
 - `mandatory`: 
@@ -4568,8 +4580,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype slug: str
 :ivar field_type: Required. The different data types of annotations. Known values are: "text",
  "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum", "location",
- "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle", "language",
- "skill", "yearsexperience", "group", "table_deprecated".
+ "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype field_type: str or ~affinda.models.AnnotationContentType
 :ivar data_source: Data source mapping identifier.
 :vartype data_source: str
@@ -4607,8 +4619,8 @@ def __init__(**kwargs)
 - `slug`: 
 - `field_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `data_source`: Data source mapping identifier.
 - `mapping`: Defines how the data point is mapped to the data source.
 - `data_point`: Required.
@@ -4729,8 +4741,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -4770,8 +4782,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -5356,8 +5368,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -5397,8 +5409,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -5452,8 +5464,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -5493,8 +5505,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -5548,8 +5560,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -5589,8 +5601,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -5644,8 +5656,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -5685,8 +5697,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -5740,8 +5752,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -5781,8 +5793,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -5836,8 +5848,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -5877,8 +5889,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -5932,8 +5944,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -5973,8 +5985,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -6028,8 +6040,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -6069,8 +6081,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -6125,8 +6137,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -6166,8 +6178,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -6222,8 +6234,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -6263,8 +6275,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -6318,8 +6330,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -6359,8 +6371,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -6414,8 +6426,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -6455,8 +6467,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -6510,8 +6522,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -6551,8 +6563,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -6607,8 +6619,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -6648,8 +6660,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -6703,8 +6715,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -6744,8 +6756,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -6799,8 +6811,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -6840,8 +6852,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -6896,8 +6908,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -6937,8 +6949,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -6992,8 +7004,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -7033,8 +7045,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -7088,8 +7100,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -7129,8 +7141,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -7184,8 +7196,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -7225,8 +7237,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -7280,8 +7292,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -7321,8 +7333,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -7376,8 +7388,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -7417,8 +7429,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -7472,8 +7484,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -7513,8 +7525,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -7569,8 +7581,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -7610,8 +7622,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -7666,8 +7678,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -7707,8 +7719,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -7762,8 +7774,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -7803,8 +7815,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -7858,8 +7870,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -7899,8 +7911,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -7955,8 +7967,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -7996,8 +8008,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -8051,8 +8063,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -8092,8 +8104,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -8147,8 +8159,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -8188,8 +8200,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -9434,8 +9446,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -9475,8 +9487,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: Years of experience range.
 
@@ -9827,8 +9839,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -9868,8 +9880,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 
 <a id="models._models.LanguageAnnotationUpdate"></a>
@@ -10026,8 +10038,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -10067,8 +10079,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -10262,6 +10274,76 @@ def __init__(**kwargs)
 - `label`: Required.
 - `score`: 
 
+<a id="models._models.Mapping"></a>
+
+## Mapping Objects
+
+```python
+class Mapping(msrest.serialization.Model)
+```
+
+A mapping allows you to specify specific settings regarding a lookup against a MappingDataSource should be applied.
+
+Variables are only populated by the server, and will be ignored when sending a request.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar identifier: Required. Uniquely identify a mapping.
+:vartype identifier: str
+:ivar organization: The organization that this mapping belongs to.
+:vartype organization: str
+:ivar data_source: Required. The mapping data source this mapping applies to.
+:vartype data_source: str
+:ivar score_cutoff: Higher values will result in more strict matching.
+:vartype score_cutoff: float
+
+<a id="models._models.Mapping.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `organization`: The organization that this mapping belongs to.
+- `data_source`: Required. The mapping data source this mapping applies to.
+- `score_cutoff`: Higher values will result in more strict matching.
+
+<a id="models._models.MappingCreate"></a>
+
+## MappingCreate Objects
+
+```python
+class MappingCreate(msrest.serialization.Model)
+```
+
+MappingCreate.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar data_source: Required. The mapping data source this mapping applies to.
+:vartype data_source: str
+:ivar score_cutoff: Higher values will result in more strict matching.
+:vartype score_cutoff: float
+:ivar organization: The organization that this mapping belongs to.
+:vartype organization: str
+
+<a id="models._models.MappingCreate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `data_source`: Required. The mapping data source this mapping applies to.
+- `score_cutoff`: Higher values will result in more strict matching.
+- `organization`: The organization that this mapping belongs to.
+
 <a id="models._models.MappingDataSource"></a>
 
 ## MappingDataSource Objects
@@ -10347,6 +10429,31 @@ def __init__(**kwargs)
 - `display_property`: Attribute in the schema which is used to display the value.
 - `values`: 
 - `schema`: The schema of the mapping data source.
+
+<a id="models._models.MappingUpdate"></a>
+
+## MappingUpdate Objects
+
+```python
+class MappingUpdate(msrest.serialization.Model)
+```
+
+MappingUpdate.
+
+:ivar score_cutoff: Higher values will result in more strict matching.
+:vartype score_cutoff: float
+
+<a id="models._models.MappingUpdate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `score_cutoff`: Higher values will result in more strict matching.
 
 <a id="models._models.Meta"></a>
 
@@ -10938,6 +11045,71 @@ def __init__(**kwargs)
 
 - `results`: 
 
+<a id="models._models.Paths1UmoszuV3MappingDataSourcesGetResponses200ContentApplicationJsonSchemaAllof1"></a>
+
+## Paths1UmoszuV3MappingDataSourcesGetResponses200ContentApplicationJsonSchemaAllof1 Objects
+
+```python
+class Paths1UmoszuV3MappingDataSourcesGetResponses200ContentApplicationJsonSchemaAllof1(
+        msrest.serialization.Model)
+```
+
+Paths1UmoszuV3MappingDataSourcesGetResponses200ContentApplicationJsonSchemaAllof1.
+
+:ivar results:
+:vartype results: list[~affinda.models.MappingDataSource]
+
+<a id="models._models.Paths1UmoszuV3MappingDataSourcesGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: 
+
+<a id="models._models.Paths11QdcofV3MappingDataSourcesGetResponses200ContentApplicationJsonSchema"></a>
+
+## Paths11QdcofV3MappingDataSourcesGetResponses200ContentApplicationJsonSchema Objects
+
+```python
+class Paths11QdcofV3MappingDataSourcesGetResponses200ContentApplicationJsonSchema(
+        PaginatedResponse,
+        Paths1UmoszuV3MappingDataSourcesGetResponses200ContentApplicationJsonSchemaAllof1
+)
+```
+
+Paths11QdcofV3MappingDataSourcesGetResponses200ContentApplicationJsonSchema.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar results:
+:vartype results: list[~affinda.models.MappingDataSource]
+:ivar count: Required. Number of items in results.
+:vartype count: int
+:ivar next: URL to request next page of results.
+:vartype next: str
+:ivar previous: URL to request previous page of results.
+:vartype previous: str
+
+<a id="models._models.Paths11QdcofV3MappingDataSourcesGetResponses200ContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: 
+- `count`: Required. Number of items in results.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
+
 <a id="models._models.PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
 
 ## PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
@@ -11080,6 +11252,71 @@ All required parameters must be populated in order to send to Azure.
 :vartype previous: str
 
 <a id="models._models.Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: 
+- `count`: Required. Number of items in results.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
+
+<a id="models._models.PathsWvcyp9V3MappingsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
+
+## PathsWvcyp9V3MappingsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
+
+```python
+class PathsWvcyp9V3MappingsGetResponses200ContentApplicationJsonSchemaAllof1(
+        msrest.serialization.Model)
+```
+
+PathsWvcyp9V3MappingsGetResponses200ContentApplicationJsonSchemaAllof1.
+
+:ivar results:
+:vartype results: list[~affinda.models.Mapping]
+
+<a id="models._models.PathsWvcyp9V3MappingsGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: 
+
+<a id="models._models.Paths1Dpvb2PV3MappingsGetResponses200ContentApplicationJsonSchema"></a>
+
+## Paths1Dpvb2PV3MappingsGetResponses200ContentApplicationJsonSchema Objects
+
+```python
+class Paths1Dpvb2PV3MappingsGetResponses200ContentApplicationJsonSchema(
+        PaginatedResponse,
+        PathsWvcyp9V3MappingsGetResponses200ContentApplicationJsonSchemaAllof1
+)
+```
+
+Paths1Dpvb2PV3MappingsGetResponses200ContentApplicationJsonSchema.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar results:
+:vartype results: list[~affinda.models.Mapping]
+:ivar count: Required. Number of items in results.
+:vartype count: int
+:ivar next: URL to request next page of results.
+:vartype next: str
+:ivar previous: URL to request previous page of results.
+:vartype previous: str
+
+<a id="models._models.Paths1Dpvb2PV3MappingsGetResponses200ContentApplicationJsonSchema.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -11750,8 +11987,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -11791,8 +12028,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -14096,8 +14333,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -14137,8 +14374,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -14313,8 +14550,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -14354,8 +14591,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 
 <a id="models._models.SkillAnnotationUpdate"></a>
@@ -14512,8 +14749,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -14553,8 +14790,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: 
 
@@ -14935,6 +15172,128 @@ def __init__(**kwargs)
 - `font_weight_regular`: 
 - `font_weight_medium`: 
 - `font_weight_bold`: 
+
+<a id="models._models.UrlAnnotation"></a>
+
+## UrlAnnotation Objects
+
+```python
+class UrlAnnotation(Annotation)
+```
+
+UrlAnnotation.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar id: Required. Annotation's ID.
+:vartype id: int
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
+:vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Required. Unique identifier for the document.
+:vartype document: str
+:ivar page_index: Required. The page number within the document, starting from 0.
+:vartype page_index: int
+:ivar raw: Required. Raw data extracted from the before any post-processing.
+:vartype raw: str
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
+:vartype confidence: float
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
+:vartype text_extraction_confidence: float
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
+:vartype is_verified: bool
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
+:vartype is_client_verified: bool
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
+:vartype is_auto_verified: bool
+:ivar data_point: Required. Data point's identifier.
+:vartype data_point: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
+:ivar parsed:
+:vartype parsed: ~affinda.models.UrlAnnotationParsed
+
+<a id="models._models.UrlAnnotation.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
+collection.
+- `id`: Required. Annotation's ID.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Required. Unique identifier for the document.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
+- `parent`: The parent annotation's ID.
+- `parsed`: 
+
+<a id="models._models.UrlAnnotationParsed"></a>
+
+## UrlAnnotationParsed Objects
+
+```python
+class UrlAnnotationParsed(msrest.serialization.Model)
+```
+
+UrlAnnotationParsed.
+
+:ivar url:
+:vartype url: str
+:ivar domain:
+:vartype domain: str
+
+<a id="models._models.UrlAnnotationParsed.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `url`: 
+- `domain`: 
 
 <a id="models._models.UsageByCollection"></a>
 
@@ -15508,8 +15867,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
- "location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
- "language", "skill", "yearsexperience", "group", "table_deprecated".
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 :vartype content_type: str or ~affinda.models.AnnotationContentType
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
@@ -15549,8 +15908,8 @@ human.
 - `data_point`: Required. Data point's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
-"location", "phonenumber", "json", "table", "cell", "expectedremuneration", "jobtitle",
-"language", "skill", "yearsexperience", "group", "table_deprecated".
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
 - `parent`: The parent annotation's ID.
 - `parsed`: Years of experience range.
 
