@@ -548,6 +548,7 @@ def get_all_documents(offset=None,
                       has_challenges=None,
                       custom_identifier=None,
                       compact=None,
+                      count=None,
                       **kwargs)
 ```
 
@@ -585,6 +586,8 @@ value is None.
 None.
 - `compact` (`bool`): If "true", the response is compacted to annotations' parsed data. Annotations'
 meta data are excluded. Default is "false".
+- `count` (`bool`): If "false", the documents count is not computed, thus saving time for large
+collections. Default is "true".
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:

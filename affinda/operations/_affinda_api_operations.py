@@ -634,6 +634,7 @@ def build_get_all_documents_request(
     has_challenges = kwargs.pop('has_challenges', _params.pop('has_challenges', None))  # type: Optional[bool]
     custom_identifier = kwargs.pop('custom_identifier', _params.pop('custom_identifier', None))  # type: Optional[str]
     compact = kwargs.pop('compact', _params.pop('compact', None))  # type: Optional[bool]
+    count = kwargs.pop('count', _params.pop('count', None))  # type: Optional[bool]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
@@ -676,6 +677,8 @@ def build_get_all_documents_request(
         _params['custom_identifier'] = _SERIALIZER.query("custom_identifier", custom_identifier, 'str')
     if compact is not None:
         _params['compact'] = _SERIALIZER.query("compact", compact, 'bool')
+    if count is not None:
+        _params['count'] = _SERIALIZER.query("count", count, 'bool')
 
     # Construct headers
     _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
@@ -4980,6 +4983,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         has_challenges=None,  # type: Optional[bool]
         custom_identifier=None,  # type: Optional[str]
         compact=None,  # type: Optional[bool]
+        count=None,  # type: Optional[bool]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema
@@ -5033,6 +5037,9 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param compact: If "true", the response is compacted to annotations' parsed data. Annotations'
          meta data are excluded. Default is "false".
         :type compact: bool
+        :param count: If "false", the documents count is not computed, thus saving time for large
+         collections. Default is "true".
+        :type count: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)
@@ -5077,6 +5084,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             has_challenges=has_challenges,
             custom_identifier=custom_identifier,
             compact=compact,
+            count=count,
             template_url=self.get_all_documents.metadata["url"],
             headers=_headers,
             params=_params,

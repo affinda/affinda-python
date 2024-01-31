@@ -1440,6 +1440,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         has_challenges: Optional[bool] = None,
         custom_identifier: Optional[str] = None,
         compact: Optional[bool] = None,
+        count: Optional[bool] = None,
         **kwargs: Any,
     ) -> _models.PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema:
         """Get list of all documents.
@@ -1492,6 +1493,9 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param compact: If "true", the response is compacted to annotations' parsed data. Annotations'
          meta data are excluded. Default is "false".
         :type compact: bool
+        :param count: If "false", the documents count is not computed, thus saving time for large
+         collections. Default is "true".
+        :type count: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)
@@ -1536,6 +1540,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             has_challenges=has_challenges,
             custom_identifier=custom_identifier,
             compact=compact,
+            count=count,
             template_url=self.get_all_documents.metadata["url"],
             headers=_headers,
             params=_params,

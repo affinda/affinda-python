@@ -367,6 +367,8 @@ try:
     from ._models_py3 import ResumeSkillSourcesItem
     from ._models_py3 import RowAnnotation
     from ._models_py3 import RowAnnotationParsed
+    from ._models_py3 import RowBetaAnnotation
+    from ._models_py3 import RowBetaAnnotationParsed
     from ._models_py3 import SearchConfigAction
     from ._models_py3 import SearchExpressionSearchScoreComponent
     from ._models_py3 import SearchParametersCustomData
@@ -375,6 +377,8 @@ try:
     from ._models_py3 import SkillsSearchScoreComponent
     from ._models_py3 import TableAnnotation
     from ._models_py3 import TableAnnotationParsed
+    from ._models_py3 import TableBetaAnnotation
+    from ._models_py3 import TableBetaAnnotationParsed
     from ._models_py3 import Tag
     from ._models_py3 import TagCreate
     from ._models_py3 import TagUpdate
@@ -704,6 +708,8 @@ except (SyntaxError, ImportError):
     from ._models import ResumeSkillSourcesItem  # type: ignore
     from ._models import RowAnnotation  # type: ignore
     from ._models import RowAnnotationParsed  # type: ignore
+    from ._models import RowBetaAnnotation  # type: ignore
+    from ._models import RowBetaAnnotationParsed  # type: ignore
     from ._models import SearchConfigAction  # type: ignore
     from ._models import SearchExpressionSearchScoreComponent  # type: ignore
     from ._models import SearchParametersCustomData  # type: ignore
@@ -712,6 +718,8 @@ except (SyntaxError, ImportError):
     from ._models import SkillsSearchScoreComponent  # type: ignore
     from ._models import TableAnnotation  # type: ignore
     from ._models import TableAnnotationParsed  # type: ignore
+    from ._models import TableBetaAnnotation  # type: ignore
+    from ._models import TableBetaAnnotationParsed  # type: ignore
     from ._models import Tag  # type: ignore
     from ._models import TagCreate  # type: ignore
     from ._models import TagUpdate  # type: ignore
@@ -1074,6 +1082,8 @@ __all__ = [
     "ResumeSkillSourcesItem",
     "RowAnnotation",
     "RowAnnotationParsed",
+    "RowBetaAnnotation",
+    "RowBetaAnnotationParsed",
     "SearchConfigAction",
     "SearchExpressionSearchScoreComponent",
     "SearchParametersCustomData",
@@ -1082,6 +1092,8 @@ __all__ = [
     "SkillsSearchScoreComponent",
     "TableAnnotation",
     "TableAnnotationParsed",
+    "TableBetaAnnotation",
+    "TableBetaAnnotationParsed",
     "Tag",
     "TagCreate",
     "TagUpdate",

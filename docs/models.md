@@ -3487,6 +3487,9 @@ All required parameters must be populated in order to send to Azure.
 :ivar source_email: If the document is created via email ingestion, this field stores the email
  file's URL.
 :vartype source_email: str
+:ivar source_email_address: If the document is created via email ingestion, this field stores
+ the email's From address.
+:vartype source_email_address: str
 :ivar region_bias:
 :vartype region_bias: ~affinda.models.RegionBias
 
@@ -3540,6 +3543,8 @@ this attribute points to those child documents.
 - `created_by`: 
 - `source_email`: If the document is created via email ingestion, this field stores the
 email file's URL.
+- `source_email_address`: If the document is created via email ingestion, this field
+stores the email's From address.
 - `region_bias`: 
 
 <a id="models._models.DocumentMetaChildDocumentsItem"></a>
@@ -4465,6 +4470,9 @@ Field.
 
 All required parameters must be populated in order to send to Azure.
 
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
 :ivar label: Required.
 :vartype label: str
 :ivar data_point: Required. Data point identifier.
@@ -4487,9 +4495,9 @@ All required parameters must be populated in order to send to Azure.
 :ivar display_enum_value: If true, both the value and the label for the enums will appear in
  the dropdown in the validation tool.
 :vartype display_enum_value: bool
-:ivar drop_null_enums: If True, any dropdown annotations that fail to be mapped will be
+:ivar drop_null: If True, any dropdown annotations that fail to parse to a value will be
  discarded.
-:vartype drop_null_enums: bool
+:vartype drop_null: bool
 :ivar enabled_child_fields:
 :vartype enabled_child_fields: list[~affinda.models.Field]
 :ivar disabled_child_fields:
@@ -4509,6 +4517,8 @@ def __init__(**kwargs)
 
 **Arguments**:
 
+- `additional_properties`: Unmatched properties from the message are deserialized to this
+collection.
 - `label`: Required.
 - `data_point`: Required. Data point identifier.
 - `field_type`: Required. The different data types of annotations. Known values are:
@@ -4522,7 +4532,7 @@ def __init__(**kwargs)
 - `show_dropdown`: 
 - `display_enum_value`: If true, both the value and the label for the enums will appear in
 the dropdown in the validation tool.
-- `drop_null_enums`: If True, any dropdown annotations that fail to be mapped will be
+- `drop_null`: If True, any dropdown annotations that fail to parse to a value will be
 discarded.
 - `enabled_child_fields`: 
 - `disabled_child_fields`: 
@@ -4574,6 +4584,9 @@ FieldDeprecated.
 
 All required parameters must be populated in order to send to Azure.
 
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
 :ivar label: Required.
 :vartype label: str
 :ivar slug:
@@ -4597,9 +4610,9 @@ All required parameters must be populated in order to send to Azure.
 :vartype auto_validation_threshold: float
 :ivar show_dropdown:
 :vartype show_dropdown: bool
-:ivar drop_null_enums: If True, any dropdown annotations that fail to be mapped will be
+:ivar drop_null: If True, any dropdown annotations that fail to parse to a value will be
  discarded.
-:vartype drop_null_enums: bool
+:vartype drop_null: bool
 :ivar display_enum_value:
 :vartype display_enum_value: bool
 :ivar fields:
@@ -4615,6 +4628,8 @@ def __init__(**kwargs)
 
 **Arguments**:
 
+- `additional_properties`: Unmatched properties from the message are deserialized to this
+collection.
 - `label`: Required.
 - `slug`: 
 - `field_type`: Required. The different data types of annotations. Known values are:
@@ -4628,7 +4643,7 @@ def __init__(**kwargs)
 - `disabled`: 
 - `auto_validation_threshold`: 
 - `show_dropdown`: 
-- `drop_null_enums`: If True, any dropdown annotations that fail to be mapped will be
+- `drop_null`: If True, any dropdown annotations that fail to parse to a value will be
 discarded.
 - `display_enum_value`: 
 - `fields`: 
@@ -5193,6 +5208,8 @@ InvoiceData.
 
 :ivar tables:
 :vartype tables: list[~affinda.models.TableAnnotation]
+:ivar tables_beta:
+:vartype tables_beta: list[~affinda.models.TableBetaAnnotation]
 :ivar invoice_date:
 :vartype invoice_date: ~affinda.models.DateAnnotation
 :ivar invoice_order_date:
@@ -5281,6 +5298,7 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `tables`: 
+- `tables_beta`: 
 - `invoice_date`: 
 - `invoice_order_date`: 
 - `payment_date_due`: 
@@ -14437,6 +14455,158 @@ def __init__(**kwargs)
 - `item_total`: 
 - `item_other`: 
 
+<a id="models._models.RowBetaAnnotation"></a>
+
+## RowBetaAnnotation Objects
+
+```python
+class RowBetaAnnotation(Annotation)
+```
+
+RowBetaAnnotation.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar id: Required. Annotation's ID.
+:vartype id: int
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
+:vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Required. Unique identifier for the document.
+:vartype document: str
+:ivar page_index: Required. The page number within the document, starting from 0.
+:vartype page_index: int
+:ivar raw: Required. Raw data extracted from the before any post-processing.
+:vartype raw: str
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
+:vartype confidence: float
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
+:vartype text_extraction_confidence: float
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
+:vartype is_verified: bool
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
+:vartype is_client_verified: bool
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
+:vartype is_auto_verified: bool
+:ivar data_point: Required. Data point's identifier.
+:vartype data_point: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
+:ivar parsed:
+:vartype parsed: ~affinda.models.RowBetaAnnotationParsed
+
+<a id="models._models.RowBetaAnnotation.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
+collection.
+- `id`: Required. Annotation's ID.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Required. Unique identifier for the document.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
+- `parent`: The parent annotation's ID.
+- `parsed`: 
+
+<a id="models._models.RowBetaAnnotationParsed"></a>
+
+## RowBetaAnnotationParsed Objects
+
+```python
+class RowBetaAnnotationParsed(msrest.serialization.Model)
+```
+
+RowBetaAnnotationParsed.
+
+:ivar item_code_beta:
+:vartype item_code_beta: ~affinda.models.TextAnnotation
+:ivar item_date_beta:
+:vartype item_date_beta: ~affinda.models.DateAnnotation
+:ivar item_description_beta:
+:vartype item_description_beta: ~affinda.models.TextAnnotation
+:ivar item_unit_beta:
+:vartype item_unit_beta: ~affinda.models.TextAnnotation
+:ivar item_unit_price_beta:
+:vartype item_unit_price_beta: ~affinda.models.FloatAnnotation
+:ivar item_quantity_beta:
+:vartype item_quantity_beta: ~affinda.models.FloatAnnotation
+:ivar item_discount_beta:
+:vartype item_discount_beta: ~affinda.models.TextAnnotation
+:ivar item_base_total_beta:
+:vartype item_base_total_beta: ~affinda.models.FloatAnnotation
+:ivar item_tax_rate_beta:
+:vartype item_tax_rate_beta: ~affinda.models.TextAnnotation
+:ivar item_tax_total_beta:
+:vartype item_tax_total_beta: ~affinda.models.FloatAnnotation
+:ivar item_total_beta:
+:vartype item_total_beta: ~affinda.models.FloatAnnotation
+:ivar item_other_beta:
+:vartype item_other_beta: ~affinda.models.TextAnnotation
+
+<a id="models._models.RowBetaAnnotationParsed.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `item_code_beta`: 
+- `item_date_beta`: 
+- `item_description_beta`: 
+- `item_unit_beta`: 
+- `item_unit_price_beta`: 
+- `item_quantity_beta`: 
+- `item_discount_beta`: 
+- `item_base_total_beta`: 
+- `item_tax_rate_beta`: 
+- `item_tax_total_beta`: 
+- `item_total_beta`: 
+- `item_other_beta`: 
+
 <a id="models._models.SearchConfigAction"></a>
 
 ## SearchConfigAction Objects
@@ -14809,6 +14979,125 @@ TableAnnotationParsed.
 :vartype rows: list[~affinda.models.RowAnnotation]
 
 <a id="models._models.TableAnnotationParsed.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `rows`: 
+
+<a id="models._models.TableBetaAnnotation"></a>
+
+## TableBetaAnnotation Objects
+
+```python
+class TableBetaAnnotation(Annotation)
+```
+
+TableBetaAnnotation.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar id: Required. Annotation's ID.
+:vartype id: int
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
+:vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Required. Unique identifier for the document.
+:vartype document: str
+:ivar page_index: Required. The page number within the document, starting from 0.
+:vartype page_index: int
+:ivar raw: Required. Raw data extracted from the before any post-processing.
+:vartype raw: str
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
+:vartype confidence: float
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
+:vartype text_extraction_confidence: float
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
+:vartype is_verified: bool
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
+:vartype is_client_verified: bool
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
+:vartype is_auto_verified: bool
+:ivar data_point: Required. Data point's identifier.
+:vartype data_point: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
+:ivar parsed:
+:vartype parsed: ~affinda.models.TableBetaAnnotationParsed
+
+<a id="models._models.TableBetaAnnotation.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
+collection.
+- `id`: Required. Annotation's ID.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Required. Unique identifier for the document.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
+- `parent`: The parent annotation's ID.
+- `parsed`: 
+
+<a id="models._models.TableBetaAnnotationParsed"></a>
+
+## TableBetaAnnotationParsed Objects
+
+```python
+class TableBetaAnnotationParsed(msrest.serialization.Model)
+```
+
+TableBetaAnnotationParsed.
+
+:ivar rows:
+:vartype rows: list[~affinda.models.RowBetaAnnotation]
+
+<a id="models._models.TableBetaAnnotationParsed.__init__"></a>
 
 #### \_\_init\_\_
 

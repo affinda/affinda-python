@@ -4379,6 +4379,9 @@ class DocumentMeta(msrest.serialization.Model):
     :ivar source_email: If the document is created via email ingestion, this field stores the email
      file's URL.
     :vartype source_email: str
+    :ivar source_email_address: If the document is created via email ingestion, this field stores
+     the email's From address.
+    :vartype source_email_address: str
     :ivar region_bias:
     :vartype region_bias: ~affinda.models.RegionBias
     """
@@ -4421,6 +4424,7 @@ class DocumentMeta(msrest.serialization.Model):
         "confirmed_by": {"key": "confirmedBy", "type": "UserNullable"},
         "created_by": {"key": "createdBy", "type": "User"},
         "source_email": {"key": "sourceEmail", "type": "str"},
+        "source_email_address": {"key": "sourceEmailAddress", "type": "str"},
         "region_bias": {"key": "regionBias", "type": "RegionBias"},
     }
 
@@ -4497,6 +4501,9 @@ class DocumentMeta(msrest.serialization.Model):
         :keyword source_email: If the document is created via email ingestion, this field stores the
          email file's URL.
         :paramtype source_email: str
+        :keyword source_email_address: If the document is created via email ingestion, this field
+         stores the email's From address.
+        :paramtype source_email_address: str
         :keyword region_bias:
         :paramtype region_bias: ~affinda.models.RegionBias
         """
@@ -4532,6 +4539,7 @@ class DocumentMeta(msrest.serialization.Model):
         self.confirmed_by = kwargs.get("confirmed_by", None)
         self.created_by = kwargs.get("created_by", None)
         self.source_email = kwargs.get("source_email", None)
+        self.source_email_address = kwargs.get("source_email_address", None)
         self.region_bias = kwargs.get("region_bias", None)
 
 
@@ -5656,6 +5664,9 @@ class Field(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
     :ivar label: Required.
     :vartype label: str
     :ivar data_point: Required. Data point identifier.
@@ -5678,9 +5689,9 @@ class Field(msrest.serialization.Model):
     :ivar display_enum_value: If true, both the value and the label for the enums will appear in
      the dropdown in the validation tool.
     :vartype display_enum_value: bool
-    :ivar drop_null_enums: If True, any dropdown annotations that fail to be mapped will be
+    :ivar drop_null: If True, any dropdown annotations that fail to parse to a value will be
      discarded.
-    :vartype drop_null_enums: bool
+    :vartype drop_null: bool
     :ivar enabled_child_fields:
     :vartype enabled_child_fields: list[~affinda.models.Field]
     :ivar disabled_child_fields:
@@ -5699,6 +5710,7 @@ class Field(msrest.serialization.Model):
     }
 
     _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
         "label": {"key": "label", "type": "str"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "field_type": {"key": "fieldType", "type": "str"},
@@ -5708,7 +5720,7 @@ class Field(msrest.serialization.Model):
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
         "show_dropdown": {"key": "showDropdown", "type": "bool"},
         "display_enum_value": {"key": "displayEnumValue", "type": "bool"},
-        "drop_null_enums": {"key": "dropNullEnums", "type": "bool"},
+        "drop_null": {"key": "dropNull", "type": "bool"},
         "enabled_child_fields": {"key": "enabledChildFields", "type": "[Field]"},
         "disabled_child_fields": {"key": "disabledChildFields", "type": "[Field]"},
         "slug": {"key": "slug", "type": "str"},
@@ -5717,6 +5729,9 @@ class Field(msrest.serialization.Model):
 
     def __init__(self, **kwargs):
         """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
         :keyword label: Required.
         :paramtype label: str
         :keyword data_point: Required. Data point identifier.
@@ -5739,9 +5754,9 @@ class Field(msrest.serialization.Model):
         :keyword display_enum_value: If true, both the value and the label for the enums will appear in
          the dropdown in the validation tool.
         :paramtype display_enum_value: bool
-        :keyword drop_null_enums: If True, any dropdown annotations that fail to be mapped will be
+        :keyword drop_null: If True, any dropdown annotations that fail to parse to a value will be
          discarded.
-        :paramtype drop_null_enums: bool
+        :paramtype drop_null: bool
         :keyword enabled_child_fields:
         :paramtype enabled_child_fields: list[~affinda.models.Field]
         :keyword disabled_child_fields:
@@ -5752,6 +5767,7 @@ class Field(msrest.serialization.Model):
         :paramtype fields: list[any]
         """
         super(Field, self).__init__(**kwargs)
+        self.additional_properties = kwargs.get("additional_properties", None)
         self.label = kwargs["label"]
         self.data_point = kwargs["data_point"]
         self.field_type = kwargs["field_type"]
@@ -5761,7 +5777,7 @@ class Field(msrest.serialization.Model):
         self.auto_validation_threshold = kwargs.get("auto_validation_threshold", None)
         self.show_dropdown = kwargs.get("show_dropdown", None)
         self.display_enum_value = kwargs.get("display_enum_value", None)
-        self.drop_null_enums = kwargs.get("drop_null_enums", None)
+        self.drop_null = kwargs.get("drop_null", None)
         self.enabled_child_fields = kwargs.get("enabled_child_fields", None)
         self.disabled_child_fields = kwargs.get("disabled_child_fields", None)
         self.slug = kwargs.get("slug", None)
@@ -5813,6 +5829,9 @@ class FieldDeprecated(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
     :ivar label: Required.
     :vartype label: str
     :ivar slug:
@@ -5836,9 +5855,9 @@ class FieldDeprecated(msrest.serialization.Model):
     :vartype auto_validation_threshold: float
     :ivar show_dropdown:
     :vartype show_dropdown: bool
-    :ivar drop_null_enums: If True, any dropdown annotations that fail to be mapped will be
+    :ivar drop_null: If True, any dropdown annotations that fail to parse to a value will be
      discarded.
-    :vartype drop_null_enums: bool
+    :vartype drop_null: bool
     :ivar display_enum_value:
     :vartype display_enum_value: bool
     :ivar fields:
@@ -5852,6 +5871,7 @@ class FieldDeprecated(msrest.serialization.Model):
     }
 
     _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
         "label": {"key": "label", "type": "str"},
         "slug": {"key": "slug", "type": "str"},
         "field_type": {"key": "fieldType", "type": "str"},
@@ -5862,13 +5882,16 @@ class FieldDeprecated(msrest.serialization.Model):
         "disabled": {"key": "disabled", "type": "bool"},
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
         "show_dropdown": {"key": "showDropdown", "type": "bool"},
-        "drop_null_enums": {"key": "dropNullEnums", "type": "bool"},
+        "drop_null": {"key": "dropNull", "type": "bool"},
         "display_enum_value": {"key": "displayEnumValue", "type": "bool"},
         "fields": {"key": "fields", "type": "[FieldDeprecated]"},
     }
 
     def __init__(self, **kwargs):
         """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
         :keyword label: Required.
         :paramtype label: str
         :keyword slug:
@@ -5892,15 +5915,16 @@ class FieldDeprecated(msrest.serialization.Model):
         :paramtype auto_validation_threshold: float
         :keyword show_dropdown:
         :paramtype show_dropdown: bool
-        :keyword drop_null_enums: If True, any dropdown annotations that fail to be mapped will be
+        :keyword drop_null: If True, any dropdown annotations that fail to parse to a value will be
          discarded.
-        :paramtype drop_null_enums: bool
+        :paramtype drop_null: bool
         :keyword display_enum_value:
         :paramtype display_enum_value: bool
         :keyword fields:
         :paramtype fields: list[~affinda.models.FieldDeprecated]
         """
         super(FieldDeprecated, self).__init__(**kwargs)
+        self.additional_properties = kwargs.get("additional_properties", None)
         self.label = kwargs["label"]
         self.slug = kwargs.get("slug", None)
         self.field_type = kwargs["field_type"]
@@ -5911,7 +5935,7 @@ class FieldDeprecated(msrest.serialization.Model):
         self.disabled = kwargs.get("disabled", None)
         self.auto_validation_threshold = kwargs.get("auto_validation_threshold", None)
         self.show_dropdown = kwargs.get("show_dropdown", None)
-        self.drop_null_enums = kwargs.get("drop_null_enums", None)
+        self.drop_null = kwargs.get("drop_null", None)
         self.display_enum_value = kwargs.get("display_enum_value", None)
         self.fields = kwargs.get("fields", None)
 
@@ -6569,6 +6593,8 @@ class InvoiceData(msrest.serialization.Model):
 
     :ivar tables:
     :vartype tables: list[~affinda.models.TableAnnotation]
+    :ivar tables_beta:
+    :vartype tables_beta: list[~affinda.models.TableBetaAnnotation]
     :ivar invoice_date:
     :vartype invoice_date: ~affinda.models.DateAnnotation
     :ivar invoice_order_date:
@@ -6649,6 +6675,7 @@ class InvoiceData(msrest.serialization.Model):
 
     _attribute_map = {
         "tables": {"key": "tables", "type": "[TableAnnotation]"},
+        "tables_beta": {"key": "tablesBeta", "type": "[TableBetaAnnotation]"},
         "invoice_date": {"key": "invoiceDate", "type": "DateAnnotation"},
         "invoice_order_date": {"key": "invoiceOrderDate", "type": "DateAnnotation"},
         "payment_date_due": {"key": "paymentDateDue", "type": "DateAnnotation"},
@@ -6735,6 +6762,8 @@ class InvoiceData(msrest.serialization.Model):
         """
         :keyword tables:
         :paramtype tables: list[~affinda.models.TableAnnotation]
+        :keyword tables_beta:
+        :paramtype tables_beta: list[~affinda.models.TableBetaAnnotation]
         :keyword invoice_date:
         :paramtype invoice_date: ~affinda.models.DateAnnotation
         :keyword invoice_order_date:
@@ -6814,6 +6843,7 @@ class InvoiceData(msrest.serialization.Model):
         """
         super(InvoiceData, self).__init__(**kwargs)
         self.tables = kwargs.get("tables", None)
+        self.tables_beta = kwargs.get("tables_beta", None)
         self.invoice_date = kwargs.get("invoice_date", None)
         self.invoice_order_date = kwargs.get("invoice_order_date", None)
         self.payment_date_due = kwargs.get("payment_date_due", None)
@@ -19667,6 +19697,230 @@ class RowAnnotationParsed(msrest.serialization.Model):
         self.item_other = kwargs.get("item_other", None)
 
 
+class RowBetaAnnotation(Annotation):
+    """RowBetaAnnotation.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar id: Required. Annotation's ID.
+    :vartype id: int
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
+    :vartype rectangle: ~affinda.models.Rectangle
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
+    :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Required. Unique identifier for the document.
+    :vartype document: str
+    :ivar page_index: Required. The page number within the document, starting from 0.
+    :vartype page_index: int
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
+    :vartype raw: str
+    :ivar confidence: Required. The overall confidence that the model's prediction is correct.
+    :vartype confidence: float
+    :ivar classification_confidence: Required. The model's confidence that the text has been
+     classified correctly.
+    :vartype classification_confidence: float
+    :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+     the confidence that the text in the image has been correctly read by the model.
+    :vartype text_extraction_confidence: float
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
+    :vartype is_verified: bool
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
+    :vartype is_auto_verified: bool
+    :ivar data_point: Required. Data point's identifier.
+    :vartype data_point: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+     "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
+    :ivar parsed:
+    :vartype parsed: ~affinda.models.RowBetaAnnotationParsed
+    """
+
+    _validation = {
+        "id": {"required": True, "minimum": 1},
+        "rectangle": {"required": True},
+        "rectangles": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
+        "raw": {"required": True},
+        "confidence": {"required": True},
+        "classification_confidence": {"required": True},
+        "text_extraction_confidence": {"required": True},
+        "is_verified": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
+    }
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "id": {"key": "id", "type": "int"},
+        "rectangle": {"key": "rectangle", "type": "Rectangle"},
+        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "raw": {"key": "raw", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
+        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
+        "parsed": {"key": "parsed", "type": "RowBetaAnnotationParsed"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword id: Required. Annotation's ID.
+        :paramtype id: int
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
+        :paramtype rectangle: ~affinda.models.Rectangle
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
+        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Required. Unique identifier for the document.
+        :paramtype document: str
+        :keyword page_index: Required. The page number within the document, starting from 0.
+        :paramtype page_index: int
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
+        :paramtype raw: str
+        :keyword confidence: Required. The overall confidence that the model's prediction is correct.
+        :paramtype confidence: float
+        :keyword classification_confidence: Required. The model's confidence that the text has been
+         classified correctly.
+        :paramtype classification_confidence: float
+        :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
+         is the confidence that the text in the image has been correctly read by the model.
+        :paramtype text_extraction_confidence: float
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
+        :paramtype is_verified: bool
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
+        :paramtype is_auto_verified: bool
+        :keyword data_point: Required. Data point's identifier.
+        :paramtype data_point: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+         "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
+        :keyword parsed:
+        :paramtype parsed: ~affinda.models.RowBetaAnnotationParsed
+        """
+        super(RowBetaAnnotation, self).__init__(**kwargs)
+        self.parsed = kwargs.get("parsed", None)
+
+
+class RowBetaAnnotationParsed(msrest.serialization.Model):
+    """RowBetaAnnotationParsed.
+
+    :ivar item_code_beta:
+    :vartype item_code_beta: ~affinda.models.TextAnnotation
+    :ivar item_date_beta:
+    :vartype item_date_beta: ~affinda.models.DateAnnotation
+    :ivar item_description_beta:
+    :vartype item_description_beta: ~affinda.models.TextAnnotation
+    :ivar item_unit_beta:
+    :vartype item_unit_beta: ~affinda.models.TextAnnotation
+    :ivar item_unit_price_beta:
+    :vartype item_unit_price_beta: ~affinda.models.FloatAnnotation
+    :ivar item_quantity_beta:
+    :vartype item_quantity_beta: ~affinda.models.FloatAnnotation
+    :ivar item_discount_beta:
+    :vartype item_discount_beta: ~affinda.models.TextAnnotation
+    :ivar item_base_total_beta:
+    :vartype item_base_total_beta: ~affinda.models.FloatAnnotation
+    :ivar item_tax_rate_beta:
+    :vartype item_tax_rate_beta: ~affinda.models.TextAnnotation
+    :ivar item_tax_total_beta:
+    :vartype item_tax_total_beta: ~affinda.models.FloatAnnotation
+    :ivar item_total_beta:
+    :vartype item_total_beta: ~affinda.models.FloatAnnotation
+    :ivar item_other_beta:
+    :vartype item_other_beta: ~affinda.models.TextAnnotation
+    """
+
+    _attribute_map = {
+        "item_code_beta": {"key": "itemCodeBeta", "type": "TextAnnotation"},
+        "item_date_beta": {"key": "itemDateBeta", "type": "DateAnnotation"},
+        "item_description_beta": {"key": "itemDescriptionBeta", "type": "TextAnnotation"},
+        "item_unit_beta": {"key": "itemUnitBeta", "type": "TextAnnotation"},
+        "item_unit_price_beta": {"key": "itemUnitPriceBeta", "type": "FloatAnnotation"},
+        "item_quantity_beta": {"key": "itemQuantityBeta", "type": "FloatAnnotation"},
+        "item_discount_beta": {"key": "itemDiscountBeta", "type": "TextAnnotation"},
+        "item_base_total_beta": {"key": "itemBaseTotalBeta", "type": "FloatAnnotation"},
+        "item_tax_rate_beta": {"key": "itemTaxRateBeta", "type": "TextAnnotation"},
+        "item_tax_total_beta": {"key": "itemTaxTotalBeta", "type": "FloatAnnotation"},
+        "item_total_beta": {"key": "itemTotalBeta", "type": "FloatAnnotation"},
+        "item_other_beta": {"key": "itemOtherBeta", "type": "TextAnnotation"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword item_code_beta:
+        :paramtype item_code_beta: ~affinda.models.TextAnnotation
+        :keyword item_date_beta:
+        :paramtype item_date_beta: ~affinda.models.DateAnnotation
+        :keyword item_description_beta:
+        :paramtype item_description_beta: ~affinda.models.TextAnnotation
+        :keyword item_unit_beta:
+        :paramtype item_unit_beta: ~affinda.models.TextAnnotation
+        :keyword item_unit_price_beta:
+        :paramtype item_unit_price_beta: ~affinda.models.FloatAnnotation
+        :keyword item_quantity_beta:
+        :paramtype item_quantity_beta: ~affinda.models.FloatAnnotation
+        :keyword item_discount_beta:
+        :paramtype item_discount_beta: ~affinda.models.TextAnnotation
+        :keyword item_base_total_beta:
+        :paramtype item_base_total_beta: ~affinda.models.FloatAnnotation
+        :keyword item_tax_rate_beta:
+        :paramtype item_tax_rate_beta: ~affinda.models.TextAnnotation
+        :keyword item_tax_total_beta:
+        :paramtype item_tax_total_beta: ~affinda.models.FloatAnnotation
+        :keyword item_total_beta:
+        :paramtype item_total_beta: ~affinda.models.FloatAnnotation
+        :keyword item_other_beta:
+        :paramtype item_other_beta: ~affinda.models.TextAnnotation
+        """
+        super(RowBetaAnnotationParsed, self).__init__(**kwargs)
+        self.item_code_beta = kwargs.get("item_code_beta", None)
+        self.item_date_beta = kwargs.get("item_date_beta", None)
+        self.item_description_beta = kwargs.get("item_description_beta", None)
+        self.item_unit_beta = kwargs.get("item_unit_beta", None)
+        self.item_unit_price_beta = kwargs.get("item_unit_price_beta", None)
+        self.item_quantity_beta = kwargs.get("item_quantity_beta", None)
+        self.item_discount_beta = kwargs.get("item_discount_beta", None)
+        self.item_base_total_beta = kwargs.get("item_base_total_beta", None)
+        self.item_tax_rate_beta = kwargs.get("item_tax_rate_beta", None)
+        self.item_tax_total_beta = kwargs.get("item_tax_total_beta", None)
+        self.item_total_beta = kwargs.get("item_total_beta", None)
+        self.item_other_beta = kwargs.get("item_other_beta", None)
+
+
 class SearchConfigAction(msrest.serialization.Model):
     """SearchConfigAction.
 
@@ -20169,6 +20423,164 @@ class TableAnnotationParsed(msrest.serialization.Model):
         :paramtype rows: list[~affinda.models.RowAnnotation]
         """
         super(TableAnnotationParsed, self).__init__(**kwargs)
+        self.rows = kwargs.get("rows", None)
+
+
+class TableBetaAnnotation(Annotation):
+    """TableBetaAnnotation.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar id: Required. Annotation's ID.
+    :vartype id: int
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
+    :vartype rectangle: ~affinda.models.Rectangle
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
+    :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Required. Unique identifier for the document.
+    :vartype document: str
+    :ivar page_index: Required. The page number within the document, starting from 0.
+    :vartype page_index: int
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
+    :vartype raw: str
+    :ivar confidence: Required. The overall confidence that the model's prediction is correct.
+    :vartype confidence: float
+    :ivar classification_confidence: Required. The model's confidence that the text has been
+     classified correctly.
+    :vartype classification_confidence: float
+    :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+     the confidence that the text in the image has been correctly read by the model.
+    :vartype text_extraction_confidence: float
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
+    :vartype is_verified: bool
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
+    :vartype is_auto_verified: bool
+    :ivar data_point: Required. Data point's identifier.
+    :vartype data_point: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+     "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
+    :ivar parsed:
+    :vartype parsed: ~affinda.models.TableBetaAnnotationParsed
+    """
+
+    _validation = {
+        "id": {"required": True, "minimum": 1},
+        "rectangle": {"required": True},
+        "rectangles": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
+        "raw": {"required": True},
+        "confidence": {"required": True},
+        "classification_confidence": {"required": True},
+        "text_extraction_confidence": {"required": True},
+        "is_verified": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
+    }
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "id": {"key": "id", "type": "int"},
+        "rectangle": {"key": "rectangle", "type": "Rectangle"},
+        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "raw": {"key": "raw", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
+        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
+        "parsed": {"key": "parsed", "type": "TableBetaAnnotationParsed"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword id: Required. Annotation's ID.
+        :paramtype id: int
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
+        :paramtype rectangle: ~affinda.models.Rectangle
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
+        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Required. Unique identifier for the document.
+        :paramtype document: str
+        :keyword page_index: Required. The page number within the document, starting from 0.
+        :paramtype page_index: int
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
+        :paramtype raw: str
+        :keyword confidence: Required. The overall confidence that the model's prediction is correct.
+        :paramtype confidence: float
+        :keyword classification_confidence: Required. The model's confidence that the text has been
+         classified correctly.
+        :paramtype classification_confidence: float
+        :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
+         is the confidence that the text in the image has been correctly read by the model.
+        :paramtype text_extraction_confidence: float
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
+        :paramtype is_verified: bool
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
+        :paramtype is_auto_verified: bool
+        :keyword data_point: Required. Data point's identifier.
+        :paramtype data_point: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+         "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
+        :keyword parsed:
+        :paramtype parsed: ~affinda.models.TableBetaAnnotationParsed
+        """
+        super(TableBetaAnnotation, self).__init__(**kwargs)
+        self.parsed = kwargs.get("parsed", None)
+
+
+class TableBetaAnnotationParsed(msrest.serialization.Model):
+    """TableBetaAnnotationParsed.
+
+    :ivar rows:
+    :vartype rows: list[~affinda.models.RowBetaAnnotation]
+    """
+
+    _attribute_map = {
+        "rows": {"key": "rows", "type": "[RowBetaAnnotation]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword rows:
+        :paramtype rows: list[~affinda.models.RowBetaAnnotation]
+        """
+        super(TableBetaAnnotationParsed, self).__init__(**kwargs)
         self.rows = kwargs.get("rows", None)
 
 
