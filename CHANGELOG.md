@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.19.0] - 2024-03-07
+### Added
+- Add validation_results endpoints
+- Add US1 region
+- Add strict attribute to RegionBias
+- Add hideReject, hideEditPages, hideRunOcr and hideReparse options to Organization validationToolConfig
+- `compact` parameter for upload document endpoint
+
 ## [4.18.0] - 2024-01-31
 ### Added
 - Add sourceEmailAddress to DocumentMeta model

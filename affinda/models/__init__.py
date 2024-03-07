@@ -11,6 +11,8 @@ try:
     from ._models_py3 import AnnotationBatchUpdate
     from ._models_py3 import AnnotationCreate
     from ._models_py3 import AnnotationUpdate
+    from ._models_py3 import AnnotationWithValidationResults
+    from ._models_py3 import AnotationDelete
     from ._models_py3 import ApiUserCreate
     from ._models_py3 import ApiUserUpdate
     from ._models_py3 import ApiUserWithKey
@@ -19,7 +21,9 @@ try:
     from ._models_py3 import ApiUserWithoutKeyOrganizationsItem
     from ._models_py3 import BaseExtractor
     from ._models_py3 import BatchAddTagRequest
+    from ._models_py3 import BatchDeleteAnnotationsResponse
     from ._models_py3 import BatchRemoveTagRequest
+    from ._models_py3 import ChangedValidationResults
     from ._models_py3 import Collection
     from ._models_py3 import CollectionCreate
     from ._models_py3 import CollectionField
@@ -37,6 +41,9 @@ try:
     from ._models_py3 import Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1
     from ._models_py3 import Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1
     from ._models_py3 import Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1
+    from ._models_py3 import (
+        Components1Kwk9B6SchemasThemeconfigPropertiesPalettePropertiesBackgroundOneof1,
+    )
     from ._models_py3 import Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1
     from ._models_py3 import Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1
     from ._models_py3 import Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1
@@ -184,6 +191,7 @@ try:
     from ._models_py3 import JobDescriptionDataUpdate
     from ._models_py3 import JobDescriptionSearch
     from ._models_py3 import JobDescriptionSearchConfig
+    from ._models_py3 import JobDescriptionSearchConfigSearchToolTheme
     from ._models_py3 import JobDescriptionSearchDetail
     from ._models_py3 import JobDescriptionSearchDetailEducation
     from ._models_py3 import JobDescriptionSearchDetailEducationMissing
@@ -338,6 +346,7 @@ try:
     from ._models_py3 import ResumeRedactData
     from ._models_py3 import ResumeSearch
     from ._models_py3 import ResumeSearchConfig
+    from ._models_py3 import ResumeSearchConfigSearchToolTheme
     from ._models_py3 import ResumeSearchDetail
     from ._models_py3 import ResumeSearchDetailEducation
     from ._models_py3 import ResumeSearchDetailEducationMissing
@@ -386,7 +395,6 @@ try:
     from ._models_py3 import TextAnnotationUpdate
     from ._models_py3 import ThemeConfig
     from ._models_py3 import ThemeConfigPalette
-    from ._models_py3 import ThemeConfigPaletteBackground
     from ._models_py3 import ThemeConfigPaletteText
     from ._models_py3 import ThemeConfigTypography
     from ._models_py3 import UrlAnnotation
@@ -395,6 +403,10 @@ try:
     from ._models_py3 import UsageByWorkspace
     from ._models_py3 import User
     from ._models_py3 import UserNullable
+    from ._models_py3 import ValidationResult
+    from ._models_py3 import ValidationResultCreate
+    from ._models_py3 import ValidationResultUpdate
+    from ._models_py3 import ValidationRule
     from ._models_py3 import ValidationToolConfig
     from ._models_py3 import Workspace
     from ._models_py3 import WorkspaceCollectionsItem
@@ -414,6 +426,8 @@ except (SyntaxError, ImportError):
     from ._models import AnnotationBatchUpdate  # type: ignore
     from ._models import AnnotationCreate  # type: ignore
     from ._models import AnnotationUpdate  # type: ignore
+    from ._models import AnnotationWithValidationResults  # type: ignore
+    from ._models import AnotationDelete  # type: ignore
     from ._models import ApiUserCreate  # type: ignore
     from ._models import ApiUserUpdate  # type: ignore
     from ._models import ApiUserWithKey  # type: ignore
@@ -422,7 +436,9 @@ except (SyntaxError, ImportError):
     from ._models import ApiUserWithoutKeyOrganizationsItem  # type: ignore
     from ._models import BaseExtractor  # type: ignore
     from ._models import BatchAddTagRequest  # type: ignore
+    from ._models import BatchDeleteAnnotationsResponse  # type: ignore
     from ._models import BatchRemoveTagRequest  # type: ignore
+    from ._models import ChangedValidationResults  # type: ignore
     from ._models import Collection  # type: ignore
     from ._models import CollectionCreate  # type: ignore
     from ._models import CollectionField  # type: ignore
@@ -436,6 +452,7 @@ except (SyntaxError, ImportError):
     from ._models import Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1  # type: ignore
     from ._models import Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1  # type: ignore
     from ._models import Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1  # type: ignore
+    from ._models import Components1Kwk9B6SchemasThemeconfigPropertiesPalettePropertiesBackgroundOneof1  # type: ignore
     from ._models import Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1  # type: ignore
     from ._models import Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1  # type: ignore
     from ._models import Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1  # type: ignore
@@ -567,6 +584,7 @@ except (SyntaxError, ImportError):
     from ._models import JobDescriptionDataUpdate  # type: ignore
     from ._models import JobDescriptionSearch  # type: ignore
     from ._models import JobDescriptionSearchConfig  # type: ignore
+    from ._models import JobDescriptionSearchConfigSearchToolTheme  # type: ignore
     from ._models import JobDescriptionSearchDetail  # type: ignore
     from ._models import JobDescriptionSearchDetailEducation  # type: ignore
     from ._models import JobDescriptionSearchDetailEducationMissing  # type: ignore
@@ -679,6 +697,7 @@ except (SyntaxError, ImportError):
     from ._models import ResumeRedactData  # type: ignore
     from ._models import ResumeSearch  # type: ignore
     from ._models import ResumeSearchConfig  # type: ignore
+    from ._models import ResumeSearchConfigSearchToolTheme  # type: ignore
     from ._models import ResumeSearchDetail  # type: ignore
     from ._models import ResumeSearchDetailEducation  # type: ignore
     from ._models import ResumeSearchDetailEducationMissing  # type: ignore
@@ -727,7 +746,6 @@ except (SyntaxError, ImportError):
     from ._models import TextAnnotationUpdate  # type: ignore
     from ._models import ThemeConfig  # type: ignore
     from ._models import ThemeConfigPalette  # type: ignore
-    from ._models import ThemeConfigPaletteBackground  # type: ignore
     from ._models import ThemeConfigPaletteText  # type: ignore
     from ._models import ThemeConfigTypography  # type: ignore
     from ._models import UrlAnnotation  # type: ignore
@@ -736,6 +754,10 @@ except (SyntaxError, ImportError):
     from ._models import UsageByWorkspace  # type: ignore
     from ._models import User  # type: ignore
     from ._models import UserNullable  # type: ignore
+    from ._models import ValidationResult  # type: ignore
+    from ._models import ValidationResultCreate  # type: ignore
+    from ._models import ValidationResultUpdate  # type: ignore
+    from ._models import ValidationRule  # type: ignore
     from ._models import ValidationToolConfig  # type: ignore
     from ._models import Workspace  # type: ignore
     from ._models import WorkspaceCollectionsItem  # type: ignore
@@ -758,10 +780,11 @@ from ._affinda_api_enums import (
     DocumentState,
     DocumentType,
     EducationLevel,
-    Enum19,
+    Enum20,
     IndexDocumentType,
     InvitationResponseStatus,
     InvitationStatus,
+    JobDescriptionSearchConfigDistanceUnit,
     ManagementLevel,
     OrganizationRole,
     OrganizationUserRole,
@@ -769,6 +792,7 @@ from ._affinda_api_enums import (
     ResthookEvent,
     ResthookSubscriptionVersion,
     ResumeDataLanguagesItem,
+    ResumeSearchConfigDistanceUnit,
     ResumeSkillSourcesItemSection,
     SearchLocationUnit,
     SearchParametersCustomDataFilterType,
@@ -788,6 +812,8 @@ __all__ = [
     "AnnotationBatchUpdate",
     "AnnotationCreate",
     "AnnotationUpdate",
+    "AnnotationWithValidationResults",
+    "AnotationDelete",
     "ApiUserCreate",
     "ApiUserUpdate",
     "ApiUserWithKey",
@@ -796,7 +822,9 @@ __all__ = [
     "ApiUserWithoutKeyOrganizationsItem",
     "BaseExtractor",
     "BatchAddTagRequest",
+    "BatchDeleteAnnotationsResponse",
     "BatchRemoveTagRequest",
+    "ChangedValidationResults",
     "Collection",
     "CollectionCreate",
     "CollectionField",
@@ -810,6 +838,7 @@ __all__ = [
     "Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1",
     "Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1",
     "Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1",
+    "Components1Kwk9B6SchemasThemeconfigPropertiesPalettePropertiesBackgroundOneof1",
     "Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1",
     "Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1",
     "Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1",
@@ -941,6 +970,7 @@ __all__ = [
     "JobDescriptionDataUpdate",
     "JobDescriptionSearch",
     "JobDescriptionSearchConfig",
+    "JobDescriptionSearchConfigSearchToolTheme",
     "JobDescriptionSearchDetail",
     "JobDescriptionSearchDetailEducation",
     "JobDescriptionSearchDetailEducationMissing",
@@ -1053,6 +1083,7 @@ __all__ = [
     "ResumeRedactData",
     "ResumeSearch",
     "ResumeSearchConfig",
+    "ResumeSearchConfigSearchToolTheme",
     "ResumeSearchDetail",
     "ResumeSearchDetailEducation",
     "ResumeSearchDetailEducationMissing",
@@ -1101,7 +1132,6 @@ __all__ = [
     "TextAnnotationUpdate",
     "ThemeConfig",
     "ThemeConfigPalette",
-    "ThemeConfigPaletteBackground",
     "ThemeConfigPaletteText",
     "ThemeConfigTypography",
     "UrlAnnotation",
@@ -1110,6 +1140,10 @@ __all__ = [
     "UsageByWorkspace",
     "User",
     "UserNullable",
+    "ValidationResult",
+    "ValidationResultCreate",
+    "ValidationResultUpdate",
+    "ValidationRule",
     "ValidationToolConfig",
     "Workspace",
     "WorkspaceCollectionsItem",
@@ -1130,10 +1164,11 @@ __all__ = [
     "DocumentState",
     "DocumentType",
     "EducationLevel",
-    "Enum19",
+    "Enum20",
     "IndexDocumentType",
     "InvitationResponseStatus",
     "InvitationStatus",
+    "JobDescriptionSearchConfigDistanceUnit",
     "ManagementLevel",
     "OrganizationRole",
     "OrganizationUserRole",
@@ -1141,6 +1176,7 @@ __all__ = [
     "ResthookEvent",
     "ResthookSubscriptionVersion",
     "ResumeDataLanguagesItem",
+    "ResumeSearchConfigDistanceUnit",
     "ResumeSkillSourcesItemSection",
     "SearchLocationUnit",
     "SearchParametersCustomDataFilterType",

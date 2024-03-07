@@ -224,6 +224,9 @@ AnnotationUpdate.
 :vartype data_point: str
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
+:ivar validation_results: The validation results created, changed or deleted as a result of
+ updating the annotation.
+:vartype validation_results: list[~affinda.models.ChangedValidationResults]
 
 <a id="models._models.AnnotationUpdate.__init__"></a>
 
@@ -244,6 +247,8 @@ be contained within multiple rectangles.
 - `is_client_verified`: Indicates whether the data has been validated by a human.
 - `data_point`: Data point's identifier.
 - `parent`: The parent annotation's ID.
+- `validation_results`: The validation results created, changed or deleted as a result of
+updating the annotation.
 
 <a id="models._models.AnnotationBatchUpdate"></a>
 
@@ -274,6 +279,9 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_point: str
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
+:ivar validation_results: The validation results created, changed or deleted as a result of
+ updating the annotation.
+:vartype validation_results: list[~affinda.models.ChangedValidationResults]
 :ivar id: Required. Annotation's ID.
 :vartype id: int
 
@@ -296,6 +304,8 @@ be contained within multiple rectangles.
 - `is_client_verified`: Indicates whether the data has been validated by a human.
 - `data_point`: Data point's identifier.
 - `parent`: The parent annotation's ID.
+- `validation_results`: The validation results created, changed or deleted as a result of
+updating the annotation.
 - `id`: Required. Annotation's ID.
 
 <a id="models._models.AnnotationCreate"></a>
@@ -327,6 +337,9 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
+:ivar validation_results: The validation results created, changed or deleted as a result of
+ creating the annotation.
+:vartype validation_results: list[~affinda.models.ChangedValidationResults]
 
 <a id="models._models.AnnotationCreate.__init__"></a>
 
@@ -347,6 +360,129 @@ be contained within multiple rectangles.
 - `parsed`: Anything.
 - `is_client_verified`: Indicates whether the data has been validated by a human.
 - `parent`: The parent annotation's ID.
+- `validation_results`: The validation results created, changed or deleted as a result of
+creating the annotation.
+
+<a id="models._models.AnnotationWithValidationResults"></a>
+
+## AnnotationWithValidationResults Objects
+
+```python
+class AnnotationWithValidationResults(Annotation)
+```
+
+AnnotationWithValidationResults.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar id: Required. Annotation's ID.
+:vartype id: int
+:ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+ data.
+:vartype rectangle: ~affinda.models.Rectangle
+:ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+ annotation can be contained within multiple rectangles.
+:vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Required. Unique identifier for the document.
+:vartype document: str
+:ivar page_index: Required. The page number within the document, starting from 0.
+:vartype page_index: int
+:ivar raw: Required. Raw data extracted from the before any post-processing.
+:vartype raw: str
+:ivar confidence: Required. The overall confidence that the model's prediction is correct.
+:vartype confidence: float
+:ivar classification_confidence: Required. The model's confidence that the text has been
+ classified correctly.
+:vartype classification_confidence: float
+:ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+ the confidence that the text in the image has been correctly read by the model.
+:vartype text_extraction_confidence: float
+:ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+ using our validation tool or through auto-validation rules.
+:vartype is_verified: bool
+:ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
+:vartype is_client_verified: bool
+:ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
+:vartype is_auto_verified: bool
+:ivar data_point: Required. Data point's identifier.
+:vartype data_point: str
+:ivar content_type: Required. The different data types of annotations. Known values are:
+ "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+ "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+ "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
+:vartype content_type: str or ~affinda.models.AnnotationContentType
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
+:ivar validation_results: List of validation results for this annotation.
+:vartype validation_results: list[~affinda.models.ValidationResult]
+
+<a id="models._models.AnnotationWithValidationResults.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
+collection.
+- `id`: Required. Annotation's ID.
+- `rectangle`: Required. x/y coordinates for the rectangular bounding box containing the
+data.
+- `rectangles`: Required. x/y coordinates for the rectangles containing the data. An
+annotation can be contained within multiple rectangles.
+- `document`: Required. Unique identifier for the document.
+- `page_index`: Required. The page number within the document, starting from 0.
+- `raw`: Required. Raw data extracted from the before any post-processing.
+- `confidence`: Required. The overall confidence that the model's prediction is correct.
+- `classification_confidence`: Required. The model's confidence that the text has been
+classified correctly.
+- `text_extraction_confidence`: Required. If the document was submitted as an image, this
+is the confidence that the text in the image has been correctly read by the model.
+- `is_verified`: Required. Indicates whether the data has been validated, either by a
+human using our validation tool or through auto-validation rules.
+- `is_client_verified`: Required. Indicates whether the data has been validated by a
+human.
+- `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
+- `data_point`: Required. Data point's identifier.
+- `content_type`: Required. The different data types of annotations. Known values are:
+"text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+"location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+"skill", "yearsexperience", "group", "table_deprecated", "url", "image".
+- `parent`: The parent annotation's ID.
+- `validation_results`: List of validation results for this annotation.
+
+<a id="models._models.AnotationDelete"></a>
+
+## AnotationDelete Objects
+
+```python
+class AnotationDelete(msrest.serialization.Model)
+```
+
+AnotationDelete.
+
+:ivar validation_results: The validation results created, changed or deleted as a result of
+ deleting the annotation.
+:vartype validation_results: any
+
+<a id="models._models.AnotationDelete.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `validation_results`: The validation results created, changed or deleted as a result of
+deleting the annotation.
 
 <a id="models._models.ApiUserCreate"></a>
 
@@ -644,6 +780,33 @@ def __init__(**kwargs)
 - `identifiers`: List of documents to tag.
 - `tag`: The tag's ID.
 
+<a id="models._models.BatchDeleteAnnotationsResponse"></a>
+
+## BatchDeleteAnnotationsResponse Objects
+
+```python
+class BatchDeleteAnnotationsResponse(msrest.serialization.Model)
+```
+
+BatchDeleteAnnotationsResponse.
+
+:ivar validation_results: The validation results created, changed or deleted as a result of
+ deleting the annotations.
+:vartype validation_results: any
+
+<a id="models._models.BatchDeleteAnnotationsResponse.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `validation_results`: The validation results created, changed or deleted as a result of
+deleting the annotations.
+
 <a id="models._models.BatchRemoveTagRequest"></a>
 
 ## BatchRemoveTagRequest Objects
@@ -672,6 +835,42 @@ def __init__(**kwargs)
 - `identifiers`: List of documents to remove tag from.
 - `tag`: The tag's ID.
 
+<a id="models._models.ChangedValidationResults"></a>
+
+## ChangedValidationResults Objects
+
+```python
+class ChangedValidationResults(msrest.serialization.Model)
+```
+
+ChangedValidationResults.
+
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
+:ivar created: List of validation results created during this operation.
+:vartype created: list[~affinda.models.ValidationResult]
+:ivar updated: List of validation results updated during this operation.
+:vartype updated: list[~affinda.models.ValidationResult]
+:ivar deleted: List of validation results deleted during this operation.
+:vartype deleted: list[~affinda.models.ValidationResult]
+
+<a id="models._models.ChangedValidationResults.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `additional_properties`: Unmatched properties from the message are deserialized to this
+collection.
+- `created`: List of validation results created during this operation.
+- `updated`: List of validation results updated during this operation.
+- `deleted`: List of validation results deleted during this operation.
+
 <a id="models._models.Collection"></a>
 
 ## Collection Objects
@@ -694,6 +893,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype extractor: ~affinda.models.Extractor
 :ivar auto_validation_threshold:
 :vartype auto_validation_threshold: float
+:ivar auto_validate_if_validation_rules_pass:
+:vartype auto_validate_if_validation_rules_pass: bool
 :ivar fields:
 :vartype fields: list[~affinda.models.FieldGroup]
 :ivar fields_layout:
@@ -723,6 +924,9 @@ All required parameters must be populated in order to send to Azure.
 :ivar trains_extractor: Whether this collection feeds documents into the extractor's training
  queue. This setting can only be toggled for custom extractors.
 :vartype trains_extractor: bool
+:ivar disable_confirmation_if_validation_rules_fail: If True, users cannot validate documents
+ with missing mandatory fields, or failing validation rules.
+:vartype disable_confirmation_if_validation_rules_fail: bool
 
 <a id="models._models.Collection.__init__"></a>
 
@@ -739,6 +943,7 @@ def __init__(**kwargs)
 - `workspace`: 
 - `extractor`: 
 - `auto_validation_threshold`: 
+- `auto_validate_if_validation_rules_pass`: 
 - `fields`: 
 - `fields_layout`: 
 - `fields_configured`: 
@@ -756,6 +961,8 @@ collection.
 this collection.
 - `trains_extractor`: Whether this collection feeds documents into the extractor's
 training queue. This setting can only be toggled for custom extractors.
+- `disable_confirmation_if_validation_rules_fail`: If True, users cannot validate
+documents with missing mandatory fields, or failing validation rules.
 
 <a id="models._models.CollectionCreate"></a>
 
@@ -797,6 +1004,9 @@ All required parameters must be populated in order to send to Azure.
 :ivar trains_extractor: Whether this collection feeds documents into the extractor's training
  queue. This setting can only be toggled for custom extractors.
 :vartype trains_extractor: bool
+:ivar disable_confirmation_if_validation_rules_fail: If True, users cannot validate documents
+ with missing mandatory fields, or failing validation rules.
+:vartype disable_confirmation_if_validation_rules_fail: bool
 
 <a id="models._models.CollectionCreate.__init__"></a>
 
@@ -824,6 +1034,8 @@ is not ambiguous.
 this collection.
 - `trains_extractor`: Whether this collection feeds documents into the extractor's
 training queue. This setting can only be toggled for custom extractors.
+- `disable_confirmation_if_validation_rules_fail`: If True, users cannot validate
+documents with missing mandatory fields, or failing validation rules.
 
 <a id="models._models.CollectionField"></a>
 
@@ -850,6 +1062,8 @@ CollectionField.
 :vartype data_source: str
 :ivar mapping: Defines how the data point is mapped to the data source.
 :vartype mapping: str
+:ivar display_raw_text: Defines how the data point is mapped to the data source.
+:vartype display_raw_text: str
 
 <a id="models._models.CollectionField.__init__"></a>
 
@@ -869,6 +1083,7 @@ the dropdown in the validation tool.
 - `auto_validation_threshold`: 
 - `data_source`: Data source mapping identifier.
 - `mapping`: Defines how the data point is mapped to the data source.
+- `display_raw_text`: Defines how the data point is mapped to the data source.
 
 <a id="models._models.CollectionUpdate"></a>
 
@@ -901,6 +1116,9 @@ CollectionUpdate.
 :ivar trains_extractor: Whether this collection feeds documents into the extractor's training
  queue. This setting can only be toggled for custom extractors.
 :vartype trains_extractor: bool
+:ivar disable_confirmation_if_validation_rules_fail: If True, users cannot validate documents
+ with missing mandatory fields, or failing validation rules.
+:vartype disable_confirmation_if_validation_rules_fail: bool
 
 <a id="models._models.CollectionUpdate.__init__"></a>
 
@@ -924,6 +1142,8 @@ is not ambiguous.
 this collection.
 - `trains_extractor`: Whether this collection feeds documents into the extractor's
 training queue. This setting can only be toggled for custom extractors.
+- `disable_confirmation_if_validation_rules_fail`: If True, users cannot validate
+documents with missing mandatory fields, or failing validation rules.
 
 <a id="models._models.CollectionWorkspace"></a>
 
@@ -1184,6 +1404,35 @@ def __init__(**kwargs)
 
 - `raw`: 
 - `parsed`: 
+
+<a id="models._models.Components1Kwk9B6SchemasThemeconfigPropertiesPalettePropertiesBackgroundOneof1"></a>
+
+## Components1Kwk9B6SchemasThemeconfigPropertiesPalettePropertiesBackgroundOneof1 Objects
+
+```python
+class Components1Kwk9B6SchemasThemeconfigPropertiesPalettePropertiesBackgroundOneof1(
+        msrest.serialization.Model)
+```
+
+Components1Kwk9B6SchemasThemeconfigPropertiesPalettePropertiesBackgroundOneof1.
+
+:ivar default:
+:vartype default: str
+:ivar paper:
+:vartype paper: str
+
+<a id="models._models.Components1Kwk9B6SchemasThemeconfigPropertiesPalettePropertiesBackgroundOneof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `default`: 
+- `paper`: 
 
 <a id="models._models.Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1"></a>
 
@@ -2304,6 +2553,9 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_source: str
 :ivar mapping: Defines how the data point is mapped to the data source.
 :vartype mapping: str
+:ivar display_raw_text: If true, then the validation tool will show the user the raw text found
+ on the page, not the value that has been parsed to a specific type.
+:vartype display_raw_text: bool
 
 <a id="models._models.DataFieldCreateField.__init__"></a>
 
@@ -2327,6 +2579,8 @@ the dropdown in the validation tool.
 - `auto_validation_threshold`: 
 - `data_source`: Data source mapping identifier.
 - `mapping`: Defines how the data point is mapped to the data source.
+- `display_raw_text`: If true, then the validation tool will show the user the raw text
+found on the page, not the value that has been parsed to a specific type.
 
 <a id="models._models.DataFieldDataPoint"></a>
 
@@ -2414,7 +2668,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype field_type: str or ~affinda.models.AnnotationContentType
 :ivar mandatory: Required.
 :vartype mandatory: bool
-:ivar show_dropdown: Required.
+:ivar show_dropdown:
 :vartype show_dropdown: bool
 :ivar display_enum_value: Required. If true, both the value and the label for the enums will
  appear in the dropdown in the validation tool.
@@ -2429,6 +2683,9 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_source: str
 :ivar mapping: Defines how the data point is mapped to the data source.
 :vartype mapping: str
+:ivar display_raw_text: If true, then the validation tool will show the user the raw text found
+ on the page, not the value that has been parsed to a specific type.
+:vartype display_raw_text: bool
 
 <a id="models._models.DataFieldField.__init__"></a>
 
@@ -2446,7 +2703,7 @@ def __init__(**kwargs)
 "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language", "skill",
 "yearsexperience", "group", "table_deprecated", "url", "image".
 - `mandatory`: Required.
-- `show_dropdown`: Required.
+- `show_dropdown`: 
 - `display_enum_value`: Required. If true, both the value and the label for the enums will
 appear in the dropdown in the validation tool.
 - `auto_validation_threshold`: Required.
@@ -2454,6 +2711,8 @@ appear in the dropdown in the validation tool.
 - `disabled_child_fields`: Required.
 - `data_source`: Data source mapping identifier.
 - `mapping`: Defines how the data point is mapped to the data source.
+- `display_raw_text`: If true, then the validation tool will show the user the raw text
+found on the page, not the value that has been parsed to a specific type.
 
 <a id="models._models.DataPoint"></a>
 
@@ -3316,6 +3575,12 @@ DocumentCreate.
 :vartype region_bias: str
 :ivar low_priority: Explicitly mark this document as low priority.
 :vartype low_priority: bool
+:ivar compact: If true, the returned parse result (assuming ``wait`` is also true) will be a
+ compact version of the full result.
+:vartype compact: bool
+:ivar delete_after_parse: If true, no data will be stored after parsing. Only compatible with
+ requests where wait: True.
+:vartype delete_after_parse: bool
 
 <a id="models._models.DocumentCreate.__init__"></a>
 
@@ -3349,6 +3614,10 @@ document normally whether its a duplicate or not. If not provided, will fallback
 workspace settings.
 - `region_bias`: A JSON representation of the RegionBias object.
 - `low_priority`: Explicitly mark this document as low priority.
+- `compact`: If true, the returned parse result (assuming ``wait`` is also true) will be a
+compact version of the full result.
+- `delete_after_parse`: If true, no data will be stored after parsing. Only compatible
+with requests where wait: True.
 
 <a id="models._models.DocumentEditRequest"></a>
 
@@ -3462,12 +3731,18 @@ All required parameters must be populated in order to send to Azure.
 :vartype archived_dt: ~datetime.datetime
 :ivar is_archived:
 :vartype is_archived: bool
+:ivar skip_parse:
+:vartype skip_parse: bool
 :ivar confirmed_dt:
 :vartype confirmed_dt: ~datetime.datetime
+:ivar confirmed_by:
+:vartype confirmed_by: ~affinda.models.UserNullable
 :ivar is_confirmed:
 :vartype is_confirmed: bool
 :ivar rejected_dt:
 :vartype rejected_dt: ~datetime.datetime
+:ivar rejected_by:
+:vartype rejected_by: ~affinda.models.UserNullable
 :ivar is_rejected:
 :vartype is_rejected: bool
 :ivar created_dt:
@@ -3480,8 +3755,6 @@ All required parameters must be populated in order to send to Azure.
 :vartype file: str
 :ivar tags: A set of tags.
 :vartype tags: list[~affinda.models.Tag]
-:ivar confirmed_by:
-:vartype confirmed_by: ~affinda.models.UserNullable
 :ivar created_by:
 :vartype created_by: ~affinda.models.User
 :ivar source_email: If the document is created via email ingestion, this field stores the email
@@ -3530,16 +3803,18 @@ this attribute points to those child documents.
 - `workspace`: Required.
 - `archived_dt`: 
 - `is_archived`: 
+- `skip_parse`: 
 - `confirmed_dt`: 
+- `confirmed_by`: 
 - `is_confirmed`: 
 - `rejected_dt`: 
+- `rejected_by`: 
 - `is_rejected`: 
 - `created_dt`: 
 - `error_code`: 
 - `error_detail`: 
 - `file`: URL to view the file.
 - `tags`: A set of tags.
-- `confirmed_by`: 
 - `created_by`: 
 - `source_email`: If the document is created via email ingestion, this field stores the
 email file's URL.
@@ -3590,6 +3865,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype name: str
 :ivar extractor:
 :vartype extractor: ~affinda.models.DocumentMetaCollectionExtractor
+:ivar validation_rules:
+:vartype validation_rules: list[~affinda.models.ValidationRule]
 
 <a id="models._models.DocumentMetaCollection.__init__"></a>
 
@@ -3604,6 +3881,7 @@ def __init__(**kwargs)
 - `identifier`: Required. Uniquely identify a collection.
 - `name`: 
 - `extractor`: 
+- `validation_rules`: 
 
 <a id="models._models.DocumentMetaCollectionExtractor"></a>
 
@@ -3779,6 +4057,8 @@ DocumentUpdate.
 :vartype is_rejected: bool
 :ivar is_archived:
 :vartype is_archived: bool
+:ivar skip_parse:
+:vartype skip_parse: bool
 :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 :vartype language: str
 :ivar identifier: Deprecated in favor of ``customIdentifier``.
@@ -3804,6 +4084,7 @@ deleted.  Defaults to no expiry.
 - `is_confirmed`: 
 - `is_rejected`: 
 - `is_archived`: 
+- `skip_parse`: 
 - `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
 - `identifier`: Deprecated in favor of ``customIdentifier``.
 - `custom_identifier`: Specify a custom identifier for the document if you need one, not
@@ -4504,6 +4785,9 @@ All required parameters must be populated in order to send to Azure.
 :vartype disabled_child_fields: list[~affinda.models.Field]
 :ivar slug:
 :vartype slug: str
+:ivar display_raw_text: If true, then the validation tool will show the user the raw text found
+ on the page, not the value that has been parsed to a specific type.
+:vartype display_raw_text: bool
 :ivar fields:
 :vartype fields: list[any]
 
@@ -4537,6 +4821,8 @@ discarded.
 - `enabled_child_fields`: 
 - `disabled_child_fields`: 
 - `slug`: 
+- `display_raw_text`: If true, then the validation tool will show the user the raw text
+found on the page, not the value that has been parsed to a specific type.
 - `fields`: 
 
 <a id="models._models.FieldCategory"></a>
@@ -4610,6 +4896,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype auto_validation_threshold: float
 :ivar show_dropdown:
 :vartype show_dropdown: bool
+:ivar display_raw_text:
+:vartype display_raw_text: bool
 :ivar drop_null: If True, any dropdown annotations that fail to parse to a value will be
  discarded.
 :vartype drop_null: bool
@@ -4643,6 +4931,7 @@ collection.
 - `disabled`: 
 - `auto_validation_threshold`: 
 - `show_dropdown`: 
+- `display_raw_text`: 
 - `drop_null`: If True, any dropdown annotations that fail to parse to a value will be
 discarded.
 - `display_enum_value`: 
@@ -8517,7 +8806,7 @@ Variables are only populated by the server, and will be ignored when sending a r
 :ivar show_index_dropdown: Controls whether or not the index dropdown is displayed to the user.
 :vartype show_index_dropdown: bool
 :ivar search_tool_theme: Customize the theme of the embeded search tool.
-:vartype search_tool_theme: dict[str, any]
+:vartype search_tool_theme: ~affinda.models.JobDescriptionSearchConfigSearchToolTheme
 :ivar user_id: ID of the logged in user.
 :vartype user_id: int
 :ivar username: Username of the logged in user.
@@ -8530,6 +8819,9 @@ Variables are only populated by the server, and will be ignored when sending a r
 :vartype hide_side_panel: bool
 :ivar custom_fields_config:
 :vartype custom_fields_config: list[~affinda.models.CustomFieldConfig]
+:ivar distance_unit: The unit of distance to use for location based searches. Known values are:
+ "mi", "km".
+:vartype distance_unit: str or ~affinda.models.JobDescriptionSearchConfigDistanceUnit
 
 <a id="models._models.JobDescriptionSearchConfig.__init__"></a>
 
@@ -8570,6 +8862,76 @@ user.
 - `hide_toolbar`: Hide the reset/import toolbar.
 - `hide_side_panel`: Hide the entire side panel.
 - `custom_fields_config`: 
+- `distance_unit`: The unit of distance to use for location based searches. Known values
+are: "mi", "km".
+
+<a id="models._models.ThemeConfig"></a>
+
+## ThemeConfig Objects
+
+```python
+class ThemeConfig(msrest.serialization.Model)
+```
+
+ThemeConfig.
+
+:ivar palette:
+:vartype palette: ~affinda.models.ThemeConfigPalette
+:ivar typography:
+:vartype typography: ~affinda.models.ThemeConfigTypography
+:ivar border_radius:
+:vartype border_radius: float
+:ivar font_url:
+:vartype font_url: str
+
+<a id="models._models.ThemeConfig.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `palette`: 
+- `typography`: 
+- `border_radius`: 
+- `font_url`: 
+
+<a id="models._models.JobDescriptionSearchConfigSearchToolTheme"></a>
+
+## JobDescriptionSearchConfigSearchToolTheme Objects
+
+```python
+class JobDescriptionSearchConfigSearchToolTheme(ThemeConfig)
+```
+
+Customize the theme of the embeded search tool.
+
+:ivar palette:
+:vartype palette: ~affinda.models.ThemeConfigPalette
+:ivar typography:
+:vartype typography: ~affinda.models.ThemeConfigTypography
+:ivar border_radius:
+:vartype border_radius: float
+:ivar font_url:
+:vartype font_url: str
+
+<a id="models._models.JobDescriptionSearchConfigSearchToolTheme.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `palette`: 
+- `typography`: 
+- `border_radius`: 
+- `font_url`: 
 
 <a id="models._models.JobDescriptionSearchDetail"></a>
 
@@ -8901,6 +9263,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype postal_code: str
 :ivar state:
 :vartype state: str
+:ivar state_code:
+:vartype state_code: str
 :ivar country:
 :vartype country: str
 :ivar country_code: Two letter country code (ISO 3166-1 alpha-2).
@@ -8919,6 +9283,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype latitude: float
 :ivar longitude:
 :vartype longitude: float
+:ivar po_box:
+:vartype po_box: str
 
 <a id="models._models.Location.__init__"></a>
 
@@ -8957,6 +9323,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype postal_code: str
 :ivar state:
 :vartype state: str
+:ivar state_code:
+:vartype state_code: str
 :ivar country:
 :vartype country: str
 :ivar country_code: Two letter country code (ISO 3166-1 alpha-2).
@@ -8975,6 +9343,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype latitude: float
 :ivar longitude:
 :vartype longitude: float
+:ivar po_box:
+:vartype po_box: str
 
 <a id="models._models.JobDescriptionSearchDetailLocationValue.__init__"></a>
 
@@ -10195,6 +10565,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype postal_code: str
 :ivar state:
 :vartype state: str
+:ivar state_code:
+:vartype state_code: str
 :ivar country:
 :vartype country: str
 :ivar country_code: Two letter country code (ISO 3166-1 alpha-2).
@@ -10213,6 +10585,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype latitude: float
 :ivar longitude:
 :vartype longitude: float
+:ivar po_box:
+:vartype po_box: str
 
 <a id="models._models.LocationAnnotationUpdateParsed.__init__"></a>
 
@@ -10881,10 +11255,18 @@ Configuration of the embeddable validation tool.
 :vartype hide_actions: bool
 :ivar hide_collection: Hide the collection selector.
 :vartype hide_collection: bool
+:ivar hide_edit_pages: Hide the edit pages button.
+:vartype hide_edit_pages: bool
 :ivar hide_export: Hide the export menu.
 :vartype hide_export: bool
 :ivar hide_filename: Hide the filename input.
 :vartype hide_filename: bool
+:ivar hide_reject: Hide the reject document button.
+:vartype hide_reject: bool
+:ivar hide_reparse: Hide the reparse button.
+:vartype hide_reparse: bool
+:ivar hide_run_ocr: Hide the run OCR button.
+:vartype hide_run_ocr: bool
 :ivar hide_tags: Hide the tags editor.
 :vartype hide_tags: bool
 :ivar hide_warnings: Hide the warnings panel.
@@ -10911,8 +11293,12 @@ def __init__(**kwargs)
 - `theme`: 
 - `hide_actions`: Hide the confirm document button and other actions.
 - `hide_collection`: Hide the collection selector.
+- `hide_edit_pages`: Hide the edit pages button.
 - `hide_export`: Hide the export menu.
 - `hide_filename`: Hide the filename input.
+- `hide_reject`: Hide the reject document button.
+- `hide_reparse`: Hide the reparse button.
+- `hide_run_ocr`: Hide the run OCR button.
 - `hide_tags`: Hide the tags editor.
 - `hide_warnings`: Hide the warnings panel.
 - `restrict_document_splitting`: Disable the page editor after a document has been split
@@ -12190,6 +12576,10 @@ RegionBias.
 :ivar square_coordinates: A list of coordinates used by Pelias in the shape of [min_lon,
  min_lat, max_lon, max_lat].
 :vartype square_coordinates: list[float]
+:ivar strict: If true, the location must be within the region, as opposed to prefering
+ locations within the region.
+ Default to false.
+:vartype strict: bool
 
 <a id="models._models.RegionBias.__init__"></a>
 
@@ -12205,6 +12595,9 @@ def __init__(**kwargs)
 - `countries`: A list of alpha-2 country codes used by Pelias.
 - `square_coordinates`: A list of coordinates used by Pelias in the shape of [min_lon,
 min_lat, max_lon, max_lat].
+- `strict`: If true, the location must be within the region, as opposed to prefering
+locations within the region.
+Default to false.
 
 <a id="models._models.RequestError"></a>
 
@@ -12288,7 +12681,8 @@ All required parameters must be populated in order to send to Azure.
  "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
  "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
  "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
- "document.classify.failed", "document.classify.completed", "document.rejected".
+ "document.classify.failed", "document.classify.completed", "document.rejected",
+ "annotation.validated".
 :vartype event: str or ~affinda.models.ResthookEvent
 :ivar organization: Required.
 :vartype organization: ~affinda.models.Organization
@@ -12324,7 +12718,8 @@ def __init__(**kwargs)
 "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
 "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
 "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
-"document.classify.failed", "document.classify.completed", "document.rejected".
+"document.classify.failed", "document.classify.completed", "document.rejected",
+"annotation.validated".
 - `organization`: Required.
 - `workspace`: Required.
 - `target_url`: Required. URL of the resthook's receiver.
@@ -12355,7 +12750,8 @@ All required parameters must be populated in order to send to Azure.
  "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
  "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
  "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
- "document.classify.failed", "document.classify.completed", "document.rejected".
+ "document.classify.failed", "document.classify.completed", "document.rejected",
+ "annotation.validated".
 :vartype event: str or ~affinda.models.ResthookEvent
 :ivar organization:
 :vartype organization: str
@@ -12381,7 +12777,8 @@ def __init__(**kwargs)
 "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
 "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
 "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
-"document.classify.failed", "document.classify.completed", "document.rejected".
+"document.classify.failed", "document.classify.completed", "document.rejected",
+"annotation.validated".
 - `organization`: 
 - `workspace`: 
 - `version`: Version of the resthook subscription. Determines the resthook body being
@@ -12402,7 +12799,7 @@ ResthookSubscriptionUpdate.
  "invoice.parse.failed", "invoice.parse.completed", "invoice.validate.completed",
  "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
  "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
- "document.classify.completed", "document.rejected".
+ "document.classify.completed", "document.rejected", "annotation.validated".
 :vartype event: str or ~affinda.models.ResthookEvent
 :ivar organization: Uniquely identify an organization.
 :vartype organization: str
@@ -12427,7 +12824,7 @@ def __init__(**kwargs)
 "invoice.parse.failed", "invoice.parse.completed", "invoice.validate.completed",
 "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
 "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
-"document.classify.completed", "document.rejected".
+"document.classify.completed", "document.rejected", "annotation.validated".
 - `organization`: Uniquely identify an organization.
 - `workspace`: Uniquely identify a workspace.
 - `version`: Version of the resthook subscription. Determines the resthook body being
@@ -13122,7 +13519,7 @@ Variables are only populated by the server, and will be ignored when sending a r
 :ivar show_index_dropdown: Controls whether or not the index dropdown is displayed to the user.
 :vartype show_index_dropdown: bool
 :ivar search_tool_theme: Customize the theme of the embeded search tool.
-:vartype search_tool_theme: dict[str, any]
+:vartype search_tool_theme: ~affinda.models.ResumeSearchConfigSearchToolTheme
 :ivar user_id: ID of the logged in user.
 :vartype user_id: int
 :ivar username: Username of the logged in user.
@@ -13135,6 +13532,9 @@ Variables are only populated by the server, and will be ignored when sending a r
 :vartype hide_side_panel: bool
 :ivar custom_fields_config:
 :vartype custom_fields_config: list[~affinda.models.CustomFieldConfig]
+:ivar distance_unit: The unit of distance to use for location based searches. Known values are:
+ "mi", "km".
+:vartype distance_unit: str or ~affinda.models.ResumeSearchConfigDistanceUnit
 
 <a id="models._models.ResumeSearchConfig.__init__"></a>
 
@@ -13175,6 +13575,42 @@ user.
 - `hide_toolbar`: Hide the reset/import toolbar.
 - `hide_side_panel`: Hide the entire side panel.
 - `custom_fields_config`: 
+- `distance_unit`: The unit of distance to use for location based searches. Known values
+are: "mi", "km".
+
+<a id="models._models.ResumeSearchConfigSearchToolTheme"></a>
+
+## ResumeSearchConfigSearchToolTheme Objects
+
+```python
+class ResumeSearchConfigSearchToolTheme(ThemeConfig)
+```
+
+Customize the theme of the embeded search tool.
+
+:ivar palette:
+:vartype palette: ~affinda.models.ThemeConfigPalette
+:ivar typography:
+:vartype typography: ~affinda.models.ThemeConfigTypography
+:ivar border_radius:
+:vartype border_radius: float
+:ivar font_url:
+:vartype font_url: str
+
+<a id="models._models.ResumeSearchConfigSearchToolTheme.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `palette`: 
+- `typography`: 
+- `border_radius`: 
+- `font_url`: 
 
 <a id="models._models.ResumeSearchDetail"></a>
 
@@ -13590,6 +14026,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype postal_code: str
 :ivar state:
 :vartype state: str
+:ivar state_code:
+:vartype state_code: str
 :ivar country:
 :vartype country: str
 :ivar country_code: Two letter country code (ISO 3166-1 alpha-2).
@@ -13608,6 +14046,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype latitude: float
 :ivar longitude:
 :vartype longitude: float
+:ivar po_box:
+:vartype po_box: str
 
 <a id="models._models.ResumeSearchDetailLocationValue.__init__"></a>
 
@@ -15277,40 +15717,6 @@ confidence that the text in the image has been correctly read by the model.
 - `content_type`: 
 - `parsed`: 
 
-<a id="models._models.ThemeConfig"></a>
-
-## ThemeConfig Objects
-
-```python
-class ThemeConfig(msrest.serialization.Model)
-```
-
-ThemeConfig.
-
-:ivar palette:
-:vartype palette: ~affinda.models.ThemeConfigPalette
-:ivar typography:
-:vartype typography: ~affinda.models.ThemeConfigTypography
-:ivar border_radius:
-:vartype border_radius: float
-:ivar font_url:
-:vartype font_url: str
-
-<a id="models._models.ThemeConfig.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `palette`: 
-- `typography`: 
-- `border_radius`: 
-- `font_url`: 
-
 <a id="models._models.ThemeConfigPalette"></a>
 
 ## ThemeConfigPalette Objects
@@ -15323,8 +15729,8 @@ ThemeConfigPalette.
 
 :ivar mode: Known values are: "light", "dark".
 :vartype mode: str or ~affinda.models.ThemeConfigPaletteMode
-:ivar background:
-:vartype background: ~affinda.models.ThemeConfigPaletteBackground
+:ivar background: Anything.
+:vartype background: any
 :ivar text:
 :vartype text: ~affinda.models.ThemeConfigPaletteText
 :ivar divider:
@@ -15355,7 +15761,7 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `mode`: Known values are: "light", "dark".
-- `background`: 
+- `background`: Anything.
 - `text`: 
 - `divider`: 
 - `primary`: 
@@ -15365,34 +15771,6 @@ def __init__(**kwargs)
 - `error`: 
 - `info`: 
 - `warning`: 
-
-<a id="models._models.ThemeConfigPaletteBackground"></a>
-
-## ThemeConfigPaletteBackground Objects
-
-```python
-class ThemeConfigPaletteBackground(msrest.serialization.Model)
-```
-
-ThemeConfigPaletteBackground.
-
-:ivar default:
-:vartype default: str
-:ivar paper:
-:vartype paper: str
-
-<a id="models._models.ThemeConfigPaletteBackground.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `default`: 
-- `paper`: 
 
 <a id="models._models.ThemeConfigPaletteText"></a>
 
@@ -15437,8 +15815,8 @@ ThemeConfigTypography.
 
 :ivar font_family:
 :vartype font_family: str
-:ivar font_size:
-:vartype font_size: str
+:ivar font_size: Anything.
+:vartype font_size: any
 :ivar font_weight_regular:
 :vartype font_weight_regular: str
 :ivar font_weight_medium:
@@ -15457,7 +15835,7 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `font_family`: 
-- `font_size`: 
+- `font_size`: Anything.
 - `font_weight_regular`: 
 - `font_weight_medium`: 
 - `font_weight_bold`: 
@@ -15681,6 +16059,156 @@ def __init__(**kwargs)
 - `email`: 
 - `avatar`: URL of the user's avatar.
 
+<a id="models._models.ValidationResult"></a>
+
+## ValidationResult Objects
+
+```python
+class ValidationResult(msrest.serialization.Model)
+```
+
+Validation result arising from a ValidationRule.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar id: Required. Validation Result's ID.
+:vartype id: int
+:ivar annotations: Required. List of annotation ids that were validated.
+:vartype annotations: list[int]
+:ivar passed: Required. Whether the validation passed or not.
+:vartype passed: bool
+:ivar rule_slug: Required. The hot-dog case slug of the validation rule that was applied.
+:vartype rule_slug: str
+:ivar message: Required. Message explaining why the validation failed.
+:vartype message: str
+:ivar document: Required. Unique identifier for the document.
+:vartype document: str
+
+<a id="models._models.ValidationResult.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `id`: Required. Validation Result's ID.
+- `annotations`: Required. List of annotation ids that were validated.
+- `passed`: Required. Whether the validation passed or not.
+- `rule_slug`: Required. The hot-dog case slug of the validation rule that was applied.
+- `message`: Required. Message explaining why the validation failed.
+- `document`: Required. Unique identifier for the document.
+
+<a id="models._models.ValidationResultCreate"></a>
+
+## ValidationResultCreate Objects
+
+```python
+class ValidationResultCreate(msrest.serialization.Model)
+```
+
+ValidationResultCreate.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar annotations: Required. List of annotation ids that were validated.
+:vartype annotations: list[int]
+:ivar passed: Whether the validation passed or not.
+:vartype passed: bool
+:ivar rule_slug: Required. The hot-dog case slug of the validation rule that was applied.
+:vartype rule_slug: str
+:ivar message: Required. Message explaining why the validation failed.
+:vartype message: str
+:ivar document: Required. Unique identifier for the document.
+:vartype document: str
+
+<a id="models._models.ValidationResultCreate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `annotations`: Required. List of annotation ids that were validated.
+- `passed`: Whether the validation passed or not.
+- `rule_slug`: Required. The hot-dog case slug of the validation rule that was applied.
+- `message`: Required. Message explaining why the validation failed.
+- `document`: Required. Unique identifier for the document.
+
+<a id="models._models.ValidationResultUpdate"></a>
+
+## ValidationResultUpdate Objects
+
+```python
+class ValidationResultUpdate(msrest.serialization.Model)
+```
+
+ValidationResultUpdate.
+
+:ivar annotations: List of annotation ids that were validated.
+:vartype annotations: list[int]
+:ivar passed: Whether the validation passed or not.
+:vartype passed: bool
+:ivar rule_slug: The hot-dog case slug of the validation rule that was applied.
+:vartype rule_slug: str
+:ivar message: Message explaining why the validation failed.
+:vartype message: str
+:ivar document: Unique identifier for the document.
+:vartype document: str
+
+<a id="models._models.ValidationResultUpdate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `annotations`: List of annotation ids that were validated.
+- `passed`: Whether the validation passed or not.
+- `rule_slug`: The hot-dog case slug of the validation rule that was applied.
+- `message`: Message explaining why the validation failed.
+- `document`: Unique identifier for the document.
+
+<a id="models._models.ValidationRule"></a>
+
+## ValidationRule Objects
+
+```python
+class ValidationRule(msrest.serialization.Model)
+```
+
+A validation rule for a collection.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar slug: Required. The slug of the validation rule, in lowercase snake_case.
+:vartype slug: str
+:ivar data_points: Required. The data point identifier that this validation rule applies to,
+ can be an empty list if the rule doens't use any data points as sources.
+:vartype data_points: list[str]
+
+<a id="models._models.ValidationRule.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `slug`: Required. The slug of the validation rule, in lowercase snake_case.
+- `data_points`: Required. The data point identifier that this validation rule applies to,
+can be an empty list if the rule doens't use any data points as sources.
+
 <a id="models._models.ValidationToolConfig"></a>
 
 ## ValidationToolConfig Objects
@@ -15697,10 +16225,18 @@ Configuration of the embeddable validation tool.
 :vartype hide_actions: bool
 :ivar hide_collection: Hide the collection selector.
 :vartype hide_collection: bool
+:ivar hide_edit_pages: Hide the edit pages button.
+:vartype hide_edit_pages: bool
 :ivar hide_export: Hide the export menu.
 :vartype hide_export: bool
 :ivar hide_filename: Hide the filename input.
 :vartype hide_filename: bool
+:ivar hide_reject: Hide the reject document button.
+:vartype hide_reject: bool
+:ivar hide_reparse: Hide the reparse button.
+:vartype hide_reparse: bool
+:ivar hide_run_ocr: Hide the run OCR button.
+:vartype hide_run_ocr: bool
 :ivar hide_tags: Hide the tags editor.
 :vartype hide_tags: bool
 :ivar hide_warnings: Hide the warnings panel.
@@ -15727,8 +16263,12 @@ def __init__(**kwargs)
 - `theme`: 
 - `hide_actions`: Hide the confirm document button and other actions.
 - `hide_collection`: Hide the collection selector.
+- `hide_edit_pages`: Hide the edit pages button.
 - `hide_export`: Hide the export menu.
 - `hide_filename`: Hide the filename input.
+- `hide_reject`: Hide the reject document button.
+- `hide_reparse`: Hide the reparse button.
+- `hide_run_ocr`: Hide the run OCR button.
 - `hide_tags`: Hide the tags editor.
 - `hide_warnings`: Hide the warnings panel.
 - `restrict_document_splitting`: Disable the page editor after a document has been split

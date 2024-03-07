@@ -368,6 +368,9 @@ class AnnotationUpdate(msrest.serialization.Model):
     :vartype data_point: str
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
+    :ivar validation_results: The validation results created, changed or deleted as a result of
+     updating the annotation.
+    :vartype validation_results: list[~affinda.models.ChangedValidationResults]
     """
 
     _validation = {
@@ -383,6 +386,7 @@ class AnnotationUpdate(msrest.serialization.Model):
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "parent": {"key": "parent", "type": "int"},
+        "validation_results": {"key": "validationResults", "type": "[ChangedValidationResults]"},
     }
 
     def __init__(
@@ -396,6 +400,7 @@ class AnnotationUpdate(msrest.serialization.Model):
         is_client_verified: Optional[bool] = None,
         data_point: Optional[str] = None,
         parent: Optional[int] = None,
+        validation_results: Optional[List["_models.ChangedValidationResults"]] = None,
         **kwargs,
     ):
         """
@@ -416,6 +421,9 @@ class AnnotationUpdate(msrest.serialization.Model):
         :paramtype data_point: str
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
+        :keyword validation_results: The validation results created, changed or deleted as a result of
+         updating the annotation.
+        :paramtype validation_results: list[~affinda.models.ChangedValidationResults]
         """
         super(AnnotationUpdate, self).__init__(**kwargs)
         self.rectangles = rectangles
@@ -426,6 +434,7 @@ class AnnotationUpdate(msrest.serialization.Model):
         self.is_client_verified = is_client_verified
         self.data_point = data_point
         self.parent = parent
+        self.validation_results = validation_results
 
 
 class AnnotationBatchUpdate(AnnotationUpdate):
@@ -450,6 +459,9 @@ class AnnotationBatchUpdate(AnnotationUpdate):
     :vartype data_point: str
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
+    :ivar validation_results: The validation results created, changed or deleted as a result of
+     updating the annotation.
+    :vartype validation_results: list[~affinda.models.ChangedValidationResults]
     :ivar id: Required. Annotation's ID.
     :vartype id: int
     """
@@ -468,6 +480,7 @@ class AnnotationBatchUpdate(AnnotationUpdate):
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
         "parent": {"key": "parent", "type": "int"},
+        "validation_results": {"key": "validationResults", "type": "[ChangedValidationResults]"},
         "id": {"key": "id", "type": "int"},
     }
 
@@ -483,6 +496,7 @@ class AnnotationBatchUpdate(AnnotationUpdate):
         is_client_verified: Optional[bool] = None,
         data_point: Optional[str] = None,
         parent: Optional[int] = None,
+        validation_results: Optional[List["_models.ChangedValidationResults"]] = None,
         **kwargs,
     ):
         """
@@ -503,6 +517,9 @@ class AnnotationBatchUpdate(AnnotationUpdate):
         :paramtype data_point: str
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
+        :keyword validation_results: The validation results created, changed or deleted as a result of
+         updating the annotation.
+        :paramtype validation_results: list[~affinda.models.ChangedValidationResults]
         :keyword id: Required. Annotation's ID.
         :paramtype id: int
         """
@@ -515,6 +532,7 @@ class AnnotationBatchUpdate(AnnotationUpdate):
             is_client_verified=is_client_verified,
             data_point=data_point,
             parent=parent,
+            validation_results=validation_results,
             **kwargs,
         )
         self.id = id
@@ -542,6 +560,9 @@ class AnnotationCreate(msrest.serialization.Model):
     :vartype is_client_verified: bool
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
+    :ivar validation_results: The validation results created, changed or deleted as a result of
+     creating the annotation.
+    :vartype validation_results: list[~affinda.models.ChangedValidationResults]
     """
 
     _validation = {
@@ -559,6 +580,7 @@ class AnnotationCreate(msrest.serialization.Model):
         "parsed": {"key": "parsed", "type": "object"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "parent": {"key": "parent", "type": "int"},
+        "validation_results": {"key": "validationResults", "type": "[ChangedValidationResults]"},
     }
 
     def __init__(
@@ -572,6 +594,7 @@ class AnnotationCreate(msrest.serialization.Model):
         parsed: Optional[Any] = None,
         is_client_verified: Optional[bool] = None,
         parent: Optional[int] = None,
+        validation_results: Optional[List["_models.ChangedValidationResults"]] = None,
         **kwargs,
     ):
         """
@@ -592,6 +615,9 @@ class AnnotationCreate(msrest.serialization.Model):
         :paramtype is_client_verified: bool
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
+        :keyword validation_results: The validation results created, changed or deleted as a result of
+         creating the annotation.
+        :paramtype validation_results: list[~affinda.models.ChangedValidationResults]
         """
         super(AnnotationCreate, self).__init__(**kwargs)
         self.rectangles = rectangles
@@ -602,6 +628,206 @@ class AnnotationCreate(msrest.serialization.Model):
         self.parsed = parsed
         self.is_client_verified = is_client_verified
         self.parent = parent
+        self.validation_results = validation_results
+
+
+class AnnotationWithValidationResults(Annotation):
+    """AnnotationWithValidationResults.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar id: Required. Annotation's ID.
+    :vartype id: int
+    :ivar rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+     data.
+    :vartype rectangle: ~affinda.models.Rectangle
+    :ivar rectangles: Required. x/y coordinates for the rectangles containing the data. An
+     annotation can be contained within multiple rectangles.
+    :vartype rectangles: list[~affinda.models.Rectangle]
+    :ivar document: Required. Unique identifier for the document.
+    :vartype document: str
+    :ivar page_index: Required. The page number within the document, starting from 0.
+    :vartype page_index: int
+    :ivar raw: Required. Raw data extracted from the before any post-processing.
+    :vartype raw: str
+    :ivar confidence: Required. The overall confidence that the model's prediction is correct.
+    :vartype confidence: float
+    :ivar classification_confidence: Required. The model's confidence that the text has been
+     classified correctly.
+    :vartype classification_confidence: float
+    :ivar text_extraction_confidence: Required. If the document was submitted as an image, this is
+     the confidence that the text in the image has been correctly read by the model.
+    :vartype text_extraction_confidence: float
+    :ivar is_verified: Required. Indicates whether the data has been validated, either by a human
+     using our validation tool or through auto-validation rules.
+    :vartype is_verified: bool
+    :ivar is_client_verified: Required. Indicates whether the data has been validated by a human.
+    :vartype is_client_verified: bool
+    :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
+    :vartype is_auto_verified: bool
+    :ivar data_point: Required. Data point's identifier.
+    :vartype data_point: str
+    :ivar content_type: Required. The different data types of annotations. Known values are:
+     "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+     "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+     "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
+    :vartype content_type: str or ~affinda.models.AnnotationContentType
+    :ivar parent: The parent annotation's ID.
+    :vartype parent: int
+    :ivar validation_results: List of validation results for this annotation.
+    :vartype validation_results: list[~affinda.models.ValidationResult]
+    """
+
+    _validation = {
+        "id": {"required": True, "minimum": 1},
+        "rectangle": {"required": True},
+        "rectangles": {"required": True},
+        "document": {"required": True},
+        "page_index": {"required": True, "minimum": 0},
+        "raw": {"required": True},
+        "confidence": {"required": True},
+        "classification_confidence": {"required": True},
+        "text_extraction_confidence": {"required": True},
+        "is_verified": {"required": True},
+        "is_client_verified": {"required": True},
+        "is_auto_verified": {"required": True},
+        "data_point": {"required": True},
+        "content_type": {"required": True},
+    }
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "id": {"key": "id", "type": "int"},
+        "rectangle": {"key": "rectangle", "type": "Rectangle"},
+        "rectangles": {"key": "rectangles", "type": "[Rectangle]"},
+        "document": {"key": "document", "type": "str"},
+        "page_index": {"key": "pageIndex", "type": "int"},
+        "raw": {"key": "raw", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "classification_confidence": {"key": "classificationConfidence", "type": "float"},
+        "text_extraction_confidence": {"key": "textExtractionConfidence", "type": "float"},
+        "is_verified": {"key": "isVerified", "type": "bool"},
+        "is_client_verified": {"key": "isClientVerified", "type": "bool"},
+        "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
+        "data_point": {"key": "dataPoint", "type": "str"},
+        "content_type": {"key": "contentType", "type": "str"},
+        "parent": {"key": "parent", "type": "int"},
+        "validation_results": {"key": "validationResults", "type": "[ValidationResult]"},
+    }
+
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        document: str,
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        data_point: str,
+        content_type: Union[str, "_models.AnnotationContentType"],
+        additional_properties: Optional[Dict[str, Any]] = None,
+        parent: Optional[int] = None,
+        validation_results: Optional[List["_models.ValidationResult"]] = None,
+        **kwargs,
+    ):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword id: Required. Annotation's ID.
+        :paramtype id: int
+        :keyword rectangle: Required. x/y coordinates for the rectangular bounding box containing the
+         data.
+        :paramtype rectangle: ~affinda.models.Rectangle
+        :keyword rectangles: Required. x/y coordinates for the rectangles containing the data. An
+         annotation can be contained within multiple rectangles.
+        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :keyword document: Required. Unique identifier for the document.
+        :paramtype document: str
+        :keyword page_index: Required. The page number within the document, starting from 0.
+        :paramtype page_index: int
+        :keyword raw: Required. Raw data extracted from the before any post-processing.
+        :paramtype raw: str
+        :keyword confidence: Required. The overall confidence that the model's prediction is correct.
+        :paramtype confidence: float
+        :keyword classification_confidence: Required. The model's confidence that the text has been
+         classified correctly.
+        :paramtype classification_confidence: float
+        :keyword text_extraction_confidence: Required. If the document was submitted as an image, this
+         is the confidence that the text in the image has been correctly read by the model.
+        :paramtype text_extraction_confidence: float
+        :keyword is_verified: Required. Indicates whether the data has been validated, either by a
+         human using our validation tool or through auto-validation rules.
+        :paramtype is_verified: bool
+        :keyword is_client_verified: Required. Indicates whether the data has been validated by a
+         human.
+        :paramtype is_client_verified: bool
+        :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
+        :paramtype is_auto_verified: bool
+        :keyword data_point: Required. Data point's identifier.
+        :paramtype data_point: str
+        :keyword content_type: Required. The different data types of annotations. Known values are:
+         "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
+         "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
+         "skill", "yearsexperience", "group", "table_deprecated", "url", "image".
+        :paramtype content_type: str or ~affinda.models.AnnotationContentType
+        :keyword parent: The parent annotation's ID.
+        :paramtype parent: int
+        :keyword validation_results: List of validation results for this annotation.
+        :paramtype validation_results: list[~affinda.models.ValidationResult]
+        """
+        super(AnnotationWithValidationResults, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            document=document,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parent=parent,
+            **kwargs,
+        )
+        self.validation_results = validation_results
+
+
+class AnotationDelete(msrest.serialization.Model):
+    """AnotationDelete.
+
+    :ivar validation_results: The validation results created, changed or deleted as a result of
+     deleting the annotation.
+    :vartype validation_results: any
+    """
+
+    _attribute_map = {
+        "validation_results": {"key": "validationResults", "type": "object"},
+    }
+
+    def __init__(self, *, validation_results: Optional[Any] = None, **kwargs):
+        """
+        :keyword validation_results: The validation results created, changed or deleted as a result of
+         deleting the annotation.
+        :paramtype validation_results: any
+        """
+        super(AnotationDelete, self).__init__(**kwargs)
+        self.validation_results = validation_results
 
 
 class ApiUserCreate(msrest.serialization.Model):
@@ -1036,6 +1262,28 @@ class BatchAddTagRequest(msrest.serialization.Model):
         self.tag = tag
 
 
+class BatchDeleteAnnotationsResponse(msrest.serialization.Model):
+    """BatchDeleteAnnotationsResponse.
+
+    :ivar validation_results: The validation results created, changed or deleted as a result of
+     deleting the annotations.
+    :vartype validation_results: any
+    """
+
+    _attribute_map = {
+        "validation_results": {"key": "validationResults", "type": "object"},
+    }
+
+    def __init__(self, *, validation_results: Optional[Any] = None, **kwargs):
+        """
+        :keyword validation_results: The validation results created, changed or deleted as a result of
+         deleting the annotations.
+        :paramtype validation_results: any
+        """
+        super(BatchDeleteAnnotationsResponse, self).__init__(**kwargs)
+        self.validation_results = validation_results
+
+
 class BatchRemoveTagRequest(msrest.serialization.Model):
     """BatchRemoveTagRequest.
 
@@ -1064,6 +1312,54 @@ class BatchRemoveTagRequest(msrest.serialization.Model):
         self.tag = tag
 
 
+class ChangedValidationResults(msrest.serialization.Model):
+    """ChangedValidationResults.
+
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
+    :ivar created: List of validation results created during this operation.
+    :vartype created: list[~affinda.models.ValidationResult]
+    :ivar updated: List of validation results updated during this operation.
+    :vartype updated: list[~affinda.models.ValidationResult]
+    :ivar deleted: List of validation results deleted during this operation.
+    :vartype deleted: list[~affinda.models.ValidationResult]
+    """
+
+    _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
+        "created": {"key": "created", "type": "[ValidationResult]"},
+        "updated": {"key": "updated", "type": "[ValidationResult]"},
+        "deleted": {"key": "deleted", "type": "[ValidationResult]"},
+    }
+
+    def __init__(
+        self,
+        *,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        created: Optional[List["_models.ValidationResult"]] = None,
+        updated: Optional[List["_models.ValidationResult"]] = None,
+        deleted: Optional[List["_models.ValidationResult"]] = None,
+        **kwargs,
+    ):
+        """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
+        :keyword created: List of validation results created during this operation.
+        :paramtype created: list[~affinda.models.ValidationResult]
+        :keyword updated: List of validation results updated during this operation.
+        :paramtype updated: list[~affinda.models.ValidationResult]
+        :keyword deleted: List of validation results deleted during this operation.
+        :paramtype deleted: list[~affinda.models.ValidationResult]
+        """
+        super(ChangedValidationResults, self).__init__(**kwargs)
+        self.additional_properties = additional_properties
+        self.created = created
+        self.updated = updated
+        self.deleted = deleted
+
+
 class Collection(msrest.serialization.Model):
     """Collection.
 
@@ -1079,6 +1375,8 @@ class Collection(msrest.serialization.Model):
     :vartype extractor: ~affinda.models.Extractor
     :ivar auto_validation_threshold:
     :vartype auto_validation_threshold: float
+    :ivar auto_validate_if_validation_rules_pass:
+    :vartype auto_validate_if_validation_rules_pass: bool
     :ivar fields:
     :vartype fields: list[~affinda.models.FieldGroup]
     :ivar fields_layout:
@@ -1108,6 +1406,9 @@ class Collection(msrest.serialization.Model):
     :ivar trains_extractor: Whether this collection feeds documents into the extractor's training
      queue. This setting can only be toggled for custom extractors.
     :vartype trains_extractor: bool
+    :ivar disable_confirmation_if_validation_rules_fail: If True, users cannot validate documents
+     with missing mandatory fields, or failing validation rules.
+    :vartype disable_confirmation_if_validation_rules_fail: bool
     """
 
     _validation = {
@@ -1122,6 +1423,10 @@ class Collection(msrest.serialization.Model):
         "workspace": {"key": "workspace", "type": "CollectionWorkspace"},
         "extractor": {"key": "extractor", "type": "Extractor"},
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
+        "auto_validate_if_validation_rules_pass": {
+            "key": "autoValidateIfValidationRulesPass",
+            "type": "bool",
+        },
         "fields": {"key": "fields", "type": "[FieldGroup]"},
         "fields_layout": {"key": "fieldsLayout", "type": "FieldsLayout"},
         "fields_configured": {"key": "fieldsConfigured", "type": "bool"},
@@ -1134,6 +1439,10 @@ class Collection(msrest.serialization.Model):
         "tailored_extractor_requested": {"key": "tailoredExtractorRequested", "type": "bool"},
         "allow_openai": {"key": "allowOpenai", "type": "bool"},
         "trains_extractor": {"key": "trainsExtractor", "type": "bool"},
+        "disable_confirmation_if_validation_rules_fail": {
+            "key": "disableConfirmationIfValidationRulesFail",
+            "type": "bool",
+        },
     }
 
     def __init__(
@@ -1144,6 +1453,7 @@ class Collection(msrest.serialization.Model):
         workspace: Optional["_models.CollectionWorkspace"] = None,
         extractor: Optional["_models.Extractor"] = None,
         auto_validation_threshold: Optional[float] = None,
+        auto_validate_if_validation_rules_pass: Optional[bool] = None,
         fields: Optional[List["_models.FieldGroup"]] = None,
         fields_layout: Optional["_models.FieldsLayout"] = None,
         fields_configured: Optional[bool] = None,
@@ -1158,6 +1468,7 @@ class Collection(msrest.serialization.Model):
         tailored_extractor_requested: Optional[bool] = None,
         allow_openai: Optional[bool] = False,
         trains_extractor: Optional[bool] = None,
+        disable_confirmation_if_validation_rules_fail: Optional[bool] = False,
         **kwargs,
     ):
         """
@@ -1171,6 +1482,8 @@ class Collection(msrest.serialization.Model):
         :paramtype extractor: ~affinda.models.Extractor
         :keyword auto_validation_threshold:
         :paramtype auto_validation_threshold: float
+        :keyword auto_validate_if_validation_rules_pass:
+        :paramtype auto_validate_if_validation_rules_pass: bool
         :keyword fields:
         :paramtype fields: list[~affinda.models.FieldGroup]
         :keyword fields_layout:
@@ -1200,6 +1513,9 @@ class Collection(msrest.serialization.Model):
         :keyword trains_extractor: Whether this collection feeds documents into the extractor's
          training queue. This setting can only be toggled for custom extractors.
         :paramtype trains_extractor: bool
+        :keyword disable_confirmation_if_validation_rules_fail: If True, users cannot validate
+         documents with missing mandatory fields, or failing validation rules.
+        :paramtype disable_confirmation_if_validation_rules_fail: bool
         """
         super(Collection, self).__init__(**kwargs)
         self.identifier = identifier
@@ -1207,6 +1523,7 @@ class Collection(msrest.serialization.Model):
         self.workspace = workspace
         self.extractor = extractor
         self.auto_validation_threshold = auto_validation_threshold
+        self.auto_validate_if_validation_rules_pass = auto_validate_if_validation_rules_pass
         self.fields = fields
         self.fields_layout = fields_layout
         self.fields_configured = fields_configured
@@ -1219,6 +1536,9 @@ class Collection(msrest.serialization.Model):
         self.tailored_extractor_requested = tailored_extractor_requested
         self.allow_openai = allow_openai
         self.trains_extractor = trains_extractor
+        self.disable_confirmation_if_validation_rules_fail = (
+            disable_confirmation_if_validation_rules_fail
+        )
 
 
 class CollectionCreate(msrest.serialization.Model):
@@ -1254,6 +1574,9 @@ class CollectionCreate(msrest.serialization.Model):
     :ivar trains_extractor: Whether this collection feeds documents into the extractor's training
      queue. This setting can only be toggled for custom extractors.
     :vartype trains_extractor: bool
+    :ivar disable_confirmation_if_validation_rules_fail: If True, users cannot validate documents
+     with missing mandatory fields, or failing validation rules.
+    :vartype disable_confirmation_if_validation_rules_fail: bool
     """
 
     _validation = {
@@ -1274,6 +1597,10 @@ class CollectionCreate(msrest.serialization.Model):
         "extractor_config": {"key": "extractorConfig", "type": "ExtractorConfig"},
         "allow_openai": {"key": "allowOpenai", "type": "bool"},
         "trains_extractor": {"key": "trainsExtractor", "type": "bool"},
+        "disable_confirmation_if_validation_rules_fail": {
+            "key": "disableConfirmationIfValidationRulesFail",
+            "type": "bool",
+        },
     }
 
     def __init__(
@@ -1291,6 +1618,7 @@ class CollectionCreate(msrest.serialization.Model):
         extractor_config: Optional["_models.ExtractorConfig"] = None,
         allow_openai: Optional[bool] = False,
         trains_extractor: Optional[bool] = None,
+        disable_confirmation_if_validation_rules_fail: Optional[bool] = False,
         **kwargs,
     ):
         """
@@ -1322,6 +1650,9 @@ class CollectionCreate(msrest.serialization.Model):
         :keyword trains_extractor: Whether this collection feeds documents into the extractor's
          training queue. This setting can only be toggled for custom extractors.
         :paramtype trains_extractor: bool
+        :keyword disable_confirmation_if_validation_rules_fail: If True, users cannot validate
+         documents with missing mandatory fields, or failing validation rules.
+        :paramtype disable_confirmation_if_validation_rules_fail: bool
         """
         super(CollectionCreate, self).__init__(**kwargs)
         self.name = name
@@ -1336,6 +1667,9 @@ class CollectionCreate(msrest.serialization.Model):
         self.extractor_config = extractor_config
         self.allow_openai = allow_openai
         self.trains_extractor = trains_extractor
+        self.disable_confirmation_if_validation_rules_fail = (
+            disable_confirmation_if_validation_rules_fail
+        )
 
 
 class CollectionField(msrest.serialization.Model):
@@ -1356,6 +1690,8 @@ class CollectionField(msrest.serialization.Model):
     :vartype data_source: str
     :ivar mapping: Defines how the data point is mapped to the data source.
     :vartype mapping: str
+    :ivar display_raw_text: Defines how the data point is mapped to the data source.
+    :vartype display_raw_text: str
     """
 
     _validation = {
@@ -1370,6 +1706,7 @@ class CollectionField(msrest.serialization.Model):
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
         "data_source": {"key": "dataSource", "type": "str"},
         "mapping": {"key": "mapping", "type": "str"},
+        "display_raw_text": {"key": "displayRawText", "type": "str"},
     }
 
     def __init__(
@@ -1382,6 +1719,7 @@ class CollectionField(msrest.serialization.Model):
         auto_validation_threshold: Optional[float] = None,
         data_source: Optional[str] = None,
         mapping: Optional[str] = None,
+        display_raw_text: Optional[str] = None,
         **kwargs,
     ):
         """
@@ -1400,6 +1738,8 @@ class CollectionField(msrest.serialization.Model):
         :paramtype data_source: str
         :keyword mapping: Defines how the data point is mapped to the data source.
         :paramtype mapping: str
+        :keyword display_raw_text: Defines how the data point is mapped to the data source.
+        :paramtype display_raw_text: str
         """
         super(CollectionField, self).__init__(**kwargs)
         self.label = label
@@ -1409,6 +1749,7 @@ class CollectionField(msrest.serialization.Model):
         self.auto_validation_threshold = auto_validation_threshold
         self.data_source = data_source
         self.mapping = mapping
+        self.display_raw_text = display_raw_text
 
 
 class CollectionUpdate(msrest.serialization.Model):
@@ -1435,6 +1776,9 @@ class CollectionUpdate(msrest.serialization.Model):
     :ivar trains_extractor: Whether this collection feeds documents into the extractor's training
      queue. This setting can only be toggled for custom extractors.
     :vartype trains_extractor: bool
+    :ivar disable_confirmation_if_validation_rules_fail: If True, users cannot validate documents
+     with missing mandatory fields, or failing validation rules.
+    :vartype disable_confirmation_if_validation_rules_fail: bool
     """
 
     _attribute_map = {
@@ -1447,6 +1791,10 @@ class CollectionUpdate(msrest.serialization.Model):
         "extractor_config": {"key": "extractorConfig", "type": "ExtractorConfig"},
         "allow_openai": {"key": "allowOpenai", "type": "bool"},
         "trains_extractor": {"key": "trainsExtractor", "type": "bool"},
+        "disable_confirmation_if_validation_rules_fail": {
+            "key": "disableConfirmationIfValidationRulesFail",
+            "type": "bool",
+        },
     }
 
     def __init__(
@@ -1461,6 +1809,7 @@ class CollectionUpdate(msrest.serialization.Model):
         extractor_config: Optional["_models.ExtractorConfig"] = None,
         allow_openai: Optional[bool] = False,
         trains_extractor: Optional[bool] = None,
+        disable_confirmation_if_validation_rules_fail: Optional[bool] = False,
         **kwargs,
     ):
         """
@@ -1485,6 +1834,9 @@ class CollectionUpdate(msrest.serialization.Model):
         :keyword trains_extractor: Whether this collection feeds documents into the extractor's
          training queue. This setting can only be toggled for custom extractors.
         :paramtype trains_extractor: bool
+        :keyword disable_confirmation_if_validation_rules_fail: If True, users cannot validate
+         documents with missing mandatory fields, or failing validation rules.
+        :paramtype disable_confirmation_if_validation_rules_fail: bool
         """
         super(CollectionUpdate, self).__init__(**kwargs)
         self.name = name
@@ -1496,6 +1848,9 @@ class CollectionUpdate(msrest.serialization.Model):
         self.extractor_config = extractor_config
         self.allow_openai = allow_openai
         self.trains_extractor = trains_extractor
+        self.disable_confirmation_if_validation_rules_fail = (
+            disable_confirmation_if_validation_rules_fail
+        )
 
 
 class CollectionWorkspace(msrest.serialization.Model):
@@ -1762,6 +2117,36 @@ class Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1(
         ).__init__(**kwargs)
         self.raw = raw
         self.parsed = parsed
+
+
+class Components1Kwk9B6SchemasThemeconfigPropertiesPalettePropertiesBackgroundOneof1(
+    msrest.serialization.Model
+):
+    """Components1Kwk9B6SchemasThemeconfigPropertiesPalettePropertiesBackgroundOneof1.
+
+    :ivar default:
+    :vartype default: str
+    :ivar paper:
+    :vartype paper: str
+    """
+
+    _attribute_map = {
+        "default": {"key": "default", "type": "str"},
+        "paper": {"key": "paper", "type": "str"},
+    }
+
+    def __init__(self, *, default: Optional[str] = None, paper: Optional[str] = None, **kwargs):
+        """
+        :keyword default:
+        :paramtype default: str
+        :keyword paper:
+        :paramtype paper: str
+        """
+        super(
+            Components1Kwk9B6SchemasThemeconfigPropertiesPalettePropertiesBackgroundOneof1, self
+        ).__init__(**kwargs)
+        self.default = default
+        self.paper = paper
 
 
 class Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1(
@@ -3068,6 +3453,9 @@ class DataFieldCreateField(msrest.serialization.Model):
     :vartype data_source: str
     :ivar mapping: Defines how the data point is mapped to the data source.
     :vartype mapping: str
+    :ivar display_raw_text: If true, then the validation tool will show the user the raw text found
+     on the page, not the value that has been parsed to a specific type.
+    :vartype display_raw_text: bool
     """
 
     _validation = {
@@ -3084,6 +3472,7 @@ class DataFieldCreateField(msrest.serialization.Model):
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
         "data_source": {"key": "dataSource", "type": "str"},
         "mapping": {"key": "mapping", "type": "str"},
+        "display_raw_text": {"key": "displayRawText", "type": "bool"},
     }
 
     def __init__(
@@ -3097,6 +3486,7 @@ class DataFieldCreateField(msrest.serialization.Model):
         auto_validation_threshold: Optional[float] = None,
         data_source: Optional[str] = None,
         mapping: Optional[str] = None,
+        display_raw_text: Optional[bool] = None,
         **kwargs,
     ):
         """
@@ -3120,6 +3510,9 @@ class DataFieldCreateField(msrest.serialization.Model):
         :paramtype data_source: str
         :keyword mapping: Defines how the data point is mapped to the data source.
         :paramtype mapping: str
+        :keyword display_raw_text: If true, then the validation tool will show the user the raw text
+         found on the page, not the value that has been parsed to a specific type.
+        :paramtype display_raw_text: bool
         """
         super(DataFieldCreateField, self).__init__(**kwargs)
         self.label = label
@@ -3130,6 +3523,7 @@ class DataFieldCreateField(msrest.serialization.Model):
         self.auto_validation_threshold = auto_validation_threshold
         self.data_source = data_source
         self.mapping = mapping
+        self.display_raw_text = display_raw_text
 
 
 class DataFieldDataPoint(msrest.serialization.Model):
@@ -3263,7 +3657,7 @@ class DataFieldField(msrest.serialization.Model):
     :vartype field_type: str or ~affinda.models.AnnotationContentType
     :ivar mandatory: Required.
     :vartype mandatory: bool
-    :ivar show_dropdown: Required.
+    :ivar show_dropdown:
     :vartype show_dropdown: bool
     :ivar display_enum_value: Required. If true, both the value and the label for the enums will
      appear in the dropdown in the validation tool.
@@ -3278,12 +3672,14 @@ class DataFieldField(msrest.serialization.Model):
     :vartype data_source: str
     :ivar mapping: Defines how the data point is mapped to the data source.
     :vartype mapping: str
+    :ivar display_raw_text: If true, then the validation tool will show the user the raw text found
+     on the page, not the value that has been parsed to a specific type.
+    :vartype display_raw_text: bool
     """
 
     _validation = {
         "label": {"required": True},
         "mandatory": {"required": True},
-        "show_dropdown": {"required": True},
         "display_enum_value": {"required": True},
         "auto_validation_threshold": {"required": True, "maximum": 1, "minimum": 0},
         "enabled_child_fields": {"required": True},
@@ -3301,6 +3697,7 @@ class DataFieldField(msrest.serialization.Model):
         "disabled_child_fields": {"key": "disabledChildFields", "type": "[Field]"},
         "data_source": {"key": "dataSource", "type": "str"},
         "mapping": {"key": "mapping", "type": "str"},
+        "display_raw_text": {"key": "displayRawText", "type": "bool"},
     }
 
     def __init__(
@@ -3308,14 +3705,15 @@ class DataFieldField(msrest.serialization.Model):
         *,
         label: str,
         mandatory: bool,
-        show_dropdown: bool,
         display_enum_value: bool,
         auto_validation_threshold: float,
         enabled_child_fields: List["_models.Field"],
         disabled_child_fields: List["_models.Field"],
         field_type: Optional[Union[str, "_models.AnnotationContentType"]] = None,
+        show_dropdown: Optional[bool] = None,
         data_source: Optional[str] = None,
         mapping: Optional[str] = None,
+        display_raw_text: Optional[bool] = None,
         **kwargs,
     ):
         """
@@ -3328,7 +3726,7 @@ class DataFieldField(msrest.serialization.Model):
         :paramtype field_type: str or ~affinda.models.AnnotationContentType
         :keyword mandatory: Required.
         :paramtype mandatory: bool
-        :keyword show_dropdown: Required.
+        :keyword show_dropdown:
         :paramtype show_dropdown: bool
         :keyword display_enum_value: Required. If true, both the value and the label for the enums will
          appear in the dropdown in the validation tool.
@@ -3343,6 +3741,9 @@ class DataFieldField(msrest.serialization.Model):
         :paramtype data_source: str
         :keyword mapping: Defines how the data point is mapped to the data source.
         :paramtype mapping: str
+        :keyword display_raw_text: If true, then the validation tool will show the user the raw text
+         found on the page, not the value that has been parsed to a specific type.
+        :paramtype display_raw_text: bool
         """
         super(DataFieldField, self).__init__(**kwargs)
         self.label = label
@@ -3355,6 +3756,7 @@ class DataFieldField(msrest.serialization.Model):
         self.disabled_child_fields = disabled_child_fields
         self.data_source = data_source
         self.mapping = mapping
+        self.display_raw_text = display_raw_text
 
 
 class DataPoint(msrest.serialization.Model):
@@ -4742,6 +5144,12 @@ class DocumentCreate(msrest.serialization.Model):
     :vartype region_bias: str
     :ivar low_priority: Explicitly mark this document as low priority.
     :vartype low_priority: bool
+    :ivar compact: If true, the returned parse result (assuming ``wait`` is also true) will be a
+     compact version of the full result.
+    :vartype compact: bool
+    :ivar delete_after_parse: If true, no data will be stored after parsing. Only compatible with
+     requests where wait: True.
+    :vartype delete_after_parse: bool
     """
 
     _attribute_map = {
@@ -4759,6 +5167,8 @@ class DocumentCreate(msrest.serialization.Model):
         "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
         "region_bias": {"key": "regionBias", "type": "str"},
         "low_priority": {"key": "lowPriority", "type": "bool"},
+        "compact": {"key": "compact", "type": "bool"},
+        "delete_after_parse": {"key": "deleteAfterParse", "type": "bool"},
     }
 
     def __init__(
@@ -4778,6 +5188,8 @@ class DocumentCreate(msrest.serialization.Model):
         reject_duplicates: Optional[bool] = None,
         region_bias: Optional[str] = None,
         low_priority: Optional[bool] = None,
+        compact: Optional[bool] = None,
+        delete_after_parse: Optional[bool] = None,
         **kwargs,
     ):
         """
@@ -4817,6 +5229,12 @@ class DocumentCreate(msrest.serialization.Model):
         :paramtype region_bias: str
         :keyword low_priority: Explicitly mark this document as low priority.
         :paramtype low_priority: bool
+        :keyword compact: If true, the returned parse result (assuming ``wait`` is also true) will be a
+         compact version of the full result.
+        :paramtype compact: bool
+        :keyword delete_after_parse: If true, no data will be stored after parsing. Only compatible
+         with requests where wait: True.
+        :paramtype delete_after_parse: bool
         """
         super(DocumentCreate, self).__init__(**kwargs)
         self.file = file
@@ -4833,6 +5251,8 @@ class DocumentCreate(msrest.serialization.Model):
         self.reject_duplicates = reject_duplicates
         self.region_bias = region_bias
         self.low_priority = low_priority
+        self.compact = compact
+        self.delete_after_parse = delete_after_parse
 
 
 class DocumentEditRequest(msrest.serialization.Model):
@@ -4939,12 +5359,18 @@ class DocumentMeta(msrest.serialization.Model):
     :vartype archived_dt: ~datetime.datetime
     :ivar is_archived:
     :vartype is_archived: bool
+    :ivar skip_parse:
+    :vartype skip_parse: bool
     :ivar confirmed_dt:
     :vartype confirmed_dt: ~datetime.datetime
+    :ivar confirmed_by:
+    :vartype confirmed_by: ~affinda.models.UserNullable
     :ivar is_confirmed:
     :vartype is_confirmed: bool
     :ivar rejected_dt:
     :vartype rejected_dt: ~datetime.datetime
+    :ivar rejected_by:
+    :vartype rejected_by: ~affinda.models.UserNullable
     :ivar is_rejected:
     :vartype is_rejected: bool
     :ivar created_dt:
@@ -4957,8 +5383,6 @@ class DocumentMeta(msrest.serialization.Model):
     :vartype file: str
     :ivar tags: A set of tags.
     :vartype tags: list[~affinda.models.Tag]
-    :ivar confirmed_by:
-    :vartype confirmed_by: ~affinda.models.UserNullable
     :ivar created_by:
     :vartype created_by: ~affinda.models.User
     :ivar source_email: If the document is created via email ingestion, this field stores the email
@@ -4997,16 +5421,18 @@ class DocumentMeta(msrest.serialization.Model):
         "workspace": {"key": "workspace", "type": "DocumentMetaWorkspace"},
         "archived_dt": {"key": "archivedDt", "type": "iso-8601"},
         "is_archived": {"key": "isArchived", "type": "bool"},
+        "skip_parse": {"key": "skipParse", "type": "bool"},
         "confirmed_dt": {"key": "confirmedDt", "type": "iso-8601"},
+        "confirmed_by": {"key": "confirmedBy", "type": "UserNullable"},
         "is_confirmed": {"key": "isConfirmed", "type": "bool"},
         "rejected_dt": {"key": "rejectedDt", "type": "iso-8601"},
+        "rejected_by": {"key": "rejectedBy", "type": "UserNullable"},
         "is_rejected": {"key": "isRejected", "type": "bool"},
         "created_dt": {"key": "createdDt", "type": "iso-8601"},
         "error_code": {"key": "errorCode", "type": "str"},
         "error_detail": {"key": "errorDetail", "type": "str"},
         "file": {"key": "file", "type": "str"},
         "tags": {"key": "tags", "type": "[Tag]"},
-        "confirmed_by": {"key": "confirmedBy", "type": "UserNullable"},
         "created_by": {"key": "createdBy", "type": "User"},
         "source_email": {"key": "sourceEmail", "type": "str"},
         "source_email_address": {"key": "sourceEmailAddress", "type": "str"},
@@ -5035,16 +5461,18 @@ class DocumentMeta(msrest.serialization.Model):
         collection: Optional["_models.DocumentMetaCollection"] = None,
         archived_dt: Optional[datetime.datetime] = None,
         is_archived: Optional[bool] = None,
+        skip_parse: Optional[bool] = None,
         confirmed_dt: Optional[datetime.datetime] = None,
+        confirmed_by: Optional["_models.UserNullable"] = None,
         is_confirmed: Optional[bool] = None,
         rejected_dt: Optional[datetime.datetime] = None,
+        rejected_by: Optional["_models.UserNullable"] = None,
         is_rejected: Optional[bool] = None,
         created_dt: Optional[datetime.datetime] = None,
         error_code: Optional[str] = None,
         error_detail: Optional[str] = None,
         file: Optional[str] = None,
         tags: Optional[List["_models.Tag"]] = None,
-        confirmed_by: Optional["_models.UserNullable"] = None,
         created_by: Optional["_models.User"] = None,
         source_email: Optional[str] = None,
         source_email_address: Optional[str] = None,
@@ -5098,12 +5526,18 @@ class DocumentMeta(msrest.serialization.Model):
         :paramtype archived_dt: ~datetime.datetime
         :keyword is_archived:
         :paramtype is_archived: bool
+        :keyword skip_parse:
+        :paramtype skip_parse: bool
         :keyword confirmed_dt:
         :paramtype confirmed_dt: ~datetime.datetime
+        :keyword confirmed_by:
+        :paramtype confirmed_by: ~affinda.models.UserNullable
         :keyword is_confirmed:
         :paramtype is_confirmed: bool
         :keyword rejected_dt:
         :paramtype rejected_dt: ~datetime.datetime
+        :keyword rejected_by:
+        :paramtype rejected_by: ~affinda.models.UserNullable
         :keyword is_rejected:
         :paramtype is_rejected: bool
         :keyword created_dt:
@@ -5116,8 +5550,6 @@ class DocumentMeta(msrest.serialization.Model):
         :paramtype file: str
         :keyword tags: A set of tags.
         :paramtype tags: list[~affinda.models.Tag]
-        :keyword confirmed_by:
-        :paramtype confirmed_by: ~affinda.models.UserNullable
         :keyword created_by:
         :paramtype created_by: ~affinda.models.User
         :keyword source_email: If the document is created via email ingestion, this field stores the
@@ -5149,16 +5581,18 @@ class DocumentMeta(msrest.serialization.Model):
         self.workspace = workspace
         self.archived_dt = archived_dt
         self.is_archived = is_archived
+        self.skip_parse = skip_parse
         self.confirmed_dt = confirmed_dt
+        self.confirmed_by = confirmed_by
         self.is_confirmed = is_confirmed
         self.rejected_dt = rejected_dt
+        self.rejected_by = rejected_by
         self.is_rejected = is_rejected
         self.created_dt = created_dt
         self.error_code = error_code
         self.error_detail = error_detail
         self.file = file
         self.tags = tags
-        self.confirmed_by = confirmed_by
         self.created_by = created_by
         self.source_email = source_email
         self.source_email_address = source_email_address
@@ -5196,6 +5630,8 @@ class DocumentMetaCollection(msrest.serialization.Model):
     :vartype name: str
     :ivar extractor:
     :vartype extractor: ~affinda.models.DocumentMetaCollectionExtractor
+    :ivar validation_rules:
+    :vartype validation_rules: list[~affinda.models.ValidationRule]
     """
 
     _validation = {
@@ -5206,6 +5642,7 @@ class DocumentMetaCollection(msrest.serialization.Model):
         "identifier": {"key": "identifier", "type": "str"},
         "name": {"key": "name", "type": "str"},
         "extractor": {"key": "extractor", "type": "DocumentMetaCollectionExtractor"},
+        "validation_rules": {"key": "validationRules", "type": "[ValidationRule]"},
     }
 
     def __init__(
@@ -5214,6 +5651,7 @@ class DocumentMetaCollection(msrest.serialization.Model):
         identifier: str,
         name: Optional[str] = None,
         extractor: Optional["_models.DocumentMetaCollectionExtractor"] = None,
+        validation_rules: Optional[List["_models.ValidationRule"]] = None,
         **kwargs,
     ):
         """
@@ -5223,11 +5661,14 @@ class DocumentMetaCollection(msrest.serialization.Model):
         :paramtype name: str
         :keyword extractor:
         :paramtype extractor: ~affinda.models.DocumentMetaCollectionExtractor
+        :keyword validation_rules:
+        :paramtype validation_rules: list[~affinda.models.ValidationRule]
         """
         super(DocumentMetaCollection, self).__init__(**kwargs)
         self.identifier = identifier
         self.name = name
         self.extractor = extractor
+        self.validation_rules = validation_rules
 
 
 class DocumentMetaCollectionExtractor(msrest.serialization.Model):
@@ -5417,6 +5858,8 @@ class DocumentUpdate(msrest.serialization.Model):
     :vartype is_rejected: bool
     :ivar is_archived:
     :vartype is_archived: bool
+    :ivar skip_parse:
+    :vartype skip_parse: bool
     :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
     :vartype language: str
     :ivar identifier: Deprecated in favor of ``customIdentifier``.
@@ -5433,6 +5876,7 @@ class DocumentUpdate(msrest.serialization.Model):
         "is_confirmed": {"key": "isConfirmed", "type": "bool"},
         "is_rejected": {"key": "isRejected", "type": "bool"},
         "is_archived": {"key": "isArchived", "type": "bool"},
+        "skip_parse": {"key": "skipParse", "type": "bool"},
         "language": {"key": "language", "type": "str"},
         "identifier": {"key": "identifier", "type": "str"},
         "custom_identifier": {"key": "customIdentifier", "type": "str"},
@@ -5447,6 +5891,7 @@ class DocumentUpdate(msrest.serialization.Model):
         is_confirmed: Optional[bool] = None,
         is_rejected: Optional[bool] = None,
         is_archived: Optional[bool] = None,
+        skip_parse: Optional[bool] = None,
         language: Optional[str] = None,
         identifier: Optional[str] = None,
         custom_identifier: Optional[str] = None,
@@ -5466,6 +5911,8 @@ class DocumentUpdate(msrest.serialization.Model):
         :paramtype is_rejected: bool
         :keyword is_archived:
         :paramtype is_archived: bool
+        :keyword skip_parse:
+        :paramtype skip_parse: bool
         :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
         :paramtype language: str
         :keyword identifier: Deprecated in favor of ``customIdentifier``.
@@ -5481,6 +5928,7 @@ class DocumentUpdate(msrest.serialization.Model):
         self.is_confirmed = is_confirmed
         self.is_rejected = is_rejected
         self.is_archived = is_archived
+        self.skip_parse = skip_parse
         self.language = language
         self.identifier = identifier
         self.custom_identifier = custom_identifier
@@ -6520,6 +6968,9 @@ class Field(msrest.serialization.Model):
     :vartype disabled_child_fields: list[~affinda.models.Field]
     :ivar slug:
     :vartype slug: str
+    :ivar display_raw_text: If true, then the validation tool will show the user the raw text found
+     on the page, not the value that has been parsed to a specific type.
+    :vartype display_raw_text: bool
     :ivar fields:
     :vartype fields: list[any]
     """
@@ -6546,6 +6997,7 @@ class Field(msrest.serialization.Model):
         "enabled_child_fields": {"key": "enabledChildFields", "type": "[Field]"},
         "disabled_child_fields": {"key": "disabledChildFields", "type": "[Field]"},
         "slug": {"key": "slug", "type": "str"},
+        "display_raw_text": {"key": "displayRawText", "type": "bool"},
         "fields": {"key": "fields", "type": "[object]"},
     }
 
@@ -6566,6 +7018,7 @@ class Field(msrest.serialization.Model):
         enabled_child_fields: Optional[List["_models.Field"]] = None,
         disabled_child_fields: Optional[List["_models.Field"]] = None,
         slug: Optional[str] = None,
+        display_raw_text: Optional[bool] = None,
         fields: Optional[List[Any]] = None,
         **kwargs,
     ):
@@ -6604,6 +7057,9 @@ class Field(msrest.serialization.Model):
         :paramtype disabled_child_fields: list[~affinda.models.Field]
         :keyword slug:
         :paramtype slug: str
+        :keyword display_raw_text: If true, then the validation tool will show the user the raw text
+         found on the page, not the value that has been parsed to a specific type.
+        :paramtype display_raw_text: bool
         :keyword fields:
         :paramtype fields: list[any]
         """
@@ -6622,6 +7078,7 @@ class Field(msrest.serialization.Model):
         self.enabled_child_fields = enabled_child_fields
         self.disabled_child_fields = disabled_child_fields
         self.slug = slug
+        self.display_raw_text = display_raw_text
         self.fields = fields
 
 
@@ -6703,6 +7160,8 @@ class FieldDeprecated(msrest.serialization.Model):
     :vartype auto_validation_threshold: float
     :ivar show_dropdown:
     :vartype show_dropdown: bool
+    :ivar display_raw_text:
+    :vartype display_raw_text: bool
     :ivar drop_null: If True, any dropdown annotations that fail to parse to a value will be
      discarded.
     :vartype drop_null: bool
@@ -6730,6 +7189,7 @@ class FieldDeprecated(msrest.serialization.Model):
         "disabled": {"key": "disabled", "type": "bool"},
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
         "show_dropdown": {"key": "showDropdown", "type": "bool"},
+        "display_raw_text": {"key": "displayRawText", "type": "bool"},
         "drop_null": {"key": "dropNull", "type": "bool"},
         "display_enum_value": {"key": "displayEnumValue", "type": "bool"},
         "fields": {"key": "fields", "type": "[FieldDeprecated]"},
@@ -6749,6 +7209,7 @@ class FieldDeprecated(msrest.serialization.Model):
         disabled: Optional[bool] = None,
         auto_validation_threshold: Optional[float] = None,
         show_dropdown: Optional[bool] = None,
+        display_raw_text: Optional[bool] = None,
         drop_null: Optional[bool] = None,
         display_enum_value: Optional[bool] = None,
         fields: Optional[List["_models.FieldDeprecated"]] = None,
@@ -6781,6 +7242,8 @@ class FieldDeprecated(msrest.serialization.Model):
         :paramtype auto_validation_threshold: float
         :keyword show_dropdown:
         :paramtype show_dropdown: bool
+        :keyword display_raw_text:
+        :paramtype display_raw_text: bool
         :keyword drop_null: If True, any dropdown annotations that fail to parse to a value will be
          discarded.
         :paramtype drop_null: bool
@@ -6801,6 +7264,7 @@ class FieldDeprecated(msrest.serialization.Model):
         self.disabled = disabled
         self.auto_validation_threshold = auto_validation_threshold
         self.show_dropdown = show_dropdown
+        self.display_raw_text = display_raw_text
         self.drop_null = drop_null
         self.display_enum_value = display_enum_value
         self.fields = fields
@@ -14232,7 +14696,7 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
     :ivar show_index_dropdown: Controls whether or not the index dropdown is displayed to the user.
     :vartype show_index_dropdown: bool
     :ivar search_tool_theme: Customize the theme of the embeded search tool.
-    :vartype search_tool_theme: dict[str, any]
+    :vartype search_tool_theme: ~affinda.models.JobDescriptionSearchConfigSearchToolTheme
     :ivar user_id: ID of the logged in user.
     :vartype user_id: int
     :ivar username: Username of the logged in user.
@@ -14245,6 +14709,9 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
     :vartype hide_side_panel: bool
     :ivar custom_fields_config:
     :vartype custom_fields_config: list[~affinda.models.CustomFieldConfig]
+    :ivar distance_unit: The unit of distance to use for location based searches. Known values are:
+     "mi", "km".
+    :vartype distance_unit: str or ~affinda.models.JobDescriptionSearchConfigDistanceUnit
     """
 
     _validation = {
@@ -14276,13 +14743,17 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         "weight_keywords": {"key": "weightKeywords", "type": "float"},
         "indices": {"key": "indices", "type": "[str]"},
         "show_index_dropdown": {"key": "showIndexDropdown", "type": "bool"},
-        "search_tool_theme": {"key": "searchToolTheme", "type": "{object}"},
+        "search_tool_theme": {
+            "key": "searchToolTheme",
+            "type": "JobDescriptionSearchConfigSearchToolTheme",
+        },
         "user_id": {"key": "userId", "type": "int"},
         "username": {"key": "username", "type": "str"},
         "actions": {"key": "actions", "type": "[SearchConfigAction]"},
         "hide_toolbar": {"key": "hideToolbar", "type": "bool"},
         "hide_side_panel": {"key": "hideSidePanel", "type": "bool"},
         "custom_fields_config": {"key": "customFieldsConfig", "type": "[CustomFieldConfig]"},
+        "distance_unit": {"key": "distanceUnit", "type": "str"},
     }
 
     def __init__(
@@ -14310,11 +14781,14 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         weight_keywords: Optional[float] = None,
         indices: Optional[List[str]] = None,
         show_index_dropdown: Optional[bool] = None,
-        search_tool_theme: Optional[Dict[str, Any]] = None,
+        search_tool_theme: Optional["_models.JobDescriptionSearchConfigSearchToolTheme"] = None,
         actions: Optional[List["_models.SearchConfigAction"]] = None,
         hide_toolbar: Optional[bool] = None,
         hide_side_panel: Optional[bool] = None,
         custom_fields_config: Optional[List["_models.CustomFieldConfig"]] = None,
+        distance_unit: Optional[
+            Union[str, "_models.JobDescriptionSearchConfigDistanceUnit"]
+        ] = None,
         **kwargs,
     ):
         """
@@ -14365,7 +14839,7 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
          user.
         :paramtype show_index_dropdown: bool
         :keyword search_tool_theme: Customize the theme of the embeded search tool.
-        :paramtype search_tool_theme: dict[str, any]
+        :paramtype search_tool_theme: ~affinda.models.JobDescriptionSearchConfigSearchToolTheme
         :keyword actions: A list of actions to show in the dropdown in the embedded search tool.
         :paramtype actions: list[~affinda.models.SearchConfigAction]
         :keyword hide_toolbar: Hide the reset/import toolbar.
@@ -14374,6 +14848,9 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         :paramtype hide_side_panel: bool
         :keyword custom_fields_config:
         :paramtype custom_fields_config: list[~affinda.models.CustomFieldConfig]
+        :keyword distance_unit: The unit of distance to use for location based searches. Known values
+         are: "mi", "km".
+        :paramtype distance_unit: str or ~affinda.models.JobDescriptionSearchConfigDistanceUnit
         """
         super(JobDescriptionSearchConfig, self).__init__(**kwargs)
         self.allow_pdf_download = allow_pdf_download
@@ -14405,6 +14882,101 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         self.hide_toolbar = hide_toolbar
         self.hide_side_panel = hide_side_panel
         self.custom_fields_config = custom_fields_config
+        self.distance_unit = distance_unit
+
+
+class ThemeConfig(msrest.serialization.Model):
+    """ThemeConfig.
+
+    :ivar palette:
+    :vartype palette: ~affinda.models.ThemeConfigPalette
+    :ivar typography:
+    :vartype typography: ~affinda.models.ThemeConfigTypography
+    :ivar border_radius:
+    :vartype border_radius: float
+    :ivar font_url:
+    :vartype font_url: str
+    """
+
+    _attribute_map = {
+        "palette": {"key": "palette", "type": "ThemeConfigPalette"},
+        "typography": {"key": "typography", "type": "ThemeConfigTypography"},
+        "border_radius": {"key": "borderRadius", "type": "float"},
+        "font_url": {"key": "fontUrl", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        palette: Optional["_models.ThemeConfigPalette"] = None,
+        typography: Optional["_models.ThemeConfigTypography"] = None,
+        border_radius: Optional[float] = None,
+        font_url: Optional[str] = None,
+        **kwargs,
+    ):
+        """
+        :keyword palette:
+        :paramtype palette: ~affinda.models.ThemeConfigPalette
+        :keyword typography:
+        :paramtype typography: ~affinda.models.ThemeConfigTypography
+        :keyword border_radius:
+        :paramtype border_radius: float
+        :keyword font_url:
+        :paramtype font_url: str
+        """
+        super(ThemeConfig, self).__init__(**kwargs)
+        self.palette = palette
+        self.typography = typography
+        self.border_radius = border_radius
+        self.font_url = font_url
+
+
+class JobDescriptionSearchConfigSearchToolTheme(ThemeConfig):
+    """Customize the theme of the embeded search tool.
+
+    :ivar palette:
+    :vartype palette: ~affinda.models.ThemeConfigPalette
+    :ivar typography:
+    :vartype typography: ~affinda.models.ThemeConfigTypography
+    :ivar border_radius:
+    :vartype border_radius: float
+    :ivar font_url:
+    :vartype font_url: str
+    """
+
+    _attribute_map = {
+        "palette": {"key": "palette", "type": "ThemeConfigPalette"},
+        "typography": {"key": "typography", "type": "ThemeConfigTypography"},
+        "border_radius": {"key": "borderRadius", "type": "float"},
+        "font_url": {"key": "fontUrl", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        palette: Optional["_models.ThemeConfigPalette"] = None,
+        typography: Optional["_models.ThemeConfigTypography"] = None,
+        border_radius: Optional[float] = None,
+        font_url: Optional[str] = None,
+        **kwargs,
+    ):
+        """
+        :keyword palette:
+        :paramtype palette: ~affinda.models.ThemeConfigPalette
+        :keyword typography:
+        :paramtype typography: ~affinda.models.ThemeConfigTypography
+        :keyword border_radius:
+        :paramtype border_radius: float
+        :keyword font_url:
+        :paramtype font_url: str
+        """
+        super(JobDescriptionSearchConfigSearchToolTheme, self).__init__(
+            palette=palette,
+            typography=typography,
+            border_radius=border_radius,
+            font_url=font_url,
+            **kwargs,
+        )
 
 
 class JobDescriptionSearchDetail(msrest.serialization.Model):
@@ -14818,6 +15390,8 @@ class Location(msrest.serialization.Model):
     :vartype postal_code: str
     :ivar state:
     :vartype state: str
+    :ivar state_code:
+    :vartype state_code: str
     :ivar country:
     :vartype country: str
     :ivar country_code: Two letter country code (ISO 3166-1 alpha-2).
@@ -14836,12 +15410,15 @@ class Location(msrest.serialization.Model):
     :vartype latitude: float
     :ivar longitude:
     :vartype longitude: float
+    :ivar po_box:
+    :vartype po_box: str
     """
 
     _validation = {
         "formatted": {"readonly": True},
         "postal_code": {"readonly": True},
         "state": {"readonly": True},
+        "state_code": {"readonly": True},
         "country": {"readonly": True},
         "country_code": {"readonly": True},
         "raw_input": {"required": True},
@@ -14851,12 +15428,14 @@ class Location(msrest.serialization.Model):
         "city": {"readonly": True},
         "latitude": {"readonly": True},
         "longitude": {"readonly": True},
+        "po_box": {"readonly": True},
     }
 
     _attribute_map = {
         "formatted": {"key": "formatted", "type": "str"},
         "postal_code": {"key": "postalCode", "type": "str"},
         "state": {"key": "state", "type": "str"},
+        "state_code": {"key": "stateCode", "type": "str"},
         "country": {"key": "country", "type": "str"},
         "country_code": {"key": "countryCode", "type": "str"},
         "raw_input": {"key": "rawInput", "type": "str"},
@@ -14866,6 +15445,7 @@ class Location(msrest.serialization.Model):
         "city": {"key": "city", "type": "str"},
         "latitude": {"key": "latitude", "type": "float"},
         "longitude": {"key": "longitude", "type": "float"},
+        "po_box": {"key": "poBox", "type": "str"},
     }
 
     def __init__(self, *, raw_input: str, **kwargs):
@@ -14877,6 +15457,7 @@ class Location(msrest.serialization.Model):
         self.formatted = None
         self.postal_code = None
         self.state = None
+        self.state_code = None
         self.country = None
         self.country_code = None
         self.raw_input = raw_input
@@ -14886,6 +15467,7 @@ class Location(msrest.serialization.Model):
         self.city = None
         self.latitude = None
         self.longitude = None
+        self.po_box = None
 
 
 class JobDescriptionSearchDetailLocationValue(
@@ -14906,6 +15488,8 @@ class JobDescriptionSearchDetailLocationValue(
     :vartype postal_code: str
     :ivar state:
     :vartype state: str
+    :ivar state_code:
+    :vartype state_code: str
     :ivar country:
     :vartype country: str
     :ivar country_code: Two letter country code (ISO 3166-1 alpha-2).
@@ -14924,12 +15508,15 @@ class JobDescriptionSearchDetailLocationValue(
     :vartype latitude: float
     :ivar longitude:
     :vartype longitude: float
+    :ivar po_box:
+    :vartype po_box: str
     """
 
     _validation = {
         "formatted": {"readonly": True},
         "postal_code": {"readonly": True},
         "state": {"readonly": True},
+        "state_code": {"readonly": True},
         "country": {"readonly": True},
         "country_code": {"readonly": True},
         "raw_input": {"required": True},
@@ -14939,6 +15526,7 @@ class JobDescriptionSearchDetailLocationValue(
         "city": {"readonly": True},
         "latitude": {"readonly": True},
         "longitude": {"readonly": True},
+        "po_box": {"readonly": True},
     }
 
     _attribute_map = {
@@ -14946,6 +15534,7 @@ class JobDescriptionSearchDetailLocationValue(
         "formatted": {"key": "formatted", "type": "str"},
         "postal_code": {"key": "postalCode", "type": "str"},
         "state": {"key": "state", "type": "str"},
+        "state_code": {"key": "stateCode", "type": "str"},
         "country": {"key": "country", "type": "str"},
         "country_code": {"key": "countryCode", "type": "str"},
         "raw_input": {"key": "rawInput", "type": "str"},
@@ -14955,6 +15544,7 @@ class JobDescriptionSearchDetailLocationValue(
         "city": {"key": "city", "type": "str"},
         "latitude": {"key": "latitude", "type": "float"},
         "longitude": {"key": "longitude", "type": "float"},
+        "po_box": {"key": "poBox", "type": "str"},
     }
 
     def __init__(self, *, raw_input: str, match: Optional[bool] = None, **kwargs):
@@ -14971,6 +15561,7 @@ class JobDescriptionSearchDetailLocationValue(
         self.formatted = None
         self.postal_code = None
         self.state = None
+        self.state_code = None
         self.country = None
         self.country_code = None
         self.raw_input = raw_input
@@ -14980,6 +15571,7 @@ class JobDescriptionSearchDetailLocationValue(
         self.city = None
         self.latitude = None
         self.longitude = None
+        self.po_box = None
 
 
 class JobDescriptionSearchDetailManagementLevel(msrest.serialization.Model):
@@ -16967,6 +17559,8 @@ class LocationAnnotationUpdateParsed(Location):
     :vartype postal_code: str
     :ivar state:
     :vartype state: str
+    :ivar state_code:
+    :vartype state_code: str
     :ivar country:
     :vartype country: str
     :ivar country_code: Two letter country code (ISO 3166-1 alpha-2).
@@ -16985,12 +17579,15 @@ class LocationAnnotationUpdateParsed(Location):
     :vartype latitude: float
     :ivar longitude:
     :vartype longitude: float
+    :ivar po_box:
+    :vartype po_box: str
     """
 
     _validation = {
         "formatted": {"readonly": True},
         "postal_code": {"readonly": True},
         "state": {"readonly": True},
+        "state_code": {"readonly": True},
         "country": {"readonly": True},
         "country_code": {"readonly": True},
         "raw_input": {"required": True},
@@ -17000,12 +17597,14 @@ class LocationAnnotationUpdateParsed(Location):
         "city": {"readonly": True},
         "latitude": {"readonly": True},
         "longitude": {"readonly": True},
+        "po_box": {"readonly": True},
     }
 
     _attribute_map = {
         "formatted": {"key": "formatted", "type": "str"},
         "postal_code": {"key": "postalCode", "type": "str"},
         "state": {"key": "state", "type": "str"},
+        "state_code": {"key": "stateCode", "type": "str"},
         "country": {"key": "country", "type": "str"},
         "country_code": {"key": "countryCode", "type": "str"},
         "raw_input": {"key": "rawInput", "type": "str"},
@@ -17015,6 +17614,7 @@ class LocationAnnotationUpdateParsed(Location):
         "city": {"key": "city", "type": "str"},
         "latitude": {"key": "latitude", "type": "float"},
         "longitude": {"key": "longitude", "type": "float"},
+        "po_box": {"key": "poBox", "type": "str"},
     }
 
     def __init__(self, *, raw_input: str, **kwargs):
@@ -17901,10 +18501,18 @@ class OrganizationValidationToolConfig(msrest.serialization.Model):
     :vartype hide_actions: bool
     :ivar hide_collection: Hide the collection selector.
     :vartype hide_collection: bool
+    :ivar hide_edit_pages: Hide the edit pages button.
+    :vartype hide_edit_pages: bool
     :ivar hide_export: Hide the export menu.
     :vartype hide_export: bool
     :ivar hide_filename: Hide the filename input.
     :vartype hide_filename: bool
+    :ivar hide_reject: Hide the reject document button.
+    :vartype hide_reject: bool
+    :ivar hide_reparse: Hide the reparse button.
+    :vartype hide_reparse: bool
+    :ivar hide_run_ocr: Hide the run OCR button.
+    :vartype hide_run_ocr: bool
     :ivar hide_tags: Hide the tags editor.
     :vartype hide_tags: bool
     :ivar hide_warnings: Hide the warnings panel.
@@ -17923,8 +18531,12 @@ class OrganizationValidationToolConfig(msrest.serialization.Model):
         "theme": {"key": "theme", "type": "ThemeConfig"},
         "hide_actions": {"key": "hideActions", "type": "bool"},
         "hide_collection": {"key": "hideCollection", "type": "bool"},
+        "hide_edit_pages": {"key": "hideEditPages", "type": "bool"},
         "hide_export": {"key": "hideExport", "type": "bool"},
         "hide_filename": {"key": "hideFilename", "type": "bool"},
+        "hide_reject": {"key": "hideReject", "type": "bool"},
+        "hide_reparse": {"key": "hideReparse", "type": "bool"},
+        "hide_run_ocr": {"key": "hideRunOcr", "type": "bool"},
         "hide_tags": {"key": "hideTags", "type": "bool"},
         "hide_warnings": {"key": "hideWarnings", "type": "bool"},
         "restrict_document_splitting": {"key": "restrictDocumentSplitting", "type": "bool"},
@@ -17938,8 +18550,12 @@ class OrganizationValidationToolConfig(msrest.serialization.Model):
         theme: Optional["_models.ThemeConfig"] = None,
         hide_actions: Optional[bool] = None,
         hide_collection: Optional[bool] = None,
+        hide_edit_pages: Optional[bool] = None,
         hide_export: Optional[bool] = None,
         hide_filename: Optional[bool] = None,
+        hide_reject: Optional[bool] = None,
+        hide_reparse: Optional[bool] = None,
+        hide_run_ocr: Optional[bool] = None,
         hide_tags: Optional[bool] = None,
         hide_warnings: Optional[bool] = None,
         restrict_document_splitting: Optional[bool] = None,
@@ -17954,10 +18570,18 @@ class OrganizationValidationToolConfig(msrest.serialization.Model):
         :paramtype hide_actions: bool
         :keyword hide_collection: Hide the collection selector.
         :paramtype hide_collection: bool
+        :keyword hide_edit_pages: Hide the edit pages button.
+        :paramtype hide_edit_pages: bool
         :keyword hide_export: Hide the export menu.
         :paramtype hide_export: bool
         :keyword hide_filename: Hide the filename input.
         :paramtype hide_filename: bool
+        :keyword hide_reject: Hide the reject document button.
+        :paramtype hide_reject: bool
+        :keyword hide_reparse: Hide the reparse button.
+        :paramtype hide_reparse: bool
+        :keyword hide_run_ocr: Hide the run OCR button.
+        :paramtype hide_run_ocr: bool
         :keyword hide_tags: Hide the tags editor.
         :paramtype hide_tags: bool
         :keyword hide_warnings: Hide the warnings panel.
@@ -17975,8 +18599,12 @@ class OrganizationValidationToolConfig(msrest.serialization.Model):
         self.theme = theme
         self.hide_actions = hide_actions
         self.hide_collection = hide_collection
+        self.hide_edit_pages = hide_edit_pages
         self.hide_export = hide_export
         self.hide_filename = hide_filename
+        self.hide_reject = hide_reject
+        self.hide_reparse = hide_reparse
+        self.hide_run_ocr = hide_run_ocr
         self.hide_tags = hide_tags
         self.hide_warnings = hide_warnings
         self.restrict_document_splitting = restrict_document_splitting
@@ -19673,12 +20301,17 @@ class RegionBias(msrest.serialization.Model):
     :ivar square_coordinates: A list of coordinates used by Pelias in the shape of [min_lon,
      min_lat, max_lon, max_lat].
     :vartype square_coordinates: list[float]
+    :ivar strict: If true, the location must be within the region, as opposed to prefering
+     locations within the region.
+     Default to false.
+    :vartype strict: bool
     """
 
     _attribute_map = {
         "country": {"key": "country", "type": "str"},
         "countries": {"key": "countries", "type": "[str]"},
         "square_coordinates": {"key": "squareCoordinates", "type": "[float]"},
+        "strict": {"key": "strict", "type": "bool"},
     }
 
     def __init__(
@@ -19687,6 +20320,7 @@ class RegionBias(msrest.serialization.Model):
         country: Optional[str] = None,
         countries: Optional[List[str]] = None,
         square_coordinates: Optional[List[float]] = None,
+        strict: Optional[bool] = None,
         **kwargs,
     ):
         """
@@ -19697,11 +20331,16 @@ class RegionBias(msrest.serialization.Model):
         :keyword square_coordinates: A list of coordinates used by Pelias in the shape of [min_lon,
          min_lat, max_lon, max_lat].
         :paramtype square_coordinates: list[float]
+        :keyword strict: If true, the location must be within the region, as opposed to prefering
+         locations within the region.
+         Default to false.
+        :paramtype strict: bool
         """
         super(RegionBias, self).__init__(**kwargs)
         self.country = country
         self.countries = countries
         self.square_coordinates = square_coordinates
+        self.strict = strict
 
 
 class RequestError(msrest.serialization.Model):
@@ -19789,7 +20428,8 @@ class ResthookSubscription(msrest.serialization.Model):
      "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
      "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
      "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
-     "document.classify.failed", "document.classify.completed", "document.rejected".
+     "document.classify.failed", "document.classify.completed", "document.rejected",
+     "annotation.validated".
     :vartype event: str or ~affinda.models.ResthookEvent
     :ivar organization: Required.
     :vartype organization: ~affinda.models.Organization
@@ -19856,7 +20496,8 @@ class ResthookSubscription(msrest.serialization.Model):
          "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
          "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
          "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
-         "document.classify.failed", "document.classify.completed", "document.rejected".
+         "document.classify.failed", "document.classify.completed", "document.rejected",
+         "annotation.validated".
         :paramtype event: str or ~affinda.models.ResthookEvent
         :keyword organization: Required.
         :paramtype organization: ~affinda.models.Organization
@@ -19900,7 +20541,8 @@ class ResthookSubscriptionCreate(msrest.serialization.Model):
      "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
      "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
      "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
-     "document.classify.failed", "document.classify.completed", "document.rejected".
+     "document.classify.failed", "document.classify.completed", "document.rejected",
+     "annotation.validated".
     :vartype event: str or ~affinda.models.ResthookEvent
     :ivar organization:
     :vartype organization: str
@@ -19942,7 +20584,8 @@ class ResthookSubscriptionCreate(msrest.serialization.Model):
          "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
          "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
          "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
-         "document.classify.failed", "document.classify.completed", "document.rejected".
+         "document.classify.failed", "document.classify.completed", "document.rejected",
+         "annotation.validated".
         :paramtype event: str or ~affinda.models.ResthookEvent
         :keyword organization:
         :paramtype organization: str
@@ -19968,7 +20611,7 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
      "invoice.parse.failed", "invoice.parse.completed", "invoice.validate.completed",
      "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
      "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
-     "document.classify.completed", "document.rejected".
+     "document.classify.completed", "document.rejected", "annotation.validated".
     :vartype event: str or ~affinda.models.ResthookEvent
     :ivar organization: Uniquely identify an organization.
     :vartype organization: str
@@ -20001,7 +20644,7 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
          "invoice.parse.failed", "invoice.parse.completed", "invoice.validate.completed",
          "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
          "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
-         "document.classify.completed", "document.rejected".
+         "document.classify.completed", "document.rejected", "annotation.validated".
         :paramtype event: str or ~affinda.models.ResthookEvent
         :keyword organization: Uniquely identify an organization.
         :paramtype organization: str
@@ -21047,7 +21690,7 @@ class ResumeSearchConfig(msrest.serialization.Model):
     :ivar show_index_dropdown: Controls whether or not the index dropdown is displayed to the user.
     :vartype show_index_dropdown: bool
     :ivar search_tool_theme: Customize the theme of the embeded search tool.
-    :vartype search_tool_theme: dict[str, any]
+    :vartype search_tool_theme: ~affinda.models.ResumeSearchConfigSearchToolTheme
     :ivar user_id: ID of the logged in user.
     :vartype user_id: int
     :ivar username: Username of the logged in user.
@@ -21060,6 +21703,9 @@ class ResumeSearchConfig(msrest.serialization.Model):
     :vartype hide_side_panel: bool
     :ivar custom_fields_config:
     :vartype custom_fields_config: list[~affinda.models.CustomFieldConfig]
+    :ivar distance_unit: The unit of distance to use for location based searches. Known values are:
+     "mi", "km".
+    :vartype distance_unit: str or ~affinda.models.ResumeSearchConfigDistanceUnit
     """
 
     _validation = {
@@ -21091,13 +21737,17 @@ class ResumeSearchConfig(msrest.serialization.Model):
         "weight_keywords": {"key": "weightKeywords", "type": "float"},
         "indices": {"key": "indices", "type": "[str]"},
         "show_index_dropdown": {"key": "showIndexDropdown", "type": "bool"},
-        "search_tool_theme": {"key": "searchToolTheme", "type": "{object}"},
+        "search_tool_theme": {
+            "key": "searchToolTheme",
+            "type": "ResumeSearchConfigSearchToolTheme",
+        },
         "user_id": {"key": "userId", "type": "int"},
         "username": {"key": "username", "type": "str"},
         "actions": {"key": "actions", "type": "[SearchConfigAction]"},
         "hide_toolbar": {"key": "hideToolbar", "type": "bool"},
         "hide_side_panel": {"key": "hideSidePanel", "type": "bool"},
         "custom_fields_config": {"key": "customFieldsConfig", "type": "[CustomFieldConfig]"},
+        "distance_unit": {"key": "distanceUnit", "type": "str"},
     }
 
     def __init__(
@@ -21125,11 +21775,12 @@ class ResumeSearchConfig(msrest.serialization.Model):
         weight_keywords: Optional[float] = None,
         indices: Optional[List[str]] = None,
         show_index_dropdown: Optional[bool] = None,
-        search_tool_theme: Optional[Dict[str, Any]] = None,
+        search_tool_theme: Optional["_models.ResumeSearchConfigSearchToolTheme"] = None,
         actions: Optional[List["_models.SearchConfigAction"]] = None,
         hide_toolbar: Optional[bool] = None,
         hide_side_panel: Optional[bool] = None,
         custom_fields_config: Optional[List["_models.CustomFieldConfig"]] = None,
+        distance_unit: Optional[Union[str, "_models.ResumeSearchConfigDistanceUnit"]] = None,
         **kwargs,
     ):
         """
@@ -21180,7 +21831,7 @@ class ResumeSearchConfig(msrest.serialization.Model):
          user.
         :paramtype show_index_dropdown: bool
         :keyword search_tool_theme: Customize the theme of the embeded search tool.
-        :paramtype search_tool_theme: dict[str, any]
+        :paramtype search_tool_theme: ~affinda.models.ResumeSearchConfigSearchToolTheme
         :keyword actions: A list of actions to show in the dropdown in the embedded search tool.
         :paramtype actions: list[~affinda.models.SearchConfigAction]
         :keyword hide_toolbar: Hide the reset/import toolbar.
@@ -21189,6 +21840,9 @@ class ResumeSearchConfig(msrest.serialization.Model):
         :paramtype hide_side_panel: bool
         :keyword custom_fields_config:
         :paramtype custom_fields_config: list[~affinda.models.CustomFieldConfig]
+        :keyword distance_unit: The unit of distance to use for location based searches. Known values
+         are: "mi", "km".
+        :paramtype distance_unit: str or ~affinda.models.ResumeSearchConfigDistanceUnit
         """
         super(ResumeSearchConfig, self).__init__(**kwargs)
         self.allow_pdf_download = allow_pdf_download
@@ -21220,6 +21874,55 @@ class ResumeSearchConfig(msrest.serialization.Model):
         self.hide_toolbar = hide_toolbar
         self.hide_side_panel = hide_side_panel
         self.custom_fields_config = custom_fields_config
+        self.distance_unit = distance_unit
+
+
+class ResumeSearchConfigSearchToolTheme(ThemeConfig):
+    """Customize the theme of the embeded search tool.
+
+    :ivar palette:
+    :vartype palette: ~affinda.models.ThemeConfigPalette
+    :ivar typography:
+    :vartype typography: ~affinda.models.ThemeConfigTypography
+    :ivar border_radius:
+    :vartype border_radius: float
+    :ivar font_url:
+    :vartype font_url: str
+    """
+
+    _attribute_map = {
+        "palette": {"key": "palette", "type": "ThemeConfigPalette"},
+        "typography": {"key": "typography", "type": "ThemeConfigTypography"},
+        "border_radius": {"key": "borderRadius", "type": "float"},
+        "font_url": {"key": "fontUrl", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        palette: Optional["_models.ThemeConfigPalette"] = None,
+        typography: Optional["_models.ThemeConfigTypography"] = None,
+        border_radius: Optional[float] = None,
+        font_url: Optional[str] = None,
+        **kwargs,
+    ):
+        """
+        :keyword palette:
+        :paramtype palette: ~affinda.models.ThemeConfigPalette
+        :keyword typography:
+        :paramtype typography: ~affinda.models.ThemeConfigTypography
+        :keyword border_radius:
+        :paramtype border_radius: float
+        :keyword font_url:
+        :paramtype font_url: str
+        """
+        super(ResumeSearchConfigSearchToolTheme, self).__init__(
+            palette=palette,
+            typography=typography,
+            border_radius=border_radius,
+            font_url=font_url,
+            **kwargs,
+        )
 
 
 class ResumeSearchDetail(msrest.serialization.Model):
@@ -21808,6 +22511,8 @@ class ResumeSearchDetailLocationValue(
     :vartype postal_code: str
     :ivar state:
     :vartype state: str
+    :ivar state_code:
+    :vartype state_code: str
     :ivar country:
     :vartype country: str
     :ivar country_code: Two letter country code (ISO 3166-1 alpha-2).
@@ -21826,12 +22531,15 @@ class ResumeSearchDetailLocationValue(
     :vartype latitude: float
     :ivar longitude:
     :vartype longitude: float
+    :ivar po_box:
+    :vartype po_box: str
     """
 
     _validation = {
         "formatted": {"readonly": True},
         "postal_code": {"readonly": True},
         "state": {"readonly": True},
+        "state_code": {"readonly": True},
         "country": {"readonly": True},
         "country_code": {"readonly": True},
         "raw_input": {"required": True},
@@ -21841,6 +22549,7 @@ class ResumeSearchDetailLocationValue(
         "city": {"readonly": True},
         "latitude": {"readonly": True},
         "longitude": {"readonly": True},
+        "po_box": {"readonly": True},
     }
 
     _attribute_map = {
@@ -21848,6 +22557,7 @@ class ResumeSearchDetailLocationValue(
         "formatted": {"key": "formatted", "type": "str"},
         "postal_code": {"key": "postalCode", "type": "str"},
         "state": {"key": "state", "type": "str"},
+        "state_code": {"key": "stateCode", "type": "str"},
         "country": {"key": "country", "type": "str"},
         "country_code": {"key": "countryCode", "type": "str"},
         "raw_input": {"key": "rawInput", "type": "str"},
@@ -21857,6 +22567,7 @@ class ResumeSearchDetailLocationValue(
         "city": {"key": "city", "type": "str"},
         "latitude": {"key": "latitude", "type": "float"},
         "longitude": {"key": "longitude", "type": "float"},
+        "po_box": {"key": "poBox", "type": "str"},
     }
 
     def __init__(self, *, raw_input: str, match: Optional[bool] = None, **kwargs):
@@ -21873,6 +22584,7 @@ class ResumeSearchDetailLocationValue(
         self.formatted = None
         self.postal_code = None
         self.state = None
+        self.state_code = None
         self.country = None
         self.country_code = None
         self.raw_input = raw_input
@@ -21882,6 +22594,7 @@ class ResumeSearchDetailLocationValue(
         self.city = None
         self.latitude = None
         self.longitude = None
+        self.po_box = None
 
 
 class ResumeSearchDetailManagementLevel(msrest.serialization.Model):
@@ -24587,59 +25300,13 @@ class TextAnnotationUpdate(AnnotationBase):
         self.parsed = parsed
 
 
-class ThemeConfig(msrest.serialization.Model):
-    """ThemeConfig.
-
-    :ivar palette:
-    :vartype palette: ~affinda.models.ThemeConfigPalette
-    :ivar typography:
-    :vartype typography: ~affinda.models.ThemeConfigTypography
-    :ivar border_radius:
-    :vartype border_radius: float
-    :ivar font_url:
-    :vartype font_url: str
-    """
-
-    _attribute_map = {
-        "palette": {"key": "palette", "type": "ThemeConfigPalette"},
-        "typography": {"key": "typography", "type": "ThemeConfigTypography"},
-        "border_radius": {"key": "borderRadius", "type": "float"},
-        "font_url": {"key": "fontUrl", "type": "str"},
-    }
-
-    def __init__(
-        self,
-        *,
-        palette: Optional["_models.ThemeConfigPalette"] = None,
-        typography: Optional["_models.ThemeConfigTypography"] = None,
-        border_radius: Optional[float] = None,
-        font_url: Optional[str] = None,
-        **kwargs,
-    ):
-        """
-        :keyword palette:
-        :paramtype palette: ~affinda.models.ThemeConfigPalette
-        :keyword typography:
-        :paramtype typography: ~affinda.models.ThemeConfigTypography
-        :keyword border_radius:
-        :paramtype border_radius: float
-        :keyword font_url:
-        :paramtype font_url: str
-        """
-        super(ThemeConfig, self).__init__(**kwargs)
-        self.palette = palette
-        self.typography = typography
-        self.border_radius = border_radius
-        self.font_url = font_url
-
-
 class ThemeConfigPalette(msrest.serialization.Model):
     """ThemeConfigPalette.
 
     :ivar mode: Known values are: "light", "dark".
     :vartype mode: str or ~affinda.models.ThemeConfigPaletteMode
-    :ivar background:
-    :vartype background: ~affinda.models.ThemeConfigPaletteBackground
+    :ivar background: Anything.
+    :vartype background: any
     :ivar text:
     :vartype text: ~affinda.models.ThemeConfigPaletteText
     :ivar divider:
@@ -24662,7 +25329,7 @@ class ThemeConfigPalette(msrest.serialization.Model):
 
     _attribute_map = {
         "mode": {"key": "mode", "type": "str"},
-        "background": {"key": "background", "type": "ThemeConfigPaletteBackground"},
+        "background": {"key": "background", "type": "object"},
         "text": {"key": "text", "type": "ThemeConfigPaletteText"},
         "divider": {"key": "divider", "type": "str"},
         "primary": {"key": "primary", "type": "PaletteColorOptions"},
@@ -24678,7 +25345,7 @@ class ThemeConfigPalette(msrest.serialization.Model):
         self,
         *,
         mode: Optional[Union[str, "_models.ThemeConfigPaletteMode"]] = None,
-        background: Optional["_models.ThemeConfigPaletteBackground"] = None,
+        background: Optional[Any] = None,
         text: Optional["_models.ThemeConfigPaletteText"] = None,
         divider: Optional[str] = None,
         primary: Optional["_models.PaletteColorOptions"] = None,
@@ -24693,8 +25360,8 @@ class ThemeConfigPalette(msrest.serialization.Model):
         """
         :keyword mode: Known values are: "light", "dark".
         :paramtype mode: str or ~affinda.models.ThemeConfigPaletteMode
-        :keyword background:
-        :paramtype background: ~affinda.models.ThemeConfigPaletteBackground
+        :keyword background: Anything.
+        :paramtype background: any
         :keyword text:
         :paramtype text: ~affinda.models.ThemeConfigPaletteText
         :keyword divider:
@@ -24726,32 +25393,6 @@ class ThemeConfigPalette(msrest.serialization.Model):
         self.error = error
         self.info = info
         self.warning = warning
-
-
-class ThemeConfigPaletteBackground(msrest.serialization.Model):
-    """ThemeConfigPaletteBackground.
-
-    :ivar default:
-    :vartype default: str
-    :ivar paper:
-    :vartype paper: str
-    """
-
-    _attribute_map = {
-        "default": {"key": "default", "type": "str"},
-        "paper": {"key": "paper", "type": "str"},
-    }
-
-    def __init__(self, *, default: Optional[str] = None, paper: Optional[str] = None, **kwargs):
-        """
-        :keyword default:
-        :paramtype default: str
-        :keyword paper:
-        :paramtype paper: str
-        """
-        super(ThemeConfigPaletteBackground, self).__init__(**kwargs)
-        self.default = default
-        self.paper = paper
 
 
 class ThemeConfigPaletteText(msrest.serialization.Model):
@@ -24798,8 +25439,8 @@ class ThemeConfigTypography(msrest.serialization.Model):
 
     :ivar font_family:
     :vartype font_family: str
-    :ivar font_size:
-    :vartype font_size: str
+    :ivar font_size: Anything.
+    :vartype font_size: any
     :ivar font_weight_regular:
     :vartype font_weight_regular: str
     :ivar font_weight_medium:
@@ -24810,7 +25451,7 @@ class ThemeConfigTypography(msrest.serialization.Model):
 
     _attribute_map = {
         "font_family": {"key": "fontFamily", "type": "str"},
-        "font_size": {"key": "fontSize", "type": "str"},
+        "font_size": {"key": "fontSize", "type": "object"},
         "font_weight_regular": {"key": "fontWeightRegular", "type": "str"},
         "font_weight_medium": {"key": "fontWeightMedium", "type": "str"},
         "font_weight_bold": {"key": "fontWeightBold", "type": "str"},
@@ -24820,7 +25461,7 @@ class ThemeConfigTypography(msrest.serialization.Model):
         self,
         *,
         font_family: Optional[str] = None,
-        font_size: Optional[str] = None,
+        font_size: Optional[Any] = None,
         font_weight_regular: Optional[str] = None,
         font_weight_medium: Optional[str] = None,
         font_weight_bold: Optional[str] = None,
@@ -24829,8 +25470,8 @@ class ThemeConfigTypography(msrest.serialization.Model):
         """
         :keyword font_family:
         :paramtype font_family: str
-        :keyword font_size:
-        :paramtype font_size: str
+        :keyword font_size: Anything.
+        :paramtype font_size: any
         :keyword font_weight_regular:
         :paramtype font_weight_regular: str
         :keyword font_weight_medium:
@@ -25172,6 +25813,231 @@ class UserNullable(msrest.serialization.Model):
         self.avatar = avatar
 
 
+class ValidationResult(msrest.serialization.Model):
+    """Validation result arising from a ValidationRule.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar id: Required. Validation Result's ID.
+    :vartype id: int
+    :ivar annotations: Required. List of annotation ids that were validated.
+    :vartype annotations: list[int]
+    :ivar passed: Required. Whether the validation passed or not.
+    :vartype passed: bool
+    :ivar rule_slug: Required. The hot-dog case slug of the validation rule that was applied.
+    :vartype rule_slug: str
+    :ivar message: Required. Message explaining why the validation failed.
+    :vartype message: str
+    :ivar document: Required. Unique identifier for the document.
+    :vartype document: str
+    """
+
+    _validation = {
+        "id": {"required": True, "minimum": 1},
+        "annotations": {"required": True},
+        "passed": {"required": True},
+        "rule_slug": {"required": True, "pattern": r"^[a-z0-9][a-z0-9-]*[a-z0-9]$"},
+        "message": {"required": True},
+        "document": {"required": True},
+    }
+
+    _attribute_map = {
+        "id": {"key": "id", "type": "int"},
+        "annotations": {"key": "annotations", "type": "[int]"},
+        "passed": {"key": "passed", "type": "bool"},
+        "rule_slug": {"key": "ruleSlug", "type": "str"},
+        "message": {"key": "message", "type": "str"},
+        "document": {"key": "document", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        id: int,
+        annotations: List[int],
+        passed: bool,
+        rule_slug: str,
+        message: str,
+        document: str,
+        **kwargs,
+    ):
+        """
+        :keyword id: Required. Validation Result's ID.
+        :paramtype id: int
+        :keyword annotations: Required. List of annotation ids that were validated.
+        :paramtype annotations: list[int]
+        :keyword passed: Required. Whether the validation passed or not.
+        :paramtype passed: bool
+        :keyword rule_slug: Required. The hot-dog case slug of the validation rule that was applied.
+        :paramtype rule_slug: str
+        :keyword message: Required. Message explaining why the validation failed.
+        :paramtype message: str
+        :keyword document: Required. Unique identifier for the document.
+        :paramtype document: str
+        """
+        super(ValidationResult, self).__init__(**kwargs)
+        self.id = id
+        self.annotations = annotations
+        self.passed = passed
+        self.rule_slug = rule_slug
+        self.message = message
+        self.document = document
+
+
+class ValidationResultCreate(msrest.serialization.Model):
+    """ValidationResultCreate.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar annotations: Required. List of annotation ids that were validated.
+    :vartype annotations: list[int]
+    :ivar passed: Whether the validation passed or not.
+    :vartype passed: bool
+    :ivar rule_slug: Required. The hot-dog case slug of the validation rule that was applied.
+    :vartype rule_slug: str
+    :ivar message: Required. Message explaining why the validation failed.
+    :vartype message: str
+    :ivar document: Required. Unique identifier for the document.
+    :vartype document: str
+    """
+
+    _validation = {
+        "annotations": {"required": True},
+        "rule_slug": {"required": True, "pattern": r"^[a-z0-9][a-z0-9-]*[a-z0-9]$"},
+        "message": {"required": True},
+        "document": {"required": True},
+    }
+
+    _attribute_map = {
+        "annotations": {"key": "annotations", "type": "[int]"},
+        "passed": {"key": "passed", "type": "bool"},
+        "rule_slug": {"key": "ruleSlug", "type": "str"},
+        "message": {"key": "message", "type": "str"},
+        "document": {"key": "document", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        annotations: List[int],
+        rule_slug: str,
+        message: str,
+        document: str,
+        passed: Optional[bool] = None,
+        **kwargs,
+    ):
+        """
+        :keyword annotations: Required. List of annotation ids that were validated.
+        :paramtype annotations: list[int]
+        :keyword passed: Whether the validation passed or not.
+        :paramtype passed: bool
+        :keyword rule_slug: Required. The hot-dog case slug of the validation rule that was applied.
+        :paramtype rule_slug: str
+        :keyword message: Required. Message explaining why the validation failed.
+        :paramtype message: str
+        :keyword document: Required. Unique identifier for the document.
+        :paramtype document: str
+        """
+        super(ValidationResultCreate, self).__init__(**kwargs)
+        self.annotations = annotations
+        self.passed = passed
+        self.rule_slug = rule_slug
+        self.message = message
+        self.document = document
+
+
+class ValidationResultUpdate(msrest.serialization.Model):
+    """ValidationResultUpdate.
+
+    :ivar annotations: List of annotation ids that were validated.
+    :vartype annotations: list[int]
+    :ivar passed: Whether the validation passed or not.
+    :vartype passed: bool
+    :ivar rule_slug: The hot-dog case slug of the validation rule that was applied.
+    :vartype rule_slug: str
+    :ivar message: Message explaining why the validation failed.
+    :vartype message: str
+    :ivar document: Unique identifier for the document.
+    :vartype document: str
+    """
+
+    _validation = {
+        "rule_slug": {"pattern": r"^[a-z0-9][a-z0-9-]*[a-z0-9]$"},
+    }
+
+    _attribute_map = {
+        "annotations": {"key": "annotations", "type": "[int]"},
+        "passed": {"key": "passed", "type": "bool"},
+        "rule_slug": {"key": "ruleSlug", "type": "str"},
+        "message": {"key": "message", "type": "str"},
+        "document": {"key": "document", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        annotations: Optional[List[int]] = None,
+        passed: Optional[bool] = None,
+        rule_slug: Optional[str] = None,
+        message: Optional[str] = None,
+        document: Optional[str] = None,
+        **kwargs,
+    ):
+        """
+        :keyword annotations: List of annotation ids that were validated.
+        :paramtype annotations: list[int]
+        :keyword passed: Whether the validation passed or not.
+        :paramtype passed: bool
+        :keyword rule_slug: The hot-dog case slug of the validation rule that was applied.
+        :paramtype rule_slug: str
+        :keyword message: Message explaining why the validation failed.
+        :paramtype message: str
+        :keyword document: Unique identifier for the document.
+        :paramtype document: str
+        """
+        super(ValidationResultUpdate, self).__init__(**kwargs)
+        self.annotations = annotations
+        self.passed = passed
+        self.rule_slug = rule_slug
+        self.message = message
+        self.document = document
+
+
+class ValidationRule(msrest.serialization.Model):
+    """A validation rule for a collection.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar slug: Required. The slug of the validation rule, in lowercase snake_case.
+    :vartype slug: str
+    :ivar data_points: Required. The data point identifier that this validation rule applies to,
+     can be an empty list if the rule doens't use any data points as sources.
+    :vartype data_points: list[str]
+    """
+
+    _validation = {
+        "slug": {"required": True, "pattern": r"^[a-z0-9_]+$"},
+        "data_points": {"required": True},
+    }
+
+    _attribute_map = {
+        "slug": {"key": "slug", "type": "str"},
+        "data_points": {"key": "dataPoints", "type": "[str]"},
+    }
+
+    def __init__(self, *, slug: str, data_points: List[str], **kwargs):
+        """
+        :keyword slug: Required. The slug of the validation rule, in lowercase snake_case.
+        :paramtype slug: str
+        :keyword data_points: Required. The data point identifier that this validation rule applies to,
+         can be an empty list if the rule doens't use any data points as sources.
+        :paramtype data_points: list[str]
+        """
+        super(ValidationRule, self).__init__(**kwargs)
+        self.slug = slug
+        self.data_points = data_points
+
+
 class ValidationToolConfig(msrest.serialization.Model):
     """Configuration of the embeddable validation tool.
 
@@ -25181,10 +26047,18 @@ class ValidationToolConfig(msrest.serialization.Model):
     :vartype hide_actions: bool
     :ivar hide_collection: Hide the collection selector.
     :vartype hide_collection: bool
+    :ivar hide_edit_pages: Hide the edit pages button.
+    :vartype hide_edit_pages: bool
     :ivar hide_export: Hide the export menu.
     :vartype hide_export: bool
     :ivar hide_filename: Hide the filename input.
     :vartype hide_filename: bool
+    :ivar hide_reject: Hide the reject document button.
+    :vartype hide_reject: bool
+    :ivar hide_reparse: Hide the reparse button.
+    :vartype hide_reparse: bool
+    :ivar hide_run_ocr: Hide the run OCR button.
+    :vartype hide_run_ocr: bool
     :ivar hide_tags: Hide the tags editor.
     :vartype hide_tags: bool
     :ivar hide_warnings: Hide the warnings panel.
@@ -25203,8 +26077,12 @@ class ValidationToolConfig(msrest.serialization.Model):
         "theme": {"key": "theme", "type": "ThemeConfig"},
         "hide_actions": {"key": "hideActions", "type": "bool"},
         "hide_collection": {"key": "hideCollection", "type": "bool"},
+        "hide_edit_pages": {"key": "hideEditPages", "type": "bool"},
         "hide_export": {"key": "hideExport", "type": "bool"},
         "hide_filename": {"key": "hideFilename", "type": "bool"},
+        "hide_reject": {"key": "hideReject", "type": "bool"},
+        "hide_reparse": {"key": "hideReparse", "type": "bool"},
+        "hide_run_ocr": {"key": "hideRunOcr", "type": "bool"},
         "hide_tags": {"key": "hideTags", "type": "bool"},
         "hide_warnings": {"key": "hideWarnings", "type": "bool"},
         "restrict_document_splitting": {"key": "restrictDocumentSplitting", "type": "bool"},
@@ -25218,8 +26096,12 @@ class ValidationToolConfig(msrest.serialization.Model):
         theme: Optional["_models.ThemeConfig"] = None,
         hide_actions: Optional[bool] = None,
         hide_collection: Optional[bool] = None,
+        hide_edit_pages: Optional[bool] = None,
         hide_export: Optional[bool] = None,
         hide_filename: Optional[bool] = None,
+        hide_reject: Optional[bool] = None,
+        hide_reparse: Optional[bool] = None,
+        hide_run_ocr: Optional[bool] = None,
         hide_tags: Optional[bool] = None,
         hide_warnings: Optional[bool] = None,
         restrict_document_splitting: Optional[bool] = None,
@@ -25234,10 +26116,18 @@ class ValidationToolConfig(msrest.serialization.Model):
         :paramtype hide_actions: bool
         :keyword hide_collection: Hide the collection selector.
         :paramtype hide_collection: bool
+        :keyword hide_edit_pages: Hide the edit pages button.
+        :paramtype hide_edit_pages: bool
         :keyword hide_export: Hide the export menu.
         :paramtype hide_export: bool
         :keyword hide_filename: Hide the filename input.
         :paramtype hide_filename: bool
+        :keyword hide_reject: Hide the reject document button.
+        :paramtype hide_reject: bool
+        :keyword hide_reparse: Hide the reparse button.
+        :paramtype hide_reparse: bool
+        :keyword hide_run_ocr: Hide the run OCR button.
+        :paramtype hide_run_ocr: bool
         :keyword hide_tags: Hide the tags editor.
         :paramtype hide_tags: bool
         :keyword hide_warnings: Hide the warnings panel.
@@ -25255,8 +26145,12 @@ class ValidationToolConfig(msrest.serialization.Model):
         self.theme = theme
         self.hide_actions = hide_actions
         self.hide_collection = hide_collection
+        self.hide_edit_pages = hide_edit_pages
         self.hide_export = hide_export
         self.hide_filename = hide_filename
+        self.hide_reject = hide_reject
+        self.hide_reparse = hide_reparse
+        self.hide_run_ocr = hide_run_ocr
         self.hide_tags = hide_tags
         self.hide_warnings = hide_warnings
         self.restrict_document_splitting = restrict_document_splitting

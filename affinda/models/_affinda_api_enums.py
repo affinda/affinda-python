@@ -89,7 +89,7 @@ class EducationLevel(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     DOCTORAL = "doctoral"
 
 
-class Enum19(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class Enum20(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     RESUMES = "resumes"
     JOB_DESCRIPTIONS = "job_descriptions"
@@ -112,6 +112,13 @@ class InvitationStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     PENDING = "pending"
     ACCEPTED = "accepted"
     DECLINED = "declined"
+
+
+class JobDescriptionSearchConfigDistanceUnit(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+    """The unit of distance to use for location based searches"""
+
+    MI = "mi"
+    KM = "km"
 
 
 class ManagementLevel(str, Enum, metaclass=CaseInsensitiveEnumMeta):
@@ -140,6 +147,7 @@ class Region(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
     API = "api"
     API_EU1 = "api.eu1"
+    API_US1 = "api.us1"
 
 
 class ResthookEvent(str, Enum, metaclass=CaseInsensitiveEnumMeta):
@@ -160,6 +168,7 @@ class ResthookEvent(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     DOCUMENT_CLASSIFY_FAILED = "document.classify.failed"
     DOCUMENT_CLASSIFY_COMPLETED = "document.classify.completed"
     DOCUMENT_REJECTED = "document.rejected"
+    ANNOTATION_VALIDATED = "annotation.validated"
 
 
 class ResthookSubscriptionVersion(str, Enum, metaclass=CaseInsensitiveEnumMeta):
@@ -375,6 +384,13 @@ class ResumeDataLanguagesItem(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     XHOSA = "Xhosa"
     YIDDISH = "Yiddish"
     YORUBA = "Yoruba"
+
+
+class ResumeSearchConfigDistanceUnit(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+    """The unit of distance to use for location based searches"""
+
+    MI = "mi"
+    KM = "km"
 
 
 class ResumeSkillSourcesItemSection(str, Enum, metaclass=CaseInsensitiveEnumMeta):

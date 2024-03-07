@@ -618,6 +618,8 @@ def create_document(file=None,
                     reject_duplicates=None,
                     region_bias=None,
                     low_priority=None,
+                    compact=None,
+                    delete_after_parse=None,
                     **kwargs)
 ```
 
@@ -644,6 +646,10 @@ required to be unique. Default value is None.
 - `reject_duplicates` (`bool`): Default value is None.
 - `region_bias` (`str`): A JSON representation of the RegionBias object. Default value is None.
 - `low_priority` (`bool`): Explicitly mark this document as low priority. Default value is None.
+- `compact` (`bool`): If true, the returned parse result (assuming ``wait`` is also true) will be a
+compact version of the full result. Default value is None.
+- `delete_after_parse` (`bool`): If true, no data will be stored after parsing. Only compatible with
+requests where wait: True. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -842,6 +848,135 @@ involved.
 **Returns**:
 
 `list[~affinda.models.Meta]`: list of Meta, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_validation_results"></a>
+
+#### get\_all\_validation\_results
+
+```python
+def get_all_validation_results(document, offset=None, limit=300, **kwargs)
+```
+
+Get list of all validation results.
+
+Returns the validation results of a document.
+
+**Arguments**:
+
+- `document` (`str`): Filter by document.
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[~affinda.models.ValidationResult]`: list of ValidationResult, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_validation_result"></a>
+
+#### create\_validation\_result
+
+```python
+def create_validation_result(body, **kwargs)
+```
+
+Create a validation result.
+
+Create a validation result.
+
+**Arguments**:
+
+- `body` (`~affinda.models.ValidationResultCreate`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ValidationResult`: ValidationResult, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_validation_result"></a>
+
+#### get\_validation\_result
+
+```python
+def get_validation_result(id, **kwargs)
+```
+
+Get specific validation result.
+
+Return a specific validation result.
+
+**Arguments**:
+
+- `id` (`int`): Validation result's ID.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ValidationResult`: ValidationResult, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_validation_result"></a>
+
+#### update\_validation\_result
+
+```python
+def update_validation_result(id, body, **kwargs)
+```
+
+Update a validation result.
+
+Update a validation result.
+
+**Arguments**:
+
+- `id` (`int`): Validation result's ID.
+- `body` (`~affinda.models.ValidationResultUpdate`): Validation result data to update.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ValidationResult`: ValidationResult, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_validation_result"></a>
+
+#### delete\_validation\_result
+
+```python
+def delete_validation_result(id, **kwargs)
+```
+
+Delete a validation result.
+
+Remove validation result.
+
+**Arguments**:
+
+- `id` (`int`): Validation result's ID.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_extractors"></a>
 
@@ -1336,7 +1471,7 @@ Create a annotation.
 
 **Returns**:
 
-`~affinda.models.Annotation or None`: Annotation or None, or the result of cls(response)
+`~affinda.models.AnnotationWithValidationResults or None`: AnnotationWithValidationResults or None, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_annotation"></a>
 
@@ -1412,7 +1547,7 @@ Deletes the specified annotation from the database.
 
 **Returns**:
 
-`None`: None, or the result of cls(response)
+`~affinda.models.AnotationDelete`: AnotationDelete, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.batch_create_annotations"></a>
 
@@ -1487,7 +1622,7 @@ Batch delete annotations.
 
 **Returns**:
 
-`None`: None, or the result of cls(response)
+`~affinda.models.BatchDeleteAnnotationsResponse`: BatchDeleteAnnotationsResponse, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_mapping_data_source"></a>
 
@@ -2920,7 +3055,7 @@ Returns all the indexes.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
-- `document_type` (`str or ~affinda.models.Enum19`): Filter indices by a document type. Default value is None.
+- `document_type` (`str or ~affinda.models.Enum20`): Filter indices by a document type. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -3013,7 +3148,7 @@ Deletes the specified index from the database.
 #### get\_all\_index\_documents
 
 ```python
-def get_all_index_documents(name, **kwargs)
+def get_all_index_documents(name, offset=None, limit=300, **kwargs)
 ```
 
 Get indexed documents for a specific index.
@@ -3023,6 +3158,9 @@ Returns all the indexed documents for that index.
 **Arguments**:
 
 - `name` (`str`): Index name.
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `limit` (`int`): The numbers of results to return. Default value is 300.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
