@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.9.0] - 2024-03-15
+### Added
+- Add US1 region
+
+## [3.8.0] - 2024-03-15
+### Added
+- Add isOcrd to document metadata
+- Add strict attribute to RegionBias
+
 ## [3.7.0] - 2023-10-19
 ### Added
 - Add field custom_identifier to DocumentMeta model

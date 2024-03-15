@@ -581,6 +581,27 @@ response = client.create_index(name=index_name)
 print(response.as_dict())
 ```
 
+### updateIndex - Update an index
+
+```python
+from affinda import AffindaAPI, TokenCredential
+
+token = "REPLACE_TOKEN"
+old_index = "REPLACE_INDEX_NAME"
+new_index = "REPLACE_NEW_INDEX_NAME"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+request_body = {
+    "name": new_index,
+}
+
+resp = client.update_index(name=old_index, body=request_body)
+
+print(resp.as_dict())
+```
+
 ### deleteIndex - Delete an index
 
 ```python

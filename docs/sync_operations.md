@@ -249,6 +249,7 @@ def create_redacted_resume(file=None,
                            redact_locations="true",
                            redact_dates="true",
                            redact_gender="true",
+                           redact_pdf_metadata="true",
                            expiry_time=None,
                            **kwargs)
 ```
@@ -278,6 +279,7 @@ Default value is "true".
 - `redact_locations` (`str`): Whether to redact location names. Default value is "true".
 - `redact_dates` (`str`): Whether to redact dates. Default value is "true".
 - `redact_gender` (`str`): Whether to redact gender. Default value is "true".
+- `redact_pdf_metadata` (`str`): Whether to redact PDF metadata. Default value is "true".
 - `expiry_time` (`~datetime.datetime`): Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
@@ -1052,7 +1054,7 @@ Returns all the indexes.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is 300.
-- `document_type` (`str or ~affinda.models.Enum5`): Filter indices by a document type. Default value is None.
+- `document_type` (`str or ~affinda.models.Enum7`): Filter indices by a document type. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1069,7 +1071,7 @@ cls(response)
 #### create\_index
 
 ```python
-def create_index(name=None, document_type=None, **kwargs)
+def create_index(body, **kwargs)
 ```
 
 Create a new index.
@@ -1078,8 +1080,7 @@ Create an index for the search tool.
 
 **Arguments**:
 
-- `name` (`str`): Default value is None.
-- `document_type` (`str or ~affinda.models.PostContentSchemaDocumentType`): Default value is None.
+- `body` (`~affinda.models.IndexCreate`): Index to create.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1088,8 +1089,33 @@ Create an index for the search tool.
 
 **Returns**:
 
-`~affinda.models.Paths1Sikw07V2IndexPostResponses201ContentApplicationJsonSchema`: Paths1Sikw07V2IndexPostResponses201ContentApplicationJsonSchema, or the result of
-cls(response)
+`~affinda.models.Index`: Index, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_index"></a>
+
+#### update\_index
+
+```python
+def update_index(name, body, **kwargs)
+```
+
+Update an index.
+
+Updates the specified index.
+
+**Arguments**:
+
+- `name` (`str`): Index name.
+- `body` (`~affinda.models.IndexUpdate`): Index data to update.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Index`: Index, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_index"></a>
 
