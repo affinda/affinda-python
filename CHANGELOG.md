@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.10.0] - 2024-03-15
+### Added
+- Add isOcrd to document metadata
+
 ## [3.9.0] - 2024-03-15
 ### Added
 - Add US1 region

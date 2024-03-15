@@ -7912,7 +7912,7 @@ class InvoiceRequestBody(msrest.serialization.Model):
     """InvoiceRequestBody.
 
     :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
-     JPG.
+     JPG, TIFF, ODT, XLS, XLSX, ZIP.
     :vartype file: IO
     :ivar url: URL to download the invoice.
     :vartype url: str
@@ -7975,7 +7975,7 @@ class InvoiceRequestBody(msrest.serialization.Model):
     ):
         """
         :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
-         PNG, JPG.
+         PNG, JPG, TIFF, ODT, XLS, XLSX, ZIP.
         :paramtype file: IO
         :keyword url: URL to download the invoice.
         :paramtype url: str
@@ -8383,7 +8383,7 @@ class JobDescriptionRequestBody(msrest.serialization.Model):
     """JobDescriptionRequestBody.
 
     :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
-     JPG.
+     JPG, TIFF, ODT, XLS, XLSX, ZIP.
     :vartype file: IO
     :ivar url: URL to download the job description.
     :vartype url: str
@@ -8450,7 +8450,7 @@ class JobDescriptionRequestBody(msrest.serialization.Model):
     ):
         """
         :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
-         PNG, JPG.
+         PNG, JPG, TIFF, ODT, XLS, XLSX, ZIP.
         :paramtype file: IO
         :keyword url: URL to download the job description.
         :paramtype url: str
@@ -11399,6 +11399,8 @@ class Meta(msrest.serialization.Model):
     :vartype document_type: str
     :ivar region_bias:
     :vartype region_bias: ~affinda.models.RegionBias
+    :ivar is_ocrd:
+    :vartype is_ocrd: bool
     """
 
     _attribute_map = {
@@ -11420,6 +11422,7 @@ class Meta(msrest.serialization.Model):
         "created_dt": {"key": "createdDt", "type": "iso-8601"},
         "document_type": {"key": "documentType", "type": "str"},
         "region_bias": {"key": "regionBias", "type": "RegionBias"},
+        "is_ocrd": {"key": "isOcrd", "type": "bool"},
     }
 
     def __init__(
@@ -11443,6 +11446,7 @@ class Meta(msrest.serialization.Model):
         created_dt: Optional[datetime.datetime] = None,
         document_type: Optional[str] = None,
         region_bias: Optional["_models.RegionBias"] = None,
+        is_ocrd: Optional[bool] = None,
         **kwargs,
     ):
         """
@@ -11493,6 +11497,8 @@ class Meta(msrest.serialization.Model):
         :paramtype document_type: str
         :keyword region_bias:
         :paramtype region_bias: ~affinda.models.RegionBias
+        :keyword is_ocrd:
+        :paramtype is_ocrd: bool
         """
         super(Meta, self).__init__(**kwargs)
         self.identifier = identifier
@@ -11513,6 +11519,7 @@ class Meta(msrest.serialization.Model):
         self.created_dt = created_dt
         self.document_type = document_type
         self.region_bias = region_bias
+        self.is_ocrd = is_ocrd
 
 
 class MetaChildDocumentsItem(msrest.serialization.Model):
@@ -12551,7 +12558,7 @@ class RedactedResumeRequestBody(msrest.serialization.Model):
     """RedactedResumeRequestBody.
 
     :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
-     JPG.
+     JPG, TIFF, ODT, XLS, XLSX, ZIP.
     :vartype file: IO
     :ivar identifier: Deprecated in favor of ``customIdentifier``.
     :vartype identifier: str
@@ -12635,7 +12642,7 @@ class RedactedResumeRequestBody(msrest.serialization.Model):
     ):
         """
         :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
-         PNG, JPG.
+         PNG, JPG, TIFF, ODT, XLS, XLSX, ZIP.
         :paramtype file: IO
         :keyword identifier: Deprecated in favor of ``customIdentifier``.
         :paramtype identifier: str
@@ -13823,7 +13830,7 @@ class ResumeRequestBody(msrest.serialization.Model):
     """ResumeRequestBody.
 
     :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
-     JPG.
+     JPG, TIFF, ODT, XLS, XLSX, ZIP.
     :vartype file: IO
     :ivar url: URL to download the resume.
     :vartype url: str
@@ -13890,7 +13897,7 @@ class ResumeRequestBody(msrest.serialization.Model):
     ):
         """
         :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
-         PNG, JPG.
+         PNG, JPG, TIFF, ODT, XLS, XLSX, ZIP.
         :paramtype file: IO
         :keyword url: URL to download the resume.
         :paramtype url: str

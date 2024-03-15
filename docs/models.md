@@ -4535,7 +4535,7 @@ class InvoiceRequestBody(msrest.serialization.Model)
 InvoiceRequestBody.
 
 :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
- JPG.
+ JPG, TIFF, ODT, XLS, XLSX, ZIP.
 :vartype file: IO
 :ivar url: URL to download the invoice.
 :vartype url: str
@@ -4576,7 +4576,7 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
-PNG, JPG.
+PNG, JPG, TIFF, ODT, XLS, XLSX, ZIP.
 - `url`: URL to download the invoice.
 - `identifier`: Deprecated in favor of ``customIdentifier``.
 - `custom_identifier`: Specify a custom identifier for the document if you need one, not
@@ -4800,7 +4800,7 @@ class JobDescriptionRequestBody(msrest.serialization.Model)
 JobDescriptionRequestBody.
 
 :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
- JPG.
+ JPG, TIFF, ODT, XLS, XLSX, ZIP.
 :vartype file: IO
 :ivar url: URL to download the job description.
 :vartype url: str
@@ -4843,7 +4843,7 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
-PNG, JPG.
+PNG, JPG, TIFF, ODT, XLS, XLSX, ZIP.
 - `url`: URL to download the job description.
 - `data`: A JSON-encoded string of the ``JobDescriptionData`` object.
 - `identifier`: Deprecated in favor of ``customIdentifier``.
@@ -6690,6 +6690,8 @@ Meta.
 :vartype document_type: str
 :ivar region_bias:
 :vartype region_bias: ~affinda.models.RegionBias
+:ivar is_ocrd:
+:vartype is_ocrd: bool
 
 <a id="models._models.Meta.__init__"></a>
 
@@ -6730,6 +6732,7 @@ applicable for images or PDF documents without a text layer).
 - `created_dt`: 
 - `document_type`: 
 - `region_bias`: 
+- `is_ocrd`: 
 
 <a id="models._models.MetaChildDocumentsItem"></a>
 
@@ -7568,7 +7571,7 @@ class RedactedResumeRequestBody(msrest.serialization.Model)
 RedactedResumeRequestBody.
 
 :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
- JPG.
+ JPG, TIFF, ODT, XLS, XLSX, ZIP.
 :vartype file: IO
 :ivar identifier: Deprecated in favor of ``customIdentifier``.
 :vartype identifier: str
@@ -7618,7 +7621,7 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
-PNG, JPG.
+PNG, JPG, TIFF, ODT, XLS, XLSX, ZIP.
 - `identifier`: Deprecated in favor of ``customIdentifier``.
 - `custom_identifier`: Specify a custom identifier for the document if you need one, not
 required to be unique.
@@ -8397,7 +8400,7 @@ class ResumeRequestBody(msrest.serialization.Model)
 ResumeRequestBody.
 
 :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
- JPG.
+ JPG, TIFF, ODT, XLS, XLSX, ZIP.
 :vartype file: IO
 :ivar url: URL to download the resume.
 :vartype url: str
@@ -8440,7 +8443,7 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
-PNG, JPG.
+PNG, JPG, TIFF, ODT, XLS, XLSX, ZIP.
 - `url`: URL to download the resume.
 - `data`: A JSON-encoded string of the ``ResumeData`` object.
 - `identifier`: Deprecated in favor of ``customIdentifier``.
