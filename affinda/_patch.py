@@ -6,7 +6,6 @@
 
 Follow our quickstart for examples: https://aka.ms/azsdk/python/dpcodegen/python/customize
 """
-from typing import Any
 
 from azure.core import PipelineClient
 from azure.core.pipeline import PipelineRequest
@@ -16,7 +15,6 @@ from msrest import Deserializer, Serializer
 from . import models
 from ._affinda_api import AffindaAPI as AffindaAPIGenerated
 from ._configuration import AffindaAPIConfiguration
-from .token_credential import TokenCredential
 
 
 class BearerTokenWithoutTLSEnforcementPolicy(BearerTokenCredentialPolicy):

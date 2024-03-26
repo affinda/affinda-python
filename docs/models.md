@@ -197,71 +197,20 @@ confidence that the text in the image has been correctly read by the model.
 - `data_point`: 
 - `content_type`: 
 
-<a id="models._models.AnnotationUpdate"></a>
-
-## AnnotationUpdate Objects
-
-```python
-class AnnotationUpdate(msrest.serialization.Model)
-```
-
-AnnotationUpdate.
-
-:ivar rectangles: x/y coordinates for the rectangles containing the data. An annotation can be
- contained within multiple rectangles.
-:vartype rectangles: list[~affinda.models.Rectangle]
-:ivar document: Unique identifier for the document.
-:vartype document: str
-:ivar page_index: The page number within the document, starting from 0.
-:vartype page_index: int
-:ivar raw: Raw data extracted from the before any post-processing.
-:vartype raw: str
-:ivar parsed: Anything.
-:vartype parsed: any
-:ivar is_client_verified: Indicates whether the data has been validated by a human.
-:vartype is_client_verified: bool
-:ivar data_point: Data point's identifier.
-:vartype data_point: str
-:ivar parent: The parent annotation's ID.
-:vartype parent: int
-:ivar validation_results: The validation results created, changed or deleted as a result of
- updating the annotation.
-:vartype validation_results: list[~affinda.models.ChangedValidationResults]
-
-<a id="models._models.AnnotationUpdate.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(**kwargs)
-```
-
-**Arguments**:
-
-- `rectangles`: x/y coordinates for the rectangles containing the data. An annotation can
-be contained within multiple rectangles.
-- `document`: Unique identifier for the document.
-- `page_index`: The page number within the document, starting from 0.
-- `raw`: Raw data extracted from the before any post-processing.
-- `parsed`: Anything.
-- `is_client_verified`: Indicates whether the data has been validated by a human.
-- `data_point`: Data point's identifier.
-- `parent`: The parent annotation's ID.
-- `validation_results`: The validation results created, changed or deleted as a result of
-updating the annotation.
-
 <a id="models._models.AnnotationBatchUpdate"></a>
 
 ## AnnotationBatchUpdate Objects
 
 ```python
-class AnnotationBatchUpdate(AnnotationUpdate)
+class AnnotationBatchUpdate(msrest.serialization.Model)
 ```
 
 AnnotationBatchUpdate.
 
 All required parameters must be populated in order to send to Azure.
 
+:ivar id: Required. Annotation's ID.
+:vartype id: int
 :ivar rectangles: x/y coordinates for the rectangles containing the data. An annotation can be
  contained within multiple rectangles.
 :vartype rectangles: list[~affinda.models.Rectangle]
@@ -282,8 +231,6 @@ All required parameters must be populated in order to send to Azure.
 :ivar validation_results: The validation results created, changed or deleted as a result of
  updating the annotation.
 :vartype validation_results: list[~affinda.models.ChangedValidationResults]
-:ivar id: Required. Annotation's ID.
-:vartype id: int
 
 <a id="models._models.AnnotationBatchUpdate.__init__"></a>
 
@@ -295,6 +242,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
+- `id`: Required. Annotation's ID.
 - `rectangles`: x/y coordinates for the rectangles containing the data. An annotation can
 be contained within multiple rectangles.
 - `document`: Unique identifier for the document.
@@ -306,7 +254,6 @@ be contained within multiple rectangles.
 - `parent`: The parent annotation's ID.
 - `validation_results`: The validation results created, changed or deleted as a result of
 updating the annotation.
-- `id`: Required. Annotation's ID.
 
 <a id="models._models.AnnotationCreate"></a>
 
@@ -362,6 +309,59 @@ be contained within multiple rectangles.
 - `parent`: The parent annotation's ID.
 - `validation_results`: The validation results created, changed or deleted as a result of
 creating the annotation.
+
+<a id="models._models.AnnotationUpdate"></a>
+
+## AnnotationUpdate Objects
+
+```python
+class AnnotationUpdate(msrest.serialization.Model)
+```
+
+AnnotationUpdate.
+
+:ivar rectangles: x/y coordinates for the rectangles containing the data. An annotation can be
+ contained within multiple rectangles.
+:vartype rectangles: list[~affinda.models.Rectangle]
+:ivar document: Unique identifier for the document.
+:vartype document: str
+:ivar page_index: The page number within the document, starting from 0.
+:vartype page_index: int
+:ivar raw: Raw data extracted from the before any post-processing.
+:vartype raw: str
+:ivar parsed: Anything.
+:vartype parsed: any
+:ivar is_client_verified: Indicates whether the data has been validated by a human.
+:vartype is_client_verified: bool
+:ivar data_point: Data point's identifier.
+:vartype data_point: str
+:ivar parent: The parent annotation's ID.
+:vartype parent: int
+:ivar validation_results: The validation results created, changed or deleted as a result of
+ updating the annotation.
+:vartype validation_results: list[~affinda.models.ChangedValidationResults]
+
+<a id="models._models.AnnotationUpdate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `rectangles`: x/y coordinates for the rectangles containing the data. An annotation can
+be contained within multiple rectangles.
+- `document`: Unique identifier for the document.
+- `page_index`: The page number within the document, starting from 0.
+- `raw`: Raw data extracted from the before any post-processing.
+- `parsed`: Anything.
+- `is_client_verified`: Indicates whether the data has been validated by a human.
+- `data_point`: Data point's identifier.
+- `parent`: The parent annotation's ID.
+- `validation_results`: The validation results created, changed or deleted as a result of
+updating the annotation.
 
 <a id="models._models.AnnotationWithValidationResults"></a>
 
@@ -3540,7 +3540,7 @@ class DocumentCreate(msrest.serialization.Model)
 DocumentCreate.
 
 :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
- JPG.
+ JPG, TIFF, ODT, XLS, XLSX, ZIP.
 :vartype file: IO
 :ivar url: URL to download the document.
 :vartype url: str
@@ -3593,7 +3593,7 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
-PNG, JPG.
+PNG, JPG, TIFF, ODT, XLS, XLSX, ZIP.
 - `url`: URL to download the document.
 - `data`: Create resume or job description directly from data.
 - `collection`: Uniquely identify a collection.
@@ -10903,6 +10903,8 @@ Meta.
 :vartype document_type: str
 :ivar region_bias:
 :vartype region_bias: ~affinda.models.RegionBias
+:ivar is_ocrd:
+:vartype is_ocrd: bool
 
 <a id="models._models.Meta.__init__"></a>
 
@@ -10943,6 +10945,7 @@ applicable for images or PDF documents without a text layer).
 - `created_dt`: 
 - `document_type`: 
 - `region_bias`: 
+- `is_ocrd`: 
 
 <a id="models._models.MetaChildDocumentsItem"></a>
 

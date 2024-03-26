@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.20.0] - 2024-03-26
+### Changed
+- Use ruff instead of black to format code, run check and format on code
+
+### Added
+- Add AnnotationBatchUpdate endpoint
+
 ## [4.19.0] - 2024-03-07
 ### Added
 - Add validation_results endpoints
