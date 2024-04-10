@@ -9,13 +9,11 @@ from azure.core import CaseInsensitiveEnumMeta
 
 
 class DocumentType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-
     RESUMES = "resumes"
     JOB_DESCRIPTIONS = "job_descriptions"
 
 
 class EducationLevel(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-
     SCHOOL = "school"
     CERTIFICATE = "certificate"
     BACHELORS = "bachelors"
@@ -24,18 +22,15 @@ class EducationLevel(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
 
 class Enum2(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-
     HR_XML = "hr-xml"
 
 
 class Enum7(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-
     RESUMES = "resumes"
     JOB_DESCRIPTIONS = "job_descriptions"
 
 
 class IndexDocumentType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-
     RESUMES = "resumes"
     JOB_DESCRIPTIONS = "job_descriptions"
 
@@ -48,7 +43,6 @@ class JobDescriptionSearchConfigDistanceUnit(str, Enum, metaclass=CaseInsensitiv
 
 
 class ManagementLevel(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-
     NONE = "None"
     LOW = "Low"
     MID = "Mid"
@@ -93,7 +87,6 @@ class ResthookSubscriptionVersion(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
 
 class ResumeDataLanguagesItem(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-
     AINU = "Ainu"
     AKAN = "Akan"
     AKKADIAN = "Akkadian"
@@ -307,7 +300,6 @@ class ResumeSearchConfigDistanceUnit(str, Enum, metaclass=CaseInsensitiveEnumMet
 
 
 class ResumeSkillSourcesItemSection(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-
     ACHIEVEMENTS = "Achievements"
     ADDITIONAL_INFORMATION = "AdditionalInformation"
     EDUCATION = "Education"
@@ -331,7 +323,6 @@ class ResumeSkillSourcesItemSection(str, Enum, metaclass=CaseInsensitiveEnumMeta
 
 
 class SearchLocationUnit(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-
     KM = "km"
     MI = "mi"
 

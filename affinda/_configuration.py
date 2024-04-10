@@ -52,7 +52,8 @@ class AffindaAPIConfiguration(Configuration):  # pylint: disable=too-many-instan
         self._configure(**kwargs)
 
     def _configure(
-        self, **kwargs  # type: Any
+        self,
+        **kwargs,  # type: Any
     ):
         # type: (...) -> None
         self.user_agent_policy = kwargs.get("user_agent_policy") or policies.UserAgentPolicy(

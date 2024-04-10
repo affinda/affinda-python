@@ -2,6 +2,6 @@
 requires = ["azure-core>=1.26.2", "msrest", "setuptools==65.7.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
-[tool.black]
+[tool.ruff]
 line-length = 99
-target-version = ['py36', 'py37', 'py38', 'py39', 'py310']
+target-version = 'py37'

@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.11.0] - 2024-04-10
+### Changed
+- Use ruff instead of black to format code, run check and format on code
+- Reduce maximum limit from 300 to 100 and remove default value
+
+### Fixed
+- Fix invoiceData annotation required fields to match underling text annotation
+
 ## [3.10.0] - 2024-03-15
 ### Added
 - Add isOcrd to document metadata

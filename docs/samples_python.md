@@ -21,8 +21,10 @@ print(all_resumes.as_dict())
 
 ```python
 from pathlib import Path
+import json
 
 from affinda import AffindaAPI, TokenCredential
+from affinda.models import ResumeData
 
 token = "REPLACE_TOKEN"
 credential = TokenCredential(token=token)
@@ -42,9 +44,7 @@ resume = client.create_resume(url=url)
 print(resume.as_dict())
 
 # Create resume with data (for direct import of resume data, no parsing is performed)
-import json
 
-from affinda.models import ResumeData
 
 data = ResumeData(date_of_birth="1999-11-01")
 data = json.dumps(data.as_dict())

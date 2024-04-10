@@ -281,7 +281,9 @@ except (SyntaxError, ImportError):
     from ._models import Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1  # type: ignore
     from ._models import Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1  # type: ignore
     from ._models import Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1  # type: ignore
-    from ._models import Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1  # type: ignore
+    from ._models import (
+        Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1,
+    )  # type: ignore
     from ._models import Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1  # type: ignore
     from ._models import Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1  # type: ignore
     from ._models import Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1  # type: ignore
@@ -290,8 +292,12 @@ except (SyntaxError, ImportError):
     from ._models import Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1  # type: ignore
     from ._models import Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1  # type: ignore
     from ._models import Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1  # type: ignore
-    from ._models import Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1  # type: ignore
-    from ._models import Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification  # type: ignore
+    from ._models import (
+        Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1,
+    )  # type: ignore
+    from ._models import (
+        Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification,
+    )  # type: ignore
     from ._models import Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1  # type: ignore
     from ._models import Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1  # type: ignore
     from ._models import Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1  # type: ignore
@@ -303,15 +309,25 @@ except (SyntaxError, ImportError):
     from ._models import Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1  # type: ignore
     from ._models import Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1  # type: ignore
     from ._models import ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1  # type: ignore
-    from ._models import ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1  # type: ignore
+    from ._models import (
+        ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1,
+    )  # type: ignore
     from ._models import ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1  # type: ignore
     from ._models import ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1  # type: ignore
     from ._models import ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1  # type: ignore
-    from ._models import ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1  # type: ignore
-    from ._models import ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1  # type: ignore
+    from ._models import (
+        ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1,
+    )  # type: ignore
+    from ._models import (
+        ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1,
+    )  # type: ignore
     from ._models import ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties  # type: ignore
-    from ._models import ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1  # type: ignore
-    from ._models import ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1  # type: ignore
+    from ._models import (
+        ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1,
+    )  # type: ignore
+    from ._models import (
+        ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1,
+    )  # type: ignore
     from ._models import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1  # type: ignore
     from ._models import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1  # type: ignore
     from ._models import CustomFieldConfig  # type: ignore
@@ -415,21 +431,33 @@ except (SyntaxError, ImportError):
     from ._models import OccupationGroupSearchScoreComponent  # type: ignore
     from ._models import PageMeta  # type: ignore
     from ._models import PaginatedResponse  # type: ignore
-    from ._models import Paths14R8PdgV2IndexNameDocumentsPostResponses201ContentApplicationJsonSchema  # type: ignore
+    from ._models import (
+        Paths14R8PdgV2IndexNameDocumentsPostResponses201ContentApplicationJsonSchema,
+    )  # type: ignore
     from ._models import Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema  # type: ignore
-    from ._models import Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema  # type: ignore
+    from ._models import (
+        Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema,
+    )  # type: ignore
     from ._models import Paths18Iqsr4V2IndexGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import Paths18ZzckpV2InvoicesGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
     from ._models import Paths1BqdurzV2IndexGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
     from ._models import Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema  # type: ignore
-    from ._models import Paths1Q5Zfv5V2RedactedResumesGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
+    from ._models import (
+        Paths1Q5Zfv5V2RedactedResumesGetResponses200ContentApplicationJsonSchemaAllof1,
+    )  # type: ignore
     from ._models import Paths23Ubd8V2ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema  # type: ignore
     from ._models import PathsAf7Nd4V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema  # type: ignore
-    from ._models import PathsDd1FapV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
+    from ._models import (
+        PathsDd1FapV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1,
+    )  # type: ignore
     from ._models import PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema  # type: ignore
-    from ._models import PathsMda0LlV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema  # type: ignore
-    from ._models import PathsV2IwngV2JobDescriptionsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
+    from ._models import (
+        PathsMda0LlV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema,
+    )  # type: ignore
+    from ._models import (
+        PathsV2IwngV2JobDescriptionsGetResponses200ContentApplicationJsonSchemaAllof1,
+    )  # type: ignore
     from ._models import PathsX4VofmV2ResumesGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
     from ._models import PathsYg099PV2IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema  # type: ignore
     from ._models import Rectangle  # type: ignore

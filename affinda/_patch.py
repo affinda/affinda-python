@@ -6,7 +6,6 @@
 
 Follow our quickstart for examples: https://aka.ms/azsdk/python/dpcodegen/python/customize
 """
-from typing import Any
 
 from azure.core import PipelineClient
 from azure.core.pipeline import PipelineRequest

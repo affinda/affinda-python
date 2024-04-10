@@ -34,7 +34,7 @@ class AffindaAPIOperationsMixin(object)
 #### get\_all\_resumes
 
 ```python
-def get_all_resumes(offset=None, limit=300, custom_identifier=None, **kwargs)
+def get_all_resumes(offset=None, limit=None, custom_identifier=None, **kwargs)
 ```
 
 Get list of all resumes.
@@ -45,7 +45,7 @@ Returns all the resume summaries for that user, limited to 300 per page.
 
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `custom_identifier` (`str`): Filter for documents with this custom identifier. Default value is
 None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
@@ -202,7 +202,7 @@ Deletes the specified resume from the database.
 
 ```python
 def get_all_redacted_resumes(offset=None,
-                             limit=300,
+                             limit=None,
                              custom_identifier=None,
                              **kwargs)
 ```
@@ -215,7 +215,7 @@ Returns all the redacted resume information for that resume.
 
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `custom_identifier` (`str`): Filter for documents with this custom identifier. Default value is
 None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
@@ -348,7 +348,10 @@ Deletes the specified resume from the database.
 #### get\_all\_invoices
 
 ```python
-def get_all_invoices(offset=None, limit=300, custom_identifier=None, **kwargs)
+def get_all_invoices(offset=None,
+                     limit=None,
+                     custom_identifier=None,
+                     **kwargs)
 ```
 
 Get list of all invoices.
@@ -359,7 +362,7 @@ Returns all the invoice summaries for that user, limited to 300 per page.
 
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `custom_identifier` (`str`): Filter for documents with this custom identifier. Default value is
 None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
@@ -482,7 +485,7 @@ will no longer be used in any tailored customer models.
 
 ```python
 def get_all_job_descriptions(offset=None,
-                             limit=300,
+                             limit=None,
                              custom_identifier=None,
                              **kwargs)
 ```
@@ -495,7 +498,7 @@ Returns all the job descriptions for that user, limited to 300 per page.
 
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `custom_identifier` (`str`): Filter for documents with this custom identifier. Default value is
 None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
@@ -650,7 +653,7 @@ Deletes the specified job description from the database.
 #### create\_job\_description\_search
 
 ```python
-def create_job_description_search(body, offset=None, limit=300, **kwargs)
+def create_job_description_search(body, offset=None, limit=None, **kwargs)
 ```
 
 Search through parsed job descriptions.
@@ -662,7 +665,7 @@ Searches through parsed job descriptions. You can search with custom criterias o
 - `body` (`~affinda.models.JobDescriptionSearchParameters`): Search parameters.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -787,7 +790,7 @@ configurations of the embeddable search tool.
 #### create\_resume\_search
 
 ```python
-def create_resume_search(body, offset=None, limit=300, **kwargs)
+def create_resume_search(body, offset=None, limit=None, **kwargs)
 ```
 
 Search through parsed resumes.
@@ -804,7 +807,7 @@ the custom criteria.
 - `body` (`~affinda.models.ResumeSearchParameters`): Search parameters.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1042,7 +1045,7 @@ Provided one or more skills, get related suggestions for your search.
 #### get\_all\_indexes
 
 ```python
-def get_all_indexes(offset=None, limit=300, document_type=None, **kwargs)
+def get_all_indexes(offset=None, limit=None, document_type=None, **kwargs)
 ```
 
 Get list of all indexes.
@@ -1053,7 +1056,7 @@ Returns all the indexes.
 
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `document_type` (`str or ~affinda.models.Enum7`): Filter indices by a document type. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
@@ -1250,7 +1253,7 @@ Returns the list of searchable occupation groups.
 #### get\_all\_resthook\_subscriptions
 
 ```python
-def get_all_resthook_subscriptions(offset=None, limit=300, **kwargs)
+def get_all_resthook_subscriptions(offset=None, limit=None, **kwargs)
 ```
 
 Get list of all resthook subscriptions.
@@ -1261,7 +1264,7 @@ Returns your resthook subscriptions.
 
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:

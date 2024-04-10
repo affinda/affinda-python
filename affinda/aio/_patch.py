@@ -6,6 +6,7 @@
 
 Follow our quickstart for examples: https://aka.ms/azsdk/python/dpcodegen/python/customize
 """
+
 from typing import TYPE_CHECKING
 
 from azure.core import AsyncPipelineClient
@@ -19,9 +20,7 @@ from ._configuration import AffindaAPIConfiguration
 from .token_credential import AsyncTokenCredential
 
 if TYPE_CHECKING:
-    from typing import Any, Union
-
-    from azure.core.credentials_async import AsyncTokenCredential as IAsyncTokenCredential
+    pass
 
 
 class AsyncBearerTokenWithoutTLSEnforcementPolicy(AsyncBearerTokenCredentialPolicy):

@@ -79,7 +79,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
     async def get_all_resumes(
         self,
         offset: Optional[int] = None,
-        limit: Optional[int] = 300,
+        limit: Optional[int] = None,
         custom_identifier: Optional[str] = None,
         **kwargs: Any,
     ) -> _models.Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema:
@@ -90,7 +90,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param offset: The number of documents to skip before starting to collect the result set.
          Default value is None.
         :type offset: int
-        :param limit: The numbers of results to return. Default value is 300.
+        :param limit: The numbers of results to return. Default value is None.
         :type limit: int
         :param custom_identifier: Filter for documents with this custom identifier. Default value is
          None.
@@ -116,9 +116,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = kwargs.pop("headers", {}) or {}
         _params = kwargs.pop("params", {}) or {}
 
-        cls = kwargs.pop(
-            "cls", None
-        )  # type: ClsType[_models.Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema]
 
         request = build_get_all_resumes_request(
             offset=offset,
@@ -226,9 +224,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
         _params = kwargs.pop("params", {}) or {}
 
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", None)
-        )  # type: Optional[str]
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", None))  # type: Optional[str]
         cls = kwargs.pop("cls", None)  # type: ClsType[_models.Resume]
 
         # Construct form data
@@ -405,9 +401,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
         _params = kwargs.pop("params", {}) or {}
 
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", "application/json")
-        )  # type: Optional[str]
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
         cls = kwargs.pop("cls", None)  # type: ClsType[Optional[_models.ResumeData]]
 
         _json = self._serialize.body(body, "ResumeData")
@@ -506,7 +500,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
     async def get_all_redacted_resumes(
         self,
         offset: Optional[int] = None,
-        limit: Optional[int] = 300,
+        limit: Optional[int] = None,
         custom_identifier: Optional[str] = None,
         **kwargs: Any,
     ) -> _models.Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema:
@@ -517,7 +511,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param offset: The number of documents to skip before starting to collect the result set.
          Default value is None.
         :type offset: int
-        :param limit: The numbers of results to return. Default value is 300.
+        :param limit: The numbers of results to return. Default value is None.
         :type limit: int
         :param custom_identifier: Filter for documents with this custom identifier. Default value is
          None.
@@ -544,9 +538,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = kwargs.pop("headers", {}) or {}
         _params = kwargs.pop("params", {}) or {}
 
-        cls = kwargs.pop(
-            "cls", None
-        )  # type: ClsType[_models.Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema]
 
         request = build_get_all_redacted_resumes_request(
             offset=offset,
@@ -667,9 +659,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
         _params = kwargs.pop("params", {}) or {}
 
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", None)
-        )  # type: Optional[str]
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", None))  # type: Optional[str]
         cls = kwargs.pop("cls", None)  # type: ClsType[_models.RedactedResume]
 
         # Construct form data
@@ -852,7 +842,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
     async def get_all_invoices(
         self,
         offset: Optional[int] = None,
-        limit: Optional[int] = 300,
+        limit: Optional[int] = None,
         custom_identifier: Optional[str] = None,
         **kwargs: Any,
     ) -> _models.PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema:
@@ -863,7 +853,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param offset: The number of documents to skip before starting to collect the result set.
          Default value is None.
         :type offset: int
-        :param limit: The numbers of results to return. Default value is 300.
+        :param limit: The numbers of results to return. Default value is None.
         :type limit: int
         :param custom_identifier: Filter for documents with this custom identifier. Default value is
          None.
@@ -889,9 +879,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = kwargs.pop("headers", {}) or {}
         _params = kwargs.pop("params", {}) or {}
 
-        cls = kwargs.pop(
-            "cls", None
-        )  # type: ClsType[_models.PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema]
 
         request = build_get_all_invoices_request(
             offset=offset,
@@ -993,9 +981,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
         _params = kwargs.pop("params", {}) or {}
 
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", None)
-        )  # type: Optional[str]
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", None))  # type: Optional[str]
         cls = kwargs.pop("cls", None)  # type: ClsType[_models.Invoice]
 
         # Construct form data
@@ -1173,7 +1159,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
     async def get_all_job_descriptions(
         self,
         offset: Optional[int] = None,
-        limit: Optional[int] = 300,
+        limit: Optional[int] = None,
         custom_identifier: Optional[str] = None,
         **kwargs: Any,
     ) -> _models.PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema:
@@ -1184,7 +1170,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param offset: The number of documents to skip before starting to collect the result set.
          Default value is None.
         :type offset: int
-        :param limit: The numbers of results to return. Default value is 300.
+        :param limit: The numbers of results to return. Default value is None.
         :type limit: int
         :param custom_identifier: Filter for documents with this custom identifier. Default value is
          None.
@@ -1210,9 +1196,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = kwargs.pop("headers", {}) or {}
         _params = kwargs.pop("params", {}) or {}
 
-        cls = kwargs.pop(
-            "cls", None
-        )  # type: ClsType[_models.PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema]
 
         request = build_get_all_job_descriptions_request(
             offset=offset,
@@ -1322,9 +1306,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
         _params = kwargs.pop("params", {}) or {}
 
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", None)
-        )  # type: Optional[str]
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", None))  # type: Optional[str]
         cls = kwargs.pop("cls", None)  # type: ClsType[_models.JobDescription]
 
         # Construct form data
@@ -1474,9 +1456,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
         _params = kwargs.pop("params", {}) or {}
 
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", "application/json")
-        )  # type: Optional[str]
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
         cls = kwargs.pop("cls", None)  # type: ClsType[Optional[_models.JobDescriptionData]]
 
         _json = self._serialize.body(body, "JobDescriptionDataUpdate")
@@ -1576,7 +1556,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         self,
         body: _models.JobDescriptionSearchParameters,
         offset: Optional[int] = None,
-        limit: Optional[int] = 300,
+        limit: Optional[int] = None,
         **kwargs: Any,
     ) -> _models.JobDescriptionSearch:
         """Search through parsed job descriptions.
@@ -1588,7 +1568,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param offset: The number of documents to skip before starting to collect the result set.
          Default value is None.
         :type offset: int
-        :param limit: The numbers of results to return. Default value is 300.
+        :param limit: The numbers of results to return. Default value is None.
         :type limit: int
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: JobDescriptionSearch, or the result of cls(response)
@@ -1610,9 +1590,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
         _params = kwargs.pop("params", {}) or {}
 
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", "application/json")
-        )  # type: Optional[str]
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
         cls = kwargs.pop("cls", None)  # type: ClsType[_models.JobDescriptionSearch]
 
         _json = self._serialize.body(body, "JobDescriptionSearchParameters")
@@ -1685,9 +1663,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
         _params = kwargs.pop("params", {}) or {}
 
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", "application/json")
-        )  # type: Optional[str]
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
         cls = kwargs.pop("cls", None)  # type: ClsType[_models.JobDescriptionSearchDetail]
 
         _json = self._serialize.body(body, "JobDescriptionSearchParameters")
@@ -1723,7 +1699,9 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
         return deserialized
 
-    get_job_description_search_detail.metadata = {"url": "/v2/job_description_search/details/{identifier}"}  # type: ignore
+    get_job_description_search_detail.metadata = {
+        "url": "/v2/job_description_search/details/{identifier}"
+    }  # type: ignore
 
     async def get_job_description_search_config(
         self, **kwargs: Any
@@ -1814,9 +1792,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
         _params = kwargs.pop("params", {}) or {}
 
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", "application/json")
-        )  # type: Optional[str]
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
         cls = kwargs.pop("cls", None)  # type: ClsType[_models.JobDescriptionSearchConfig]
 
         _json = self._serialize.body(body, "JobDescriptionSearchConfig")
@@ -1886,9 +1862,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
         _params = kwargs.pop("params", {}) or {}
 
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", "application/json")
-        )  # type: Optional[str]
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
         cls = kwargs.pop("cls", None)  # type: ClsType[_models.JobDescriptionSearchEmbed]
 
         if body is not None:
@@ -1935,7 +1909,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         self,
         body: _models.ResumeSearchParameters,
         offset: Optional[int] = None,
-        limit: Optional[int] = 300,
+        limit: Optional[int] = None,
         **kwargs: Any,
     ) -> _models.ResumeSearch:
         """Search through parsed resumes.
@@ -1952,7 +1926,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param offset: The number of documents to skip before starting to collect the result set.
          Default value is None.
         :type offset: int
-        :param limit: The numbers of results to return. Default value is 300.
+        :param limit: The numbers of results to return. Default value is None.
         :type limit: int
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: ResumeSearch, or the result of cls(response)
@@ -1974,9 +1948,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
         _params = kwargs.pop("params", {}) or {}
 
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", "application/json")
-        )  # type: Optional[str]
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
         cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResumeSearch]
 
         _json = self._serialize.body(body, "ResumeSearchParameters")
@@ -2049,9 +2021,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
         _params = kwargs.pop("params", {}) or {}
 
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", "application/json")
-        )  # type: Optional[str]
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
         cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResumeSearchDetail]
 
         _json = self._serialize.body(body, "ResumeSearchParameters")
@@ -2301,9 +2271,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
         _params = kwargs.pop("params", {}) or {}
 
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", "application/json")
-        )  # type: Optional[str]
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
         cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResumeSearchConfig]
 
         _json = self._serialize.body(body, "ResumeSearchConfig")
@@ -2373,9 +2341,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
         _params = kwargs.pop("params", {}) or {}
 
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", "application/json")
-        )  # type: Optional[str]
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
         cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResumeSearchEmbed]
 
         if body is not None:
@@ -2477,7 +2443,9 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
         return deserialized
 
-    get_resume_search_suggestion_job_title.metadata = {"url": "/v2/resume_search/suggestion_job_title"}  # type: ignore
+    get_resume_search_suggestion_job_title.metadata = {
+        "url": "/v2/resume_search/suggestion_job_title"
+    }  # type: ignore
 
     async def get_resume_search_suggestion_skill(
         self, skills: List[str], **kwargs: Any
@@ -2544,7 +2512,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
     async def get_all_indexes(
         self,
         offset: Optional[int] = None,
-        limit: Optional[int] = 300,
+        limit: Optional[int] = None,
         document_type: Optional[Union[str, "_models.Enum7"]] = None,
         **kwargs: Any,
     ) -> _models.Paths18Iqsr4V2IndexGetResponses200ContentApplicationJsonSchema:
@@ -2555,7 +2523,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param offset: The number of documents to skip before starting to collect the result set.
          Default value is None.
         :type offset: int
-        :param limit: The numbers of results to return. Default value is 300.
+        :param limit: The numbers of results to return. Default value is None.
         :type limit: int
         :param document_type: Filter indices by a document type. Default value is None.
         :type document_type: str or ~affinda.models.Enum7
@@ -2580,9 +2548,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = kwargs.pop("headers", {}) or {}
         _params = kwargs.pop("params", {}) or {}
 
-        cls = kwargs.pop(
-            "cls", None
-        )  # type: ClsType[_models.Paths18Iqsr4V2IndexGetResponses200ContentApplicationJsonSchema]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.Paths18Iqsr4V2IndexGetResponses200ContentApplicationJsonSchema]
 
         request = build_get_all_indexes_request(
             offset=offset,
@@ -2646,9 +2612,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
         _params = kwargs.pop("params", {}) or {}
 
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", "application/json")
-        )  # type: Optional[str]
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
         cls = kwargs.pop("cls", None)  # type: ClsType[_models.Index]
 
         _json = self._serialize.body(body, "IndexCreate")
@@ -2716,9 +2680,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
         _params = kwargs.pop("params", {}) or {}
 
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", "application/json")
-        )  # type: Optional[str]
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
         cls = kwargs.pop("cls", None)  # type: ClsType[_models.Index]
 
         _json = self._serialize.body(body, "IndexUpdate")
@@ -2845,9 +2807,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = kwargs.pop("headers", {}) or {}
         _params = kwargs.pop("params", {}) or {}
 
-        cls = kwargs.pop(
-            "cls", None
-        )  # type: ClsType[_models.PathsAf7Nd4V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchema]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.PathsAf7Nd4V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchema]
 
         request = build_get_all_index_documents_request(
             name=name,
@@ -2920,12 +2880,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
         _params = kwargs.pop("params", {}) or {}
 
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", "application/json")
-        )  # type: Optional[str]
-        cls = kwargs.pop(
-            "cls", None
-        )  # type: ClsType[_models.Paths14R8PdgV2IndexNameDocumentsPostResponses201ContentApplicationJsonSchema]
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.Paths14R8PdgV2IndexNameDocumentsPostResponses201ContentApplicationJsonSchema]
 
         _json = self._serialize.body(
             body, "PathsYg099PV2IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema"
@@ -3086,7 +3042,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
     list_occupation_groups.metadata = {"url": "/v2/occupation_groups"}  # type: ignore
 
     async def get_all_resthook_subscriptions(
-        self, offset: Optional[int] = None, limit: Optional[int] = 300, **kwargs: Any
+        self, offset: Optional[int] = None, limit: Optional[int] = None, **kwargs: Any
     ) -> _models.PathsMda0LlV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema:
         """Get list of all resthook subscriptions.
 
@@ -3095,7 +3051,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param offset: The number of documents to skip before starting to collect the result set.
          Default value is None.
         :type offset: int
-        :param limit: The numbers of results to return. Default value is 300.
+        :param limit: The numbers of results to return. Default value is None.
         :type limit: int
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsMda0LlV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema, or the
@@ -3119,9 +3075,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = kwargs.pop("headers", {}) or {}
         _params = kwargs.pop("params", {}) or {}
 
-        cls = kwargs.pop(
-            "cls", None
-        )  # type: ClsType[_models.PathsMda0LlV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.PathsMda0LlV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema]
 
         request = build_get_all_resthook_subscriptions_request(
             offset=offset,
@@ -3195,9 +3149,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
         _params = kwargs.pop("params", {}) or {}
 
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", "application/json")
-        )  # type: Optional[str]
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
         cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResthookSubscription]
 
         _json = self._serialize.body(body, "ResthookSubscriptionCreate")
@@ -3327,9 +3279,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
         _params = kwargs.pop("params", {}) or {}
 
-        content_type = kwargs.pop(
-            "content_type", _headers.pop("Content-Type", "application/json")
-        )  # type: Optional[str]
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
         cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResthookSubscription]
 
         _json = self._serialize.body(body, "ResthookSubscriptionUpdate")
