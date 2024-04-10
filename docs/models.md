@@ -1187,7 +1187,9 @@ class Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1(
 
 Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -1202,7 +1204,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1"></a>
@@ -1216,7 +1218,9 @@ class Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1(
 
 Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -1231,7 +1235,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1"></a>
@@ -1245,7 +1249,9 @@ class Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1(
 
 Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -1260,7 +1266,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1"></a>
@@ -1274,7 +1280,9 @@ class Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1(
 
 Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -1289,7 +1297,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1"></a>
@@ -1329,7 +1337,9 @@ class Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1(
 
 Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -1344,7 +1354,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1"></a>
@@ -1358,7 +1368,9 @@ class Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1(
 
 Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -1373,7 +1385,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1"></a>
@@ -1387,7 +1399,9 @@ class Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1(
 
 Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -1402,7 +1416,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.Components1Kwk9B6SchemasThemeconfigPropertiesPalettePropertiesBackgroundOneof1"></a>
@@ -1445,7 +1459,9 @@ class Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1(
 
 Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -1460,7 +1476,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1"></a>
@@ -1474,7 +1490,9 @@ class Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1(
 
 Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -1489,7 +1507,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1"></a>
@@ -1503,7 +1521,9 @@ class Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1(
 
 Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -1518,7 +1538,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1"></a>
@@ -1532,7 +1552,9 @@ class Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1(
 
 Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -1547,7 +1569,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1"></a>
@@ -1561,7 +1583,9 @@ class Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1(
 
 Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -1576,7 +1600,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1"></a>
@@ -1669,7 +1693,9 @@ class Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1(
 
 Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -1684,7 +1710,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1"></a>
@@ -1698,7 +1724,9 @@ class Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1(
 
 Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -1713,7 +1741,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1"></a>
@@ -1727,7 +1755,9 @@ class Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1(
 
 Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -1742,7 +1772,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1"></a>
@@ -1756,7 +1786,9 @@ class Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1(
 
 Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -1771,7 +1803,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1"></a>
@@ -1785,7 +1817,9 @@ class Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1(
 
 Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -1800,7 +1834,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1"></a>
@@ -1814,7 +1848,9 @@ class Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1(
 
 Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -1829,7 +1865,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1"></a>
@@ -1843,7 +1879,9 @@ class Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1(
 
 Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -1858,7 +1896,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1"></a>
@@ -1872,7 +1910,9 @@ class Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1(
 
 Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -1887,7 +1927,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1"></a>
@@ -1901,7 +1941,9 @@ class Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1(
 
 Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -1916,7 +1958,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1"></a>
@@ -1930,7 +1972,9 @@ class Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1(
 
 Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -1945,7 +1989,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1"></a>
@@ -1959,7 +2003,9 @@ class ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1(
 
 ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -1974,7 +2020,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1"></a>
@@ -1988,7 +2034,9 @@ class ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllo
 
 ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -2003,7 +2051,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1"></a>
@@ -2017,7 +2065,9 @@ class ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1(
 
 ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -2032,7 +2082,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1"></a>
@@ -2046,7 +2096,9 @@ class ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1(
 
 ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -2061,7 +2113,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1"></a>
@@ -2075,7 +2127,9 @@ class ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1(
 
 ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -2090,7 +2144,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1"></a>
@@ -2216,7 +2270,9 @@ class ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1(
 
 ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -2231,7 +2287,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1"></a>
@@ -2245,7 +2301,9 @@ class ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1(
 
 ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1.
 
-:ivar raw:
+All required parameters must be populated in order to send to Azure.
+
+:ivar raw: Required.
 :vartype raw: str
 :ivar parsed:
 :vartype parsed: str
@@ -2260,7 +2318,7 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `raw`: 
+- `raw`: Required.
 - `parsed`: 
 
 <a id="models._models.CurrencyCodeAnnotation"></a>
@@ -2497,6 +2555,9 @@ All required parameters must be populated in order to send to Azure.
 :ivar manual_entry: If true, the model will not be used to predict this data point. Instead,
  the user will be able to manually enter the value in the validation tool.
 :vartype manual_entry: bool
+:ivar mapping_data_source: If populated, the model will learn to predict this field using the
+ data source, rather than relying on fuzzy string matching.
+:vartype mapping_data_source: str
 
 <a id="models._models.DataFieldCreateDataPoint.__init__"></a>
 
@@ -2520,6 +2581,8 @@ def __init__(**kwargs)
 - `parent`: The identifier of the parent data point if applicable.
 - `manual_entry`: If true, the model will not be used to predict this data point. Instead,
 the user will be able to manually enter the value in the validation tool.
+- `mapping_data_source`: If populated, the model will learn to predict this field using
+the data source, rather than relying on fuzzy string matching.
 
 <a id="models._models.DataFieldCreateField"></a>
 
@@ -2753,6 +2816,9 @@ All required parameters must be populated in order to send to Azure.
 :vartype children: list[~affinda.models.DataPoint]
 :ivar available_data_sources:
 :vartype available_data_sources: list[~affinda.models.MappingDataSource]
+:ivar mapping_data_source: If populated, the model will learn to predict this field using the
+ data source, rather than relying on fuzzy string matching.
+:vartype mapping_data_source: str
 :ivar manual_entry: If true, the model will not be used to predict this data point. Instead,
  the user will be able to manually enter the value in the validation tool.
 :vartype manual_entry: bool
@@ -2782,6 +2848,8 @@ values are: "text", "integer", "float", "decimal", "date", "datetime", "daterang
 - `parent`: The identifier of the parent data point if applicable.
 - `children`: 
 - `available_data_sources`: 
+- `mapping_data_source`: If populated, the model will learn to predict this field using
+the data source, rather than relying on fuzzy string matching.
 - `manual_entry`: If true, the model will not be used to predict this data point. Instead,
 the user will be able to manually enter the value in the validation tool.
 
@@ -3101,6 +3169,9 @@ All required parameters must be populated in order to send to Azure.
 :ivar manual_entry: If true, the model will not be used to predict this data point. Instead,
  the user will be able to manually enter the value in the validation tool.
 :vartype manual_entry: bool
+:ivar mapping_data_source: If populated, the model will learn to predict this field using the
+ data source, rather than relying on fuzzy string matching.
+:vartype mapping_data_source: str
 
 <a id="models._models.DataPointCreate.__init__"></a>
 
@@ -3126,6 +3197,8 @@ values are: "text", "integer", "float", "decimal", "date", "datetime", "daterang
 - `parent`: The identifier of the parent data point if applicable.
 - `manual_entry`: If true, the model will not be used to predict this data point. Instead,
 the user will be able to manually enter the value in the validation tool.
+- `mapping_data_source`: If populated, the model will learn to predict this field using
+the data source, rather than relying on fuzzy string matching.
 
 <a id="models._models.DataPointUpdate"></a>
 
@@ -3145,6 +3218,9 @@ DataPointUpdate.
 :vartype description: str
 :ivar parent: The identifier of the parent data point if applicable.
 :vartype parent: str
+:ivar mapping_data_source: If populated, the model will learn to predict this field using the
+ data source, rather than relying on fuzzy string matching.
+:vartype mapping_data_source: str
 
 <a id="models._models.DataPointUpdate.__init__"></a>
 
@@ -3160,6 +3236,8 @@ def __init__(**kwargs)
 - `slug`: A camelCase string that will be used as the key in the API response.
 - `description`: 
 - `parent`: The identifier of the parent data point if applicable.
+- `mapping_data_source`: If populated, the model will learn to predict this field using
+the data source, rather than relying on fuzzy string matching.
 
 <a id="models._models.DateAnnotation"></a>
 
@@ -3581,6 +3659,9 @@ DocumentCreate.
 :ivar delete_after_parse: If true, no data will be stored after parsing. Only compatible with
  requests where wait: True.
 :vartype delete_after_parse: bool
+:ivar enable_validation_tool: If true, the document will be viewable in the Affinda Validation
+ Tool. Set to False to optimize parsing speed.
+:vartype enable_validation_tool: bool
 
 <a id="models._models.DocumentCreate.__init__"></a>
 
@@ -3618,6 +3699,8 @@ workspace settings.
 compact version of the full result.
 - `delete_after_parse`: If true, no data will be stored after parsing. Only compatible
 with requests where wait: True.
+- `enable_validation_tool`: If true, the document will be viewable in the Affinda
+Validation Tool. Set to False to optimize parsing speed.
 
 <a id="models._models.DocumentEditRequest"></a>
 

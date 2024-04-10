@@ -189,7 +189,7 @@ Return monthly credits consumption of a workspace.
 
 ```python
 def get_all_workspace_memberships(offset=None,
-                                  limit=300,
+                                  limit=None,
                                   workspace=None,
                                   user=None,
                                   **kwargs)
@@ -203,7 +203,7 @@ Returns the memberships of your workspaces.
 
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `workspace` (`str`): Filter by workspace. Default value is None.
 - `user` (`str`): Partial text match on user's email, case-insensitive. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
@@ -531,7 +531,7 @@ Return monthly credits consumption of a collection.
 
 ```python
 def get_all_documents(offset=None,
-                      limit=300,
+                      limit=None,
                       workspace=None,
                       collection=None,
                       state=None,
@@ -560,7 +560,7 @@ Returns all the document summaries for that user, limited to 300 per page.
 
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `workspace` (`str`): Filter by workspace. Default value is None.
 - `collection` (`str`): Filter by collection. Default value is None.
 - `state` (`str or ~affinda.models.DocumentState`): Filter by the document's state. Default value is None.
@@ -620,6 +620,7 @@ def create_document(file=None,
                     low_priority=None,
                     compact=None,
                     delete_after_parse=None,
+                    enable_validation_tool=None,
                     **kwargs)
 ```
 
@@ -650,6 +651,8 @@ required to be unique. Default value is None.
 compact version of the full result. Default value is None.
 - `delete_after_parse` (`bool`): If true, no data will be stored after parsing. Only compatible with
 requests where wait: True. Default value is None.
+- `enable_validation_tool` (`bool`): If true, the document will be viewable in the Affinda Validation
+Tool. Set to False to optimize parsing speed. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -854,7 +857,7 @@ involved.
 #### get\_all\_validation\_results
 
 ```python
-def get_all_validation_results(document, offset=None, limit=300, **kwargs)
+def get_all_validation_results(document, offset=None, limit=None, **kwargs)
 ```
 
 Get list of all validation results.
@@ -866,7 +869,7 @@ Returns the validation results of a document.
 - `document` (`str`): Filter by document.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1118,7 +1121,7 @@ Deletes the specified extractor from the database.
 
 ```python
 def get_all_data_points(offset=None,
-                        limit=300,
+                        limit=None,
                         organization=None,
                         include_public=None,
                         extractor=None,
@@ -1137,7 +1140,7 @@ Returns your custom data points as well as Affinda's off-the-shelf data points.
 
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `organization` (`str`): Filter by organization. Default value is None.
 - `include_public` (`bool`): Allows you to include public data points in the response when you're
 filtering by organization. Default value is None.
@@ -1266,7 +1269,7 @@ Deletes the specified data point from the database.
 def get_data_point_choices(data_point,
                            collection,
                            offset=None,
-                           limit=300,
+                           limit=None,
                            search=None,
                            **kwargs)
 ```
@@ -1281,7 +1284,7 @@ Returns available choices for a specific enum data point.
 - `collection` (`str`): The collection to get choices for.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `search` (`str`): Filter choices by searching for a substring. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
@@ -1654,7 +1657,7 @@ Create a custom mapping data source.
 #### list\_mapping\_data\_sources
 
 ```python
-def list_mapping_data_sources(offset=None, limit=300, **kwargs)
+def list_mapping_data_sources(offset=None, limit=None, **kwargs)
 ```
 
 List mapping data sources.
@@ -1665,7 +1668,7 @@ Returns the list of all custom mapping data sources.
 
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1733,9 +1736,10 @@ Delete the specified mapping data source from the database.
 
 ```python
 def list_mapping_data_source_values(identifier,
-                                    limit=300,
+                                    limit=None,
                                     offset=None,
                                     search=None,
+                                    annotation=None,
                                     **kwargs)
 ```
 
@@ -1746,10 +1750,11 @@ Returns the list of all values in a mapping data source.
 **Arguments**:
 
 - `identifier` (`str`): Mapping data source's identifier.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
 - `search` (`str`): Search for specific values. Default value is None.
+- `annotation` (`int`): Filter based on annotation ID. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1895,7 +1900,7 @@ Create a custom mapping.
 #### list\_mappings
 
 ```python
-def list_mappings(mapping_data_source, offset=None, limit=300, **kwargs)
+def list_mappings(mapping_data_source, offset=None, limit=None, **kwargs)
 ```
 
 List mappings.
@@ -1907,7 +1912,7 @@ Returns the list of all custom data mappings.
 - `mapping_data_source` (`str`): Mapping data source's identifier.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -2000,7 +2005,7 @@ Updates a specific mapping.
 #### get\_all\_tags
 
 ```python
-def get_all_tags(limit=300, offset=None, workspace=None, **kwargs)
+def get_all_tags(limit=None, offset=None, workspace=None, **kwargs)
 ```
 
 Get list of all tags.
@@ -2009,7 +2014,7 @@ Returns your tags.
 
 **Arguments**:
 
-- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
 - `workspace` (`str`): Filter by workspace. Default value is None.
@@ -2268,7 +2273,7 @@ Delete the specified organization from the database.
 
 ```python
 def get_all_organization_memberships(offset=None,
-                                     limit=300,
+                                     limit=None,
                                      organization=None,
                                      role=None,
                                      **kwargs)
@@ -2282,7 +2287,7 @@ Returns all the organization memberships.
 
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `organization` (`str`): Filter by organization. Default value is None.
 - `role` (`str or ~affinda.models.OrganizationRole`): Filter by role. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
@@ -2380,7 +2385,7 @@ also use this to leave their organization.
 
 ```python
 def get_all_invitations(offset=None,
-                        limit=300,
+                        limit=None,
                         organization=None,
                         status=None,
                         role=None,
@@ -2395,7 +2400,7 @@ Get list of all invitations you created or sent to you.
 
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `organization` (`str`): Filter by organization. Default value is None.
 - `status` (`str or ~affinda.models.InvitationStatus`): Filter by status. Default value is None.
 - `role` (`str or ~affinda.models.OrganizationRole`): Filter by role. Default value is None.
@@ -2720,7 +2725,7 @@ Regenerate API key for an API user.
 #### get\_all\_resthook\_subscriptions
 
 ```python
-def get_all_resthook_subscriptions(offset=None, limit=300, **kwargs)
+def get_all_resthook_subscriptions(offset=None, limit=None, **kwargs)
 ```
 
 Get list of all resthook subscriptions.
@@ -2731,7 +2736,7 @@ Returns your resthook subscriptions.
 
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -2906,7 +2911,7 @@ Returns the list of searchable occupation groups.
 #### create\_job\_description\_search
 
 ```python
-def create_job_description_search(body, offset=None, limit=300, **kwargs)
+def create_job_description_search(body, offset=None, limit=None, **kwargs)
 ```
 
 Search through parsed job descriptions.
@@ -2918,7 +2923,7 @@ Searches through parsed job descriptions. You can search with custom criterias o
 - `body` (`~affinda.models.JobDescriptionSearchParameters`): Search parameters.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -3043,7 +3048,7 @@ configurations of the embeddable search tool.
 #### get\_all\_indexes
 
 ```python
-def get_all_indexes(offset=None, limit=300, document_type=None, **kwargs)
+def get_all_indexes(offset=None, limit=None, document_type=None, **kwargs)
 ```
 
 Get list of all indexes.
@@ -3054,7 +3059,7 @@ Returns all the indexes.
 
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `document_type` (`str or ~affinda.models.Enum20`): Filter indices by a document type. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
@@ -3148,7 +3153,7 @@ Deletes the specified index from the database.
 #### get\_all\_index\_documents
 
 ```python
-def get_all_index_documents(name, offset=None, limit=300, **kwargs)
+def get_all_index_documents(name, offset=None, limit=None, **kwargs)
 ```
 
 Get indexed documents for a specific index.
@@ -3160,7 +3165,7 @@ Returns all the indexed documents for that index.
 - `name` (`str`): Index name.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -3230,7 +3235,7 @@ Delete the specified indexed document from the database.
 #### create\_resume\_search
 
 ```python
-def create_resume_search(body, offset=None, limit=300, **kwargs)
+def create_resume_search(body, offset=None, limit=None, **kwargs)
 ```
 
 Search through parsed resumes.
@@ -3247,7 +3252,7 @@ the custom criteria.
 - `body` (`~affinda.models.ResumeSearchParameters`): Search parameters.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is 300.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
