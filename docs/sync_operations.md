@@ -1657,7 +1657,12 @@ Create a custom mapping data source.
 #### list\_mapping\_data\_sources
 
 ```python
-def list_mapping_data_sources(offset=None, limit=None, **kwargs)
+def list_mapping_data_sources(offset=None,
+                              limit=None,
+                              name=None,
+                              organization=None,
+                              identifier=None,
+                              **kwargs)
 ```
 
 List mapping data sources.
@@ -1669,6 +1674,9 @@ Returns the list of all custom mapping data sources.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is None.
+- `name` (`str`): Filter by name. Default value is None.
+- `organization` (`str`): Filter by organization. Default value is None.
+- `identifier` (`str`): Filter by identifier. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:

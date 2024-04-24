@@ -1811,6 +1811,9 @@ def build_list_mapping_data_sources_request(
 
     offset = kwargs.pop('offset', _params.pop('offset', None))  # type: Optional[int]
     limit = kwargs.pop('limit', _params.pop('limit', None))  # type: Optional[int]
+    name = kwargs.pop('name', _params.pop('name', None))  # type: Optional[str]
+    organization = kwargs.pop('organization', _params.pop('organization', None))  # type: Optional[str]
+    identifier = kwargs.pop('identifier', _params.pop('identifier', None))  # type: Optional[str]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
@@ -1821,6 +1824,12 @@ def build_list_mapping_data_sources_request(
         _params['offset'] = _SERIALIZER.query("offset", offset, 'int', minimum=0)
     if limit is not None:
         _params['limit'] = _SERIALIZER.query("limit", limit, 'int', maximum=100, minimum=1)
+    if name is not None:
+        _params['name'] = _SERIALIZER.query("name", name, 'str')
+    if organization is not None:
+        _params['organization'] = _SERIALIZER.query("organization", organization, 'str')
+    if identifier is not None:
+        _params['identifier'] = _SERIALIZER.query("identifier", identifier, 'str')
 
     # Construct headers
     _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
@@ -8025,6 +8034,9 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         self,
         offset=None,  # type: Optional[int]
         limit=None,  # type: Optional[int]
+        name=None,  # type: Optional[str]
+        organization=None,  # type: Optional[str]
+        identifier=None,  # type: Optional[str]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.Paths11QdcofV3MappingDataSourcesGetResponses200ContentApplicationJsonSchema
@@ -8037,6 +8049,12 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type offset: int
         :param limit: The numbers of results to return. Default value is None.
         :type limit: int
+        :param name: Filter by name. Default value is None.
+        :type name: str
+        :param organization: Filter by organization. Default value is None.
+        :type organization: str
+        :param identifier: Filter by identifier. Default value is None.
+        :type identifier: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Paths11QdcofV3MappingDataSourcesGetResponses200ContentApplicationJsonSchema, or the
          result of cls(response)
@@ -8064,6 +8082,9 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         request = build_list_mapping_data_sources_request(
             offset=offset,
             limit=limit,
+            name=name,
+            organization=organization,
+            identifier=identifier,
             template_url=self.list_mapping_data_sources.metadata["url"],
             headers=_headers,
             params=_params,

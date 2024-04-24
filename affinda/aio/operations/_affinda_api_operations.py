@@ -4202,7 +4202,13 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
     create_mapping_data_source.metadata = {"url": "/v3/mapping_data_sources"}  # type: ignore
 
     async def list_mapping_data_sources(
-        self, offset: Optional[int] = None, limit: Optional[int] = None, **kwargs: Any
+        self,
+        offset: Optional[int] = None,
+        limit: Optional[int] = None,
+        name: Optional[str] = None,
+        organization: Optional[str] = None,
+        identifier: Optional[str] = None,
+        **kwargs: Any,
     ) -> _models.Paths11QdcofV3MappingDataSourcesGetResponses200ContentApplicationJsonSchema:
         """List mapping data sources.
 
@@ -4213,6 +4219,12 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type offset: int
         :param limit: The numbers of results to return. Default value is None.
         :type limit: int
+        :param name: Filter by name. Default value is None.
+        :type name: str
+        :param organization: Filter by organization. Default value is None.
+        :type organization: str
+        :param identifier: Filter by identifier. Default value is None.
+        :type identifier: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Paths11QdcofV3MappingDataSourcesGetResponses200ContentApplicationJsonSchema, or the
          result of cls(response)
@@ -4240,6 +4252,9 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         request = build_list_mapping_data_sources_request(
             offset=offset,
             limit=limit,
+            name=name,
+            organization=organization,
+            identifier=identifier,
             template_url=self.list_mapping_data_sources.metadata["url"],
             headers=_headers,
             params=_params,
