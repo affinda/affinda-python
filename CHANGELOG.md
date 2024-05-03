@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.22.2] - 2024-05-03
+### Removed
+- Removed unnecessary models of InvoiceData fields
+
 ## [4.22.1] - 2024-05-03
 ### Fixed
 - Fix invoice data deserialization

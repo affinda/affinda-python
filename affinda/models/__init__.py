@@ -29,51 +29,18 @@ try:
     from ._models_py3 import CollectionField
     from ._models_py3 import CollectionUpdate
     from ._models_py3 import CollectionWorkspace
-    from ._models_py3 import Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1
-    from ._models_py3 import Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1
-    from ._models_py3 import Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1
-    from ._models_py3 import (
-        Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1,
-    )
     from ._models_py3 import (
         Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1,
     )
-    from ._models_py3 import Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1
-    from ._models_py3 import Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1
-    from ._models_py3 import Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1
     from ._models_py3 import (
         Components1Kwk9B6SchemasThemeconfigPropertiesPalettePropertiesBackgroundOneof1,
     )
-    from ._models_py3 import Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1
-    from ._models_py3 import Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1
-    from ._models_py3 import Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1
-    from ._models_py3 import Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1
-    from ._models_py3 import Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1
     from ._models_py3 import (
         Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1,
     )
     from ._models_py3 import (
         Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification,
     )
-    from ._models_py3 import Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1
-    from ._models_py3 import Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1
-    from ._models_py3 import Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1
-    from ._models_py3 import Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1
-    from ._models_py3 import Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1
-    from ._models_py3 import Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1
-    from ._models_py3 import (
-        Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1,
-    )
-    from ._models_py3 import Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1
-    from ._models_py3 import Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1
-    from ._models_py3 import Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1
-    from ._models_py3 import ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1
-    from ._models_py3 import (
-        ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1,
-    )
-    from ._models_py3 import ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1
-    from ._models_py3 import ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1
-    from ._models_py3 import ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1
     from ._models_py3 import (
         ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1,
     )
@@ -86,8 +53,6 @@ try:
     from ._models_py3 import (
         ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1,
     )
-    from ._models_py3 import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1
-    from ._models_py3 import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1
     from ._models_py3 import CurrencyCodeAnnotation
     from ._models_py3 import CustomFieldConfig
     from ._models_py3 import DataField
@@ -157,35 +122,6 @@ try:
     from ._models_py3 import InvitationUpdate
     from ._models_py3 import Invoice
     from ._models_py3 import InvoiceData
-    from ._models_py3 import InvoiceDataBankAccountNumber
-    from ._models_py3 import InvoiceDataBankBsb
-    from ._models_py3 import InvoiceDataBankIban
-    from ._models_py3 import InvoiceDataBankSortCode
-    from ._models_py3 import InvoiceDataBankSwift
-    from ._models_py3 import InvoiceDataBpayBillerCode
-    from ._models_py3 import InvoiceDataBpayReference
-    from ._models_py3 import InvoiceDataCustomerBusinessNumber
-    from ._models_py3 import InvoiceDataCustomerCompanyName
-    from ._models_py3 import InvoiceDataCustomerContactName
-    from ._models_py3 import InvoiceDataCustomerEmail
-    from ._models_py3 import InvoiceDataCustomerNumber
-    from ._models_py3 import InvoiceDataCustomerPhoneNumber
-    from ._models_py3 import InvoiceDataCustomerVat
-    from ._models_py3 import InvoiceDataInvoiceNumber
-    from ._models_py3 import InvoiceDataInvoicePurchaseOrderNumber
-    from ._models_py3 import InvoiceDataPaymentAmountBase
-    from ._models_py3 import InvoiceDataPaymentAmountDue
-    from ._models_py3 import InvoiceDataPaymentAmountPaid
-    from ._models_py3 import InvoiceDataPaymentAmountTax
-    from ._models_py3 import InvoiceDataPaymentAmountTotal
-    from ._models_py3 import InvoiceDataPaymentReference
-    from ._models_py3 import InvoiceDataSupplierBusinessNumber
-    from ._models_py3 import InvoiceDataSupplierCompanyName
-    from ._models_py3 import InvoiceDataSupplierEmail
-    from ._models_py3 import InvoiceDataSupplierFax
-    from ._models_py3 import InvoiceDataSupplierPhoneNumber
-    from ._models_py3 import InvoiceDataSupplierVat
-    from ._models_py3 import InvoiceDataSupplierWebsite
     from ._models_py3 import JobDescription
     from ._models_py3 import JobDescriptionData
     from ._models_py3 import JobDescriptionDataUpdate
@@ -444,47 +380,18 @@ except (SyntaxError, ImportError):
     from ._models import CollectionField  # type: ignore
     from ._models import CollectionUpdate  # type: ignore
     from ._models import CollectionWorkspace  # type: ignore
-    from ._models import Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1  # type: ignore
-    from ._models import Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1  # type: ignore
-    from ._models import Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1  # type: ignore
-    from ._models import Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1  # type: ignore
     from ._models import (
         Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1,
     )  # type: ignore
-    from ._models import Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1  # type: ignore
-    from ._models import Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1  # type: ignore
-    from ._models import Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1  # type: ignore
     from ._models import (
         Components1Kwk9B6SchemasThemeconfigPropertiesPalettePropertiesBackgroundOneof1,
     )  # type: ignore
-    from ._models import Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1  # type: ignore
-    from ._models import Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1  # type: ignore
-    from ._models import Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1  # type: ignore
-    from ._models import Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1  # type: ignore
-    from ._models import Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1  # type: ignore
     from ._models import (
         Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1,
     )  # type: ignore
     from ._models import (
         Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification,
     )  # type: ignore
-    from ._models import Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1  # type: ignore
-    from ._models import Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1  # type: ignore
-    from ._models import Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1  # type: ignore
-    from ._models import Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1  # type: ignore
-    from ._models import Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1  # type: ignore
-    from ._models import Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1  # type: ignore
-    from ._models import Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1  # type: ignore
-    from ._models import Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1  # type: ignore
-    from ._models import Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1  # type: ignore
-    from ._models import Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1  # type: ignore
-    from ._models import ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1  # type: ignore
-    from ._models import (
-        ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1,
-    )  # type: ignore
-    from ._models import ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1  # type: ignore
-    from ._models import ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1  # type: ignore
-    from ._models import ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1  # type: ignore
     from ._models import (
         ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1,
     )  # type: ignore
@@ -495,8 +402,6 @@ except (SyntaxError, ImportError):
     from ._models import (
         ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1,
     )  # type: ignore
-    from ._models import ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1  # type: ignore
-    from ._models import ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1  # type: ignore
     from ._models import CurrencyCodeAnnotation  # type: ignore
     from ._models import CustomFieldConfig  # type: ignore
     from ._models import DataField  # type: ignore
@@ -566,35 +471,6 @@ except (SyntaxError, ImportError):
     from ._models import InvitationUpdate  # type: ignore
     from ._models import Invoice  # type: ignore
     from ._models import InvoiceData  # type: ignore
-    from ._models import InvoiceDataBankAccountNumber  # type: ignore
-    from ._models import InvoiceDataBankBsb  # type: ignore
-    from ._models import InvoiceDataBankIban  # type: ignore
-    from ._models import InvoiceDataBankSortCode  # type: ignore
-    from ._models import InvoiceDataBankSwift  # type: ignore
-    from ._models import InvoiceDataBpayBillerCode  # type: ignore
-    from ._models import InvoiceDataBpayReference  # type: ignore
-    from ._models import InvoiceDataCustomerBusinessNumber  # type: ignore
-    from ._models import InvoiceDataCustomerCompanyName  # type: ignore
-    from ._models import InvoiceDataCustomerContactName  # type: ignore
-    from ._models import InvoiceDataCustomerEmail  # type: ignore
-    from ._models import InvoiceDataCustomerNumber  # type: ignore
-    from ._models import InvoiceDataCustomerPhoneNumber  # type: ignore
-    from ._models import InvoiceDataCustomerVat  # type: ignore
-    from ._models import InvoiceDataInvoiceNumber  # type: ignore
-    from ._models import InvoiceDataInvoicePurchaseOrderNumber  # type: ignore
-    from ._models import InvoiceDataPaymentAmountBase  # type: ignore
-    from ._models import InvoiceDataPaymentAmountDue  # type: ignore
-    from ._models import InvoiceDataPaymentAmountPaid  # type: ignore
-    from ._models import InvoiceDataPaymentAmountTax  # type: ignore
-    from ._models import InvoiceDataPaymentAmountTotal  # type: ignore
-    from ._models import InvoiceDataPaymentReference  # type: ignore
-    from ._models import InvoiceDataSupplierBusinessNumber  # type: ignore
-    from ._models import InvoiceDataSupplierCompanyName  # type: ignore
-    from ._models import InvoiceDataSupplierEmail  # type: ignore
-    from ._models import InvoiceDataSupplierFax  # type: ignore
-    from ._models import InvoiceDataSupplierPhoneNumber  # type: ignore
-    from ._models import InvoiceDataSupplierVat  # type: ignore
-    from ._models import InvoiceDataSupplierWebsite  # type: ignore
     from ._models import JobDescription  # type: ignore
     from ._models import JobDescriptionData  # type: ignore
     from ._models import JobDescriptionDataUpdate  # type: ignore
@@ -872,43 +748,14 @@ __all__ = [
     "CollectionField",
     "CollectionUpdate",
     "CollectionWorkspace",
-    "Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1",
-    "Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1",
-    "Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1",
-    "Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1",
     "Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1",
-    "Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1",
-    "Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1",
-    "Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1",
     "Components1Kwk9B6SchemasThemeconfigPropertiesPalettePropertiesBackgroundOneof1",
-    "Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1",
-    "Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1",
-    "Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1",
-    "Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1",
-    "Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1",
     "Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1",
     "Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification",
-    "Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1",
-    "Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1",
-    "Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1",
-    "Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1",
-    "Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1",
-    "Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1",
-    "Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1",
-    "Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1",
-    "Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1",
-    "Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1",
-    "ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1",
-    "ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1",
-    "ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1",
-    "ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1",
-    "ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1",
     "ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1",
     "ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1",
     "ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties",
     "ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1",
-    "ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1",
-    "ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1",
     "CurrencyCodeAnnotation",
     "CustomFieldConfig",
     "DataField",
@@ -978,35 +825,6 @@ __all__ = [
     "InvitationUpdate",
     "Invoice",
     "InvoiceData",
-    "InvoiceDataBankAccountNumber",
-    "InvoiceDataBankBsb",
-    "InvoiceDataBankIban",
-    "InvoiceDataBankSortCode",
-    "InvoiceDataBankSwift",
-    "InvoiceDataBpayBillerCode",
-    "InvoiceDataBpayReference",
-    "InvoiceDataCustomerBusinessNumber",
-    "InvoiceDataCustomerCompanyName",
-    "InvoiceDataCustomerContactName",
-    "InvoiceDataCustomerEmail",
-    "InvoiceDataCustomerNumber",
-    "InvoiceDataCustomerPhoneNumber",
-    "InvoiceDataCustomerVat",
-    "InvoiceDataInvoiceNumber",
-    "InvoiceDataInvoicePurchaseOrderNumber",
-    "InvoiceDataPaymentAmountBase",
-    "InvoiceDataPaymentAmountDue",
-    "InvoiceDataPaymentAmountPaid",
-    "InvoiceDataPaymentAmountTax",
-    "InvoiceDataPaymentAmountTotal",
-    "InvoiceDataPaymentReference",
-    "InvoiceDataSupplierBusinessNumber",
-    "InvoiceDataSupplierCompanyName",
-    "InvoiceDataSupplierEmail",
-    "InvoiceDataSupplierFax",
-    "InvoiceDataSupplierPhoneNumber",
-    "InvoiceDataSupplierVat",
-    "InvoiceDataSupplierWebsite",
     "JobDescription",
     "JobDescriptionData",
     "JobDescriptionDataUpdate",
