@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.11.1] - 2024-05-03
+### Fixed
+- Fix invoice data deserialization
+
 ## [3.11.0] - 2024-04-10
 ### Changed
 - Use ruff instead of black to format code, run check and format on code

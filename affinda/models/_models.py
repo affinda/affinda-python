@@ -284,17 +284,11 @@ class Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1(
 ):
     """Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -303,7 +297,7 @@ class Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1(
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -311,24 +305,18 @@ class Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1(
         super(Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
 class Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1(msrest.serialization.Model):
     """Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -337,7 +325,7 @@ class Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1(msrest.se
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -345,24 +333,18 @@ class Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1(msrest.se
         super(Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
 class Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1(msrest.serialization.Model):
     """Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -371,13 +353,13 @@ class Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1(msrest.seriali
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1, self).__init__(**kwargs)
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -386,17 +368,11 @@ class Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1(
 ):
     """Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -405,7 +381,7 @@ class Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1(
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -413,7 +389,7 @@ class Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1(
         super(
             Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1, self
         ).__init__(**kwargs)
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -447,17 +423,11 @@ class Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1(
 ):
     """Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -466,7 +436,7 @@ class Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1(
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -474,24 +444,18 @@ class Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1(
         super(Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
 class Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1(msrest.serialization.Model):
     """Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -500,7 +464,7 @@ class Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1(msrest.seri
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -508,7 +472,7 @@ class Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1(msrest.seri
         super(Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -517,17 +481,11 @@ class Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1(
 ):
     """Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -536,7 +494,7 @@ class Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1(
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -544,7 +502,7 @@ class Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1(
         super(
             Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1, self
         ).__init__(**kwargs)
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -553,17 +511,11 @@ class Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1(
 ):
     """Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -572,7 +524,7 @@ class Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1(
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -580,7 +532,7 @@ class Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1(
         super(
             Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1, self
         ).__init__(**kwargs)
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -589,17 +541,11 @@ class Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1(
 ):
     """Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -608,7 +554,7 @@ class Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1(
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -616,24 +562,18 @@ class Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1(
         super(
             Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1, self
         ).__init__(**kwargs)
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
 class Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1(msrest.serialization.Model):
     """Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -642,7 +582,7 @@ class Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1(msrest.ser
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -650,24 +590,18 @@ class Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1(msrest.ser
         super(Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
 class Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1(msrest.serialization.Model):
     """Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -676,7 +610,7 @@ class Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1(msrest.serial
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -684,24 +618,18 @@ class Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1(msrest.serial
         super(Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
 class Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1(msrest.serialization.Model):
     """Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -710,13 +638,13 @@ class Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1(msrest.serializ
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
         """
         super(Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1, self).__init__(**kwargs)
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -830,17 +758,11 @@ class Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1(
 ):
     """Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -849,7 +771,7 @@ class Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1(
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -857,7 +779,7 @@ class Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1(
         super(Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -866,17 +788,11 @@ class Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1(
 ):
     """Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -885,7 +801,7 @@ class Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1(
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -893,24 +809,18 @@ class Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1(
         super(Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
 class Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1(msrest.serialization.Model):
     """Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -919,7 +829,7 @@ class Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1(msrest.se
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -927,7 +837,7 @@ class Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1(msrest.se
         super(Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -936,17 +846,11 @@ class Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1(
 ):
     """Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -955,7 +859,7 @@ class Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1(
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -963,7 +867,7 @@ class Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1(
         super(
             Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1, self
         ).__init__(**kwargs)
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -972,17 +876,11 @@ class Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1(
 ):
     """Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -991,7 +889,7 @@ class Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1(
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -999,7 +897,7 @@ class Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1(
         super(Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -1008,17 +906,11 @@ class Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1(
 ):
     """Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -1027,7 +919,7 @@ class Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1(
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -1035,7 +927,7 @@ class Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1(
         super(Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -1044,17 +936,11 @@ class Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1(
 ):
     """Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -1063,7 +949,7 @@ class Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1(
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -1071,24 +957,18 @@ class Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1(
         super(
             Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1, self
         ).__init__(**kwargs)
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
 class Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1(msrest.serialization.Model):
     """Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -1097,7 +977,7 @@ class Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1(msrest.ser
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -1105,7 +985,7 @@ class Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1(msrest.ser
         super(Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -1114,17 +994,11 @@ class Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1(
 ):
     """Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -1133,7 +1007,7 @@ class Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1(
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -1141,7 +1015,7 @@ class Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1(
         super(Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -1150,17 +1024,11 @@ class Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1(
 ):
     """Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -1169,7 +1037,7 @@ class Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1(
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -1177,24 +1045,18 @@ class Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1(
         super(Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
 class ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1(msrest.serialization.Model):
     """ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -1203,7 +1065,7 @@ class ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1(msrest.se
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -1211,7 +1073,7 @@ class ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1(msrest.se
         super(ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -1220,17 +1082,11 @@ class ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllo
 ):
     """ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -1239,7 +1095,7 @@ class ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllo
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -1247,24 +1103,18 @@ class ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllo
         super(
             ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1, self
         ).__init__(**kwargs)
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
 class ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.serialization.Model):
     """ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -1273,7 +1123,7 @@ class ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.seria
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -1281,24 +1131,18 @@ class ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.seria
         super(ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
 class ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1(msrest.serialization.Model):
     """ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -1307,7 +1151,7 @@ class ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1(msrest.seria
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -1315,7 +1159,7 @@ class ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1(msrest.seria
         super(ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -1324,17 +1168,11 @@ class ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1(
 ):
     """ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -1343,7 +1181,7 @@ class ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1(
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -1351,7 +1189,7 @@ class ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1(
         super(ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -1499,17 +1337,11 @@ class ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValu
 class ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1(msrest.serialization.Model):
     """ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -1518,7 +1350,7 @@ class ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1(msrest.ser
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -1526,7 +1358,7 @@ class ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1(msrest.ser
         super(ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
@@ -1535,17 +1367,11 @@ class ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1(
 ):
     """ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :ivar raw: Required.
+    :ivar raw:
     :vartype raw: str
     :ivar parsed:
     :vartype parsed: str
     """
-
-    _validation = {
-        "raw": {"required": True},
-    }
 
     _attribute_map = {
         "raw": {"key": "raw", "type": "str"},
@@ -1554,7 +1380,7 @@ class ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1(
 
     def __init__(self, **kwargs):
         """
-        :keyword raw: Required.
+        :keyword raw:
         :paramtype raw: str
         :keyword parsed:
         :paramtype parsed: str
@@ -1562,7 +1388,7 @@ class ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1(
         super(
             ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1, self
         ).__init__(**kwargs)
-        self.raw = kwargs["raw"]
+        self.raw = kwargs.get("raw", None)
         self.parsed = kwargs.get("parsed", None)
 
 
