@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.22.1] - 2024-05-03
+### Fixed
+- Fix invoice data deserialization
+
 ## [4.22.0] - 2024-04-24
 ### Added
 - Added filter and sort options for mapping data source endpoint

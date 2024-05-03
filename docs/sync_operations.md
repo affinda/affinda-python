@@ -3238,6 +3238,35 @@ Delete the specified indexed document from the database.
 
 `None`: None, or the result of cls(response)
 
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.re_index_document"></a>
+
+#### re\_index\_document
+
+```python
+def re_index_document(name, identifier, **kwargs)
+```
+
+Re-index a document.
+
+Re-index a document.
+This is relevant if you updated the document's data via the /annotations endpoint, and want to
+refresh
+the document's data in the search index.
+
+**Arguments**:
+
+- `name` (`str`): Index name.
+- `identifier` (`str`): Document identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resume_search"></a>
 
 #### create\_resume\_search

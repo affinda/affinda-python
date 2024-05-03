@@ -3544,6 +3544,36 @@ def build_delete_index_document_request(
     )
 
 
+def build_re_index_document_request(
+    name,  # type: str
+    identifier,  # type: str
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+
+    accept = _headers.pop('Accept', "application/json")
+
+    # Construct URL
+    _url = kwargs.pop("template_url", "/v3/index/{name}/documents/{identifier}/re_index")
+    path_format_arguments = {
+        "name": _SERIALIZER.url("name", name, 'str'),
+        "identifier": _SERIALIZER.url("identifier", identifier, 'str'),
+    }
+
+    _url = _format_url_section(_url, **path_format_arguments)
+
+    # Construct headers
+    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="POST",
+        url=_url,
+        headers=_headers,
+        **kwargs
+    )
+
+
 def build_create_resume_search_request(
     **kwargs  # type: Any
 ):
@@ -12185,6 +12215,74 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             return cls(pipeline_response, None, {})
 
     delete_index_document.metadata = {"url": "/v3/index/{name}/documents/{identifier}"}  # type: ignore
+
+    def re_index_document(  # pylint: disable=inconsistent-return-statements
+        self,
+        name,  # type: str
+        identifier,  # type: str
+        **kwargs,  # type: Any
+    ):
+        # type: (...) -> None
+        """Re-index a document.
+
+        Re-index a document.
+        This is relevant if you updated the document's data via the /annotations endpoint, and want to
+        refresh
+        the document's data in the search index.
+
+        :param name: Index name.
+        :type name: str
+        :param identifier: Document identifier.
+        :type identifier: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: None, or the result of cls(response)
+        :rtype: None
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[None]
+
+        request = build_re_index_document_request(
+            name=name,
+            identifier=identifier,
+            template_url=self.re_index_document.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [204]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if cls:
+            return cls(pipeline_response, None, {})
+
+    re_index_document.metadata = {"url": "/v3/index/{name}/documents/{identifier}/re_index"}  # type: ignore
 
     def create_resume_search(
         self,

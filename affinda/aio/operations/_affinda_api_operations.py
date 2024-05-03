@@ -123,6 +123,7 @@ from ...operations._affinda_api_operations import (
     build_list_mapping_data_sources_request,
     build_list_mappings_request,
     build_list_occupation_groups_request,
+    build_re_index_document_request,
     build_regenerate_api_key_for_api_user_request,
     build_replace_data_point_choices_request,
     build_replace_mapping_data_source_values_request,
@@ -8167,6 +8168,70 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             return cls(pipeline_response, None, {})
 
     delete_index_document.metadata = {"url": "/v3/index/{name}/documents/{identifier}"}  # type: ignore
+
+    async def re_index_document(  # pylint: disable=inconsistent-return-statements
+        self, name: str, identifier: str, **kwargs: Any
+    ) -> None:
+        """Re-index a document.
+
+        Re-index a document.
+        This is relevant if you updated the document's data via the /annotations endpoint, and want to
+        refresh
+        the document's data in the search index.
+
+        :param name: Index name.
+        :type name: str
+        :param identifier: Document identifier.
+        :type identifier: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: None, or the result of cls(response)
+        :rtype: None
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[None]
+
+        request = build_re_index_document_request(
+            name=name,
+            identifier=identifier,
+            template_url=self.re_index_document.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [204]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if cls:
+            return cls(pipeline_response, None, {})
+
+    re_index_document.metadata = {"url": "/v3/index/{name}/documents/{identifier}/re_index"}  # type: ignore
 
     async def create_resume_search(
         self,
