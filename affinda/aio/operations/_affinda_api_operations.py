@@ -26,7 +26,9 @@ from ...operations._affinda_api_operations import (
     build_add_mapping_data_source_value_request,
     build_batch_add_tag_request,
     build_batch_create_annotations_request,
+    build_batch_create_validation_results_request,
     build_batch_delete_annotations_request,
+    build_batch_delete_validation_results_request,
     build_batch_remove_tag_request,
     build_batch_update_annotations_request,
     build_create_annotation_request,
@@ -2517,6 +2519,134 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
     delete_validation_result.metadata = {"url": "/v3/validation_results/{id}"}  # type: ignore
 
+    async def batch_create_validation_results(
+        self, body: List[_models.ValidationResultCreate], **kwargs: Any
+    ) -> List[_models.ValidationResult]:
+        """Batch create validation results.
+
+        Batch create validation results.
+
+        :param body:
+        :type body: list[~affinda.models.ValidationResultCreate]
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: list of ValidationResult, or the result of cls(response)
+        :rtype: list[~affinda.models.ValidationResult]
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[List[_models.ValidationResult]]
+
+        _json = self._serialize.body(body, "[ValidationResultCreate]")
+
+        request = build_batch_create_validation_results_request(
+            content_type=content_type,
+            json=_json,
+            template_url=self.batch_create_validation_results.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [201]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("[ValidationResult]", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    batch_create_validation_results.metadata = {"url": "/v3/validation_results/batch_create"}  # type: ignore
+
+    async def batch_delete_validation_results(  # pylint: disable=inconsistent-return-statements
+        self, body: _models.BatchDeleteValidationResultsRequest, **kwargs: Any
+    ) -> None:
+        """Batch delete validation results.
+
+        Batch delete validation results.
+
+        :param body:
+        :type body: ~affinda.models.BatchDeleteValidationResultsRequest
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: None, or the result of cls(response)
+        :rtype: None
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[None]
+
+        _json = self._serialize.body(body, "BatchDeleteValidationResultsRequest")
+
+        request = build_batch_delete_validation_results_request(
+            content_type=content_type,
+            json=_json,
+            template_url=self.batch_delete_validation_results.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [204]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if cls:
+            return cls(pipeline_response, None, {})
+
+    batch_delete_validation_results.metadata = {"url": "/v3/validation_results/batch_delete"}  # type: ignore
+
     async def get_all_extractors(
         self,
         organization: str,
@@ -4208,6 +4338,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         limit: Optional[int] = None,
         name: Optional[str] = None,
         organization: Optional[str] = None,
+        workspace: Optional[str] = None,
         identifier: Optional[str] = None,
         **kwargs: Any,
     ) -> _models.Paths11QdcofV3MappingDataSourcesGetResponses200ContentApplicationJsonSchema:
@@ -4224,6 +4355,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type name: str
         :param organization: Filter by organization. Default value is None.
         :type organization: str
+        :param workspace: Filter by workspace. Default value is None.
+        :type workspace: str
         :param identifier: Filter by identifier. Default value is None.
         :type identifier: str
         :keyword callable cls: A custom type or function that will be passed the direct response
@@ -4255,6 +4388,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             limit=limit,
             name=name,
             organization=organization,
+            workspace=workspace,
             identifier=identifier,
             template_url=self.list_mapping_data_sources.metadata["url"],
             headers=_headers,
@@ -7692,6 +7826,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         offset: Optional[int] = None,
         limit: Optional[int] = None,
         document_type: Optional[Union[str, "_models.Enum20"]] = None,
+        name: Optional[str] = None,
         **kwargs: Any,
     ) -> _models.PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema:
         """Get list of all indexes.
@@ -7705,6 +7840,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type limit: int
         :param document_type: Filter indices by a document type. Default value is None.
         :type document_type: str or ~affinda.models.Enum20
+        :param name: Filter indices by name. Default value is None.
+        :type name: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)
@@ -7732,6 +7869,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             offset=offset,
             limit=limit,
             document_type=document_type,
+            name=name,
             template_url=self.get_all_indexes.metadata["url"],
             headers=_headers,
             params=_params,

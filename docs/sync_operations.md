@@ -981,6 +981,56 @@ Remove validation result.
 
 `None`: None, or the result of cls(response)
 
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.batch_create_validation_results"></a>
+
+#### batch\_create\_validation\_results
+
+```python
+def batch_create_validation_results(body, **kwargs)
+```
+
+Batch create validation results.
+
+Batch create validation results.
+
+**Arguments**:
+
+- `body` (`list[~affinda.models.ValidationResultCreate]`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[~affinda.models.ValidationResult]`: list of ValidationResult, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.batch_delete_validation_results"></a>
+
+#### batch\_delete\_validation\_results
+
+```python
+def batch_delete_validation_results(body, **kwargs)
+```
+
+Batch delete validation results.
+
+Batch delete validation results.
+
+**Arguments**:
+
+- `body` (`~affinda.models.BatchDeleteValidationResultsRequest`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_extractors"></a>
 
 #### get\_all\_extractors
@@ -1661,6 +1711,7 @@ def list_mapping_data_sources(offset=None,
                               limit=None,
                               name=None,
                               organization=None,
+                              workspace=None,
                               identifier=None,
                               **kwargs)
 ```
@@ -1676,6 +1727,7 @@ Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is None.
 - `name` (`str`): Filter by name. Default value is None.
 - `organization` (`str`): Filter by organization. Default value is None.
+- `workspace` (`str`): Filter by workspace. Default value is None.
 - `identifier` (`str`): Filter by identifier. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
@@ -3056,7 +3108,11 @@ configurations of the embeddable search tool.
 #### get\_all\_indexes
 
 ```python
-def get_all_indexes(offset=None, limit=None, document_type=None, **kwargs)
+def get_all_indexes(offset=None,
+                    limit=None,
+                    document_type=None,
+                    name=None,
+                    **kwargs)
 ```
 
 Get list of all indexes.
@@ -3069,6 +3125,7 @@ Returns all the indexes.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is None.
 - `document_type` (`str or ~affinda.models.Enum20`): Filter indices by a document type. Default value is None.
+- `name` (`str`): Filter indices by name. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:

@@ -22,6 +22,7 @@ try:
     from ._models_py3 import BaseExtractor
     from ._models_py3 import BatchAddTagRequest
     from ._models_py3 import BatchDeleteAnnotationsResponse
+    from ._models_py3 import BatchDeleteValidationResultsRequest
     from ._models_py3 import BatchRemoveTagRequest
     from ._models_py3 import ChangedValidationResults
     from ._models_py3 import Collection
@@ -373,6 +374,7 @@ except (SyntaxError, ImportError):
     from ._models import BaseExtractor  # type: ignore
     from ._models import BatchAddTagRequest  # type: ignore
     from ._models import BatchDeleteAnnotationsResponse  # type: ignore
+    from ._models import BatchDeleteValidationResultsRequest  # type: ignore
     from ._models import BatchRemoveTagRequest  # type: ignore
     from ._models import ChangedValidationResults  # type: ignore
     from ._models import Collection  # type: ignore
@@ -741,6 +743,7 @@ __all__ = [
     "BaseExtractor",
     "BatchAddTagRequest",
     "BatchDeleteAnnotationsResponse",
+    "BatchDeleteValidationResultsRequest",
     "BatchRemoveTagRequest",
     "ChangedValidationResults",
     "Collection",

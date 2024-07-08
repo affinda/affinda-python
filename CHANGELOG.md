@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.23.0] - 2024-07-08
+### Added
+- Ability to filter index by name
+- Ability to set workspace for MappingDataSource
+
 ## [4.22.2] - 2024-05-03
 ### Removed
 - Removed unnecessary models of InvoiceData fields

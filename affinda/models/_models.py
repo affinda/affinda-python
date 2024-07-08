@@ -1107,6 +1107,32 @@ class BatchDeleteAnnotationsResponse(msrest.serialization.Model):
         self.validation_results = kwargs.get("validation_results", None)
 
 
+class BatchDeleteValidationResultsRequest(msrest.serialization.Model):
+    """BatchDeleteValidationResultsRequest.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar ids: Required. List of validation result IDs to delete.
+    :vartype ids: list[int]
+    """
+
+    _validation = {
+        "ids": {"required": True},
+    }
+
+    _attribute_map = {
+        "ids": {"key": "ids", "type": "[int]"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword ids: Required. List of validation result IDs to delete.
+        :paramtype ids: list[int]
+        """
+        super(BatchDeleteValidationResultsRequest, self).__init__(**kwargs)
+        self.ids = kwargs["ids"]
+
+
 class BatchRemoveTagRequest(msrest.serialization.Model):
     """BatchRemoveTagRequest.
 
@@ -1450,6 +1476,11 @@ class CollectionField(msrest.serialization.Model):
 
     :ivar label:
     :vartype label: str
+    :ivar field_type: The different data types of annotations. Known values are: "text", "integer",
+     "float", "decimal", "date", "datetime", "daterange", "boolean", "enum", "location",
+     "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language", "skill",
+     "yearsexperience", "group", "table_deprecated", "url", "image".
+    :vartype field_type: str or ~affinda.models.AnnotationContentType
     :ivar mandatory:
     :vartype mandatory: bool
     :ivar show_dropdown:
@@ -1473,6 +1504,7 @@ class CollectionField(msrest.serialization.Model):
 
     _attribute_map = {
         "label": {"key": "label", "type": "str"},
+        "field_type": {"key": "fieldType", "type": "str"},
         "mandatory": {"key": "mandatory", "type": "bool"},
         "show_dropdown": {"key": "showDropdown", "type": "bool"},
         "display_enum_value": {"key": "displayEnumValue", "type": "bool"},
@@ -1486,6 +1518,11 @@ class CollectionField(msrest.serialization.Model):
         """
         :keyword label:
         :paramtype label: str
+        :keyword field_type: The different data types of annotations. Known values are: "text",
+         "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum", "location",
+         "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language", "skill",
+         "yearsexperience", "group", "table_deprecated", "url", "image".
+        :paramtype field_type: str or ~affinda.models.AnnotationContentType
         :keyword mandatory:
         :paramtype mandatory: bool
         :keyword show_dropdown:
@@ -1504,6 +1541,7 @@ class CollectionField(msrest.serialization.Model):
         """
         super(CollectionField, self).__init__(**kwargs)
         self.label = kwargs.get("label", None)
+        self.field_type = kwargs.get("field_type", None)
         self.mandatory = kwargs.get("mandatory", None)
         self.show_dropdown = kwargs.get("show_dropdown", None)
         self.display_enum_value = kwargs.get("display_enum_value", None)
@@ -3945,6 +3983,8 @@ class DocumentMeta(msrest.serialization.Model):
     :vartype error_detail: str
     :ivar file: URL to view the file.
     :vartype file: str
+    :ivar html: URL to view the file converted to HTML.
+    :vartype html: str
     :ivar tags: A set of tags.
     :vartype tags: list[~affinda.models.Tag]
     :ivar created_by:
@@ -3996,6 +4036,7 @@ class DocumentMeta(msrest.serialization.Model):
         "error_code": {"key": "errorCode", "type": "str"},
         "error_detail": {"key": "errorDetail", "type": "str"},
         "file": {"key": "file", "type": "str"},
+        "html": {"key": "html", "type": "str"},
         "tags": {"key": "tags", "type": "[Tag]"},
         "created_by": {"key": "createdBy", "type": "User"},
         "source_email": {"key": "sourceEmail", "type": "str"},
@@ -4073,6 +4114,8 @@ class DocumentMeta(msrest.serialization.Model):
         :paramtype error_detail: str
         :keyword file: URL to view the file.
         :paramtype file: str
+        :keyword html: URL to view the file converted to HTML.
+        :paramtype html: str
         :keyword tags: A set of tags.
         :paramtype tags: list[~affinda.models.Tag]
         :keyword created_by:
@@ -4117,6 +4160,7 @@ class DocumentMeta(msrest.serialization.Model):
         self.error_code = kwargs.get("error_code", None)
         self.error_detail = kwargs.get("error_detail", None)
         self.file = kwargs.get("file", None)
+        self.html = kwargs.get("html", None)
         self.tags = kwargs.get("tags", None)
         self.created_by = kwargs.get("created_by", None)
         self.source_email = kwargs.get("source_email", None)
@@ -9423,6 +9467,8 @@ class Mapping(msrest.serialization.Model):
     :vartype data_source: str
     :ivar score_cutoff: Higher values will result in more strict matching.
     :vartype score_cutoff: float
+    :ivar order_by: The field to order the results by. Leave blank for ordering by relevance.
+    :vartype order_by: str
     """
 
     _validation = {
@@ -9435,6 +9481,7 @@ class Mapping(msrest.serialization.Model):
         "organization": {"key": "organization", "type": "str"},
         "data_source": {"key": "dataSource", "type": "str"},
         "score_cutoff": {"key": "scoreCutoff", "type": "float"},
+        "order_by": {"key": "orderBy", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -9445,12 +9492,15 @@ class Mapping(msrest.serialization.Model):
         :paramtype data_source: str
         :keyword score_cutoff: Higher values will result in more strict matching.
         :paramtype score_cutoff: float
+        :keyword order_by: The field to order the results by. Leave blank for ordering by relevance.
+        :paramtype order_by: str
         """
         super(Mapping, self).__init__(**kwargs)
         self.identifier = None
         self.organization = kwargs.get("organization", None)
         self.data_source = kwargs["data_source"]
         self.score_cutoff = kwargs.get("score_cutoff", None)
+        self.order_by = kwargs.get("order_by", None)
 
 
 class MappingCreate(msrest.serialization.Model):
@@ -9464,6 +9514,8 @@ class MappingCreate(msrest.serialization.Model):
     :vartype score_cutoff: float
     :ivar organization: The organization that this mapping belongs to.
     :vartype organization: str
+    :ivar order_by: The field to order the results by. Leave blank for ordering by relevance.
+    :vartype order_by: str
     """
 
     _validation = {
@@ -9474,6 +9526,7 @@ class MappingCreate(msrest.serialization.Model):
         "data_source": {"key": "dataSource", "type": "str"},
         "score_cutoff": {"key": "scoreCutoff", "type": "float"},
         "organization": {"key": "organization", "type": "str"},
+        "order_by": {"key": "orderBy", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -9484,11 +9537,14 @@ class MappingCreate(msrest.serialization.Model):
         :paramtype score_cutoff: float
         :keyword organization: The organization that this mapping belongs to.
         :paramtype organization: str
+        :keyword order_by: The field to order the results by. Leave blank for ordering by relevance.
+        :paramtype order_by: str
         """
         super(MappingCreate, self).__init__(**kwargs)
         self.data_source = kwargs["data_source"]
         self.score_cutoff = kwargs.get("score_cutoff", None)
         self.organization = kwargs.get("organization", None)
+        self.order_by = kwargs.get("order_by", None)
 
 
 class MappingDataSource(msrest.serialization.Model):
@@ -9508,6 +9564,8 @@ class MappingDataSource(msrest.serialization.Model):
     :vartype display_property: str
     :ivar organization: Required. The organization that this mapping data source belongs to.
     :vartype organization: str
+    :ivar workspace: Required. The workspace that this mapping data source belongs to.
+    :vartype workspace: str
     :ivar schema: The schema of the mapping data source.
     :vartype schema: any
     """
@@ -9517,6 +9575,7 @@ class MappingDataSource(msrest.serialization.Model):
         "key_property": {"required": True},
         "display_property": {"required": True},
         "organization": {"required": True},
+        "workspace": {"required": True},
     }
 
     _attribute_map = {
@@ -9525,6 +9584,7 @@ class MappingDataSource(msrest.serialization.Model):
         "key_property": {"key": "keyProperty", "type": "str"},
         "display_property": {"key": "displayProperty", "type": "str"},
         "organization": {"key": "organization", "type": "str"},
+        "workspace": {"key": "workspace", "type": "str"},
         "schema": {"key": "schema", "type": "object"},
     }
 
@@ -9539,6 +9599,8 @@ class MappingDataSource(msrest.serialization.Model):
         :paramtype display_property: str
         :keyword organization: Required. The organization that this mapping data source belongs to.
         :paramtype organization: str
+        :keyword workspace: Required. The workspace that this mapping data source belongs to.
+        :paramtype workspace: str
         :keyword schema: The schema of the mapping data source.
         :paramtype schema: any
         """
@@ -9548,18 +9610,19 @@ class MappingDataSource(msrest.serialization.Model):
         self.key_property = kwargs["key_property"]
         self.display_property = kwargs["display_property"]
         self.organization = kwargs["organization"]
+        self.workspace = kwargs["workspace"]
         self.schema = kwargs.get("schema", None)
 
 
 class MappingDataSourceCreate(msrest.serialization.Model):
     """A mapping data source is used to map from raw data found by our AI models to records in your database.
 
-    All required parameters must be populated in order to send to Azure.
-
     :ivar name:
     :vartype name: str
-    :ivar organization: Required. The organization that this mapping data source belongs to.
+    :ivar organization: The organization that this mapping data source belongs to.
     :vartype organization: str
+    :ivar workspace: The workspace that this mapping data source belongs to.
+    :vartype workspace: str
     :ivar key_property: Attribute in the schema which uniquely identifiers the value.
     :vartype key_property: str
     :ivar display_property: Attribute in the schema which is used to display the value.
@@ -9570,13 +9633,10 @@ class MappingDataSourceCreate(msrest.serialization.Model):
     :vartype schema: any
     """
 
-    _validation = {
-        "organization": {"required": True},
-    }
-
     _attribute_map = {
         "name": {"key": "name", "type": "str"},
         "organization": {"key": "organization", "type": "str"},
+        "workspace": {"key": "workspace", "type": "str"},
         "key_property": {"key": "keyProperty", "type": "str"},
         "display_property": {"key": "displayProperty", "type": "str"},
         "values": {"key": "values", "type": "[object]"},
@@ -9587,8 +9647,10 @@ class MappingDataSourceCreate(msrest.serialization.Model):
         """
         :keyword name:
         :paramtype name: str
-        :keyword organization: Required. The organization that this mapping data source belongs to.
+        :keyword organization: The organization that this mapping data source belongs to.
         :paramtype organization: str
+        :keyword workspace: The workspace that this mapping data source belongs to.
+        :paramtype workspace: str
         :keyword key_property: Attribute in the schema which uniquely identifiers the value.
         :paramtype key_property: str
         :keyword display_property: Attribute in the schema which is used to display the value.
@@ -9600,7 +9662,8 @@ class MappingDataSourceCreate(msrest.serialization.Model):
         """
         super(MappingDataSourceCreate, self).__init__(**kwargs)
         self.name = kwargs.get("name", None)
-        self.organization = kwargs["organization"]
+        self.organization = kwargs.get("organization", None)
+        self.workspace = kwargs.get("workspace", None)
         self.key_property = kwargs.get("key_property", None)
         self.display_property = kwargs.get("display_property", None)
         self.values = kwargs.get("values", None)
@@ -9612,19 +9675,25 @@ class MappingUpdate(msrest.serialization.Model):
 
     :ivar score_cutoff: Higher values will result in more strict matching.
     :vartype score_cutoff: float
+    :ivar order_by: The field to order the results by. Leave blank for ordering by relevance.
+    :vartype order_by: str
     """
 
     _attribute_map = {
         "score_cutoff": {"key": "scoreCutoff", "type": "float"},
+        "order_by": {"key": "orderBy", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         """
         :keyword score_cutoff: Higher values will result in more strict matching.
         :paramtype score_cutoff: float
+        :keyword order_by: The field to order the results by. Leave blank for ordering by relevance.
+        :paramtype order_by: str
         """
         super(MappingUpdate, self).__init__(**kwargs)
         self.score_cutoff = kwargs.get("score_cutoff", None)
+        self.order_by = kwargs.get("order_by", None)
 
 
 class Meta(msrest.serialization.Model):
@@ -16499,7 +16568,8 @@ class ValidationResult(msrest.serialization.Model):
     :vartype id: int
     :ivar annotations: Required. List of annotation ids that were validated.
     :vartype annotations: list[int]
-    :ivar passed: Required. Whether the validation passed or not.
+    :ivar passed: Required. Whether the validation passed or not, null if the validation was not
+     applicable.
     :vartype passed: bool
     :ivar rule_slug: Required. The hot-dog case slug of the validation rule that was applied.
     :vartype rule_slug: str
@@ -16533,7 +16603,8 @@ class ValidationResult(msrest.serialization.Model):
         :paramtype id: int
         :keyword annotations: Required. List of annotation ids that were validated.
         :paramtype annotations: list[int]
-        :keyword passed: Required. Whether the validation passed or not.
+        :keyword passed: Required. Whether the validation passed or not, null if the validation was not
+         applicable.
         :paramtype passed: bool
         :keyword rule_slug: Required. The hot-dog case slug of the validation rule that was applied.
         :paramtype rule_slug: str
@@ -16558,7 +16629,7 @@ class ValidationResultCreate(msrest.serialization.Model):
 
     :ivar annotations: Required. List of annotation ids that were validated.
     :vartype annotations: list[int]
-    :ivar passed: Whether the validation passed or not.
+    :ivar passed: Whether the validation passed or not, null if the validation was not applicable.
     :vartype passed: bool
     :ivar rule_slug: Required. The hot-dog case slug of the validation rule that was applied.
     :vartype rule_slug: str
@@ -16587,7 +16658,8 @@ class ValidationResultCreate(msrest.serialization.Model):
         """
         :keyword annotations: Required. List of annotation ids that were validated.
         :paramtype annotations: list[int]
-        :keyword passed: Whether the validation passed or not.
+        :keyword passed: Whether the validation passed or not, null if the validation was not
+         applicable.
         :paramtype passed: bool
         :keyword rule_slug: Required. The hot-dog case slug of the validation rule that was applied.
         :paramtype rule_slug: str
@@ -16609,7 +16681,7 @@ class ValidationResultUpdate(msrest.serialization.Model):
 
     :ivar annotations: List of annotation ids that were validated.
     :vartype annotations: list[int]
-    :ivar passed: Whether the validation passed or not.
+    :ivar passed: Whether the validation passed or not, null if the validation was not applicable.
     :vartype passed: bool
     :ivar rule_slug: The hot-dog case slug of the validation rule that was applied.
     :vartype rule_slug: str
@@ -16635,7 +16707,8 @@ class ValidationResultUpdate(msrest.serialization.Model):
         """
         :keyword annotations: List of annotation ids that were validated.
         :paramtype annotations: list[int]
-        :keyword passed: Whether the validation passed or not.
+        :keyword passed: Whether the validation passed or not, null if the validation was not
+         applicable.
         :paramtype passed: bool
         :keyword rule_slug: The hot-dog case slug of the validation rule that was applied.
         :paramtype rule_slug: str

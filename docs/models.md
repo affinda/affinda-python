@@ -807,6 +807,33 @@ def __init__(**kwargs)
 - `validation_results`: The validation results created, changed or deleted as a result of
 deleting the annotations.
 
+<a id="models._models.BatchDeleteValidationResultsRequest"></a>
+
+## BatchDeleteValidationResultsRequest Objects
+
+```python
+class BatchDeleteValidationResultsRequest(msrest.serialization.Model)
+```
+
+BatchDeleteValidationResultsRequest.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar ids: Required. List of validation result IDs to delete.
+:vartype ids: list[int]
+
+<a id="models._models.BatchDeleteValidationResultsRequest.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `ids`: Required. List of validation result IDs to delete.
+
 <a id="models._models.BatchRemoveTagRequest"></a>
 
 ## BatchRemoveTagRequest Objects
@@ -1049,6 +1076,11 @@ CollectionField.
 
 :ivar label:
 :vartype label: str
+:ivar field_type: The different data types of annotations. Known values are: "text", "integer",
+ "float", "decimal", "date", "datetime", "daterange", "boolean", "enum", "location",
+ "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language", "skill",
+ "yearsexperience", "group", "table_deprecated", "url", "image".
+:vartype field_type: str or ~affinda.models.AnnotationContentType
 :ivar mandatory:
 :vartype mandatory: bool
 :ivar show_dropdown:
@@ -1076,6 +1108,10 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `label`: 
+- `field_type`: The different data types of annotations. Known values are: "text",
+"integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum", "location",
+"phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language", "skill",
+"yearsexperience", "group", "table_deprecated", "url", "image".
 - `mandatory`: 
 - `show_dropdown`: 
 - `display_enum_value`: If true, both the value and the label for the enums will appear in
@@ -2937,6 +2973,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype error_detail: str
 :ivar file: URL to view the file.
 :vartype file: str
+:ivar html: URL to view the file converted to HTML.
+:vartype html: str
 :ivar tags: A set of tags.
 :vartype tags: list[~affinda.models.Tag]
 :ivar created_by:
@@ -2998,6 +3036,7 @@ this attribute points to those child documents.
 - `error_code`: 
 - `error_detail`: 
 - `file`: URL to view the file.
+- `html`: URL to view the file converted to HTML.
 - `tags`: A set of tags.
 - `created_by`: 
 - `source_email`: If the document is created via email ingestion, this field stores the
@@ -6990,6 +7029,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype data_source: str
 :ivar score_cutoff: Higher values will result in more strict matching.
 :vartype score_cutoff: float
+:ivar order_by: The field to order the results by. Leave blank for ordering by relevance.
+:vartype order_by: str
 
 <a id="models._models.Mapping.__init__"></a>
 
@@ -7004,6 +7045,7 @@ def __init__(**kwargs)
 - `organization`: The organization that this mapping belongs to.
 - `data_source`: Required. The mapping data source this mapping applies to.
 - `score_cutoff`: Higher values will result in more strict matching.
+- `order_by`: The field to order the results by. Leave blank for ordering by relevance.
 
 <a id="models._models.MappingCreate"></a>
 
@@ -7023,6 +7065,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype score_cutoff: float
 :ivar organization: The organization that this mapping belongs to.
 :vartype organization: str
+:ivar order_by: The field to order the results by. Leave blank for ordering by relevance.
+:vartype order_by: str
 
 <a id="models._models.MappingCreate.__init__"></a>
 
@@ -7037,6 +7081,7 @@ def __init__(**kwargs)
 - `data_source`: Required. The mapping data source this mapping applies to.
 - `score_cutoff`: Higher values will result in more strict matching.
 - `organization`: The organization that this mapping belongs to.
+- `order_by`: The field to order the results by. Leave blank for ordering by relevance.
 
 <a id="models._models.MappingDataSource"></a>
 
@@ -7062,6 +7107,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype display_property: str
 :ivar organization: Required. The organization that this mapping data source belongs to.
 :vartype organization: str
+:ivar workspace: Required. The workspace that this mapping data source belongs to.
+:vartype workspace: str
 :ivar schema: The schema of the mapping data source.
 :vartype schema: any
 
@@ -7080,6 +7127,7 @@ def __init__(**kwargs)
 - `display_property`: Required. Attribute in the schema which is used to display the
 value.
 - `organization`: Required. The organization that this mapping data source belongs to.
+- `workspace`: Required. The workspace that this mapping data source belongs to.
 - `schema`: The schema of the mapping data source.
 
 <a id="models._models.MappingDataSourceCreate"></a>
@@ -7092,12 +7140,12 @@ class MappingDataSourceCreate(msrest.serialization.Model)
 
 A mapping data source is used to map from raw data found by our AI models to records in your database.
 
-All required parameters must be populated in order to send to Azure.
-
 :ivar name:
 :vartype name: str
-:ivar organization: Required. The organization that this mapping data source belongs to.
+:ivar organization: The organization that this mapping data source belongs to.
 :vartype organization: str
+:ivar workspace: The workspace that this mapping data source belongs to.
+:vartype workspace: str
 :ivar key_property: Attribute in the schema which uniquely identifiers the value.
 :vartype key_property: str
 :ivar display_property: Attribute in the schema which is used to display the value.
@@ -7118,7 +7166,8 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `name`: 
-- `organization`: Required. The organization that this mapping data source belongs to.
+- `organization`: The organization that this mapping data source belongs to.
+- `workspace`: The workspace that this mapping data source belongs to.
 - `key_property`: Attribute in the schema which uniquely identifiers the value.
 - `display_property`: Attribute in the schema which is used to display the value.
 - `values`: 
@@ -7136,6 +7185,8 @@ MappingUpdate.
 
 :ivar score_cutoff: Higher values will result in more strict matching.
 :vartype score_cutoff: float
+:ivar order_by: The field to order the results by. Leave blank for ordering by relevance.
+:vartype order_by: str
 
 <a id="models._models.MappingUpdate.__init__"></a>
 
@@ -7148,6 +7199,7 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `score_cutoff`: Higher values will result in more strict matching.
+- `order_by`: The field to order the results by. Leave blank for ordering by relevance.
 
 <a id="models._models.Meta"></a>
 
@@ -12474,7 +12526,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype id: int
 :ivar annotations: Required. List of annotation ids that were validated.
 :vartype annotations: list[int]
-:ivar passed: Required. Whether the validation passed or not.
+:ivar passed: Required. Whether the validation passed or not, null if the validation was not
+ applicable.
 :vartype passed: bool
 :ivar rule_slug: Required. The hot-dog case slug of the validation rule that was applied.
 :vartype rule_slug: str
@@ -12495,7 +12548,8 @@ def __init__(**kwargs)
 
 - `id`: Required. Validation Result's ID.
 - `annotations`: Required. List of annotation ids that were validated.
-- `passed`: Required. Whether the validation passed or not.
+- `passed`: Required. Whether the validation passed or not, null if the validation was not
+applicable.
 - `rule_slug`: Required. The hot-dog case slug of the validation rule that was applied.
 - `message`: Required. Message explaining why the validation failed.
 - `document`: Required. Unique identifier for the document.
@@ -12514,7 +12568,7 @@ All required parameters must be populated in order to send to Azure.
 
 :ivar annotations: Required. List of annotation ids that were validated.
 :vartype annotations: list[int]
-:ivar passed: Whether the validation passed or not.
+:ivar passed: Whether the validation passed or not, null if the validation was not applicable.
 :vartype passed: bool
 :ivar rule_slug: Required. The hot-dog case slug of the validation rule that was applied.
 :vartype rule_slug: str
@@ -12534,7 +12588,8 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `annotations`: Required. List of annotation ids that were validated.
-- `passed`: Whether the validation passed or not.
+- `passed`: Whether the validation passed or not, null if the validation was not
+applicable.
 - `rule_slug`: Required. The hot-dog case slug of the validation rule that was applied.
 - `message`: Required. Message explaining why the validation failed.
 - `document`: Required. Unique identifier for the document.
@@ -12551,7 +12606,7 @@ ValidationResultUpdate.
 
 :ivar annotations: List of annotation ids that were validated.
 :vartype annotations: list[int]
-:ivar passed: Whether the validation passed or not.
+:ivar passed: Whether the validation passed or not, null if the validation was not applicable.
 :vartype passed: bool
 :ivar rule_slug: The hot-dog case slug of the validation rule that was applied.
 :vartype rule_slug: str
@@ -12571,7 +12626,8 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `annotations`: List of annotation ids that were validated.
-- `passed`: Whether the validation passed or not.
+- `passed`: Whether the validation passed or not, null if the validation was not
+applicable.
 - `rule_slug`: The hot-dog case slug of the validation rule that was applied.
 - `message`: Message explaining why the validation failed.
 - `document`: Unique identifier for the document.
