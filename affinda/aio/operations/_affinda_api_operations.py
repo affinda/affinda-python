@@ -5235,6 +5235,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         workspace: Optional[str] = None,
+        name: Optional[str] = None,
         **kwargs: Any,
     ) -> List[_models.Tag]:
         """Get list of all tags.
@@ -5248,6 +5249,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type offset: int
         :param workspace: Filter by workspace. Default value is None.
         :type workspace: str
+        :param name: Filter by name. Default value is None.
+        :type name: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: list of Tag, or the result of cls(response)
         :rtype: list[~affinda.models.Tag]
@@ -5274,6 +5277,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             limit=limit,
             offset=offset,
             workspace=workspace,
+            name=name,
             template_url=self.get_all_tags.metadata["url"],
             headers=_headers,
             params=_params,

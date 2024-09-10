@@ -2274,6 +2274,7 @@ def build_get_all_tags_request(
     limit = kwargs.pop('limit', _params.pop('limit', None))  # type: Optional[int]
     offset = kwargs.pop('offset', _params.pop('offset', None))  # type: Optional[int]
     workspace = kwargs.pop('workspace', _params.pop('workspace', None))  # type: Optional[str]
+    name = kwargs.pop('name', _params.pop('name', None))  # type: Optional[str]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
@@ -2286,6 +2287,8 @@ def build_get_all_tags_request(
         _params['offset'] = _SERIALIZER.query("offset", offset, 'int', minimum=0)
     if workspace is not None:
         _params['workspace'] = _SERIALIZER.query("workspace", workspace, 'str')
+    if name is not None:
+        _params['name'] = _SERIALIZER.query("name", name, 'str')
 
     # Construct headers
     _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
@@ -9195,6 +9198,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         limit=None,  # type: Optional[int]
         offset=None,  # type: Optional[int]
         workspace=None,  # type: Optional[str]
+        name=None,  # type: Optional[str]
         **kwargs,  # type: Any
     ):
         # type: (...) -> List[_models.Tag]
@@ -9209,6 +9213,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type offset: int
         :param workspace: Filter by workspace. Default value is None.
         :type workspace: str
+        :param name: Filter by name. Default value is None.
+        :type name: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: list of Tag, or the result of cls(response)
         :rtype: list[~affinda.models.Tag]
@@ -9235,6 +9241,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             limit=limit,
             offset=offset,
             workspace=workspace,
+            name=name,
             template_url=self.get_all_tags.metadata["url"],
             headers=_headers,
             params=_params,

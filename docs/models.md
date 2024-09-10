@@ -920,6 +920,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype extractor: ~affinda.models.Extractor
 :ivar auto_validation_threshold:
 :vartype auto_validation_threshold: float
+:ivar enable_auto_validation_threshold:
+:vartype enable_auto_validation_threshold: bool
 :ivar auto_validate_if_validation_rules_pass:
 :vartype auto_validate_if_validation_rules_pass: bool
 :ivar fields:
@@ -970,6 +972,7 @@ def __init__(**kwargs)
 - `workspace`: 
 - `extractor`: 
 - `auto_validation_threshold`: 
+- `enable_auto_validation_threshold`: 
 - `auto_validate_if_validation_rules_pass`: 
 - `fields`: 
 - `fields_layout`: 
@@ -1014,6 +1017,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype base_extractor: str
 :ivar auto_validation_threshold:
 :vartype auto_validation_threshold: float
+:ivar enable_auto_validation_threshold:
+:vartype enable_auto_validation_threshold: bool
 :ivar fields:
 :vartype fields: list[~affinda.models.FieldGroup]
 :ivar fields_layout:
@@ -1051,6 +1056,7 @@ def __init__(**kwargs)
 - `base_extractor`: Not applicable, please leave empty. This feature is reserved for super
 user.
 - `auto_validation_threshold`: 
+- `enable_auto_validation_threshold`: 
 - `fields`: 
 - `fields_layout`: 
 - `date_format_preference`: Known values are: "DMY", "MDY", "YMD".
@@ -1088,8 +1094,12 @@ CollectionField.
 :ivar display_enum_value: If true, both the value and the label for the enums will appear in
  the dropdown in the validation tool.
 :vartype display_enum_value: bool
-:ivar auto_validation_threshold:
+:ivar auto_validation_threshold: Threshold for auto validation. If null, uses the collection's
+ autoValidationThreshold.
 :vartype auto_validation_threshold: float
+:ivar enable_auto_validation_threshold: If true, the autoValidationThreshold enable auto
+ validation from the threshold from this field if specified, else from the collection.
+:vartype enable_auto_validation_threshold: bool
 :ivar data_source: Data source mapping identifier.
 :vartype data_source: str
 :ivar mapping: Defines how the data point is mapped to the data source.
@@ -1116,7 +1126,10 @@ def __init__(**kwargs)
 - `show_dropdown`: 
 - `display_enum_value`: If true, both the value and the label for the enums will appear in
 the dropdown in the validation tool.
-- `auto_validation_threshold`: 
+- `auto_validation_threshold`: Threshold for auto validation. If null, uses the
+collection's autoValidationThreshold.
+- `enable_auto_validation_threshold`: If true, the autoValidationThreshold enable auto
+validation from the threshold from this field if specified, else from the collection.
 - `data_source`: Data source mapping identifier.
 - `mapping`: Defines how the data point is mapped to the data source.
 - `display_raw_text`: Defines how the data point is mapped to the data source.
@@ -1135,6 +1148,8 @@ CollectionUpdate.
 :vartype name: str
 :ivar auto_validation_threshold:
 :vartype auto_validation_threshold: float
+:ivar enable_auto_validation_threshold:
+:vartype enable_auto_validation_threshold: bool
 :ivar fields:
 :vartype fields: list[~affinda.models.FieldGroup]
 :ivar fields_layout:
@@ -1168,6 +1183,7 @@ def __init__(**kwargs)
 
 - `name`: 
 - `auto_validation_threshold`: 
+- `enable_auto_validation_threshold`: 
 - `fields`: 
 - `fields_layout`: 
 - `date_format_preference`: Known values are: "DMY", "MDY", "YMD".
@@ -1747,8 +1763,12 @@ All required parameters must be populated in order to send to Azure.
 :ivar display_enum_value: If true, both the value and the label for the enums will appear in
  the dropdown in the validation tool.
 :vartype display_enum_value: bool
-:ivar auto_validation_threshold:
+:ivar auto_validation_threshold: Threshold for auto validation. If null, uses the collection's
+ autoValidationThreshold.
 :vartype auto_validation_threshold: float
+:ivar enable_auto_validation_threshold: If true, the autoValidationThreshold enable auto
+ validation from the threshold from this field if specified, else from the collection.
+:vartype enable_auto_validation_threshold: bool
 :ivar data_source: Data source mapping identifier.
 :vartype data_source: str
 :ivar mapping: Defines how the data point is mapped to the data source.
@@ -1776,7 +1796,10 @@ def __init__(**kwargs)
 - `show_dropdown`: 
 - `display_enum_value`: If true, both the value and the label for the enums will appear in
 the dropdown in the validation tool.
-- `auto_validation_threshold`: 
+- `auto_validation_threshold`: Threshold for auto validation. If null, uses the
+collection's autoValidationThreshold.
+- `enable_auto_validation_threshold`: If true, the autoValidationThreshold enable auto
+validation from the threshold from this field if specified, else from the collection.
 - `data_source`: Data source mapping identifier.
 - `mapping`: Defines how the data point is mapped to the data source.
 - `display_raw_text`: If true, then the validation tool will show the user the raw text
@@ -1873,8 +1896,12 @@ All required parameters must be populated in order to send to Azure.
 :ivar display_enum_value: Required. If true, both the value and the label for the enums will
  appear in the dropdown in the validation tool.
 :vartype display_enum_value: bool
-:ivar auto_validation_threshold: Required.
+:ivar auto_validation_threshold: Required. Threshold for auto validation. If null, uses the
+ collection's autoValidationThreshold.
 :vartype auto_validation_threshold: float
+:ivar enable_auto_validation_threshold: If true, the autoValidationThreshold enable auto
+ validation from the threshold from this field if specified, else from the collection.
+:vartype enable_auto_validation_threshold: bool
 :ivar enabled_child_fields: Required.
 :vartype enabled_child_fields: list[~affinda.models.Field]
 :ivar disabled_child_fields: Required.
@@ -1906,7 +1933,10 @@ def __init__(**kwargs)
 - `show_dropdown`: 
 - `display_enum_value`: Required. If true, both the value and the label for the enums will
 appear in the dropdown in the validation tool.
-- `auto_validation_threshold`: Required.
+- `auto_validation_threshold`: Required. Threshold for auto validation. If null, uses the
+collection's autoValidationThreshold.
+- `enable_auto_validation_threshold`: If true, the autoValidationThreshold enable auto
+validation from the threshold from this field if specified, else from the collection.
 - `enabled_child_fields`: Required.
 - `disabled_child_fields`: Required.
 - `data_source`: Data source mapping identifier.
@@ -3057,6 +3087,9 @@ DocumentMetaChildDocumentsItem.
 
 :ivar identifier: Unique identifier for the document.
 :vartype identifier: str
+:ivar custom_identifier: Optional identifier for the document that you can set to track the
+ document in the Affinda system.  Is not required to be unique.
+:vartype custom_identifier: str
 
 <a id="models._models.DocumentMetaChildDocumentsItem.__init__"></a>
 
@@ -3069,6 +3102,8 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `identifier`: Unique identifier for the document.
+- `custom_identifier`: Optional identifier for the document that you can set to track the
+document in the Affinda system.  Is not required to be unique.
 
 <a id="models._models.DocumentMetaCollection"></a>
 
@@ -3152,6 +3187,9 @@ If this document is part of a splitted document, this attribute points to the or
 
 :ivar identifier: Unique identifier for the document.
 :vartype identifier: str
+:ivar custom_identifier: Optional identifier for the document that you can set to track the
+ document in the Affinda system.  Is not required to be unique.
+:vartype custom_identifier: str
 
 <a id="models._models.DocumentMetaParentDocument.__init__"></a>
 
@@ -3164,6 +3202,8 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `identifier`: Unique identifier for the document.
+- `custom_identifier`: Optional identifier for the document that you can set to track the
+document in the Affinda system.  Is not required to be unique.
 
 <a id="models._models.DocumentMetaWorkspace"></a>
 
@@ -3992,8 +4032,12 @@ All required parameters must be populated in order to send to Azure.
 :vartype mapping: str
 :ivar mandatory:
 :vartype mandatory: bool
-:ivar auto_validation_threshold:
+:ivar auto_validation_threshold: Threshold for auto validation. If null, uses the collection's
+ autoValidationThreshold.
 :vartype auto_validation_threshold: float
+:ivar enable_auto_validation_threshold: If true, the autoValidationThreshold enable auto
+ validation from the threshold from this field if specified, else from the collection.
+:vartype enable_auto_validation_threshold: bool
 :ivar show_dropdown:
 :vartype show_dropdown: bool
 :ivar display_enum_value: If true, both the value and the label for the enums will appear in
@@ -4037,7 +4081,10 @@ collection.
 - `data_source`: Data source mapping identifier.
 - `mapping`: Defines how the data point is mapped to the data source.
 - `mandatory`: 
-- `auto_validation_threshold`: 
+- `auto_validation_threshold`: Threshold for auto validation. If null, uses the
+collection's autoValidationThreshold.
+- `enable_auto_validation_threshold`: If true, the autoValidationThreshold enable auto
+validation from the threshold from this field if specified, else from the collection.
 - `show_dropdown`: 
 - `display_enum_value`: If true, both the value and the label for the enums will appear in
 the dropdown in the validation tool.

@@ -1399,6 +1399,8 @@ class Collection(msrest.serialization.Model):
     :vartype extractor: ~affinda.models.Extractor
     :ivar auto_validation_threshold:
     :vartype auto_validation_threshold: float
+    :ivar enable_auto_validation_threshold:
+    :vartype enable_auto_validation_threshold: bool
     :ivar auto_validate_if_validation_rules_pass:
     :vartype auto_validate_if_validation_rules_pass: bool
     :ivar fields:
@@ -1447,6 +1449,10 @@ class Collection(msrest.serialization.Model):
         "workspace": {"key": "workspace", "type": "CollectionWorkspace"},
         "extractor": {"key": "extractor", "type": "Extractor"},
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
+        "enable_auto_validation_threshold": {
+            "key": "enableAutoValidationThreshold",
+            "type": "bool",
+        },
         "auto_validate_if_validation_rules_pass": {
             "key": "autoValidateIfValidationRulesPass",
             "type": "bool",
@@ -1477,7 +1483,8 @@ class Collection(msrest.serialization.Model):
         workspace: Optional["_models.CollectionWorkspace"] = None,
         extractor: Optional["_models.Extractor"] = None,
         auto_validation_threshold: Optional[float] = None,
-        auto_validate_if_validation_rules_pass: Optional[bool] = None,
+        enable_auto_validation_threshold: Optional[bool] = False,
+        auto_validate_if_validation_rules_pass: Optional[bool] = False,
         fields: Optional[List["_models.FieldGroup"]] = None,
         fields_layout: Optional["_models.FieldsLayout"] = None,
         fields_configured: Optional[bool] = None,
@@ -1506,6 +1513,8 @@ class Collection(msrest.serialization.Model):
         :paramtype extractor: ~affinda.models.Extractor
         :keyword auto_validation_threshold:
         :paramtype auto_validation_threshold: float
+        :keyword enable_auto_validation_threshold:
+        :paramtype enable_auto_validation_threshold: bool
         :keyword auto_validate_if_validation_rules_pass:
         :paramtype auto_validate_if_validation_rules_pass: bool
         :keyword fields:
@@ -1547,6 +1556,7 @@ class Collection(msrest.serialization.Model):
         self.workspace = workspace
         self.extractor = extractor
         self.auto_validation_threshold = auto_validation_threshold
+        self.enable_auto_validation_threshold = enable_auto_validation_threshold
         self.auto_validate_if_validation_rules_pass = auto_validate_if_validation_rules_pass
         self.fields = fields
         self.fields_layout = fields_layout
@@ -1581,6 +1591,8 @@ class CollectionCreate(msrest.serialization.Model):
     :vartype base_extractor: str
     :ivar auto_validation_threshold:
     :vartype auto_validation_threshold: float
+    :ivar enable_auto_validation_threshold:
+    :vartype enable_auto_validation_threshold: bool
     :ivar fields:
     :vartype fields: list[~affinda.models.FieldGroup]
     :ivar fields_layout:
@@ -1614,6 +1626,10 @@ class CollectionCreate(msrest.serialization.Model):
         "extractor": {"key": "extractor", "type": "str"},
         "base_extractor": {"key": "baseExtractor", "type": "str"},
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
+        "enable_auto_validation_threshold": {
+            "key": "enableAutoValidationThreshold",
+            "type": "bool",
+        },
         "fields": {"key": "fields", "type": "[FieldGroup]"},
         "fields_layout": {"key": "fieldsLayout", "type": "FieldsLayout"},
         "date_format_preference": {"key": "dateFormatPreference", "type": "str"},
@@ -1635,6 +1651,7 @@ class CollectionCreate(msrest.serialization.Model):
         extractor: Optional[str] = None,
         base_extractor: Optional[str] = None,
         auto_validation_threshold: Optional[float] = None,
+        enable_auto_validation_threshold: Optional[bool] = False,
         fields: Optional[List["_models.FieldGroup"]] = None,
         fields_layout: Optional["_models.FieldsLayout"] = None,
         date_format_preference: Optional[Union[str, "_models.DateFormatPreference"]] = None,
@@ -1657,6 +1674,8 @@ class CollectionCreate(msrest.serialization.Model):
         :paramtype base_extractor: str
         :keyword auto_validation_threshold:
         :paramtype auto_validation_threshold: float
+        :keyword enable_auto_validation_threshold:
+        :paramtype enable_auto_validation_threshold: bool
         :keyword fields:
         :paramtype fields: list[~affinda.models.FieldGroup]
         :keyword fields_layout:
@@ -1684,6 +1703,7 @@ class CollectionCreate(msrest.serialization.Model):
         self.extractor = extractor
         self.base_extractor = base_extractor
         self.auto_validation_threshold = auto_validation_threshold
+        self.enable_auto_validation_threshold = enable_auto_validation_threshold
         self.fields = fields
         self.fields_layout = fields_layout
         self.date_format_preference = date_format_preference
@@ -1713,8 +1733,12 @@ class CollectionField(msrest.serialization.Model):
     :ivar display_enum_value: If true, both the value and the label for the enums will appear in
      the dropdown in the validation tool.
     :vartype display_enum_value: bool
-    :ivar auto_validation_threshold:
+    :ivar auto_validation_threshold: Threshold for auto validation. If null, uses the collection's
+     autoValidationThreshold.
     :vartype auto_validation_threshold: float
+    :ivar enable_auto_validation_threshold: If true, the autoValidationThreshold enable auto
+     validation from the threshold from this field if specified, else from the collection.
+    :vartype enable_auto_validation_threshold: bool
     :ivar data_source: Data source mapping identifier.
     :vartype data_source: str
     :ivar mapping: Defines how the data point is mapped to the data source.
@@ -1734,6 +1758,10 @@ class CollectionField(msrest.serialization.Model):
         "show_dropdown": {"key": "showDropdown", "type": "bool"},
         "display_enum_value": {"key": "displayEnumValue", "type": "bool"},
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
+        "enable_auto_validation_threshold": {
+            "key": "enableAutoValidationThreshold",
+            "type": "bool",
+        },
         "data_source": {"key": "dataSource", "type": "str"},
         "mapping": {"key": "mapping", "type": "str"},
         "display_raw_text": {"key": "displayRawText", "type": "str"},
@@ -1748,6 +1776,7 @@ class CollectionField(msrest.serialization.Model):
         show_dropdown: Optional[bool] = None,
         display_enum_value: Optional[bool] = None,
         auto_validation_threshold: Optional[float] = None,
+        enable_auto_validation_threshold: Optional[bool] = None,
         data_source: Optional[str] = None,
         mapping: Optional[str] = None,
         display_raw_text: Optional[str] = None,
@@ -1768,8 +1797,12 @@ class CollectionField(msrest.serialization.Model):
         :keyword display_enum_value: If true, both the value and the label for the enums will appear in
          the dropdown in the validation tool.
         :paramtype display_enum_value: bool
-        :keyword auto_validation_threshold:
+        :keyword auto_validation_threshold: Threshold for auto validation. If null, uses the
+         collection's autoValidationThreshold.
         :paramtype auto_validation_threshold: float
+        :keyword enable_auto_validation_threshold: If true, the autoValidationThreshold enable auto
+         validation from the threshold from this field if specified, else from the collection.
+        :paramtype enable_auto_validation_threshold: bool
         :keyword data_source: Data source mapping identifier.
         :paramtype data_source: str
         :keyword mapping: Defines how the data point is mapped to the data source.
@@ -1784,6 +1817,7 @@ class CollectionField(msrest.serialization.Model):
         self.show_dropdown = show_dropdown
         self.display_enum_value = display_enum_value
         self.auto_validation_threshold = auto_validation_threshold
+        self.enable_auto_validation_threshold = enable_auto_validation_threshold
         self.data_source = data_source
         self.mapping = mapping
         self.display_raw_text = display_raw_text
@@ -1796,6 +1830,8 @@ class CollectionUpdate(msrest.serialization.Model):
     :vartype name: str
     :ivar auto_validation_threshold:
     :vartype auto_validation_threshold: float
+    :ivar enable_auto_validation_threshold:
+    :vartype enable_auto_validation_threshold: bool
     :ivar fields:
     :vartype fields: list[~affinda.models.FieldGroup]
     :ivar fields_layout:
@@ -1821,6 +1857,10 @@ class CollectionUpdate(msrest.serialization.Model):
     _attribute_map = {
         "name": {"key": "name", "type": "str"},
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
+        "enable_auto_validation_threshold": {
+            "key": "enableAutoValidationThreshold",
+            "type": "bool",
+        },
         "fields": {"key": "fields", "type": "[FieldGroup]"},
         "fields_layout": {"key": "fieldsLayout", "type": "FieldsLayout"},
         "date_format_preference": {"key": "dateFormatPreference", "type": "str"},
@@ -1839,6 +1879,7 @@ class CollectionUpdate(msrest.serialization.Model):
         *,
         name: Optional[str] = None,
         auto_validation_threshold: Optional[float] = None,
+        enable_auto_validation_threshold: Optional[bool] = False,
         fields: Optional[List["_models.FieldGroup"]] = None,
         fields_layout: Optional["_models.FieldsLayout"] = None,
         date_format_preference: Optional[Union[str, "_models.DateFormatPreference"]] = None,
@@ -1854,6 +1895,8 @@ class CollectionUpdate(msrest.serialization.Model):
         :paramtype name: str
         :keyword auto_validation_threshold:
         :paramtype auto_validation_threshold: float
+        :keyword enable_auto_validation_threshold:
+        :paramtype enable_auto_validation_threshold: bool
         :keyword fields:
         :paramtype fields: list[~affinda.models.FieldGroup]
         :keyword fields_layout:
@@ -1878,6 +1921,7 @@ class CollectionUpdate(msrest.serialization.Model):
         super(CollectionUpdate, self).__init__(**kwargs)
         self.name = name
         self.auto_validation_threshold = auto_validation_threshold
+        self.enable_auto_validation_threshold = enable_auto_validation_threshold
         self.fields = fields
         self.fields_layout = fields_layout
         self.date_format_preference = date_format_preference
@@ -2651,8 +2695,12 @@ class DataFieldCreateField(msrest.serialization.Model):
     :ivar display_enum_value: If true, both the value and the label for the enums will appear in
      the dropdown in the validation tool.
     :vartype display_enum_value: bool
-    :ivar auto_validation_threshold:
+    :ivar auto_validation_threshold: Threshold for auto validation. If null, uses the collection's
+     autoValidationThreshold.
     :vartype auto_validation_threshold: float
+    :ivar enable_auto_validation_threshold: If true, the autoValidationThreshold enable auto
+     validation from the threshold from this field if specified, else from the collection.
+    :vartype enable_auto_validation_threshold: bool
     :ivar data_source: Data source mapping identifier.
     :vartype data_source: str
     :ivar mapping: Defines how the data point is mapped to the data source.
@@ -2674,6 +2722,10 @@ class DataFieldCreateField(msrest.serialization.Model):
         "show_dropdown": {"key": "showDropdown", "type": "bool"},
         "display_enum_value": {"key": "displayEnumValue", "type": "bool"},
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
+        "enable_auto_validation_threshold": {
+            "key": "enableAutoValidationThreshold",
+            "type": "bool",
+        },
         "data_source": {"key": "dataSource", "type": "str"},
         "mapping": {"key": "mapping", "type": "str"},
         "display_raw_text": {"key": "displayRawText", "type": "bool"},
@@ -2688,6 +2740,7 @@ class DataFieldCreateField(msrest.serialization.Model):
         show_dropdown: Optional[bool] = None,
         display_enum_value: Optional[bool] = None,
         auto_validation_threshold: Optional[float] = None,
+        enable_auto_validation_threshold: Optional[bool] = None,
         data_source: Optional[str] = None,
         mapping: Optional[str] = None,
         display_raw_text: Optional[bool] = None,
@@ -2708,8 +2761,12 @@ class DataFieldCreateField(msrest.serialization.Model):
         :keyword display_enum_value: If true, both the value and the label for the enums will appear in
          the dropdown in the validation tool.
         :paramtype display_enum_value: bool
-        :keyword auto_validation_threshold:
+        :keyword auto_validation_threshold: Threshold for auto validation. If null, uses the
+         collection's autoValidationThreshold.
         :paramtype auto_validation_threshold: float
+        :keyword enable_auto_validation_threshold: If true, the autoValidationThreshold enable auto
+         validation from the threshold from this field if specified, else from the collection.
+        :paramtype enable_auto_validation_threshold: bool
         :keyword data_source: Data source mapping identifier.
         :paramtype data_source: str
         :keyword mapping: Defines how the data point is mapped to the data source.
@@ -2725,6 +2782,7 @@ class DataFieldCreateField(msrest.serialization.Model):
         self.show_dropdown = show_dropdown
         self.display_enum_value = display_enum_value
         self.auto_validation_threshold = auto_validation_threshold
+        self.enable_auto_validation_threshold = enable_auto_validation_threshold
         self.data_source = data_source
         self.mapping = mapping
         self.display_raw_text = display_raw_text
@@ -2866,8 +2924,12 @@ class DataFieldField(msrest.serialization.Model):
     :ivar display_enum_value: Required. If true, both the value and the label for the enums will
      appear in the dropdown in the validation tool.
     :vartype display_enum_value: bool
-    :ivar auto_validation_threshold: Required.
+    :ivar auto_validation_threshold: Required. Threshold for auto validation. If null, uses the
+     collection's autoValidationThreshold.
     :vartype auto_validation_threshold: float
+    :ivar enable_auto_validation_threshold: If true, the autoValidationThreshold enable auto
+     validation from the threshold from this field if specified, else from the collection.
+    :vartype enable_auto_validation_threshold: bool
     :ivar enabled_child_fields: Required.
     :vartype enabled_child_fields: list[~affinda.models.Field]
     :ivar disabled_child_fields: Required.
@@ -2897,6 +2959,10 @@ class DataFieldField(msrest.serialization.Model):
         "show_dropdown": {"key": "showDropdown", "type": "bool"},
         "display_enum_value": {"key": "displayEnumValue", "type": "bool"},
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
+        "enable_auto_validation_threshold": {
+            "key": "enableAutoValidationThreshold",
+            "type": "bool",
+        },
         "enabled_child_fields": {"key": "enabledChildFields", "type": "[Field]"},
         "disabled_child_fields": {"key": "disabledChildFields", "type": "[Field]"},
         "data_source": {"key": "dataSource", "type": "str"},
@@ -2915,6 +2981,7 @@ class DataFieldField(msrest.serialization.Model):
         disabled_child_fields: List["_models.Field"],
         field_type: Optional[Union[str, "_models.AnnotationContentType"]] = None,
         show_dropdown: Optional[bool] = None,
+        enable_auto_validation_threshold: Optional[bool] = None,
         data_source: Optional[str] = None,
         mapping: Optional[str] = None,
         display_raw_text: Optional[bool] = None,
@@ -2935,8 +3002,12 @@ class DataFieldField(msrest.serialization.Model):
         :keyword display_enum_value: Required. If true, both the value and the label for the enums will
          appear in the dropdown in the validation tool.
         :paramtype display_enum_value: bool
-        :keyword auto_validation_threshold: Required.
+        :keyword auto_validation_threshold: Required. Threshold for auto validation. If null, uses the
+         collection's autoValidationThreshold.
         :paramtype auto_validation_threshold: float
+        :keyword enable_auto_validation_threshold: If true, the autoValidationThreshold enable auto
+         validation from the threshold from this field if specified, else from the collection.
+        :paramtype enable_auto_validation_threshold: bool
         :keyword enabled_child_fields: Required.
         :paramtype enabled_child_fields: list[~affinda.models.Field]
         :keyword disabled_child_fields: Required.
@@ -2956,6 +3027,7 @@ class DataFieldField(msrest.serialization.Model):
         self.show_dropdown = show_dropdown
         self.display_enum_value = display_enum_value
         self.auto_validation_threshold = auto_validation_threshold
+        self.enable_auto_validation_threshold = enable_auto_validation_threshold
         self.enabled_child_fields = enabled_child_fields
         self.disabled_child_fields = disabled_child_fields
         self.data_source = data_source
@@ -4851,19 +4923,33 @@ class DocumentMetaChildDocumentsItem(msrest.serialization.Model):
 
     :ivar identifier: Unique identifier for the document.
     :vartype identifier: str
+    :ivar custom_identifier: Optional identifier for the document that you can set to track the
+     document in the Affinda system.  Is not required to be unique.
+    :vartype custom_identifier: str
     """
 
     _attribute_map = {
         "identifier": {"key": "identifier", "type": "str"},
+        "custom_identifier": {"key": "customIdentifier", "type": "str"},
     }
 
-    def __init__(self, *, identifier: Optional[str] = None, **kwargs):
+    def __init__(
+        self,
+        *,
+        identifier: Optional[str] = None,
+        custom_identifier: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword identifier: Unique identifier for the document.
         :paramtype identifier: str
+        :keyword custom_identifier: Optional identifier for the document that you can set to track the
+         document in the Affinda system.  Is not required to be unique.
+        :paramtype custom_identifier: str
         """
         super(DocumentMetaChildDocumentsItem, self).__init__(**kwargs)
         self.identifier = identifier
+        self.custom_identifier = custom_identifier
 
 
 class DocumentMetaCollection(msrest.serialization.Model):
@@ -4969,19 +5055,33 @@ class DocumentMetaParentDocument(msrest.serialization.Model):
 
     :ivar identifier: Unique identifier for the document.
     :vartype identifier: str
+    :ivar custom_identifier: Optional identifier for the document that you can set to track the
+     document in the Affinda system.  Is not required to be unique.
+    :vartype custom_identifier: str
     """
 
     _attribute_map = {
         "identifier": {"key": "identifier", "type": "str"},
+        "custom_identifier": {"key": "customIdentifier", "type": "str"},
     }
 
-    def __init__(self, *, identifier: Optional[str] = None, **kwargs):
+    def __init__(
+        self,
+        *,
+        identifier: Optional[str] = None,
+        custom_identifier: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword identifier: Unique identifier for the document.
         :paramtype identifier: str
+        :keyword custom_identifier: Optional identifier for the document that you can set to track the
+         document in the Affinda system.  Is not required to be unique.
+        :paramtype custom_identifier: str
         """
         super(DocumentMetaParentDocument, self).__init__(**kwargs)
         self.identifier = identifier
+        self.custom_identifier = custom_identifier
 
 
 class DocumentMetaWorkspace(msrest.serialization.Model):
@@ -6199,8 +6299,12 @@ class Field(msrest.serialization.Model):
     :vartype mapping: str
     :ivar mandatory:
     :vartype mandatory: bool
-    :ivar auto_validation_threshold:
+    :ivar auto_validation_threshold: Threshold for auto validation. If null, uses the collection's
+     autoValidationThreshold.
     :vartype auto_validation_threshold: float
+    :ivar enable_auto_validation_threshold: If true, the autoValidationThreshold enable auto
+     validation from the threshold from this field if specified, else from the collection.
+    :vartype enable_auto_validation_threshold: bool
     :ivar show_dropdown:
     :vartype show_dropdown: bool
     :ivar display_enum_value: If true, both the value and the label for the enums will appear in
@@ -6240,6 +6344,10 @@ class Field(msrest.serialization.Model):
         "mapping": {"key": "mapping", "type": "str"},
         "mandatory": {"key": "mandatory", "type": "bool"},
         "auto_validation_threshold": {"key": "autoValidationThreshold", "type": "float"},
+        "enable_auto_validation_threshold": {
+            "key": "enableAutoValidationThreshold",
+            "type": "bool",
+        },
         "show_dropdown": {"key": "showDropdown", "type": "bool"},
         "display_enum_value": {"key": "displayEnumValue", "type": "bool"},
         "hide_enum_detail": {"key": "hideEnumDetail", "type": "bool"},
@@ -6262,6 +6370,7 @@ class Field(msrest.serialization.Model):
         mapping: Optional[str] = None,
         mandatory: Optional[bool] = None,
         auto_validation_threshold: Optional[float] = None,
+        enable_auto_validation_threshold: Optional[bool] = None,
         show_dropdown: Optional[bool] = None,
         display_enum_value: Optional[bool] = None,
         hide_enum_detail: Optional[bool] = None,
@@ -6292,8 +6401,12 @@ class Field(msrest.serialization.Model):
         :paramtype mapping: str
         :keyword mandatory:
         :paramtype mandatory: bool
-        :keyword auto_validation_threshold:
+        :keyword auto_validation_threshold: Threshold for auto validation. If null, uses the
+         collection's autoValidationThreshold.
         :paramtype auto_validation_threshold: float
+        :keyword enable_auto_validation_threshold: If true, the autoValidationThreshold enable auto
+         validation from the threshold from this field if specified, else from the collection.
+        :paramtype enable_auto_validation_threshold: bool
         :keyword show_dropdown:
         :paramtype show_dropdown: bool
         :keyword display_enum_value: If true, both the value and the label for the enums will appear in
@@ -6325,6 +6438,7 @@ class Field(msrest.serialization.Model):
         self.mapping = mapping
         self.mandatory = mandatory
         self.auto_validation_threshold = auto_validation_threshold
+        self.enable_auto_validation_threshold = enable_auto_validation_threshold
         self.show_dropdown = show_dropdown
         self.display_enum_value = display_enum_value
         self.hide_enum_detail = hide_enum_detail

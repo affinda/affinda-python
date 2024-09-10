@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.24.0] - 2024-09-10
+### Added
+- Allow filter tags by name
+- Added enableValidationThreshold to collection and field objects
+
 ## [4.23.0] - 2024-07-08
 ### Added
 - Ability to filter index by name
