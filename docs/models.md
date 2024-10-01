@@ -3297,6 +3297,57 @@ def __init__(**kwargs)
 - `rotation`: Specify a degree of rotation if you want to rotate a page. Possitive number
 for clockwise rotation, and negative number for counter-clockwise rotation.
 
+<a id="models._models.DocumentSplitter"></a>
+
+## DocumentSplitter Objects
+
+```python
+class DocumentSplitter(msrest.serialization.Model)
+```
+
+DocumentSplitter.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar identifier: Required. Uniquely identify a document splitter.
+:vartype identifier: str
+:ivar name: Required.
+:vartype name: str
+:ivar type: Required. The different types of document splitters. Known values are: "llm",
+ "extractor".
+:vartype type: str or ~affinda.models.DocumentSplitterType
+:ivar organization: Required. Uniquely identify an organization.
+:vartype organization: str
+:ivar extractor: Required. Uniquely identify an extractor.
+:vartype extractor: str
+:ivar llm_model: Required. The different types of document splitters. Known values are:
+ "anthropic.claude-3-haiku-20240307-v1:0", "anthropic.claude-3-sonnet-20240229-v1:0",
+ "anthropic.claude-3-5-sonnet-20240620-v1:0", "gpt-35", "gpt-4".
+:vartype llm_model: str or ~affinda.models.LLMModelType
+:ivar llm_hint: Required. The hint about when to split which is passed into the LLM prompt.
+:vartype llm_hint: str
+
+<a id="models._models.DocumentSplitter.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Required. Uniquely identify a document splitter.
+- `name`: Required.
+- `type`: Required. The different types of document splitters. Known values are: "llm",
+"extractor".
+- `organization`: Required. Uniquely identify an organization.
+- `extractor`: Required. Uniquely identify an extractor.
+- `llm_model`: Required. The different types of document splitters. Known values are:
+"anthropic.claude-3-haiku-20240307-v1:0", "anthropic.claude-3-sonnet-20240229-v1:0",
+"anthropic.claude-3-5-sonnet-20240620-v1:0", "gpt-35", "gpt-4".
+- `llm_hint`: Required. The hint about when to split which is passed into the LLM prompt.
+
 <a id="models._models.DocumentUpdate"></a>
 
 ## DocumentUpdate Objects
@@ -12823,13 +12874,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
  ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
 :vartype whitelist_ingest_addresses: list[str]
-:ivar document_splitter: Option "leave" means no document splitting at all. Option
- "conservative" means we don't actually split documents the documents, but will add a warning to
- documents that may require a split. Option "recommended" means we split documents that are
- highly likely to require a split, and add warnings to documents that might require one. Option
- "aggressive" means we split all documents that are likely to require a split. Known values are:
- "leave", "conservative", "recommended", "aggressive".
-:vartype document_splitter: str or ~affinda.models.WorkspaceSplitDocumentsOptions
+:ivar document_splitter:
+:vartype document_splitter: ~affinda.models.WorkspaceDocumentSplitter
 
 <a id="models._models.Workspace.__init__"></a>
 
@@ -12862,12 +12908,7 @@ workspace settings.
 will be uploaded to this workspace.
 - `whitelist_ingest_addresses`: If specified, only emails from these addresses will be
 ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
-- `document_splitter`: Option "leave" means no document splitting at all. Option
-"conservative" means we don't actually split documents the documents, but will add a warning to
-documents that may require a split. Option "recommended" means we split documents that are
-highly likely to require a split, and add warnings to documents that might require one. Option
-"aggressive" means we split all documents that are likely to require a split. Known values are:
-"leave", "conservative", "recommended", "aggressive".
+- `document_splitter`: 
 
 <a id="models._models.WorkspaceCollectionsItem"></a>
 
@@ -12987,13 +13028,8 @@ All required parameters must be populated in order to send to Azure.
 :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
  ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
 :vartype whitelist_ingest_addresses: list[str]
-:ivar document_splitter: Option "leave" means no document splitting at all. Option
- "conservative" means we don't actually split documents the documents, but will add a warning to
- documents that may require a split. Option "recommended" means we split documents that are
- highly likely to require a split, and add warnings to documents that might require one. Option
- "aggressive" means we split all documents that are likely to require a split. Known values are:
- "leave", "conservative", "recommended", "aggressive".
-:vartype document_splitter: str or ~affinda.models.WorkspaceSplitDocumentsOptions
+:ivar document_splitter: Uniquely identify a document splitter.
+:vartype document_splitter: str
 
 <a id="models._models.WorkspaceCreate.__init__"></a>
 
@@ -13019,12 +13055,37 @@ document normally whether its a duplicate or not. If not provided, will fallback
 workspace settings.
 - `whitelist_ingest_addresses`: If specified, only emails from these addresses will be
 ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
-- `document_splitter`: Option "leave" means no document splitting at all. Option
-"conservative" means we don't actually split documents the documents, but will add a warning to
-documents that may require a split. Option "recommended" means we split documents that are
-highly likely to require a split, and add warnings to documents that might require one. Option
-"aggressive" means we split all documents that are likely to require a split. Known values are:
-"leave", "conservative", "recommended", "aggressive".
+- `document_splitter`: Uniquely identify a document splitter.
+
+<a id="models._models.WorkspaceDocumentSplitter"></a>
+
+## WorkspaceDocumentSplitter Objects
+
+```python
+class WorkspaceDocumentSplitter(msrest.serialization.Model)
+```
+
+WorkspaceDocumentSplitter.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar identifier: Required. Uniquely identify a document splitter.
+:vartype identifier: str
+:ivar name: Required.
+:vartype name: str
+
+<a id="models._models.WorkspaceDocumentSplitter.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Required. Uniquely identify a document splitter.
+- `name`: Required.
 
 <a id="models._models.WorkspaceMembership"></a>
 
@@ -13112,13 +13173,8 @@ WorkspaceUpdate.
 :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
  ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
 :vartype whitelist_ingest_addresses: list[str]
-:ivar document_splitter: Option "leave" means no document splitting at all. Option
- "conservative" means we don't actually split documents the documents, but will add a warning to
- documents that may require a split. Option "recommended" means we split documents that are
- highly likely to require a split, and add warnings to documents that might require one. Option
- "aggressive" means we split all documents that are likely to require a split. Known values are:
- "leave", "conservative", "recommended", "aggressive".
-:vartype document_splitter: str or ~affinda.models.WorkspaceSplitDocumentsOptions
+:ivar document_splitter: Uniquely identify a document splitter.
+:vartype document_splitter: str
 
 <a id="models._models.WorkspaceUpdate.__init__"></a>
 
@@ -13143,12 +13199,7 @@ document normally whether its a duplicate or not. If not provided, will fallback
 workspace settings.
 - `whitelist_ingest_addresses`: If specified, only emails from these addresses will be
 ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
-- `document_splitter`: Option "leave" means no document splitting at all. Option
-"conservative" means we don't actually split documents the documents, but will add a warning to
-documents that may require a split. Option "recommended" means we split documents that are
-highly likely to require a split, and add warnings to documents that might require one. Option
-"aggressive" means we split all documents that are likely to require a split. Known values are:
-"leave", "conservative", "recommended", "aggressive".
+- `document_splitter`: Uniquely identify a document splitter.
 
 <a id="models._models.YearsExperienceAnnotation"></a>
 

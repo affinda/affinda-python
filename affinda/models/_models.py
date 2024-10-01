@@ -4483,6 +4483,80 @@ class DocumentSplitPage(msrest.serialization.Model):
         self.rotation = kwargs.get("rotation", None)
 
 
+class DocumentSplitter(msrest.serialization.Model):
+    """DocumentSplitter.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar identifier: Required. Uniquely identify a document splitter.
+    :vartype identifier: str
+    :ivar name: Required.
+    :vartype name: str
+    :ivar type: Required. The different types of document splitters. Known values are: "llm",
+     "extractor".
+    :vartype type: str or ~affinda.models.DocumentSplitterType
+    :ivar organization: Required. Uniquely identify an organization.
+    :vartype organization: str
+    :ivar extractor: Required. Uniquely identify an extractor.
+    :vartype extractor: str
+    :ivar llm_model: Required. The different types of document splitters. Known values are:
+     "anthropic.claude-3-haiku-20240307-v1:0", "anthropic.claude-3-sonnet-20240229-v1:0",
+     "anthropic.claude-3-5-sonnet-20240620-v1:0", "gpt-35", "gpt-4".
+    :vartype llm_model: str or ~affinda.models.LLMModelType
+    :ivar llm_hint: Required. The hint about when to split which is passed into the LLM prompt.
+    :vartype llm_hint: str
+    """
+
+    _validation = {
+        "identifier": {"required": True},
+        "name": {"required": True},
+        "type": {"required": True},
+        "organization": {"required": True},
+        "extractor": {"required": True},
+        "llm_model": {"required": True},
+        "llm_hint": {"required": True},
+    }
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type": {"key": "type", "type": "str"},
+        "organization": {"key": "organization", "type": "str"},
+        "extractor": {"key": "extractor", "type": "str"},
+        "llm_model": {"key": "llmModel", "type": "str"},
+        "llm_hint": {"key": "llmHint", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Required. Uniquely identify a document splitter.
+        :paramtype identifier: str
+        :keyword name: Required.
+        :paramtype name: str
+        :keyword type: Required. The different types of document splitters. Known values are: "llm",
+         "extractor".
+        :paramtype type: str or ~affinda.models.DocumentSplitterType
+        :keyword organization: Required. Uniquely identify an organization.
+        :paramtype organization: str
+        :keyword extractor: Required. Uniquely identify an extractor.
+        :paramtype extractor: str
+        :keyword llm_model: Required. The different types of document splitters. Known values are:
+         "anthropic.claude-3-haiku-20240307-v1:0", "anthropic.claude-3-sonnet-20240229-v1:0",
+         "anthropic.claude-3-5-sonnet-20240620-v1:0", "gpt-35", "gpt-4".
+        :paramtype llm_model: str or ~affinda.models.LLMModelType
+        :keyword llm_hint: Required. The hint about when to split which is passed into the LLM prompt.
+        :paramtype llm_hint: str
+        """
+        super(DocumentSplitter, self).__init__(**kwargs)
+        self.identifier = kwargs["identifier"]
+        self.name = kwargs["name"]
+        self.type = kwargs["type"]
+        self.organization = kwargs["organization"]
+        self.extractor = kwargs["extractor"]
+        self.llm_model = kwargs["llm_model"]
+        self.llm_hint = kwargs["llm_hint"]
+
+
 class DocumentUpdate(msrest.serialization.Model):
     """DocumentUpdate.
 
@@ -17008,13 +17082,8 @@ class Workspace(msrest.serialization.Model):
     :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
      ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
     :vartype whitelist_ingest_addresses: list[str]
-    :ivar document_splitter: Option "leave" means no document splitting at all. Option
-     "conservative" means we don't actually split documents the documents, but will add a warning to
-     documents that may require a split. Option "recommended" means we split documents that are
-     highly likely to require a split, and add warnings to documents that might require one. Option
-     "aggressive" means we split all documents that are likely to require a split. Known values are:
-     "leave", "conservative", "recommended", "aggressive".
-    :vartype document_splitter: str or ~affinda.models.WorkspaceSplitDocumentsOptions
+    :ivar document_splitter:
+    :vartype document_splitter: ~affinda.models.WorkspaceDocumentSplitter
     """
 
     _validation = {
@@ -17036,7 +17105,7 @@ class Workspace(msrest.serialization.Model):
         "confirmed_docs_count": {"key": "confirmedDocsCount", "type": "int"},
         "ingest_email": {"key": "ingestEmail", "type": "str"},
         "whitelist_ingest_addresses": {"key": "whitelistIngestAddresses", "type": "[str]"},
-        "document_splitter": {"key": "documentSplitter", "type": "str"},
+        "document_splitter": {"key": "documentSplitter", "type": "WorkspaceDocumentSplitter"},
     }
 
     def __init__(self, **kwargs):
@@ -17074,13 +17143,8 @@ class Workspace(msrest.serialization.Model):
         :keyword whitelist_ingest_addresses: If specified, only emails from these addresses will be
          ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
         :paramtype whitelist_ingest_addresses: list[str]
-        :keyword document_splitter: Option "leave" means no document splitting at all. Option
-         "conservative" means we don't actually split documents the documents, but will add a warning to
-         documents that may require a split. Option "recommended" means we split documents that are
-         highly likely to require a split, and add warnings to documents that might require one. Option
-         "aggressive" means we split all documents that are likely to require a split. Known values are:
-         "leave", "conservative", "recommended", "aggressive".
-        :paramtype document_splitter: str or ~affinda.models.WorkspaceSplitDocumentsOptions
+        :keyword document_splitter:
+        :paramtype document_splitter: ~affinda.models.WorkspaceDocumentSplitter
         """
         super(Workspace, self).__init__(**kwargs)
         self.identifier = kwargs["identifier"]
@@ -17247,13 +17311,8 @@ class WorkspaceCreate(msrest.serialization.Model):
     :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
      ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
     :vartype whitelist_ingest_addresses: list[str]
-    :ivar document_splitter: Option "leave" means no document splitting at all. Option
-     "conservative" means we don't actually split documents the documents, but will add a warning to
-     documents that may require a split. Option "recommended" means we split documents that are
-     highly likely to require a split, and add warnings to documents that might require one. Option
-     "aggressive" means we split all documents that are likely to require a split. Known values are:
-     "leave", "conservative", "recommended", "aggressive".
-    :vartype document_splitter: str or ~affinda.models.WorkspaceSplitDocumentsOptions
+    :ivar document_splitter: Uniquely identify a document splitter.
+    :vartype document_splitter: str
     """
 
     _validation = {
@@ -17293,13 +17352,8 @@ class WorkspaceCreate(msrest.serialization.Model):
         :keyword whitelist_ingest_addresses: If specified, only emails from these addresses will be
          ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
         :paramtype whitelist_ingest_addresses: list[str]
-        :keyword document_splitter: Option "leave" means no document splitting at all. Option
-         "conservative" means we don't actually split documents the documents, but will add a warning to
-         documents that may require a split. Option "recommended" means we split documents that are
-         highly likely to require a split, and add warnings to documents that might require one. Option
-         "aggressive" means we split all documents that are likely to require a split. Known values are:
-         "leave", "conservative", "recommended", "aggressive".
-        :paramtype document_splitter: str or ~affinda.models.WorkspaceSplitDocumentsOptions
+        :keyword document_splitter: Uniquely identify a document splitter.
+        :paramtype document_splitter: str
         """
         super(WorkspaceCreate, self).__init__(**kwargs)
         self.organization = kwargs["organization"]
@@ -17309,6 +17363,39 @@ class WorkspaceCreate(msrest.serialization.Model):
         self.reject_duplicates = kwargs.get("reject_duplicates", None)
         self.whitelist_ingest_addresses = kwargs.get("whitelist_ingest_addresses", None)
         self.document_splitter = kwargs.get("document_splitter", None)
+
+
+class WorkspaceDocumentSplitter(msrest.serialization.Model):
+    """WorkspaceDocumentSplitter.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar identifier: Required. Uniquely identify a document splitter.
+    :vartype identifier: str
+    :ivar name: Required.
+    :vartype name: str
+    """
+
+    _validation = {
+        "identifier": {"required": True},
+        "name": {"required": True},
+    }
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Required. Uniquely identify a document splitter.
+        :paramtype identifier: str
+        :keyword name: Required.
+        :paramtype name: str
+        """
+        super(WorkspaceDocumentSplitter, self).__init__(**kwargs)
+        self.identifier = kwargs["identifier"]
+        self.name = kwargs["name"]
 
 
 class WorkspaceMembership(msrest.serialization.Model):
@@ -17393,13 +17480,8 @@ class WorkspaceUpdate(msrest.serialization.Model):
     :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
      ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
     :vartype whitelist_ingest_addresses: list[str]
-    :ivar document_splitter: Option "leave" means no document splitting at all. Option
-     "conservative" means we don't actually split documents the documents, but will add a warning to
-     documents that may require a split. Option "recommended" means we split documents that are
-     highly likely to require a split, and add warnings to documents that might require one. Option
-     "aggressive" means we split all documents that are likely to require a split. Known values are:
-     "leave", "conservative", "recommended", "aggressive".
-    :vartype document_splitter: str or ~affinda.models.WorkspaceSplitDocumentsOptions
+    :ivar document_splitter: Uniquely identify a document splitter.
+    :vartype document_splitter: str
     """
 
     _attribute_map = {
@@ -17431,13 +17513,8 @@ class WorkspaceUpdate(msrest.serialization.Model):
         :keyword whitelist_ingest_addresses: If specified, only emails from these addresses will be
          ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
         :paramtype whitelist_ingest_addresses: list[str]
-        :keyword document_splitter: Option "leave" means no document splitting at all. Option
-         "conservative" means we don't actually split documents the documents, but will add a warning to
-         documents that may require a split. Option "recommended" means we split documents that are
-         highly likely to require a split, and add warnings to documents that might require one. Option
-         "aggressive" means we split all documents that are likely to require a split. Known values are:
-         "leave", "conservative", "recommended", "aggressive".
-        :paramtype document_splitter: str or ~affinda.models.WorkspaceSplitDocumentsOptions
+        :keyword document_splitter: Uniquely identify a document splitter.
+        :paramtype document_splitter: str
         """
         super(WorkspaceUpdate, self).__init__(**kwargs)
         self.name = kwargs.get("name", None)

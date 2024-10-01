@@ -822,36 +822,6 @@ Remove a tag from documents.
 
 `None`: None, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.edit_document_pages"></a>
-
-#### edit\_document\_pages
-
-```python
-def edit_document_pages(identifier, body, **kwargs)
-```
-
-Edit pages of a document.
-
-Split / merge / rotate / delete pages of a document.
-Documents with multiple pages can be splitted into multiple documents, or merged into one
-document.
-Each page can also be rotated. Edit operations will trigger re-parsing of the documents
-involved.
-
-**Arguments**:
-
-- `identifier` (`str`): Document's identifier.
-- `body` (`~affinda.models.DocumentEditRequest`): Describe how the pages should be edited.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`list[~affinda.models.Meta]`: list of Meta, or the result of cls(response)
-
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_validation_results"></a>
 
 #### get\_all\_validation\_results
@@ -1030,6 +1000,95 @@ Batch delete validation results.
 **Returns**:
 
 `None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_document_splitters"></a>
+
+#### get\_all\_document\_splitters
+
+```python
+def get_all_document_splitters(offset=None,
+                               limit=None,
+                               organization=None,
+                               include_public=None,
+                               **kwargs)
+```
+
+Get list of all document splitters.
+
+Returns all the document splitters visible to the user.
+
+**Arguments**:
+
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `limit` (`int`): The numbers of results to return. Default value is None.
+- `organization` (`str`): Filter by organization. Default value is None.
+- `include_public` (`bool`): Allows you to include public splitters in the response when you're
+filtering by organization. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[~affinda.models.DocumentSplitter]`: list of DocumentSplitter, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_document_splitter"></a>
+
+#### get\_document\_splitter
+
+```python
+def get_document_splitter(identifier, **kwargs)
+```
+
+Get specific document splitter.
+
+Return a specific document splitter.
+
+**Arguments**:
+
+- `identifier` (`str`): Document splitter's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.DocumentSplitter`: DocumentSplitter, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.edit_document_pages"></a>
+
+#### edit\_document\_pages
+
+```python
+def edit_document_pages(identifier, body, **kwargs)
+```
+
+Split pages of a document.
+
+Split / merge / rotate / delete pages of a document.
+Documents with multiple pages can be splitted into multiple documents, or merged into one
+document.
+Each page can also be rotated. Edit operations will trigger re-parsing of the documents
+involved.
+
+**Arguments**:
+
+- `identifier` (`str`): Document's identifier.
+- `body` (`~affinda.models.DocumentEditRequest`): Describe how the pages should be edited.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[~affinda.models.Meta]`: list of Meta, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_extractors"></a>
 
@@ -2967,6 +3026,261 @@ Returns the list of searchable occupation groups.
 
 `list[~affinda.models.OccupationGroup]`: list of OccupationGroup, or the result of cls(response)
 
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resume_search"></a>
+
+#### create\_resume\_search
+
+```python
+def create_resume_search(body, offset=None, limit=None, **kwargs)
+```
+
+Search through parsed resumes.
+
+Searches through parsed resumes. Users have 3 options to create a search::code:`<br
+/>`:code:`<br />` 1.    Match to a job description - a parsed job description is used to find
+candidates that suit it:code:`<br />` 2.  Match to a resume - a parsed resume is used to find
+other candidates that have similar attributes:code:`<br />` 3.  Search using custom
+criteria:code:`<br />`:code:`<br />` Users should only populate 1 of jobDescription, resume or
+the custom criteria.
+
+**Arguments**:
+
+- `body` (`~affinda.models.ResumeSearchParameters`): Search parameters.
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `limit` (`int`): The numbers of results to return. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ResumeSearch`: ResumeSearch, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_detail"></a>
+
+#### get\_resume\_search\_detail
+
+```python
+def get_resume_search_detail(identifier, body, **kwargs)
+```
+
+Get search result of specific resume.
+
+This contains more detailed information about the matching score of the search criteria, or
+which search criteria is missing in this resume.
+The ``identifier`` is the unique ID returned via the `/resume_search <#post-/resume_search>`_
+endpoint.
+
+**Arguments**:
+
+- `identifier` (`str`): Resume identifier.
+- `body` (`~affinda.models.ResumeSearchParameters`): Search parameters.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ResumeSearchDetail`: ResumeSearchDetail, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_config"></a>
+
+#### get\_resume\_search\_config
+
+```python
+def get_resume_search_config(**kwargs)
+```
+
+Get the config for the logged in user's embeddable resume search tool.
+
+Return configurations such as which fields can be displayed in the logged in user's embeddable
+resume search tool, what are their weights, what is the maximum number of results that can be
+returned, etc.
+
+**Arguments**:
+
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ResumeSearchConfig`: ResumeSearchConfig, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_resume_search_config"></a>
+
+#### update\_resume\_search\_config
+
+```python
+def update_resume_search_config(body, **kwargs)
+```
+
+Update the config for the logged in user's embeddable resume search tool.
+
+Update configurations such as which fields can be displayed in the logged in user's embeddable
+resume search tool, what are their weights, what is the maximum number of results that can be
+returned, etc.
+
+**Arguments**:
+
+- `body` (`~affinda.models.ResumeSearchConfig`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ResumeSearchConfig`: ResumeSearchConfig, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resume_search_embed_url"></a>
+
+#### create\_resume\_search\_embed\_url
+
+```python
+def create_resume_search_embed_url(body=None, **kwargs)
+```
+
+Create a signed URL for the embeddable resume search tool.
+
+Create and return a signed URL of the resume search tool which then can be embedded on a web
+page. An optional parameter ``config_override`` can be passed to override the user-level
+configurations of the embeddable resume search tool.
+
+**Arguments**:
+
+- `body` (`~affinda.models.Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema`): Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ResumeSearchEmbed`: ResumeSearchEmbed, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_match"></a>
+
+#### get\_resume\_search\_match
+
+```python
+def get_resume_search_match(resume,
+                            job_description,
+                            index=None,
+                            search_expression=None,
+                            job_titles_weight=None,
+                            years_experience_weight=None,
+                            locations_weight=None,
+                            languages_weight=None,
+                            skills_weight=None,
+                            education_weight=None,
+                            search_expression_weight=None,
+                            soc_codes_weight=None,
+                            management_level_weight=None,
+                            **kwargs)
+```
+
+Match a single resume and job description.
+
+Get the matching score between a resume and a job description. The score ranges between 0 and
+1, with 0 being not a match at all, and 1 being perfect match.:code:`<br/>` Note, this score
+will not directly match the score returned from POST `/resume_search/details/{identifier}
+<#post-/resume_search/details/-identifier->`_.
+
+**Arguments**:
+
+- `resume` (`str`): Identify the resume to match.
+- `job_description` (`str`): Identify the job description to match.
+- `index` (`str`): Optionally, specify an index to search in. If not specified, will search in all
+indexes. Default value is None.
+- `search_expression` (`str`): Add keywords to the search criteria. Default value is None.
+- `job_titles_weight` (`float`): How important is this criteria to the matching score, range from 0 to
+1. Default value is None.
+- `years_experience_weight` (`float`): How important is this criteria to the matching score, range
+from 0 to 1. Default value is None.
+- `locations_weight` (`float`): How important is this criteria to the matching score, range from 0 to
+1. Default value is None.
+- `languages_weight` (`float`): How important is this criteria to the matching score, range from 0 to
+1. Default value is None.
+- `skills_weight` (`float`): How important is this criteria to the matching score, range from 0 to 1.
+Default value is None.
+- `education_weight` (`float`): How important is this criteria to the matching score, range from 0 to
+1. Default value is None.
+- `search_expression_weight` (`float`): How important is this criteria to the matching score, range
+from 0 to 1. Default value is None.
+- `soc_codes_weight` (`float`): How important is this criteria to the matching score, range from 0 to
+1. Default value is None.
+- `management_level_weight` (`float`): How important is this criteria to the matching score, range
+from 0 to 1. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ResumeSearchMatch`: ResumeSearchMatch, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_suggestion_job_title"></a>
+
+#### get\_resume\_search\_suggestion\_job\_title
+
+```python
+def get_resume_search_suggestion_job_title(job_titles, **kwargs)
+```
+
+Get job title suggestions based on provided job title(s).
+
+Provided one or more job titles, get related suggestions for your search.
+
+**Arguments**:
+
+- `job_titles` (`list[str]`): Job title to query suggestions for.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[str]`: list of str, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_suggestion_skill"></a>
+
+#### get\_resume\_search\_suggestion\_skill
+
+```python
+def get_resume_search_suggestion_skill(skills, **kwargs)
+```
+
+Get skill suggestions based on provided skill(s).
+
+Provided one or more skills, get related suggestions for your search.
+
+**Arguments**:
+
+- `skills` (`list[str]`): Skill to query suggestions for.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[str]`: list of str, or the result of cls(response)
+
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_job_description_search"></a>
 
 #### create\_job\_description\_search
@@ -3125,7 +3439,7 @@ Returns all the indexes.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is None.
-- `document_type` (`str or ~affinda.models.Enum20`): Filter indices by a document type. Default value is None.
+- `document_type` (`str or ~affinda.models.Enum23`): Filter indices by a document type. Default value is None.
 - `name` (`str`): Filter indices by name. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
@@ -3324,259 +3638,4 @@ the document's data in the search index.
 **Returns**:
 
 `None`: None, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resume_search"></a>
-
-#### create\_resume\_search
-
-```python
-def create_resume_search(body, offset=None, limit=None, **kwargs)
-```
-
-Search through parsed resumes.
-
-Searches through parsed resumes. Users have 3 options to create a search::code:`<br
-/>`:code:`<br />` 1.    Match to a job description - a parsed job description is used to find
-candidates that suit it:code:`<br />` 2.  Match to a resume - a parsed resume is used to find
-other candidates that have similar attributes:code:`<br />` 3.  Search using custom
-criteria:code:`<br />`:code:`<br />` Users should only populate 1 of jobDescription, resume or
-the custom criteria.
-
-**Arguments**:
-
-- `body` (`~affinda.models.ResumeSearchParameters`): Search parameters.
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.ResumeSearch`: ResumeSearch, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_detail"></a>
-
-#### get\_resume\_search\_detail
-
-```python
-def get_resume_search_detail(identifier, body, **kwargs)
-```
-
-Get search result of specific resume.
-
-This contains more detailed information about the matching score of the search criteria, or
-which search criteria is missing in this resume.
-The ``identifier`` is the unique ID returned via the `/resume_search <#post-/resume_search>`_
-endpoint.
-
-**Arguments**:
-
-- `identifier` (`str`): Resume identifier.
-- `body` (`~affinda.models.ResumeSearchParameters`): Search parameters.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.ResumeSearchDetail`: ResumeSearchDetail, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_match"></a>
-
-#### get\_resume\_search\_match
-
-```python
-def get_resume_search_match(resume,
-                            job_description,
-                            index=None,
-                            search_expression=None,
-                            job_titles_weight=None,
-                            years_experience_weight=None,
-                            locations_weight=None,
-                            languages_weight=None,
-                            skills_weight=None,
-                            education_weight=None,
-                            search_expression_weight=None,
-                            soc_codes_weight=None,
-                            management_level_weight=None,
-                            **kwargs)
-```
-
-Match a single resume and job description.
-
-Get the matching score between a resume and a job description. The score ranges between 0 and
-1, with 0 being not a match at all, and 1 being perfect match.:code:`<br/>` Note, this score
-will not directly match the score returned from POST `/resume_search/details/{identifier}
-<#post-/resume_search/details/-identifier->`_.
-
-**Arguments**:
-
-- `resume` (`str`): Identify the resume to match.
-- `job_description` (`str`): Identify the job description to match.
-- `index` (`str`): Optionally, specify an index to search in. If not specified, will search in all
-indexes. Default value is None.
-- `search_expression` (`str`): Add keywords to the search criteria. Default value is None.
-- `job_titles_weight` (`float`): How important is this criteria to the matching score, range from 0 to
-1. Default value is None.
-- `years_experience_weight` (`float`): How important is this criteria to the matching score, range
-from 0 to 1. Default value is None.
-- `locations_weight` (`float`): How important is this criteria to the matching score, range from 0 to
-1. Default value is None.
-- `languages_weight` (`float`): How important is this criteria to the matching score, range from 0 to
-1. Default value is None.
-- `skills_weight` (`float`): How important is this criteria to the matching score, range from 0 to 1.
-Default value is None.
-- `education_weight` (`float`): How important is this criteria to the matching score, range from 0 to
-1. Default value is None.
-- `search_expression_weight` (`float`): How important is this criteria to the matching score, range
-from 0 to 1. Default value is None.
-- `soc_codes_weight` (`float`): How important is this criteria to the matching score, range from 0 to
-1. Default value is None.
-- `management_level_weight` (`float`): How important is this criteria to the matching score, range
-from 0 to 1. Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.ResumeSearchMatch`: ResumeSearchMatch, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_config"></a>
-
-#### get\_resume\_search\_config
-
-```python
-def get_resume_search_config(**kwargs)
-```
-
-Get the config for the logged in user's embeddable resume search tool.
-
-Return configurations such as which fields can be displayed in the logged in user's embeddable
-resume search tool, what are their weights, what is the maximum number of results that can be
-returned, etc.
-
-**Arguments**:
-
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.ResumeSearchConfig`: ResumeSearchConfig, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_resume_search_config"></a>
-
-#### update\_resume\_search\_config
-
-```python
-def update_resume_search_config(body, **kwargs)
-```
-
-Update the config for the logged in user's embeddable resume search tool.
-
-Update configurations such as which fields can be displayed in the logged in user's embeddable
-resume search tool, what are their weights, what is the maximum number of results that can be
-returned, etc.
-
-**Arguments**:
-
-- `body` (`~affinda.models.ResumeSearchConfig`): 
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.ResumeSearchConfig`: ResumeSearchConfig, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_resume_search_embed_url"></a>
-
-#### create\_resume\_search\_embed\_url
-
-```python
-def create_resume_search_embed_url(body=None, **kwargs)
-```
-
-Create a signed URL for the embeddable resume search tool.
-
-Create and return a signed URL of the resume search tool which then can be embedded on a web
-page. An optional parameter ``config_override`` can be passed to override the user-level
-configurations of the embeddable resume search tool.
-
-**Arguments**:
-
-- `body` (`~affinda.models.Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema`): Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.ResumeSearchEmbed`: ResumeSearchEmbed, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_suggestion_job_title"></a>
-
-#### get\_resume\_search\_suggestion\_job\_title
-
-```python
-def get_resume_search_suggestion_job_title(job_titles, **kwargs)
-```
-
-Get job title suggestions based on provided job title(s).
-
-Provided one or more job titles, get related suggestions for your search.
-
-**Arguments**:
-
-- `job_titles` (`list[str]`): Job title to query suggestions for.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`list[str]`: list of str, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_resume_search_suggestion_skill"></a>
-
-#### get\_resume\_search\_suggestion\_skill
-
-```python
-def get_resume_search_suggestion_skill(skills, **kwargs)
-```
-
-Get skill suggestions based on provided skill(s).
-
-Provided one or more skills, get related suggestions for your search.
-
-**Arguments**:
-
-- `skills` (`list[str]`): Skill to query suggestions for.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`list[str]`: list of str, or the result of cls(response)
 

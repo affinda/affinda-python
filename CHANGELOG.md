@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.25.0] - 2024-10-01
+### Added
+- Add document splitter endpoints
+
 ## [4.24.0] - 2024-09-10
 ### Added
 - Allow filter tags by name

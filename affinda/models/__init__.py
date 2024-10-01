@@ -89,6 +89,7 @@ try:
     from ._models_py3 import DocumentMetaWorkspace
     from ._models_py3 import DocumentSplit
     from ._models_py3 import DocumentSplitPage
+    from ._models_py3 import DocumentSplitter
     from ._models_py3 import DocumentUpdate
     from ._models_py3 import DocumentWarning
     from ._models_py3 import Education
@@ -349,6 +350,7 @@ try:
     from ._models_py3 import WorkspaceCollectionsItem
     from ._models_py3 import WorkspaceCollectionsItemExtractor
     from ._models_py3 import WorkspaceCreate
+    from ._models_py3 import WorkspaceDocumentSplitter
     from ._models_py3 import WorkspaceMembership
     from ._models_py3 import WorkspaceMembershipCreate
     from ._models_py3 import WorkspaceUpdate
@@ -439,6 +441,7 @@ except (SyntaxError, ImportError):
     from ._models import DocumentMetaWorkspace  # type: ignore
     from ._models import DocumentSplit  # type: ignore
     from ._models import DocumentSplitPage  # type: ignore
+    from ._models import DocumentSplitter  # type: ignore
     from ._models import DocumentUpdate  # type: ignore
     from ._models import DocumentWarning  # type: ignore
     from ._models import Education  # type: ignore
@@ -683,6 +686,7 @@ except (SyntaxError, ImportError):
     from ._models import WorkspaceCollectionsItem  # type: ignore
     from ._models import WorkspaceCollectionsItemExtractor  # type: ignore
     from ._models import WorkspaceCreate  # type: ignore
+    from ._models import WorkspaceDocumentSplitter  # type: ignore
     from ._models import WorkspaceMembership  # type: ignore
     from ._models import WorkspaceMembershipCreate  # type: ignore
     from ._models import WorkspaceUpdate  # type: ignore
@@ -697,14 +701,16 @@ from ._affinda_api_enums import (
     DateFormatPreference,
     DateRange,
     DocumentFormat,
+    DocumentSplitterType,
     DocumentState,
     DocumentType,
     EducationLevel,
-    Enum20,
+    Enum23,
     IndexDocumentType,
     InvitationResponseStatus,
     InvitationStatus,
     JobDescriptionSearchConfigDistanceUnit,
+    LLMModelType,
     ManagementLevel,
     OrganizationRole,
     OrganizationUserRole,
@@ -718,7 +724,6 @@ from ._affinda_api_enums import (
     SearchParametersCustomDataFilterType,
     ThemeConfigPaletteMode,
     Version,
-    WorkspaceSplitDocumentsOptions,
     WorkspaceVisibility,
 )
 from ._patch import __all__ as _patch_all
@@ -794,6 +799,7 @@ __all__ = [
     "DocumentMetaWorkspace",
     "DocumentSplit",
     "DocumentSplitPage",
+    "DocumentSplitter",
     "DocumentUpdate",
     "DocumentWarning",
     "Education",
@@ -1012,6 +1018,7 @@ __all__ = [
     "WorkspaceCollectionsItem",
     "WorkspaceCollectionsItemExtractor",
     "WorkspaceCreate",
+    "WorkspaceDocumentSplitter",
     "WorkspaceMembership",
     "WorkspaceMembershipCreate",
     "WorkspaceUpdate",
@@ -1024,14 +1031,16 @@ __all__ = [
     "DateFormatPreference",
     "DateRange",
     "DocumentFormat",
+    "DocumentSplitterType",
     "DocumentState",
     "DocumentType",
     "EducationLevel",
-    "Enum20",
+    "Enum23",
     "IndexDocumentType",
     "InvitationResponseStatus",
     "InvitationStatus",
     "JobDescriptionSearchConfigDistanceUnit",
+    "LLMModelType",
     "ManagementLevel",
     "OrganizationRole",
     "OrganizationUserRole",
@@ -1045,7 +1054,6 @@ __all__ = [
     "SearchParametersCustomDataFilterType",
     "ThemeConfigPaletteMode",
     "Version",
-    "WorkspaceSplitDocumentsOptions",
     "WorkspaceVisibility",
 ]
 __all__.extend([p for p in _patch_all if p not in __all__])

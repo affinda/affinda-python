@@ -433,59 +433,6 @@ updated_resume = client.update_document_data(identifier, updated_data)
 print(updated_resume.as_dict())
 ```
 
-### editDocumentPages - Edit pages of a document
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import DocumentEditRequest, DocumentSplit, DocumentSplitPage
-
-token = "REPLACE_TOKEN"
-identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-# Get the page IDs of the document pages
-document = client.get_document(identifier)
-ids = []
-for page in document.meta.pages:
-    ids.append(page.id)
-
-# Let's say the document has 5 pages, we want to split to 3 documents:
-# - Document 1:
-#   - Page 1
-# - Document 2:
-#   - Page 2 and 3
-#   - Rotate page 3 by 90 degrees
-# - Document 3:
-#   - Page 4
-#   - Delete page 5
-split_1 = DocumentSplit(
-    identifier=identifier,
-    pages=[
-        DocumentSplitPage(id=ids[0]),
-    ],
-)
-split_2 = DocumentSplit(
-    pages=[
-        DocumentSplitPage(id=ids[1]),
-        DocumentSplitPage(id=ids[2], rotation=90),
-    ],
-)
-split_3 = DocumentSplit(
-    pages=[
-        DocumentSplitPage(id=ids[3]),
-    ]
-)
-
-res = client.edit_document_pages(
-    identifier,
-    DocumentEditRequest(splits=[split_1, split_2, split_3]),
-)
-for document_meta in res:
-    print(document_meta.as_dict())
-```
-
 Document API - Tag
 ------------------
 
@@ -612,6 +559,62 @@ credential = TokenCredential(token=token)
 client = AffindaAPI(credential=credential)
 
 client.delete_tag(id)
+```
+
+Document API - Splitting
+------------------------
+
+### editDocumentPages - Split pages of a document
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import DocumentEditRequest, DocumentSplit, DocumentSplitPage
+
+token = "REPLACE_TOKEN"
+identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+# Get the page IDs of the document pages
+document = client.get_document(identifier)
+ids = []
+for page in document.meta.pages:
+    ids.append(page.id)
+
+# Let's say the document has 5 pages, we want to split to 3 documents:
+# - Document 1:
+#   - Page 1
+# - Document 2:
+#   - Page 2 and 3
+#   - Rotate page 3 by 90 degrees
+# - Document 3:
+#   - Page 4
+#   - Delete page 5
+split_1 = DocumentSplit(
+    identifier=identifier,
+    pages=[
+        DocumentSplitPage(id=ids[0]),
+    ],
+)
+split_2 = DocumentSplit(
+    pages=[
+        DocumentSplitPage(id=ids[1]),
+        DocumentSplitPage(id=ids[2], rotation=90),
+    ],
+)
+split_3 = DocumentSplit(
+    pages=[
+        DocumentSplitPage(id=ids[3]),
+    ]
+)
+
+res = client.edit_document_pages(
+    identifier,
+    DocumentEditRequest(splits=[split_1, split_2, split_3]),
+)
+for document_meta in res:
+    print(document_meta.as_dict())
 ```
 
 Document API - Extractor
@@ -1525,63 +1528,6 @@ print(res.as_dict())
 Search & Match API - Searching
 ------------------------------
 
-### createJobDescriptionSearch - Search through parsed job descriptions
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import JobDescriptionSearchParameters
-
-token = "REPLACE_TOKEN"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-# Search with custom criterias
-parameters = JobDescriptionSearchParameters(
-    indices=["Job-Description-Search-Demo"],
-    job_titles=["Senior Java Software Developer"],
-    skills=[
-        {"name": "Java Programming", "required": True},
-        {"name": "Python Programming", "required": False},
-    ],
-    # Many more criterias are available, refer to JobDescriptionSearchParameters
-)
-resp = client.create_job_description_search(parameters)
-print(resp.as_dict())
-
-# Search with a resume
-resume_identifier = "REPLACE_RESUME_IDENTIFIER"
-parameters = JobDescriptionSearchParameters(
-    indices=["Job-Description-Search-Demo"],
-    resume=resume_identifier,
-)
-resp = client.create_job_description_search(parameters)
-print(resp.as_dict())
-```
-
-### getJobDescriptionSearchDetail - Get search result of specific job description
-
-```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import JobDescriptionSearchParameters
-
-token = "REPLACE_TOKEN"
-job_description_identifier = "REPLACE_IDENTIFIER"
-
-credential = TokenCredential(token=token)
-client = AffindaAPI(credential=credential)
-
-# Search with custom criterias
-parameters = JobDescriptionSearchParameters(
-    indices=["Job-Description-Search-Demo"],
-    job_titles=["Senior Java Software Developer"],
-    degrees=["Bachelors"],
-    # Many more criterias are available, refer to JobDescriptionSearchParameters
-)
-resp = client.get_job_description_search_detail(body=parameters, identifier=job_description_identifier)
-print(resp.as_dict())
-```
-
 ### createResumeSearch - Search through parsed resumes
 
 ```python
@@ -1687,6 +1633,63 @@ client = AffindaAPI(credential=credential)
 
 suggested_skills = client.get_resume_search_suggestion_skill(["Javascript", "Python"])
 print(suggested_skills)
+```
+
+### createJobDescriptionSearch - Search through parsed job descriptions
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import JobDescriptionSearchParameters
+
+token = "REPLACE_TOKEN"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+# Search with custom criterias
+parameters = JobDescriptionSearchParameters(
+    indices=["Job-Description-Search-Demo"],
+    job_titles=["Senior Java Software Developer"],
+    skills=[
+        {"name": "Java Programming", "required": True},
+        {"name": "Python Programming", "required": False},
+    ],
+    # Many more criterias are available, refer to JobDescriptionSearchParameters
+)
+resp = client.create_job_description_search(parameters)
+print(resp.as_dict())
+
+# Search with a resume
+resume_identifier = "REPLACE_RESUME_IDENTIFIER"
+parameters = JobDescriptionSearchParameters(
+    indices=["Job-Description-Search-Demo"],
+    resume=resume_identifier,
+)
+resp = client.create_job_description_search(parameters)
+print(resp.as_dict())
+```
+
+### getJobDescriptionSearchDetail - Get search result of specific job description
+
+```python
+from affinda import AffindaAPI, TokenCredential
+from affinda.models import JobDescriptionSearchParameters
+
+token = "REPLACE_TOKEN"
+job_description_identifier = "REPLACE_IDENTIFIER"
+
+credential = TokenCredential(token=token)
+client = AffindaAPI(credential=credential)
+
+# Search with custom criterias
+parameters = JobDescriptionSearchParameters(
+    indices=["Job-Description-Search-Demo"],
+    job_titles=["Senior Java Software Developer"],
+    degrees=["Bachelors"],
+    # Many more criterias are available, refer to JobDescriptionSearchParameters
+)
+resp = client.get_job_description_search_detail(body=parameters, identifier=job_description_identifier)
+print(resp.as_dict())
 ```
 
 Search & Match API - Embedding

@@ -895,37 +895,6 @@ def build_batch_remove_tag_request(
     )
 
 
-def build_edit_document_pages_request(
-    identifier,  # type: str
-    **kwargs  # type: Any
-):
-    # type: (...) -> HttpRequest
-    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-
-    content_type = kwargs.pop('content_type', _headers.pop('Content-Type', None))  # type: Optional[str]
-    accept = _headers.pop('Accept', "application/json")
-
-    # Construct URL
-    _url = kwargs.pop("template_url", "/v3/validate/{identifier}/split")
-    path_format_arguments = {
-        "identifier": _SERIALIZER.url("identifier", identifier, 'str'),
-    }
-
-    _url = _format_url_section(_url, **path_format_arguments)
-
-    # Construct headers
-    if content_type is not None:
-        _headers['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
-    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
-
-    return HttpRequest(
-        method="POST",
-        url=_url,
-        headers=_headers,
-        **kwargs
-    )
-
-
 def build_get_all_validation_results_request(
     **kwargs  # type: Any
 ):
@@ -1108,6 +1077,103 @@ def build_batch_delete_validation_results_request(
 
     # Construct URL
     _url = kwargs.pop("template_url", "/v3/validation_results/batch_delete")
+
+    # Construct headers
+    if content_type is not None:
+        _headers['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="POST",
+        url=_url,
+        headers=_headers,
+        **kwargs
+    )
+
+
+def build_get_all_document_splitters_request(
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+    _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
+
+    offset = kwargs.pop('offset', _params.pop('offset', None))  # type: Optional[int]
+    limit = kwargs.pop('limit', _params.pop('limit', None))  # type: Optional[int]
+    organization = kwargs.pop('organization', _params.pop('organization', None))  # type: Optional[str]
+    include_public = kwargs.pop('include_public', _params.pop('include_public', None))  # type: Optional[bool]
+    accept = _headers.pop('Accept', "application/json")
+
+    # Construct URL
+    _url = kwargs.pop("template_url", "/v3/document_splitters")
+
+    # Construct parameters
+    if offset is not None:
+        _params['offset'] = _SERIALIZER.query("offset", offset, 'int', minimum=0)
+    if limit is not None:
+        _params['limit'] = _SERIALIZER.query("limit", limit, 'int', maximum=100, minimum=1)
+    if organization is not None:
+        _params['organization'] = _SERIALIZER.query("organization", organization, 'str')
+    if include_public is not None:
+        _params['include_public'] = _SERIALIZER.query("include_public", include_public, 'bool')
+
+    # Construct headers
+    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="GET",
+        url=_url,
+        params=_params,
+        headers=_headers,
+        **kwargs
+    )
+
+
+def build_get_document_splitter_request(
+    identifier,  # type: str
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+
+    accept = _headers.pop('Accept', "application/json")
+
+    # Construct URL
+    _url = kwargs.pop("template_url", "/v3/document_splitters/{identifier}")
+    path_format_arguments = {
+        "identifier": _SERIALIZER.url("identifier", identifier, 'str'),
+    }
+
+    _url = _format_url_section(_url, **path_format_arguments)
+
+    # Construct headers
+    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="GET",
+        url=_url,
+        headers=_headers,
+        **kwargs
+    )
+
+
+def build_edit_document_pages_request(
+    identifier,  # type: str
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+
+    content_type = kwargs.pop('content_type', _headers.pop('Content-Type', None))  # type: Optional[str]
+    accept = _headers.pop('Accept', "application/json")
+
+    # Construct URL
+    _url = kwargs.pop("template_url", "/v3/validate/{identifier}/split")
+    path_format_arguments = {
+        "identifier": _SERIALIZER.url("identifier", identifier, 'str'),
+    }
+
+    _url = _format_url_section(_url, **path_format_arguments)
 
     # Construct headers
     if content_type is not None:
@@ -3244,6 +3310,263 @@ def build_list_occupation_groups_request(
     )
 
 
+def build_create_resume_search_request(
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+    _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
+
+    content_type = kwargs.pop('content_type', _headers.pop('Content-Type', None))  # type: Optional[str]
+    offset = kwargs.pop('offset', _params.pop('offset', None))  # type: Optional[int]
+    limit = kwargs.pop('limit', _params.pop('limit', None))  # type: Optional[int]
+    accept = _headers.pop('Accept', "application/json")
+
+    # Construct URL
+    _url = kwargs.pop("template_url", "/v3/resume_search")
+
+    # Construct parameters
+    if offset is not None:
+        _params['offset'] = _SERIALIZER.query("offset", offset, 'int', minimum=0)
+    if limit is not None:
+        _params['limit'] = _SERIALIZER.query("limit", limit, 'int', maximum=50, minimum=1)
+
+    # Construct headers
+    if content_type is not None:
+        _headers['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="POST",
+        url=_url,
+        params=_params,
+        headers=_headers,
+        **kwargs
+    )
+
+
+def build_get_resume_search_detail_request(
+    identifier,  # type: str
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+
+    content_type = kwargs.pop('content_type', _headers.pop('Content-Type', None))  # type: Optional[str]
+    accept = _headers.pop('Accept', "application/json")
+
+    # Construct URL
+    _url = kwargs.pop("template_url", "/v3/resume_search/details/{identifier}")
+    path_format_arguments = {
+        "identifier": _SERIALIZER.url("identifier", identifier, 'str'),
+    }
+
+    _url = _format_url_section(_url, **path_format_arguments)
+
+    # Construct headers
+    if content_type is not None:
+        _headers['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="POST",
+        url=_url,
+        headers=_headers,
+        **kwargs
+    )
+
+
+def build_get_resume_search_config_request(
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+
+    accept = _headers.pop('Accept', "application/json")
+
+    # Construct URL
+    _url = kwargs.pop("template_url", "/v3/resume_search/config")
+
+    # Construct headers
+    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="GET",
+        url=_url,
+        headers=_headers,
+        **kwargs
+    )
+
+
+def build_update_resume_search_config_request(
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+
+    content_type = kwargs.pop('content_type', _headers.pop('Content-Type', None))  # type: Optional[str]
+    accept = _headers.pop('Accept', "application/json")
+
+    # Construct URL
+    _url = kwargs.pop("template_url", "/v3/resume_search/config")
+
+    # Construct headers
+    if content_type is not None:
+        _headers['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="PATCH",
+        url=_url,
+        headers=_headers,
+        **kwargs
+    )
+
+
+def build_create_resume_search_embed_url_request(
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+
+    content_type = kwargs.pop('content_type', _headers.pop('Content-Type', None))  # type: Optional[str]
+    accept = _headers.pop('Accept', "application/json")
+
+    # Construct URL
+    _url = kwargs.pop("template_url", "/v3/resume_search/embed")
+
+    # Construct headers
+    if content_type is not None:
+        _headers['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="POST",
+        url=_url,
+        headers=_headers,
+        **kwargs
+    )
+
+
+def build_get_resume_search_match_request(
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+    _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
+
+    resume = kwargs.pop('resume')  # type: str
+    job_description = kwargs.pop('job_description')  # type: str
+    index = kwargs.pop('index', _params.pop('index', None))  # type: Optional[str]
+    search_expression = kwargs.pop('search_expression', _params.pop('search_expression', None))  # type: Optional[str]
+    job_titles_weight = kwargs.pop('job_titles_weight', _params.pop('job_titles_weight', None))  # type: Optional[float]
+    years_experience_weight = kwargs.pop('years_experience_weight', _params.pop('years_experience_weight', None))  # type: Optional[float]
+    locations_weight = kwargs.pop('locations_weight', _params.pop('locations_weight', None))  # type: Optional[float]
+    languages_weight = kwargs.pop('languages_weight', _params.pop('languages_weight', None))  # type: Optional[float]
+    skills_weight = kwargs.pop('skills_weight', _params.pop('skills_weight', None))  # type: Optional[float]
+    education_weight = kwargs.pop('education_weight', _params.pop('education_weight', None))  # type: Optional[float]
+    search_expression_weight = kwargs.pop('search_expression_weight', _params.pop('search_expression_weight', None))  # type: Optional[float]
+    soc_codes_weight = kwargs.pop('soc_codes_weight', _params.pop('soc_codes_weight', None))  # type: Optional[float]
+    management_level_weight = kwargs.pop('management_level_weight', _params.pop('management_level_weight', None))  # type: Optional[float]
+    accept = _headers.pop('Accept', "application/json")
+
+    # Construct URL
+    _url = kwargs.pop("template_url", "/v3/resume_search/match")
+
+    # Construct parameters
+    _params['resume'] = _SERIALIZER.query("resume", resume, 'str')
+    _params['job_description'] = _SERIALIZER.query("job_description", job_description, 'str')
+    if index is not None:
+        _params['index'] = _SERIALIZER.query("index", index, 'str')
+    if search_expression is not None:
+        _params['search_expression'] = _SERIALIZER.query("search_expression", search_expression, 'str')
+    if job_titles_weight is not None:
+        _params['job_titles_weight'] = _SERIALIZER.query("job_titles_weight", job_titles_weight, 'float', maximum=1, minimum=0)
+    if years_experience_weight is not None:
+        _params['years_experience_weight'] = _SERIALIZER.query("years_experience_weight", years_experience_weight, 'float', maximum=1, minimum=0)
+    if locations_weight is not None:
+        _params['locations_weight'] = _SERIALIZER.query("locations_weight", locations_weight, 'float', maximum=1, minimum=0)
+    if languages_weight is not None:
+        _params['languages_weight'] = _SERIALIZER.query("languages_weight", languages_weight, 'float', maximum=1, minimum=0)
+    if skills_weight is not None:
+        _params['skills_weight'] = _SERIALIZER.query("skills_weight", skills_weight, 'float', maximum=1, minimum=0)
+    if education_weight is not None:
+        _params['education_weight'] = _SERIALIZER.query("education_weight", education_weight, 'float', maximum=1, minimum=0)
+    if search_expression_weight is not None:
+        _params['search_expression_weight'] = _SERIALIZER.query("search_expression_weight", search_expression_weight, 'float', maximum=1, minimum=0)
+    if soc_codes_weight is not None:
+        _params['soc_codes_weight'] = _SERIALIZER.query("soc_codes_weight", soc_codes_weight, 'float', maximum=1, minimum=0)
+    if management_level_weight is not None:
+        _params['management_level_weight'] = _SERIALIZER.query("management_level_weight", management_level_weight, 'float', maximum=1, minimum=0)
+
+    # Construct headers
+    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="GET",
+        url=_url,
+        params=_params,
+        headers=_headers,
+        **kwargs
+    )
+
+
+def build_get_resume_search_suggestion_job_title_request(
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+    _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
+
+    job_titles = kwargs.pop('job_titles')  # type: List[str]
+    accept = _headers.pop('Accept', "application/json")
+
+    # Construct URL
+    _url = kwargs.pop("template_url", "/v3/resume_search/suggestion_job_title")
+
+    # Construct parameters
+    _params['job_titles'] = [_SERIALIZER.query("job_titles", q, 'str') if q is not None else '' for q in job_titles]
+
+    # Construct headers
+    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="GET",
+        url=_url,
+        params=_params,
+        headers=_headers,
+        **kwargs
+    )
+
+
+def build_get_resume_search_suggestion_skill_request(
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+    _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
+
+    skills = kwargs.pop('skills')  # type: List[str]
+    accept = _headers.pop('Accept', "application/json")
+
+    # Construct URL
+    _url = kwargs.pop("template_url", "/v3/resume_search/suggestion_skill")
+
+    # Construct parameters
+    _params['skills'] = [_SERIALIZER.query("skills", q, 'str') if q is not None else '' for q in skills]
+
+    # Construct headers
+    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="GET",
+        url=_url,
+        params=_params,
+        headers=_headers,
+        **kwargs
+    )
+
+
 def build_create_job_description_search_request(
     **kwargs  # type: Any
 ):
@@ -3391,7 +3714,7 @@ def build_get_all_indexes_request(
 
     offset = kwargs.pop('offset', _params.pop('offset', None))  # type: Optional[int]
     limit = kwargs.pop('limit', _params.pop('limit', None))  # type: Optional[int]
-    document_type = kwargs.pop('document_type', _params.pop('document_type', None))  # type: Optional[Union[str, "_models.Enum20"]]
+    document_type = kwargs.pop('document_type', _params.pop('document_type', None))  # type: Optional[Union[str, "_models.Enum23"]]
     name = kwargs.pop('name', _params.pop('name', None))  # type: Optional[str]
     accept = _headers.pop('Accept', "application/json")
 
@@ -3628,263 +3951,6 @@ def build_re_index_document_request(
     return HttpRequest(
         method="POST",
         url=_url,
-        headers=_headers,
-        **kwargs
-    )
-
-
-def build_create_resume_search_request(
-    **kwargs  # type: Any
-):
-    # type: (...) -> HttpRequest
-    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-    _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
-
-    content_type = kwargs.pop('content_type', _headers.pop('Content-Type', None))  # type: Optional[str]
-    offset = kwargs.pop('offset', _params.pop('offset', None))  # type: Optional[int]
-    limit = kwargs.pop('limit', _params.pop('limit', None))  # type: Optional[int]
-    accept = _headers.pop('Accept', "application/json")
-
-    # Construct URL
-    _url = kwargs.pop("template_url", "/v3/resume_search")
-
-    # Construct parameters
-    if offset is not None:
-        _params['offset'] = _SERIALIZER.query("offset", offset, 'int', minimum=0)
-    if limit is not None:
-        _params['limit'] = _SERIALIZER.query("limit", limit, 'int', maximum=50, minimum=1)
-
-    # Construct headers
-    if content_type is not None:
-        _headers['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
-    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
-
-    return HttpRequest(
-        method="POST",
-        url=_url,
-        params=_params,
-        headers=_headers,
-        **kwargs
-    )
-
-
-def build_get_resume_search_detail_request(
-    identifier,  # type: str
-    **kwargs  # type: Any
-):
-    # type: (...) -> HttpRequest
-    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-
-    content_type = kwargs.pop('content_type', _headers.pop('Content-Type', None))  # type: Optional[str]
-    accept = _headers.pop('Accept', "application/json")
-
-    # Construct URL
-    _url = kwargs.pop("template_url", "/v3/resume_search/details/{identifier}")
-    path_format_arguments = {
-        "identifier": _SERIALIZER.url("identifier", identifier, 'str'),
-    }
-
-    _url = _format_url_section(_url, **path_format_arguments)
-
-    # Construct headers
-    if content_type is not None:
-        _headers['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
-    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
-
-    return HttpRequest(
-        method="POST",
-        url=_url,
-        headers=_headers,
-        **kwargs
-    )
-
-
-def build_get_resume_search_match_request(
-    **kwargs  # type: Any
-):
-    # type: (...) -> HttpRequest
-    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-    _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
-
-    resume = kwargs.pop('resume')  # type: str
-    job_description = kwargs.pop('job_description')  # type: str
-    index = kwargs.pop('index', _params.pop('index', None))  # type: Optional[str]
-    search_expression = kwargs.pop('search_expression', _params.pop('search_expression', None))  # type: Optional[str]
-    job_titles_weight = kwargs.pop('job_titles_weight', _params.pop('job_titles_weight', None))  # type: Optional[float]
-    years_experience_weight = kwargs.pop('years_experience_weight', _params.pop('years_experience_weight', None))  # type: Optional[float]
-    locations_weight = kwargs.pop('locations_weight', _params.pop('locations_weight', None))  # type: Optional[float]
-    languages_weight = kwargs.pop('languages_weight', _params.pop('languages_weight', None))  # type: Optional[float]
-    skills_weight = kwargs.pop('skills_weight', _params.pop('skills_weight', None))  # type: Optional[float]
-    education_weight = kwargs.pop('education_weight', _params.pop('education_weight', None))  # type: Optional[float]
-    search_expression_weight = kwargs.pop('search_expression_weight', _params.pop('search_expression_weight', None))  # type: Optional[float]
-    soc_codes_weight = kwargs.pop('soc_codes_weight', _params.pop('soc_codes_weight', None))  # type: Optional[float]
-    management_level_weight = kwargs.pop('management_level_weight', _params.pop('management_level_weight', None))  # type: Optional[float]
-    accept = _headers.pop('Accept', "application/json")
-
-    # Construct URL
-    _url = kwargs.pop("template_url", "/v3/resume_search/match")
-
-    # Construct parameters
-    _params['resume'] = _SERIALIZER.query("resume", resume, 'str')
-    _params['job_description'] = _SERIALIZER.query("job_description", job_description, 'str')
-    if index is not None:
-        _params['index'] = _SERIALIZER.query("index", index, 'str')
-    if search_expression is not None:
-        _params['search_expression'] = _SERIALIZER.query("search_expression", search_expression, 'str')
-    if job_titles_weight is not None:
-        _params['job_titles_weight'] = _SERIALIZER.query("job_titles_weight", job_titles_weight, 'float', maximum=1, minimum=0)
-    if years_experience_weight is not None:
-        _params['years_experience_weight'] = _SERIALIZER.query("years_experience_weight", years_experience_weight, 'float', maximum=1, minimum=0)
-    if locations_weight is not None:
-        _params['locations_weight'] = _SERIALIZER.query("locations_weight", locations_weight, 'float', maximum=1, minimum=0)
-    if languages_weight is not None:
-        _params['languages_weight'] = _SERIALIZER.query("languages_weight", languages_weight, 'float', maximum=1, minimum=0)
-    if skills_weight is not None:
-        _params['skills_weight'] = _SERIALIZER.query("skills_weight", skills_weight, 'float', maximum=1, minimum=0)
-    if education_weight is not None:
-        _params['education_weight'] = _SERIALIZER.query("education_weight", education_weight, 'float', maximum=1, minimum=0)
-    if search_expression_weight is not None:
-        _params['search_expression_weight'] = _SERIALIZER.query("search_expression_weight", search_expression_weight, 'float', maximum=1, minimum=0)
-    if soc_codes_weight is not None:
-        _params['soc_codes_weight'] = _SERIALIZER.query("soc_codes_weight", soc_codes_weight, 'float', maximum=1, minimum=0)
-    if management_level_weight is not None:
-        _params['management_level_weight'] = _SERIALIZER.query("management_level_weight", management_level_weight, 'float', maximum=1, minimum=0)
-
-    # Construct headers
-    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
-
-    return HttpRequest(
-        method="GET",
-        url=_url,
-        params=_params,
-        headers=_headers,
-        **kwargs
-    )
-
-
-def build_get_resume_search_config_request(
-    **kwargs  # type: Any
-):
-    # type: (...) -> HttpRequest
-    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-
-    accept = _headers.pop('Accept', "application/json")
-
-    # Construct URL
-    _url = kwargs.pop("template_url", "/v3/resume_search/config")
-
-    # Construct headers
-    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
-
-    return HttpRequest(
-        method="GET",
-        url=_url,
-        headers=_headers,
-        **kwargs
-    )
-
-
-def build_update_resume_search_config_request(
-    **kwargs  # type: Any
-):
-    # type: (...) -> HttpRequest
-    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-
-    content_type = kwargs.pop('content_type', _headers.pop('Content-Type', None))  # type: Optional[str]
-    accept = _headers.pop('Accept', "application/json")
-
-    # Construct URL
-    _url = kwargs.pop("template_url", "/v3/resume_search/config")
-
-    # Construct headers
-    if content_type is not None:
-        _headers['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
-    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
-
-    return HttpRequest(
-        method="PATCH",
-        url=_url,
-        headers=_headers,
-        **kwargs
-    )
-
-
-def build_create_resume_search_embed_url_request(
-    **kwargs  # type: Any
-):
-    # type: (...) -> HttpRequest
-    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-
-    content_type = kwargs.pop('content_type', _headers.pop('Content-Type', None))  # type: Optional[str]
-    accept = _headers.pop('Accept', "application/json")
-
-    # Construct URL
-    _url = kwargs.pop("template_url", "/v3/resume_search/embed")
-
-    # Construct headers
-    if content_type is not None:
-        _headers['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
-    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
-
-    return HttpRequest(
-        method="POST",
-        url=_url,
-        headers=_headers,
-        **kwargs
-    )
-
-
-def build_get_resume_search_suggestion_job_title_request(
-    **kwargs  # type: Any
-):
-    # type: (...) -> HttpRequest
-    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-    _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
-
-    job_titles = kwargs.pop('job_titles')  # type: List[str]
-    accept = _headers.pop('Accept', "application/json")
-
-    # Construct URL
-    _url = kwargs.pop("template_url", "/v3/resume_search/suggestion_job_title")
-
-    # Construct parameters
-    _params['job_titles'] = [_SERIALIZER.query("job_titles", q, 'str') if q is not None else '' for q in job_titles]
-
-    # Construct headers
-    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
-
-    return HttpRequest(
-        method="GET",
-        url=_url,
-        params=_params,
-        headers=_headers,
-        **kwargs
-    )
-
-
-def build_get_resume_search_suggestion_skill_request(
-    **kwargs  # type: Any
-):
-    # type: (...) -> HttpRequest
-    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-    _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
-
-    skills = kwargs.pop('skills')  # type: List[str]
-    accept = _headers.pop('Accept', "application/json")
-
-    # Construct URL
-    _url = kwargs.pop("template_url", "/v3/resume_search/suggestion_skill")
-
-    # Construct parameters
-    _params['skills'] = [_SERIALIZER.query("skills", q, 'str') if q is not None else '' for q in skills]
-
-    # Construct headers
-    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
-
-    return HttpRequest(
-        method="GET",
-        url=_url,
-        params=_params,
         headers=_headers,
         **kwargs
     )
@@ -5932,83 +5998,6 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
     batch_remove_tag.metadata = {"url": "/v3/documents/batch_remove_tag"}  # type: ignore
 
-    def edit_document_pages(
-        self,
-        identifier,  # type: str
-        body,  # type: _models.DocumentEditRequest
-        **kwargs,  # type: Any
-    ):
-        # type: (...) -> List[_models.Meta]
-        """Edit pages of a document.
-
-        Split / merge / rotate / delete pages of a document.
-        Documents with multiple pages can be splitted into multiple documents, or merged into one
-        document.
-        Each page can also be rotated. Edit operations will trigger re-parsing of the documents
-        involved.
-
-        :param identifier: Document's identifier.
-        :type identifier: str
-        :param body: Describe how the pages should be edited.
-        :type body: ~affinda.models.DocumentEditRequest
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of Meta, or the result of cls(response)
-        :rtype: list[~affinda.models.Meta]
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-        _params = kwargs.pop("params", {}) or {}
-
-        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
-        cls = kwargs.pop("cls", None)  # type: ClsType[List[_models.Meta]]
-
-        _json = self._serialize.body(body, "DocumentEditRequest")
-
-        request = build_edit_document_pages_request(
-            identifier=identifier,
-            content_type=content_type,
-            json=_json,
-            template_url=self.edit_document_pages.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("[Meta]", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    edit_document_pages.metadata = {"url": "/v3/validate/{identifier}/split"}  # type: ignore
-
     def get_all_validation_results(
         self,
         document,  # type: str
@@ -6484,6 +6473,227 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             return cls(pipeline_response, None, {})
 
     batch_delete_validation_results.metadata = {"url": "/v3/validation_results/batch_delete"}  # type: ignore
+
+    def get_all_document_splitters(
+        self,
+        offset=None,  # type: Optional[int]
+        limit=None,  # type: Optional[int]
+        organization=None,  # type: Optional[str]
+        include_public=None,  # type: Optional[bool]
+        **kwargs,  # type: Any
+    ):
+        # type: (...) -> List[_models.DocumentSplitter]
+        """Get list of all document splitters.
+
+        Returns all the document splitters visible to the user.
+
+        :param offset: The number of documents to skip before starting to collect the result set.
+         Default value is None.
+        :type offset: int
+        :param limit: The numbers of results to return. Default value is None.
+        :type limit: int
+        :param organization: Filter by organization. Default value is None.
+        :type organization: str
+        :param include_public: Allows you to include public splitters in the response when you're
+         filtering by organization. Default value is None.
+        :type include_public: bool
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: list of DocumentSplitter, or the result of cls(response)
+        :rtype: list[~affinda.models.DocumentSplitter]
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[List[_models.DocumentSplitter]]
+
+        request = build_get_all_document_splitters_request(
+            offset=offset,
+            limit=limit,
+            organization=organization,
+            include_public=include_public,
+            template_url=self.get_all_document_splitters.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("[DocumentSplitter]", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_all_document_splitters.metadata = {"url": "/v3/document_splitters"}  # type: ignore
+
+    def get_document_splitter(
+        self,
+        identifier,  # type: str
+        **kwargs,  # type: Any
+    ):
+        # type: (...) -> _models.DocumentSplitter
+        """Get specific document splitter.
+
+        Return a specific document splitter.
+
+        :param identifier: Document splitter's identifier.
+        :type identifier: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: DocumentSplitter, or the result of cls(response)
+        :rtype: ~affinda.models.DocumentSplitter
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.DocumentSplitter]
+
+        request = build_get_document_splitter_request(
+            identifier=identifier,
+            template_url=self.get_document_splitter.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("DocumentSplitter", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_document_splitter.metadata = {"url": "/v3/document_splitters/{identifier}"}  # type: ignore
+
+    def edit_document_pages(
+        self,
+        identifier,  # type: str
+        body,  # type: _models.DocumentEditRequest
+        **kwargs,  # type: Any
+    ):
+        # type: (...) -> List[_models.Meta]
+        """Split pages of a document.
+
+        Split / merge / rotate / delete pages of a document.
+        Documents with multiple pages can be splitted into multiple documents, or merged into one
+        document.
+        Each page can also be rotated. Edit operations will trigger re-parsing of the documents
+        involved.
+
+        :param identifier: Document's identifier.
+        :type identifier: str
+        :param body: Describe how the pages should be edited.
+        :type body: ~affinda.models.DocumentEditRequest
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: list of Meta, or the result of cls(response)
+        :rtype: list[~affinda.models.Meta]
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[List[_models.Meta]]
+
+        _json = self._serialize.body(body, "DocumentEditRequest")
+
+        request = build_edit_document_pages_request(
+            identifier=identifier,
+            content_type=content_type,
+            json=_json,
+            template_url=self.edit_document_pages.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("[Meta]", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    edit_document_pages.metadata = {"url": "/v3/validate/{identifier}/split"}  # type: ignore
 
     def get_all_extractors(
         self,
@@ -11550,6 +11760,628 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
     list_occupation_groups.metadata = {"url": "/v3/occupation_groups"}  # type: ignore
 
+    def create_resume_search(
+        self,
+        body,  # type: _models.ResumeSearchParameters
+        offset=None,  # type: Optional[int]
+        limit=None,  # type: Optional[int]
+        **kwargs,  # type: Any
+    ):
+        # type: (...) -> _models.ResumeSearch
+        """Search through parsed resumes.
+
+        Searches through parsed resumes. Users have 3 options to create a search::code:`<br
+        />`:code:`<br />` 1.    Match to a job description - a parsed job description is used to find
+        candidates that suit it:code:`<br />` 2.  Match to a resume - a parsed resume is used to find
+        other candidates that have similar attributes:code:`<br />` 3.  Search using custom
+        criteria:code:`<br />`:code:`<br />` Users should only populate 1 of jobDescription, resume or
+        the custom criteria.
+
+        :param body: Search parameters.
+        :type body: ~affinda.models.ResumeSearchParameters
+        :param offset: The number of documents to skip before starting to collect the result set.
+         Default value is None.
+        :type offset: int
+        :param limit: The numbers of results to return. Default value is None.
+        :type limit: int
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: ResumeSearch, or the result of cls(response)
+        :rtype: ~affinda.models.ResumeSearch
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResumeSearch]
+
+        _json = self._serialize.body(body, "ResumeSearchParameters")
+
+        request = build_create_resume_search_request(
+            content_type=content_type,
+            json=_json,
+            offset=offset,
+            limit=limit,
+            template_url=self.create_resume_search.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [201]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("ResumeSearch", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    create_resume_search.metadata = {"url": "/v3/resume_search"}  # type: ignore
+
+    def get_resume_search_detail(
+        self,
+        identifier,  # type: str
+        body,  # type: _models.ResumeSearchParameters
+        **kwargs,  # type: Any
+    ):
+        # type: (...) -> _models.ResumeSearchDetail
+        """Get search result of specific resume.
+
+        This contains more detailed information about the matching score of the search criteria, or
+        which search criteria is missing in this resume.
+        The ``identifier`` is the unique ID returned via the `/resume_search <#post-/resume_search>`_
+        endpoint.
+
+        :param identifier: Resume identifier.
+        :type identifier: str
+        :param body: Search parameters.
+        :type body: ~affinda.models.ResumeSearchParameters
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: ResumeSearchDetail, or the result of cls(response)
+        :rtype: ~affinda.models.ResumeSearchDetail
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResumeSearchDetail]
+
+        _json = self._serialize.body(body, "ResumeSearchParameters")
+
+        request = build_get_resume_search_detail_request(
+            identifier=identifier,
+            content_type=content_type,
+            json=_json,
+            template_url=self.get_resume_search_detail.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("ResumeSearchDetail", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_resume_search_detail.metadata = {"url": "/v3/resume_search/details/{identifier}"}  # type: ignore
+
+    def get_resume_search_config(
+        self,
+        **kwargs,  # type: Any
+    ):
+        # type: (...) -> _models.ResumeSearchConfig
+        """Get the config for the logged in user's embeddable resume search tool.
+
+        Return configurations such as which fields can be displayed in the logged in user's embeddable
+        resume search tool, what are their weights, what is the maximum number of results that can be
+        returned, etc.
+
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: ResumeSearchConfig, or the result of cls(response)
+        :rtype: ~affinda.models.ResumeSearchConfig
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResumeSearchConfig]
+
+        request = build_get_resume_search_config_request(
+            template_url=self.get_resume_search_config.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("ResumeSearchConfig", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_resume_search_config.metadata = {"url": "/v3/resume_search/config"}  # type: ignore
+
+    def update_resume_search_config(
+        self,
+        body,  # type: _models.ResumeSearchConfig
+        **kwargs,  # type: Any
+    ):
+        # type: (...) -> _models.ResumeSearchConfig
+        """Update the config for the logged in user's embeddable resume search tool.
+
+        Update configurations such as which fields can be displayed in the logged in user's embeddable
+        resume search tool, what are their weights, what is the maximum number of results that can be
+        returned, etc.
+
+        :param body:
+        :type body: ~affinda.models.ResumeSearchConfig
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: ResumeSearchConfig, or the result of cls(response)
+        :rtype: ~affinda.models.ResumeSearchConfig
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResumeSearchConfig]
+
+        _json = self._serialize.body(body, "ResumeSearchConfig")
+
+        request = build_update_resume_search_config_request(
+            content_type=content_type,
+            json=_json,
+            template_url=self.update_resume_search_config.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("ResumeSearchConfig", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    update_resume_search_config.metadata = {"url": "/v3/resume_search/config"}  # type: ignore
+
+    def create_resume_search_embed_url(
+        self,
+        body=None,  # type: Optional[_models.Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema]
+        **kwargs,  # type: Any
+    ):
+        # type: (...) -> _models.ResumeSearchEmbed
+        """Create a signed URL for the embeddable resume search tool.
+
+        Create and return a signed URL of the resume search tool which then can be embedded on a web
+        page. An optional parameter ``config_override`` can be passed to override the user-level
+        configurations of the embeddable resume search tool.
+
+        :param body:  Default value is None.
+        :type body:
+         ~affinda.models.Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: ResumeSearchEmbed, or the result of cls(response)
+        :rtype: ~affinda.models.ResumeSearchEmbed
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResumeSearchEmbed]
+
+        if body is not None:
+            _json = self._serialize.body(
+                body, "Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema"
+            )
+        else:
+            _json = None
+
+        request = build_create_resume_search_embed_url_request(
+            content_type=content_type,
+            json=_json,
+            template_url=self.create_resume_search_embed_url.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("ResumeSearchEmbed", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    create_resume_search_embed_url.metadata = {"url": "/v3/resume_search/embed"}  # type: ignore
+
+    def get_resume_search_match(
+        self,
+        resume,  # type: str
+        job_description,  # type: str
+        index=None,  # type: Optional[str]
+        search_expression=None,  # type: Optional[str]
+        job_titles_weight=None,  # type: Optional[float]
+        years_experience_weight=None,  # type: Optional[float]
+        locations_weight=None,  # type: Optional[float]
+        languages_weight=None,  # type: Optional[float]
+        skills_weight=None,  # type: Optional[float]
+        education_weight=None,  # type: Optional[float]
+        search_expression_weight=None,  # type: Optional[float]
+        soc_codes_weight=None,  # type: Optional[float]
+        management_level_weight=None,  # type: Optional[float]
+        **kwargs,  # type: Any
+    ):
+        # type: (...) -> _models.ResumeSearchMatch
+        """Match a single resume and job description.
+
+        Get the matching score between a resume and a job description. The score ranges between 0 and
+        1, with 0 being not a match at all, and 1 being perfect match.:code:`<br/>` Note, this score
+        will not directly match the score returned from POST `/resume_search/details/{identifier}
+        <#post-/resume_search/details/-identifier->`_.
+
+        :param resume: Identify the resume to match.
+        :type resume: str
+        :param job_description: Identify the job description to match.
+        :type job_description: str
+        :param index: Optionally, specify an index to search in. If not specified, will search in all
+         indexes. Default value is None.
+        :type index: str
+        :param search_expression: Add keywords to the search criteria. Default value is None.
+        :type search_expression: str
+        :param job_titles_weight: How important is this criteria to the matching score, range from 0 to
+         1. Default value is None.
+        :type job_titles_weight: float
+        :param years_experience_weight: How important is this criteria to the matching score, range
+         from 0 to 1. Default value is None.
+        :type years_experience_weight: float
+        :param locations_weight: How important is this criteria to the matching score, range from 0 to
+         1. Default value is None.
+        :type locations_weight: float
+        :param languages_weight: How important is this criteria to the matching score, range from 0 to
+         1. Default value is None.
+        :type languages_weight: float
+        :param skills_weight: How important is this criteria to the matching score, range from 0 to 1.
+         Default value is None.
+        :type skills_weight: float
+        :param education_weight: How important is this criteria to the matching score, range from 0 to
+         1. Default value is None.
+        :type education_weight: float
+        :param search_expression_weight: How important is this criteria to the matching score, range
+         from 0 to 1. Default value is None.
+        :type search_expression_weight: float
+        :param soc_codes_weight: How important is this criteria to the matching score, range from 0 to
+         1. Default value is None.
+        :type soc_codes_weight: float
+        :param management_level_weight: How important is this criteria to the matching score, range
+         from 0 to 1. Default value is None.
+        :type management_level_weight: float
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: ResumeSearchMatch, or the result of cls(response)
+        :rtype: ~affinda.models.ResumeSearchMatch
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResumeSearchMatch]
+
+        request = build_get_resume_search_match_request(
+            resume=resume,
+            job_description=job_description,
+            index=index,
+            search_expression=search_expression,
+            job_titles_weight=job_titles_weight,
+            years_experience_weight=years_experience_weight,
+            locations_weight=locations_weight,
+            languages_weight=languages_weight,
+            skills_weight=skills_weight,
+            education_weight=education_weight,
+            search_expression_weight=search_expression_weight,
+            soc_codes_weight=soc_codes_weight,
+            management_level_weight=management_level_weight,
+            template_url=self.get_resume_search_match.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("ResumeSearchMatch", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_resume_search_match.metadata = {"url": "/v3/resume_search/match"}  # type: ignore
+
+    def get_resume_search_suggestion_job_title(
+        self,
+        job_titles,  # type: List[str]
+        **kwargs,  # type: Any
+    ):
+        # type: (...) -> List[str]
+        """Get job title suggestions based on provided job title(s).
+
+        Provided one or more job titles, get related suggestions for your search.
+
+        :param job_titles: Job title to query suggestions for.
+        :type job_titles: list[str]
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: list of str, or the result of cls(response)
+        :rtype: list[str]
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[List[str]]
+
+        request = build_get_resume_search_suggestion_job_title_request(
+            job_titles=job_titles,
+            template_url=self.get_resume_search_suggestion_job_title.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("[str]", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_resume_search_suggestion_job_title.metadata = {
+        "url": "/v3/resume_search/suggestion_job_title"
+    }  # type: ignore
+
+    def get_resume_search_suggestion_skill(
+        self,
+        skills,  # type: List[str]
+        **kwargs,  # type: Any
+    ):
+        # type: (...) -> List[str]
+        """Get skill suggestions based on provided skill(s).
+
+        Provided one or more skills, get related suggestions for your search.
+
+        :param skills: Skill to query suggestions for.
+        :type skills: list[str]
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: list of str, or the result of cls(response)
+        :rtype: list[str]
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[List[str]]
+
+        request = build_get_resume_search_suggestion_skill_request(
+            skills=skills,
+            template_url=self.get_resume_search_suggestion_skill.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("[str]", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_resume_search_suggestion_skill.metadata = {"url": "/v3/resume_search/suggestion_skill"}  # type: ignore
+
     def create_job_description_search(
         self,
         body,  # type: _models.JobDescriptionSearchParameters
@@ -11916,7 +12748,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         self,
         offset=None,  # type: Optional[int]
         limit=None,  # type: Optional[int]
-        document_type=None,  # type: Optional[Union[str, "_models.Enum20"]]
+        document_type=None,  # type: Optional[Union[str, "_models.Enum23"]]
         name=None,  # type: Optional[str]
         **kwargs,  # type: Any
     ):
@@ -11931,7 +12763,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param limit: The numbers of results to return. Default value is None.
         :type limit: int
         :param document_type: Filter indices by a document type. Default value is None.
-        :type document_type: str or ~affinda.models.Enum20
+        :type document_type: str or ~affinda.models.Enum23
         :param name: Filter indices by name. Default value is None.
         :type name: str
         :keyword callable cls: A custom type or function that will be passed the direct response
@@ -12488,625 +13320,3 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             return cls(pipeline_response, None, {})
 
     re_index_document.metadata = {"url": "/v3/index/{name}/documents/{identifier}/re_index"}  # type: ignore
-
-    def create_resume_search(
-        self,
-        body,  # type: _models.ResumeSearchParameters
-        offset=None,  # type: Optional[int]
-        limit=None,  # type: Optional[int]
-        **kwargs,  # type: Any
-    ):
-        # type: (...) -> _models.ResumeSearch
-        """Search through parsed resumes.
-
-        Searches through parsed resumes. Users have 3 options to create a search::code:`<br
-        />`:code:`<br />` 1.    Match to a job description - a parsed job description is used to find
-        candidates that suit it:code:`<br />` 2.  Match to a resume - a parsed resume is used to find
-        other candidates that have similar attributes:code:`<br />` 3.  Search using custom
-        criteria:code:`<br />`:code:`<br />` Users should only populate 1 of jobDescription, resume or
-        the custom criteria.
-
-        :param body: Search parameters.
-        :type body: ~affinda.models.ResumeSearchParameters
-        :param offset: The number of documents to skip before starting to collect the result set.
-         Default value is None.
-        :type offset: int
-        :param limit: The numbers of results to return. Default value is None.
-        :type limit: int
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: ResumeSearch, or the result of cls(response)
-        :rtype: ~affinda.models.ResumeSearch
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-        _params = kwargs.pop("params", {}) or {}
-
-        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResumeSearch]
-
-        _json = self._serialize.body(body, "ResumeSearchParameters")
-
-        request = build_create_resume_search_request(
-            content_type=content_type,
-            json=_json,
-            offset=offset,
-            limit=limit,
-            template_url=self.create_resume_search.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [201]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("ResumeSearch", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    create_resume_search.metadata = {"url": "/v3/resume_search"}  # type: ignore
-
-    def get_resume_search_detail(
-        self,
-        identifier,  # type: str
-        body,  # type: _models.ResumeSearchParameters
-        **kwargs,  # type: Any
-    ):
-        # type: (...) -> _models.ResumeSearchDetail
-        """Get search result of specific resume.
-
-        This contains more detailed information about the matching score of the search criteria, or
-        which search criteria is missing in this resume.
-        The ``identifier`` is the unique ID returned via the `/resume_search <#post-/resume_search>`_
-        endpoint.
-
-        :param identifier: Resume identifier.
-        :type identifier: str
-        :param body: Search parameters.
-        :type body: ~affinda.models.ResumeSearchParameters
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: ResumeSearchDetail, or the result of cls(response)
-        :rtype: ~affinda.models.ResumeSearchDetail
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-        _params = kwargs.pop("params", {}) or {}
-
-        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResumeSearchDetail]
-
-        _json = self._serialize.body(body, "ResumeSearchParameters")
-
-        request = build_get_resume_search_detail_request(
-            identifier=identifier,
-            content_type=content_type,
-            json=_json,
-            template_url=self.get_resume_search_detail.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("ResumeSearchDetail", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    get_resume_search_detail.metadata = {"url": "/v3/resume_search/details/{identifier}"}  # type: ignore
-
-    def get_resume_search_match(
-        self,
-        resume,  # type: str
-        job_description,  # type: str
-        index=None,  # type: Optional[str]
-        search_expression=None,  # type: Optional[str]
-        job_titles_weight=None,  # type: Optional[float]
-        years_experience_weight=None,  # type: Optional[float]
-        locations_weight=None,  # type: Optional[float]
-        languages_weight=None,  # type: Optional[float]
-        skills_weight=None,  # type: Optional[float]
-        education_weight=None,  # type: Optional[float]
-        search_expression_weight=None,  # type: Optional[float]
-        soc_codes_weight=None,  # type: Optional[float]
-        management_level_weight=None,  # type: Optional[float]
-        **kwargs,  # type: Any
-    ):
-        # type: (...) -> _models.ResumeSearchMatch
-        """Match a single resume and job description.
-
-        Get the matching score between a resume and a job description. The score ranges between 0 and
-        1, with 0 being not a match at all, and 1 being perfect match.:code:`<br/>` Note, this score
-        will not directly match the score returned from POST `/resume_search/details/{identifier}
-        <#post-/resume_search/details/-identifier->`_.
-
-        :param resume: Identify the resume to match.
-        :type resume: str
-        :param job_description: Identify the job description to match.
-        :type job_description: str
-        :param index: Optionally, specify an index to search in. If not specified, will search in all
-         indexes. Default value is None.
-        :type index: str
-        :param search_expression: Add keywords to the search criteria. Default value is None.
-        :type search_expression: str
-        :param job_titles_weight: How important is this criteria to the matching score, range from 0 to
-         1. Default value is None.
-        :type job_titles_weight: float
-        :param years_experience_weight: How important is this criteria to the matching score, range
-         from 0 to 1. Default value is None.
-        :type years_experience_weight: float
-        :param locations_weight: How important is this criteria to the matching score, range from 0 to
-         1. Default value is None.
-        :type locations_weight: float
-        :param languages_weight: How important is this criteria to the matching score, range from 0 to
-         1. Default value is None.
-        :type languages_weight: float
-        :param skills_weight: How important is this criteria to the matching score, range from 0 to 1.
-         Default value is None.
-        :type skills_weight: float
-        :param education_weight: How important is this criteria to the matching score, range from 0 to
-         1. Default value is None.
-        :type education_weight: float
-        :param search_expression_weight: How important is this criteria to the matching score, range
-         from 0 to 1. Default value is None.
-        :type search_expression_weight: float
-        :param soc_codes_weight: How important is this criteria to the matching score, range from 0 to
-         1. Default value is None.
-        :type soc_codes_weight: float
-        :param management_level_weight: How important is this criteria to the matching score, range
-         from 0 to 1. Default value is None.
-        :type management_level_weight: float
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: ResumeSearchMatch, or the result of cls(response)
-        :rtype: ~affinda.models.ResumeSearchMatch
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = kwargs.pop("headers", {}) or {}
-        _params = kwargs.pop("params", {}) or {}
-
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResumeSearchMatch]
-
-        request = build_get_resume_search_match_request(
-            resume=resume,
-            job_description=job_description,
-            index=index,
-            search_expression=search_expression,
-            job_titles_weight=job_titles_weight,
-            years_experience_weight=years_experience_weight,
-            locations_weight=locations_weight,
-            languages_weight=languages_weight,
-            skills_weight=skills_weight,
-            education_weight=education_weight,
-            search_expression_weight=search_expression_weight,
-            soc_codes_weight=soc_codes_weight,
-            management_level_weight=management_level_weight,
-            template_url=self.get_resume_search_match.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("ResumeSearchMatch", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    get_resume_search_match.metadata = {"url": "/v3/resume_search/match"}  # type: ignore
-
-    def get_resume_search_config(
-        self,
-        **kwargs,  # type: Any
-    ):
-        # type: (...) -> _models.ResumeSearchConfig
-        """Get the config for the logged in user's embeddable resume search tool.
-
-        Return configurations such as which fields can be displayed in the logged in user's embeddable
-        resume search tool, what are their weights, what is the maximum number of results that can be
-        returned, etc.
-
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: ResumeSearchConfig, or the result of cls(response)
-        :rtype: ~affinda.models.ResumeSearchConfig
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = kwargs.pop("headers", {}) or {}
-        _params = kwargs.pop("params", {}) or {}
-
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResumeSearchConfig]
-
-        request = build_get_resume_search_config_request(
-            template_url=self.get_resume_search_config.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("ResumeSearchConfig", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    get_resume_search_config.metadata = {"url": "/v3/resume_search/config"}  # type: ignore
-
-    def update_resume_search_config(
-        self,
-        body,  # type: _models.ResumeSearchConfig
-        **kwargs,  # type: Any
-    ):
-        # type: (...) -> _models.ResumeSearchConfig
-        """Update the config for the logged in user's embeddable resume search tool.
-
-        Update configurations such as which fields can be displayed in the logged in user's embeddable
-        resume search tool, what are their weights, what is the maximum number of results that can be
-        returned, etc.
-
-        :param body:
-        :type body: ~affinda.models.ResumeSearchConfig
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: ResumeSearchConfig, or the result of cls(response)
-        :rtype: ~affinda.models.ResumeSearchConfig
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-        _params = kwargs.pop("params", {}) or {}
-
-        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResumeSearchConfig]
-
-        _json = self._serialize.body(body, "ResumeSearchConfig")
-
-        request = build_update_resume_search_config_request(
-            content_type=content_type,
-            json=_json,
-            template_url=self.update_resume_search_config.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("ResumeSearchConfig", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    update_resume_search_config.metadata = {"url": "/v3/resume_search/config"}  # type: ignore
-
-    def create_resume_search_embed_url(
-        self,
-        body=None,  # type: Optional[_models.Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema]
-        **kwargs,  # type: Any
-    ):
-        # type: (...) -> _models.ResumeSearchEmbed
-        """Create a signed URL for the embeddable resume search tool.
-
-        Create and return a signed URL of the resume search tool which then can be embedded on a web
-        page. An optional parameter ``config_override`` can be passed to override the user-level
-        configurations of the embeddable resume search tool.
-
-        :param body:  Default value is None.
-        :type body:
-         ~affinda.models.Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: ResumeSearchEmbed, or the result of cls(response)
-        :rtype: ~affinda.models.ResumeSearchEmbed
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-        _params = kwargs.pop("params", {}) or {}
-
-        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.ResumeSearchEmbed]
-
-        if body is not None:
-            _json = self._serialize.body(
-                body, "Paths1Czpnk1V3ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema"
-            )
-        else:
-            _json = None
-
-        request = build_create_resume_search_embed_url_request(
-            content_type=content_type,
-            json=_json,
-            template_url=self.create_resume_search_embed_url.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("ResumeSearchEmbed", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    create_resume_search_embed_url.metadata = {"url": "/v3/resume_search/embed"}  # type: ignore
-
-    def get_resume_search_suggestion_job_title(
-        self,
-        job_titles,  # type: List[str]
-        **kwargs,  # type: Any
-    ):
-        # type: (...) -> List[str]
-        """Get job title suggestions based on provided job title(s).
-
-        Provided one or more job titles, get related suggestions for your search.
-
-        :param job_titles: Job title to query suggestions for.
-        :type job_titles: list[str]
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of str, or the result of cls(response)
-        :rtype: list[str]
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = kwargs.pop("headers", {}) or {}
-        _params = kwargs.pop("params", {}) or {}
-
-        cls = kwargs.pop("cls", None)  # type: ClsType[List[str]]
-
-        request = build_get_resume_search_suggestion_job_title_request(
-            job_titles=job_titles,
-            template_url=self.get_resume_search_suggestion_job_title.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("[str]", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    get_resume_search_suggestion_job_title.metadata = {
-        "url": "/v3/resume_search/suggestion_job_title"
-    }  # type: ignore
-
-    def get_resume_search_suggestion_skill(
-        self,
-        skills,  # type: List[str]
-        **kwargs,  # type: Any
-    ):
-        # type: (...) -> List[str]
-        """Get skill suggestions based on provided skill(s).
-
-        Provided one or more skills, get related suggestions for your search.
-
-        :param skills: Skill to query suggestions for.
-        :type skills: list[str]
-        :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of str, or the result of cls(response)
-        :rtype: list[str]
-        :raises: ~azure.core.exceptions.HttpResponseError
-        """
-        error_map = {
-            404: ResourceNotFoundError,
-            409: ResourceExistsError,
-            400: lambda response: HttpResponseError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-            401: lambda response: ClientAuthenticationError(
-                response=response, model=self._deserialize(_models.RequestError, response)
-            ),
-        }
-        error_map.update(kwargs.pop("error_map", {}) or {})
-
-        _headers = kwargs.pop("headers", {}) or {}
-        _params = kwargs.pop("params", {}) or {}
-
-        cls = kwargs.pop("cls", None)  # type: ClsType[List[str]]
-
-        request = build_get_resume_search_suggestion_skill_request(
-            skills=skills,
-            template_url=self.get_resume_search_suggestion_skill.metadata["url"],
-            headers=_headers,
-            params=_params,
-        )
-        request = _convert_request(request)
-        path_format_arguments = {
-            "region": self._serialize.url("self._config.region", self._config.region, "str"),
-        }
-        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
-
-        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
-            request, stream=False, **kwargs
-        )
-        response = pipeline_response.http_response
-
-        if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
-            raise HttpResponseError(response=response, model=error)
-
-        deserialized = self._deserialize("[str]", pipeline_response)
-
-        if cls:
-            return cls(pipeline_response, deserialized, {})
-
-        return deserialized
-
-    get_resume_search_suggestion_skill.metadata = {"url": "/v3/resume_search/suggestion_skill"}  # type: ignore

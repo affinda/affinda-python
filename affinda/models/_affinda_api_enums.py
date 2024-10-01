@@ -61,6 +61,13 @@ class DocumentFormat(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     HR_XML = "hr-xml"
 
 
+class DocumentSplitterType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+    """The different types of document splitters"""
+
+    LLM = "llm"
+    EXTRACTOR = "extractor"
+
+
 class DocumentState(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     UPLOADED = "uploaded"
     REVIEW = "review"
@@ -82,7 +89,7 @@ class EducationLevel(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     DOCTORAL = "doctoral"
 
 
-class Enum20(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class Enum23(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     RESUMES = "resumes"
     JOB_DESCRIPTIONS = "job_descriptions"
 
@@ -108,6 +115,16 @@ class JobDescriptionSearchConfigDistanceUnit(str, Enum, metaclass=CaseInsensitiv
 
     MI = "mi"
     KM = "km"
+
+
+class LLMModelType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+    """The different types of document splitters"""
+
+    ANTHROPIC_CLAUDE3_HAIKU20240307_V1_0 = "anthropic.claude-3-haiku-20240307-v1:0"
+    ANTHROPIC_CLAUDE3_SONNET20240229_V1_0 = "anthropic.claude-3-sonnet-20240229-v1:0"
+    ANTHROPIC_CLAUDE3_5_SONNET20240620_V1_0 = "anthropic.claude-3-5-sonnet-20240620-v1:0"
+    GPT35 = "gpt-35"
+    GPT4 = "gpt-4"
 
 
 class ManagementLevel(str, Enum, metaclass=CaseInsensitiveEnumMeta):
@@ -427,20 +444,6 @@ class Version(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     V1 = "v1"
     V2 = "v2"
     V3 = "v3"
-
-
-class WorkspaceSplitDocumentsOptions(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """Option "leave" means no document splitting at all. Option "conservative" means we don't
-    actually split documents the documents, but will add a warning to documents that may require a
-    split. Option "recommended" means we split documents that are highly likely to require a split,
-    and add warnings to documents that might require one. Option "aggressive" means we split all
-    documents that are likely to require a split.
-    """
-
-    LEAVE = "leave"
-    CONSERVATIVE = "conservative"
-    RECOMMENDED = "recommended"
-    AGGRESSIVE = "aggressive"
 
 
 class WorkspaceVisibility(str, Enum, metaclass=CaseInsensitiveEnumMeta):
