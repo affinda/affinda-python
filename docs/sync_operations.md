@@ -608,6 +608,7 @@ def create_document(file=None,
                     url=None,
                     data=None,
                     collection=None,
+                    document_type=None,
                     workspace=None,
                     wait=True,
                     identifier=None,
@@ -621,6 +622,8 @@ def create_document(file=None,
                     compact=None,
                     delete_after_parse=None,
                     enable_validation_tool=None,
+                    use_ocr=None,
+                    warning_messages=None,
                     **kwargs)
 ```
 
@@ -636,6 +639,8 @@ to check processing status and retrieve results.:code:`<br/>`.
 - `url` (`str`): URL to download the document. Default value is None.
 - `data` (`any`): Create resume or job description directly from data. Default value is None.
 - `collection` (`str`): Default value is None.
+- `document_type` (`str`): The document type's identifier.  Provide if you already know the document
+type. Default value is None.
 - `workspace` (`str`): Default value is None.
 - `wait` (`bool`): Default value is True.
 - `identifier` (`str`): Deprecated in favor of ``customIdentifier``. Default value is None.
@@ -653,6 +658,11 @@ compact version of the full result. Default value is None.
 requests where wait: True. Default value is None.
 - `enable_validation_tool` (`bool`): If true, the document will be viewable in the Affinda Validation
 Tool. Set to False to optimize parsing speed. Default value is None.
+- `use_ocr` (`bool`): If true, the document will be treated like an image, and the text will be
+extracted using OCR. If false, the document will be treated like a PDF, and the text will be
+extracted using the parser. If not set, we will determine whether to use OCR based on whether
+words are found in the document. Default value is None.
+- `warning_messages` (`list[~affinda.models.DocumentWarning]`): Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -769,6 +779,31 @@ Only applicable for resumes and job descriptions. For other document types, plea
 **Returns**:
 
 `~affinda.models.Document`: Document, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_redacted_document"></a>
+
+#### get\_redacted\_document
+
+```python
+def get_redacted_document(identifier, **kwargs)
+```
+
+Get redacted document.
+
+Get the redacted version of a document. The original document is not modified.
+
+**Arguments**:
+
+- `identifier` (`str`): Document identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`IO`: IO, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.batch_add_tag"></a>
 
@@ -1859,6 +1894,7 @@ def list_mapping_data_source_values(identifier,
                                     offset=None,
                                     search=None,
                                     annotation=None,
+                                    document=None,
                                     **kwargs)
 ```
 
@@ -1874,6 +1910,8 @@ Returns the list of all values in a mapping data source.
 Default value is None.
 - `search` (`str`): Search for specific values. Default value is None.
 - `annotation` (`int`): Filter based on annotation ID. Default value is None.
+- `document` (`str`): Identifier of the document to apply filter lookups on if available. Default
+value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1953,6 +1991,33 @@ Return a specific mapping dta source value.
 
 - `identifier` (`str`): Mapping data source's identifier.
 - `value` (`str`): Mapping Data Source Value's value.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`any`: any, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_mapping_data_source_value"></a>
+
+#### update\_mapping\_data\_source\_value
+
+```python
+def update_mapping_data_source_value(identifier, value, body, **kwargs)
+```
+
+Update specific mapping data source value.
+
+Update the specified mapping data source value.
+
+**Arguments**:
+
+- `identifier` (`str`): Mapping data source's identifier.
+- `value` (`str`): Mapping Data Source's value.
+- `body` (`any`): 
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -3439,7 +3504,7 @@ Returns all the indexes.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is None.
-- `document_type` (`str or ~affinda.models.Enum23`): Filter indices by a document type. Default value is None.
+- `document_type` (`str or ~affinda.models.Enum22`): Filter indices by a document type. Default value is None.
 - `name` (`str`): Filter indices by name. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
