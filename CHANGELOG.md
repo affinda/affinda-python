@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.26.1] - 2025-05-07
+### Changed
+- Updated readme
+
 ## [4.26.0] - 2025-03-31
 ### Added
 - Ability to edit single mapping data source value

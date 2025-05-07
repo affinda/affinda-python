@@ -33,43 +33,29 @@ Please see below for which versions are compatible with which API version.
 
 ## Quickstart
 
-If you don't have an API token, obtain one from [affinda.com](https://affinda.com/resume-parser/free-api-key/).
+Before using the API, you need to create an account, setup a workspace, and obtain an API key. Follow the steps in our [documentation](https://docs.affinda.com/docs/getting-started-with-affinda).
 
 ```python
 from pathlib import Path
-from pprint import pprint
-
 from affinda import AffindaAPI, TokenCredential
-from affinda.models import WorkspaceCreate, CollectionCreate
 
-token = "REPLACE_API_TOKEN"
-file_pth = Path("PATH_TO_DOCUMENT.pdf")
+API_KEY = "YOUR_API_KEY"                      # replace with your actual key
+WORKSPACE_ID = "YOUR_WORKSPACE_IDENTIFIER"    # e.g. "vBAdDBer"
+FILE_PATH = Path("resume.pdf")                # path to the résumé you want to parse
 
-credential = TokenCredential(token=token)
+# Set up the client
+credential = TokenCredential(token=API_KEY)
 client = AffindaAPI(credential=credential)
 
-# First get the organisation, by default your first one will have free credits
-my_organisation = client.get_all_organizations()[0]
+# Upload the document and wait until processing finishes
+with FILE_PATH.open("rb") as f:
+    doc = client.create_document(
+        file=f,
+        workspace=WORKSPACE_ID,
+    )
 
-# And within that organisation, create a workspace, for example for Recruitment:
-workspace_body = WorkspaceCreate(
-    organization=my_organisation.identifier,
-    name="My Workspace",
-)
-recruitment_workspace = client.create_workspace(body=workspace_body)
-
-# Finally, create a collection that will contain our uploaded documents, for example resumes, by selecting the
-# appropriate extractor
-collection_body = CollectionCreate(
-    name="Resumes", workspace=recruitment_workspace.identifier, extractor="resume"
-)
-resume_collection = client.create_collection(collection_body)
-
-# Now we can upload a resume for parsing
-with open(file_pth, "rb") as f:
-    resume = client.create_document(file=f, file_name=file_pth.name, collection=resume_collection.identifier)
-
-pprint(resume.as_dict())
+# Access parsed data
+print(doc.data)
 ```
 
 ## Samples
