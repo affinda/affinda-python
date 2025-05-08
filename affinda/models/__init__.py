@@ -90,6 +90,9 @@ try:
     from ._models_py3 import DocumentSplit
     from ._models_py3 import DocumentSplitPage
     from ._models_py3 import DocumentSplitter
+    from ._models_py3 import DocumentType
+    from ._models_py3 import DocumentTypeCreate
+    from ._models_py3 import DocumentTypeUpdate
     from ._models_py3 import DocumentUpdate
     from ._models_py3 import DocumentWarning
     from ._models_py3 import Education
@@ -442,6 +445,9 @@ except (SyntaxError, ImportError):
     from ._models import DocumentSplit  # type: ignore
     from ._models import DocumentSplitPage  # type: ignore
     from ._models import DocumentSplitter  # type: ignore
+    from ._models import DocumentType  # type: ignore
+    from ._models import DocumentTypeCreate  # type: ignore
+    from ._models import DocumentTypeUpdate  # type: ignore
     from ._models import DocumentUpdate  # type: ignore
     from ._models import DocumentWarning  # type: ignore
     from ._models import Education  # type: ignore
@@ -700,13 +706,13 @@ from ._affinda_api_enums import (
     CollectionDateFormatPreference,
     DateFormatPreference,
     DateRange,
+    DocType,
     DocumentFormat,
     DocumentSplitterType,
     DocumentState,
-    DocumentType,
     EducationLevel,
     Enum22,
-    IndexDocumentType,
+    IndexDocType,
     InvitationResponseStatus,
     InvitationStatus,
     JobDescriptionSearchConfigDistanceUnit,
@@ -799,6 +805,9 @@ __all__ = [
     "DocumentSplit",
     "DocumentSplitPage",
     "DocumentSplitter",
+    "DocumentType",
+    "DocumentTypeCreate",
+    "DocumentTypeUpdate",
     "DocumentUpdate",
     "DocumentWarning",
     "Education",
@@ -1029,13 +1038,13 @@ __all__ = [
     "CollectionDateFormatPreference",
     "DateFormatPreference",
     "DateRange",
+    "DocType",
     "DocumentFormat",
     "DocumentSplitterType",
     "DocumentState",
-    "DocumentType",
     "EducationLevel",
     "Enum22",
-    "IndexDocumentType",
+    "IndexDocType",
     "InvitationResponseStatus",
     "InvitationStatus",
     "JobDescriptionSearchConfigDistanceUnit",

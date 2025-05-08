@@ -38,6 +38,7 @@ from ...operations._affinda_api_operations import (
     build_create_data_point_choice_request,
     build_create_data_point_request,
     build_create_document_request,
+    build_create_document_type_request,
     build_create_extractor_request,
     build_create_index_document_request,
     build_create_index_request,
@@ -60,6 +61,7 @@ from ...operations._affinda_api_operations import (
     build_delete_data_point_choice_request,
     build_delete_data_point_request,
     build_delete_document_request,
+    build_delete_document_type_request,
     build_delete_extractor_request,
     build_delete_index_document_request,
     build_delete_index_request,
@@ -101,6 +103,8 @@ from ...operations._affinda_api_operations import (
     build_get_data_point_request,
     build_get_document_request,
     build_get_document_splitter_request,
+    build_get_document_type_request,
+    build_get_document_types_request,
     build_get_extractor_request,
     build_get_invitation_by_token_request,
     build_get_invitation_request,
@@ -141,6 +145,7 @@ from ...operations._affinda_api_operations import (
     build_update_data_point_request,
     build_update_document_data_request,
     build_update_document_request,
+    build_update_document_type_request,
     build_update_extractor_request,
     build_update_index_request,
     build_update_invitation_request,
@@ -5860,6 +5865,323 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             return cls(pipeline_response, None, {})
 
     delete_tag.metadata = {"url": "/v3/tags/{id}"}  # type: ignore
+
+    async def get_document_types(
+        self, organization: Optional[str] = None, **kwargs: Any
+    ) -> List[_models.DocumentType]:
+        """List document types.
+
+        Returns a list of document types that the user has access to.
+
+        :param organization: Filter by organization identifier. Default value is None.
+        :type organization: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: list of DocumentType, or the result of cls(response)
+        :rtype: list[~affinda.models.DocumentType]
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[List[_models.DocumentType]]
+
+        request = build_get_document_types_request(
+            organization=organization,
+            template_url=self.get_document_types.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("[DocumentType]", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_document_types.metadata = {"url": "/v3/document_types"}  # type: ignore
+
+    async def create_document_type(
+        self, body: _models.DocumentTypeCreate, **kwargs: Any
+    ) -> Optional[_models.DocumentType]:
+        """Create a document type.
+
+        Create a new document type in the specified organization.
+
+        :param body:
+        :type body: ~affinda.models.DocumentTypeCreate
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: DocumentType, or the result of cls(response)
+        :rtype: ~affinda.models.DocumentType or None
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[Optional[_models.DocumentType]]
+
+        _json = self._serialize.body(body, "DocumentTypeCreate")
+
+        request = build_create_document_type_request(
+            content_type=content_type,
+            json=_json,
+            template_url=self.create_document_type.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [201, 403]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = None
+        if response.status_code == 201:
+            deserialized = self._deserialize("DocumentType", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    create_document_type.metadata = {"url": "/v3/document_types"}  # type: ignore
+
+    async def get_document_type(
+        self, identifier: str, **kwargs: Any
+    ) -> Optional[_models.DocumentType]:
+        """Get a document type.
+
+        Returns the details of a specific document type.
+
+        :param identifier: Document type identifier.
+        :type identifier: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: DocumentType, or the result of cls(response)
+        :rtype: ~affinda.models.DocumentType or None
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[Optional[_models.DocumentType]]
+
+        request = build_get_document_type_request(
+            identifier=identifier,
+            template_url=self.get_document_type.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200, 404]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = None
+        if response.status_code == 200:
+            deserialized = self._deserialize("DocumentType", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_document_type.metadata = {"url": "/v3/document_types/{identifier}"}  # type: ignore
+
+    async def update_document_type(
+        self, identifier: str, body: _models.DocumentTypeUpdate, **kwargs: Any
+    ) -> Optional[_models.DocumentType]:
+        """Update a document type.
+
+        Update an existing document type.
+
+        :param identifier: Document type identifier.
+        :type identifier: str
+        :param body:
+        :type body: ~affinda.models.DocumentTypeUpdate
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: DocumentType, or the result of cls(response)
+        :rtype: ~affinda.models.DocumentType or None
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[Optional[_models.DocumentType]]
+
+        _json = self._serialize.body(body, "DocumentTypeUpdate")
+
+        request = build_update_document_type_request(
+            identifier=identifier,
+            content_type=content_type,
+            json=_json,
+            template_url=self.update_document_type.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200, 403, 404]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = None
+        if response.status_code == 200:
+            deserialized = self._deserialize("DocumentType", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    update_document_type.metadata = {"url": "/v3/document_types/{identifier}"}  # type: ignore
+
+    async def delete_document_type(  # pylint: disable=inconsistent-return-statements
+        self, identifier: str, **kwargs: Any
+    ) -> None:
+        """Delete a document type.
+
+        Delete a document type.
+
+        :param identifier: Document type identifier.
+        :type identifier: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: None, or the result of cls(response)
+        :rtype: None
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[None]
+
+        request = build_delete_document_type_request(
+            identifier=identifier,
+            template_url=self.delete_document_type.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [204, 403, 404]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if cls:
+            return cls(pipeline_response, None, {})
+
+    delete_document_type.metadata = {"url": "/v3/document_types/{identifier}"}  # type: ignore
 
     async def get_all_organizations(self, **kwargs: Any) -> List[_models.Organization]:
         """Get list of all organizations.

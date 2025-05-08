@@ -4602,6 +4602,127 @@ class DocumentSplitter(msrest.serialization.Model):
         self.llm_hint = kwargs["llm_hint"]
 
 
+class DocumentType(msrest.serialization.Model):
+    """DocumentType.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar identifier: Required. Uniquely identify a document type.
+    :vartype identifier: str
+    :ivar name: Required. The name of the document type.
+    :vartype name: str
+    :ivar description: A description of the document type.
+    :vartype description: str
+    :ivar ingest_email: The email address that can be used to email documents directly to this
+     document type.
+    :vartype ingest_email: str
+    :ivar organization: Required. The identifier of the organization this document type belongs to.
+    :vartype organization: str
+    """
+
+    _validation = {
+        "identifier": {"required": True},
+        "name": {"required": True},
+        "organization": {"required": True},
+    }
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "description": {"key": "description", "type": "str"},
+        "ingest_email": {"key": "ingest_email", "type": "str"},
+        "organization": {"key": "organization", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword identifier: Required. Uniquely identify a document type.
+        :paramtype identifier: str
+        :keyword name: Required. The name of the document type.
+        :paramtype name: str
+        :keyword description: A description of the document type.
+        :paramtype description: str
+        :keyword ingest_email: The email address that can be used to email documents directly to this
+         document type.
+        :paramtype ingest_email: str
+        :keyword organization: Required. The identifier of the organization this document type belongs
+         to.
+        :paramtype organization: str
+        """
+        super(DocumentType, self).__init__(**kwargs)
+        self.identifier = kwargs["identifier"]
+        self.name = kwargs["name"]
+        self.description = kwargs.get("description", None)
+        self.ingest_email = kwargs.get("ingest_email", None)
+        self.organization = kwargs["organization"]
+
+
+class DocumentTypeCreate(msrest.serialization.Model):
+    """DocumentTypeCreate.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar name: Required. The name of the document type.
+    :vartype name: str
+    :ivar description: A description of the document type.
+    :vartype description: str
+    :ivar organization: Required. The identifier of the organization this document type belongs to.
+    :vartype organization: str
+    """
+
+    _validation = {
+        "name": {"required": True},
+        "organization": {"required": True},
+    }
+
+    _attribute_map = {
+        "name": {"key": "name", "type": "str"},
+        "description": {"key": "description", "type": "str"},
+        "organization": {"key": "organization", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name: Required. The name of the document type.
+        :paramtype name: str
+        :keyword description: A description of the document type.
+        :paramtype description: str
+        :keyword organization: Required. The identifier of the organization this document type belongs
+         to.
+        :paramtype organization: str
+        """
+        super(DocumentTypeCreate, self).__init__(**kwargs)
+        self.name = kwargs["name"]
+        self.description = kwargs.get("description", None)
+        self.organization = kwargs["organization"]
+
+
+class DocumentTypeUpdate(msrest.serialization.Model):
+    """DocumentTypeUpdate.
+
+    :ivar name: The new name of the document type.
+    :vartype name: str
+    :ivar description: A new description of the document type.
+    :vartype description: str
+    """
+
+    _attribute_map = {
+        "name": {"key": "name", "type": "str"},
+        "description": {"key": "description", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword name: The new name of the document type.
+        :paramtype name: str
+        :keyword description: A new description of the document type.
+        :paramtype description: str
+        """
+        super(DocumentTypeUpdate, self).__init__(**kwargs)
+        self.name = kwargs.get("name", None)
+        self.description = kwargs.get("description", None)
+
+
 class DocumentUpdate(msrest.serialization.Model):
     """DocumentUpdate.
 
@@ -6062,36 +6183,44 @@ class Index(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
     :ivar name: Required. Unique index name.
     :vartype name: str
-    :ivar document_type: Required. Known values are: "resumes", "job_descriptions".
-    :vartype document_type: str or ~affinda.models.IndexDocumentType
+    :ivar doc_type: Required. Known values are: "resumes", "job_descriptions".
+    :vartype doc_type: str or ~affinda.models.IndexDocType
     :ivar user: Required. The user who created this index.
     :vartype user: ~affinda.models.IndexUser
     """
 
     _validation = {
         "name": {"required": True},
-        "document_type": {"required": True},
+        "doc_type": {"required": True},
         "user": {"required": True, "readonly": True},
     }
 
     _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
         "name": {"key": "name", "type": "str"},
-        "document_type": {"key": "documentType", "type": "str"},
+        "doc_type": {"key": "docType", "type": "str"},
         "user": {"key": "user", "type": "IndexUser"},
     }
 
     def __init__(self, **kwargs):
         """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
         :keyword name: Required. Unique index name.
         :paramtype name: str
-        :keyword document_type: Required. Known values are: "resumes", "job_descriptions".
-        :paramtype document_type: str or ~affinda.models.IndexDocumentType
+        :keyword doc_type: Required. Known values are: "resumes", "job_descriptions".
+        :paramtype doc_type: str or ~affinda.models.IndexDocType
         """
         super(Index, self).__init__(**kwargs)
+        self.additional_properties = kwargs.get("additional_properties", None)
         self.name = kwargs["name"]
-        self.document_type = kwargs["document_type"]
+        self.doc_type = kwargs["doc_type"]
         self.user = None
 
 
@@ -6100,10 +6229,13 @@ class IndexCreate(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
+    :ivar additional_properties: Unmatched properties from the message are deserialized to this
+     collection.
+    :vartype additional_properties: dict[str, any]
     :ivar name: Required. Unique index name.
     :vartype name: str
-    :ivar document_type: Known values are: "resumes", "job_descriptions".
-    :vartype document_type: str or ~affinda.models.DocumentType
+    :ivar doc_type: Known values are: "resumes", "job_descriptions".
+    :vartype doc_type: str or ~affinda.models.DocType
     """
 
     _validation = {
@@ -6111,20 +6243,25 @@ class IndexCreate(msrest.serialization.Model):
     }
 
     _attribute_map = {
+        "additional_properties": {"key": "", "type": "{object}"},
         "name": {"key": "name", "type": "str"},
-        "document_type": {"key": "documentType", "type": "str"},
+        "doc_type": {"key": "docType", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         """
+        :keyword additional_properties: Unmatched properties from the message are deserialized to this
+         collection.
+        :paramtype additional_properties: dict[str, any]
         :keyword name: Required. Unique index name.
         :paramtype name: str
-        :keyword document_type: Known values are: "resumes", "job_descriptions".
-        :paramtype document_type: str or ~affinda.models.DocumentType
+        :keyword doc_type: Known values are: "resumes", "job_descriptions".
+        :paramtype doc_type: str or ~affinda.models.DocType
         """
         super(IndexCreate, self).__init__(**kwargs)
+        self.additional_properties = kwargs.get("additional_properties", None)
         self.name = kwargs["name"]
-        self.document_type = kwargs.get("document_type", None)
+        self.doc_type = kwargs.get("doc_type", None)
 
 
 class IndexUpdate(msrest.serialization.Model):

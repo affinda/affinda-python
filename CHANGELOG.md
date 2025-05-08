@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.27.0] - 2025-05-08
+### Added
+- Document type endpoints
+
 ## [4.26.1] - 2025-05-07
 ### Changed
 - Updated readme

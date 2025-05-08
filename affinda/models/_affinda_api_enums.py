@@ -56,6 +56,11 @@ class DateRange(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     YEAR = "year"
 
 
+class DocType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+    RESUMES = "resumes"
+    JOB_DESCRIPTIONS = "job_descriptions"
+
+
 class DocumentFormat(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     JSON = "json"
     XML = "xml"
@@ -78,11 +83,6 @@ class DocumentState(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     REJECTED = "rejected"
 
 
-class DocumentType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    RESUMES = "resumes"
-    JOB_DESCRIPTIONS = "job_descriptions"
-
-
 class EducationLevel(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     SCHOOL = "school"
     CERTIFICATE = "certificate"
@@ -96,7 +96,7 @@ class Enum22(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     JOB_DESCRIPTIONS = "job_descriptions"
 
 
-class IndexDocumentType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class IndexDocType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     RESUMES = "resumes"
     JOB_DESCRIPTIONS = "job_descriptions"
 

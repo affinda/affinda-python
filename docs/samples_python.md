@@ -1055,6 +1055,9 @@ client.batch_delete_annotations(body)
 Document API - Mapping Data Sources
 -----------------------------------
 
+Document API - Document Type
+----------------------------
+
 Organization API - Organization
 -------------------------------
 

@@ -3376,6 +3376,110 @@ def __init__(**kwargs)
 - `extractor`: Required. Uniquely identify an extractor.
 - `llm_hint`: Required. The hint about when to split which is passed into the LLM prompt.
 
+<a id="models._models.DocumentType"></a>
+
+## DocumentType Objects
+
+```python
+class DocumentType(msrest.serialization.Model)
+```
+
+DocumentType.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar identifier: Required. Uniquely identify a document type.
+:vartype identifier: str
+:ivar name: Required. The name of the document type.
+:vartype name: str
+:ivar description: A description of the document type.
+:vartype description: str
+:ivar ingest_email: The email address that can be used to email documents directly to this
+ document type.
+:vartype ingest_email: str
+:ivar organization: Required. The identifier of the organization this document type belongs to.
+:vartype organization: str
+
+<a id="models._models.DocumentType.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Required. Uniquely identify a document type.
+- `name`: Required. The name of the document type.
+- `description`: A description of the document type.
+- `ingest_email`: The email address that can be used to email documents directly to this
+document type.
+- `organization`: Required. The identifier of the organization this document type belongs
+to.
+
+<a id="models._models.DocumentTypeCreate"></a>
+
+## DocumentTypeCreate Objects
+
+```python
+class DocumentTypeCreate(msrest.serialization.Model)
+```
+
+DocumentTypeCreate.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar name: Required. The name of the document type.
+:vartype name: str
+:ivar description: A description of the document type.
+:vartype description: str
+:ivar organization: Required. The identifier of the organization this document type belongs to.
+:vartype organization: str
+
+<a id="models._models.DocumentTypeCreate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `name`: Required. The name of the document type.
+- `description`: A description of the document type.
+- `organization`: Required. The identifier of the organization this document type belongs
+to.
+
+<a id="models._models.DocumentTypeUpdate"></a>
+
+## DocumentTypeUpdate Objects
+
+```python
+class DocumentTypeUpdate(msrest.serialization.Model)
+```
+
+DocumentTypeUpdate.
+
+:ivar name: The new name of the document type.
+:vartype name: str
+:ivar description: A new description of the document type.
+:vartype description: str
+
+<a id="models._models.DocumentTypeUpdate.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `name`: The new name of the document type.
+- `description`: A new description of the document type.
+
 <a id="models._models.DocumentUpdate"></a>
 
 ## DocumentUpdate Objects
@@ -4485,10 +4589,13 @@ Variables are only populated by the server, and will be ignored when sending a r
 
 All required parameters must be populated in order to send to Azure.
 
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
 :ivar name: Required. Unique index name.
 :vartype name: str
-:ivar document_type: Required. Known values are: "resumes", "job_descriptions".
-:vartype document_type: str or ~affinda.models.IndexDocumentType
+:ivar doc_type: Required. Known values are: "resumes", "job_descriptions".
+:vartype doc_type: str or ~affinda.models.IndexDocType
 :ivar user: Required. The user who created this index.
 :vartype user: ~affinda.models.IndexUser
 
@@ -4502,8 +4609,10 @@ def __init__(**kwargs)
 
 **Arguments**:
 
+- `additional_properties`: Unmatched properties from the message are deserialized to this
+collection.
 - `name`: Required. Unique index name.
-- `document_type`: Required. Known values are: "resumes", "job_descriptions".
+- `doc_type`: Required. Known values are: "resumes", "job_descriptions".
 
 <a id="models._models.IndexCreate"></a>
 
@@ -4517,10 +4626,13 @@ IndexRequestBody.
 
 All required parameters must be populated in order to send to Azure.
 
+:ivar additional_properties: Unmatched properties from the message are deserialized to this
+ collection.
+:vartype additional_properties: dict[str, any]
 :ivar name: Required. Unique index name.
 :vartype name: str
-:ivar document_type: Known values are: "resumes", "job_descriptions".
-:vartype document_type: str or ~affinda.models.DocumentType
+:ivar doc_type: Known values are: "resumes", "job_descriptions".
+:vartype doc_type: str or ~affinda.models.DocType
 
 <a id="models._models.IndexCreate.__init__"></a>
 
@@ -4532,8 +4644,10 @@ def __init__(**kwargs)
 
 **Arguments**:
 
+- `additional_properties`: Unmatched properties from the message are deserialized to this
+collection.
 - `name`: Required. Unique index name.
-- `document_type`: Known values are: "resumes", "job_descriptions".
+- `doc_type`: Known values are: "resumes", "job_descriptions".
 
 <a id="models._models.IndexUpdate"></a>
 

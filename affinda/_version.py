@@ -4,4 +4,4 @@
 # Changes may cause incorrect behavior and will be lost if the code is regenerated.
 # --------------------------------------------------------------------------
 
-VERSION = "4.26.1"
+VERSION = "4.27.0"

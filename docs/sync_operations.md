@@ -2314,6 +2314,132 @@ Deletes the specified tag from the database.
 
 `None`: None, or the result of cls(response)
 
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_document_types"></a>
+
+#### get\_document\_types
+
+```python
+def get_document_types(organization=None, **kwargs)
+```
+
+List document types.
+
+Returns a list of document types that the user has access to.
+
+**Arguments**:
+
+- `organization` (`str`): Filter by organization identifier. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[~affinda.models.DocumentType]`: list of DocumentType, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_document_type"></a>
+
+#### create\_document\_type
+
+```python
+def create_document_type(body, **kwargs)
+```
+
+Create a document type.
+
+Create a new document type in the specified organization.
+
+**Arguments**:
+
+- `body` (`~affinda.models.DocumentTypeCreate`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.DocumentType or None`: DocumentType, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_document_type"></a>
+
+#### get\_document\_type
+
+```python
+def get_document_type(identifier, **kwargs)
+```
+
+Get a document type.
+
+Returns the details of a specific document type.
+
+**Arguments**:
+
+- `identifier` (`str`): Document type identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.DocumentType or None`: DocumentType, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_document_type"></a>
+
+#### update\_document\_type
+
+```python
+def update_document_type(identifier, body, **kwargs)
+```
+
+Update a document type.
+
+Update an existing document type.
+
+**Arguments**:
+
+- `identifier` (`str`): Document type identifier.
+- `body` (`~affinda.models.DocumentTypeUpdate`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.DocumentType or None`: DocumentType, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_document_type"></a>
+
+#### delete\_document\_type
+
+```python
+def delete_document_type(identifier, **kwargs)
+```
+
+Delete a document type.
+
+Delete a document type.
+
+**Arguments**:
+
+- `identifier` (`str`): Document type identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_organizations"></a>
 
 #### get\_all\_organizations
