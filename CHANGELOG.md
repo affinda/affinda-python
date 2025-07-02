@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.28.0] - 2025-07-02
+### Added
+- Validate API response with Pydantic model
+
 ## [4.27.0] - 2025-05-08
 ### Added
 - Document type endpoints

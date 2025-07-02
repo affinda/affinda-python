@@ -263,6 +263,7 @@ try:
     )
     from ._models_py3 import PhoneNumberAnnotation
     from ._models_py3 import PhoneNumberAnnotationParsed
+    from ._models_py3 import PydanticModelsResponse
     from ._models_py3 import Rectangle
     from ._models_py3 import RedactConfig
     from ._models_py3 import RegionBias
@@ -602,6 +603,7 @@ except (SyntaxError, ImportError):
     )  # type: ignore
     from ._models import PhoneNumberAnnotation  # type: ignore
     from ._models import PhoneNumberAnnotationParsed  # type: ignore
+    from ._models import PydanticModelsResponse  # type: ignore
     from ._models import Rectangle  # type: ignore
     from ._models import RedactConfig  # type: ignore
     from ._models import RegionBias  # type: ignore
@@ -936,6 +938,7 @@ __all__ = [
     "PathsZ1JuagV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchema",
     "PhoneNumberAnnotation",
     "PhoneNumberAnnotationParsed",
+    "PydanticModelsResponse",
     "Rectangle",
     "RedactConfig",
     "RegionBias",

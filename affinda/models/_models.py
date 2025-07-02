@@ -4728,6 +4728,11 @@ class DocumentUpdate(msrest.serialization.Model):
 
     :ivar collection: Uniquely identify a collection.
     :vartype collection: str
+    :ivar workspace: Uniquely identify a workspace.
+    :vartype workspace: str
+    :ivar document_type: The document type's identifier.  Provide if you already know the document
+     type.
+    :vartype document_type: str
     :ivar file_name: Optional filename of the file.
     :vartype file_name: str
     :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
@@ -4754,6 +4759,8 @@ class DocumentUpdate(msrest.serialization.Model):
 
     _attribute_map = {
         "collection": {"key": "collection", "type": "str"},
+        "workspace": {"key": "workspace", "type": "str"},
+        "document_type": {"key": "documentType", "type": "str"},
         "file_name": {"key": "fileName", "type": "str"},
         "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
         "is_confirmed": {"key": "isConfirmed", "type": "bool"},
@@ -4770,6 +4777,11 @@ class DocumentUpdate(msrest.serialization.Model):
         """
         :keyword collection: Uniquely identify a collection.
         :paramtype collection: str
+        :keyword workspace: Uniquely identify a workspace.
+        :paramtype workspace: str
+        :keyword document_type: The document type's identifier.  Provide if you already know the
+         document type.
+        :paramtype document_type: str
         :keyword file_name: Optional filename of the file.
         :paramtype file_name: str
         :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
@@ -4795,6 +4807,8 @@ class DocumentUpdate(msrest.serialization.Model):
         """
         super(DocumentUpdate, self).__init__(**kwargs)
         self.collection = kwargs.get("collection", None)
+        self.workspace = kwargs.get("workspace", None)
+        self.document_type = kwargs.get("document_type", None)
         self.file_name = kwargs.get("file_name", None)
         self.expiry_time = kwargs.get("expiry_time", None)
         self.is_confirmed = kwargs.get("is_confirmed", None)
@@ -12008,6 +12022,32 @@ class PhoneNumberAnnotationParsed(msrest.serialization.Model):
         self.country_code = kwargs.get("country_code", None)
         self.international_country_code = kwargs.get("international_country_code", None)
         self.national_number = kwargs.get("national_number", None)
+
+
+class PydanticModelsResponse(msrest.serialization.Model):
+    """PydanticModelsResponse.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar code: Required. Pydantic model code.
+    :vartype code: str
+    """
+
+    _validation = {
+        "code": {"required": True},
+    }
+
+    _attribute_map = {
+        "code": {"key": "code", "type": "str"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword code: Required. Pydantic model code.
+        :paramtype code: str
+        """
+        super(PydanticModelsResponse, self).__init__(**kwargs)
+        self.code = kwargs["code"]
 
 
 class Rectangle(msrest.serialization.Model):

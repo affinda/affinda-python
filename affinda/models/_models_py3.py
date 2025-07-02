@@ -5462,6 +5462,11 @@ class DocumentUpdate(msrest.serialization.Model):
 
     :ivar collection: Uniquely identify a collection.
     :vartype collection: str
+    :ivar workspace: Uniquely identify a workspace.
+    :vartype workspace: str
+    :ivar document_type: The document type's identifier.  Provide if you already know the document
+     type.
+    :vartype document_type: str
     :ivar file_name: Optional filename of the file.
     :vartype file_name: str
     :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
@@ -5488,6 +5493,8 @@ class DocumentUpdate(msrest.serialization.Model):
 
     _attribute_map = {
         "collection": {"key": "collection", "type": "str"},
+        "workspace": {"key": "workspace", "type": "str"},
+        "document_type": {"key": "documentType", "type": "str"},
         "file_name": {"key": "fileName", "type": "str"},
         "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
         "is_confirmed": {"key": "isConfirmed", "type": "bool"},
@@ -5504,6 +5511,8 @@ class DocumentUpdate(msrest.serialization.Model):
         self,
         *,
         collection: Optional[str] = None,
+        workspace: Optional[str] = None,
+        document_type: Optional[str] = None,
         file_name: Optional[str] = None,
         expiry_time: Optional[datetime.datetime] = None,
         is_confirmed: Optional[bool] = None,
@@ -5519,6 +5528,11 @@ class DocumentUpdate(msrest.serialization.Model):
         """
         :keyword collection: Uniquely identify a collection.
         :paramtype collection: str
+        :keyword workspace: Uniquely identify a workspace.
+        :paramtype workspace: str
+        :keyword document_type: The document type's identifier.  Provide if you already know the
+         document type.
+        :paramtype document_type: str
         :keyword file_name: Optional filename of the file.
         :paramtype file_name: str
         :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
@@ -5544,6 +5558,8 @@ class DocumentUpdate(msrest.serialization.Model):
         """
         super(DocumentUpdate, self).__init__(**kwargs)
         self.collection = collection
+        self.workspace = workspace
+        self.document_type = document_type
         self.file_name = file_name
         self.expiry_time = expiry_time
         self.is_confirmed = is_confirmed
@@ -13959,6 +13975,32 @@ class PhoneNumberAnnotationParsed(msrest.serialization.Model):
         self.country_code = country_code
         self.international_country_code = international_country_code
         self.national_number = national_number
+
+
+class PydanticModelsResponse(msrest.serialization.Model):
+    """PydanticModelsResponse.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar code: Required. Pydantic model code.
+    :vartype code: str
+    """
+
+    _validation = {
+        "code": {"required": True},
+    }
+
+    _attribute_map = {
+        "code": {"key": "code", "type": "str"},
+    }
+
+    def __init__(self, *, code: str, **kwargs):
+        """
+        :keyword code: Required. Pydantic model code.
+        :paramtype code: str
+        """
+        super(PydanticModelsResponse, self).__init__(**kwargs)
+        self.code = code
 
 
 class Rectangle(msrest.serialization.Model):

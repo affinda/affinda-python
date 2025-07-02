@@ -128,10 +128,12 @@ from ...operations._affinda_api_operations import (
     build_get_validation_result_request,
     build_get_workspace_membership_request,
     build_get_workspace_request,
+    build_json_schema_from_document_type_request,
     build_list_mapping_data_source_values_request,
     build_list_mapping_data_sources_request,
     build_list_mappings_request,
     build_list_occupation_groups_request,
+    build_pydantic_models_from_document_type_request,
     build_re_index_document_request,
     build_regenerate_api_key_for_api_user_request,
     build_replace_data_point_choices_request,
@@ -1448,6 +1450,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         custom_identifier: Optional[str] = None,
         compact: Optional[bool] = None,
         count: Optional[bool] = None,
+        camel_case: Optional[bool] = None,
         **kwargs: Any,
     ) -> _models.PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema:
         """Get list of all documents.
@@ -1503,6 +1506,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param count: If "false", the documents count is not computed, thus saving time for large
          collections. Default is "true".
         :type count: bool
+        :param camel_case: Whether to return the response in camelCase. Default is true.
+        :type camel_case: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)
@@ -1549,6 +1554,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             custom_identifier=custom_identifier,
             compact=compact,
             count=count,
+            camel_case=camel_case,
             template_url=self.get_all_documents.metadata["url"],
             headers=_headers,
             params=_params,
@@ -1582,6 +1588,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
     async def create_document(
         self,
+        camel_case: Optional[bool] = None,
         file: Optional[IO] = None,
         url: Optional[str] = None,
         data: Any = None,
@@ -1610,6 +1617,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         subsequent use with the `/documents/{identifier} <#get-/v3/documents/-identifier->`_ endpoint
         to check processing status and retrieve results.:code:`<br/>`.
 
+        :param camel_case: Whether to return the response in camelCase. Default is true.
+        :type camel_case: bool
         :param file:  Default value is None.
         :type file: IO
         :param url: URL to download the document. Default value is None.
@@ -1710,6 +1719,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
         request = build_create_document_request(
             content_type=content_type,
+            camel_case=camel_case,
             files=_files,
             template_url=self.create_document.metadata["url"],
             headers=_headers,
@@ -1749,6 +1759,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         identifier: str,
         format: Optional[Union[str, "_models.DocumentFormat"]] = None,
         compact: Optional[bool] = None,
+        camel_case: Optional[bool] = None,
         **kwargs: Any,
     ) -> _models.Document:
         """Get specific document.
@@ -1762,6 +1773,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param compact: If "true", the response is compacted to annotations' parsed data. Annotations'
          meta data are excluded. Default is "false".
         :type compact: bool
+        :param camel_case: Whether to return the response in camelCase. Default is true.
+        :type camel_case: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Document, or the result of cls(response)
         :rtype: ~affinda.models.Document
@@ -1794,6 +1807,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             identifier=identifier,
             format=format,
             compact=compact,
+            camel_case=camel_case,
             template_url=self.get_document.metadata["url"],
             headers=_headers,
             params=_params,
@@ -1828,7 +1842,12 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
     get_document.metadata = {"url": "/v3/documents/{identifier}"}  # type: ignore
 
     async def update_document(
-        self, identifier: str, body: _models.DocumentUpdate, **kwargs: Any
+        self,
+        identifier: str,
+        body: _models.DocumentUpdate,
+        compact: Optional[bool] = None,
+        camel_case: Optional[bool] = None,
+        **kwargs: Any,
     ) -> _models.Document:
         """Update a document.
 
@@ -1838,6 +1857,11 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type identifier: str
         :param body: Document data to update.
         :type body: ~affinda.models.DocumentUpdate
+        :param compact: If "true", the response is compacted to annotations' parsed data. Annotations'
+         meta data are excluded. Default is "false".
+        :type compact: bool
+        :param camel_case: Whether to return the response in camelCase. Default is true.
+        :type camel_case: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Document, or the result of cls(response)
         :rtype: ~affinda.models.Document
@@ -1867,6 +1891,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             identifier=identifier,
             content_type=content_type,
             json=_json,
+            compact=compact,
+            camel_case=camel_case,
             template_url=self.update_document.metadata["url"],
             headers=_headers,
             params=_params,
@@ -5867,7 +5893,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
     delete_tag.metadata = {"url": "/v3/tags/{id}"}  # type: ignore
 
     async def get_document_types(
-        self, organization: Optional[str] = None, **kwargs: Any
+        self, organization: Optional[str] = None, workspace: Optional[str] = None, **kwargs: Any
     ) -> List[_models.DocumentType]:
         """List document types.
 
@@ -5875,6 +5901,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
         :param organization: Filter by organization identifier. Default value is None.
         :type organization: str
+        :param workspace: Filter by workspace identifier. Default value is None.
+        :type workspace: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: list of DocumentType, or the result of cls(response)
         :rtype: list[~affinda.models.DocumentType]
@@ -5899,6 +5927,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
         request = build_get_document_types_request(
             organization=organization,
+            workspace=workspace,
             template_url=self.get_document_types.metadata["url"],
             headers=_headers,
             params=_params,
@@ -6182,6 +6211,140 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             return cls(pipeline_response, None, {})
 
     delete_document_type.metadata = {"url": "/v3/document_types/{identifier}"}  # type: ignore
+
+    async def json_schema_from_document_type(
+        self, identifier: str, title: Optional[str] = None, **kwargs: Any
+    ) -> Dict[str, Any]:
+        """Generate JSON schema from a document type.
+
+        Generate JSON schema from a document type.
+
+        :param identifier: Document type's identifier.
+        :type identifier: str
+        :param title: Title for the JSON schema. Default value is None.
+        :type title: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: dict mapping str to any, or the result of cls(response)
+        :rtype: dict[str, any]
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[Dict[str, Any]]
+
+        request = build_json_schema_from_document_type_request(
+            identifier=identifier,
+            title=title,
+            template_url=self.json_schema_from_document_type.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("{object}", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    json_schema_from_document_type.metadata = {
+        "url": "/v3/document_types/{identifier}/json_schema"
+    }  # type: ignore
+
+    async def pydantic_models_from_document_type(
+        self, identifier: str, model_name: Optional[str] = None, **kwargs: Any
+    ) -> _models.PydanticModelsResponse:
+        """Generate Pydantic models from a document type.
+
+        Generate Pydantic models from a document type.
+
+        :param identifier: Document type's identifier.
+        :type identifier: str
+        :param model_name: Name for the Pydantic model. Default value is None.
+        :type model_name: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: PydanticModelsResponse, or the result of cls(response)
+        :rtype: ~affinda.models.PydanticModelsResponse
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.PydanticModelsResponse]
+
+        request = build_pydantic_models_from_document_type_request(
+            identifier=identifier,
+            model_name=model_name,
+            template_url=self.pydantic_models_from_document_type.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("PydanticModelsResponse", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    pydantic_models_from_document_type.metadata = {
+        "url": "/v3/document_types/{identifier}/pydantic_models"
+    }  # type: ignore
 
     async def get_all_organizations(self, **kwargs: Any) -> List[_models.Organization]:
         """Get list of all organizations.

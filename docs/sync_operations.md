@@ -549,6 +549,7 @@ def get_all_documents(offset=None,
                       custom_identifier=None,
                       compact=None,
                       count=None,
+                      camel_case=None,
                       **kwargs)
 ```
 
@@ -588,6 +589,7 @@ None.
 meta data are excluded. Default is "false".
 - `count` (`bool`): If "false", the documents count is not computed, thus saving time for large
 collections. Default is "true".
+- `camel_case` (`bool`): Whether to return the response in camelCase. Default is true.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -604,7 +606,8 @@ cls(response)
 #### create\_document
 
 ```python
-def create_document(file=None,
+def create_document(camel_case=None,
+                    file=None,
                     url=None,
                     data=None,
                     collection=None,
@@ -635,6 +638,7 @@ to check processing status and retrieve results.:code:`<br/>`.
 
 **Arguments**:
 
+- `camel_case` (`bool`): Whether to return the response in camelCase. Default is true.
 - `file` (`IO`): Default value is None.
 - `url` (`str`): URL to download the document. Default value is None.
 - `data` (`any`): Create resume or job description directly from data. Default value is None.
@@ -678,7 +682,11 @@ words are found in the document. Default value is None.
 #### get\_document
 
 ```python
-def get_document(identifier, format=None, compact=None, **kwargs)
+def get_document(identifier,
+                 format=None,
+                 compact=None,
+                 camel_case=None,
+                 **kwargs)
 ```
 
 Get specific document.
@@ -691,6 +699,7 @@ Return a specific document.
 - `format` (`str or ~affinda.models.DocumentFormat`): Specify which format you want the response to be. Default is "json".
 - `compact` (`bool`): If "true", the response is compacted to annotations' parsed data. Annotations'
 meta data are excluded. Default is "false".
+- `camel_case` (`bool`): Whether to return the response in camelCase. Default is true.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -706,7 +715,7 @@ meta data are excluded. Default is "false".
 #### update\_document
 
 ```python
-def update_document(identifier, body, **kwargs)
+def update_document(identifier, body, compact=None, camel_case=None, **kwargs)
 ```
 
 Update a document.
@@ -717,6 +726,9 @@ Update file name, expiry time, or move to another collection, etc.
 
 - `identifier` (`str`): Document's identifier.
 - `body` (`~affinda.models.DocumentUpdate`): Document data to update.
+- `compact` (`bool`): If "true", the response is compacted to annotations' parsed data. Annotations'
+meta data are excluded. Default is "false".
+- `camel_case` (`bool`): Whether to return the response in camelCase. Default is true.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -2319,7 +2331,7 @@ Deletes the specified tag from the database.
 #### get\_document\_types
 
 ```python
-def get_document_types(organization=None, **kwargs)
+def get_document_types(organization=None, workspace=None, **kwargs)
 ```
 
 List document types.
@@ -2329,6 +2341,7 @@ Returns a list of document types that the user has access to.
 **Arguments**:
 
 - `organization` (`str`): Filter by organization identifier. Default value is None.
+- `workspace` (`str`): Filter by workspace identifier. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -2439,6 +2452,58 @@ Delete a document type.
 **Returns**:
 
 `None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.json_schema_from_document_type"></a>
+
+#### json\_schema\_from\_document\_type
+
+```python
+def json_schema_from_document_type(identifier, title=None, **kwargs)
+```
+
+Generate JSON schema from a document type.
+
+Generate JSON schema from a document type.
+
+**Arguments**:
+
+- `identifier` (`str`): Document type's identifier.
+- `title` (`str`): Title for the JSON schema. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`dict[str, any]`: dict mapping str to any, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.pydantic_models_from_document_type"></a>
+
+#### pydantic\_models\_from\_document\_type
+
+```python
+def pydantic_models_from_document_type(identifier, model_name=None, **kwargs)
+```
+
+Generate Pydantic models from a document type.
+
+Generate Pydantic models from a document type.
+
+**Arguments**:
+
+- `identifier` (`str`): Document type's identifier.
+- `model_name` (`str`): Name for the Pydantic model. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.PydanticModelsResponse`: PydanticModelsResponse, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_organizations"></a>
 

@@ -635,6 +635,7 @@ def build_get_all_documents_request(
     custom_identifier = kwargs.pop('custom_identifier', _params.pop('custom_identifier', None))  # type: Optional[str]
     compact = kwargs.pop('compact', _params.pop('compact', None))  # type: Optional[bool]
     count = kwargs.pop('count', _params.pop('count', None))  # type: Optional[bool]
+    camel_case = kwargs.pop('camel_case', _params.pop('camel_case', None))  # type: Optional[bool]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
@@ -679,6 +680,8 @@ def build_get_all_documents_request(
         _params['compact'] = _SERIALIZER.query("compact", compact, 'bool')
     if count is not None:
         _params['count'] = _SERIALIZER.query("count", count, 'bool')
+    if camel_case is not None:
+        _params['camel_case'] = _SERIALIZER.query("camel_case", camel_case, 'bool')
 
     # Construct headers
     _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
@@ -697,12 +700,18 @@ def build_create_document_request(
 ):
     # type: (...) -> HttpRequest
     _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+    _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
 
     content_type = kwargs.pop('content_type', _headers.pop('Content-Type', None))  # type: Optional[str]
+    camel_case = kwargs.pop('camel_case', _params.pop('camel_case', None))  # type: Optional[bool]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
     _url = kwargs.pop("template_url", "/v3/documents")
+
+    # Construct parameters
+    if camel_case is not None:
+        _params['camel_case'] = _SERIALIZER.query("camel_case", camel_case, 'bool')
 
     # Construct headers
     if content_type is not None:
@@ -712,6 +721,7 @@ def build_create_document_request(
     return HttpRequest(
         method="POST",
         url=_url,
+        params=_params,
         headers=_headers,
         **kwargs
     )
@@ -727,6 +737,7 @@ def build_get_document_request(
 
     format = kwargs.pop('format', _params.pop('format', None))  # type: Optional[Union[str, "_models.DocumentFormat"]]
     compact = kwargs.pop('compact', _params.pop('compact', None))  # type: Optional[bool]
+    camel_case = kwargs.pop('camel_case', _params.pop('camel_case', None))  # type: Optional[bool]
     accept = _headers.pop('Accept', "application/json, application/xml")
 
     # Construct URL
@@ -742,6 +753,8 @@ def build_get_document_request(
         _params['format'] = _SERIALIZER.query("format", format, 'str')
     if compact is not None:
         _params['compact'] = _SERIALIZER.query("compact", compact, 'bool')
+    if camel_case is not None:
+        _params['camel_case'] = _SERIALIZER.query("camel_case", camel_case, 'bool')
 
     # Construct headers
     _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
@@ -761,8 +774,11 @@ def build_update_document_request(
 ):
     # type: (...) -> HttpRequest
     _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+    _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
 
     content_type = kwargs.pop('content_type', _headers.pop('Content-Type', None))  # type: Optional[str]
+    compact = kwargs.pop('compact', _params.pop('compact', None))  # type: Optional[bool]
+    camel_case = kwargs.pop('camel_case', _params.pop('camel_case', None))  # type: Optional[bool]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
@@ -773,6 +789,12 @@ def build_update_document_request(
 
     _url = _format_url_section(_url, **path_format_arguments)
 
+    # Construct parameters
+    if compact is not None:
+        _params['compact'] = _SERIALIZER.query("compact", compact, 'bool')
+    if camel_case is not None:
+        _params['camel_case'] = _SERIALIZER.query("camel_case", camel_case, 'bool')
+
     # Construct headers
     if content_type is not None:
         _headers['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
@@ -781,6 +803,7 @@ def build_update_document_request(
     return HttpRequest(
         method="PATCH",
         url=_url,
+        params=_params,
         headers=_headers,
         **kwargs
     )
@@ -2552,6 +2575,7 @@ def build_get_document_types_request(
     _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
 
     organization = kwargs.pop('organization', _params.pop('organization', None))  # type: Optional[str]
+    workspace = kwargs.pop('workspace', _params.pop('workspace', None))  # type: Optional[str]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
@@ -2560,6 +2584,8 @@ def build_get_document_types_request(
     # Construct parameters
     if organization is not None:
         _params['organization'] = _SERIALIZER.query("organization", organization, 'str')
+    if workspace is not None:
+        _params['workspace'] = _SERIALIZER.query("workspace", workspace, 'str')
 
     # Construct headers
     _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
@@ -2680,6 +2706,76 @@ def build_delete_document_type_request(
     return HttpRequest(
         method="DELETE",
         url=_url,
+        headers=_headers,
+        **kwargs
+    )
+
+
+def build_json_schema_from_document_type_request(
+    identifier,  # type: str
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+    _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
+
+    title = kwargs.pop('title', _params.pop('title', None))  # type: Optional[str]
+    accept = _headers.pop('Accept', "application/json")
+
+    # Construct URL
+    _url = kwargs.pop("template_url", "/v3/document_types/{identifier}/json_schema")
+    path_format_arguments = {
+        "identifier": _SERIALIZER.url("identifier", identifier, 'str'),
+    }
+
+    _url = _format_url_section(_url, **path_format_arguments)
+
+    # Construct parameters
+    if title is not None:
+        _params['title'] = _SERIALIZER.query("title", title, 'str')
+
+    # Construct headers
+    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="GET",
+        url=_url,
+        params=_params,
+        headers=_headers,
+        **kwargs
+    )
+
+
+def build_pydantic_models_from_document_type_request(
+    identifier,  # type: str
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+    _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
+
+    model_name = kwargs.pop('model_name', _params.pop('model_name', None))  # type: Optional[str]
+    accept = _headers.pop('Accept', "application/json")
+
+    # Construct URL
+    _url = kwargs.pop("template_url", "/v3/document_types/{identifier}/pydantic_models")
+    path_format_arguments = {
+        "identifier": _SERIALIZER.url("identifier", identifier, 'str'),
+    }
+
+    _url = _format_url_section(_url, **path_format_arguments)
+
+    # Construct parameters
+    if model_name is not None:
+        _params['model_name'] = _SERIALIZER.query("model_name", model_name, 'str')
+
+    # Construct headers
+    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="GET",
+        url=_url,
+        params=_params,
         headers=_headers,
         **kwargs
     )
@@ -5502,6 +5598,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         custom_identifier=None,  # type: Optional[str]
         compact=None,  # type: Optional[bool]
         count=None,  # type: Optional[bool]
+        camel_case=None,  # type: Optional[bool]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema
@@ -5558,6 +5655,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param count: If "false", the documents count is not computed, thus saving time for large
          collections. Default is "true".
         :type count: bool
+        :param camel_case: Whether to return the response in camelCase. Default is true.
+        :type camel_case: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)
@@ -5604,6 +5703,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             custom_identifier=custom_identifier,
             compact=compact,
             count=count,
+            camel_case=camel_case,
             template_url=self.get_all_documents.metadata["url"],
             headers=_headers,
             params=_params,
@@ -5637,6 +5737,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
     def create_document(
         self,
+        camel_case=None,  # type: Optional[bool]
         file=None,  # type: Optional[IO]
         url=None,  # type: Optional[str]
         data=None,  # type: Any
@@ -5666,6 +5767,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         subsequent use with the `/documents/{identifier} <#get-/v3/documents/-identifier->`_ endpoint
         to check processing status and retrieve results.:code:`<br/>`.
 
+        :param camel_case: Whether to return the response in camelCase. Default is true.
+        :type camel_case: bool
         :param file:  Default value is None.
         :type file: IO
         :param url: URL to download the document. Default value is None.
@@ -5766,6 +5869,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
         request = build_create_document_request(
             content_type=content_type,
+            camel_case=camel_case,
             files=_files,
             template_url=self.create_document.metadata["url"],
             headers=_headers,
@@ -5805,6 +5909,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         identifier,  # type: str
         format=None,  # type: Optional[Union[str, "_models.DocumentFormat"]]
         compact=None,  # type: Optional[bool]
+        camel_case=None,  # type: Optional[bool]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.Document
@@ -5819,6 +5924,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param compact: If "true", the response is compacted to annotations' parsed data. Annotations'
          meta data are excluded. Default is "false".
         :type compact: bool
+        :param camel_case: Whether to return the response in camelCase. Default is true.
+        :type camel_case: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Document, or the result of cls(response)
         :rtype: ~affinda.models.Document
@@ -5851,6 +5958,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             identifier=identifier,
             format=format,
             compact=compact,
+            camel_case=camel_case,
             template_url=self.get_document.metadata["url"],
             headers=_headers,
             params=_params,
@@ -5888,6 +5996,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         self,
         identifier,  # type: str
         body,  # type: _models.DocumentUpdate
+        compact=None,  # type: Optional[bool]
+        camel_case=None,  # type: Optional[bool]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.Document
@@ -5899,6 +6009,11 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type identifier: str
         :param body: Document data to update.
         :type body: ~affinda.models.DocumentUpdate
+        :param compact: If "true", the response is compacted to annotations' parsed data. Annotations'
+         meta data are excluded. Default is "false".
+        :type compact: bool
+        :param camel_case: Whether to return the response in camelCase. Default is true.
+        :type camel_case: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Document, or the result of cls(response)
         :rtype: ~affinda.models.Document
@@ -5928,6 +6043,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             identifier=identifier,
             content_type=content_type,
             json=_json,
+            compact=compact,
+            camel_case=camel_case,
             template_url=self.update_document.metadata["url"],
             headers=_headers,
             params=_params,
@@ -10128,6 +10245,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
     def get_document_types(
         self,
         organization=None,  # type: Optional[str]
+        workspace=None,  # type: Optional[str]
         **kwargs,  # type: Any
     ):
         # type: (...) -> List[_models.DocumentType]
@@ -10137,6 +10255,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
         :param organization: Filter by organization identifier. Default value is None.
         :type organization: str
+        :param workspace: Filter by workspace identifier. Default value is None.
+        :type workspace: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: list of DocumentType, or the result of cls(response)
         :rtype: list[~affinda.models.DocumentType]
@@ -10161,6 +10281,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
         request = build_get_document_types_request(
             organization=organization,
+            workspace=workspace,
             template_url=self.get_document_types.metadata["url"],
             headers=_headers,
             params=_params,
@@ -10457,6 +10578,148 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             return cls(pipeline_response, None, {})
 
     delete_document_type.metadata = {"url": "/v3/document_types/{identifier}"}  # type: ignore
+
+    def json_schema_from_document_type(
+        self,
+        identifier,  # type: str
+        title=None,  # type: Optional[str]
+        **kwargs,  # type: Any
+    ):
+        # type: (...) -> Dict[str, Any]
+        """Generate JSON schema from a document type.
+
+        Generate JSON schema from a document type.
+
+        :param identifier: Document type's identifier.
+        :type identifier: str
+        :param title: Title for the JSON schema. Default value is None.
+        :type title: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: dict mapping str to any, or the result of cls(response)
+        :rtype: dict[str, any]
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[Dict[str, Any]]
+
+        request = build_json_schema_from_document_type_request(
+            identifier=identifier,
+            title=title,
+            template_url=self.json_schema_from_document_type.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("{object}", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    json_schema_from_document_type.metadata = {
+        "url": "/v3/document_types/{identifier}/json_schema"
+    }  # type: ignore
+
+    def pydantic_models_from_document_type(
+        self,
+        identifier,  # type: str
+        model_name=None,  # type: Optional[str]
+        **kwargs,  # type: Any
+    ):
+        # type: (...) -> _models.PydanticModelsResponse
+        """Generate Pydantic models from a document type.
+
+        Generate Pydantic models from a document type.
+
+        :param identifier: Document type's identifier.
+        :type identifier: str
+        :param model_name: Name for the Pydantic model. Default value is None.
+        :type model_name: str
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: PydanticModelsResponse, or the result of cls(response)
+        :rtype: ~affinda.models.PydanticModelsResponse
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.PydanticModelsResponse]
+
+        request = build_pydantic_models_from_document_type_request(
+            identifier=identifier,
+            model_name=model_name,
+            template_url=self.pydantic_models_from_document_type.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("PydanticModelsResponse", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    pydantic_models_from_document_type.metadata = {
+        "url": "/v3/document_types/{identifier}/pydantic_models"
+    }  # type: ignore
 
     def get_all_organizations(
         self,

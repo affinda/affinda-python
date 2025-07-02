@@ -3492,6 +3492,11 @@ DocumentUpdate.
 
 :ivar collection: Uniquely identify a collection.
 :vartype collection: str
+:ivar workspace: Uniquely identify a workspace.
+:vartype workspace: str
+:ivar document_type: The document type's identifier.  Provide if you already know the document
+ type.
+:vartype document_type: str
 :ivar file_name: Optional filename of the file.
 :vartype file_name: str
 :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
@@ -3526,6 +3531,9 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `collection`: Uniquely identify a collection.
+- `workspace`: Uniquely identify a workspace.
+- `document_type`: The document type's identifier.  Provide if you already know the
+document type.
 - `file_name`: Optional filename of the file.
 - `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
 deleted.  Defaults to no expiry.
@@ -9073,6 +9081,33 @@ def __init__(**kwargs)
 - `country_code`: 
 - `international_country_code`: 
 - `national_number`: 
+
+<a id="models._models.PydanticModelsResponse"></a>
+
+## PydanticModelsResponse Objects
+
+```python
+class PydanticModelsResponse(msrest.serialization.Model)
+```
+
+PydanticModelsResponse.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar code: Required. Pydantic model code.
+:vartype code: str
+
+<a id="models._models.PydanticModelsResponse.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `code`: Required. Pydantic model code.
 
 <a id="models._models.Rectangle"></a>
 
