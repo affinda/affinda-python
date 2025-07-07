@@ -53,7 +53,7 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         identifier,  # type: str
         format=...,  # type: Optional[Union[str, "_models.DocumentFormat"]]
         compact=...,  # type: Optional[bool]
-        camel_case=...,  # type: Optional[bool]
+        snake_case=...,  # type: Optional[bool]
         data_model=...,  # type: None
         ignore_validation_errors=...,  # type: bool
         **kwargs,  # type: Any
@@ -67,7 +67,7 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         identifier,  # type: str
         format=...,  # type: Optional[Union[str, "_models.DocumentFormat"]]
         compact=...,  # type: Optional[bool]
-        camel_case=...,  # type: Optional[bool]
+        snake_case=...,  # type: Optional[bool]
         data_model=...,  # type: Type["TModel"]
         ignore_validation_errors=...,  # type: Literal[False]
         **kwargs,  # type: Any
@@ -81,7 +81,7 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         identifier,  # type: str
         format=...,  # type: Optional[Union[str, "_models.DocumentFormat"]]
         compact=...,  # type: Optional[bool]
-        camel_case=...,  # type: Optional[bool]
+        snake_case=...,  # type: Optional[bool]
         data_model=...,  # type: Type["TModel"]
         ignore_validation_errors=...,  # type: Literal[True]
         **kwargs,  # type: Any
@@ -94,7 +94,7 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         identifier,  # type: str
         format=None,  # type: Optional[Union[str, "_models.DocumentFormat"]]
         compact=None,  # type: Optional[bool]
-        camel_case=None,  # type: Optional[bool]
+        snake_case=None,  # type: Optional[bool]
         data_model=None,  # type: Optional[Type["TModel"]]
         ignore_validation_errors=False,  # type: bool
         **kwargs,  # type: Any
@@ -102,13 +102,13 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         # type: (...) -> Union["_models.Document", "ResultWithParsed[TModel]", "ResultWithOptionalParsed[TModel]"]
         if data_model:
             compact = True
-            camel_case = False
+            snake_case = True
 
         deserialized = await super().get_document(
             identifier,
             format=format,
             compact=compact,
-            camel_case=camel_case,
+            snake_case=snake_case,
             **kwargs,
         )
 
@@ -127,7 +127,7 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
     @overload
     async def create_document(
         self,
-        camel_case=...,  # type: Optional[bool]
+        snake_case=...,  # type: Optional[bool]
         file=...,  # type: Optional[IO]
         url=...,  # type: Optional[str]
         data=...,  # type: Any
@@ -158,7 +158,7 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
     @overload
     async def create_document(
         self,
-        camel_case=...,  # type: Optional[bool]
+        snake_case=...,  # type: Optional[bool]
         file=...,  # type: Optional[IO]
         url=...,  # type: Optional[str]
         data=...,  # type: Any
@@ -189,7 +189,7 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
     @overload
     async def create_document(
         self,
-        camel_case=...,  # type: Optional[bool]
+        snake_case=...,  # type: Optional[bool]
         file=...,  # type: Optional[IO]
         url=...,  # type: Optional[str]
         data=...,  # type: Any
@@ -219,7 +219,7 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
 
     async def create_document(
         self,
-        camel_case=None,  # type: Optional[bool]
+        snake_case=None,  # type: Optional[bool]
         file=None,  # type: Optional[IO]
         url=None,  # type: Optional[str]
         data=None,  # type: Any
@@ -247,10 +247,10 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         # type: (...) -> Union["_models.Document", "ResultWithParsed[TModel]", "ResultWithOptionalParsed[TModel]"]
         if data_model:
             compact = True
-            camel_case = False
+            snake_case = True
 
         deserialized = await super().create_document(
-            camel_case=camel_case,
+            snake_case=snake_case,
             file=file,
             url=url,
             data=data,
@@ -292,7 +292,7 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         identifier,  # type: str
         body,  # type: _models.DocumentUpdate
         compact=...,  # type: Optional[bool]
-        camel_case=...,  # type: Optional[bool]
+        snake_case=...,  # type: Optional[bool]
         data_model=...,  # type: None
         ignore_validation_errors=...,  # type: bool
         **kwargs,  # type: Any
@@ -306,7 +306,7 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         identifier,  # type: str
         body,  # type: _models.DocumentUpdate
         compact=...,  # type: Optional[bool]
-        camel_case=...,  # type: Optional[bool]
+        snake_case=...,  # type: Optional[bool]
         data_model=...,  # type: Type["TModel"]
         ignore_validation_errors=...,  # type: Literal[False]
         **kwargs,  # type: Any
@@ -320,7 +320,7 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         identifier,  # type: str
         body,  # type: _models.DocumentUpdate
         compact=...,  # type: Optional[bool]
-        camel_case=...,  # type: Optional[bool]
+        snake_case=...,  # type: Optional[bool]
         data_model=...,  # type: Type["TModel"]
         ignore_validation_errors=...,  # type: Literal[True]
         **kwargs,  # type: Any
@@ -333,7 +333,7 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         identifier,  # type: str
         body,  # type: _models.DocumentUpdate
         compact=None,  # type: Optional[bool]
-        camel_case=None,  # type: Optional[bool]
+        snake_case=None,  # type: Optional[bool]
         data_model=None,  # type: Optional[Type["TModel"]]
         ignore_validation_errors=False,  # type: bool
         **kwargs,  # type: Any
@@ -341,13 +341,13 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         # type: (...) -> Union["_models.Document", "ResultWithParsed[TModel]", "ResultWithOptionalParsed[TModel]"]
         if data_model:
             compact = True
-            camel_case = False
+            snake_case = True
 
         deserialized = await super().update_document(
             identifier,
             body,
             compact=compact,
-            camel_case=camel_case,
+            snake_case=snake_case,
             **kwargs,
         )
 

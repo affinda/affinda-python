@@ -635,7 +635,7 @@ def build_get_all_documents_request(
     custom_identifier = kwargs.pop('custom_identifier', _params.pop('custom_identifier', None))  # type: Optional[str]
     compact = kwargs.pop('compact', _params.pop('compact', None))  # type: Optional[bool]
     count = kwargs.pop('count', _params.pop('count', None))  # type: Optional[bool]
-    camel_case = kwargs.pop('camel_case', _params.pop('camel_case', None))  # type: Optional[bool]
+    snake_case = kwargs.pop('snake_case', _params.pop('snake_case', None))  # type: Optional[bool]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
@@ -680,8 +680,8 @@ def build_get_all_documents_request(
         _params['compact'] = _SERIALIZER.query("compact", compact, 'bool')
     if count is not None:
         _params['count'] = _SERIALIZER.query("count", count, 'bool')
-    if camel_case is not None:
-        _params['camel_case'] = _SERIALIZER.query("camel_case", camel_case, 'bool')
+    if snake_case is not None:
+        _params['snake_case'] = _SERIALIZER.query("snake_case", snake_case, 'bool')
 
     # Construct headers
     _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
@@ -703,15 +703,15 @@ def build_create_document_request(
     _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
 
     content_type = kwargs.pop('content_type', _headers.pop('Content-Type', None))  # type: Optional[str]
-    camel_case = kwargs.pop('camel_case', _params.pop('camel_case', None))  # type: Optional[bool]
+    snake_case = kwargs.pop('snake_case', _params.pop('snake_case', None))  # type: Optional[bool]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
     _url = kwargs.pop("template_url", "/v3/documents")
 
     # Construct parameters
-    if camel_case is not None:
-        _params['camel_case'] = _SERIALIZER.query("camel_case", camel_case, 'bool')
+    if snake_case is not None:
+        _params['snake_case'] = _SERIALIZER.query("snake_case", snake_case, 'bool')
 
     # Construct headers
     if content_type is not None:
@@ -737,7 +737,7 @@ def build_get_document_request(
 
     format = kwargs.pop('format', _params.pop('format', None))  # type: Optional[Union[str, "_models.DocumentFormat"]]
     compact = kwargs.pop('compact', _params.pop('compact', None))  # type: Optional[bool]
-    camel_case = kwargs.pop('camel_case', _params.pop('camel_case', None))  # type: Optional[bool]
+    snake_case = kwargs.pop('snake_case', _params.pop('snake_case', None))  # type: Optional[bool]
     accept = _headers.pop('Accept', "application/json, application/xml")
 
     # Construct URL
@@ -753,8 +753,8 @@ def build_get_document_request(
         _params['format'] = _SERIALIZER.query("format", format, 'str')
     if compact is not None:
         _params['compact'] = _SERIALIZER.query("compact", compact, 'bool')
-    if camel_case is not None:
-        _params['camel_case'] = _SERIALIZER.query("camel_case", camel_case, 'bool')
+    if snake_case is not None:
+        _params['snake_case'] = _SERIALIZER.query("snake_case", snake_case, 'bool')
 
     # Construct headers
     _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
@@ -778,7 +778,7 @@ def build_update_document_request(
 
     content_type = kwargs.pop('content_type', _headers.pop('Content-Type', None))  # type: Optional[str]
     compact = kwargs.pop('compact', _params.pop('compact', None))  # type: Optional[bool]
-    camel_case = kwargs.pop('camel_case', _params.pop('camel_case', None))  # type: Optional[bool]
+    snake_case = kwargs.pop('snake_case', _params.pop('snake_case', None))  # type: Optional[bool]
     accept = _headers.pop('Accept', "application/json")
 
     # Construct URL
@@ -792,8 +792,8 @@ def build_update_document_request(
     # Construct parameters
     if compact is not None:
         _params['compact'] = _SERIALIZER.query("compact", compact, 'bool')
-    if camel_case is not None:
-        _params['camel_case'] = _SERIALIZER.query("camel_case", camel_case, 'bool')
+    if snake_case is not None:
+        _params['snake_case'] = _SERIALIZER.query("snake_case", snake_case, 'bool')
 
     # Construct headers
     if content_type is not None:
@@ -5598,7 +5598,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         custom_identifier=None,  # type: Optional[str]
         compact=None,  # type: Optional[bool]
         count=None,  # type: Optional[bool]
-        camel_case=None,  # type: Optional[bool]
+        snake_case=None,  # type: Optional[bool]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema
@@ -5655,8 +5655,9 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param count: If "false", the documents count is not computed, thus saving time for large
          collections. Default is "true".
         :type count: bool
-        :param camel_case: Whether to return the response in camelCase. Default is true.
-        :type camel_case: bool
+        :param snake_case: Whether to return the response in snake_case instead of camelCase. Default
+         is false.
+        :type snake_case: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)
@@ -5703,7 +5704,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             custom_identifier=custom_identifier,
             compact=compact,
             count=count,
-            camel_case=camel_case,
+            snake_case=snake_case,
             template_url=self.get_all_documents.metadata["url"],
             headers=_headers,
             params=_params,
@@ -5737,7 +5738,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
     def create_document(
         self,
-        camel_case=None,  # type: Optional[bool]
+        snake_case=None,  # type: Optional[bool]
         file=None,  # type: Optional[IO]
         url=None,  # type: Optional[str]
         data=None,  # type: Any
@@ -5767,8 +5768,9 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         subsequent use with the `/documents/{identifier} <#get-/v3/documents/-identifier->`_ endpoint
         to check processing status and retrieve results.:code:`<br/>`.
 
-        :param camel_case: Whether to return the response in camelCase. Default is true.
-        :type camel_case: bool
+        :param snake_case: Whether to return the response in snake_case instead of camelCase. Default
+         is false.
+        :type snake_case: bool
         :param file:  Default value is None.
         :type file: IO
         :param url: URL to download the document. Default value is None.
@@ -5869,7 +5871,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
         request = build_create_document_request(
             content_type=content_type,
-            camel_case=camel_case,
+            snake_case=snake_case,
             files=_files,
             template_url=self.create_document.metadata["url"],
             headers=_headers,
@@ -5909,7 +5911,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         identifier,  # type: str
         format=None,  # type: Optional[Union[str, "_models.DocumentFormat"]]
         compact=None,  # type: Optional[bool]
-        camel_case=None,  # type: Optional[bool]
+        snake_case=None,  # type: Optional[bool]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.Document
@@ -5924,8 +5926,9 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param compact: If "true", the response is compacted to annotations' parsed data. Annotations'
          meta data are excluded. Default is "false".
         :type compact: bool
-        :param camel_case: Whether to return the response in camelCase. Default is true.
-        :type camel_case: bool
+        :param snake_case: Whether to return the response in snake_case instead of camelCase. Default
+         is false.
+        :type snake_case: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Document, or the result of cls(response)
         :rtype: ~affinda.models.Document
@@ -5958,7 +5961,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             identifier=identifier,
             format=format,
             compact=compact,
-            camel_case=camel_case,
+            snake_case=snake_case,
             template_url=self.get_document.metadata["url"],
             headers=_headers,
             params=_params,
@@ -5997,7 +6000,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         identifier,  # type: str
         body,  # type: _models.DocumentUpdate
         compact=None,  # type: Optional[bool]
-        camel_case=None,  # type: Optional[bool]
+        snake_case=None,  # type: Optional[bool]
         **kwargs,  # type: Any
     ):
         # type: (...) -> _models.Document
@@ -6012,8 +6015,9 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param compact: If "true", the response is compacted to annotations' parsed data. Annotations'
          meta data are excluded. Default is "false".
         :type compact: bool
-        :param camel_case: Whether to return the response in camelCase. Default is true.
-        :type camel_case: bool
+        :param snake_case: Whether to return the response in snake_case instead of camelCase. Default
+         is false.
+        :type snake_case: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Document, or the result of cls(response)
         :rtype: ~affinda.models.Document
@@ -6044,7 +6048,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             content_type=content_type,
             json=_json,
             compact=compact,
-            camel_case=camel_case,
+            snake_case=snake_case,
             template_url=self.update_document.metadata["url"],
             headers=_headers,
             params=_params,

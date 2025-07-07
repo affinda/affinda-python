@@ -549,7 +549,7 @@ def get_all_documents(offset=None,
                       custom_identifier=None,
                       compact=None,
                       count=None,
-                      camel_case=None,
+                      snake_case=None,
                       **kwargs)
 ```
 
@@ -589,7 +589,8 @@ None.
 meta data are excluded. Default is "false".
 - `count` (`bool`): If "false", the documents count is not computed, thus saving time for large
 collections. Default is "true".
-- `camel_case` (`bool`): Whether to return the response in camelCase. Default is true.
+- `snake_case` (`bool`): Whether to return the response in snake_case instead of camelCase. Default
+is false.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -606,7 +607,7 @@ cls(response)
 #### create\_document
 
 ```python
-def create_document(camel_case=None,
+def create_document(snake_case=None,
                     file=None,
                     url=None,
                     data=None,
@@ -638,7 +639,8 @@ to check processing status and retrieve results.:code:`<br/>`.
 
 **Arguments**:
 
-- `camel_case` (`bool`): Whether to return the response in camelCase. Default is true.
+- `snake_case` (`bool`): Whether to return the response in snake_case instead of camelCase. Default
+is false.
 - `file` (`IO`): Default value is None.
 - `url` (`str`): URL to download the document. Default value is None.
 - `data` (`any`): Create resume or job description directly from data. Default value is None.
@@ -685,7 +687,7 @@ words are found in the document. Default value is None.
 def get_document(identifier,
                  format=None,
                  compact=None,
-                 camel_case=None,
+                 snake_case=None,
                  **kwargs)
 ```
 
@@ -699,7 +701,8 @@ Return a specific document.
 - `format` (`str or ~affinda.models.DocumentFormat`): Specify which format you want the response to be. Default is "json".
 - `compact` (`bool`): If "true", the response is compacted to annotations' parsed data. Annotations'
 meta data are excluded. Default is "false".
-- `camel_case` (`bool`): Whether to return the response in camelCase. Default is true.
+- `snake_case` (`bool`): Whether to return the response in snake_case instead of camelCase. Default
+is false.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -715,7 +718,7 @@ meta data are excluded. Default is "false".
 #### update\_document
 
 ```python
-def update_document(identifier, body, compact=None, camel_case=None, **kwargs)
+def update_document(identifier, body, compact=None, snake_case=None, **kwargs)
 ```
 
 Update a document.
@@ -728,7 +731,8 @@ Update file name, expiry time, or move to another collection, etc.
 - `body` (`~affinda.models.DocumentUpdate`): Document data to update.
 - `compact` (`bool`): If "true", the response is compacted to annotations' parsed data. Annotations'
 meta data are excluded. Default is "false".
-- `camel_case` (`bool`): Whether to return the response in camelCase. Default is true.
+- `snake_case` (`bool`): Whether to return the response in snake_case instead of camelCase. Default
+is false.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:

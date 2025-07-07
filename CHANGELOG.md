@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.28.2] - 2025-07-07
+### Fixed
+- API response is not converted to snake_case before feeding to Pydantic models
+
 ## [4.28.1] - 2025-07-02
 ### Fixed
 - Add missing dependencies for generating pydantic models

@@ -1450,7 +1450,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         custom_identifier: Optional[str] = None,
         compact: Optional[bool] = None,
         count: Optional[bool] = None,
-        camel_case: Optional[bool] = None,
+        snake_case: Optional[bool] = None,
         **kwargs: Any,
     ) -> _models.PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema:
         """Get list of all documents.
@@ -1506,8 +1506,9 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param count: If "false", the documents count is not computed, thus saving time for large
          collections. Default is "true".
         :type count: bool
-        :param camel_case: Whether to return the response in camelCase. Default is true.
-        :type camel_case: bool
+        :param snake_case: Whether to return the response in snake_case instead of camelCase. Default
+         is false.
+        :type snake_case: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)
@@ -1554,7 +1555,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             custom_identifier=custom_identifier,
             compact=compact,
             count=count,
-            camel_case=camel_case,
+            snake_case=snake_case,
             template_url=self.get_all_documents.metadata["url"],
             headers=_headers,
             params=_params,
@@ -1588,7 +1589,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
     async def create_document(
         self,
-        camel_case: Optional[bool] = None,
+        snake_case: Optional[bool] = None,
         file: Optional[IO] = None,
         url: Optional[str] = None,
         data: Any = None,
@@ -1617,8 +1618,9 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         subsequent use with the `/documents/{identifier} <#get-/v3/documents/-identifier->`_ endpoint
         to check processing status and retrieve results.:code:`<br/>`.
 
-        :param camel_case: Whether to return the response in camelCase. Default is true.
-        :type camel_case: bool
+        :param snake_case: Whether to return the response in snake_case instead of camelCase. Default
+         is false.
+        :type snake_case: bool
         :param file:  Default value is None.
         :type file: IO
         :param url: URL to download the document. Default value is None.
@@ -1719,7 +1721,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
         request = build_create_document_request(
             content_type=content_type,
-            camel_case=camel_case,
+            snake_case=snake_case,
             files=_files,
             template_url=self.create_document.metadata["url"],
             headers=_headers,
@@ -1759,7 +1761,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         identifier: str,
         format: Optional[Union[str, "_models.DocumentFormat"]] = None,
         compact: Optional[bool] = None,
-        camel_case: Optional[bool] = None,
+        snake_case: Optional[bool] = None,
         **kwargs: Any,
     ) -> _models.Document:
         """Get specific document.
@@ -1773,8 +1775,9 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param compact: If "true", the response is compacted to annotations' parsed data. Annotations'
          meta data are excluded. Default is "false".
         :type compact: bool
-        :param camel_case: Whether to return the response in camelCase. Default is true.
-        :type camel_case: bool
+        :param snake_case: Whether to return the response in snake_case instead of camelCase. Default
+         is false.
+        :type snake_case: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Document, or the result of cls(response)
         :rtype: ~affinda.models.Document
@@ -1807,7 +1810,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             identifier=identifier,
             format=format,
             compact=compact,
-            camel_case=camel_case,
+            snake_case=snake_case,
             template_url=self.get_document.metadata["url"],
             headers=_headers,
             params=_params,
@@ -1846,7 +1849,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         identifier: str,
         body: _models.DocumentUpdate,
         compact: Optional[bool] = None,
-        camel_case: Optional[bool] = None,
+        snake_case: Optional[bool] = None,
         **kwargs: Any,
     ) -> _models.Document:
         """Update a document.
@@ -1860,8 +1863,9 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param compact: If "true", the response is compacted to annotations' parsed data. Annotations'
          meta data are excluded. Default is "false".
         :type compact: bool
-        :param camel_case: Whether to return the response in camelCase. Default is true.
-        :type camel_case: bool
+        :param snake_case: Whether to return the response in snake_case instead of camelCase. Default
+         is false.
+        :type snake_case: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Document, or the result of cls(response)
         :rtype: ~affinda.models.Document
@@ -1892,7 +1896,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             content_type=content_type,
             json=_json,
             compact=compact,
-            camel_case=camel_case,
+            snake_case=snake_case,
             template_url=self.update_document.metadata["url"],
             headers=_headers,
             params=_params,
