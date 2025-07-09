@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.28.4] - 2025-07-09
+### Fixed
+- Fix get_document failed to serialize v2 document types
+
 ## [4.28.3] - 2025-07-07
 ### Fixed
 - Correct typing for aio client

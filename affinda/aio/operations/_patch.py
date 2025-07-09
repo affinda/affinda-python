@@ -1,34 +1,39 @@
-from typing import (  # noqa: F401
-    IO,
+from typing import (
     TYPE_CHECKING,
     Any,
     Callable,
     Dict,
     Generic,
-    List,
-    Literal,
     Optional,
-    Type,
+    Type,  # noqa: F401
     TypeVar,
-    Union,
     overload,
 )
 
+from azure.core.exceptions import (
+    ClientAuthenticationError,
+    HttpResponseError,
+    ResourceExistsError,
+    ResourceNotFoundError,
+    map_error,
+)
 from azure.core.pipeline import PipelineResponse
 from azure.core.pipeline.transport import HttpResponse
 from azure.core.rest import HttpRequest
 from pydantic_core import ValidationError
 
+from ..._vendor import _convert_request  # noqa: TID252
 from ._affinda_api_operations import (
     AffindaAPIOperationsMixin as AffindaAPIOperationsMixinGenerated,
 )
+from ._affinda_api_operations import build_get_document_request
 
 if TYPE_CHECKING:
     import datetime  # noqa: F401
 
     from pydantic import BaseModel  # noqa: F401
 
-    from .. import models as _models  # noqa: F401
+    from ... import models as _models  # noqa: F401
 
     T = TypeVar("T")
     ClsType = Optional[
@@ -104,13 +109,53 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
             compact = True
             snake_case = True
 
-        deserialized = await super().get_document(
-            identifier,
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.Document]
+
+        request = build_get_document_request(
+            identifier=identifier,
             format=format,
             compact=compact,
             snake_case=snake_case,
-            **kwargs,
+            template_url=self.get_document.metadata["url"],
+            headers=_headers,
+            params=_params,
         )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if response.status_code == 200:
+            deserialized = self._deserialize("Document", pipeline_response)
+
+        if cls:
+            deserialized = cls(pipeline_response, deserialized, {})
 
         if data_model:
             try:
