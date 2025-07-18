@@ -57,7 +57,6 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         identifier,  # type: str
         format=...,  # type: Optional[Union[str, "_models.DocumentFormat"]]
         compact=...,  # type: Optional[bool]
-        snake_case=...,  # type: Optional[bool]
         data_model=...,  # type: None
         ignore_validation_errors=...,  # type: bool
         **kwargs,  # type: Any
@@ -71,7 +70,6 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         identifier,  # type: str
         format=...,  # type: Optional[Union[str, "_models.DocumentFormat"]]
         compact=...,  # type: Optional[bool]
-        snake_case=...,  # type: Optional[bool]
         data_model=...,  # type: Type["TModel"]
         ignore_validation_errors=...,  # type: Literal[False]
         **kwargs,  # type: Any
@@ -85,7 +83,6 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         identifier,  # type: str
         format=...,  # type: Optional[Union[str, "_models.DocumentFormat"]]
         compact=...,  # type: Optional[bool]
-        snake_case=...,  # type: Optional[bool]
         data_model=...,  # type: Type["TModel"]
         ignore_validation_errors=...,  # type: Literal[True]
         **kwargs,  # type: Any
@@ -98,7 +95,6 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         identifier,  # type: str
         format=None,  # type: Optional[Union[str, "_models.DocumentFormat"]]
         compact=None,  # type: Optional[bool]
-        snake_case=None,  # type: Optional[bool]
         data_model=None,  # type: Optional[Type["TModel"]]
         ignore_validation_errors=False,  # type: bool
         **kwargs,  # type: Any
@@ -106,7 +102,6 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         # type: (...) -> Union["_models.Document", "ResultWithParsed[TModel]", "ResultWithOptionalParsed[TModel]"]
         if data_model:
             compact = True
-            snake_case = True
 
         error_map = {
             404: ResourceNotFoundError,
@@ -129,7 +124,6 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
             identifier=identifier,
             format=format,
             compact=compact,
-            snake_case=snake_case,
             template_url=self.get_document.metadata["url"],
             headers=_headers,
             params=_params,
@@ -171,7 +165,6 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
     @overload
     def create_document(
         self,
-        snake_case=...,  # type: Optional[bool]
         file=...,  # type: Optional[IO]
         url=...,  # type: Optional[str]
         data=...,  # type: Any
@@ -202,7 +195,6 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
     @overload
     def create_document(
         self,
-        snake_case=...,  # type: Optional[bool]
         file=...,  # type: Optional[IO]
         url=...,  # type: Optional[str]
         data=...,  # type: Any
@@ -233,7 +225,6 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
     @overload
     def create_document(
         self,
-        snake_case=...,  # type: Optional[bool]
         file=...,  # type: Optional[IO]
         url=...,  # type: Optional[str]
         data=...,  # type: Any
@@ -263,7 +254,6 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
 
     def create_document(
         self,
-        snake_case=None,  # type: Optional[bool]
         file=None,  # type: Optional[IO]
         url=None,  # type: Optional[str]
         data=None,  # type: Any
@@ -291,10 +281,8 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         # type: (...) -> Union["_models.Document", "ResultWithParsed[TModel]", "ResultWithOptionalParsed[TModel]"]
         if data_model:
             compact = True
-            snake_case = True
 
         deserialized = super().create_document(
-            snake_case=snake_case,
             file=file,
             url=url,
             data=data,
@@ -336,7 +324,6 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         identifier,  # type: str
         body,  # type: _models.DocumentUpdate
         compact=...,  # type: Optional[bool]
-        snake_case=...,  # type: Optional[bool]
         data_model=...,  # type: None
         ignore_validation_errors=...,  # type: bool
         **kwargs,  # type: Any
@@ -350,7 +337,6 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         identifier,  # type: str
         body,  # type: _models.DocumentUpdate
         compact=...,  # type: Optional[bool]
-        snake_case=...,  # type: Optional[bool]
         data_model=...,  # type: Type["TModel"]
         ignore_validation_errors=...,  # type: Literal[False]
         **kwargs,  # type: Any
@@ -364,7 +350,6 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         identifier,  # type: str
         body,  # type: _models.DocumentUpdate
         compact=...,  # type: Optional[bool]
-        snake_case=...,  # type: Optional[bool]
         data_model=...,  # type: Type["TModel"]
         ignore_validation_errors=...,  # type: Literal[True]
         **kwargs,  # type: Any
@@ -377,7 +362,6 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         identifier,  # type: str
         body,  # type: _models.DocumentUpdate
         compact=None,  # type: Optional[bool]
-        snake_case=None,  # type: Optional[bool]
         data_model=None,  # type: Optional[Type["TModel"]]
         ignore_validation_errors=False,  # type: bool
         **kwargs,  # type: Any
@@ -385,13 +369,11 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         # type: (...) -> Union["_models.Document", "ResultWithParsed[TModel]", "ResultWithOptionalParsed[TModel]"]
         if data_model:
             compact = True
-            snake_case = True
 
         deserialized = super().update_document(
             identifier,
             body,
             compact=compact,
-            snake_case=snake_case,
             **kwargs,
         )
 

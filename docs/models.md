@@ -79,8 +79,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required. Data point's identifier.
+:ivar data_point: Data point's identifier.
 :vartype data_point: str
+:ivar field: Field's identifier.
+:vartype field: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
  "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -119,7 +121,8 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required. Data point's identifier.
+- `data_point`: Data point's identifier.
+- `field`: Field's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
 "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -274,8 +277,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype document: str
 :ivar page_index: Required. The page number within the document, starting from 0.
 :vartype page_index: int
-:ivar data_point: Required. Data point's identifier.
+:ivar data_point: Data point's identifier.
 :vartype data_point: str
+:ivar field: Field's identifier.
+:vartype field: str
 :ivar raw: Raw data extracted from the before any post-processing.
 :vartype raw: str
 :ivar parsed: Anything.
@@ -302,7 +307,8 @@ def __init__(**kwargs)
 be contained within multiple rectangles.
 - `document`: Required. Unique identifier for the document.
 - `page_index`: Required. The page number within the document, starting from 0.
-- `data_point`: Required. Data point's identifier.
+- `data_point`: Data point's identifier.
+- `field`: Field's identifier.
 - `raw`: Raw data extracted from the before any post-processing.
 - `parsed`: Anything.
 - `is_client_verified`: Indicates whether the data has been validated by a human.
@@ -335,6 +341,8 @@ AnnotationUpdate.
 :vartype is_client_verified: bool
 :ivar data_point: Data point's identifier.
 :vartype data_point: str
+:ivar field: Field's identifier.
+:vartype field: str
 :ivar parent: The parent annotation's ID.
 :vartype parent: int
 :ivar validation_results: The validation results created, changed or deleted as a result of
@@ -359,6 +367,7 @@ be contained within multiple rectangles.
 - `parsed`: Anything.
 - `is_client_verified`: Indicates whether the data has been validated by a human.
 - `data_point`: Data point's identifier.
+- `field`: Field's identifier.
 - `parent`: The parent annotation's ID.
 - `validation_results`: The validation results created, changed or deleted as a result of
 updating the annotation.
@@ -407,8 +416,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required. Data point's identifier.
+:ivar data_point: Data point's identifier.
 :vartype data_point: str
+:ivar field: Field's identifier.
+:vartype field: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
  "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -449,7 +460,8 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required. Data point's identifier.
+- `data_point`: Data point's identifier.
+- `field`: Field's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
 "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -1523,8 +1535,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required. Data point's identifier.
+:ivar data_point: Data point's identifier.
 :vartype data_point: str
+:ivar field: Field's identifier.
+:vartype field: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
  "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -1565,7 +1579,8 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required. Data point's identifier.
+- `data_point`: Data point's identifier.
+- `field`: Field's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
 "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -2455,8 +2470,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required. Data point's identifier.
+:ivar data_point: Data point's identifier.
 :vartype data_point: str
+:ivar field: Field's identifier.
+:vartype field: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
  "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -2497,7 +2514,8 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required. Data point's identifier.
+- `data_point`: Data point's identifier.
+- `field`: Field's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
 "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -2623,8 +2641,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required. Data point's identifier.
+:ivar data_point: Data point's identifier.
 :vartype data_point: str
+:ivar field: Field's identifier.
+:vartype field: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
  "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -2665,7 +2685,8 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required. Data point's identifier.
+- `data_point`: Data point's identifier.
+- `field`: Field's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
 "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -3762,8 +3783,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required. Data point's identifier.
+:ivar data_point: Data point's identifier.
 :vartype data_point: str
+:ivar field: Field's identifier.
+:vartype field: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
  "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -3804,7 +3827,8 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required. Data point's identifier.
+- `data_point`: Data point's identifier.
+- `field`: Field's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
 "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -4508,8 +4532,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required. Data point's identifier.
+:ivar data_point: Data point's identifier.
 :vartype data_point: str
+:ivar field: Field's identifier.
+:vartype field: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
  "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -4550,7 +4576,8 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required. Data point's identifier.
+- `data_point`: Data point's identifier.
+- `field`: Field's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
 "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -6422,8 +6449,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required. Data point's identifier.
+:ivar data_point: Data point's identifier.
 :vartype data_point: str
+:ivar field: Field's identifier.
+:vartype field: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
  "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -6464,7 +6493,8 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required. Data point's identifier.
+- `data_point`: Data point's identifier.
+- `field`: Field's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
 "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -6815,8 +6845,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required. Data point's identifier.
+:ivar data_point: Data point's identifier.
 :vartype data_point: str
+:ivar field: Field's identifier.
+:vartype field: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
  "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -6857,7 +6889,8 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required. Data point's identifier.
+- `data_point`: Data point's identifier.
+- `field`: Field's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
 "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -7014,8 +7047,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required. Data point's identifier.
+:ivar data_point: Data point's identifier.
 :vartype data_point: str
+:ivar field: Field's identifier.
+:vartype field: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
  "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -7056,7 +7091,8 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required. Data point's identifier.
+- `data_point`: Data point's identifier.
+- `field`: Field's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
 "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -8995,8 +9031,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required. Data point's identifier.
+:ivar data_point: Data point's identifier.
 :vartype data_point: str
+:ivar field: Field's identifier.
+:vartype field: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
  "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -9037,7 +9075,8 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required. Data point's identifier.
+- `data_point`: Data point's identifier.
+- `field`: Field's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
 "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -11422,8 +11461,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required. Data point's identifier.
+:ivar data_point: Data point's identifier.
 :vartype data_point: str
+:ivar field: Field's identifier.
+:vartype field: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
  "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -11464,7 +11505,8 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required. Data point's identifier.
+- `data_point`: Data point's identifier.
+- `field`: Field's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
 "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -11574,8 +11616,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required. Data point's identifier.
+:ivar data_point: Data point's identifier.
 :vartype data_point: str
+:ivar field: Field's identifier.
+:vartype field: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
  "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -11616,7 +11660,8 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required. Data point's identifier.
+- `data_point`: Data point's identifier.
+- `field`: Field's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
 "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -11791,8 +11836,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required. Data point's identifier.
+:ivar data_point: Data point's identifier.
 :vartype data_point: str
+:ivar field: Field's identifier.
+:vartype field: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
  "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -11833,7 +11880,8 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required. Data point's identifier.
+- `data_point`: Data point's identifier.
+- `field`: Field's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
 "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -11990,8 +12038,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required. Data point's identifier.
+:ivar data_point: Data point's identifier.
 :vartype data_point: str
+:ivar field: Field's identifier.
+:vartype field: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
  "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -12032,7 +12082,8 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required. Data point's identifier.
+- `data_point`: Data point's identifier.
+- `field`: Field's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
 "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -12109,8 +12160,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required. Data point's identifier.
+:ivar data_point: Data point's identifier.
 :vartype data_point: str
+:ivar field: Field's identifier.
+:vartype field: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
  "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -12151,7 +12204,8 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required. Data point's identifier.
+- `data_point`: Data point's identifier.
+- `field`: Field's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
 "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -12322,8 +12376,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required. Data point's identifier.
+:ivar data_point: Data point's identifier.
 :vartype data_point: str
+:ivar field: Field's identifier.
+:vartype field: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
  "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -12364,7 +12420,8 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required. Data point's identifier.
+- `data_point`: Data point's identifier.
+- `field`: Field's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
 "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -12613,8 +12670,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required. Data point's identifier.
+:ivar data_point: Data point's identifier.
 :vartype data_point: str
+:ivar field: Field's identifier.
+:vartype field: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
  "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -12655,7 +12714,8 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required. Data point's identifier.
+- `data_point`: Data point's identifier.
+- `field`: Field's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
 "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -13425,8 +13485,10 @@ All required parameters must be populated in order to send to Azure.
 :vartype is_client_verified: bool
 :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
 :vartype is_auto_verified: bool
-:ivar data_point: Required. Data point's identifier.
+:ivar data_point: Data point's identifier.
 :vartype data_point: str
+:ivar field: Field's identifier.
+:vartype field: str
 :ivar content_type: Required. The different data types of annotations. Known values are:
  "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
  "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -13467,7 +13529,8 @@ human using our validation tool or through auto-validation rules.
 - `is_client_verified`: Required. Indicates whether the data has been validated by a
 human.
 - `is_auto_verified`: Required. Indicates whether the data has been auto-validated.
-- `data_point`: Required. Data point's identifier.
+- `data_point`: Data point's identifier.
+- `field`: Field's identifier.
 - `content_type`: Required. The different data types of annotations. Known values are:
 "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
 "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",

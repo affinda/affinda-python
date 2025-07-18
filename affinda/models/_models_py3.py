@@ -92,8 +92,10 @@ class Annotation(msrest.serialization.Model):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required. Data point's identifier.
+    :ivar data_point: Data point's identifier.
     :vartype data_point: str
+    :ivar field: Field's identifier.
+    :vartype field: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
      "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
      "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -116,7 +118,6 @@ class Annotation(msrest.serialization.Model):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -135,6 +136,7 @@ class Annotation(msrest.serialization.Model):
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
+        "field": {"key": "field", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
         "parent": {"key": "parent", "type": "int"},
     }
@@ -154,9 +156,10 @@ class Annotation(msrest.serialization.Model):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: Union[str, "_models.AnnotationContentType"],
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        field: Optional[str] = None,
         parent: Optional[int] = None,
         **kwargs,
     ):
@@ -194,8 +197,10 @@ class Annotation(msrest.serialization.Model):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required. Data point's identifier.
+        :keyword data_point: Data point's identifier.
         :paramtype data_point: str
+        :keyword field: Field's identifier.
+        :paramtype field: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
          "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
          "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -219,6 +224,7 @@ class Annotation(msrest.serialization.Model):
         self.is_client_verified = is_client_verified
         self.is_auto_verified = is_auto_verified
         self.data_point = data_point
+        self.field = field
         self.content_type = content_type
         self.parent = parent
 
@@ -459,8 +465,10 @@ class AnnotationCreate(msrest.serialization.Model):
     :vartype document: str
     :ivar page_index: Required. The page number within the document, starting from 0.
     :vartype page_index: int
-    :ivar data_point: Required. Data point's identifier.
+    :ivar data_point: Data point's identifier.
     :vartype data_point: str
+    :ivar field: Field's identifier.
+    :vartype field: str
     :ivar raw: Raw data extracted from the before any post-processing.
     :vartype raw: str
     :ivar parsed: Anything.
@@ -477,7 +485,6 @@ class AnnotationCreate(msrest.serialization.Model):
     _validation = {
         "document": {"required": True},
         "page_index": {"required": True, "minimum": 0},
-        "data_point": {"required": True},
     }
 
     _attribute_map = {
@@ -485,6 +492,7 @@ class AnnotationCreate(msrest.serialization.Model):
         "document": {"key": "document", "type": "str"},
         "page_index": {"key": "pageIndex", "type": "int"},
         "data_point": {"key": "dataPoint", "type": "str"},
+        "field": {"key": "field", "type": "str"},
         "raw": {"key": "raw", "type": "str"},
         "parsed": {"key": "parsed", "type": "object"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
@@ -497,8 +505,9 @@ class AnnotationCreate(msrest.serialization.Model):
         *,
         document: str,
         page_index: int,
-        data_point: str,
         rectangles: Optional[List["_models.Rectangle"]] = None,
+        data_point: Optional[str] = None,
+        field: Optional[str] = None,
         raw: Optional[str] = None,
         parsed: Optional[Any] = None,
         is_client_verified: Optional[bool] = None,
@@ -514,8 +523,10 @@ class AnnotationCreate(msrest.serialization.Model):
         :paramtype document: str
         :keyword page_index: Required. The page number within the document, starting from 0.
         :paramtype page_index: int
-        :keyword data_point: Required. Data point's identifier.
+        :keyword data_point: Data point's identifier.
         :paramtype data_point: str
+        :keyword field: Field's identifier.
+        :paramtype field: str
         :keyword raw: Raw data extracted from the before any post-processing.
         :paramtype raw: str
         :keyword parsed: Anything.
@@ -533,6 +544,7 @@ class AnnotationCreate(msrest.serialization.Model):
         self.document = document
         self.page_index = page_index
         self.data_point = data_point
+        self.field = field
         self.raw = raw
         self.parsed = parsed
         self.is_client_verified = is_client_verified
@@ -558,6 +570,8 @@ class AnnotationUpdate(msrest.serialization.Model):
     :vartype is_client_verified: bool
     :ivar data_point: Data point's identifier.
     :vartype data_point: str
+    :ivar field: Field's identifier.
+    :vartype field: str
     :ivar parent: The parent annotation's ID.
     :vartype parent: int
     :ivar validation_results: The validation results created, changed or deleted as a result of
@@ -577,6 +591,7 @@ class AnnotationUpdate(msrest.serialization.Model):
         "parsed": {"key": "parsed", "type": "object"},
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
+        "field": {"key": "field", "type": "str"},
         "parent": {"key": "parent", "type": "int"},
         "validation_results": {"key": "validationResults", "type": "[ChangedValidationResults]"},
     }
@@ -591,6 +606,7 @@ class AnnotationUpdate(msrest.serialization.Model):
         parsed: Optional[Any] = None,
         is_client_verified: Optional[bool] = None,
         data_point: Optional[str] = None,
+        field: Optional[str] = None,
         parent: Optional[int] = None,
         validation_results: Optional[List["_models.ChangedValidationResults"]] = None,
         **kwargs,
@@ -611,6 +627,8 @@ class AnnotationUpdate(msrest.serialization.Model):
         :paramtype is_client_verified: bool
         :keyword data_point: Data point's identifier.
         :paramtype data_point: str
+        :keyword field: Field's identifier.
+        :paramtype field: str
         :keyword parent: The parent annotation's ID.
         :paramtype parent: int
         :keyword validation_results: The validation results created, changed or deleted as a result of
@@ -625,6 +643,7 @@ class AnnotationUpdate(msrest.serialization.Model):
         self.parsed = parsed
         self.is_client_verified = is_client_verified
         self.data_point = data_point
+        self.field = field
         self.parent = parent
         self.validation_results = validation_results
 
@@ -666,8 +685,10 @@ class AnnotationWithValidationResults(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required. Data point's identifier.
+    :ivar data_point: Data point's identifier.
     :vartype data_point: str
+    :ivar field: Field's identifier.
+    :vartype field: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
      "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
      "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -692,7 +713,6 @@ class AnnotationWithValidationResults(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -711,6 +731,7 @@ class AnnotationWithValidationResults(Annotation):
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
+        "field": {"key": "field", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
         "parent": {"key": "parent", "type": "int"},
         "validation_results": {"key": "validationResults", "type": "[ValidationResult]"},
@@ -731,9 +752,10 @@ class AnnotationWithValidationResults(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: Union[str, "_models.AnnotationContentType"],
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        field: Optional[str] = None,
         parent: Optional[int] = None,
         validation_results: Optional[List["_models.ValidationResult"]] = None,
         **kwargs,
@@ -772,8 +794,10 @@ class AnnotationWithValidationResults(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required. Data point's identifier.
+        :keyword data_point: Data point's identifier.
         :paramtype data_point: str
+        :keyword field: Field's identifier.
+        :paramtype field: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
          "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
          "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -799,6 +823,7 @@ class AnnotationWithValidationResults(Annotation):
             is_client_verified=is_client_verified,
             is_auto_verified=is_auto_verified,
             data_point=data_point,
+            field=field,
             content_type=content_type,
             parent=parent,
             **kwargs,
@@ -2309,8 +2334,10 @@ class CurrencyCodeAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required. Data point's identifier.
+    :ivar data_point: Data point's identifier.
     :vartype data_point: str
+    :ivar field: Field's identifier.
+    :vartype field: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
      "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
      "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -2335,7 +2362,6 @@ class CurrencyCodeAnnotation(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -2354,6 +2380,7 @@ class CurrencyCodeAnnotation(Annotation):
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
+        "field": {"key": "field", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
         "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "DataPointChoice"},
@@ -2374,9 +2401,10 @@ class CurrencyCodeAnnotation(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: Union[str, "_models.AnnotationContentType"],
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        field: Optional[str] = None,
         parent: Optional[int] = None,
         parsed: Optional["_models.DataPointChoice"] = None,
         **kwargs,
@@ -2415,8 +2443,10 @@ class CurrencyCodeAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required. Data point's identifier.
+        :keyword data_point: Data point's identifier.
         :paramtype data_point: str
+        :keyword field: Field's identifier.
+        :paramtype field: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
          "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
          "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -2442,6 +2472,7 @@ class CurrencyCodeAnnotation(Annotation):
             is_client_verified=is_client_verified,
             is_auto_verified=is_auto_verified,
             data_point=data_point,
+            field=field,
             content_type=content_type,
             parent=parent,
             **kwargs,
@@ -3813,8 +3844,10 @@ class DateAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required. Data point's identifier.
+    :ivar data_point: Data point's identifier.
     :vartype data_point: str
+    :ivar field: Field's identifier.
+    :vartype field: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
      "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
      "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -3839,7 +3872,6 @@ class DateAnnotation(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -3858,6 +3890,7 @@ class DateAnnotation(Annotation):
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
+        "field": {"key": "field", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
         "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "date"},
@@ -3878,9 +3911,10 @@ class DateAnnotation(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: Union[str, "_models.AnnotationContentType"],
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        field: Optional[str] = None,
         parent: Optional[int] = None,
         parsed: Optional[datetime.date] = None,
         **kwargs,
@@ -3919,8 +3953,10 @@ class DateAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required. Data point's identifier.
+        :keyword data_point: Data point's identifier.
         :paramtype data_point: str
+        :keyword field: Field's identifier.
+        :paramtype field: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
          "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
          "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -3946,6 +3982,7 @@ class DateAnnotation(Annotation):
             is_client_verified=is_client_verified,
             is_auto_verified=is_auto_verified,
             data_point=data_point,
+            field=field,
             content_type=content_type,
             parent=parent,
             **kwargs,
@@ -4123,8 +4160,10 @@ class DateRangeAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required. Data point's identifier.
+    :ivar data_point: Data point's identifier.
     :vartype data_point: str
+    :ivar field: Field's identifier.
+    :vartype field: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
      "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
      "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -4149,7 +4188,6 @@ class DateRangeAnnotation(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -4168,6 +4206,7 @@ class DateRangeAnnotation(Annotation):
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
+        "field": {"key": "field", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
         "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "DateRangeAnnotationParsed"},
@@ -4188,9 +4227,10 @@ class DateRangeAnnotation(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: Union[str, "_models.AnnotationContentType"],
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        field: Optional[str] = None,
         parent: Optional[int] = None,
         parsed: Optional["_models.DateRangeAnnotationParsed"] = None,
         **kwargs,
@@ -4229,8 +4269,10 @@ class DateRangeAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required. Data point's identifier.
+        :keyword data_point: Data point's identifier.
         :paramtype data_point: str
+        :keyword field: Field's identifier.
+        :paramtype field: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
          "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
          "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -4256,6 +4298,7 @@ class DateRangeAnnotation(Annotation):
             is_client_verified=is_client_verified,
             is_auto_verified=is_auto_verified,
             data_point=data_point,
+            field=field,
             content_type=content_type,
             parent=parent,
             **kwargs,
@@ -5835,8 +5878,10 @@ class ExpectedRemunerationAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required. Data point's identifier.
+    :ivar data_point: Data point's identifier.
     :vartype data_point: str
+    :ivar field: Field's identifier.
+    :vartype field: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
      "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
      "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -5861,7 +5906,6 @@ class ExpectedRemunerationAnnotation(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -5880,6 +5924,7 @@ class ExpectedRemunerationAnnotation(Annotation):
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
+        "field": {"key": "field", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
         "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "ExpectedRemunerationAnnotationParsed"},
@@ -5900,9 +5945,10 @@ class ExpectedRemunerationAnnotation(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: Union[str, "_models.AnnotationContentType"],
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        field: Optional[str] = None,
         parent: Optional[int] = None,
         parsed: Optional["_models.ExpectedRemunerationAnnotationParsed"] = None,
         **kwargs,
@@ -5941,8 +5987,10 @@ class ExpectedRemunerationAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required. Data point's identifier.
+        :keyword data_point: Data point's identifier.
         :paramtype data_point: str
+        :keyword field: Field's identifier.
+        :paramtype field: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
          "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
          "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -5968,6 +6016,7 @@ class ExpectedRemunerationAnnotation(Annotation):
             is_client_verified=is_client_verified,
             is_auto_verified=is_auto_verified,
             data_point=data_point,
+            field=field,
             content_type=content_type,
             parent=parent,
             **kwargs,
@@ -7038,8 +7087,10 @@ class FloatAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required. Data point's identifier.
+    :ivar data_point: Data point's identifier.
     :vartype data_point: str
+    :ivar field: Field's identifier.
+    :vartype field: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
      "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
      "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -7064,7 +7115,6 @@ class FloatAnnotation(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -7083,6 +7133,7 @@ class FloatAnnotation(Annotation):
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
+        "field": {"key": "field", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
         "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "float"},
@@ -7103,9 +7154,10 @@ class FloatAnnotation(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: Union[str, "_models.AnnotationContentType"],
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        field: Optional[str] = None,
         parent: Optional[int] = None,
         parsed: Optional[float] = None,
         **kwargs,
@@ -7144,8 +7196,10 @@ class FloatAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required. Data point's identifier.
+        :keyword data_point: Data point's identifier.
         :paramtype data_point: str
+        :keyword field: Field's identifier.
+        :paramtype field: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
          "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
          "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -7171,6 +7225,7 @@ class FloatAnnotation(Annotation):
             is_client_verified=is_client_verified,
             is_auto_verified=is_auto_verified,
             data_point=data_point,
+            field=field,
             content_type=content_type,
             parent=parent,
             **kwargs,
@@ -10080,8 +10135,10 @@ class JobTitleAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required. Data point's identifier.
+    :ivar data_point: Data point's identifier.
     :vartype data_point: str
+    :ivar field: Field's identifier.
+    :vartype field: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
      "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
      "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -10106,7 +10163,6 @@ class JobTitleAnnotation(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -10125,6 +10181,7 @@ class JobTitleAnnotation(Annotation):
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
+        "field": {"key": "field", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
         "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "JobTitleAnnotationParsed"},
@@ -10145,9 +10202,10 @@ class JobTitleAnnotation(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: Union[str, "_models.AnnotationContentType"],
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        field: Optional[str] = None,
         parent: Optional[int] = None,
         parsed: Optional["_models.JobTitleAnnotationParsed"] = None,
         **kwargs,
@@ -10186,8 +10244,10 @@ class JobTitleAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required. Data point's identifier.
+        :keyword data_point: Data point's identifier.
         :paramtype data_point: str
+        :keyword field: Field's identifier.
+        :paramtype field: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
          "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
          "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -10213,6 +10273,7 @@ class JobTitleAnnotation(Annotation):
             is_client_verified=is_client_verified,
             is_auto_verified=is_auto_verified,
             data_point=data_point,
+            field=field,
             content_type=content_type,
             parent=parent,
             **kwargs,
@@ -10714,8 +10775,10 @@ class LanguageAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required. Data point's identifier.
+    :ivar data_point: Data point's identifier.
     :vartype data_point: str
+    :ivar field: Field's identifier.
+    :vartype field: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
      "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
      "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -10740,7 +10803,6 @@ class LanguageAnnotation(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
         "parsed": {"readonly": True},
     }
@@ -10760,6 +10822,7 @@ class LanguageAnnotation(Annotation):
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
+        "field": {"key": "field", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
         "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
@@ -10780,9 +10843,10 @@ class LanguageAnnotation(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: Union[str, "_models.AnnotationContentType"],
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        field: Optional[str] = None,
         parent: Optional[int] = None,
         **kwargs,
     ):
@@ -10820,8 +10884,10 @@ class LanguageAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required. Data point's identifier.
+        :keyword data_point: Data point's identifier.
         :paramtype data_point: str
+        :keyword field: Field's identifier.
+        :paramtype field: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
          "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
          "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -10845,6 +10911,7 @@ class LanguageAnnotation(Annotation):
             is_client_verified=is_client_verified,
             is_auto_verified=is_auto_verified,
             data_point=data_point,
+            field=field,
             content_type=content_type,
             parent=parent,
             **kwargs,
@@ -11060,8 +11127,10 @@ class LocationAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required. Data point's identifier.
+    :ivar data_point: Data point's identifier.
     :vartype data_point: str
+    :ivar field: Field's identifier.
+    :vartype field: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
      "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
      "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -11086,7 +11155,6 @@ class LocationAnnotation(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -11105,6 +11173,7 @@ class LocationAnnotation(Annotation):
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
+        "field": {"key": "field", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
         "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "Location"},
@@ -11125,9 +11194,10 @@ class LocationAnnotation(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: Union[str, "_models.AnnotationContentType"],
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        field: Optional[str] = None,
         parent: Optional[int] = None,
         parsed: Optional["_models.Location"] = None,
         **kwargs,
@@ -11166,8 +11236,10 @@ class LocationAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required. Data point's identifier.
+        :keyword data_point: Data point's identifier.
         :paramtype data_point: str
+        :keyword field: Field's identifier.
+        :paramtype field: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
          "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
          "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -11193,6 +11265,7 @@ class LocationAnnotation(Annotation):
             is_client_verified=is_client_verified,
             is_auto_verified=is_auto_verified,
             data_point=data_point,
+            field=field,
             content_type=content_type,
             parent=parent,
             **kwargs,
@@ -13780,8 +13853,10 @@ class PhoneNumberAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required. Data point's identifier.
+    :ivar data_point: Data point's identifier.
     :vartype data_point: str
+    :ivar field: Field's identifier.
+    :vartype field: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
      "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
      "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -13806,7 +13881,6 @@ class PhoneNumberAnnotation(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -13825,6 +13899,7 @@ class PhoneNumberAnnotation(Annotation):
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
+        "field": {"key": "field", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
         "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "PhoneNumberAnnotationParsed"},
@@ -13845,9 +13920,10 @@ class PhoneNumberAnnotation(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: Union[str, "_models.AnnotationContentType"],
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        field: Optional[str] = None,
         parent: Optional[int] = None,
         parsed: Optional["_models.PhoneNumberAnnotationParsed"] = None,
         **kwargs,
@@ -13886,8 +13962,10 @@ class PhoneNumberAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required. Data point's identifier.
+        :keyword data_point: Data point's identifier.
         :paramtype data_point: str
+        :keyword field: Field's identifier.
+        :paramtype field: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
          "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
          "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -13913,6 +13991,7 @@ class PhoneNumberAnnotation(Annotation):
             is_client_verified=is_client_verified,
             is_auto_verified=is_auto_verified,
             data_point=data_point,
+            field=field,
             content_type=content_type,
             parent=parent,
             **kwargs,
@@ -17574,8 +17653,10 @@ class RowAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required. Data point's identifier.
+    :ivar data_point: Data point's identifier.
     :vartype data_point: str
+    :ivar field: Field's identifier.
+    :vartype field: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
      "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
      "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -17600,7 +17681,6 @@ class RowAnnotation(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -17619,6 +17699,7 @@ class RowAnnotation(Annotation):
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
+        "field": {"key": "field", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
         "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "RowAnnotationParsed"},
@@ -17639,9 +17720,10 @@ class RowAnnotation(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: Union[str, "_models.AnnotationContentType"],
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        field: Optional[str] = None,
         parent: Optional[int] = None,
         parsed: Optional["_models.RowAnnotationParsed"] = None,
         **kwargs,
@@ -17680,8 +17762,10 @@ class RowAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required. Data point's identifier.
+        :keyword data_point: Data point's identifier.
         :paramtype data_point: str
+        :keyword field: Field's identifier.
+        :paramtype field: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
          "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
          "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -17707,6 +17791,7 @@ class RowAnnotation(Annotation):
             is_client_verified=is_client_verified,
             is_auto_verified=is_auto_verified,
             data_point=data_point,
+            field=field,
             content_type=content_type,
             parent=parent,
             **kwargs,
@@ -17853,8 +17938,10 @@ class RowBetaAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required. Data point's identifier.
+    :ivar data_point: Data point's identifier.
     :vartype data_point: str
+    :ivar field: Field's identifier.
+    :vartype field: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
      "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
      "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -17879,7 +17966,6 @@ class RowBetaAnnotation(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -17898,6 +17984,7 @@ class RowBetaAnnotation(Annotation):
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
+        "field": {"key": "field", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
         "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "RowBetaAnnotationParsed"},
@@ -17918,9 +18005,10 @@ class RowBetaAnnotation(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: Union[str, "_models.AnnotationContentType"],
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        field: Optional[str] = None,
         parent: Optional[int] = None,
         parsed: Optional["_models.RowBetaAnnotationParsed"] = None,
         **kwargs,
@@ -17959,8 +18047,10 @@ class RowBetaAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required. Data point's identifier.
+        :keyword data_point: Data point's identifier.
         :paramtype data_point: str
+        :keyword field: Field's identifier.
+        :paramtype field: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
          "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
          "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -17986,6 +18076,7 @@ class RowBetaAnnotation(Annotation):
             is_client_verified=is_client_verified,
             is_auto_verified=is_auto_verified,
             data_point=data_point,
+            field=field,
             content_type=content_type,
             parent=parent,
             **kwargs,
@@ -18207,8 +18298,10 @@ class SkillAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required. Data point's identifier.
+    :ivar data_point: Data point's identifier.
     :vartype data_point: str
+    :ivar field: Field's identifier.
+    :vartype field: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
      "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
      "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -18233,7 +18326,6 @@ class SkillAnnotation(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
         "parsed": {"readonly": True},
     }
@@ -18253,6 +18345,7 @@ class SkillAnnotation(Annotation):
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
+        "field": {"key": "field", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
         "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
@@ -18273,9 +18366,10 @@ class SkillAnnotation(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: Union[str, "_models.AnnotationContentType"],
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        field: Optional[str] = None,
         parent: Optional[int] = None,
         **kwargs,
     ):
@@ -18313,8 +18407,10 @@ class SkillAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required. Data point's identifier.
+        :keyword data_point: Data point's identifier.
         :paramtype data_point: str
+        :keyword field: Field's identifier.
+        :paramtype field: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
          "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
          "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -18338,6 +18434,7 @@ class SkillAnnotation(Annotation):
             is_client_verified=is_client_verified,
             is_auto_verified=is_auto_verified,
             data_point=data_point,
+            field=field,
             content_type=content_type,
             parent=parent,
             **kwargs,
@@ -18553,8 +18650,10 @@ class TableAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required. Data point's identifier.
+    :ivar data_point: Data point's identifier.
     :vartype data_point: str
+    :ivar field: Field's identifier.
+    :vartype field: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
      "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
      "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -18579,7 +18678,6 @@ class TableAnnotation(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -18598,6 +18696,7 @@ class TableAnnotation(Annotation):
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
+        "field": {"key": "field", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
         "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "TableAnnotationParsed"},
@@ -18618,9 +18717,10 @@ class TableAnnotation(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: Union[str, "_models.AnnotationContentType"],
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        field: Optional[str] = None,
         parent: Optional[int] = None,
         parsed: Optional["_models.TableAnnotationParsed"] = None,
         **kwargs,
@@ -18659,8 +18759,10 @@ class TableAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required. Data point's identifier.
+        :keyword data_point: Data point's identifier.
         :paramtype data_point: str
+        :keyword field: Field's identifier.
+        :paramtype field: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
          "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
          "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -18686,6 +18788,7 @@ class TableAnnotation(Annotation):
             is_client_verified=is_client_verified,
             is_auto_verified=is_auto_verified,
             data_point=data_point,
+            field=field,
             content_type=content_type,
             parent=parent,
             **kwargs,
@@ -18750,8 +18853,10 @@ class TableBetaAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required. Data point's identifier.
+    :ivar data_point: Data point's identifier.
     :vartype data_point: str
+    :ivar field: Field's identifier.
+    :vartype field: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
      "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
      "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -18776,7 +18881,6 @@ class TableBetaAnnotation(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -18795,6 +18899,7 @@ class TableBetaAnnotation(Annotation):
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
+        "field": {"key": "field", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
         "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "TableBetaAnnotationParsed"},
@@ -18815,9 +18920,10 @@ class TableBetaAnnotation(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: Union[str, "_models.AnnotationContentType"],
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        field: Optional[str] = None,
         parent: Optional[int] = None,
         parsed: Optional["_models.TableBetaAnnotationParsed"] = None,
         **kwargs,
@@ -18856,8 +18962,10 @@ class TableBetaAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required. Data point's identifier.
+        :keyword data_point: Data point's identifier.
         :paramtype data_point: str
+        :keyword field: Field's identifier.
+        :paramtype field: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
          "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
          "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -18883,6 +18991,7 @@ class TableBetaAnnotation(Annotation):
             is_client_verified=is_client_verified,
             is_auto_verified=is_auto_verified,
             data_point=data_point,
+            field=field,
             content_type=content_type,
             parent=parent,
             **kwargs,
@@ -19053,8 +19162,10 @@ class TextAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required. Data point's identifier.
+    :ivar data_point: Data point's identifier.
     :vartype data_point: str
+    :ivar field: Field's identifier.
+    :vartype field: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
      "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
      "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -19079,7 +19190,6 @@ class TextAnnotation(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -19098,6 +19208,7 @@ class TextAnnotation(Annotation):
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
+        "field": {"key": "field", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
         "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "str"},
@@ -19118,9 +19229,10 @@ class TextAnnotation(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: Union[str, "_models.AnnotationContentType"],
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        field: Optional[str] = None,
         parent: Optional[int] = None,
         parsed: Optional[str] = None,
         **kwargs,
@@ -19159,8 +19271,10 @@ class TextAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required. Data point's identifier.
+        :keyword data_point: Data point's identifier.
         :paramtype data_point: str
+        :keyword field: Field's identifier.
+        :paramtype field: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
          "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
          "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -19186,6 +19300,7 @@ class TextAnnotation(Annotation):
             is_client_verified=is_client_verified,
             is_auto_verified=is_auto_verified,
             data_point=data_point,
+            field=field,
             content_type=content_type,
             parent=parent,
             **kwargs,
@@ -19550,8 +19665,10 @@ class UrlAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required. Data point's identifier.
+    :ivar data_point: Data point's identifier.
     :vartype data_point: str
+    :ivar field: Field's identifier.
+    :vartype field: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
      "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
      "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -19576,7 +19693,6 @@ class UrlAnnotation(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -19595,6 +19711,7 @@ class UrlAnnotation(Annotation):
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
+        "field": {"key": "field", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
         "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "UrlAnnotationParsed"},
@@ -19615,9 +19732,10 @@ class UrlAnnotation(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: Union[str, "_models.AnnotationContentType"],
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        field: Optional[str] = None,
         parent: Optional[int] = None,
         parsed: Optional["_models.UrlAnnotationParsed"] = None,
         **kwargs,
@@ -19656,8 +19774,10 @@ class UrlAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required. Data point's identifier.
+        :keyword data_point: Data point's identifier.
         :paramtype data_point: str
+        :keyword field: Field's identifier.
+        :paramtype field: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
          "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
          "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -19683,6 +19803,7 @@ class UrlAnnotation(Annotation):
             is_client_verified=is_client_verified,
             is_auto_verified=is_auto_verified,
             data_point=data_point,
+            field=field,
             content_type=content_type,
             parent=parent,
             **kwargs,
@@ -20771,8 +20892,10 @@ class YearsExperienceAnnotation(Annotation):
     :vartype is_client_verified: bool
     :ivar is_auto_verified: Required. Indicates whether the data has been auto-validated.
     :vartype is_auto_verified: bool
-    :ivar data_point: Required. Data point's identifier.
+    :ivar data_point: Data point's identifier.
     :vartype data_point: str
+    :ivar field: Field's identifier.
+    :vartype field: str
     :ivar content_type: Required. The different data types of annotations. Known values are:
      "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
      "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -20797,7 +20920,6 @@ class YearsExperienceAnnotation(Annotation):
         "is_verified": {"required": True},
         "is_client_verified": {"required": True},
         "is_auto_verified": {"required": True},
-        "data_point": {"required": True},
         "content_type": {"required": True},
     }
 
@@ -20816,6 +20938,7 @@ class YearsExperienceAnnotation(Annotation):
         "is_client_verified": {"key": "isClientVerified", "type": "bool"},
         "is_auto_verified": {"key": "isAutoVerified", "type": "bool"},
         "data_point": {"key": "dataPoint", "type": "str"},
+        "field": {"key": "field", "type": "str"},
         "content_type": {"key": "contentType", "type": "str"},
         "parent": {"key": "parent", "type": "int"},
         "parsed": {"key": "parsed", "type": "YearsExperienceAnnotationParsed"},
@@ -20836,9 +20959,10 @@ class YearsExperienceAnnotation(Annotation):
         is_verified: bool,
         is_client_verified: bool,
         is_auto_verified: bool,
-        data_point: str,
         content_type: Union[str, "_models.AnnotationContentType"],
         additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        field: Optional[str] = None,
         parent: Optional[int] = None,
         parsed: Optional["_models.YearsExperienceAnnotationParsed"] = None,
         **kwargs,
@@ -20877,8 +21001,10 @@ class YearsExperienceAnnotation(Annotation):
         :paramtype is_client_verified: bool
         :keyword is_auto_verified: Required. Indicates whether the data has been auto-validated.
         :paramtype is_auto_verified: bool
-        :keyword data_point: Required. Data point's identifier.
+        :keyword data_point: Data point's identifier.
         :paramtype data_point: str
+        :keyword field: Field's identifier.
+        :paramtype field: str
         :keyword content_type: Required. The different data types of annotations. Known values are:
          "text", "integer", "float", "decimal", "date", "datetime", "daterange", "boolean", "enum",
          "location", "phonenumber", "json", "table", "expectedremuneration", "jobtitle", "language",
@@ -20904,6 +21030,7 @@ class YearsExperienceAnnotation(Annotation):
             is_client_verified=is_client_verified,
             is_auto_verified=is_auto_verified,
             data_point=data_point,
+            field=field,
             content_type=content_type,
             parent=parent,
             **kwargs,

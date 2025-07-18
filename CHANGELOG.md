@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.28.5] - 2025-07-18
+### Fixed
+- Fix failing to serialize some keys in document meta data
+
 ## [4.28.4] - 2025-07-09
 ### Fixed
 - Fix get_document failed to serialize v2 document types
