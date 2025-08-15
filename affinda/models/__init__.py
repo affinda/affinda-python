@@ -79,6 +79,7 @@ try:
     from ._models_py3 import DateRangeValue
     from ._models_py3 import Document
     from ._models_py3 import DocumentCreate
+    from ._models_py3 import DocumentCreateFromData
     from ._models_py3 import DocumentEditRequest
     from ._models_py3 import DocumentError
     from ._models_py3 import DocumentMeta
@@ -435,6 +436,7 @@ except (SyntaxError, ImportError):
     from ._models import DateRangeValue  # type: ignore
     from ._models import Document  # type: ignore
     from ._models import DocumentCreate  # type: ignore
+    from ._models import DocumentCreateFromData  # type: ignore
     from ._models import DocumentEditRequest  # type: ignore
     from ._models import DocumentError  # type: ignore
     from ._models import DocumentMeta  # type: ignore
@@ -713,7 +715,7 @@ from ._affinda_api_enums import (
     DocumentSplitterType,
     DocumentState,
     EducationLevel,
-    Enum22,
+    Enum17,
     IndexDocType,
     InvitationResponseStatus,
     InvitationStatus,
@@ -796,6 +798,7 @@ __all__ = [
     "DateRangeValue",
     "Document",
     "DocumentCreate",
+    "DocumentCreateFromData",
     "DocumentEditRequest",
     "DocumentError",
     "DocumentMeta",
@@ -1046,7 +1049,7 @@ __all__ = [
     "DocumentSplitterType",
     "DocumentState",
     "EducationLevel",
-    "Enum22",
+    "Enum17",
     "IndexDocType",
     "InvitationResponseStatus",
     "InvitationStatus",

@@ -2815,8 +2815,6 @@ DocumentCreate.
 :vartype file: IO
 :ivar url: URL to download the document.
 :vartype url: str
-:ivar data: Create resume or job description directly from data.
-:vartype data: any
 :ivar collection: Uniquely identify a collection.
 :vartype collection: str
 :ivar document_type: The document type's identifier.  Provide if you already know the document
@@ -2879,7 +2877,6 @@ def __init__(**kwargs)
 - `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
 PNG, JPG, TIFF, ODT, XLS, XLSX.
 - `url`: URL to download the document.
-- `data`: Create resume or job description directly from data.
 - `collection`: Uniquely identify a collection.
 - `document_type`: The document type's identifier.  Provide if you already know the
 document type.
@@ -2911,6 +2908,120 @@ extracted using OCR. If false, the document will be treated like a PDF, and the 
 extracted using the parser. If not set, we will determine whether to use OCR based on whether
 words are found in the document.
 - `warning_messages`: 
+
+<a id="models._models.DocumentCreateFromData"></a>
+
+## DocumentCreateFromData Objects
+
+```python
+class DocumentCreateFromData(DocumentCreate)
+```
+
+DocumentCreateFromData.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
+ JPG, TIFF, ODT, XLS, XLSX.
+:vartype file: IO
+:ivar url: URL to download the document.
+:vartype url: str
+:ivar collection: Uniquely identify a collection.
+:vartype collection: str
+:ivar document_type: The document type's identifier.  Provide if you already know the document
+ type.
+:vartype document_type: str
+:ivar workspace: Uniquely identify a workspace.
+:vartype workspace: str
+:ivar wait: If "true" (default), will return a response only after processing has completed. If
+ "false", will return an empty data object which can be polled at the GET endpoint until
+ processing is complete.
+:vartype wait: bool
+:ivar identifier: Deprecated in favor of ``customIdentifier``.
+:vartype identifier: str
+:ivar custom_identifier: Specify a custom identifier for the document if you need one, not
+ required to be unique.
+:vartype custom_identifier: str
+:ivar file_name: Optional filename of the file.
+:vartype file_name: str
+:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+ deleted.  Defaults to no expiry.
+:vartype expiry_time: ~datetime.datetime
+:ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+:vartype language: str
+:ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
+ of an existing document, no credits will be consumed. If "false", will parse the document
+ normally whether its a duplicate or not. If not provided, will fallback to the workspace
+ settings.
+:vartype reject_duplicates: bool
+:ivar region_bias: A JSON representation of the RegionBias object.
+:vartype region_bias: str
+:ivar low_priority: Explicitly mark this document as low priority.
+:vartype low_priority: bool
+:ivar compact: If true, the returned parse result (assuming ``wait`` is also true) will be a
+ compact version of the full result.
+:vartype compact: bool
+:ivar delete_after_parse: If true, no data will be stored after parsing. Only compatible with
+ requests where wait: True.
+:vartype delete_after_parse: bool
+:ivar enable_validation_tool: If true, the document will be viewable in the Affinda Validation
+ Tool. Set to False to optimize parsing speed.
+:vartype enable_validation_tool: bool
+:ivar use_ocr: If true, the document will be treated like an image, and the text will be
+ extracted using OCR. If false, the document will be treated like a PDF, and the text will be
+ extracted using the parser. If not set, we will determine whether to use OCR based on whether
+ words are found in the document.
+:vartype use_ocr: bool
+:ivar warning_messages:
+:vartype warning_messages: list[~affinda.models.DocumentWarning]
+:ivar data: Required. Create resume or job description directly from data.
+:vartype data: any
+
+<a id="models._models.DocumentCreateFromData.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+PNG, JPG, TIFF, ODT, XLS, XLSX.
+- `url`: URL to download the document.
+- `collection`: Uniquely identify a collection.
+- `document_type`: The document type's identifier.  Provide if you already know the
+document type.
+- `workspace`: Uniquely identify a workspace.
+- `wait`: If "true" (default), will return a response only after processing has completed.
+If "false", will return an empty data object which can be polled at the GET endpoint until
+processing is complete.
+- `identifier`: Deprecated in favor of ``customIdentifier``.
+- `custom_identifier`: Specify a custom identifier for the document if you need one, not
+required to be unique.
+- `file_name`: Optional filename of the file.
+- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
+deleted.  Defaults to no expiry.
+- `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+- `reject_duplicates`: If "true", parsing will fail when the uploaded document is
+duplicate of an existing document, no credits will be consumed. If "false", will parse the
+document normally whether its a duplicate or not. If not provided, will fallback to the
+workspace settings.
+- `region_bias`: A JSON representation of the RegionBias object.
+- `low_priority`: Explicitly mark this document as low priority.
+- `compact`: If true, the returned parse result (assuming ``wait`` is also true) will be a
+compact version of the full result.
+- `delete_after_parse`: If true, no data will be stored after parsing. Only compatible
+with requests where wait: True.
+- `enable_validation_tool`: If true, the document will be viewable in the Affinda
+Validation Tool. Set to False to optimize parsing speed.
+- `use_ocr`: If true, the document will be treated like an image, and the text will be
+extracted using OCR. If false, the document will be treated like a PDF, and the text will be
+extracted using the parser. If not set, we will determine whether to use OCR based on whether
+words are found in the document.
+- `warning_messages`: 
+- `data`: Required. Create resume or job description directly from data.
 
 <a id="models._models.DocumentEditRequest"></a>
 

@@ -91,7 +91,7 @@ class EducationLevel(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     DOCTORAL = "doctoral"
 
 
-class Enum22(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class Enum17(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     RESUMES = "resumes"
     JOB_DESCRIPTIONS = "job_descriptions"
 

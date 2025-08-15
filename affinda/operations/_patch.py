@@ -22,6 +22,7 @@ from azure.core.pipeline.transport import HttpResponse
 from azure.core.rest import HttpRequest
 from pydantic_core import ValidationError
 
+from .. import models as _models  # noqa: F401
 from .._vendor import _convert_request  # noqa: TID252
 from ._affinda_api_operations import (
     AffindaAPIOperationsMixin as AffindaAPIOperationsMixinGenerated,
@@ -32,8 +33,6 @@ if TYPE_CHECKING:
     import datetime  # noqa: F401
 
     from pydantic import BaseModel  # noqa: F401
-
-    from .. import models as _models  # noqa: F401
 
     T = TypeVar("T")
     ClsType = Optional[

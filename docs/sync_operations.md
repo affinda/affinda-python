@@ -29,6 +29,273 @@ Affinda API client for Python.
 class AffindaAPIOperationsMixin(object)
 ```
 
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_documents"></a>
+
+#### get\_all\_documents
+
+```python
+def get_all_documents(offset=None,
+                      limit=None,
+                      workspace=None,
+                      collection=None,
+                      state=None,
+                      tags=None,
+                      created_dt=None,
+                      search=None,
+                      ordering=None,
+                      include_data=None,
+                      exclude=None,
+                      in_review=None,
+                      failed=None,
+                      ready=None,
+                      validatable=None,
+                      has_challenges=None,
+                      custom_identifier=None,
+                      compact=None,
+                      count=None,
+                      snake_case=None,
+                      **kwargs)
+```
+
+Get list of all documents.
+
+Returns all the document summaries for that user, limited to 300 per page.
+
+**Arguments**:
+
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `limit` (`int`): The numbers of results to return. Default value is None.
+- `workspace` (`str`): Filter by workspace. Default value is None.
+- `collection` (`str`): Filter by collection. Default value is None.
+- `state` (`str or ~affinda.models.DocumentState`): Filter by the document's state. Default value is None.
+- `tags` (`list[int]`): Filter by tag's IDs. Default value is None.
+- `created_dt` (`str or ~affinda.models.DateRange`): Filter by created datetime. Default value is None.
+- `search` (`str`): Partial, case-insensitive match with file name or tag name. Default value is
+None.
+- `ordering` (`list[str]`): Sort the result set. A "-" at the beginning denotes DESC sort, e.g.
+-created_dt. Sort by multiple fields is supported. Supported values include: 'file_name',
+'extractor', 'created_dt', 'validated_dt', 'archived_dt' and 'parsed__:code:`<dataPointSlug>`'.
+Default value is None.
+- `include_data` (`bool`): By default, this endpoint returns only the meta data of the documents. Set
+this to ``true`` will return a summary of the data that was parsed. If you want to retrieve the
+full set of data for a document, use the ``GET /documents/{identifier}`` endpoint. Default
+value is None.
+- `exclude` (`list[str]`): Exclude some documents from the result. Default value is None.
+- `in_review` (`bool`): Exclude documents that are currently being reviewed. Default value is None.
+- `failed` (`bool`): Filter by failed status. Default value is None.
+- `ready` (`bool`): Filter by ready status. Default value is None.
+- `validatable` (`bool`): Filter for validatable documents. Default value is None.
+- `has_challenges` (`bool`): Filter for documents with challenges. Default value is None.
+- `custom_identifier` (`str`): Filter for documents with this custom identifier. Default value is
+None.
+- `compact` (`bool`): If "true", the response is compacted to annotations' parsed data. Annotations'
+meta data are excluded. Default is "false".
+- `count` (`bool`): If "false", the documents count is not computed, thus saving time for large
+collections. Default is "true".
+- `snake_case` (`bool`): Whether to return the response in snake_case instead of camelCase. Default
+is false.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema`: PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema, or the result of
+cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_document"></a>
+
+#### create\_document
+
+```python
+def create_document(snake_case=None,
+                    file=None,
+                    url=None,
+                    collection=None,
+                    document_type=None,
+                    workspace=None,
+                    wait=True,
+                    identifier=None,
+                    custom_identifier=None,
+                    file_name=None,
+                    expiry_time=None,
+                    language=None,
+                    reject_duplicates=None,
+                    region_bias=None,
+                    low_priority=None,
+                    compact=None,
+                    delete_after_parse=None,
+                    enable_validation_tool=None,
+                    use_ocr=None,
+                    warning_messages=None,
+                    **kwargs)
+```
+
+Upload a document for parsing.
+
+Uploads a document for parsing via file upload or URL.
+When successful, returns an ``identifier`` in the response for subsequent use with the
+`/documents/{identifier} <#get-/v3/documents/-identifier->`_ endpoint to check processing
+status and retrieve results.:code:`<br/>`.
+
+**Arguments**:
+
+- `snake_case` (`bool`): Whether to return the response in snake_case instead of camelCase. Default
+is false.
+- `file` (`IO`): Default value is None.
+- `url` (`str`): URL to download the document. Default value is None.
+- `collection` (`str`): Default value is None.
+- `document_type` (`str`): The document type's identifier.  Provide if you already know the document
+type. Default value is None.
+- `workspace` (`str`): Default value is None.
+- `wait` (`bool`): Default value is True.
+- `identifier` (`str`): Deprecated in favor of ``customIdentifier``. Default value is None.
+- `custom_identifier` (`str`): Specify a custom identifier for the document if you need one, not
+required to be unique. Default value is None.
+- `file_name` (`str`): Default value is None.
+- `expiry_time` (`~datetime.datetime`): Default value is None.
+- `language` (`str`): Default value is None.
+- `reject_duplicates` (`bool`): Default value is None.
+- `region_bias` (`str`): A JSON representation of the RegionBias object. Default value is None.
+- `low_priority` (`bool`): Explicitly mark this document as low priority. Default value is None.
+- `compact` (`bool`): If true, the returned parse result (assuming ``wait`` is also true) will be a
+compact version of the full result. Default value is None.
+- `delete_after_parse` (`bool`): If true, no data will be stored after parsing. Only compatible with
+requests where wait: True. Default value is None.
+- `enable_validation_tool` (`bool`): If true, the document will be viewable in the Affinda Validation
+Tool. Set to False to optimize parsing speed. Default value is None.
+- `use_ocr` (`bool`): If true, the document will be treated like an image, and the text will be
+extracted using OCR. If false, the document will be treated like a PDF, and the text will be
+extracted using the parser. If not set, we will determine whether to use OCR based on whether
+words are found in the document. Default value is None.
+- `warning_messages` (`list[~affinda.models.DocumentWarning]`): Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Document`: Document, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_document"></a>
+
+#### get\_document
+
+```python
+def get_document(identifier,
+                 format=None,
+                 compact=None,
+                 snake_case=None,
+                 **kwargs)
+```
+
+Get specific document.
+
+Return a specific document.
+
+**Arguments**:
+
+- `identifier` (`str`): Document's identifier.
+- `format` (`str or ~affinda.models.DocumentFormat`): Specify which format you want the response to be. Default is "json".
+- `compact` (`bool`): If "true", the response is compacted to annotations' parsed data. Annotations'
+meta data are excluded. Default is "false".
+- `snake_case` (`bool`): Whether to return the response in snake_case instead of camelCase. Default
+is false.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Document`: Document, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_document"></a>
+
+#### update\_document
+
+```python
+def update_document(identifier, body, compact=None, snake_case=None, **kwargs)
+```
+
+Update a document.
+
+Update file name, expiry time, or move to another collection, etc.
+
+**Arguments**:
+
+- `identifier` (`str`): Document's identifier.
+- `body` (`~affinda.models.DocumentUpdate`): Document data to update.
+- `compact` (`bool`): If "true", the response is compacted to annotations' parsed data. Annotations'
+meta data are excluded. Default is "false".
+- `snake_case` (`bool`): Whether to return the response in snake_case instead of camelCase. Default
+is false.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Document`: Document, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_document"></a>
+
+#### delete\_document
+
+```python
+def delete_document(identifier, **kwargs)
+```
+
+Delete a document.
+
+Deletes the specified document from the database.
+
+**Arguments**:
+
+- `identifier` (`str`): Document's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_redacted_document"></a>
+
+#### get\_redacted\_document
+
+```python
+def get_redacted_document(identifier, **kwargs)
+```
+
+Get redacted document.
+
+Get the redacted version of a document. The original document is not modified.
+
+**Arguments**:
+
+- `identifier` (`str`): Document identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`IO`: IO, or the result of cls(response)
+
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_workspaces"></a>
 
 #### get\_all\_workspaces
@@ -292,21 +559,22 @@ Remove an user from a workspace.
 
 `None`: None, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_collections"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_document_types"></a>
 
-#### get\_all\_collections
+#### get\_document\_types
 
 ```python
-def get_all_collections(workspace, **kwargs)
+def get_document_types(organization=None, workspace=None, **kwargs)
 ```
 
-Get list of all collections.
+List document types.
 
-Returns your collections.
+Returns a list of document types that the user has access to.
 
 **Arguments**:
 
-- `workspace` (`str`): Filter by workspace.
+- `organization` (`str`): Filter by organization identifier. Default value is None.
+- `workspace` (`str`): Filter by workspace identifier. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -315,23 +583,23 @@ Returns your collections.
 
 **Returns**:
 
-`list[~affinda.models.Collection]`: list of Collection, or the result of cls(response)
+`list[~affinda.models.DocumentType]`: list of DocumentType, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_collection"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_document_type"></a>
 
-#### create\_collection
+#### create\_document\_type
 
 ```python
-def create_collection(body, **kwargs)
+def create_document_type(body, **kwargs)
 ```
 
-Create a collection.
+Create a document type.
 
-Create a collection.
+Create a new document type in the specified organization.
 
 **Arguments**:
 
-- `body` (`~affinda.models.CollectionCreate`): 
+- `body` (`~affinda.models.DocumentTypeCreate`): 
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -340,23 +608,23 @@ Create a collection.
 
 **Returns**:
 
-`~affinda.models.Collection`: Collection, or the result of cls(response)
+`~affinda.models.DocumentType or None`: DocumentType, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_collection"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_document_type"></a>
 
-#### get\_collection
+#### get\_document\_type
 
 ```python
-def get_collection(identifier, **kwargs)
+def get_document_type(identifier, **kwargs)
 ```
 
-Get specific collection.
+Get a document type.
 
-Return a specific collection.
+Returns the details of a specific document type.
 
 **Arguments**:
 
-- `identifier` (`str`): Collection's identifier.
+- `identifier` (`str`): Document type identifier.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -365,24 +633,24 @@ Return a specific collection.
 
 **Returns**:
 
-`~affinda.models.Collection`: Collection, or the result of cls(response)
+`~affinda.models.DocumentType or None`: DocumentType, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_collection"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_document_type"></a>
 
-#### update\_collection
+#### update\_document\_type
 
 ```python
-def update_collection(identifier, body, **kwargs)
+def update_document_type(identifier, body, **kwargs)
 ```
 
-Update a collection.
+Update a document type.
 
-Update data of a collection.
+Update an existing document type.
 
 **Arguments**:
 
-- `identifier` (`str`): Collection's identifier.
-- `body` (`~affinda.models.CollectionUpdate`): Collection data to update.
+- `identifier` (`str`): Document type identifier.
+- `body` (`~affinda.models.DocumentTypeUpdate`): 
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -391,23 +659,23 @@ Update data of a collection.
 
 **Returns**:
 
-`~affinda.models.Collection`: Collection, or the result of cls(response)
+`~affinda.models.DocumentType or None`: DocumentType, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_collection"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_document_type"></a>
 
-#### delete\_collection
+#### delete\_document\_type
 
 ```python
-def delete_collection(identifier, **kwargs)
+def delete_document_type(identifier, **kwargs)
 ```
 
-Delete a collection.
+Delete a document type.
 
-Deletes the specified collection from the database.
+Delete a document type.
 
 **Arguments**:
 
-- `identifier` (`str`): Collection's identifier.
+- `identifier` (`str`): Document type identifier.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -418,22 +686,22 @@ Deletes the specified collection from the database.
 
 `None`: None, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_data_field_for_collection"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.json_schema_from_document_type"></a>
 
-#### create\_data\_field\_for\_collection
+#### json\_schema\_from\_document\_type
 
 ```python
-def create_data_field_for_collection(identifier, body, **kwargs)
+def json_schema_from_document_type(identifier, title=None, **kwargs)
 ```
 
-Create data field for a collection along with a new data point.
+Generate JSON schema from a document type.
 
-Create data field for a collection along with a new data point.
+Generate JSON schema from a document type.
 
 **Arguments**:
 
-- `identifier` (`str`): Collection's identifier.
-- `body` (`~affinda.models.DataFieldCreate`): The data field and data point to be created.
+- `identifier` (`str`): Document type's identifier.
+- `title` (`str`): Title for the JSON schema. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -442,24 +710,24 @@ Create data field for a collection along with a new data point.
 
 **Returns**:
 
-`~affinda.models.DataField`: DataField, or the result of cls(response)
+`dict[str, any]`: dict mapping str to any, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_data_field_for_collection"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.pydantic_models_from_document_type"></a>
 
-#### get\_data\_field\_for\_collection
+#### pydantic\_models\_from\_document\_type
 
 ```python
-def get_data_field_for_collection(identifier, datapoint_identifier, **kwargs)
+def pydantic_models_from_document_type(identifier, model_name=None, **kwargs)
 ```
 
-Get data field for a collection assosciated with a data point.
+Generate Pydantic models from a document type.
 
-Get a data field for a collection assosciated with a data point.
+Generate Pydantic models from a document type.
 
 **Arguments**:
 
-- `identifier` (`str`): Collection's identifier.
-- `datapoint_identifier` (`str`): Datapoint's identifier.
+- `identifier` (`str`): Document type's identifier.
+- `model_name` (`str`): Name for the Pydantic model. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -468,26 +736,23 @@ Get a data field for a collection assosciated with a data point.
 
 **Returns**:
 
-`~affinda.models.CollectionField`: CollectionField, or the result of cls(response)
+`~affinda.models.PydanticModelsResponse`: PydanticModelsResponse, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_data_field_for_collection"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_mapping_data_source"></a>
 
-#### update\_data\_field\_for\_collection
+#### create\_mapping\_data\_source
 
 ```python
-def update_data_field_for_collection(identifier, datapoint_identifier, body,
-                                     **kwargs)
+def create_mapping_data_source(body, **kwargs)
 ```
 
-Update data field for a collection assosciated with a data point.
+Create a data source.
 
-Update data field for a collection assosciated with a data point.
+Create a custom mapping data source.
 
 **Arguments**:
 
-- `identifier` (`str`): Collection's identifier.
-- `datapoint_identifier` (`str`): Datapoint's identifier.
-- `body` (`~affinda.models.CollectionField`): Data field properties to update.
+- `body` (`~affinda.models.MappingDataSourceCreate`): 
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -496,101 +761,124 @@ Update data field for a collection assosciated with a data point.
 
 **Returns**:
 
-`~affinda.models.CollectionField`: CollectionField, or the result of cls(response)
+`~affinda.models.MappingDataSource`: MappingDataSource, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_usage_by_collection"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.list_mapping_data_sources"></a>
 
-#### get\_usage\_by\_collection
-
-```python
-def get_usage_by_collection(identifier, start=None, end=None, **kwargs)
-```
-
-Get usage by collection.
-
-Return monthly credits consumption of a collection.
-
-**Arguments**:
-
-- `identifier` (`str`): Collection's identifier.
-- `start` (`str`): Start date of the period to retrieve. Format: YYYY-MM. Default value is None.
-- `end` (`str`): End date of the period to retrieve. Format: YYYY-MM. Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`list[~affinda.models.UsageByCollection]`: list of UsageByCollection, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_documents"></a>
-
-#### get\_all\_documents
+#### list\_mapping\_data\_sources
 
 ```python
-def get_all_documents(offset=None,
-                      limit=None,
-                      workspace=None,
-                      collection=None,
-                      state=None,
-                      tags=None,
-                      created_dt=None,
-                      search=None,
-                      ordering=None,
-                      include_data=None,
-                      exclude=None,
-                      in_review=None,
-                      failed=None,
-                      ready=None,
-                      validatable=None,
-                      has_challenges=None,
-                      custom_identifier=None,
-                      compact=None,
-                      count=None,
-                      snake_case=None,
-                      **kwargs)
+def list_mapping_data_sources(offset=None,
+                              limit=None,
+                              name=None,
+                              organization=None,
+                              workspace=None,
+                              identifier=None,
+                              **kwargs)
 ```
 
-Get list of all documents.
+List data sources.
 
-Returns all the document summaries for that user, limited to 300 per page.
+Returns the list of all custom mapping data sources.
 
 **Arguments**:
 
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is None.
+- `name` (`str`): Filter by name. Default value is None.
+- `organization` (`str`): Filter by organization. Default value is None.
 - `workspace` (`str`): Filter by workspace. Default value is None.
-- `collection` (`str`): Filter by collection. Default value is None.
-- `state` (`str or ~affinda.models.DocumentState`): Filter by the document's state. Default value is None.
-- `tags` (`list[int]`): Filter by tag's IDs. Default value is None.
-- `created_dt` (`str or ~affinda.models.DateRange`): Filter by created datetime. Default value is None.
-- `search` (`str`): Partial, case-insensitive match with file name or tag name. Default value is
-None.
-- `ordering` (`list[str]`): Sort the result set. A "-" at the beginning denotes DESC sort, e.g.
--created_dt. Sort by multiple fields is supported. Supported values include: 'file_name',
-'extractor', 'created_dt', 'validated_dt', 'archived_dt' and 'parsed__:code:`<dataPointSlug>`'.
+- `identifier` (`str`): Filter by identifier. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Paths11QdcofV3MappingDataSourcesGetResponses200ContentApplicationJsonSchema`: Paths11QdcofV3MappingDataSourcesGetResponses200ContentApplicationJsonSchema, or the
+result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_mapping_data_source"></a>
+
+#### get\_mapping\_data\_source
+
+```python
+def get_mapping_data_source(identifier, **kwargs)
+```
+
+Get specific data source.
+
+Return a specific mapping data source.
+
+**Arguments**:
+
+- `identifier` (`str`): Data source's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.MappingDataSource`: MappingDataSource, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_mapping_data_source"></a>
+
+#### delete\_mapping\_data\_source
+
+```python
+def delete_mapping_data_source(identifier, **kwargs)
+```
+
+Delete specific data source.
+
+Delete the specified mapping data source from the database.
+
+**Arguments**:
+
+- `identifier` (`str`): Data source's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.list_mapping_data_source_values"></a>
+
+#### list\_mapping\_data\_source\_values
+
+```python
+def list_mapping_data_source_values(identifier,
+                                    limit=None,
+                                    offset=None,
+                                    search=None,
+                                    annotation=None,
+                                    document=None,
+                                    **kwargs)
+```
+
+List values for a data source.
+
+Returns the list of all values in a mapping data source.
+
+**Arguments**:
+
+- `identifier` (`str`): Data source's identifier.
+- `limit` (`int`): The numbers of results to return. Default value is None.
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
-- `include_data` (`bool`): By default, this endpoint returns only the meta data of the documents. Set
-this to ``true`` will return a summary of the data that was parsed. If you want to retrieve the
-full set of data for a document, use the ``GET /documents/{identifier}`` endpoint. Default
+- `search` (`str`): Search for specific values. Default value is None.
+- `annotation` (`int`): Filter based on annotation ID. Default value is None.
+- `document` (`str`): Identifier of the document to apply filter lookups on if available. Default
 value is None.
-- `exclude` (`list[str]`): Exclude some documents from the result. Default value is None.
-- `in_review` (`bool`): Exclude documents that are currently being reviewed. Default value is None.
-- `failed` (`bool`): Filter by failed status. Default value is None.
-- `ready` (`bool`): Filter by ready status. Default value is None.
-- `validatable` (`bool`): Filter for validatable documents. Default value is None.
-- `has_challenges` (`bool`): Filter for documents with challenges. Default value is None.
-- `custom_identifier` (`str`): Filter for documents with this custom identifier. Default value is
-None.
-- `compact` (`bool`): If "true", the response is compacted to annotations' parsed data. Annotations'
-meta data are excluded. Default is "false".
-- `count` (`bool`): If "false", the documents count is not computed, thus saving time for large
-collections. Default is "true".
-- `snake_case` (`bool`): Whether to return the response in snake_case instead of camelCase. Default
-is false.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -599,76 +887,25 @@ is false.
 
 **Returns**:
 
-`~affinda.models.PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema`: PathsOxm5M7V3DocumentsGetResponses200ContentApplicationJsonSchema, or the result of
-cls(response)
+`~affinda.models.Paths1Qr7BnyV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchema`: Paths1Qr7BnyV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchema, or
+the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_document"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.replace_mapping_data_source_values"></a>
 
-#### create\_document
+#### replace\_mapping\_data\_source\_values
 
 ```python
-def create_document(snake_case=None,
-                    file=None,
-                    url=None,
-                    data=None,
-                    collection=None,
-                    document_type=None,
-                    workspace=None,
-                    wait=True,
-                    identifier=None,
-                    custom_identifier=None,
-                    file_name=None,
-                    expiry_time=None,
-                    language=None,
-                    reject_duplicates=None,
-                    region_bias=None,
-                    low_priority=None,
-                    compact=None,
-                    delete_after_parse=None,
-                    enable_validation_tool=None,
-                    use_ocr=None,
-                    warning_messages=None,
-                    **kwargs)
+def replace_mapping_data_source_values(identifier, body, **kwargs)
 ```
 
-Upload a document for parsing.
+Replace values for a data source.
 
-Uploads a document for parsing. When successful, returns an ``identifier`` in the response for
-subsequent use with the `/documents/{identifier} <#get-/v3/documents/-identifier->`_ endpoint
-to check processing status and retrieve results.:code:`<br/>`.
+Replaces the list of all values in a mapping data source.
 
 **Arguments**:
 
-- `snake_case` (`bool`): Whether to return the response in snake_case instead of camelCase. Default
-is false.
-- `file` (`IO`): Default value is None.
-- `url` (`str`): URL to download the document. Default value is None.
-- `data` (`any`): Create resume or job description directly from data. Default value is None.
-- `collection` (`str`): Default value is None.
-- `document_type` (`str`): The document type's identifier.  Provide if you already know the document
-type. Default value is None.
-- `workspace` (`str`): Default value is None.
-- `wait` (`bool`): Default value is True.
-- `identifier` (`str`): Deprecated in favor of ``customIdentifier``. Default value is None.
-- `custom_identifier` (`str`): Specify a custom identifier for the document if you need one, not
-required to be unique. Default value is None.
-- `file_name` (`str`): Default value is None.
-- `expiry_time` (`~datetime.datetime`): Default value is None.
-- `language` (`str`): Default value is None.
-- `reject_duplicates` (`bool`): Default value is None.
-- `region_bias` (`str`): A JSON representation of the RegionBias object. Default value is None.
-- `low_priority` (`bool`): Explicitly mark this document as low priority. Default value is None.
-- `compact` (`bool`): If true, the returned parse result (assuming ``wait`` is also true) will be a
-compact version of the full result. Default value is None.
-- `delete_after_parse` (`bool`): If true, no data will be stored after parsing. Only compatible with
-requests where wait: True. Default value is None.
-- `enable_validation_tool` (`bool`): If true, the document will be viewable in the Affinda Validation
-Tool. Set to False to optimize parsing speed. Default value is None.
-- `use_ocr` (`bool`): If true, the document will be treated like an image, and the text will be
-extracted using OCR. If false, the document will be treated like a PDF, and the text will be
-extracted using the parser. If not set, we will determine whether to use OCR based on whether
-words are found in the document. Default value is None.
-- `warning_messages` (`list[~affinda.models.DocumentWarning]`): Default value is None.
+- `identifier` (`str`): Data source's identifier.
+- `body` (`list[any]`): 
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -677,32 +914,24 @@ words are found in the document. Default value is None.
 
 **Returns**:
 
-`~affinda.models.Document`: Document, or the result of cls(response)
+`list[any]`: list of any, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_document"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.add_mapping_data_source_value"></a>
 
-#### get\_document
+#### add\_mapping\_data\_source\_value
 
 ```python
-def get_document(identifier,
-                 format=None,
-                 compact=None,
-                 snake_case=None,
-                 **kwargs)
+def add_mapping_data_source_value(identifier, body, **kwargs)
 ```
 
-Get specific document.
+Add value for a data source.
 
-Return a specific document.
+Adds a value to a mapping data source.
 
 **Arguments**:
 
-- `identifier` (`str`): Document's identifier.
-- `format` (`str or ~affinda.models.DocumentFormat`): Specify which format you want the response to be. Default is "json".
-- `compact` (`bool`): If "true", the response is compacted to annotations' parsed data. Annotations'
-meta data are excluded. Default is "false".
-- `snake_case` (`bool`): Whether to return the response in snake_case instead of camelCase. Default
-is false.
+- `identifier` (`str`): Data source's identifier.
+- `body` (`any`): 
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -711,28 +940,24 @@ is false.
 
 **Returns**:
 
-`~affinda.models.Document`: Document, or the result of cls(response)
+`any`: any, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_document"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_mapping_data_source_value"></a>
 
-#### update\_document
+#### get\_mapping\_data\_source\_value
 
 ```python
-def update_document(identifier, body, compact=None, snake_case=None, **kwargs)
+def get_mapping_data_source_value(identifier, value, **kwargs)
 ```
 
-Update a document.
+Get specific data source value.
 
-Update file name, expiry time, or move to another collection, etc.
+Return a specific mapping dta source value.
 
 **Arguments**:
 
-- `identifier` (`str`): Document's identifier.
-- `body` (`~affinda.models.DocumentUpdate`): Document data to update.
-- `compact` (`bool`): If "true", the response is compacted to annotations' parsed data. Annotations'
-meta data are excluded. Default is "false".
-- `snake_case` (`bool`): Whether to return the response in snake_case instead of camelCase. Default
-is false.
+- `identifier` (`str`): Data source's identifier.
+- `value` (`str`): Data Source Value's value.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -741,23 +966,25 @@ is false.
 
 **Returns**:
 
-`~affinda.models.Document`: Document, or the result of cls(response)
+`any`: any, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_document"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_mapping_data_source_value"></a>
 
-#### delete\_document
+#### update\_mapping\_data\_source\_value
 
 ```python
-def delete_document(identifier, **kwargs)
+def update_mapping_data_source_value(identifier, value, body, **kwargs)
 ```
 
-Delete a document.
+Update specific data source value.
 
-Deletes the specified document from the database.
+Update the specified mapping data source value.
 
 **Arguments**:
 
-- `identifier` (`str`): Document's identifier.
+- `identifier` (`str`): Data source's identifier.
+- `value` (`str`): Data Source's value.
+- `body` (`any`): 
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -766,103 +993,24 @@ Deletes the specified document from the database.
 
 **Returns**:
 
-`None`: None, or the result of cls(response)
+`any`: any, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_document_data"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_mapping_data_source_value"></a>
 
-#### update\_document\_data
+#### delete\_mapping\_data\_source\_value
 
 ```python
-def update_document_data(identifier, body, **kwargs)
+def delete_mapping_data_source_value(identifier, value, **kwargs)
 ```
 
-Update a document's data.
+Delete specific data source value.
 
-Update data of a document.
-Only applicable for resumes and job descriptions. For other document types, please use the
-``PATCH /annotations/{id}`` endpoint or the ``POST /annotations/batch_update`` endpoint.
+Delete the specified mapping data source value from the database.
 
 **Arguments**:
 
-- `identifier` (`str`): Resume or Job Description identifier.
-- `body` (`any`): Resume data to update.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Document`: Document, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_redacted_document"></a>
-
-#### get\_redacted\_document
-
-```python
-def get_redacted_document(identifier, **kwargs)
-```
-
-Get redacted document.
-
-Get the redacted version of a document. The original document is not modified.
-
-**Arguments**:
-
-- `identifier` (`str`): Document identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`IO`: IO, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.batch_add_tag"></a>
-
-#### batch\_add\_tag
-
-```python
-def batch_add_tag(body, **kwargs)
-```
-
-Add a tag to documents.
-
-Add a tag to documents.
-Tags are used to group documents together.
-Tags can be used to filter documents.
-
-**Arguments**:
-
-- `body` (`~affinda.models.BatchAddTagRequest`): Specify the tag and the documents to tag.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`None`: None, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.batch_remove_tag"></a>
-
-#### batch\_remove\_tag
-
-```python
-def batch_remove_tag(body, **kwargs)
-```
-
-Remove a tag from documents.
-
-Remove a tag from documents.
-
-**Arguments**:
-
-- `body` (`~affinda.models.BatchRemoveTagRequest`): Specify the tag and the documents to remove the tag from.
+- `identifier` (`str`): Data source's identifier.
+- `value` (`str`): Data Source Value's value.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1052,30 +1200,20 @@ Batch delete validation results.
 
 `None`: None, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_document_splitters"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_organizations"></a>
 
-#### get\_all\_document\_splitters
+#### get\_all\_organizations
 
 ```python
-def get_all_document_splitters(offset=None,
-                               limit=None,
-                               organization=None,
-                               include_public=None,
-                               **kwargs)
+def get_all_organizations(**kwargs)
 ```
 
-Get list of all document splitters.
+Get list of all organizations.
 
-Returns all the document splitters visible to the user.
+Returns all the organizations.
 
 **Arguments**:
 
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is None.
-- `organization` (`str`): Filter by organization. Default value is None.
-- `include_public` (`bool`): Allows you to include public splitters in the response when you're
-filtering by organization. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1084,232 +1222,28 @@ filtering by organization. Default value is None.
 
 **Returns**:
 
-`list[~affinda.models.DocumentSplitter]`: list of DocumentSplitter, or the result of cls(response)
+`list[~affinda.models.Organization]`: list of Organization, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_document_splitter"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_organization"></a>
 
-#### get\_document\_splitter
-
-```python
-def get_document_splitter(identifier, **kwargs)
-```
-
-Get specific document splitter.
-
-Return a specific document splitter.
-
-**Arguments**:
-
-- `identifier` (`str`): Document splitter's identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.DocumentSplitter`: DocumentSplitter, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.edit_document_pages"></a>
-
-#### edit\_document\_pages
+#### create\_organization
 
 ```python
-def edit_document_pages(identifier, body, **kwargs)
-```
-
-Split pages of a document.
-
-Split / merge / rotate / delete pages of a document.
-Documents with multiple pages can be splitted into multiple documents, or merged into one
-document.
-Each page can also be rotated. Edit operations will trigger re-parsing of the documents
-involved.
-
-**Arguments**:
-
-- `identifier` (`str`): Document's identifier.
-- `body` (`~affinda.models.DocumentEditRequest`): Describe how the pages should be edited.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`list[~affinda.models.Meta]`: list of Meta, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_extractors"></a>
-
-#### get\_all\_extractors
-
-```python
-def get_all_extractors(organization,
-                       include_public_extractors=None,
-                       name=None,
-                       validatable=None,
-                       **kwargs)
-```
-
-Get list of all extractors.
-
-Returns your custom extractors as well as Affinda's off-the-shelf extractors.
-
-**Arguments**:
-
-- `organization` (`str`): Filter by organization.
-- `include_public_extractors` (`bool`): Whether to include Affinda's off-the-shelf extractors.
-Default value is None.
-- `name` (`str`): Filter by name. Default value is None.
-- `validatable` (`bool`): Filter by validatable. Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`list[~affinda.models.Extractor]`: list of Extractor, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_extractor"></a>
-
-#### create\_extractor
-
-```python
-def create_extractor(body=None, **kwargs)
-```
-
-Create an extractor.
-
-Create a custom extractor.
-
-**Arguments**:
-
-- `body` (`~affinda.models.ExtractorCreate`): Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Extractor`: Extractor, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_extractor"></a>
-
-#### get\_extractor
-
-```python
-def get_extractor(identifier, **kwargs)
-```
-
-Get specific extractor.
-
-Return a specific extractor.
-
-**Arguments**:
-
-- `identifier` (`str`): Extractor's identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Extractor`: Extractor, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_extractor"></a>
-
-#### update\_extractor
-
-```python
-def update_extractor(identifier, body, **kwargs)
-```
-
-Update an extractor.
-
-Update data of an extractor.
-
-**Arguments**:
-
-- `identifier` (`str`): Extractor's identifier.
-- `body` (`~affinda.models.ExtractorUpdate`): Extractor data to update.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Extractor`: Extractor, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_extractor"></a>
-
-#### delete\_extractor
-
-```python
-def delete_extractor(identifier, **kwargs)
-```
-
-Delete an extractor.
-
-Deletes the specified extractor from the database.
-
-**Arguments**:
-
-- `identifier` (`str`): Extractor's identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`None`: None, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_data_points"></a>
-
-#### get\_all\_data\_points
-
-```python
-def get_all_data_points(offset=None,
-                        limit=None,
-                        organization=None,
-                        include_public=None,
-                        extractor=None,
-                        slug=None,
-                        description=None,
-                        annotation_content_type=None,
-                        identifier=None,
+def create_organization(name,
+                        avatar=None,
+                        resthook_signature_key=None,
                         **kwargs)
 ```
 
-Get list of all data points.
+Create a new organization.
 
-Returns your custom data points as well as Affinda's off-the-shelf data points.
+Create a new organization.
 
 **Arguments**:
 
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is None.
-- `organization` (`str`): Filter by organization. Default value is None.
-- `include_public` (`bool`): Allows you to include public data points in the response when you're
-filtering by organization. Default value is None.
-- `extractor` (`str`): Filter by extractor. Default value is None.
-- `slug` (`str`): Filter by slug. Default value is None.
-- `description` (`str`): Filter by description. Default value is None.
-- `annotation_content_type` (`str`): Filter by annotation content type, e.g. text, integer, float,
-date, etc. Default value is None.
-- `identifier` (`list[str]`): Filter by specific identifiers. Default value is None.
+- `name` (`str`): 
+- `avatar` (`IO`): Upload avatar for the organization. Default value is None.
+- `resthook_signature_key` (`str`): Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1318,23 +1252,23 @@ date, etc. Default value is None.
 
 **Returns**:
 
-`list[~affinda.models.DataPoint]`: list of DataPoint, or the result of cls(response)
+`~affinda.models.Organization`: Organization, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_data_point"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_organization"></a>
 
-#### create\_data\_point
+#### get\_organization
 
 ```python
-def create_data_point(body=None, **kwargs)
+def get_organization(identifier, **kwargs)
 ```
 
-Create a data point.
+Get detail of an organization.
 
-Create a custom data point.
+Get detail of an organization.
 
 **Arguments**:
 
-- `body` (`~affinda.models.DataPointCreate`): Default value is None.
+- `identifier` (`str`): Organization identifier.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1343,23 +1277,32 @@ Create a custom data point.
 
 **Returns**:
 
-`~affinda.models.DataPoint`: DataPoint, or the result of cls(response)
+`~affinda.models.Organization`: Organization, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_data_point"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_organization"></a>
 
-#### get\_data\_point
+#### update\_organization
 
 ```python
-def get_data_point(identifier, **kwargs)
+def update_organization(identifier,
+                        name=None,
+                        avatar=None,
+                        resthook_signature_key=None,
+                        validation_tool_config=None,
+                        **kwargs)
 ```
 
-Get specific data point.
+Update an organization.
 
-Return a specific data point.
+Update the detail of an organization.
 
 **Arguments**:
 
-- `identifier` (`str`): Data point's identifier.
+- `identifier` (`str`): Organization identifier.
+- `name` (`str`): Default value is None.
+- `avatar` (`IO`): Default value is None.
+- `resthook_signature_key` (`str`): Default value is None.
+- `validation_tool_config` (`~affinda.models.ValidationToolConfig`): Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1368,49 +1311,23 @@ Return a specific data point.
 
 **Returns**:
 
-`~affinda.models.DataPoint`: DataPoint, or the result of cls(response)
+`~affinda.models.Organization`: Organization, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_data_point"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_organization"></a>
 
-#### update\_data\_point
+#### delete\_organization
 
 ```python
-def update_data_point(identifier, body, **kwargs)
+def delete_organization(identifier, **kwargs)
 ```
 
-Update a data point.
+Delete an organization.
 
-Update data of a data point.
+Delete the specified organization from the database.
 
 **Arguments**:
 
-- `identifier` (`str`): DataPoint's identifier.
-- `body` (`~affinda.models.DataPointUpdate`): Data point to update.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.DataPoint`: DataPoint, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_data_point"></a>
-
-#### delete\_data\_point
-
-```python
-def delete_data_point(identifier, **kwargs)
-```
-
-Delete a data point.
-
-Deletes the specified data point from the database.
-
-**Arguments**:
-
-- `identifier` (`str`): DataPoint's identifier.
+- `identifier` (`str`): Organization identifier.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1421,31 +1338,25 @@ Deletes the specified data point from the database.
 
 `None`: None, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_data_point_choices"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_tags"></a>
 
-#### get\_data\_point\_choices
+#### get\_all\_tags
 
 ```python
-def get_data_point_choices(data_point,
-                           collection,
-                           offset=None,
-                           limit=None,
-                           search=None,
-                           **kwargs)
+def get_all_tags(limit=None, offset=None, workspace=None, name=None, **kwargs)
 ```
 
-Get list of data point choices.
+Get list of all tags.
 
-Returns available choices for a specific enum data point.
+Returns your tags.
 
 **Arguments**:
 
-- `data_point` (`str`): The data point to get choices for.
-- `collection` (`str`): The collection to get choices for.
+- `limit` (`int`): The numbers of results to return. Default value is None.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is None.
-- `search` (`str`): Filter choices by searching for a substring. Default value is None.
+- `workspace` (`str`): Filter by workspace. Default value is None.
+- `name` (`str`): Filter by name. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1454,24 +1365,23 @@ Default value is None.
 
 **Returns**:
 
-`~affinda.models.PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema`: PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema, or the result
-of cls(response)
+`list[~affinda.models.Tag]`: list of Tag, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_data_point_choice"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_tag"></a>
 
-#### create\_data\_point\_choice
+#### create\_tag
 
 ```python
-def create_data_point_choice(body=None, **kwargs)
+def create_tag(body, **kwargs)
 ```
 
-Create a data point choice.
+Create a tag.
 
-Create a custom data point choice.
+Create a tag.
 
 **Arguments**:
 
-- `body` (`~affinda.models.DataPointChoiceCreate`): Default value is None.
+- `body` (`~affinda.models.TagCreate`): 
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1480,23 +1390,23 @@ Create a custom data point choice.
 
 **Returns**:
 
-`~affinda.models.DataPointChoice`: DataPointChoice, or the result of cls(response)
+`~affinda.models.Tag`: Tag, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_data_point_choice"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_tag"></a>
 
-#### get\_data\_point\_choice
+#### get\_tag
 
 ```python
-def get_data_point_choice(id, **kwargs)
+def get_tag(id, **kwargs)
 ```
 
-Get specific data point choice.
+Get specific tag.
 
-Return a specific data point choice.
+Return a specific tag.
 
 **Arguments**:
 
-- `id` (`int`): Data point choice's ID.
+- `id` (`int`): Tag's ID.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1505,24 +1415,24 @@ Return a specific data point choice.
 
 **Returns**:
 
-`~affinda.models.DataPointChoice`: DataPointChoice, or the result of cls(response)
+`~affinda.models.Tag`: Tag, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_data_point_choice"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_tag"></a>
 
-#### update\_data\_point\_choice
+#### update\_tag
 
 ```python
-def update_data_point_choice(id, body, **kwargs)
+def update_tag(id, body, **kwargs)
 ```
 
-Update a data point choice.
+Update a tag.
 
-Update data of a data point choice.
+Update data of an tag.
 
 **Arguments**:
 
-- `id` (`int`): Data point choice's ID.
-- `body` (`~affinda.models.DataPointChoiceUpdate`): Data point choice to update.
+- `id` (`int`): Tag's ID.
+- `body` (`~affinda.models.TagUpdate`): Tag data to update.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1531,23 +1441,23 @@ Update data of a data point choice.
 
 **Returns**:
 
-`~affinda.models.DataPointChoice`: DataPointChoice, or the result of cls(response)
+`~affinda.models.Tag`: Tag, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_data_point_choice"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_tag"></a>
 
-#### delete\_data\_point\_choice
+#### delete\_tag
 
 ```python
-def delete_data_point_choice(id, **kwargs)
+def delete_tag(id, **kwargs)
 ```
 
-Delete a data point choice.
+Delete an tag.
 
-Deletes the specified data point choice from the database.
+Deletes the specified tag from the database.
 
 **Arguments**:
 
-- `id` (`int`): Data point choice's ID.
+- `id` (`int`): Tag's ID.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1558,23 +1468,23 @@ Deletes the specified data point choice from the database.
 
 `None`: None, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.replace_data_point_choices"></a>
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.batch_add_tag"></a>
 
-#### replace\_data\_point\_choices
+#### batch\_add\_tag
 
 ```python
-def replace_data_point_choices(body=None, **kwargs)
+def batch_add_tag(body, **kwargs)
 ```
 
-Replace choices of a data point.
+Add a tag to documents.
 
-Replace choices of a data point. Existing choices and incoming choices are matched base on
-their ``value``. New ``value`` will be created, existing ``value`` will be updated, and
-``value`` not in incoming choices will be deleted.
+Add a tag to documents.
+Tags are used to group documents together.
+Tags can be used to filter documents.
 
 **Arguments**:
 
-- `body` (`~affinda.models.DataPointChoiceReplaceRequest`): Default value is None.
+- `body` (`~affinda.models.BatchAddTagRequest`): Specify the tag and the documents to tag.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
 **Raises**:
@@ -1583,7 +1493,32 @@ their ``value``. New ``value`` will be created, existing ``value`` will be updat
 
 **Returns**:
 
-`~affinda.models.DataPointChoiceReplaceResponse`: DataPointChoiceReplaceResponse, or the result of cls(response)
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.batch_remove_tag"></a>
+
+#### batch\_remove\_tag
+
+```python
+def batch_remove_tag(body, **kwargs)
+```
+
+Remove a tag from documents.
+
+Remove a tag from documents.
+
+**Arguments**:
+
+- `body` (`~affinda.models.BatchRemoveTagRequest`): Specify the tag and the documents to remove the tag from.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_annotations"></a>
 
@@ -1787,1319 +1722,6 @@ Batch delete annotations.
 
 `~affinda.models.BatchDeleteAnnotationsResponse`: BatchDeleteAnnotationsResponse, or the result of cls(response)
 
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_mapping_data_source"></a>
-
-#### create\_mapping\_data\_source
-
-```python
-def create_mapping_data_source(body, **kwargs)
-```
-
-Create a mapping data source.
-
-Create a custom mapping data source.
-
-**Arguments**:
-
-- `body` (`~affinda.models.MappingDataSourceCreate`): 
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.MappingDataSource`: MappingDataSource, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.list_mapping_data_sources"></a>
-
-#### list\_mapping\_data\_sources
-
-```python
-def list_mapping_data_sources(offset=None,
-                              limit=None,
-                              name=None,
-                              organization=None,
-                              workspace=None,
-                              identifier=None,
-                              **kwargs)
-```
-
-List mapping data sources.
-
-Returns the list of all custom mapping data sources.
-
-**Arguments**:
-
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is None.
-- `name` (`str`): Filter by name. Default value is None.
-- `organization` (`str`): Filter by organization. Default value is None.
-- `workspace` (`str`): Filter by workspace. Default value is None.
-- `identifier` (`str`): Filter by identifier. Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Paths11QdcofV3MappingDataSourcesGetResponses200ContentApplicationJsonSchema`: Paths11QdcofV3MappingDataSourcesGetResponses200ContentApplicationJsonSchema, or the
-result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_mapping_data_source"></a>
-
-#### get\_mapping\_data\_source
-
-```python
-def get_mapping_data_source(identifier, **kwargs)
-```
-
-Get specific mapping data source.
-
-Return a specific mapping data source.
-
-**Arguments**:
-
-- `identifier` (`str`): Mapping data source's identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.MappingDataSource`: MappingDataSource, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_mapping_data_source"></a>
-
-#### delete\_mapping\_data\_source
-
-```python
-def delete_mapping_data_source(identifier, **kwargs)
-```
-
-Delete specific mapping data source.
-
-Delete the specified mapping data source from the database.
-
-**Arguments**:
-
-- `identifier` (`str`): Mapping data source's identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`None`: None, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.list_mapping_data_source_values"></a>
-
-#### list\_mapping\_data\_source\_values
-
-```python
-def list_mapping_data_source_values(identifier,
-                                    limit=None,
-                                    offset=None,
-                                    search=None,
-                                    annotation=None,
-                                    document=None,
-                                    **kwargs)
-```
-
-List values for a mapping data source.
-
-Returns the list of all values in a mapping data source.
-
-**Arguments**:
-
-- `identifier` (`str`): Mapping data source's identifier.
-- `limit` (`int`): The numbers of results to return. Default value is None.
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-Default value is None.
-- `search` (`str`): Search for specific values. Default value is None.
-- `annotation` (`int`): Filter based on annotation ID. Default value is None.
-- `document` (`str`): Identifier of the document to apply filter lookups on if available. Default
-value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Paths1Qr7BnyV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchema`: Paths1Qr7BnyV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchema, or
-the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.replace_mapping_data_source_values"></a>
-
-#### replace\_mapping\_data\_source\_values
-
-```python
-def replace_mapping_data_source_values(identifier, body, **kwargs)
-```
-
-Replace values for a mapping data source.
-
-Replaces the list of all values in a mapping data source.
-
-**Arguments**:
-
-- `identifier` (`str`): Mapping data source's identifier.
-- `body` (`list[any]`): 
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`list[any]`: list of any, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.add_mapping_data_source_value"></a>
-
-#### add\_mapping\_data\_source\_value
-
-```python
-def add_mapping_data_source_value(identifier, body, **kwargs)
-```
-
-Add value for a mapping data source.
-
-Adds a value to a mapping data source.
-
-**Arguments**:
-
-- `identifier` (`str`): Mapping data source's identifier.
-- `body` (`any`): 
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`any`: any, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_mapping_data_source_value"></a>
-
-#### get\_mapping\_data\_source\_value
-
-```python
-def get_mapping_data_source_value(identifier, value, **kwargs)
-```
-
-Get specific mapping data source value.
-
-Return a specific mapping dta source value.
-
-**Arguments**:
-
-- `identifier` (`str`): Mapping data source's identifier.
-- `value` (`str`): Mapping Data Source Value's value.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`any`: any, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_mapping_data_source_value"></a>
-
-#### update\_mapping\_data\_source\_value
-
-```python
-def update_mapping_data_source_value(identifier, value, body, **kwargs)
-```
-
-Update specific mapping data source value.
-
-Update the specified mapping data source value.
-
-**Arguments**:
-
-- `identifier` (`str`): Mapping data source's identifier.
-- `value` (`str`): Mapping Data Source's value.
-- `body` (`any`): 
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`any`: any, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_mapping_data_source_value"></a>
-
-#### delete\_mapping\_data\_source\_value
-
-```python
-def delete_mapping_data_source_value(identifier, value, **kwargs)
-```
-
-Delete specific mapping data source value.
-
-Delete the specified mapping data source value from the database.
-
-**Arguments**:
-
-- `identifier` (`str`): Mapping data source's identifier.
-- `value` (`str`): Mapping Data Source Value's value.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`None`: None, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_mapping"></a>
-
-#### create\_mapping
-
-```python
-def create_mapping(body, **kwargs)
-```
-
-Create a mapping.
-
-Create a custom mapping.
-
-**Arguments**:
-
-- `body` (`~affinda.models.MappingCreate`): 
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Mapping`: Mapping, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.list_mappings"></a>
-
-#### list\_mappings
-
-```python
-def list_mappings(mapping_data_source, offset=None, limit=None, **kwargs)
-```
-
-List mappings.
-
-Returns the list of all custom data mappings.
-
-**Arguments**:
-
-- `mapping_data_source` (`str`): Mapping data source's identifier.
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Paths1Dpvb2PV3MappingsGetResponses200ContentApplicationJsonSchema`: Paths1Dpvb2PV3MappingsGetResponses200ContentApplicationJsonSchema, or the result of
-cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_mapping"></a>
-
-#### get\_mapping
-
-```python
-def get_mapping(identifier, **kwargs)
-```
-
-Get specific mapping.
-
-Return a specific mapping.
-
-**Arguments**:
-
-- `identifier` (`str`): Mapping's identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Mapping`: Mapping, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_mapping"></a>
-
-#### delete\_mapping
-
-```python
-def delete_mapping(identifier, **kwargs)
-```
-
-Delete specific mapping.
-
-Delete the specified mapping from the database.
-
-**Arguments**:
-
-- `identifier` (`str`): Mapping's identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`None`: None, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_mapping"></a>
-
-#### update\_mapping
-
-```python
-def update_mapping(identifier, body, **kwargs)
-```
-
-Update specific mapping.
-
-Updates a specific mapping.
-
-**Arguments**:
-
-- `identifier` (`str`): Mapping's identifier.
-- `body` (`~affinda.models.MappingUpdate`): 
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Mapping`: Mapping, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_tags"></a>
-
-#### get\_all\_tags
-
-```python
-def get_all_tags(limit=None, offset=None, workspace=None, name=None, **kwargs)
-```
-
-Get list of all tags.
-
-Returns your tags.
-
-**Arguments**:
-
-- `limit` (`int`): The numbers of results to return. Default value is None.
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-Default value is None.
-- `workspace` (`str`): Filter by workspace. Default value is None.
-- `name` (`str`): Filter by name. Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`list[~affinda.models.Tag]`: list of Tag, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_tag"></a>
-
-#### create\_tag
-
-```python
-def create_tag(body, **kwargs)
-```
-
-Create a tag.
-
-Create a tag.
-
-**Arguments**:
-
-- `body` (`~affinda.models.TagCreate`): 
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Tag`: Tag, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_tag"></a>
-
-#### get\_tag
-
-```python
-def get_tag(id, **kwargs)
-```
-
-Get specific tag.
-
-Return a specific tag.
-
-**Arguments**:
-
-- `id` (`int`): Tag's ID.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Tag`: Tag, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_tag"></a>
-
-#### update\_tag
-
-```python
-def update_tag(id, body, **kwargs)
-```
-
-Update a tag.
-
-Update data of an tag.
-
-**Arguments**:
-
-- `id` (`int`): Tag's ID.
-- `body` (`~affinda.models.TagUpdate`): Tag data to update.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Tag`: Tag, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_tag"></a>
-
-#### delete\_tag
-
-```python
-def delete_tag(id, **kwargs)
-```
-
-Delete an tag.
-
-Deletes the specified tag from the database.
-
-**Arguments**:
-
-- `id` (`int`): Tag's ID.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`None`: None, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_document_types"></a>
-
-#### get\_document\_types
-
-```python
-def get_document_types(organization=None, workspace=None, **kwargs)
-```
-
-List document types.
-
-Returns a list of document types that the user has access to.
-
-**Arguments**:
-
-- `organization` (`str`): Filter by organization identifier. Default value is None.
-- `workspace` (`str`): Filter by workspace identifier. Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`list[~affinda.models.DocumentType]`: list of DocumentType, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_document_type"></a>
-
-#### create\_document\_type
-
-```python
-def create_document_type(body, **kwargs)
-```
-
-Create a document type.
-
-Create a new document type in the specified organization.
-
-**Arguments**:
-
-- `body` (`~affinda.models.DocumentTypeCreate`): 
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.DocumentType or None`: DocumentType, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_document_type"></a>
-
-#### get\_document\_type
-
-```python
-def get_document_type(identifier, **kwargs)
-```
-
-Get a document type.
-
-Returns the details of a specific document type.
-
-**Arguments**:
-
-- `identifier` (`str`): Document type identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.DocumentType or None`: DocumentType, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_document_type"></a>
-
-#### update\_document\_type
-
-```python
-def update_document_type(identifier, body, **kwargs)
-```
-
-Update a document type.
-
-Update an existing document type.
-
-**Arguments**:
-
-- `identifier` (`str`): Document type identifier.
-- `body` (`~affinda.models.DocumentTypeUpdate`): 
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.DocumentType or None`: DocumentType, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_document_type"></a>
-
-#### delete\_document\_type
-
-```python
-def delete_document_type(identifier, **kwargs)
-```
-
-Delete a document type.
-
-Delete a document type.
-
-**Arguments**:
-
-- `identifier` (`str`): Document type identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`None`: None, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.json_schema_from_document_type"></a>
-
-#### json\_schema\_from\_document\_type
-
-```python
-def json_schema_from_document_type(identifier, title=None, **kwargs)
-```
-
-Generate JSON schema from a document type.
-
-Generate JSON schema from a document type.
-
-**Arguments**:
-
-- `identifier` (`str`): Document type's identifier.
-- `title` (`str`): Title for the JSON schema. Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`dict[str, any]`: dict mapping str to any, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.pydantic_models_from_document_type"></a>
-
-#### pydantic\_models\_from\_document\_type
-
-```python
-def pydantic_models_from_document_type(identifier, model_name=None, **kwargs)
-```
-
-Generate Pydantic models from a document type.
-
-Generate Pydantic models from a document type.
-
-**Arguments**:
-
-- `identifier` (`str`): Document type's identifier.
-- `model_name` (`str`): Name for the Pydantic model. Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.PydanticModelsResponse`: PydanticModelsResponse, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_organizations"></a>
-
-#### get\_all\_organizations
-
-```python
-def get_all_organizations(**kwargs)
-```
-
-Get list of all organizations.
-
-Returns all the organizations.
-
-**Arguments**:
-
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`list[~affinda.models.Organization]`: list of Organization, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_organization"></a>
-
-#### create\_organization
-
-```python
-def create_organization(name,
-                        avatar=None,
-                        resthook_signature_key=None,
-                        **kwargs)
-```
-
-Create a new organization.
-
-Create a new organization.
-
-**Arguments**:
-
-- `name` (`str`): 
-- `avatar` (`IO`): Upload avatar for the organization. Default value is None.
-- `resthook_signature_key` (`str`): Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Organization`: Organization, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_organization"></a>
-
-#### get\_organization
-
-```python
-def get_organization(identifier, **kwargs)
-```
-
-Get detail of an organization.
-
-Get detail of an organization.
-
-**Arguments**:
-
-- `identifier` (`str`): Organization identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Organization`: Organization, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_organization"></a>
-
-#### update\_organization
-
-```python
-def update_organization(identifier,
-                        name=None,
-                        avatar=None,
-                        resthook_signature_key=None,
-                        validation_tool_config=None,
-                        **kwargs)
-```
-
-Update an organization.
-
-Update the detail of an organization.
-
-**Arguments**:
-
-- `identifier` (`str`): Organization identifier.
-- `name` (`str`): Default value is None.
-- `avatar` (`IO`): Default value is None.
-- `resthook_signature_key` (`str`): Default value is None.
-- `validation_tool_config` (`~affinda.models.ValidationToolConfig`): Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Organization`: Organization, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_organization"></a>
-
-#### delete\_organization
-
-```python
-def delete_organization(identifier, **kwargs)
-```
-
-Delete an organization.
-
-Delete the specified organization from the database.
-
-**Arguments**:
-
-- `identifier` (`str`): Organization identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`None`: None, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_organization_memberships"></a>
-
-#### get\_all\_organization\_memberships
-
-```python
-def get_all_organization_memberships(offset=None,
-                                     limit=None,
-                                     organization=None,
-                                     role=None,
-                                     **kwargs)
-```
-
-Get list of all organization memberships.
-
-Returns all the organization memberships.
-
-**Arguments**:
-
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is None.
-- `organization` (`str`): Filter by organization. Default value is None.
-- `role` (`str or ~affinda.models.OrganizationRole`): Filter by role. Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema`: PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema, or
-the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_organization_membership"></a>
-
-#### get\_organization\_membership
-
-```python
-def get_organization_membership(identifier, **kwargs)
-```
-
-Get detail of an organization membership.
-
-Get detail of an organization membership.
-
-**Arguments**:
-
-- `identifier` (`str`): Membership identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.OrganizationMembership`: OrganizationMembership, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_organization_membership"></a>
-
-#### update\_organization\_membership
-
-```python
-def update_organization_membership(identifier, body, **kwargs)
-```
-
-Update an organization membership.
-
-The admin users can use this endpoint to update the role of the members within their
-organization.
-
-**Arguments**:
-
-- `identifier` (`str`): Membership identifier.
-- `body` (`~affinda.models.OrganizationMembershipUpdate`): 
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.OrganizationMembership`: OrganizationMembership, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_organization_membership"></a>
-
-#### delete\_organization\_membership
-
-```python
-def delete_organization_membership(identifier, **kwargs)
-```
-
-Delete an organization membership.
-
-The admin users can use this endpoint to remove member from their organization. Other users can
-also use this to leave their organization.
-
-**Arguments**:
-
-- `identifier` (`str`): Membership identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`None`: None, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_invitations"></a>
-
-#### get\_all\_invitations
-
-```python
-def get_all_invitations(offset=None,
-                        limit=None,
-                        organization=None,
-                        status=None,
-                        role=None,
-                        **kwargs)
-```
-
-Get list of all invitations.
-
-Get list of all invitations you created or sent to you.
-
-**Arguments**:
-
-- `offset` (`int`): The number of documents to skip before starting to collect the result set.
-Default value is None.
-- `limit` (`int`): The numbers of results to return. Default value is None.
-- `organization` (`str`): Filter by organization. Default value is None.
-- `status` (`str or ~affinda.models.InvitationStatus`): Filter by status. Default value is None.
-- `role` (`str or ~affinda.models.OrganizationRole`): Filter by role. Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema`: Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema, or the result of
-cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_invitation"></a>
-
-#### create\_invitation
-
-```python
-def create_invitation(body, **kwargs)
-```
-
-Create a new invitation.
-
-Create a new invitation.
-
-**Arguments**:
-
-- `body` (`~affinda.models.InvitationCreate`): Invitation to create.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Invitation`: Invitation, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_invitation"></a>
-
-#### get\_invitation
-
-```python
-def get_invitation(identifier, **kwargs)
-```
-
-Get detail of an invitation.
-
-Get detail of an invitation.
-
-**Arguments**:
-
-- `identifier` (`str`): Invitation identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Invitation`: Invitation, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_invitation"></a>
-
-#### update\_invitation
-
-```python
-def update_invitation(identifier, body, **kwargs)
-```
-
-Update an invitation.
-
-Update the detail of an invitation.
-
-**Arguments**:
-
-- `identifier` (`str`): Invitation identifier.
-- `body` (`~affinda.models.InvitationUpdate`): 
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Invitation`: Invitation, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_invitation"></a>
-
-#### delete\_invitation
-
-```python
-def delete_invitation(identifier, **kwargs)
-```
-
-Delete an invitation.
-
-Delete the specified invitation from the database.
-
-**Arguments**:
-
-- `identifier` (`str`): Invitation identifier.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`None`: None, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_invitation_by_token"></a>
-
-#### get\_invitation\_by\_token
-
-```python
-def get_invitation_by_token(token, **kwargs)
-```
-
-Get detail of an invitation by token.
-
-Get detail of an invitation using a secret token. This allows users who have not
-registered/logged in to view the invitation.
-
-**Arguments**:
-
-- `token` (`str`): Invitation token.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Invitation`: Invitation, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.respond_to_invitation"></a>
-
-#### respond\_to\_invitation
-
-```python
-def respond_to_invitation(token, body, **kwargs)
-```
-
-Respond to an invitation.
-
-Choose to accept or decline an invitation.
-
-**Arguments**:
-
-- `token` (`str`): Invitation token.
-- `body` (`~affinda.models.InvitationResponse`): 
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Invitation`: Invitation, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_api_users"></a>
-
-#### get\_all\_api\_users
-
-```python
-def get_all_api_users(organization=None, **kwargs)
-```
-
-Get list of all API users.
-
-Returns your API users.
-
-**Arguments**:
-
-- `organization` (`str`): Filter by organization. Default value is None.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.Paths26Civ0V3ApiUsersGetResponses200ContentApplicationJsonSchema`: Paths26Civ0V3ApiUsersGetResponses200ContentApplicationJsonSchema, or the result of
-cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_api_user"></a>
-
-#### create\_api\_user
-
-```python
-def create_api_user(body, **kwargs)
-```
-
-Create an API user.
-
-Create an API user.
-
-**Arguments**:
-
-- `body` (`~affinda.models.ApiUserCreate`): 
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.ApiUserWithKey`: ApiUserWithKey, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_api_user"></a>
-
-#### get\_api\_user
-
-```python
-def get_api_user(id, **kwargs)
-```
-
-Get specific API user.
-
-Return a specific API user.
-
-**Arguments**:
-
-- `id` (`int`): API user's ID.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.ApiUserWithoutKey`: ApiUserWithoutKey, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_api_user"></a>
-
-#### update\_api\_user
-
-```python
-def update_api_user(id, body, **kwargs)
-```
-
-Update an API user.
-
-Update data of an API user.
-
-**Arguments**:
-
-- `id` (`int`): API user's ID.
-- `body` (`~affinda.models.ApiUserUpdate`): API user to update.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.ApiUserWithoutKey`: ApiUserWithoutKey, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_api_user"></a>
-
-#### delete\_api\_user
-
-```python
-def delete_api_user(id, **kwargs)
-```
-
-Delete an API user.
-
-Deletes the specified API user from the database.
-
-**Arguments**:
-
-- `id` (`int`): API user's ID.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`None`: None, or the result of cls(response)
-
-<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.regenerate_api_key_for_api_user"></a>
-
-#### regenerate\_api\_key\_for\_api\_user
-
-```python
-def regenerate_api_key_for_api_user(id, **kwargs)
-```
-
-Regenerate API key for an API user.
-
-Regenerate API key for an API user.
-
-**Arguments**:
-
-- `id` (`int`): API user's ID.
-- `cls` (`callable`): A custom type or function that will be passed the direct response
-
-**Raises**:
-
-- `None`: ~azure.core.exceptions.HttpResponseError
-
-**Returns**:
-
-`~affinda.models.ApiUserWithKey`: ApiUserWithKey, or the result of cls(response)
-
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_resthook_subscriptions"></a>
 
 #### get\_all\_resthook\_subscriptions
@@ -3261,6 +1883,68 @@ header that you received to activate the subscription using this endpoint.
 **Returns**:
 
 `~affinda.models.ResthookSubscription`: ResthookSubscription, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_document_from_data"></a>
+
+#### create\_document\_from\_data
+
+```python
+def create_document_from_data(data, snake_case=None, **kwargs)
+```
+
+Create a document from raw data.
+
+Creates a document directly from structured resume or job description data for use in Search &
+Match functionality. This endpoint is specifically designed for programmatic document creation
+without file uploads.:code:`<br/>`
+If you want to upload a document with a file or URL, see the main `POST /v3/documents
+<#post-/v3/documents>`_ endpoint under the Documents tag.:code:`<br/>`
+When successful, returns an ``identifier`` in the response for subsequent use with the
+`/documents/{identifier} <#get-/v3/documents/-identifier->`_ endpoint to check processing
+status and retrieve results.:code:`<br/>`.
+
+**Arguments**:
+
+- `data` (`any`): Create resume or job description directly from data.
+- `snake_case` (`bool`): Whether to return the response in snake_case instead of camelCase. Default
+is false.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Document`: Document, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_document_data"></a>
+
+#### update\_document\_data
+
+```python
+def update_document_data(identifier, body, **kwargs)
+```
+
+Update a document's data.
+
+Update data of a document.
+Only applicable for resumes and job descriptions. For other document types, please use the
+``PATCH /annotations/{id}`` endpoint or the ``POST /annotations/batch_update`` endpoint.
+
+**Arguments**:
+
+- `identifier` (`str`): Resume or Job Description identifier.
+- `body` (`any`): Resume data to update.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Document`: Document, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.list_occupation_groups"></a>
 
@@ -3699,7 +2383,7 @@ Returns all the indexes.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is None.
-- `document_type` (`str or ~affinda.models.Enum22`): Filter indices by a document type. Default value is None.
+- `document_type` (`str or ~affinda.models.Enum17`): Filter indices by a document type. Default value is None.
 - `name` (`str`): Filter indices by name. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
@@ -3898,4 +2582,1353 @@ the document's data in the search index.
 **Returns**:
 
 `None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_collections"></a>
+
+#### get\_all\_collections
+
+```python
+def get_all_collections(workspace, **kwargs)
+```
+
+Get list of all collections.
+
+Returns your collections.
+
+**Arguments**:
+
+- `workspace` (`str`): Filter by workspace.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[~affinda.models.Collection]`: list of Collection, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_collection"></a>
+
+#### create\_collection
+
+```python
+def create_collection(body, **kwargs)
+```
+
+Create a collection.
+
+Create a collection.
+
+**Arguments**:
+
+- `body` (`~affinda.models.CollectionCreate`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Collection`: Collection, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_collection"></a>
+
+#### get\_collection
+
+```python
+def get_collection(identifier, **kwargs)
+```
+
+Get specific collection.
+
+Return a specific collection.
+
+**Arguments**:
+
+- `identifier` (`str`): Collection's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Collection`: Collection, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_collection"></a>
+
+#### update\_collection
+
+```python
+def update_collection(identifier, body, **kwargs)
+```
+
+Update a collection.
+
+Update data of a collection.
+
+**Arguments**:
+
+- `identifier` (`str`): Collection's identifier.
+- `body` (`~affinda.models.CollectionUpdate`): Collection data to update.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Collection`: Collection, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_collection"></a>
+
+#### delete\_collection
+
+```python
+def delete_collection(identifier, **kwargs)
+```
+
+Delete a collection.
+
+Deletes the specified collection from the database.
+
+**Arguments**:
+
+- `identifier` (`str`): Collection's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_data_field_for_collection"></a>
+
+#### create\_data\_field\_for\_collection
+
+```python
+def create_data_field_for_collection(identifier, body, **kwargs)
+```
+
+Create data field for a collection along with a new data point.
+
+Create data field for a collection along with a new data point.
+
+**Arguments**:
+
+- `identifier` (`str`): Collection's identifier.
+- `body` (`~affinda.models.DataFieldCreate`): The data field and data point to be created.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.DataField`: DataField, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_data_field_for_collection"></a>
+
+#### get\_data\_field\_for\_collection
+
+```python
+def get_data_field_for_collection(identifier, datapoint_identifier, **kwargs)
+```
+
+Get data field for a collection assosciated with a data point.
+
+Get a data field for a collection assosciated with a data point.
+
+**Arguments**:
+
+- `identifier` (`str`): Collection's identifier.
+- `datapoint_identifier` (`str`): Datapoint's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.CollectionField`: CollectionField, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_data_field_for_collection"></a>
+
+#### update\_data\_field\_for\_collection
+
+```python
+def update_data_field_for_collection(identifier, datapoint_identifier, body,
+                                     **kwargs)
+```
+
+Update data field for a collection assosciated with a data point.
+
+Update data field for a collection assosciated with a data point.
+
+**Arguments**:
+
+- `identifier` (`str`): Collection's identifier.
+- `datapoint_identifier` (`str`): Datapoint's identifier.
+- `body` (`~affinda.models.CollectionField`): Data field properties to update.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.CollectionField`: CollectionField, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_usage_by_collection"></a>
+
+#### get\_usage\_by\_collection
+
+```python
+def get_usage_by_collection(identifier, start=None, end=None, **kwargs)
+```
+
+Get usage by collection.
+
+Return monthly credits consumption of a collection.
+
+**Arguments**:
+
+- `identifier` (`str`): Collection's identifier.
+- `start` (`str`): Start date of the period to retrieve. Format: YYYY-MM. Default value is None.
+- `end` (`str`): End date of the period to retrieve. Format: YYYY-MM. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[~affinda.models.UsageByCollection]`: list of UsageByCollection, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_data_points"></a>
+
+#### get\_all\_data\_points
+
+```python
+def get_all_data_points(offset=None,
+                        limit=None,
+                        organization=None,
+                        include_public=None,
+                        extractor=None,
+                        slug=None,
+                        description=None,
+                        annotation_content_type=None,
+                        identifier=None,
+                        **kwargs)
+```
+
+Get list of all data points.
+
+Returns your custom data points as well as Affinda's off-the-shelf data points.
+
+**Arguments**:
+
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `limit` (`int`): The numbers of results to return. Default value is None.
+- `organization` (`str`): Filter by organization. Default value is None.
+- `include_public` (`bool`): Allows you to include public data points in the response when you're
+filtering by organization. Default value is None.
+- `extractor` (`str`): Filter by extractor. Default value is None.
+- `slug` (`str`): Filter by slug. Default value is None.
+- `description` (`str`): Filter by description. Default value is None.
+- `annotation_content_type` (`str`): Filter by annotation content type, e.g. text, integer, float,
+date, etc. Default value is None.
+- `identifier` (`list[str]`): Filter by specific identifiers. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[~affinda.models.DataPoint]`: list of DataPoint, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_data_point"></a>
+
+#### create\_data\_point
+
+```python
+def create_data_point(body=None, **kwargs)
+```
+
+Create a data point.
+
+Create a custom data point.
+
+**Arguments**:
+
+- `body` (`~affinda.models.DataPointCreate`): Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.DataPoint`: DataPoint, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_data_point"></a>
+
+#### get\_data\_point
+
+```python
+def get_data_point(identifier, **kwargs)
+```
+
+Get specific data point.
+
+Return a specific data point.
+
+**Arguments**:
+
+- `identifier` (`str`): Data point's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.DataPoint`: DataPoint, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_data_point"></a>
+
+#### update\_data\_point
+
+```python
+def update_data_point(identifier, body, **kwargs)
+```
+
+Update a data point.
+
+Update data of a data point.
+
+**Arguments**:
+
+- `identifier` (`str`): DataPoint's identifier.
+- `body` (`~affinda.models.DataPointUpdate`): Data point to update.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.DataPoint`: DataPoint, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_data_point"></a>
+
+#### delete\_data\_point
+
+```python
+def delete_data_point(identifier, **kwargs)
+```
+
+Delete a data point.
+
+Deletes the specified data point from the database.
+
+**Arguments**:
+
+- `identifier` (`str`): DataPoint's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_data_point_choices"></a>
+
+#### get\_data\_point\_choices
+
+```python
+def get_data_point_choices(data_point,
+                           collection,
+                           offset=None,
+                           limit=None,
+                           search=None,
+                           **kwargs)
+```
+
+Get list of data point choices.
+
+Returns available choices for a specific enum data point.
+
+**Arguments**:
+
+- `data_point` (`str`): The data point to get choices for.
+- `collection` (`str`): The collection to get choices for.
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `limit` (`int`): The numbers of results to return. Default value is None.
+- `search` (`str`): Filter choices by searching for a substring. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema`: PathsMnwxgV3DataPointChoicesGetResponses200ContentApplicationJsonSchema, or the result
+of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_data_point_choice"></a>
+
+#### create\_data\_point\_choice
+
+```python
+def create_data_point_choice(body=None, **kwargs)
+```
+
+Create a data point choice.
+
+Create a custom data point choice.
+
+**Arguments**:
+
+- `body` (`~affinda.models.DataPointChoiceCreate`): Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.DataPointChoice`: DataPointChoice, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_data_point_choice"></a>
+
+#### get\_data\_point\_choice
+
+```python
+def get_data_point_choice(id, **kwargs)
+```
+
+Get specific data point choice.
+
+Return a specific data point choice.
+
+**Arguments**:
+
+- `id` (`int`): Data point choice's ID.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.DataPointChoice`: DataPointChoice, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_data_point_choice"></a>
+
+#### update\_data\_point\_choice
+
+```python
+def update_data_point_choice(id, body, **kwargs)
+```
+
+Update a data point choice.
+
+Update data of a data point choice.
+
+**Arguments**:
+
+- `id` (`int`): Data point choice's ID.
+- `body` (`~affinda.models.DataPointChoiceUpdate`): Data point choice to update.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.DataPointChoice`: DataPointChoice, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_data_point_choice"></a>
+
+#### delete\_data\_point\_choice
+
+```python
+def delete_data_point_choice(id, **kwargs)
+```
+
+Delete a data point choice.
+
+Deletes the specified data point choice from the database.
+
+**Arguments**:
+
+- `id` (`int`): Data point choice's ID.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.replace_data_point_choices"></a>
+
+#### replace\_data\_point\_choices
+
+```python
+def replace_data_point_choices(body=None, **kwargs)
+```
+
+Replace choices of a data point.
+
+Replace choices of a data point. Existing choices and incoming choices are matched base on
+their ``value``. New ``value`` will be created, existing ``value`` will be updated, and
+``value`` not in incoming choices will be deleted.
+
+**Arguments**:
+
+- `body` (`~affinda.models.DataPointChoiceReplaceRequest`): Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.DataPointChoiceReplaceResponse`: DataPointChoiceReplaceResponse, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_api_users"></a>
+
+#### get\_all\_api\_users
+
+```python
+def get_all_api_users(organization=None, **kwargs)
+```
+
+Get list of all API users.
+
+Returns your API users.
+
+**Arguments**:
+
+- `organization` (`str`): Filter by organization. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Paths26Civ0V3ApiUsersGetResponses200ContentApplicationJsonSchema`: Paths26Civ0V3ApiUsersGetResponses200ContentApplicationJsonSchema, or the result of
+cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_api_user"></a>
+
+#### create\_api\_user
+
+```python
+def create_api_user(body, **kwargs)
+```
+
+Create an API user.
+
+Create an API user.
+
+**Arguments**:
+
+- `body` (`~affinda.models.ApiUserCreate`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ApiUserWithKey`: ApiUserWithKey, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_api_user"></a>
+
+#### get\_api\_user
+
+```python
+def get_api_user(id, **kwargs)
+```
+
+Get specific API user.
+
+Return a specific API user.
+
+**Arguments**:
+
+- `id` (`int`): API user's ID.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ApiUserWithoutKey`: ApiUserWithoutKey, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_api_user"></a>
+
+#### update\_api\_user
+
+```python
+def update_api_user(id, body, **kwargs)
+```
+
+Update an API user.
+
+Update data of an API user.
+
+**Arguments**:
+
+- `id` (`int`): API user's ID.
+- `body` (`~affinda.models.ApiUserUpdate`): API user to update.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ApiUserWithoutKey`: ApiUserWithoutKey, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_api_user"></a>
+
+#### delete\_api\_user
+
+```python
+def delete_api_user(id, **kwargs)
+```
+
+Delete an API user.
+
+Deletes the specified API user from the database.
+
+**Arguments**:
+
+- `id` (`int`): API user's ID.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.regenerate_api_key_for_api_user"></a>
+
+#### regenerate\_api\_key\_for\_api\_user
+
+```python
+def regenerate_api_key_for_api_user(id, **kwargs)
+```
+
+Regenerate API key for an API user.
+
+Regenerate API key for an API user.
+
+**Arguments**:
+
+- `id` (`int`): API user's ID.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.ApiUserWithKey`: ApiUserWithKey, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_document_splitters"></a>
+
+#### get\_all\_document\_splitters
+
+```python
+def get_all_document_splitters(offset=None,
+                               limit=None,
+                               organization=None,
+                               include_public=None,
+                               **kwargs)
+```
+
+Get list of all document splitters.
+
+Returns all the document splitters visible to the user.
+
+**Arguments**:
+
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `limit` (`int`): The numbers of results to return. Default value is None.
+- `organization` (`str`): Filter by organization. Default value is None.
+- `include_public` (`bool`): Allows you to include public splitters in the response when you're
+filtering by organization. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[~affinda.models.DocumentSplitter]`: list of DocumentSplitter, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_document_splitter"></a>
+
+#### get\_document\_splitter
+
+```python
+def get_document_splitter(identifier, **kwargs)
+```
+
+Get specific document splitter.
+
+Return a specific document splitter.
+
+**Arguments**:
+
+- `identifier` (`str`): Document splitter's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.DocumentSplitter`: DocumentSplitter, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.edit_document_pages"></a>
+
+#### edit\_document\_pages
+
+```python
+def edit_document_pages(identifier, body, **kwargs)
+```
+
+Split pages of a document.
+
+Split / merge / rotate / delete pages of a document.
+Documents with multiple pages can be splitted into multiple documents, or merged into one
+document.
+Each page can also be rotated. Edit operations will trigger re-parsing of the documents
+involved.
+
+**Arguments**:
+
+- `identifier` (`str`): Document's identifier.
+- `body` (`~affinda.models.DocumentEditRequest`): Describe how the pages should be edited.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[~affinda.models.Meta]`: list of Meta, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_extractors"></a>
+
+#### get\_all\_extractors
+
+```python
+def get_all_extractors(organization,
+                       include_public_extractors=None,
+                       name=None,
+                       validatable=None,
+                       **kwargs)
+```
+
+Get list of all extractors.
+
+Returns your custom extractors as well as Affinda's off-the-shelf extractors.
+
+**Arguments**:
+
+- `organization` (`str`): Filter by organization.
+- `include_public_extractors` (`bool`): Whether to include Affinda's off-the-shelf extractors.
+Default value is None.
+- `name` (`str`): Filter by name. Default value is None.
+- `validatable` (`bool`): Filter by validatable. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`list[~affinda.models.Extractor]`: list of Extractor, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_extractor"></a>
+
+#### create\_extractor
+
+```python
+def create_extractor(body=None, **kwargs)
+```
+
+Create an extractor.
+
+Create a custom extractor.
+
+**Arguments**:
+
+- `body` (`~affinda.models.ExtractorCreate`): Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Extractor`: Extractor, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_extractor"></a>
+
+#### get\_extractor
+
+```python
+def get_extractor(identifier, **kwargs)
+```
+
+Get specific extractor.
+
+Return a specific extractor.
+
+**Arguments**:
+
+- `identifier` (`str`): Extractor's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Extractor`: Extractor, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_extractor"></a>
+
+#### update\_extractor
+
+```python
+def update_extractor(identifier, body, **kwargs)
+```
+
+Update an extractor.
+
+Update data of an extractor.
+
+**Arguments**:
+
+- `identifier` (`str`): Extractor's identifier.
+- `body` (`~affinda.models.ExtractorUpdate`): Extractor data to update.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Extractor`: Extractor, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_extractor"></a>
+
+#### delete\_extractor
+
+```python
+def delete_extractor(identifier, **kwargs)
+```
+
+Delete an extractor.
+
+Deletes the specified extractor from the database.
+
+**Arguments**:
+
+- `identifier` (`str`): Extractor's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_organization_memberships"></a>
+
+#### get\_all\_organization\_memberships
+
+```python
+def get_all_organization_memberships(offset=None,
+                                     limit=None,
+                                     organization=None,
+                                     role=None,
+                                     **kwargs)
+```
+
+Get list of all organization memberships.
+
+Returns all the organization memberships.
+
+**Arguments**:
+
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `limit` (`int`): The numbers of results to return. Default value is None.
+- `organization` (`str`): Filter by organization. Default value is None.
+- `role` (`str or ~affinda.models.OrganizationRole`): Filter by role. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema`: PathsQ5Os5RV3OrganizationMembershipsGetResponses200ContentApplicationJsonSchema, or
+the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_organization_membership"></a>
+
+#### get\_organization\_membership
+
+```python
+def get_organization_membership(identifier, **kwargs)
+```
+
+Get detail of an organization membership.
+
+Get detail of an organization membership.
+
+**Arguments**:
+
+- `identifier` (`str`): Membership identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.OrganizationMembership`: OrganizationMembership, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_organization_membership"></a>
+
+#### update\_organization\_membership
+
+```python
+def update_organization_membership(identifier, body, **kwargs)
+```
+
+Update an organization membership.
+
+The admin users can use this endpoint to update the role of the members within their
+organization.
+
+**Arguments**:
+
+- `identifier` (`str`): Membership identifier.
+- `body` (`~affinda.models.OrganizationMembershipUpdate`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.OrganizationMembership`: OrganizationMembership, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_organization_membership"></a>
+
+#### delete\_organization\_membership
+
+```python
+def delete_organization_membership(identifier, **kwargs)
+```
+
+Delete an organization membership.
+
+The admin users can use this endpoint to remove member from their organization. Other users can
+also use this to leave their organization.
+
+**Arguments**:
+
+- `identifier` (`str`): Membership identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_invitations"></a>
+
+#### get\_all\_invitations
+
+```python
+def get_all_invitations(offset=None,
+                        limit=None,
+                        organization=None,
+                        status=None,
+                        role=None,
+                        **kwargs)
+```
+
+Get list of all invitations.
+
+Get list of all invitations you created or sent to you.
+
+**Arguments**:
+
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `limit` (`int`): The numbers of results to return. Default value is None.
+- `organization` (`str`): Filter by organization. Default value is None.
+- `status` (`str or ~affinda.models.InvitationStatus`): Filter by status. Default value is None.
+- `role` (`str or ~affinda.models.OrganizationRole`): Filter by role. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema`: Paths18Wh2VcV3InvitationsGetResponses200ContentApplicationJsonSchema, or the result of
+cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_invitation"></a>
+
+#### create\_invitation
+
+```python
+def create_invitation(body, **kwargs)
+```
+
+Create a new invitation.
+
+Create a new invitation.
+
+**Arguments**:
+
+- `body` (`~affinda.models.InvitationCreate`): Invitation to create.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Invitation`: Invitation, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_invitation"></a>
+
+#### get\_invitation
+
+```python
+def get_invitation(identifier, **kwargs)
+```
+
+Get detail of an invitation.
+
+Get detail of an invitation.
+
+**Arguments**:
+
+- `identifier` (`str`): Invitation identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Invitation`: Invitation, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_invitation"></a>
+
+#### update\_invitation
+
+```python
+def update_invitation(identifier, body, **kwargs)
+```
+
+Update an invitation.
+
+Update the detail of an invitation.
+
+**Arguments**:
+
+- `identifier` (`str`): Invitation identifier.
+- `body` (`~affinda.models.InvitationUpdate`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Invitation`: Invitation, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_invitation"></a>
+
+#### delete\_invitation
+
+```python
+def delete_invitation(identifier, **kwargs)
+```
+
+Delete an invitation.
+
+Delete the specified invitation from the database.
+
+**Arguments**:
+
+- `identifier` (`str`): Invitation identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_invitation_by_token"></a>
+
+#### get\_invitation\_by\_token
+
+```python
+def get_invitation_by_token(token, **kwargs)
+```
+
+Get detail of an invitation by token.
+
+Get detail of an invitation using a secret token. This allows users who have not
+registered/logged in to view the invitation.
+
+**Arguments**:
+
+- `token` (`str`): Invitation token.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Invitation`: Invitation, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.respond_to_invitation"></a>
+
+#### respond\_to\_invitation
+
+```python
+def respond_to_invitation(token, body, **kwargs)
+```
+
+Respond to an invitation.
+
+Choose to accept or decline an invitation.
+
+**Arguments**:
+
+- `token` (`str`): Invitation token.
+- `body` (`~affinda.models.InvitationResponse`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Invitation`: Invitation, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_mapping"></a>
+
+#### create\_mapping
+
+```python
+def create_mapping(body, **kwargs)
+```
+
+Create a mapping.
+
+Create a custom mapping.
+
+**Arguments**:
+
+- `body` (`~affinda.models.MappingCreate`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Mapping`: Mapping, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.list_mappings"></a>
+
+#### list\_mappings
+
+```python
+def list_mappings(mapping_data_source, offset=None, limit=None, **kwargs)
+```
+
+List mappings.
+
+Returns the list of all custom data mappings.
+
+**Arguments**:
+
+- `mapping_data_source` (`str`): Data source's identifier.
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `limit` (`int`): The numbers of results to return. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Paths1Dpvb2PV3MappingsGetResponses200ContentApplicationJsonSchema`: Paths1Dpvb2PV3MappingsGetResponses200ContentApplicationJsonSchema, or the result of
+cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_mapping"></a>
+
+#### get\_mapping
+
+```python
+def get_mapping(identifier, **kwargs)
+```
+
+Get specific mapping.
+
+Return a specific mapping.
+
+**Arguments**:
+
+- `identifier` (`str`): Mapping's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Mapping`: Mapping, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.delete_mapping"></a>
+
+#### delete\_mapping
+
+```python
+def delete_mapping(identifier, **kwargs)
+```
+
+Delete specific mapping.
+
+Delete the specified mapping from the database.
+
+**Arguments**:
+
+- `identifier` (`str`): Mapping's identifier.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.update_mapping"></a>
+
+#### update\_mapping
+
+```python
+def update_mapping(identifier, body, **kwargs)
+```
+
+Update specific mapping.
+
+Updates a specific mapping.
+
+**Arguments**:
+
+- `identifier` (`str`): Mapping's identifier.
+- `body` (`~affinda.models.MappingUpdate`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Mapping`: Mapping, or the result of cls(response)
 

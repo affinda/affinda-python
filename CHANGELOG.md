@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.28.6] - 2025-08-15
+### Fixed
+- Uncaught exception when serializing 401 response
+
 ## [4.28.5] - 2025-07-18
 ### Fixed
 - Fix failing to serialize some keys in document meta data

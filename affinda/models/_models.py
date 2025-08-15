@@ -3847,8 +3847,6 @@ class DocumentCreate(msrest.serialization.Model):
     :vartype file: IO
     :ivar url: URL to download the document.
     :vartype url: str
-    :ivar data: Create resume or job description directly from data.
-    :vartype data: any
     :ivar collection: Uniquely identify a collection.
     :vartype collection: str
     :ivar document_type: The document type's identifier.  Provide if you already know the document
@@ -3902,7 +3900,6 @@ class DocumentCreate(msrest.serialization.Model):
     _attribute_map = {
         "file": {"key": "file", "type": "IO"},
         "url": {"key": "url", "type": "str"},
-        "data": {"key": "data", "type": "object"},
         "collection": {"key": "collection", "type": "str"},
         "document_type": {"key": "documentType", "type": "str"},
         "workspace": {"key": "workspace", "type": "str"},
@@ -3929,8 +3926,6 @@ class DocumentCreate(msrest.serialization.Model):
         :paramtype file: IO
         :keyword url: URL to download the document.
         :paramtype url: str
-        :keyword data: Create resume or job description directly from data.
-        :paramtype data: any
         :keyword collection: Uniquely identify a collection.
         :paramtype collection: str
         :keyword document_type: The document type's identifier.  Provide if you already know the
@@ -3983,7 +3978,6 @@ class DocumentCreate(msrest.serialization.Model):
         super(DocumentCreate, self).__init__(**kwargs)
         self.file = kwargs.get("file", None)
         self.url = kwargs.get("url", None)
-        self.data = kwargs.get("data", None)
         self.collection = kwargs.get("collection", None)
         self.document_type = kwargs.get("document_type", None)
         self.workspace = kwargs.get("workspace", None)
@@ -4001,6 +3995,157 @@ class DocumentCreate(msrest.serialization.Model):
         self.enable_validation_tool = kwargs.get("enable_validation_tool", None)
         self.use_ocr = kwargs.get("use_ocr", None)
         self.warning_messages = kwargs.get("warning_messages", None)
+
+
+class DocumentCreateFromData(DocumentCreate):
+    """DocumentCreateFromData.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
+     JPG, TIFF, ODT, XLS, XLSX.
+    :vartype file: IO
+    :ivar url: URL to download the document.
+    :vartype url: str
+    :ivar collection: Uniquely identify a collection.
+    :vartype collection: str
+    :ivar document_type: The document type's identifier.  Provide if you already know the document
+     type.
+    :vartype document_type: str
+    :ivar workspace: Uniquely identify a workspace.
+    :vartype workspace: str
+    :ivar wait: If "true" (default), will return a response only after processing has completed. If
+     "false", will return an empty data object which can be polled at the GET endpoint until
+     processing is complete.
+    :vartype wait: bool
+    :ivar identifier: Deprecated in favor of ``customIdentifier``.
+    :vartype identifier: str
+    :ivar custom_identifier: Specify a custom identifier for the document if you need one, not
+     required to be unique.
+    :vartype custom_identifier: str
+    :ivar file_name: Optional filename of the file.
+    :vartype file_name: str
+    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
+     deleted.  Defaults to no expiry.
+    :vartype expiry_time: ~datetime.datetime
+    :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+    :vartype language: str
+    :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
+     of an existing document, no credits will be consumed. If "false", will parse the document
+     normally whether its a duplicate or not. If not provided, will fallback to the workspace
+     settings.
+    :vartype reject_duplicates: bool
+    :ivar region_bias: A JSON representation of the RegionBias object.
+    :vartype region_bias: str
+    :ivar low_priority: Explicitly mark this document as low priority.
+    :vartype low_priority: bool
+    :ivar compact: If true, the returned parse result (assuming ``wait`` is also true) will be a
+     compact version of the full result.
+    :vartype compact: bool
+    :ivar delete_after_parse: If true, no data will be stored after parsing. Only compatible with
+     requests where wait: True.
+    :vartype delete_after_parse: bool
+    :ivar enable_validation_tool: If true, the document will be viewable in the Affinda Validation
+     Tool. Set to False to optimize parsing speed.
+    :vartype enable_validation_tool: bool
+    :ivar use_ocr: If true, the document will be treated like an image, and the text will be
+     extracted using OCR. If false, the document will be treated like a PDF, and the text will be
+     extracted using the parser. If not set, we will determine whether to use OCR based on whether
+     words are found in the document.
+    :vartype use_ocr: bool
+    :ivar warning_messages:
+    :vartype warning_messages: list[~affinda.models.DocumentWarning]
+    :ivar data: Required. Create resume or job description directly from data.
+    :vartype data: any
+    """
+
+    _validation = {
+        "data": {"required": True},
+    }
+
+    _attribute_map = {
+        "file": {"key": "file", "type": "IO"},
+        "url": {"key": "url", "type": "str"},
+        "collection": {"key": "collection", "type": "str"},
+        "document_type": {"key": "documentType", "type": "str"},
+        "workspace": {"key": "workspace", "type": "str"},
+        "wait": {"key": "wait", "type": "bool"},
+        "identifier": {"key": "identifier", "type": "str"},
+        "custom_identifier": {"key": "customIdentifier", "type": "str"},
+        "file_name": {"key": "fileName", "type": "str"},
+        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
+        "language": {"key": "language", "type": "str"},
+        "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
+        "region_bias": {"key": "regionBias", "type": "str"},
+        "low_priority": {"key": "lowPriority", "type": "bool"},
+        "compact": {"key": "compact", "type": "bool"},
+        "delete_after_parse": {"key": "deleteAfterParse", "type": "bool"},
+        "enable_validation_tool": {"key": "enableValidationTool", "type": "bool"},
+        "use_ocr": {"key": "useOcr", "type": "bool"},
+        "warning_messages": {"key": "warningMessages", "type": "[DocumentWarning]"},
+        "data": {"key": "data", "type": "object"},
+    }
+
+    def __init__(self, **kwargs):
+        """
+        :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
+         PNG, JPG, TIFF, ODT, XLS, XLSX.
+        :paramtype file: IO
+        :keyword url: URL to download the document.
+        :paramtype url: str
+        :keyword collection: Uniquely identify a collection.
+        :paramtype collection: str
+        :keyword document_type: The document type's identifier.  Provide if you already know the
+         document type.
+        :paramtype document_type: str
+        :keyword workspace: Uniquely identify a workspace.
+        :paramtype workspace: str
+        :keyword wait: If "true" (default), will return a response only after processing has completed.
+         If "false", will return an empty data object which can be polled at the GET endpoint until
+         processing is complete.
+        :paramtype wait: bool
+        :keyword identifier: Deprecated in favor of ``customIdentifier``.
+        :paramtype identifier: str
+        :keyword custom_identifier: Specify a custom identifier for the document if you need one, not
+         required to be unique.
+        :paramtype custom_identifier: str
+        :keyword file_name: Optional filename of the file.
+        :paramtype file_name: str
+        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
+         deleted.  Defaults to no expiry.
+        :paramtype expiry_time: ~datetime.datetime
+        :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
+        :paramtype language: str
+        :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
+         duplicate of an existing document, no credits will be consumed. If "false", will parse the
+         document normally whether its a duplicate or not. If not provided, will fallback to the
+         workspace settings.
+        :paramtype reject_duplicates: bool
+        :keyword region_bias: A JSON representation of the RegionBias object.
+        :paramtype region_bias: str
+        :keyword low_priority: Explicitly mark this document as low priority.
+        :paramtype low_priority: bool
+        :keyword compact: If true, the returned parse result (assuming ``wait`` is also true) will be a
+         compact version of the full result.
+        :paramtype compact: bool
+        :keyword delete_after_parse: If true, no data will be stored after parsing. Only compatible
+         with requests where wait: True.
+        :paramtype delete_after_parse: bool
+        :keyword enable_validation_tool: If true, the document will be viewable in the Affinda
+         Validation Tool. Set to False to optimize parsing speed.
+        :paramtype enable_validation_tool: bool
+        :keyword use_ocr: If true, the document will be treated like an image, and the text will be
+         extracted using OCR. If false, the document will be treated like a PDF, and the text will be
+         extracted using the parser. If not set, we will determine whether to use OCR based on whether
+         words are found in the document.
+        :paramtype use_ocr: bool
+        :keyword warning_messages:
+        :paramtype warning_messages: list[~affinda.models.DocumentWarning]
+        :keyword data: Required. Create resume or job description directly from data.
+        :paramtype data: any
+        """
+        super(DocumentCreateFromData, self).__init__(**kwargs)
+        self.data = kwargs["data"]
 
 
 class DocumentEditRequest(msrest.serialization.Model):
