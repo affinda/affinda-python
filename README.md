@@ -1,6 +1,6 @@
 # Python Client Library for Affinda Document Parser API
 
-![affinda logo](https://api.affinda.com/static/documentation/affinda_logo_light.png)
+![affinda logo](https://api.affinda.com/static/documentation/affinda_logo.png)
 
 [![pypi ver](https://img.shields.io/pypi/v/affinda)](https://pypi.org/project/affinda/)
 [![pypi pyver](https://img.shields.io/pypi/pyversions/affinda)](https://pypi.org/affinda/)
@@ -132,6 +132,6 @@ Samples for all operations using the client can be [found here.](./docs/samples_
 
 ## API reference
 
--   [API operations can be found here](./docs/sync_operations.md)
--   [API models and objects](./docs/models.md)
--   [Exceptions](./docs/exceptions.md)
+- [API operations can be found here](./docs/sync_operations.md)
+- [API models and objects](./docs/models.md)
+- [Exceptions](./docs/exceptions.md)

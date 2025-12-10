@@ -4470,6 +4470,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         delete_after_parse=None,  # type: Optional[bool]
         enable_validation_tool=None,  # type: Optional[bool]
         use_ocr=None,  # type: Optional[bool]
+        llm_hint=None,  # type: Optional[str]
+        limit_to_examples=None,  # type: Optional[List[str]]
         warning_messages=None,  # type: Optional[List[_models.DocumentWarning]]
         **kwargs,  # type: Any
     ):
@@ -4528,6 +4530,12 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
          extracted using the parser. If not set, we will determine whether to use OCR based on whether
          words are found in the document. Default value is None.
         :type use_ocr: bool
+        :param llm_hint: Optional hint inserted into the LLM prompt when processing this document.
+         Default value is None.
+        :type llm_hint: str
+        :param limit_to_examples: Restrict LLM example selection to the specified document identifiers.
+         Default value is None.
+        :type limit_to_examples: list[str]
         :param warning_messages:  Default value is None.
         :type warning_messages: list[~affinda.models.DocumentWarning]
         :keyword callable cls: A custom type or function that will be passed the direct response
@@ -4576,6 +4584,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             "deleteAfterParse": delete_after_parse,
             "enableValidationTool": enable_validation_tool,
             "useOcr": use_ocr,
+            "llmHint": llm_hint,
+            "limitToExamples": limit_to_examples,
             "warningMessages": warning_messages,
         }
 
@@ -6471,7 +6481,9 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         # type: (...) -> List[Any]
         """Replace values for a data source.
 
-        Replaces the list of all values in a mapping data source.
+        Replaces the list of all values in a mapping data source
+        Note: For large data sources (e.g. > 1000 values), it can take a few minutes after the request
+        completes for the new values to be searchable.
 
         :param identifier: Data source's identifier.
         :type identifier: str
@@ -9107,7 +9119,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
     def create_document_from_data(
         self,
-        data,  # type: Any
+        body,  # type: _models.DocumentCreateFromData
         snake_case=None,  # type: Optional[bool]
         **kwargs,  # type: Any
     ):
@@ -9123,8 +9135,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         `/documents/{identifier} <#get-/v3/documents/-identifier->`_ endpoint to check processing
         status and retrieve results.:code:`<br/>`.
 
-        :param data: Create resume or job description directly from data.
-        :type data: any
+        :param body: Resume or job description data to create a document from.
+        :type body: ~affinda.models.DocumentCreateFromData
         :param snake_case: Whether to return the response in snake_case instead of camelCase. Default
          is false.
         :type snake_case: bool
@@ -9151,23 +9163,20 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
         _params = kwargs.pop("params", {}) or {}
 
-        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", None))  # type: Optional[str]
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
         cls = kwargs.pop("cls", None)  # type: ClsType[_models.Document]
 
-        # Construct form data
-        _files = {
-            "data": data,
-        }
+        _json = self._serialize.body(body, "DocumentCreateFromData")
 
         request = build_create_document_from_data_request(
             content_type=content_type,
+            json=_json,
             snake_case=snake_case,
-            files=_files,
             template_url=self.create_document_from_data.metadata["url"],
             headers=_headers,
             params=_params,
         )
-        request = _convert_request(request, _files)
+        request = _convert_request(request)
         path_format_arguments = {
             "region": self._serialize.url("self._config.region", self._config.region, "str"),
         }

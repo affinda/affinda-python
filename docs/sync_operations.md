@@ -130,6 +130,8 @@ def create_document(snake_case=None,
                     delete_after_parse=None,
                     enable_validation_tool=None,
                     use_ocr=None,
+                    llm_hint=None,
+                    limit_to_examples=None,
                     warning_messages=None,
                     **kwargs)
 ```
@@ -171,6 +173,10 @@ Tool. Set to False to optimize parsing speed. Default value is None.
 extracted using OCR. If false, the document will be treated like a PDF, and the text will be
 extracted using the parser. If not set, we will determine whether to use OCR based on whether
 words are found in the document. Default value is None.
+- `llm_hint` (`str`): Optional hint inserted into the LLM prompt when processing this document.
+Default value is None.
+- `limit_to_examples` (`list[str]`): Restrict LLM example selection to the specified document identifiers.
+Default value is None.
 - `warning_messages` (`list[~affinda.models.DocumentWarning]`): Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
@@ -900,7 +906,9 @@ def replace_mapping_data_source_values(identifier, body, **kwargs)
 
 Replace values for a data source.
 
-Replaces the list of all values in a mapping data source.
+Replaces the list of all values in a mapping data source
+Note: For large data sources (e.g. > 1000 values), it can take a few minutes after the request
+completes for the new values to be searchable.
 
 **Arguments**:
 
@@ -1889,7 +1897,7 @@ header that you received to activate the subscription using this endpoint.
 #### create\_document\_from\_data
 
 ```python
-def create_document_from_data(data, snake_case=None, **kwargs)
+def create_document_from_data(body, snake_case=None, **kwargs)
 ```
 
 Create a document from raw data.
@@ -1905,7 +1913,7 @@ status and retrieve results.:code:`<br/>`.
 
 **Arguments**:
 
-- `data` (`any`): Create resume or job description directly from data.
+- `body` (`~affinda.models.DocumentCreateFromData`): Resume or job description data to create a document from.
 - `snake_case` (`bool`): Whether to return the response in snake_case instead of camelCase. Default
 is false.
 - `cls` (`callable`): A custom type or function that will be passed the direct response

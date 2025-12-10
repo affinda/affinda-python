@@ -2861,6 +2861,10 @@ DocumentCreate.
  extracted using the parser. If not set, we will determine whether to use OCR based on whether
  words are found in the document.
 :vartype use_ocr: bool
+:ivar llm_hint: Optional hint inserted into the LLM prompt when processing this document.
+:vartype llm_hint: str
+:ivar limit_to_examples: Restrict LLM example selection to the specified document identifiers.
+:vartype limit_to_examples: list[str]
 :ivar warning_messages:
 :vartype warning_messages: list[~affinda.models.DocumentWarning]
 
@@ -2907,6 +2911,9 @@ Validation Tool. Set to False to optimize parsing speed.
 extracted using OCR. If false, the document will be treated like a PDF, and the text will be
 extracted using the parser. If not set, we will determine whether to use OCR based on whether
 words are found in the document.
+- `llm_hint`: Optional hint inserted into the LLM prompt when processing this document.
+- `limit_to_examples`: Restrict LLM example selection to the specified document
+identifiers.
 - `warning_messages`: 
 
 <a id="models._models.DocumentCreateFromData"></a>
@@ -2914,66 +2921,13 @@ words are found in the document.
 ## DocumentCreateFromData Objects
 
 ```python
-class DocumentCreateFromData(DocumentCreate)
+class DocumentCreateFromData(msrest.serialization.Model)
 ```
 
 DocumentCreateFromData.
 
 All required parameters must be populated in order to send to Azure.
 
-:ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
- JPG, TIFF, ODT, XLS, XLSX.
-:vartype file: IO
-:ivar url: URL to download the document.
-:vartype url: str
-:ivar collection: Uniquely identify a collection.
-:vartype collection: str
-:ivar document_type: The document type's identifier.  Provide if you already know the document
- type.
-:vartype document_type: str
-:ivar workspace: Uniquely identify a workspace.
-:vartype workspace: str
-:ivar wait: If "true" (default), will return a response only after processing has completed. If
- "false", will return an empty data object which can be polled at the GET endpoint until
- processing is complete.
-:vartype wait: bool
-:ivar identifier: Deprecated in favor of ``customIdentifier``.
-:vartype identifier: str
-:ivar custom_identifier: Specify a custom identifier for the document if you need one, not
- required to be unique.
-:vartype custom_identifier: str
-:ivar file_name: Optional filename of the file.
-:vartype file_name: str
-:ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
- deleted.  Defaults to no expiry.
-:vartype expiry_time: ~datetime.datetime
-:ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-:vartype language: str
-:ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
- of an existing document, no credits will be consumed. If "false", will parse the document
- normally whether its a duplicate or not. If not provided, will fallback to the workspace
- settings.
-:vartype reject_duplicates: bool
-:ivar region_bias: A JSON representation of the RegionBias object.
-:vartype region_bias: str
-:ivar low_priority: Explicitly mark this document as low priority.
-:vartype low_priority: bool
-:ivar compact: If true, the returned parse result (assuming ``wait`` is also true) will be a
- compact version of the full result.
-:vartype compact: bool
-:ivar delete_after_parse: If true, no data will be stored after parsing. Only compatible with
- requests where wait: True.
-:vartype delete_after_parse: bool
-:ivar enable_validation_tool: If true, the document will be viewable in the Affinda Validation
- Tool. Set to False to optimize parsing speed.
-:vartype enable_validation_tool: bool
-:ivar use_ocr: If true, the document will be treated like an image, and the text will be
- extracted using OCR. If false, the document will be treated like a PDF, and the text will be
- extracted using the parser. If not set, we will determine whether to use OCR based on whether
- words are found in the document.
-:vartype use_ocr: bool
-:ivar warning_messages:
-:vartype warning_messages: list[~affinda.models.DocumentWarning]
 :ivar data: Required. Create resume or job description directly from data.
 :vartype data: any
 
@@ -2987,40 +2941,6 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `file`: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
-PNG, JPG, TIFF, ODT, XLS, XLSX.
-- `url`: URL to download the document.
-- `collection`: Uniquely identify a collection.
-- `document_type`: The document type's identifier.  Provide if you already know the
-document type.
-- `workspace`: Uniquely identify a workspace.
-- `wait`: If "true" (default), will return a response only after processing has completed.
-If "false", will return an empty data object which can be polled at the GET endpoint until
-processing is complete.
-- `identifier`: Deprecated in favor of ``customIdentifier``.
-- `custom_identifier`: Specify a custom identifier for the document if you need one, not
-required to be unique.
-- `file_name`: Optional filename of the file.
-- `expiry_time`: The date/time in ISO-8601 format when the document will be automatically
-deleted.  Defaults to no expiry.
-- `language`: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-- `reject_duplicates`: If "true", parsing will fail when the uploaded document is
-duplicate of an existing document, no credits will be consumed. If "false", will parse the
-document normally whether its a duplicate or not. If not provided, will fallback to the
-workspace settings.
-- `region_bias`: A JSON representation of the RegionBias object.
-- `low_priority`: Explicitly mark this document as low priority.
-- `compact`: If true, the returned parse result (assuming ``wait`` is also true) will be a
-compact version of the full result.
-- `delete_after_parse`: If true, no data will be stored after parsing. Only compatible
-with requests where wait: True.
-- `enable_validation_tool`: If true, the document will be viewable in the Affinda
-Validation Tool. Set to False to optimize parsing speed.
-- `use_ocr`: If true, the document will be treated like an image, and the text will be
-extracted using OCR. If false, the document will be treated like a PDF, and the text will be
-extracted using the parser. If not set, we will determine whether to use OCR based on whether
-words are found in the document.
-- `warning_messages`: 
 - `data`: Required. Create resume or job description directly from data.
 
 <a id="models._models.DocumentEditRequest"></a>
@@ -3164,6 +3084,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype file: str
 :ivar html: URL to view the file converted to HTML.
 :vartype html: str
+:ivar llm_hint: Optional hint inserted into the LLM prompt when processing this document.
+:vartype llm_hint: str
 :ivar tags: A set of tags.
 :vartype tags: list[~affinda.models.Tag]
 :ivar created_by:
@@ -3229,6 +3151,7 @@ document type.
 - `error_detail`: 
 - `file`: URL to view the file.
 - `html`: URL to view the file converted to HTML.
+- `llm_hint`: Optional hint inserted into the LLM prompt when processing this document.
 - `tags`: A set of tags.
 - `created_by`: 
 - `source_email`: If the document is created via email ingestion, this field stores the
@@ -3649,6 +3572,8 @@ DocumentUpdate.
 :ivar custom_identifier: Specify a custom identifier for the document if you need one, not
  required to be unique.
 :vartype custom_identifier: str
+:ivar llm_hint: Optional hint inserted into the LLM prompt when processing this document.
+:vartype llm_hint: str
 :ivar warning_messages:
 :vartype warning_messages: list[~affinda.models.DocumentWarning]
 
@@ -3677,6 +3602,7 @@ deleted.  Defaults to no expiry.
 - `identifier`: Deprecated in favor of ``customIdentifier``.
 - `custom_identifier`: Specify a custom identifier for the document if you need one, not
 required to be unique.
+- `llm_hint`: Optional hint inserted into the LLM prompt when processing this document.
 - `warning_messages`: 
 
 <a id="models._models.DocumentWarning"></a>
@@ -5262,7 +5188,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype error: ~affinda.models.DocumentError
 :ivar warnings:
 :vartype warnings: list[~affinda.models.DocumentWarning]
-:ivar data:
+:ivar data: A JSON-encoded string of the ``JobDescriptionData`` object.
 :vartype data: ~affinda.models.JobDescriptionData
 
 <a id="models._models.JobDescription.__init__"></a>
@@ -5278,7 +5204,7 @@ def __init__(**kwargs)
 - `meta`: Required.
 - `error`: 
 - `warnings`: 
-- `data`: 
+- `data`: A JSON-encoded string of the ``JobDescriptionData`` object.
 
 <a id="models._models.JobDescriptionData"></a>
 
@@ -5288,7 +5214,7 @@ def __init__(**kwargs)
 class JobDescriptionData(msrest.serialization.Model)
 ```
 
-JobDescriptionData.
+A JSON-encoded string of the ``JobDescriptionData`` object.
 
 :ivar additional_properties: Unmatched properties from the message are deserialized to this
  collection.
@@ -8016,6 +7942,8 @@ Configuration of the embeddable validation tool.
 :vartype hide_export: bool
 :ivar hide_filename: Hide the filename input.
 :vartype hide_filename: bool
+:ivar hide_show_raw_values: Hide the toggle for showing raw annotation values.
+:vartype hide_show_raw_values: bool
 :ivar hide_reject: Hide the reject document button.
 :vartype hide_reject: bool
 :ivar hide_reparse: Hide the reparse button.
@@ -8034,6 +7962,11 @@ Configuration of the embeddable validation tool.
 :ivar disable_edit_document_metadata: Disable editing document metadata. Makes the collection
  selector, filename input and tags editor read only.
 :vartype disable_edit_document_metadata: bool
+:ivar disable_manual_annotation_editing: Disable manual editing of annotation values via the
+ validation popover.
+:vartype disable_manual_annotation_editing: bool
+:ivar hide_document_status: Hide the document status indicator in the toolbar.
+:vartype hide_document_status: bool
 
 <a id="models._models.OrganizationValidationToolConfig.__init__"></a>
 
@@ -8051,6 +7984,7 @@ def __init__(**kwargs)
 - `hide_edit_pages`: Hide the edit pages button.
 - `hide_export`: Hide the export menu.
 - `hide_filename`: Hide the filename input.
+- `hide_show_raw_values`: Hide the toggle for showing raw annotation values.
 - `hide_reject`: Hide the reject document button.
 - `hide_reparse`: Hide the reparse button.
 - `hide_run_ocr`: Hide the run OCR button.
@@ -8061,6 +7995,9 @@ once.
 - `disable_currency_formatting`: Disable currency formatting of decimals values.
 - `disable_edit_document_metadata`: Disable editing document metadata. Makes the
 collection selector, filename input and tags editor read only.
+- `disable_manual_annotation_editing`: Disable manual editing of annotation values via the
+validation popover.
+- `hide_document_status`: Hide the document status indicator in the toolbar.
 
 <a id="models._models.PageMeta"></a>
 
@@ -11260,8 +11197,10 @@ All required parameters must be populated in order to send to Azure.
 :ivar filter_type: Required. Data points of "text" type support only "equals" filterType,
  others support both "equals" and "range". Known values are: "equals", "range".
 :vartype filter_type: str or ~affinda.models.SearchParametersCustomDataFilterType
-:ivar data_point: Required. The data point's slug.
+:ivar data_point: The data point's slug, used for portal v2 (deprecated).
 :vartype data_point: str
+:ivar field: The field's slug.
+:vartype field: str
 :ivar query: Required. "equals" searches require the "value" key inside the query, and "range"
  searches require at least one of "gte" (greater than or equal) and "lte" (less than or equal).
 :vartype query: any
@@ -11282,7 +11221,8 @@ def __init__(**kwargs)
 
 - `filter_type`: Required. Data points of "text" type support only "equals" filterType,
 others support both "equals" and "range". Known values are: "equals", "range".
-- `data_point`: Required. The data point's slug.
+- `data_point`: The data point's slug, used for portal v2 (deprecated).
+- `field`: The field's slug.
 - `query`: Required. "equals" searches require the "value" key inside the query, and
 "range" searches require at least one of "gte" (greater than or equal) and "lte" (less than or
 equal).
@@ -11304,8 +11244,10 @@ All required parameters must be populated in order to send to Azure.
 :ivar filter_type: Required. Data points of "text" type support only "equals" filterType,
  others support both "equals" and "range". Known values are: "equals", "range".
 :vartype filter_type: str or ~affinda.models.SearchParametersCustomDataFilterType
-:ivar data_point: Required. The data point's slug.
+:ivar data_point: The data point's slug, used for portal v2 (deprecated).
 :vartype data_point: str
+:ivar field: The field's slug.
+:vartype field: str
 :ivar query: Required. "equals" searches require the "value" key inside the query, and "range"
  searches require at least one of "gte" (greater than or equal) and "lte" (less than or equal).
 :vartype query: any
@@ -11326,7 +11268,8 @@ def __init__(**kwargs)
 
 - `filter_type`: Required. Data points of "text" type support only "equals" filterType,
 others support both "equals" and "range". Known values are: "equals", "range".
-- `data_point`: Required. The data point's slug.
+- `data_point`: The data point's slug, used for portal v2 (deprecated).
+- `field`: The field's slug.
 - `query`: Required. "equals" searches require the "value" key inside the query, and
 "range" searches require at least one of "gte" (greater than or equal) and "lte" (less than or
 equal).
@@ -12978,7 +12921,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar passed: Required. Whether the validation passed or not, null if the validation was not
  applicable.
 :vartype passed: bool
-:ivar rule_slug: Required. The hot-dog case slug of the validation rule that was applied.
+:ivar rule_slug: Required. The kebab-case slug of the validation rule that was applied.
 :vartype rule_slug: str
 :ivar message: Required. Message explaining why the validation failed.
 :vartype message: str
@@ -12999,7 +12942,7 @@ def __init__(**kwargs)
 - `annotations`: Required. List of annotation ids that were validated.
 - `passed`: Required. Whether the validation passed or not, null if the validation was not
 applicable.
-- `rule_slug`: Required. The hot-dog case slug of the validation rule that was applied.
+- `rule_slug`: Required. The kebab-case slug of the validation rule that was applied.
 - `message`: Required. Message explaining why the validation failed.
 - `document`: Required. Unique identifier for the document.
 
@@ -13019,7 +12962,7 @@ All required parameters must be populated in order to send to Azure.
 :vartype annotations: list[int]
 :ivar passed: Whether the validation passed or not, null if the validation was not applicable.
 :vartype passed: bool
-:ivar rule_slug: Required. The hot-dog case slug of the validation rule that was applied.
+:ivar rule_slug: Required. The kebab-case slug of the validation rule that was applied.
 :vartype rule_slug: str
 :ivar message: Required. Message explaining why the validation failed.
 :vartype message: str
@@ -13039,7 +12982,7 @@ def __init__(**kwargs)
 - `annotations`: Required. List of annotation ids that were validated.
 - `passed`: Whether the validation passed or not, null if the validation was not
 applicable.
-- `rule_slug`: Required. The hot-dog case slug of the validation rule that was applied.
+- `rule_slug`: Required. The kebab-case slug of the validation rule that was applied.
 - `message`: Required. Message explaining why the validation failed.
 - `document`: Required. Unique identifier for the document.
 
@@ -13057,7 +13000,7 @@ ValidationResultUpdate.
 :vartype annotations: list[int]
 :ivar passed: Whether the validation passed or not, null if the validation was not applicable.
 :vartype passed: bool
-:ivar rule_slug: The hot-dog case slug of the validation rule that was applied.
+:ivar rule_slug: The kebab-case slug of the validation rule that was applied.
 :vartype rule_slug: str
 :ivar message: Message explaining why the validation failed.
 :vartype message: str
@@ -13077,7 +13020,7 @@ def __init__(**kwargs)
 - `annotations`: List of annotation ids that were validated.
 - `passed`: Whether the validation passed or not, null if the validation was not
 applicable.
-- `rule_slug`: The hot-dog case slug of the validation rule that was applied.
+- `rule_slug`: The kebab-case slug of the validation rule that was applied.
 - `message`: Message explaining why the validation failed.
 - `document`: Unique identifier for the document.
 
@@ -13135,6 +13078,8 @@ Configuration of the embeddable validation tool.
 :vartype hide_export: bool
 :ivar hide_filename: Hide the filename input.
 :vartype hide_filename: bool
+:ivar hide_show_raw_values: Hide the toggle for showing raw annotation values.
+:vartype hide_show_raw_values: bool
 :ivar hide_reject: Hide the reject document button.
 :vartype hide_reject: bool
 :ivar hide_reparse: Hide the reparse button.
@@ -13153,6 +13098,11 @@ Configuration of the embeddable validation tool.
 :ivar disable_edit_document_metadata: Disable editing document metadata. Makes the collection
  selector, filename input and tags editor read only.
 :vartype disable_edit_document_metadata: bool
+:ivar disable_manual_annotation_editing: Disable manual editing of annotation values via the
+ validation popover.
+:vartype disable_manual_annotation_editing: bool
+:ivar hide_document_status: Hide the document status indicator in the toolbar.
+:vartype hide_document_status: bool
 
 <a id="models._models.ValidationToolConfig.__init__"></a>
 
@@ -13170,6 +13120,7 @@ def __init__(**kwargs)
 - `hide_edit_pages`: Hide the edit pages button.
 - `hide_export`: Hide the export menu.
 - `hide_filename`: Hide the filename input.
+- `hide_show_raw_values`: Hide the toggle for showing raw annotation values.
 - `hide_reject`: Hide the reject document button.
 - `hide_reparse`: Hide the reparse button.
 - `hide_run_ocr`: Hide the run OCR button.
@@ -13180,6 +13131,9 @@ once.
 - `disable_currency_formatting`: Disable currency formatting of decimals values.
 - `disable_edit_document_metadata`: Disable editing document metadata. Makes the
 collection selector, filename input and tags editor read only.
+- `disable_manual_annotation_editing`: Disable manual editing of annotation values via the
+validation popover.
+- `hide_document_status`: Hide the document status indicator in the toolbar.
 
 <a id="models._models.Workspace"></a>
 
@@ -13205,6 +13159,8 @@ All required parameters must be populated in order to send to Azure.
 :vartype visibility: str or ~affinda.models.WorkspaceVisibility
 :ivar collections:
 :vartype collections: list[~affinda.models.WorkspaceCollectionsItem]
+:ivar document_types: Document types associated with this workspace.
+:vartype document_types: list[str]
 :ivar reject_invalid_documents: If true, the uploaded document will be rejected if it's of the
  wrong document type, or if its document type cannot be determined. No credits will be consumed.
 :vartype reject_invalid_documents: bool
@@ -13245,6 +13201,7 @@ def __init__(**kwargs)
 the workspace. Visibility "private" means only people explicitly added can access the
 workspace. Known values are: "organization", "private".
 - `collections`: 
+- `document_types`: Document types associated with this workspace.
 - `reject_invalid_documents`: If true, the uploaded document will be rejected if it's of
 the wrong document type, or if its document type cannot be determined. No credits will be
 consumed.
@@ -13324,8 +13281,6 @@ All required parameters must be populated in order to send to Azure.
 :vartype category: str
 :ivar validatable: Required.
 :vartype validatable: bool
-:ivar is_custom:
-:vartype is_custom: bool
 :ivar created_dt:
 :vartype created_dt: ~datetime.datetime
 
@@ -13345,7 +13300,6 @@ def __init__(**kwargs)
 - `base_extractor`: 
 - `category`: 
 - `validatable`: Required.
-- `is_custom`: 
 - `created_dt`: 
 
 <a id="models._models.WorkspaceCreate"></a>
@@ -13376,6 +13330,8 @@ All required parameters must be populated in order to send to Azure.
  normally whether its a duplicate or not. If not provided, will fallback to the workspace
  settings.
 :vartype reject_duplicates: bool
+:ivar document_types: Document types to associate with this workspace.
+:vartype document_types: list[str]
 :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
  ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
 :vartype whitelist_ingest_addresses: list[str]
@@ -13404,6 +13360,7 @@ consumed.
 duplicate of an existing document, no credits will be consumed. If "false", will parse the
 document normally whether its a duplicate or not. If not provided, will fallback to the
 workspace settings.
+- `document_types`: Document types to associate with this workspace.
 - `whitelist_ingest_addresses`: If specified, only emails from these addresses will be
 ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
 - `document_splitter`: Uniquely identify a document splitter.
@@ -13521,6 +13478,8 @@ WorkspaceUpdate.
  normally whether its a duplicate or not. If not provided, will fallback to the workspace
  settings.
 :vartype reject_duplicates: bool
+:ivar document_types: Document types to associate with this workspace.
+:vartype document_types: list[str]
 :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
  ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
 :vartype whitelist_ingest_addresses: list[str]
@@ -13548,6 +13507,7 @@ consumed.
 duplicate of an existing document, no credits will be consumed. If "false", will parse the
 document normally whether its a duplicate or not. If not provided, will fallback to the
 workspace settings.
+- `document_types`: Document types to associate with this workspace.
 - `whitelist_ingest_addresses`: If specified, only emails from these addresses will be
 ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
 - `document_splitter`: Uniquely identify a document splitter.

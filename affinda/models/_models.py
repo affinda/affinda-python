@@ -3893,6 +3893,10 @@ class DocumentCreate(msrest.serialization.Model):
      extracted using the parser. If not set, we will determine whether to use OCR based on whether
      words are found in the document.
     :vartype use_ocr: bool
+    :ivar llm_hint: Optional hint inserted into the LLM prompt when processing this document.
+    :vartype llm_hint: str
+    :ivar limit_to_examples: Restrict LLM example selection to the specified document identifiers.
+    :vartype limit_to_examples: list[str]
     :ivar warning_messages:
     :vartype warning_messages: list[~affinda.models.DocumentWarning]
     """
@@ -3916,6 +3920,8 @@ class DocumentCreate(msrest.serialization.Model):
         "delete_after_parse": {"key": "deleteAfterParse", "type": "bool"},
         "enable_validation_tool": {"key": "enableValidationTool", "type": "bool"},
         "use_ocr": {"key": "useOcr", "type": "bool"},
+        "llm_hint": {"key": "llmHint", "type": "str"},
+        "limit_to_examples": {"key": "limitToExamples", "type": "[str]"},
         "warning_messages": {"key": "warningMessages", "type": "[DocumentWarning]"},
     }
 
@@ -3972,6 +3978,11 @@ class DocumentCreate(msrest.serialization.Model):
          extracted using the parser. If not set, we will determine whether to use OCR based on whether
          words are found in the document.
         :paramtype use_ocr: bool
+        :keyword llm_hint: Optional hint inserted into the LLM prompt when processing this document.
+        :paramtype llm_hint: str
+        :keyword limit_to_examples: Restrict LLM example selection to the specified document
+         identifiers.
+        :paramtype limit_to_examples: list[str]
         :keyword warning_messages:
         :paramtype warning_messages: list[~affinda.models.DocumentWarning]
         """
@@ -3994,67 +4005,16 @@ class DocumentCreate(msrest.serialization.Model):
         self.delete_after_parse = kwargs.get("delete_after_parse", None)
         self.enable_validation_tool = kwargs.get("enable_validation_tool", None)
         self.use_ocr = kwargs.get("use_ocr", None)
+        self.llm_hint = kwargs.get("llm_hint", None)
+        self.limit_to_examples = kwargs.get("limit_to_examples", None)
         self.warning_messages = kwargs.get("warning_messages", None)
 
 
-class DocumentCreateFromData(DocumentCreate):
+class DocumentCreateFromData(msrest.serialization.Model):
     """DocumentCreateFromData.
 
     All required parameters must be populated in order to send to Azure.
 
-    :ivar file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML, PNG,
-     JPG, TIFF, ODT, XLS, XLSX.
-    :vartype file: IO
-    :ivar url: URL to download the document.
-    :vartype url: str
-    :ivar collection: Uniquely identify a collection.
-    :vartype collection: str
-    :ivar document_type: The document type's identifier.  Provide if you already know the document
-     type.
-    :vartype document_type: str
-    :ivar workspace: Uniquely identify a workspace.
-    :vartype workspace: str
-    :ivar wait: If "true" (default), will return a response only after processing has completed. If
-     "false", will return an empty data object which can be polled at the GET endpoint until
-     processing is complete.
-    :vartype wait: bool
-    :ivar identifier: Deprecated in favor of ``customIdentifier``.
-    :vartype identifier: str
-    :ivar custom_identifier: Specify a custom identifier for the document if you need one, not
-     required to be unique.
-    :vartype custom_identifier: str
-    :ivar file_name: Optional filename of the file.
-    :vartype file_name: str
-    :ivar expiry_time: The date/time in ISO-8601 format when the document will be automatically
-     deleted.  Defaults to no expiry.
-    :vartype expiry_time: ~datetime.datetime
-    :ivar language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-    :vartype language: str
-    :ivar reject_duplicates: If "true", parsing will fail when the uploaded document is duplicate
-     of an existing document, no credits will be consumed. If "false", will parse the document
-     normally whether its a duplicate or not. If not provided, will fallback to the workspace
-     settings.
-    :vartype reject_duplicates: bool
-    :ivar region_bias: A JSON representation of the RegionBias object.
-    :vartype region_bias: str
-    :ivar low_priority: Explicitly mark this document as low priority.
-    :vartype low_priority: bool
-    :ivar compact: If true, the returned parse result (assuming ``wait`` is also true) will be a
-     compact version of the full result.
-    :vartype compact: bool
-    :ivar delete_after_parse: If true, no data will be stored after parsing. Only compatible with
-     requests where wait: True.
-    :vartype delete_after_parse: bool
-    :ivar enable_validation_tool: If true, the document will be viewable in the Affinda Validation
-     Tool. Set to False to optimize parsing speed.
-    :vartype enable_validation_tool: bool
-    :ivar use_ocr: If true, the document will be treated like an image, and the text will be
-     extracted using OCR. If false, the document will be treated like a PDF, and the text will be
-     extracted using the parser. If not set, we will determine whether to use OCR based on whether
-     words are found in the document.
-    :vartype use_ocr: bool
-    :ivar warning_messages:
-    :vartype warning_messages: list[~affinda.models.DocumentWarning]
     :ivar data: Required. Create resume or job description directly from data.
     :vartype data: any
     """
@@ -4064,83 +4024,11 @@ class DocumentCreateFromData(DocumentCreate):
     }
 
     _attribute_map = {
-        "file": {"key": "file", "type": "IO"},
-        "url": {"key": "url", "type": "str"},
-        "collection": {"key": "collection", "type": "str"},
-        "document_type": {"key": "documentType", "type": "str"},
-        "workspace": {"key": "workspace", "type": "str"},
-        "wait": {"key": "wait", "type": "bool"},
-        "identifier": {"key": "identifier", "type": "str"},
-        "custom_identifier": {"key": "customIdentifier", "type": "str"},
-        "file_name": {"key": "fileName", "type": "str"},
-        "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
-        "language": {"key": "language", "type": "str"},
-        "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
-        "region_bias": {"key": "regionBias", "type": "str"},
-        "low_priority": {"key": "lowPriority", "type": "bool"},
-        "compact": {"key": "compact", "type": "bool"},
-        "delete_after_parse": {"key": "deleteAfterParse", "type": "bool"},
-        "enable_validation_tool": {"key": "enableValidationTool", "type": "bool"},
-        "use_ocr": {"key": "useOcr", "type": "bool"},
-        "warning_messages": {"key": "warningMessages", "type": "[DocumentWarning]"},
         "data": {"key": "data", "type": "object"},
     }
 
     def __init__(self, **kwargs):
         """
-        :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
-         PNG, JPG, TIFF, ODT, XLS, XLSX.
-        :paramtype file: IO
-        :keyword url: URL to download the document.
-        :paramtype url: str
-        :keyword collection: Uniquely identify a collection.
-        :paramtype collection: str
-        :keyword document_type: The document type's identifier.  Provide if you already know the
-         document type.
-        :paramtype document_type: str
-        :keyword workspace: Uniquely identify a workspace.
-        :paramtype workspace: str
-        :keyword wait: If "true" (default), will return a response only after processing has completed.
-         If "false", will return an empty data object which can be polled at the GET endpoint until
-         processing is complete.
-        :paramtype wait: bool
-        :keyword identifier: Deprecated in favor of ``customIdentifier``.
-        :paramtype identifier: str
-        :keyword custom_identifier: Specify a custom identifier for the document if you need one, not
-         required to be unique.
-        :paramtype custom_identifier: str
-        :keyword file_name: Optional filename of the file.
-        :paramtype file_name: str
-        :keyword expiry_time: The date/time in ISO-8601 format when the document will be automatically
-         deleted.  Defaults to no expiry.
-        :paramtype expiry_time: ~datetime.datetime
-        :keyword language: Language code in ISO 639-1 format. Must specify zh-cn or zh-tw for Chinese.
-        :paramtype language: str
-        :keyword reject_duplicates: If "true", parsing will fail when the uploaded document is
-         duplicate of an existing document, no credits will be consumed. If "false", will parse the
-         document normally whether its a duplicate or not. If not provided, will fallback to the
-         workspace settings.
-        :paramtype reject_duplicates: bool
-        :keyword region_bias: A JSON representation of the RegionBias object.
-        :paramtype region_bias: str
-        :keyword low_priority: Explicitly mark this document as low priority.
-        :paramtype low_priority: bool
-        :keyword compact: If true, the returned parse result (assuming ``wait`` is also true) will be a
-         compact version of the full result.
-        :paramtype compact: bool
-        :keyword delete_after_parse: If true, no data will be stored after parsing. Only compatible
-         with requests where wait: True.
-        :paramtype delete_after_parse: bool
-        :keyword enable_validation_tool: If true, the document will be viewable in the Affinda
-         Validation Tool. Set to False to optimize parsing speed.
-        :paramtype enable_validation_tool: bool
-        :keyword use_ocr: If true, the document will be treated like an image, and the text will be
-         extracted using OCR. If false, the document will be treated like a PDF, and the text will be
-         extracted using the parser. If not set, we will determine whether to use OCR based on whether
-         words are found in the document.
-        :paramtype use_ocr: bool
-        :keyword warning_messages:
-        :paramtype warning_messages: list[~affinda.models.DocumentWarning]
         :keyword data: Required. Create resume or job description directly from data.
         :paramtype data: any
         """
@@ -4279,6 +4167,8 @@ class DocumentMeta(msrest.serialization.Model):
     :vartype file: str
     :ivar html: URL to view the file converted to HTML.
     :vartype html: str
+    :ivar llm_hint: Optional hint inserted into the LLM prompt when processing this document.
+    :vartype llm_hint: str
     :ivar tags: A set of tags.
     :vartype tags: list[~affinda.models.Tag]
     :ivar created_by:
@@ -4333,6 +4223,7 @@ class DocumentMeta(msrest.serialization.Model):
         "error_detail": {"key": "errorDetail", "type": "str"},
         "file": {"key": "file", "type": "str"},
         "html": {"key": "html", "type": "str"},
+        "llm_hint": {"key": "llmHint", "type": "str"},
         "tags": {"key": "tags", "type": "[Tag]"},
         "created_by": {"key": "createdBy", "type": "User"},
         "source_email": {"key": "sourceEmail", "type": "str"},
@@ -4417,6 +4308,8 @@ class DocumentMeta(msrest.serialization.Model):
         :paramtype file: str
         :keyword html: URL to view the file converted to HTML.
         :paramtype html: str
+        :keyword llm_hint: Optional hint inserted into the LLM prompt when processing this document.
+        :paramtype llm_hint: str
         :keyword tags: A set of tags.
         :paramtype tags: list[~affinda.models.Tag]
         :keyword created_by:
@@ -4464,6 +4357,7 @@ class DocumentMeta(msrest.serialization.Model):
         self.error_detail = kwargs.get("error_detail", None)
         self.file = kwargs.get("file", None)
         self.html = kwargs.get("html", None)
+        self.llm_hint = kwargs.get("llm_hint", None)
         self.tags = kwargs.get("tags", None)
         self.created_by = kwargs.get("created_by", None)
         self.source_email = kwargs.get("source_email", None)
@@ -4930,6 +4824,8 @@ class DocumentUpdate(msrest.serialization.Model):
     :ivar custom_identifier: Specify a custom identifier for the document if you need one, not
      required to be unique.
     :vartype custom_identifier: str
+    :ivar llm_hint: Optional hint inserted into the LLM prompt when processing this document.
+    :vartype llm_hint: str
     :ivar warning_messages:
     :vartype warning_messages: list[~affinda.models.DocumentWarning]
     """
@@ -4947,6 +4843,7 @@ class DocumentUpdate(msrest.serialization.Model):
         "language": {"key": "language", "type": "str"},
         "identifier": {"key": "identifier", "type": "str"},
         "custom_identifier": {"key": "customIdentifier", "type": "str"},
+        "llm_hint": {"key": "llmHint", "type": "str"},
         "warning_messages": {"key": "warningMessages", "type": "[DocumentWarning]"},
     }
 
@@ -4979,6 +4876,8 @@ class DocumentUpdate(msrest.serialization.Model):
         :keyword custom_identifier: Specify a custom identifier for the document if you need one, not
          required to be unique.
         :paramtype custom_identifier: str
+        :keyword llm_hint: Optional hint inserted into the LLM prompt when processing this document.
+        :paramtype llm_hint: str
         :keyword warning_messages:
         :paramtype warning_messages: list[~affinda.models.DocumentWarning]
         """
@@ -4995,6 +4894,7 @@ class DocumentUpdate(msrest.serialization.Model):
         self.language = kwargs.get("language", None)
         self.identifier = kwargs.get("identifier", None)
         self.custom_identifier = kwargs.get("custom_identifier", None)
+        self.llm_hint = kwargs.get("llm_hint", None)
         self.warning_messages = kwargs.get("warning_messages", None)
 
 
@@ -7091,7 +6991,7 @@ class JobDescription(Document):
     :vartype error: ~affinda.models.DocumentError
     :ivar warnings:
     :vartype warnings: list[~affinda.models.DocumentWarning]
-    :ivar data:
+    :ivar data: A JSON-encoded string of the ``JobDescriptionData`` object.
     :vartype data: ~affinda.models.JobDescriptionData
     """
 
@@ -7116,7 +7016,7 @@ class JobDescription(Document):
         :paramtype error: ~affinda.models.DocumentError
         :keyword warnings:
         :paramtype warnings: list[~affinda.models.DocumentWarning]
-        :keyword data:
+        :keyword data: A JSON-encoded string of the ``JobDescriptionData`` object.
         :paramtype data: ~affinda.models.JobDescriptionData
         """
         super(JobDescription, self).__init__(**kwargs)
@@ -7125,7 +7025,7 @@ class JobDescription(Document):
 
 
 class JobDescriptionData(msrest.serialization.Model):
-    """JobDescriptionData.
+    """A JSON-encoded string of the ``JobDescriptionData`` object.
 
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
@@ -10773,6 +10673,8 @@ class OrganizationValidationToolConfig(msrest.serialization.Model):
     :vartype hide_export: bool
     :ivar hide_filename: Hide the filename input.
     :vartype hide_filename: bool
+    :ivar hide_show_raw_values: Hide the toggle for showing raw annotation values.
+    :vartype hide_show_raw_values: bool
     :ivar hide_reject: Hide the reject document button.
     :vartype hide_reject: bool
     :ivar hide_reparse: Hide the reparse button.
@@ -10791,6 +10693,11 @@ class OrganizationValidationToolConfig(msrest.serialization.Model):
     :ivar disable_edit_document_metadata: Disable editing document metadata. Makes the collection
      selector, filename input and tags editor read only.
     :vartype disable_edit_document_metadata: bool
+    :ivar disable_manual_annotation_editing: Disable manual editing of annotation values via the
+     validation popover.
+    :vartype disable_manual_annotation_editing: bool
+    :ivar hide_document_status: Hide the document status indicator in the toolbar.
+    :vartype hide_document_status: bool
     """
 
     _attribute_map = {
@@ -10800,6 +10707,7 @@ class OrganizationValidationToolConfig(msrest.serialization.Model):
         "hide_edit_pages": {"key": "hideEditPages", "type": "bool"},
         "hide_export": {"key": "hideExport", "type": "bool"},
         "hide_filename": {"key": "hideFilename", "type": "bool"},
+        "hide_show_raw_values": {"key": "hideShowRawValues", "type": "bool"},
         "hide_reject": {"key": "hideReject", "type": "bool"},
         "hide_reparse": {"key": "hideReparse", "type": "bool"},
         "hide_run_ocr": {"key": "hideRunOcr", "type": "bool"},
@@ -10808,6 +10716,11 @@ class OrganizationValidationToolConfig(msrest.serialization.Model):
         "restrict_document_splitting": {"key": "restrictDocumentSplitting", "type": "bool"},
         "disable_currency_formatting": {"key": "disableCurrencyFormatting", "type": "bool"},
         "disable_edit_document_metadata": {"key": "disableEditDocumentMetadata", "type": "bool"},
+        "disable_manual_annotation_editing": {
+            "key": "disableManualAnnotationEditing",
+            "type": "bool",
+        },
+        "hide_document_status": {"key": "hideDocumentStatus", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
@@ -10824,6 +10737,8 @@ class OrganizationValidationToolConfig(msrest.serialization.Model):
         :paramtype hide_export: bool
         :keyword hide_filename: Hide the filename input.
         :paramtype hide_filename: bool
+        :keyword hide_show_raw_values: Hide the toggle for showing raw annotation values.
+        :paramtype hide_show_raw_values: bool
         :keyword hide_reject: Hide the reject document button.
         :paramtype hide_reject: bool
         :keyword hide_reparse: Hide the reparse button.
@@ -10842,6 +10757,11 @@ class OrganizationValidationToolConfig(msrest.serialization.Model):
         :keyword disable_edit_document_metadata: Disable editing document metadata. Makes the
          collection selector, filename input and tags editor read only.
         :paramtype disable_edit_document_metadata: bool
+        :keyword disable_manual_annotation_editing: Disable manual editing of annotation values via the
+         validation popover.
+        :paramtype disable_manual_annotation_editing: bool
+        :keyword hide_document_status: Hide the document status indicator in the toolbar.
+        :paramtype hide_document_status: bool
         """
         super(OrganizationValidationToolConfig, self).__init__(**kwargs)
         self.theme = kwargs.get("theme", None)
@@ -10850,6 +10770,7 @@ class OrganizationValidationToolConfig(msrest.serialization.Model):
         self.hide_edit_pages = kwargs.get("hide_edit_pages", None)
         self.hide_export = kwargs.get("hide_export", None)
         self.hide_filename = kwargs.get("hide_filename", None)
+        self.hide_show_raw_values = kwargs.get("hide_show_raw_values", None)
         self.hide_reject = kwargs.get("hide_reject", None)
         self.hide_reparse = kwargs.get("hide_reparse", None)
         self.hide_run_ocr = kwargs.get("hide_run_ocr", None)
@@ -10858,6 +10779,10 @@ class OrganizationValidationToolConfig(msrest.serialization.Model):
         self.restrict_document_splitting = kwargs.get("restrict_document_splitting", None)
         self.disable_currency_formatting = kwargs.get("disable_currency_formatting", None)
         self.disable_edit_document_metadata = kwargs.get("disable_edit_document_metadata", None)
+        self.disable_manual_annotation_editing = kwargs.get(
+            "disable_manual_annotation_editing", None
+        )
+        self.hide_document_status = kwargs.get("hide_document_status", None)
 
 
 class PageMeta(msrest.serialization.Model):
@@ -14915,8 +14840,10 @@ class SearchParametersCustomData(msrest.serialization.Model):
     :ivar filter_type: Required. Data points of "text" type support only "equals" filterType,
      others support both "equals" and "range". Known values are: "equals", "range".
     :vartype filter_type: str or ~affinda.models.SearchParametersCustomDataFilterType
-    :ivar data_point: Required. The data point's slug.
+    :ivar data_point: The data point's slug, used for portal v2 (deprecated).
     :vartype data_point: str
+    :ivar field: The field's slug.
+    :vartype field: str
     :ivar query: Required. "equals" searches require the "value" key inside the query, and "range"
      searches require at least one of "gte" (greater than or equal) and "lte" (less than or equal).
     :vartype query: any
@@ -14928,7 +14855,6 @@ class SearchParametersCustomData(msrest.serialization.Model):
 
     _validation = {
         "filter_type": {"required": True},
-        "data_point": {"required": True},
         "query": {"required": True},
         "weight": {"maximum": 1, "minimum": 0},
     }
@@ -14936,6 +14862,7 @@ class SearchParametersCustomData(msrest.serialization.Model):
     _attribute_map = {
         "filter_type": {"key": "filterType", "type": "str"},
         "data_point": {"key": "dataPoint", "type": "str"},
+        "field": {"key": "field", "type": "str"},
         "query": {"key": "query", "type": "object"},
         "required": {"key": "required", "type": "bool"},
         "weight": {"key": "weight", "type": "float"},
@@ -14946,8 +14873,10 @@ class SearchParametersCustomData(msrest.serialization.Model):
         :keyword filter_type: Required. Data points of "text" type support only "equals" filterType,
          others support both "equals" and "range". Known values are: "equals", "range".
         :paramtype filter_type: str or ~affinda.models.SearchParametersCustomDataFilterType
-        :keyword data_point: Required. The data point's slug.
+        :keyword data_point: The data point's slug, used for portal v2 (deprecated).
         :paramtype data_point: str
+        :keyword field: The field's slug.
+        :paramtype field: str
         :keyword query: Required. "equals" searches require the "value" key inside the query, and
          "range" searches require at least one of "gte" (greater than or equal) and "lte" (less than or
          equal).
@@ -14959,7 +14888,8 @@ class SearchParametersCustomData(msrest.serialization.Model):
         """
         super(SearchParametersCustomData, self).__init__(**kwargs)
         self.filter_type = kwargs["filter_type"]
-        self.data_point = kwargs["data_point"]
+        self.data_point = kwargs.get("data_point", None)
+        self.field = kwargs.get("field", None)
         self.query = kwargs["query"]
         self.required = kwargs.get("required", None)
         self.weight = kwargs.get("weight", None)
@@ -14973,8 +14903,10 @@ class ResumeSearchParametersCustomData(SearchParametersCustomData):
     :ivar filter_type: Required. Data points of "text" type support only "equals" filterType,
      others support both "equals" and "range". Known values are: "equals", "range".
     :vartype filter_type: str or ~affinda.models.SearchParametersCustomDataFilterType
-    :ivar data_point: Required. The data point's slug.
+    :ivar data_point: The data point's slug, used for portal v2 (deprecated).
     :vartype data_point: str
+    :ivar field: The field's slug.
+    :vartype field: str
     :ivar query: Required. "equals" searches require the "value" key inside the query, and "range"
      searches require at least one of "gte" (greater than or equal) and "lte" (less than or equal).
     :vartype query: any
@@ -14986,7 +14918,6 @@ class ResumeSearchParametersCustomData(SearchParametersCustomData):
 
     _validation = {
         "filter_type": {"required": True},
-        "data_point": {"required": True},
         "query": {"required": True},
         "weight": {"maximum": 1, "minimum": 0},
     }
@@ -14994,6 +14925,7 @@ class ResumeSearchParametersCustomData(SearchParametersCustomData):
     _attribute_map = {
         "filter_type": {"key": "filterType", "type": "str"},
         "data_point": {"key": "dataPoint", "type": "str"},
+        "field": {"key": "field", "type": "str"},
         "query": {"key": "query", "type": "object"},
         "required": {"key": "required", "type": "bool"},
         "weight": {"key": "weight", "type": "float"},
@@ -15004,8 +14936,10 @@ class ResumeSearchParametersCustomData(SearchParametersCustomData):
         :keyword filter_type: Required. Data points of "text" type support only "equals" filterType,
          others support both "equals" and "range". Known values are: "equals", "range".
         :paramtype filter_type: str or ~affinda.models.SearchParametersCustomDataFilterType
-        :keyword data_point: Required. The data point's slug.
+        :keyword data_point: The data point's slug, used for portal v2 (deprecated).
         :paramtype data_point: str
+        :keyword field: The field's slug.
+        :paramtype field: str
         :keyword query: Required. "equals" searches require the "value" key inside the query, and
          "range" searches require at least one of "gte" (greater than or equal) and "lte" (less than or
          equal).
@@ -17211,7 +17145,7 @@ class ValidationResult(msrest.serialization.Model):
     :ivar passed: Required. Whether the validation passed or not, null if the validation was not
      applicable.
     :vartype passed: bool
-    :ivar rule_slug: Required. The hot-dog case slug of the validation rule that was applied.
+    :ivar rule_slug: Required. The kebab-case slug of the validation rule that was applied.
     :vartype rule_slug: str
     :ivar message: Required. Message explaining why the validation failed.
     :vartype message: str
@@ -17246,7 +17180,7 @@ class ValidationResult(msrest.serialization.Model):
         :keyword passed: Required. Whether the validation passed or not, null if the validation was not
          applicable.
         :paramtype passed: bool
-        :keyword rule_slug: Required. The hot-dog case slug of the validation rule that was applied.
+        :keyword rule_slug: Required. The kebab-case slug of the validation rule that was applied.
         :paramtype rule_slug: str
         :keyword message: Required. Message explaining why the validation failed.
         :paramtype message: str
@@ -17271,7 +17205,7 @@ class ValidationResultCreate(msrest.serialization.Model):
     :vartype annotations: list[int]
     :ivar passed: Whether the validation passed or not, null if the validation was not applicable.
     :vartype passed: bool
-    :ivar rule_slug: Required. The hot-dog case slug of the validation rule that was applied.
+    :ivar rule_slug: Required. The kebab-case slug of the validation rule that was applied.
     :vartype rule_slug: str
     :ivar message: Required. Message explaining why the validation failed.
     :vartype message: str
@@ -17301,7 +17235,7 @@ class ValidationResultCreate(msrest.serialization.Model):
         :keyword passed: Whether the validation passed or not, null if the validation was not
          applicable.
         :paramtype passed: bool
-        :keyword rule_slug: Required. The hot-dog case slug of the validation rule that was applied.
+        :keyword rule_slug: Required. The kebab-case slug of the validation rule that was applied.
         :paramtype rule_slug: str
         :keyword message: Required. Message explaining why the validation failed.
         :paramtype message: str
@@ -17323,7 +17257,7 @@ class ValidationResultUpdate(msrest.serialization.Model):
     :vartype annotations: list[int]
     :ivar passed: Whether the validation passed or not, null if the validation was not applicable.
     :vartype passed: bool
-    :ivar rule_slug: The hot-dog case slug of the validation rule that was applied.
+    :ivar rule_slug: The kebab-case slug of the validation rule that was applied.
     :vartype rule_slug: str
     :ivar message: Message explaining why the validation failed.
     :vartype message: str
@@ -17350,7 +17284,7 @@ class ValidationResultUpdate(msrest.serialization.Model):
         :keyword passed: Whether the validation passed or not, null if the validation was not
          applicable.
         :paramtype passed: bool
-        :keyword rule_slug: The hot-dog case slug of the validation rule that was applied.
+        :keyword rule_slug: The kebab-case slug of the validation rule that was applied.
         :paramtype rule_slug: str
         :keyword message: Message explaining why the validation failed.
         :paramtype message: str
@@ -17415,6 +17349,8 @@ class ValidationToolConfig(msrest.serialization.Model):
     :vartype hide_export: bool
     :ivar hide_filename: Hide the filename input.
     :vartype hide_filename: bool
+    :ivar hide_show_raw_values: Hide the toggle for showing raw annotation values.
+    :vartype hide_show_raw_values: bool
     :ivar hide_reject: Hide the reject document button.
     :vartype hide_reject: bool
     :ivar hide_reparse: Hide the reparse button.
@@ -17433,6 +17369,11 @@ class ValidationToolConfig(msrest.serialization.Model):
     :ivar disable_edit_document_metadata: Disable editing document metadata. Makes the collection
      selector, filename input and tags editor read only.
     :vartype disable_edit_document_metadata: bool
+    :ivar disable_manual_annotation_editing: Disable manual editing of annotation values via the
+     validation popover.
+    :vartype disable_manual_annotation_editing: bool
+    :ivar hide_document_status: Hide the document status indicator in the toolbar.
+    :vartype hide_document_status: bool
     """
 
     _attribute_map = {
@@ -17442,6 +17383,7 @@ class ValidationToolConfig(msrest.serialization.Model):
         "hide_edit_pages": {"key": "hideEditPages", "type": "bool"},
         "hide_export": {"key": "hideExport", "type": "bool"},
         "hide_filename": {"key": "hideFilename", "type": "bool"},
+        "hide_show_raw_values": {"key": "hideShowRawValues", "type": "bool"},
         "hide_reject": {"key": "hideReject", "type": "bool"},
         "hide_reparse": {"key": "hideReparse", "type": "bool"},
         "hide_run_ocr": {"key": "hideRunOcr", "type": "bool"},
@@ -17450,6 +17392,11 @@ class ValidationToolConfig(msrest.serialization.Model):
         "restrict_document_splitting": {"key": "restrictDocumentSplitting", "type": "bool"},
         "disable_currency_formatting": {"key": "disableCurrencyFormatting", "type": "bool"},
         "disable_edit_document_metadata": {"key": "disableEditDocumentMetadata", "type": "bool"},
+        "disable_manual_annotation_editing": {
+            "key": "disableManualAnnotationEditing",
+            "type": "bool",
+        },
+        "hide_document_status": {"key": "hideDocumentStatus", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
@@ -17466,6 +17413,8 @@ class ValidationToolConfig(msrest.serialization.Model):
         :paramtype hide_export: bool
         :keyword hide_filename: Hide the filename input.
         :paramtype hide_filename: bool
+        :keyword hide_show_raw_values: Hide the toggle for showing raw annotation values.
+        :paramtype hide_show_raw_values: bool
         :keyword hide_reject: Hide the reject document button.
         :paramtype hide_reject: bool
         :keyword hide_reparse: Hide the reparse button.
@@ -17484,6 +17433,11 @@ class ValidationToolConfig(msrest.serialization.Model):
         :keyword disable_edit_document_metadata: Disable editing document metadata. Makes the
          collection selector, filename input and tags editor read only.
         :paramtype disable_edit_document_metadata: bool
+        :keyword disable_manual_annotation_editing: Disable manual editing of annotation values via the
+         validation popover.
+        :paramtype disable_manual_annotation_editing: bool
+        :keyword hide_document_status: Hide the document status indicator in the toolbar.
+        :paramtype hide_document_status: bool
         """
         super(ValidationToolConfig, self).__init__(**kwargs)
         self.theme = kwargs.get("theme", None)
@@ -17492,6 +17446,7 @@ class ValidationToolConfig(msrest.serialization.Model):
         self.hide_edit_pages = kwargs.get("hide_edit_pages", None)
         self.hide_export = kwargs.get("hide_export", None)
         self.hide_filename = kwargs.get("hide_filename", None)
+        self.hide_show_raw_values = kwargs.get("hide_show_raw_values", None)
         self.hide_reject = kwargs.get("hide_reject", None)
         self.hide_reparse = kwargs.get("hide_reparse", None)
         self.hide_run_ocr = kwargs.get("hide_run_ocr", None)
@@ -17500,6 +17455,10 @@ class ValidationToolConfig(msrest.serialization.Model):
         self.restrict_document_splitting = kwargs.get("restrict_document_splitting", None)
         self.disable_currency_formatting = kwargs.get("disable_currency_formatting", None)
         self.disable_edit_document_metadata = kwargs.get("disable_edit_document_metadata", None)
+        self.disable_manual_annotation_editing = kwargs.get(
+            "disable_manual_annotation_editing", None
+        )
+        self.hide_document_status = kwargs.get("hide_document_status", None)
 
 
 class Workspace(msrest.serialization.Model):
@@ -17519,6 +17478,8 @@ class Workspace(msrest.serialization.Model):
     :vartype visibility: str or ~affinda.models.WorkspaceVisibility
     :ivar collections:
     :vartype collections: list[~affinda.models.WorkspaceCollectionsItem]
+    :ivar document_types: Document types associated with this workspace.
+    :vartype document_types: list[str]
     :ivar reject_invalid_documents: If true, the uploaded document will be rejected if it's of the
      wrong document type, or if its document type cannot be determined. No credits will be consumed.
     :vartype reject_invalid_documents: bool
@@ -17555,6 +17516,7 @@ class Workspace(msrest.serialization.Model):
         "name": {"key": "name", "type": "str"},
         "visibility": {"key": "visibility", "type": "str"},
         "collections": {"key": "collections", "type": "[WorkspaceCollectionsItem]"},
+        "document_types": {"key": "documentTypes", "type": "[str]"},
         "reject_invalid_documents": {"key": "rejectInvalidDocuments", "type": "bool"},
         "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
         "members": {"key": "members", "type": "[User]"},
@@ -17579,6 +17541,8 @@ class Workspace(msrest.serialization.Model):
         :paramtype visibility: str or ~affinda.models.WorkspaceVisibility
         :keyword collections:
         :paramtype collections: list[~affinda.models.WorkspaceCollectionsItem]
+        :keyword document_types: Document types associated with this workspace.
+        :paramtype document_types: list[str]
         :keyword reject_invalid_documents: If true, the uploaded document will be rejected if it's of
          the wrong document type, or if its document type cannot be determined. No credits will be
          consumed.
@@ -17609,6 +17573,7 @@ class Workspace(msrest.serialization.Model):
         self.name = kwargs.get("name", None)
         self.visibility = kwargs.get("visibility", None)
         self.collections = kwargs.get("collections", None)
+        self.document_types = kwargs.get("document_types", None)
         self.reject_invalid_documents = kwargs.get("reject_invalid_documents", None)
         self.reject_duplicates = kwargs.get("reject_duplicates", None)
         self.members = kwargs.get("members", None)
@@ -17690,8 +17655,6 @@ class WorkspaceCollectionsItemExtractor(msrest.serialization.Model):
     :vartype category: str
     :ivar validatable: Required.
     :vartype validatable: bool
-    :ivar is_custom:
-    :vartype is_custom: bool
     :ivar created_dt:
     :vartype created_dt: ~datetime.datetime
     """
@@ -17710,7 +17673,6 @@ class WorkspaceCollectionsItemExtractor(msrest.serialization.Model):
         "base_extractor": {"key": "baseExtractor", "type": "BaseExtractor"},
         "category": {"key": "category", "type": "str"},
         "validatable": {"key": "validatable", "type": "bool"},
-        "is_custom": {"key": "isCustom", "type": "bool"},
         "created_dt": {"key": "createdDt", "type": "iso-8601"},
     }
 
@@ -17728,8 +17690,6 @@ class WorkspaceCollectionsItemExtractor(msrest.serialization.Model):
         :paramtype category: str
         :keyword validatable: Required.
         :paramtype validatable: bool
-        :keyword is_custom:
-        :paramtype is_custom: bool
         :keyword created_dt:
         :paramtype created_dt: ~datetime.datetime
         """
@@ -17740,7 +17700,6 @@ class WorkspaceCollectionsItemExtractor(msrest.serialization.Model):
         self.base_extractor = kwargs.get("base_extractor", None)
         self.category = kwargs.get("category", None)
         self.validatable = kwargs["validatable"]
-        self.is_custom = kwargs.get("is_custom", None)
         self.created_dt = kwargs.get("created_dt", None)
 
 
@@ -17765,6 +17724,8 @@ class WorkspaceCreate(msrest.serialization.Model):
      normally whether its a duplicate or not. If not provided, will fallback to the workspace
      settings.
     :vartype reject_duplicates: bool
+    :ivar document_types: Document types to associate with this workspace.
+    :vartype document_types: list[str]
     :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
      ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
     :vartype whitelist_ingest_addresses: list[str]
@@ -17783,6 +17744,7 @@ class WorkspaceCreate(msrest.serialization.Model):
         "visibility": {"key": "visibility", "type": "str"},
         "reject_invalid_documents": {"key": "rejectInvalidDocuments", "type": "bool"},
         "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
+        "document_types": {"key": "documentTypes", "type": "[str]"},
         "whitelist_ingest_addresses": {"key": "whitelistIngestAddresses", "type": "[str]"},
         "document_splitter": {"key": "documentSplitter", "type": "str"},
     }
@@ -17806,6 +17768,8 @@ class WorkspaceCreate(msrest.serialization.Model):
          document normally whether its a duplicate or not. If not provided, will fallback to the
          workspace settings.
         :paramtype reject_duplicates: bool
+        :keyword document_types: Document types to associate with this workspace.
+        :paramtype document_types: list[str]
         :keyword whitelist_ingest_addresses: If specified, only emails from these addresses will be
          ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
         :paramtype whitelist_ingest_addresses: list[str]
@@ -17818,6 +17782,7 @@ class WorkspaceCreate(msrest.serialization.Model):
         self.visibility = kwargs.get("visibility", None)
         self.reject_invalid_documents = kwargs.get("reject_invalid_documents", None)
         self.reject_duplicates = kwargs.get("reject_duplicates", None)
+        self.document_types = kwargs.get("document_types", None)
         self.whitelist_ingest_addresses = kwargs.get("whitelist_ingest_addresses", None)
         self.document_splitter = kwargs.get("document_splitter", None)
 
@@ -17934,6 +17899,8 @@ class WorkspaceUpdate(msrest.serialization.Model):
      normally whether its a duplicate or not. If not provided, will fallback to the workspace
      settings.
     :vartype reject_duplicates: bool
+    :ivar document_types: Document types to associate with this workspace.
+    :vartype document_types: list[str]
     :ivar whitelist_ingest_addresses: If specified, only emails from these addresses will be
      ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
     :vartype whitelist_ingest_addresses: list[str]
@@ -17946,6 +17913,7 @@ class WorkspaceUpdate(msrest.serialization.Model):
         "visibility": {"key": "visibility", "type": "str"},
         "reject_invalid_documents": {"key": "rejectInvalidDocuments", "type": "bool"},
         "reject_duplicates": {"key": "rejectDuplicates", "type": "bool"},
+        "document_types": {"key": "documentTypes", "type": "[str]"},
         "whitelist_ingest_addresses": {"key": "whitelistIngestAddresses", "type": "[str]"},
         "document_splitter": {"key": "documentSplitter", "type": "str"},
     }
@@ -17967,6 +17935,8 @@ class WorkspaceUpdate(msrest.serialization.Model):
          document normally whether its a duplicate or not. If not provided, will fallback to the
          workspace settings.
         :paramtype reject_duplicates: bool
+        :keyword document_types: Document types to associate with this workspace.
+        :paramtype document_types: list[str]
         :keyword whitelist_ingest_addresses: If specified, only emails from these addresses will be
          ingested for parsing. Wild cards are allowed, e.g. "*@eyefind.info".
         :paramtype whitelist_ingest_addresses: list[str]
@@ -17978,6 +17948,7 @@ class WorkspaceUpdate(msrest.serialization.Model):
         self.visibility = kwargs.get("visibility", None)
         self.reject_invalid_documents = kwargs.get("reject_invalid_documents", None)
         self.reject_duplicates = kwargs.get("reject_duplicates", None)
+        self.document_types = kwargs.get("document_types", None)
         self.whitelist_ingest_addresses = kwargs.get("whitelist_ingest_addresses", None)
         self.document_splitter = kwargs.get("document_splitter", None)
 

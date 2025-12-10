@@ -350,6 +350,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         delete_after_parse: Optional[bool] = None,
         enable_validation_tool: Optional[bool] = None,
         use_ocr: Optional[bool] = None,
+        llm_hint: Optional[str] = None,
+        limit_to_examples: Optional[List[str]] = None,
         warning_messages: Optional[List[_models.DocumentWarning]] = None,
         **kwargs: Any,
     ) -> _models.Document:
@@ -407,6 +409,12 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
          extracted using the parser. If not set, we will determine whether to use OCR based on whether
          words are found in the document. Default value is None.
         :type use_ocr: bool
+        :param llm_hint: Optional hint inserted into the LLM prompt when processing this document.
+         Default value is None.
+        :type llm_hint: str
+        :param limit_to_examples: Restrict LLM example selection to the specified document identifiers.
+         Default value is None.
+        :type limit_to_examples: list[str]
         :param warning_messages:  Default value is None.
         :type warning_messages: list[~affinda.models.DocumentWarning]
         :keyword callable cls: A custom type or function that will be passed the direct response
@@ -455,6 +463,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             "deleteAfterParse": delete_after_parse,
             "enableValidationTool": enable_validation_tool,
             "useOcr": use_ocr,
+            "llmHint": llm_hint,
+            "limitToExamples": limit_to_examples,
             "warningMessages": warning_messages,
         }
 
@@ -2270,7 +2280,9 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
     ) -> List[Any]:
         """Replace values for a data source.
 
-        Replaces the list of all values in a mapping data source.
+        Replaces the list of all values in a mapping data source
+        Note: For large data sources (e.g. > 1000 values), it can take a few minutes after the request
+        completes for the new values to be searchable.
 
         :param identifier: Data source's identifier.
         :type identifier: str
@@ -4777,7 +4789,10 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
     activate_resthook_subscription.metadata = {"url": "/v3/resthook_subscriptions/activate"}  # type: ignore
 
     async def create_document_from_data(
-        self, data: Any, snake_case: Optional[bool] = None, **kwargs: Any
+        self,
+        body: _models.DocumentCreateFromData,
+        snake_case: Optional[bool] = None,
+        **kwargs: Any,
     ) -> _models.Document:
         """Create a document from raw data.
 
@@ -4790,8 +4805,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         `/documents/{identifier} <#get-/v3/documents/-identifier->`_ endpoint to check processing
         status and retrieve results.:code:`<br/>`.
 
-        :param data: Create resume or job description directly from data.
-        :type data: any
+        :param body: Resume or job description data to create a document from.
+        :type body: ~affinda.models.DocumentCreateFromData
         :param snake_case: Whether to return the response in snake_case instead of camelCase. Default
          is false.
         :type snake_case: bool
@@ -4818,23 +4833,20 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
         _params = kwargs.pop("params", {}) or {}
 
-        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", None))  # type: Optional[str]
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
         cls = kwargs.pop("cls", None)  # type: ClsType[_models.Document]
 
-        # Construct form data
-        _files = {
-            "data": data,
-        }
+        _json = self._serialize.body(body, "DocumentCreateFromData")
 
         request = build_create_document_from_data_request(
             content_type=content_type,
+            json=_json,
             snake_case=snake_case,
-            files=_files,
             template_url=self.create_document_from_data.metadata["url"],
             headers=_headers,
             params=_params,
         )
-        request = _convert_request(request, _files)
+        request = _convert_request(request)
         path_format_arguments = {
             "region": self._serialize.url("self._config.region", self._config.region, "str"),
         }

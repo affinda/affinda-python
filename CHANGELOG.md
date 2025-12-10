@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.28.7] - 2025-12-10
+### Changed
+- Update affinda logo in README
+
 ## [4.28.6] - 2025-08-15
 ### Fixed
 - Uncaught exception when serializing 401 response
