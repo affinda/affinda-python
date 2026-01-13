@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.28.8] - 2026-01-13
+### Removed
+- Remove `data` parameter from `create_document()`. Use `create_document_from_data()` instead.
+
 ## [4.28.7] - 2025-12-10
 ### Changed
 - Update affinda logo in README

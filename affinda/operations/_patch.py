@@ -284,7 +284,6 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         deserialized = super().create_document(
             file=file,
             url=url,
-            data=data,
             collection=collection,
             document_type=document_type,
             workspace=workspace,
