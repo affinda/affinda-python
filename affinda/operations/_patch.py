@@ -166,7 +166,6 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         self,
         file=...,  # type: Optional[IO]
         url=...,  # type: Optional[str]
-        data=...,  # type: Any
         collection=...,  # type: Optional[str]
         document_type=...,  # type: Optional[str]
         workspace=...,  # type: Optional[str]
@@ -196,7 +195,6 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         self,
         file=...,  # type: Optional[IO]
         url=...,  # type: Optional[str]
-        data=...,  # type: Any
         collection=...,  # type: Optional[str]
         document_type=...,  # type: Optional[str]
         workspace=...,  # type: Optional[str]
@@ -226,7 +224,6 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         self,
         file=...,  # type: Optional[IO]
         url=...,  # type: Optional[str]
-        data=...,  # type: Any
         collection=...,  # type: Optional[str]
         document_type=...,  # type: Optional[str]
         workspace=...,  # type: Optional[str]
@@ -255,7 +252,6 @@ class AffindaAPIOperationsMixin(AffindaAPIOperationsMixinGenerated):
         self,
         file=None,  # type: Optional[IO]
         url=None,  # type: Optional[str]
-        data=None,  # type: Any
         collection=None,  # type: Optional[str]
         document_type=None,  # type: Optional[str]
         workspace=None,  # type: Optional[str]

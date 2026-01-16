@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.28.9] - 2026-01-16
+### Removed
+- Remove `data` parameter from `create_document()`. Use `create_document_from_data()` instead.
+
 ## [4.28.8] - 2026-01-13
 ### Removed
 - Remove `data` parameter from `create_document()`. Use `create_document_from_data()` instead.
