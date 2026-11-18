@@ -90,6 +90,7 @@ from ...operations._affinda_api_operations import (
     build_get_all_invitations_request,
     build_get_all_organization_memberships_request,
     build_get_all_organizations_request,
+    build_get_all_resthook_results_request,
     build_get_all_resthook_subscriptions_request,
     build_get_all_tags_request,
     build_get_all_validation_results_request,
@@ -126,6 +127,7 @@ from ...operations._affinda_api_operations import (
     build_get_tag_request,
     build_get_usage_by_collection_request,
     build_get_usage_by_workspace_request,
+    build_get_usage_request,
     build_get_validation_result_request,
     build_get_workspace_membership_request,
     build_get_workspace_request,
@@ -139,6 +141,7 @@ from ...operations._affinda_api_operations import (
     build_regenerate_api_key_for_api_user_request,
     build_replace_data_point_choices_request,
     build_replace_mapping_data_source_values_request,
+    build_resend_resthook_results_request,
     build_respond_to_invitation_request,
     build_update_annotation_request,
     build_update_api_user_request,
@@ -214,13 +217,14 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :type tags: list[int]
         :param created_dt: Filter by created datetime. Default value is None.
         :type created_dt: str or ~affinda.models.DateRange
-        :param search: Partial, case-insensitive match with file name or tag name. Default value is
-         None.
+        :param search: Partial, case-insensitive match with file name, identifier or tag name. For an
+         indexed collection or workspace, it also matches custom identifier and document text. Default
+         value is None.
         :type search: str
-        :param ordering: Sort the result set. A "-" at the beginning denotes DESC sort, e.g.
-         -created_dt. Sort by multiple fields is supported. Supported values include: 'file_name',
-         'extractor', 'created_dt', 'validated_dt', 'archived_dt' and 'parsed__:code:`<dataPointSlug>`'.
-         Default value is None.
+        :param ordering: Sort the results. Put "-" before a value to sort in descending order, e.g.
+         -created_dt. You can sort by more than one value. Supported values: 'identifier', 'file_name',
+         'extractor', 'collection', 'created_dt', 'validated_dt' and 'archived_dt'. Default value is
+         None.
         :type ordering: list[str]
         :param include_data: By default, this endpoint returns only the meta data of the documents. Set
          this to ``true`` will return a summary of the data that was parsed. If you want to retrieve the
@@ -1121,6 +1125,9 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         """Get usage by workspace.
 
         Return monthly credits consumption of a workspace.
+        Deprecated: use ``GET /v3/usage?organization={id}&workspace={id}`` instead. The new endpoint
+        returns a unified daily series and supports the same workspace scoping along with organization-
+        and document-type-level reporting.
 
         :param identifier: Workspace's identifier.
         :type identifier: str
@@ -3418,6 +3425,94 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
     delete_organization.metadata = {"url": "/v3/organizations/{identifier}"}  # type: ignore
 
+    async def get_usage(
+        self,
+        organization: str,
+        workspace: Optional[str] = None,
+        document_type: Optional[str] = None,
+        start: Optional[datetime.date] = None,
+        end: Optional[datetime.date] = None,
+        **kwargs: Any,
+    ) -> _models.UsageResponse:
+        """Get usage.
+
+        Returns daily credits consumption for an organization over a date range. Optionally scope the
+        report to a single workspace, a single document type, or a single (workspace × document type)
+        pair by supplying both ``workspace`` and ``document_type``.
+
+        :param organization: Organization to report usage for. The caller must be an admin or owner.
+        :type organization: str
+        :param workspace: Optionally scope the report to a single workspace within the organization.
+         Combine with ``document_type`` to scope to a single (workspace × document type) pair. Default
+         value is None.
+        :type workspace: str
+        :param document_type: Optionally scope the report to a single document type within the
+         organization. Combine with ``workspace`` to scope to a single (workspace × document type) pair.
+         Default value is None.
+        :type document_type: str
+        :param start: Inclusive start date of the report (YYYY-MM-DD). Defaults to 365 days before
+         ``end``. Default value is None.
+        :type start: ~datetime.date
+        :param end: Inclusive end date of the report (YYYY-MM-DD). Defaults to today. Default value is
+         None.
+        :type end: ~datetime.date
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: UsageResponse, or the result of cls(response)
+        :rtype: ~affinda.models.UsageResponse
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.UsageResponse]
+
+        request = build_get_usage_request(
+            organization=organization,
+            workspace=workspace,
+            document_type=document_type,
+            start=start,
+            end=end,
+            template_url=self.get_usage.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("UsageResponse", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_usage.metadata = {"url": "/v3/usage"}  # type: ignore
+
     async def get_all_tags(
         self,
         limit: Optional[int] = None,
@@ -4788,6 +4883,159 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
     activate_resthook_subscription.metadata = {"url": "/v3/resthook_subscriptions/activate"}  # type: ignore
 
+    async def get_all_resthook_results(
+        self,
+        document: str,
+        offset: Optional[int] = None,
+        limit: Optional[int] = None,
+        event: Optional[Union[str, "_models.ResthookEvent"]] = None,
+        **kwargs: Any,
+    ) -> _models.Paths1Uxms0YV3ResthookResultsGetResponses200ContentApplicationJsonSchema:
+        """Get list of webhook delivery results for a document.
+
+        Returns the webhook (resthook) delivery results recorded for a document.
+
+        :param document: Identifier of the document to return webhook delivery results for.
+        :type document: str
+        :param offset: The number of documents to skip before starting to collect the result set.
+         Default value is None.
+        :type offset: int
+        :param limit: The numbers of results to return. Default value is None.
+        :type limit: int
+        :param event: Filter results by event. Default value is None.
+        :type event: str or ~affinda.models.ResthookEvent
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: Paths1Uxms0YV3ResthookResultsGetResponses200ContentApplicationJsonSchema, or the
+         result of cls(response)
+        :rtype:
+         ~affinda.models.Paths1Uxms0YV3ResthookResultsGetResponses200ContentApplicationJsonSchema
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.Paths1Uxms0YV3ResthookResultsGetResponses200ContentApplicationJsonSchema]
+
+        request = build_get_all_resthook_results_request(
+            document=document,
+            offset=offset,
+            limit=limit,
+            event=event,
+            template_url=self.get_all_resthook_results.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize(
+            "Paths1Uxms0YV3ResthookResultsGetResponses200ContentApplicationJsonSchema",
+            pipeline_response,
+        )
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_all_resthook_results.metadata = {"url": "/v3/resthook_results"}  # type: ignore
+
+    async def resend_resthook_results(  # pylint: disable=inconsistent-return-statements
+        self,
+        body: _models.PathsJg1B16V3ResthookResultsResendPostRequestbodyContentApplicationJsonSchema,
+        **kwargs: Any,
+    ) -> None:
+        """Re-trigger webhooks for a document.
+
+        Replays an event for a document, re-firing it to every matching v3 webhook subscription
+        (including ones that are currently inactive). The deliveries are queued asynchronously, so a
+        202 is returned immediately.
+
+        :param body:
+        :type body:
+         ~affinda.models.PathsJg1B16V3ResthookResultsResendPostRequestbodyContentApplicationJsonSchema
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: None, or the result of cls(response)
+        :rtype: None
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            404: lambda response: ResourceNotFoundError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[None]
+
+        _json = self._serialize.body(
+            body, "PathsJg1B16V3ResthookResultsResendPostRequestbodyContentApplicationJsonSchema"
+        )
+
+        request = build_resend_resthook_results_request(
+            content_type=content_type,
+            json=_json,
+            template_url=self.resend_resthook_results.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [202]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if cls:
+            return cls(pipeline_response, None, {})
+
+    resend_resthook_results.metadata = {"url": "/v3/resthook_results/resend"}  # type: ignore
+
     async def create_document_from_data(
         self,
         body: _models.DocumentCreateFromData,
@@ -5964,7 +6212,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         self,
         offset: Optional[int] = None,
         limit: Optional[int] = None,
-        document_type: Optional[Union[str, "_models.Enum17"]] = None,
+        document_type: Optional[Union[str, "_models.Enum18"]] = None,
         name: Optional[str] = None,
         **kwargs: Any,
     ) -> _models.PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema:
@@ -5978,7 +6226,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param limit: The numbers of results to return. Default value is None.
         :type limit: int
         :param document_type: Filter indices by a document type. Default value is None.
-        :type document_type: str or ~affinda.models.Enum17
+        :type document_type: str or ~affinda.models.Enum18
         :param name: Filter indices by name. Default value is None.
         :type name: str
         :keyword callable cls: A custom type or function that will be passed the direct response
@@ -7049,6 +7297,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         """Get usage by collection.
 
         Return monthly credits consumption of a collection.
+        Deprecated: use ``GET /v3/usage?organization={id}&document_type={id}`` instead. The new
+        endpoint returns a unified daily series and uses the modern "document type" terminology.
 
         :param identifier: Collection's identifier.
         :type identifier: str
@@ -9415,7 +9665,9 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
     delete_invitation.metadata = {"url": "/v3/invitations/{identifier}"}  # type: ignore
 
-    async def get_invitation_by_token(self, token: str, **kwargs: Any) -> _models.Invitation:
+    async def get_invitation_by_token(
+        self, token: str, **kwargs: Any
+    ) -> _models.InvitationByToken:
         """Get detail of an invitation by token.
 
         Get detail of an invitation using a secret token. This allows users who have not
@@ -9424,8 +9676,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param token: Invitation token.
         :type token: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: Invitation, or the result of cls(response)
-        :rtype: ~affinda.models.Invitation
+        :return: InvitationByToken, or the result of cls(response)
+        :rtype: ~affinda.models.InvitationByToken
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -9441,7 +9693,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _headers = kwargs.pop("headers", {}) or {}
         _params = kwargs.pop("params", {}) or {}
 
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.Invitation]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.InvitationByToken]
 
         request = build_get_invitation_by_token_request(
             token=token,
@@ -9465,7 +9717,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
 
-        deserialized = self._deserialize("Invitation", pipeline_response)
+        deserialized = self._deserialize("InvitationByToken", pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -9476,7 +9728,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
 
     async def respond_to_invitation(
         self, token: str, body: _models.InvitationResponse, **kwargs: Any
-    ) -> _models.Invitation:
+    ) -> _models.InvitationByToken:
         """Respond to an invitation.
 
         Choose to accept or decline an invitation.
@@ -9486,8 +9738,8 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         :param body:
         :type body: ~affinda.models.InvitationResponse
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: Invitation, or the result of cls(response)
-        :rtype: ~affinda.models.Invitation
+        :return: InvitationByToken, or the result of cls(response)
+        :rtype: ~affinda.models.InvitationByToken
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -9506,7 +9758,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
         _params = kwargs.pop("params", {}) or {}
 
         content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.Invitation]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.InvitationByToken]
 
         _json = self._serialize.body(body, "InvitationResponse")
 
@@ -9534,7 +9786,7 @@ class AffindaAPIOperationsMixin:  # pylint: disable=too-many-public-methods
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
 
-        deserialized = self._deserialize("Invitation", pipeline_response)
+        deserialized = self._deserialize("InvitationByToken", pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})

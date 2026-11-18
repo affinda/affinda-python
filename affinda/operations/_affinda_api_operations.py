@@ -81,17 +81,17 @@ def build_get_all_documents_request(
     if state is not None:
         _params['state'] = _SERIALIZER.query("state", state, 'str')
     if tags is not None:
-        _params['tags'] = _SERIALIZER.query("tags", tags, '[int]')
+        _params['tags'] = [_SERIALIZER.query("tags", q, 'int', minimum=1) if q is not None else '' for q in tags]
     if created_dt is not None:
         _params['created_dt'] = _SERIALIZER.query("created_dt", created_dt, 'str')
     if search is not None:
         _params['search'] = _SERIALIZER.query("search", search, 'str')
     if ordering is not None:
-        _params['ordering'] = _SERIALIZER.query("ordering", ordering, '[str]')
+        _params['ordering'] = _SERIALIZER.query("ordering", ordering, '[str]', div=',')
     if include_data is not None:
         _params['include_data'] = _SERIALIZER.query("include_data", include_data, 'bool')
     if exclude is not None:
-        _params['exclude'] = _SERIALIZER.query("exclude", exclude, '[str]')
+        _params['exclude'] = [_SERIALIZER.query("exclude", q, 'str') if q is not None else '' for q in exclude]
     if in_review is not None:
         _params['in_review'] = _SERIALIZER.query("in_review", in_review, 'bool')
     if failed is not None:
@@ -1464,6 +1464,46 @@ def build_delete_organization_request(
     )
 
 
+def build_get_usage_request(
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+    _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
+
+    organization = kwargs.pop('organization')  # type: str
+    workspace = kwargs.pop('workspace', _params.pop('workspace', None))  # type: Optional[str]
+    document_type = kwargs.pop('document_type', _params.pop('document_type', None))  # type: Optional[str]
+    start = kwargs.pop('start', _params.pop('start', None))  # type: Optional[datetime.date]
+    end = kwargs.pop('end', _params.pop('end', None))  # type: Optional[datetime.date]
+    accept = _headers.pop('Accept', "application/json")
+
+    # Construct URL
+    _url = kwargs.pop("template_url", "/v3/usage")
+
+    # Construct parameters
+    _params['organization'] = _SERIALIZER.query("organization", organization, 'str')
+    if workspace is not None:
+        _params['workspace'] = _SERIALIZER.query("workspace", workspace, 'str')
+    if document_type is not None:
+        _params['document_type'] = _SERIALIZER.query("document_type", document_type, 'str')
+    if start is not None:
+        _params['start'] = _SERIALIZER.query("start", start, 'date')
+    if end is not None:
+        _params['end'] = _SERIALIZER.query("end", end, 'date')
+
+    # Construct headers
+    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="GET",
+        url=_url,
+        params=_params,
+        headers=_headers,
+        **kwargs
+    )
+
+
 def build_get_all_tags_request(
     **kwargs  # type: Any
 ):
@@ -2047,6 +2087,68 @@ def build_activate_resthook_subscription_request(
     )
 
 
+def build_get_all_resthook_results_request(
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+    _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
+
+    document = kwargs.pop('document')  # type: str
+    offset = kwargs.pop('offset', _params.pop('offset', None))  # type: Optional[int]
+    limit = kwargs.pop('limit', _params.pop('limit', None))  # type: Optional[int]
+    event = kwargs.pop('event', _params.pop('event', None))  # type: Optional[Union[str, "_models.ResthookEvent"]]
+    accept = _headers.pop('Accept', "application/json")
+
+    # Construct URL
+    _url = kwargs.pop("template_url", "/v3/resthook_results")
+
+    # Construct parameters
+    if offset is not None:
+        _params['offset'] = _SERIALIZER.query("offset", offset, 'int', minimum=0)
+    if limit is not None:
+        _params['limit'] = _SERIALIZER.query("limit", limit, 'int', maximum=100, minimum=1)
+    _params['document'] = _SERIALIZER.query("document", document, 'str')
+    if event is not None:
+        _params['event'] = _SERIALIZER.query("event", event, 'str')
+
+    # Construct headers
+    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="GET",
+        url=_url,
+        params=_params,
+        headers=_headers,
+        **kwargs
+    )
+
+
+def build_resend_resthook_results_request(
+    **kwargs  # type: Any
+):
+    # type: (...) -> HttpRequest
+    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+
+    content_type = kwargs.pop('content_type', _headers.pop('Content-Type', None))  # type: Optional[str]
+    accept = _headers.pop('Accept', "application/json")
+
+    # Construct URL
+    _url = kwargs.pop("template_url", "/v3/resthook_results/resend")
+
+    # Construct headers
+    if content_type is not None:
+        _headers['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
+
+    return HttpRequest(
+        method="POST",
+        url=_url,
+        headers=_headers,
+        **kwargs
+    )
+
+
 def build_create_document_from_data_request(
     **kwargs  # type: Any
 ):
@@ -2536,7 +2638,7 @@ def build_get_all_indexes_request(
 
     offset = kwargs.pop('offset', _params.pop('offset', None))  # type: Optional[int]
     limit = kwargs.pop('limit', _params.pop('limit', None))  # type: Optional[int]
-    document_type = kwargs.pop('document_type', _params.pop('document_type', None))  # type: Optional[Union[str, "_models.Enum17"]]
+    document_type = kwargs.pop('document_type', _params.pop('document_type', None))  # type: Optional[Union[str, "_models.Enum18"]]
     name = kwargs.pop('name', _params.pop('name', None))  # type: Optional[str]
     accept = _headers.pop('Accept', "application/json")
 
@@ -3089,7 +3191,7 @@ def build_get_all_data_points_request(
     if annotation_content_type is not None:
         _params['annotation_content_type'] = _SERIALIZER.query("annotation_content_type", annotation_content_type, 'str')
     if identifier is not None:
-        _params['identifier'] = _SERIALIZER.query("identifier", identifier, '[str]')
+        _params['identifier'] = [_SERIALIZER.query("identifier", q, 'str') if q is not None else '' for q in identifier]
 
     # Construct headers
     _headers['Accept'] = _SERIALIZER.header("accept", accept, 'str')
@@ -4334,13 +4436,14 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type tags: list[int]
         :param created_dt: Filter by created datetime. Default value is None.
         :type created_dt: str or ~affinda.models.DateRange
-        :param search: Partial, case-insensitive match with file name or tag name. Default value is
-         None.
+        :param search: Partial, case-insensitive match with file name, identifier or tag name. For an
+         indexed collection or workspace, it also matches custom identifier and document text. Default
+         value is None.
         :type search: str
-        :param ordering: Sort the result set. A "-" at the beginning denotes DESC sort, e.g.
-         -created_dt. Sort by multiple fields is supported. Supported values include: 'file_name',
-         'extractor', 'created_dt', 'validated_dt', 'archived_dt' and 'parsed__:code:`<dataPointSlug>`'.
-         Default value is None.
+        :param ordering: Sort the results. Put "-" before a value to sort in descending order, e.g.
+         -created_dt. You can sort by more than one value. Supported values: 'identifier', 'file_name',
+         'extractor', 'collection', 'created_dt', 'validated_dt' and 'archived_dt'. Default value is
+         None.
         :type ordering: list[str]
         :param include_data: By default, this endpoint returns only the meta data of the documents. Set
          this to ``true`` will return a summary of the data that was parsed. If you want to retrieve the
@@ -5272,6 +5375,9 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         """Get usage by workspace.
 
         Return monthly credits consumption of a workspace.
+        Deprecated: use ``GET /v3/usage?organization={id}&workspace={id}`` instead. The new endpoint
+        returns a unified daily series and supports the same workspace scoping along with organization-
+        and document-type-level reporting.
 
         :param identifier: Workspace's identifier.
         :type identifier: str
@@ -7672,6 +7778,95 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
     delete_organization.metadata = {"url": "/v3/organizations/{identifier}"}  # type: ignore
 
+    def get_usage(
+        self,
+        organization,  # type: str
+        workspace=None,  # type: Optional[str]
+        document_type=None,  # type: Optional[str]
+        start=None,  # type: Optional[datetime.date]
+        end=None,  # type: Optional[datetime.date]
+        **kwargs,  # type: Any
+    ):
+        # type: (...) -> _models.UsageResponse
+        """Get usage.
+
+        Returns daily credits consumption for an organization over a date range. Optionally scope the
+        report to a single workspace, a single document type, or a single (workspace × document type)
+        pair by supplying both ``workspace`` and ``document_type``.
+
+        :param organization: Organization to report usage for. The caller must be an admin or owner.
+        :type organization: str
+        :param workspace: Optionally scope the report to a single workspace within the organization.
+         Combine with ``document_type`` to scope to a single (workspace × document type) pair. Default
+         value is None.
+        :type workspace: str
+        :param document_type: Optionally scope the report to a single document type within the
+         organization. Combine with ``workspace`` to scope to a single (workspace × document type) pair.
+         Default value is None.
+        :type document_type: str
+        :param start: Inclusive start date of the report (YYYY-MM-DD). Defaults to 365 days before
+         ``end``. Default value is None.
+        :type start: ~datetime.date
+        :param end: Inclusive end date of the report (YYYY-MM-DD). Defaults to today. Default value is
+         None.
+        :type end: ~datetime.date
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: UsageResponse, or the result of cls(response)
+        :rtype: ~affinda.models.UsageResponse
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.UsageResponse]
+
+        request = build_get_usage_request(
+            organization=organization,
+            workspace=workspace,
+            document_type=document_type,
+            start=start,
+            end=end,
+            template_url=self.get_usage.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize("UsageResponse", pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_usage.metadata = {"url": "/v3/usage"}  # type: ignore
+
     def get_all_tags(
         self,
         limit=None,  # type: Optional[int]
@@ -9117,6 +9312,161 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
     activate_resthook_subscription.metadata = {"url": "/v3/resthook_subscriptions/activate"}  # type: ignore
 
+    def get_all_resthook_results(
+        self,
+        document,  # type: str
+        offset=None,  # type: Optional[int]
+        limit=None,  # type: Optional[int]
+        event=None,  # type: Optional[Union[str, "_models.ResthookEvent"]]
+        **kwargs,  # type: Any
+    ):
+        # type: (...) -> _models.Paths1Uxms0YV3ResthookResultsGetResponses200ContentApplicationJsonSchema
+        """Get list of webhook delivery results for a document.
+
+        Returns the webhook (resthook) delivery results recorded for a document.
+
+        :param document: Identifier of the document to return webhook delivery results for.
+        :type document: str
+        :param offset: The number of documents to skip before starting to collect the result set.
+         Default value is None.
+        :type offset: int
+        :param limit: The numbers of results to return. Default value is None.
+        :type limit: int
+        :param event: Filter results by event. Default value is None.
+        :type event: str or ~affinda.models.ResthookEvent
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: Paths1Uxms0YV3ResthookResultsGetResponses200ContentApplicationJsonSchema, or the
+         result of cls(response)
+        :rtype:
+         ~affinda.models.Paths1Uxms0YV3ResthookResultsGetResponses200ContentApplicationJsonSchema
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = kwargs.pop("headers", {}) or {}
+        _params = kwargs.pop("params", {}) or {}
+
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.Paths1Uxms0YV3ResthookResultsGetResponses200ContentApplicationJsonSchema]
+
+        request = build_get_all_resthook_results_request(
+            document=document,
+            offset=offset,
+            limit=limit,
+            event=event,
+            template_url=self.get_all_resthook_results.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        deserialized = self._deserialize(
+            "Paths1Uxms0YV3ResthookResultsGetResponses200ContentApplicationJsonSchema",
+            pipeline_response,
+        )
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+
+    get_all_resthook_results.metadata = {"url": "/v3/resthook_results"}  # type: ignore
+
+    def resend_resthook_results(  # pylint: disable=inconsistent-return-statements
+        self,
+        body,  # type: _models.PathsJg1B16V3ResthookResultsResendPostRequestbodyContentApplicationJsonSchema
+        **kwargs,  # type: Any
+    ):
+        # type: (...) -> None
+        """Re-trigger webhooks for a document.
+
+        Replays an event for a document, re-firing it to every matching v3 webhook subscription
+        (including ones that are currently inactive). The deliveries are queued asynchronously, so a
+        202 is returned immediately.
+
+        :param body:
+        :type body:
+         ~affinda.models.PathsJg1B16V3ResthookResultsResendPostRequestbodyContentApplicationJsonSchema
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: None, or the result of cls(response)
+        :rtype: None
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        error_map = {
+            409: ResourceExistsError,
+            400: lambda response: HttpResponseError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            401: lambda response: ClientAuthenticationError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+            404: lambda response: ResourceNotFoundError(
+                response=response, model=self._deserialize(_models.RequestError, response)
+            ),
+        }
+        error_map.update(kwargs.pop("error_map", {}) or {})
+
+        _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
+        _params = kwargs.pop("params", {}) or {}
+
+        content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
+        cls = kwargs.pop("cls", None)  # type: ClsType[None]
+
+        _json = self._serialize.body(
+            body, "PathsJg1B16V3ResthookResultsResendPostRequestbodyContentApplicationJsonSchema"
+        )
+
+        request = build_resend_resthook_results_request(
+            content_type=content_type,
+            json=_json,
+            template_url=self.resend_resthook_results.metadata["url"],
+            headers=_headers,
+            params=_params,
+        )
+        request = _convert_request(request)
+        path_format_arguments = {
+            "region": self._serialize.url("self._config.region", self._config.region, "str"),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)  # type: ignore
+
+        pipeline_response = self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
+            request, stream=False, **kwargs
+        )
+        response = pipeline_response.http_response
+
+        if response.status_code not in [202]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
+            raise HttpResponseError(response=response, model=error)
+
+        if cls:
+            return cls(pipeline_response, None, {})
+
+    resend_resthook_results.metadata = {"url": "/v3/resthook_results/resend"}  # type: ignore
+
     def create_document_from_data(
         self,
         body,  # type: _models.DocumentCreateFromData
@@ -10329,7 +10679,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         self,
         offset=None,  # type: Optional[int]
         limit=None,  # type: Optional[int]
-        document_type=None,  # type: Optional[Union[str, "_models.Enum17"]]
+        document_type=None,  # type: Optional[Union[str, "_models.Enum18"]]
         name=None,  # type: Optional[str]
         **kwargs,  # type: Any
     ):
@@ -10344,7 +10694,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param limit: The numbers of results to return. Default value is None.
         :type limit: int
         :param document_type: Filter indices by a document type. Default value is None.
-        :type document_type: str or ~affinda.models.Enum17
+        :type document_type: str or ~affinda.models.Enum18
         :param name: Filter indices by name. Default value is None.
         :type name: str
         :keyword callable cls: A custom type or function that will be passed the direct response
@@ -11471,6 +11821,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         """Get usage by collection.
 
         Return monthly credits consumption of a collection.
+        Deprecated: use ``GET /v3/usage?organization={id}&document_type={id}`` instead. The new
+        endpoint returns a unified daily series and uses the modern "document type" terminology.
 
         :param identifier: Collection's identifier.
         :type identifier: str
@@ -13949,7 +14301,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         token,  # type: str
         **kwargs,  # type: Any
     ):
-        # type: (...) -> _models.Invitation
+        # type: (...) -> _models.InvitationByToken
         """Get detail of an invitation by token.
 
         Get detail of an invitation using a secret token. This allows users who have not
@@ -13958,8 +14310,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param token: Invitation token.
         :type token: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: Invitation, or the result of cls(response)
-        :rtype: ~affinda.models.Invitation
+        :return: InvitationByToken, or the result of cls(response)
+        :rtype: ~affinda.models.InvitationByToken
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -13975,7 +14327,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         _headers = kwargs.pop("headers", {}) or {}
         _params = kwargs.pop("params", {}) or {}
 
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.Invitation]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.InvitationByToken]
 
         request = build_get_invitation_by_token_request(
             token=token,
@@ -13999,7 +14351,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
 
-        deserialized = self._deserialize("Invitation", pipeline_response)
+        deserialized = self._deserialize("InvitationByToken", pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -14014,7 +14366,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         body,  # type: _models.InvitationResponse
         **kwargs,  # type: Any
     ):
-        # type: (...) -> _models.Invitation
+        # type: (...) -> _models.InvitationByToken
         """Respond to an invitation.
 
         Choose to accept or decline an invitation.
@@ -14024,8 +14376,8 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param body:
         :type body: ~affinda.models.InvitationResponse
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: Invitation, or the result of cls(response)
-        :rtype: ~affinda.models.Invitation
+        :return: InvitationByToken, or the result of cls(response)
+        :rtype: ~affinda.models.InvitationByToken
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -14044,7 +14396,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         _params = kwargs.pop("params", {}) or {}
 
         content_type = kwargs.pop("content_type", _headers.pop("Content-Type", "application/json"))  # type: Optional[str]
-        cls = kwargs.pop("cls", None)  # type: ClsType[_models.Invitation]
+        cls = kwargs.pop("cls", None)  # type: ClsType[_models.InvitationByToken]
 
         _json = self._serialize.body(body, "InvitationResponse")
 
@@ -14072,7 +14424,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
             error = self._deserialize.failsafe_deserialize(_models.RequestError, pipeline_response)
             raise HttpResponseError(response=response, model=error)
 
-        deserialized = self._deserialize("Invitation", pipeline_response)
+        deserialized = self._deserialize("InvitationByToken", pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})

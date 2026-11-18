@@ -6,6 +6,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.29.0] - 2026-11-18
+### Added
+- `active` field on `ResthookSubscriptionUpdate`, to activate or deactivate a subscription.
+- `submission.completed` resthook event.
+- `get_usage()`: daily credits usage for an organization, optionally for one workspace or document type.
+
+### Changed
+- Minimum Python version is now 3.11. Python 3.9 and 3.10 are past end of life.
+
+### Deprecated
+- `get_usage_by_collection()` and `get_usage_by_workspace()`. Use `get_usage()`.
+
+### Fixed
+- `get_all_documents()`: the `tags`, `exclude` and `ordering` list arguments are now sent in the form the API accepts. Before, a list caused a 400 error.
+- `get_all_data_points()`: the `identifier` list argument is now sent in the form the API accepts.
+
 ## [4.28.9] - 2026-01-16
 ### Removed
 - Remove `data` parameter from `create_document()`. Use `create_document_from_data()` instead.

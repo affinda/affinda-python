@@ -71,6 +71,7 @@ class DocumentSplitterType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """The different types of document splitters"""
 
     LLM = "llm"
+    LLM_V2 = "llm_v2"
     EXTRACTOR = "extractor"
     KEYWORD = "keyword"
 
@@ -91,7 +92,7 @@ class EducationLevel(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     DOCTORAL = "doctoral"
 
 
-class Enum17(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class Enum18(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     RESUMES = "resumes"
     JOB_DESCRIPTIONS = "job_descriptions"
 
@@ -139,7 +140,9 @@ class OrganizationUserRole(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
 
 class Region(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """region - server parameter"""
+    """The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1' for EU. You can
+    find your region in the Affinda web app URL.
+    """
 
     API = "api"
     API_EU1 = "api.eu1"
@@ -165,6 +168,7 @@ class ResthookEvent(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     DOCUMENT_CLASSIFY_COMPLETED = "document.classify.completed"
     DOCUMENT_REJECTED = "document.rejected"
     ANNOTATION_VALIDATED = "annotation.validated"
+    SUBMISSION_COMPLETED = "submission.completed"
 
 
 class ResthookSubscriptionVersion(str, Enum, metaclass=CaseInsensitiveEnumMeta):
@@ -429,6 +433,22 @@ class SearchParametersCustomDataFilterType(str, Enum, metaclass=CaseInsensitiveE
 class ThemeConfigPaletteMode(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     LIGHT = "light"
     DARK = "dark"
+
+
+class UsageResponseScope(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+    """What the usage was scoped to."""
+
+    ORGANIZATION = "organization"
+    WORKSPACE = "workspace"
+    DOCUMENT_TYPE = "documentType"
+    WORKSPACE_AND_DOCUMENT_TYPE = "workspaceAndDocumentType"
+
+
+class UserRole(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+    """The role of the logged in user within the organization."""
+
+    ADMIN = "admin"
+    MEMBER = "member"
 
 
 class Version(str, Enum, metaclass=CaseInsensitiveEnumMeta):

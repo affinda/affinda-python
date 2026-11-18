@@ -5346,7 +5346,7 @@ class DocumentSplitter(msrest.serialization.Model):
     :ivar name: Required.
     :vartype name: str
     :ivar type: Required. The different types of document splitters. Known values are: "llm",
-     "extractor", "keyword".
+     "llm_v2", "extractor", "keyword".
     :vartype type: str or ~affinda.models.DocumentSplitterType
     :ivar organization: Required. Uniquely identify an organization.
     :vartype organization: str
@@ -5391,7 +5391,7 @@ class DocumentSplitter(msrest.serialization.Model):
         :keyword name: Required.
         :paramtype name: str
         :keyword type: Required. The different types of document splitters. Known values are: "llm",
-         "extractor", "keyword".
+         "llm_v2", "extractor", "keyword".
         :paramtype type: str or ~affinda.models.DocumentSplitterType
         :keyword organization: Required. Uniquely identify an organization.
         :paramtype organization: str
@@ -7549,6 +7549,133 @@ class Invitation(msrest.serialization.Model):
         self.invited_by = invited_by
         self.responded_by = responded_by
         self.created_dt = created_dt
+
+
+class InvitationByToken(msrest.serialization.Model):
+    """InvitationByToken.
+
+    :ivar identifier: Uniquely identify an invitation.
+    :vartype identifier: str
+    :ivar organization:
+    :vartype organization: ~affinda.models.InvitationByTokenOrganization
+    :ivar email: The email which the invitation is sent to.
+    :vartype email: str
+    :ivar role: Known values are: "admin", "member".
+    :vartype role: str or ~affinda.models.OrganizationRole
+    :ivar status: Known values are: "pending", "accepted", "declined".
+    :vartype status: str or ~affinda.models.InvitationStatus
+    :ivar expiry_date: The date after which the invitation expires. Default is 10 days from now.
+    :vartype expiry_date: ~datetime.date
+    :ivar invited_by:
+    :vartype invited_by: ~affinda.models.User
+    :ivar responded_by: The person who receives this invitation can register/signin with any
+     account and respond to it. This field stores which account has responded to the invitation.
+    :vartype responded_by: ~affinda.models.RespondedBy
+    :ivar created_dt:
+    :vartype created_dt: ~datetime.datetime
+    """
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "organization": {"key": "organization", "type": "InvitationByTokenOrganization"},
+        "email": {"key": "email", "type": "str"},
+        "role": {"key": "role", "type": "str"},
+        "status": {"key": "status", "type": "str"},
+        "expiry_date": {"key": "expiryDate", "type": "date"},
+        "invited_by": {"key": "invitedBy", "type": "User"},
+        "responded_by": {"key": "respondedBy", "type": "RespondedBy"},
+        "created_dt": {"key": "createdDt", "type": "iso-8601"},
+    }
+
+    def __init__(
+        self,
+        *,
+        identifier: Optional[str] = None,
+        organization: Optional["_models.InvitationByTokenOrganization"] = None,
+        email: Optional[str] = None,
+        role: Optional[Union[str, "_models.OrganizationRole"]] = None,
+        status: Optional[Union[str, "_models.InvitationStatus"]] = None,
+        expiry_date: Optional[datetime.date] = None,
+        invited_by: Optional["_models.User"] = None,
+        responded_by: Optional["_models.RespondedBy"] = None,
+        created_dt: Optional[datetime.datetime] = None,
+        **kwargs,
+    ):
+        """
+        :keyword identifier: Uniquely identify an invitation.
+        :paramtype identifier: str
+        :keyword organization:
+        :paramtype organization: ~affinda.models.InvitationByTokenOrganization
+        :keyword email: The email which the invitation is sent to.
+        :paramtype email: str
+        :keyword role: Known values are: "admin", "member".
+        :paramtype role: str or ~affinda.models.OrganizationRole
+        :keyword status: Known values are: "pending", "accepted", "declined".
+        :paramtype status: str or ~affinda.models.InvitationStatus
+        :keyword expiry_date: The date after which the invitation expires. Default is 10 days from now.
+        :paramtype expiry_date: ~datetime.date
+        :keyword invited_by:
+        :paramtype invited_by: ~affinda.models.User
+        :keyword responded_by: The person who receives this invitation can register/signin with any
+         account and respond to it. This field stores which account has responded to the invitation.
+        :paramtype responded_by: ~affinda.models.RespondedBy
+        :keyword created_dt:
+        :paramtype created_dt: ~datetime.datetime
+        """
+        super(InvitationByToken, self).__init__(**kwargs)
+        self.identifier = identifier
+        self.organization = organization
+        self.email = email
+        self.role = role
+        self.status = status
+        self.expiry_date = expiry_date
+        self.invited_by = invited_by
+        self.responded_by = responded_by
+        self.created_dt = created_dt
+
+
+class InvitationByTokenOrganization(msrest.serialization.Model):
+    """InvitationByTokenOrganization.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar identifier: Required. Uniquely identify an organization.
+    :vartype identifier: str
+    :ivar name: Required.
+    :vartype name: str
+    :ivar user_role: Required. The role of the logged in user within the organization. Known values
+     are: "admin", "member".
+    :vartype user_role: str or ~affinda.models.UserRole
+    """
+
+    _validation = {
+        "identifier": {"required": True},
+        "name": {"required": True},
+        "user_role": {"required": True},
+    }
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "user_role": {"key": "userRole", "type": "str"},
+    }
+
+    def __init__(
+        self, *, identifier: str, name: str, user_role: Union[str, "_models.UserRole"], **kwargs
+    ):
+        """
+        :keyword identifier: Required. Uniquely identify an organization.
+        :paramtype identifier: str
+        :keyword name: Required.
+        :paramtype name: str
+        :keyword user_role: Required. The role of the logged in user within the organization. Known
+         values are: "admin", "member".
+        :paramtype user_role: str or ~affinda.models.UserRole
+        """
+        super(InvitationByTokenOrganization, self).__init__(**kwargs)
+        self.identifier = identifier
+        self.name = name
+        self.user_role = user_role
 
 
 class InvitationCreate(msrest.serialization.Model):
@@ -12191,24 +12318,44 @@ class OccupationGroupSearchScoreComponent(msrest.serialization.Model):
 class Organization(msrest.serialization.Model):
     """Organization.
 
-    :ivar identifier: Uniquely identify an organization.
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar identifier: Required. Uniquely identify an organization.
     :vartype identifier: str
-    :ivar name:
+    :ivar name: Required.
     :vartype name: str
-    :ivar user_role: The role of the logged in user within the organization. Known values are:
-     "admin", "member".
+    :ivar user_role: Required. The role of the logged in user within the organization. Known values
+     are: "admin", "member".
     :vartype user_role: str or ~affinda.models.OrganizationUserRole
-    :ivar avatar: URL of the organization's avatar.
+    :ivar avatar: Required. URL of the organization's avatar.
     :vartype avatar: str
-    :ivar resthook_signature_key: Used to sign webhook payloads so you can verify their integrity.
+    :ivar resthook_signature_key: Required. Used to sign webhook payloads so you can verify their
+     integrity.
     :vartype resthook_signature_key: str
-    :ivar is_trial:
+    :ivar is_trial: Required.
     :vartype is_trial: bool
-    :ivar validation_tool_config: Configuration of the embeddable validation tool.
+    :ivar validation_tool_config: Required. Configuration of the embeddable validation tool.
     :vartype validation_tool_config: ~affinda.models.OrganizationValidationToolConfig
-    :ivar show_custom_field_creation: Whether to show the custom field creation in the UI.
+    :ivar show_custom_field_creation: Required. Whether to show the custom field creation in the
+     UI.
     :vartype show_custom_field_creation: bool
+    :ivar allow_data_source_record_creation: Required. Allow reviewers to create missing records
+     from the data source selector. Keep disabled when data sources are managed by external system
+     syncs.
+    :vartype allow_data_source_record_creation: bool
     """
+
+    _validation = {
+        "identifier": {"required": True},
+        "name": {"required": True},
+        "user_role": {"required": True},
+        "avatar": {"required": True},
+        "resthook_signature_key": {"required": True},
+        "is_trial": {"required": True},
+        "validation_tool_config": {"required": True},
+        "show_custom_field_creation": {"required": True},
+        "allow_data_source_record_creation": {"required": True},
+    }
 
     _attribute_map = {
         "identifier": {"key": "identifier", "type": "str"},
@@ -12222,40 +12369,50 @@ class Organization(msrest.serialization.Model):
             "type": "OrganizationValidationToolConfig",
         },
         "show_custom_field_creation": {"key": "showCustomFieldCreation", "type": "bool"},
+        "allow_data_source_record_creation": {
+            "key": "allowDataSourceRecordCreation",
+            "type": "bool",
+        },
     }
 
     def __init__(
         self,
         *,
-        identifier: Optional[str] = None,
-        name: Optional[str] = None,
-        user_role: Optional[Union[str, "_models.OrganizationUserRole"]] = None,
-        avatar: Optional[str] = None,
-        resthook_signature_key: Optional[str] = None,
-        is_trial: Optional[bool] = None,
-        validation_tool_config: Optional["_models.OrganizationValidationToolConfig"] = None,
-        show_custom_field_creation: Optional[bool] = None,
+        identifier: str,
+        name: str,
+        user_role: Union[str, "_models.OrganizationUserRole"],
+        avatar: str,
+        resthook_signature_key: str,
+        is_trial: bool,
+        validation_tool_config: "_models.OrganizationValidationToolConfig",
+        show_custom_field_creation: bool,
+        allow_data_source_record_creation: bool,
         **kwargs,
     ):
         """
-        :keyword identifier: Uniquely identify an organization.
+        :keyword identifier: Required. Uniquely identify an organization.
         :paramtype identifier: str
-        :keyword name:
+        :keyword name: Required.
         :paramtype name: str
-        :keyword user_role: The role of the logged in user within the organization. Known values are:
-         "admin", "member".
+        :keyword user_role: Required. The role of the logged in user within the organization. Known
+         values are: "admin", "member".
         :paramtype user_role: str or ~affinda.models.OrganizationUserRole
-        :keyword avatar: URL of the organization's avatar.
+        :keyword avatar: Required. URL of the organization's avatar.
         :paramtype avatar: str
-        :keyword resthook_signature_key: Used to sign webhook payloads so you can verify their
-         integrity.
+        :keyword resthook_signature_key: Required. Used to sign webhook payloads so you can verify
+         their integrity.
         :paramtype resthook_signature_key: str
-        :keyword is_trial:
+        :keyword is_trial: Required.
         :paramtype is_trial: bool
-        :keyword validation_tool_config: Configuration of the embeddable validation tool.
+        :keyword validation_tool_config: Required. Configuration of the embeddable validation tool.
         :paramtype validation_tool_config: ~affinda.models.OrganizationValidationToolConfig
-        :keyword show_custom_field_creation: Whether to show the custom field creation in the UI.
+        :keyword show_custom_field_creation: Required. Whether to show the custom field creation in the
+         UI.
         :paramtype show_custom_field_creation: bool
+        :keyword allow_data_source_record_creation: Required. Allow reviewers to create missing records
+         from the data source selector. Keep disabled when data sources are managed by external system
+         syncs.
+        :paramtype allow_data_source_record_creation: bool
         """
         super(Organization, self).__init__(**kwargs)
         self.identifier = identifier
@@ -12266,6 +12423,7 @@ class Organization(msrest.serialization.Model):
         self.is_trial = is_trial
         self.validation_tool_config = validation_tool_config
         self.show_custom_field_creation = show_custom_field_creation
+        self.allow_data_source_record_creation = allow_data_source_record_creation
 
 
 class OrganizationCreate(msrest.serialization.Model):
@@ -13125,6 +13283,30 @@ class Paths1Dpvb2PV3MappingsGetResponses200ContentApplicationJsonSchema(
         self.previous = previous
 
 
+class Paths1M0Dyj1V3ResthookResultsGetResponses200ContentApplicationJsonSchemaAllof1(
+    msrest.serialization.Model
+):
+    """Paths1M0Dyj1V3ResthookResultsGetResponses200ContentApplicationJsonSchemaAllof1.
+
+    :ivar results:
+    :vartype results: list[~affinda.models.RestHookResult]
+    """
+
+    _attribute_map = {
+        "results": {"key": "results", "type": "[RestHookResult]"},
+    }
+
+    def __init__(self, *, results: Optional[List["_models.RestHookResult"]] = None, **kwargs):
+        """
+        :keyword results:
+        :paramtype results: list[~affinda.models.RestHookResult]
+        """
+        super(
+            Paths1M0Dyj1V3ResthookResultsGetResponses200ContentApplicationJsonSchemaAllof1, self
+        ).__init__(**kwargs)
+        self.results = results
+
+
 class Paths1O6IvdaV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchemaAllof1(
     msrest.serialization.Model
 ):
@@ -13228,6 +13410,63 @@ class Paths1Qr7BnyV3MappingDataSourcesIdentifierValuesGetResponses200ContentAppl
         super(
             Paths1Qr7BnyV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchema,
             self,
+        ).__init__(count=count, next=next, previous=previous, results=results, **kwargs)
+        self.results = results
+        self.count = count
+        self.next = next
+        self.previous = previous
+
+
+class Paths1Uxms0YV3ResthookResultsGetResponses200ContentApplicationJsonSchema(
+    PaginatedResponse,
+    Paths1M0Dyj1V3ResthookResultsGetResponses200ContentApplicationJsonSchemaAllof1,
+):
+    """Paths1Uxms0YV3ResthookResultsGetResponses200ContentApplicationJsonSchema.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar results:
+    :vartype results: list[~affinda.models.RestHookResult]
+    :ivar count: Required. Number of items in results.
+    :vartype count: int
+    :ivar next: URL to request next page of results.
+    :vartype next: str
+    :ivar previous: URL to request previous page of results.
+    :vartype previous: str
+    """
+
+    _validation = {
+        "count": {"required": True, "minimum": 0},
+    }
+
+    _attribute_map = {
+        "results": {"key": "results", "type": "[RestHookResult]"},
+        "count": {"key": "count", "type": "int"},
+        "next": {"key": "next", "type": "str"},
+        "previous": {"key": "previous", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        count: int,
+        results: Optional[List["_models.RestHookResult"]] = None,
+        next: Optional[str] = None,
+        previous: Optional[str] = None,
+        **kwargs,
+    ):
+        """
+        :keyword results:
+        :paramtype results: list[~affinda.models.RestHookResult]
+        :keyword count: Required. Number of items in results.
+        :paramtype count: int
+        :keyword next: URL to request next page of results.
+        :paramtype next: str
+        :keyword previous: URL to request previous page of results.
+        :paramtype previous: str
+        """
+        super(
+            Paths1Uxms0YV3ResthookResultsGetResponses200ContentApplicationJsonSchema, self
         ).__init__(count=count, next=next, previous=previous, results=results, **kwargs)
         self.results = results
         self.count = count
@@ -13499,6 +13738,55 @@ class PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchem
             PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema, self
         ).__init__(**kwargs)
         self.document = document
+
+
+class PathsJg1B16V3ResthookResultsResendPostRequestbodyContentApplicationJsonSchema(
+    msrest.serialization.Model
+):
+    """PathsJg1B16V3ResthookResultsResendPostRequestbodyContentApplicationJsonSchema.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar document: Required. Identifier of the document to replay the event for.
+    :vartype document: str
+    :ivar event: Required. The event name to subscribe to. Known values are:
+     "resume.parse.succeeded", "resume.parse.failed", "resume.parse.completed",
+     "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
+     "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
+     "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
+     "document.classify.failed", "document.classify.completed", "document.rejected",
+     "annotation.validated", "submission.completed".
+    :vartype event: str or ~affinda.models.ResthookEvent
+    """
+
+    _validation = {
+        "document": {"required": True},
+        "event": {"required": True},
+    }
+
+    _attribute_map = {
+        "document": {"key": "document", "type": "str"},
+        "event": {"key": "event", "type": "str"},
+    }
+
+    def __init__(self, *, document: str, event: Union[str, "_models.ResthookEvent"], **kwargs):
+        """
+        :keyword document: Required. Identifier of the document to replay the event for.
+        :paramtype document: str
+        :keyword event: Required. The event name to subscribe to. Known values are:
+         "resume.parse.succeeded", "resume.parse.failed", "resume.parse.completed",
+         "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
+         "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
+         "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
+         "document.classify.failed", "document.classify.completed", "document.rejected",
+         "annotation.validated", "submission.completed".
+        :paramtype event: str or ~affinda.models.ResthookEvent
+        """
+        super(
+            PathsJg1B16V3ResthookResultsResendPostRequestbodyContentApplicationJsonSchema, self
+        ).__init__(**kwargs)
+        self.document = document
+        self.event = event
 
 
 class PathsL3R02CV3DocumentsGetResponses200ContentApplicationJsonSchemaAllof1(
@@ -14418,6 +14706,181 @@ class RequestErrorErrorsItem(msrest.serialization.Model):
         self.detail = detail
 
 
+class RespondedBy(User):
+    """The person who receives this invitation can register/signin with any account and respond to it. This field stores which account has responded to the invitation.
+
+    :ivar id: Uniquely identify a user.
+    :vartype id: int
+    :ivar name:
+    :vartype name: str
+    :ivar username:
+    :vartype username: str
+    :ivar email:
+    :vartype email: str
+    :ivar avatar: URL of the user's avatar.
+    :vartype avatar: str
+    """
+
+    _validation = {
+        "id": {"minimum": 1},
+    }
+
+    _attribute_map = {
+        "id": {"key": "id", "type": "int"},
+        "name": {"key": "name", "type": "str"},
+        "username": {"key": "username", "type": "str"},
+        "email": {"key": "email", "type": "str"},
+        "avatar": {"key": "avatar", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        id: Optional[int] = None,
+        name: Optional[str] = None,
+        username: Optional[str] = None,
+        email: Optional[str] = None,
+        avatar: Optional[str] = None,
+        **kwargs,
+    ):
+        """
+        :keyword id: Uniquely identify a user.
+        :paramtype id: int
+        :keyword name:
+        :paramtype name: str
+        :keyword username:
+        :paramtype username: str
+        :keyword email:
+        :paramtype email: str
+        :keyword avatar: URL of the user's avatar.
+        :paramtype avatar: str
+        """
+        super(RespondedBy, self).__init__(
+            id=id, name=name, username=username, email=email, avatar=avatar, **kwargs
+        )
+
+
+class RestHookResult(msrest.serialization.Model):
+    """RestHookResult.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar timestamp: Required. When the webhook delivery was attempted.
+    :vartype timestamp: ~datetime.datetime
+    :ivar document: Required.
+    :vartype document: ~affinda.models.RestHookResultDocument
+    :ivar event: Required. The event name to subscribe to. Known values are:
+     "resume.parse.succeeded", "resume.parse.failed", "resume.parse.completed",
+     "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
+     "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
+     "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
+     "document.classify.failed", "document.classify.completed", "document.rejected",
+     "annotation.validated", "submission.completed".
+    :vartype event: str or ~affinda.models.ResthookEvent
+    :ivar target_url: Required. URL the webhook was delivered to.
+    :vartype target_url: str
+    :ivar failed: Required. True if the delivery could not reach the target (a connection-level
+     failure).
+    :vartype failed: bool
+    :ivar status: Required. HTTP status code returned by the target, or null if the delivery never
+     connected.
+    :vartype status: int
+    :ivar content: Required. Truncated response body returned by the target.
+    :vartype content: str
+    """
+
+    _validation = {
+        "timestamp": {"required": True},
+        "document": {"required": True},
+        "event": {"required": True},
+        "target_url": {"required": True},
+        "failed": {"required": True},
+        "status": {"required": True},
+        "content": {"required": True},
+    }
+
+    _attribute_map = {
+        "timestamp": {"key": "timestamp", "type": "iso-8601"},
+        "document": {"key": "document", "type": "RestHookResultDocument"},
+        "event": {"key": "event", "type": "str"},
+        "target_url": {"key": "targetUrl", "type": "str"},
+        "failed": {"key": "failed", "type": "bool"},
+        "status": {"key": "status", "type": "int"},
+        "content": {"key": "content", "type": "str"},
+    }
+
+    def __init__(
+        self,
+        *,
+        timestamp: datetime.datetime,
+        document: "_models.RestHookResultDocument",
+        event: Union[str, "_models.ResthookEvent"],
+        target_url: str,
+        failed: bool,
+        status: int,
+        content: str,
+        **kwargs,
+    ):
+        """
+        :keyword timestamp: Required. When the webhook delivery was attempted.
+        :paramtype timestamp: ~datetime.datetime
+        :keyword document: Required.
+        :paramtype document: ~affinda.models.RestHookResultDocument
+        :keyword event: Required. The event name to subscribe to. Known values are:
+         "resume.parse.succeeded", "resume.parse.failed", "resume.parse.completed",
+         "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
+         "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
+         "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
+         "document.classify.failed", "document.classify.completed", "document.rejected",
+         "annotation.validated", "submission.completed".
+        :paramtype event: str or ~affinda.models.ResthookEvent
+        :keyword target_url: Required. URL the webhook was delivered to.
+        :paramtype target_url: str
+        :keyword failed: Required. True if the delivery could not reach the target (a connection-level
+         failure).
+        :paramtype failed: bool
+        :keyword status: Required. HTTP status code returned by the target, or null if the delivery
+         never connected.
+        :paramtype status: int
+        :keyword content: Required. Truncated response body returned by the target.
+        :paramtype content: str
+        """
+        super(RestHookResult, self).__init__(**kwargs)
+        self.timestamp = timestamp
+        self.document = document
+        self.event = event
+        self.target_url = target_url
+        self.failed = failed
+        self.status = status
+        self.content = content
+
+
+class RestHookResultDocument(msrest.serialization.Model):
+    """RestHookResultDocument.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar identifier: Required. Identifier of the document the webhook was fired for.
+    :vartype identifier: str
+    """
+
+    _validation = {
+        "identifier": {"required": True},
+    }
+
+    _attribute_map = {
+        "identifier": {"key": "identifier", "type": "str"},
+    }
+
+    def __init__(self, *, identifier: str, **kwargs):
+        """
+        :keyword identifier: Required. Identifier of the document the webhook was fired for.
+        :paramtype identifier: str
+        """
+        super(RestHookResultDocument, self).__init__(**kwargs)
+        self.identifier = identifier
+
+
 class ResthookSubscription(msrest.serialization.Model):
     """ResthookSubscription.
 
@@ -14431,7 +14894,7 @@ class ResthookSubscription(msrest.serialization.Model):
      "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
      "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
      "document.classify.failed", "document.classify.completed", "document.rejected",
-     "annotation.validated".
+     "annotation.validated", "submission.completed".
     :vartype event: str or ~affinda.models.ResthookEvent
     :ivar organization: Required.
     :vartype organization: ~affinda.models.Organization
@@ -14499,7 +14962,7 @@ class ResthookSubscription(msrest.serialization.Model):
          "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
          "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
          "document.classify.failed", "document.classify.completed", "document.rejected",
-         "annotation.validated".
+         "annotation.validated", "submission.completed".
         :paramtype event: str or ~affinda.models.ResthookEvent
         :keyword organization: Required.
         :paramtype organization: ~affinda.models.Organization
@@ -14544,7 +15007,7 @@ class ResthookSubscriptionCreate(msrest.serialization.Model):
      "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
      "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
      "document.classify.failed", "document.classify.completed", "document.rejected",
-     "annotation.validated".
+     "annotation.validated", "submission.completed".
     :vartype event: str or ~affinda.models.ResthookEvent
     :ivar organization:
     :vartype organization: str
@@ -14587,7 +15050,7 @@ class ResthookSubscriptionCreate(msrest.serialization.Model):
          "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
          "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
          "document.classify.failed", "document.classify.completed", "document.rejected",
-         "annotation.validated".
+         "annotation.validated", "submission.completed".
         :paramtype event: str or ~affinda.models.ResthookEvent
         :keyword organization:
         :paramtype organization: str
@@ -14613,7 +15076,8 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
      "invoice.parse.failed", "invoice.parse.completed", "invoice.validate.completed",
      "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
      "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
-     "document.classify.completed", "document.rejected", "annotation.validated".
+     "document.classify.completed", "document.rejected", "annotation.validated",
+     "submission.completed".
     :vartype event: str or ~affinda.models.ResthookEvent
     :ivar organization: Uniquely identify an organization.
     :vartype organization: str
@@ -14622,6 +15086,8 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
     :ivar version: Version of the resthook subscription. Determines the resthook body being fired.
      Known values are: "v1", "v2", "v3".
     :vartype version: str or ~affinda.models.Version
+    :ivar active: Set to ``true`` to activate the subscription, or ``false`` to deactivate it.
+    :vartype active: bool
     """
 
     _attribute_map = {
@@ -14629,6 +15095,7 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
         "organization": {"key": "organization", "type": "str"},
         "workspace": {"key": "workspace", "type": "str"},
         "version": {"key": "version", "type": "str"},
+        "active": {"key": "active", "type": "bool"},
     }
 
     def __init__(
@@ -14638,6 +15105,7 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
         organization: Optional[str] = None,
         workspace: Optional[str] = None,
         version: Optional[Union[str, "_models.Version"]] = None,
+        active: Optional[bool] = None,
         **kwargs,
     ):
         """
@@ -14646,7 +15114,8 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
          "invoice.parse.failed", "invoice.parse.completed", "invoice.validate.completed",
          "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
          "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
-         "document.classify.completed", "document.rejected", "annotation.validated".
+         "document.classify.completed", "document.rejected", "annotation.validated",
+         "submission.completed".
         :paramtype event: str or ~affinda.models.ResthookEvent
         :keyword organization: Uniquely identify an organization.
         :paramtype organization: str
@@ -14655,12 +15124,15 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
         :keyword version: Version of the resthook subscription. Determines the resthook body being
          fired. Known values are: "v1", "v2", "v3".
         :paramtype version: str or ~affinda.models.Version
+        :keyword active: Set to ``true`` to activate the subscription, or ``false`` to deactivate it.
+        :paramtype active: bool
         """
         super(ResthookSubscriptionUpdate, self).__init__(**kwargs)
         self.event = event
         self.organization = organization
         self.workspace = workspace
         self.version = version
+        self.active = active
 
 
 class ResthookSubscriptionWorkspace(msrest.serialization.Model):
@@ -19987,6 +20459,118 @@ class UsageByWorkspace(msrest.serialization.Model):
         super(UsageByWorkspace, self).__init__(**kwargs)
         self.month = month
         self.count = count
+
+
+class UsageItem(msrest.serialization.Model):
+    """Daily credits consumption for a single date in the requested period.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar date: Required. The day this usage was recorded against, in YYYY-MM-DD.
+    :vartype date: ~datetime.date
+    :ivar count: Required. Credits consumed on this day.
+    :vartype count: int
+    """
+
+    _validation = {
+        "date": {"required": True},
+        "count": {"required": True},
+    }
+
+    _attribute_map = {
+        "date": {"key": "date", "type": "date"},
+        "count": {"key": "count", "type": "int"},
+    }
+
+    def __init__(self, *, date: datetime.date, count: int, **kwargs):
+        """
+        :keyword date: Required. The day this usage was recorded against, in YYYY-MM-DD.
+        :paramtype date: ~datetime.date
+        :keyword count: Required. Credits consumed on this day.
+        :paramtype count: int
+        """
+        super(UsageItem, self).__init__(**kwargs)
+        self.date = date
+        self.count = count
+
+
+class UsageResponse(msrest.serialization.Model):
+    """Daily credits consumption for an organization over a date range, optionally scoped to a single workspace, a single document type, or a single (workspace × document type) pair.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar scope: Required. What the usage was scoped to. Known values are: "organization",
+     "workspace", "documentType", "workspaceAndDocumentType".
+    :vartype scope: str or ~affinda.models.UsageResponseScope
+    :ivar scope_identifier: Required. Identifier of the scoped entity: the organization, workspace,
+     or document type identifier. When scoped to a (workspace × document type) pair, it is the
+     workspace and document type identifiers joined by a colon (\
+     ``{workspaceIdentifier}:{documentTypeIdentifier}``\ ).
+    :vartype scope_identifier: str
+    :ivar start: Required. Inclusive start of the reported period (YYYY-MM-DD).
+    :vartype start: ~datetime.date
+    :ivar end: Required. Inclusive end of the reported period (YYYY-MM-DD).
+    :vartype end: ~datetime.date
+    :ivar total: Required. Total credits consumed over the period.
+    :vartype total: int
+    :ivar items: Required. Per-day breakdown. Days with zero usage are omitted.
+    :vartype items: list[~affinda.models.UsageItem]
+    """
+
+    _validation = {
+        "scope": {"required": True},
+        "scope_identifier": {"required": True},
+        "start": {"required": True},
+        "end": {"required": True},
+        "total": {"required": True},
+        "items": {"required": True},
+    }
+
+    _attribute_map = {
+        "scope": {"key": "scope", "type": "str"},
+        "scope_identifier": {"key": "scopeIdentifier", "type": "str"},
+        "start": {"key": "start", "type": "date"},
+        "end": {"key": "end", "type": "date"},
+        "total": {"key": "total", "type": "int"},
+        "items": {"key": "items", "type": "[UsageItem]"},
+    }
+
+    def __init__(
+        self,
+        *,
+        scope: Union[str, "_models.UsageResponseScope"],
+        scope_identifier: str,
+        start: datetime.date,
+        end: datetime.date,
+        total: int,
+        items: List["_models.UsageItem"],
+        **kwargs,
+    ):
+        """
+        :keyword scope: Required. What the usage was scoped to. Known values are: "organization",
+         "workspace", "documentType", "workspaceAndDocumentType".
+        :paramtype scope: str or ~affinda.models.UsageResponseScope
+        :keyword scope_identifier: Required. Identifier of the scoped entity: the organization,
+         workspace, or document type identifier. When scoped to a (workspace × document type) pair, it
+         is the workspace and document type identifiers joined by a colon (\
+         ``{workspaceIdentifier}:{documentTypeIdentifier}``\ ).
+        :paramtype scope_identifier: str
+        :keyword start: Required. Inclusive start of the reported period (YYYY-MM-DD).
+        :paramtype start: ~datetime.date
+        :keyword end: Required. Inclusive end of the reported period (YYYY-MM-DD).
+        :paramtype end: ~datetime.date
+        :keyword total: Required. Total credits consumed over the period.
+        :paramtype total: int
+        :keyword items: Required. Per-day breakdown. Days with zero usage are omitted.
+        :paramtype items: list[~affinda.models.UsageItem]
+        """
+        super(UsageResponse, self).__init__(**kwargs)
+        self.scope = scope
+        self.scope_identifier = scope_identifier
+        self.start = start
+        self.end = end
+        self.total = total
+        self.items = items
 
 
 class UserNullable(msrest.serialization.Model):

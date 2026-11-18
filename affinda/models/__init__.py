@@ -122,6 +122,8 @@ try:
     from ._models_py3 import IndexUpdate
     from ._models_py3 import IndexUser
     from ._models_py3 import Invitation
+    from ._models_py3 import InvitationByToken
+    from ._models_py3 import InvitationByTokenOrganization
     from ._models_py3 import InvitationCreate
     from ._models_py3 import InvitationRespondedBy
     from ._models_py3 import InvitationResponse
@@ -207,6 +209,9 @@ try:
     )
     from ._models_py3 import Paths1Dpvb2PV3MappingsGetResponses200ContentApplicationJsonSchema
     from ._models_py3 import (
+        Paths1M0Dyj1V3ResthookResultsGetResponses200ContentApplicationJsonSchemaAllof1,
+    )
+    from ._models_py3 import (
         Paths1O6IvdaV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchemaAllof1,
     )
     from ._models_py3 import (
@@ -217,6 +222,9 @@ try:
     )
     from ._models_py3 import (
         Paths1UmoszuV3MappingDataSourcesGetResponses200ContentApplicationJsonSchemaAllof1,
+    )
+    from ._models_py3 import (
+        Paths1Uxms0YV3ResthookResultsGetResponses200ContentApplicationJsonSchema,
     )
     from ._models_py3 import Paths26Civ0V3ApiUsersGetResponses200ContentApplicationJsonSchema
     from ._models_py3 import (
@@ -235,6 +243,9 @@ try:
     from ._models_py3 import PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema
     from ._models_py3 import (
         PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema,
+    )
+    from ._models_py3 import (
+        PathsJg1B16V3ResthookResultsResendPostRequestbodyContentApplicationJsonSchema,
     )
     from ._models_py3 import (
         PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1,
@@ -270,6 +281,9 @@ try:
     from ._models_py3 import RegionBias
     from ._models_py3 import RequestError
     from ._models_py3 import RequestErrorErrorsItem
+    from ._models_py3 import RespondedBy
+    from ._models_py3 import RestHookResult
+    from ._models_py3 import RestHookResultDocument
     from ._models_py3 import ResthookSubscription
     from ._models_py3 import ResthookSubscriptionCreate
     from ._models_py3 import ResthookSubscriptionUpdate
@@ -344,6 +358,8 @@ try:
     from ._models_py3 import UrlAnnotationParsed
     from ._models_py3 import UsageByCollection
     from ._models_py3 import UsageByWorkspace
+    from ._models_py3 import UsageItem
+    from ._models_py3 import UsageResponse
     from ._models_py3 import User
     from ._models_py3 import UserNullable
     from ._models_py3 import ValidationResult
@@ -479,6 +495,8 @@ except (SyntaxError, ImportError):
     from ._models import IndexUpdate  # type: ignore
     from ._models import IndexUser  # type: ignore
     from ._models import Invitation  # type: ignore
+    from ._models import InvitationByToken  # type: ignore
+    from ._models import InvitationByTokenOrganization  # type: ignore
     from ._models import InvitationCreate  # type: ignore
     from ._models import InvitationRespondedBy  # type: ignore
     from ._models import InvitationResponse  # type: ignore
@@ -558,6 +576,9 @@ except (SyntaxError, ImportError):
     from ._models import Paths1Dgz0V9V3AnnotationsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
     from ._models import Paths1Dpvb2PV3MappingsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import (
+        Paths1M0Dyj1V3ResthookResultsGetResponses200ContentApplicationJsonSchemaAllof1,
+    )  # type: ignore
+    from ._models import (
         Paths1O6IvdaV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchemaAllof1,
     )  # type: ignore
     from ._models import (
@@ -569,6 +590,7 @@ except (SyntaxError, ImportError):
     from ._models import (
         Paths1UmoszuV3MappingDataSourcesGetResponses200ContentApplicationJsonSchemaAllof1,
     )  # type: ignore
+    from ._models import Paths1Uxms0YV3ResthookResultsGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import Paths26Civ0V3ApiUsersGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import (
         Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1,
@@ -584,6 +606,9 @@ except (SyntaxError, ImportError):
     from ._models import PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema  # type: ignore
     from ._models import (
         PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema,
+    )  # type: ignore
+    from ._models import (
+        PathsJg1B16V3ResthookResultsResendPostRequestbodyContentApplicationJsonSchema,
     )  # type: ignore
     from ._models import PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
     from ._models import PathsL3R02CV3DocumentsGetResponses200ContentApplicationJsonSchemaAllof1  # type: ignore
@@ -611,6 +636,9 @@ except (SyntaxError, ImportError):
     from ._models import RegionBias  # type: ignore
     from ._models import RequestError  # type: ignore
     from ._models import RequestErrorErrorsItem  # type: ignore
+    from ._models import RespondedBy  # type: ignore
+    from ._models import RestHookResult  # type: ignore
+    from ._models import RestHookResultDocument  # type: ignore
     from ._models import ResthookSubscription  # type: ignore
     from ._models import ResthookSubscriptionCreate  # type: ignore
     from ._models import ResthookSubscriptionUpdate  # type: ignore
@@ -685,6 +713,8 @@ except (SyntaxError, ImportError):
     from ._models import UrlAnnotationParsed  # type: ignore
     from ._models import UsageByCollection  # type: ignore
     from ._models import UsageByWorkspace  # type: ignore
+    from ._models import UsageItem  # type: ignore
+    from ._models import UsageResponse  # type: ignore
     from ._models import User  # type: ignore
     from ._models import UserNullable  # type: ignore
     from ._models import ValidationResult  # type: ignore
@@ -715,7 +745,7 @@ from ._affinda_api_enums import (
     DocumentSplitterType,
     DocumentState,
     EducationLevel,
-    Enum17,
+    Enum18,
     IndexDocType,
     InvitationResponseStatus,
     InvitationStatus,
@@ -732,6 +762,8 @@ from ._affinda_api_enums import (
     SearchLocationUnit,
     SearchParametersCustomDataFilterType,
     ThemeConfigPaletteMode,
+    UsageResponseScope,
+    UserRole,
     Version,
     WorkspaceVisibility,
 )
@@ -841,6 +873,8 @@ __all__ = [
     "IndexUpdate",
     "IndexUser",
     "Invitation",
+    "InvitationByToken",
+    "InvitationByTokenOrganization",
     "InvitationCreate",
     "InvitationRespondedBy",
     "InvitationResponse",
@@ -917,10 +951,12 @@ __all__ = [
     "Paths1D5Zg6MV3AnnotationsGetResponses200ContentApplicationJsonSchema",
     "Paths1Dgz0V9V3AnnotationsGetResponses200ContentApplicationJsonSchemaAllof1",
     "Paths1Dpvb2PV3MappingsGetResponses200ContentApplicationJsonSchema",
+    "Paths1M0Dyj1V3ResthookResultsGetResponses200ContentApplicationJsonSchemaAllof1",
     "Paths1O6IvdaV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchemaAllof1",
     "Paths1Qojy9V3ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1",
     "Paths1Qr7BnyV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchema",
     "Paths1UmoszuV3MappingDataSourcesGetResponses200ContentApplicationJsonSchemaAllof1",
+    "Paths1Uxms0YV3ResthookResultsGetResponses200ContentApplicationJsonSchema",
     "Paths26Civ0V3ApiUsersGetResponses200ContentApplicationJsonSchema",
     "Paths2Ld2HiV3WorkspaceMembershipsGetResponses200ContentApplicationJsonSchemaAllof1",
     "Paths4K6IzqV3DataPointChoicesGetResponses200ContentApplicationJsonSchemaAllof1",
@@ -929,6 +965,7 @@ __all__ = [
     "PathsCl024WV3IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema",
     "PathsDvrcp3V3IndexGetResponses200ContentApplicationJsonSchema",
     "PathsFte27NV3IndexNameDocumentsPostResponses201ContentApplicationJsonSchema",
+    "PathsJg1B16V3ResthookResultsResendPostRequestbodyContentApplicationJsonSchema",
     "PathsKhpbbuV3InvitationsGetResponses200ContentApplicationJsonSchemaAllof1",
     "PathsL3R02CV3DocumentsGetResponses200ContentApplicationJsonSchemaAllof1",
     "PathsM3DzbgV3JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema",
@@ -947,6 +984,9 @@ __all__ = [
     "RegionBias",
     "RequestError",
     "RequestErrorErrorsItem",
+    "RespondedBy",
+    "RestHookResult",
+    "RestHookResultDocument",
     "ResthookSubscription",
     "ResthookSubscriptionCreate",
     "ResthookSubscriptionUpdate",
@@ -1021,6 +1061,8 @@ __all__ = [
     "UrlAnnotationParsed",
     "UsageByCollection",
     "UsageByWorkspace",
+    "UsageItem",
+    "UsageResponse",
     "User",
     "UserNullable",
     "ValidationResult",
@@ -1049,7 +1091,7 @@ __all__ = [
     "DocumentSplitterType",
     "DocumentState",
     "EducationLevel",
-    "Enum17",
+    "Enum18",
     "IndexDocType",
     "InvitationResponseStatus",
     "InvitationStatus",
@@ -1066,6 +1108,8 @@ __all__ = [
     "SearchLocationUnit",
     "SearchParametersCustomDataFilterType",
     "ThemeConfigPaletteMode",
+    "UsageResponseScope",
+    "UserRole",
     "Version",
     "WorkspaceVisibility",
 ]

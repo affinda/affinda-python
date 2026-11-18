@@ -195,7 +195,7 @@ client = AffindaAPI(credential=credential)
 
 res = client.get_usage_by_workspace(workspace_identifier, start="2023-06", end="2023-07")
 for usage in res:
-    print(usage.as_dict())  # noqa: T201
+    print(usage.as_dict())
 ```
 
 ### getAllWorkspaceMemberships - Get list of all workspace memberships
@@ -419,6 +419,9 @@ client = AffindaAPI(credential=credential)
 
 client.delete_organization_membership(identifier)
 ```
+
+Usage
+-----
 
 Tags
 ----
@@ -1299,7 +1302,7 @@ client = AffindaAPI(credential=credential)
 
 res = client.get_usage_by_collection(collection_identifier, start="2023-06", end="2023-07")
 for usage in res:
-    print(usage.as_dict())  # noqa: T201
+    print(usage.as_dict())
 ```
 
 ### getAllDataPoints - Get list of all data points

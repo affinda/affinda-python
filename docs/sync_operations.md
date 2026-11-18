@@ -15,7 +15,8 @@ Affinda API client for Python.
 **Arguments**:
 
 - `credential` (`~azure.core.credentials.TokenCredential`): Credential needed for the client to connect to Azure.
-- `region` (`str or ~affinda.models.Region`): region - server parameter. Default value is "api".
+- `region` (`str or ~affinda.models.Region`): The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1'
+for EU. You can find your region in the Affinda web app URL. Default value is "api".
 
 <a id="operations._affinda_api_operations"></a>
 
@@ -71,12 +72,13 @@ Default value is None.
 - `state` (`str or ~affinda.models.DocumentState`): Filter by the document's state. Default value is None.
 - `tags` (`list[int]`): Filter by tag's IDs. Default value is None.
 - `created_dt` (`str or ~affinda.models.DateRange`): Filter by created datetime. Default value is None.
-- `search` (`str`): Partial, case-insensitive match with file name or tag name. Default value is
+- `search` (`str`): Partial, case-insensitive match with file name, identifier or tag name. For an
+indexed collection or workspace, it also matches custom identifier and document text. Default
+value is None.
+- `ordering` (`list[str]`): Sort the results. Put "-" before a value to sort in descending order, e.g.
+-created_dt. You can sort by more than one value. Supported values: 'identifier', 'file_name',
+'extractor', 'collection', 'created_dt', 'validated_dt' and 'archived_dt'. Default value is
 None.
-- `ordering` (`list[str]`): Sort the result set. A "-" at the beginning denotes DESC sort, e.g.
--created_dt. Sort by multiple fields is supported. Supported values include: 'file_name',
-'extractor', 'created_dt', 'validated_dt', 'archived_dt' and 'parsed__:code:`<dataPointSlug>`'.
-Default value is None.
 - `include_data` (`bool`): By default, this endpoint returns only the meta data of the documents. Set
 this to ``true`` will return a summary of the data that was parsed. If you want to retrieve the
 full set of data for a document, use the ``GET /documents/{identifier}`` endpoint. Default
@@ -440,6 +442,9 @@ def get_usage_by_workspace(identifier, start=None, end=None, **kwargs)
 Get usage by workspace.
 
 Return monthly credits consumption of a workspace.
+Deprecated: use ``GET /v3/usage?organization={id}&workspace={id}`` instead. The new endpoint
+returns a unified daily series and supports the same workspace scoping along with organization-
+and document-type-level reporting.
 
 **Arguments**:
 
@@ -1346,6 +1351,48 @@ Delete the specified organization from the database.
 
 `None`: None, or the result of cls(response)
 
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_usage"></a>
+
+#### get\_usage
+
+```python
+def get_usage(organization,
+              workspace=None,
+              document_type=None,
+              start=None,
+              end=None,
+              **kwargs)
+```
+
+Get usage.
+
+Returns daily credits consumption for an organization over a date range. Optionally scope the
+report to a single workspace, a single document type, or a single (workspace × document type)
+pair by supplying both ``workspace`` and ``document_type``.
+
+**Arguments**:
+
+- `organization` (`str`): Organization to report usage for. The caller must be an admin or owner.
+- `workspace` (`str`): Optionally scope the report to a single workspace within the organization.
+Combine with ``document_type`` to scope to a single (workspace × document type) pair. Default
+value is None.
+- `document_type` (`str`): Optionally scope the report to a single document type within the
+organization. Combine with ``workspace`` to scope to a single (workspace × document type) pair.
+Default value is None.
+- `start` (`~datetime.date`): Inclusive start date of the report (YYYY-MM-DD). Defaults to 365 days before
+``end``. Default value is None.
+- `end` (`~datetime.date`): Inclusive end date of the report (YYYY-MM-DD). Defaults to today. Default value is
+None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.UsageResponse`: UsageResponse, or the result of cls(response)
+
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_tags"></a>
 
 #### get\_all\_tags
@@ -1892,6 +1939,67 @@ header that you received to activate the subscription using this endpoint.
 
 `~affinda.models.ResthookSubscription`: ResthookSubscription, or the result of cls(response)
 
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.get_all_resthook_results"></a>
+
+#### get\_all\_resthook\_results
+
+```python
+def get_all_resthook_results(document,
+                             offset=None,
+                             limit=None,
+                             event=None,
+                             **kwargs)
+```
+
+Get list of webhook delivery results for a document.
+
+Returns the webhook (resthook) delivery results recorded for a document.
+
+**Arguments**:
+
+- `document` (`str`): Identifier of the document to return webhook delivery results for.
+- `offset` (`int`): The number of documents to skip before starting to collect the result set.
+Default value is None.
+- `limit` (`int`): The numbers of results to return. Default value is None.
+- `event` (`str or ~affinda.models.ResthookEvent`): Filter results by event. Default value is None.
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`~affinda.models.Paths1Uxms0YV3ResthookResultsGetResponses200ContentApplicationJsonSchema`: Paths1Uxms0YV3ResthookResultsGetResponses200ContentApplicationJsonSchema, or the
+result of cls(response)
+
+<a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.resend_resthook_results"></a>
+
+#### resend\_resthook\_results
+
+```python
+def resend_resthook_results(body, **kwargs)
+```
+
+Re-trigger webhooks for a document.
+
+Replays an event for a document, re-firing it to every matching v3 webhook subscription
+(including ones that are currently inactive). The deliveries are queued asynchronously, so a
+202 is returned immediately.
+
+**Arguments**:
+
+- `body` (`~affinda.models.PathsJg1B16V3ResthookResultsResendPostRequestbodyContentApplicationJsonSchema`): 
+- `cls` (`callable`): A custom type or function that will be passed the direct response
+
+**Raises**:
+
+- `None`: ~azure.core.exceptions.HttpResponseError
+
+**Returns**:
+
+`None`: None, or the result of cls(response)
+
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_document_from_data"></a>
 
 #### create\_document\_from\_data
@@ -2391,7 +2499,7 @@ Returns all the indexes.
 - `offset` (`int`): The number of documents to skip before starting to collect the result set.
 Default value is None.
 - `limit` (`int`): The numbers of results to return. Default value is None.
-- `document_type` (`str or ~affinda.models.Enum17`): Filter indices by a document type. Default value is None.
+- `document_type` (`str or ~affinda.models.Enum18`): Filter indices by a document type. Default value is None.
 - `name` (`str`): Filter indices by name. Default value is None.
 - `cls` (`callable`): A custom type or function that will be passed the direct response
 
@@ -2808,6 +2916,8 @@ def get_usage_by_collection(identifier, start=None, end=None, **kwargs)
 Get usage by collection.
 
 Return monthly credits consumption of a collection.
+Deprecated: use ``GET /v3/usage?organization={id}&document_type={id}`` instead. The new
+endpoint returns a unified daily series and uses the modern "document type" terminology.
 
 **Arguments**:
 
@@ -3782,7 +3892,7 @@ registered/logged in to view the invitation.
 
 **Returns**:
 
-`~affinda.models.Invitation`: Invitation, or the result of cls(response)
+`~affinda.models.InvitationByToken`: InvitationByToken, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.respond_to_invitation"></a>
 
@@ -3808,7 +3918,7 @@ Choose to accept or decline an invitation.
 
 **Returns**:
 
-`~affinda.models.Invitation`: Invitation, or the result of cls(response)
+`~affinda.models.InvitationByToken`: InvitationByToken, or the result of cls(response)
 
 <a id="operations._affinda_api_operations.AffindaAPIOperationsMixin.create_mapping"></a>
 

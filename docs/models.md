@@ -3404,7 +3404,7 @@ All required parameters must be populated in order to send to Azure.
 :ivar name: Required.
 :vartype name: str
 :ivar type: Required. The different types of document splitters. Known values are: "llm",
- "extractor", "keyword".
+ "llm_v2", "extractor", "keyword".
 :vartype type: str or ~affinda.models.DocumentSplitterType
 :ivar organization: Required. Uniquely identify an organization.
 :vartype organization: str
@@ -3426,7 +3426,7 @@ def __init__(**kwargs)
 - `identifier`: Required. Uniquely identify a document splitter.
 - `name`: Required.
 - `type`: Required. The different types of document splitters. Known values are: "llm",
-"extractor", "keyword".
+"llm_v2", "extractor", "keyword".
 - `organization`: Required. Uniquely identify an organization.
 - `extractor`: Required. Uniquely identify an extractor.
 - `llm_hint`: Required. The hint about when to split which is passed into the LLM prompt.
@@ -4830,6 +4830,92 @@ def __init__(**kwargs)
 - `invited_by`: 
 - `responded_by`: 
 - `created_dt`: 
+
+<a id="models._models.InvitationByToken"></a>
+
+## InvitationByToken Objects
+
+```python
+class InvitationByToken(msrest.serialization.Model)
+```
+
+InvitationByToken.
+
+:ivar identifier: Uniquely identify an invitation.
+:vartype identifier: str
+:ivar organization:
+:vartype organization: ~affinda.models.InvitationByTokenOrganization
+:ivar email: The email which the invitation is sent to.
+:vartype email: str
+:ivar role: Known values are: "admin", "member".
+:vartype role: str or ~affinda.models.OrganizationRole
+:ivar status: Known values are: "pending", "accepted", "declined".
+:vartype status: str or ~affinda.models.InvitationStatus
+:ivar expiry_date: The date after which the invitation expires. Default is 10 days from now.
+:vartype expiry_date: ~datetime.date
+:ivar invited_by:
+:vartype invited_by: ~affinda.models.User
+:ivar responded_by: The person who receives this invitation can register/signin with any
+ account and respond to it. This field stores which account has responded to the invitation.
+:vartype responded_by: ~affinda.models.RespondedBy
+:ivar created_dt:
+:vartype created_dt: ~datetime.datetime
+
+<a id="models._models.InvitationByToken.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Uniquely identify an invitation.
+- `organization`: 
+- `email`: The email which the invitation is sent to.
+- `role`: Known values are: "admin", "member".
+- `status`: Known values are: "pending", "accepted", "declined".
+- `expiry_date`: The date after which the invitation expires. Default is 10 days from now.
+- `invited_by`: 
+- `responded_by`: The person who receives this invitation can register/signin with any
+account and respond to it. This field stores which account has responded to the invitation.
+- `created_dt`: 
+
+<a id="models._models.InvitationByTokenOrganization"></a>
+
+## InvitationByTokenOrganization Objects
+
+```python
+class InvitationByTokenOrganization(msrest.serialization.Model)
+```
+
+InvitationByTokenOrganization.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar identifier: Required. Uniquely identify an organization.
+:vartype identifier: str
+:ivar name: Required.
+:vartype name: str
+:ivar user_role: Required. The role of the logged in user within the organization. Known values
+ are: "admin", "member".
+:vartype user_role: str or ~affinda.models.UserRole
+
+<a id="models._models.InvitationByTokenOrganization.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Required. Uniquely identify an organization.
+- `name`: Required.
+- `user_role`: Required. The role of the logged in user within the organization. Known
+values are: "admin", "member".
 
 <a id="models._models.InvitationCreate"></a>
 
@@ -7751,23 +7837,31 @@ class Organization(msrest.serialization.Model)
 
 Organization.
 
-:ivar identifier: Uniquely identify an organization.
+All required parameters must be populated in order to send to Azure.
+
+:ivar identifier: Required. Uniquely identify an organization.
 :vartype identifier: str
-:ivar name:
+:ivar name: Required.
 :vartype name: str
-:ivar user_role: The role of the logged in user within the organization. Known values are:
- "admin", "member".
+:ivar user_role: Required. The role of the logged in user within the organization. Known values
+ are: "admin", "member".
 :vartype user_role: str or ~affinda.models.OrganizationUserRole
-:ivar avatar: URL of the organization's avatar.
+:ivar avatar: Required. URL of the organization's avatar.
 :vartype avatar: str
-:ivar resthook_signature_key: Used to sign webhook payloads so you can verify their integrity.
+:ivar resthook_signature_key: Required. Used to sign webhook payloads so you can verify their
+ integrity.
 :vartype resthook_signature_key: str
-:ivar is_trial:
+:ivar is_trial: Required.
 :vartype is_trial: bool
-:ivar validation_tool_config: Configuration of the embeddable validation tool.
+:ivar validation_tool_config: Required. Configuration of the embeddable validation tool.
 :vartype validation_tool_config: ~affinda.models.OrganizationValidationToolConfig
-:ivar show_custom_field_creation: Whether to show the custom field creation in the UI.
+:ivar show_custom_field_creation: Required. Whether to show the custom field creation in the
+ UI.
 :vartype show_custom_field_creation: bool
+:ivar allow_data_source_record_creation: Required. Allow reviewers to create missing records
+ from the data source selector. Keep disabled when data sources are managed by external system
+ syncs.
+:vartype allow_data_source_record_creation: bool
 
 <a id="models._models.Organization.__init__"></a>
 
@@ -7779,16 +7873,20 @@ def __init__(**kwargs)
 
 **Arguments**:
 
-- `identifier`: Uniquely identify an organization.
-- `name`: 
-- `user_role`: The role of the logged in user within the organization. Known values are:
-"admin", "member".
-- `avatar`: URL of the organization's avatar.
-- `resthook_signature_key`: Used to sign webhook payloads so you can verify their
-integrity.
-- `is_trial`: 
-- `validation_tool_config`: Configuration of the embeddable validation tool.
-- `show_custom_field_creation`: Whether to show the custom field creation in the UI.
+- `identifier`: Required. Uniquely identify an organization.
+- `name`: Required.
+- `user_role`: Required. The role of the logged in user within the organization. Known
+values are: "admin", "member".
+- `avatar`: Required. URL of the organization's avatar.
+- `resthook_signature_key`: Required. Used to sign webhook payloads so you can verify
+their integrity.
+- `is_trial`: Required.
+- `validation_tool_config`: Required. Configuration of the embeddable validation tool.
+- `show_custom_field_creation`: Required. Whether to show the custom field creation in the
+UI.
+- `allow_data_source_record_creation`: Required. Allow reviewers to create missing records
+from the data source selector. Keep disabled when data sources are managed by external system
+syncs.
 
 <a id="models._models.OrganizationCreate"></a>
 
@@ -8427,6 +8525,32 @@ def __init__(**kwargs)
 - `next`: URL to request next page of results.
 - `previous`: URL to request previous page of results.
 
+<a id="models._models.Paths1M0Dyj1V3ResthookResultsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
+
+## Paths1M0Dyj1V3ResthookResultsGetResponses200ContentApplicationJsonSchemaAllof1 Objects
+
+```python
+class Paths1M0Dyj1V3ResthookResultsGetResponses200ContentApplicationJsonSchemaAllof1(
+        msrest.serialization.Model)
+```
+
+Paths1M0Dyj1V3ResthookResultsGetResponses200ContentApplicationJsonSchemaAllof1.
+
+:ivar results:
+:vartype results: list[~affinda.models.RestHookResult]
+
+<a id="models._models.Paths1M0Dyj1V3ResthookResultsGetResponses200ContentApplicationJsonSchemaAllof1.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: 
+
 <a id="models._models.Paths1O6IvdaV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchemaAllof1"></a>
 
 ## Paths1O6IvdaV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchemaAllof1 Objects
@@ -8504,6 +8628,45 @@ All required parameters must be populated in order to send to Azure.
 :vartype previous: str
 
 <a id="models._models.Paths1Qr7BnyV3MappingDataSourcesIdentifierValuesGetResponses200ContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `results`: 
+- `count`: Required. Number of items in results.
+- `next`: URL to request next page of results.
+- `previous`: URL to request previous page of results.
+
+<a id="models._models.Paths1Uxms0YV3ResthookResultsGetResponses200ContentApplicationJsonSchema"></a>
+
+## Paths1Uxms0YV3ResthookResultsGetResponses200ContentApplicationJsonSchema Objects
+
+```python
+class Paths1Uxms0YV3ResthookResultsGetResponses200ContentApplicationJsonSchema(
+        PaginatedResponse,
+        Paths1M0Dyj1V3ResthookResultsGetResponses200ContentApplicationJsonSchemaAllof1
+)
+```
+
+Paths1Uxms0YV3ResthookResultsGetResponses200ContentApplicationJsonSchema.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar results:
+:vartype results: list[~affinda.models.RestHookResult]
+:ivar count: Required. Number of items in results.
+:vartype count: int
+:ivar next: URL to request next page of results.
+:vartype next: str
+:ivar previous: URL to request previous page of results.
+:vartype previous: str
+
+<a id="models._models.Paths1Uxms0YV3ResthookResultsGetResponses200ContentApplicationJsonSchema.__init__"></a>
 
 #### \_\_init\_\_
 
@@ -8752,6 +8915,49 @@ def __init__(**kwargs)
 **Arguments**:
 
 - `document`: Unique identifier for the document.
+
+<a id="models._models.PathsJg1B16V3ResthookResultsResendPostRequestbodyContentApplicationJsonSchema"></a>
+
+## PathsJg1B16V3ResthookResultsResendPostRequestbodyContentApplicationJsonSchema Objects
+
+```python
+class PathsJg1B16V3ResthookResultsResendPostRequestbodyContentApplicationJsonSchema(
+        msrest.serialization.Model)
+```
+
+PathsJg1B16V3ResthookResultsResendPostRequestbodyContentApplicationJsonSchema.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar document: Required. Identifier of the document to replay the event for.
+:vartype document: str
+:ivar event: Required. The event name to subscribe to. Known values are:
+ "resume.parse.succeeded", "resume.parse.failed", "resume.parse.completed",
+ "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
+ "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
+ "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
+ "document.classify.failed", "document.classify.completed", "document.rejected",
+ "annotation.validated", "submission.completed".
+:vartype event: str or ~affinda.models.ResthookEvent
+
+<a id="models._models.PathsJg1B16V3ResthookResultsResendPostRequestbodyContentApplicationJsonSchema.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `document`: Required. Identifier of the document to replay the event for.
+- `event`: Required. The event name to subscribe to. Known values are:
+"resume.parse.succeeded", "resume.parse.failed", "resume.parse.completed",
+"invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
+"invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
+"document.parse.completed", "document.validate.completed", "document.classify.succeeded",
+"document.classify.failed", "document.classify.completed", "document.rejected",
+"annotation.validated", "submission.completed".
 
 <a id="models._models.PathsL3R02CV3DocumentsGetResponses200ContentApplicationJsonSchemaAllof1"></a>
 
@@ -9384,6 +9590,131 @@ def __init__(**kwargs)
 - `code`: Required.
 - `detail`: Required.
 
+<a id="models._models.RespondedBy"></a>
+
+## RespondedBy Objects
+
+```python
+class RespondedBy(User)
+```
+
+The person who receives this invitation can register/signin with any account and respond to it. This field stores which account has responded to the invitation.
+
+:ivar id: Uniquely identify a user.
+:vartype id: int
+:ivar name:
+:vartype name: str
+:ivar username:
+:vartype username: str
+:ivar email:
+:vartype email: str
+:ivar avatar: URL of the user's avatar.
+:vartype avatar: str
+
+<a id="models._models.RespondedBy.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `id`: Uniquely identify a user.
+- `name`: 
+- `username`: 
+- `email`: 
+- `avatar`: URL of the user's avatar.
+
+<a id="models._models.RestHookResult"></a>
+
+## RestHookResult Objects
+
+```python
+class RestHookResult(msrest.serialization.Model)
+```
+
+RestHookResult.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar timestamp: Required. When the webhook delivery was attempted.
+:vartype timestamp: ~datetime.datetime
+:ivar document: Required.
+:vartype document: ~affinda.models.RestHookResultDocument
+:ivar event: Required. The event name to subscribe to. Known values are:
+ "resume.parse.succeeded", "resume.parse.failed", "resume.parse.completed",
+ "invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
+ "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
+ "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
+ "document.classify.failed", "document.classify.completed", "document.rejected",
+ "annotation.validated", "submission.completed".
+:vartype event: str or ~affinda.models.ResthookEvent
+:ivar target_url: Required. URL the webhook was delivered to.
+:vartype target_url: str
+:ivar failed: Required. True if the delivery could not reach the target (a connection-level
+ failure).
+:vartype failed: bool
+:ivar status: Required. HTTP status code returned by the target, or null if the delivery never
+ connected.
+:vartype status: int
+:ivar content: Required. Truncated response body returned by the target.
+:vartype content: str
+
+<a id="models._models.RestHookResult.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `timestamp`: Required. When the webhook delivery was attempted.
+- `document`: Required.
+- `event`: Required. The event name to subscribe to. Known values are:
+"resume.parse.succeeded", "resume.parse.failed", "resume.parse.completed",
+"invoice.parse.succeeded", "invoice.parse.failed", "invoice.parse.completed",
+"invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
+"document.parse.completed", "document.validate.completed", "document.classify.succeeded",
+"document.classify.failed", "document.classify.completed", "document.rejected",
+"annotation.validated", "submission.completed".
+- `target_url`: Required. URL the webhook was delivered to.
+- `failed`: Required. True if the delivery could not reach the target (a connection-level
+failure).
+- `status`: Required. HTTP status code returned by the target, or null if the delivery
+never connected.
+- `content`: Required. Truncated response body returned by the target.
+
+<a id="models._models.RestHookResultDocument"></a>
+
+## RestHookResultDocument Objects
+
+```python
+class RestHookResultDocument(msrest.serialization.Model)
+```
+
+RestHookResultDocument.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar identifier: Required. Identifier of the document the webhook was fired for.
+:vartype identifier: str
+
+<a id="models._models.RestHookResultDocument.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `identifier`: Required. Identifier of the document the webhook was fired for.
+
 <a id="models._models.ResthookSubscription"></a>
 
 ## ResthookSubscription Objects
@@ -9404,7 +9735,7 @@ All required parameters must be populated in order to send to Azure.
  "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
  "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
  "document.classify.failed", "document.classify.completed", "document.rejected",
- "annotation.validated".
+ "annotation.validated", "submission.completed".
 :vartype event: str or ~affinda.models.ResthookEvent
 :ivar organization: Required.
 :vartype organization: ~affinda.models.Organization
@@ -9441,7 +9772,7 @@ def __init__(**kwargs)
 "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
 "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
 "document.classify.failed", "document.classify.completed", "document.rejected",
-"annotation.validated".
+"annotation.validated", "submission.completed".
 - `organization`: Required.
 - `workspace`: Required.
 - `target_url`: Required. URL of the resthook's receiver.
@@ -9473,7 +9804,7 @@ All required parameters must be populated in order to send to Azure.
  "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
  "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
  "document.classify.failed", "document.classify.completed", "document.rejected",
- "annotation.validated".
+ "annotation.validated", "submission.completed".
 :vartype event: str or ~affinda.models.ResthookEvent
 :ivar organization:
 :vartype organization: str
@@ -9500,7 +9831,7 @@ def __init__(**kwargs)
 "invoice.validate.completed", "document.parse.succeeded", "document.parse.failed",
 "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
 "document.classify.failed", "document.classify.completed", "document.rejected",
-"annotation.validated".
+"annotation.validated", "submission.completed".
 - `organization`: 
 - `workspace`: 
 - `version`: Version of the resthook subscription. Determines the resthook body being
@@ -9521,7 +9852,8 @@ ResthookSubscriptionUpdate.
  "invoice.parse.failed", "invoice.parse.completed", "invoice.validate.completed",
  "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
  "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
- "document.classify.completed", "document.rejected", "annotation.validated".
+ "document.classify.completed", "document.rejected", "annotation.validated",
+ "submission.completed".
 :vartype event: str or ~affinda.models.ResthookEvent
 :ivar organization: Uniquely identify an organization.
 :vartype organization: str
@@ -9530,6 +9862,8 @@ ResthookSubscriptionUpdate.
 :ivar version: Version of the resthook subscription. Determines the resthook body being fired.
  Known values are: "v1", "v2", "v3".
 :vartype version: str or ~affinda.models.Version
+:ivar active: Set to ``true`` to activate the subscription, or ``false`` to deactivate it.
+:vartype active: bool
 
 <a id="models._models.ResthookSubscriptionUpdate.__init__"></a>
 
@@ -9546,11 +9880,13 @@ def __init__(**kwargs)
 "invoice.parse.failed", "invoice.parse.completed", "invoice.validate.completed",
 "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
 "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
-"document.classify.completed", "document.rejected", "annotation.validated".
+"document.classify.completed", "document.rejected", "annotation.validated",
+"submission.completed".
 - `organization`: Uniquely identify an organization.
 - `workspace`: Uniquely identify a workspace.
 - `version`: Version of the resthook subscription. Determines the resthook body being
 fired. Known values are: "v1", "v2", "v3".
+- `active`: Set to ``true`` to activate the subscription, or ``false`` to deactivate it.
 
 <a id="models._models.ResthookSubscriptionWorkspace"></a>
 
@@ -12864,6 +13200,84 @@ def __init__(**kwargs)
 
 - `month`: Required. Month of the usage.
 - `count`: Required. Usage count.
+
+<a id="models._models.UsageItem"></a>
+
+## UsageItem Objects
+
+```python
+class UsageItem(msrest.serialization.Model)
+```
+
+Daily credits consumption for a single date in the requested period.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar date: Required. The day this usage was recorded against, in YYYY-MM-DD.
+:vartype date: ~datetime.date
+:ivar count: Required. Credits consumed on this day.
+:vartype count: int
+
+<a id="models._models.UsageItem.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `date`: Required. The day this usage was recorded against, in YYYY-MM-DD.
+- `count`: Required. Credits consumed on this day.
+
+<a id="models._models.UsageResponse"></a>
+
+## UsageResponse Objects
+
+```python
+class UsageResponse(msrest.serialization.Model)
+```
+
+Daily credits consumption for an organization over a date range, optionally scoped to a single workspace, a single document type, or a single (workspace × document type) pair.
+
+All required parameters must be populated in order to send to Azure.
+
+:ivar scope: Required. What the usage was scoped to. Known values are: "organization",
+ "workspace", "documentType", "workspaceAndDocumentType".
+:vartype scope: str or ~affinda.models.UsageResponseScope
+:ivar scope_identifier: Required. Identifier of the scoped entity: the organization, workspace,
+ or document type identifier. When scoped to a (workspace × document type) pair, it is the
+ workspace and document type identifiers joined by a colon (     ``{workspaceIdentifier}:{documentTypeIdentifier}``\ ).
+:vartype scope_identifier: str
+:ivar start: Required. Inclusive start of the reported period (YYYY-MM-DD).
+:vartype start: ~datetime.date
+:ivar end: Required. Inclusive end of the reported period (YYYY-MM-DD).
+:vartype end: ~datetime.date
+:ivar total: Required. Total credits consumed over the period.
+:vartype total: int
+:ivar items: Required. Per-day breakdown. Days with zero usage are omitted.
+:vartype items: list[~affinda.models.UsageItem]
+
+<a id="models._models.UsageResponse.__init__"></a>
+
+#### \_\_init\_\_
+
+```python
+def __init__(**kwargs)
+```
+
+**Arguments**:
+
+- `scope`: Required. What the usage was scoped to. Known values are: "organization",
+"workspace", "documentType", "workspaceAndDocumentType".
+- `scope_identifier`: Required. Identifier of the scoped entity: the organization,
+workspace, or document type identifier. When scoped to a (workspace × document type) pair, it
+is the workspace and document type identifiers joined by a colon (         ``{workspaceIdentifier}:{documentTypeIdentifier}``\ ).
+- `start`: Required. Inclusive start of the reported period (YYYY-MM-DD).
+- `end`: Required. Inclusive end of the reported period (YYYY-MM-DD).
+- `total`: Required. Total credits consumed over the period.
+- `items`: Required. Per-day breakdown. Days with zero usage are omitted.
 
 <a id="models._models.UserNullable"></a>
 

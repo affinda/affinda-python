@@ -28,7 +28,8 @@ class AffindaAPI(AffindaAPIOperationsMixin):
 
     :param credential: Credential needed for the client to connect to Azure.
     :type credential: ~azure.core.credentials.TokenCredential
-    :param region: region - server parameter. Default value is "api".
+    :param region: The instance region. Use 'api' for AUS/Global, 'api.us1' for US, or 'api.eu1'
+     for EU. You can find your region in the Affinda web app URL. Default value is "api".
     :type region: str or ~affinda.models.Region
     """
 
